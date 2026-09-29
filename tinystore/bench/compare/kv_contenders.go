@@ -8,6 +8,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strconv"
 	"time"
 
 	"github.com/cockroachdb/pebble/v2"
@@ -160,6 +161,34 @@ func (b *boltKV) get(_ context.Context, key string) ([]byte, error) {
 
 func (b *boltKV) close() error { return b.db.Close() }
 
+// bbolt borrowed: the value read in place, inside its transaction, as bbolt
+// hands it out from its memory map, and not copied for the caller; only its
+// length leaves the transaction.
+type boltBorrowedKV struct{ *boltKV }
+
+func openBoltBorrowedKV(ctx context.Context, dir string) (subject, error) {
+	s, err := openBoltKV(ctx, dir)
+	if err != nil {
+		return nil, err
+	}
+	return boltBorrowedKV{s.(*boltKV)}, nil
+}
+
+func (b boltBorrowedKV) get(_ context.Context, key string) ([]byte, error) {
+	n := 0
+	err := b.db.View(func(tx *bolt.Tx) error {
+		n = len(tx.Bucket(boltBucket).Get([]byte(key)))
+		return nil
+	})
+	if err == nil && n == 0 {
+		err = fmt.Errorf("%s: not found", key)
+	}
+	return borrowedLength[:n:n], err
+}
+
+// borrowedLength stands for a value of n bytes nobody copied
+var borrowedLength = make([]byte, kvValueBytes)
+
 // Badger: SyncWrites, which Badger leaves off unless asked.
 
 type badgerKV struct {
@@ -235,7 +264,7 @@ type redisKV struct {
 }
 
 func openRedisKV(ctx context.Context, dir string) (subject, error) {
-	client, server, err := startRedis(ctx, dir)
+	client, server, err := startRedis(ctx, dir, false)
 	if err != nil {
 		return nil, err
 	}
@@ -244,15 +273,33 @@ func openRedisKV(ctx context.Context, dir string) (subject, error) {
 
 // startRedis starts a server of its own on a Unix socket in dir, with an
 // append-only file synced on every write, and waits until it answers
-func startRedis(ctx context.Context, dir string) (*redis.Client, *exec.Cmd, error) {
-	socket := filepath.Join(dir, "redis.sock")
-	server := exec.Command("redis-server", "--port", "0", "--unixsocket", socket, "--dir", dir,
-		"--appendonly", "yes", "--appendfsync", "always", "--save", "", "--daemonize", "no")
+// openRedisTCPKV is Redis on a loopback port, set beside TinyStore's server
+func openRedisTCPKV(ctx context.Context, dir string) (subject, error) {
+	client, server, err := startRedis(ctx, dir, true)
+	if err != nil {
+		return nil, err
+	}
+	return &redisKV{client: client, server: server}, nil
+}
+
+func startRedis(ctx context.Context, dir string, tcp bool) (*redis.Client, *exec.Cmd, error) {
+	listen := []string{"--port", "0", "--unixsocket", filepath.Join(dir, "redis.sock")}
+	options := &redis.Options{Network: "unix", Addr: filepath.Join(dir, "redis.sock")}
+	if tcp {
+		port, err := freePort()
+		if err != nil {
+			return nil, nil, err
+		}
+		listen = []string{"--port", strconv.Itoa(port), "--bind", "127.0.0.1"}
+		options = &redis.Options{Network: "tcp", Addr: "127.0.0.1:" + strconv.Itoa(port)}
+	}
+	server := exec.Command("redis-server", append(listen, "--dir", dir,
+		"--appendonly", "yes", "--appendfsync", "always", "--save", "", "--daemonize", "no")...)
 	server.Stdout, server.Stderr = os.Stderr, os.Stderr
 	if err := server.Start(); err != nil {
 		return nil, nil, fmt.Errorf("redis-server: %w", err)
 	}
-	client := redis.NewClient(&redis.Options{Network: "unix", Addr: socket})
+	client := redis.NewClient(options)
 	for deadline := time.Now().Add(10 * time.Second); ; time.Sleep(20 * time.Millisecond) {
 		if client.Ping(ctx).Err() == nil {
 			return client, server, nil

@@ -13,7 +13,6 @@ import (
 	"time"
 
 	_ "github.com/jackc/pgx/v5/stdlib"
-	_ "github.com/ncruces/go-sqlite3/driver"
 
 	"github.com/tinyshed/tinystore"
 	"github.com/tinyshed/tinystore/sqldb"
@@ -79,14 +78,16 @@ func openSQLiteSQL(ctx context.Context, dir string) (subject, error) {
 	return openHandSQL(ctx, "sqlite", filepath.Join(dir, "app.db"))
 }
 
-func openNcrucesSQL(ctx context.Context, dir string) (subject, error) {
-	return openHandSQL(ctx, "sqlite3", filepath.Join(dir, "app.db"))
-}
-
 func openHandSQL(ctx context.Context, driver, path string) (subject, error) {
 	dsn := "file:" + filepath.ToSlash(path) +
 		"?_pragma=journal_mode(WAL)&_pragma=synchronous(FULL)&_pragma=busy_timeout(5000)"
-	writer, err := sql.Open(driver, dsn+"&_txlock=immediate")
+	return openHandSQLWith(ctx, driver, dsn+"&_txlock=immediate", dsn+"&_pragma=query_only(1)")
+}
+
+// openHandSQLWith opens the writer pool of one and the pool of readers with
+// the DSNs a driver spells its pragmas in
+func openHandSQLWith(ctx context.Context, driver, writerDSN, readerDSN string) (subject, error) {
+	writer, err := sql.Open(driver, writerDSN)
 	if err != nil {
 		return nil, err
 	}
@@ -94,7 +95,7 @@ func openHandSQL(ctx context.Context, driver, path string) (subject, error) {
 	if _, err = writer.ExecContext(ctx, notesSchema); err != nil {
 		return nil, errors.Join(err, writer.Close())
 	}
-	reader, err := sql.Open(driver, dsn+"&_pragma=query_only(1)")
+	reader, err := sql.Open(driver, readerDSN)
 	if err != nil {
 		return nil, errors.Join(err, writer.Close())
 	}

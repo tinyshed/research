@@ -2,8 +2,8 @@ package main
 
 import (
 	"context"
-	_ "embed"
 	"database/sql"
+	_ "embed"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -56,10 +56,12 @@ func measureJobs(ctx context.Context, s subject, seconds float64) ([]stage, erro
 			return store.enqueue(ctx, n)
 		}))
 	}
+	before := spent()
 	began := time.Now()
 	done, err := store.drain(ctx, drainWorkers)
 	elapsed := time.Since(began).Seconds()
 	drained := stage{Name: "drain", Goroutines: drainWorkers, Ops: done, Seconds: elapsed, PerSecond: float64(done) / elapsed}
+	drained.addUsage(before, spent())
 	if err != nil {
 		drained.Errors, drained.FirstError = 1, err.Error()
 	}

@@ -233,7 +233,7 @@ func (a *servicesApp) start(ctx context.Context) error {
 		}
 	}
 	var err error
-	if a.redis, a.redisCmd, err = startRedis(ctx, filepath.Join(a.dir, "redis")); err != nil {
+	if a.redis, a.redisCmd, err = startRedis(ctx, filepath.Join(a.dir, "redis"), false); err != nil {
 		return err
 	}
 	pg, err := openPostgresSQL(ctx, filepath.Join(a.dir, "postgres"))

@@ -1,4 +1,4 @@
-module github.com/tinyshed/tinystore/bench/compare
+module github.com/tinyshed/tinystore/server/compare
 
 go 1.27.0
 
@@ -9,10 +9,12 @@ require (
 	github.com/dgraph-io/badger/v4 v4.9.6
 	github.com/jackc/pgx/v5 v5.11.0
 	github.com/klauspost/compress v1.20.1
+	github.com/mattn/go-sqlite3 v1.14.52
 	github.com/ncruces/go-sqlite3 v0.35.6
 	github.com/prometheus/prometheus v0.315.0
 	github.com/redis/go-redis/v9 v9.22.0
 	github.com/tinyshed/tinystore v0.0.0
+	github.com/tinyshed/tinystore/server v0.0.0
 	go.etcd.io/bbolt v1.5.0
 	maragu.dev/goqite v0.4.0
 	modernc.org/sqlite v1.60.1
@@ -128,4 +130,7 @@ require (
 	modernc.org/memory v1.12.1 // indirect
 )
 
-replace github.com/tinyshed/tinystore => ../../source
+replace (
+	github.com/tinyshed/tinystore => ../../source
+	github.com/tinyshed/tinystore/server => ../../source/server
+)

@@ -127,6 +127,7 @@ func loadMetricsCorpus() (*metricsCorpus, error) { return loadCorpus() }
 func ingestCorpus(ctx context.Context, store metricsStore, c *metricsCorpus) stage {
 	var latencies histogram
 	s := stage{Name: "ingest", Goroutines: 1}
+	before := spent()
 	began := time.Now()
 	window := metricsWindow.Milliseconds()
 	for start := c.from; start <= c.to; start += window {
@@ -144,6 +145,7 @@ func ingestCorpus(ctx context.Context, store metricsStore, c *metricsCorpus) sta
 	s.Ops = int64(c.samples)
 	s.PerSecond = float64(c.samples) / s.Seconds
 	s.P50Micros, s.P99Micros = latencies.quantile(0.5), latencies.quantile(0.99)
+	s.addUsage(before, spent())
 	return s
 }
 

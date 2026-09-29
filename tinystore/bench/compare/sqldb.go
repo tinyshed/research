@@ -37,11 +37,12 @@ const notesSchema = `create table if not exists note (
 ) strict`
 
 var sqlEngine = engine{
-	order: []string{"tinystore", "sqlite", "ncruces", "postgres"},
+	// the third SQLite, ncruces or mattn, is a build's own: both register the
+	// database/sql driver sqlite3, so one binary holds one of them
+	order: []string{"tinystore", "sqlite", "postgres"},
 	contenders: map[string]opener{
 		"tinystore": openTinyStoreSQL,
 		"sqlite":    openSQLiteSQL,
-		"ncruces":   openNcrucesSQL,
 		"postgres":  openPostgresSQL,
 	},
 	measure: measureSQL,

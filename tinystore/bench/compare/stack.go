@@ -89,11 +89,14 @@ func timeBackup(ctx context.Context, app appStore) (stage, error) {
 	}
 	defer os.RemoveAll(dir)
 	path := filepath.Join(dir, "backup")
+	before := spent()
 	began := time.Now()
 	if err = app.backup(ctx, path); err != nil {
 		return stage{}, err
 	}
 	elapsed := time.Since(began).Seconds()
 	size, err := directoryBytes(dir)
-	return stage{Name: "backup-bytes", Goroutines: 1, Ops: size, Seconds: elapsed}, err
+	s := stage{Name: "backup-bytes", Goroutines: 1, Ops: size, Seconds: elapsed}
+	s.addUsage(before, spent())
+	return s, err
 }

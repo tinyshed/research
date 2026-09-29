@@ -19,6 +19,11 @@ type stage struct {
 	P50Micros  float64 `json:"p50_us"`
 	P99Micros  float64 `json:"p99_us"`
 	FirstError string  `json:"first_error,omitempty"`
+	// what the contender's processes, its services' included, spent on the
+	// stage: CPU time and bytes the storage layer read and wrote
+	CPUSeconds float64 `json:"cpu_seconds"`
+	ReadBytes  int64   `json:"read_bytes"`
+	WriteBytes int64   `json:"write_bytes"`
 }
 
 // operation is one call of a stage; worker and n tell it which goroutine it is
@@ -31,8 +36,10 @@ type operation func(ctx context.Context, worker int, n int) error
 func timeStage(ctx context.Context, name string, goroutines int, seconds float64, op operation) stage {
 	warm := time.Duration(seconds * float64(time.Second) / 5)
 	_ = runFor(ctx, goroutines, warm, op)
+	before := spent()
 	result := runFor(ctx, goroutines, time.Duration(seconds*float64(time.Second)), op)
 	result.Name, result.Goroutines = name, goroutines
+	result.addUsage(before, spent())
 	return result
 }
 
@@ -117,4 +124,9 @@ func (h *histogram) quantile(q float64) float64 {
 		}
 	}
 	return 0
+}
+
+func (s *stage) addUsage(before, after usage) {
+	s.CPUSeconds = after.cpu - before.cpu
+	s.ReadBytes, s.WriteBytes = after.read-before.read, after.write-before.write
 }

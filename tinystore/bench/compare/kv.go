@@ -21,14 +21,19 @@ const (
 )
 
 var kvEngine = engine{
-	order: []string{"tinystore", "sqlite", "bbolt", "badger", "pebble", "redis"},
+	order: []string{"tinystore", "tinystore-sidecar", "tinystore-server", "sqlite", "bbolt", "bbolt-borrowed",
+		"badger", "pebble", "redis", "redis-tcp"},
 	contenders: map[string]opener{
-		"tinystore": openTinyStoreKV,
-		"sqlite":    openSQLiteKV,
-		"bbolt":     openBoltKV,
-		"badger":    openBadgerKV,
-		"pebble":    openPebbleKV,
-		"redis":     openRedisKV,
+		"tinystore":         openTinyStoreKV,
+		"tinystore-sidecar": openTinyStoreServeKV,
+		"tinystore-server":  openTinyStoreServerKV,
+		"bbolt-borrowed":    openBoltBorrowedKV,
+		"redis-tcp":         openRedisTCPKV,
+		"sqlite":            openSQLiteKV,
+		"bbolt":             openBoltKV,
+		"badger":            openBadgerKV,
+		"pebble":            openPebbleKV,
+		"redis":             openRedisKV,
 	},
 	measure: measureKV,
 }

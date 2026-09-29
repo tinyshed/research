@@ -5,6 +5,9 @@
 //	compare weight -out results/weight.json            what linking each contender costs a program
 //	compare child -engine kv -contender bbolt ...      one contender in a process of its own
 //
+// The module's path is under the server's so that Go lets it import the
+// server's own client, which the sidecar contenders call through.
+//
 // Each contender runs in a fresh child process with a fresh directory, so the
 // memory a run reports is that contender's alone, and the parent only orders
 // the runs and gathers what the children print.

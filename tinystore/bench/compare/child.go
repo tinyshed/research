@@ -125,6 +125,7 @@ func measureContender(ctx context.Context, e engine, open opener, dir string, se
 		return childRun{}, fmt.Errorf("open: %w", err)
 	}
 	run := childRun{OpenSeconds: time.Since(began).Seconds()}
+	servicePIDs = func() []int { return pidsOf(s) }
 	time.Sleep(200 * time.Millisecond) // let a service finish starting before its memory is read
 	run.OpenRSS = residentBytes()
 

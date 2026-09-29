@@ -143,3 +143,56 @@ func describeEnvironment() environment {
 	}
 	return e
 }
+
+// usage is what this process and its contender's services had spent at one
+// moment: CPU seconds, user and system, and the bytes their I/O read from and
+// wrote to the storage layer, as /proc/<pid>/stat and /proc/<pid>/io count them.
+type usage struct {
+	cpu         float64
+	read, write int64
+}
+
+// servicePIDs is the child's opened contender's services, set once it opens
+var servicePIDs = func() []int { return nil }
+
+// spent sums usage over this process and every service process tree
+func spent() usage {
+	total := processUsage(os.Getpid())
+	for _, root := range servicePIDs() {
+		for _, pid := range processTree(root) {
+			u := processUsage(pid)
+			total.cpu, total.read, total.write = total.cpu+u.cpu, total.read+u.read, total.write+u.write
+		}
+	}
+	return total
+}
+
+// Linux counts utime and stime in ticks of USER_HZ, a hundred a second
+const clockTicks = 100
+
+func processUsage(pid int) usage {
+	var u usage
+	dir := "/proc/" + strconv.Itoa(pid)
+	if stat, err := os.ReadFile(dir + "/stat"); err == nil {
+		// utime and stime are the 12th and 13th fields after the command
+		fields := strings.Fields(string(stat[strings.LastIndexByte(string(stat), ')')+1:]))
+		if len(fields) > 12 {
+			utime, _ := strconv.ParseFloat(fields[11], 64)
+			stime, _ := strconv.ParseFloat(fields[12], 64)
+			u.cpu = (utime + stime) / clockTicks
+		}
+	}
+	if io, err := os.ReadFile(dir + "/io"); err == nil {
+		for line := range strings.Lines(string(io)) {
+			name, value, _ := strings.Cut(strings.TrimSpace(line), ": ")
+			n, _ := strconv.ParseInt(value, 10, 64)
+			switch name {
+			case "read_bytes":
+				u.read = n
+			case "write_bytes":
+				u.write = n
+			}
+		}
+	}
+	return u
+}

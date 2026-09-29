@@ -159,6 +159,7 @@ func (c *logCorpus) settle() {
 func appendCorpus(ctx context.Context, store recordsStore, c *logCorpus) stage {
 	var latencies histogram
 	s := stage{Name: "append", Goroutines: 1, Ops: int64(len(c.lines))}
+	before := spent()
 	began := time.Now()
 	for start := 0; start < len(c.lines); start += appendLines {
 		sent := time.Now()
@@ -173,6 +174,7 @@ func appendCorpus(ctx context.Context, store recordsStore, c *logCorpus) stage {
 	s.Seconds = time.Since(began).Seconds()
 	s.PerSecond = float64(s.Ops) / s.Seconds
 	s.P50Micros, s.P99Micros = latencies.quantile(0.5), latencies.quantile(0.99)
+	s.addUsage(before, spent())
 	return s
 }
 

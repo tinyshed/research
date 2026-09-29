@@ -77,6 +77,11 @@ func runOnce(ctx context.Context, engineName, contender string, repeat int, seco
 		return childRun{}, err
 	}
 	defer os.RemoveAll(dir)
+	// a server that runs as its own user, as Postgres does, must reach its
+	// directory under this one, which MkdirTemp makes for its owner alone
+	if err = os.Chmod(dir, 0o755); err != nil {
+		return childRun{}, err
+	}
 	self, err := os.Executable()
 	if err != nil {
 		return childRun{}, err
