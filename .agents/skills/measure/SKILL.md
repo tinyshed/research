@@ -9,6 +9,31 @@ AGENTS.md holds the rules: a number with its environment, a candidate against
 what it replaces on identical input in the same run, storage divided by object,
 payload beside file. This is how to keep them.
 
+## Which TinyStore is measured
+
+`tinystore/source` is a checkout like any other, and every module here and
+`server-spike`'s binary build from it, so what it has checked out is what is
+measured.
+
+- **The pinned commit**: `git submodule update --init`.
+- **A later commit of TinyStore's `main`**: `git -C tinystore/source fetch`,
+  then `checkout <commit>`; fix what the move broke in the modules here, whose
+  `internal/` imports follow TinyStore; commit the pointer with the round,
+  `chore(tinystore): measure <short commit>`.
+- **Work not on `main` yet**: commit it on a branch of the TinyStore
+  checkout, then
+  `git -C tinystore/source fetch <tinystore checkout> <branch>` and
+  `git -C tinystore/source checkout FETCH_HEAD`. Not `go.work`, which leaves
+  `server-spike`'s binary on the old commit. The round may run; its report
+  waits until that commit is on TinyStore's `main`, since a report cites a
+  commit that stays.
+- **A candidate against its baseline**: a worktree of `tinystore/source` at
+  each commit, `git -C tinystore/source worktree add ../base <commit>`, and
+  each pass run against one of them, interleaved as below.
+
+What the round found goes back to TinyStore as a commit of its own there, a
+fix or the document that asked, citing the report here by its URL.
+
 ## Before the run
 
 - **Commit the harness first.** A report names the commit it measured; an

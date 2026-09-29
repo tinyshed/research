@@ -42,9 +42,9 @@ commit the new pointer with the round that measured it. A report names the
 TinyStore commit it measured; TinyStore never rewrites a commit a report
 cites, and neither do we here.
 
-To measure uncommitted TinyStore work, point a local, git-ignored `go.work`
-at that checkout. The round is then an anecdote until that work is committed
-there and the submodule moves to it.
+To measure TinyStore work not yet on its `main`, commit it on a branch and
+check that commit out in the submodule, as the `measure` skill says; the
+report waits until the commit is on TinyStore's `main`.
 
 A module that does not build against the pinned commit is broken, not
 archived: fix it or delete it, and say so in the round that noticed.
