@@ -50,6 +50,47 @@ func statusBytes(path, field string) int64 {
 	return 0
 }
 
+// servicePSS is a service's memory at this moment: the proportional set size
+// of its process and every process under it. A server that forks a process a
+// connection maps its shared memory into each, so resident sizes added up
+// count that memory once a process; PSS divides each shared page among the
+// processes mapping it, so the sum counts it once.
+func servicePSS(root int) int64 {
+	var total int64
+	for _, pid := range processTree(root) {
+		total += statusBytes("/proc/"+strconv.Itoa(pid)+"/smaps_rollup", "Pss:")
+	}
+	return total
+}
+
+// processTree is root and every process descended from it
+func processTree(root int) []int {
+	parents := map[int][]int{}
+	entries, _ := os.ReadDir("/proc")
+	for _, entry := range entries {
+		pid, err := strconv.Atoi(entry.Name())
+		if err != nil {
+			continue
+		}
+		stat, err := os.ReadFile("/proc/" + entry.Name() + "/stat")
+		if err != nil {
+			continue
+		}
+		// the parent is the second field after the command, whose name may hold spaces
+		fields := strings.Fields(string(stat[strings.LastIndexByte(string(stat), ')')+1:]))
+		if len(fields) > 1 {
+			if parent, err := strconv.Atoi(fields[1]); err == nil {
+				parents[parent] = append(parents[parent], pid)
+			}
+		}
+	}
+	tree := []int{root}
+	for i := 0; i < len(tree); i++ {
+		tree = append(tree, parents[tree[i]]...)
+	}
+	return tree
+}
+
 // directoryBytes is the size of every file under dir, as ls counts it
 func directoryBytes(dir string) (int64, error) {
 	var total int64

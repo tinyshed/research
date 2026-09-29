@@ -29,7 +29,12 @@ type subject interface {
 }
 
 var engines = map[string]engine{
-	"kv": kvEngine,
+	"kv":      kvEngine,
+	"sqldb":   sqlEngine,
+	"metrics": metricsEngine,
+	"records": recordsEngine,
+	"jobs":    jobsEngine,
+	"blobs":   blobsEngine,
 }
 
 func engineNames() []string {
@@ -51,6 +56,9 @@ type childRun struct {
 	OpenRSS    int64 `json:"open_rss_bytes"`
 	PeakRSS    int64 `json:"peak_rss_bytes"`
 	ServiceRSS int64 `json:"service_peak_rss_bytes,omitempty"`
+	// a service's processes' proportional set size once the stages ended,
+	// which counts memory they share once
+	ServicePSS int64 `json:"service_pss_bytes,omitempty"`
 	DiskBytes  int64 `json:"disk_bytes"`
 }
 
@@ -60,7 +68,7 @@ func (r childRun) summary() string {
 		parts = append(parts, fmt.Sprintf("%s×%d %.0f/s p99 %.1fµs", s.Name, s.Goroutines, s.PerSecond, s.P99Micros))
 	}
 	return fmt.Sprintf("%-10s #%d  peak %.1f MiB  disk %.1f MiB  %s", r.Contender, r.Repeat,
-		float64(r.PeakRSS+r.ServiceRSS)/(1<<20), float64(r.DiskBytes)/(1<<20), strings.Join(parts, "  "))
+		float64(r.PeakRSS+max(r.ServicePSS, r.ServiceRSS))/(1<<20), float64(r.DiskBytes)/(1<<20), strings.Join(parts, "  "))
 }
 
 func runChild(ctx context.Context, args []string) error {
@@ -105,6 +113,7 @@ func measureContender(ctx context.Context, e engine, open opener, dir string, se
 	run.PeakRSS = peakResidentBytes(0)
 	if pid := s.servicePID(); pid != 0 {
 		run.ServiceRSS = peakResidentBytes(pid)
+		run.ServicePSS = servicePSS(pid)
 	}
 	if err = s.close(); err != nil {
 		return childRun{}, fmt.Errorf("close: %w", err)
