@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 )
 
@@ -21,6 +22,12 @@ type appStore interface {
 	subject
 	seed(ctx context.Context) error
 	serve(ctx context.Context, r appRequest) error
+}
+
+// backs up is an application's storage whose backup is measured: the
+// embedded store and the services; a store served over the socket takes its
+// backup on the server's side, which this round does not measure.
+type backsUp interface {
 	backup(ctx context.Context, path string) error
 }
 
@@ -38,10 +45,12 @@ const (
 )
 
 var stackEngine = engine{
-	order: []string{"tinystore", "services"},
+	order: []string{"tinystore", "tinystore-sidecar", "tinystore-server", "services"},
 	contenders: map[string]opener{
-		"tinystore": openTinyStoreApp,
-		"services":  openServicesApp,
+		"tinystore":         openTinyStoreApp,
+		"tinystore-sidecar": openSidecarApp,
+		"tinystore-server":  openServerApp,
+		"services":          openServicesApp,
 	},
 	measure: measureStack,
 }
@@ -62,11 +71,24 @@ func measureStack(ctx context.Context, s subject, seconds float64) ([]stage, err
 			return app.serve(ctx, requestFor(worker, n))
 		}))
 	}
-	backup, err := timeBackup(ctx, app)
+	if _, ok := app.(backsUp); !ok {
+		return stages, nil
+	}
+	dir, err := os.MkdirTemp("", "compare-backup-")
+	if err != nil {
+		return nil, err
+	}
+	defer os.RemoveAll(dir)
+	archive := filepath.Join(dir, "backup.zip")
+	backup, err := timeBackup(ctx, app, archive)
 	if err != nil {
 		return nil, fmt.Errorf("backup: %w", err)
 	}
-	return append(stages, backup), nil
+	restore, err := timeRestore(ctx, app, archive)
+	if err != nil {
+		return nil, fmt.Errorf("restore: %w", err)
+	}
+	return append(stages, backup, restore), nil
 }
 
 func requestFor(worker, n int) appRequest {
@@ -80,22 +102,16 @@ func requestFor(worker, n int) appRequest {
 	}
 }
 
-// timeBackup writes a backup beside the run's directory and reports its time,
-// and its size as the stage's operation count, in bytes
-func timeBackup(ctx context.Context, app appStore) (stage, error) {
-	dir, err := os.MkdirTemp("", "compare-backup-")
-	if err != nil {
-		return stage{}, err
-	}
-	defer os.RemoveAll(dir)
-	path := filepath.Join(dir, "backup")
+// timeBackup writes a backup to archive and reports its time, and its size as
+// the stage's operation count, in bytes
+func timeBackup(ctx context.Context, app appStore, archive string) (stage, error) {
 	before := spent()
 	began := time.Now()
-	if err = app.backup(ctx, path); err != nil {
+	if err := app.(backsUp).backup(ctx, strings.TrimSuffix(archive, ".zip")); err != nil {
 		return stage{}, err
 	}
 	elapsed := time.Since(began).Seconds()
-	size, err := directoryBytes(dir)
+	size, err := directoryBytes(filepath.Dir(archive))
 	s := stage{Name: "backup-bytes", Goroutines: 1, Ops: size, Seconds: elapsed}
 	s.addUsage(before, spent())
 	return s, err

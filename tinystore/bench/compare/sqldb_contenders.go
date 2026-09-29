@@ -159,6 +159,9 @@ func openPostgresSQL(ctx context.Context, dir string) (subject, error) {
 // requires, since it refuses to run as root
 func initPostgres(ctx context.Context, dir string) (string, error) {
 	data := filepath.Join(dir, "pg")
+	if _, err := os.Stat(filepath.Join(data, "PG_VERSION")); err == nil {
+		return data, nil // a cluster already there, opened again
+	}
 	if err := exec.CommandContext(ctx, "chown", "postgres:postgres", dir).Run(); err != nil {
 		return "", fmt.Errorf("chown: %w", err)
 	}
@@ -200,9 +203,22 @@ func (p *postgresSQL) updateNote(ctx context.Context, id int64, body string) err
 
 func (p *postgresSQL) servicePID() int { return p.server.Process.Pid }
 
-// close stops the server as pg_ctl's fast mode does, SIGINT, and waits for it
+// close stops the server with pg_ctl's fast mode, since the runuser that
+// started it does not pass a signal on, and kills it if that has not ended it
+// in thirty seconds
 func (p *postgresSQL) close() error {
 	err := p.db.Close()
-	_ = p.server.Process.Signal(os.Interrupt)
-	return errors.Join(err, p.server.Wait())
+	stop := asPostgres(context.Background(), postgresBinary("pg_ctl"), "-D", p.data, "stop", "-m", "fast", "-w")
+	if text, stopErr := stop.CombinedOutput(); stopErr != nil {
+		err = errors.Join(err, fmt.Errorf("pg_ctl stop: %w\n%s", stopErr, text))
+	}
+	done := make(chan error, 1)
+	go func() { done <- p.server.Wait() }()
+	select {
+	case waited := <-done:
+		return errors.Join(err, waited)
+	case <-time.After(30 * time.Second):
+		_ = p.server.Process.Kill()
+		return errors.Join(err, errors.New("postgres did not stop within thirty seconds"), <-done)
+	}
 }

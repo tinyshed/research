@@ -110,6 +110,7 @@ func runChild(ctx context.Context, args []string) error {
 		return fmt.Errorf("no contender %q", *contender)
 	}
 
+	runDir = *dir
 	run, err := measureContender(ctx, e, open, *dir, *seconds)
 	if err != nil {
 		return err
@@ -118,6 +119,13 @@ func runChild(ctx context.Context, args []string) error {
 	return json.NewEncoder(os.Stdout).Encode(run)
 }
 
+// active is the child's contender as its measure leaves it, and reopen opens
+// it again on its directory, for a measure that closes it and reads it cold
+var (
+	active subject
+	reopen func(context.Context) (subject, error)
+)
+
 func measureContender(ctx context.Context, e engine, open opener, dir string, seconds float64) (childRun, error) {
 	began := time.Now()
 	s, err := open(ctx, dir)
@@ -125,11 +133,13 @@ func measureContender(ctx context.Context, e engine, open opener, dir string, se
 		return childRun{}, fmt.Errorf("open: %w", err)
 	}
 	run := childRun{OpenSeconds: time.Since(began).Seconds()}
-	servicePIDs = func() []int { return pidsOf(s) }
+	servicePIDs = func() []int { return pidsOf(active) }
 	time.Sleep(200 * time.Millisecond) // let a service finish starting before its memory is read
 	run.OpenRSS = residentBytes()
 
+	active, reopen = s, func(ctx context.Context) (subject, error) { return open(ctx, dir) }
 	run.Stages, err = e.measure(ctx, s, seconds)
+	s = active // a measure that reopened its contender leaves the reopened one to close
 	if err != nil {
 		_ = s.close()
 		return childRun{}, err

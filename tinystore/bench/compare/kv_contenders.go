@@ -283,6 +283,12 @@ func openRedisTCPKV(ctx context.Context, dir string) (subject, error) {
 }
 
 func startRedis(ctx context.Context, dir string, tcp bool) (*redis.Client, *exec.Cmd, error) {
+	return startRedisWith(ctx, dir, tcp, true)
+}
+
+// startRedisWith starts Redis with its append-only file or without it, as a
+// server restored from an RDB file starts before the file is turned on
+func startRedisWith(ctx context.Context, dir string, tcp, appendOnly bool) (*redis.Client, *exec.Cmd, error) {
 	listen := []string{"--port", "0", "--unixsocket", filepath.Join(dir, "redis.sock")}
 	options := &redis.Options{Network: "unix", Addr: filepath.Join(dir, "redis.sock")}
 	if tcp {
@@ -293,8 +299,12 @@ func startRedis(ctx context.Context, dir string, tcp bool) (*redis.Client, *exec
 		listen = []string{"--port", strconv.Itoa(port), "--bind", "127.0.0.1"}
 		options = &redis.Options{Network: "tcp", Addr: "127.0.0.1:" + strconv.Itoa(port)}
 	}
+	aof := "yes"
+	if !appendOnly {
+		aof = "no"
+	}
 	server := exec.Command("redis-server", append(listen, "--dir", dir,
-		"--appendonly", "yes", "--appendfsync", "always", "--save", "", "--daemonize", "no")...)
+		"--appendonly", aof, "--appendfsync", "always", "--save", "", "--daemonize", "no")...)
 	server.Stdout, server.Stderr = os.Stderr, os.Stderr
 	if err := server.Start(); err != nil {
 		return nil, nil, fmt.Errorf("redis-server: %w", err)

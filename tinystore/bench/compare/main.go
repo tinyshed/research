@@ -4,6 +4,7 @@
 //	compare run -engine kv -out results/kv.json        every contender, repeated and interleaved
 //	compare weight -out results/weight.json            what linking each contender costs a program
 //	compare child -engine kv -contender bbolt ...      one contender in a process of its own
+//	compare crash -out results/crash.json              kill -9 each kv contender, then read back what it acknowledged
 //
 // The module's path is under the server's so that Go lets it import the
 // server's own client, which the sidecar contenders call through.
@@ -41,6 +42,12 @@ func dispatch(ctx context.Context, args []string) error {
 		return weighAll(ctx, args[1:])
 	case "child":
 		return runChild(ctx, args[1:])
+	case "crash":
+		return runCrash(ctx, args[1:])
+	case "crash-write":
+		return crashWrite(ctx, args[1:])
+	case "crash-verify":
+		return crashVerify(ctx, args[1:])
 	}
 	return fmt.Errorf("no command %q: run, weight or child", args[0])
 }

@@ -252,7 +252,7 @@ func (a *servicesApp) start(ctx context.Context) error {
 	if a.logFile, err = os.OpenFile(filepath.Join(a.dir, "app.log"), os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0o644); err != nil {
 		return err
 	}
-	a.log = slog.New(slog.NewJSONHandler(a.logFile, nil))
+	a.log = newJSONLogger(a.logFile)
 	return nil
 }
 
@@ -472,3 +472,5 @@ func (v *victoriaMetrics) deleteSnapshot(ctx context.Context, name string) {
 		_ = resp.Body.Close()
 	}
 }
+
+func newJSONLogger(w io.Writer) *slog.Logger { return slog.New(slog.NewJSONHandler(w, nil)) }

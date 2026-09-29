@@ -17,7 +17,10 @@ type weighed struct {
 	Program string `json:"program"`
 	Bytes   int64  `json:"bytes"`
 	Added   int64  `json:"added_bytes"`
-	Error   string `json:"error,omitempty"`
+	// Cgo says the program needs a C toolchain to build and a C library at run
+	// time, as a file named cgo in its directory declares
+	Cgo   bool   `json:"cgo,omitempty"`
+	Error string `json:"error,omitempty"`
 }
 
 func weighAll(ctx context.Context, args []string) error {
@@ -36,14 +39,16 @@ func weighAll(ctx context.Context, args []string) error {
 	}
 	defer os.RemoveAll(built)
 
-	baseline, err := weigh(ctx, built, "empty")
+	baseline, err := weigh(ctx, built, "empty", false)
 	if err != nil {
 		return err
 	}
 	var weights []weighed
 	for _, p := range programs {
 		w := weighed{Program: p.Name()}
-		if w.Bytes, err = weigh(ctx, built, p.Name()); err != nil {
+		_, statErr := os.Stat(filepath.Join("weight", p.Name(), "cgo"))
+		w.Cgo = statErr == nil
+		if w.Bytes, err = weigh(ctx, built, p.Name(), w.Cgo); err != nil {
 			w.Error = err.Error()
 		} else {
 			w.Added = w.Bytes - baseline
@@ -55,13 +60,19 @@ func weighAll(ctx context.Context, args []string) error {
 	return writeJSON(*out, weights)
 }
 
-func weigh(ctx context.Context, dir, program string) (int64, error) {
+// weigh builds a program without cgo, or with it when it cannot do without,
+// since without it such a program links a stub that fails at run time
+func weigh(ctx context.Context, dir, program string, cgo bool) (int64, error) {
 	binary := filepath.Join(dir, program)
 	build := exec.CommandContext(ctx, "go", "build", "-trimpath", "-ldflags=-s -w", "-o", binary,
 		"./weight/"+program)
-	build.Env = append(os.Environ(), "CGO_ENABLED=0", "GOOS=linux", "GOARCH=amd64", "GOWORK=off")
+	enabled := "CGO_ENABLED=0"
+	if cgo {
+		enabled = "CGO_ENABLED=1"
+	}
+	build.Env = append(os.Environ(), enabled, "GOOS=linux", "GOARCH=amd64", "GOWORK=off")
 	if text, err := build.CombinedOutput(); err != nil {
-		return 0, fmt.Errorf("does not build without cgo: %s", strings.TrimSpace(string(text)))
+		return 0, fmt.Errorf("does not build (%s): %s", enabled, strings.TrimSpace(string(text)))
 	}
 	info, err := os.Stat(binary)
 	if err != nil {

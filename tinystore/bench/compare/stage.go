@@ -24,6 +24,11 @@ type stage struct {
 	CPUSeconds float64 `json:"cpu_seconds"`
 	ReadBytes  int64   `json:"read_bytes"`
 	WriteBytes int64   `json:"write_bytes"`
+	// a long stage's minutes, and a fixed load's rate a second and the calls
+	// it could not offer on time because every worker was busy
+	Timeline []window `json:"timeline,omitempty"`
+	Offered  float64  `json:"offered_per_second,omitempty"`
+	Missed   int64    `json:"missed,omitempty"`
 }
 
 // operation is one call of a stage; worker and n tell it which goroutine it is
