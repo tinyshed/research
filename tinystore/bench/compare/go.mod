@@ -8,14 +8,14 @@ require (
 	github.com/cockroachdb/pebble/v2 v2.1.7
 	github.com/dgraph-io/badger/v4 v4.9.6
 	github.com/jackc/pgx/v5 v5.11.0
-	github.com/klauspost/compress v1.19.0
+	github.com/klauspost/compress v1.20.1
 	github.com/ncruces/go-sqlite3 v0.35.6
-	github.com/prometheus/prometheus v0.313.4
+	github.com/prometheus/prometheus v0.315.0
 	github.com/redis/go-redis/v9 v9.22.0
 	github.com/tinyshed/tinystore v0.0.0
 	go.etcd.io/bbolt v1.5.0
 	maragu.dev/goqite v0.4.0
-	modernc.org/sqlite v1.59.0
+	modernc.org/sqlite v1.60.1
 )
 
 require (
@@ -88,8 +88,8 @@ require (
 	github.com/oklog/ulid/v2 v2.1.2 // indirect
 	github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/prometheus/client_golang v1.24.0 // indirect
-	github.com/prometheus/client_golang/exp v0.0.0-20260602051030-3537b20ac86b // indirect
+	github.com/prometheus/client_golang v1.24.1 // indirect
+	github.com/prometheus/client_golang/exp v0.0.0-20260907100614-57bb367da472 // indirect
 	github.com/prometheus/client_model v0.6.3 // indirect
 	github.com/prometheus/common v0.71.0 // indirect
 	github.com/prometheus/otlptranslator v1.0.0 // indirect

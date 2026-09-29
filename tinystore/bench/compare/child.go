@@ -28,6 +28,22 @@ type subject interface {
 	servicePID() int
 }
 
+// services is a contender that runs several: each one's processes count.
+type services interface {
+	servicePIDs() []int
+}
+
+// pidsOf is every service process a subject started, none for a library
+func pidsOf(s subject) []int {
+	if many, ok := s.(services); ok {
+		return many.servicePIDs()
+	}
+	if pid := s.servicePID(); pid != 0 {
+		return []int{pid}
+	}
+	return nil
+}
+
 var engines = map[string]engine{
 	"kv":      kvEngine,
 	"sqldb":   sqlEngine,
@@ -35,6 +51,7 @@ var engines = map[string]engine{
 	"records": recordsEngine,
 	"jobs":    jobsEngine,
 	"blobs":   blobsEngine,
+	"stack":   stackEngine,
 }
 
 func engineNames() []string {
@@ -60,6 +77,10 @@ type childRun struct {
 	// which counts memory they share once
 	ServicePSS int64 `json:"service_pss_bytes,omitempty"`
 	DiskBytes  int64 `json:"disk_bytes"`
+	// how long opening took, a service's start included, and how many
+	// processes the contender runs, this one counted
+	OpenSeconds float64 `json:"open_seconds"`
+	Processes   int     `json:"processes"`
 }
 
 func (r childRun) summary() string {
@@ -98,12 +119,14 @@ func runChild(ctx context.Context, args []string) error {
 }
 
 func measureContender(ctx context.Context, e engine, open opener, dir string, seconds float64) (childRun, error) {
+	began := time.Now()
 	s, err := open(ctx, dir)
 	if err != nil {
 		return childRun{}, fmt.Errorf("open: %w", err)
 	}
+	run := childRun{OpenSeconds: time.Since(began).Seconds()}
 	time.Sleep(200 * time.Millisecond) // let a service finish starting before its memory is read
-	run := childRun{OpenRSS: residentBytes()}
+	run.OpenRSS = residentBytes()
 
 	run.Stages, err = e.measure(ctx, s, seconds)
 	if err != nil {
@@ -111,9 +134,11 @@ func measureContender(ctx context.Context, e engine, open opener, dir string, se
 		return childRun{}, err
 	}
 	run.PeakRSS = peakResidentBytes(0)
-	if pid := s.servicePID(); pid != 0 {
-		run.ServiceRSS = peakResidentBytes(pid)
-		run.ServicePSS = servicePSS(pid)
+	run.Processes = 1
+	for _, pid := range pidsOf(s) {
+		run.ServiceRSS += peakResidentBytes(pid)
+		run.ServicePSS += servicePSS(pid)
+		run.Processes += len(processTree(pid))
 	}
 	if err = s.close(); err != nil {
 		return childRun{}, fmt.Errorf("close: %w", err)

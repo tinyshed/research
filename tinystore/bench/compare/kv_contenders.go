@@ -235,21 +235,32 @@ type redisKV struct {
 }
 
 func openRedisKV(ctx context.Context, dir string) (subject, error) {
+	client, server, err := startRedis(ctx, dir)
+	if err != nil {
+		return nil, err
+	}
+	return &redisKV{client: client, server: server}, nil
+}
+
+// startRedis starts a server of its own on a Unix socket in dir, with an
+// append-only file synced on every write, and waits until it answers
+func startRedis(ctx context.Context, dir string) (*redis.Client, *exec.Cmd, error) {
 	socket := filepath.Join(dir, "redis.sock")
 	server := exec.Command("redis-server", "--port", "0", "--unixsocket", socket, "--dir", dir,
 		"--appendonly", "yes", "--appendfsync", "always", "--save", "", "--daemonize", "no")
 	server.Stdout, server.Stderr = os.Stderr, os.Stderr
 	if err := server.Start(); err != nil {
-		return nil, fmt.Errorf("redis-server: %w", err)
+		return nil, nil, fmt.Errorf("redis-server: %w", err)
 	}
 	client := redis.NewClient(&redis.Options{Network: "unix", Addr: socket})
-	r := &redisKV{client: client, server: server}
 	for deadline := time.Now().Add(10 * time.Second); ; time.Sleep(20 * time.Millisecond) {
 		if client.Ping(ctx).Err() == nil {
-			return r, nil
+			return client, server, nil
 		}
 		if time.Now().After(deadline) {
-			return nil, errors.Join(errors.New("redis-server did not answer within ten seconds"), r.close())
+			err := errors.Join(errors.New("redis-server did not answer within ten seconds"),
+				(&redisKV{client: client, server: server}).close())
+			return nil, nil, err
 		}
 	}
 }
