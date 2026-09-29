@@ -125,7 +125,7 @@ func main() {
 
 	fmt.Printf("microblock %d B, %d microblocks, page cache %d KiB, %d reads per measurement\n",
 		microblock, *total, *cacheKiB, *runs)
-	fmt.Printf("%-7s %9s %9s %11s %11s %11s %11s\n",
+	fmt.Printf("%-7s %9s %9s %11s %11s %11s %11s %8s\n",
 		"group", "rows", "file B", "SELECT ns", "ranged ns", "SELECT B", "ranged B", "verified")
 
 	for _, group := range []int{1, 2, 4, 8, 16, 64} {

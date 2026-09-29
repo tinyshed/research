@@ -1,10 +1,9 @@
-module github.com/tinyshed/tinystore/bench/kv
+module github.com/tinyshed/tinystore/spike
 
 go 1.27.0
 
-toolchain go1.27.1
-
 require (
+	github.com/klauspost/compress v1.19.0
 	github.com/tinyshed/tinystore v0.0.0
 	modernc.org/sqlite v1.59.0
 )
@@ -21,4 +20,4 @@ require (
 	modernc.org/memory v1.12.1 // indirect
 )
 
-replace github.com/tinyshed/tinystore => ../../source
+replace github.com/tinyshed/tinystore => ../source

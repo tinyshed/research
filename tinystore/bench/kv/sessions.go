@@ -105,7 +105,10 @@ func (t *tableSessions) signIn(ctx context.Context, user int64, token string, s 
 // as a careful handler without kv.Sliding does
 func (t *tableSessions) read(ctx context.Context, user int64, token string) (found, renewed bool, err error) {
 	now := t.now()
-	row, err := sqldb.One[sessionRow](ctx, t.app, selectSession, user, token, now.UnixMilli())
+	row, present, err := sqldb.One[sessionRow](ctx, t.app, selectSession, user, token, now.UnixMilli())
+	if err == nil && !present {
+		err = sql.ErrNoRows
+	}
 	switch {
 	case errors.Is(err, sql.ErrNoRows):
 		return false, false, nil

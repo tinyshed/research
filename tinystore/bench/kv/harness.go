@@ -59,7 +59,7 @@ func (b *backend) openEngine(ctx context.Context) error {
 	}
 	migrations, err := fs.Sub(migrationFiles, "migrations")
 	if err == nil {
-		b.app, err = sqldb.Open(ctx, b.store, "app", migrations)
+		b.app, err = sqldb.Open(ctx, b.store, "app", migrations, nil)
 	}
 	return err
 }

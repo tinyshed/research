@@ -126,7 +126,7 @@ func binary(t *testing.T) string {
 	}
 	out := filepath.Join(t.TempDir(), name)
 	build := exec.Command("go", "build", "-trimpath", "-o", out, ".")
-	build.Dir = filepath.Join("..", "..", "cmd", "tinystore")
+	build.Dir = filepath.Join("..", "source", "cmd", "tinystore")
 	build.Env = append(os.Environ(), "CGO_ENABLED=0")
 	if text, err := build.CombinedOutput(); err != nil {
 		t.Fatalf("build tinystore: %v\n%s", err, text)

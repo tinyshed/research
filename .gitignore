@@ -1,1 +1,8 @@
 /tinystore/bench/corpus/
+# a local workspace to measure uncommitted work; every module builds without it
+go.work
+go.work.sum
+*.db
+*.db-shm
+*.db-wal
+*.exe

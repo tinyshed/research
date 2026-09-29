@@ -97,7 +97,10 @@ func (t *tableDrafts) preload(ctx context.Context, batch []storedDraft) error {
 }
 
 func (t *tableDrafts) open(ctx context.Context, user, note int64) (draft, string, error) {
-	row, err := sqldb.One[draftRow](ctx, t.app, selectDraft, note, user, t.now().UnixMilli())
+	row, found, err := sqldb.One[draftRow](ctx, t.app, selectDraft, note, user, t.now().UnixMilli())
+	if err == nil && !found {
+		err = sql.ErrNoRows
+	}
 	switch {
 	case errors.Is(err, sql.ErrNoRows):
 		return draft{}, "", nil

@@ -14,22 +14,24 @@ where every file below had its history.
 | [spike/](spike/) | the prototypes and measurements behind the rounds |
 | [server-spike/](server-spike/) | the server measured through `tinystore serve` |
 | [bench/](bench/) | corpora runners and harnesses comparing against other engines |
+| [source/](https://github.com/tinyshed/tinystore) | TinyStore itself, the submodule everything here builds against |
 
-## The code is an archive
+## Running the code
 
-`spike/`, `server-spike/` and `bench/` do not build here. They import
-TinyStore's `internal/` packages, which Go lets only TinyStore's own module
-import, so each runs from a TinyStore checkout at the commit its report names:
+`source/` is TinyStore as a submodule, pinned to the commit the latest round
+measured. `spike/`, `server-spike/` and `bench/*` are modules named under
+`github.com/tinyshed/tinystore/`, so Go lets them import TinyStore's
+`internal/`, and each replaces TinyStore with `source/`:
 
 ```sh
-git -C <tinystore> checkout <commit the report names>
-cd <tinystore>
-TINYSTORE_SPIKE=1 go test ./spike -run <name> -v -count=1
+git submodule update --init
+cd tinystore/spike
+GOWORK=off TINYSTORE_SPIKE=1 go test -run <name> -v -count=1 .
 ```
 
-A report names the commit it measured, and those commits stay in TinyStore's
-history. Links from a report to TinyStore's design documents point at the
-commit this was moved from.
+A report names the TinyStore commit it measured; an older round is reproduced
+by checking `source/` out at that commit. The rules for a round are in
+[AGENTS.md](../AGENTS.md).
 
 Corpora are fetched, never committed: the runners in `bench/` download and
 normalise them into `bench/corpus/`, and a hash file pins each one.
