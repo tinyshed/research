@@ -10,6 +10,7 @@ where every file below had its history.
 | [reports/](reports/README.md) | the dated rounds, each with its environment and reproduction command |
 | [measurements.md](measurements.md) | every number the rounds settled on |
 | [open-questions.md](open-questions.md) | what was left open, and the gate each question must pass |
+| [storage-runtime-direction.md](storage-runtime-direction.md) | the 22 September assessment of outside designs for shared SQLite engines |
 | [rewrite.md](rewrite.md), [samples/](samples/) | how the metrics code was rewritten for people |
 | [spike/](spike/) | the prototypes and measurements behind the rounds |
 | [server-spike/](server-spike/) | the server measured through `tinystore serve` |
