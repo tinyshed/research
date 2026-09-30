@@ -51,7 +51,9 @@ round() {
 
 for engine in ${ENGINES:-stack kv sqldb jobs blobs records metrics}; do
   contenders=""
-  if [ "$engine" = stack ]; then
+  if [ -n "${CONTENDERS:-}" ]; then
+    contenders="-contenders $CONTENDERS"
+  elif [ "$engine" = stack ]; then
     contenders="-contenders tinystore-batch,tinystore-batch-baseline,tinystore,tinystore-baseline,tinystore-sidecar,tinystore-server,services"
   fi
   # The contender names above are literal words, not shell input.
@@ -62,6 +64,11 @@ for engine in ${ENGINES:-stack kv sqldb jobs blobs records metrics}; do
       -repeats "${REPEATS:-3}" -seconds "${SECONDS_A_STAGE:-5}" -dir /data
   fi
 done
+
+if [ "${DEEP_ROUNDS:-1}" = 0 ]; then
+  printf '%s DONE\n' "$(date -u +%H:%M:%S)" >> "$out/progress.txt"
+  exit 0
+fi
 
 for engine in sqldb jobs blobs; do
   round "$engine-served" /tmp/compare-candidate run -engine "$engine" \
