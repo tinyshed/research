@@ -218,7 +218,7 @@ func (s *servedBlobs) put(ctx context.Context, key string, body []byte) error {
 	if err != nil {
 		return err
 	}
-	piece := int(s.conn.Welcome.MaxBody)
+	piece := int(min(s.conn.Welcome.MaxBody, s.conn.Welcome.StreamCredit, s.conn.Welcome.ConnectionCredit))
 	for sent := 0; ; sent += piece {
 		end := min(sent+piece, len(body))
 		last := end == len(body)

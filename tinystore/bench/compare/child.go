@@ -79,8 +79,9 @@ type childRun struct {
 	DiskBytes  int64 `json:"disk_bytes"`
 	// how long opening took, a service's start included, and how many
 	// processes the contender runs, this one counted
-	OpenSeconds float64 `json:"open_seconds"`
-	Processes   int     `json:"processes"`
+	OpenSeconds     float64 `json:"open_seconds"`
+	Processes       int     `json:"processes"`
+	TinyStoreCommit string  `json:"tinystore_commit,omitempty"`
 }
 
 func (r childRun) summary() string {

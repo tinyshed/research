@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"maps"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -40,6 +41,7 @@ func runAll(ctx context.Context, args []string) error {
 	seconds := flags.Float64("seconds", 5, "how long each timed stage runs")
 	base := flags.String("dir", os.TempDir(), "where each run's directory is made, on the disk measured")
 	out := flags.String("out", "", "the JSON file the round is written to")
+	timeout := flags.Duration("timeout", 30*time.Minute, "the longest one contender may run, its services included")
 	if err := flags.Parse(args); err != nil {
 		return err
 	}
@@ -47,6 +49,7 @@ func runAll(ctx context.Context, args []string) error {
 	if !ok {
 		return fmt.Errorf("-engine %q: one of %s", *engineName, strings.Join(engineNames(), ", "))
 	}
+	e = withBaseline(e)
 	contenders, err := chosen(e, *only)
 	if err != nil {
 		return err
@@ -59,7 +62,9 @@ func runAll(ctx context.Context, args []string) error {
 			slices.Reverse(order)
 		}
 		for _, name := range order {
-			run, err := runOnce(ctx, *engineName, name, repeat+1, *seconds, *base)
+			bounded, cancel := context.WithTimeout(ctx, *timeout)
+			run, err := runOnce(bounded, *engineName, name, repeat+1, *seconds, *base)
+			cancel()
 			if err != nil {
 				failed := fmt.Sprintf("%s, repeat %d: %v", name, repeat+1, err)
 				fmt.Fprintln(os.Stderr, "compare: "+failed)
@@ -77,6 +82,24 @@ func runAll(ctx context.Context, args []string) error {
 		return fmt.Errorf("%d of the round's runs failed", len(r.Failed))
 	}
 	return nil
+}
+
+// withBaseline adds a saved revision beside the candidate, using the same
+// harness. The child selects its binary and server in runOnce.
+func withBaseline(e engine) engine {
+	if os.Getenv("COMPARE_BASELINE_BIN") == "" {
+		return e
+	}
+	e.order, e.contenders = slices.Clone(e.order), maps.Clone(e.contenders)
+	for _, name := range []string{"tinystore", "tinystore-batch"} {
+		if open, found := e.contenders[name]; found {
+			e.contenders[name+"-baseline"] = open
+			if name == "tinystore" {
+				e.order = slices.Insert(e.order, 1, name+"-baseline")
+			}
+		}
+	}
+	return e
 }
 
 // runOnce runs one contender in a child process with a directory of its own,
@@ -98,8 +121,18 @@ func runOnce(ctx context.Context, engineName, contender string, repeat int, seco
 	if err != nil {
 		return childRun{}, err
 	}
-	child := exec.CommandContext(ctx, self, "child", "-engine", engineName, "-contender", contender,
+	name, server, commit := contender, os.Getenv("TINYSTORE_BIN"), os.Getenv("TINYSTORE_COMMIT")
+	if strings.HasSuffix(name, "-baseline") {
+		self = os.Getenv("COMPARE_BASELINE_BIN")
+		name = strings.TrimSuffix(name, "-baseline")
+		server, commit = os.Getenv("COMPARE_BASELINE_SERVER"), os.Getenv("COMPARE_BASELINE_COMMIT")
+	}
+	child := exec.CommandContext(ctx, self, "child", "-engine", engineName, "-contender", name,
 		"-dir", dir, "-seconds", strconv.FormatFloat(seconds, 'f', -1, 64))
+	child.Env = append(os.Environ(), "TINYSTORE_BIN="+server)
+	ownGroup(child)
+	child.Cancel = func() error { killGroup(child); return nil }
+	child.WaitDelay = 5 * time.Second
 	var stdout, stderr bytes.Buffer
 	child.Stdout, child.Stderr = &stdout, &stderr
 	if err = child.Run(); err != nil {
@@ -109,7 +142,10 @@ func runOnce(ctx context.Context, engineName, contender string, repeat int, seco
 	if err = json.Unmarshal(stdout.Bytes(), &run); err != nil {
 		return childRun{}, fmt.Errorf("its output: %w\n%s", err, stdout.String())
 	}
-	run.Repeat = repeat
+	run.Contender, run.Repeat = contender, repeat
+	if strings.HasPrefix(contender, "tinystore") {
+		run.TinyStoreCommit = commit
+	}
 	return run, nil
 }
 
