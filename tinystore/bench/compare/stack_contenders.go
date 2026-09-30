@@ -363,21 +363,32 @@ func zipTrees(path string, sources map[string]string) error {
 	}
 	archive := zip.NewWriter(out)
 	for name, source := range sources {
-		err = filepath.WalkDir(source, func(file string, entry fs.DirEntry, err error) error {
-			if err != nil || entry.IsDir() {
-				return err
-			}
-			relative, err := filepath.Rel(source, file)
-			if err != nil {
-				return err
-			}
-			return addFile(archive, filepath.ToSlash(filepath.Join(name, relative)), file)
-		})
-		if err != nil {
+		if err = zipTree(archive, name, source); err != nil {
 			return errors.Join(err, out.Close())
 		}
 	}
 	return errors.Join(archive.Close(), out.Sync(), out.Close())
+}
+
+// zipTree follows a link to a directory, since a VictoriaMetrics snapshot is
+// links to the parts it holds
+func zipTree(archive *zip.Writer, name, source string) error {
+	return filepath.WalkDir(source, func(file string, entry fs.DirEntry, err error) error {
+		if err != nil || entry.IsDir() {
+			return err
+		}
+		relative, err := filepath.Rel(source, file)
+		if err != nil {
+			return err
+		}
+		inside := filepath.Join(name, relative)
+		if entry.Type()&fs.ModeSymlink != 0 {
+			if info, err := os.Stat(file); err == nil && info.IsDir() {
+				return zipTree(archive, inside, file+string(filepath.Separator))
+			}
+		}
+		return addFile(archive, filepath.ToSlash(inside), file)
+	})
 }
 
 func addFile(archive *zip.Writer, name, path string) error {

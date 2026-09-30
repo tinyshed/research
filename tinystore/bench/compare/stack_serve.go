@@ -30,6 +30,10 @@ type servedApp struct {
 	files    uint64
 	lines    *client.Stream
 	queued   chan string // log lines waiting for the stream; full, a line is dropped
+	// slots bound the requests in flight below the streams a connection may
+	// have open, so that a burst waits for a stream as an SDK's calls do,
+	// rather than being refused
+	slots    chan struct{}
 	dropped  atomic.Int64
 	requests atomic.Int64
 	writes   atomic.Int64
@@ -42,7 +46,12 @@ func openSidecarApp(ctx context.Context, dir string) (subject, error) {
 }
 
 func openServerApp(ctx context.Context, dir string) (subject, error) {
-	return openServedApp(ctx, dir, startServer)
+	return openServedApp(ctx, dir, func(ctx context.Context, dir string) (*exec.Cmd, *client.Conn, error) {
+		return startServerMigrated(ctx, dir, func(ctx context.Context, admin *client.Conn) error {
+			_, err := admin.Call(ctx, wire.SQLOpen, wire.SQLDatabase{Name: "app", Migrations: appMigrations})
+			return err
+		})
+	})
 }
 
 func openServedApp(ctx context.Context, dir string,
@@ -52,7 +61,7 @@ func openServedApp(ctx context.Context, dir string,
 	if err != nil {
 		return nil, err
 	}
-	a := &servedApp{server: server, conn: conn}
+	a := &servedApp{server: server, conn: conn, slots: make(chan struct{}, conn.Welcome.InFlight-8)}
 	if err = a.openHandles(ctx); err != nil {
 		return nil, errors.Join(err, a.close())
 	}
@@ -84,6 +93,8 @@ func (a *servedApp) openHandles(ctx context.Context) error {
 	return err
 }
 
+var appMigrations = []wire.SQLMigration{{Name: "0001_notes.sql", Text: notesSchema + ";\n"}}
+
 func (a *servedApp) handle(ctx context.Context, method wire.Method, open client.Message) (uint64, error) {
 	body, err := a.conn.Call(ctx, method, open)
 	if err != nil {
@@ -106,6 +117,12 @@ func (a *servedApp) seed(ctx context.Context) error {
 }
 
 func (a *servedApp) serve(ctx context.Context, r appRequest) error {
+	select {
+	case a.slots <- struct{}{}:
+	case <-ctx.Done():
+		return ctx.Err()
+	}
+	defer func() { <-a.slots }()
 	if err := a.session(ctx, r.user); err != nil {
 		return err
 	}

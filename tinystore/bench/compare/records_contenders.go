@@ -111,6 +111,7 @@ func openSQLiteRecords(ctx context.Context, dir string) (subject, error) {
 	if err != nil {
 		return nil, errors.Join(err, writer.Close())
 	}
+	keepReaders(reader)
 	return &sqliteRecords{writer: writer, reader: reader}, nil
 }
 

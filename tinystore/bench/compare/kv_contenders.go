@@ -99,6 +99,7 @@ func openSQLiteKV(ctx context.Context, dir string) (subject, error) {
 	if err != nil {
 		return nil, errors.Join(err, writer.Close())
 	}
+	keepReaders(reader)
 	return &sqliteKV{writer: writer, reader: reader}, nil
 }
 

@@ -91,17 +91,27 @@ func startSidecar(ctx context.Context, dir string) (*exec.Cmd, *client.Conn, err
 // startServer starts tinystore serve listening on a loopback port with a
 // data token, and connects with the token once it answers
 func startServer(ctx context.Context, dir string) (*exec.Cmd, *client.Conn, error) {
+	return startServerMigrated(ctx, dir, nil)
+}
+
+// startServerMigrated starts the server with an admin token and a data one:
+// migrate runs on an admin connection first, as a deployment applies its
+// migrations, and the application connects with the data token
+func startServerMigrated(ctx context.Context, dir string,
+	migrate func(context.Context, *client.Conn) error,
+) (*exec.Cmd, *client.Conn, error) {
 	binary := os.Getenv("TINYSTORE_BIN")
 	if binary == "" {
 		return nil, nil, errors.New("TINYSTORE_BIN names no tinystore binary; run.sh builds one")
 	}
-	secret := make([]byte, 32)
+	secret := make([]byte, 64)
 	if _, err := rand.Read(secret); err != nil {
 		return nil, nil, err
 	}
-	token := base64.RawURLEncoding.EncodeToString(secret)
+	token := base64.RawURLEncoding.EncodeToString(secret[:32])
+	admin := base64.RawURLEncoding.EncodeToString(secret[32:])
 	tokens := filepath.Join(filepath.Dir(dir), filepath.Base(dir)+".tokens")
-	if err := os.WriteFile(tokens, []byte("data "+token+"\n"), 0o600); err != nil {
+	if err := os.WriteFile(tokens, []byte("admin "+admin+"\ndata "+token+"\n"), 0o600); err != nil {
 		return nil, nil, err
 	}
 	port, err := freePort()
@@ -115,7 +125,17 @@ func startServer(ctx context.Context, dir string) (*exec.Cmd, *client.Conn, erro
 		return nil, nil, fmt.Errorf("tinystore serve: %w", err)
 	}
 	for deadline := time.Now().Add(30 * time.Second); ; time.Sleep(20 * time.Millisecond) {
-		if conn, err := client.Dial(ctx, endpoint, wire.Hello{Token: token}); err == nil {
+		if conn, err := client.Dial(ctx, endpoint, wire.Hello{Token: admin}); err == nil {
+			if migrate != nil {
+				err = migrate(ctx, conn)
+			}
+			if err = errors.Join(err, conn.Close()); err == nil {
+				conn, err = client.Dial(ctx, endpoint, wire.Hello{Token: token})
+			}
+			if err != nil {
+				_ = server.Process.Kill()
+				return nil, nil, errors.Join(err, server.Wait())
+			}
 			return server, conn, nil
 		}
 		if time.Now().After(deadline) {

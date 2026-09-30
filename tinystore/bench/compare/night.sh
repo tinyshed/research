@@ -10,7 +10,8 @@
 # REPEATS and SECONDS_A_STAGE go to run.sh; CRASH_CYCLES (20), COLD_REPEATS
 # (3), LATENCY_SECONDS (15) and STEADY_SECONDS (900; 0 leaves the long runs
 # out) set the deep rounds, so that a smoke run is this script with small
-# numbers. A round that fails is named in failures.txt.
+# numbers. A round that fails is named in failures.txt; running the script
+# again with the same OUT redoes only the rounds whose JSON is missing.
 set -u
 
 date=$(date -u +%Y-%m-%d)
@@ -19,8 +20,19 @@ mkdir -p "$OUT"
 sh run.sh
 export TINYSTORE_BIN=/tmp/tinystore
 
+# round runs as run.sh's does: skipped when its JSON is there, and logged
 round() {
-	"$@" || echo "$(date -u +%H:%M:%S) failed: $*" >> "$OUT/failures.txt"
+	for last; do :; done
+	if [ -s "$last" ]; then
+		echo "$(date -u +%H:%M:%S) have $last" >> "$OUT/progress.txt"
+		return 0
+	fi
+	echo "$(date -u +%H:%M:%S) start $*" >> "$OUT/progress.txt"
+	if "$@"; then
+		echo "$(date -u +%H:%M:%S) done $last" >> "$OUT/progress.txt"
+	else
+		echo "$(date -u +%H:%M:%S) failed: $*" | tee -a "$OUT/failures.txt" >> "$OUT/progress.txt"
+	fi
 }
 
 round /tmp/compare crash -cycles "${CRASH_CYCLES:-20}" -dir /data -out "$OUT/crash.json"

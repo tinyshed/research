@@ -99,6 +99,7 @@ func openHandSQLWith(ctx context.Context, driver, writerDSN, readerDSN string) (
 	if err != nil {
 		return nil, errors.Join(err, writer.Close())
 	}
+	keepReaders(reader)
 	return &handSQL{writer: writer, reader: reader}, nil
 }
 
@@ -143,6 +144,10 @@ func openPostgresSQL(ctx context.Context, dir string) (subject, error) {
 	if err != nil {
 		return nil, err
 	}
+	// a pool below Postgres's default max_connections of 100, as an application
+	// sizes it: past that a burst waits for a connection instead of being refused
+	db.SetMaxOpenConns(postgresConnections)
+	db.SetMaxIdleConns(postgresConnections)
 	p := &postgresSQL{db: db, server: server, data: data}
 	for deadline := time.Now().Add(30 * time.Second); ; time.Sleep(50 * time.Millisecond) {
 		if _, err = db.ExecContext(ctx, strings.Replace(strings.TrimSuffix(notesSchema, " strict"),
@@ -184,6 +189,18 @@ func postgresBinary(name string) string {
 	}
 	return found[len(found)-1]
 }
+
+const postgresConnections = 64
+
+// keepReaders keeps a hand-made SQLite's readers open, as TinyStore's pool
+// does: database/sql keeps two idle connections unless told otherwise, so at
+// 64 goroutines every other read would open the file and set its pragmas again
+func keepReaders(reader *sql.DB) {
+	reader.SetMaxOpenConns(readers)
+	reader.SetMaxIdleConns(readers)
+}
+
+const readers = 64
 
 func (p *postgresSQL) getNote(ctx context.Context, id int64) (note, error) {
 	var n note

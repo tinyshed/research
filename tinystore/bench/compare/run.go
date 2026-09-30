@@ -27,6 +27,9 @@ type round struct {
 	Environment environment `json:"environment"`
 	Seconds     float64     `json:"seconds_a_stage"`
 	Runs        []childRun  `json:"runs"`
+	// Failed names each contender's repeat that failed and why; the round goes
+	// on without it, and a later run of that contender alone fills the gap
+	Failed []string `json:"failed,omitempty"`
 }
 
 func runAll(ctx context.Context, args []string) error {
@@ -58,13 +61,22 @@ func runAll(ctx context.Context, args []string) error {
 		for _, name := range order {
 			run, err := runOnce(ctx, *engineName, name, repeat+1, *seconds, *base)
 			if err != nil {
-				return fmt.Errorf("%s, repeat %d: %w", name, repeat+1, err)
+				failed := fmt.Sprintf("%s, repeat %d: %v", name, repeat+1, err)
+				fmt.Fprintln(os.Stderr, "compare: "+failed)
+				r.Failed = append(r.Failed, failed)
+				continue
 			}
 			fmt.Fprintln(os.Stderr, run.summary())
 			r.Runs = append(r.Runs, run)
 		}
 	}
-	return writeJSON(*out, r)
+	if err = writeJSON(*out, r); err != nil {
+		return err
+	}
+	if len(r.Failed) > 0 {
+		return fmt.Errorf("%d of the round's runs failed", len(r.Failed))
+	}
+	return nil
 }
 
 // runOnce runs one contender in a child process with a directory of its own,

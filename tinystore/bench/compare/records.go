@@ -122,7 +122,12 @@ func (c *logCorpus) read(path string) error {
 	if !strings.HasSuffix(path, "-json.log") {
 		stream = strings.TrimSuffix(filepath.Base(path), ".log")
 	}
-	at := time.Unix(0, 0)
+	// A line without a time of its own takes the millisecond after the line
+	// before it, and those before a file's first timed line the milliseconds
+	// before that one, so that a docker log's unparsed line stays among its
+	// neighbours rather than at 1970, past any retention.
+	at, timed, untimed := time.Unix(0, 0), false, 0
+	first := len(c.lines)
 	lines := bufio.NewScanner(f)
 	lines.Buffer(make([]byte, 1<<20), 16<<20)
 	for lines.Scan() {
@@ -133,9 +138,18 @@ func (c *logCorpus) read(path string) error {
 		line := logLine{Stream: stream, Body: lines.Text()}
 		if json.Unmarshal(lines.Bytes(), &docker) == nil && !docker.Time.IsZero() {
 			line.At, line.Body = docker.Time, strings.TrimSuffix(docker.Log, "\n")
+			if !timed {
+				for i := first; i < first+untimed; i++ {
+					c.lines[i].At = docker.Time.Add(-time.Duration(first+untimed-i) * time.Millisecond)
+				}
+			}
+			at, timed = docker.Time, true
 		} else {
 			at = at.Add(time.Millisecond)
 			line.At = at
+			if !timed {
+				untimed++
+			}
 		}
 		c.lines = append(c.lines, line)
 	}

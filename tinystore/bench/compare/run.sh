@@ -8,7 +8,8 @@
 #     -e GOWORK=off -e GOFLAGS=-buildvcs=false tinystore-compare sh run.sh
 #
 # ENGINES, REPEATS, SECONDS_A_STAGE and OUT narrow a run; a round that fails
-# is named in failures.txt and the others go on. Nothing else may run on the
+# is named in failures.txt and the others go on. A round whose JSON is already
+# in OUT is skipped, so running it again redoes only what failed. Nothing else may run on the
 # machine meanwhile: see the measure skill.
 set -u
 
@@ -33,10 +34,21 @@ export TINYSTORE_BIN=/tmp/tinystore
 	nproc
 	free -b | head -2
 	echo "tinystore ${TINYSTORE_COMMIT:-unknown}"
-} > "$out/environment.txt" 2>&1
+} >> "$out/environment.txt" 2>&1
 
+# round runs a command whose last argument is its JSON, unless that is there
 round() {
-	"$@" || echo "$(date -u +%H:%M:%S) failed: $*" >> "$out/failures.txt"
+	for last; do :; done
+	if [ -s "$last" ]; then
+		echo "$(date -u +%H:%M:%S) have $last" >> "$out/progress.txt"
+		return 0
+	fi
+	echo "$(date -u +%H:%M:%S) start $*" >> "$out/progress.txt"
+	if "$@"; then
+		echo "$(date -u +%H:%M:%S) done $last" >> "$out/progress.txt"
+	else
+		echo "$(date -u +%H:%M:%S) failed: $*" | tee -a "$out/failures.txt" >> "$out/progress.txt"
+	fi
 }
 
 round /tmp/compare weight -out "$out/weight.json"
