@@ -37,7 +37,9 @@ func init() {
 			}
 			var stages []stage
 			for _, st := range app.steps() {
-				stages = append(stages, timeStage(ctx, st.name, 64, seconds, st.op))
+				stages = append(stages, counted(ctx, app, func() stage {
+					return timeStage(ctx, st.name, 64, seconds, st.op)
+				}))
 			}
 			return stages, nil
 		}}
@@ -69,14 +71,18 @@ func (a *tinyStoreApp) steps() []step {
 			return err
 		}},
 		{"enqueue", func(ctx context.Context, _, n int) error {
-			return a.queue.Enqueue(ctx, job{N: n, Text: "index the note"})
+			err := a.queue.Enqueue(ctx, job{N: n, Text: "index the note"})
+			if err == nil {
+				a.enqueued.Add(1)
+			}
+			return err
 		}},
 		{"write", func(ctx context.Context, worker, n int) error {
-			id := stepNote(worker, n)
-			if _, err := a.db.Exec(ctx, notesUpdate, makeNote(int64(id), n).Body, id); err != nil {
-				return err
+			err := a.write(ctx, appRequest{note: stepNote(worker, n), n: n})
+			if err == nil {
+				a.enqueued.Add(1)
 			}
-			return a.queue.Enqueue(ctx, job{N: id, Text: "index the note"})
+			return err
 		}},
 		{"upload", func(ctx context.Context, worker, n int) error {
 			_, err := a.files.Put(ctx, fmt.Sprintf("steps/%d-%d", worker, n), bytes.NewReader(attachment),
@@ -108,18 +114,13 @@ func (a *servicesApp) steps() []step {
 			if err == nil {
 				_, err = a.pg.db.ExecContext(ctx, jobsInsert, body)
 			}
+			if err == nil {
+				a.enqueued.Add(1)
+			}
 			return err
 		}},
 		{"write", func(ctx context.Context, worker, n int) error {
-			id := stepNote(worker, n)
-			if err := a.pg.updateNote(ctx, int64(id), makeNote(int64(id), n).Body); err != nil {
-				return err
-			}
-			body, err := json.Marshal(job{N: id, Text: "index the note"})
-			if err == nil {
-				_, err = a.pg.db.ExecContext(ctx, jobsInsert, body)
-			}
-			return err
+			return a.write(ctx, stepNote(worker, n), n)
 		}},
 		{"upload", func(ctx context.Context, worker, n int) error {
 			return a.files.put(ctx, fmt.Sprintf("steps/%d-%d", worker, n), attachment)

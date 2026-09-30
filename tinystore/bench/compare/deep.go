@@ -59,12 +59,13 @@ func timeline(ctx context.Context, name string, goroutines int, seconds float64,
 }
 
 // fixedLoads finds what op sustains from 64 goroutines, then offers a quarter,
-// a half, three quarters and nine tenths of it, each for seconds
-func fixedLoads(ctx context.Context, name string, seconds float64, op operation) []stage {
-	most := timeStage(ctx, name+"-max", 64, seconds, op)
+// a half, three quarters and nine tenths of it, each for seconds; app, when it
+// counts what it kept, gives each stage its counts
+func fixedLoads(ctx context.Context, name string, seconds float64, op operation, app any) []stage {
+	most := counted(ctx, app, func() stage { return timeStage(ctx, name+"-max", 64, seconds, op) })
 	stages := []stage{most}
 	for _, share := range []float64{0.25, 0.5, 0.75, 0.9} {
-		s := openLoop(ctx, most.PerSecond*share, seconds, op)
+		s := counted(ctx, app, func() stage { return openLoop(ctx, most.PerSecond*share, seconds, op) })
 		s.Name = fmt.Sprintf("%s-%d%%", name, int(share*100))
 		stages = append(stages, s)
 	}
@@ -84,9 +85,12 @@ func openLoop(ctx context.Context, rate, seconds float64, op operation) stage {
 		wg        sync.WaitGroup
 		missed    atomic.Int64
 	)
+	resumeCalls(workers)
 	for worker := range workers {
 		wg.Go(func() {
-			n := 0
+			ctx, cancel := workerContext(ctx)
+			defer cancel()
+			n := callsMade[worker]
 			for at := range due {
 				err := op(ctx, worker, n)
 				latencies[worker].add(time.Since(at))
@@ -97,6 +101,7 @@ func openLoop(ctx context.Context, rate, seconds float64, op operation) stage {
 					first.CompareAndSwap(nil, err.Error())
 				}
 			}
+			callsMade[worker] = n
 		})
 	}
 	before := spent()
@@ -146,7 +151,7 @@ func init() {
 			if err != nil {
 				return nil, err
 			}
-			return fixedLoads(ctx, "mixed", seconds, kvMixed(store)), nil
+			return fixedLoads(ctx, "mixed", seconds, kvMixed(store), nil), nil
 		}}
 	engines["stack-steady"] = engine{order: stackEngine.order, contenders: stackEngine.contenders,
 		measure: func(ctx context.Context, s subject, seconds float64) ([]stage, error) {
@@ -154,7 +159,9 @@ func init() {
 			if err != nil {
 				return nil, err
 			}
-			return []stage{timeline(ctx, "request", 64, seconds, appRequests(app))}, nil
+			return []stage{counted(ctx, app, func() stage {
+				return timeline(ctx, "request", 64, seconds, appRequests(app))
+			})}, nil
 		}}
 	engines["stack-latency"] = engine{order: stackEngine.order, contenders: stackEngine.contenders,
 		measure: func(ctx context.Context, s subject, seconds float64) ([]stage, error) {
@@ -162,7 +169,7 @@ func init() {
 			if err != nil {
 				return nil, err
 			}
-			return fixedLoads(ctx, "request", seconds, appRequests(app)), nil
+			return fixedLoads(ctx, "request", seconds, appRequests(app), app), nil
 		}}
 }
 

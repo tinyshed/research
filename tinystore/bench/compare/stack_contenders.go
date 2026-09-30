@@ -67,31 +67,56 @@ type tinyStoreApp struct {
 	db       *sqldb.DB
 	queue    *jobs.Queue[job]
 	files    *blobs.Bucket
+	logs     *records.Store
 	log      *slog.Logger
 	requests metrics.CounterInstrument
 	writes   metrics.CounterInstrument
 	stop     context.CancelFunc
 	worker   chan error
+	enqueued atomic.Int64
+	handled  atomic.Int64
+	// write is how a request writes its note and job, and background the
+	// context the application's own goroutines run under until close
+	write      func(ctx context.Context, r appRequest) error
+	background context.Context
+	running    sync.WaitGroup
+	schema     string // the database's one migration, which a restore opens again
+	// jobsIn is where the queue lives: jobs.db, or a design's own place
+	jobsIn func(db *sqldb.DB) jobs.Options
 }
 
 func openTinyStoreApp(ctx context.Context, dir string) (subject, error) {
+	return openTinyStoreAppWith(ctx, dir, notesSchema+";\n", inJobsDB)
+}
+
+func inJobsDB(*sqldb.DB) jobs.Options { return jobs.Options{} }
+
+// openTinyStoreAppWith opens the application with schema as its database's
+// one migration, and its queue where jobsIn says
+func openTinyStoreAppWith(ctx context.Context, dir, schema string, jobsIn func(*sqldb.DB) jobs.Options) (
+	*tinyStoreApp, error,
+) {
 	store, err := tinystore.Open(ctx, dir, tinystore.Options{})
 	if err != nil {
 		return nil, err
 	}
-	app := &tinyStoreApp{store: store, worker: make(chan error, 1)}
-	if err = app.openEngines(ctx); err != nil {
+	app := &tinyStoreApp{store: store, worker: make(chan error, 1), schema: schema, jobsIn: jobsIn}
+	app.write = app.writeInTurn
+	if err = app.openEngines(ctx, schema); err != nil {
 		return nil, errors.Join(err, store.Close(ctx))
 	}
 	work, stop := context.WithCancel(context.Background())
-	app.stop = stop
+	app.stop, app.background = stop, work
 	go func() {
-		app.worker <- app.queue.Work(work, func(context.Context, jobs.Job[job]) error { return nil })
+		app.worker <- app.queue.Work(work, func(context.Context, jobs.Job[job]) error {
+			app.handled.Add(1)
+			return nil
+		}, jobs.Workers(stackJobWorkers))
 	}()
 	return app, nil
 }
 
-func (a *tinyStoreApp) openEngines(ctx context.Context) error {
+func (a *tinyStoreApp) openEngines(ctx context.Context, schema string) error {
 	state, err := kv.Open(ctx, a.store, kv.Options{})
 	if err != nil {
 		return err
@@ -99,11 +124,11 @@ func (a *tinyStoreApp) openEngines(ctx context.Context) error {
 	if a.sessions, err = kv.OpenBucket[[]byte](ctx, state, "sessions"); err != nil {
 		return err
 	}
-	migrations := fstest.MapFS{"0001_notes.sql": {Data: []byte(notesSchema + ";\n")}}
+	migrations := fstest.MapFS{"0001_notes.sql": {Data: []byte(schema)}}
 	if a.db, err = sqldb.Open(ctx, a.store, "app", migrations, nil); err != nil {
 		return err
 	}
-	queues, err := jobs.Open(ctx, a.store, jobs.Options{})
+	queues, err := jobs.Open(ctx, a.store, a.jobsIn(a.db))
 	if err != nil {
 		return err
 	}
@@ -117,11 +142,11 @@ func (a *tinyStoreApp) openEngines(ctx context.Context) error {
 	if a.files, err = blobs.OpenBucket(ctx, objects, "attachments"); err != nil {
 		return err
 	}
-	logs, err := records.Open(ctx, a.store, records.Options{})
+	a.logs, err = records.Open(ctx, a.store, records.Options{Buffer: stackLogBuffer, Flush: stackLogFlush})
 	if err != nil {
 		return err
 	}
-	a.log = slog.New(logs.Handler("app"))
+	a.log = slog.New(a.logs.Handler("app"))
 	counters, err := metrics.Open(ctx, a.store, metrics.Options{})
 	if err != nil {
 		return err
@@ -149,12 +174,10 @@ func (a *tinyStoreApp) serve(ctx context.Context, r appRequest) error {
 		return errors.Join(err, errNotFound("note "+strconv.Itoa(r.note), found))
 	}
 	if r.write {
-		if _, err := a.db.Exec(ctx, notesUpdate, makeNote(int64(r.note), r.n).Body, r.note); err != nil {
+		if err := a.write(ctx, r); err != nil {
 			return err
 		}
-		if err := a.queue.Enqueue(ctx, job{N: r.note, Text: "index the note"}); err != nil {
-			return err
-		}
+		a.enqueued.Add(1)
 		a.writes.Inc()
 	}
 	if r.upload {
@@ -166,6 +189,24 @@ func (a *tinyStoreApp) serve(ctx context.Context, r appRequest) error {
 	a.log.InfoContext(ctx, "request", "user", r.user, "note", r.note, "write", r.write)
 	a.requests.Inc()
 	return nil
+}
+
+// writeInTurn updates the note, then enqueues its job: two commits, in the
+// database's file and the queue's, one after the other
+func (a *tinyStoreApp) writeInTurn(ctx context.Context, r appRequest) error {
+	if _, err := a.db.Exec(ctx, notesUpdate, makeNote(int64(r.note), r.n).Body, r.note); err != nil {
+		return err
+	}
+	return a.queue.Enqueue(ctx, job{N: r.note, Text: "index the note"})
+}
+
+// counts flushes the log lines the handler holds first, so that a line is
+// either stored or dropped by the time it is counted
+func (a *tinyStoreApp) counts(ctx context.Context) appCounts {
+	_ = a.logs.Flush(ctx)
+	stats := a.logs.Stats()
+	return appCounts{LogsStored: int64(stats.Appended), LogsDropped: int64(stats.Dropped),
+		JobsEnqueued: a.enqueued.Load(), JobsHandled: a.handled.Load()}
 }
 
 func (a *tinyStoreApp) backup(ctx context.Context, path string) error {
@@ -181,6 +222,7 @@ func (a *tinyStoreApp) backup(ctx context.Context, path string) error {
 
 func (a *tinyStoreApp) close() error {
 	a.stop()
+	a.running.Wait()
 	err := <-a.worker
 	if errors.Is(err, context.Canceled) {
 		err = nil
@@ -191,7 +233,9 @@ func (a *tinyStoreApp) close() error {
 // The services an application runs otherwise: Postgres for its notes and
 // its job queue, Redis for sessions, files on the disk for attachments,
 // VictoriaMetrics for its counters, pushed every ten seconds, and a JSON log
-// file. A worker in the process claims jobs with FOR UPDATE SKIP LOCKED.
+// file. A worker in the process leases jobs with FOR UPDATE SKIP LOCKED.
+// A note's update and its job commit in one transaction, as an application
+// on Postgres writes them.
 
 type servicesApp struct {
 	dir      string
@@ -204,14 +248,27 @@ type servicesApp struct {
 	log      *slog.Logger
 	requests atomic.Int64
 	writes   atomic.Int64
+	logged   atomic.Int64
+	enqueued atomic.Int64
+	handled  atomic.Int64
 	stop     context.CancelFunc
 	running  sync.WaitGroup
 }
 
 const (
-	jobsSchema = `create table if not exists jobs (id bigserial primary key, body jsonb not null)`
+	jobsSchema = `create table if not exists jobs (id bigserial primary key, body jsonb not null,
+		leased_until timestamptz)`
 	jobsInsert = `insert into jobs (body) values ($1)`
-	jobsClaim  = `delete from jobs where id = (select id from jobs order by id for update skip locked limit 1) returning id`
+	// jobsSettle deletes the jobs the worker ran and leases it the next ones
+	// in one statement and one commit, as TinyStore's Work settles and claims
+	// in one write: a job goes once its handler returned, and one whose worker
+	// vanished is leased again when its lease ends
+	jobsSettle = `with ran as (delete from jobs where id = any($1::bigint[]))
+		update jobs set leased_until = now() + interval '30 seconds'
+		where id in (select id from jobs where leased_until is null or leased_until < now()
+			order by id limit $2 for update skip locked)
+		returning id`
+	notesUpdatePostgres = `update note set body = $1 where id = $2`
 )
 
 func openServicesApp(ctx context.Context, dir string) (subject, error) {
@@ -256,18 +313,70 @@ func (a *servicesApp) start(ctx context.Context) error {
 	return nil
 }
 
-// work claims a job at a time, and waits a little when none is waiting
+// work runs the jobs it leases, stackJobBatch a statement, and waits a little
+// when it leased none
 func (a *servicesApp) work(ctx context.Context) {
+	var ran []int64
 	for ctx.Err() == nil {
-		var id int64
-		err := a.pg.db.QueryRowContext(ctx, jobsClaim).Scan(&id)
+		leased, err := a.settle(ctx, ran)
 		if err != nil {
+			leased = nil // the jobs it ran are leased to it until they are deleted
+		} else {
+			a.handled.Add(int64(len(ran)))
+			ran = leased // the handler does nothing, as TinyStore's does
+		}
+		if len(leased) == 0 {
 			select {
 			case <-ctx.Done():
 			case <-time.After(20 * time.Millisecond):
 			}
 		}
 	}
+}
+
+func (a *servicesApp) settle(ctx context.Context, ran []int64) ([]int64, error) {
+	rows, err := a.pg.db.QueryContext(ctx, jobsSettle, ran, stackJobBatch)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var leased []int64
+	for rows.Next() {
+		var id int64
+		if err = rows.Scan(&id); err != nil {
+			return nil, err
+		}
+		leased = append(leased, id)
+	}
+	return leased, rows.Err()
+}
+
+// write updates a note and enqueues its job in one transaction
+func (a *servicesApp) write(ctx context.Context, id, n int) error {
+	body, err := json.Marshal(job{N: id, Text: "index the note"})
+	if err != nil {
+		return err
+	}
+	tx, err := a.pg.db.BeginTx(ctx, nil)
+	if err != nil {
+		return err
+	}
+	defer func() { _ = tx.Rollback() }()
+	if _, err = tx.ExecContext(ctx, notesUpdatePostgres, makeNote(int64(id), n).Body, id); err != nil {
+		return err
+	}
+	if _, err = tx.ExecContext(ctx, jobsInsert, body); err != nil {
+		return err
+	}
+	if err = tx.Commit(); err != nil {
+		return err
+	}
+	a.enqueued.Add(1)
+	return nil
+}
+
+func (a *servicesApp) counts(context.Context) appCounts {
+	return appCounts{LogsStored: a.logged.Load(), JobsEnqueued: a.enqueued.Load(), JobsHandled: a.handled.Load()}
 }
 
 // pushMetrics sends the counters to VictoriaMetrics every ten seconds, as an
@@ -305,14 +414,7 @@ func (a *servicesApp) serve(ctx context.Context, r appRequest) error {
 		return err
 	}
 	if r.write {
-		if err := a.pg.updateNote(ctx, int64(r.note), makeNote(int64(r.note), r.n).Body); err != nil {
-			return err
-		}
-		body, err := json.Marshal(job{N: r.note, Text: "index the note"})
-		if err != nil {
-			return err
-		}
-		if _, err = a.pg.db.ExecContext(ctx, jobsInsert, body); err != nil {
+		if err := a.write(ctx, r.note, r.n); err != nil {
 			return err
 		}
 		a.writes.Add(1)
@@ -323,6 +425,7 @@ func (a *servicesApp) serve(ctx context.Context, r appRequest) error {
 		}
 	}
 	a.log.InfoContext(ctx, "request", "user", r.user, "note", r.note, "write", r.write)
+	a.logged.Add(1)
 	a.requests.Add(1)
 	return nil
 }

@@ -2,7 +2,12 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"math/bits"
+	"os"
+	"path/filepath"
+	"runtime"
+	"runtime/pprof"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -29,12 +34,27 @@ type stage struct {
 	Timeline []window `json:"timeline,omitempty"`
 	Offered  float64  `json:"offered_per_second,omitempty"`
 	Missed   int64    `json:"missed,omitempty"`
+	// what an application kept of the stage's work, see appCounts
+	App *appCounts `json:"app,omitempty"`
 }
 
 // operation is one call of a stage; worker and n tell it which goroutine it is
-// on and how many calls that goroutine made before, so that each chooses its
-// keys without sharing a generator.
+// on and how many calls that goroutine made before in this process, so that
+// each chooses its keys without sharing a generator.
 type operation func(ctx context.Context, worker int, n int) error
+
+// callsMade is how many calls each worker made in this process: a warm-up,
+// the stages after it and a long stage's minutes continue one numbering, so
+// that no call makes a key an earlier one made, such as an upload's.
+var callsMade []int
+
+// resumeCalls makes room for goroutines' numbering before they start; each
+// worker then reads and writes only its own entry
+func resumeCalls(goroutines int) {
+	for len(callsMade) < goroutines {
+		callsMade = append(callsMade, 0)
+	}
+}
 
 // timeStage runs op on goroutines for seconds, after a warm-up of a fifth of
 // that which it does not count.
@@ -42,7 +62,9 @@ func timeStage(ctx context.Context, name string, goroutines int, seconds float64
 	warm := time.Duration(seconds * float64(time.Second) / 5)
 	_ = runFor(ctx, goroutines, warm, op)
 	before := spent()
-	result := runFor(ctx, goroutines, time.Duration(seconds*float64(time.Second)), op)
+	result := profiled(name, goroutines, func() stage {
+		return runFor(ctx, goroutines, time.Duration(seconds*float64(time.Second)), op)
+	})
 	result.Name, result.Goroutines = name, goroutines
 	result.addUsage(before, spent())
 	return result
@@ -55,11 +77,15 @@ func runFor(ctx context.Context, goroutines int, length time.Duration, op operat
 		wg          sync.WaitGroup
 		latencies   = make([]histogram, goroutines)
 	)
+	resumeCalls(goroutines)
 	start := time.Now()
 	deadline := start.Add(length)
 	for worker := range goroutines {
 		wg.Go(func() {
-			for n := 0; time.Now().Before(deadline) && ctx.Err() == nil; n++ {
+			ctx, cancel := workerContext(ctx)
+			defer cancel()
+			n := callsMade[worker]
+			for ; time.Now().Before(deadline) && ctx.Err() == nil; n++ {
 				began := time.Now()
 				err := op(ctx, worker, n)
 				latencies[worker].add(time.Since(began))
@@ -69,6 +95,7 @@ func runFor(ctx context.Context, goroutines int, length time.Duration, op operat
 					firstError.CompareAndSwap(nil, err.Error())
 				}
 			}
+			callsMade[worker] = n
 		})
 	}
 	wg.Wait()
@@ -84,6 +111,54 @@ func runFor(ctx context.Context, goroutines int, length time.Duration, op operat
 		s.FirstError = text
 	}
 	return s
+}
+
+// profiled runs measure under a CPU profile and with mutex and blocking
+// contention recorded, when COMPARE_PROFILE names a directory and
+// COMPARE_PROFILE_STAGE the stage, as request×64. A profiled stage's rate is
+// the profile's, not a measurement.
+func profiled(name string, goroutines int, measure func() stage) stage {
+	dir, want := os.Getenv("COMPARE_PROFILE"), os.Getenv("COMPARE_PROFILE_STAGE")
+	if dir == "" || want != fmt.Sprintf("%s×%d", name, goroutines) {
+		return measure()
+	}
+	base := filepath.Join(dir, fmt.Sprintf("%d-%s-%d", os.Getpid(), name, goroutines))
+	cpu, err := os.Create(base + ".cpu")
+	if err == nil {
+		err = pprof.StartCPUProfile(cpu)
+	}
+	runtime.SetMutexProfileFraction(5)
+	runtime.SetBlockProfileRate(int(10 * time.Microsecond))
+	s := measure()
+	if err == nil {
+		pprof.StopCPUProfile()
+	}
+	if cpu != nil {
+		_ = cpu.Close()
+	}
+	for _, kind := range []string{"mutex", "block", "goroutine"} {
+		if out, err := os.Create(base + "." + kind); err == nil {
+			_ = pprof.Lookup(kind).WriteTo(out, 0)
+			_ = out.Close()
+		}
+	}
+	runtime.SetMutexProfileFraction(0)
+	runtime.SetBlockProfileRate(0)
+	return s
+}
+
+// sharedContext hands every worker the one context of the run, as an errgroup
+// does, instead of a context of its own, as a server gives each request
+var sharedContext = os.Getenv("COMPARE_SHARED_CONTEXT") == "1"
+
+// workerContext is a worker's context, which the run's still cancels. A select
+// locks every channel it names, so workers sharing one Done channel contend on
+// its lock in every select of the store they call, even one that never waits.
+func workerContext(ctx context.Context) (context.Context, context.CancelFunc) {
+	if sharedContext {
+		return ctx, func() {}
+	}
+	return context.WithCancel(ctx)
 }
 
 // histogram counts durations in buckets eight to a power of two, so a

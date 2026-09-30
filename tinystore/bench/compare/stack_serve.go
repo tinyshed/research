@@ -37,6 +37,9 @@ type servedApp struct {
 	dropped  atomic.Int64
 	requests atomic.Int64
 	writes   atomic.Int64
+	logged   atomic.Int64
+	enqueued atomic.Int64
+	handled  atomic.Int64
 	stop     context.CancelFunc
 	running  sync.WaitGroup
 }
@@ -138,6 +141,7 @@ func (a *servedApp) serve(ctx context.Context, r appRequest) error {
 			Jobs: []wire.JobsJob{{Value: value}}}); err != nil {
 			return err
 		}
+		a.enqueued.Add(1)
 		a.writes.Add(1)
 	}
 	if r.upload {
@@ -148,11 +152,19 @@ func (a *servedApp) serve(ctx context.Context, r appRequest) error {
 	line := fmt.Sprintf(`{"level":"info","msg":"request","user":%d,"note":%d,"write":%t}`+"\n", r.user, r.note, r.write)
 	select {
 	case a.queued <- line:
+		a.logged.Add(1)
 	default:
 		a.dropped.Add(1) // as TinyStore's own handler drops and counts, never waiting
 	}
 	a.requests.Add(1)
 	return nil
+}
+
+// counts says what this side kept: a line it handed to the stream counts as
+// stored, what the server did with it is the server's to count
+func (a *servedApp) counts(context.Context) appCounts {
+	return appCounts{LogsStored: a.logged.Load(), LogsDropped: a.dropped.Load(),
+		JobsEnqueued: a.enqueued.Load(), JobsHandled: a.handled.Load()}
 }
 
 // sendLines sends what the requests logged, what has gathered in one DATA,
@@ -245,7 +257,7 @@ func (a *servedApp) upload(ctx context.Context, key string) error {
 
 // work runs the queue's jobs through a work stream, acknowledging each
 func (a *servedApp) work(ctx context.Context) {
-	st, err := a.conn.Open(ctx, wire.JobsWork, wire.JobsWorkers{Handle: a.queue, Workers: 1}, false)
+	st, err := a.conn.Open(ctx, wire.JobsWork, wire.JobsWorkers{Handle: a.queue, Workers: stackJobWorkers}, false)
 	if err != nil {
 		return
 	}
@@ -264,6 +276,7 @@ func (a *servedApp) work(ctx context.Context) {
 		if st.Send(ctx, wire.JobsOutcome{Job: held.Job, How: wire.JobAck}.Append(nil), false) != nil {
 			return
 		}
+		a.handled.Add(1)
 	}
 }
 

@@ -74,11 +74,7 @@ func (a *tinyStoreApp) restore(ctx context.Context, archive, dir string) (appSto
 	if err = backup.Restore(ctx, dir, f, info.Size()); err != nil {
 		return nil, err
 	}
-	s, err := openTinyStoreApp(ctx, dir)
-	if err != nil {
-		return nil, err
-	}
-	return s.(appStore), nil
+	return openTinyStoreAppWith(ctx, dir, a.schema, a.jobsIn)
 }
 
 // The services, as their operator brings them back: the attachments and the

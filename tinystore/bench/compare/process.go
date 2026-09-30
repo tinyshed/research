@@ -117,10 +117,13 @@ type environment struct {
 	CPU        string            `json:"cpu"`
 	Kernel     string            `json:"kernel"`
 	Modules    map[string]string `json:"modules"`
+	// every worker shared the run's context, COMPARE_SHARED_CONTEXT=1
+	SharedContext bool `json:"shared_context,omitempty"`
 }
 
 func describeEnvironment() environment {
-	e := environment{Go: runtime.Version(), GOMAXPROCS: runtime.GOMAXPROCS(0), Modules: map[string]string{}}
+	e := environment{Go: runtime.Version(), GOMAXPROCS: runtime.GOMAXPROCS(0), Modules: map[string]string{},
+		SharedContext: sharedContext}
 	if release, err := os.ReadFile("/proc/sys/kernel/osrelease"); err == nil {
 		e.Kernel = strings.TrimSpace(string(release))
 	}

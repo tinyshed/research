@@ -44,6 +44,51 @@ const (
 	appAttachmentBytes = 16 << 10
 )
 
+// The settings where an application's defaults would keep less of its work
+// than the services keep, set so that both keep all of it: every log line
+// stored, and the queue handled as fast as it fills. A stage's app counts say
+// what each kept.
+const (
+	stackJobBatch   = 256                    // jobs one write settles and claims, on either side
+	stackJobWorkers = stackJobBatch / 2      // TinyStore's Work claims two jobs ahead a worker
+	stackLogBuffer  = 16 << 10               // log lines TinyStore's handler holds between flushes
+	stackLogFlush   = 100 * time.Millisecond // how often it writes them: 160,000 lines a second at most
+)
+
+// appCounts is what an application kept of a stage's work, its warm-up
+// included: the log lines it stored and dropped, the jobs enqueued and
+// handled, and at the stage's end the jobs waiting since it opened. A queue
+// that falls behind and a logger that drops show here, where a rate hides them.
+type appCounts struct {
+	LogsStored   int64 `json:"logs_stored"`
+	LogsDropped  int64 `json:"logs_dropped"`
+	JobsEnqueued int64 `json:"jobs_enqueued"`
+	JobsHandled  int64 `json:"jobs_handled"`
+	JobsWaiting  int64 `json:"jobs_waiting"`
+}
+
+// counting is an application that counts what it kept since it opened
+type counting interface {
+	counts(ctx context.Context) appCounts
+}
+
+// counted runs a stage of app's and gives it what app kept while it ran
+func counted(ctx context.Context, app any, run func() stage) stage {
+	c, ok := app.(counting)
+	if !ok {
+		return run()
+	}
+	before := c.counts(ctx)
+	s := run()
+	after := c.counts(ctx)
+	s.App = &appCounts{
+		LogsStored: after.LogsStored - before.LogsStored, LogsDropped: after.LogsDropped - before.LogsDropped,
+		JobsEnqueued: after.JobsEnqueued - before.JobsEnqueued, JobsHandled: after.JobsHandled - before.JobsHandled,
+		JobsWaiting: after.JobsEnqueued - after.JobsHandled,
+	}
+	return s
+}
+
 var stackEngine = engine{
 	order: []string{"tinystore", "tinystore-sidecar", "tinystore-server", "services"},
 	contenders: map[string]opener{
@@ -55,8 +100,8 @@ var stackEngine = engine{
 	measure: measureStack,
 }
 
-// measureStack seeds users and notes, serves requests from 8 and 64 clients,
-// then takes a backup and times it
+// measureStack seeds users and notes, serves requests from 8, 64 and 256
+// clients, then takes a backup and times it
 func measureStack(ctx context.Context, s subject, seconds float64) ([]stage, error) {
 	app, ok := s.(appStore)
 	if !ok {
@@ -66,9 +111,9 @@ func measureStack(ctx context.Context, s subject, seconds float64) ([]stage, err
 		return nil, fmt.Errorf("seed: %w", err)
 	}
 	var stages []stage
-	for _, clients := range []int{8, 64} {
-		stages = append(stages, timeStage(ctx, "request", clients, seconds, func(ctx context.Context, worker, n int) error {
-			return app.serve(ctx, requestFor(worker, n))
+	for _, clients := range []int{8, 64, 256} {
+		stages = append(stages, counted(ctx, app, func() stage {
+			return timeStage(ctx, "request", clients, seconds, appRequests(app))
 		}))
 	}
 	if _, ok := app.(backsUp); !ok {
