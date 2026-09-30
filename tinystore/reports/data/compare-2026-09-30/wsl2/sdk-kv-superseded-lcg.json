@@ -1,0 +1,2670 @@
+{
+  "engine": "sdk-kv",
+  "started": "2026-09-30T03:02:42.445448+00:00",
+  "runs": [
+    {
+      "contender": "bun-redis",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 105367,
+          "errors": 0,
+          "seconds": 5.000030224999999,
+          "per_second": 21073.272612067067,
+          "p50_us": 40.592999999716994,
+          "p99_us": 102.3960000002262,
+          "cpu_seconds": 6.7700000000000005
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 688651,
+          "errors": 0,
+          "seconds": 5.000027088000002,
+          "per_second": 137729.45383691083,
+          "p50_us": 51.68300000150339,
+          "p99_us": 124.88899999880232,
+          "cpu_seconds": 7.66
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 1626741,
+          "errors": 0,
+          "seconds": 5.000068912999999,
+          "per_second": 325343.7159177011,
+          "p50_us": 175.0319999991916,
+          "p99_us": 477.2369999991497,
+          "cpu_seconds": 8.750000000000004
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1523,
+          "errors": 0,
+          "seconds": 5.0002964349999965,
+          "per_second": 304.58194225039,
+          "p50_us": 3228.5480000027746,
+          "p99_us": 4542.1580000001995,
+          "cpu_seconds": 0.2600000000000051
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6256,
+          "errors": 0,
+          "seconds": 5.005040646999994,
+          "per_second": 1249.9398988397481,
+          "p50_us": 6343.864999995276,
+          "p99_us": 7800.453999996535,
+          "cpu_seconds": 0.25
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 48570,
+          "errors": 0,
+          "seconds": 5.0045198010000025,
+          "per_second": 9705.226861185512,
+          "p50_us": 6669.395999997505,
+          "p99_us": 9244.331999994756,
+          "cpu_seconds": 0.5199999999999996
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 7350,
+          "errors": 0,
+          "seconds": 5.005331899999997,
+          "per_second": 1468.4340912537696,
+          "p50_us": 60.50400000094669,
+          "p99_us": 3484.464000001026,
+          "cpu_seconds": 0.6800000000000033
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 10664,
+          "errors": 0,
+          "seconds": 5.005790398000005,
+          "per_second": 2130.3329049215995,
+          "p50_us": 3277.78699999908,
+          "p99_us": 7728.194000002986,
+          "cpu_seconds": 0.3299999999999983
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 50875,
+          "errors": 0,
+          "seconds": 5.0002933459999985,
+          "per_second": 10174.403075911061,
+          "p50_us": 6461.465000000317,
+          "p99_us": 8229.915999996592,
+          "cpu_seconds": 0.509999999999998
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 109752320,
+      "service_peak_rss_bytes": 38739968,
+      "disk_bytes": 0,
+      "open_seconds": 0.0005297359999999997,
+      "processes": 2,
+      "repeat": 1
+    },
+    {
+      "contender": "bun-redis",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 107438,
+          "errors": 0,
+          "seconds": 5.00001736,
+          "per_second": 21487.525395311826,
+          "p50_us": 40.743000001384644,
+          "p99_us": 81.99100000092585,
+          "cpu_seconds": 6.830000000000001
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 711173,
+          "errors": 0,
+          "seconds": 5.000032296000001,
+          "per_second": 142233.6812842058,
+          "p50_us": 51.02400000032503,
+          "p99_us": 105.29699999824516,
+          "cpu_seconds": 7.720000000000001
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 1721556,
+          "errors": 0,
+          "seconds": 5.000058461000001,
+          "per_second": 344307.1742916567,
+          "p50_us": 167.0620000004419,
+          "p99_us": 369.7069999980158,
+          "cpu_seconds": 8.77
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1536,
+          "errors": 0,
+          "seconds": 5.000589080999998,
+          "per_second": 307.1638111269956,
+          "p50_us": 3219.355999997788,
+          "p99_us": 3813.1780000003346,
+          "cpu_seconds": 0.259999999999998
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6264,
+          "errors": 0,
+          "seconds": 5.004086906000004,
+          "per_second": 1251.7768211597872,
+          "p50_us": 6324.88100000046,
+          "p99_us": 7948.391999998421,
+          "cpu_seconds": 0.28000000000000114
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 50783,
+          "errors": 0,
+          "seconds": 5.006205331999998,
+          "per_second": 10144.010609271594,
+          "p50_us": 6430.871000004117,
+          "p99_us": 7535.9279999975115,
+          "cpu_seconds": 0.4700000000000024
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 7361,
+          "errors": 0,
+          "seconds": 5.0017516310000065,
+          "per_second": 1471.6844303859018,
+          "p50_us": 62.75399999867659,
+          "p99_us": 3385.9059999958845,
+          "cpu_seconds": 0.6800000000000033
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 10511,
+          "errors": 0,
+          "seconds": 5.003704811000003,
+          "per_second": 2100.6435025689198,
+          "p50_us": 3269.957999997132,
+          "p99_us": 6858.871000004001,
+          "cpu_seconds": 0.33999999999999986
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 50389,
+          "errors": 0,
+          "seconds": 5.0009268099999975,
+          "per_second": 10075.932305036078,
+          "p50_us": 6524.044999998296,
+          "p99_us": 8013.5569999984,
+          "cpu_seconds": 0.46000000000000085
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 109838336,
+      "service_peak_rss_bytes": 38543360,
+      "disk_bytes": 0,
+      "open_seconds": 0.00036370500000000306,
+      "processes": 2,
+      "repeat": 2
+    },
+    {
+      "contender": "bun-redis",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 103229,
+          "errors": 0,
+          "seconds": 5.000011205999999,
+          "per_second": 20645.75372873675,
+          "p50_us": 41.39199999917764,
+          "p99_us": 92.03100000013364,
+          "cpu_seconds": 6.75
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 675125,
+          "errors": 0,
+          "seconds": 5.000031294,
+          "per_second": 135024.15491081923,
+          "p50_us": 51.60299999988638,
+          "p99_us": 207.1539999997185,
+          "cpu_seconds": 7.579999999999998
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 1633476,
+          "errors": 0,
+          "seconds": 5.000045828000002,
+          "per_second": 326692.2056699196,
+          "p50_us": 175.63199999858625,
+          "p99_us": 379.1559999990568,
+          "cpu_seconds": 8.799999999999997
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1529,
+          "errors": 0,
+          "seconds": 5.002644245,
+          "per_second": 305.63836345712406,
+          "p50_us": 3185.869000000821,
+          "p99_us": 5486.3749999967695,
+          "cpu_seconds": 0.25
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6133,
+          "errors": 0,
+          "seconds": 5.005672085000006,
+          "per_second": 1225.210100833042,
+          "p50_us": 6376.157999999123,
+          "p99_us": 8308.230000002368,
+          "cpu_seconds": 0.24999999999999645
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 49556,
+          "errors": 0,
+          "seconds": 5.003930248000004,
+          "per_second": 9903.415424267112,
+          "p50_us": 6568.043999999645,
+          "p99_us": 8598.618999996688,
+          "cpu_seconds": 0.4800000000000004
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 7200,
+          "errors": 0,
+          "seconds": 5.000943161000003,
+          "per_second": 1439.7284208605697,
+          "p50_us": 62.16400000266731,
+          "p99_us": 3625.3149999974994,
+          "cpu_seconds": 0.6800000000000033
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 10590,
+          "errors": 0,
+          "seconds": 5.000308031,
+          "per_second": 2117.869526106401,
+          "p50_us": 3306.5070000011474,
+          "p99_us": 6952.975000000151,
+          "cpu_seconds": 0.3200000000000003
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 51185,
+          "errors": 0,
+          "seconds": 5.000447126999999,
+          "per_second": 10236.084634037168,
+          "p50_us": 6400.10600000096,
+          "p99_us": 7427.389999997104,
+          "cpu_seconds": 0.48999999999999844
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 110534656,
+      "service_peak_rss_bytes": 38572032,
+      "disk_bytes": 0,
+      "open_seconds": 0.00041071900000000025,
+      "processes": 2,
+      "repeat": 3
+    },
+    {
+      "contender": "bun-redis-tcp",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 73714,
+          "errors": 0,
+          "seconds": 5.000068409999998,
+          "per_second": 14742.598291770177,
+          "p50_us": 64.82499999947322,
+          "p99_us": 134.87499999973807,
+          "cpu_seconds": 6.42
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 420220,
+          "errors": 0,
+          "seconds": 5.000038089000001,
+          "per_second": 84043.35977449389,
+          "p50_us": 83.9750000013737,
+          "p99_us": 301.85599999822443,
+          "cpu_seconds": 8.019999999999998
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 780342,
+          "errors": 0,
+          "seconds": 5.000058922,
+          "per_second": 156066.56084922032,
+          "p50_us": 379.6149999980116,
+          "p99_us": 975.2269999989949,
+          "cpu_seconds": 9.18
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1489,
+          "errors": 0,
+          "seconds": 5.0032269870000015,
+          "per_second": 297.60792461923126,
+          "p50_us": 3281.922999995004,
+          "p99_us": 5396.634999997332,
+          "cpu_seconds": 0.29000000000000625
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6095,
+          "errors": 0,
+          "seconds": 5.006465986999996,
+          "per_second": 1217.4256283427349,
+          "p50_us": 6531.25700000237,
+          "p99_us": 7981.047000001126,
+          "cpu_seconds": 0.30000000000000426
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 48197,
+          "errors": 0,
+          "seconds": 5.0064244350000005,
+          "per_second": 9627.030353849732,
+          "p50_us": 6487.944000000425,
+          "p99_us": 8898.325000001932,
+          "cpu_seconds": 0.5999999999999943
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 7082,
+          "errors": 0,
+          "seconds": 5.000990455999999,
+          "per_second": 1416.1194791930234,
+          "p50_us": 80.12600000074599,
+          "p99_us": 3576.5749999991385,
+          "cpu_seconds": 0.8299999999999983
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 10513,
+          "errors": 0,
+          "seconds": 5.005732858000003,
+          "per_second": 2100.1919795217314,
+          "p50_us": 3332.8479999981937,
+          "p99_us": 7174.562000000151,
+          "cpu_seconds": 0.4099999999999966
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 50876,
+          "errors": 0,
+          "seconds": 5.005987754999994,
+          "per_second": 10163.029254153671,
+          "p50_us": 6401.527000001806,
+          "p99_us": 8474.699999998847,
+          "cpu_seconds": 0.6799999999999997
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 76476416,
+      "service_peak_rss_bytes": 38850560,
+      "disk_bytes": 0,
+      "open_seconds": 0.0005748260000000016,
+      "processes": 2,
+      "repeat": 1
+    },
+    {
+      "contender": "bun-redis-tcp",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 77789,
+          "errors": 0,
+          "seconds": 5.000041312000001,
+          "per_second": 15557.671456295355,
+          "p50_us": 64.03400000090187,
+          "p99_us": 103.61700000066776,
+          "cpu_seconds": 6.55
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 415927,
+          "errors": 0,
+          "seconds": 5.0000351169999995,
+          "per_second": 83184.815759765,
+          "p50_us": 86.66599999924074,
+          "p99_us": 199.87399999808986,
+          "cpu_seconds": 8.179999999999998
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 785741,
+          "errors": 0,
+          "seconds": 5.000057290000001,
+          "per_second": 157146.39941655545,
+          "p50_us": 382.4160000003758,
+          "p99_us": 777.4839999983669,
+          "cpu_seconds": 9.219999999999999
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1108,
+          "errors": 0,
+          "seconds": 5.003177870000004,
+          "per_second": 221.45924626101674,
+          "p50_us": 3459.6889999993437,
+          "p99_us": 7426.0100000028615,
+          "cpu_seconds": 0.259999999999998
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6249,
+          "errors": 0,
+          "seconds": 5.006009817999999,
+          "per_second": 1248.2995893317286,
+          "p50_us": 6367.244000000937,
+          "p99_us": 7742.238999999245,
+          "cpu_seconds": 0.31999999999999673
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 48133,
+          "errors": 0,
+          "seconds": 5.005223313000002,
+          "per_second": 9616.553945751986,
+          "p50_us": 6601.8849999964,
+          "p99_us": 8302.15400000452,
+          "cpu_seconds": 0.6199999999999974
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 6962,
+          "errors": 0,
+          "seconds": 5.001671864000004,
+          "per_second": 1391.9345749387599,
+          "p50_us": 77.73499999893829,
+          "p99_us": 3569.8540000012144,
+          "cpu_seconds": 0.8000000000000007
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 10609,
+          "errors": 0,
+          "seconds": 5.003041821999999,
+          "per_second": 2120.5099572321747,
+          "p50_us": 3312.3819999964326,
+          "p99_us": 6880.578999996942,
+          "cpu_seconds": 0.4299999999999997
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 50218,
+          "errors": 0,
+          "seconds": 5.0059073389999975,
+          "per_second": 10031.747812981248,
+          "p50_us": 6480.231000001368,
+          "p99_us": 8065.424000000348,
+          "cpu_seconds": 0.6500000000000057
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 77471744,
+      "service_peak_rss_bytes": 38813696,
+      "disk_bytes": 0,
+      "open_seconds": 0.000453050999999995,
+      "processes": 2,
+      "repeat": 2
+    },
+    {
+      "contender": "bun-redis-tcp",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 73654,
+          "errors": 0,
+          "seconds": 5.000038105,
+          "per_second": 14730.687737428754,
+          "p50_us": 64.85400000019581,
+          "p99_us": 169.41100000076403,
+          "cpu_seconds": 6.44
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 425653,
+          "errors": 0,
+          "seconds": 5.0000332730000006,
+          "per_second": 85130.0334936791,
+          "p50_us": 85.07599999938975,
+          "p99_us": 187.2430000003078,
+          "cpu_seconds": 8.139999999999997
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 815902,
+          "errors": 0,
+          "seconds": 5.000078318,
+          "per_second": 163177.84404752197,
+          "p50_us": 369.4359999972221,
+          "p99_us": 856.1890000019048,
+          "cpu_seconds": 9.229999999999997
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1536,
+          "errors": 0,
+          "seconds": 5.000430670999995,
+          "per_second": 307.17354185271165,
+          "p50_us": 3227.591000002576,
+          "p99_us": 3798.819999999978,
+          "cpu_seconds": 0.26000000000000156
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6167,
+          "errors": 0,
+          "seconds": 5.005516231000001,
+          "per_second": 1232.0407557180085,
+          "p50_us": 6442.527999999584,
+          "p99_us": 7998.8329999978305,
+          "cpu_seconds": 0.30000000000000426
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 48256,
+          "errors": 0,
+          "seconds": 5.003848306,
+          "per_second": 9643.77755859172,
+          "p50_us": 6580.583999995724,
+          "p99_us": 8093.723999998474,
+          "cpu_seconds": 0.5899999999999999
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 7140,
+          "errors": 0,
+          "seconds": 5.001830660000007,
+          "per_second": 1427.477354861108,
+          "p50_us": 78.55500000005122,
+          "p99_us": 3424.525000002177,
+          "cpu_seconds": 0.8099999999999952
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 10506,
+          "errors": 0,
+          "seconds": 5.005881534,
+          "per_second": 2098.7312481614154,
+          "p50_us": 3272.715999999491,
+          "p99_us": 6760.236000001896,
+          "cpu_seconds": 0.4100000000000037
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 50075,
+          "errors": 0,
+          "seconds": 5.005993065999996,
+          "per_second": 10003.010259862802,
+          "p50_us": 6521.88500000193,
+          "p99_us": 7721.718999993755,
+          "cpu_seconds": 0.6299999999999955
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 77393920,
+      "service_peak_rss_bytes": 38699008,
+      "disk_bytes": 0,
+      "open_seconds": 0.0005459579999999988,
+      "processes": 2,
+      "repeat": 3
+    },
+    {
+      "contender": "bun-tinystore",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 33857,
+          "errors": 0,
+          "seconds": 5.000091518000001,
+          "per_second": 6771.276061271483,
+          "p50_us": 140.26000000012573,
+          "p99_us": 326.7370000012306,
+          "cpu_seconds": 6.82
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 222832,
+          "errors": 0,
+          "seconds": 5.000091874999998,
+          "per_second": 44565.58110744717,
+          "p50_us": 149.1249999999127,
+          "p99_us": 1364.0529999975115,
+          "cpu_seconds": 15.57
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 627528,
+          "errors": 0,
+          "seconds": 5.000203941,
+          "per_second": 125500.48106127839,
+          "p50_us": 358.42399999819463,
+          "p99_us": 3088.7130000010075,
+          "cpu_seconds": 21.950000000000003
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1614,
+          "errors": 0,
+          "seconds": 5.000712099999997,
+          "per_second": 322.7540333705676,
+          "p50_us": 3352.0989999997255,
+          "p99_us": 4509.268000001612,
+          "cpu_seconds": 0.6999999999999957
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6476,
+          "errors": 0,
+          "seconds": 5.003881960999999,
+          "per_second": 1294.1951969438155,
+          "p50_us": 6511.559999999008,
+          "p99_us": 16133.28399999591,
+          "cpu_seconds": 1.230000000000004
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 35976,
+          "errors": 0,
+          "seconds": 5.004032235999999,
+          "per_second": 7189.402126785182,
+          "p50_us": 8030.0440000064555,
+          "p99_us": 21731.919999998354,
+          "cpu_seconds": 2.529999999999994
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 6095,
+          "errors": 0,
+          "seconds": 5.001156317000001,
+          "per_second": 1218.7181550958105,
+          "p50_us": 163.43000000051688,
+          "p99_us": 3795.5030000011902,
+          "cpu_seconds": 1.7300000000000182
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 30489,
+          "errors": 0,
+          "seconds": 5.006237760999997,
+          "per_second": 6090.20215490321,
+          "p50_us": 166.83199999533826,
+          "p99_us": 7060.932000000321,
+          "cpu_seconds": 4.409999999999997
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 177775,
+          "errors": 0,
+          "seconds": 5.005595782999997,
+          "per_second": 35515.252870349505,
+          "p50_us": 223.91500000230735,
+          "p99_us": 18088.744000000588,
+          "cpu_seconds": 10.909999999999997
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 86675456,
+      "service_peak_rss_bytes": 67870720,
+      "disk_bytes": 0,
+      "open_seconds": 0.020801562000000003,
+      "processes": 2,
+      "repeat": 1
+    },
+    {
+      "contender": "bun-tinystore",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 34599,
+          "errors": 0,
+          "seconds": 5.000103243,
+          "per_second": 6919.657118768017,
+          "p50_us": 138.90900000114925,
+          "p99_us": 213.2980000005773,
+          "cpu_seconds": 6.890000000000001
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 232417,
+          "errors": 0,
+          "seconds": 5.000097706,
+          "per_second": 46482.49167633365,
+          "p50_us": 145.8100000018021,
+          "p99_us": 1117.23400000119,
+          "cpu_seconds": 15.719999999999999
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 666468,
+          "errors": 0,
+          "seconds": 5.0001139750000005,
+          "per_second": 133290.56164164736,
+          "p50_us": 340.25300000212155,
+          "p99_us": 2938.364999998157,
+          "cpu_seconds": 22.5
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1672,
+          "errors": 0,
+          "seconds": 5.000272612000004,
+          "per_second": 334.38176870345376,
+          "p50_us": 3279.0490000006685,
+          "p99_us": 4631.4930000007735,
+          "cpu_seconds": 0.7000000000000028
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6450,
+          "errors": 0,
+          "seconds": 5.0033329299999965,
+          "per_second": 1289.140676872767,
+          "p50_us": 6581.894000002649,
+          "p99_us": 11968.345000001136,
+          "cpu_seconds": 1.1499999999999915
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 36382,
+          "errors": 0,
+          "seconds": 5.012279591000006,
+          "per_second": 7258.5735371440815,
+          "p50_us": 7919.0660000022035,
+          "p99_us": 21600.609000000986,
+          "cpu_seconds": 2.5
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 6535,
+          "errors": 0,
+          "seconds": 5.002744872000003,
+          "per_second": 1306.2828841374496,
+          "p50_us": 156.0109999991255,
+          "p99_us": 3571.3470000046073,
+          "cpu_seconds": 1.7399999999999949
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 31847,
+          "errors": 0,
+          "seconds": 5.005647111999998,
+          "per_second": 6362.214372574015,
+          "p50_us": 165.07000000274274,
+          "p99_us": 6799.613999995927,
+          "cpu_seconds": 4.530000000000001
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 181866,
+          "errors": 0,
+          "seconds": 5.012489757000003,
+          "per_second": 36282.56790869686,
+          "p50_us": 221.00399999908404,
+          "p99_us": 18004.760000003444,
+          "cpu_seconds": 10.990000000000009
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 91455488,
+      "service_peak_rss_bytes": 67092480,
+      "disk_bytes": 0,
+      "open_seconds": 0.020093900000000005,
+      "processes": 2,
+      "repeat": 2
+    },
+    {
+      "contender": "bun-tinystore",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 33787,
+          "errors": 0,
+          "seconds": 5.000129943999998,
+          "per_second": 6757.224387846832,
+          "p50_us": 140.26000000012573,
+          "p99_us": 288.58000000036554,
+          "cpu_seconds": 6.869999999999999
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 225897,
+          "errors": 0,
+          "seconds": 5.000164674,
+          "per_second": 45177.912074501415,
+          "p50_us": 148.04999999978463,
+          "p99_us": 1305.1769999983662,
+          "cpu_seconds": 15.620000000000001
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 657700,
+          "errors": 0,
+          "seconds": 5.000266753,
+          "per_second": 131532.98263645655,
+          "p50_us": 339.7430000004533,
+          "p99_us": 2986.6339999971387,
+          "cpu_seconds": 22.549999999999997
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1643,
+          "errors": 0,
+          "seconds": 5.000823249000001,
+          "per_second": 328.5459049824538,
+          "p50_us": 3338.9489999972284,
+          "p99_us": 4637.587000001076,
+          "cpu_seconds": 0.7299999999999969
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6337,
+          "errors": 0,
+          "seconds": 5.004242945999999,
+          "per_second": 1266.3254099334451,
+          "p50_us": 6656.565999997838,
+          "p99_us": 15233.315999998013,
+          "cpu_seconds": 1.1799999999999926
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 35968,
+          "errors": 0,
+          "seconds": 5.016818843000001,
+          "per_second": 7169.483516469082,
+          "p50_us": 7924.947999999858,
+          "p99_us": 22400.399999998626,
+          "cpu_seconds": 2.549999999999997
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 6255,
+          "errors": 0,
+          "seconds": 5.003447105999999,
+          "per_second": 1250.1381282714415,
+          "p50_us": 160.1310000041849,
+          "p99_us": 3749.653999999282,
+          "cpu_seconds": 1.7000000000000028
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 31009,
+          "errors": 0,
+          "seconds": 5.003589878999999,
+          "per_second": 6197.350452351095,
+          "p50_us": 167.94800000207033,
+          "p99_us": 6994.641999997839,
+          "cpu_seconds": 4.480000000000004
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 176964,
+          "errors": 0,
+          "seconds": 5.006637052999999,
+          "per_second": 35345.88150222761,
+          "p50_us": 228.37599999911617,
+          "p99_us": 18473.989999998594,
+          "cpu_seconds": 10.88000000000001
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 90615808,
+      "service_peak_rss_bytes": 67133440,
+      "disk_bytes": 0,
+      "open_seconds": 0.020160547,
+      "processes": 2,
+      "repeat": 3
+    },
+    {
+      "contender": "bun-tinystore-server",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 32716,
+          "errors": 0,
+          "seconds": 5.000017534,
+          "per_second": 6543.177054386705,
+          "p50_us": 141.86900000095193,
+          "p99_us": 324.6309999994992,
+          "cpu_seconds": 6.559999999999999
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 183649,
+          "errors": 0,
+          "seconds": 5.000159174999997,
+          "per_second": 36728.63074404029,
+          "p50_us": 192.42300000041723,
+          "p99_us": 904.5630000000529,
+          "cpu_seconds": 16.36
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 581338,
+          "errors": 0,
+          "seconds": 5.000307491000004,
+          "per_second": 116260.45019158194,
+          "p50_us": 409.6899999967718,
+          "p99_us": 3104.3769999996584,
+          "cpu_seconds": 24.029999999999994
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1641,
+          "errors": 0,
+          "seconds": 5.001825744999998,
+          "per_second": 328.0802018423776,
+          "p50_us": 3305.924000000232,
+          "p99_us": 4757.0249999989755,
+          "cpu_seconds": 0.6999999999999957
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6167,
+          "errors": 0,
+          "seconds": 5.004513872000003,
+          "per_second": 1232.287522371363,
+          "p50_us": 6669.46900000039,
+          "p99_us": 17425.018000001728,
+          "cpu_seconds": 1.1700000000000017
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 35291,
+          "errors": 0,
+          "seconds": 5.004711019999995,
+          "per_second": 7051.555995734602,
+          "p50_us": 8189.922999998089,
+          "p99_us": 20032.043999999587,
+          "cpu_seconds": 2.3600000000000136
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 6325,
+          "errors": 0,
+          "seconds": 5.002030294000003,
+          "per_second": 1264.486544111281,
+          "p50_us": 164.80100000626408,
+          "p99_us": 3713.839000003645,
+          "cpu_seconds": 1.7800000000000011
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 31246,
+          "errors": 0,
+          "seconds": 5.0039920219999985,
+          "per_second": 6244.214591595528,
+          "p50_us": 177.18200000672368,
+          "p99_us": 6913.84200000175,
+          "cpu_seconds": 4.990000000000009
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 175230,
+          "errors": 0,
+          "seconds": 5.006351974999998,
+          "per_second": 35001.53422592707,
+          "p50_us": 292.5099999993108,
+          "p99_us": 18879.718000011053,
+          "cpu_seconds": 13.040000000000006
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 81707008,
+      "service_peak_rss_bytes": 66203648,
+      "disk_bytes": 0,
+      "open_seconds": 0.0027438569999999984,
+      "processes": 2,
+      "repeat": 1
+    },
+    {
+      "contender": "bun-tinystore-server",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 33040,
+          "errors": 0,
+          "seconds": 5.0000752199999985,
+          "per_second": 6607.900590743515,
+          "p50_us": 141.90899999994144,
+          "p99_us": 224.6450000002369,
+          "cpu_seconds": 6.570000000000001
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 190471,
+          "errors": 0,
+          "seconds": 5.0002036489999995,
+          "per_second": 38092.648494045374,
+          "p50_us": 188.71199999921373,
+          "p99_us": 914.9519999991753,
+          "cpu_seconds": 16.52
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 594896,
+          "errors": 0,
+          "seconds": 5.000281908999997,
+          "per_second": 118972.49211674403,
+          "p50_us": 403.2370000022638,
+          "p99_us": 3046.4040000006207,
+          "cpu_seconds": 24.29
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1638,
+          "errors": 0,
+          "seconds": 5.000953115000001,
+          "per_second": 327.5375638069744,
+          "p50_us": 3359.5970000023954,
+          "p99_us": 4063.218000002962,
+          "cpu_seconds": 0.6800000000000068
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6330,
+          "errors": 0,
+          "seconds": 5.006524991999998,
+          "per_second": 1264.3500252400222,
+          "p50_us": 6661.948000000848,
+          "p99_us": 14336.70500000153,
+          "cpu_seconds": 1.2000000000000028
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 35938,
+          "errors": 0,
+          "seconds": 5.019096892000001,
+          "per_second": 7160.252287076189,
+          "p50_us": 7947.65400000324,
+          "p99_us": 21992.2430000006,
+          "cpu_seconds": 2.469999999999999
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 6296,
+          "errors": 0,
+          "seconds": 5.0020234560000025,
+          "per_second": 1258.6906189829745,
+          "p50_us": 159.74200000346173,
+          "p99_us": 3615.0199999974575,
+          "cpu_seconds": 1.7000000000000028
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 30611,
+          "errors": 0,
+          "seconds": 5.0044052169999995,
+          "per_second": 6116.8108241942955,
+          "p50_us": 174.35200000181794,
+          "p99_us": 6844.4239999953425,
+          "cpu_seconds": 4.890000000000015
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 129754,
+          "errors": 0,
+          "seconds": 5.009842085999997,
+          "per_second": 25899.818352078906,
+          "p50_us": 284.25000000424916,
+          "p99_us": 21743.916999999783,
+          "cpu_seconds": 9.909999999999997
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 81489920,
+      "service_peak_rss_bytes": 66674688,
+      "disk_bytes": 0,
+      "open_seconds": 0.0023298190000000003,
+      "processes": 2,
+      "repeat": 2
+    },
+    {
+      "contender": "bun-tinystore-server",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 32541,
+          "errors": 0,
+          "seconds": 5.000050249999998,
+          "per_second": 6508.13459324734,
+          "p50_us": 143.71900000151072,
+          "p99_us": 282.9839999994874,
+          "cpu_seconds": 6.59
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 181984,
+          "errors": 0,
+          "seconds": 5.000152805999998,
+          "per_second": 36395.68770410895,
+          "p50_us": 193.8320000008389,
+          "p99_us": 1019.4840000003751,
+          "cpu_seconds": 16.410000000000004
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 576051,
+          "errors": 0,
+          "seconds": 5.000219648000002,
+          "per_second": 115205.13908432204,
+          "p50_us": 416.77700000218465,
+          "p99_us": 2998.954999999114,
+          "cpu_seconds": 24.08
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1598,
+          "errors": 0,
+          "seconds": 5.001010847000002,
+          "per_second": 319.53539971995974,
+          "p50_us": 3359.2719999978726,
+          "p99_us": 4714.286000002176,
+          "cpu_seconds": 0.6599999999999966
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6418,
+          "errors": 0,
+          "seconds": 5.006248174,
+          "per_second": 1281.997970722256,
+          "p50_us": 6553.9930000013555,
+          "p99_us": 12398.020000000542,
+          "cpu_seconds": 1.240000000000002
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 35923,
+          "errors": 0,
+          "seconds": 5.003933098999995,
+          "per_second": 7178.952893510705,
+          "p50_us": 7987.9150000051595,
+          "p99_us": 22516.91800000117,
+          "cpu_seconds": 2.539999999999992
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 6217,
+          "errors": 0,
+          "seconds": 5.000507660000003,
+          "per_second": 1243.273767927794,
+          "p50_us": 163.4279999998398,
+          "p99_us": 3713.7480000019423,
+          "cpu_seconds": 1.730000000000004
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 30676,
+          "errors": 0,
+          "seconds": 5.003890857999999,
+          "per_second": 6130.429473887619,
+          "p50_us": 177.12200000096345,
+          "p99_us": 6992.000999998709,
+          "cpu_seconds": 4.949999999999989
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 175771,
+          "errors": 0,
+          "seconds": 5.005394604000001,
+          "per_second": 35116.312280261525,
+          "p50_us": 286.5989999991143,
+          "p99_us": 18920.41099999915,
+          "cpu_seconds": 13.030000000000001
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 84332544,
+      "service_peak_rss_bytes": 66785280,
+      "disk_bytes": 0,
+      "open_seconds": 0.002718026000000002,
+      "processes": 2,
+      "repeat": 3
+    },
+    {
+      "contender": "python-redis",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 54328,
+          "errors": 0,
+          "seconds": 5.000084388000687,
+          "per_second": 10865.416617842999,
+          "p50_us": 89.62599895312451,
+          "p99_us": 144.15999976336025,
+          "cpu_seconds": 5.409999999999999
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 88981,
+          "errors": 0,
+          "seconds": 5.00006228500024,
+          "per_second": 17795.97831549727,
+          "p50_us": 436.07000043266453,
+          "p99_us": 657.7590011147549,
+          "cpu_seconds": 6.290000000000003
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 92899,
+          "errors": 0,
+          "seconds": 5.000367972999811,
+          "per_second": 18578.43272767548,
+          "p50_us": 3412.293999645044,
+          "p99_us": 4394.130999571644,
+          "cpu_seconds": 6.339999999999996
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1512,
+          "errors": 0,
+          "seconds": 5.002513614999771,
+          "per_second": 302.2480529520896,
+          "p50_us": 3275.545001088176,
+          "p99_us": 3987.3300011095125,
+          "cpu_seconds": 0.28000000000000114
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6113,
+          "errors": 0,
+          "seconds": 5.003444425001362,
+          "per_second": 1221.7583489994167,
+          "p50_us": 6504.3049999076175,
+          "p99_us": 7750.677999865729,
+          "cpu_seconds": 0.4299999999999997
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 46607,
+          "errors": 0,
+          "seconds": 5.006263491999562,
+          "per_second": 9309.7377064715,
+          "p50_us": 6825.747001130367,
+          "p99_us": 8831.518000079086,
+          "cpu_seconds": 1.4600000000000044
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 6766,
+          "errors": 0,
+          "seconds": 5.00088945600146,
+          "per_second": 1352.9593204425403,
+          "p50_us": 101.09700087923557,
+          "p99_us": 3543.7860005913535,
+          "cpu_seconds": 0.8500000000000014
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 9861,
+          "errors": 0,
+          "seconds": 5.0035322189996805,
+          "per_second": 1970.8077350946762,
+          "p50_us": 3637.222000179463,
+          "p99_us": 7286.800000656513,
+          "cpu_seconds": 0.6899999999999977
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 48289,
+          "errors": 0,
+          "seconds": 5.003787518999161,
+          "per_second": 9650.489717368851,
+          "p50_us": 6842.549000793952,
+          "p99_us": 9132.047000093735,
+          "cpu_seconds": 1.5899999999999999
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 35831808,
+      "service_peak_rss_bytes": 38711296,
+      "disk_bytes": 0,
+      "open_seconds": 0.06914875800066511,
+      "processes": 2,
+      "repeat": 1
+    },
+    {
+      "contender": "python-redis",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 52741,
+          "errors": 0,
+          "seconds": 5.000338321999152,
+          "per_second": 10547.48631066907,
+          "p50_us": 89.30600051826332,
+          "p99_us": 203.10400032030884,
+          "cpu_seconds": 5.390000000000001
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 86723,
+          "errors": 0,
+          "seconds": 5.000144359999467,
+          "per_second": 17344.09924116856,
+          "p50_us": 435.5099990789313,
+          "p99_us": 840.0869992328808,
+          "cpu_seconds": 6.269999999999998
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 88474,
+          "errors": 0,
+          "seconds": 5.0004029470001115,
+          "per_second": 17693.374101596783,
+          "p50_us": 3486.2590000557248,
+          "p99_us": 4598.555000484339,
+          "cpu_seconds": 6.309999999999999
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1483,
+          "errors": 0,
+          "seconds": 5.000442861999545,
+          "per_second": 296.5737317528287,
+          "p50_us": 3328.482000142685,
+          "p99_us": 4099.665000467212,
+          "cpu_seconds": 0.28999999999999915
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6040,
+          "errors": 0,
+          "seconds": 5.004299004998757,
+          "per_second": 1206.9622526485107,
+          "p50_us": 6580.987001143512,
+          "p99_us": 8191.436998458812,
+          "cpu_seconds": 0.4399999999999977
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 46765,
+          "errors": 0,
+          "seconds": 5.004113435999898,
+          "per_second": 9345.311731658545,
+          "p50_us": 6798.508000429138,
+          "p99_us": 9125.709000727511,
+          "cpu_seconds": 1.4800000000000004
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 6925,
+          "errors": 0,
+          "seconds": 5.000467885000035,
+          "per_second": 1384.8704079818226,
+          "p50_us": 100.75699901790358,
+          "p99_us": 3519.4590000173775,
+          "cpu_seconds": 0.8700000000000045
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 9379,
+          "errors": 0,
+          "seconds": 5.0001981259993045,
+          "per_second": 1875.7256739952838,
+          "p50_us": 3872.3140005458845,
+          "p99_us": 7822.740999472444,
+          "cpu_seconds": 0.6699999999999982
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 48148,
+          "errors": 0,
+          "seconds": 5.0059084330005135,
+          "per_second": 9618.234261456588,
+          "p50_us": 6839.418998424662,
+          "p99_us": 9063.564999451046,
+          "cpu_seconds": 1.610000000000003
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 35192832,
+      "service_peak_rss_bytes": 38707200,
+      "disk_bytes": 0,
+      "open_seconds": 0.04918683699906978,
+      "processes": 2,
+      "repeat": 2
+    },
+    {
+      "contender": "python-redis",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 55241,
+          "errors": 0,
+          "seconds": 5.000074605002737,
+          "per_second": 11048.035152261444,
+          "p50_us": 89.17699960875325,
+          "p99_us": 147.17299927724525,
+          "cpu_seconds": 5.41
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 88839,
+          "errors": 0,
+          "seconds": 5.000087037999037,
+          "per_second": 17767.490710632126,
+          "p50_us": 432.3089997342322,
+          "p99_us": 786.1630001571029,
+          "cpu_seconds": 6.300000000000001
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 92998,
+          "errors": 0,
+          "seconds": 5.000405266000598,
+          "per_second": 18598.09256508148,
+          "p50_us": 3400.5259985860903,
+          "p99_us": 4161.438002483919,
+          "cpu_seconds": 6.32
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1472,
+          "errors": 0,
+          "seconds": 5.000707068000338,
+          "per_second": 294.35837372266184,
+          "p50_us": 3267.9789983376395,
+          "p99_us": 6214.621000253828,
+          "cpu_seconds": 0.2799999999999976
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6072,
+          "errors": 0,
+          "seconds": 5.003952953000407,
+          "per_second": 1213.4406652163234,
+          "p50_us": 6538.592999277171,
+          "p99_us": 7880.006000050344,
+          "cpu_seconds": 0.4299999999999997
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 46828,
+          "errors": 0,
+          "seconds": 5.006565370000317,
+          "per_second": 9353.318400793603,
+          "p50_us": 6807.183999626432,
+          "p99_us": 8606.747000158066,
+          "cpu_seconds": 1.4299999999999962
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 6820,
+          "errors": 0,
+          "seconds": 5.000872418000654,
+          "per_second": 1363.7620458885117,
+          "p50_us": 101.93699927185662,
+          "p99_us": 3542.760001437273,
+          "cpu_seconds": 0.8800000000000026
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 10126,
+          "errors": 0,
+          "seconds": 5.00413516500339,
+          "per_second": 2023.5264768259192,
+          "p50_us": 3563.4909982036334,
+          "p99_us": 6908.430998009862,
+          "cpu_seconds": 0.6900000000000013
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 50157,
+          "errors": 0,
+          "seconds": 5.004250998998032,
+          "per_second": 10022.878550664745,
+          "p50_us": 6568.968001374742,
+          "p99_us": 8591.859001171542,
+          "cpu_seconds": 1.6199999999999974
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 35614720,
+      "service_peak_rss_bytes": 38760448,
+      "disk_bytes": 0,
+      "open_seconds": 0.04664787299770978,
+      "processes": 2,
+      "repeat": 3
+    },
+    {
+      "contender": "python-redis-tcp",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 48441,
+          "errors": 0,
+          "seconds": 5.000024413000574,
+          "per_second": 9688.152696624531,
+          "p50_us": 98.58700104814488,
+          "p99_us": 160.30999904614873,
+          "cpu_seconds": 5.529999999999999
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 78499,
+          "errors": 0,
+          "seconds": 5.000119365000501,
+          "per_second": 15699.425207620447,
+          "p50_us": 496.2540006090421,
+          "p99_us": 746.601001083036,
+          "cpu_seconds": 6.57
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 80934,
+          "errors": 0,
+          "seconds": 5.000586842999837,
+          "per_second": 16184.900400899334,
+          "p50_us": 3928.047999579576,
+          "p99_us": 4791.965999174863,
+          "cpu_seconds": 6.629999999999999
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1551,
+          "errors": 0,
+          "seconds": 5.002884098001232,
+          "per_second": 310.0211737105124,
+          "p50_us": 3198.1379997887416,
+          "p99_us": 3624.6180006855866,
+          "cpu_seconds": 0.3200000000000003
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6206,
+          "errors": 0,
+          "seconds": 5.005494779999935,
+          "per_second": 1239.8374731698511,
+          "p50_us": 6395.867001629085,
+          "p99_us": 8028.037998883519,
+          "cpu_seconds": 0.4899999999999949
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 47141,
+          "errors": 0,
+          "seconds": 5.006603346999327,
+          "per_second": 9415.764887436835,
+          "p50_us": 6890.448999911314,
+          "p99_us": 8157.32599949115,
+          "cpu_seconds": 1.8500000000000014
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 6506,
+          "errors": 0,
+          "seconds": 5.000066209999204,
+          "per_second": 1301.1827697379701,
+          "p50_us": 116.97799891408067,
+          "p99_us": 3526.690999933635,
+          "cpu_seconds": 0.9399999999999977
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 9863,
+          "errors": 0,
+          "seconds": 5.00386016199991,
+          "per_second": 1971.0782637175098,
+          "p50_us": 3697.7520012442255,
+          "p99_us": 7224.672999655013,
+          "cpu_seconds": 0.8500000000000014
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 48993,
+          "errors": 0,
+          "seconds": 5.00524879600016,
+          "per_second": 9788.324616181264,
+          "p50_us": 6618.53100064036,
+          "p99_us": 8155.744999385206,
+          "cpu_seconds": 1.8600000000000065
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 35508224,
+      "service_peak_rss_bytes": 38723584,
+      "disk_bytes": 0,
+      "open_seconds": 0.04750624699954642,
+      "processes": 2,
+      "repeat": 1
+    },
+    {
+      "contender": "python-redis-tcp",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 46423,
+          "errors": 0,
+          "seconds": 5.000020519000827,
+          "per_second": 9284.561898013346,
+          "p50_us": 99.7259994619526,
+          "p99_us": 214.67500118887983,
+          "cpu_seconds": 5.52
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 76262,
+          "errors": 0,
+          "seconds": 5.000097280000773,
+          "per_second": 15252.10325507671,
+          "p50_us": 500.76499974238686,
+          "p99_us": 891.9169995351695,
+          "cpu_seconds": 6.550000000000001
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 77193,
+          "errors": 0,
+          "seconds": 5.000610377999692,
+          "per_second": 15436.715553687705,
+          "p50_us": 4039.9000008619623,
+          "p99_us": 5216.015999394585,
+          "cpu_seconds": 6.6200000000000045
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1532,
+          "errors": 0,
+          "seconds": 5.001715336000416,
+          "per_second": 306.29492025930693,
+          "p50_us": 3231.3579995388864,
+          "p99_us": 3698.89899957343,
+          "cpu_seconds": 0.3200000000000003
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6141,
+          "errors": 0,
+          "seconds": 5.005829473999256,
+          "per_second": 1226.7697155680044,
+          "p50_us": 6493.839000540902,
+          "p99_us": 7779.452000249876,
+          "cpu_seconds": 0.490000000000002
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 46399,
+          "errors": 0,
+          "seconds": 5.006497460000901,
+          "per_second": 9267.756624406966,
+          "p50_us": 6870.5419998877915,
+          "p99_us": 9748.509000928607,
+          "cpu_seconds": 1.8299999999999983
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 46554,
+          "errors": 0,
+          "seconds": 5.000038569000026,
+          "per_second": 9310.728178904925,
+          "p50_us": 100.12699931394309,
+          "p99_us": 209.42100127285812,
+          "cpu_seconds": 5.5
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 75747,
+          "errors": 0,
+          "seconds": 5.000096558000223,
+          "per_second": 15149.10744649596,
+          "p50_us": 504.6440001024166,
+          "p99_us": 876.644000527449,
+          "cpu_seconds": 6.57
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 78046,
+          "errors": 0,
+          "seconds": 5.000412569999753,
+          "per_second": 15607.912128739381,
+          "p50_us": 4032.6369999093004,
+          "p99_us": 5123.82699889713,
+          "cpu_seconds": 6.589999999999996
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 35053568,
+      "service_peak_rss_bytes": 38711296,
+      "disk_bytes": 0,
+      "open_seconds": 0.04771218199857685,
+      "processes": 2,
+      "repeat": 2
+    },
+    {
+      "contender": "python-redis-tcp",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 48000,
+          "errors": 0,
+          "seconds": 5.000017410999135,
+          "per_second": 9599.966570998067,
+          "p50_us": 99.24600090016611,
+          "p99_us": 157.57499932078645,
+          "cpu_seconds": 5.5200000000000005
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 79124,
+          "errors": 0,
+          "seconds": 5.0001051260005624,
+          "per_second": 15824.467287408608,
+          "p50_us": 492.97400255454704,
+          "p99_us": 713.905999873532,
+          "cpu_seconds": 6.5699999999999985
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 80814,
+          "errors": 0,
+          "seconds": 5.000435893998656,
+          "per_second": 16161.39106932459,
+          "p50_us": 3905.188001226634,
+          "p99_us": 4688.830002123723,
+          "cpu_seconds": 6.609999999999999
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1529,
+          "errors": 0,
+          "seconds": 5.003258557000663,
+          "per_second": 305.60083645099485,
+          "p50_us": 3237.4280017393176,
+          "p99_us": 3784.6660015929956,
+          "cpu_seconds": 0.3100000000000023
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6113,
+          "errors": 0,
+          "seconds": 5.005212099000346,
+          "per_second": 1221.3268646938866,
+          "p50_us": 6511.603998660576,
+          "p99_us": 7906.2089971557725,
+          "cpu_seconds": 0.4800000000000004
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 47766,
+          "errors": 0,
+          "seconds": 5.004511969000305,
+          "per_second": 9544.587023845539,
+          "p50_us": 6776.932001230307,
+          "p99_us": 8593.725000537233,
+          "cpu_seconds": 1.8200000000000003
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 6610,
+          "errors": 0,
+          "seconds": 5.0026832450021175,
+          "per_second": 1321.2909305428554,
+          "p50_us": 116.58800212899223,
+          "p99_us": 3470.9419996943325,
+          "cpu_seconds": 0.9600000000000044
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 9759,
+          "errors": 0,
+          "seconds": 5.004106243002752,
+          "per_second": 1950.1984022913225,
+          "p50_us": 3763.5439985024277,
+          "p99_us": 7163.8510016782675,
+          "cpu_seconds": 0.8000000000000007
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 47225,
+          "errors": 0,
+          "seconds": 5.005987283999275,
+          "per_second": 9433.703547539182,
+          "p50_us": 6759.052997949766,
+          "p99_us": 9399.694001331227,
+          "cpu_seconds": 1.8200000000000003
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 35504128,
+      "service_peak_rss_bytes": 38952960,
+      "disk_bytes": 0,
+      "open_seconds": 0.04982814100003452,
+      "processes": 2,
+      "repeat": 3
+    },
+    {
+      "contender": "python-tinystore",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 22804,
+          "errors": 0,
+          "seconds": 5.000099592998595,
+          "per_second": 4560.709157059866,
+          "p50_us": 211.38500051165465,
+          "p99_us": 361.48500112176407,
+          "cpu_seconds": 5.719999999999999
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 123247,
+          "errors": 0,
+          "seconds": 5.000316704999932,
+          "per_second": 24647.838781244092,
+          "p50_us": 308.5509997617919,
+          "p99_us": 646.4439993578708,
+          "cpu_seconds": 12.23
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 294319,
+          "errors": 0,
+          "seconds": 5.000622875999397,
+          "per_second": 58856.46794374171,
+          "p50_us": 1081.6039994097082,
+          "p99_us": 1640.6529994128505,
+          "cpu_seconds": 13.099999999999998
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1623,
+          "errors": 0,
+          "seconds": 5.001918685000419,
+          "per_second": 324.47548675011376,
+          "p50_us": 3308.47799887124,
+          "p99_us": 6538.785000884673,
+          "cpu_seconds": 0.740000000000002
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6320,
+          "errors": 0,
+          "seconds": 5.003995601000497,
+          "per_second": 1262.9907186042253,
+          "p50_us": 6666.4339992712485,
+          "p99_us": 14981.391999754123,
+          "cpu_seconds": 1.25
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 36416,
+          "errors": 0,
+          "seconds": 5.005853184000443,
+          "per_second": 7274.68398721555,
+          "p50_us": 7929.704999696696,
+          "p99_us": 21221.426999545656,
+          "cpu_seconds": 2.6700000000000017
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 6196,
+          "errors": 0,
+          "seconds": 5.001589718000105,
+          "per_second": 1238.8061295194525,
+          "p50_us": 201.49400006630458,
+          "p99_us": 3689.6210003760643,
+          "cpu_seconds": 1.8500000000000014
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 30154,
+          "errors": 0,
+          "seconds": 5.005380389000493,
+          "per_second": 6024.317365821891,
+          "p50_us": 241.6359984636074,
+          "p99_us": 6774.540999685996,
+          "cpu_seconds": 4.760000000000005
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 176844,
+          "errors": 0,
+          "seconds": 5.020117362999372,
+          "per_second": 35227.06486972267,
+          "p50_us": 528.2759993860964,
+          "p99_us": 17918.462999659823,
+          "cpu_seconds": 11.340000000000003
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 41582592,
+      "service_peak_rss_bytes": 66338816,
+      "disk_bytes": 0,
+      "open_seconds": 0.021698272999856272,
+      "processes": 2,
+      "repeat": 1
+    },
+    {
+      "contender": "python-tinystore",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 22679,
+          "errors": 0,
+          "seconds": 5.000174356000571,
+          "per_second": 4535.641836725866,
+          "p50_us": 211.144999411772,
+          "p99_us": 443.5219998413231,
+          "cpu_seconds": 5.73
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 143664,
+          "errors": 0,
+          "seconds": 5.0001441380009055,
+          "per_second": 28731.971726206662,
+          "p50_us": 268.4680002857931,
+          "p99_us": 541.3359995145584,
+          "cpu_seconds": 12.850000000000001
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 279687,
+          "errors": 0,
+          "seconds": 5.00056888600011,
+          "per_second": 55931.03632329281,
+          "p50_us": 1120.6350009160815,
+          "p99_us": 1995.8350003435044,
+          "cpu_seconds": 12.969999999999999
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1599,
+          "errors": 0,
+          "seconds": 5.002774044000034,
+          "per_second": 319.62267052970844,
+          "p50_us": 3368.7239993014373,
+          "p99_us": 4737.686000225949,
+          "cpu_seconds": 0.7299999999999969
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6241,
+          "errors": 0,
+          "seconds": 5.0047999510006775,
+          "per_second": 1247.0028894465906,
+          "p50_us": 6703.978000587085,
+          "p99_us": 14921.545998731744,
+          "cpu_seconds": 1.1400000000000006
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 36814,
+          "errors": 0,
+          "seconds": 5.00737225299963,
+          "per_second": 7351.959898317294,
+          "p50_us": 7886.146000601002,
+          "p99_us": 22391.600001355982,
+          "cpu_seconds": 2.739999999999995
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 26912,
+          "errors": 0,
+          "seconds": 5.00001327300015,
+          "per_second": 5382.385711918728,
+          "p50_us": 177.30199942889158,
+          "p99_us": 306.53599969809875,
+          "cpu_seconds": 5.859999999999999
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 143392,
+          "errors": 0,
+          "seconds": 5.000183397998626,
+          "per_second": 28677.348126349545,
+          "p50_us": 268.84799990511965,
+          "p99_us": 545.7440001919167,
+          "cpu_seconds": 12.899999999999991
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 281910,
+          "errors": 0,
+          "seconds": 5.000565865999306,
+          "per_second": 56375.619790714125,
+          "p50_us": 1120.4450001969235,
+          "p99_us": 1839.461001509335,
+          "cpu_seconds": 12.939999999999998
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 39501824,
+      "service_peak_rss_bytes": 67502080,
+      "disk_bytes": 0,
+      "open_seconds": 0.02060607000021264,
+      "processes": 2,
+      "repeat": 2
+    },
+    {
+      "contender": "python-tinystore",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 23339,
+          "errors": 0,
+          "seconds": 5.000168939001014,
+          "per_second": 4667.642290634865,
+          "p50_us": 209.68699755030684,
+          "p99_us": 298.08499675709754,
+          "cpu_seconds": 5.76
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 146617,
+          "errors": 0,
+          "seconds": 5.000198293000722,
+          "per_second": 29322.23712112268,
+          "p50_us": 265.13800185057335,
+          "p99_us": 488.2260000158567,
+          "cpu_seconds": 12.910000000000002
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 291974,
+          "errors": 0,
+          "seconds": 5.0006495359994005,
+          "per_second": 58387.21508038011,
+          "p50_us": 1090.4240007221233,
+          "p99_us": 1640.46200006851,
+          "cpu_seconds": 13.0
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1595,
+          "errors": 0,
+          "seconds": 5.001479580998421,
+          "per_second": 318.9056306577179,
+          "p50_us": 3379.2300018831156,
+          "p99_us": 4791.175000718795,
+          "cpu_seconds": 0.8200000000000074
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6381,
+          "errors": 0,
+          "seconds": 5.0016123159985,
+          "per_second": 1275.7886051242508,
+          "p50_us": 6634.089000726817,
+          "p99_us": 14781.196998228552,
+          "cpu_seconds": 1.2700000000000102
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 29438,
+          "errors": 0,
+          "seconds": 5.012207419000333,
+          "per_second": 5873.2605295635,
+          "p50_us": 8747.527001105482,
+          "p99_us": 27073.213997937273,
+          "cpu_seconds": 2.2299999999999898
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 27185,
+          "errors": 0,
+          "seconds": 5.000074900002801,
+          "per_second": 5436.918554957001,
+          "p50_us": 178.40299915405922,
+          "p99_us": 241.38599837897345,
+          "cpu_seconds": 5.869999999999997
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 146280,
+          "errors": 0,
+          "seconds": 5.000243362999754,
+          "per_second": 29254.576103720574,
+          "p50_us": 266.16900140652433,
+          "p99_us": 488.7830000370741,
+          "cpu_seconds": 12.939999999999998
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 281945,
+          "errors": 0,
+          "seconds": 5.000625679000223,
+          "per_second": 56381.944600254385,
+          "p50_us": 1124.5160021644551,
+          "p99_us": 1845.5860008543823,
+          "cpu_seconds": 12.870000000000005
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 39354368,
+      "service_peak_rss_bytes": 67457024,
+      "disk_bytes": 0,
+      "open_seconds": 0.020705105001979973,
+      "processes": 2,
+      "repeat": 3
+    },
+    {
+      "contender": "python-tinystore-server",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 23588,
+          "errors": 0,
+          "seconds": 5.000188108000657,
+          "per_second": 4717.422523016188,
+          "p50_us": 205.8769987343112,
+          "p99_us": 290.0340004998725,
+          "cpu_seconds": 5.629999999999999
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 137223,
+          "errors": 0,
+          "seconds": 5.000196428998606,
+          "per_second": 27443.52185929659,
+          "p50_us": 288.18900136684533,
+          "p99_us": 485.81199916952755,
+          "cpu_seconds": 14.299999999999995
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 287153,
+          "errors": 0,
+          "seconds": 5.0003933619991585,
+          "per_second": 57426.082152304145,
+          "p50_us": 1106.9249994761776,
+          "p99_us": 1766.4699989836663,
+          "cpu_seconds": 13.86
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1595,
+          "errors": 0,
+          "seconds": 5.000328014000843,
+          "per_second": 318.9790740795452,
+          "p50_us": 3396.3860005314928,
+          "p99_us": 4118.848999496549,
+          "cpu_seconds": 0.9100000000000037
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6394,
+          "errors": 0,
+          "seconds": 5.0044726980013365,
+          "per_second": 1277.6570851417787,
+          "p50_us": 6613.986999582266,
+          "p99_us": 14638.082000601571,
+          "cpu_seconds": 1.25
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 36097,
+          "errors": 0,
+          "seconds": 5.004107233000468,
+          "per_second": 7213.474515884065,
+          "p50_us": 7994.180999958189,
+          "p99_us": 20667.45299998729,
+          "cpu_seconds": 2.440000000000005
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 6108,
+          "errors": 0,
+          "seconds": 5.0007193660003395,
+          "per_second": 1221.424269781666,
+          "p50_us": 201.98399943183176,
+          "p99_us": 3606.614000091213,
+          "cpu_seconds": 1.8599999999999994
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 30144,
+          "errors": 0,
+          "seconds": 5.0054652049984725,
+          "per_second": 6022.217469396873,
+          "p50_us": 234.326000281726,
+          "p99_us": 6794.746001105523,
+          "cpu_seconds": 5.050000000000011
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 176040,
+          "errors": 0,
+          "seconds": 5.01193911900009,
+          "per_second": 35124.12976698747,
+          "p50_us": 529.2360001476482,
+          "p99_us": 18067.136999889044,
+          "cpu_seconds": 12.549999999999997
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 39555072,
+      "service_peak_rss_bytes": 65998848,
+      "disk_bytes": 0,
+      "open_seconds": 0.000808774999313755,
+      "processes": 2,
+      "repeat": 1
+    },
+    {
+      "contender": "python-tinystore-server",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 23041,
+          "errors": 0,
+          "seconds": 5.000088860000687,
+          "per_second": 4608.118104524413,
+          "p50_us": 209.55400032107718,
+          "p99_us": 331.2620010547107,
+          "cpu_seconds": 5.59
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 130396,
+          "errors": 0,
+          "seconds": 5.000231318999795,
+          "per_second": 26077.99353292386,
+          "p50_us": 298.43999982404057,
+          "p99_us": 600.8710006426554,
+          "cpu_seconds": 14.11
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 281041,
+          "errors": 0,
+          "seconds": 5.000690262000717,
+          "per_second": 56200.44139417642,
+          "p50_us": 1113.6560005979845,
+          "p99_us": 1930.491000166512,
+          "cpu_seconds": 13.760000000000005
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1590,
+          "errors": 0,
+          "seconds": 5.000835635999465,
+          "per_second": 317.9468624311671,
+          "p50_us": 3369.0480013319757,
+          "p99_us": 5006.453000532929,
+          "cpu_seconds": 0.759999999999998
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6348,
+          "errors": 0,
+          "seconds": 5.00654810100059,
+          "per_second": 1267.9394808433606,
+          "p50_us": 6588.710000869469,
+          "p99_us": 14613.982999435393,
+          "cpu_seconds": 1.3200000000000003
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 36238,
+          "errors": 0,
+          "seconds": 5.007572198001071,
+          "per_second": 7236.640544986157,
+          "p50_us": 7987.105000211159,
+          "p99_us": 21816.593998664757,
+          "cpu_seconds": 2.700000000000003
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 6078,
+          "errors": 0,
+          "seconds": 5.000068970000939,
+          "per_second": 1215.583232244666,
+          "p50_us": 208.72499953838997,
+          "p99_us": 3730.7410002540564,
+          "cpu_seconds": 1.9200000000000017
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 30110,
+          "errors": 0,
+          "seconds": 5.004306230999646,
+          "per_second": 6016.8180383288245,
+          "p50_us": 238.51699916122016,
+          "p99_us": 6849.113000498619,
+          "cpu_seconds": 5.100000000000001
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 173095,
+          "errors": 0,
+          "seconds": 5.005002498000977,
+          "per_second": 34584.39832330454,
+          "p50_us": 542.4279988801572,
+          "p99_us": 18303.77199985378,
+          "cpu_seconds": 12.549999999999997
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 39243776,
+      "service_peak_rss_bytes": 66916352,
+      "disk_bytes": 0,
+      "open_seconds": 0.0011168060009367764,
+      "processes": 2,
+      "repeat": 2
+    },
+    {
+      "contender": "python-tinystore-server",
+      "stages": [
+        {
+          "name": "get",
+          "goroutines": 1,
+          "ops": 23424,
+          "errors": 0,
+          "seconds": 5.0000748349993955,
+          "per_second": 4684.729883648398,
+          "p50_us": 207.76400197064504,
+          "p99_us": 285.1919998647645,
+          "cpu_seconds": 5.62
+        },
+        {
+          "name": "get",
+          "goroutines": 8,
+          "ops": 136943,
+          "errors": 0,
+          "seconds": 5.0001559289994475,
+          "per_second": 27387.745891237213,
+          "p50_us": 288.759998511523,
+          "p99_us": 487.01299965614453,
+          "cpu_seconds": 14.26
+        },
+        {
+          "name": "get",
+          "goroutines": 64,
+          "ops": 284024,
+          "errors": 0,
+          "seconds": 5.000542197001778,
+          "per_second": 56798.64078945178,
+          "p50_us": 1112.1450006612577,
+          "p99_us": 1868.0960019992199,
+          "cpu_seconds": 13.849999999999994
+        },
+        {
+          "name": "set",
+          "goroutines": 1,
+          "ops": 1649,
+          "errors": 0,
+          "seconds": 5.000229672001296,
+          "per_second": 329.78485153063036,
+          "p50_us": 3304.0890011761803,
+          "p99_us": 4415.4899987916,
+          "cpu_seconds": 0.8500000000000014
+        },
+        {
+          "name": "set",
+          "goroutines": 8,
+          "ops": 6362,
+          "errors": 0,
+          "seconds": 5.006299161999777,
+          "per_second": 1270.79900623811,
+          "p50_us": 6652.879001194378,
+          "p99_us": 14737.195000634529,
+          "cpu_seconds": 1.259999999999998
+        },
+        {
+          "name": "set",
+          "goroutines": 64,
+          "ops": 36046,
+          "errors": 0,
+          "seconds": 5.004815583000891,
+          "per_second": 7202.263380579308,
+          "p50_us": 8010.154000658076,
+          "p99_us": 21329.265997337643,
+          "cpu_seconds": 2.499999999999993
+        },
+        {
+          "name": "mixed",
+          "goroutines": 1,
+          "ops": 5902,
+          "errors": 0,
+          "seconds": 5.003302495002572,
+          "per_second": 1179.6208615999274,
+          "p50_us": 200.72500046808273,
+          "p99_us": 3736.2869989010505,
+          "cpu_seconds": 1.8400000000000034
+        },
+        {
+          "name": "mixed",
+          "goroutines": 8,
+          "ops": 29759,
+          "errors": 0,
+          "seconds": 5.005145367002115,
+          "per_second": 5945.681457364838,
+          "p50_us": 235.265997616807,
+          "p99_us": 6898.0860014562495,
+          "cpu_seconds": 5.010000000000005
+        },
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 179233,
+          "errors": 0,
+          "seconds": 5.0064339929995185,
+          "per_second": 35800.53192564227,
+          "p50_us": 526.2359991320409,
+          "p99_us": 17589.88700021291,
+          "cpu_seconds": 12.61999999999999
+        }
+      ],
+      "open_rss_bytes": 0,
+      "peak_rss_bytes": 38649856,
+      "service_peak_rss_bytes": 66449408,
+      "disk_bytes": 0,
+      "open_seconds": 0.000835385999380378,
+      "processes": 2,
+      "repeat": 3
+    }
+  ]
+}

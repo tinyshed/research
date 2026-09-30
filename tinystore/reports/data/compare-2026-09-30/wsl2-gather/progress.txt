@@ -1,0 +1,12 @@
+06:10:54 start /tmp/compare weight -out results/2026-09-30-wsl2-gather/weight.json
+06:10:57 done results/2026-09-30-wsl2-gather/weight.json
+06:10:57 start /tmp/compare run -engine stack -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-wsl2-gather/stack.json
+06:15:20 done results/2026-09-30-wsl2-gather/stack.json
+06:15:20 start /tmp/compare run -engine stack-steps -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-wsl2-gather/stack-steps.json
+06:19:55 done results/2026-09-30-wsl2-gather/stack-steps.json
+06:19:55 start /tmp/compare run -engine sqldb -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-wsl2-gather/sqldb.json
+06:54:28 done results/2026-09-30-wsl2-gather/sqldb.json
+06:54:28 start /tmp/compare-mattn run -engine sqldb -contenders mattn -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-wsl2-gather/sqldb-mattn.json
+07:11:53 done results/2026-09-30-wsl2-gather/sqldb-mattn.json
+07:11:53 start /tmp/compare run -engine kv -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-wsl2-gather/kv.json
+07:31:36 start sdk kv

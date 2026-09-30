@@ -1,0 +1,1190 @@
+{
+  "engine": "kv-steady",
+  "started": "2026-09-30T01:19:54.841012761Z",
+  "environment": {
+    "go": "go1.27.1",
+    "gomaxprocs": 8,
+    "cpu": "Intel Xeon Processor (Icelake)",
+    "kernel": "6.8.0-142-generic",
+    "modules": {
+      "cloud.google.com/go/auth": "v0.23.2",
+      "cloud.google.com/go/auth/oauth2adapt": "v0.2.8",
+      "cloud.google.com/go/compute/metadata": "v0.9.0",
+      "github.com/Azure/azure-sdk-for-go/sdk/azcore": "v1.23.1",
+      "github.com/Azure/azure-sdk-for-go/sdk/azidentity": "v1.14.1",
+      "github.com/Azure/azure-sdk-for-go/sdk/internal": "v1.12.0",
+      "github.com/AzureAD/microsoft-authentication-library-for-go": "v1.8.0",
+      "github.com/DataDog/zstd": "v1.5.7",
+      "github.com/RaduBerinde/axisds": "v0.1.0",
+      "github.com/RaduBerinde/btreemap": "v0.0.0-20250419174037-3d62b7205d54",
+      "github.com/alecthomas/units": "v0.0.0-20240927000941-0f3dac36c52b",
+      "github.com/aws/aws-sdk-go-v2": "v1.46.0",
+      "github.com/aws/aws-sdk-go-v2/config": "v1.33.3",
+      "github.com/aws/aws-sdk-go-v2/credentials": "v1.20.3",
+      "github.com/aws/aws-sdk-go-v2/feature/ec2/imds": "v1.19.2",
+      "github.com/aws/aws-sdk-go-v2/internal/configsources": "v1.5.2",
+      "github.com/aws/aws-sdk-go-v2/internal/endpoints/v2": "v2.8.2",
+      "github.com/aws/aws-sdk-go-v2/internal/v4a": "v1.5.2",
+      "github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding": "v1.13.19",
+      "github.com/aws/aws-sdk-go-v2/service/internal/presigned-url": "v1.14.2",
+      "github.com/aws/aws-sdk-go-v2/service/signin": "v1.9.0",
+      "github.com/aws/aws-sdk-go-v2/service/sso": "v1.37.0",
+      "github.com/aws/aws-sdk-go-v2/service/ssooidc": "v1.42.0",
+      "github.com/aws/aws-sdk-go-v2/service/sts": "v1.49.0",
+      "github.com/aws/smithy-go": "v1.28.1",
+      "github.com/bboreham/go-loser": "v0.0.0-20230920113527-fcc2c21820a3",
+      "github.com/beorn7/perks": "v1.0.1",
+      "github.com/cenkalti/backoff/v5": "v5.0.3",
+      "github.com/cespare/xxhash/v2": "v2.3.0",
+      "github.com/cockroachdb/crlib": "v0.0.0-20241112164430-1264a2edc35b",
+      "github.com/cockroachdb/errors": "v1.11.3",
+      "github.com/cockroachdb/logtags": "v0.0.0-20230118201751-21c54148d20b",
+      "github.com/cockroachdb/pebble/v2": "v2.1.7",
+      "github.com/cockroachdb/redact": "v1.1.5",
+      "github.com/cockroachdb/swiss": "v0.0.0-20260820225851-333444432258",
+      "github.com/cockroachdb/tokenbucket": "v0.0.0-20230807174530-cc333fc44b06",
+      "github.com/dennwc/varint": "v1.0.0",
+      "github.com/dgraph-io/badger/v4": "v4.9.6",
+      "github.com/dgraph-io/ristretto/v2": "v2.2.0",
+      "github.com/dustin/go-humanize": "v1.0.1",
+      "github.com/felixge/httpsnoop": "v1.1.0",
+      "github.com/getsentry/sentry-go": "v0.27.0",
+      "github.com/go-logr/logr": "v1.4.4",
+      "github.com/go-logr/stdr": "v1.2.2",
+      "github.com/gogo/protobuf": "v1.3.2",
+      "github.com/golang-jwt/jwt/v5": "v5.3.1",
+      "github.com/golang/snappy": "v1.0.0",
+      "github.com/google/flatbuffers": "v25.2.10+incompatible",
+      "github.com/google/go-cmp": "v0.7.0",
+      "github.com/google/s2a-go": "v0.1.9",
+      "github.com/google/uuid": "v1.6.0",
+      "github.com/googleapis/enterprise-certificate-proxy": "v0.3.20",
+      "github.com/googleapis/gax-go/v2": "v2.24.0",
+      "github.com/grafana/regexp": "v0.0.0-20250905093917-f7b3be9d1853",
+      "github.com/jackc/pgpassfile": "v1.0.0",
+      "github.com/jackc/pgservicefile": "v0.0.0-20240606120523-5a60cdf6a761",
+      "github.com/jackc/pgx/v5": "v5.11.0",
+      "github.com/jackc/puddle/v2": "v2.2.2",
+      "github.com/jpillora/backoff": "v1.0.0",
+      "github.com/klauspost/compress": "v1.20.1",
+      "github.com/kr/pretty": "v0.3.1",
+      "github.com/kr/text": "v0.2.0",
+      "github.com/kylelemons/godebug": "v1.1.0",
+      "github.com/minio/minlz": "v1.0.1-0.20250507153514-87eb42fe8882",
+      "github.com/munnerz/goautoneg": "v0.0.0-20191010083416-a7dc8b61c822",
+      "github.com/mwitkow/go-conntrack": "v0.0.0-20190716064945-2f068394615f",
+      "github.com/ncruces/go-sqlite3": "v0.35.6",
+      "github.com/ncruces/go-sqlite3-wasm/v6": "v6.3.35304",
+      "github.com/ncruces/julianday": "v1.0.0",
+      "github.com/oklog/ulid/v2": "v2.1.2",
+      "github.com/pkg/browser": "v0.0.0-20240102092130-5ac0b6a4141c",
+      "github.com/pkg/errors": "v0.9.1",
+      "github.com/prometheus/client_golang": "v1.24.1",
+      "github.com/prometheus/client_golang/exp": "v0.0.0-20260907100614-57bb367da472",
+      "github.com/prometheus/client_model": "v0.6.3",
+      "github.com/prometheus/common": "v0.71.0",
+      "github.com/prometheus/otlptranslator": "v1.0.0",
+      "github.com/prometheus/procfs": "v0.21.1",
+      "github.com/prometheus/prometheus": "v0.315.0",
+      "github.com/prometheus/sigv4": "v0.5.0",
+      "github.com/redis/go-redis/v9": "v9.22.0",
+      "github.com/remyoudompheng/bigfft": "v0.0.0-20230129092748-24d4a6f8daec",
+      "github.com/rogpeppe/go-internal": "v1.14.1",
+      "github.com/stretchr/testify": "v1.12.1",
+      "github.com/tinyshed/tinystore": "replaced by ../../source",
+      "github.com/tinyshed/tinystore/server": "replaced by ../../source/server",
+      "go.etcd.io/bbolt": "v1.5.0",
+      "go.opentelemetry.io/auto/sdk": "v1.2.1",
+      "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp": "v0.71.0",
+      "go.opentelemetry.io/otel": "v1.46.0",
+      "go.opentelemetry.io/otel/metric": "v1.46.0",
+      "go.opentelemetry.io/otel/trace": "v1.46.0",
+      "go.uber.org/atomic": "v1.11.0",
+      "go.uber.org/goleak": "v1.3.0",
+      "go.yaml.in/yaml/v2": "v2.4.4",
+      "go.yaml.in/yaml/v3": "v3.0.5",
+      "golang.org/x/crypto": "v0.57.0",
+      "golang.org/x/exp": "v0.0.0-20260709172345-9ea1abe57597",
+      "golang.org/x/net": "v0.58.0",
+      "golang.org/x/oauth2": "v0.36.0",
+      "golang.org/x/sync": "v0.23.0",
+      "golang.org/x/sys": "v0.48.0",
+      "golang.org/x/text": "v0.42.0",
+      "golang.org/x/time": "v0.15.0",
+      "google.golang.org/api": "v0.297.0",
+      "google.golang.org/genproto/googleapis/rpc": "v0.0.0-20260825221802-da73d73af1c5",
+      "google.golang.org/grpc": "v1.83.2",
+      "google.golang.org/protobuf": "v1.36.12",
+      "k8s.io/apimachinery": "v0.37.0",
+      "k8s.io/client-go": "v0.37.0",
+      "k8s.io/klog/v2": "v2.140.0",
+      "k8s.io/utils": "v0.0.0-20260626114624-be93311217bd",
+      "maragu.dev/goqite": "v0.4.0",
+      "modernc.org/libc": "v1.77.1",
+      "modernc.org/mathutil": "v1.7.1",
+      "modernc.org/memory": "v1.12.1",
+      "modernc.org/sqlite": "v1.60.1"
+    }
+  },
+  "seconds_a_stage": 900,
+  "runs": [
+    {
+      "contender": "tinystore",
+      "repeat": 1,
+      "stages": [
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 43427969,
+          "errors": 0,
+          "seconds": 900.001644032,
+          "per_second": 48253.2107446416,
+          "p50_us": 0,
+          "p99_us": 0,
+          "cpu_seconds": 2229.7599999999998,
+          "read_bytes": 0,
+          "write_bytes": 34807558144,
+          "timeline": [
+            {
+              "at_seconds": 60.006903993,
+              "per_second": 45648.747356129905,
+              "p50_us": 131.072,
+              "p99_us": 14680.064,
+              "errors": 0,
+              "disk_bytes": 22033448,
+              "cpu_seconds": 144.62,
+              "write_bytes": 2193313792
+            },
+            {
+              "at_seconds": 120.01481992500001,
+              "per_second": 48385.18310301248,
+              "p50_us": 122.88,
+              "p99_us": 13631.488,
+              "errors": 0,
+              "disk_bytes": 22033448,
+              "cpu_seconds": 148.85000000000002,
+              "write_bytes": 2328227840
+            },
+            {
+              "at_seconds": 180.022679578,
+              "per_second": 48845.63483766019,
+              "p50_us": 122.88,
+              "p99_us": 13631.488,
+              "errors": 0,
+              "disk_bytes": 22033448,
+              "cpu_seconds": 150.03999999999996,
+              "write_bytes": 2346315776
+            },
+            {
+              "at_seconds": 240.02929366200001,
+              "per_second": 48922.35705701578,
+              "p50_us": 122.88,
+              "p99_us": 13631.488,
+              "errors": 0,
+              "disk_bytes": 22033448,
+              "cpu_seconds": 150.30000000000007,
+              "write_bytes": 2355560448
+            },
+            {
+              "at_seconds": 300.034419571,
+              "per_second": 48789.881791763575,
+              "p50_us": 122.88,
+              "p99_us": 13631.488,
+              "errors": 0,
+              "disk_bytes": 22033448,
+              "cpu_seconds": 149.7299999999999,
+              "write_bytes": 2344828928
+            },
+            {
+              "at_seconds": 360.039754126,
+              "per_second": 49546.79483163162,
+              "p50_us": 122.88,
+              "p99_us": 12582.912,
+              "errors": 0,
+              "disk_bytes": 22033448,
+              "cpu_seconds": 151.9000000000001,
+              "write_bytes": 2383990784
+            },
+            {
+              "at_seconds": 420.045328805,
+              "per_second": 48611.116810465835,
+              "p50_us": 122.88,
+              "p99_us": 13631.488,
+              "errors": 0,
+              "disk_bytes": 22033448,
+              "cpu_seconds": 149.08000000000004,
+              "write_bytes": 2338754560
+            },
+            {
+              "at_seconds": 480.052165838,
+              "per_second": 48864.131905294125,
+              "p50_us": 122.88,
+              "p99_us": 13631.488,
+              "errors": 0,
+              "disk_bytes": 22033448,
+              "cpu_seconds": 149.63999999999987,
+              "write_bytes": 2353606656
+            },
+            {
+              "at_seconds": 540.055717774,
+              "per_second": 49338.71253417927,
+              "p50_us": 122.88,
+              "p99_us": 13631.488,
+              "errors": 0,
+              "disk_bytes": 22033448,
+              "cpu_seconds": 151.5,
+              "write_bytes": 2373603328
+            },
+            {
+              "at_seconds": 600.0601696179999,
+              "per_second": 48017.020595249414,
+              "p50_us": 122.88,
+              "p99_us": 13631.488,
+              "errors": 0,
+              "disk_bytes": 22033448,
+              "cpu_seconds": 147.25,
+              "write_bytes": 2308673536
+            },
+            {
+              "at_seconds": 660.0990177399999,
+              "per_second": 47022.93745315036,
+              "p50_us": 122.88,
+              "p99_us": 13631.488,
+              "errors": 0,
+              "disk_bytes": 22033448,
+              "cpu_seconds": 145.25,
+              "write_bytes": 2261987328
+            },
+            {
+              "at_seconds": 720.105819035,
+              "per_second": 47386.17854368003,
+              "p50_us": 122.88,
+              "p99_us": 13631.488,
+              "errors": 0,
+              "disk_bytes": 22033448,
+              "cpu_seconds": 146.4000000000001,
+              "write_bytes": 2275348480
+            },
+            {
+              "at_seconds": 780.1462967,
+              "per_second": 48040.773694267715,
+              "p50_us": 122.88,
+              "p99_us": 13631.488,
+              "errors": 0,
+              "disk_bytes": 22033448,
+              "cpu_seconds": 147.5999999999999,
+              "write_bytes": 2315575296
+            },
+            {
+              "at_seconds": 840.151036291,
+              "per_second": 48058.020410649726,
+              "p50_us": 122.88,
+              "p99_us": 13631.488,
+              "errors": 0,
+              "disk_bytes": 22033448,
+              "cpu_seconds": 148.24000000000024,
+              "write_bytes": 2309869568
+            },
+            {
+              "at_seconds": 900.001644032,
+              "per_second": 48321.71483563416,
+              "p50_us": 122.88,
+              "p99_us": 13631.488,
+              "errors": 0,
+              "disk_bytes": 22033448,
+              "cpu_seconds": 149.35999999999967,
+              "write_bytes": 2317901824
+            }
+          ]
+        }
+      ],
+      "open_rss_bytes": 34746368,
+      "peak_rss_bytes": 62853120,
+      "disk_bytes": 17604608,
+      "open_seconds": 0.033848294,
+      "processes": 1
+    },
+    {
+      "contender": "sqlite",
+      "repeat": 1,
+      "stages": [
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 8683877,
+          "errors": 0,
+          "seconds": 900.046276546,
+          "per_second": 9648.256124479596,
+          "p50_us": 0,
+          "p99_us": 0,
+          "cpu_seconds": 574.55,
+          "read_bytes": 0,
+          "write_bytes": 4959903744,
+          "timeline": [
+            {
+              "at_seconds": 60.11746577,
+              "per_second": 5216.121404713032,
+              "p50_us": 32.768,
+              "p99_us": 301989.888,
+              "errors": 0,
+              "disk_bytes": 22257240,
+              "cpu_seconds": 19.7,
+              "write_bytes": 371421184
+            },
+            {
+              "at_seconds": 120.22266747,
+              "per_second": 8631.732118453236,
+              "p50_us": 40.96,
+              "p99_us": 184549.376,
+              "errors": 0,
+              "disk_bytes": 22257240,
+              "cpu_seconds": 35.5,
+              "write_bytes": 341925888
+            },
+            {
+              "at_seconds": 180.33394564,
+              "per_second": 10118.034726859976,
+              "p50_us": 36.864,
+              "p99_us": 150994.944,
+              "errors": 0,
+              "disk_bytes": 22257240,
+              "cpu_seconds": 40.36,
+              "write_bytes": 353226752
+            },
+            {
+              "at_seconds": 240.419647287,
+              "per_second": 10263.49003333625,
+              "p50_us": 36.864,
+              "p99_us": 150994.944,
+              "errors": 0,
+              "disk_bytes": 22257240,
+              "cpu_seconds": 40.56000000000002,
+              "write_bytes": 339566592
+            },
+            {
+              "at_seconds": 300.503835784,
+              "per_second": 10288.81333781959,
+              "p50_us": 36.864,
+              "p99_us": 150994.944,
+              "errors": 0,
+              "disk_bytes": 22257240,
+              "cpu_seconds": 40.56999999999999,
+              "write_bytes": 335880192
+            },
+            {
+              "at_seconds": 360.593093771,
+              "per_second": 10254.112309612867,
+              "p50_us": 36.864,
+              "p99_us": 150994.944,
+              "errors": 0,
+              "disk_bytes": 22257240,
+              "cpu_seconds": 40.629999999999995,
+              "write_bytes": 338042880
+            },
+            {
+              "at_seconds": 420.648610573,
+              "per_second": 9853.815794326698,
+              "p50_us": 36.864,
+              "p99_us": 150994.944,
+              "errors": 0,
+              "disk_bytes": 22257240,
+              "cpu_seconds": 39.31999999999999,
+              "write_bytes": 319016960
+            },
+            {
+              "at_seconds": 480.72458145499996,
+              "per_second": 10448.004265014119,
+              "p50_us": 36.864,
+              "p99_us": 150994.944,
+              "errors": 0,
+              "disk_bytes": 22257240,
+              "cpu_seconds": 41.45999999999998,
+              "write_bytes": 336306176
+            },
+            {
+              "at_seconds": 540.786560694,
+              "per_second": 10142.506253014757,
+              "p50_us": 36.864,
+              "p99_us": 150994.944,
+              "errors": 0,
+              "disk_bytes": 22257240,
+              "cpu_seconds": 40.49000000000001,
+              "write_bytes": 332587008
+            },
+            {
+              "at_seconds": 600.8636634339999,
+              "per_second": 10126.803262017625,
+              "p50_us": 36.864,
+              "p99_us": 150994.944,
+              "errors": 0,
+              "disk_bytes": 22257240,
+              "cpu_seconds": 40.22000000000003,
+              "write_bytes": 327290880
+            },
+            {
+              "at_seconds": 660.931707363,
+              "per_second": 9577.555092022081,
+              "p50_us": 36.864,
+              "p99_us": 167772.16,
+              "errors": 0,
+              "disk_bytes": 22257240,
+              "cpu_seconds": 37.849999999999966,
+              "write_bytes": 307449856
+            },
+            {
+              "at_seconds": 720.996143849,
+              "per_second": 9818.572095277377,
+              "p50_us": 40.96,
+              "p99_us": 150994.944,
+              "errors": 0,
+              "disk_bytes": 22257240,
+              "cpu_seconds": 39.210000000000036,
+              "write_bytes": 303874048
+            },
+            {
+              "at_seconds": 781.0693375149999,
+              "per_second": 9722.273186393904,
+              "p50_us": 36.864,
+              "p99_us": 150994.944,
+              "errors": 0,
+              "disk_bytes": 22257240,
+              "cpu_seconds": 38.89999999999998,
+              "write_bytes": 305594368
+            },
+            {
+              "at_seconds": 841.1317648539999,
+              "per_second": 10490.301972708956,
+              "p50_us": 40.96,
+              "p99_us": 150994.944,
+              "errors": 0,
+              "disk_bytes": 22257240,
+              "cpu_seconds": 41.860000000000014,
+              "write_bytes": 330788864
+            },
+            {
+              "at_seconds": 900.046276546,
+              "per_second": 9777.557064573286,
+              "p50_us": 36.864,
+              "p99_us": 150994.944,
+              "errors": 0,
+              "disk_bytes": 22257240,
+              "cpu_seconds": 37.91999999999996,
+              "write_bytes": 316932096
+            }
+          ]
+        }
+      ],
+      "open_rss_bytes": 31801344,
+      "peak_rss_bytes": 60325888,
+      "disk_bytes": 18083840,
+      "open_seconds": 0.011948438,
+      "processes": 1
+    },
+    {
+      "contender": "bbolt",
+      "repeat": 1,
+      "stages": [
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 27711648,
+          "errors": 0,
+          "seconds": 900.01112165,
+          "per_second": 30790.339511800634,
+          "p50_us": 0,
+          "p99_us": 0,
+          "cpu_seconds": 288.17,
+          "read_bytes": 24576,
+          "write_bytes": 20845977600,
+          "timeline": [
+            {
+              "at_seconds": 60.012238627,
+              "per_second": 31259.590425543483,
+              "p50_us": 5.12,
+              "p99_us": 23068.672,
+              "errors": 0,
+              "disk_bytes": 50364416,
+              "cpu_seconds": 19.46,
+              "write_bytes": 1410949120
+            },
+            {
+              "at_seconds": 120.026022162,
+              "per_second": 30751.352294322565,
+              "p50_us": 5.12,
+              "p99_us": 23068.672,
+              "errors": 0,
+              "disk_bytes": 50364416,
+              "cpu_seconds": 19.250000000000004,
+              "write_bytes": 1388302336
+            },
+            {
+              "at_seconds": 180.04083367200002,
+              "per_second": 30774.019838290416,
+              "p50_us": 5.12,
+              "p99_us": 23068.672,
+              "errors": 0,
+              "disk_bytes": 50364416,
+              "cpu_seconds": 19.119999999999997,
+              "write_bytes": 1389256704
+            },
+            {
+              "at_seconds": 240.04985200100003,
+              "per_second": 30753.794202764686,
+              "p50_us": 5.12,
+              "p99_us": 23068.672,
+              "errors": 0,
+              "disk_bytes": 50364416,
+              "cpu_seconds": 19.15,
+              "write_bytes": 1388302336
+            },
+            {
+              "at_seconds": 300.05275308500006,
+              "per_second": 30768.995609319027,
+              "p50_us": 5.12,
+              "p99_us": 23068.672,
+              "errors": 0,
+              "disk_bytes": 50364416,
+              "cpu_seconds": 19.17,
+              "write_bytes": 1388777472
+            },
+            {
+              "at_seconds": 360.05904392300005,
+              "per_second": 30767.257469459255,
+              "p50_us": 5.12,
+              "p99_us": 23068.672,
+              "errors": 0,
+              "disk_bytes": 50364416,
+              "cpu_seconds": 19.019999999999996,
+              "write_bytes": 1388777472
+            },
+            {
+              "at_seconds": 420.060234834,
+              "per_second": 30733.973309551864,
+              "p50_us": 5.12,
+              "p99_us": 23068.672,
+              "errors": 0,
+              "disk_bytes": 50364416,
+              "cpu_seconds": 19.13000000000001,
+              "write_bytes": 1387323392
+            },
+            {
+              "at_seconds": 480.06299553200006,
+              "per_second": 30757.00148679182,
+              "p50_us": 5.12,
+              "p99_us": 23068.672,
+              "errors": 0,
+              "disk_bytes": 50364416,
+              "cpu_seconds": 19.169999999999987,
+              "write_bytes": 1388302336
+            },
+            {
+              "at_seconds": 540.069547785,
+              "per_second": 30778.25555137881,
+              "p50_us": 5.12,
+              "p99_us": 23068.672,
+              "errors": 0,
+              "disk_bytes": 50364416,
+              "cpu_seconds": 19.26000000000002,
+              "write_bytes": 1389256704
+            },
+            {
+              "at_seconds": 600.072572926,
+              "per_second": 30756.86593573044,
+              "p50_us": 5.12,
+              "p99_us": 23068.672,
+              "errors": 0,
+              "disk_bytes": 50364416,
+              "cpu_seconds": 19.339999999999975,
+              "write_bytes": 1388302336
+            },
+            {
+              "at_seconds": 660.083220721,
+              "per_second": 30752.959146589397,
+              "p50_us": 5.12,
+              "p99_us": 23068.672,
+              "errors": 0,
+              "disk_bytes": 50364416,
+              "cpu_seconds": 19.210000000000008,
+              "write_bytes": 1388302336
+            },
+            {
+              "at_seconds": 720.094271372,
+              "per_second": 30752.752701043526,
+              "p50_us": 5.12,
+              "p99_us": 23068.672,
+              "errors": 0,
+              "disk_bytes": 50364416,
+              "cpu_seconds": 19.140000000000015,
+              "write_bytes": 1388302336
+            },
+            {
+              "at_seconds": 780.109430626,
+              "per_second": 30733.585029636753,
+              "p50_us": 5.12,
+              "p99_us": 23068.672,
+              "errors": 0,
+              "disk_bytes": 50364416,
+              "cpu_seconds": 19.20999999999998,
+              "write_bytes": 1387646976
+            },
+            {
+              "at_seconds": 840.123201056,
+              "per_second": 30751.35900938927,
+              "p50_us": 5.12,
+              "p99_us": 23068.672,
+              "errors": 0,
+              "disk_bytes": 50364416,
+              "cpu_seconds": 19.25999999999999,
+              "write_bytes": 1388302336
+            },
+            {
+              "at_seconds": 900.01112165,
+              "per_second": 30763.24877749353,
+              "p50_us": 5.12,
+              "p99_us": 23068.672,
+              "errors": 0,
+              "disk_bytes": 50364416,
+              "cpu_seconds": 19.28000000000003,
+              "write_bytes": 1385873408
+            }
+          ]
+        }
+      ],
+      "open_rss_bytes": 29777920,
+      "peak_rss_bytes": 75284480,
+      "disk_bytes": 50364416,
+      "open_seconds": 0.006155472,
+      "processes": 1
+    },
+    {
+      "contender": "badger",
+      "repeat": 1,
+      "stages": [
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 13246596,
+          "errors": 0,
+          "seconds": 900.0107615750001,
+          "per_second": 14718.264009219993,
+          "p50_us": 0,
+          "p99_us": 0,
+          "cpu_seconds": 410.97999999999996,
+          "read_bytes": 0,
+          "write_bytes": 5826314240,
+          "timeline": [
+            {
+              "at_seconds": 60.002992281,
+              "per_second": 14152.394200995464,
+              "p50_us": 3932.16,
+              "p99_us": 16777.216,
+              "errors": 0,
+              "disk_bytes": 2282750001,
+              "cpu_seconds": 18.8,
+              "write_bytes": 367230976
+            },
+            {
+              "at_seconds": 120.00874279499999,
+              "per_second": 14506.976290495732,
+              "p50_us": 3932.16,
+              "p99_us": 15728.64,
+              "errors": 0,
+              "disk_bytes": 2282750001,
+              "cpu_seconds": 19.87,
+              "write_bytes": 376688640
+            },
+            {
+              "at_seconds": 180.01170843399998,
+              "per_second": 14111.769159783678,
+              "p50_us": 4194.304,
+              "p99_us": 16777.216,
+              "errors": 0,
+              "disk_bytes": 2315357270,
+              "cpu_seconds": 20.709999999999994,
+              "write_bytes": 398823424
+            },
+            {
+              "at_seconds": 240.016496437,
+              "per_second": 13927.18860965259,
+              "p50_us": 4194.304,
+              "p99_us": 16777.216,
+              "errors": 0,
+              "disk_bytes": 2315357270,
+              "cpu_seconds": 23.690000000000012,
+              "write_bytes": 361447424
+            },
+            {
+              "at_seconds": 300.018846711,
+              "per_second": 14778.45444304604,
+              "p50_us": 3932.16,
+              "p99_us": 14680.064,
+              "errors": 0,
+              "disk_bytes": 2315357270,
+              "cpu_seconds": 25.519999999999996,
+              "write_bytes": 383680512
+            },
+            {
+              "at_seconds": 360.025827591,
+              "per_second": 14371.877860754657,
+              "p50_us": 3932.16,
+              "p99_us": 15728.64,
+              "errors": 0,
+              "disk_bytes": 2315357270,
+              "cpu_seconds": 25.63000000000001,
+              "write_bytes": 372924416
+            },
+            {
+              "at_seconds": 420.031320864,
+              "per_second": 14943.615177370397,
+              "p50_us": 3932.16,
+              "p99_us": 14680.064,
+              "errors": 0,
+              "disk_bytes": 2336444997,
+              "cpu_seconds": 27.619999999999976,
+              "write_bytes": 409116672
+            },
+            {
+              "at_seconds": 480.036091552,
+              "per_second": 14834.703804276289,
+              "p50_us": 3932.16,
+              "p99_us": 14680.064,
+              "errors": 0,
+              "disk_bytes": 2336444997,
+              "cpu_seconds": 27.860000000000014,
+              "write_bytes": 385175552
+            },
+            {
+              "at_seconds": 540.0422975,
+              "per_second": 14921.1066731314,
+              "p50_us": 3932.16,
+              "p99_us": 13631.488,
+              "errors": 0,
+              "disk_bytes": 2336444997,
+              "cpu_seconds": 28.879999999999995,
+              "write_bytes": 387567616
+            },
+            {
+              "at_seconds": 600.046965792,
+              "per_second": 15102.308300249673,
+              "p50_us": 3932.16,
+              "p99_us": 13631.488,
+              "errors": 0,
+              "disk_bytes": 2336444997,
+              "cpu_seconds": 29.689999999999998,
+              "write_bytes": 391933952
+            },
+            {
+              "at_seconds": 660.0540350240001,
+              "per_second": 14912.776302075943,
+              "p50_us": 3932.16,
+              "p99_us": 14680.064,
+              "errors": 0,
+              "disk_bytes": 2357778131,
+              "cpu_seconds": 30.660000000000025,
+              "write_bytes": 408551424
+            },
+            {
+              "at_seconds": 720.061069659,
+              "per_second": 15322.953476919465,
+              "p50_us": 3932.16,
+              "p99_us": 13631.488,
+              "errors": 0,
+              "disk_bytes": 2357778131,
+              "cpu_seconds": 32.18000000000001,
+              "write_bytes": 397504512
+            },
+            {
+              "at_seconds": 780.069015712,
+              "per_second": 14235.748033193893,
+              "p50_us": 4194.304,
+              "p99_us": 14680.064,
+              "errors": 0,
+              "disk_bytes": 2357778131,
+              "cpu_seconds": 31.269999999999982,
+              "write_bytes": 369557504
+            },
+            {
+              "at_seconds": 840.078258954,
+              "per_second": 14910.31967178294,
+              "p50_us": 3932.16,
+              "p99_us": 13631.488,
+              "errors": 0,
+              "disk_bytes": 2357778131,
+              "cpu_seconds": 32.81,
+              "write_bytes": 387198976
+            },
+            {
+              "at_seconds": 900.0107615750001,
+              "per_second": 15742.960142455287,
+              "p50_us": 3932.16,
+              "p99_us": 12582.912,
+              "errors": 0,
+              "disk_bytes": 2379245198,
+              "cpu_seconds": 35.789999999999964,
+              "write_bytes": 428912640
+            }
+          ]
+        }
+      ],
+      "open_rss_bytes": 33800192,
+      "peak_rss_bytes": 1097695232,
+      "disk_bytes": 103657946,
+      "open_seconds": 0.013745354,
+      "processes": 1
+    },
+    {
+      "contender": "pebble",
+      "repeat": 1,
+      "stages": [
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 162373593,
+          "errors": 0,
+          "seconds": 899.997296552,
+          "per_second": 180415.64527146154,
+          "p50_us": 0,
+          "p99_us": 0,
+          "cpu_seconds": 4991.09,
+          "read_bytes": 0,
+          "write_bytes": 15309008896,
+          "timeline": [
+            {
+              "at_seconds": 60.000756279,
+              "per_second": 181124.70031987946,
+              "p50_us": 229.376,
+              "p99_us": 1966.08,
+              "errors": 0,
+              "disk_bytes": 31177633,
+              "cpu_seconds": 333.13,
+              "write_bytes": 1031503872
+            },
+            {
+              "at_seconds": 120.001542481,
+              "per_second": 182752.82198943078,
+              "p50_us": 229.376,
+              "p99_us": 1835.008,
+              "errors": 0,
+              "disk_bytes": 31693754,
+              "cpu_seconds": 336.7,
+              "write_bytes": 1041465344
+            },
+            {
+              "at_seconds": 180.004264733,
+              "per_second": 181636.392332795,
+              "p50_us": 229.376,
+              "p99_us": 1966.08,
+              "errors": 0,
+              "disk_bytes": 31208966,
+              "cpu_seconds": 335.17999999999995,
+              "write_bytes": 1031831552
+            },
+            {
+              "at_seconds": 240.00501257000002,
+              "per_second": 183915.12435775244,
+              "p50_us": 229.376,
+              "p99_us": 1835.008,
+              "errors": 0,
+              "disk_bytes": 31713732,
+              "cpu_seconds": 337.69999999999993,
+              "write_bytes": 1046593536
+            },
+            {
+              "at_seconds": 300.005789977,
+              "per_second": 183269.35875196033,
+              "p50_us": 229.376,
+              "p99_us": 1835.008,
+              "errors": 0,
+              "disk_bytes": 31735781,
+              "cpu_seconds": 337.21000000000004,
+              "write_bytes": 1049796608
+            },
+            {
+              "at_seconds": 360.00644411400003,
+              "per_second": 182051.79855304418,
+              "p50_us": 229.376,
+              "p99_us": 1966.08,
+              "errors": 0,
+              "disk_bytes": 31248035,
+              "cpu_seconds": 335.5500000000002,
+              "write_bytes": 1035640832
+            },
+            {
+              "at_seconds": 420.00749806400006,
+              "per_second": 166751.63753519367,
+              "p50_us": 212.992,
+              "p99_us": 3670.016,
+              "errors": 0,
+              "disk_bytes": 31771772,
+              "cpu_seconds": 306.8899999999999,
+              "write_bytes": 908509184
+            },
+            {
+              "at_seconds": 480.0082149660001,
+              "per_second": 178669.51519112033,
+              "p50_us": 229.376,
+              "p99_us": 2359.296,
+              "errors": 0,
+              "disk_bytes": 31787379,
+              "cpu_seconds": 330.4000000000001,
+              "write_bytes": 994787328
+            },
+            {
+              "at_seconds": 540.009431401,
+              "per_second": 181312.07409411913,
+              "p50_us": 229.376,
+              "p99_us": 1966.08,
+              "errors": 0,
+              "disk_bytes": 31288482,
+              "cpu_seconds": 334.30999999999995,
+              "write_bytes": 1034592256
+            },
+            {
+              "at_seconds": 600.010704412,
+              "per_second": 181316.88636015294,
+              "p50_us": 229.376,
+              "p99_us": 1966.08,
+              "errors": 0,
+              "disk_bytes": 31809950,
+              "cpu_seconds": 334.1500000000001,
+              "write_bytes": 1037922304
+            },
+            {
+              "at_seconds": 660.011525314,
+              "per_second": 181130.2384970826,
+              "p50_us": 229.376,
+              "p99_us": 1966.08,
+              "errors": 0,
+              "disk_bytes": 31319322,
+              "cpu_seconds": 333.5300000000002,
+              "write_bytes": 1033977856
+            },
+            {
+              "at_seconds": 720.012146378,
+              "per_second": 182890.673553112,
+              "p50_us": 229.376,
+              "p99_us": 1835.008,
+              "errors": 0,
+              "disk_bytes": 31833866,
+              "cpu_seconds": 337.8800000000001,
+              "write_bytes": 1043066880
+            },
+            {
+              "at_seconds": 780.012674886,
+              "per_second": 180533.49311007705,
+              "p50_us": 229.376,
+              "p99_us": 1966.08,
+              "errors": 0,
+              "disk_bytes": 31345968,
+              "cpu_seconds": 334.0199999999995,
+              "write_bytes": 1018777600
+            },
+            {
+              "at_seconds": 840.013719186,
+              "per_second": 180273.64567053044,
+              "p50_us": 229.376,
+              "p99_us": 2097.152,
+              "errors": 0,
+              "disk_bytes": 31361243,
+              "cpu_seconds": 334.1400000000003,
+              "write_bytes": 996962304
+            },
+            {
+              "at_seconds": 899.997296552,
+              "per_second": 178605.81963343517,
+              "p50_us": 229.376,
+              "p99_us": 2097.152,
+              "errors": 0,
+              "disk_bytes": 40317147,
+              "cpu_seconds": 330.28999999999996,
+              "write_bytes": 1003581440
+            }
+          ]
+        }
+      ],
+      "open_rss_bytes": 33677312,
+      "peak_rss_bytes": 56426496,
+      "disk_bytes": 31885232,
+      "open_seconds": 0.022869568,
+      "processes": 1
+    },
+    {
+      "contender": "redis",
+      "repeat": 1,
+      "stages": [
+        {
+          "name": "mixed",
+          "goroutines": 64,
+          "ops": 14315334,
+          "errors": 0,
+          "seconds": 899.995434913,
+          "per_second": 15906.007347008179,
+          "p50_us": 0,
+          "p99_us": 0,
+          "cpu_seconds": 506.84999999999997,
+          "read_bytes": 0,
+          "write_bytes": 2035666944,
+          "timeline": [
+            {
+              "at_seconds": 60.003911655,
+              "per_second": 16645.64813278755,
+              "p50_us": 3932.16,
+              "p99_us": 8388.608,
+              "errors": 0,
+              "disk_bytes": 33797847,
+              "cpu_seconds": 35.25,
+              "write_bytes": 137895936
+            },
+            {
+              "at_seconds": 120.005997543,
+              "per_second": 16205.803275156966,
+              "p50_us": 3932.16,
+              "p99_us": 8388.608,
+              "errors": 0,
+              "disk_bytes": 50254729,
+              "cpu_seconds": 34.300000000000004,
+              "write_bytes": 134262784
+            },
+            {
+              "at_seconds": 180.008834076,
+              "per_second": 16084.956241513622,
+              "p50_us": 3932.16,
+              "p99_us": 8388.608,
+              "errors": 0,
+              "disk_bytes": 66590269,
+              "cpu_seconds": 34.269999999999996,
+              "write_bytes": 133062656
+            },
+            {
+              "at_seconds": 240.011540022,
+              "per_second": 15420.587878698534,
+              "p50_us": 4194.304,
+              "p99_us": 8388.608,
+              "errors": 0,
+              "disk_bytes": 29647411,
+              "cpu_seconds": 32.65999999999998,
+              "write_bytes": 142565376
+            },
+            {
+              "at_seconds": 300.017232142,
+              "per_second": 15274.300947434851,
+              "p50_us": 4194.304,
+              "p99_us": 8388.608,
+              "errors": 0,
+              "disk_bytes": 45188989,
+              "cpu_seconds": 32.41,
+              "write_bytes": 126459904
+            },
+            {
+              "at_seconds": 360.021892431,
+              "per_second": 15101.52704199405,
+              "p50_us": 4194.304,
+              "p99_us": 9437.184,
+              "errors": 0,
+              "disk_bytes": 60557342,
+              "cpu_seconds": 32.03,
+              "write_bytes": 125263872
+            },
+            {
+              "at_seconds": 420.024911384,
+              "per_second": 16538.201199131254,
+              "p50_us": 3932.16,
+              "p99_us": 8388.608,
+              "errors": 0,
+              "disk_bytes": 24716329,
+              "cpu_seconds": 34.940000000000026,
+              "write_bytes": 151498752
+            },
+            {
+              "at_seconds": 480.02662626200004,
+              "per_second": 15297.82943481424,
+              "p50_us": 3932.16,
+              "p99_us": 11534.336,
+              "errors": 0,
+              "disk_bytes": 40279877,
+              "cpu_seconds": 32.48999999999998,
+              "write_bytes": 126808064
+            },
+            {
+              "at_seconds": 540.029750453,
+              "per_second": 16075.829600630737,
+              "p50_us": 3932.16,
+              "p99_us": 9437.184,
+              "errors": 0,
+              "disk_bytes": 56608826,
+              "cpu_seconds": 34.079999999999984,
+              "write_bytes": 133435392
+            },
+            {
+              "at_seconds": 600.031804122,
+              "per_second": 16292.842331579695,
+              "p50_us": 3932.16,
+              "p99_us": 9437.184,
+              "errors": 0,
+              "disk_bytes": 20533918,
+              "cpu_seconds": 34.5,
+              "write_bytes": 149655552
+            },
+            {
+              "at_seconds": 660.033664463,
+              "per_second": 16675.966283603466,
+              "p50_us": 3670.016,
+              "p99_us": 8388.608,
+              "errors": 0,
+              "disk_bytes": 37459944,
+              "cpu_seconds": 35.280000000000086,
+              "write_bytes": 138117120
+            },
+            {
+              "at_seconds": 720.037959717,
+              "per_second": 16055.817269777479,
+              "p50_us": 3932.16,
+              "p99_us": 9437.184,
+              "errors": 0,
+              "disk_bytes": 53769627,
+              "cpu_seconds": 34.37999999999994,
+              "write_bytes": 133111808
+            },
+            {
+              "at_seconds": 780.0395479780001,
+              "per_second": 16468.864052425186,
+              "p50_us": 3932.16,
+              "p99_us": 8388.608,
+              "errors": 0,
+              "disk_bytes": 17873689,
+              "cpu_seconds": 35.139999999999986,
+              "write_bytes": 151109632
+            },
+            {
+              "at_seconds": 840.0431006990001,
+              "per_second": 15346.324646502593,
+              "p50_us": 4194.304,
+              "p99_us": 9437.184,
+              "errors": 0,
+              "disk_bytes": 33481515,
+              "cpu_seconds": 32.960000000000036,
+              "write_bytes": 127377408
+            },
+            {
+              "at_seconds": 899.995434913,
+              "per_second": 15104.999861515485,
+              "p50_us": 4194.304,
+              "p99_us": 9437.184,
+              "errors": 0,
+              "disk_bytes": 48841756,
+              "cpu_seconds": 32.14999999999998,
+              "write_bytes": 125042688
+            }
+          ]
+        }
+      ],
+      "open_rss_bytes": 33333248,
+      "peak_rss_bytes": 45793280,
+      "service_peak_rss_bytes": 38699008,
+      "service_pss_bytes": 37348352,
+      "disk_bytes": 48841774,
+      "open_seconds": 0.1024248,
+      "processes": 2
+    }
+  ]
+}

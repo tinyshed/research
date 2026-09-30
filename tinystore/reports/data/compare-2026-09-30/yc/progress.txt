@@ -1,0 +1,68 @@
+22:43:41 start /tmp/compare weight -out results/2026-09-30-yc/weight.json
+22:45:14 done results/2026-09-30-yc/weight.json
+22:45:14 start /tmp/compare run -engine stack -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-yc/stack.json
+22:48:44 done results/2026-09-30-yc/stack.json
+22:48:44 start /tmp/compare run -engine kv -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-yc/kv.json
+23:33:16 done results/2026-09-30-yc/kv.json
+23:33:16 start /tmp/compare run -engine sqldb -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-yc/sqldb.json
+23:57:25 done results/2026-09-30-yc/sqldb.json
+23:57:25 start /tmp/compare-mattn run -engine sqldb -contenders mattn -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-yc/sqldb-mattn.json
+00:09:36 done results/2026-09-30-yc/sqldb-mattn.json
+00:09:36 start /tmp/compare run -engine metrics -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-yc/metrics.json
+00:13:44 done results/2026-09-30-yc/metrics.json
+00:13:44 start /tmp/compare run -engine records -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-yc/records.json
+00:16:19 done results/2026-09-30-yc/records.json
+00:16:19 start /tmp/compare run -engine jobs -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-yc/jobs.json
+00:21:22 done results/2026-09-30-yc/jobs.json
+00:21:22 start /tmp/compare run -engine blobs -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-yc/blobs.json
+00:29:42 done results/2026-09-30-yc/blobs.json
+00:29:42 start /tmp/compare crash -cycles 20 -dir /data -out results/2026-09-30-yc/crash.json
+00:35:01 done results/2026-09-30-yc/crash.json
+00:35:01 start /tmp/compare run -engine kv-cold -repeats 3 -dir /data -out results/2026-09-30-yc/kv-cold.json
+00:50:24 done results/2026-09-30-yc/kv-cold.json
+00:50:24 start /tmp/compare run -engine sqldb-cold -repeats 3 -dir /data -out results/2026-09-30-yc/sqldb-cold.json
+01:01:08 done results/2026-09-30-yc/sqldb-cold.json
+01:01:08 start /tmp/compare run -engine kv-latency -repeats 1 -seconds 15 -dir /data -out results/2026-09-30-yc/kv-latency.json
+01:14:26 done results/2026-09-30-yc/kv-latency.json
+01:14:26 start /tmp/compare run -engine stack-latency -repeats 1 -seconds 15 -dir /data -out results/2026-09-30-yc/stack-latency.json
+01:19:54 done results/2026-09-30-yc/stack-latency.json
+01:19:54 start /tmp/compare run -engine kv-steady -repeats 1 -seconds 900 -dir /data -out results/2026-09-30-yc/kv-steady.json
+02:54:50 done results/2026-09-30-yc/kv-steady.json
+02:54:50 start /tmp/compare run -engine stack-steady -repeats 1 -seconds 900 -dir /data -out results/2026-09-30-yc/stack-steady.json
+03:55:07 done results/2026-09-30-yc/stack-steady.json
+03:56:23 start /tmp/compare run -engine sqldb -contenders tinystore,tinystore-sidecar,tinystore-server -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-yc/sqldb-served.json
+04:06:19 done results/2026-09-30-yc/sqldb-served.json
+04:06:19 start /tmp/compare run -engine jobs -contenders tinystore,tinystore-sidecar,tinystore-server -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-yc/jobs-served.json
+04:15:09 done results/2026-09-30-yc/jobs-served.json
+04:15:09 start /tmp/compare run -engine blobs -contenders tinystore,tinystore-sidecar,tinystore-server -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-yc/blobs-served.json
+04:23:19 done results/2026-09-30-yc/blobs-served.json
+04:23:43 start sdk kv
+04:49:47 done results/2026-09-30-yc/sdk-kv.json
+04:51:08 rerun stack-latency
+04:56:32 done results/2026-09-30-yc/stack-latency.json
+04:59:09 start pools stack tinystore,services
+05:01:28 done results/2026-09-30-yc/stack-pools.json
+05:01:28 start pools kv tinystore,sqlite
+05:18:58 done results/2026-09-30-yc/kv-pools.json
+05:18:58 start pools sqldb tinystore,sqlite,ncruces,postgres
+05:44:58 done results/2026-09-30-yc/sqldb-pools.json
+05:44:58 start pools sqldb mattn
+05:58:32 done results/2026-09-30-yc/sqldb-mattn-pools.json
+05:58:32 start pools records tinystore,sqlite
+05:59:50 done results/2026-09-30-yc/records-pools.json
+05:59:50 start pools blobs tinystore,sqlite
+06:05:20 done results/2026-09-30-yc/blobs-pools.json
+06:05:20 start pools kv-cold tinystore,sqlite
+06:15:53 done results/2026-09-30-yc/kv-cold-pools.json
+06:15:53 start pools sqldb-cold tinystore,sqlite,postgres
+06:27:05 done results/2026-09-30-yc/sqldb-cold-pools.json
+06:27:05 start pools kv-latency tinystore,sqlite
+06:33:02 done results/2026-09-30-yc/kv-latency-pools.json
+06:33:02 start pools stack-latency tinystore,services
+06:35:45 done results/2026-09-30-yc/stack-latency-pools.json
+06:35:45 start pools kv-steady sqlite
+06:54:10 done results/2026-09-30-yc/kv-steady-pools.json
+06:54:10 start pools stack-steady services
+07:09:16 done results/2026-09-30-yc/stack-steady-pools.json
+07:10:36 rerun stack-steps
+07:15:08 done results/2026-09-30-yc/stack-steps.json

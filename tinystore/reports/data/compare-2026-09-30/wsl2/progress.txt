@@ -1,0 +1,68 @@
+22:41:41 start /tmp/compare weight -out results/2026-09-30-wsl2/weight.json
+22:41:43 done results/2026-09-30-wsl2/weight.json
+22:41:43 start /tmp/compare run -engine stack -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-wsl2/stack.json
+22:45:28 done results/2026-09-30-wsl2/stack.json
+22:45:28 start /tmp/compare run -engine kv -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-wsl2/kv.json
+22:54:42 have results/2026-09-30-wsl2/weight.json
+22:54:42 have results/2026-09-30-wsl2/stack.json
+22:54:42 start /tmp/compare run -engine kv -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-wsl2/kv.json
+23:49:53 done results/2026-09-30-wsl2/kv.json
+23:49:53 start /tmp/compare run -engine sqldb -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-wsl2/sqldb.json
+00:23:14 done results/2026-09-30-wsl2/sqldb.json
+00:23:14 start /tmp/compare-mattn run -engine sqldb -contenders mattn -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-wsl2/sqldb-mattn.json
+00:39:42 done results/2026-09-30-wsl2/sqldb-mattn.json
+00:39:42 start /tmp/compare run -engine metrics -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-wsl2/metrics.json
+00:43:10 done results/2026-09-30-wsl2/metrics.json
+00:43:10 start /tmp/compare run -engine records -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-wsl2/records.json
+00:47:31 failed: /tmp/compare run -engine records -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-wsl2/records.json
+00:47:31 start /tmp/compare run -engine jobs -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-wsl2/jobs.json
+00:52:31 done results/2026-09-30-wsl2/jobs.json
+00:52:31 start /tmp/compare run -engine blobs -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-wsl2/blobs.json
+01:01:12 done results/2026-09-30-wsl2/blobs.json
+01:01:12 start /tmp/compare crash -cycles 20 -dir /data -out results/2026-09-30-wsl2/crash.json
+01:06:39 done results/2026-09-30-wsl2/crash.json
+01:06:39 start /tmp/compare run -engine kv-cold -repeats 3 -dir /data -out results/2026-09-30-wsl2/kv-cold.json
+01:31:03 done results/2026-09-30-wsl2/kv-cold.json
+01:31:03 start /tmp/compare run -engine sqldb-cold -repeats 3 -dir /data -out results/2026-09-30-wsl2/sqldb-cold.json
+01:46:14 done results/2026-09-30-wsl2/sqldb-cold.json
+01:46:14 start /tmp/compare run -engine kv-latency -repeats 1 -seconds 15 -dir /data -out results/2026-09-30-wsl2/kv-latency.json
+02:02:14 done results/2026-09-30-wsl2/kv-latency.json
+02:02:14 start /tmp/compare run -engine stack-latency -repeats 1 -seconds 15 -dir /data -out results/2026-09-30-wsl2/stack-latency.json
+02:07:43 done results/2026-09-30-wsl2/stack-latency.json
+02:07:49 start /tmp/compare run -engine sqldb -contenders tinystore,tinystore-sidecar,tinystore-server -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-wsl2/sqldb-served.json
+02:17:41 done results/2026-09-30-wsl2/sqldb-served.json
+02:17:41 start /tmp/compare run -engine jobs -contenders tinystore,tinystore-sidecar,tinystore-server -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-wsl2/jobs-served.json
+02:26:46 done results/2026-09-30-wsl2/jobs-served.json
+02:26:46 start /tmp/compare run -engine blobs -contenders tinystore,tinystore-sidecar,tinystore-server -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-wsl2/blobs-served.json
+02:35:07 done results/2026-09-30-wsl2/blobs-served.json
+02:35:57 start sdk kv
+03:02:42 done results/2026-09-30-wsl2/sdk-kv.json
+03:03:01 have results/2026-09-30-wsl2/weight.json
+03:03:01 start /tmp/compare run -engine records -repeats 3 -seconds 5 -dir /data -out results/2026-09-30-wsl2/records.json
+03:07:59 done results/2026-09-30-wsl2/records.json
+03:08:22 rerun stack-latency
+03:13:53 done results/2026-09-30-wsl2/stack-latency.json
+03:14:39 start sdk kv
+03:41:23 done results/2026-09-30-wsl2/sdk-kv.json
+03:42:25 start pools stack tinystore,services
+03:45:20 done results/2026-09-30-wsl2/stack-pools.json
+03:45:20 start pools kv tinystore,sqlite
+04:05:04 done results/2026-09-30-wsl2/kv-pools.json
+04:05:04 start pools sqldb tinystore,sqlite,ncruces,postgres
+04:38:47 done results/2026-09-30-wsl2/sqldb-pools.json
+04:38:47 start pools sqldb mattn
+04:55:13 done results/2026-09-30-wsl2/sqldb-mattn-pools.json
+04:55:13 start pools records tinystore,sqlite
+04:57:01 done results/2026-09-30-wsl2/records-pools.json
+04:57:01 start pools blobs tinystore,sqlite
+05:02:31 done results/2026-09-30-wsl2/blobs-pools.json
+05:02:31 start pools kv-cold tinystore,sqlite
+05:17:03 done results/2026-09-30-wsl2/kv-cold-pools.json
+05:17:03 start pools sqldb-cold tinystore,sqlite,postgres
+05:41:59 done results/2026-09-30-wsl2/sqldb-cold-pools.json
+05:41:59 start pools kv-latency tinystore,sqlite
+05:54:41 done results/2026-09-30-wsl2/kv-latency-pools.json
+05:54:41 start pools stack-latency tinystore,services
+05:57:26 done results/2026-09-30-wsl2/stack-latency-pools.json
+05:58:17 rerun stack-steps
+06:02:54 done results/2026-09-30-wsl2/stack-steps.json
