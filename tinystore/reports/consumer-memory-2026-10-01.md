@@ -163,8 +163,9 @@ the client and its encoding/scheduling, not just transport. Bun and Python
 have no embedded mode. Loopback TCP uses a token but not TLS. WSL2's
 single-in-flight latency is not quoted as bare-Linux latency.
 
-The four SDK cards show gets/sets separately, retaining Go sidecar and
-server rows so the process-boundary comparison is within one language.
+The single client-mode chart shows reads/writes in separate panels, retaining
+all Go, Bun and Python modes so its title describes the entire comparison.
+The mobile variant stacks those panels instead of shrinking their labels.
 The matched round, not the older separately timed SDK results, supplies
 all their numbers. The raw file is `wsl2/sdk-modes.json`; its `started`
 field is aggregation time, and actual start/end are in `sdk-progress.txt`.

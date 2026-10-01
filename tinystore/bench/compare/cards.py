@@ -130,17 +130,6 @@ CARDS = [
      [("TinyStore", "tinystore"), ("Victoria", "victoria"), ("Prometheus", "prometheus")]),
 ]
 
-for language, title in (("bun", "Bun"), ("python", "Python")):
-    for operation, action in (("get", "reads"), ("set", "writes")):
-        CARDS.append((
-            f"sdk-{language}-{operation}", f"{title}: KV {action}, 64 in flight",
-            "calls a second · higher is better", "sdk-modes",
-            lambda r, c, operation=operation: per_second(r, c, operation, 64), rate,
-            [("Go embedded", "go-embedded"), ("Go sidecar", "go-sidecar"),
-             (f"{title} sidecar", f"{language}-tinystore"), ("Go server", "go-server"),
-             (f"{title} server", f"{language}-tinystore-server")],
-        ))
-
 THEMES = {
     "light": {"text": "#1f2328", "muted": "#59636e", "ours": "#23212B", "theirs": "#d1d9e0", "border": "#d1d9e0"},
     "dark": {"text": "#f0f6fc", "muted": "#9198a1", "ours": "#ECEAF3", "theirs": "#3d444d", "border": "#3d444d"},
@@ -208,6 +197,42 @@ def memory_card(title, unit, rows, colours, height):
             f'viewBox="0 0 {WIDTH} {height}" font-family="{FONT}">\n' + "\n".join(body) + "\n</svg>\n")
 
 
+def client_modes_card(round_, colours, mobile):
+    width, height = (400, 550) if mobile else (800, 310)
+    body = [
+        f'<rect x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" rx="6" fill="none" '
+        f'stroke="{colours["border"]}"/>',
+        f'<text x="20" y="36" font-size="16" font-weight="600" fill="{colours["text"]}">'
+        'KV: embedded, sidecar, server</text>',
+        f'<text x="20" y="56" font-size="12" fill="{colours["muted"]}">'
+        '64 calls in flight · calls/second · higher is better</text>',
+    ]
+    modes = [("Go embedded", "go-embedded"), ("Go sidecar", "go-sidecar"),
+             ("Bun sidecar", "bun-tinystore"), ("Python sidecar", "python-tinystore"),
+             ("Go server", "go-server"), ("Bun server", "bun-tinystore-server"),
+             ("Python server", "python-tinystore-server")]
+    for panel, (operation, title) in enumerate((("get", "Reads"), ("set", "Writes"))):
+        x, y = (0, 80 + panel * 240) if mobile else (panel * 400, 80)
+        body.append(f'<text x="{x + 20}" y="{y}" font-size="14" font-weight="600" '
+                    f'fill="{colours["text"]}">{title}</text>')
+        values = [per_second(round_, contender, operation, 64) for _, contender in modes]
+        if any(value is None for value in values):
+            raise ValueError("client modes card needs every measured mode")
+        maximum = max(values)
+        for row, ((label, _), value) in enumerate(zip(modes, values)):
+            top = y + 16 + row * 27
+            length = max(3, 162 * value / maximum)
+            fill = colours["ours"] if row == 0 else colours["theirs"]
+            body += [
+                f'<text x="{x + 20}" y="{top + 13}" font-size="13" fill="{colours["text"]}">{label}</text>',
+                f'<rect x="{x + 138}" y="{top}" width="{length:.1f}" height="17" rx="3" fill="{fill}"/>',
+                f'<text x="{x + 146 + length:.1f}" y="{top + 13}" font-size="13" '
+                f'fill="{colours["text"]}">{rate(value)}</text>',
+            ]
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
+            f'viewBox="0 0 {width} {height}" font-family="{FONT}">\n' + "\n".join(body) + "\n</svg>\n")
+
+
 def main():
     directory, out = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
     drawn = []
@@ -232,6 +257,13 @@ def main():
             path = out / f"bench-{name}-{theme}.svg"
             draw = memory_card if name == "stack-memory" else card
             path.write_text(draw(title, unit, rows, colours, height), encoding="utf-8", newline="\n")
+    modes = load(directory, "sdk-modes")
+    if modes is not None:
+        for theme, colours in THEMES.items():
+            for mobile in (False, True):
+                suffix = f"mobile-{theme}" if mobile else theme
+                path = out / f"bench-sdk-modes-{suffix}.svg"
+                path.write_text(client_modes_card(modes, colours, mobile), encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":
