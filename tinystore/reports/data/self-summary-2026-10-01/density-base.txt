@@ -1,0 +1,26 @@
+=== RUN   TestCorpusThroughPublicStore
+    corpus_test.go:88: PUBLIC STORE head_samples=242400 groups=2020 clocks=1
+    corpus_test.go:97: PUBLIC WRITER commits=4041 prepared=15 evicted=0 programs=15 cache_writes=53291 cache_spills=0
+    corpus_test.go:105: PUBLIC STORE size is the entire file after close; freed pages are included
+    corpus_test.go:106: PUBLIC STORE series=2020 samples=5090400 file=4554752 B/sample=0.894773 ingest+maintain=12.341059167s
+    corpus_test.go:112: PUBLIC OBJECT sqlite_schema bytes=4096
+    corpus_test.go:112: PUBLIC OBJECT _tinystore_migrations bytes=4096
+    corpus_test.go:112: PUBLIC OBJECT store_state bytes=4096
+    corpus_test.go:112: PUBLIC OBJECT series bytes=155648
+    corpus_test.go:112: PUBLIC OBJECT sqlite_autoindex_series_1 bytes=114688
+    corpus_test.go:112: PUBLIC OBJECT label_values bytes=16384
+    corpus_test.go:112: PUBLIC OBJECT sqlite_autoindex_label_values_1 bytes=12288
+    corpus_test.go:112: PUBLIC OBJECT postings bytes=253952
+    corpus_test.go:112: PUBLIC OBJECT series_state bytes=446464
+    corpus_test.go:112: PUBLIC OBJECT series_ready bytes=4096
+    corpus_test.go:112: PUBLIC OBJECT series_due bytes=36864
+    corpus_test.go:112: PUBLIC OBJECT series_failed bytes=4096
+    corpus_test.go:112: PUBLIC OBJECT series_failed_id bytes=4096
+    corpus_test.go:112: PUBLIC OBJECT clocks bytes=4096
+    corpus_test.go:112: PUBLIC OBJECT sqlite_autoindex_clocks_1 bytes=4096
+    corpus_test.go:112: PUBLIC OBJECT groups bytes=409600
+    corpus_test.go:112: PUBLIC OBJECT payloads bytes=3076096
+    corpus_test.go:151: PUBLIC STORE full reopened bitwise readback=1.295879418s
+    corpus_test.go:152: PUBLIC STORE exact aggregates checked=64
+--- PASS: TestCorpusThroughPublicStore (13.66s)
+PASS

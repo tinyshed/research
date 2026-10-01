@@ -179,3 +179,4 @@ TinyStore source is reviewed and merged to main.
 |---|---|
 | [runtime-continuation-2026-10-01.md](runtime-continuation-2026-10-01.md) | saved modernc/ncruces revisions on local Linux containers and the existing Yandex VM; every engine, the application stack, Go/Bun/Python clients, rejected cancellation and idle-slot prototypes, corrected metrics bounds, process crash smoke and binary weight |
 | [consumer-memory-2026-10-01.md](consumer-memory-2026-10-01.md) | independent small consumers: root-only and one engine at a time, natural startup versus GC, matched application idle/load memory, an actual bitwise-checked raw TSBS file, and interleaved Go/Bun/Python modes |
+| [self-summary-2026-10-01.md](self-summary-2026-10-01.md) | separate experiment branched from the checked runtime: opt-in self reports, directory-v4 exact aggregate summaries, eight interleaved saved-revision comparisons, raw equivalence, and TSBS file pages by object |

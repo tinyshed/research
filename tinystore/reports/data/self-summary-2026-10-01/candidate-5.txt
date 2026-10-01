@@ -1,0 +1,8 @@
+goos: linux
+goarch: amd64
+pkg: github.com/tinyshed/tinystore/metrics
+cpu: AMD Ryzen 7 7700 8-Core Processor              
+BenchmarkWholeBlockAggregate/sum-16         	    4653	    254797 ns/op	  386509 B/op	    2201 allocs/op
+BenchmarkWholeBlockAggregate/increase-16    	    3643	    304912 ns/op	  454839 B/op	    3003 allocs/op
+BenchmarkCutBlockAggregate-16               	     843	   1378600 ns/op	 1218700 B/op	    4754 allocs/op
+PASS
