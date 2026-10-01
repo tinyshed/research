@@ -1,0 +1,517 @@
+{
+  "engine": "stack-steady",
+  "started": "2026-10-01T05:33:26.098897926Z",
+  "environment": {
+    "go": "go1.27.1",
+    "gomaxprocs": 8,
+    "cpu": "Intel Xeon Processor (Icelake)",
+    "kernel": "6.8.0-142-generic",
+    "modules": {
+      "cloud.google.com/go/auth": "v0.23.2",
+      "cloud.google.com/go/auth/oauth2adapt": "v0.2.8",
+      "cloud.google.com/go/compute/metadata": "v0.9.0",
+      "github.com/Azure/azure-sdk-for-go/sdk/azcore": "v1.23.1",
+      "github.com/Azure/azure-sdk-for-go/sdk/azidentity": "v1.14.1",
+      "github.com/Azure/azure-sdk-for-go/sdk/internal": "v1.12.0",
+      "github.com/AzureAD/microsoft-authentication-library-for-go": "v1.8.0",
+      "github.com/RaduBerinde/axisds": "v0.1.0",
+      "github.com/RaduBerinde/btreemap": "v0.0.0-20250419174037-3d62b7205d54",
+      "github.com/alecthomas/units": "v0.0.0-20240927000941-0f3dac36c52b",
+      "github.com/aws/aws-sdk-go-v2": "v1.46.0",
+      "github.com/aws/aws-sdk-go-v2/config": "v1.33.3",
+      "github.com/aws/aws-sdk-go-v2/credentials": "v1.20.3",
+      "github.com/aws/aws-sdk-go-v2/feature/ec2/imds": "v1.19.2",
+      "github.com/aws/aws-sdk-go-v2/internal/configsources": "v1.5.2",
+      "github.com/aws/aws-sdk-go-v2/internal/endpoints/v2": "v2.8.2",
+      "github.com/aws/aws-sdk-go-v2/internal/v4a": "v1.5.2",
+      "github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding": "v1.13.19",
+      "github.com/aws/aws-sdk-go-v2/service/internal/presigned-url": "v1.14.2",
+      "github.com/aws/aws-sdk-go-v2/service/signin": "v1.9.0",
+      "github.com/aws/aws-sdk-go-v2/service/sso": "v1.37.0",
+      "github.com/aws/aws-sdk-go-v2/service/ssooidc": "v1.42.0",
+      "github.com/aws/aws-sdk-go-v2/service/sts": "v1.49.0",
+      "github.com/aws/smithy-go": "v1.28.1",
+      "github.com/bboreham/go-loser": "v0.0.0-20230920113527-fcc2c21820a3",
+      "github.com/beorn7/perks": "v1.0.1",
+      "github.com/cenkalti/backoff/v5": "v5.0.3",
+      "github.com/cespare/xxhash/v2": "v2.3.0",
+      "github.com/cockroachdb/crlib": "v0.0.0-20241112164430-1264a2edc35b",
+      "github.com/cockroachdb/errors": "v1.11.3",
+      "github.com/cockroachdb/logtags": "v0.0.0-20230118201751-21c54148d20b",
+      "github.com/cockroachdb/pebble/v2": "v2.1.7",
+      "github.com/cockroachdb/redact": "v1.1.5",
+      "github.com/cockroachdb/swiss": "v0.0.0-20260820225851-333444432258",
+      "github.com/cockroachdb/tokenbucket": "v0.0.0-20230807174530-cc333fc44b06",
+      "github.com/dennwc/varint": "v1.0.0",
+      "github.com/dgraph-io/badger/v4": "v4.9.6",
+      "github.com/dgraph-io/ristretto/v2": "v2.2.0",
+      "github.com/dustin/go-humanize": "v1.0.1",
+      "github.com/felixge/httpsnoop": "v1.1.0",
+      "github.com/getsentry/sentry-go": "v0.27.0",
+      "github.com/go-logr/logr": "v1.4.4",
+      "github.com/go-logr/stdr": "v1.2.2",
+      "github.com/gogo/protobuf": "v1.3.2",
+      "github.com/golang-jwt/jwt/v5": "v5.3.1",
+      "github.com/golang/snappy": "v1.0.0",
+      "github.com/google/flatbuffers": "v25.2.10+incompatible",
+      "github.com/google/go-cmp": "v0.7.0",
+      "github.com/google/s2a-go": "v0.1.9",
+      "github.com/google/uuid": "v1.6.0",
+      "github.com/googleapis/enterprise-certificate-proxy": "v0.3.20",
+      "github.com/googleapis/gax-go/v2": "v2.24.0",
+      "github.com/grafana/regexp": "v0.0.0-20250905093917-f7b3be9d1853",
+      "github.com/jackc/pgpassfile": "v1.0.0",
+      "github.com/jackc/pgservicefile": "v0.0.0-20240606120523-5a60cdf6a761",
+      "github.com/jackc/pgx/v5": "v5.11.0",
+      "github.com/jackc/puddle/v2": "v2.2.2",
+      "github.com/jpillora/backoff": "v1.0.0",
+      "github.com/klauspost/compress": "v1.20.1",
+      "github.com/kr/pretty": "v0.3.1",
+      "github.com/kr/text": "v0.2.0",
+      "github.com/kylelemons/godebug": "v1.1.0",
+      "github.com/minio/minlz": "v1.0.1-0.20250507153514-87eb42fe8882",
+      "github.com/munnerz/goautoneg": "v0.0.0-20191010083416-a7dc8b61c822",
+      "github.com/mwitkow/go-conntrack": "v0.0.0-20190716064945-2f068394615f",
+      "github.com/ncruces/go-sqlite3": "v0.35.6",
+      "github.com/ncruces/go-sqlite3-wasm/v6": "v6.3.35304",
+      "github.com/ncruces/julianday": "v1.0.0",
+      "github.com/oklog/ulid/v2": "v2.1.2",
+      "github.com/pkg/browser": "v0.0.0-20240102092130-5ac0b6a4141c",
+      "github.com/pkg/errors": "v0.9.1",
+      "github.com/prometheus/client_golang": "v1.24.1",
+      "github.com/prometheus/client_golang/exp": "v0.0.0-20260907100614-57bb367da472",
+      "github.com/prometheus/client_model": "v0.6.3",
+      "github.com/prometheus/common": "v0.71.0",
+      "github.com/prometheus/otlptranslator": "v1.0.0",
+      "github.com/prometheus/procfs": "v0.21.1",
+      "github.com/prometheus/prometheus": "v0.315.0",
+      "github.com/prometheus/sigv4": "v0.5.0",
+      "github.com/redis/go-redis/v9": "v9.22.0",
+      "github.com/remyoudompheng/bigfft": "v0.0.0-20230129092748-24d4a6f8daec",
+      "github.com/rogpeppe/go-internal": "v1.14.1",
+      "github.com/stretchr/testify": "v1.12.1",
+      "github.com/tinyshed/tinystore": "replaced by ../../source",
+      "github.com/tinyshed/tinystore/server": "replaced by ../../source/server",
+      "go.etcd.io/bbolt": "v1.5.0",
+      "go.opentelemetry.io/auto/sdk": "v1.2.1",
+      "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp": "v0.71.0",
+      "go.opentelemetry.io/otel": "v1.46.0",
+      "go.opentelemetry.io/otel/metric": "v1.46.0",
+      "go.opentelemetry.io/otel/trace": "v1.46.0",
+      "go.uber.org/atomic": "v1.11.0",
+      "go.uber.org/goleak": "v1.3.0",
+      "go.yaml.in/yaml/v2": "v2.4.4",
+      "go.yaml.in/yaml/v3": "v3.0.5",
+      "golang.org/x/crypto": "v0.57.0",
+      "golang.org/x/exp": "v0.0.0-20260709172345-9ea1abe57597",
+      "golang.org/x/net": "v0.58.0",
+      "golang.org/x/oauth2": "v0.36.0",
+      "golang.org/x/sync": "v0.23.0",
+      "golang.org/x/sys": "v0.48.0",
+      "golang.org/x/text": "v0.42.0",
+      "golang.org/x/time": "v0.15.0",
+      "google.golang.org/api": "v0.297.0",
+      "google.golang.org/genproto/googleapis/rpc": "v0.0.0-20260825221802-da73d73af1c5",
+      "google.golang.org/grpc": "v1.83.2",
+      "google.golang.org/protobuf": "v1.36.12",
+      "k8s.io/apimachinery": "v0.37.0",
+      "k8s.io/client-go": "v0.37.0",
+      "k8s.io/klog/v2": "v2.140.0",
+      "k8s.io/utils": "v0.0.0-20260626114624-be93311217bd",
+      "maragu.dev/goqite": "v0.4.0",
+      "modernc.org/libc": "v1.77.1",
+      "modernc.org/mathutil": "v1.7.1",
+      "modernc.org/memory": "v1.12.1",
+      "modernc.org/sqlite": "v1.60.1"
+    }
+  },
+  "seconds_a_stage": 180,
+  "runs": [
+    {
+      "contender": "tinystore-batch",
+      "repeat": 1,
+      "stages": [
+        {
+          "name": "request",
+          "goroutines": 64,
+          "ops": 6327222,
+          "errors": 0,
+          "seconds": 180.003426224,
+          "per_second": 35150.56425718404,
+          "p50_us": 0,
+          "p99_us": 0,
+          "cpu_seconds": 617.63,
+          "read_bytes": 0,
+          "write_bytes": 11489251328,
+          "timeline": [
+            {
+              "at_seconds": 60.046538842,
+              "per_second": 36907.32293215696,
+              "p50_us": 163.84,
+              "p99_us": 46137.344,
+              "errors": 0,
+              "disk_bytes": 796406640,
+              "cpu_seconds": 212.08,
+              "write_bytes": 3944816640
+            },
+            {
+              "at_seconds": 120.06215499,
+              "per_second": 34253.40156352801,
+              "p50_us": 163.84,
+              "p99_us": 50331.648,
+              "errors": 0,
+              "disk_bytes": 1512052792,
+              "cpu_seconds": 205.34,
+              "write_bytes": 3788193792
+            },
+            {
+              "at_seconds": 180.003426224,
+              "per_second": 34288.99584021792,
+              "p50_us": 163.84,
+              "p99_us": 50331.648,
+              "errors": 0,
+              "disk_bytes": 2215410224,
+              "cpu_seconds": 200.20999999999998,
+              "write_bytes": 3756240896
+            }
+          ],
+          "app": {
+            "logs_stored": 6327222,
+            "logs_dropped": 0,
+            "jobs_enqueued": 632053,
+            "jobs_handled": 632053,
+            "jobs_waiting": 0
+          }
+        }
+      ],
+      "open_rss_bytes": 42389504,
+      "peak_rss_bytes": 116584448,
+      "disk_bytes": 2202249216,
+      "open_seconds": 0.058385222,
+      "processes": 1,
+      "tinystore_commit": "ad4f047"
+    },
+    {
+      "contender": "tinystore-batch-baseline",
+      "repeat": 1,
+      "stages": [
+        {
+          "name": "request",
+          "goroutines": 64,
+          "ops": 5668941,
+          "errors": 0,
+          "seconds": 180.004868926,
+          "per_second": 31493.264786801414,
+          "p50_us": 0,
+          "p99_us": 0,
+          "cpu_seconds": 635.0699999999999,
+          "read_bytes": 0,
+          "write_bytes": 10291924992,
+          "timeline": [
+            {
+              "at_seconds": 60.011203005,
+              "per_second": 32426.145495498055,
+              "p50_us": 245.76,
+              "p99_us": 25165.824,
+              "errors": 0,
+              "disk_bytes": 701149856,
+              "cpu_seconds": 215.71,
+              "write_bytes": 3461799936
+            },
+            {
+              "at_seconds": 120.024107983,
+              "per_second": 31017.528657917584,
+              "p50_us": 262.144,
+              "p99_us": 29360.128,
+              "errors": 0,
+              "disk_bytes": 1350080688,
+              "cpu_seconds": 212.81,
+              "write_bytes": 3430023168
+            },
+            {
+              "at_seconds": 180.004868926,
+              "per_second": 31035.901691361443,
+              "p50_us": 245.76,
+              "p99_us": 25165.824,
+              "errors": 0,
+              "disk_bytes": 1991231096,
+              "cpu_seconds": 206.54999999999995,
+              "write_bytes": 3400101888
+            }
+          ],
+          "app": {
+            "logs_stored": 5668941,
+            "logs_dropped": 0,
+            "jobs_enqueued": 566618,
+            "jobs_handled": 566618,
+            "jobs_waiting": 0
+          }
+        }
+      ],
+      "open_rss_bytes": 38354944,
+      "peak_rss_bytes": 149446656,
+      "disk_bytes": 1977521152,
+      "open_seconds": 0.087949603,
+      "processes": 1,
+      "tinystore_commit": "20c71a3"
+    },
+    {
+      "contender": "services",
+      "repeat": 1,
+      "stages": [
+        {
+          "name": "request",
+          "goroutines": 64,
+          "ops": 4381490,
+          "errors": 0,
+          "seconds": 179.434005457,
+          "per_second": 24418.392649937196,
+          "p50_us": 0,
+          "p99_us": 0,
+          "cpu_seconds": 765.8200000000003,
+          "read_bytes": 1085440,
+          "write_bytes": 1924272128,
+          "timeline": [
+            {
+              "at_seconds": 60.002382113,
+              "per_second": 20962.23442648106,
+              "p50_us": 1179.648,
+              "p99_us": 25165.824,
+              "errors": 0,
+              "disk_bytes": 700536799,
+              "cpu_seconds": 224.83,
+              "write_bytes": 549634048
+            },
+            {
+              "at_seconds": 120.005750762,
+              "per_second": 25171.45343680919,
+              "p50_us": 1310.72,
+              "p99_us": 15728.64,
+              "errors": 0,
+              "disk_bytes": 1500324602,
+              "cpu_seconds": 262.0799999999999,
+              "write_bytes": 664236032
+            },
+            {
+              "at_seconds": 179.434005457,
+              "per_second": 27147.591802586423,
+              "p50_us": 1441.792,
+              "p99_us": 12582.912,
+              "errors": 0,
+              "disk_bytes": 2346052086,
+              "cpu_seconds": 277.7500000000004,
+              "write_bytes": 710402048
+            }
+          ],
+          "app": {
+            "logs_stored": 4381490,
+            "logs_dropped": 0,
+            "jobs_enqueued": 437645,
+            "jobs_handled": 437645,
+            "jobs_waiting": 0
+          }
+        }
+      ],
+      "open_rss_bytes": 35057664,
+      "peak_rss_bytes": 65921024,
+      "service_peak_rss_bytes": 78761984,
+      "service_pss_bytes": 71597056,
+      "disk_bytes": 2344705116,
+      "open_seconds": 0.871767691,
+      "processes": 74
+    },
+    {
+      "contender": "services",
+      "repeat": 2,
+      "stages": [
+        {
+          "name": "request",
+          "goroutines": 64,
+          "ops": 4950122,
+          "errors": 0,
+          "seconds": 179.33315253199999,
+          "per_second": 27602.938609561923,
+          "p50_us": 0,
+          "p99_us": 0,
+          "cpu_seconds": 855.4200000000001,
+          "read_bytes": 286720,
+          "write_bytes": 2173136896,
+          "timeline": [
+            {
+              "at_seconds": 60.003654362,
+              "per_second": 28239.69669875821,
+              "p50_us": 1441.792,
+              "p99_us": 11534.336,
+              "errors": 0,
+              "disk_bytes": 943062808,
+              "cpu_seconds": 295.72000000000014,
+              "write_bytes": 740343808
+            },
+            {
+              "at_seconds": 120.00764901299999,
+              "per_second": 27253.818841755165,
+              "p50_us": 1441.792,
+              "p99_us": 11534.336,
+              "errors": 0,
+              "disk_bytes": 1799398436,
+              "cpu_seconds": 280.04999999999956,
+              "write_bytes": 721440768
+            },
+            {
+              "at_seconds": 179.33315253199999,
+              "per_second": 27312.014292151296,
+              "p50_us": 1441.792,
+              "p99_us": 12582.912,
+              "errors": 0,
+              "disk_bytes": 2645567591,
+              "cpu_seconds": 278.3300000000005,
+              "write_bytes": 711352320
+            }
+          ],
+          "app": {
+            "logs_stored": 4950122,
+            "logs_dropped": 0,
+            "jobs_enqueued": 494700,
+            "jobs_handled": 494700,
+            "jobs_waiting": 0
+          }
+        }
+      ],
+      "open_rss_bytes": 35803136,
+      "peak_rss_bytes": 65761280,
+      "service_peak_rss_bytes": 111259648,
+      "service_pss_bytes": 104002560,
+      "disk_bytes": 2643974886,
+      "open_seconds": 0.817756293,
+      "processes": 74
+    },
+    {
+      "contender": "tinystore-batch-baseline",
+      "repeat": 2,
+      "stages": [
+        {
+          "name": "request",
+          "goroutines": 64,
+          "ops": 5637692,
+          "errors": 0,
+          "seconds": 180.05326587899998,
+          "per_second": 31311.245438828428,
+          "p50_us": 0,
+          "p99_us": 0,
+          "cpu_seconds": 641.98,
+          "read_bytes": 57344,
+          "write_bytes": 10258251776,
+          "timeline": [
+            {
+              "at_seconds": 60.023120233,
+              "per_second": 32394.367244690253,
+              "p50_us": 262.144,
+              "p99_us": 25165.824,
+              "errors": 0,
+              "disk_bytes": 701822712,
+              "cpu_seconds": 217.23000000000002,
+              "write_bytes": 3466551296
+            },
+            {
+              "at_seconds": 120.032327082,
+              "per_second": 30819.070891133084,
+              "p50_us": 262.144,
+              "p99_us": 27262.976,
+              "errors": 0,
+              "disk_bytes": 1345111952,
+              "cpu_seconds": 213.77,
+              "write_bytes": 3403984896
+            },
+            {
+              "at_seconds": 180.05326587899998,
+              "per_second": 30720.162612520824,
+              "p50_us": 262.144,
+              "p99_us": 29360.128,
+              "errors": 0,
+              "disk_bytes": 1980691560,
+              "cpu_seconds": 210.98000000000002,
+              "write_bytes": 3387715584
+            }
+          ],
+          "app": {
+            "logs_stored": 5637692,
+            "logs_dropped": 0,
+            "jobs_enqueued": 563458,
+            "jobs_handled": 563426,
+            "jobs_waiting": 32
+          }
+        }
+      ],
+      "open_rss_bytes": 38486016,
+      "peak_rss_bytes": 147075072,
+      "disk_bytes": 1966882816,
+      "open_seconds": 0.108384262,
+      "processes": 1,
+      "tinystore_commit": "20c71a3"
+    },
+    {
+      "contender": "tinystore-batch",
+      "repeat": 2,
+      "stages": [
+        {
+          "name": "request",
+          "goroutines": 64,
+          "ops": 6331414,
+          "errors": 0,
+          "seconds": 180.026504056,
+          "per_second": 35169.34372080301,
+          "p50_us": 0,
+          "p99_us": 0,
+          "cpu_seconds": 615.6700000000001,
+          "read_bytes": 8192,
+          "write_bytes": 11485650944,
+          "timeline": [
+            {
+              "at_seconds": 60.058533348,
+              "per_second": 36845.50515374334,
+              "p50_us": 163.84,
+              "p99_us": 46137.344,
+              "errors": 0,
+              "disk_bytes": 796586776,
+              "cpu_seconds": 211.94,
+              "write_bytes": 3946160128
+            },
+            {
+              "at_seconds": 120.064667939,
+              "per_second": 34193.73725678614,
+              "p50_us": 163.84,
+              "p99_us": 50331.648,
+              "errors": 0,
+              "disk_bytes": 1508255000,
+              "cpu_seconds": 203.29,
+              "write_bytes": 3778928640
+            },
+            {
+              "at_seconds": 180.026504056,
+              "per_second": 34466.80645281415,
+              "p50_us": 180.224,
+              "p99_us": 46137.344,
+              "errors": 0,
+              "disk_bytes": 2218406528,
+              "cpu_seconds": 200.43000000000006,
+              "write_bytes": 3760562176
+            }
+          ],
+          "app": {
+            "logs_stored": 6331414,
+            "logs_dropped": 0,
+            "jobs_enqueued": 632484,
+            "jobs_handled": 632484,
+            "jobs_waiting": 0
+          }
+        }
+      ],
+      "open_rss_bytes": 42373120,
+      "peak_rss_bytes": 116162560,
+      "disk_bytes": 2204102656,
+      "open_seconds": 0.069514303,
+      "processes": 1,
+      "tinystore_commit": "ad4f047"
+    }
+  ]
+}

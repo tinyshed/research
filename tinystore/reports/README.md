@@ -169,3 +169,12 @@ fetch and normalise them.
 | | |
 |---|---|
 | [comment-cleanup-2026-09-29.md](comment-cleanup-2026-09-29.md) | every comment read once: about 8 % needed an edit, mostly run-on sentences and restated names, and fifteen were stale, one on the SQL check's security boundary; width 80, field notes on their fields; both rounds done and tests green, nothing committed |
+
+## 1 October 2026 - Runtime Continuation Draft
+
+The following round stays on `research/runtime-benchmarks` until the measured
+TinyStore source is reviewed and merged to main.
+
+| | |
+|---|---|
+| [runtime-continuation-2026-10-01.md](runtime-continuation-2026-10-01.md) | saved modernc/ncruces revisions on local Linux containers and the existing Yandex VM; every engine, the application stack, Go/Bun/Python clients, rejected cancellation and idle-slot prototypes, corrected metrics bounds, process crash smoke and binary weight |
