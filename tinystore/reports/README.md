@@ -170,10 +170,11 @@ fetch and normalise them.
 |---|---|
 | [comment-cleanup-2026-09-29.md](comment-cleanup-2026-09-29.md) | every comment read once: about 8 % needed an edit, mostly run-on sentences and restated names, and fifteen were stale, one on the SQL check's security boundary; width 80, field notes on their fields; both rounds done and tests green, nothing committed |
 
-## 1 October 2026 - Runtime Continuation Draft
+## 1 October 2026 — the runtime on ncruces
 
-The following round stays on `research/runtime-benchmarks` until the measured
-TinyStore source is reviewed and merged to main.
+TinyStore's `main` took the measured source on 2 October 2026, `ad4f047` and
+the self-summary experiment after it; the rejected idle-slot candidate,
+`eeb0aea`, stays on `research/runtime-hot-paths`.
 
 | | |
 |---|---|

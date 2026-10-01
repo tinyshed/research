@@ -1,8 +1,8 @@
 # Runtime continuation: saved revisions and the final comparison
 
-Draft on `research/runtime-benchmarks`. The candidate has not been merged to
-TinyStore's `main`; this report is prepared for review, not published as a
-product guarantee. The full engine comparison completed on both machines;
+Measured on `research/runtime-benchmarks`. TinyStore's `main` took the final
+candidate on 2 October 2026; the report is a measurement, not a product
+guarantee. The full engine comparison completed on both machines;
 SDK and corrected wide-read rounds are collected separately below.
 
 | Question | Answer | What follows |

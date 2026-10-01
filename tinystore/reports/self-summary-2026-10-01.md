@@ -1,7 +1,7 @@
 # Opt-In Self Reports and Exact Aggregate Summaries
 
-Draft on `research/self-summary-measurements`; the production experiment is
-on `research/self-metrics-summary`, branched from the checked runtime, not main.
+Measured on `research/self-summary-measurements`; TinyStore's `main` took the
+experiment, `research/self-metrics-summary`, on 2 October 2026.
 No cloud machine was recreated. The measured candidate is
 `8bf3824164cea4c8758aaabdce1c863f27828c34`; baseline is
 `48cdcd1085d4c09350081d8900fc7a6c85cab276`. Harness is `d4303d5`.

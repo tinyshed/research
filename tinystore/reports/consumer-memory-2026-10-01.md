@@ -1,7 +1,7 @@
 # Small Consumers, Idle Memory and Raw Metrics
 
-Draft on `research/runtime-benchmarks`, with TinyStore's measured source still
-off main. Source is `ad4f0477f4ba96cf59b0cecbb3e5134f6e064d8a`; harness is
+Measured on `research/runtime-benchmarks`; TinyStore's `main` took the code on
+2 October 2026. Source is `ad4f0477f4ba96cf59b0cecbb3e5134f6e064d8a`; harness is
 `f353a11`. No production code is changed in this round.
 
 | Question | Answer | What follows |
