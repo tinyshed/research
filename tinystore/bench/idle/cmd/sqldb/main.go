@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"testing/fstest"
 
 	"github.com/tinyshed/tinystore"
 	"github.com/tinyshed/tinystore/bench/idle/internal/consumer"
@@ -14,6 +15,7 @@ func main() {
 }
 
 func openSQL(ctx context.Context, store *tinystore.Store) error {
-	_, err := sqldb.Open(ctx, store, "app", nil, nil)
+	migrations := fstest.MapFS{"0001.sql": {Data: []byte("create table note (id integer primary key) strict;")}}
+	_, err := sqldb.Open(ctx, store, "app", migrations, nil)
 	return err
 }

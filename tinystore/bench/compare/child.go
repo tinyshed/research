@@ -70,9 +70,11 @@ type childRun struct {
 	Stages    []stage `json:"stages"`
 	// the process's resident memory once its store is open and empty, and its
 	// peak over the whole run; a service's is added to the client's
-	OpenRSS    int64 `json:"open_rss_bytes"`
-	PeakRSS    int64 `json:"peak_rss_bytes"`
-	ServiceRSS int64 `json:"service_peak_rss_bytes,omitempty"`
+	OpenRSS        int64 `json:"open_rss_bytes"`
+	OpenServiceRSS int64 `json:"open_service_peak_rss_bytes,omitempty"`
+	OpenServicePSS int64 `json:"open_service_pss_bytes,omitempty"`
+	PeakRSS        int64 `json:"peak_rss_bytes"`
+	ServiceRSS     int64 `json:"service_peak_rss_bytes,omitempty"`
 	// a service's processes' proportional set size once the stages ended,
 	// which counts memory they share once
 	ServicePSS int64 `json:"service_pss_bytes,omitempty"`
@@ -137,6 +139,10 @@ func measureContender(ctx context.Context, e engine, open opener, dir string, se
 	servicePIDs = func() []int { return pidsOf(active) }
 	time.Sleep(200 * time.Millisecond) // let a service finish starting before its memory is read
 	run.OpenRSS = residentBytes()
+	for _, pid := range pidsOf(s) {
+		run.OpenServiceRSS += peakResidentBytes(pid)
+		run.OpenServicePSS += servicePSS(pid)
+	}
 
 	active, reopen = s, func(ctx context.Context) (subject, error) { return open(ctx, dir) }
 	run.Stages, err = e.measure(ctx, s, seconds)
