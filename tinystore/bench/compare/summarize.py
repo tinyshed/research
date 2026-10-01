@@ -1,10 +1,9 @@
-"""Turns a results directory's rounds into the report's tables.
+"""Audit a round directory and print per-stage repeats and medians.
 
-    python summarize.py results/<date> > results/<date>/summary.md
+    python summarize.py reports/data/<round>/<machine>
 
-Every figure is the median of a contender's repeats, with the range beside it
-when there were more than one. Only the standard library, so that it runs
-wherever the results were copied to.
+Failed operations are not throughput. Queue snapshots are reported separately
+because a completed foreground request need not have drained its background job.
 """
 
 import json
@@ -13,137 +12,73 @@ import statistics
 import sys
 
 
-def median(values):
-    return statistics.median(values) if values else 0
+def passes(values):
+    return "; ".join(f"{value:,.0f}" for value in values)
 
 
-def spread(values, fmt):
-    shown = fmt(median(values))
-    if len(values) > 1 and min(values) != max(values):
-        shown += f" ({fmt(min(values))}–{fmt(max(values))})"
-    return shown
+def stage_table(round_):
+    invalid = False
+    grouped = {}
+    for run in sorted(round_["runs"], key=lambda run: run["repeat"]):
+        for stage in run["stages"]:
+            key = (run["contender"], stage["name"], stage["goroutines"])
+            grouped.setdefault(key, []).append(stage)
+            app = stage.get("app", {})
+            if app.get("logs_dropped") or app.get("jobs_waiting"):
+                print(f'{key}, repeat {run["repeat"]}: {app}')
+
+    print("\n| Contender | Stage | Workers | Passes/s | Median/s |")
+    print("|---|---|---:|---:|---:|")
+    for (contender, name, workers), stages in grouped.items():
+        errors = sum(stage.get("errors", 0) for stage in stages)
+        if errors:
+            invalid = True
+            print(f"| {contender} | {name} | {workers} | INVALID: {errors} errors | - |")
+            continue
+        rates = [stage["per_second"] for stage in stages]
+        print(f"| {contender} | {name} | {workers} | {passes(rates)} | {statistics.median(rates):,.0f} |")
+    return invalid
 
 
-def rate(v):
-    if v >= 1_000_000:
-        return f"{v / 1e6:.2f} M"
-    if v >= 10_000:
-        return f"{v / 1e3:.0f} k"
-    if v >= 1_000:
-        return f"{v / 1e3:.1f} k"
-    return f"{v:.0f}"
+def footprint_table(round_):
+    print("\n| Contender | Composite RAM MiB | Final disk MiB |")
+    print("|---|---:|---:|")
+    for contender in dict.fromkeys(run["contender"] for run in round_["runs"]):
+        runs = [run for run in round_["runs"] if run["contender"] == contender]
+        memory = [run["peak_rss_bytes"] + max(run.get("service_peak_rss_bytes", 0),
+                                             run.get("service_pss_bytes", 0)) for run in runs]
+        disk = [run["disk_bytes"] for run in runs]
+        ram_mib, disk_mib = statistics.median(memory) / 2**20, statistics.median(disk) / 2**20
+        print(f"| {contender} | {ram_mib:.1f} | {disk_mib:.2f} |")
 
 
-def micros(v):
-    if v >= 1000:
-        return f"{v / 1000:.1f} ms"
-    return f"{v:.0f} µs"
+def crash_summary(results):
+    invalid = False
+    for result in results:
+        if "cycles" not in result:
+            continue
+        lost = sum(cycle["lost"] for cycle in result["cycles"])
+        wrong = sum(cycle["wrong"] for cycle in result["cycles"])
+        invalid |= bool(lost or wrong)
+        print(f'{result["contender"]}: {len(result["cycles"])} crashes, {lost} lost, {wrong} wrong')
+    return invalid
 
 
-def mib(v):
-    return f"{v / 2**20:.1f}"
-
-
-def memory(run):
-    return run["peak_rss_bytes"] + max(run.get("service_pss_bytes", 0), run.get("service_peak_rss_bytes", 0))
-
-
-def contenders(round_):
-    order, runs = [], {}
-    for run in round_["runs"]:
-        name = run["contender"]
-        if name not in runs:
-            order.append(name)
-            runs[name] = []
-        runs[name].append(run)
-    return order, runs
-
-
-def stage_keys(runs):
-    keys = []
-    for run_list in runs.values():
-        for run in run_list:
-            for s in run["stages"]:
-                key = (s["name"], s["goroutines"])
-                if key not in keys:
-                    keys.append(key)
-    return keys
-
-
-def stage_values(run_list, key, field):
-    out = []
-    for run in run_list:
-        for s in run["stages"]:
-            if (s["name"], s["goroutines"]) == key and not s.get("first_error"):
-                out.append(s[field])
-    return out
-
-
-def table(round_):
-    order, runs = contenders(round_)
-    lines = []
-    head = ["", "peak MiB", "disk MiB", "ready s", "processes"]
-    lines.append("| " + " | ".join(head) + " |")
-    lines.append("|" + "---|" * len(head))
-    for name in order:
-        rs = runs[name]
-        lines.append(
-            f"| {name} | {spread([memory(r) for r in rs], mib)} | {spread([r['disk_bytes'] for r in rs], mib)} "
-            f"| {spread([r['open_seconds'] for r in rs], lambda v: f'{v:.2f}')} | {rs[0].get('processes', 1)} |"
-        )
-    lines.append("")
-    keys = stage_keys(runs)
-    head = ["stage"] + order
-    lines.append("| " + " | ".join(head) + " |")
-    lines.append("|" + "---|" * len(head))
-    for key in keys:
-        row = [f"{key[0]}×{key[1]}"]
-        for name in order:
-            per = stage_values(runs[name], key, "per_second")
-            p99 = stage_values(runs[name], key, "p99_us")
-            cpu = stage_values(runs[name], key, "cpu_seconds")
-            ops = stage_values(runs[name], key, "ops")
-            if not per:
-                row.append("—")
-                continue
-            cell = f"{spread(per, rate)}/s, p99 {micros(median(p99))}"
-            if cpu and median(ops):
-                cell += f", {median(cpu) / median(ops) * 1e6:.0f} µs CPU/op"
-            row.append(cell)
-        lines.append("| " + " | ".join(row) + " |")
-    errors = []
-    for name in order:
-        for run in runs[name]:
-            for s in run["stages"]:
-                if s.get("errors"):
-                    errors.append(f"- {name} #{run['repeat']} {s['name']}×{s['goroutines']}: "
-                                  f"{s['errors']} errors, first: {s.get('first_error', '')[:200]}")
-    for failed in round_.get("failed", []):
-        errors.append(f"- failed: {failed.splitlines()[0][:200]}")
-    if errors:
-        lines.append("")
-        lines.extend(errors)
-    return "\n".join(lines)
-
-
-def main():
-    sys.stdout.reconfigure(encoding="utf-8")
-    directory = pathlib.Path(sys.argv[1])
-    print(f"# {directory.name}\n")
-    environment = directory / "environment.txt"
-    if environment.exists():
-        print("```text\n" + environment.read_text().strip() + "\n```\n")
+def summarize(directory):
+    invalid = False
     for path in sorted(directory.glob("*.json")):
-        data = json.loads(path.read_text())
-        if isinstance(data, dict) and "runs" in data:
-            print(f"## {path.stem}\n")
-            print(table(data) + "\n")
-        else:
-            print(f"## {path.stem}\n\n```json\n{json.dumps(data, indent=1)[:4000]}\n```\n")
-    failures = directory / "failures.txt"
-    if failures.exists():
-        print("## failures\n\n```text\n" + failures.read_text().strip() + "\n```")
+        round_ = json.loads(path.read_text())
+        print(f"\n## {path.stem}\n")
+        if isinstance(round_, list):
+            invalid |= crash_summary(round_)
+            continue
+        if round_.get("failed"):
+            invalid = True
+            print("Failed: " + "; ".join(round_["failed"]))
+        invalid |= stage_table(round_)
+        footprint_table(round_)
+    return invalid
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(summarize(pathlib.Path(sys.argv[1])))

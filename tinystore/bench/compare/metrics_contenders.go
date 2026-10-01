@@ -26,8 +26,8 @@ import (
 	"github.com/tinyshed/tinystore/metrics"
 )
 
-// TinyStore: its metrics engine with its defaults; a window goes in calls of
-// at most MaxBatchSamples, the default bound on one Ingest.
+// TinyStore: default ingest bounds and an explicit output budget for the
+// TSBS wide read's 763,560 samples. The default query budget is 100,000.
 
 type tinyStoreMetrics struct {
 	noService
@@ -42,7 +42,9 @@ func openTinyStoreMetrics(ctx context.Context, dir string) (subject, error) {
 	if err != nil {
 		return nil, err
 	}
-	m, err := metrics.Open(ctx, store, metrics.Options{})
+	m, err := metrics.Open(ctx, store, metrics.Options{
+		Limits: metrics.Limits{OutputSamples: 1 << 20},
+	})
 	if err != nil {
 		return nil, errors.Join(err, store.Close(ctx))
 	}

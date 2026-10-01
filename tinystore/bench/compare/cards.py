@@ -17,7 +17,19 @@ from xml.sax.saxutils import escape
 
 def load(directory, engine):
     path = directory / f"{engine}.json"
-    return json.loads(path.read_text()) if path.exists() else None
+    if not path.exists():
+        return None
+
+    round_ = json.loads(path.read_text())
+    if round_.get("failed"):
+        raise ValueError(f"{engine}: failed runs cannot become README figures")
+
+    for run in round_["runs"]:
+        for stage in run["stages"]:
+            if stage.get("errors"):
+                raise ValueError(f'{engine}: {run["contender"]} {stage["name"]} has errors')
+
+    return round_
 
 
 def per_second(round_, contender, stage, goroutines):
@@ -42,6 +54,16 @@ def disk(round_, contender):
     return statistics.median(values) / 2**20 if values else None
 
 
+def settled_ingest(round_, contender):
+    values = []
+    for run in round_["runs"]:
+        if run["contender"] != contender:
+            continue
+        stages = {stage["name"]: stage for stage in run["stages"]}
+        values.append(stages["ingest"]["ops"] / (stages["ingest"]["seconds"] + stages["settle"]["seconds"]))
+    return statistics.median(values) if values else None
+
+
 def rate(v):
     if v >= 1_000_000:
         return f"{v / 1e6:.2f} M"
@@ -61,10 +83,10 @@ def size(v):
 CARDS = [
     ("stack", "An application, 64 clients", "requests a second · higher is better", "stack",
      lambda r, c: per_second(r, c, "request", 64), rate,
-     [("TinyStore", "tinystore"), ("sidecar", "tinystore-sidecar"), ("services", "services")]),
-    ("stack-memory", "An application, memory", "MiB at peak, services included · lower is better", "stack",
+     [("TinyStore Batch", "tinystore-batch"), ("two files", "tinystore"), ("services", "services")]),
+    ("stack-memory", "An application, memory", "Client HWM + service max(HWM, PSS), MiB", "stack",
      peak, size,
-     [("TinyStore", "tinystore"), ("sidecar", "tinystore-sidecar"), ("services", "services")]),
+     [("TinyStore Batch", "tinystore-batch"), ("two files", "tinystore"), ("services", "services")]),
     ("kv", "KV writes, 64 goroutines", "durable sets a second · higher is better", "kv",
      lambda r, c: per_second(r, c, "set", 64), rate,
      [("TinyStore", "tinystore"), ("Pebble", "pebble"), ("Redis", "redis"), ("bbolt", "bbolt"), ("SQLite", "sqlite")]),
@@ -74,8 +96,14 @@ CARDS = [
     ("records", "Log lines on disk", "MiB after close · lower is better", "records",
      disk, size,
      [("TinyStore", "tinystore"), ("JSONL+zstd", "jsonl-zstd"), ("JSONL", "jsonl")]),
-    ("metrics-memory", "Metrics, memory", "MiB at peak · lower is better", "metrics",
+    ("metrics-disk", "Metrics on disk", "MiB after settle and close · lower is better", "metrics",
+     disk, size,
+     [("TinyStore", "tinystore"), ("Victoria", "victoria"), ("Prometheus", "prometheus")]),
+    ("metrics-memory", "Metrics, memory", "Client HWM + service max(HWM, PSS), MiB", "metrics",
      peak, size,
+     [("TinyStore", "tinystore"), ("Victoria", "victoria"), ("Prometheus", "prometheus")]),
+    ("metrics-ingest", "Metrics ingest + settle", "samples a second · higher is better", "metrics",
+     settled_ingest, rate,
      [("TinyStore", "tinystore"), ("Victoria", "victoria"), ("Prometheus", "prometheus")]),
 ]
 
