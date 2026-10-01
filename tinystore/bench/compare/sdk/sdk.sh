@@ -110,7 +110,7 @@ for path in sorted(runs_dir.glob("*.json")):
     text = path.read_text().strip()
     if not text:
         continue
-    run = json.loads(text.splitlines()[-1])
+    run = json.loads(text)
     repeat = int(path.stem.rsplit("-", 1)[1])
     if "runs" in run:
         failed.extend(run.get("failed", []))
