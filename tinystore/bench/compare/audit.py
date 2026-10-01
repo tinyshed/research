@@ -52,10 +52,12 @@ def footprint_table(round_):
         print(f"| {contender} | {ram_mib:.1f} | {disk_mib:.2f} |")
 
 
-def crash_summary(results):
+def array_summary(results):
     invalid = False
     for result in results:
         if "cycles" not in result:
+            print(f'{result["program"]}: {result["bytes"]:,} bytes, '
+                  f'{result["added_bytes"]:,} added, cgo={result.get("cgo", False)}')
             continue
         lost = sum(cycle["lost"] for cycle in result["cycles"])
         wrong = sum(cycle["wrong"] for cycle in result["cycles"])
@@ -70,7 +72,7 @@ def summarize(directory):
         round_ = json.loads(path.read_text())
         print(f"\n## {path.stem}\n")
         if isinstance(round_, list):
-            invalid |= crash_summary(round_)
+            invalid |= array_summary(round_)
             continue
         if round_.get("failed"):
             invalid = True

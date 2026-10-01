@@ -645,3 +645,11 @@ redis: 30 crashes, 0 lost, 0 wrong
 
 ## weight
 
+badger: 8,315,040 bytes, 7,008,256 added, cgo=False
+bbolt: 1,953,952 bytes, 647,168 added, cgo=False
+empty: 1,306,784 bytes, 0 added, cgo=False
+mattn: 3,780,488 bytes, 2,473,704 added, cgo=True
+pebble: 13,680,800 bytes, 12,374,016 added, cgo=False
+redis: 7,225,504 bytes, 5,918,720 added, cgo=False
+sqlite: 6,656,160 bytes, 5,349,376 added, cgo=False
+tinystore: 8,990,880 bytes, 7,684,096 added, cgo=False
