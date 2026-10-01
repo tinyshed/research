@@ -37,6 +37,13 @@ class CardsTest(unittest.TestCase):
                             "service_pss_bytes": 3 << 20, "service_peak_rss_bytes": 2 << 20}]}
         self.assertEqual(cards.peak(round_, "tinystore"), 4)
 
+    def test_service_idle_cannot_come_from_client_rss_alone(self):
+        with self.assertRaises(ValueError):
+            cards.memory_pair({"runs": [{"contender": "services", "processes": 4}]}, "services")
+
+    def test_raw_uses_the_index_as_well_as_sample_bytes(self):
+        self.assertEqual(cards.metric_disk({"raw": {"TotalBytes": 3 << 20}}, "raw"), 3)
+
 
 if __name__ == "__main__":
     unittest.main()

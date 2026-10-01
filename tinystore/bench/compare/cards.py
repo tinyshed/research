@@ -29,6 +29,11 @@ def load(directory, engine):
             if stage.get("errors"):
                 raise ValueError(f'{engine}: {run["contender"]} {stage["name"]} has errors')
 
+    if engine == "metrics":
+        raw = directory / "metrics-raw.json"
+        if raw.exists():
+            round_["raw"] = json.loads(raw.read_text())
+
     return round_
 
 
@@ -52,6 +57,24 @@ def peak(round_, contender):
 def disk(round_, contender):
     values = [run["disk_bytes"] for run in round_["runs"] if run["contender"] == contender]
     return statistics.median(values) / 2**20 if values else None
+
+
+def metric_disk(round_, contender):
+    if contender == "raw":
+        return round_["raw"]["TotalBytes"] / 2**20 if "raw" in round_ else None
+    return disk(round_, contender)
+
+
+def memory_pair(round_, contender):
+    runs = [run for run in round_["runs"] if run["contender"] == contender]
+    if not runs:
+        return None
+    for run in runs:
+        if run.get("processes", 1) > 1 and "open_service_pss_bytes" not in run:
+            raise ValueError("service idle was not measured in this round")
+    idle = [run["open_rss_bytes"] + max(run.get("open_service_pss_bytes", 0),
+                                      run.get("open_service_peak_rss_bytes", 0)) for run in runs]
+    return statistics.median(idle) / 2**20, peak(round_, contender)
 
 
 def settled_ingest(round_, contender):
@@ -83,10 +106,10 @@ def size(v):
 CARDS = [
     ("stack", "An application, 64 clients", "requests a second · higher is better", "stack",
      lambda r, c: per_second(r, c, "request", 64), rate,
-     [("TinyStore Batch", "tinystore-batch"), ("two files", "tinystore"), ("services", "services")]),
-    ("stack-memory", "An application, memory", "Client HWM + service max(HWM, PSS), MiB", "stack",
-     peak, size,
-     [("TinyStore Batch", "tinystore-batch"), ("two files", "tinystore"), ("services", "services")]),
+     [("TinyStore Batch", "tinystore-batch"), ("TinyStore Split", "tinystore"), ("Services", "services")]),
+    ("stack-memory", "An application, memory", "Idle / load peak, MiB (client + services)", "stack-memory",
+     memory_pair, lambda pair: f"{size(pair[0])} / {size(pair[1])}",
+     [("TinyStore", "tinystore-batch"), ("Services", "services")]),
     ("kv", "KV writes, 64 goroutines", "durable sets a second · higher is better", "kv",
      lambda r, c: per_second(r, c, "set", 64), rate,
      [("TinyStore", "tinystore"), ("Pebble", "pebble"), ("Redis", "redis"), ("bbolt", "bbolt"), ("SQLite", "sqlite")]),
@@ -97,8 +120,8 @@ CARDS = [
      disk, size,
      [("TinyStore", "tinystore"), ("JSONL+zstd", "jsonl-zstd"), ("JSONL", "jsonl")]),
     ("metrics-disk", "Metrics on disk", "MiB after settle and close · lower is better", "metrics",
-     disk, size,
-     [("TinyStore", "tinystore"), ("Victoria", "victoria"), ("Prometheus", "prometheus")]),
+     metric_disk, size,
+     [("TinyStore", "tinystore"), ("Victoria", "victoria"), ("Prometheus", "prometheus"), ("Raw binary", "raw")]),
     ("metrics-memory", "Metrics, memory", "Client HWM + service max(HWM, PSS), MiB", "metrics",
      peak, size,
      [("TinyStore", "tinystore"), ("Victoria", "victoria"), ("Prometheus", "prometheus")]),
@@ -106,6 +129,17 @@ CARDS = [
      settled_ingest, rate,
      [("TinyStore", "tinystore"), ("Victoria", "victoria"), ("Prometheus", "prometheus")]),
 ]
+
+for language, title in (("bun", "Bun"), ("python", "Python")):
+    for operation, action in (("get", "reads"), ("set", "writes")):
+        CARDS.append((
+            f"sdk-{language}-{operation}", f"{title}: KV {action}, 64 in flight",
+            "calls a second · higher is better", "sdk-modes",
+            lambda r, c, operation=operation: per_second(r, c, operation, 64), rate,
+            [("Go embedded", "go-embedded"), ("Go sidecar", "go-sidecar"),
+             (f"{title} sidecar", f"{language}-tinystore"), ("Go server", "go-server"),
+             (f"{title} server", f"{language}-tinystore-server")],
+        ))
 
 THEMES = {
     "light": {"text": "#1f2328", "muted": "#59636e", "ours": "#23212B", "theirs": "#d1d9e0", "border": "#d1d9e0"},
@@ -149,6 +183,31 @@ def card(title, unit, rows, colours, height):
     )
 
 
+def memory_card(title, unit, rows, colours, height):
+    body = [
+        f'<rect x="0.5" y="0.5" width="{WIDTH - 1}" height="{height - 1}" rx="6" fill="none" '
+        f'stroke="{colours["border"]}"/>',
+        f'<text x="{PAD}" y="36" font-size="16" font-weight="600" fill="{colours["text"]}">{escape(title)}</text>',
+        f'<text x="{PAD}" y="56" font-size="12" fill="{colours["muted"]}">{escape(unit)}</text>',
+    ]
+    left, end = PAD + LABEL, 300
+    maximum = max(peak for _, (_, peak), _ in rows)
+    for i, (label, (idle, peak), _) in enumerate(rows):
+        y = 74 + i * 48
+        colour = colours["ours"] if i == 0 else colours["theirs"]
+        body.append(f'<text x="{PAD}" y="{y + 13}" font-size="14" fill="{colours["text"]}">{escape(label)}</text>')
+        for value, offset, opacity in ((idle, 0, 1), (peak, 20, 0.4)):
+            width = max(3, (end - left) * value / maximum)
+            body += [
+                f'<rect x="{left}" y="{y + offset}" width="{width:.1f}" height="12" rx="2" '
+                f'fill="{colour}" opacity="{opacity}"/>',
+                f'<text x="{left + width + 8:.1f}" y="{y + offset + 11}" font-size="12" '
+                f'fill="{colours["text"]}">{size(value)}</text>',
+            ]
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{height}" '
+            f'viewBox="0 0 {WIDTH} {height}" font-family="{FONT}">\n' + "\n".join(body) + "\n</svg>\n")
+
+
 def main():
     directory, out = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
     drawn = []
@@ -171,7 +230,8 @@ def main():
         print(name, ", ".join(f"{label} {shown}" for label, _, shown in rows), file=sys.stderr)
         for theme, colours in THEMES.items():
             path = out / f"bench-{name}-{theme}.svg"
-            path.write_text(card(title, unit, rows, colours, height), encoding="utf-8", newline="\n")
+            draw = memory_card if name == "stack-memory" else card
+            path.write_text(draw(title, unit, rows, colours, height), encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":
