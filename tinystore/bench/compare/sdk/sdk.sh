@@ -21,6 +21,9 @@ if [ -s "$out/sdk-kv.json" ]; then
 fi
 go build -C ../../source/cmd/tinystore -o /tmp/tinystore . || exit 1
 export TINYSTORE_BIN=/tmp/tinystore
+if [ "${COMPARE_GO_MODES:-0}" = 1 ]; then
+	go build -o /tmp/compare-mode . || exit 1
+fi
 runs=$(mktemp -d)
 echo "$(date -u +%H:%M:%S) start sdk kv" >> "$out/progress.txt"
 
@@ -73,12 +76,30 @@ one() {
 	rm -rf "$dir" "$dir.tokens"
 }
 
+go_modes() {
+	[ "${COMPARE_GO_MODES:-0}" = 1 ] || return 0
+	/tmp/compare-mode run -engine kv -contenders "$1" -repeats 1 \
+		-seconds "${SECONDS_A_STAGE:-5}" -dir /data -out "$runs/go-$repeat.json" \
+		2>>"$runs/errors.log" || echo "go repeat $repeat failed" >> "$runs/failed.txt"
+}
+
 for repeat in $(seq 1 "${REPEATS:-3}"); do
-	for language in bun python; do
-		for contender in tinystore tinystore-server redis redis-tcp; do
+	languages="bun python"
+	contenders="${SDK_CONTENDERS:-tinystore tinystore-server redis redis-tcp}"
+	if [ "$((repeat % 2))" = 1 ]; then
+		go_modes tinystore,tinystore-sidecar,tinystore-server
+	else
+		languages="python bun"
+		contenders=$(printf '%s\n' "$contenders" | awk '{for (i=NF;i>0;i--) printf "%s ", $i}')
+	fi
+	for language in $languages; do
+		for contender in $contenders; do
 			one "$language" "$contender" "$repeat"
 		done
 	done
+	if [ "$((repeat % 2))" = 0 ]; then
+		go_modes tinystore-server,tinystore-sidecar,tinystore
+	fi
 done
 
 python3 - "$runs" "$out/sdk-kv.json" <<'EOF'
@@ -90,12 +111,20 @@ for path in sorted(runs_dir.glob("*.json")):
     if not text:
         continue
     run = json.loads(text.splitlines()[-1])
-    run["repeat"] = int(path.stem.rsplit("-", 1)[1])
-    runs.append(run)
+    repeat = int(path.stem.rsplit("-", 1)[1])
+    if "runs" in run:
+        failed.extend(run.get("failed", []))
+        names = {"tinystore": "go-embedded", "tinystore-sidecar": "go-sidecar", "tinystore-server": "go-server"}
+        for measured in run["runs"]:
+            measured["contender"] = names[measured["contender"]]
+            measured["repeat"] = repeat
+            runs.append(measured)
+    else:
+        run["repeat"] = repeat
+        runs.append(run)
 failures = runs_dir / "failed.txt"
 if failures.exists():
-    failed = failures.read_text().split("\n")
-    failed = [f for f in failed if f]
+    failed.extend(f for f in failures.read_text().splitlines() if f)
 round_ = {"engine": "sdk-kv", "started": datetime.datetime.now(datetime.UTC).isoformat(), "runs": runs}
 if failed:
     round_["failed"] = failed
