@@ -1,0 +1,24 @@
+[package]
+name = "tinystore-metrics-native-bench"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[features]
+telemetry = []
+
+[[bin]]
+name = "tinystore-metrics-native-bench"
+path = "src/main.rs"
+
+[dependencies]
+rusqlite = { version = "=0.40.1", default-features = false, features = ["cache", "limits", "modern_sqlite", "hooks"] }
+zstd = "=0.13.3"
+sha2 = "=0.10.9"
+base64 = "=0.22.1"
+serde_json = "=1.0.145"
+num-bigint = "=0.4.6"
+num-traits = "=0.2.19"
+crc32fast = "=1.5.0"
+crc32c = "=0.6.8"
+rayon = "=1.11.0"
