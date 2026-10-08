@@ -1,0 +1,209 @@
+[
+  {
+    "case": "read_head_point",
+    "blocks": 0,
+    "bytes": 625,
+    "decoded": 240,
+    "series": 1,
+    "stops": null,
+    "summarized": 0
+  },
+  {
+    "case": "read_head_full8",
+    "blocks": 0,
+    "bytes": 4846,
+    "decoded": 16008,
+    "series": 8,
+    "stops": null,
+    "summarized": 0
+  },
+  {
+    "case": "read_sealed_point",
+    "blocks": 1,
+    "bytes": 869,
+    "decoded": 240,
+    "series": 1,
+    "stops": null,
+    "summarized": 0
+  },
+  {
+    "case": "read_sealed_boundary",
+    "blocks": 8,
+    "bytes": 5487,
+    "decoded": 1928,
+    "series": 8,
+    "stops": null,
+    "summarized": 0
+  },
+  {
+    "case": "read_sealed_full8",
+    "blocks": 160,
+    "bytes": 12631,
+    "decoded": 38408,
+    "series": 8,
+    "stops": null,
+    "summarized": 0
+  },
+  {
+    "case": "read_sealed_full16",
+    "blocks": 320,
+    "bytes": 25958,
+    "decoded": 76816,
+    "series": 16,
+    "stops": null,
+    "summarized": 0
+  },
+  {
+    "case": "read_filtered_one",
+    "blocks": 20,
+    "bytes": 1793,
+    "decoded": 4801,
+    "series": 1,
+    "stops": null,
+    "summarized": 0
+  },
+  {
+    "case": "read_where",
+    "blocks": 60,
+    "bytes": 4880,
+    "decoded": 14403,
+    "series": 3,
+    "stops": null,
+    "summarized": 0
+  },
+  {
+    "case": "read_prefix",
+    "blocks": 20,
+    "bytes": 1805,
+    "decoded": 4801,
+    "series": 1,
+    "stops": null,
+    "summarized": 0
+  },
+  {
+    "case": "read_noneof",
+    "blocks": 120,
+    "bytes": 9534,
+    "decoded": 28806,
+    "series": 6,
+    "stops": null,
+    "summarized": 0
+  },
+  {
+    "case": "read_since",
+    "blocks": 32,
+    "bytes": 6615,
+    "decoded": 7688,
+    "series": 8,
+    "stops": null,
+    "summarized": 0
+  },
+  {
+    "case": "aggregate_count",
+    "blocks": 160,
+    "bytes": 5111,
+    "decoded": 8,
+    "series": 8,
+    "stops": null,
+    "summarized": 160
+  },
+  {
+    "case": "aggregate_sum",
+    "blocks": 160,
+    "bytes": 5111,
+    "decoded": 8,
+    "series": 8,
+    "stops": null,
+    "summarized": 160
+  },
+  {
+    "case": "aggregate_avg",
+    "blocks": 160,
+    "bytes": 5111,
+    "decoded": 8,
+    "series": 8,
+    "stops": null,
+    "summarized": 160
+  },
+  {
+    "case": "aggregate_min",
+    "blocks": 160,
+    "bytes": 5111,
+    "decoded": 8,
+    "series": 8,
+    "stops": null,
+    "summarized": 160
+  },
+  {
+    "case": "aggregate_max",
+    "blocks": 160,
+    "bytes": 5111,
+    "decoded": 8,
+    "series": 8,
+    "stops": null,
+    "summarized": 160
+  },
+  {
+    "case": "aggregate_delta",
+    "blocks": 160,
+    "bytes": 5111,
+    "decoded": 8,
+    "series": 8,
+    "stops": null,
+    "summarized": 160
+  },
+  {
+    "case": "aggregate_increase",
+    "blocks": 160,
+    "bytes": 6067,
+    "decoded": 8,
+    "series": 8,
+    "stops": null,
+    "summarized": 160
+  },
+  {
+    "case": "aggregate_rate",
+    "blocks": 160,
+    "bytes": 6067,
+    "decoded": 8,
+    "series": 8,
+    "stops": null,
+    "summarized": 160
+  },
+  {
+    "case": "aggregate_cut_sum",
+    "blocks": 160,
+    "bytes": 8871,
+    "decoded": 19208,
+    "series": 8,
+    "stops": null,
+    "summarized": 80
+  },
+  {
+    "case": "aggregate_cut_avg",
+    "blocks": 160,
+    "bytes": 8871,
+    "decoded": 19208,
+    "series": 8,
+    "stops": null,
+    "summarized": 80
+  },
+  {
+    "case": "aggregate_grouped_sum",
+    "blocks": 160,
+    "bytes": 5111,
+    "decoded": 8,
+    "series": 8,
+    "stops": null,
+    "summarized": 160
+  },
+  {
+    "case": "aggregate_grouped_increase",
+    "blocks": 160,
+    "bytes": 6067,
+    "decoded": 8,
+    "series": 8,
+    "stops": null,
+    "summarized": 160
+  }
+]

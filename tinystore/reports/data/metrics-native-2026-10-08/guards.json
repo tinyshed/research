@@ -1,0 +1,14 @@
+{
+  "guards": {
+    "atomic_rollback": true,
+    "decode_limit": true,
+    "final_digest": "ee90eb1b8289f431",
+    "output_limit": true,
+    "series_limit": true,
+    "too_new": true,
+    "too_old": true
+  },
+  "edge-guards": {
+    "nonfinite": true
+  }
+}

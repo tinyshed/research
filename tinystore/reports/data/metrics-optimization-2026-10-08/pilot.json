@@ -1,0 +1,267 @@
+[
+  {
+    "case": "ingest_append1",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 372599.8125,
+    "warm": 32,
+    "go_crossread": "faacb189a83a9655"
+  },
+  {
+    "case": "ingest_replace1",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 580611.0,
+    "warm": 32,
+    "go_crossread": "2a5f4030a7a8583e"
+  },
+  {
+    "case": "ingest_scrape100",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 2377449.875,
+    "warm": 32,
+    "go_crossread": "24215721ffaaf67f"
+  },
+  {
+    "case": "ingest_register8",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 1282926.1875,
+    "warm": 32,
+    "go_crossread": "9606a1bf2d6d67f0"
+  },
+  {
+    "case": "ingest_shuffled240",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 645280.5,
+    "warm": 32,
+    "go_crossread": "aaff553473828118"
+  },
+  {
+    "case": "ingest_duplicates240",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 665126.0625,
+    "warm": 32,
+    "go_crossread": "60c4d948f654d090"
+  },
+  {
+    "case": "read_head_point",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 16156.4375,
+    "warm": 32
+  },
+  {
+    "case": "read_head_full8",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 365383.8125,
+    "warm": 32
+  },
+  {
+    "case": "read_sealed_point",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 28686.1875,
+    "warm": 32
+  },
+  {
+    "case": "read_sealed_boundary",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 188609.75,
+    "warm": 32
+  },
+  {
+    "case": "read_sealed_full8",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 1086783.75,
+    "warm": 32
+  },
+  {
+    "case": "read_sealed_full16",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 2219116.25,
+    "warm": 32
+  },
+  {
+    "case": "read_filtered_one",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 147078.25,
+    "warm": 32
+  },
+  {
+    "case": "stream_sealed_full8",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 1181935.25,
+    "warm": 32
+  },
+  {
+    "case": "read_where",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 439038.4375,
+    "warm": 32
+  },
+  {
+    "case": "read_prefix",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 150740.5625,
+    "warm": 32
+  },
+  {
+    "case": "read_noneof",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 874062.75,
+    "warm": 32
+  },
+  {
+    "case": "read_since",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 347864.75,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_count",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 195309.625,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_sum",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 192091.125,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_avg",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 168665.25,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_min",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 158083.875,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_max",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 182822.4375,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_delta",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 153274.25,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_increase",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 214665.1875,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_rate",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 222835.9375,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_cut_sum",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 1995917.8125,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_cut_avg",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 2062674.75,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_grouped_sum",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 177376.25,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_grouped_increase",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 209056.25,
+    "warm": 32
+  },
+  {
+    "case": "read_wide64",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 2918977.5,
+    "warm": 32
+  },
+  {
+    "case": "stream_wide64",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 2451146.5,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_wide_sum",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 645276.0625,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_wide_cut_sum",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 4945147.5625,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_wide_cut_avg",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 4781518.6875,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_wide_cut_count",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 4143647.25,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_wide_grouped_cut_sum",
+    "implementation": "rust_metrics",
+    "iterations": 16,
+    "ns_per_op": 4783083.4375,
+    "warm": 32
+  }
+]

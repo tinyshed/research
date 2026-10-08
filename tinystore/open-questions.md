@@ -521,3 +521,19 @@ own delta alphabet. The threshold worth defending is **0.7 bytes a sample over a
 real mixed corpus**, measured whole, against another engine keeping the same
 samples exactly — and on our own fixtures two classes of four are still above
 it, by 0.02 and 0.046.
+
+## Rust/native SQLite after the October evaluation
+
+The [measured Rust evaluation](reports/rust-research-summary-2026-10-08.md)
+supports further prototypes and selected Go algorithm backports. It does not
+settle a production migration or an exact native memory budget.
+
+| Question | Evidence now | Gate still required |
+| --- | --- | --- |
+| Can the algorithm improvements help Go? | Word-reservoir decoding improved both languages in the kernel round. | Port selected changes with format/error compatibility and remeasure public-engine paths. |
+| Can native SQLite ship with one application binary? | Pinned SQLite and zstd are statically embedded; no libsqlite3.so is required. | Validate each target toolchain/platform and production VFS/locking/recovery behavior. |
+| Does PGO generalize? | Read/decode-heavy synthetic cases improved against the same LTO build. | Train and validate on independent representative corpora, including irregular clocks/high cardinality. |
+| Does parallelism pay under load? | Rayon 2 helped Read16, but several aggregates and streams slowed. | Bounded shared worker/admission pools, mixed concurrent clients, fairness and CPU-per-call measurements. |
+| Is memory admission preserved? | Bounded Rust scratch reduced allocation requests without material further peak-RSS savings. | Include native SQLite/zstd memory, retained results, reader/writer pools and cross-query reservations in the production budget. |
+| Is the Rust engine ready to replace Go? | Synchronous paths, formats, exact floats and selected errors matched on retained fixtures. | Lifecycle, cancellation, recovery, partial retention, locks, snapshots/backups, instrumentation and cross-platform fault tests. |
+| Does this evaluate a complete records port? | Records packing kernels and 1024-byte SQLite behavior were evaluated. | A complete records workload/engine port with the same compatibility and operational gates. |

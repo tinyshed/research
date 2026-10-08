@@ -1,0 +1,1593 @@
+{
+  "publication_date": "2026-10-08",
+  "tinystore_commit": "e307c48a40126aad0e2873b6bf3aaedef8115483",
+  "measured_deep_harness_commit": "16df44bff8bc7f18313d0806492a7c8304fbc9b6",
+  "archival_source_commit": "a799d1626a38e77e3388916083f8b8c760441f77",
+  "notes": [
+    "First four runs were uncommitted when measured; publication does not reclassify them as formal committed runs.",
+    "Published measured source hashes match the original recorded sources. READMEs, English report translations, presentation helpers and legacy API compatibility were adapted after measurement.",
+    "Original raw/report/archive hashes remain in publication-provenance.json. Deep raw strings containing local paths were sanitized; numbers and embedded source/binary/fixture hashes are unchanged.",
+    "No fixture database, generated native source, binary, build target or PGO profile is published.",
+    "This manifest lists added/changed files except itself; the final Git commit identifies the complete tree."
+  ],
+  "verified_source_hashes": [
+    {
+      "round": "rust-kernels-2026-10-07",
+      "matched_source_files": 15
+    },
+    {
+      "round": "sqlite-native-2026-10-07",
+      "matched_source_files": 11
+    },
+    {
+      "round": "metrics-native-2026-10-08",
+      "matched_source_files": 24
+    },
+    {
+      "round": "metrics-optimization-2026-10-08",
+      "matched_source_files": 45
+    },
+    {
+      "round": "metrics-deep-2026-10-08",
+      "matched_source_files": 52
+    }
+  ],
+  "deep_raw_provenance": [
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/environment.json",
+      "original_sha256": "2da552ddd7bc34ab158e37fc57e265aa6a42de7723558bb9cc2e52b8a923e6f4",
+      "published_sha256": "cb0009fa827352b793f387109a2db102e1b1ee576d054a31143f975efbe33d02",
+      "path_sanitized": true
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/guards.json",
+      "original_sha256": "6b6cf9687d24337b7f1da0f9ccea12a58d0c6c5ed91fa4644559a727694e3371",
+      "published_sha256": "6b6cf9687d24337b7f1da0f9ccea12a58d0c6c5ed91fa4644559a727694e3371",
+      "path_sanitized": false
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/inspect.json",
+      "original_sha256": "5a1b8f0881199c56e49ea47cbbbfe48f70defcaeea551f1769740421f95294b4",
+      "published_sha256": "5a1b8f0881199c56e49ea47cbbbfe48f70defcaeea551f1769740421f95294b4",
+      "path_sanitized": false
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/kernels.jsonl",
+      "original_sha256": "cc726ec4a014bfc8262c4f567749d3f8c966d91ad4871e792986554bae6d36e2",
+      "published_sha256": "cc726ec4a014bfc8262c4f567749d3f8c966d91ad4871e792986554bae6d36e2",
+      "path_sanitized": false
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/linkage.txt",
+      "original_sha256": "063769da31858bee99d9751215459a2930539551464b92ea073a88595cba9636",
+      "published_sha256": "063769da31858bee99d9751215459a2930539551464b92ea073a88595cba9636",
+      "path_sanitized": false
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/memory.jsonl",
+      "original_sha256": "1ecf20c2dba2dfef9c585ed82c43078da4fb18e573d2b7ee53c4b469d276450a",
+      "published_sha256": "1ecf20c2dba2dfef9c585ed82c43078da4fb18e573d2b7ee53c4b469d276450a",
+      "path_sanitized": false
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/native-build.json",
+      "original_sha256": "5024e7b8bb57439cf9696011c65c8a67bbb34d8f88dcb0c7b4af53a5c8716f1a",
+      "published_sha256": "5024e7b8bb57439cf9696011c65c8a67bbb34d8f88dcb0c7b4af53a5c8716f1a",
+      "path_sanitized": false
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/pilot.json",
+      "original_sha256": "49fda8b972438dfe5a8a25aeda8b193a71d77a5aaccb8e54094e5986cfe6a51f",
+      "published_sha256": "49fda8b972438dfe5a8a25aeda8b193a71d77a5aaccb8e54094e5986cfe6a51f",
+      "path_sanitized": false
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/plans.json",
+      "original_sha256": "aa4a60432012e8859cd5ba8b40b194fe50d5c41b6144c5e2ff15f35f97e4d7f0",
+      "published_sha256": "aa4a60432012e8859cd5ba8b40b194fe50d5c41b6144c5e2ff15f35f97e4d7f0",
+      "path_sanitized": false
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/profiles.jsonl",
+      "original_sha256": "3ff11064b1a1e825a9e1095ae44a241f4e425312f631ff4bf69b10b4f57b82a8",
+      "published_sha256": "3ff11064b1a1e825a9e1095ae44a241f4e425312f631ff4bf69b10b4f57b82a8",
+      "path_sanitized": false
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/summary.json",
+      "original_sha256": "0bd0a2eee4f94ace13445daa324dc8adf46f4a5e9f8438128199f2a88e0965ed",
+      "published_sha256": "0bd0a2eee4f94ace13445daa324dc8adf46f4a5e9f8438128199f2a88e0965ed",
+      "path_sanitized": false
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/timings.jsonl",
+      "original_sha256": "d60dcc09de097978f5f9581ed7c8cc9f1c6be99bb2954e301096de14ffd96b83",
+      "published_sha256": "d60dcc09de097978f5f9581ed7c8cc9f1c6be99bb2954e301096de14ffd96b83",
+      "path_sanitized": false
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/verification.json",
+      "original_sha256": "903aec55009e2e76f8bcde0d5aacd3e8f6584b2f079540a40d20174e3d5e9742",
+      "published_sha256": "903aec55009e2e76f8bcde0d5aacd3e8f6584b2f079540a40d20174e3d5e9742",
+      "path_sanitized": false
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/verified-hashes.json",
+      "original_sha256": "1022677e5909db31221d12c887bdc316a692cacd2910eb16e2f9373bd518795f",
+      "published_sha256": "1022677e5909db31221d12c887bdc316a692cacd2910eb16e2f9373bd518795f",
+      "path_sanitized": false
+    }
+  ],
+  "files": [
+    {
+      "path": "tinystore/README.md",
+      "bytes": 2700,
+      "sha256": "ad6076c20f746b4741e7efb1eb5eca121fe0d9648bf82def29f19b5b8c3d978d"
+    },
+    {
+      "path": "tinystore/RUST-RESEARCH-LICENSE",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "tinystore/RUST-RESEARCH-NOTICES.md",
+      "bytes": 928,
+      "sha256": "66b04be5315ef182dbaa0d3ab7024525c6be4fb0ce0759f9930aa551b36e13f9"
+    },
+    {
+      "path": "tinystore/bench/compare/README.md",
+      "bytes": 1430,
+      "sha256": "ebc9a441191afaebd53f57540800499d3d80d7fd26afcf06d3f75dbafd2745b3"
+    },
+    {
+      "path": "tinystore/bench/compare/metrics_contenders.go",
+      "bytes": 9983,
+      "sha256": "f962ad0abcffdf86a01e3e54204f4e5c633fff4e3532f36858c2db087b6efc68"
+    },
+    {
+      "path": "tinystore/bench/compare/metrics_contenders_test.go",
+      "bytes": 1625,
+      "sha256": "a47510f8683198d3c6f7b609f626ee5f317e7a6d8a7900b0bc22298be1dd950d"
+    },
+    {
+      "path": "tinystore/bench/compare/records_contenders.go",
+      "bytes": 8001,
+      "sha256": "c4c7ac98d637fccd1c49fd5694d16ac01ef927c531edce0a7544d3dd70d634c0"
+    },
+    {
+      "path": "tinystore/bench/compare/records_contenders_test.go",
+      "bytes": 1115,
+      "sha256": "a8d6f11c975eca5f8cc5e514c14be3b2ca241248e2c6e00f0da8b62411f01117"
+    },
+    {
+      "path": "tinystore/bench/kv/go.mod",
+      "bytes": 816,
+      "sha256": "5c8b21854f690c92f2fcae805f80ad29282cea9e03cf2d377df2d8659bfea6ee"
+    },
+    {
+      "path": "tinystore/bench/kv/go.sum",
+      "bytes": 4845,
+      "sha256": "2a577307a985268d1baf74d19e2f57ee28974d4bd2f81e3d7dd13d26c0ac7ddc"
+    },
+    {
+      "path": "tinystore/bench/perf/aggregate.go",
+      "bytes": 2256,
+      "sha256": "06d32feae442f7d2f7ba20232463e829b9564994aefa6af0cde0fe810f5d1083"
+    },
+    {
+      "path": "tinystore/bench/perf/go.mod",
+      "bytes": 877,
+      "sha256": "16961fefbfa9f6f825e713e61de7a3adbe2ef23231ebf416ec4f6c3eb4d7c2c5"
+    },
+    {
+      "path": "tinystore/bench/perf/go.sum",
+      "bytes": 5356,
+      "sha256": "61714f33de6d1b22a4e38f1fea18236c330089174e5ca0e2f8257c5682552630"
+    },
+    {
+      "path": "tinystore/bench/perf/long_churn.go",
+      "bytes": 6070,
+      "sha256": "07cf23b27c37316912bff6289a0bfd2260d32c3ed13be485ccc094c1b6c8502f"
+    },
+    {
+      "path": "tinystore/bench/perf/main.go",
+      "bytes": 21383,
+      "sha256": "e61e910e5f94e4b17e4dd281e9bc2bf68a90d3c51e5944dd13693817057dc603"
+    },
+    {
+      "path": "tinystore/bench/perf/multi_store.go",
+      "bytes": 2708,
+      "sha256": "c733c383fb3032a5be0955381fe98e3d12accd7ed7ef6b5a98da0ad7a5905af3"
+    },
+    {
+      "path": "tinystore/bench/perf/ram.go",
+      "bytes": 10953,
+      "sha256": "8a7fad3b986ec6224aa638e7301a8fcdd7adea7e46f9ae3324d3705d3102a650"
+    },
+    {
+      "path": "tinystore/bench/perf/ready.go",
+      "bytes": 2034,
+      "sha256": "23ed3d5f9a802eecff4c4cd0995eadc3d8a942ea41ce43d8aa5c1f2c6025d112"
+    },
+    {
+      "path": "tinystore/bench/perf/repro/main.go",
+      "bytes": 7401,
+      "sha256": "3ca4c79145b627d9b5c7bfcba6a140c4cb3e8c203d5b578a95bfeef6b411df19"
+    },
+    {
+      "path": "tinystore/bench/perf/steady.go",
+      "bytes": 3877,
+      "sha256": "cdf4f090fcc97e184ffde45061e681d243cbed4624b9a07343c38fe52e8486a4"
+    },
+    {
+      "path": "tinystore/bench/records/docker_stages.go",
+      "bytes": 8948,
+      "sha256": "54bcf9f924a9f03703d11193042829f45e61954f6866e794c2a5539d343c0213"
+    },
+    {
+      "path": "tinystore/bench/records/go.mod",
+      "bytes": 872,
+      "sha256": "0056341aba019818331de638c1432bd17bfb3aba873a222e2b8dbda52ef32f85"
+    },
+    {
+      "path": "tinystore/bench/records/go.sum",
+      "bytes": 5024,
+      "sha256": "5456416814c1da14159da8f6194205b310640a741b944325b19b8177756c008e"
+    },
+    {
+      "path": "tinystore/bench/records/load.go",
+      "bytes": 6468,
+      "sha256": "5d49fd39b698e868342ca411231bf41a07f5752240307e374577072acda679cb"
+    },
+    {
+      "path": "tinystore/bench/records/measure.go",
+      "bytes": 9649,
+      "sha256": "6420f7273f9e898b2b4d4d07cf1935d72d4fa53700026f3be29bc7c90f3f619f"
+    },
+    {
+      "path": "tinystore/measurements.md",
+      "bytes": 38807,
+      "sha256": "9dc233078dcd2f248c28dd8ef0e4e922c968c5831f26dd30cb559f03c4a7ebe5"
+    },
+    {
+      "path": "tinystore/metrics-bench/.gitignore",
+      "bytes": 39,
+      "sha256": "46d76436441463f19befae059a378fa4359bb86f08604af365f16aaddb72a76e"
+    },
+    {
+      "path": "tinystore/metrics-bench/LICENSE",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "tinystore/metrics-bench/NOTICE",
+      "bytes": 357,
+      "sha256": "b5c6e10b2c4e973ff4067e907513746961ee7f2e303047b483c4cc9bac3a944e"
+    },
+    {
+      "path": "tinystore/metrics-bench/README.md",
+      "bytes": 3750,
+      "sha256": "b729d957ebb75dcfd2f2dc32cd08f93afb085ef5963d1631eb728f37ab99f145"
+    },
+    {
+      "path": "tinystore/metrics-bench/go/edge.go",
+      "bytes": 1433,
+      "sha256": "07dc5ca3a73b82ea88f749561da05719494dbf27f4d173c536370d0fc66f847e"
+    },
+    {
+      "path": "tinystore/metrics-bench/go/go.mod",
+      "bytes": 447,
+      "sha256": "022cfd1854ce0ff051ae179dd12db962d6fd666e68d055845973708439e5c1e5"
+    },
+    {
+      "path": "tinystore/metrics-bench/go/go.sum",
+      "bytes": 1042,
+      "sha256": "dcc7556447f800550b4cd026a1053fc43f5a79d69b825bf4d10015774604e684"
+    },
+    {
+      "path": "tinystore/metrics-bench/go/main.go",
+      "bytes": 16263,
+      "sha256": "7b1df14efd3e8f5b76f3bfe752a5a42601c07d3bc9609435a42945f68b54abb2"
+    },
+    {
+      "path": "tinystore/metrics-bench/plot_results.py",
+      "bytes": 1531,
+      "sha256": "befd37eaa60248d8951aa0a777ae937f76a7c8ebddf50c62dc16763968b96c54"
+    },
+    {
+      "path": "tinystore/metrics-bench/render_report.py",
+      "bytes": 15462,
+      "sha256": "ec4d546286540bf4fc8a579d7b0803eea341e94147100aec78aef357297dce44"
+    },
+    {
+      "path": "tinystore/metrics-bench/run.py",
+      "bytes": 11780,
+      "sha256": "ab439e582675f52a4912e375b940b8b93f76b34d2e611b8c98b6d96defc6cf9c"
+    },
+    {
+      "path": "tinystore/metrics-bench/rust/Cargo.lock",
+      "bytes": 11315,
+      "sha256": "e61da03b84d442819e1a439074a07a186e62e2f04c52d875ba0f0471b8f77457"
+    },
+    {
+      "path": "tinystore/metrics-bench/rust/Cargo.toml",
+      "bytes": 467,
+      "sha256": "de0c36b33dd64a781671a79a7ef408768c160d82178f4de704f5b5b66aba1507"
+    },
+    {
+      "path": "tinystore/metrics-bench/rust/build.rs",
+      "bytes": 100,
+      "sha256": "6e4e5c4dff1fa9aff41261013cae863a583e62453fab8a98e19c0675c9d096d2"
+    },
+    {
+      "path": "tinystore/metrics-bench/rust/src/codec.rs",
+      "bytes": 7636,
+      "sha256": "c2abc1bcc0a2285a3728542b5999fe356182776b9655b0f09a9f428992a8f746"
+    },
+    {
+      "path": "tinystore/metrics-bench/rust/src/codec/binary.rs",
+      "bytes": 5614,
+      "sha256": "aeeb75a3c4f6fb05eaf019d85fb6c1b0651f6bb0eeb0eef515588468a869fe0d"
+    },
+    {
+      "path": "tinystore/metrics-bench/rust/src/codec/clocks.rs",
+      "bytes": 7139,
+      "sha256": "78fcde6c8becfbc624b431c5bed4b08d2f1026b4e9c0b1ec3205bb75e0c3d605"
+    },
+    {
+      "path": "tinystore/metrics-bench/rust/src/codec/directory.rs",
+      "bytes": 5882,
+      "sha256": "45e48e9a87c9e066f74f2de39db8b013b7e067719c3da2aeff1f02782cc46758"
+    },
+    {
+      "path": "tinystore/metrics-bench/rust/src/codec/envelope.rs",
+      "bytes": 19199,
+      "sha256": "68bff54785a8bfb793fd71c3ac2011428b01b41cc325b9792f4076698e16c41b"
+    },
+    {
+      "path": "tinystore/metrics-bench/rust/src/codec/huffman.rs",
+      "bytes": 4465,
+      "sha256": "9ccb4ead391718893c33bd71a0d829c46f257213505b8d5b46af1c0de688e460"
+    },
+    {
+      "path": "tinystore/metrics-bench/rust/src/codec/residuals.rs",
+      "bytes": 5778,
+      "sha256": "707db96cc90663a961928d7b598520e90e2b35560b3b1989986708fb13662e31"
+    },
+    {
+      "path": "tinystore/metrics-bench/rust/src/codec/sealed.rs",
+      "bytes": 3569,
+      "sha256": "2960bae1df647dc20acd5d2f3c680e062b14b0d170066d93a0ecd2e638edb9f7"
+    },
+    {
+      "path": "tinystore/metrics-bench/rust/src/codec/summaries.rs",
+      "bytes": 4863,
+      "sha256": "672836bb4d908fd5f7afcc17c6f04f6c891f6fd3c422408754796edec80c6ed4"
+    },
+    {
+      "path": "tinystore/metrics-bench/rust/src/codec/tests.rs",
+      "bytes": 18025,
+      "sha256": "86710775add354383def9def59263714fcce88985573b4f5d46b5a8f3644d6ed"
+    },
+    {
+      "path": "tinystore/metrics-bench/rust/src/codec/values.rs",
+      "bytes": 7937,
+      "sha256": "30dc88690a8149a77b826d39d1b86cdd41bfa296babc00c30fe8187b775f105f"
+    },
+    {
+      "path": "tinystore/metrics-bench/rust/src/engine.rs",
+      "bytes": 59383,
+      "sha256": "195dabcbbf4ea5d3771cfd599ec1824c430753e2d6c8226cd677af6bd4e1b638"
+    },
+    {
+      "path": "tinystore/metrics-bench/rust/src/exact.rs",
+      "bytes": 4662,
+      "sha256": "d90c61775e441f2a80f10f1059a92c2b73080bea0fa4dd125987b6e04e6f54f4"
+    },
+    {
+      "path": "tinystore/metrics-bench/rust/src/main.rs",
+      "bytes": 18526,
+      "sha256": "fb969b14e0aefe5d0d0c6e89ac7152eb2a2ef6100a834385a74e07451005dc7e"
+    },
+    {
+      "path": "tinystore/metrics-bench/rust/src/query.rs",
+      "bytes": 54113,
+      "sha256": "3ad13f81a874a40b35e2e5ee9cd933e1030bb6aab06cd17254fa49619e76be7a"
+    },
+    {
+      "path": "tinystore/metrics-bench/rust/src/query/quote.rs",
+      "bytes": 15164,
+      "sha256": "836fe1209510581c2e26d82a6dc7049b7fda7cd5ce44f9f42b06090f36f66401"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/.gitignore",
+      "bytes": 94,
+      "sha256": "f1c8799c49f46ee06faf524e22b5f3223521ac7d32034f6218a0f936f76617bc"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/LICENSE",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/NOTICE",
+      "bytes": 357,
+      "sha256": "b5c6e10b2c4e973ff4067e907513746961ee7f2e303047b483c4cc9bac3a944e"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/README.md",
+      "bytes": 3448,
+      "sha256": "b3ce250bf58ac768d19a39c9188748bee5111976525d263345836032c2cc0024"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/build.py",
+      "bytes": 4900,
+      "sha256": "520ffe5615ae5af8d9be2c51cb99fa34dfedfef754a2465c0d5d5e1279a79b14"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/deep_run.py",
+      "bytes": 11127,
+      "sha256": "78ef419fce28e505ec4f26d7045a2a168f5712f02d47742e0a030674547d2010"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/go/edge.go",
+      "bytes": 1433,
+      "sha256": "07dc5ca3a73b82ea88f749561da05719494dbf27f4d173c536370d0fc66f847e"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/go/go.mod",
+      "bytes": 447,
+      "sha256": "022cfd1854ce0ff051ae179dd12db962d6fd666e68d055845973708439e5c1e5"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/go/go.sum",
+      "bytes": 1042,
+      "sha256": "dcc7556447f800550b4cd026a1053fc43f5a79d69b825bf4d10015774604e684"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/go/main.go",
+      "bytes": 16871,
+      "sha256": "5c70aba2e77e2c66b57ada87049bbd33b8a04b79544df99fe192df05d48f4f2a"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/reference-rust/Cargo.lock",
+      "bytes": 12702,
+      "sha256": "b0b0fe2ea88fb1e371e15fd9490175c8b419b9ca025c3e26b5d6807d85a79b28"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/reference-rust/Cargo.toml",
+      "bytes": 485,
+      "sha256": "57359e430a54b52b50d0710f55c86ec98a3e45f1f875c593544141792e5bdbce"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/reference-rust/build.rs",
+      "bytes": 100,
+      "sha256": "6e4e5c4dff1fa9aff41261013cae863a583e62453fab8a98e19c0675c9d096d2"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/reference-rust/src/codec.rs",
+      "bytes": 8056,
+      "sha256": "38d498364741bdb3cf1a491355b475bf84b83d6d63252a5bf2015979c8b9161e"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/reference-rust/src/codec/binary.rs",
+      "bytes": 5614,
+      "sha256": "aeeb75a3c4f6fb05eaf019d85fb6c1b0651f6bb0eeb0eef515588468a869fe0d"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/reference-rust/src/codec/clocks.rs",
+      "bytes": 7139,
+      "sha256": "78fcde6c8becfbc624b431c5bed4b08d2f1026b4e9c0b1ec3205bb75e0c3d605"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/reference-rust/src/codec/directory.rs",
+      "bytes": 5882,
+      "sha256": "45e48e9a87c9e066f74f2de39db8b013b7e067719c3da2aeff1f02782cc46758"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/reference-rust/src/codec/envelope.rs",
+      "bytes": 19465,
+      "sha256": "87132c52be87e5283266b13475ca7e0708b54358e82cc9f71851cfbac043e710"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/reference-rust/src/codec/huffman.rs",
+      "bytes": 4465,
+      "sha256": "9ccb4ead391718893c33bd71a0d829c46f257213505b8d5b46af1c0de688e460"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/reference-rust/src/codec/residuals.rs",
+      "bytes": 5778,
+      "sha256": "707db96cc90663a961928d7b598520e90e2b35560b3b1989986708fb13662e31"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/reference-rust/src/codec/sealed.rs",
+      "bytes": 4554,
+      "sha256": "108e8d53613f6b6a709c91116332c491da2194cff538224f4fc40479f1fb49d8"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/reference-rust/src/codec/summaries.rs",
+      "bytes": 4863,
+      "sha256": "672836bb4d908fd5f7afcc17c6f04f6c891f6fd3c422408754796edec80c6ed4"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/reference-rust/src/codec/tests.rs",
+      "bytes": 20334,
+      "sha256": "478e6f986c2f53edf96d75e945aeb40d44448d4dc5468e4a1ae8109e951542a0"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/reference-rust/src/codec/values.rs",
+      "bytes": 7937,
+      "sha256": "30dc88690a8149a77b826d39d1b86cdd41bfa296babc00c30fe8187b775f105f"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/reference-rust/src/engine.rs",
+      "bytes": 59383,
+      "sha256": "195dabcbbf4ea5d3771cfd599ec1824c430753e2d6c8226cd677af6bd4e1b638"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/reference-rust/src/exact.rs",
+      "bytes": 14738,
+      "sha256": "de1234874f36704590d34cfc1f0ccbada8c1745134eeae4e4a7707202cda3ec7"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/reference-rust/src/main.rs",
+      "bytes": 19674,
+      "sha256": "9a9a232442e7d64ee27a00743aef8ec67aa21547ce1dc0ebb6cafb42877f4145"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/reference-rust/src/query.rs",
+      "bytes": 66357,
+      "sha256": "601f0900779f6c8f144ae87bef1acfb024ef68fb6c5a94ea28d567f3e3291602"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/reference-rust/src/query/parallel.rs",
+      "bytes": 1670,
+      "sha256": "aa8208c24520c3ba2189bbf6d5776075a61d54e39a65ddf95977bdb5372a93ee"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/reference-rust/src/query/quote.rs",
+      "bytes": 15164,
+      "sha256": "836fe1209510581c2e26d82a6dc7049b7fda7cd5ce44f9f42b06090f36f66401"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/render_deep_report.py",
+      "bytes": 40854,
+      "sha256": "0cba8b5a10b5fe7be5dc417a4e6a0b22189c715186a5babc48b9fbcfefbfe43f"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/run.py",
+      "bytes": 1178,
+      "sha256": "fa95456ce4d3f7e133b8546679f6a973cd901d1eb7831379376c7301392c4c59"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/Cargo.lock",
+      "bytes": 12702,
+      "sha256": "b0b0fe2ea88fb1e371e15fd9490175c8b419b9ca025c3e26b5d6807d85a79b28"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/Cargo.toml",
+      "bytes": 512,
+      "sha256": "3412b96481820e7cc0cc026447af538836737804fa732231a2e2d08ab3452281"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/build.rs",
+      "bytes": 100,
+      "sha256": "6e4e5c4dff1fa9aff41261013cae863a583e62453fab8a98e19c0675c9d096d2"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/codec.rs",
+      "bytes": 12293,
+      "sha256": "71f4981a0a87465984ccb952a97527ebb1ccc21490f365e6df792c229dd853e9"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/codec/binary.rs",
+      "bytes": 6581,
+      "sha256": "8c3471212d32433a642ad0f2814cc05d2ef2ebe7e5c982383ab2f6c87c8b7f77"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/codec/buffer_tests.rs",
+      "bytes": 10487,
+      "sha256": "1bfe9486a456e6a1cad32edd53ebc6eb8d3feeeeb5f4baca3fe0bd29537c68f7"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/codec/clocks.rs",
+      "bytes": 7139,
+      "sha256": "78fcde6c8becfbc624b431c5bed4b08d2f1026b4e9c0b1ec3205bb75e0c3d605"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/codec/directory.rs",
+      "bytes": 5882,
+      "sha256": "45e48e9a87c9e066f74f2de39db8b013b7e067719c3da2aeff1f02782cc46758"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/codec/envelope.rs",
+      "bytes": 23253,
+      "sha256": "70a0d2ab10d9aecf904b927f857d76b06e6ad6627e5e72208e855d869316da34"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/codec/huffman.rs",
+      "bytes": 15242,
+      "sha256": "f126979a8e29e89f6c3a9e9937e4fde4cfc9c8c63444a3e4bf8e90a42421be07"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/codec/residuals.rs",
+      "bytes": 15432,
+      "sha256": "c1f0a58a6f274ea841b572a4f06a969a645abcb040544497e8d4f3fc4e5bf8b9"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/codec/sealed.rs",
+      "bytes": 6765,
+      "sha256": "b7796a2783700ff2fd71bda9ad5c7fa950e885f49c51d5a52fa1b50910703b94"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/codec/summaries.rs",
+      "bytes": 4863,
+      "sha256": "672836bb4d908fd5f7afcc17c6f04f6c891f6fd3c422408754796edec80c6ed4"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/codec/tests.rs",
+      "bytes": 20334,
+      "sha256": "478e6f986c2f53edf96d75e945aeb40d44448d4dc5468e4a1ae8109e951542a0"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/codec/values.rs",
+      "bytes": 10285,
+      "sha256": "280f4804974fe3b38213fc6298ec27f5b3ee316c18ebc2399ee9e4455721adac"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/engine.rs",
+      "bytes": 59383,
+      "sha256": "195dabcbbf4ea5d3771cfd599ec1824c430753e2d6c8226cd677af6bd4e1b638"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/exact.rs",
+      "bytes": 14738,
+      "sha256": "de1234874f36704590d34cfc1f0ccbada8c1745134eeae4e4a7707202cda3ec7"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/main.rs",
+      "bytes": 20913,
+      "sha256": "2fffb7e54b4168bc26064cc8f2cc836b3771dc7f849794de075e07408db74d31"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/profile.rs",
+      "bytes": 5303,
+      "sha256": "bcd3034bab95e2fe61c91bb61d5495121e5980ea10d92826a25ccf199f2572e4"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/query.rs",
+      "bytes": 69343,
+      "sha256": "25030b980a4bf329eb5e17e8d0ebb73ee63eba5fb3a72c74a8b7fb8494ecb4ce"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/query/optimization_tests.rs",
+      "bytes": 11190,
+      "sha256": "813bc9588dfa8d841fd9e19264b08e0a9fbf60e69d764d775f03bb3437815512"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/query/parallel.rs",
+      "bytes": 1670,
+      "sha256": "aa8208c24520c3ba2189bbf6d5776075a61d54e39a65ddf95977bdb5372a93ee"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/query/quote.rs",
+      "bytes": 15164,
+      "sha256": "836fe1209510581c2e26d82a6dc7049b7fda7cd5ce44f9f42b06090f36f66401"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/query/specialized.rs",
+      "bytes": 10047,
+      "sha256": "bba8edf50a5c595ec78b496653a01291387102feffece731ca7935f6264bf4e0"
+    },
+    {
+      "path": "tinystore/metrics-max-bench/rust/src/tuning.rs",
+      "bytes": 523,
+      "sha256": "7879b42215b4e2effe6eb9737242e376934fc9ce88aea42d10ef1678c3a8b162"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/.gitignore",
+      "bytes": 65,
+      "sha256": "788a67860205e953f949e3e240c70193f49a41078200a84a59733bc8885ebaf3"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/LICENSE",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/NOTICE",
+      "bytes": 357,
+      "sha256": "b5c6e10b2c4e973ff4067e907513746961ee7f2e303047b483c4cc9bac3a944e"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/README.md",
+      "bytes": 4590,
+      "sha256": "eee02598dbd9e73bd893cc6d272168d50d5c5df54cd8f2b461e02f10f4ff4ad4"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/go/edge.go",
+      "bytes": 1433,
+      "sha256": "07dc5ca3a73b82ea88f749561da05719494dbf27f4d173c536370d0fc66f847e"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/go/go.mod",
+      "bytes": 447,
+      "sha256": "022cfd1854ce0ff051ae179dd12db962d6fd666e68d055845973708439e5c1e5"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/go/go.sum",
+      "bytes": 1042,
+      "sha256": "dcc7556447f800550b4cd026a1053fc43f5a79d69b825bf4d10015774604e684"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/go/main.go",
+      "bytes": 16871,
+      "sha256": "5c70aba2e77e2c66b57ada87049bbd33b8a04b79544df99fe192df05d48f4f2a"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/opt_run.py",
+      "bytes": 9925,
+      "sha256": "6751ca28cfbb8e4758c5c66b29885635bf80481a1599844595ac9343410157c4"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/render_opt_report.py",
+      "bytes": 11901,
+      "sha256": "80b8df35fbdc85dff573786f94b5c97b0260e706e64f8d533ef90a4a01a2e893"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/run.py",
+      "bytes": 1178,
+      "sha256": "fa95456ce4d3f7e133b8546679f6a973cd901d1eb7831379376c7301392c4c59"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust-baseline-src/Cargo.lock",
+      "bytes": 11315,
+      "sha256": "e61da03b84d442819e1a439074a07a186e62e2f04c52d875ba0f0471b8f77457"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust-baseline-src/Cargo.toml",
+      "bytes": 467,
+      "sha256": "de0c36b33dd64a781671a79a7ef408768c160d82178f4de704f5b5b66aba1507"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust-baseline-src/build.rs",
+      "bytes": 100,
+      "sha256": "6e4e5c4dff1fa9aff41261013cae863a583e62453fab8a98e19c0675c9d096d2"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust-baseline-src/src/codec.rs",
+      "bytes": 7636,
+      "sha256": "c2abc1bcc0a2285a3728542b5999fe356182776b9655b0f09a9f428992a8f746"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust-baseline-src/src/codec/binary.rs",
+      "bytes": 5614,
+      "sha256": "aeeb75a3c4f6fb05eaf019d85fb6c1b0651f6bb0eeb0eef515588468a869fe0d"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust-baseline-src/src/codec/clocks.rs",
+      "bytes": 7139,
+      "sha256": "78fcde6c8becfbc624b431c5bed4b08d2f1026b4e9c0b1ec3205bb75e0c3d605"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust-baseline-src/src/codec/directory.rs",
+      "bytes": 5882,
+      "sha256": "45e48e9a87c9e066f74f2de39db8b013b7e067719c3da2aeff1f02782cc46758"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust-baseline-src/src/codec/envelope.rs",
+      "bytes": 19199,
+      "sha256": "68bff54785a8bfb793fd71c3ac2011428b01b41cc325b9792f4076698e16c41b"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust-baseline-src/src/codec/huffman.rs",
+      "bytes": 4465,
+      "sha256": "9ccb4ead391718893c33bd71a0d829c46f257213505b8d5b46af1c0de688e460"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust-baseline-src/src/codec/residuals.rs",
+      "bytes": 5778,
+      "sha256": "707db96cc90663a961928d7b598520e90e2b35560b3b1989986708fb13662e31"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust-baseline-src/src/codec/sealed.rs",
+      "bytes": 3569,
+      "sha256": "2960bae1df647dc20acd5d2f3c680e062b14b0d170066d93a0ecd2e638edb9f7"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust-baseline-src/src/codec/summaries.rs",
+      "bytes": 4863,
+      "sha256": "672836bb4d908fd5f7afcc17c6f04f6c891f6fd3c422408754796edec80c6ed4"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust-baseline-src/src/codec/tests.rs",
+      "bytes": 18025,
+      "sha256": "86710775add354383def9def59263714fcce88985573b4f5d46b5a8f3644d6ed"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust-baseline-src/src/codec/values.rs",
+      "bytes": 7937,
+      "sha256": "30dc88690a8149a77b826d39d1b86cdd41bfa296babc00c30fe8187b775f105f"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust-baseline-src/src/engine.rs",
+      "bytes": 59383,
+      "sha256": "195dabcbbf4ea5d3771cfd599ec1824c430753e2d6c8226cd677af6bd4e1b638"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust-baseline-src/src/exact.rs",
+      "bytes": 4662,
+      "sha256": "d90c61775e441f2a80f10f1059a92c2b73080bea0fa4dd125987b6e04e6f54f4"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust-baseline-src/src/main.rs",
+      "bytes": 19488,
+      "sha256": "9442b835b9261b57ee596de1ae8ebcd30765380be77a70d7d7826a3d67732487"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust-baseline-src/src/query.rs",
+      "bytes": 54113,
+      "sha256": "3ad13f81a874a40b35e2e5ee9cd933e1030bb6aab06cd17254fa49619e76be7a"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust-baseline-src/src/query/quote.rs",
+      "bytes": 15164,
+      "sha256": "836fe1209510581c2e26d82a6dc7049b7fda7cd5ce44f9f42b06090f36f66401"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust/Cargo.lock",
+      "bytes": 12702,
+      "sha256": "b0b0fe2ea88fb1e371e15fd9490175c8b419b9ca025c3e26b5d6807d85a79b28"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust/Cargo.toml",
+      "bytes": 485,
+      "sha256": "57359e430a54b52b50d0710f55c86ec98a3e45f1f875c593544141792e5bdbce"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust/build.rs",
+      "bytes": 100,
+      "sha256": "6e4e5c4dff1fa9aff41261013cae863a583e62453fab8a98e19c0675c9d096d2"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust/src/codec.rs",
+      "bytes": 8056,
+      "sha256": "38d498364741bdb3cf1a491355b475bf84b83d6d63252a5bf2015979c8b9161e"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust/src/codec/binary.rs",
+      "bytes": 5614,
+      "sha256": "aeeb75a3c4f6fb05eaf019d85fb6c1b0651f6bb0eeb0eef515588468a869fe0d"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust/src/codec/clocks.rs",
+      "bytes": 7139,
+      "sha256": "78fcde6c8becfbc624b431c5bed4b08d2f1026b4e9c0b1ec3205bb75e0c3d605"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust/src/codec/directory.rs",
+      "bytes": 5882,
+      "sha256": "45e48e9a87c9e066f74f2de39db8b013b7e067719c3da2aeff1f02782cc46758"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust/src/codec/envelope.rs",
+      "bytes": 19465,
+      "sha256": "87132c52be87e5283266b13475ca7e0708b54358e82cc9f71851cfbac043e710"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust/src/codec/huffman.rs",
+      "bytes": 4465,
+      "sha256": "9ccb4ead391718893c33bd71a0d829c46f257213505b8d5b46af1c0de688e460"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust/src/codec/residuals.rs",
+      "bytes": 5778,
+      "sha256": "707db96cc90663a961928d7b598520e90e2b35560b3b1989986708fb13662e31"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust/src/codec/sealed.rs",
+      "bytes": 4554,
+      "sha256": "108e8d53613f6b6a709c91116332c491da2194cff538224f4fc40479f1fb49d8"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust/src/codec/summaries.rs",
+      "bytes": 4863,
+      "sha256": "672836bb4d908fd5f7afcc17c6f04f6c891f6fd3c422408754796edec80c6ed4"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust/src/codec/tests.rs",
+      "bytes": 20334,
+      "sha256": "478e6f986c2f53edf96d75e945aeb40d44448d4dc5468e4a1ae8109e951542a0"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust/src/codec/values.rs",
+      "bytes": 7937,
+      "sha256": "30dc88690a8149a77b826d39d1b86cdd41bfa296babc00c30fe8187b775f105f"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust/src/engine.rs",
+      "bytes": 59383,
+      "sha256": "195dabcbbf4ea5d3771cfd599ec1824c430753e2d6c8226cd677af6bd4e1b638"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust/src/exact.rs",
+      "bytes": 14738,
+      "sha256": "de1234874f36704590d34cfc1f0ccbada8c1745134eeae4e4a7707202cda3ec7"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust/src/main.rs",
+      "bytes": 19674,
+      "sha256": "9a9a232442e7d64ee27a00743aef8ec67aa21547ce1dc0ebb6cafb42877f4145"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust/src/query.rs",
+      "bytes": 66357,
+      "sha256": "601f0900779f6c8f144ae87bef1acfb024ef68fb6c5a94ea28d567f3e3291602"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust/src/query/parallel.rs",
+      "bytes": 1670,
+      "sha256": "aa8208c24520c3ba2189bbf6d5776075a61d54e39a65ddf95977bdb5372a93ee"
+    },
+    {
+      "path": "tinystore/metrics-opt-bench/rust/src/query/quote.rs",
+      "bytes": 15164,
+      "sha256": "836fe1209510581c2e26d82a6dc7049b7fda7cd5ce44f9f42b06090f36f66401"
+    },
+    {
+      "path": "tinystore/open-questions.md",
+      "bytes": 29044,
+      "sha256": "3009421ac5b98857aadbac2bfb7549ad06a18ec0b08e068d9aff37ebf1675029"
+    },
+    {
+      "path": "tinystore/reports/README.md",
+      "bytes": 24689,
+      "sha256": "4e1d87dab9205720364b89425b3dc56bd7445c58b250548a1aca0422e3794a80"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/ablations.csv",
+      "bytes": 3459,
+      "sha256": "86e26113ab23f35ff380fc37d5bc8dd483ac5a7ed0a4c9b707e13aa149f984ec"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/compiler-ratios.csv",
+      "bytes": 3956,
+      "sha256": "1511d93c3273246e8f69002a9536bb57fa04869f03fdf250430ee3548f2694ee"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/deep-optimizations.png",
+      "bytes": 207759,
+      "sha256": "173c3c058f8a0d7e30b89e2647ac12ccd74e759ff40d291f586bf037f1fe380e"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/deep-optimizations.svg",
+      "bytes": 172849,
+      "sha256": "c996e34bd7e225a296683a85038ffa8b7c52bea48367b978d3b611532ee7480e"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/environment.json",
+      "bytes": 18276,
+      "sha256": "cb0009fa827352b793f387109a2db102e1b1ee576d054a31143f975efbe33d02"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/guards.json",
+      "bytes": 3674,
+      "sha256": "6b6cf9687d24337b7f1da0f9ccea12a58d0c6c5ed91fa4644559a727694e3371"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/inspect.json",
+      "bytes": 21735,
+      "sha256": "5a1b8f0881199c56e49ea47cbbbfe48f70defcaeea551f1769740421f95294b4"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/kernels.csv",
+      "bytes": 9104,
+      "sha256": "bb122610cd68852eff5923320d72948b1ad667f9d8c9acbfe83a883c6ba40b2c"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/kernels.jsonl",
+      "bytes": 17844,
+      "sha256": "cc726ec4a014bfc8262c4f567749d3f8c966d91ad4871e792986554bae6d36e2"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/linkage.txt",
+      "bytes": 8343,
+      "sha256": "063769da31858bee99d9751215459a2930539551464b92ea073a88595cba9636"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/medians.csv",
+      "bytes": 7960,
+      "sha256": "25ee405b053bc0e77376c0274a55a0c68c294b8737378a8e1cded10c3645c3fe"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/memory.csv",
+      "bytes": 5236,
+      "sha256": "16544daba07d91180b5d2c9502cffb008b3c46c4916cf1c9be73a42ef2ee4edd"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/memory.jsonl",
+      "bytes": 19534,
+      "sha256": "1ecf20c2dba2dfef9c585ed82c43078da4fb18e573d2b7ee53c4b469d276450a"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/native-build.json",
+      "bytes": 1500,
+      "sha256": "5024e7b8bb57439cf9696011c65c8a67bbb34d8f88dcb0c7b4af53a5c8716f1a"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/passes.md",
+      "bytes": 50109,
+      "sha256": "3841d14bc01832dc3fb24712e86c2a84435279c2d8604a4b5b30e468ddf8b045"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/pilot.json",
+      "bytes": 6071,
+      "sha256": "49fda8b972438dfe5a8a25aeda8b193a71d77a5aaccb8e54094e5986cfe6a51f"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/plans.json",
+      "bytes": 4557,
+      "sha256": "aa4a60432012e8859cd5ba8b40b194fe50d5c41b6144c5e2ff15f35f97e4d7f0"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/profiles.csv",
+      "bytes": 56235,
+      "sha256": "6af41c8d5302773cd2d091e53888dcb667a2acd80f07cd3d23bc5d35f1ddd3f6"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/profiles.jsonl",
+      "bytes": 124220,
+      "sha256": "3ff11064b1a1e825a9e1095ae44a241f4e425312f631ff4bf69b10b4f57b82a8"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/publication-checks.json",
+      "bytes": 11840,
+      "sha256": "4e36b8694e5b4204f031955e393af5b3d10781c0cea460464fba08c6779508cd"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/summary.json",
+      "bytes": 92204,
+      "sha256": "0bd0a2eee4f94ace13445daa324dc8adf46f4a5e9f8438128199f2a88e0965ed"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/timings.csv",
+      "bytes": 200773,
+      "sha256": "9f2ae5350cef413c55fb60d958a11756d28f975c41e6af60a4b0b3ce8c31c44e"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/timings.jsonl",
+      "bytes": 483591,
+      "sha256": "d60dcc09de097978f5f9581ed7c8cc9f1c6be99bb2954e301096de14ffd96b83"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/verification.json",
+      "bytes": 15583,
+      "sha256": "903aec55009e2e76f8bcde0d5aacd3e8f6584b2f079540a40d20174e3d5e9742"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-deep-2026-10-08/verified-hashes.json",
+      "bytes": 5787,
+      "sha256": "1022677e5909db31221d12c887bdc316a692cacd2910eb16e2f9373bd518795f"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-native-2026-10-08/artifact-sha256.json",
+      "bytes": 5127,
+      "sha256": "1de220b53022fd66ac821ed5c138b0c47c25e2c947197a89129d90bdae6d9347"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-native-2026-10-08/checks.json",
+      "bytes": 438,
+      "sha256": "35a52bdd3d715fa6665637ef44c286ffa7936726dd9b9e7b2e6f99db2bb109ef"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-native-2026-10-08/environment.json",
+      "bytes": 9777,
+      "sha256": "1d637794c99de1a600dc94873b38a6310075cc873c038bf9bbe01d5d5fe54a0d"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-native-2026-10-08/guards.json",
+      "bytes": 256,
+      "sha256": "e0b0d7815f7e1b4c477034173c6828a17cdb89246f345103790026288ac22023"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-native-2026-10-08/inspect.json",
+      "bytes": 27637,
+      "sha256": "33a31a89436ca3daf7d8e46c4908cc5cf40fd7a7957dfb7a92d5d97dc4a64610"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-native-2026-10-08/memory.jsonl",
+      "bytes": 7298,
+      "sha256": "70ba95744529bb344f35377e18d500425b02fa66fa6079c0437b999d8e4f4c3a"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-native-2026-10-08/native-build.json",
+      "bytes": 1500,
+      "sha256": "5024e7b8bb57439cf9696011c65c8a67bbb34d8f88dcb0c7b4af53a5c8716f1a"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-native-2026-10-08/native-linkage.txt",
+      "bytes": 1688,
+      "sha256": "15eff517119c35b72beacf87843ab70dca7f8e04e8462584df4231357736f098"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-native-2026-10-08/pilot.json",
+      "bytes": 4288,
+      "sha256": "efacee1bf85ed5ab9443a09587fcff613f6cc338fe145304a888122cdc957b6c"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-native-2026-10-08/plans.json",
+      "bytes": 3565,
+      "sha256": "adc9f57c339d13fae9c64aa9b226a3f6e3aab377e11cfe75b73e97db4d321c9f"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-native-2026-10-08/speedup.png",
+      "bytes": 173591,
+      "sha256": "8fee6600d3868aba77735c328f6c89c23742436d19d895d2487d0d8fc7524f9a"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-native-2026-10-08/speedup.svg",
+      "bytes": 116924,
+      "sha256": "54bee6a172e40c3f0861e1660d02da3b8e601fc4f6b8f528711b6dc5585eaa43"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-native-2026-10-08/summary.json",
+      "bytes": 18568,
+      "sha256": "f06786397890db2cab8137e127022c6237a4f6e2c76c05a7266240d34cba8c76"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-native-2026-10-08/timings.jsonl",
+      "bytes": 192518,
+      "sha256": "006d9c5919337d8682cb30787b24c1c363d5c77963e579e2d5d2f2a571f4939f"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-native-2026-10-08/verification.json",
+      "bytes": 60151,
+      "sha256": "1d3e78316cabe83bc45067919b09b26148a3fda5fa07b7d984dbe4c360d5aedf"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-optimization-2026-10-08/artifact-sha256.json",
+      "bytes": 7841,
+      "sha256": "87effbd6351dad9f861f30ac3eddbb8ac99e26206e7372c77077551d39fb690f"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-optimization-2026-10-08/environment.json",
+      "bytes": 13005,
+      "sha256": "6392bbb926ab5ddff77811148d723df59247299d8783934c0bca745daa48fcd8"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-optimization-2026-10-08/guards.json",
+      "bytes": 2556,
+      "sha256": "277ca75c9fad6bb6eeea0b3d81981b319aa18f438a91928d568ca25d99db6492"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-optimization-2026-10-08/inspect.json",
+      "bytes": 11068,
+      "sha256": "783ce9f62624f3d808b12167686da978549d4033f741c29de55337d4de965a56"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-optimization-2026-10-08/memory.jsonl",
+      "bytes": 16222,
+      "sha256": "fd97767e19a10789b415cf9317a03e445c3bf9428e11187a4bd946a0eec20909"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-optimization-2026-10-08/native-build.json",
+      "bytes": 1500,
+      "sha256": "5024e7b8bb57439cf9696011c65c8a67bbb34d8f88dcb0c7b4af53a5c8716f1a"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-optimization-2026-10-08/native-linkage.txt",
+      "bytes": 1688,
+      "sha256": "db3a563bf4b53ad6380c2346b8d14975c10f203fe372de078e6ef9588efab139"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-optimization-2026-10-08/optimization.png",
+      "bytes": 130248,
+      "sha256": "fd37e6b70419c8637e96332ff5db0cc6a16a6fb682c73b1ade5a24775d8f3609"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-optimization-2026-10-08/optimization.svg",
+      "bytes": 66586,
+      "sha256": "cb733fa60a9b776aba4e2ba1ce9bc2f2ec1340a59e55e5946a1f02a493ba8c6b"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-optimization-2026-10-08/pilot.json",
+      "bytes": 5636,
+      "sha256": "22b758451e9d5c57e9f08ae08a13fbd44f039808b01cc4d5b4a35e661bc4843a"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-optimization-2026-10-08/plans.json",
+      "bytes": 4557,
+      "sha256": "aa4a60432012e8859cd5ba8b40b194fe50d5c41b6144c5e2ff15f35f97e4d7f0"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-optimization-2026-10-08/summary.json",
+      "bytes": 55231,
+      "sha256": "0346b245639411c864744ec0af209087712860d2426830d774c1e041a36234ef"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-optimization-2026-10-08/threshold-pilot.json",
+      "bytes": 11593,
+      "sha256": "314dde34ba2439a0d5e7ec8c9a0313f8588a9e02743a27d378d8210f72eb4928"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-optimization-2026-10-08/timings.jsonl",
+      "bytes": 263218,
+      "sha256": "9a772c6b9bce01b0df0109923cb0d37af631548672a77041737ab0267b341275"
+    },
+    {
+      "path": "tinystore/reports/data/metrics-optimization-2026-10-08/verification.json",
+      "bytes": 15583,
+      "sha256": "f55947cca78c513679b0b847b0c4d582a718c7d97807afd13039e53f6b933f1e"
+    },
+    {
+      "path": "tinystore/reports/data/publication-provenance.json",
+      "bytes": 25913,
+      "sha256": "1d3fe6f4b141e0b706b8fdf79497b95f23537cd575405e9afda4b0ac445d69db"
+    },
+    {
+      "path": "tinystore/reports/data/rust-artifacts-sha256.json",
+      "bytes": 3802,
+      "sha256": "b1e8d8cb527a222261ed4d31c4f35ea47935dfbc06dc10e4881796631de6bccb"
+    },
+    {
+      "path": "tinystore/reports/data/rust-kernels-2026-10-07/allocations.jsonl",
+      "bytes": 20580,
+      "sha256": "9d6cc222b03f3e234b2de795b0f69a67b8c5b6abf05b04e91d72115ceefedc64"
+    },
+    {
+      "path": "tinystore/reports/data/rust-kernels-2026-10-07/environment.json",
+      "bytes": 5738,
+      "sha256": "f68a2cba337328c48070b50dc44e6f271b1e89d4b71a048a8d2673350f1de332"
+    },
+    {
+      "path": "tinystore/reports/data/rust-kernels-2026-10-07/memory.jsonl",
+      "bytes": 7629,
+      "sha256": "d472c8cf1c994be1247ec1bb345ff30e733501b4c4f6b657200d0fd2d1b9f62f"
+    },
+    {
+      "path": "tinystore/reports/data/rust-kernels-2026-10-07/summary.json",
+      "bytes": 27446,
+      "sha256": "dc6e65e50ad60f8dd59cbc1c7f2f174967ce48c89adb57326d2f2ef6aade752b"
+    },
+    {
+      "path": "tinystore/reports/data/rust-kernels-2026-10-07/timings.jsonl",
+      "bytes": 118898,
+      "sha256": "c89fd6a59b94f8b4c019886c781078b35245dad771a6ee795d57c485245de5ae"
+    },
+    {
+      "path": "tinystore/reports/data/rust-kernels-2026-10-07/verification.json",
+      "bytes": 13744,
+      "sha256": "aa1a37bc7d007d9a4cf1dded1c9dd03f20a3141014b845f8c3de22f42d11878b"
+    },
+    {
+      "path": "tinystore/reports/data/sqlite-native-2026-10-07/artifact-sha256.json",
+      "bytes": 2998,
+      "sha256": "f5ecc5339c0aa2090af42297d2e781293797b67fdf36858d2ca142b43a6416f7"
+    },
+    {
+      "path": "tinystore/reports/data/sqlite-native-2026-10-07/environment.json",
+      "bytes": 6991,
+      "sha256": "deb8901d0e4fd8cb24928b5b43d930fbaf460ab7faadc793ef49bcb2ef7ec45d"
+    },
+    {
+      "path": "tinystore/reports/data/sqlite-native-2026-10-07/inspect.json",
+      "bytes": 19109,
+      "sha256": "902caafe07740bfcf3a1d5442b9e03ca629fb9f45a1be20a5f4b38c58fde5a13"
+    },
+    {
+      "path": "tinystore/reports/data/sqlite-native-2026-10-07/native-build.json",
+      "bytes": 1500,
+      "sha256": "5024e7b8bb57439cf9696011c65c8a67bbb34d8f88dcb0c7b4af53a5c8716f1a"
+    },
+    {
+      "path": "tinystore/reports/data/sqlite-native-2026-10-07/rust-linkage.txt",
+      "bytes": 1685,
+      "sha256": "c55383188cce17cd0c6c25188f4d68e59ffa5e2c3a24b284d5d0d2b711d0519e"
+    },
+    {
+      "path": "tinystore/reports/data/sqlite-native-2026-10-07/summary.json",
+      "bytes": 8288,
+      "sha256": "0f55c517dd0a6425c60c55ccf3091aa4fc8dfc3a9db151ff7dee79a0bd02b6e5"
+    },
+    {
+      "path": "tinystore/reports/data/sqlite-native-2026-10-07/timings.jsonl",
+      "bytes": 20372,
+      "sha256": "5dcb77e03a270ee7a53fb7a106f265daae5a04a064ee267ecb0694922ca4495b"
+    },
+    {
+      "path": "tinystore/reports/data/sqlite-native-2026-10-07/verification.json",
+      "bytes": 2273,
+      "sha256": "ea7f386bb19d2ab7111dc0217d42c83a80542aee1cebb01794c175e9f05f0712"
+    },
+    {
+      "path": "tinystore/reports/data/sqlite-native-2026-10-07/write-followup-environment.json",
+      "bytes": 1525,
+      "sha256": "aed54e8d851ad39f83fc7d539b23f2ae84f0f9b02ebf3ece558de4b56cbbd98c"
+    },
+    {
+      "path": "tinystore/reports/data/sqlite-native-2026-10-07/write-followup-summary.json",
+      "bytes": 1778,
+      "sha256": "8e32fc227ea226ba3dee71054752e30ae7ad0068717ad025b602521060ccb354"
+    },
+    {
+      "path": "tinystore/reports/data/sqlite-native-2026-10-07/write-followup.jsonl",
+      "bytes": 6735,
+      "sha256": "6c35d0088580b159d05baa04e6c0a12a2895b4f23160138129b7257470806ad0"
+    },
+    {
+      "path": "tinystore/reports/metrics-deep-2026-10-08.md",
+      "bytes": 32893,
+      "sha256": "a934eee9e940090f2def59e79191b279ff54cebb0f7a67ce7cfac72ac4676f6a"
+    },
+    {
+      "path": "tinystore/reports/metrics-native-2026-10-08.md",
+      "bytes": 16762,
+      "sha256": "40f52074fa88a01e8c8f213ff20495562b8e1d90992db8241d1ac9e83955ec82"
+    },
+    {
+      "path": "tinystore/reports/metrics-optimization-2026-10-08.md",
+      "bytes": 12643,
+      "sha256": "9dda1c2ef6578fe670c34295f03d36db4335be9307352b3ff5ed4749443a896d"
+    },
+    {
+      "path": "tinystore/reports/rust-kernels-2026-10-07.md",
+      "bytes": 15415,
+      "sha256": "8a3dfe032aa083e304989e618314b8176eadd6cc116074d369d39a8f4426371b"
+    },
+    {
+      "path": "tinystore/reports/rust-research-summary-2026-10-08.md",
+      "bytes": 21347,
+      "sha256": "db428c4735c947c3bf254266bc6a5894b0d0ae0b5325f3864dd6a40cebb94ad7"
+    },
+    {
+      "path": "tinystore/reports/sqlite-native-2026-10-07.md",
+      "bytes": 11307,
+      "sha256": "56e4ba94d20bd1868bac90e5ecf6e5b2b5ef23b9e11c1429c3bfdd500e582709"
+    },
+    {
+      "path": "tinystore/rust-spike/.gitignore",
+      "bytes": 46,
+      "sha256": "ea107b8e532626531d2a96ac30cc894f098fec5885cb25508e432814a6ac24ab"
+    },
+    {
+      "path": "tinystore/rust-spike/README.md",
+      "bytes": 2758,
+      "sha256": "6199de211daabf30e83c19669085d9e73520d2af1be4fd153b63b13d8a7dc501"
+    },
+    {
+      "path": "tinystore/rust-spike/complete.py",
+      "bytes": 3738,
+      "sha256": "bcdc45b74d683b469af732d38153c2f56e3181fb8cf7fcfd14a30d1ca57e11cc"
+    },
+    {
+      "path": "tinystore/rust-spike/go/go.mod",
+      "bytes": 79,
+      "sha256": "04acaad488ceebc6721047e42f7a97e128bb2a0a3adbe18680cf4db45ba86d7c"
+    },
+    {
+      "path": "tinystore/rust-spike/go/ingest.go",
+      "bytes": 2755,
+      "sha256": "23d917715af90f0739634afefeb9a3d7bc5a4784a503b59ab80140d22b879c57"
+    },
+    {
+      "path": "tinystore/rust-spike/go/ingest_test.go",
+      "bytes": 1279,
+      "sha256": "64036ec771dc7accedbb8123171c2e8fd6a96d5dffadd0a29778c1d107fb90fc"
+    },
+    {
+      "path": "tinystore/rust-spike/go/main.go",
+      "bytes": 5490,
+      "sha256": "0d1a3f297adfd712963d685097f78ea92d0b06054e016bfc91cfa728d719358c"
+    },
+    {
+      "path": "tinystore/rust-spike/go/metrics.go",
+      "bytes": 13121,
+      "sha256": "139290bf70d5d02fc30d32d7635ee2534bdf9bdad83de7f9b07d360ad9872db2"
+    },
+    {
+      "path": "tinystore/rust-spike/go/metrics_test.go",
+      "bytes": 3429,
+      "sha256": "b6bd9f5a79f3b6b7b20574a865786e589f35eb29618e83956362a416e4f4ce49"
+    },
+    {
+      "path": "tinystore/rust-spike/go/records.go",
+      "bytes": 9532,
+      "sha256": "5191760a93ddc5178097954e2f8d100178610a6efe61e7dc38b32223f7cf5898"
+    },
+    {
+      "path": "tinystore/rust-spike/go/records_test.go",
+      "bytes": 3988,
+      "sha256": "fb043842c0c4cd5b4f250724d88876509427eabd51562c706e92c37e3d41c77e"
+    },
+    {
+      "path": "tinystore/rust-spike/render_report.py",
+      "bytes": 13017,
+      "sha256": "6b7a3f0015ef801a3bb782366d2de59832e75332d696a77c3b15c4bda742b07a"
+    },
+    {
+      "path": "tinystore/rust-spike/run.py",
+      "bytes": 8015,
+      "sha256": "ee287672612e58cbca3e212ef4de1887ef12b2a6e964960aca3c4c493955f999"
+    },
+    {
+      "path": "tinystore/rust-spike/rust/Cargo.lock",
+      "bytes": 164,
+      "sha256": "909de2f47c29cfd8e1c36da95cae51534095418a6f5ba0ef4e6bf1433e24b9bc"
+    },
+    {
+      "path": "tinystore/rust-spike/rust/Cargo.toml",
+      "bytes": 128,
+      "sha256": "3cf5987f35226d3e87179fb4d3bb9163923be0e2d461501e4660011187909627"
+    },
+    {
+      "path": "tinystore/rust-spike/rust/src/ingest.rs",
+      "bytes": 4359,
+      "sha256": "cf07101d623daa000b8157a57041094c30c3870aef3e228dbece29bc042c4f2c"
+    },
+    {
+      "path": "tinystore/rust-spike/rust/src/main.rs",
+      "bytes": 8309,
+      "sha256": "aaeef2ddd4470322a1641d915cd04e2794c93c63f977a78947bd7b0a639411ea"
+    },
+    {
+      "path": "tinystore/rust-spike/rust/src/metrics.rs",
+      "bytes": 17202,
+      "sha256": "4fc056ef930e44540f39ce1fbcef8e88b6118d5a26302af1140e1c4d7160a35d"
+    },
+    {
+      "path": "tinystore/rust-spike/rust/src/records.rs",
+      "bytes": 16144,
+      "sha256": "a90a92f85cb1d75804678f5987cf9e61e0e67393b726d8697d655578b059d403"
+    },
+    {
+      "path": "tinystore/server-spike/go.mod",
+      "bytes": 536,
+      "sha256": "c57f8c39c6a369766806436af4e6db27fe99896eee539c1d6d64df3f7e75fa0c"
+    },
+    {
+      "path": "tinystore/server-spike/go.sum",
+      "bytes": 1042,
+      "sha256": "dcc7556447f800550b4cd026a1053fc43f5a79d69b825bf4d10015774604e684"
+    },
+    {
+      "path": "tinystore/spike/go.mod",
+      "bytes": 829,
+      "sha256": "0c468771ce6908edec1c8a23c2acce82d4d30d18f35302caf49535d10867b28a"
+    },
+    {
+      "path": "tinystore/spike/go.sum",
+      "bytes": 5024,
+      "sha256": "5456416814c1da14159da8f6194205b310640a741b944325b19b8177756c008e"
+    },
+    {
+      "path": "tinystore/sqlite-bench/.gitignore",
+      "bytes": 55,
+      "sha256": "5de9f7ae21e070d9c06a9976e4d90a27fb7cfab9b6741bef61f5dd512b4589f4"
+    },
+    {
+      "path": "tinystore/sqlite-bench/README.md",
+      "bytes": 2678,
+      "sha256": "f083b9ade4ec92db4a6e366010269be45272be035cb4a7ffe88b269ba20d1cfb"
+    },
+    {
+      "path": "tinystore/sqlite-bench/build_native.py",
+      "bytes": 3987,
+      "sha256": "e958afb9d59d9a31d90128c968747d9338db4028516de50831f880523b71b829"
+    },
+    {
+      "path": "tinystore/sqlite-bench/go/go.mod",
+      "bytes": 388,
+      "sha256": "8d9f0faa4d45db96e09583416d02f5d4059415375c9a1d25c461e176b414f87a"
+    },
+    {
+      "path": "tinystore/sqlite-bench/go/go.sum",
+      "bytes": 863,
+      "sha256": "1c56a6c76cc5865731da3d5ae0aa6efc9ce69a7c2998fa1e55b7c73c88ec0df6"
+    },
+    {
+      "path": "tinystore/sqlite-bench/go/main.go",
+      "bytes": 4611,
+      "sha256": "619fc3c35b5608be9fbfc21ee7b126d766a7cc4edbe721ff6a7e9232ecdec614"
+    },
+    {
+      "path": "tinystore/sqlite-bench/go/raw.go",
+      "bytes": 4730,
+      "sha256": "d264bc1afeaf0ffd32b7889689e8e7e08d59308686af205e6aa30abbd083575b"
+    },
+    {
+      "path": "tinystore/sqlite-bench/go/tiny.go",
+      "bytes": 5131,
+      "sha256": "dbea7d91ffc152acc569b8afa0e6467489693e54b0dcc2fd4eeb1ce21cafb4cb"
+    },
+    {
+      "path": "tinystore/sqlite-bench/render_report.py",
+      "bytes": 12276,
+      "sha256": "08f65916a6822afb636722a93452c46901044416ddca05f85c19a76a587b3d9e"
+    },
+    {
+      "path": "tinystore/sqlite-bench/run.py",
+      "bytes": 8050,
+      "sha256": "6061096db3fd609c437b35371df869392269fd59dbf72343368e696e01bbeaef"
+    },
+    {
+      "path": "tinystore/sqlite-bench/rust/.gitignore",
+      "bytes": 9,
+      "sha256": "306fd52e74fca6746e12acc750f232de15e71da917756a1270d74c91f5eb7368"
+    },
+    {
+      "path": "tinystore/sqlite-bench/rust/Cargo.lock",
+      "bytes": 2599,
+      "sha256": "31994ad47f367e039a78b099adbb51a54c6e1a9b55b7fd65ab7110b53eb06e3e"
+    },
+    {
+      "path": "tinystore/sqlite-bench/rust/Cargo.toml",
+      "bytes": 226,
+      "sha256": "9a79a181cb0ac40ed0656ee8193cc0d80431d37cf104ae365de082a78e8381f9"
+    },
+    {
+      "path": "tinystore/sqlite-bench/rust/README.md",
+      "bytes": 4055,
+      "sha256": "ba53f21ed303d9a435b1e4f34ea93f2a59ffa6a7e2287b83ac91ad2dc5b2e119"
+    },
+    {
+      "path": "tinystore/sqlite-bench/rust/build.rs",
+      "bytes": 100,
+      "sha256": "6e4e5c4dff1fa9aff41261013cae863a583e62453fab8a98e19c0675c9d096d2"
+    },
+    {
+      "path": "tinystore/sqlite-bench/rust/src/main.rs",
+      "bytes": 16421,
+      "sha256": "1d07b797dd63ba8fb38e7730dcd6dc9c5c9e257d8f4dd67df7dbf48ed71a8e98"
+    },
+    {
+      "path": "tinystore/sqlite-bench/write_followup.py",
+      "bytes": 2916,
+      "sha256": "f07fc08d56316a86809e65a4bd5b73fdc131c0f4c4c4c9797a43072e911d7fcd"
+    },
+    {
+      "path": "tinystore/sqlite-rust-spike/.gitignore",
+      "bytes": 9,
+      "sha256": "306fd52e74fca6746e12acc750f232de15e71da917756a1270d74c91f5eb7368"
+    },
+    {
+      "path": "tinystore/sqlite-rust-spike/Cargo.lock",
+      "bytes": 3228,
+      "sha256": "dd1b3ce68fbade3cfdaab8a33bab1d2540830d34c8d3e73959fd4af5f847c880"
+    },
+    {
+      "path": "tinystore/sqlite-rust-spike/Cargo.toml",
+      "bytes": 218,
+      "sha256": "13fe076d091d68956ab1680b4704c94fc03629dd0edcc091060dc56626a5ad3c"
+    },
+    {
+      "path": "tinystore/sqlite-rust-spike/README.md",
+      "bytes": 4800,
+      "sha256": "b3aa6ad238f2e405799af40622a9ef4d6e42c47fbc630afd4de78cb8b78cee66"
+    },
+    {
+      "path": "tinystore/sqlite-rust-spike/evidence/ldd.txt",
+      "bytes": 297,
+      "sha256": "b067fe2db52dd289c3cf2b87788b33ff1f2899619a6c0791cfe16b16f75f1565"
+    },
+    {
+      "path": "tinystore/sqlite-rust-spike/evidence/readelf-dynamic.txt",
+      "bytes": 1686,
+      "sha256": "3105c8e88f731d31823d6659803761572dc2bb834e5a6b050431ff39d9c7a73f"
+    },
+    {
+      "path": "tinystore/sqlite-rust-spike/evidence/smoke-1024.txt",
+      "bytes": 2900,
+      "sha256": "3e3518bf46726180d10932f3cb1b925aa6d56b6a836272f259430acd10f8c81f"
+    },
+    {
+      "path": "tinystore/sqlite-rust-spike/evidence/smoke-4096.txt",
+      "bytes": 2900,
+      "sha256": "488c652dd6a4c7eb737de8ddcc166febe1f2f8e8740e9923cef0d24b918a770c"
+    },
+    {
+      "path": "tinystore/sqlite-rust-spike/src/main.rs",
+      "bytes": 11040,
+      "sha256": "2d5825d2ae68f8ed0754802b57ac4a5508edc75458a79d3dd7282beea8f9d5b8"
+    }
+  ]
+}

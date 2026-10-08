@@ -1,0 +1,26 @@
+{
+  "started_utc": "2026-10-07T23:56:53.989159+00:00",
+  "reason": "single-row FULL commits had a 9ms/op outlier in the initial run",
+  "passes": 6,
+  "minimum_final_seconds": 0.25,
+  "cpu_affinity": 0,
+  "source_sha256": {
+    "run.py": "6061096db3fd609c437b35371df869392269fd59dbf72343368e696e01bbeaef",
+    "build_native.py": "e958afb9d59d9a31d90128c968747d9338db4028516de50831f880523b71b829",
+    "go/main.go": "619fc3c35b5608be9fbfc21ee7b126d766a7cc4edbe721ff6a7e9232ecdec614",
+    "go/raw.go": "d264bc1afeaf0ffd32b7889689e8e7e08d59308686af205e6aa30abbd083575b",
+    "go/tiny.go": "dbea7d91ffc152acc569b8afa0e6467489693e54b0dcc2fd4eeb1ce21cafb4cb",
+    "rust/src/main.rs": "1d07b797dd63ba8fb38e7730dcd6dc9c5c9e257d8f4dd67df7dbf48ed71a8e98",
+    "go/go.mod": "8d9f0faa4d45db96e09583416d02f5d4059415375c9a1d25c461e176b414f87a",
+    "go/go.sum": "1c56a6c76cc5865731da3d5ae0aa6efc9ce69a7c2998fa1e55b7c73c88ec0df6",
+    "rust/Cargo.toml": "9a79a181cb0ac40ed0656ee8193cc0d80431d37cf104ae365de082a78e8381f9",
+    "rust/Cargo.lock": "31994ad47f367e039a78b099adbb51a54c6e1a9b55b7fd65ab7110b53eb06e3e",
+    "rust/build.rs": "6e4e5c4dff1fa9aff41261013cae863a583e62453fab8a98e19c0675c9d096d2"
+  },
+  "followup_source_sha256": "f07fc08d56316a86809e65a4bd5b73fdc131c0f4c4c4c9797a43072e911d7fcd",
+  "binary_sha256": {
+    "go": "ec0fbf129c74c932b5c2540262ed229c3de4c17a3a338ff89c2b127dec704120",
+    "rust": "8d58bdea78d0a28eec03cf23db99d0d8ff242a0973058cf5496cf12a0b1d2403"
+  },
+  "finished_utc": "2026-10-07T23:57:21.971925+00:00"
+}

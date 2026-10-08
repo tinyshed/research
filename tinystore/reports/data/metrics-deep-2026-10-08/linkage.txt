@@ -1,0 +1,175 @@
+bin/go-reference
+
+There is no dynamic section in this file.
+
+bin/rust-default
+
+Dynamic section at offset 0x36f350 contains 30 entries:
+  Tag        Type                         Name/Value
+ 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [ld-linux-x86-64.so.2]
+ 0x000000000000001e (FLAGS)              BIND_NOW
+ 0x000000006ffffffb (FLAGS_1)            Flags: NOW PIE
+ 0x0000000000000015 (DEBUG)              0x0
+ 0x0000000000000007 (RELA)               0x1ad8
+ 0x0000000000000008 (RELASZ)             77616 (bytes)
+ 0x0000000000000009 (RELAENT)            24 (bytes)
+ 0x000000006ffffff9 (RELACOUNT)          3110
+ 0x0000000000000017 (JMPREL)             0x14a08
+ 0x0000000000000002 (PLTRELSZ)           1104 (bytes)
+ 0x0000000000000003 (PLTGOT)             0x372730
+ 0x0000000000000014 (PLTREL)             RELA
+ 0x0000000000000006 (SYMTAB)             0x340
+ 0x000000000000000b (SYMENT)             24 (bytes)
+ 0x0000000000000005 (STRTAB)             0x1364
+ 0x000000000000000a (STRSZ)              1902 (bytes)
+ 0x000000006ffffef5 (GNU_HASH)           0x1348
+ 0x0000000000000019 (INIT_ARRAY)         0x368d28
+ 0x000000000000001b (INIT_ARRAYSZ)       16 (bytes)
+ 0x000000000000001a (FINI_ARRAY)         0x368d20
+ 0x000000000000001c (FINI_ARRAYSZ)       8 (bytes)
+ 0x000000000000000c (INIT)               0x367918
+ 0x000000000000000d (FINI)               0x367930
+ 0x000000006ffffff0 (VERSYM)             0x10a8
+ 0x000000006ffffffe (VERNEED)            0x11c8
+ 0x000000006fffffff (VERNEEDNUM)         4
+ 0x0000000000000000 (NULL)               0x0
+
+bin/rust-lto
+
+Dynamic section at offset 0x34aa48 contains 29 entries:
+  Tag        Type                         Name/Value
+ 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+ 0x000000000000001e (FLAGS)              BIND_NOW
+ 0x000000006ffffffb (FLAGS_1)            Flags: NOW PIE
+ 0x0000000000000015 (DEBUG)              0x0
+ 0x0000000000000007 (RELA)               0x1a78
+ 0x0000000000000008 (RELASZ)             66000 (bytes)
+ 0x0000000000000009 (RELAENT)            24 (bytes)
+ 0x000000006ffffff9 (RELACOUNT)          2626
+ 0x0000000000000017 (JMPREL)             0x11c48
+ 0x0000000000000002 (PLTRELSZ)           1104 (bytes)
+ 0x0000000000000003 (PLTGOT)             0x34da78
+ 0x0000000000000014 (PLTREL)             RELA
+ 0x0000000000000006 (SYMTAB)             0x340
+ 0x000000000000000b (SYMENT)             24 (bytes)
+ 0x0000000000000005 (STRTAB)             0x132c
+ 0x000000000000000a (STRSZ)              1866 (bytes)
+ 0x000000006ffffef5 (GNU_HASH)           0x1310
+ 0x0000000000000019 (INIT_ARRAY)         0x345e98
+ 0x000000000000001b (INIT_ARRAYSZ)       16 (bytes)
+ 0x000000000000001a (FINI_ARRAY)         0x345e90
+ 0x000000000000001c (FINI_ARRAYSZ)       8 (bytes)
+ 0x000000000000000c (INIT)               0x344a88
+ 0x000000000000000d (FINI)               0x344aa0
+ 0x000000006ffffff0 (VERSYM)             0x1090
+ 0x000000006ffffffe (VERNEED)            0x11ac
+ 0x000000006fffffff (VERNEEDNUM)         3
+ 0x0000000000000000 (NULL)               0x0
+
+bin/rust-native
+
+Dynamic section at offset 0x34c628 contains 29 entries:
+  Tag        Type                         Name/Value
+ 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+ 0x000000000000001e (FLAGS)              BIND_NOW
+ 0x000000006ffffffb (FLAGS_1)            Flags: NOW PIE
+ 0x0000000000000015 (DEBUG)              0x0
+ 0x0000000000000007 (RELA)               0x1a58
+ 0x0000000000000008 (RELASZ)             65952 (bytes)
+ 0x0000000000000009 (RELAENT)            24 (bytes)
+ 0x000000006ffffff9 (RELACOUNT)          2625
+ 0x0000000000000017 (JMPREL)             0x11bf8
+ 0x0000000000000002 (PLTRELSZ)           1104 (bytes)
+ 0x0000000000000003 (PLTGOT)             0x34f640
+ 0x0000000000000014 (PLTREL)             RELA
+ 0x0000000000000006 (SYMTAB)             0x340
+ 0x000000000000000b (SYMENT)             24 (bytes)
+ 0x0000000000000005 (STRTAB)             0x1314
+ 0x000000000000000a (STRSZ)              1860 (bytes)
+ 0x000000006ffffef5 (GNU_HASH)           0x12f8
+ 0x0000000000000019 (INIT_ARRAY)         0x347a58
+ 0x000000000000001b (INIT_ARRAYSZ)       16 (bytes)
+ 0x000000000000001a (FINI_ARRAY)         0x347a50
+ 0x000000000000001c (FINI_ARRAYSZ)       8 (bytes)
+ 0x000000000000000c (INIT)               0x346648
+ 0x000000000000000d (FINI)               0x346660
+ 0x000000006ffffff0 (VERSYM)             0x1078
+ 0x000000006ffffffe (VERNEED)            0x1194
+ 0x000000006fffffff (VERNEEDNUM)         3
+ 0x0000000000000000 (NULL)               0x0
+
+bin/rust-pgo
+
+Dynamic section at offset 0x33a828 contains 29 entries:
+  Tag        Type                         Name/Value
+ 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+ 0x000000000000001e (FLAGS)              BIND_NOW
+ 0x000000006ffffffb (FLAGS_1)            Flags: NOW PIE
+ 0x0000000000000015 (DEBUG)              0x0
+ 0x0000000000000007 (RELA)               0x1a78
+ 0x0000000000000008 (RELASZ)             67416 (bytes)
+ 0x0000000000000009 (RELAENT)            24 (bytes)
+ 0x000000006ffffff9 (RELACOUNT)          2685
+ 0x0000000000000017 (JMPREL)             0x121d0
+ 0x0000000000000002 (PLTRELSZ)           1104 (bytes)
+ 0x0000000000000003 (PLTGOT)             0x33d9c8
+ 0x0000000000000014 (PLTREL)             RELA
+ 0x0000000000000006 (SYMTAB)             0x340
+ 0x000000000000000b (SYMENT)             24 (bytes)
+ 0x0000000000000005 (STRTAB)             0x132c
+ 0x000000000000000a (STRSZ)              1866 (bytes)
+ 0x000000006ffffef5 (GNU_HASH)           0x1310
+ 0x0000000000000019 (INIT_ARRAY)         0x335b18
+ 0x000000000000001b (INIT_ARRAYSZ)       16 (bytes)
+ 0x000000000000001a (FINI_ARRAY)         0x335b10
+ 0x000000000000001c (FINI_ARRAYSZ)       8 (bytes)
+ 0x000000000000000c (INIT)               0x334708
+ 0x000000000000000d (FINI)               0x334720
+ 0x000000006ffffff0 (VERSYM)             0x1090
+ 0x000000006ffffffe (VERNEED)            0x11ac
+ 0x000000006fffffff (VERNEEDNUM)         3
+ 0x0000000000000000 (NULL)               0x0
+
+bin/rust-reference
+
+Dynamic section at offset 0x334b10 contains 30 entries:
+  Tag        Type                         Name/Value
+ 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [ld-linux-x86-64.so.2]
+ 0x000000000000001e (FLAGS)              BIND_NOW
+ 0x000000006ffffffb (FLAGS_1)            Flags: NOW PIE
+ 0x0000000000000015 (DEBUG)              0x0
+ 0x0000000000000007 (RELA)               0x1ad8
+ 0x0000000000000008 (RELASZ)             76488 (bytes)
+ 0x0000000000000009 (RELAENT)            24 (bytes)
+ 0x000000006ffffff9 (RELACOUNT)          3063
+ 0x0000000000000017 (JMPREL)             0x145a0
+ 0x0000000000000002 (PLTRELSZ)           1104 (bytes)
+ 0x0000000000000003 (PLTGOT)             0x337ee0
+ 0x0000000000000014 (PLTREL)             RELA
+ 0x0000000000000006 (SYMTAB)             0x340
+ 0x000000000000000b (SYMENT)             24 (bytes)
+ 0x0000000000000005 (STRTAB)             0x1364
+ 0x000000000000000a (STRSZ)              1902 (bytes)
+ 0x000000006ffffef5 (GNU_HASH)           0x1348
+ 0x0000000000000019 (INIT_ARRAY)         0x32e898
+ 0x000000000000001b (INIT_ARRAYSZ)       16 (bytes)
+ 0x000000000000001a (FINI_ARRAY)         0x32e890
+ 0x000000000000001c (FINI_ARRAYSZ)       8 (bytes)
+ 0x000000000000000c (INIT)               0x32d4d8
+ 0x000000000000000d (FINI)               0x32d4f0
+ 0x000000006ffffff0 (VERSYM)             0x10a8
+ 0x000000006ffffffe (VERNEED)            0x11c8
+ 0x000000006fffffff (VERNEEDNUM)         4
+ 0x0000000000000000 (NULL)               0x0

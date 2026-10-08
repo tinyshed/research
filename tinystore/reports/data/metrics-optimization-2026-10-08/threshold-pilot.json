@@ -1,0 +1,542 @@
+[
+  {
+    "case": "aggregate_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 184993.2109375,
+    "warm": 32,
+    "variant": "rust_base",
+    "pass_id": 1
+  },
+  {
+    "case": "aggregate_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 230633.796875,
+    "warm": 32,
+    "variant": "rust_serial",
+    "pass_id": 1
+  },
+  {
+    "case": "aggregate_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 269502.875,
+    "warm": 32,
+    "variant": "rayon1",
+    "pass_id": 1
+  },
+  {
+    "case": "aggregate_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 287800.1875,
+    "warm": 32,
+    "variant": "rayon2",
+    "pass_id": 1
+  },
+  {
+    "case": "aggregate_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 203228.8671875,
+    "warm": 32,
+    "variant": "rust_base",
+    "pass_id": 2
+  },
+  {
+    "case": "aggregate_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 212730.8203125,
+    "warm": 32,
+    "variant": "rust_serial",
+    "pass_id": 2
+  },
+  {
+    "case": "aggregate_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 253604.421875,
+    "warm": 32,
+    "variant": "rayon1",
+    "pass_id": 2
+  },
+  {
+    "case": "aggregate_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 290157.3515625,
+    "warm": 32,
+    "variant": "rayon2",
+    "pass_id": 2
+  },
+  {
+    "case": "aggregate_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 174012.65625,
+    "warm": 32,
+    "variant": "rust_base",
+    "pass_id": 3
+  },
+  {
+    "case": "aggregate_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 180527.6171875,
+    "warm": 32,
+    "variant": "rust_serial",
+    "pass_id": 3
+  },
+  {
+    "case": "aggregate_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 212973.2109375,
+    "warm": 32,
+    "variant": "rayon1",
+    "pass_id": 3
+  },
+  {
+    "case": "aggregate_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 274412.953125,
+    "warm": 32,
+    "variant": "rayon2",
+    "pass_id": 3
+  },
+  {
+    "case": "aggregate_count",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 145901.609375,
+    "warm": 32,
+    "variant": "rust_base",
+    "pass_id": 1
+  },
+  {
+    "case": "aggregate_count",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 149878.5078125,
+    "warm": 32,
+    "variant": "rust_serial",
+    "pass_id": 1
+  },
+  {
+    "case": "aggregate_count",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 185017.3828125,
+    "warm": 32,
+    "variant": "rayon1",
+    "pass_id": 1
+  },
+  {
+    "case": "aggregate_count",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 273052.9296875,
+    "warm": 32,
+    "variant": "rayon2",
+    "pass_id": 1
+  },
+  {
+    "case": "aggregate_count",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 178034.5546875,
+    "warm": 32,
+    "variant": "rust_base",
+    "pass_id": 2
+  },
+  {
+    "case": "aggregate_count",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 175921.109375,
+    "warm": 32,
+    "variant": "rust_serial",
+    "pass_id": 2
+  },
+  {
+    "case": "aggregate_count",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 205204.4453125,
+    "warm": 32,
+    "variant": "rayon1",
+    "pass_id": 2
+  },
+  {
+    "case": "aggregate_count",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 219677.65625,
+    "warm": 32,
+    "variant": "rayon2",
+    "pass_id": 2
+  },
+  {
+    "case": "aggregate_count",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 156826.609375,
+    "warm": 32,
+    "variant": "rust_base",
+    "pass_id": 3
+  },
+  {
+    "case": "aggregate_count",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 177616.046875,
+    "warm": 32,
+    "variant": "rust_serial",
+    "pass_id": 3
+  },
+  {
+    "case": "aggregate_count",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 225096.3828125,
+    "warm": 32,
+    "variant": "rayon1",
+    "pass_id": 3
+  },
+  {
+    "case": "aggregate_count",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 260411.375,
+    "warm": 32,
+    "variant": "rayon2",
+    "pass_id": 3
+  },
+  {
+    "case": "read_sealed_full8",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 1326325.6015625,
+    "warm": 32,
+    "variant": "rust_base",
+    "pass_id": 1
+  },
+  {
+    "case": "read_sealed_full8",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 1200793.6640625,
+    "warm": 32,
+    "variant": "rust_serial",
+    "pass_id": 1
+  },
+  {
+    "case": "read_sealed_full8",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 1242583.3984375,
+    "warm": 32,
+    "variant": "rayon1",
+    "pass_id": 1
+  },
+  {
+    "case": "read_sealed_full8",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 1270103.09375,
+    "warm": 32,
+    "variant": "rayon2",
+    "pass_id": 1
+  },
+  {
+    "case": "read_sealed_full8",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 1264719.59375,
+    "warm": 32,
+    "variant": "rust_base",
+    "pass_id": 2
+  },
+  {
+    "case": "read_sealed_full8",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 1178025.9921875,
+    "warm": 32,
+    "variant": "rust_serial",
+    "pass_id": 2
+  },
+  {
+    "case": "read_sealed_full8",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 1370428.6015625,
+    "warm": 32,
+    "variant": "rayon1",
+    "pass_id": 2
+  },
+  {
+    "case": "read_sealed_full8",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 1281069.4921875,
+    "warm": 32,
+    "variant": "rayon2",
+    "pass_id": 2
+  },
+  {
+    "case": "read_sealed_full8",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 1279693.15625,
+    "warm": 32,
+    "variant": "rust_base",
+    "pass_id": 3
+  },
+  {
+    "case": "read_sealed_full8",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 1147074.796875,
+    "warm": 32,
+    "variant": "rust_serial",
+    "pass_id": 3
+  },
+  {
+    "case": "read_sealed_full8",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 1144199.8359375,
+    "warm": 32,
+    "variant": "rayon1",
+    "pass_id": 3
+  },
+  {
+    "case": "read_sealed_full8",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 1339814.0,
+    "warm": 32,
+    "variant": "rayon2",
+    "pass_id": 3
+  },
+  {
+    "case": "aggregate_cut_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 2116738.6171875,
+    "warm": 32,
+    "variant": "rust_base",
+    "pass_id": 1
+  },
+  {
+    "case": "aggregate_cut_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 839988.2578125,
+    "warm": 32,
+    "variant": "rust_serial",
+    "pass_id": 1
+  },
+  {
+    "case": "aggregate_cut_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 887568.203125,
+    "warm": 32,
+    "variant": "rayon1",
+    "pass_id": 1
+  },
+  {
+    "case": "aggregate_cut_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 889989.2421875,
+    "warm": 32,
+    "variant": "rayon2",
+    "pass_id": 1
+  },
+  {
+    "case": "aggregate_cut_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 2288715.4609375,
+    "warm": 32,
+    "variant": "rust_base",
+    "pass_id": 2
+  },
+  {
+    "case": "aggregate_cut_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 790817.453125,
+    "warm": 32,
+    "variant": "rust_serial",
+    "pass_id": 2
+  },
+  {
+    "case": "aggregate_cut_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 996029.5546875,
+    "warm": 32,
+    "variant": "rayon1",
+    "pass_id": 2
+  },
+  {
+    "case": "aggregate_cut_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 813316.6015625,
+    "warm": 32,
+    "variant": "rayon2",
+    "pass_id": 2
+  },
+  {
+    "case": "aggregate_cut_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 2066134.5234375,
+    "warm": 32,
+    "variant": "rust_base",
+    "pass_id": 3
+  },
+  {
+    "case": "aggregate_cut_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 844651.953125,
+    "warm": 32,
+    "variant": "rust_serial",
+    "pass_id": 3
+  },
+  {
+    "case": "aggregate_cut_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 867744.328125,
+    "warm": 32,
+    "variant": "rayon1",
+    "pass_id": 3
+  },
+  {
+    "case": "aggregate_cut_sum",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 914632.0,
+    "warm": 32,
+    "variant": "rayon2",
+    "pass_id": 3
+  },
+  {
+    "case": "read_wide64",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 3422833.5859375,
+    "warm": 32,
+    "variant": "rust_base",
+    "pass_id": 1
+  },
+  {
+    "case": "read_wide64",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 2977057.6640625,
+    "warm": 32,
+    "variant": "rust_serial",
+    "pass_id": 1
+  },
+  {
+    "case": "read_wide64",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 3630971.703125,
+    "warm": 32,
+    "variant": "rayon1",
+    "pass_id": 1
+  },
+  {
+    "case": "read_wide64",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 3927475.9375,
+    "warm": 32,
+    "variant": "rayon2",
+    "pass_id": 1
+  },
+  {
+    "case": "read_wide64",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 3234164.6015625,
+    "warm": 32,
+    "variant": "rust_base",
+    "pass_id": 2
+  },
+  {
+    "case": "read_wide64",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 3426074.484375,
+    "warm": 32,
+    "variant": "rust_serial",
+    "pass_id": 2
+  },
+  {
+    "case": "read_wide64",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 3553097.8359375,
+    "warm": 32,
+    "variant": "rayon1",
+    "pass_id": 2
+  },
+  {
+    "case": "read_wide64",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 4182369.53125,
+    "warm": 32,
+    "variant": "rayon2",
+    "pass_id": 2
+  },
+  {
+    "case": "read_wide64",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 3067697.515625,
+    "warm": 32,
+    "variant": "rust_base",
+    "pass_id": 3
+  },
+  {
+    "case": "read_wide64",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 2949704.7109375,
+    "warm": 32,
+    "variant": "rust_serial",
+    "pass_id": 3
+  },
+  {
+    "case": "read_wide64",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 3152796.3359375,
+    "warm": 32,
+    "variant": "rayon1",
+    "pass_id": 3
+  },
+  {
+    "case": "read_wide64",
+    "implementation": "rust_metrics",
+    "iterations": 128,
+    "ns_per_op": 3878738.9453125,
+    "warm": 32,
+    "variant": "rayon2",
+    "pass_id": 3
+  }
+]

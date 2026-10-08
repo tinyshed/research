@@ -1,0 +1,1072 @@
+{
+  "sealed": {
+    "go": {
+      "clock_bytes": 226,
+      "directory_bytes": 10058,
+      "file_bytes": 135168,
+      "head_bytes": 496,
+      "head_samples": 16,
+      "objects": [
+        {
+          "Name": "sqlite_schema",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "_tinystore_migrations",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "store_state",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_series_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "label_values",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_label_values_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "postings",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_state",
+          "Pages": 9,
+          "Bytes": 36864
+        },
+        {
+          "Name": "series_ready",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_due",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_failed",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_failed_id",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "clocks",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_clocks_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "groups",
+          "Pages": 4,
+          "Bytes": 16384
+        },
+        {
+          "Name": "payloads",
+          "Pages": 6,
+          "Bytes": 24576
+        }
+      ],
+      "payload_bytes": 15040,
+      "row_counts": {
+        "clocks": 1,
+        "groups": 16,
+        "label_values": 11,
+        "payloads": 320,
+        "postings": 48,
+        "series": 16,
+        "series_state": 16
+      },
+      "settings": {
+        "busy_timeout": 5000,
+        "cache_size": -1024,
+        "checkpoint_fullfsync": 1,
+        "foreign_keys": 1,
+        "fullfsync": 1,
+        "mmap_size": 0,
+        "page_size": 4096,
+        "source_id": "2026-07-24 19:02:57 bf7c7f30031888f4e796e429ab3978879485813aaca6f641c7b33e4e09459bcc",
+        "synchronous": 2,
+        "trusted_schema": 0,
+        "version": "3.53.4",
+        "wal_autocheckpoint": 1000
+      }
+    },
+    "native": {
+      "compile_options": [
+        "ALLOW_URI_AUTHORITY",
+        "ATOMIC_INTRINSICS=1",
+        "COMPILER=gcc-14.2.0",
+        "DEFAULT_AUTOVACUUM",
+        "DEFAULT_CACHE_SIZE=-2000",
+        "DEFAULT_FILE_FORMAT=4",
+        "DEFAULT_FOREIGN_KEYS",
+        "DEFAULT_JOURNAL_SIZE_LIMIT=-1",
+        "DEFAULT_MMAP_SIZE=0",
+        "DEFAULT_PAGE_SIZE=4096",
+        "DEFAULT_PCACHE_INITSZ=20",
+        "DEFAULT_RECURSIVE_TRIGGERS",
+        "DEFAULT_SECTOR_SIZE=4096",
+        "DEFAULT_SYNCHRONOUS=2",
+        "DEFAULT_WAL_AUTOCHECKPOINT=1000",
+        "DEFAULT_WAL_SYNCHRONOUS=1",
+        "DEFAULT_WORKER_THREADS=0",
+        "DIRECT_OVERFLOW_READ",
+        "DQS=0",
+        "ENABLE_API_ARMOR",
+        "ENABLE_ATOMIC_WRITE",
+        "ENABLE_BATCH_ATOMIC_WRITE",
+        "ENABLE_COLUMN_METADATA",
+        "ENABLE_MATH_FUNCTIONS",
+        "ENABLE_PREUPDATE_HOOK",
+        "ENABLE_SETLK_TIMEOUT",
+        "ENABLE_STAT4",
+        "LIKE_DOESNT_MATCH_BLOBS",
+        "MALLOC_SOFT_LIMIT=1024",
+        "MAX_ATTACHED=10",
+        "MAX_COLUMN=2000",
+        "MAX_COMPOUND_SELECT=500",
+        "MAX_DEFAULT_PAGE_SIZE=8192",
+        "MAX_EXPR_DEPTH=1000",
+        "MAX_FUNCTION_ARG=1000",
+        "MAX_LENGTH=1000000000",
+        "MAX_LIKE_PATTERN_LENGTH=50000",
+        "MAX_MMAP_SIZE=1073741824",
+        "MAX_PAGE_COUNT=0xfffffffe",
+        "MAX_PAGE_SIZE=65536",
+        "MAX_SQL_LENGTH=1000000000",
+        "MAX_TRIGGER_DEPTH=1000",
+        "MAX_VARIABLE_NUMBER=32766",
+        "MAX_VDBE_OP=250000000",
+        "MAX_WORKER_THREADS=8",
+        "MUTEX_PTHREADS",
+        "OMIT_COMPLETE",
+        "OMIT_DEPRECATED",
+        "OMIT_DESERIALIZE",
+        "OMIT_GET_TABLE",
+        "OMIT_LOAD_EXTENSION",
+        "OMIT_SHARED_CACHE",
+        "SOUNDEX",
+        "STRICT_SUBTYPE",
+        "SYSTEM_MALLOC",
+        "TEMP_STORE=1",
+        "THREADSAFE=1",
+        "USE_URI"
+      ],
+      "reader": {
+        "busy_timeout": 5000,
+        "cache_size": -1024,
+        "checkpoint_fullfsync": 1,
+        "foreign_keys": 1,
+        "fullfsync": 1,
+        "journal_mode": "wal",
+        "mmap_size": 0,
+        "page_size": 4096,
+        "query_only": 1,
+        "source_id": "2026-07-24 19:02:57 bf7c7f30031888f4e796e429ab3978879485813aaca6f641c7b33e4e09459bcc",
+        "synchronous": 2,
+        "trusted_schema": 0,
+        "version": "3.53.4",
+        "wal_autocheckpoint": 1000
+      },
+      "writer": {
+        "busy_timeout": 5000,
+        "cache_size": -1024,
+        "checkpoint_fullfsync": 1,
+        "foreign_keys": 1,
+        "fullfsync": 1,
+        "journal_mode": "wal",
+        "mmap_size": 0,
+        "page_size": 4096,
+        "query_only": 0,
+        "source_id": "2026-07-24 19:02:57 bf7c7f30031888f4e796e429ab3978879485813aaca6f641c7b33e4e09459bcc",
+        "synchronous": 2,
+        "trusted_schema": 0,
+        "version": "3.53.4",
+        "wal_autocheckpoint": 1000
+      }
+    }
+  },
+  "head": {
+    "go": {
+      "clock_bytes": 0,
+      "directory_bytes": 0,
+      "file_bytes": 77824,
+      "head_bytes": 4768,
+      "head_samples": 16008,
+      "objects": [
+        {
+          "Name": "sqlite_schema",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "_tinystore_migrations",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "store_state",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_series_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "label_values",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_label_values_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "postings",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_state",
+          "Pages": 3,
+          "Bytes": 12288
+        },
+        {
+          "Name": "series_ready",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_due",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_failed",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_failed_id",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "clocks",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_clocks_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "groups",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "payloads",
+          "Pages": 1,
+          "Bytes": 4096
+        }
+      ],
+      "payload_bytes": 0,
+      "row_counts": {
+        "clocks": 0,
+        "groups": 0,
+        "label_values": 10,
+        "payloads": 0,
+        "postings": 24,
+        "series": 8,
+        "series_state": 8
+      },
+      "settings": {
+        "busy_timeout": 5000,
+        "cache_size": -1024,
+        "checkpoint_fullfsync": 1,
+        "foreign_keys": 1,
+        "fullfsync": 1,
+        "mmap_size": 0,
+        "page_size": 4096,
+        "source_id": "2026-07-24 19:02:57 bf7c7f30031888f4e796e429ab3978879485813aaca6f641c7b33e4e09459bcc",
+        "synchronous": 2,
+        "trusted_schema": 0,
+        "version": "3.53.4",
+        "wal_autocheckpoint": 1000
+      }
+    },
+    "native": {
+      "compile_options": [
+        "ALLOW_URI_AUTHORITY",
+        "ATOMIC_INTRINSICS=1",
+        "COMPILER=gcc-14.2.0",
+        "DEFAULT_AUTOVACUUM",
+        "DEFAULT_CACHE_SIZE=-2000",
+        "DEFAULT_FILE_FORMAT=4",
+        "DEFAULT_FOREIGN_KEYS",
+        "DEFAULT_JOURNAL_SIZE_LIMIT=-1",
+        "DEFAULT_MMAP_SIZE=0",
+        "DEFAULT_PAGE_SIZE=4096",
+        "DEFAULT_PCACHE_INITSZ=20",
+        "DEFAULT_RECURSIVE_TRIGGERS",
+        "DEFAULT_SECTOR_SIZE=4096",
+        "DEFAULT_SYNCHRONOUS=2",
+        "DEFAULT_WAL_AUTOCHECKPOINT=1000",
+        "DEFAULT_WAL_SYNCHRONOUS=1",
+        "DEFAULT_WORKER_THREADS=0",
+        "DIRECT_OVERFLOW_READ",
+        "DQS=0",
+        "ENABLE_API_ARMOR",
+        "ENABLE_ATOMIC_WRITE",
+        "ENABLE_BATCH_ATOMIC_WRITE",
+        "ENABLE_COLUMN_METADATA",
+        "ENABLE_MATH_FUNCTIONS",
+        "ENABLE_PREUPDATE_HOOK",
+        "ENABLE_SETLK_TIMEOUT",
+        "ENABLE_STAT4",
+        "LIKE_DOESNT_MATCH_BLOBS",
+        "MALLOC_SOFT_LIMIT=1024",
+        "MAX_ATTACHED=10",
+        "MAX_COLUMN=2000",
+        "MAX_COMPOUND_SELECT=500",
+        "MAX_DEFAULT_PAGE_SIZE=8192",
+        "MAX_EXPR_DEPTH=1000",
+        "MAX_FUNCTION_ARG=1000",
+        "MAX_LENGTH=1000000000",
+        "MAX_LIKE_PATTERN_LENGTH=50000",
+        "MAX_MMAP_SIZE=1073741824",
+        "MAX_PAGE_COUNT=0xfffffffe",
+        "MAX_PAGE_SIZE=65536",
+        "MAX_SQL_LENGTH=1000000000",
+        "MAX_TRIGGER_DEPTH=1000",
+        "MAX_VARIABLE_NUMBER=32766",
+        "MAX_VDBE_OP=250000000",
+        "MAX_WORKER_THREADS=8",
+        "MUTEX_PTHREADS",
+        "OMIT_COMPLETE",
+        "OMIT_DEPRECATED",
+        "OMIT_DESERIALIZE",
+        "OMIT_GET_TABLE",
+        "OMIT_LOAD_EXTENSION",
+        "OMIT_SHARED_CACHE",
+        "SOUNDEX",
+        "STRICT_SUBTYPE",
+        "SYSTEM_MALLOC",
+        "TEMP_STORE=1",
+        "THREADSAFE=1",
+        "USE_URI"
+      ],
+      "reader": {
+        "busy_timeout": 5000,
+        "cache_size": -1024,
+        "checkpoint_fullfsync": 1,
+        "foreign_keys": 1,
+        "fullfsync": 1,
+        "journal_mode": "wal",
+        "mmap_size": 0,
+        "page_size": 4096,
+        "query_only": 1,
+        "source_id": "2026-07-24 19:02:57 bf7c7f30031888f4e796e429ab3978879485813aaca6f641c7b33e4e09459bcc",
+        "synchronous": 2,
+        "trusted_schema": 0,
+        "version": "3.53.4",
+        "wal_autocheckpoint": 1000
+      },
+      "writer": {
+        "busy_timeout": 5000,
+        "cache_size": -1024,
+        "checkpoint_fullfsync": 1,
+        "foreign_keys": 1,
+        "fullfsync": 1,
+        "journal_mode": "wal",
+        "mmap_size": 0,
+        "page_size": 4096,
+        "query_only": 0,
+        "source_id": "2026-07-24 19:02:57 bf7c7f30031888f4e796e429ab3978879485813aaca6f641c7b33e4e09459bcc",
+        "synchronous": 2,
+        "trusted_schema": 0,
+        "version": "3.53.4",
+        "wal_autocheckpoint": 1000
+      }
+    }
+  },
+  "scrape": {
+    "go": {
+      "clock_bytes": 0,
+      "directory_bytes": 0,
+      "file_bytes": 102400,
+      "head_bytes": 7500,
+      "head_samples": 24000,
+      "objects": [
+        {
+          "Name": "sqlite_schema",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "_tinystore_migrations",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "store_state",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series",
+          "Pages": 3,
+          "Bytes": 12288
+        },
+        {
+          "Name": "sqlite_autoindex_series_1",
+          "Pages": 3,
+          "Bytes": 12288
+        },
+        {
+          "Name": "label_values",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_label_values_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "postings",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_state",
+          "Pages": 5,
+          "Bytes": 20480
+        },
+        {
+          "Name": "series_ready",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_due",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_failed",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_failed_id",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "clocks",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_clocks_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "groups",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "payloads",
+          "Pages": 1,
+          "Bytes": 4096
+        }
+      ],
+      "payload_bytes": 0,
+      "row_counts": {
+        "clocks": 0,
+        "groups": 0,
+        "label_values": 102,
+        "payloads": 0,
+        "postings": 300,
+        "series": 100,
+        "series_state": 100
+      },
+      "settings": {
+        "busy_timeout": 5000,
+        "cache_size": -1024,
+        "checkpoint_fullfsync": 1,
+        "foreign_keys": 1,
+        "fullfsync": 1,
+        "mmap_size": 0,
+        "page_size": 4096,
+        "source_id": "2026-07-24 19:02:57 bf7c7f30031888f4e796e429ab3978879485813aaca6f641c7b33e4e09459bcc",
+        "synchronous": 2,
+        "trusted_schema": 0,
+        "version": "3.53.4",
+        "wal_autocheckpoint": 1000
+      }
+    },
+    "native": {
+      "compile_options": [
+        "ALLOW_URI_AUTHORITY",
+        "ATOMIC_INTRINSICS=1",
+        "COMPILER=gcc-14.2.0",
+        "DEFAULT_AUTOVACUUM",
+        "DEFAULT_CACHE_SIZE=-2000",
+        "DEFAULT_FILE_FORMAT=4",
+        "DEFAULT_FOREIGN_KEYS",
+        "DEFAULT_JOURNAL_SIZE_LIMIT=-1",
+        "DEFAULT_MMAP_SIZE=0",
+        "DEFAULT_PAGE_SIZE=4096",
+        "DEFAULT_PCACHE_INITSZ=20",
+        "DEFAULT_RECURSIVE_TRIGGERS",
+        "DEFAULT_SECTOR_SIZE=4096",
+        "DEFAULT_SYNCHRONOUS=2",
+        "DEFAULT_WAL_AUTOCHECKPOINT=1000",
+        "DEFAULT_WAL_SYNCHRONOUS=1",
+        "DEFAULT_WORKER_THREADS=0",
+        "DIRECT_OVERFLOW_READ",
+        "DQS=0",
+        "ENABLE_API_ARMOR",
+        "ENABLE_ATOMIC_WRITE",
+        "ENABLE_BATCH_ATOMIC_WRITE",
+        "ENABLE_COLUMN_METADATA",
+        "ENABLE_MATH_FUNCTIONS",
+        "ENABLE_PREUPDATE_HOOK",
+        "ENABLE_SETLK_TIMEOUT",
+        "ENABLE_STAT4",
+        "LIKE_DOESNT_MATCH_BLOBS",
+        "MALLOC_SOFT_LIMIT=1024",
+        "MAX_ATTACHED=10",
+        "MAX_COLUMN=2000",
+        "MAX_COMPOUND_SELECT=500",
+        "MAX_DEFAULT_PAGE_SIZE=8192",
+        "MAX_EXPR_DEPTH=1000",
+        "MAX_FUNCTION_ARG=1000",
+        "MAX_LENGTH=1000000000",
+        "MAX_LIKE_PATTERN_LENGTH=50000",
+        "MAX_MMAP_SIZE=1073741824",
+        "MAX_PAGE_COUNT=0xfffffffe",
+        "MAX_PAGE_SIZE=65536",
+        "MAX_SQL_LENGTH=1000000000",
+        "MAX_TRIGGER_DEPTH=1000",
+        "MAX_VARIABLE_NUMBER=32766",
+        "MAX_VDBE_OP=250000000",
+        "MAX_WORKER_THREADS=8",
+        "MUTEX_PTHREADS",
+        "OMIT_COMPLETE",
+        "OMIT_DEPRECATED",
+        "OMIT_DESERIALIZE",
+        "OMIT_GET_TABLE",
+        "OMIT_LOAD_EXTENSION",
+        "OMIT_SHARED_CACHE",
+        "SOUNDEX",
+        "STRICT_SUBTYPE",
+        "SYSTEM_MALLOC",
+        "TEMP_STORE=1",
+        "THREADSAFE=1",
+        "USE_URI"
+      ],
+      "reader": {
+        "busy_timeout": 5000,
+        "cache_size": -1024,
+        "checkpoint_fullfsync": 1,
+        "foreign_keys": 1,
+        "fullfsync": 1,
+        "journal_mode": "wal",
+        "mmap_size": 0,
+        "page_size": 4096,
+        "query_only": 1,
+        "source_id": "2026-07-24 19:02:57 bf7c7f30031888f4e796e429ab3978879485813aaca6f641c7b33e4e09459bcc",
+        "synchronous": 2,
+        "trusted_schema": 0,
+        "version": "3.53.4",
+        "wal_autocheckpoint": 1000
+      },
+      "writer": {
+        "busy_timeout": 5000,
+        "cache_size": -1024,
+        "checkpoint_fullfsync": 1,
+        "foreign_keys": 1,
+        "fullfsync": 1,
+        "journal_mode": "wal",
+        "mmap_size": 0,
+        "page_size": 4096,
+        "query_only": 0,
+        "source_id": "2026-07-24 19:02:57 bf7c7f30031888f4e796e429ab3978879485813aaca6f641c7b33e4e09459bcc",
+        "synchronous": 2,
+        "trusted_schema": 0,
+        "version": "3.53.4",
+        "wal_autocheckpoint": 1000
+      }
+    }
+  },
+  "ready": {
+    "go": {
+      "clock_bytes": 0,
+      "directory_bytes": 0,
+      "file_bytes": 102400,
+      "head_bytes": 22272,
+      "head_samples": 76816,
+      "objects": [
+        {
+          "Name": "sqlite_schema",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "_tinystore_migrations",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "store_state",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_series_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "label_values",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_label_values_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "postings",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_state",
+          "Pages": 9,
+          "Bytes": 36864
+        },
+        {
+          "Name": "series_ready",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_due",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_failed",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_failed_id",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "clocks",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_clocks_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "groups",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "payloads",
+          "Pages": 1,
+          "Bytes": 4096
+        }
+      ],
+      "payload_bytes": 0,
+      "row_counts": {
+        "clocks": 0,
+        "groups": 0,
+        "label_values": 11,
+        "payloads": 0,
+        "postings": 48,
+        "series": 16,
+        "series_state": 16
+      },
+      "settings": {
+        "busy_timeout": 5000,
+        "cache_size": -1024,
+        "checkpoint_fullfsync": 1,
+        "foreign_keys": 1,
+        "fullfsync": 1,
+        "mmap_size": 0,
+        "page_size": 4096,
+        "source_id": "2026-07-24 19:02:57 bf7c7f30031888f4e796e429ab3978879485813aaca6f641c7b33e4e09459bcc",
+        "synchronous": 2,
+        "trusted_schema": 0,
+        "version": "3.53.4",
+        "wal_autocheckpoint": 1000
+      }
+    },
+    "native": {
+      "compile_options": [
+        "ALLOW_URI_AUTHORITY",
+        "ATOMIC_INTRINSICS=1",
+        "COMPILER=gcc-14.2.0",
+        "DEFAULT_AUTOVACUUM",
+        "DEFAULT_CACHE_SIZE=-2000",
+        "DEFAULT_FILE_FORMAT=4",
+        "DEFAULT_FOREIGN_KEYS",
+        "DEFAULT_JOURNAL_SIZE_LIMIT=-1",
+        "DEFAULT_MMAP_SIZE=0",
+        "DEFAULT_PAGE_SIZE=4096",
+        "DEFAULT_PCACHE_INITSZ=20",
+        "DEFAULT_RECURSIVE_TRIGGERS",
+        "DEFAULT_SECTOR_SIZE=4096",
+        "DEFAULT_SYNCHRONOUS=2",
+        "DEFAULT_WAL_AUTOCHECKPOINT=1000",
+        "DEFAULT_WAL_SYNCHRONOUS=1",
+        "DEFAULT_WORKER_THREADS=0",
+        "DIRECT_OVERFLOW_READ",
+        "DQS=0",
+        "ENABLE_API_ARMOR",
+        "ENABLE_ATOMIC_WRITE",
+        "ENABLE_BATCH_ATOMIC_WRITE",
+        "ENABLE_COLUMN_METADATA",
+        "ENABLE_MATH_FUNCTIONS",
+        "ENABLE_PREUPDATE_HOOK",
+        "ENABLE_SETLK_TIMEOUT",
+        "ENABLE_STAT4",
+        "LIKE_DOESNT_MATCH_BLOBS",
+        "MALLOC_SOFT_LIMIT=1024",
+        "MAX_ATTACHED=10",
+        "MAX_COLUMN=2000",
+        "MAX_COMPOUND_SELECT=500",
+        "MAX_DEFAULT_PAGE_SIZE=8192",
+        "MAX_EXPR_DEPTH=1000",
+        "MAX_FUNCTION_ARG=1000",
+        "MAX_LENGTH=1000000000",
+        "MAX_LIKE_PATTERN_LENGTH=50000",
+        "MAX_MMAP_SIZE=1073741824",
+        "MAX_PAGE_COUNT=0xfffffffe",
+        "MAX_PAGE_SIZE=65536",
+        "MAX_SQL_LENGTH=1000000000",
+        "MAX_TRIGGER_DEPTH=1000",
+        "MAX_VARIABLE_NUMBER=32766",
+        "MAX_VDBE_OP=250000000",
+        "MAX_WORKER_THREADS=8",
+        "MUTEX_PTHREADS",
+        "OMIT_COMPLETE",
+        "OMIT_DEPRECATED",
+        "OMIT_DESERIALIZE",
+        "OMIT_GET_TABLE",
+        "OMIT_LOAD_EXTENSION",
+        "OMIT_SHARED_CACHE",
+        "SOUNDEX",
+        "STRICT_SUBTYPE",
+        "SYSTEM_MALLOC",
+        "TEMP_STORE=1",
+        "THREADSAFE=1",
+        "USE_URI"
+      ],
+      "reader": {
+        "busy_timeout": 5000,
+        "cache_size": -1024,
+        "checkpoint_fullfsync": 1,
+        "foreign_keys": 1,
+        "fullfsync": 1,
+        "journal_mode": "wal",
+        "mmap_size": 0,
+        "page_size": 4096,
+        "query_only": 1,
+        "source_id": "2026-07-24 19:02:57 bf7c7f30031888f4e796e429ab3978879485813aaca6f641c7b33e4e09459bcc",
+        "synchronous": 2,
+        "trusted_schema": 0,
+        "version": "3.53.4",
+        "wal_autocheckpoint": 1000
+      },
+      "writer": {
+        "busy_timeout": 5000,
+        "cache_size": -1024,
+        "checkpoint_fullfsync": 1,
+        "foreign_keys": 1,
+        "fullfsync": 1,
+        "journal_mode": "wal",
+        "mmap_size": 0,
+        "page_size": 4096,
+        "query_only": 0,
+        "source_id": "2026-07-24 19:02:57 bf7c7f30031888f4e796e429ab3978879485813aaca6f641c7b33e4e09459bcc",
+        "synchronous": 2,
+        "trusted_schema": 0,
+        "version": "3.53.4",
+        "wal_autocheckpoint": 1000
+      }
+    }
+  },
+  "edge": {
+    "go": {
+      "clock_bytes": 540,
+      "directory_bytes": 919,
+      "file_bytes": 81920,
+      "head_bytes": 372,
+      "head_samples": 12,
+      "objects": [
+        {
+          "Name": "sqlite_schema",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "_tinystore_migrations",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "store_state",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_series_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "label_values",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_label_values_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "postings",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_state",
+          "Pages": 4,
+          "Bytes": 16384
+        },
+        {
+          "Name": "series_ready",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_due",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_failed",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_failed_id",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "clocks",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_clocks_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "groups",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "payloads",
+          "Pages": 1,
+          "Bytes": 4096
+        }
+      ],
+      "payload_bytes": 1432,
+      "row_counts": {
+        "clocks": 2,
+        "groups": 12,
+        "label_values": 15,
+        "payloads": 22,
+        "postings": 36,
+        "series": 12,
+        "series_state": 12
+      },
+      "settings": {
+        "busy_timeout": 5000,
+        "cache_size": -1024,
+        "checkpoint_fullfsync": 1,
+        "foreign_keys": 1,
+        "fullfsync": 1,
+        "mmap_size": 0,
+        "page_size": 4096,
+        "source_id": "2026-07-24 19:02:57 bf7c7f30031888f4e796e429ab3978879485813aaca6f641c7b33e4e09459bcc",
+        "synchronous": 2,
+        "trusted_schema": 0,
+        "version": "3.53.4",
+        "wal_autocheckpoint": 1000
+      }
+    },
+    "native": {
+      "compile_options": [
+        "ALLOW_URI_AUTHORITY",
+        "ATOMIC_INTRINSICS=1",
+        "COMPILER=gcc-14.2.0",
+        "DEFAULT_AUTOVACUUM",
+        "DEFAULT_CACHE_SIZE=-2000",
+        "DEFAULT_FILE_FORMAT=4",
+        "DEFAULT_FOREIGN_KEYS",
+        "DEFAULT_JOURNAL_SIZE_LIMIT=-1",
+        "DEFAULT_MMAP_SIZE=0",
+        "DEFAULT_PAGE_SIZE=4096",
+        "DEFAULT_PCACHE_INITSZ=20",
+        "DEFAULT_RECURSIVE_TRIGGERS",
+        "DEFAULT_SECTOR_SIZE=4096",
+        "DEFAULT_SYNCHRONOUS=2",
+        "DEFAULT_WAL_AUTOCHECKPOINT=1000",
+        "DEFAULT_WAL_SYNCHRONOUS=1",
+        "DEFAULT_WORKER_THREADS=0",
+        "DIRECT_OVERFLOW_READ",
+        "DQS=0",
+        "ENABLE_API_ARMOR",
+        "ENABLE_ATOMIC_WRITE",
+        "ENABLE_BATCH_ATOMIC_WRITE",
+        "ENABLE_COLUMN_METADATA",
+        "ENABLE_MATH_FUNCTIONS",
+        "ENABLE_PREUPDATE_HOOK",
+        "ENABLE_SETLK_TIMEOUT",
+        "ENABLE_STAT4",
+        "LIKE_DOESNT_MATCH_BLOBS",
+        "MALLOC_SOFT_LIMIT=1024",
+        "MAX_ATTACHED=10",
+        "MAX_COLUMN=2000",
+        "MAX_COMPOUND_SELECT=500",
+        "MAX_DEFAULT_PAGE_SIZE=8192",
+        "MAX_EXPR_DEPTH=1000",
+        "MAX_FUNCTION_ARG=1000",
+        "MAX_LENGTH=1000000000",
+        "MAX_LIKE_PATTERN_LENGTH=50000",
+        "MAX_MMAP_SIZE=1073741824",
+        "MAX_PAGE_COUNT=0xfffffffe",
+        "MAX_PAGE_SIZE=65536",
+        "MAX_SQL_LENGTH=1000000000",
+        "MAX_TRIGGER_DEPTH=1000",
+        "MAX_VARIABLE_NUMBER=32766",
+        "MAX_VDBE_OP=250000000",
+        "MAX_WORKER_THREADS=8",
+        "MUTEX_PTHREADS",
+        "OMIT_COMPLETE",
+        "OMIT_DEPRECATED",
+        "OMIT_DESERIALIZE",
+        "OMIT_GET_TABLE",
+        "OMIT_LOAD_EXTENSION",
+        "OMIT_SHARED_CACHE",
+        "SOUNDEX",
+        "STRICT_SUBTYPE",
+        "SYSTEM_MALLOC",
+        "TEMP_STORE=1",
+        "THREADSAFE=1",
+        "USE_URI"
+      ],
+      "reader": {
+        "busy_timeout": 5000,
+        "cache_size": -1024,
+        "checkpoint_fullfsync": 1,
+        "foreign_keys": 1,
+        "fullfsync": 1,
+        "journal_mode": "wal",
+        "mmap_size": 0,
+        "page_size": 4096,
+        "query_only": 1,
+        "source_id": "2026-07-24 19:02:57 bf7c7f30031888f4e796e429ab3978879485813aaca6f641c7b33e4e09459bcc",
+        "synchronous": 2,
+        "trusted_schema": 0,
+        "version": "3.53.4",
+        "wal_autocheckpoint": 1000
+      },
+      "writer": {
+        "busy_timeout": 5000,
+        "cache_size": -1024,
+        "checkpoint_fullfsync": 1,
+        "foreign_keys": 1,
+        "fullfsync": 1,
+        "journal_mode": "wal",
+        "mmap_size": 0,
+        "page_size": 4096,
+        "query_only": 0,
+        "source_id": "2026-07-24 19:02:57 bf7c7f30031888f4e796e429ab3978879485813aaca6f641c7b33e4e09459bcc",
+        "synchronous": 2,
+        "trusted_schema": 0,
+        "version": "3.53.4",
+        "wal_autocheckpoint": 1000
+      }
+    }
+  }
+}

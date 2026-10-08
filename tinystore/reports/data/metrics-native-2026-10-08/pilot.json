@@ -1,0 +1,212 @@
+[
+  {
+    "case": "ingest_append1",
+    "implementation": "go_metrics",
+    "iterations": 8,
+    "ns_per_op": 527489.375,
+    "warm": 32
+  },
+  {
+    "case": "ingest_replace1",
+    "implementation": "go_metrics",
+    "iterations": 8,
+    "ns_per_op": 1006559.375,
+    "warm": 32
+  },
+  {
+    "case": "ingest_scrape100",
+    "implementation": "go_metrics",
+    "iterations": 8,
+    "ns_per_op": 5359372.375,
+    "warm": 32
+  },
+  {
+    "case": "ingest_register8",
+    "implementation": "go_metrics",
+    "iterations": 8,
+    "ns_per_op": 2020608.75,
+    "warm": 32
+  },
+  {
+    "case": "ingest_shuffled240",
+    "implementation": "go_metrics",
+    "iterations": 8,
+    "ns_per_op": 957177.625,
+    "warm": 32
+  },
+  {
+    "case": "ingest_duplicates240",
+    "implementation": "go_metrics",
+    "iterations": 8,
+    "ns_per_op": 1139979.375,
+    "warm": 32
+  },
+  {
+    "case": "read_head_point",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 47920.9375,
+    "warm": 32
+  },
+  {
+    "case": "read_head_full8",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 989558.0625,
+    "warm": 32
+  },
+  {
+    "case": "read_sealed_point",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 99942.875,
+    "warm": 32
+  },
+  {
+    "case": "read_sealed_boundary",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 482620,
+    "warm": 32
+  },
+  {
+    "case": "read_sealed_full8",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 2946540.3125,
+    "warm": 32
+  },
+  {
+    "case": "read_sealed_full16",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 5174560.875,
+    "warm": 32
+  },
+  {
+    "case": "read_filtered_one",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 428938.0625,
+    "warm": 32
+  },
+  {
+    "case": "stream_sealed_full8",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 2894101.5,
+    "warm": 32
+  },
+  {
+    "case": "read_where",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 1126768.5,
+    "warm": 32
+  },
+  {
+    "case": "read_prefix",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 467189.0625,
+    "warm": 32
+  },
+  {
+    "case": "read_noneof",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 4009821.3125,
+    "warm": 32
+  },
+  {
+    "case": "read_since",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 1007303.5625,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_count",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 379693.25,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_sum",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 376366.5,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_avg",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 371151.25,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_min",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 443243.625,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_max",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 395250.6875,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_delta",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 390652.6875,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_increase",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 422749.5,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_rate",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 393729.125,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_cut_sum",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 2318811.8125,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_cut_avg",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 2541361.8125,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_grouped_sum",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 480352.875,
+    "warm": 32
+  },
+  {
+    "case": "aggregate_grouped_increase",
+    "implementation": "go_metrics",
+    "iterations": 16,
+    "ns_per_op": 435186.0625,
+    "warm": 32
+  }
+]

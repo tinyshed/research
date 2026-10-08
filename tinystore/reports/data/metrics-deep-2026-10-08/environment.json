@@ -1,0 +1,425 @@
+{
+  "started_utc": "2026-10-08T15:27:14.519691+00:00",
+  "tinystore_commit": "e307c48a40126aad0e2873b6bf3aaedef8115483",
+  "source_sha256": {
+    "build.py": "520ffe5615ae5af8d9be2c51cb99fa34dfedfef754a2465c0d5d5e1279a79b14",
+    "deep_run.py": "78ef419fce28e505ec4f26d7045a2a168f5712f02d47742e0a030674547d2010",
+    "go/edge.go": "07dc5ca3a73b82ea88f749561da05719494dbf27f4d173c536370d0fc66f847e",
+    "go/go.mod": "022cfd1854ce0ff051ae179dd12db962d6fd666e68d055845973708439e5c1e5",
+    "go/go.sum": "dcc7556447f800550b4cd026a1053fc43f5a79d69b825bf4d10015774604e684",
+    "go/main.go": "5c70aba2e77e2c66b57ada87049bbd33b8a04b79544df99fe192df05d48f4f2a",
+    "reference-rust/Cargo.lock": "b0b0fe2ea88fb1e371e15fd9490175c8b419b9ca025c3e26b5d6807d85a79b28",
+    "reference-rust/Cargo.toml": "57359e430a54b52b50d0710f55c86ec98a3e45f1f875c593544141792e5bdbce",
+    "reference-rust/build.rs": "6e4e5c4dff1fa9aff41261013cae863a583e62453fab8a98e19c0675c9d096d2",
+    "reference-rust/src/codec/binary.rs": "aeeb75a3c4f6fb05eaf019d85fb6c1b0651f6bb0eeb0eef515588468a869fe0d",
+    "reference-rust/src/codec/clocks.rs": "78fcde6c8becfbc624b431c5bed4b08d2f1026b4e9c0b1ec3205bb75e0c3d605",
+    "reference-rust/src/codec/directory.rs": "45e48e9a87c9e066f74f2de39db8b013b7e067719c3da2aeff1f02782cc46758",
+    "reference-rust/src/codec/envelope.rs": "87132c52be87e5283266b13475ca7e0708b54358e82cc9f71851cfbac043e710",
+    "reference-rust/src/codec/huffman.rs": "9ccb4ead391718893c33bd71a0d829c46f257213505b8d5b46af1c0de688e460",
+    "reference-rust/src/codec/residuals.rs": "707db96cc90663a961928d7b598520e90e2b35560b3b1989986708fb13662e31",
+    "reference-rust/src/codec/sealed.rs": "108e8d53613f6b6a709c91116332c491da2194cff538224f4fc40479f1fb49d8",
+    "reference-rust/src/codec/summaries.rs": "672836bb4d908fd5f7afcc17c6f04f6c891f6fd3c422408754796edec80c6ed4",
+    "reference-rust/src/codec/tests.rs": "478e6f986c2f53edf96d75e945aeb40d44448d4dc5468e4a1ae8109e951542a0",
+    "reference-rust/src/codec/values.rs": "30dc88690a8149a77b826d39d1b86cdd41bfa296babc00c30fe8187b775f105f",
+    "reference-rust/src/codec.rs": "38d498364741bdb3cf1a491355b475bf84b83d6d63252a5bf2015979c8b9161e",
+    "reference-rust/src/engine.rs": "195dabcbbf4ea5d3771cfd599ec1824c430753e2d6c8226cd677af6bd4e1b638",
+    "reference-rust/src/exact.rs": "de1234874f36704590d34cfc1f0ccbada8c1745134eeae4e4a7707202cda3ec7",
+    "reference-rust/src/main.rs": "9a9a232442e7d64ee27a00743aef8ec67aa21547ce1dc0ebb6cafb42877f4145",
+    "reference-rust/src/query/parallel.rs": "aa8208c24520c3ba2189bbf6d5776075a61d54e39a65ddf95977bdb5372a93ee",
+    "reference-rust/src/query/quote.rs": "836fe1209510581c2e26d82a6dc7049b7fda7cd5ce44f9f42b06090f36f66401",
+    "reference-rust/src/query.rs": "601f0900779f6c8f144ae87bef1acfb024ef68fb6c5a94ea28d567f3e3291602",
+    "run.py": "fa95456ce4d3f7e133b8546679f6a973cd901d1eb7831379376c7301392c4c59",
+    "rust/Cargo.lock": "b0b0fe2ea88fb1e371e15fd9490175c8b419b9ca025c3e26b5d6807d85a79b28",
+    "rust/Cargo.toml": "3412b96481820e7cc0cc026447af538836737804fa732231a2e2d08ab3452281",
+    "rust/build.rs": "6e4e5c4dff1fa9aff41261013cae863a583e62453fab8a98e19c0675c9d096d2",
+    "rust/src/codec/binary.rs": "8c3471212d32433a642ad0f2814cc05d2ef2ebe7e5c982383ab2f6c87c8b7f77",
+    "rust/src/codec/buffer_tests.rs": "1bfe9486a456e6a1cad32edd53ebc6eb8d3feeeeb5f4baca3fe0bd29537c68f7",
+    "rust/src/codec/clocks.rs": "78fcde6c8becfbc624b431c5bed4b08d2f1026b4e9c0b1ec3205bb75e0c3d605",
+    "rust/src/codec/directory.rs": "45e48e9a87c9e066f74f2de39db8b013b7e067719c3da2aeff1f02782cc46758",
+    "rust/src/codec/envelope.rs": "70a0d2ab10d9aecf904b927f857d76b06e6ad6627e5e72208e855d869316da34",
+    "rust/src/codec/huffman.rs": "f126979a8e29e89f6c3a9e9937e4fde4cfc9c8c63444a3e4bf8e90a42421be07",
+    "rust/src/codec/residuals.rs": "c1f0a58a6f274ea841b572a4f06a969a645abcb040544497e8d4f3fc4e5bf8b9",
+    "rust/src/codec/sealed.rs": "b7796a2783700ff2fd71bda9ad5c7fa950e885f49c51d5a52fa1b50910703b94",
+    "rust/src/codec/summaries.rs": "672836bb4d908fd5f7afcc17c6f04f6c891f6fd3c422408754796edec80c6ed4",
+    "rust/src/codec/tests.rs": "478e6f986c2f53edf96d75e945aeb40d44448d4dc5468e4a1ae8109e951542a0",
+    "rust/src/codec/values.rs": "280f4804974fe3b38213fc6298ec27f5b3ee316c18ebc2399ee9e4455721adac",
+    "rust/src/codec.rs": "71f4981a0a87465984ccb952a97527ebb1ccc21490f365e6df792c229dd853e9",
+    "rust/src/engine.rs": "195dabcbbf4ea5d3771cfd599ec1824c430753e2d6c8226cd677af6bd4e1b638",
+    "rust/src/exact.rs": "de1234874f36704590d34cfc1f0ccbada8c1745134eeae4e4a7707202cda3ec7",
+    "rust/src/main.rs": "2fffb7e54b4168bc26064cc8f2cc836b3771dc7f849794de075e07408db74d31",
+    "rust/src/profile.rs": "bcd3034bab95e2fe61c91bb61d5495121e5980ea10d92826a25ccf199f2572e4",
+    "rust/src/query/optimization_tests.rs": "813bc9588dfa8d841fd9e19264b08e0a9fbf60e69d764d775f03bb3437815512",
+    "rust/src/query/parallel.rs": "aa8208c24520c3ba2189bbf6d5776075a61d54e39a65ddf95977bdb5372a93ee",
+    "rust/src/query/quote.rs": "836fe1209510581c2e26d82a6dc7049b7fda7cd5ce44f9f42b06090f36f66401",
+    "rust/src/query/specialized.rs": "bba8edf50a5c595ec78b496653a01291387102feffece731ca7935f6264bf4e0",
+    "rust/src/query.rs": "25030b980a4bf329eb5e17e8d0ebb73ee63eba5fb3a72c74a8b7fb8494ecb4ce",
+    "rust/src/tuning.rs": "7879b42215b4e2effe6eb9737242e376934fc9ce88aea42d10ef1678c3a8b162"
+  },
+  "binary_sha256": {
+    "bin/go-reference": "74782483e11d72c795a2b1307dba83d0e0852a2e230ab4c7985f1d6dd6575fb1",
+    "bin/rust-reference": "b5e3b85f3cf8667c86064d5df01c218193fa92b25a8e16b0c5c295185f94973d",
+    "bin/rust-default": "f1725fd088c828d0ddd4b4049dbee375191d648737d69dd1b9e2b2fb1260f632",
+    "bin/rust-lto": "70ce259da5a613f6e2a05498460164f8560a6155303235596fad66a34b0ec092",
+    "bin/rust-native": "91c6ded939602d13431ccbb05227483766b018b756d4a9cca88ccb7e9f17af22",
+    "bin/rust-pgo": "038f7168a72cf80734e05c14844f5c00a7e3191aa2e6bd84618903a57b58d070"
+  },
+  "go": "go version go1.27.1 linux/amd64",
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "cpu": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           46 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  3\nOn-line CPU(s) list:                     0-2\nVendor ID:                               AuthenticAMD\nModel name:                              AMD EPYC 9V74 80-Core Processor\nCPU family:                              25\nModel:                                   17\nThread(s) per core:                      1\nCore(s) per socket:                      3\nSocket(s):                               1\nStepping:                                1\nBogoMIPS:                                5192.26\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves avx512_bf16 clzero xsaveerptr arat npt nrip_save tsc_scale vmcb_clean flushbyasid pausefilter pfthreshold v_vmsave_vmload avx512vbmi umip avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid fsrm arch_capabilities\nHypervisor vendor:                       KVM\nVirtualization type:                     full\nL1d cache:                               64 KiB (2 instances)\nL1i cache:                               64 KiB (2 instances)\nL2 cache:                                2 MiB (2 instances)\nL3 cache:                                32 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-2\nVulnerability Gather data sampling:      Not affected\nVulnerability Ghostwrite:                Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Old microcode:             Not affected\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Vulnerable\nVulnerability Spec store bypass:         Vulnerable\nVulnerability Spectre v1:                Vulnerable: __user pointer sanitization and usercopy barriers only; no swapgs barriers\nVulnerability Spectre v2:                Vulnerable; STIBP: disabled; PBRSB-eIBRS: Not affected; BHI: Not affected\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Vulnerable\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Not affected",
+  "cpu_quota": "200000 100000",
+  "memory_limit": "8589934592",
+  "cpus": [
+    0,
+    2
+  ],
+  "variants": {
+    "go": [
+      "bin/go-reference",
+      []
+    ],
+    "rust_previous": [
+      "bin/rust-reference",
+      [
+        "--fast-exact",
+        "1",
+        "--fast-codec",
+        "1",
+        "--threads",
+        "0"
+      ]
+    ],
+    "rust_control": [
+      "bin/rust-default",
+      [
+        "--fast-exact",
+        "1",
+        "--fast-codec",
+        "1",
+        "--threads",
+        "0",
+        "--tuning",
+        "0"
+      ]
+    ],
+    "rust_new": [
+      "bin/rust-default",
+      [
+        "--fast-exact",
+        "1",
+        "--fast-codec",
+        "1",
+        "--threads",
+        "0",
+        "--tuning",
+        "15"
+      ]
+    ],
+    "rayon2": [
+      "bin/rust-default",
+      [
+        "--fast-exact",
+        "1",
+        "--fast-codec",
+        "1",
+        "--threads",
+        "2",
+        "--tuning",
+        "15"
+      ]
+    ],
+    "rust_lto": [
+      "bin/rust-lto",
+      [
+        "--fast-exact",
+        "1",
+        "--fast-codec",
+        "1",
+        "--threads",
+        "0",
+        "--tuning",
+        "15"
+      ]
+    ],
+    "rust_native": [
+      "bin/rust-native",
+      [
+        "--fast-exact",
+        "1",
+        "--fast-codec",
+        "1",
+        "--threads",
+        "0",
+        "--tuning",
+        "15"
+      ]
+    ],
+    "rust_pgo": [
+      "bin/rust-pgo",
+      [
+        "--fast-exact",
+        "1",
+        "--fast-codec",
+        "1",
+        "--threads",
+        "0",
+        "--tuning",
+        "15"
+      ]
+    ],
+    "pgo_rayon2": [
+      "bin/rust-pgo",
+      [
+        "--fast-exact",
+        "1",
+        "--fast-codec",
+        "1",
+        "--threads",
+        "2",
+        "--tuning",
+        "15"
+      ]
+    ],
+    "only_bits": [
+      "bin/rust-default",
+      [
+        "--fast-exact",
+        "1",
+        "--fast-codec",
+        "1",
+        "--threads",
+        "0",
+        "--tuning",
+        "1"
+      ]
+    ],
+    "only_buffers": [
+      "bin/rust-default",
+      [
+        "--fast-exact",
+        "1",
+        "--fast-codec",
+        "1",
+        "--threads",
+        "0",
+        "--tuning",
+        "2"
+      ]
+    ],
+    "only_fused": [
+      "bin/rust-default",
+      [
+        "--fast-exact",
+        "1",
+        "--fast-codec",
+        "1",
+        "--threads",
+        "0",
+        "--tuning",
+        "4"
+      ]
+    ],
+    "only_specialized": [
+      "bin/rust-default",
+      [
+        "--fast-exact",
+        "1",
+        "--fast-codec",
+        "1",
+        "--threads",
+        "0",
+        "--tuning",
+        "8"
+      ]
+    ]
+  },
+  "gomaxprocs": 1,
+  "warm": 32,
+  "iterations": {
+    "ingest_append1": 188,
+    "ingest_replace1": 213,
+    "ingest_scrape100": 50,
+    "ingest_register8": 16,
+    "ingest_shuffled240": 197,
+    "ingest_duplicates240": 212,
+    "maintain_ready": 1,
+    "expire_all": 1,
+    "read_head_point": 7320,
+    "read_head_full8": 332,
+    "read_sealed_point": 3893,
+    "read_sealed_boundary": 653,
+    "read_sealed_full8": 114,
+    "read_sealed_full16": 58,
+    "read_filtered_one": 1059,
+    "stream_sealed_full8": 130,
+    "read_where": 292,
+    "read_prefix": 804,
+    "read_noneof": 155,
+    "read_since": 383,
+    "aggregate_count": 622,
+    "aggregate_sum": 565,
+    "aggregate_avg": 573,
+    "aggregate_min": 701,
+    "aggregate_max": 845,
+    "aggregate_delta": 720,
+    "aggregate_increase": 544,
+    "aggregate_rate": 560,
+    "aggregate_cut_sum": 140,
+    "aggregate_cut_avg": 131,
+    "aggregate_grouped_sum": 669,
+    "aggregate_grouped_increase": 515,
+    "read_wide64": 41,
+    "stream_wide64": 54,
+    "aggregate_wide_sum": 183,
+    "aggregate_wide_cut_sum": 58,
+    "aggregate_wide_cut_avg": 52,
+    "aggregate_wide_cut_count": 55,
+    "aggregate_wide_grouped_cut_sum": 54,
+    "read_edge": 412,
+    "aggregate_edge_sum_3": 8234,
+    "aggregate_edge_increase_10": 8005
+  },
+  "passes": 5,
+  "harness_status": "committed prototype; local VM/container measurements with source/binary hashes",
+  "harness_commit": "16df44bff8bc7f18313d0806492a7c8304fbc9b6",
+  "baseline_note": "Previous optimized Rust port remeasured in this session; control is new source with all deep switches off",
+  "build": {
+    "portable_lto_flags": "-C lto=thin -C embed-bitcode=yes -C codegen-units=1",
+    "builds": [
+      {
+        "name": "default",
+        "flags": "",
+        "features": [],
+        "sha256": "f1725fd088c828d0ddd4b4049dbee375191d648737d69dd1b9e2b2fb1260f632",
+        "bytes": 4246488,
+        "build_output": ""
+      },
+      {
+        "name": "telemetry",
+        "flags": "",
+        "features": [
+          "telemetry"
+        ],
+        "sha256": "bbabd683c1461d95b4035f267d165eced98f29a2c460fbf0749340e7069b2a90",
+        "bytes": 4301456,
+        "build_output": ""
+      },
+      {
+        "name": "lto",
+        "flags": "-C lto=thin -C embed-bitcode=yes -C codegen-units=1",
+        "features": [],
+        "sha256": "70ce259da5a613f6e2a05498460164f8560a6155303235596fad66a34b0ec092",
+        "bytes": 3870960,
+        "build_output": ""
+      },
+      {
+        "name": "native",
+        "flags": "-C lto=thin -C embed-bitcode=yes -C codegen-units=1 -C target-cpu=native",
+        "features": [],
+        "sha256": "91c6ded939602d13431ccbb05227483766b018b756d4a9cca88ccb7e9f17af22",
+        "bytes": 3877064,
+        "build_output": ""
+      },
+      {
+        "name": "pgo-train",
+        "flags": "-C lto=thin -C embed-bitcode=yes -C codegen-units=1 -C profile-generate=<repo>/tinystore/metrics-max-bench/pgo/raw",
+        "features": [],
+        "sha256": "b20097706ee42a24b05dcdfb0d4d56334b2f5d79e00451ba8af93827ada468ae",
+        "bytes": 5647112,
+        "build_output": ""
+      },
+      {
+        "name": "pgo",
+        "flags": "-C lto=thin -C embed-bitcode=yes -C codegen-units=1 -C profile-use=<repo>/tinystore/metrics-max-bench/pgo/merged.profdata",
+        "features": [],
+        "sha256": "038f7168a72cf80734e05c14844f5c00a7e3191aa2e6bd84618903a57b58d070",
+        "bytes": 3817080,
+        "build_output": ""
+      }
+    ],
+    "training": [
+      {
+        "case": "read_head_full8",
+        "implementation": "rust_metrics",
+        "iterations": 256,
+        "ns_per_op": 391258.88671875,
+        "warm": 32,
+        "fixture": "head"
+      },
+      {
+        "case": "read_sealed_full8",
+        "implementation": "rust_metrics",
+        "iterations": 256,
+        "ns_per_op": 1109561.32421875,
+        "warm": 32,
+        "fixture": "sealed"
+      },
+      {
+        "case": "aggregate_cut_sum",
+        "implementation": "rust_metrics",
+        "iterations": 256,
+        "ns_per_op": 933529.08984375,
+        "warm": 32,
+        "fixture": "sealed"
+      },
+      {
+        "case": "aggregate_count",
+        "implementation": "rust_metrics",
+        "iterations": 256,
+        "ns_per_op": 171793.97265625,
+        "warm": 32,
+        "fixture": "sealed"
+      },
+      {
+        "case": "ingest_scrape100",
+        "implementation": "rust_metrics",
+        "iterations": 64,
+        "ns_per_op": 3026991.875,
+        "warm": 32,
+        "fixture": "scrape"
+      },
+      {
+        "case": "maintain_ready",
+        "implementation": "rust_metrics",
+        "iterations": 1,
+        "ns_per_op": 34724682.0,
+        "warm": 0,
+        "fixture": "ready"
+      }
+    ],
+    "profile_sha256": "300d0130630926ccca9e74ab97c0bb312e8890e618cca0ba5238c82c22aebfa6",
+    "profdata_tool": "LLVM (http://llvm.org/):\n  LLVM version 23.1.1-rust-1.99.0-stable\n  Optimized build.",
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n"
+  },
+  "fixtures": {
+    "sealed": {
+      "sha256": "2df2463ca583e0308616687aa2360391b5f7bd9cb97b2e9a5d7c348c021686d8",
+      "bytes": 135168
+    },
+    "ready": {
+      "sha256": "212dfdab7278b38b37b47b17c52e4e2b3c53e147dc4f2ff15abc75dfc5d8becc",
+      "bytes": 102400
+    },
+    "head": {
+      "sha256": "2f1f5c1772d62ec5910292d9b8b5cdefe610105bd15e2769c771962c59dc71a0",
+      "bytes": 77824
+    },
+    "scrape": {
+      "sha256": "52b672041cda3b7ad68f77731c734b322bd86d54b5038927c9da1ee5c752b56a",
+      "bytes": 102400
+    },
+    "empty": {
+      "sha256": "515600698251e249a8e1c466a797d7e0a5027a0e64f56285fe693b147ca68a5a",
+      "bytes": 69632
+    },
+    "edge": {
+      "sha256": "d3a0ab8cb53f80d5dfae960205a38779f9823f51d03f8a38f9c81dc295ca1a10",
+      "bytes": 81920
+    },
+    "wide": {
+      "sha256": "579a2fc5a190197f3afe8780a5a0f91a56d8fe10139e9c66c5e9c9e46a20db40",
+      "bytes": 143360
+    }
+  },
+  "finished_utc": "2026-10-08T15:32:44.018064+00:00"
+}

@@ -1,0 +1,114 @@
+{
+  "guards": {
+    "go": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    },
+    "rust_base": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    },
+    "rust_serial": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    },
+    "rayon1": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    },
+    "rayon2": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    },
+    "rust_refactor": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    },
+    "rust_exact": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    },
+    "rust_codec": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    },
+    "rayon2_shared_cache": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    }
+  },
+  "edge-guards": {
+    "go": {
+      "nonfinite": true
+    },
+    "rust_base": {
+      "nonfinite": true
+    },
+    "rust_serial": {
+      "nonfinite": true
+    },
+    "rayon1": {
+      "nonfinite": true
+    },
+    "rayon2": {
+      "nonfinite": true
+    },
+    "rust_refactor": {
+      "nonfinite": true
+    },
+    "rust_exact": {
+      "nonfinite": true
+    },
+    "rust_codec": {
+      "nonfinite": true
+    },
+    "rayon2_shared_cache": {
+      "nonfinite": true
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{"case": "read_head_full8", "heap_alloc_bytes": 5551576, "heap_sys_bytes": 16252928, "implementation": "go_metrics", "iterations": 16, "retained_samples": 256128, "rss_kib": 20292, "max_rss_kib": 20572, "pass_id": 1}
+{"case": "read_head_full8", "implementation": "rust_metrics", "iterations": 16, "retained_samples": 256128, "rss_kib": 7776, "sqlite_memory_used": 343560, "max_rss_kib": 7588, "pass_id": 1}
+{"case": "read_head_full8", "implementation": "rust_metrics", "iterations": 16, "retained_samples": 256128, "rss_kib": 7796, "sqlite_memory_used": 343560, "max_rss_kib": 7596, "pass_id": 2}
+{"case": "read_head_full8", "heap_alloc_bytes": 5547160, "heap_sys_bytes": 16252928, "implementation": "go_metrics", "iterations": 16, "retained_samples": 256128, "rss_kib": 18984, "max_rss_kib": 19296, "pass_id": 2}
+{"case": "read_head_full8", "heap_alloc_bytes": 5563120, "heap_sys_bytes": 16220160, "implementation": "go_metrics", "iterations": 16, "retained_samples": 256128, "rss_kib": 20992, "max_rss_kib": 21216, "pass_id": 3}
+{"case": "read_head_full8", "implementation": "rust_metrics", "iterations": 16, "retained_samples": 256128, "rss_kib": 7712, "sqlite_memory_used": 343560, "max_rss_kib": 7508, "pass_id": 3}
+{"case": "read_sealed_full8", "heap_alloc_bytes": 10777792, "heap_sys_bytes": 24838144, "implementation": "go_metrics", "iterations": 16, "retained_samples": 614528, "rss_kib": 30544, "max_rss_kib": 30816, "pass_id": 1}
+{"case": "read_sealed_full8", "implementation": "rust_metrics", "iterations": 16, "retained_samples": 614528, "rss_kib": 13804, "sqlite_memory_used": 347864, "max_rss_kib": 13720, "pass_id": 1}
+{"case": "read_sealed_full8", "implementation": "rust_metrics", "iterations": 16, "retained_samples": 614528, "rss_kib": 13808, "sqlite_memory_used": 347864, "max_rss_kib": 13720, "pass_id": 2}
+{"case": "read_sealed_full8", "heap_alloc_bytes": 10776128, "heap_sys_bytes": 28966912, "implementation": "go_metrics", "iterations": 16, "retained_samples": 614528, "rss_kib": 32140, "max_rss_kib": 32480, "pass_id": 2}
+{"case": "read_sealed_full8", "heap_alloc_bytes": 10778416, "heap_sys_bytes": 28966912, "implementation": "go_metrics", "iterations": 16, "retained_samples": 614528, "rss_kib": 32096, "max_rss_kib": 32352, "pass_id": 3}
+{"case": "read_sealed_full8", "implementation": "rust_metrics", "iterations": 16, "retained_samples": 614528, "rss_kib": 13860, "sqlite_memory_used": 347864, "max_rss_kib": 13768, "pass_id": 3}
+{"case": "read_sealed_full16", "heap_alloc_bytes": 21338464, "heap_sys_bytes": 45776896, "implementation": "go_metrics", "iterations": 16, "retained_samples": 1229056, "rss_kib": 52660, "max_rss_kib": 52704, "pass_id": 1}
+{"case": "read_sealed_full16", "implementation": "rust_metrics", "iterations": 16, "retained_samples": 1229056, "rss_kib": 23952, "sqlite_memory_used": 381888, "max_rss_kib": 23852, "pass_id": 1}
+{"case": "read_sealed_full16", "implementation": "rust_metrics", "iterations": 16, "retained_samples": 1229056, "rss_kib": 23844, "sqlite_memory_used": 381888, "max_rss_kib": 23740, "pass_id": 2}
+{"case": "read_sealed_full16", "heap_alloc_bytes": 21335728, "heap_sys_bytes": 45809664, "implementation": "go_metrics", "iterations": 16, "retained_samples": 1229056, "rss_kib": 49896, "max_rss_kib": 49936, "pass_id": 2}
+{"case": "read_sealed_full16", "heap_alloc_bytes": 21335968, "heap_sys_bytes": 45809664, "implementation": "go_metrics", "iterations": 16, "retained_samples": 1229056, "rss_kib": 50144, "max_rss_kib": 50204, "pass_id": 3}
+{"case": "read_sealed_full16", "implementation": "rust_metrics", "iterations": 16, "retained_samples": 1229056, "rss_kib": 23964, "sqlite_memory_used": 381888, "max_rss_kib": 23848, "pass_id": 3}
+{"case": "stream_sealed_full8", "heap_alloc_bytes": 317760, "heap_sys_bytes": 8028160, "implementation": "go_metrics", "iterations": 16, "retained_samples": 0, "rss_kib": 14904, "max_rss_kib": 15044, "pass_id": 1}
+{"case": "stream_sealed_full8", "implementation": "rust_metrics", "iterations": 16, "retained_samples": 0, "rss_kib": 4076, "sqlite_memory_used": 347864, "max_rss_kib": 4060, "pass_id": 1}
+{"case": "stream_sealed_full8", "implementation": "rust_metrics", "iterations": 16, "retained_samples": 0, "rss_kib": 4064, "sqlite_memory_used": 347864, "max_rss_kib": 4056, "pass_id": 2}
+{"case": "stream_sealed_full8", "heap_alloc_bytes": 319152, "heap_sys_bytes": 8028160, "implementation": "go_metrics", "iterations": 16, "retained_samples": 0, "rss_kib": 14916, "max_rss_kib": 15288, "pass_id": 2}
+{"case": "stream_sealed_full8", "heap_alloc_bytes": 316592, "heap_sys_bytes": 7995392, "implementation": "go_metrics", "iterations": 16, "retained_samples": 0, "rss_kib": 14924, "max_rss_kib": 15244, "pass_id": 3}
+{"case": "stream_sealed_full8", "implementation": "rust_metrics", "iterations": 16, "retained_samples": 0, "rss_kib": 4136, "sqlite_memory_used": 347864, "max_rss_kib": 4000, "pass_id": 3}
+{"case": "aggregate_cut_sum", "heap_alloc_bytes": 414736, "heap_sys_bytes": 12156928, "implementation": "go_metrics", "iterations": 16, "retained_samples": 0, "rss_kib": 13952, "max_rss_kib": 14300, "pass_id": 1}
+{"case": "aggregate_cut_sum", "implementation": "rust_metrics", "iterations": 16, "retained_samples": 0, "rss_kib": 4104, "sqlite_memory_used": 347864, "max_rss_kib": 3936, "pass_id": 1}
+{"case": "aggregate_cut_sum", "implementation": "rust_metrics", "iterations": 16, "retained_samples": 0, "rss_kib": 4068, "sqlite_memory_used": 347864, "max_rss_kib": 3888, "pass_id": 2}
+{"case": "aggregate_cut_sum", "heap_alloc_bytes": 395792, "heap_sys_bytes": 7962624, "implementation": "go_metrics", "iterations": 16, "retained_samples": 0, "rss_kib": 13928, "max_rss_kib": 14308, "pass_id": 2}
+{"case": "aggregate_cut_sum", "heap_alloc_bytes": 390944, "heap_sys_bytes": 7962624, "implementation": "go_metrics", "iterations": 16, "retained_samples": 0, "rss_kib": 14140, "max_rss_kib": 14560, "pass_id": 3}
+{"case": "aggregate_cut_sum", "implementation": "rust_metrics", "iterations": 16, "retained_samples": 0, "rss_kib": 4152, "sqlite_memory_used": 347864, "max_rss_kib": 4040, "pass_id": 3}
+{"case": "aggregate_sum", "heap_alloc_bytes": 331104, "heap_sys_bytes": 8028160, "implementation": "go_metrics", "iterations": 16, "retained_samples": 0, "rss_kib": 14228, "max_rss_kib": 14432, "pass_id": 1}
+{"case": "aggregate_sum", "implementation": "rust_metrics", "iterations": 16, "retained_samples": 0, "rss_kib": 4036, "sqlite_memory_used": 345712, "max_rss_kib": 3992, "pass_id": 1}
+{"case": "aggregate_sum", "implementation": "rust_metrics", "iterations": 16, "retained_samples": 0, "rss_kib": 4000, "sqlite_memory_used": 345712, "max_rss_kib": 3896, "pass_id": 2}
+{"case": "aggregate_sum", "heap_alloc_bytes": 331248, "heap_sys_bytes": 12222464, "implementation": "go_metrics", "iterations": 16, "retained_samples": 0, "rss_kib": 14212, "max_rss_kib": 14428, "pass_id": 2}
+{"case": "aggregate_sum", "heap_alloc_bytes": 333056, "heap_sys_bytes": 7766016, "implementation": "go_metrics", "iterations": 16, "retained_samples": 0, "rss_kib": 14060, "max_rss_kib": 14560, "pass_id": 3}
+{"case": "aggregate_sum", "implementation": "rust_metrics", "iterations": 16, "retained_samples": 0, "rss_kib": 4084, "sqlite_memory_used": 345712, "max_rss_kib": 4040, "pass_id": 3}

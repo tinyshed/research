@@ -1,0 +1,91 @@
+{
+  "started_utc": "2026-10-07T23:55:20.710881+00:00",
+  "source_sha256": {
+    "run.py": "6061096db3fd609c437b35371df869392269fd59dbf72343368e696e01bbeaef",
+    "build_native.py": "e958afb9d59d9a31d90128c968747d9338db4028516de50831f880523b71b829",
+    "go/main.go": "619fc3c35b5608be9fbfc21ee7b126d766a7cc4edbe721ff6a7e9232ecdec614",
+    "go/raw.go": "d264bc1afeaf0ffd32b7889689e8e7e08d59308686af205e6aa30abbd083575b",
+    "go/tiny.go": "dbea7d91ffc152acc569b8afa0e6467489693e54b0dcc2fd4eeb1ce21cafb4cb",
+    "rust/src/main.rs": "1d07b797dd63ba8fb38e7730dcd6dc9c5c9e257d8f4dd67df7dbf48ed71a8e98",
+    "go/go.mod": "8d9f0faa4d45db96e09583416d02f5d4059415375c9a1d25c461e176b414f87a",
+    "go/go.sum": "1c56a6c76cc5865731da3d5ae0aa6efc9ce69a7c2998fa1e55b7c73c88ec0df6",
+    "rust/Cargo.toml": "9a79a181cb0ac40ed0656ee8193cc0d80431d37cf104ae365de082a78e8381f9",
+    "rust/Cargo.lock": "31994ad47f367e039a78b099adbb51a54c6e1a9b55b7fd65ab7110b53eb06e3e",
+    "rust/build.rs": "6e4e5c4dff1fa9aff41261013cae863a583e62453fab8a98e19c0675c9d096d2"
+  },
+  "tinystore_commit": "e307c48a40126aad0e2873b6bf3aaedef8115483",
+  "go": "go version go1.27.1 linux/amd64",
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "cpu": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           46 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  3\nOn-line CPU(s) list:                     0-2\nVendor ID:                               AuthenticAMD\nModel name:                              AMD EPYC 9V74 80-Core Processor\nCPU family:                              25\nModel:                                   17\nThread(s) per core:                      1\nCore(s) per socket:                      3\nSocket(s):                               1\nStepping:                                1\nBogoMIPS:                                5192.26\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves avx512_bf16 clzero xsaveerptr arat npt nrip_save tsc_scale vmcb_clean flushbyasid pausefilter pfthreshold v_vmsave_vmload avx512vbmi umip avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid fsrm arch_capabilities\nHypervisor vendor:                       KVM\nVirtualization type:                     full\nL1d cache:                               64 KiB (2 instances)\nL1i cache:                               64 KiB (2 instances)\nL2 cache:                                2 MiB (2 instances)\nL3 cache:                                32 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-2\nVulnerability Gather data sampling:      Not affected\nVulnerability Ghostwrite:                Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Old microcode:             Not affected\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Vulnerable\nVulnerability Spec store bypass:         Vulnerable\nVulnerability Spectre v1:                Vulnerable: __user pointer sanitization and usercopy barriers only; no swapgs barriers\nVulnerability Spectre v2:                Vulnerable; STIBP: disabled; PBRSB-eIBRS: Not affected; BHI: Not affected\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Vulnerable\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Not affected",
+  "cpu_affinity": 0,
+  "cpu_quota": "200000 100000",
+  "memory_limit": "8589934592",
+  "passes": 3,
+  "minimum_final_seconds": 0.15,
+  "gomaxprocs": 1,
+  "gogc": "default100",
+  "filesystem": "overlayfs",
+  "native_build": {
+    "version": "3.53.4",
+    "download_url": "https://sqlite.org/2026/sqlite-amalgamation-3530400.zip",
+    "archive_sha256": "1e71ddf93849c6a6ecf58b827c0692073d2dd7ee40196158068f7b29f422e87d",
+    "sqlite3_c_sha256": "b1dd5d74ec7f29055a6684fa06fb3c2f6821c87dd38f9a458dfd2e8a1db28189",
+    "sqlite3_h_sha256": "919e7f2e8ed1d8f56ac17b412b8971c76aa5d1a879752cc6058f75e7d5910e1d",
+    "compiler": "cc (Debian 14.2.0-19) 14.2.0",
+    "flags": [
+      "-O2",
+      "-fPIC",
+      "-pthread",
+      "-DSQLITE_THREADSAFE=1",
+      "-DSQLITE_DQS=0",
+      "-DSQLITE_DEFAULT_WAL_SYNCHRONOUS=1",
+      "-DSQLITE_LIKE_DOESNT_MATCH_BLOBS",
+      "-DSQLITE_STRICT_SUBTYPE=1",
+      "-DSQLITE_OMIT_DEPRECATED",
+      "-DSQLITE_OMIT_SHARED_CACHE",
+      "-DSQLITE_USE_URI=1",
+      "-DSQLITE_ALLOW_URI_AUTHORITY",
+      "-DSQLITE_DEFAULT_FOREIGN_KEYS=1",
+      "-DSQLITE_TRUSTED_SCHEMA=0",
+      "-DSQLITE_ENABLE_API_ARMOR",
+      "-DSQLITE_ENABLE_ATOMIC_WRITE",
+      "-DSQLITE_ENABLE_BATCH_ATOMIC_WRITE",
+      "-DSQLITE_ENABLE_COLUMN_METADATA",
+      "-DSQLITE_ENABLE_MATH_FUNCTIONS",
+      "-DSQLITE_ENABLE_PREUPDATE_HOOK",
+      "-DSQLITE_ENABLE_SETLK_TIMEOUT=2",
+      "-DSQLITE_ENABLE_STAT4=1",
+      "-DSQLITE_SOUNDEX",
+      "-DSQLITE_OMIT_COMPLETE",
+      "-DSQLITE_OMIT_GET_TABLE",
+      "-DSQLITE_OMIT_DESERIALIZE",
+      "-DSQLITE_OMIT_LOAD_EXTENSION",
+      "-DSQLITE_MAX_MMAP_SIZE=1073741824",
+      "-DSQLITE_EXPERIMENTAL_PRAGMA_20251114"
+    ],
+    "intentional_differences": [
+      "native THREADSAFE=1",
+      "native Unix VFS",
+      "native automatic initialization"
+    ]
+  },
+  "fixtures": {
+    "1024": {
+      "bytes": 4800512,
+      "sha256": "1d8b67acc41a2d061498d2d580a3974d72cafa3e6ea4d7b2fc3ca46c4ff1fa84"
+    },
+    "4096": {
+      "bytes": 5173248,
+      "sha256": "f675b788fe0175c02cbf917f4c80b093ab296a57aae044d29eb5c9d43c7685aa"
+    }
+  },
+  "binary_sha256": {
+    "go": "ec0fbf129c74c932b5c2540262ed229c3de4c17a3a338ff89c2b127dec704120",
+    "rust": "8d58bdea78d0a28eec03cf23db99d0d8ff242a0973058cf5496cf12a0b1d2403"
+  },
+  "harness_status": "uncommitted local prototype; source hashes recorded",
+  "data_rows": 32768,
+  "body_bytes": 128,
+  "finished_utc": "2026-10-07T23:56:11.643136+00:00"
+}

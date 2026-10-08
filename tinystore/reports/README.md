@@ -181,3 +181,22 @@ the self-summary experiment after it; the rejected idle-slot candidate,
 | [runtime-continuation-2026-10-01.md](runtime-continuation-2026-10-01.md) | saved modernc/ncruces revisions on local Linux containers and the existing Yandex VM; every engine, the application stack, Go/Bun/Python clients, rejected cancellation and idle-slot prototypes, corrected metrics bounds, process crash smoke and binary weight |
 | [consumer-memory-2026-10-01.md](consumer-memory-2026-10-01.md) | independent small consumers: root-only and one engine at a time, natural startup versus GC, matched application idle/load memory, an actual bitwise-checked raw TSBS file, and interleaved Go/Bun/Python modes |
 | [self-summary-2026-10-01.md](self-summary-2026-10-01.md) | separate experiment branched from the checked runtime: opt-in self reports, directory-v4 exact aggregate summaries, eight interleaved saved-revision comparisons, raw equivalence, and TSBS file pages by object |
+
+
+## 7–8 October 2026 — Rust and native SQLite research
+
+The first four rounds are preserved exploratory runs whose harnesses were
+uncommitted when measured. The deeper-optimization round commits its harness
+before measurement. Each comparison uses its own same-session baseline.
+
+| Report | Scope |
+| --- | --- |
+| [Rust research synthesis](rust-research-summary-2026-10-08.md) | findings across all rounds, SQLite linking, memory bounds and production gates |
+| [Algorithm kernels](rust-kernels-2026-10-07.md) | 54 deterministic fixtures: metrics preparation/codecs and records packing |
+| [Matched native SQLite](sqlite-native-2026-10-07.md) | wrapper/backend reads, FULL writes, version/source/build parity and static linkage |
+| [Synchronous metrics port](metrics-native-2026-10-08.md) | full ingest, read, stream, aggregate, maintenance and retention paths through SQLite |
+| [First optimizations and Rayon](metrics-optimization-2026-10-08.md) | fixed exact accumulator, allocation changes, ordered bounded parallelism and RSS |
+| [Deeper optimizations](metrics-deep-2026-10-08.md) | word kernels, shared buffers, fused queries, operation specialization, LTO/native/PGO and profiles |
+
+[Raw-data publication provenance](data/publication-provenance.json) preserves
+original hashes and distinguishes translated documentation from measured code.

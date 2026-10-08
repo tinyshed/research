@@ -1,0 +1,224 @@
+{
+  "tinystore_commit": "e307c48a40126aad0e2873b6bf3aaedef8115483",
+  "go": "go1.27.1 linux/amd64",
+  "environment": {
+    "GOWORK": "off",
+    "CGO_ENABLED": "0",
+    "GOMAXPROCS": "1"
+  },
+  "scope": "Compile all 16 Go modules outside source; compare adapter tests also ran. Historical benchmarks were not remeasured. Rust telemetry release suite: 39 tests passed before measurement; original test stdout was not retained.",
+  "modules": [
+    {
+      "module": "tinystore/bench/alibaba",
+      "exit": 0,
+      "output": "?   \tgithub.com/tinyshed/tinystore/bench/alibaba\t[no test files]\n"
+    },
+    {
+      "module": "tinystore/bench/blob",
+      "exit": 0,
+      "output": "?   \tgithub.com/tinyshed/tinystore/bench/blob\t[no test files]\ngo: downloading modernc.org/libc v1.75.7\ngo: downloading modernc.org/sqlite v1.59.0\ngo: downloading github.com/dustin/go-humanize v1.0.1\ngo: downloading github.com/google/uuid v1.6.0\ngo: downloading golang.org/x/sys v0.47.0\ngo: downloading modernc.org/mathutil v1.7.1\ngo: downloading modernc.org/memory v1.12.1\ngo: downloading github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec\n"
+    },
+    {
+      "module": "tinystore/bench/compare",
+      "exit": 0,
+      "output": "Parent agent received successful compile log for main and 8 weight packages; two adapter integration tests passed in 0.017 s."
+    },
+    {
+      "module": "tinystore/bench/idle",
+      "exit": 0,
+      "output": "ok  \tgithub.com/tinyshed/tinystore/bench/idle\t0.002s [no tests to run]\n?   \tgithub.com/tinyshed/tinystore/bench/idle/cmd/all\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/idle/cmd/blobs\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/idle/cmd/empty\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/idle/cmd/jobs\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/idle/cmd/kv\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/idle/cmd/metrics\t[no test files]\nok  \tgithub.com/tinyshed/tinystore/bench/idle/cmd/raw\t0.002s [no tests to run]\n?   \tgithub.com/tinyshed/tinystore/bench/idle/cmd/records\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/idle/cmd/root\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/idle/cmd/sqldb\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/idle/internal/consumer\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/idle/internal/probe\t[no test files]\n"
+    },
+    {
+      "module": "tinystore/bench/kv",
+      "exit": 0,
+      "output": "?   \tgithub.com/tinyshed/tinystore/bench/kv\t[no test files]\n"
+    },
+    {
+      "module": "tinystore/bench/perf",
+      "exit": 0,
+      "output": "?   \tgithub.com/tinyshed/tinystore/bench/perf\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/perf/layout\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/perf/raw\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/perf/remote\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/perf/repro\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/perf/sqlshape\t[no test files]\n"
+    },
+    {
+      "module": "tinystore/bench/records",
+      "exit": 0,
+      "output": "?   \tgithub.com/tinyshed/tinystore/bench/records\t[no test files]\n"
+    },
+    {
+      "module": "tinystore/bench/telegraf",
+      "exit": 0,
+      "output": "?   \tgithub.com/tinyshed/tinystore/bench/telegraf\t[no test files]\n"
+    },
+    {
+      "module": "tinystore/bench/tsbs",
+      "exit": 0,
+      "output": "?   \tgithub.com/tinyshed/tinystore/bench/tsbs\t[no test files]\n"
+    },
+    {
+      "module": "tinystore/server-spike",
+      "exit": 0,
+      "output": "ok  \tgithub.com/tinyshed/tinystore/server/spike\t0.003s [no tests to run]\n"
+    },
+    {
+      "module": "tinystore/spike",
+      "exit": 0,
+      "output": "ok  \tgithub.com/tinyshed/tinystore/spike\t0.005s [no tests to run]\n"
+    },
+    {
+      "module": "tinystore/metrics-bench/go",
+      "exit": 0,
+      "output": "?   \tgithub.com/tinyshed/tinystore/metrics-bench\t[no test files]\n"
+    },
+    {
+      "module": "tinystore/metrics-max-bench/go",
+      "exit": 0,
+      "output": "?   \tgithub.com/tinyshed/tinystore/metrics-bench\t[no test files]\n"
+    },
+    {
+      "module": "tinystore/metrics-opt-bench/go",
+      "exit": 0,
+      "output": "?   \tgithub.com/tinyshed/tinystore/metrics-bench\t[no test files]\n"
+    },
+    {
+      "module": "tinystore/rust-spike/go",
+      "exit": 0,
+      "output": "ok  \tgithub.com/tinyshed/tinystore/rust-spike\t0.004s [no tests to run]\n"
+    },
+    {
+      "module": "tinystore/sqlite-bench/go",
+      "exit": 0,
+      "output": "?   \tgithub.com/tinyshed/tinystore/sqlite-bench\t[no test files]\n"
+    }
+  ],
+  "compatibility_fix_steps": [
+    {
+      "module": "tinystore/bench/kv",
+      "steps": [
+        {
+          "command": "go mod tidy",
+          "exit": 0,
+          "output": "go: downloading github.com/google/pprof v0.0.0-20260802141513-ef3492d7dac3\ngo: downloading modernc.org/fileutil v1.4.0\ngo: downloading github.com/mattn/go-isatty v0.0.24\ngo: downloading github.com/ncruces/go-strftime v1.0.0\ngo: downloading golang.org/x/tools v0.48.0\ngo: downloading modernc.org/cc/v4 v4.29.2\ngo: downloading modernc.org/ccgo/v4 v4.35.0\ngo: downloading modernc.org/goabi0 v0.2.0\ngo: downloading golang.org/x/sync v0.22.0\ngo: downloading modernc.org/opt v0.2.0\ngo: downloading modernc.org/sortutil v1.2.1\ngo: downloading modernc.org/strutil v1.2.1\ngo: downloading modernc.org/token v1.1.0\ngo: downloading golang.org/x/mod v0.38.0\ngo: downloading modernc.org/gc/v2 v2.6.5\ngo: downloading modernc.org/gc/v3 v3.1.5\ngo: downloading github.com/hashicorp/golang-lru/v2 v2.0.7\ngo: downloading golang.org/x/tools v0.50.0\n"
+        },
+        {
+          "command": "go test -run ^$ ./...",
+          "exit": 0,
+          "output": "?   \tgithub.com/tinyshed/tinystore/bench/kv\t[no test files]\n"
+        }
+      ],
+      "go": "go version go1.27.1 linux/amd64",
+      "environment": {
+        "GOWORK": "off",
+        "CGO_ENABLED": "0",
+        "GOMAXPROCS": "1"
+      },
+      "final_exit": 0,
+      "scope": "Compile only; no benchmarks run or historical measurements changed."
+    },
+    {
+      "module": "tinystore/bench/perf",
+      "steps": [
+        {
+          "command": "go mod tidy",
+          "exit": 0,
+          "output": "go: downloading github.com/google/go-cmp v0.6.0\ngo: downloading golang.org/x/text v0.14.0\n"
+        },
+        {
+          "command": "go test -run ^$ ./...",
+          "exit": 1,
+          "output": "FAIL\tgithub.com/tinyshed/tinystore/bench/perf [build failed]\n?   \tgithub.com/tinyshed/tinystore/bench/perf/layout\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/perf/raw\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/perf/remote\t[no test files]\nFAIL\tgithub.com/tinyshed/tinystore/bench/perf/repro [build failed]\n?   \tgithub.com/tinyshed/tinystore/bench/perf/sqlshape\t[no test files]\nFAIL\n# github.com/tinyshed/tinystore/bench/perf\n./main.go:303:21: undefined: metrics.Label\n./aggregate.go:26:46: unknown field Matchers in struct literal of type metrics.Range\n./aggregate.go:26:66: undefined: metrics.Label\n./aggregate.go:31:24: undefined: metrics.Label\n./aggregate.go:33:24: undefined: metrics.Label\n./aggregate.go:35:59: unknown field Matchers in struct literal of type metrics.Range\n./long_churn.go:65:36: invalid append: argument must be a slice; have identity.series.Labels (variable of map type metrics.Labels)\n./long_churn.go:65:68: undefined: metrics.Label\n./long_churn.go:104:86: undefined: metrics.Label\n./long_churn.go:108:34: series[id].Labels[index].Name undefined (type string has no field or method Name)\n./long_churn.go:108:34: too many errors\n# github.com/tinyshed/tinystore/bench/perf/repro\nrepro/main.go:22:63: undefined: metrics.Label\nrepro/main.go:190:45: unknown field Matchers in struct literal of type metrics.Range\n"
+        },
+        {
+          "command": "go test -run ^$ ./...",
+          "exit": 0,
+          "output": "?   \tgithub.com/tinyshed/tinystore/bench/perf\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/perf/layout\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/perf/raw\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/perf/remote\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/perf/repro\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/perf/sqlshape\t[no test files]\n"
+        },
+        {
+          "command": "go test -run ^$ ./...",
+          "exit": 0,
+          "output": "?   \tgithub.com/tinyshed/tinystore/bench/perf\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/perf/layout\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/perf/raw\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/perf/remote\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/perf/repro\t[no test files]\n?   \tgithub.com/tinyshed/tinystore/bench/perf/sqlshape\t[no test files]\n"
+        }
+      ],
+      "go": "go version go1.27.1 linux/amd64",
+      "environment": {
+        "GOWORK": "off",
+        "CGO_ENABLED": "0",
+        "GOMAXPROCS": "1"
+      },
+      "final_exit": 0,
+      "scope": "Compile only; no benchmarks run or historical measurements changed."
+    },
+    {
+      "module": "tinystore/bench/records",
+      "steps": [
+        {
+          "command": "go mod tidy",
+          "exit": 0,
+          "output": ""
+        },
+        {
+          "command": "go test -run ^$ ./...",
+          "exit": 1,
+          "output": "FAIL\tgithub.com/tinyshed/tinystore/bench/records [build failed]\nFAIL\n# github.com/tinyshed/tinystore/bench/records\n./docker_stages.go:229:23: h.logs.Read undefined (type *records.Store has no field or method Read)\n./load.go:136:22: l.h.logs.Read undefined (type *records.Store has no field or method Read)\n./measure.go:137:23: h.logs.Read undefined (type *records.Store has no field or method Read)\n./measure.go:272:23: h.logs.Read undefined (type *records.Store has no field or method Read)\n"
+        },
+        {
+          "command": "go test -run ^$ ./...",
+          "exit": 0,
+          "output": "?   \tgithub.com/tinyshed/tinystore/bench/records\t[no test files]\n"
+        }
+      ],
+      "go": "go version go1.27.1 linux/amd64",
+      "environment": {
+        "GOWORK": "off",
+        "CGO_ENABLED": "0",
+        "GOMAXPROCS": "1"
+      },
+      "final_exit": 0,
+      "scope": "Compile only; no benchmarks run or historical measurements changed."
+    },
+    {
+      "module": "tinystore/server-spike",
+      "steps": [
+        {
+          "command": "go mod tidy",
+          "exit": 0,
+          "output": ""
+        },
+        {
+          "command": "go test -run ^$ ./...",
+          "exit": 0,
+          "output": "ok  \tgithub.com/tinyshed/tinystore/server/spike\t0.003s [no tests to run]\n"
+        }
+      ],
+      "go": "go version go1.27.1 linux/amd64",
+      "environment": {
+        "GOWORK": "off",
+        "CGO_ENABLED": "0",
+        "GOMAXPROCS": "1"
+      },
+      "final_exit": 0,
+      "scope": "Compile only; no benchmarks run or historical measurements changed."
+    },
+    {
+      "module": "tinystore/spike",
+      "steps": [
+        {
+          "command": "go mod tidy",
+          "exit": 0,
+          "output": ""
+        },
+        {
+          "command": "go test -run ^$ ./...",
+          "exit": 0,
+          "output": "ok  \tgithub.com/tinyshed/tinystore/spike\t0.005s [no tests to run]\n"
+        }
+      ],
+      "go": "go version go1.27.1 linux/amd64",
+      "environment": {
+        "GOWORK": "off",
+        "CGO_ENABLED": "0",
+        "GOMAXPROCS": "1"
+      },
+      "final_exit": 0,
+      "scope": "Compile only; no benchmarks run or historical measurements changed."
+    }
+  ]
+}

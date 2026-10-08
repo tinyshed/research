@@ -644,3 +644,32 @@ measure parallel throughput or total process RSS. One shared writer codec and a
 bounded reader pool are appropriate for the single-writer design. The bounded
 8 KiB setting must agree with the production format's maximum decoded size;
 the spike alone does not establish compatibility with every future block.
+
+## Rust and native SQLite evaluation, 7–8 October 2026
+
+The [final synthesis](reports/rust-research-summary-2026-10-08.md) links all five
+rounds and their raw data. The first four were uncommitted exploratory runs;
+the final round commits its harness before measurement. Ratios below are
+within the final session, not products of earlier speedups.
+
+| Final workload | Go, ms | Previous optimized Rust, ms | New serial Rust, ms | PGO + LTO, ms | PGO + Rayon 2, ms |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Read16 | 5.2531 | 2.3561 | 1.9749 | 1.6565 | 1.3387 |
+| Cut avg | 2.5398 | 0.9232 | 0.7297 | 0.5583 | 0.6135 |
+| Wide cut sum | 5.2648 | 2.1542 | 1.8226 | 1.4538 | 1.7874 |
+| Scrape100 ingest | 6.3312 | 2.5106 | 2.6740 | 2.5135 | 2.5693 |
+
+Five interleaved passes, 42 cases, 2070 operation timings and 90 peak-RSS
+processes ran on Linux/AMD EPYC 9V74 with 3 visible vCPUs, quota 2 CPUs and
+8 GiB RAM; Go1.27.1, Rust1.99.0. Fixtures fit the 1 MiB SQLite cache. SQLite
+3.53.4 and zstd were embedded statically; system runtime libraries remained
+dynamic. The synchronous Rust prototype omits production concurrency and
+lifecycle contracts. These are single-request latency measurements.
+
+Requested Rust allocation bytes for wide Read fell about 37% against control,
+while peak RSS stayed near 27–28 MiB for all optimized Rust serial variants.
+Those counters exclude native C allocations and do not establish a total RAM
+budget. PGO helped read/decode-heavy work, but scrape100 showed no additional
+benefit over previous Rust; Rayon helped Read16 and slowed several aggregates.
+Every pass and compiler/switch comparison is in the
+[deep round](reports/metrics-deep-2026-10-08.md).

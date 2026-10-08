@@ -1,0 +1,162 @@
+{
+  "guards": {
+    "go": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    },
+    "rust_previous": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    },
+    "rust_control": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    },
+    "rust_new": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    },
+    "rayon2": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    },
+    "rust_lto": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    },
+    "rust_native": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    },
+    "rust_pgo": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    },
+    "pgo_rayon2": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    },
+    "only_bits": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    },
+    "only_buffers": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    },
+    "only_fused": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    },
+    "only_specialized": {
+      "atomic_rollback": true,
+      "decode_limit": true,
+      "final_digest": "ee90eb1b8289f431",
+      "output_limit": true,
+      "series_limit": true,
+      "too_new": true,
+      "too_old": true
+    }
+  },
+  "edge-guards": {
+    "go": {
+      "nonfinite": true
+    },
+    "rust_previous": {
+      "nonfinite": true
+    },
+    "rust_control": {
+      "nonfinite": true
+    },
+    "rust_new": {
+      "nonfinite": true
+    },
+    "rayon2": {
+      "nonfinite": true
+    },
+    "rust_lto": {
+      "nonfinite": true
+    },
+    "rust_native": {
+      "nonfinite": true
+    },
+    "rust_pgo": {
+      "nonfinite": true
+    },
+    "pgo_rayon2": {
+      "nonfinite": true
+    },
+    "only_bits": {
+      "nonfinite": true
+    },
+    "only_buffers": {
+      "nonfinite": true
+    },
+    "only_fused": {
+      "nonfinite": true
+    },
+    "only_specialized": {
+      "nonfinite": true
+    }
+  }
+}

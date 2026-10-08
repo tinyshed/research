@@ -1,0 +1,36 @@
+{"case": "update1", "implementation": "go_tinystore", "iterations": 2048, "ns_per_op": 194174.30810546875, "page_size": 1024, "pass_id": 1, "utc": "2026-10-07T23:56:54.914966+00:00"}
+{"case": "update1", "implementation": "go_tinystore", "iterations": 2048, "ns_per_op": 169392.14453125, "page_size": 4096, "pass_id": 1, "utc": "2026-10-07T23:56:55.701757+00:00"}
+{"case": "update1", "implementation": "go_raw", "iterations": 2048, "ns_per_op": 166649.5556640625, "page_size": 1024, "pass_id": 1, "utc": "2026-10-07T23:56:56.433774+00:00"}
+{"case": "update1", "implementation": "go_raw", "iterations": 2048, "ns_per_op": 162464.90673828125, "page_size": 4096, "pass_id": 1, "utc": "2026-10-07T23:56:57.208590+00:00"}
+{"case": "update1", "implementation": "rust_native", "iterations": 2048, "ns_per_op": 134385.599609375, "checksum_sink": 2048, "page_size": 1024, "pass_id": 1, "utc": "2026-10-07T23:56:57.857570+00:00"}
+{"case": "update1", "implementation": "rust_native", "iterations": 2048, "ns_per_op": 140098.77392578125, "checksum_sink": 2048, "page_size": 4096, "pass_id": 1, "utc": "2026-10-07T23:56:58.513542+00:00"}
+{"case": "update1", "implementation": "go_raw", "iterations": 2048, "ns_per_op": 158522.359375, "page_size": 1024, "pass_id": 2, "utc": "2026-10-07T23:56:59.240880+00:00"}
+{"case": "update1", "implementation": "go_raw", "iterations": 2048, "ns_per_op": 174116.990234375, "page_size": 4096, "pass_id": 2, "utc": "2026-10-07T23:57:00.030697+00:00"}
+{"case": "update1", "implementation": "rust_native", "iterations": 2048, "ns_per_op": 133284.90625, "checksum_sink": 2048, "page_size": 1024, "pass_id": 2, "utc": "2026-10-07T23:57:00.681895+00:00"}
+{"case": "update1", "implementation": "rust_native", "iterations": 2048, "ns_per_op": 137482.0537109375, "checksum_sink": 2048, "page_size": 4096, "pass_id": 2, "utc": "2026-10-07T23:57:01.325689+00:00"}
+{"case": "update1", "implementation": "go_tinystore", "iterations": 2048, "ns_per_op": 225968.86669921875, "page_size": 1024, "pass_id": 2, "utc": "2026-10-07T23:57:02.261627+00:00"}
+{"case": "update1", "implementation": "go_tinystore", "iterations": 2048, "ns_per_op": 186767.833984375, "page_size": 4096, "pass_id": 2, "utc": "2026-10-07T23:57:03.121829+00:00"}
+{"case": "update1", "implementation": "rust_native", "iterations": 2048, "ns_per_op": 141259.86962890625, "checksum_sink": 2048, "page_size": 1024, "pass_id": 3, "utc": "2026-10-07T23:57:03.784317+00:00"}
+{"case": "update1", "implementation": "rust_native", "iterations": 2048, "ns_per_op": 187612.78125, "checksum_sink": 2048, "page_size": 4096, "pass_id": 3, "utc": "2026-10-07T23:57:04.557634+00:00"}
+{"case": "update1", "implementation": "go_tinystore", "iterations": 2048, "ns_per_op": 181600.97509765625, "page_size": 1024, "pass_id": 3, "utc": "2026-10-07T23:57:05.413081+00:00"}
+{"case": "update1", "implementation": "go_tinystore", "iterations": 2048, "ns_per_op": 190171.3583984375, "page_size": 4096, "pass_id": 3, "utc": "2026-10-07T23:57:06.261110+00:00"}
+{"case": "update1", "implementation": "go_raw", "iterations": 2048, "ns_per_op": 166926.23681640625, "page_size": 1024, "pass_id": 3, "utc": "2026-10-07T23:57:07.047150+00:00"}
+{"case": "update1", "implementation": "go_raw", "iterations": 2048, "ns_per_op": 173587.5927734375, "page_size": 4096, "pass_id": 3, "utc": "2026-10-07T23:57:07.830588+00:00"}
+{"case": "update1", "implementation": "go_tinystore", "iterations": 2048, "ns_per_op": 178682.8037109375, "page_size": 1024, "pass_id": 4, "utc": "2026-10-07T23:57:08.647401+00:00"}
+{"case": "update1", "implementation": "go_tinystore", "iterations": 2048, "ns_per_op": 212539.64111328125, "page_size": 4096, "pass_id": 4, "utc": "2026-10-07T23:57:09.558088+00:00"}
+{"case": "update1", "implementation": "go_raw", "iterations": 1024, "ns_per_op": 248528.2353515625, "page_size": 1024, "pass_id": 4, "utc": "2026-10-07T23:57:10.107235+00:00"}
+{"case": "update1", "implementation": "go_raw", "iterations": 1024, "ns_per_op": 270037.7001953125, "page_size": 4096, "pass_id": 4, "utc": "2026-10-07T23:57:10.749661+00:00"}
+{"case": "update1", "implementation": "rust_native", "iterations": 2048, "ns_per_op": 156490.103515625, "checksum_sink": 2048, "page_size": 1024, "pass_id": 4, "utc": "2026-10-07T23:57:11.604675+00:00"}
+{"case": "update1", "implementation": "rust_native", "iterations": 2048, "ns_per_op": 160191.34228515625, "checksum_sink": 2048, "page_size": 4096, "pass_id": 4, "utc": "2026-10-07T23:57:12.375827+00:00"}
+{"case": "update1", "implementation": "go_raw", "iterations": 2048, "ns_per_op": 161893.00439453125, "page_size": 1024, "pass_id": 5, "utc": "2026-10-07T23:57:13.144217+00:00"}
+{"case": "update1", "implementation": "go_raw", "iterations": 2048, "ns_per_op": 206654.2001953125, "page_size": 4096, "pass_id": 5, "utc": "2026-10-07T23:57:14.081574+00:00"}
+{"case": "update1", "implementation": "rust_native", "iterations": 2048, "ns_per_op": 150490.13134765625, "checksum_sink": 2048, "page_size": 1024, "pass_id": 5, "utc": "2026-10-07T23:57:14.782539+00:00"}
+{"case": "update1", "implementation": "rust_native", "iterations": 2048, "ns_per_op": 144736.35693359375, "checksum_sink": 2048, "page_size": 4096, "pass_id": 5, "utc": "2026-10-07T23:57:15.487914+00:00"}
+{"case": "update1", "implementation": "go_tinystore", "iterations": 2048, "ns_per_op": 177294.966796875, "page_size": 1024, "pass_id": 5, "utc": "2026-10-07T23:57:16.331994+00:00"}
+{"case": "update1", "implementation": "go_tinystore", "iterations": 2048, "ns_per_op": 193603.0224609375, "page_size": 4096, "pass_id": 5, "utc": "2026-10-07T23:57:17.187511+00:00"}
+{"case": "update1", "implementation": "rust_native", "iterations": 2048, "ns_per_op": 149699.5380859375, "checksum_sink": 2048, "page_size": 1024, "pass_id": 6, "utc": "2026-10-07T23:57:17.870983+00:00"}
+{"case": "update1", "implementation": "rust_native", "iterations": 2048, "ns_per_op": 160693.1005859375, "checksum_sink": 2048, "page_size": 4096, "pass_id": 6, "utc": "2026-10-07T23:57:18.680525+00:00"}
+{"case": "update1", "implementation": "go_tinystore", "iterations": 2048, "ns_per_op": 182675.65234375, "page_size": 1024, "pass_id": 6, "utc": "2026-10-07T23:57:19.566925+00:00"}
+{"case": "update1", "implementation": "go_tinystore", "iterations": 2048, "ns_per_op": 173067.0458984375, "page_size": 4096, "pass_id": 6, "utc": "2026-10-07T23:57:20.392970+00:00"}
+{"case": "update1", "implementation": "go_raw", "iterations": 2048, "ns_per_op": 169705.17236328125, "page_size": 1024, "pass_id": 6, "utc": "2026-10-07T23:57:21.167422+00:00"}
+{"case": "update1", "implementation": "go_raw", "iterations": 2048, "ns_per_op": 176324.88037109375, "page_size": 4096, "pass_id": 6, "utc": "2026-10-07T23:57:21.971256+00:00"}

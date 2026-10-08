@@ -1,0 +1,110 @@
+[
+  {
+    "page_size": 1024,
+    "affected": 0,
+    "case": "point",
+    "checksum": "177d2579210cf6c9",
+    "final_digest": "5fbc2722c77d450c",
+    "iterations": 16,
+    "rows": 16
+  },
+  {
+    "page_size": 1024,
+    "affected": 0,
+    "case": "point_txn",
+    "checksum": "177d2579210cf6c9",
+    "final_digest": "5fbc2722c77d450c",
+    "iterations": 16,
+    "rows": 16
+  },
+  {
+    "page_size": 1024,
+    "affected": 0,
+    "case": "range240",
+    "checksum": "b1ff0f33dce61167",
+    "final_digest": "5fbc2722c77d450c",
+    "iterations": 16,
+    "rows": 3840
+  },
+  {
+    "page_size": 1024,
+    "affected": 0,
+    "case": "aggregate240",
+    "checksum": "ac88d998b361abbc",
+    "final_digest": "5fbc2722c77d450c",
+    "iterations": 16,
+    "rows": 3840
+  },
+  {
+    "page_size": 1024,
+    "affected": 16,
+    "case": "update1",
+    "checksum": "e5dc4fed7ba79c25",
+    "final_digest": "0f768236c48536c0",
+    "iterations": 16,
+    "rows": 0
+  },
+  {
+    "page_size": 1024,
+    "affected": 1024,
+    "case": "update64",
+    "checksum": "cf03815b6ea56d25",
+    "final_digest": "89db0b5ddd799700",
+    "iterations": 16,
+    "rows": 0
+  },
+  {
+    "page_size": 4096,
+    "affected": 0,
+    "case": "point",
+    "checksum": "177d2579210cf6c9",
+    "final_digest": "5fbc2722c77d450c",
+    "iterations": 16,
+    "rows": 16
+  },
+  {
+    "page_size": 4096,
+    "affected": 0,
+    "case": "point_txn",
+    "checksum": "177d2579210cf6c9",
+    "final_digest": "5fbc2722c77d450c",
+    "iterations": 16,
+    "rows": 16
+  },
+  {
+    "page_size": 4096,
+    "affected": 0,
+    "case": "range240",
+    "checksum": "b1ff0f33dce61167",
+    "final_digest": "5fbc2722c77d450c",
+    "iterations": 16,
+    "rows": 3840
+  },
+  {
+    "page_size": 4096,
+    "affected": 0,
+    "case": "aggregate240",
+    "checksum": "ac88d998b361abbc",
+    "final_digest": "5fbc2722c77d450c",
+    "iterations": 16,
+    "rows": 3840
+  },
+  {
+    "page_size": 4096,
+    "affected": 16,
+    "case": "update1",
+    "checksum": "e5dc4fed7ba79c25",
+    "final_digest": "0f768236c48536c0",
+    "iterations": 16,
+    "rows": 0
+  },
+  {
+    "page_size": 4096,
+    "affected": 1024,
+    "case": "update64",
+    "checksum": "cf03815b6ea56d25",
+    "final_digest": "89db0b5ddd799700",
+    "iterations": 16,
+    "rows": 0
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "checked_utc": "2026-10-08T07:59:59.482369+00:00",
+  "go_vet": "passed",
+  "rust_fmt": "passed",
+  "rust_unit_tests": {
+    "passed": 15,
+    "failed": 0,
+    "codec": 9,
+    "engine": 3,
+    "exact": 2,
+    "quote": 1
+  },
+  "verification_scenarios": 49,
+  "resource_plans": 23,
+  "timing_rows": 320,
+  "memory_processes": 36,
+  "timed_write_crossread_digest_pairs": 40,
+  "production_worktree": "clean",
+  "commit_or_push": false
+}

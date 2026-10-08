@@ -1,0 +1,41 @@
+{
+  "started_utc": "2026-10-07T23:27:05.731616+00:00",
+  "tinystore_commit": "e307c48a40126aad0e2873b6bf3aaedef8115483",
+  "go": "go version go1.27.1 linux/amd64",
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+  "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "cpu": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           46 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  3\nOn-line CPU(s) list:                     0-2\nVendor ID:                               AuthenticAMD\nModel name:                              AMD EPYC 9V74 80-Core Processor\nCPU family:                              25\nModel:                                   17\nThread(s) per core:                      1\nCore(s) per socket:                      3\nSocket(s):                               1\nStepping:                                1\nBogoMIPS:                                5192.26\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves avx512_bf16 clzero xsaveerptr arat npt nrip_save tsc_scale vmcb_clean flushbyasid pausefilter pfthreshold v_vmsave_vmload avx512vbmi umip avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid fsrm arch_capabilities\nHypervisor vendor:                       KVM\nVirtualization type:                     full\nL1d cache:                               64 KiB (2 instances)\nL1i cache:                               64 KiB (2 instances)\nL2 cache:                                2 MiB (2 instances)\nL3 cache:                                32 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-2\nVulnerability Gather data sampling:      Not affected\nVulnerability Ghostwrite:                Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Old microcode:             Not affected\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Vulnerable\nVulnerability Spec store bypass:         Vulnerable\nVulnerability Spectre v1:                Vulnerable: __user pointer sanitization and usercopy barriers only; no swapgs barriers\nVulnerability Spectre v2:                Vulnerable; STIBP: disabled; PBRSB-eIBRS: Not affected; BHI: Not affected\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Vulnerable\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Not affected",
+  "cpu_affinity": 0,
+  "cpu_quota": "200000 100000",
+  "memory_limit": "8589934592",
+  "passes": 5,
+  "minimum_final_seconds": 0.15,
+  "gomaxprocs": 1,
+  "gogc": "default (100)",
+  "harness_status": "uncommitted local prototype; content hashes pin the measured files",
+  "source_sha256": {
+    "run.py": "ee287672612e58cbca3e212ef4de1887ef12b2a6e964960aca3c4c493955f999",
+    "go/ingest.go": "23d917715af90f0739634afefeb9a3d7bc5a4784a503b59ab80140d22b879c57",
+    "go/ingest_test.go": "64036ec771dc7accedbb8123171c2e8fd6a96d5dffadd0a29778c1d107fb90fc",
+    "go/main.go": "0d1a3f297adfd712963d685097f78ea92d0b06054e016bfc91cfa728d719358c",
+    "go/metrics.go": "139290bf70d5d02fc30d32d7635ee2534bdf9bdad83de7f9b07d360ad9872db2",
+    "go/metrics_test.go": "b6bd9f5a79f3b6b7b20574a865786e589f35eb29618e83956362a416e4f4ce49",
+    "go/records.go": "5191760a93ddc5178097954e2f8d100178610a6efe61e7dc38b32223f7cf5898",
+    "go/records_test.go": "fb043842c0c4cd5b4f250724d88876509427eabd51562c706e92c37e3d41c77e",
+    "rust/src/ingest.rs": "cf07101d623daa000b8157a57041094c30c3870aef3e228dbece29bc042c4f2c",
+    "rust/src/main.rs": "aaeef2ddd4470322a1641d915cd04e2794c93c63f977a78947bd7b0a639411ea",
+    "rust/src/metrics.rs": "4fc056ef930e44540f39ce1fbcef8e88b6118d5a26302af1140e1c4d7160a35d",
+    "rust/src/records.rs": "a90a92f85cb1d75804678f5987cf9e61e0e67393b726d8697d655578b059d403",
+    "go/go.mod": "04acaad488ceebc6721047e42f7a97e128bb2a0a3adbe18680cf4db45ba86d7c",
+    "rust/Cargo.toml": "3cf5987f35226d3e87179fb4d3bb9163923be0e2d461501e4660011187909627",
+    "rust/Cargo.lock": "909de2f47c29cfd8e1c36da95cae51534095418a6f5ba0ef4e6bf1433e24b9bc"
+  },
+  "finished_utc": "2026-10-07T23:37:36.567517+00:00",
+  "completion_driver_sha256": "bcdc45b74d683b469af732d38153c2f56e3181fb8cf7fcfd14a30d1ca57e11cc",
+  "completion_note": "All timing and allocation passes completed unchanged; memory collection resumed after installing GNU time locally.",
+  "binary_sha256": {
+    "go": "ebfb43331758d29bfe390963fa36892450bbe8ed4e6e60546cf9d0aade634cdc",
+    "rust": "2ea893aa8e3fa7971bc948d8e17e4372e6a5c8b3780c5e1b667b9c58cf839156"
+  }
+}

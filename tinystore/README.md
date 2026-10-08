@@ -30,9 +30,21 @@ cd tinystore/spike
 GOWORK=off TINYSTORE_SPIKE=1 go test -run <name> -v -count=1 .
 ```
 
-A report names the TinyStore commit it measured; an older round is reproduced
-by checking `source/` out at that commit. The rules for a round are in
+A report names the TinyStore commit it measured. To reproduce an older round,
+check out its matching research harness revision as well as its TinyStore
+`source/` commit; later compatibility edits can target a newer public API. The rules for a round are in
 [AGENTS.md](../AGENTS.md).
 
 Corpora are fetched, never committed: the runners in `bench/` download and
 normalise them into `bench/corpus/`, and a hash file pins each one.
+
+## Rust evaluation, 7–8 October 2026
+
+Start with the [research synthesis](reports/rust-research-summary-2026-10-08.md).
+The retained standalone prototypes are [algorithm kernels](rust-spike/),
+[SQLite linkage smoke](sqlite-rust-spike/), [matched native SQLite](sqlite-bench/),
+[metrics paths](metrics-bench/), [first optimizations](metrics-opt-bench/) and
+[deeper optimizations](metrics-max-bench/). Each directory contains its source,
+locked dependencies and reproduction instructions; the reports link raw output.
+TinyStore is pinned to `e307c48a40126aad0e2873b6bf3aaedef8115483` for these rounds.
+The production Go repository remains unchanged by this evaluation.
