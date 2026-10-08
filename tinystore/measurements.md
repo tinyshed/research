@@ -749,8 +749,10 @@ different rounds or multiplied kernel gains.
 | Set256 / Set4KiB | 0.97× / 0.72× |
 | CAS / durable counter Add | 1.02× / 0.93× |
 
-Read paths favored this native/backend/runtime slice; FULL writes showed no
-general improvement and the larger overwrite was slower. The short native
+Read paths favored this native/backend/runtime slice. Post-run review found
+that native Set additionally constructs and copies an owned Entry while Go
+Set returns only an error; the Set/CAS/recreation timings need equal-result
+remeasurement before attributing their differences. The short native
 SQL-only safe-rusqlite/FFI control differed by 1.05×, which is not a general
 wrapper or engine multiplier. Revisions, expiry, values, spill references and
 orphan counts matched after every paired mutating workload.
