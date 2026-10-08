@@ -1,0 +1,15 @@
+{
+  "guard": "head CRC",
+  "source_sha256_before": "7a18351d20e8478ff659f279eaf07fd87e8531675646ac35a68577514e819921",
+  "source_sha256_after": "7a18351d20e8478ff659f279eaf07fd87e8531675646ac35a68577514e819921",
+  "broken_implementation": {
+    "exit_code": 101,
+    "stdout": "\nrunning 1 test\ntest codec::tests::head_and_segment_guards ... FAILED\n\nfailures:\n\n---- codec::tests::head_and_segment_guards stdout ----\n\nthread 'codec::tests::head_and_segment_guards' (5157) panicked at src/codec.rs:837:9:\nassertion failed: decode_head(\"x\", &bad).is_err()\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n\n\nfailures:\n    codec::tests::head_and_segment_guards\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.00s\n\n",
+    "stderr": "   Compiling tinystore-records-native-bench v0.1.0 (<repo>/tinystore/records-native-bench/rust)\n    Finished `release` profile [optimized] target(s) in 0.83s\n     Running unittests src/main.rs (<tmp>/records-target/release/deps/tinystore_records_native_bench-ffdfce125268e35d)\nerror: test failed, to rerun pass `--bin tinystore-records-native-bench`\n"
+  },
+  "restored_implementation": {
+    "exit_code": 0,
+    "stdout": "\nrunning 1 test\ntest codec::tests::head_and_segment_guards ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.00s\n\n",
+    "stderr": "   Compiling tinystore-records-native-bench v0.1.0 (<repo>/tinystore/records-native-bench/rust)\n    Finished `release` profile [optimized] target(s) in 0.80s\n     Running unittests src/main.rs (<tmp>/records-target/release/deps/tinystore_records_native_bench-ffdfce125268e35d)\n"
+  }
+}

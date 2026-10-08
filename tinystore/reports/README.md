@@ -198,6 +198,8 @@ before measurement. Each comparison uses its own same-session baseline.
 | [First optimizations and Rayon](metrics-optimization-2026-10-08.md) | fixed exact accumulator, allocation changes, ordered bounded parallelism and RSS |
 | [Deeper optimizations](metrics-deep-2026-10-08.md) | word kernels, shared buffers, fused queries, operation specialization, LTO/native/PGO and profiles |
 | [SQLite adapter and rusqlite followup](sqlite-adapter-2026-10-08.md) | local Linux/WSL2 paired arena/metadata/lookaside trials, raw statement loops and three small rusqlite patches; no general engine gain, a head-buffer interaction, full source hashes and preserved failures |
+| [Records algorithms and native slice](records-native-2026-10-08.md) | production head cross-reads, controlled compatible sealed artifacts, public Apache text and typed records, kernels, pagination/follow, FULL writes and explicit codec limits |
+| [KV algorithms and native slice](kv-native-2026-10-08.md) | public Go/native operation parity, typed/raw values, versions/CAS/TTL, branch scans/clears, counters, kernels and native SQL controls |
 
 [Raw-data publication provenance](data/publication-provenance.json) preserves
 original hashes and distinguishes translated documentation from measured code.

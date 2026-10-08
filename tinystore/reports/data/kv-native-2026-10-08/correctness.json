@@ -1,0 +1,36 @@
+{
+  "source": "e307c48a40126aad0e2873b6bf3aaedef8115483",
+  "fixture_revision": 17123,
+  "semantic_commands": 56,
+  "transcripts_equal": true,
+  "physical_snapshot_equal": true,
+  "snapshot": {
+    "buckets": "[(1, 'bench', 'values'), (2, 'spill', 'values'), (3, 'json', 'values'), (4, 'clear', 'values'), (5, 'expiry', 'values'), (6, 'small', 'values'), (7, 'shapes', 'values'), (8, 'strings', 'values'), (9, 'signed', 'values'), (10, 'unsigned', 'values'), (11, 'floats', 'values'), (12, 'float32', 'values'), (13, 'nothing', 'values'), (14, 'trace', 'values'), (15, 'counters', 'counters')]",
+    "meta": "[('revision', 17142)]",
+    "branches": "[]",
+    "cells_sha256": "8cf94f55c6cd6bd41d4d7f91f815634a92244e304c950272f5ea0c769c414d84",
+    "count": 5672,
+    "orphan_spills": 0
+  },
+  "reopen_equal": true,
+  "typed_cross_read": {
+    "integer_identity": "passed",
+    "typed_bits": "passed"
+  },
+  "native_typed_rewrite": {
+    "bit_exact": true,
+    "native_typed_and_raw_rewrite_checked": 32
+  },
+  "missing_spill_take_rollback": true,
+  "four_mib_page_and_one_mib_value_bounds": true,
+  "kernel_truth_tables": {
+    "escaped_hex": "6100ff62",
+    "json_codec": 47122,
+    "key_loop": 49664,
+    "key_search": 49664,
+    "scan_materialize": 8083200,
+    "ttl_guard": 64,
+    "value_codec": 2048
+  },
+  "fixture_sha256": "4bc1dac6dec8e9a19d07e768fb2f8af20948cf8860678c972ad0780afe82fd3c"
+}

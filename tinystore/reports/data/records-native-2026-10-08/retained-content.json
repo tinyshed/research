@@ -1,0 +1,8 @@
+{
+  "definition": "8 timestamp bytes;4 bytes per present level; present trace/span bytes; UTF-8 stream/name/body/context and attribute key/value content; excludes containers, length tags and allocation metadata",
+  "records_per_result": 4096,
+  "retained_results": 64,
+  "retained_records": 262144,
+  "logical_bytes_per_result": 736279,
+  "retained_logical_bytes": 47121856
+}

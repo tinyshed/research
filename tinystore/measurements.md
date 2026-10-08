@@ -696,3 +696,76 @@ Rust baseline in each of two sessions, but combining it with metadata borrowing
 lost the difference. Inclusive instrumentation located most of the change in
 post-snapshot processing; allocator/buffer placement remains a hypothesis.
 Keep this as a specific followup question rather than a default pool setting.
+
+## Records algorithms and native slice, 8 October 2026
+
+The [records followup](reports/records-native-2026-10-08.md) compares the real
+public Go API at `e307c48a40126aad0e2873b6bf3aaedef8115483` with a synchronous
+Rust/native-SQLite slice. Six balanced passes ran on the local Ryzen 7 7700
+Docker Desktop/WSL2 environment, using Go 1.27.1, Rust 1.99.0 and the same
+pinned SQLite 3.53.4 archive. These are within-session exploratory ratios;
+the harness was uncommitted during collection by user request.
+
+The typed 4096-record full-head scan took 7.155 ms in Go and 3.994 ms in Rust
+(1.79×). Reading the same native-produced compatible sealed bytes took
+8.457/3.242 ms (2.61×), while a filtered sealed scan took 1.324/3.881 ms and
+Follow127 took 0.305/1.493 ms: production Go's pruning and Follow cache matter.
+The native decoder accepts production heads and its raw-fallback sealed
+representation, not arbitrary production Go sealed codecs. The sealed-read
+ratio is conditional on that shared representation, not a complete port.
+
+Longer calibrated kernel passes retained identical output bytes and showed
+the word reader improving width64 decode from 15.89 to 3.84 µs in Go and
+11.20 to 2.88 µs in Rust. Width1 and Rice variants regressed with that reader.
+An explicit arrival-key index sort reduced Go's selected stable ordering
+kernel from 88.01 to 44.22 µs; this is not a measured public-engine change.
+
+Retaining 64 results of 4096 records retained 45.0 MiB of logical content;
+inclusive current RSS was about 269–286 MiB for Go and 336 MiB for native Rust.
+No general native-memory saving followed. The faster fallback native seal
+also produced 49,536 block payload bytes versus Go's 29,863, so its time is
+reported beside payload/file/dbstat costs rather than as an equivalent-codec
+speedup. The report preserves Apache/typed fixtures, complete page/follow
+walks, late publication, corruption/index guards, allocation samples and all
+passes. Runtime, cancellation, shared admission, retention and holder merges
+remain outside the slice.
+
+## KV algorithms and native slice, 8 October 2026
+
+The [KV followup](reports/kv-native-2026-10-08.md) keeps the same production
+baseline and matched native SQLite 3.53.4 on the local Ryzen/WSL2 host. Its
+quiet window ran separately from records, pinned to CPU 2. Calibration chose
+equal fixed counts, followed by six balanced passes. The following figures
+are medians of same-pass Go/native elapsed ratios, not ratios assembled from
+different rounds or multiplied kernel gains.
+
+| Synchronous public path | Paired Go/native ratio |
+| --- | ---: |
+| Typed 256-byte Get | 1.80× |
+| Raw Get | 1.78× |
+| GetEntry / Has | 1.76× / 1.79× |
+| 4 KiB Get / typed JSON Get | 1.90× / 1.89× |
+| Scan100 | 3.08× |
+| Set256 / Set4KiB | 0.97× / 0.72× |
+| CAS / durable counter Add | 1.02× / 0.93× |
+
+Read paths favored this native/backend/runtime slice; FULL writes showed no
+general improvement and the larger overwrite was slower. The short native
+SQL-only safe-rusqlite/FFI control differed by 1.05×, which is not a general
+wrapper or engine multiplier. Revisions, expiry, values, spill references and
+orphan counts matched after every paired mutating workload.
+
+Bulk-copy key escaping improved the selected Go loop kernel 2.61× and Rust
+1.21×; the resulting Go implementation was faster than the Rust one in this
+fixture. The JSON kernel favored Rust 4.75× but omits SQL and the complete
+typed engine. Native allocation diagnostics use a separate binary and exclude
+SQLite C allocations; process RSS includes startup and cache effects.
+
+The retained slice verifies 56 semantic commands, physical row snapshots,
+32 native value rewrites reopened through Go types, exact float/uint64 bits,
+default TTL and version rules, branch clear/expiry, page/value bounds and a
+proven failed-Take guard. It omits concurrent/grouped scheduling, lifecycle,
+shared admission, general user transactions, custom codecs and arbitrary-byte
+keys, plus config/watch/once/limiter/quota/sliding/relaxed-counter runtimes.
+These exploratory local timings establish neither production readiness nor
+bare-Linux or concurrent-throughput guarantees.

@@ -470,3 +470,22 @@ instructions are [rust-spike](../rust-spike/README.md),
 different sessions as a new paired comparison. The shared AMD EPYC 9V74 VM,
 Go 1.27.1, Rust 1.99.0, two-CPU quota and 8 GiB memory limit define the observed
 environment; they do not define a deployment guarantee.
+
+## Subsequent records and KV slices
+
+The [records followup](records-native-2026-10-08.md) and
+[KV followup](kv-native-2026-10-08.md) extend the selected algorithms and
+synchronous native/backend comparisons to two more engines on a local
+Ryzen/WSL2 host. Each retains its own same-session Go baseline, fixed traces,
+six balanced passes, source/binary hashes and explicit implementation limits.
+Their harnesses were uncommitted during collection by user request.
+
+Records demonstrates production-head compatibility and controlled reads of
+native-produced compatible sealed representations; arbitrary Go-sealed codecs
+remain unsupported. Full reads can favor native while selective reads, Follow
+caching and retained RSS favor the complete Go implementation. KV verifies
+typed/raw representations and synchronous mutation semantics; point reads and
+scans favor native in its fixture, while FULL writes show no general gain.
+Both rounds also identify useful Go algorithm candidates. These findings add
+evidence for further engine-specific work without settling the complete-port,
+memory-admission, concurrency or recovery gates above.

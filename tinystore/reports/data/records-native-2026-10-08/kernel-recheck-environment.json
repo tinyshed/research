@@ -1,0 +1,36 @@
+{
+  "started_utc": "2026-10-08T17:42:34.419904+00:00",
+  "method": "same fixed count for Go/Rust per case; ceil(150ms / fastest main median), floor2048 cap131072; six balanced passes",
+  "passes": 6,
+  "counts": {
+    "head/serialize": 2614,
+    "records/rice_escapes/decode": 6683,
+    "records/rice_escapes/decode_word": 2262,
+    "records/rice_escapes/encode": 33716,
+    "records/rice_small/decode": 33828,
+    "records/rice_small/decode_word": 9651,
+    "records/rice_small/encode": 45943,
+    "records/width_1/decode": 105399,
+    "records/width_1/decode_word": 57548,
+    "records/width_1/encode": 103964,
+    "records/width_17/decode": 32734,
+    "records/width_17/decode_word": 50213,
+    "records/width_17/encode": 87337,
+    "records/width_64/decode": 13044,
+    "records/width_64/decode_word": 49384,
+    "records/width_64/encode": 92854,
+    "records/width_7/decode": 57404,
+    "records/width_7/decode_word": 53831,
+    "records/width_7/encode": 103112,
+    "sort/arrival_key": 12223,
+    "sort/stable": 11528
+  },
+  "script_sha256": "fe9c05fae0f1e326e2bfc1b322a8d1f4c7c1cca8b77337d71b8b0aff9a45b741",
+  "binary_sha256": {
+    "go": "11713c56031bd06ac3163e1e35590ceeff173fc2b37ae7cba729e4f09fed5df2",
+    "rust": "be7068932c0a7c4b730a42a270711b0e760977d3d955ea5565a717249440467f"
+  },
+  "main_runtime_source_hashes_verified": true,
+  "affinity": 0,
+  "finished_utc": "2026-10-08T17:43:35.399875+00:00"
+}

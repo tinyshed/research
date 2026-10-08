@@ -1,0 +1,38 @@
+{
+  "binaries": {
+    "go-kv": {
+      "initial": "b31774ad7b97038d8ef8bec319d8143b9807286fcdebc166042818d396e7bf87",
+      "final": "b31774ad7b97038d8ef8bec319d8143b9807286fcdebc166042818d396e7bf87",
+      "unchanged": true
+    },
+    "rust-kv-telemetry": {
+      "initial": "09c72cd893eaf9925ee918c79009278d250058e1e5eac7416c14e5b906a9416d",
+      "final": "09c72cd893eaf9925ee918c79009278d250058e1e5eac7416c14e5b906a9416d",
+      "unchanged": true
+    },
+    "rust-kv": {
+      "initial": "a3dca0fb4af38129b50ba378ffd55dbf9bd2f8708cd2e48bc06256a38136cd71",
+      "final": "a3dca0fb4af38129b50ba378ffd55dbf9bd2f8708cd2e48bc06256a38136cd71",
+      "unchanged": true
+    }
+  },
+  "source_files_unchanged": {
+    ".gitignore": true,
+    "NOTICE": true,
+    "README.md": true,
+    "build.py": true,
+    "check.py": true,
+    "corrupt.jsonl": true,
+    "go/go.mod": true,
+    "go/go.sum": true,
+    "go/main.go": true,
+    "guard_proof.py": true,
+    "reopen.jsonl": true,
+    "report.py": true,
+    "run.py": true,
+    "rust/Cargo.lock": true,
+    "rust/Cargo.toml": true,
+    "rust/src/main.rs": true,
+    "trace.jsonl": true
+  }
+}

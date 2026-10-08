@@ -44,7 +44,9 @@ Start with the [research synthesis](reports/rust-research-summary-2026-10-08.md)
 The retained standalone prototypes are [algorithm kernels](rust-spike/),
 [SQLite linkage smoke](sqlite-rust-spike/), [matched native SQLite](sqlite-bench/),
 [metrics paths](metrics-bench/), [first optimizations](metrics-opt-bench/) and
-[deeper optimizations](metrics-max-bench/). Each directory contains its source,
+[deeper optimizations](metrics-max-bench/),
+[records algorithms/native slice](records-native-bench/) and
+[KV algorithms/native slice](kv-native-bench/). Each directory contains its source,
 locked dependencies and reproduction instructions; the reports link raw output.
 TinyStore is pinned to `e307c48a40126aad0e2873b6bf3aaedef8115483` for these rounds.
 The production Go repository remains unchanged by this evaluation.

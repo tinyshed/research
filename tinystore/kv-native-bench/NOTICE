@@ -1,0 +1,11 @@
+TinyStore KV native research prototype
+Copyright 2026 the TinyStore authors
+
+The schema, path encoding, SQL and value rules in this prototype are derived
+from github.com/tinyshed/tinystore at e307c48a40126aad0e2873b6bf3aaedef8115483,
+under the Apache License 2.0. See ../RUST-RESEARCH-LICENSE.
+This is an incomplete research prototype, not a released TinyStore engine.
+
+Stock rusqlite and its locked dependencies retain their own licenses.
+SQLite is fetched as the official public-domain amalgamation by the shared
+sqlite-bench/build_native.py, with its pinned source and archive SHA-256.

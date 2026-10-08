@@ -1,0 +1,40 @@
+{
+  "guard": "failed Take decode must rollback cell deletion",
+  "mutation": "disable typed integer decode validation in a temporary copy; original source unchanged",
+  "mutated_source_sha256": "8e874d11f669470cdbbcf0e9060ff76a0e5d1726d8a29fc5000b34b2771c5d3c",
+  "mutated_binary_sha256": "6ed041749aa33ecd75edbfc4a364bb7161b7901cf43cc398615c4a4b649f1c0f",
+  "broken_transcript": [
+    {
+      "error": null,
+      "found": true,
+      "op": "take_bad",
+      "value": {
+        "Bytes": "bm90IGFuIGludGVnZXI=",
+        "Int": 0,
+        "Kind": 2
+      }
+    },
+    {
+      "error": null,
+      "found": false,
+      "op": "has"
+    }
+  ],
+  "restored_transcript": [
+    {
+      "error": {
+        "bucket": "trace",
+        "code": "corrupt",
+        "path": "bad"
+      },
+      "found": false,
+      "op": "take_bad"
+    },
+    {
+      "error": null,
+      "found": true,
+      "op": "has"
+    }
+  ],
+  "oracle_rejected_mutation": true
+}

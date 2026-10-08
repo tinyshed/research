@@ -1,0 +1,110 @@
+{
+  "commands": [
+    {
+      "command": [
+        "gofmt",
+        "-w",
+        "."
+      ],
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "go",
+        "test",
+        "-count=1",
+        "./..."
+      ],
+      "stdout": "ok  \tgithub.com/tinyshed/tinystore/records-native-bench\t0.004s\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "go",
+        "build",
+        "-trimpath",
+        "-o",
+        "/work/records-native/go-records",
+        "."
+      ],
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "cargo",
+        "fmt",
+        "--check"
+      ],
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--release",
+        "--locked",
+        "--offline"
+      ],
+      "stdout": "\nrunning 7 tests\ntest bits::tests::failed_read_preserves_consumed_bits ... ok\ntest bits::tests::shifts_by_64_and_mixed_alignment ... ok\ntest bits::tests::signed_range_wrapping ... ok\ntest bits::tests::width_round_trip_and_truncation ... ok\ntest codec::tests::bounds_and_bits ... ok\ntest bits::tests::rice_round_trip_escape_and_truncation ... ok\ntest codec::tests::head_and_segment_guards ... ok\n\ntest result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "    Finished `release` profile [optimized] target(s) in 0.03s\n     Running unittests src/main.rs (<tmp>/records-target/release/deps/tinystore_records_native_bench-ffdfce125268e35d)\n",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "cargo",
+        "build",
+        "--release",
+        "--locked",
+        "--offline"
+      ],
+      "stdout": "",
+      "stderr": "   Compiling tinystore-records-native-bench v0.1.0 (<repo>/tinystore/records-native-bench/rust)\n    Finished `release` profile [optimized] target(s) in 1.16s\n",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "cargo",
+        "build",
+        "--release",
+        "--locked",
+        "--offline",
+        "--features",
+        "counting-allocator"
+      ],
+      "stdout": "",
+      "stderr": "   Compiling tinystore-records-native-bench v0.1.0 (<repo>/tinystore/records-native-bench/rust)\n    Finished `release` profile [optimized] target(s) in 1.23s\n",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "ldd",
+        "/work/records-native/rust-records"
+      ],
+      "stdout": "\tlinux-vdso.so.1 (0x00007c15ac139000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007c15ac101000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007c15abd10000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007c15abb1c000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007c15ac13b000)\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "readelf",
+        "-d",
+        "/work/records-native/rust-records"
+      ],
+      "stdout": "\nDynamic section at offset 0x2c3150 contains 30 entries:\n  Tag        Type                         Name/Value\n 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]\n 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]\n 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]\n 0x0000000000000001 (NEEDED)             Shared library: [ld-linux-x86-64.so.2]\n 0x000000000000001e (FLAGS)              BIND_NOW\n 0x000000006ffffffb (FLAGS_1)            Flags: NOW PIE\n 0x0000000000000015 (DEBUG)              0x0\n 0x0000000000000007 (RELA)               0x1910\n 0x0000000000000008 (RELASZ)             67104 (bytes)\n 0x0000000000000009 (RELAENT)            24 (bytes)\n 0x000000006ffffff9 (RELACOUNT)          2684\n 0x0000000000000017 (JMPREL)             0x11f30\n 0x0000000000000002 (PLTRELSZ)           1104 (bytes)\n 0x0000000000000003 (PLTGOT)             0x2c62b8\n 0x0000000000000014 (PLTREL)             RELA\n 0x0000000000000006 (SYMTAB)             0x340\n 0x000000000000000b (SYMENT)             24 (bytes)\n 0x0000000000000005 (STRTAB)             0x1234\n 0x000000000000000a (STRSZ)              1755 (bytes)\n 0x000000006ffffef5 (GNU_HASH)           0x1218\n 0x0000000000000019 (INIT_ARRAY)         0x2beac8\n 0x000000000000001b (INIT_ARRAYSZ)       16 (bytes)\n 0x000000000000001a (FINI_ARRAY)         0x2beac0\n 0x000000000000001c (FINI_ARRAYSZ)       8 (bytes)\n 0x000000000000000c (INIT)               0x2bd778\n 0x000000000000000d (FINI)               0x2bd790\n 0x000000006ffffff0 (VERSYM)             0xfa0\n 0x000000006ffffffe (VERNEED)            0x10a8\n 0x000000006fffffff (VERNEEDNUM)         4\n 0x0000000000000000 (NULL)               0x0\n",
+      "stderr": "",
+      "exit_code": 0
+    }
+  ],
+  "binary_sha256": {
+    "go-records": "11713c56031bd06ac3163e1e35590ceeff173fc2b37ae7cba729e4f09fed5df2",
+    "rust-records": "be7068932c0a7c4b730a42a270711b0e760977d3d955ea5565a717249440467f",
+    "rust-alloc-records": "862d6af6f5f2ba611be7451434ebdd6600d7de0ba6cb19ce463179884fb61383"
+  }
+}

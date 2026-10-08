@@ -1,0 +1,1223 @@
+[
+  {
+    "fixture": "apache-empty",
+    "file_bytes": 24576,
+    "payload_bytes": {
+      "heads": 0,
+      "segments": 0,
+      "blocks": 0
+    },
+    "dbstat": [
+      {
+        "Name": "sqlite_schema",
+        "Pages": 5,
+        "Bytes": 5120
+      },
+      {
+        "Name": "_tinystore_migrations",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "streams",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "sqlite_autoindex_streams_1",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "sqlite_sequence",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_stream",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "head_state",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_end",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_size",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_holder",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segment_keys",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "block_traces",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "block_filters",
+        "Pages": 1,
+        "Bytes": 1024
+      }
+    ]
+  },
+  {
+    "fixture": "apache-go-head",
+    "file_bytes": 117760,
+    "payload_bytes": {
+      "heads": 92073,
+      "segments": 0,
+      "blocks": 0
+    },
+    "dbstat": [
+      {
+        "Name": "sqlite_schema",
+        "Pages": 5,
+        "Bytes": 5120
+      },
+      {
+        "Name": "_tinystore_migrations",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "streams",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "sqlite_autoindex_streams_1",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads",
+        "Pages": 92,
+        "Bytes": 94208
+      },
+      {
+        "Name": "sqlite_sequence",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_stream",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "head_state",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_end",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_size",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_holder",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segment_keys",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "block_traces",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "block_filters",
+        "Pages": 1,
+        "Bytes": 1024
+      }
+    ]
+  },
+  {
+    "fixture": "apache-go-sealed",
+    "file_bytes": 138240,
+    "payload_bytes": {
+      "heads": 0,
+      "segments": 632,
+      "blocks": 41129
+    },
+    "dbstat": [
+      {
+        "Name": "sqlite_schema",
+        "Pages": 5,
+        "Bytes": 5120
+      },
+      {
+        "Name": "_tinystore_migrations",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "streams",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "sqlite_autoindex_streams_1",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "sqlite_sequence",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_stream",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "head_state",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_end",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_size",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_holder",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segment_keys",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks",
+        "Pages": 41,
+        "Bytes": 41984
+      },
+      {
+        "Name": "blocks_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "block_traces",
+        "Pages": 3,
+        "Bytes": 3072
+      },
+      {
+        "Name": "block_filters",
+        "Pages": 1,
+        "Bytes": 1024
+      }
+    ]
+  },
+  {
+    "fixture": "apache-native-head",
+    "file_bytes": 116736,
+    "payload_bytes": {
+      "heads": 91049,
+      "segments": 0,
+      "blocks": 0
+    },
+    "dbstat": [
+      {
+        "Name": "sqlite_schema",
+        "Pages": 5,
+        "Bytes": 5120
+      },
+      {
+        "Name": "_tinystore_migrations",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "streams",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "sqlite_autoindex_streams_1",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads",
+        "Pages": 91,
+        "Bytes": 93184
+      },
+      {
+        "Name": "sqlite_sequence",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_stream",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "head_state",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_end",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_size",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_holder",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segment_keys",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "block_traces",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "block_filters",
+        "Pages": 1,
+        "Bytes": 1024
+      }
+    ]
+  },
+  {
+    "fixture": "apache-native-sealed",
+    "file_bytes": 147456,
+    "payload_bytes": {
+      "heads": 0,
+      "segments": 240,
+      "blocks": 60642
+    },
+    "dbstat": [
+      {
+        "Name": "sqlite_schema",
+        "Pages": 5,
+        "Bytes": 5120
+      },
+      {
+        "Name": "_tinystore_migrations",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "streams",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "sqlite_autoindex_streams_1",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "sqlite_sequence",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_stream",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "head_state",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_end",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_size",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_holder",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segment_keys",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks",
+        "Pages": 61,
+        "Bytes": 62464
+      },
+      {
+        "Name": "blocks_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "block_traces",
+        "Pages": 3,
+        "Bytes": 3072
+      },
+      {
+        "Name": "block_filters",
+        "Pages": 1,
+        "Bytes": 1024
+      }
+    ]
+  },
+  {
+    "fixture": "typed-empty",
+    "file_bytes": 24576,
+    "payload_bytes": {
+      "heads": 0,
+      "segments": 0,
+      "blocks": 0
+    },
+    "dbstat": [
+      {
+        "Name": "sqlite_schema",
+        "Pages": 5,
+        "Bytes": 5120
+      },
+      {
+        "Name": "_tinystore_migrations",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "streams",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "sqlite_autoindex_streams_1",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "sqlite_sequence",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_stream",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "head_state",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_end",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_size",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_holder",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segment_keys",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "block_traces",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "block_filters",
+        "Pages": 1,
+        "Bytes": 1024
+      }
+    ]
+  },
+  {
+    "fixture": "typed-go-head",
+    "file_bytes": 106496,
+    "payload_bytes": {
+      "heads": 78287,
+      "segments": 0,
+      "blocks": 0
+    },
+    "dbstat": [
+      {
+        "Name": "sqlite_schema",
+        "Pages": 5,
+        "Bytes": 5120
+      },
+      {
+        "Name": "_tinystore_migrations",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "streams",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "sqlite_autoindex_streams_1",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads",
+        "Pages": 81,
+        "Bytes": 82944
+      },
+      {
+        "Name": "sqlite_sequence",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_stream",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "head_state",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_end",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_size",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_holder",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segment_keys",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "block_traces",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "block_filters",
+        "Pages": 1,
+        "Bytes": 1024
+      }
+    ]
+  },
+  {
+    "fixture": "typed-go-sealed",
+    "file_bytes": 120832,
+    "payload_bytes": {
+      "heads": 0,
+      "segments": 632,
+      "blocks": 29863
+    },
+    "dbstat": [
+      {
+        "Name": "sqlite_schema",
+        "Pages": 5,
+        "Bytes": 5120
+      },
+      {
+        "Name": "_tinystore_migrations",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "streams",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "sqlite_autoindex_streams_1",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "sqlite_sequence",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_stream",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "head_state",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_end",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_size",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_holder",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segment_keys",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks",
+        "Pages": 31,
+        "Bytes": 31744
+      },
+      {
+        "Name": "blocks_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "block_traces",
+        "Pages": 3,
+        "Bytes": 3072
+      },
+      {
+        "Name": "block_filters",
+        "Pages": 1,
+        "Bytes": 1024
+      }
+    ]
+  },
+  {
+    "fixture": "typed-late-native-sealed",
+    "file_bytes": 132096,
+    "payload_bytes": {
+      "heads": 0,
+      "segments": 444,
+      "blocks": 50131
+    },
+    "dbstat": [
+      {
+        "Name": "sqlite_schema",
+        "Pages": 5,
+        "Bytes": 5120
+      },
+      {
+        "Name": "_tinystore_migrations",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "streams",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "sqlite_autoindex_streams_1",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "sqlite_sequence",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_stream",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "head_state",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_end",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_size",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_holder",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segment_keys",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks",
+        "Pages": 51,
+        "Bytes": 52224
+      },
+      {
+        "Name": "blocks_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "block_traces",
+        "Pages": 3,
+        "Bytes": 3072
+      },
+      {
+        "Name": "block_filters",
+        "Pages": 1,
+        "Bytes": 1024
+      }
+    ]
+  },
+  {
+    "fixture": "typed-native-head",
+    "file_bytes": 106496,
+    "payload_bytes": {
+      "heads": 78196,
+      "segments": 0,
+      "blocks": 0
+    },
+    "dbstat": [
+      {
+        "Name": "sqlite_schema",
+        "Pages": 5,
+        "Bytes": 5120
+      },
+      {
+        "Name": "_tinystore_migrations",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "streams",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "sqlite_autoindex_streams_1",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads",
+        "Pages": 81,
+        "Bytes": 82944
+      },
+      {
+        "Name": "sqlite_sequence",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_stream",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "head_state",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_end",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_size",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_holder",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segment_keys",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "block_traces",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "block_filters",
+        "Pages": 1,
+        "Bytes": 1024
+      }
+    ]
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "file_bytes": 131072,
+    "payload_bytes": {
+      "heads": 0,
+      "segments": 240,
+      "blocks": 49536
+    },
+    "dbstat": [
+      {
+        "Name": "sqlite_schema",
+        "Pages": 5,
+        "Bytes": 5120
+      },
+      {
+        "Name": "_tinystore_migrations",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "streams",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "sqlite_autoindex_streams_1",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "sqlite_sequence",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_stream",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "heads_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "head_state",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_end",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_size",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segments_by_holder",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "segment_keys",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks",
+        "Pages": 49,
+        "Bytes": 50176
+      },
+      {
+        "Name": "blocks_by_time",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "blocks_by_first",
+        "Pages": 1,
+        "Bytes": 1024
+      },
+      {
+        "Name": "block_traces",
+        "Pages": 3,
+        "Bytes": 3072
+      },
+      {
+        "Name": "block_filters",
+        "Pages": 1,
+        "Bytes": 1024
+      }
+    ]
+  }
+]

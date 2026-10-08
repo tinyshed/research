@@ -1,0 +1,7 @@
+This research prototype translates records/head.go, route.go, schema.go,
+block.go, page.go and bits.go contracts from tinyshed/tinystore commit
+e307c48a40126aad0e2873b6bf3aaedef8115483 (Apache-2.0). Its synchronous Rust
+implementation, deliberately limited column writer and native SQLite/zstd
+backends are experimental modifications. Existing bit extraction kernels
+were copied from tinystore/rust-spike with the same attribution. No
+production TinyStore code is changed or imported by Rust.
