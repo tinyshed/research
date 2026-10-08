@@ -244,7 +244,8 @@ fn read_grid_into(mut head: Head, data: &[u8], out: &mut Vec<Sample>) -> Result<
     Ok(())
 }
 pub fn decode(block: &Block) -> Result<Vec<Sample>> {
-    if block.body.is_empty() {
+    let stored = block.value_body();
+    if stored.is_empty() {
         return Ok((0..block.head.count)
             .map(|i| Sample {
                 at: i as i64,
@@ -252,12 +253,12 @@ pub fn decode(block: &Block) -> Result<Vec<Sample>> {
             })
             .collect());
     }
-    if block.body.len() < 5 {
+    if stored.len() < 5 {
         return Err("value body size".into());
     }
-    let end = block.body.len() - 4;
-    let body = &block.body[..end];
-    if value_checksum(block, body) != u32::from_le_bytes(block.body[end..].try_into().unwrap()) {
+    let end = stored.len() - 4;
+    let body = &stored[..end];
+    if value_checksum(block, body) != u32::from_le_bytes(stored[end..].try_into().unwrap()) {
         return Err("value body checksum".into());
     }
     match body[0] {
@@ -280,19 +281,20 @@ pub(super) fn decode_into(block: &Block, out: &mut Vec<Sample>) -> Result<()> {
 }
 
 fn decode_into_inner(block: &Block, out: &mut Vec<Sample>) -> Result<()> {
-    if block.body.is_empty() {
+    let stored = block.value_body();
+    if stored.is_empty() {
         out.extend((0..block.head.count).map(|i| Sample {
             at: i as i64,
             value: block.head.first,
         }));
         return Ok(());
     }
-    if block.body.len() < 5 {
+    if stored.len() < 5 {
         return Err("value body size".into());
     }
-    let end = block.body.len() - 4;
-    let body = &block.body[..end];
-    if value_checksum(block, body) != u32::from_le_bytes(block.body[end..].try_into().unwrap()) {
+    let end = stored.len() - 4;
+    let body = &stored[..end];
+    if value_checksum(block, body) != u32::from_le_bytes(stored[end..].try_into().unwrap()) {
         return Err("value body checksum".into());
     }
     match body[0] {

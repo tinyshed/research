@@ -120,6 +120,7 @@ pub struct Engine {
 }
 
 fn configure(connection: &Connection, reader: bool) -> Result<()> {
+    crate::adapter::configure_connection(connection)?;
     connection.execute_batch(
         "PRAGMA foreign_keys=1; PRAGMA busy_timeout=5000;
          PRAGMA synchronous=FULL; PRAGMA fullfsync=1;

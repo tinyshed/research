@@ -136,7 +136,17 @@ pub struct Block {
     pub head: Head,
     pub summary: Summary,
     pub body: Vec<u8>,
+    pub shared_body: Option<(Arc<Vec<u8>>, Range<usize>)>,
     pub body_bytes: usize,
+}
+
+impl Block {
+    pub fn value_body(&self) -> &[u8] {
+        match &self.shared_body {
+            Some((bytes, range)) => &bytes[range.clone()],
+            None => &self.body,
+        }
+    }
 }
 
 #[derive(Clone, Debug, Default)]

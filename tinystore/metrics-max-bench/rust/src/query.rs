@@ -1,5 +1,7 @@
 //! Native port of metrics matching, bounded snapshot fetch, reads and exact aggregates.
 #[cfg(test)]
+mod adapter_tests;
+#[cfg(test)]
 mod optimization_tests;
 mod parallel;
 mod quote;
@@ -1064,8 +1066,17 @@ fn match_series(conn: &Connection, q: &Checked, budget: &mut Budget) -> Result<V
             return Err("corrupt metrics data: label ids size".into());
         }
         budget.bytes(size as usize)?;
-        let source: Option<Vec<u8>> = row.get(3)?;
-        let source = source.ok_or("corrupt metrics data: series metadata")?;
+        let owned;
+        let source = if crate::adapter::borrow_metadata() {
+            row.get_ref(3)?
+                .as_blob()
+                .map_err(|_| "corrupt metrics data: series metadata")?
+        } else {
+            owned = row
+                .get::<_, Option<Vec<u8>>>(3)?
+                .ok_or("corrupt metrics data: series metadata")?;
+            &owned
+        };
         if kind != "gauge" && kind != "counter" {
             return Err("corrupt metrics data: kind".into());
         }
@@ -1076,7 +1087,7 @@ fn match_series(conn: &Connection, q: &Checked, budget: &mut Budget) -> Result<V
                 kind,
                 labels: BTreeMap::new(),
             },
-            ids: decode_label_ids(&source)?,
+            ids: decode_label_ids(source)?,
         });
     }
     drop(rows);
@@ -1243,6 +1254,10 @@ fn fetch_group_rows(
 }
 
 fn fetch_payloads(conn: &Connection, reads: &mut [SeriesRead]) -> Result<()> {
+    fetch_payloads_mode(conn, reads, crate::adapter::arena())
+}
+
+fn fetch_payloads_mode(conn: &Connection, reads: &mut [SeriesRead], use_arena: bool) -> Result<()> {
     let _profile = crate::profile::scope("fetch_payloads");
     let mut destinations = HashMap::new();
     let mut ids = Vec::new();
@@ -1263,6 +1278,18 @@ fn fetch_payloads(conn: &Connection, reads: &mut [SeriesRead]) -> Result<()> {
             ids.push(block.payload);
         }
     }
+    // Every selected body was charged to the payload budget before this call.
+    // Reserve exactly that admitted total, never decode a borrowed SQLite row.
+    let total = destinations
+        .values()
+        .try_fold(0usize, |sum, &(_, _, size)| sum.checked_add(size))
+        .ok_or("metrics resource limit: arena capacity")?;
+    let mut arena = Vec::new();
+    let mut ranges = Vec::new();
+    if use_arena {
+        arena.try_reserve_exact(total)?;
+        ranges.try_reserve_exact(ids.len())?;
+    }
     for chunk in ids.chunks(64) {
         let json = serde_json::to_string(chunk)?;
         let mut statement=conn.prepare_cached("SELECT p.id,p.body FROM json_each(?) ids JOIN payloads p ON p.id=CAST(ids.value AS INTEGER)")?;
@@ -1270,17 +1297,44 @@ fn fetch_payloads(conn: &Connection, reads: &mut [SeriesRead]) -> Result<()> {
         let mut fetched = BTreeSet::new();
         while let Some(row) = rows.next()? {
             let id: i64 = row.get(0)?;
-            let body: Vec<u8> = row.get(1)?;
+            let owned = if use_arena {
+                None
+            } else {
+                Some(row.get::<_, Vec<u8>>(1)?)
+            };
+            let body = if use_arena {
+                row.get_ref(1)?.as_blob()?
+            } else {
+                owned.as_deref().unwrap()
+            };
             let &(ri, bi, size) = destinations
                 .get(&id)
                 .ok_or("corrupt metrics data: payload id")?;
             if !fetched.insert(id) || body.len() != size {
                 return Err("corrupt metrics data: payload size or repeat".into());
             }
-            reads[ri].blocks[bi].block.body = body;
+            if use_arena {
+                if body.len() > total.saturating_sub(arena.len()) {
+                    return Err("metrics resource limit: arena capacity".into());
+                }
+                let start = arena.len();
+                arena.extend_from_slice(body);
+                ranges.push((ri, bi, start..arena.len()));
+            } else {
+                reads[ri].blocks[bi].block.body = owned.unwrap();
+            }
         }
         if fetched.len() != chunk.len() {
             return Err("corrupt metrics data: selected payload missing".into());
+        }
+    }
+    if use_arena {
+        if arena.len() != total {
+            return Err("corrupt metrics data: arena size".into());
+        }
+        let bytes = std::sync::Arc::new(arena);
+        for (ri, bi, range) in ranges {
+            reads[ri].blocks[bi].block.shared_body = Some((bytes.clone(), range));
         }
     }
     Ok(())

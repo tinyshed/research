@@ -1,3 +1,5 @@
+mod adapter;
+mod adapter_probe;
 mod codec;
 mod engine;
 mod exact;
@@ -36,6 +38,7 @@ struct Arguments {
     fast_exact: bool,
     fast_codec: bool,
     tuning: usize,
+    adapter: usize,
 }
 impl Arguments {
     fn parse() -> Result<Self> {
@@ -51,6 +54,7 @@ impl Arguments {
             fast_exact: false,
             fast_codec: false,
             tuning: 0,
+            adapter: 0,
         };
         let mut args = std::env::args().skip(1);
         while let Some(k) = args.next() {
@@ -67,6 +71,7 @@ impl Arguments {
                 "--fast-exact" => out.fast_exact = v == "1",
                 "--fast-codec" => out.fast_codec = v == "1",
                 "--tuning" => out.tuning = v.parse()?,
+                "--adapter" => out.adapter = v.parse()?,
                 _ => return Err(format!("unknown flag {k}").into()),
             }
         }
@@ -531,9 +536,11 @@ fn main() -> Result<()> {
     exact::configure_fast(args.fast_exact);
     codec::set_optimized(args.fast_codec);
     tuning::configure(args.tuning);
+    adapter::configure(args.adapter);
     let engine = Engine::open(&args.database, options(), args.now)?;
     let mut last_stream = None;
     let result = match args.mode.as_str() {
+        "wrapper" => adapter_probe::run(&engine.reader, &args.case, args.iterations, args.warm)?,
         "digest" => json!({"final_digest":format!("{:016x}",digest(&engine)?)}),
         "guards" => guards(&engine)?,
         "edge-guards" => {
@@ -590,6 +597,8 @@ fn main() -> Result<()> {
                 black_box(operation(&engine, &args.case, i, false, &mut last_stream)?);
             }
             profile::reset();
+            adapter::counters(&engine.reader, true)?;
+            adapter::counters(&engine.writer, true)?;
             profile::configure(true);
             for i in 0..args.iterations {
                 let _scope = profile::scope("operation");
@@ -604,6 +613,9 @@ fn main() -> Result<()> {
             let mut out = profile::finish();
             out["case"] = json!(args.case);
             out["iterations"] = json!(args.iterations);
+            out["sqlite_reader"] = adapter::counters(&engine.reader, false)?;
+            out["sqlite_writer"] = adapter::counters(&engine.writer, false)?;
+            out["sqlite_memory_used"] = json!(unsafe { rusqlite::ffi::sqlite3_memory_used() });
             out
         }
         "memory" => {
