@@ -936,13 +936,13 @@
     },
     {
       "path": "tinystore/open-questions.md",
-      "bytes": 29044,
-      "sha256": "3009421ac5b98857aadbac2bfb7549ad06a18ec0b08e068d9aff37ebf1675029"
+      "bytes": 29895,
+      "sha256": "24aed8669346466beafc8507ce92e8af5017fba806c751640d3a7d6a8f17c521"
     },
     {
       "path": "tinystore/reports/README.md",
-      "bytes": 24689,
-      "sha256": "4e1d87dab9205720364b89425b3dc56bd7445c58b250548a1aca0422e3794a80"
+      "bytes": 24727,
+      "sha256": "657cb1d5ab3c9b98a3d3dd6ebe78d8215c529b3c0d5648861d8cf272e1bae6a1"
     },
     {
       "path": "tinystore/reports/data/metrics-deep-2026-10-08/ablations.csv",
@@ -1336,8 +1336,8 @@
     },
     {
       "path": "tinystore/reports/rust-research-summary-2026-10-08.md",
-      "bytes": 21347,
-      "sha256": "db428c4735c947c3bf254266bc6a5894b0d0ae0b5325f3864dd6a40cebb94ad7"
+      "bytes": 32856,
+      "sha256": "edb0ee54b906c57bed0c217d37d8ba20cdad6c4e2e70333a6da2c9546079204b"
     },
     {
       "path": "tinystore/reports/sqlite-native-2026-10-07.md",
@@ -1588,6 +1588,21 @@
       "path": "tinystore/sqlite-rust-spike/src/main.rs",
       "bytes": 11040,
       "sha256": "2d5825d2ae68f8ed0754802b57ac4a5508edc75458a79d3dd7282beea8f9d5b8"
+    }
+  ],
+  "documentation_addenda": [
+    {
+      "date": "2026-10-08",
+      "base_publication_commit": "80e66be89858556705fbf638b55414e930b191c7",
+      "topic": "Unmeasured low-level SQLite adapter, allocation/admission and per-engine performance hypotheses",
+      "files": [
+        "tinystore/open-questions.md",
+        "tinystore/reports/README.md",
+        "tinystore/reports/rust-research-summary-2026-10-08.md"
+      ],
+      "new_implementation": false,
+      "new_benchmark_samples": false,
+      "recorded_measurements_changed": false
     }
   ]
 }

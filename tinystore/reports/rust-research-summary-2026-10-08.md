@@ -176,7 +176,8 @@ loops, Go retains its sink output while Rust consumes and destroys each owning
 result; both retain the last Stream callback result. The Go/native latency
 ratios include these consumer-lifetime differences, as well as the backend and
 engine differences. The separate RSS scenarios retain 16 owning results on both
-stacks. Normalize consumer lifetimes in a future application-load comparison. Native SQLite retains
+stacks. Normalize consumer lifetimes in a future application-load comparison.
+Native SQLite retains
 THREADSAFE=1 and independently owned NO_MUTEX connections; the Go backend uses
 isolated translated THREADSAFE=0 instances and a custom VFS. Copying the Go
 setting into a shared native library would not preserve that isolation.
@@ -294,6 +295,142 @@ previous Rust, 27.76 for new serial and 27.39 for PGO; Read16 was 23.20,
 23.40 and 23.23 MiB respectively. Caller-owned output remained a substantial
 retained footprint. Lower allocation churn must not be presented as an equal
 RSS reduction or an exact total-memory budget.
+
+## Low-level SQLite extension plan (unmeasured)
+
+Documentation addendum, 2026-10-08. This proposal adds no implementation or
+benchmark samples. It describes the next experiments beyond the already
+measured native-SQLite backend and Rust optimizations.
+
+The working hypothesis is that a small TinyStore-owned SQLite adapter can
+reduce allocation/copying costs on selected paths and give native SQLite a
+place in the production memory budget. Further engine-level CPU gains are
+plausible where those costs matter. Replacing thin rusqlite calls with raw C
+calls alone has no demonstrated speed benefit; a custom allocator is primarily
+a memory-admission and failure-control candidate and can add overhead.
+
+### Adapter boundary and supported access
+
+Rusqlite 0.40.1 reexports libsqlite3-sys as `rusqlite::ffi` and exposes the
+underlying connection through unsafe `Connection::handle()`. Missing high-level
+operations can therefore call SQLite's documented C API. Keep normal operations
+on safe rusqlite interfaces and place pointer ownership, callback state,
+initialization and error translation inside one audited adapter. Connection,
+statement and buffer lifetimes must remain explicit; a raw call must preserve
+rusqlite's ownership, statement-cache and threading invariants.
+
+The adapter would own the pinned static SQLite build, startup-only global
+configuration, per-connection configuration, statement/transaction lifetime,
+memory accounting and admission, diagnostics and cancellation. The engines
+would consume safe operations and bounded owned snapshots. Version, source ID,
+compile options, page sizes and PRAGMAs remain checked at startup. Native
+THREADSAFE=1 and exclusively owned NO_MUTEX connections remain the baseline.
+The current build already controls SQLite's flags and embeds the library;
+low-level access does not require a dynamic SQLite dependency or a fork of its
+internal VDBE/pager code.
+
+Several proposed facilities already have safe wrappers: `Row::get_ref()`
+borrows column values, `prepare_cached()` already uses
+SQLITE_PREPARE_PERSISTENT, and the enabled hooks expose a progress handler and
+an interrupt handle. Raw access is an extension point for missing facilities,
+not evidence that those existing operations need to be replaced.
+
+### Candidates and engine implications
+
+| Candidate | Mechanism to separate in an experiment | Plausible benefit | Constraint to preserve |
+| --- | --- | --- | --- |
+| Native allocation accounting and admission | SQLite status counters first; then SQLITE_CONFIG_MALLOC callbacks that account for rounded allocation sizes and enforce a shared budget | Native memory becomes visible and rejectable; lower fragmentation or allocator cost is a separate hypothesis | Global configuration precedes initialization; realloc failure preserves the old allocation; OOM and transaction recovery remain correct; callbacks cannot unwind into C |
+| Lookaside and page-cache buffers | Per-connection lookaside plus separately measured SQLITE_CONFIG_PAGECACHE capacity | Fewer general-purpose allocations during prepare/step, potentially less CPU and variance | Preallocated pools consume reserved RAM; page-cache exhaustion falls back to heap allocation; tuning must include every connection and engine |
+| Borrowed rows copied into a bounded shared arena | Read validated BLOB views with get_ref(), copy into one admitted batch arena, and retain ranges after closing the snapshot | Fewer per-payload Rust allocations and less capacity/metadata overhead; especially plausible for scans of many blocks | Each borrowed value is consumed before the next step/reset/finalize; short snapshots, corruption/limit precedence and Rayon ownership remain intact; required byte copies are still present |
+| Scoped static input binding | Measure sqlite3_bind_blob64 with SQLITE_STATIC against the current transient binding path for sufficiently large buffers | Potentially removes one parameter-binding copy on head/body writes | Input storage survives until rebinding, clear_bindings or finalize; reset alone does not release the binding; pager/storage copies and FULL commit work remain |
+| Statement diagnostics and narrowly chosen raw loops | Measure VM steps, scans, sorts, reprepares, statement/cache memory and wrapper-only costs before changing prepare/bind/step | Identifies avoidable SQL/planner or conversion work on short operations | Existing statement reuse/PERSISTENT is already baseline; direct step is not automatically faster |
+| SQLite C compiler variants | Hold version/options fixed and separately compare the current -O2 archive with supported optimization/profile-guided C builds | Possible native VM/pager CPU improvement shared by engines | The previous Rust PGO/LTO experiments did not optimize the precompiled SQLite C archive; build/link compatibility and format/error checks must be repeated |
+| Custom VFS or page-cache implementation | Isolate a concrete I/O, instrumentation or cache-policy requirement before replacing an existing implementation | Useful only if a measured bottleneck or required policy justifies it | WAL, locking, syncing, file lifetime and platform behavior need their own fault/concurrency evidence |
+
+The short-snapshot boundary is particularly important. Metrics currently
+materializes payloads into owned Vec buffers before decode/parallel work.
+Production records explicitly decodes only after releasing its snapshot.
+Borrow-and-decode while a SQLite row is live would change that policy; it can
+be an isolated experiment, but a production candidate must preserve the existing
+snapshot contract or establish a separately reviewed replacement. The first
+compatible experiment is a bounded owned arena, not references to SQLite memory
+handed to Rayon after the statement or connection has released it.
+
+| Engine/workload | Where additional gains are plausible | Current limit on that expectation |
+| --- | --- | --- |
+| Metrics Read/Stream and decoded cut aggregates | Payload acquisition/ownership, batch arenas, native allocation traffic and SQLite C CPU | Whole-block summary queries do little decode work; output materialization remains; existing native-backend gains are already in the baseline |
+| Records block scans and stream/page assembly | Fewer allocations while fetching packed bodies, reused batch storage and efficient column decoding | No complete native records port was measured; decode must stay outside the snapshot and pagination/budget/corruption behavior must match |
+| KV and sqldb short point operations | Statement/conversion overhead, planner work and lookaside behavior if diagnostics identify them | Small values offer little copy savings; statements are already cached; the current records/metrics results do not quantify these engines |
+| Blobs metadata and inline contents | Metadata allocation costs and bounded owned inline-body acquisition | Large bodies use external files, so SQLite-call changes do not accelerate their bulk file reads; inline readers retain checked bytes and survive replacement/deletion/store close |
+| Durable writes in every engine | Large-input binding copies and native prepare/step work | WAL/FULL commit, syncing and checkpoint costs remain; the final scrape experiment found no additional query-switch benefit |
+
+Incremental BLOB I/O is another available API, but it is not a generic shortcut.
+SQLite excludes WITHOUT ROWID tables; TinyStore has both rowid body tables and
+WITHOUT ROWID key/metadata tables. The blobs reader's current ownership and
+integrity contract also prevents treating a retained SQLite BLOB handle as an
+equivalent drop-in replacement for an owned inline buffer or open file.
+
+### What memory control would and would not establish
+
+`sqlite3_status64`, `sqlite3_db_status` and allocator callbacks answer different
+questions. SQLite's hard heap limit is shared by all connections using that
+library instance, not a per-engine or per-query reservation and not a cap on
+process RSS. Caller-provided page-cache/lookaside storage must also be counted
+in the application's budget; supplied page-cache pools and disabled memory
+accounting can prevent the stock heap limit from covering all relevant memory.
+A shared native budget needs engine/query admission and capacity for writer
+progress as well as accounting of Rust outputs, codec scratch and native zstd.
+
+The measured 16 retained Read16 results already contain 18.75 MiB of timestamp
+and value data before containers. An SQLite allocator change cannot remove that
+caller-owned content. Lower native allocation traffic, lower peak RSS and a
+correct memory limit are separate outcomes to report.
+
+### Next measurement and expected size of the effect
+
+Prioritize native diagnostics, a contract-preserving batch arena, then
+lookaside/page-cache ablations. Treat the tracking allocator as a separately
+measured budgeting feature before assuming it accelerates requests. Raw
+statement loops, static binding, C compiler variants and custom VFS/cache work
+follow only where their individual costs or requirements justify the effort.
+
+The existing inclusive profiles show snapshot and decode/process work, but do
+not isolate rusqlite overhead or native malloc cost. They cannot provide a
+percentage forecast for this proposal. As arithmetic only, if a separately
+measured component occupies 25% of a call and becomes twice as fast, total
+speed improves to 1 / (0.75 + 0.25 / 2) = 1.14x. This is an illustration, not
+an estimated TinyStore gain. There is no basis here to promise another broad
+multi-times speedup from switching to raw calls.
+
+Commit each candidate harness first and compare it with the current optimized
+Rust/native baseline in the same quiet session, one change at a time. Keep
+SQLite version, SQL, schema, PRAGMAs, compiler settings, affinity, input traces
+and result lifetimes equal. Include the fixed-cache fixtures and independent
+corpora with larger/irregular blocks and realistic label/payload distributions.
+Measure latency distributions, CPU per call, Rust and native allocation traffic,
+SQLite/cache counters and current/peak RSS under serial and concurrent load.
+Arena/borrow experiments must also record snapshot duration, WAL growth and
+checkpoint behavior. For a budgeted allocator, record admission/OOM refusals,
+writer progress and recovered connection/transaction state; injected allocation
+failures, cancellation, rollback and corruption checks are acceptance gates.
+Durable write trials retain WAL/FULL. Any storage-layout candidate reports
+payload bytes and per-object file pages separately.
+
+The hypothesis is strongest for allocation/copy-heavy block processing and for
+shared native memory admission. Small cached operations and sync-bound writes
+may see little benefit. Each engine needs its own public-path evidence before
+these facilities become production defaults.
+
+API references: SQLite [global configuration](https://sqlite.org/c3ref/config.html),
+[allocator methods](https://sqlite.org/c3ref/mem_methods.html),
+[heap limits](https://sqlite.org/c3ref/hard_heap_limit64.html),
+[column-value lifetimes](https://sqlite.org/c3ref/column_blob.html),
+[binding lifetimes](https://sqlite.org/c3ref/bind_blob.html) and
+[incremental BLOB access](https://sqlite.org/c3ref/blob_open.html).
+The locked rusqlite/libsqlite3-sys versions and native build flags are retained
+in [Cargo.toml](../metrics-max-bench/rust/Cargo.toml),
+[Cargo.lock](../metrics-max-bench/rust/Cargo.lock) and the
+[native build record](data/metrics-deep-2026-10-08/native-build.json).
 
 ## Remaining decision gates and reproduction
 

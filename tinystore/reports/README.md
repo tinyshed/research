@@ -191,7 +191,7 @@ before measurement. Each comparison uses its own same-session baseline.
 
 | Report | Scope |
 | --- | --- |
-| [Rust research synthesis](rust-research-summary-2026-10-08.md) | findings across all rounds, SQLite linking, memory bounds and production gates |
+| [Rust research synthesis](rust-research-summary-2026-10-08.md) | findings across all rounds, SQLite linking, memory bounds, production gates and an unmeasured low-level adapter plan |
 | [Algorithm kernels](rust-kernels-2026-10-07.md) | 54 deterministic fixtures: metrics preparation/codecs and records packing |
 | [Matched native SQLite](sqlite-native-2026-10-07.md) | wrapper/backend reads, FULL writes, version/source/build parity and static linkage |
 | [Synchronous metrics port](metrics-native-2026-10-08.md) | full ingest, read, stream, aggregate, maintenance and retention paths through SQLite |
