@@ -1,0 +1,238 @@
+
+running 179 tests
+test bind::test::invalid_name ... ok
+test cache::test::test_cache ... ok
+test cache::test::test_cache_key ... ok
+test cache::test::test_empty_stmt ... ok
+test cache::test::test_connection_close ... ok
+test cache::test::test_discard ... ok
+test cache::test::test_set_capacity ... ok
+test column::test::column_exists ... ok
+test column::test::table_exists ... ok
+test config::test::test_db_config ... ok
+test column::test::column_metadata ... ok
+test hooks::test::test_progress_handler_interrupt ... ok
+test limits::test::test_limit_values ... ok
+test pragma::test::double_quote ... ok
+test pragma::test::is_identifier ... ok
+test limits::test::test_limit ... ok
+test pragma::test::locking_mode ... ok
+test column::test::test_column_name_in_error ... ok
+test hooks::test::test_commit_hook ... ok
+test pragma::test::pragma_query_value ... ok
+test hooks::test::test_non_owning_hooks_cleanup ... ok
+test hooks::test::test_update_hook ... ok
+test cache::test::test_ddl ... ok
+test pragma::test::pragma_query_no_schema ... ok
+test pragma::test::pragma ... ok
+test hooks::test::test_fn_commit_hook ... ok
+test hooks::test::test_rollback_hook ... ok
+test hooks::test::test_authorizer ... ok
+test pragma::test::pragma_query_with_schema ... ok
+test pragma::test::pragma_func_query_value ... ok
+test pragma::test::pragma_update ... ok
+test hooks::test::test_progress_handler ... ok
+test pragma::test::pragma_func ... ok
+test pragma::test::wrap_and_escape ... ok
+test pragma::test::pragma_update_and_check ... ok
+test row::tests::as_ref ... ok
+test row::tests::debug ... ok
+test statement::test::readonly ... ok
+test row::tests::test_try_from_row_for_tuple_1 ... ok
+test statement::test::is_explain ... ok
+test raw_statement::tinystore_count_cache_regressions::reset_and_conversion_error_do_not_poison_cached_statement ... ok
+test statement::test::test_comment_stmt ... ok
+test statement::test::test_comment_and_sql_stmt ... ok
+test row::tests::test_try_from_row_for_tuple_16 ... ok
+test statement::test::test_bind_parameters ... ok
+test statement::test::test_empty_stmt ... ok
+test statement::test::test_error_offset ... ok
+test statement::test::query_one ... ok
+test row::tests::test_try_from_row_for_tuple_2 ... ok
+test column::test::test_column_name_reference ... ok
+test statement::test::test_expanded_sql ... ok
+test statement::test::test_execute_named ... ok
+test statement::test::test_nul_byte ... ok
+test statement::test::test_exists ... ok
+test statement::test::test_parameter_name ... ok
+test statement::test::test_semi_colon_stmt ... ok
+test statement::test::test_query_map_named ... FAILED
+test raw_statement::tinystore_count_cache_regressions::schema_reprepare_refreshes_count_and_keeps_invalid_index_errors ... ok
+test statement::test::test_query_by_column_name ... ok
+test statement::test::test_insert ... ok
+test statement::test::test_insert_different_tables ... ok
+test statement::test::test_query_named ... FAILED
+test statement::test::test_query_and_then_by_name ... FAILED
+test statement::test::test_query_by_column_name_ignore_case ... ok
+test statement::test::test_tuple_params ... ok
+test statement::test::test_query_row ... ok
+test statement::test::test_raw_binding ... ok
+test statement::test::test_stmt_execute_named ... ok
+test statement::test::test_unbound_parameters_are_reused ... ok
+test statement::test::test_unbound_parameters_are_null ... ok
+test test::db_readonly ... ok
+test statement::test::test_utf16_conversion ... ok
+test test::query_and_then_tests::test_query_and_then ... FAILED
+test test::query_and_then_tests::test_query_and_then_custom_error ... FAILED
+test test::query_and_then_tests::test_query_and_then_fails ... FAILED
+test test::query_and_then_tests::test_query_and_then_custom_error_fails ... FAILED
+test test::query_and_then_tests::test_query_row_and_then_custom_error_fails ... FAILED
+test test::release_memory ... ok
+test test::set_errmsg ... ok
+test test::query_and_then_tests::test_query_row_and_then_custom_error ... FAILED
+test test::test_cache_flush ... ok
+test test::test_close_retry ... ok
+test test::test_batch ... ok
+test test::test_db_name ... ok
+test test::test_alter_table ... ok
+test test::test_dyn_box ... ok
+test test::test_dynamic ... FAILED
+test test::test_execute ... ok
+test test::test_execute_batch ... ok
+test test::test_execute_select_with_row ... ok
+test test::test_from_handle ... ok
+test test::test_execute_multiple ... ok
+test test::test_from_handle_owned ... ok
+test test::test_get_raw ... ok
+test test::test_interrupt_close ... ok
+test test::test_invalid_batch ... ok
+test test::test_is_autocommit ... ok
+test test::test_is_busy ... ok
+test test::test_is_interrupted ... ok
+test test::test_last_insert_rowid ... ok
+test test::test_open ... ok
+test test::test_open_failure ... ok
+test test::test_notnull_constraint_error ... ok
+test test::test_open_with_flags ... ok
+test test::test_optional ... ok
+test test::test_params ... ok
+test test::test_pragma_query_row ... ok
+test test::test_prepare_column_names ... ok
+test test::test_prepare_execute ... ok
+test test::test_prepare_failures ... ok
+test test::test_prepare_query ... ok
+test test::test_path ... ok
+test test::test_query_map ... FAILED
+test test::test_query_row ... ok
+test test::test_statement_debugging ... ok
+test test::test_returning ... ok
+test test::test_version_string ... ok
+test test::test_total_changes ... ok
+test transaction::test::auto_commit ... ok
+test transaction::test::test_drop ... ok
+test transaction::test::test_explicit_rollback_commit ... ok
+test transaction::test::test_ignore_drop_behavior ... ok
+test transaction::test::test_rc ... ok
+test transaction::test::test_savepoint ... ok
+test transaction::test::test_savepoint_drop_behavior_releases ... ok
+test transaction::test::test_unchecked_nesting ... ok
+test transaction::test::txn_state ... ok
+test transaction::test::test_savepoint_names ... ok
+test types::from_sql::test::from_sql_error ... ok
+test transaction::test::test_savepoint_release_error ... ok
+test types::from_sql::test::test_cow ... ok
+test types::from_sql::test::test_heap_slice ... ok
+test types::from_sql::test::test_integral_ranges ... ok
+test types::from_sql::test::test_nonzero_ranges ... ok
+test types::test::test_blob ... ok
+test types::test::test_dynamic_type ... ok
+test types::test::test_empty_blob ... ok
+test types::test::test_mismatched_types ... ok
+test types::test::test_numeric_conversions ... ok
+test types::test::test_option ... ok
+test types::test::test_str ... ok
+test types::test::test_string ... ok
+test types::to_sql::test::test_box_deref ... ok
+test types::test::test_value ... ok
+test types::to_sql::test::test_box_direct ... ok
+test types::to_sql::test::test_box_dyn ... ok
+test types::to_sql::test::test_cells ... ok
+test types::to_sql::test::test_cow_str ... ok
+test types::to_sql::test::test_integral_types ... ok
+test types::to_sql::test::test_nonzero_types ... ok
+test types::to_sql::test::test_u8_array ... ok
+test types::to_sql::test::to_sql ... ok
+test types::value::test::data_type ... ok
+test types::value::test::from ... ok
+test types::value::test::from_option ... ok
+test types::value_ref::test::as_blob ... ok
+test types::value_ref::test::as_blob_or_null ... ok
+test types::value_ref::test::as_bytes ... ok
+test types::value_ref::test::as_bytes_or_null ... ok
+test types::value_ref::test::as_f64 ... ok
+test types::value_ref::test::as_f64_or_null ... ok
+test types::value_ref::test::as_i64 ... ok
+test types::value_ref::test::as_i64_or_null ... ok
+test types::value_ref::test::as_str ... ok
+test types::value_ref::test::as_str_or_null ... ok
+test types::value_ref::test::from_option ... ok
+test types::value_ref::test::from_value ... ok
+test util::param_cache::test::test_cache ... ok
+test util::small_cstr::test::test_small_cstring ... ok
+test util::sqlite_string::test::test_alloc ... ok
+test util::sqlite_string::test::test_from_str ... ok
+test util::sqlite_string::test::test_lossy ... ok
+test util::sqlite_string::test::test_into_raw ... ok
+test busy::test::test_busy_handler ... ok
+test test::test_persistence ... ok
+test test::test_invalid_unicode_file_names ... ok
+test test::test_concurrent_transactions_busy_commit ... ok
+test hooks::test::wal_hook ... ok
+test busy::test::test_default_busy ... ok
+
+failures:
+
+---- statement::test::test_query_map_named stdout ----
+Error: SqlInputError { error: Error { code: Unknown, extended_code: 1 }, msg: "no such column: \"one\" - should this be a string literal in single-quotes?", sql: "\n        INSERT INTO test(id, name) VALUES (1, \"one\");\n        ", offset: 47 }
+
+---- statement::test::test_query_named stdout ----
+Error: SqlInputError { error: Error { code: Unknown, extended_code: 1 }, msg: "no such column: \"one\" - should this be a string literal in single-quotes?", sql: "\n        INSERT INTO test(id, name) VALUES (1, \"one\");\n        ", offset: 47 }
+
+---- statement::test::test_query_and_then_by_name stdout ----
+Error: SqlInputError { error: Error { code: Unknown, extended_code: 1 }, msg: "no such column: \"one\" - should this be a string literal in single-quotes?", sql: "\n        INSERT INTO test(id, name) VALUES (1, \"one\");\n        INSERT INTO test(id, name) VALUES (2, \"one\");\n        ", offset: 47 }
+
+---- test::query_and_then_tests::test_query_and_then stdout ----
+Error: SqlInputError { error: Error { code: Unknown, extended_code: 1 }, msg: "no such column: \"hello\" - should this be a string literal in single-quotes?", sql: "\n                       INSERT INTO foo VALUES(4, \"hello\");\n                       INSERT INTO foo VALUES(3, \", \");\n                       INSERT INTO foo VALUES(2, \"world\");\n                       INSERT INTO foo VALUES(1, \"!\");\n                       END;", offset: 50 }
+
+---- test::query_and_then_tests::test_query_and_then_custom_error stdout ----
+Error: Sqlite(SqlInputError { error: Error { code: Unknown, extended_code: 1 }, msg: "no such column: \"hello\" - should this be a string literal in single-quotes?", sql: "\n                       INSERT INTO foo VALUES(4, \"hello\");\n                       INSERT INTO foo VALUES(3, \", \");\n                       INSERT INTO foo VALUES(2, \"world\");\n                       INSERT INTO foo VALUES(1, \"!\");\n                       END;", offset: 50 })
+
+---- test::query_and_then_tests::test_query_and_then_fails stdout ----
+Error: SqlInputError { error: Error { code: Unknown, extended_code: 1 }, msg: "no such column: \"hello\" - should this be a string literal in single-quotes?", sql: "\n                       INSERT INTO foo VALUES(4, \"hello\");\n                       INSERT INTO foo VALUES(3, \", \");\n                       INSERT INTO foo VALUES(2, \"world\");\n                       INSERT INTO foo VALUES(1, \"!\");\n                       END;", offset: 50 }
+
+---- test::query_and_then_tests::test_query_and_then_custom_error_fails stdout ----
+Error: SqlInputError { error: Error { code: Unknown, extended_code: 1 }, msg: "no such column: \"hello\" - should this be a string literal in single-quotes?", sql: "\n                       INSERT INTO foo VALUES(4, \"hello\");\n                       INSERT INTO foo VALUES(3, \", \");\n                       INSERT INTO foo VALUES(2, \"world\");\n                       INSERT INTO foo VALUES(1, \"!\");\n                       END;", offset: 50 }
+
+---- test::query_and_then_tests::test_query_row_and_then_custom_error_fails stdout ----
+Error: SqlInputError { error: Error { code: Unknown, extended_code: 1 }, msg: "no such column: \"hello\" - should this be a string literal in single-quotes?", sql: "\n                       INSERT INTO foo VALUES(4, \"hello\");\n                       END;", offset: 50 }
+
+---- test::query_and_then_tests::test_query_row_and_then_custom_error stdout ----
+Error: Sqlite(SqlInputError { error: Error { code: Unknown, extended_code: 1 }, msg: "no such column: \"hello\" - should this be a string literal in single-quotes?", sql: "\n                       INSERT INTO foo VALUES(4, \"hello\");\n                       END;", offset: 50 })
+
+---- test::test_dynamic stdout ----
+Error: SqlInputError { error: Error { code: Unknown, extended_code: 1 }, msg: "no such column: \"hello\" - should this be a string literal in single-quotes?", sql: "\n                       INSERT INTO foo VALUES(4, \"hello\");\n                       END;", offset: 50 }
+
+---- test::test_query_map stdout ----
+Error: SqlInputError { error: Error { code: Unknown, extended_code: 1 }, msg: "no such column: \"hello\" - should this be a string literal in single-quotes?", sql: "\n                   INSERT INTO foo VALUES(4, \"hello\");\n                   INSERT INTO foo VALUES(3, \", \");\n                   INSERT INTO foo VALUES(2, \"world\");\n                   INSERT INTO foo VALUES(1, \"!\");\n                   END;", offset: 46 }
+
+
+failures:
+    statement::test::test_query_and_then_by_name
+    statement::test::test_query_map_named
+    statement::test::test_query_named
+    test::query_and_then_tests::test_query_and_then
+    test::query_and_then_tests::test_query_and_then_custom_error
+    test::query_and_then_tests::test_query_and_then_custom_error_fails
+    test::query_and_then_tests::test_query_and_then_fails
+    test::query_and_then_tests::test_query_row_and_then_custom_error
+    test::query_and_then_tests::test_query_row_and_then_custom_error_fails
+    test::test_dynamic
+    test::test_query_map
+
+test result: FAILED. 168 passed; 11 failed; 0 ignored; 0 measured; 0 filtered out; finished in 5.01s
+
+
+   Compiling rusqlite v0.40.1 (<tmp>/rusqlite-inline)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.46s
+     Running unittests src/lib.rs (<tmp>/test-target-inline/debug/deps/rusqlite-adf5207d26c1aea8)
+error: test failed, to rerun pass `--lib`

@@ -1,0 +1,6400 @@
+[
+  {
+    "case": "read_sealed_full16",
+    "iterations": 32,
+    "rust_allocation_calls": 239840,
+    "rust_requested_bytes": 72477280,
+    "sqlite_memory_used": 381648,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 3072,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 118184,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 17312
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 22
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 33136,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "aggregate_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_block": {
+        "calls": 10240,
+        "inclusive_ns": 22441088,
+        "rust_allocation_calls": 71680,
+        "rust_requested_bytes": 5242880
+      },
+      "decode_head_chunk": {
+        "calls": 512,
+        "inclusive_ns": 42452,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 32,
+        "inclusive_ns": 845182,
+        "rust_allocation_calls": 1632,
+        "rust_requested_bytes": 653760
+      },
+      "fetch_heads": {
+        "calls": 32,
+        "inclusive_ns": 493459,
+        "rust_allocation_calls": 2048,
+        "rust_requested_bytes": 297472
+      },
+      "fetch_payloads": {
+        "calls": 32,
+        "inclusive_ns": 2407261,
+        "rust_allocation_calls": 14624,
+        "rust_requested_bytes": 2331776
+      },
+      "fold_series": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 1028666,
+        "rust_allocation_calls": 7712,
+        "rust_requested_bytes": 656992
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 52925113,
+        "rust_allocation_calls": 239840,
+        "rust_requested_bytes": 72477280
+      },
+      "parse_head": {
+        "calls": 512,
+        "inclusive_ns": 89767,
+        "rust_allocation_calls": 1024,
+        "rust_requested_bytes": 73728
+      },
+      "read_process": {
+        "calls": 32,
+        "inclusive_ns": 40445524,
+        "rust_allocation_calls": 72288,
+        "rust_requested_bytes": 44658688
+      },
+      "read_total": {
+        "calls": 32,
+        "inclusive_ns": 51163143,
+        "rust_allocation_calls": 239712,
+        "rust_requested_bytes": 72459200
+      },
+      "select_group": {
+        "calls": 512,
+        "inclusive_ns": 5526440,
+        "rust_allocation_calls": 137664,
+        "rust_requested_bytes": 23486432
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 10690439,
+        "rust_allocation_calls": 167328,
+        "rust_requested_bytes": 27782784
+      }
+    },
+    "variant": "control"
+  },
+  {
+    "case": "read_sealed_full16",
+    "iterations": 32,
+    "rust_allocation_calls": 239328,
+    "rust_requested_bytes": 72475232,
+    "sqlite_memory_used": 381648,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 3072,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 118184,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 17312
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 22
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 33136,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "aggregate_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_block": {
+        "calls": 10240,
+        "inclusive_ns": 27036116,
+        "rust_allocation_calls": 71680,
+        "rust_requested_bytes": 5242880
+      },
+      "decode_head_chunk": {
+        "calls": 512,
+        "inclusive_ns": 437430,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 32,
+        "inclusive_ns": 1179327,
+        "rust_allocation_calls": 1632,
+        "rust_requested_bytes": 653760
+      },
+      "fetch_heads": {
+        "calls": 32,
+        "inclusive_ns": 702357,
+        "rust_allocation_calls": 2048,
+        "rust_requested_bytes": 297472
+      },
+      "fetch_payloads": {
+        "calls": 32,
+        "inclusive_ns": 2770538,
+        "rust_allocation_calls": 14624,
+        "rust_requested_bytes": 2331776
+      },
+      "fold_series": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 1663699,
+        "rust_allocation_calls": 7200,
+        "rust_requested_bytes": 654944
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 66556286,
+        "rust_allocation_calls": 239328,
+        "rust_requested_bytes": 72475232
+      },
+      "parse_head": {
+        "calls": 512,
+        "inclusive_ns": 90898,
+        "rust_allocation_calls": 1024,
+        "rust_requested_bytes": 73728
+      },
+      "read_process": {
+        "calls": 32,
+        "inclusive_ns": 51227426,
+        "rust_allocation_calls": 72288,
+        "rust_requested_bytes": 44658688
+      },
+      "read_total": {
+        "calls": 32,
+        "inclusive_ns": 64213634,
+        "rust_allocation_calls": 239200,
+        "rust_requested_bytes": 72457152
+      },
+      "select_group": {
+        "calls": 512,
+        "inclusive_ns": 6006234,
+        "rust_allocation_calls": 137664,
+        "rust_requested_bytes": 23486432
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 12936594,
+        "rust_allocation_calls": 166816,
+        "rust_requested_bytes": 27780736
+      }
+    },
+    "variant": "metadata"
+  },
+  {
+    "case": "read_sealed_full16",
+    "iterations": 32,
+    "rust_allocation_calls": 229696,
+    "rust_requested_bytes": 72806240,
+    "sqlite_memory_used": 381648,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 3072,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 118184,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 17312
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 22
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 33136,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "aggregate_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_block": {
+        "calls": 10240,
+        "inclusive_ns": 24457289,
+        "rust_allocation_calls": 71680,
+        "rust_requested_bytes": 5242880
+      },
+      "decode_head_chunk": {
+        "calls": 512,
+        "inclusive_ns": 56202,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 32,
+        "inclusive_ns": 888119,
+        "rust_allocation_calls": 1632,
+        "rust_requested_bytes": 653760
+      },
+      "fetch_heads": {
+        "calls": 32,
+        "inclusive_ns": 508862,
+        "rust_allocation_calls": 2048,
+        "rust_requested_bytes": 297472
+      },
+      "fetch_payloads": {
+        "calls": 32,
+        "inclusive_ns": 2497853,
+        "rust_allocation_calls": 4480,
+        "rust_requested_bytes": 2660736
+      },
+      "fold_series": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 1164214,
+        "rust_allocation_calls": 7712,
+        "rust_requested_bytes": 656992
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 59346663,
+        "rust_allocation_calls": 229696,
+        "rust_requested_bytes": 72806240
+      },
+      "parse_head": {
+        "calls": 512,
+        "inclusive_ns": 77795,
+        "rust_allocation_calls": 1024,
+        "rust_requested_bytes": 73728
+      },
+      "read_process": {
+        "calls": 32,
+        "inclusive_ns": 46292193,
+        "rust_allocation_calls": 72288,
+        "rust_requested_bytes": 44658688
+      },
+      "read_total": {
+        "calls": 32,
+        "inclusive_ns": 57480243,
+        "rust_allocation_calls": 229568,
+        "rust_requested_bytes": 72788160
+      },
+      "select_group": {
+        "calls": 512,
+        "inclusive_ns": 5683711,
+        "rust_allocation_calls": 137664,
+        "rust_requested_bytes": 23486432
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 11159619,
+        "rust_allocation_calls": 157184,
+        "rust_requested_bytes": 28111744
+      }
+    },
+    "variant": "arena"
+  },
+  {
+    "case": "read_sealed_full16",
+    "iterations": 32,
+    "rust_allocation_calls": 229184,
+    "rust_requested_bytes": 72804192,
+    "sqlite_memory_used": 381648,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 3072,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 118184,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 17312
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 22
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 33136,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "aggregate_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_block": {
+        "calls": 10240,
+        "inclusive_ns": 24513245,
+        "rust_allocation_calls": 71680,
+        "rust_requested_bytes": 5242880
+      },
+      "decode_head_chunk": {
+        "calls": 512,
+        "inclusive_ns": 50403,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 32,
+        "inclusive_ns": 1005113,
+        "rust_allocation_calls": 1632,
+        "rust_requested_bytes": 653760
+      },
+      "fetch_heads": {
+        "calls": 32,
+        "inclusive_ns": 554363,
+        "rust_allocation_calls": 2048,
+        "rust_requested_bytes": 297472
+      },
+      "fetch_payloads": {
+        "calls": 32,
+        "inclusive_ns": 2962204,
+        "rust_allocation_calls": 4480,
+        "rust_requested_bytes": 2660736
+      },
+      "fold_series": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 1261521,
+        "rust_allocation_calls": 7200,
+        "rust_requested_bytes": 654944
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 58549280,
+        "rust_allocation_calls": 229184,
+        "rust_requested_bytes": 72804192
+      },
+      "parse_head": {
+        "calls": 512,
+        "inclusive_ns": 76596,
+        "rust_allocation_calls": 1024,
+        "rust_requested_bytes": 73728
+      },
+      "read_process": {
+        "calls": 32,
+        "inclusive_ns": 44686045,
+        "rust_allocation_calls": 72288,
+        "rust_requested_bytes": 44658688
+      },
+      "read_total": {
+        "calls": 32,
+        "inclusive_ns": 56781696,
+        "rust_allocation_calls": 229056,
+        "rust_requested_bytes": 72786112
+      },
+      "select_group": {
+        "calls": 512,
+        "inclusive_ns": 5871385,
+        "rust_allocation_calls": 137664,
+        "rust_requested_bytes": 23486432
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 12068080,
+        "rust_allocation_calls": 156672,
+        "rust_requested_bytes": 28109696
+      }
+    },
+    "variant": "both"
+  },
+  {
+    "case": "read_sealed_full16",
+    "iterations": 32,
+    "rust_allocation_calls": 239840,
+    "rust_requested_bytes": 72477280,
+    "sqlite_memory_used": 285648,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 3072,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 118184,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 33136,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "aggregate_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_block": {
+        "calls": 10240,
+        "inclusive_ns": 22172248,
+        "rust_allocation_calls": 71680,
+        "rust_requested_bytes": 5242880
+      },
+      "decode_head_chunk": {
+        "calls": 512,
+        "inclusive_ns": 41636,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 32,
+        "inclusive_ns": 936858,
+        "rust_allocation_calls": 1632,
+        "rust_requested_bytes": 653760
+      },
+      "fetch_heads": {
+        "calls": 32,
+        "inclusive_ns": 548107,
+        "rust_allocation_calls": 2048,
+        "rust_requested_bytes": 297472
+      },
+      "fetch_payloads": {
+        "calls": 32,
+        "inclusive_ns": 2791436,
+        "rust_allocation_calls": 14624,
+        "rust_requested_bytes": 2331776
+      },
+      "fold_series": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 1055686,
+        "rust_allocation_calls": 7712,
+        "rust_requested_bytes": 656992
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 53016347,
+        "rust_allocation_calls": 239840,
+        "rust_requested_bytes": 72477280
+      },
+      "parse_head": {
+        "calls": 512,
+        "inclusive_ns": 76916,
+        "rust_allocation_calls": 1024,
+        "rust_requested_bytes": 73728
+      },
+      "read_process": {
+        "calls": 32,
+        "inclusive_ns": 40200835,
+        "rust_allocation_calls": 72288,
+        "rust_requested_bytes": 44658688
+      },
+      "read_total": {
+        "calls": 32,
+        "inclusive_ns": 51265464,
+        "rust_allocation_calls": 239712,
+        "rust_requested_bytes": 72459200
+      },
+      "select_group": {
+        "calls": 512,
+        "inclusive_ns": 5288182,
+        "rust_allocation_calls": 137664,
+        "rust_requested_bytes": 23486432
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 11037887,
+        "rust_allocation_calls": 167328,
+        "rust_requested_bytes": 27782784
+      }
+    },
+    "variant": "lookaside_off"
+  },
+  {
+    "case": "read_sealed_full16",
+    "iterations": 32,
+    "rust_allocation_calls": 239840,
+    "rust_requested_bytes": 72477280,
+    "sqlite_memory_used": 809936,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 3072,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 118184,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 17184
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 320
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 21
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 33136,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "aggregate_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_block": {
+        "calls": 10240,
+        "inclusive_ns": 23483438,
+        "rust_allocation_calls": 71680,
+        "rust_requested_bytes": 5242880
+      },
+      "decode_head_chunk": {
+        "calls": 512,
+        "inclusive_ns": 43066,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 32,
+        "inclusive_ns": 889676,
+        "rust_allocation_calls": 1632,
+        "rust_requested_bytes": 653760
+      },
+      "fetch_heads": {
+        "calls": 32,
+        "inclusive_ns": 488968,
+        "rust_allocation_calls": 2048,
+        "rust_requested_bytes": 297472
+      },
+      "fetch_payloads": {
+        "calls": 32,
+        "inclusive_ns": 2510460,
+        "rust_allocation_calls": 14624,
+        "rust_requested_bytes": 2331776
+      },
+      "fold_series": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 1196438,
+        "rust_allocation_calls": 7712,
+        "rust_requested_bytes": 656992
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 54620102,
+        "rust_allocation_calls": 239840,
+        "rust_requested_bytes": 72477280
+      },
+      "parse_head": {
+        "calls": 512,
+        "inclusive_ns": 78176,
+        "rust_allocation_calls": 1024,
+        "rust_requested_bytes": 73728
+      },
+      "read_process": {
+        "calls": 32,
+        "inclusive_ns": 41673804,
+        "rust_allocation_calls": 72288,
+        "rust_requested_bytes": 44658688
+      },
+      "read_total": {
+        "calls": 32,
+        "inclusive_ns": 52808401,
+        "rust_allocation_calls": 239712,
+        "rust_requested_bytes": 72459200
+      },
+      "select_group": {
+        "calls": 512,
+        "inclusive_ns": 5586776,
+        "rust_allocation_calls": 137664,
+        "rust_requested_bytes": 23486432
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 11099075,
+        "rust_allocation_calls": 167328,
+        "rust_requested_bytes": 27782784
+      }
+    },
+    "variant": "lookaside_512"
+  },
+  {
+    "case": "read_sealed_full16",
+    "iterations": 32,
+    "rust_allocation_calls": 229184,
+    "rust_requested_bytes": 72804192,
+    "sqlite_memory_used": 809936,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 3072,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 118184,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 17184
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 320
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 21
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 33136,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "aggregate_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_block": {
+        "calls": 10240,
+        "inclusive_ns": 22652933,
+        "rust_allocation_calls": 71680,
+        "rust_requested_bytes": 5242880
+      },
+      "decode_head_chunk": {
+        "calls": 512,
+        "inclusive_ns": 44711,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 32,
+        "inclusive_ns": 867564,
+        "rust_allocation_calls": 1632,
+        "rust_requested_bytes": 653760
+      },
+      "fetch_heads": {
+        "calls": 32,
+        "inclusive_ns": 476000,
+        "rust_allocation_calls": 2048,
+        "rust_requested_bytes": 297472
+      },
+      "fetch_payloads": {
+        "calls": 32,
+        "inclusive_ns": 2497401,
+        "rust_allocation_calls": 4480,
+        "rust_requested_bytes": 2660736
+      },
+      "fold_series": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 1005594,
+        "rust_allocation_calls": 7200,
+        "rust_requested_bytes": 654944
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 54601192,
+        "rust_allocation_calls": 229184,
+        "rust_requested_bytes": 72804192
+      },
+      "parse_head": {
+        "calls": 512,
+        "inclusive_ns": 78265,
+        "rust_allocation_calls": 1024,
+        "rust_requested_bytes": 73728
+      },
+      "read_process": {
+        "calls": 32,
+        "inclusive_ns": 42254988,
+        "rust_allocation_calls": 72288,
+        "rust_requested_bytes": 44658688
+      },
+      "read_total": {
+        "calls": 32,
+        "inclusive_ns": 52778596,
+        "rust_allocation_calls": 229056,
+        "rust_requested_bytes": 72786112
+      },
+      "select_group": {
+        "calls": 512,
+        "inclusive_ns": 5266916,
+        "rust_allocation_calls": 137664,
+        "rust_requested_bytes": 23486432
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 10498167,
+        "rust_allocation_calls": 156672,
+        "rust_requested_bytes": 28109696
+      }
+    },
+    "variant": "both_lookaside_512"
+  },
+  {
+    "case": "read_wide64",
+    "iterations": 32,
+    "rust_allocation_calls": 297760,
+    "rust_requested_bytes": 81860032,
+    "sqlite_memory_used": 400064,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 8768,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 126888,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 30272
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 96
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 24
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 42816,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "aggregate_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_block": {
+        "calls": 12288,
+        "inclusive_ns": 27825422,
+        "rust_allocation_calls": 86016,
+        "rust_requested_bytes": 6291456
+      },
+      "decode_head_chunk": {
+        "calls": 2048,
+        "inclusive_ns": 124425,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 32,
+        "inclusive_ns": 2639916,
+        "rust_allocation_calls": 5152,
+        "rust_requested_bytes": 1721984
+      },
+      "fetch_heads": {
+        "calls": 32,
+        "inclusive_ns": 1493086,
+        "rust_allocation_calls": 6912,
+        "rust_requested_bytes": 1174528
+      },
+      "fetch_payloads": {
+        "calls": 32,
+        "inclusive_ns": 2850483,
+        "rust_allocation_calls": 17472,
+        "rust_requested_bytes": 2539392
+      },
+      "fold_series": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 2349149,
+        "rust_allocation_calls": 30112,
+        "rust_requested_bytes": 2793888
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 68543363,
+        "rust_allocation_calls": 297760,
+        "rust_requested_bytes": 81860032
+      },
+      "parse_head": {
+        "calls": 2048,
+        "inclusive_ns": 291860,
+        "rust_allocation_calls": 4096,
+        "rust_requested_bytes": 294912
+      },
+      "read_process": {
+        "calls": 32,
+        "inclusive_ns": 50665294,
+        "rust_allocation_calls": 88224,
+        "rust_requested_bytes": 53891072
+      },
+      "read_total": {
+        "calls": 32,
+        "inclusive_ns": 66301236,
+        "rust_allocation_calls": 297696,
+        "rust_requested_bytes": 81859552
+      },
+      "select_group": {
+        "calls": 2048,
+        "inclusive_ns": 5464906,
+        "rust_allocation_calls": 135328,
+        "rust_requested_bytes": 18313728
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 15610040,
+        "rust_allocation_calls": 209376,
+        "rust_requested_bytes": 27950688
+      }
+    },
+    "variant": "control"
+  },
+  {
+    "case": "read_wide64",
+    "iterations": 32,
+    "rust_allocation_calls": 295712,
+    "rust_requested_bytes": 81851840,
+    "sqlite_memory_used": 400064,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 8768,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 126888,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 30272
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 96
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 24
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 42816,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "aggregate_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_block": {
+        "calls": 12288,
+        "inclusive_ns": 29109467,
+        "rust_allocation_calls": 86016,
+        "rust_requested_bytes": 6291456
+      },
+      "decode_head_chunk": {
+        "calls": 2048,
+        "inclusive_ns": 133979,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 32,
+        "inclusive_ns": 2683234,
+        "rust_allocation_calls": 5152,
+        "rust_requested_bytes": 1721984
+      },
+      "fetch_heads": {
+        "calls": 32,
+        "inclusive_ns": 1386136,
+        "rust_allocation_calls": 6912,
+        "rust_requested_bytes": 1174528
+      },
+      "fetch_payloads": {
+        "calls": 32,
+        "inclusive_ns": 2787970,
+        "rust_allocation_calls": 17472,
+        "rust_requested_bytes": 2539392
+      },
+      "fold_series": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 2911847,
+        "rust_allocation_calls": 28064,
+        "rust_requested_bytes": 2785696
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 69540916,
+        "rust_allocation_calls": 295712,
+        "rust_requested_bytes": 81851840
+      },
+      "parse_head": {
+        "calls": 2048,
+        "inclusive_ns": 293288,
+        "rust_allocation_calls": 4096,
+        "rust_requested_bytes": 294912
+      },
+      "read_process": {
+        "calls": 32,
+        "inclusive_ns": 51919354,
+        "rust_allocation_calls": 88224,
+        "rust_requested_bytes": 53891072
+      },
+      "read_total": {
+        "calls": 32,
+        "inclusive_ns": 67182191,
+        "rust_allocation_calls": 295648,
+        "rust_requested_bytes": 81851360
+      },
+      "select_group": {
+        "calls": 2048,
+        "inclusive_ns": 4613816,
+        "rust_allocation_calls": 135328,
+        "rust_requested_bytes": 18313728
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 15203223,
+        "rust_allocation_calls": 207328,
+        "rust_requested_bytes": 27942496
+      }
+    },
+    "variant": "metadata"
+  },
+  {
+    "case": "read_wide64",
+    "iterations": 32,
+    "rust_allocation_calls": 285568,
+    "rust_requested_bytes": 82254528,
+    "sqlite_memory_used": 400064,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 8768,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 126888,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 30272
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 96
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 24
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 42816,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "aggregate_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_block": {
+        "calls": 12288,
+        "inclusive_ns": 27141374,
+        "rust_allocation_calls": 86016,
+        "rust_requested_bytes": 6291456
+      },
+      "decode_head_chunk": {
+        "calls": 2048,
+        "inclusive_ns": 126844,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 32,
+        "inclusive_ns": 2589397,
+        "rust_allocation_calls": 5152,
+        "rust_requested_bytes": 1721984
+      },
+      "fetch_heads": {
+        "calls": 32,
+        "inclusive_ns": 1412639,
+        "rust_allocation_calls": 6912,
+        "rust_requested_bytes": 1174528
+      },
+      "fetch_payloads": {
+        "calls": 32,
+        "inclusive_ns": 2663340,
+        "rust_allocation_calls": 5280,
+        "rust_requested_bytes": 2933888
+      },
+      "fold_series": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 2541736,
+        "rust_allocation_calls": 30112,
+        "rust_requested_bytes": 2793888
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 65792947,
+        "rust_allocation_calls": 285568,
+        "rust_requested_bytes": 82254528
+      },
+      "parse_head": {
+        "calls": 2048,
+        "inclusive_ns": 276646,
+        "rust_allocation_calls": 4096,
+        "rust_requested_bytes": 294912
+      },
+      "read_process": {
+        "calls": 32,
+        "inclusive_ns": 49167219,
+        "rust_allocation_calls": 88224,
+        "rust_requested_bytes": 53891072
+      },
+      "read_total": {
+        "calls": 32,
+        "inclusive_ns": 63646089,
+        "rust_allocation_calls": 285504,
+        "rust_requested_bytes": 82254048
+      },
+      "select_group": {
+        "calls": 2048,
+        "inclusive_ns": 4400410,
+        "rust_allocation_calls": 135328,
+        "rust_requested_bytes": 18313728
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 14454019,
+        "rust_allocation_calls": 197184,
+        "rust_requested_bytes": 28345184
+      }
+    },
+    "variant": "arena"
+  },
+  {
+    "case": "read_wide64",
+    "iterations": 32,
+    "rust_allocation_calls": 283520,
+    "rust_requested_bytes": 82246336,
+    "sqlite_memory_used": 400064,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 8768,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 126888,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 30272
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 96
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 24
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 42816,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "aggregate_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_block": {
+        "calls": 12288,
+        "inclusive_ns": 28816732,
+        "rust_allocation_calls": 86016,
+        "rust_requested_bytes": 6291456
+      },
+      "decode_head_chunk": {
+        "calls": 2048,
+        "inclusive_ns": 127777,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 32,
+        "inclusive_ns": 2751299,
+        "rust_allocation_calls": 5152,
+        "rust_requested_bytes": 1721984
+      },
+      "fetch_heads": {
+        "calls": 32,
+        "inclusive_ns": 1402916,
+        "rust_allocation_calls": 6912,
+        "rust_requested_bytes": 1174528
+      },
+      "fetch_payloads": {
+        "calls": 32,
+        "inclusive_ns": 2933045,
+        "rust_allocation_calls": 5280,
+        "rust_requested_bytes": 2933888
+      },
+      "fold_series": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 2570465,
+        "rust_allocation_calls": 28064,
+        "rust_requested_bytes": 2785696
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 70903433,
+        "rust_allocation_calls": 283520,
+        "rust_requested_bytes": 82246336
+      },
+      "parse_head": {
+        "calls": 2048,
+        "inclusive_ns": 278519,
+        "rust_allocation_calls": 4096,
+        "rust_requested_bytes": 294912
+      },
+      "read_process": {
+        "calls": 32,
+        "inclusive_ns": 53447372,
+        "rust_allocation_calls": 88224,
+        "rust_requested_bytes": 53891072
+      },
+      "read_total": {
+        "calls": 32,
+        "inclusive_ns": 68572439,
+        "rust_allocation_calls": 283456,
+        "rust_requested_bytes": 82245856
+      },
+      "select_group": {
+        "calls": 2048,
+        "inclusive_ns": 4596716,
+        "rust_allocation_calls": 135328,
+        "rust_requested_bytes": 18313728
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 15098645,
+        "rust_allocation_calls": 195136,
+        "rust_requested_bytes": 28336992
+      }
+    },
+    "variant": "both"
+  },
+  {
+    "case": "read_wide64",
+    "iterations": 32,
+    "rust_allocation_calls": 297760,
+    "rust_requested_bytes": 81860032,
+    "sqlite_memory_used": 304064,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 8768,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 126888,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 42816,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "aggregate_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_block": {
+        "calls": 12288,
+        "inclusive_ns": 26885619,
+        "rust_allocation_calls": 86016,
+        "rust_requested_bytes": 6291456
+      },
+      "decode_head_chunk": {
+        "calls": 2048,
+        "inclusive_ns": 118155,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 32,
+        "inclusive_ns": 3028715,
+        "rust_allocation_calls": 5152,
+        "rust_requested_bytes": 1721984
+      },
+      "fetch_heads": {
+        "calls": 32,
+        "inclusive_ns": 1478536,
+        "rust_allocation_calls": 6912,
+        "rust_requested_bytes": 1174528
+      },
+      "fetch_payloads": {
+        "calls": 32,
+        "inclusive_ns": 3172095,
+        "rust_allocation_calls": 17472,
+        "rust_requested_bytes": 2539392
+      },
+      "fold_series": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 2223084,
+        "rust_allocation_calls": 30112,
+        "rust_requested_bytes": 2793888
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 68325629,
+        "rust_allocation_calls": 297760,
+        "rust_requested_bytes": 81860032
+      },
+      "parse_head": {
+        "calls": 2048,
+        "inclusive_ns": 286125,
+        "rust_allocation_calls": 4096,
+        "rust_requested_bytes": 294912
+      },
+      "read_process": {
+        "calls": 32,
+        "inclusive_ns": 50772242,
+        "rust_allocation_calls": 88224,
+        "rust_requested_bytes": 53891072
+      },
+      "read_total": {
+        "calls": 32,
+        "inclusive_ns": 66180841,
+        "rust_allocation_calls": 297696,
+        "rust_requested_bytes": 81859552
+      },
+      "select_group": {
+        "calls": 2048,
+        "inclusive_ns": 4663609,
+        "rust_allocation_calls": 135328,
+        "rust_requested_bytes": 18313728
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 15383538,
+        "rust_allocation_calls": 209376,
+        "rust_requested_bytes": 27950688
+      }
+    },
+    "variant": "lookaside_off"
+  },
+  {
+    "case": "read_wide64",
+    "iterations": 32,
+    "rust_allocation_calls": 297760,
+    "rust_requested_bytes": 81860032,
+    "sqlite_memory_used": 828352,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 8768,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 126888,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 30208
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 160
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 24
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 42816,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "aggregate_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_block": {
+        "calls": 12288,
+        "inclusive_ns": 27996502,
+        "rust_allocation_calls": 86016,
+        "rust_requested_bytes": 6291456
+      },
+      "decode_head_chunk": {
+        "calls": 2048,
+        "inclusive_ns": 121788,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 32,
+        "inclusive_ns": 2540964,
+        "rust_allocation_calls": 5152,
+        "rust_requested_bytes": 1721984
+      },
+      "fetch_heads": {
+        "calls": 32,
+        "inclusive_ns": 1541575,
+        "rust_allocation_calls": 6912,
+        "rust_requested_bytes": 1174528
+      },
+      "fetch_payloads": {
+        "calls": 32,
+        "inclusive_ns": 2928417,
+        "rust_allocation_calls": 17472,
+        "rust_requested_bytes": 2539392
+      },
+      "fold_series": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 2436239,
+        "rust_allocation_calls": 30112,
+        "rust_requested_bytes": 2793888
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 68973360,
+        "rust_allocation_calls": 297760,
+        "rust_requested_bytes": 81860032
+      },
+      "parse_head": {
+        "calls": 2048,
+        "inclusive_ns": 284092,
+        "rust_allocation_calls": 4096,
+        "rust_requested_bytes": 294912
+      },
+      "read_process": {
+        "calls": 32,
+        "inclusive_ns": 51117031,
+        "rust_allocation_calls": 88224,
+        "rust_requested_bytes": 53891072
+      },
+      "read_total": {
+        "calls": 32,
+        "inclusive_ns": 66517694,
+        "rust_allocation_calls": 297696,
+        "rust_requested_bytes": 81859552
+      },
+      "select_group": {
+        "calls": 2048,
+        "inclusive_ns": 5131495,
+        "rust_allocation_calls": 135328,
+        "rust_requested_bytes": 18313728
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 15374621,
+        "rust_allocation_calls": 209376,
+        "rust_requested_bytes": 27950688
+      }
+    },
+    "variant": "lookaside_512"
+  },
+  {
+    "case": "read_wide64",
+    "iterations": 32,
+    "rust_allocation_calls": 283520,
+    "rust_requested_bytes": 82246336,
+    "sqlite_memory_used": 828352,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 8768,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 126888,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 30208
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 160
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 24
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 42816,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "aggregate_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_block": {
+        "calls": 12288,
+        "inclusive_ns": 27222997,
+        "rust_allocation_calls": 86016,
+        "rust_requested_bytes": 6291456
+      },
+      "decode_head_chunk": {
+        "calls": 2048,
+        "inclusive_ns": 123618,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 32,
+        "inclusive_ns": 2654650,
+        "rust_allocation_calls": 5152,
+        "rust_requested_bytes": 1721984
+      },
+      "fetch_heads": {
+        "calls": 32,
+        "inclusive_ns": 1431292,
+        "rust_allocation_calls": 6912,
+        "rust_requested_bytes": 1174528
+      },
+      "fetch_payloads": {
+        "calls": 32,
+        "inclusive_ns": 2989329,
+        "rust_allocation_calls": 5280,
+        "rust_requested_bytes": 2933888
+      },
+      "fold_series": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 2196054,
+        "rust_allocation_calls": 28064,
+        "rust_requested_bytes": 2785696
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 67328488,
+        "rust_allocation_calls": 283520,
+        "rust_requested_bytes": 82246336
+      },
+      "parse_head": {
+        "calls": 2048,
+        "inclusive_ns": 281219,
+        "rust_allocation_calls": 4096,
+        "rust_requested_bytes": 294912
+      },
+      "read_process": {
+        "calls": 32,
+        "inclusive_ns": 50074007,
+        "rust_allocation_calls": 88224,
+        "rust_requested_bytes": 53891072
+      },
+      "read_total": {
+        "calls": 32,
+        "inclusive_ns": 64993347,
+        "rust_allocation_calls": 283456,
+        "rust_requested_bytes": 82245856
+      },
+      "select_group": {
+        "calls": 2048,
+        "inclusive_ns": 4690252,
+        "rust_allocation_calls": 135328,
+        "rust_requested_bytes": 18313728
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 14892318,
+        "rust_allocation_calls": 195136,
+        "rust_requested_bytes": 28336992
+      }
+    },
+    "variant": "both_lookaside_512"
+  },
+  {
+    "case": "aggregate_wide_cut_sum",
+    "iterations": 32,
+    "rust_allocation_calls": 379104,
+    "rust_requested_bytes": 43792800,
+    "sqlite_memory_used": 400064,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 14464,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 126888,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 23360
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 96
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 24
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 42816,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 32,
+        "inclusive_ns": 27436700,
+        "rust_allocation_calls": 176960,
+        "rust_requested_bytes": 16973248
+      },
+      "aggregate_total": {
+        "calls": 32,
+        "inclusive_ns": 41871316,
+        "rust_allocation_calls": 378912,
+        "rust_requested_bytes": 43791264
+      },
+      "decode_block": {
+        "calls": 6144,
+        "inclusive_ns": 14228385,
+        "rust_allocation_calls": 43008,
+        "rust_requested_bytes": 3145728
+      },
+      "decode_head_chunk": {
+        "calls": 2048,
+        "inclusive_ns": 113436,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 32,
+        "inclusive_ns": 2597698,
+        "rust_allocation_calls": 5152,
+        "rust_requested_bytes": 1721984
+      },
+      "fetch_heads": {
+        "calls": 32,
+        "inclusive_ns": 1422310,
+        "rust_allocation_calls": 6912,
+        "rust_requested_bytes": 1174528
+      },
+      "fetch_payloads": {
+        "calls": 32,
+        "inclusive_ns": 1975004,
+        "rust_allocation_calls": 9952,
+        "rust_requested_bytes": 1388928
+      },
+      "fold_series": {
+        "calls": 2048,
+        "inclusive_ns": 26143292,
+        "rust_allocation_calls": 146400,
+        "rust_requested_bytes": 15169280
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 2615914,
+        "rust_allocation_calls": 30112,
+        "rust_requested_bytes": 2793888
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 42028200,
+        "rust_allocation_calls": 379104,
+        "rust_requested_bytes": 43792800
+      },
+      "parse_head": {
+        "calls": 2048,
+        "inclusive_ns": 278761,
+        "rust_allocation_calls": 4096,
+        "rust_requested_bytes": 294912
+      },
+      "read_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "read_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "select_group": {
+        "calls": 2048,
+        "inclusive_ns": 5028021,
+        "rust_allocation_calls": 135328,
+        "rust_requested_bytes": 18313728
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 14415294,
+        "rust_allocation_calls": 201856,
+        "rust_requested_bytes": 26800224
+      }
+    },
+    "variant": "control"
+  },
+  {
+    "case": "aggregate_wide_cut_sum",
+    "iterations": 32,
+    "rust_allocation_calls": 377056,
+    "rust_requested_bytes": 43784608,
+    "sqlite_memory_used": 400064,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 14464,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 126888,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 23360
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 96
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 24
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 42816,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 32,
+        "inclusive_ns": 26494388,
+        "rust_allocation_calls": 176960,
+        "rust_requested_bytes": 16973248
+      },
+      "aggregate_total": {
+        "calls": 32,
+        "inclusive_ns": 40118584,
+        "rust_allocation_calls": 376864,
+        "rust_requested_bytes": 43783072
+      },
+      "decode_block": {
+        "calls": 6144,
+        "inclusive_ns": 13393439,
+        "rust_allocation_calls": 43008,
+        "rust_requested_bytes": 3145728
+      },
+      "decode_head_chunk": {
+        "calls": 2048,
+        "inclusive_ns": 110952,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 32,
+        "inclusive_ns": 2509071,
+        "rust_allocation_calls": 5152,
+        "rust_requested_bytes": 1721984
+      },
+      "fetch_heads": {
+        "calls": 32,
+        "inclusive_ns": 1328039,
+        "rust_allocation_calls": 6912,
+        "rust_requested_bytes": 1174528
+      },
+      "fetch_payloads": {
+        "calls": 32,
+        "inclusive_ns": 1943946,
+        "rust_allocation_calls": 9952,
+        "rust_requested_bytes": 1388928
+      },
+      "fold_series": {
+        "calls": 2048,
+        "inclusive_ns": 25225503,
+        "rust_allocation_calls": 146400,
+        "rust_requested_bytes": 15169280
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 2377410,
+        "rust_allocation_calls": 28064,
+        "rust_requested_bytes": 2785696
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 40269827,
+        "rust_allocation_calls": 377056,
+        "rust_requested_bytes": 43784608
+      },
+      "parse_head": {
+        "calls": 2048,
+        "inclusive_ns": 277096,
+        "rust_allocation_calls": 4096,
+        "rust_requested_bytes": 294912
+      },
+      "read_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "read_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "select_group": {
+        "calls": 2048,
+        "inclusive_ns": 4707869,
+        "rust_allocation_calls": 135328,
+        "rust_requested_bytes": 18313728
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 13606594,
+        "rust_allocation_calls": 199808,
+        "rust_requested_bytes": 26792032
+      }
+    },
+    "variant": "metadata"
+  },
+  {
+    "case": "aggregate_wide_cut_sum",
+    "iterations": 32,
+    "rust_allocation_calls": 373056,
+    "rust_requested_bytes": 43990688,
+    "sqlite_memory_used": 400064,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 14464,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 126888,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 23360
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 96
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 24
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 42816,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 32,
+        "inclusive_ns": 27394667,
+        "rust_allocation_calls": 176960,
+        "rust_requested_bytes": 16973248
+      },
+      "aggregate_total": {
+        "calls": 32,
+        "inclusive_ns": 41054547,
+        "rust_allocation_calls": 372864,
+        "rust_requested_bytes": 43989152
+      },
+      "decode_block": {
+        "calls": 6144,
+        "inclusive_ns": 13969312,
+        "rust_allocation_calls": 43008,
+        "rust_requested_bytes": 3145728
+      },
+      "decode_head_chunk": {
+        "calls": 2048,
+        "inclusive_ns": 137803,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 32,
+        "inclusive_ns": 2598869,
+        "rust_allocation_calls": 5152,
+        "rust_requested_bytes": 1721984
+      },
+      "fetch_heads": {
+        "calls": 32,
+        "inclusive_ns": 1367525,
+        "rust_allocation_calls": 6912,
+        "rust_requested_bytes": 1174528
+      },
+      "fetch_payloads": {
+        "calls": 32,
+        "inclusive_ns": 1977279,
+        "rust_allocation_calls": 3904,
+        "rust_requested_bytes": 1586816
+      },
+      "fold_series": {
+        "calls": 2048,
+        "inclusive_ns": 26107267,
+        "rust_allocation_calls": 146400,
+        "rust_requested_bytes": 15169280
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 2309224,
+        "rust_allocation_calls": 30112,
+        "rust_requested_bytes": 2793888
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 41216281,
+        "rust_allocation_calls": 373056,
+        "rust_requested_bytes": 43990688
+      },
+      "parse_head": {
+        "calls": 2048,
+        "inclusive_ns": 288376,
+        "rust_allocation_calls": 4096,
+        "rust_requested_bytes": 294912
+      },
+      "read_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "read_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "select_group": {
+        "calls": 2048,
+        "inclusive_ns": 4634758,
+        "rust_allocation_calls": 135328,
+        "rust_requested_bytes": 18313728
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 13641340,
+        "rust_allocation_calls": 195808,
+        "rust_requested_bytes": 26998112
+      }
+    },
+    "variant": "arena"
+  },
+  {
+    "case": "aggregate_wide_cut_sum",
+    "iterations": 32,
+    "rust_allocation_calls": 371008,
+    "rust_requested_bytes": 43982496,
+    "sqlite_memory_used": 400064,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 14464,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 126888,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 23360
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 96
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 24
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 42816,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 32,
+        "inclusive_ns": 26094007,
+        "rust_allocation_calls": 176960,
+        "rust_requested_bytes": 16973248
+      },
+      "aggregate_total": {
+        "calls": 32,
+        "inclusive_ns": 39663217,
+        "rust_allocation_calls": 370816,
+        "rust_requested_bytes": 43980960
+      },
+      "decode_block": {
+        "calls": 6144,
+        "inclusive_ns": 13297213,
+        "rust_allocation_calls": 43008,
+        "rust_requested_bytes": 3145728
+      },
+      "decode_head_chunk": {
+        "calls": 2048,
+        "inclusive_ns": 108670,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 32,
+        "inclusive_ns": 2732634,
+        "rust_allocation_calls": 5152,
+        "rust_requested_bytes": 1721984
+      },
+      "fetch_heads": {
+        "calls": 32,
+        "inclusive_ns": 1375372,
+        "rust_allocation_calls": 6912,
+        "rust_requested_bytes": 1174528
+      },
+      "fetch_payloads": {
+        "calls": 32,
+        "inclusive_ns": 1969018,
+        "rust_allocation_calls": 3904,
+        "rust_requested_bytes": 1586816
+      },
+      "fold_series": {
+        "calls": 2048,
+        "inclusive_ns": 24851493,
+        "rust_allocation_calls": 146400,
+        "rust_requested_bytes": 15169280
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 2200155,
+        "rust_allocation_calls": 28064,
+        "rust_requested_bytes": 2785696
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 39814249,
+        "rust_allocation_calls": 371008,
+        "rust_requested_bytes": 43982496
+      },
+      "parse_head": {
+        "calls": 2048,
+        "inclusive_ns": 290878,
+        "rust_allocation_calls": 4096,
+        "rust_requested_bytes": 294912
+      },
+      "read_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "read_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "select_group": {
+        "calls": 2048,
+        "inclusive_ns": 4527808,
+        "rust_allocation_calls": 135328,
+        "rust_requested_bytes": 18313728
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 13551709,
+        "rust_allocation_calls": 193760,
+        "rust_requested_bytes": 26989920
+      }
+    },
+    "variant": "both"
+  },
+  {
+    "case": "aggregate_wide_cut_sum",
+    "iterations": 32,
+    "rust_allocation_calls": 379104,
+    "rust_requested_bytes": 43792800,
+    "sqlite_memory_used": 304064,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 14464,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 126888,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 42816,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 32,
+        "inclusive_ns": 27258457,
+        "rust_allocation_calls": 176960,
+        "rust_requested_bytes": 16973248
+      },
+      "aggregate_total": {
+        "calls": 32,
+        "inclusive_ns": 42138302,
+        "rust_allocation_calls": 378912,
+        "rust_requested_bytes": 43791264
+      },
+      "decode_block": {
+        "calls": 6144,
+        "inclusive_ns": 13938086,
+        "rust_allocation_calls": 43008,
+        "rust_requested_bytes": 3145728
+      },
+      "decode_head_chunk": {
+        "calls": 2048,
+        "inclusive_ns": 112987,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 32,
+        "inclusive_ns": 2891272,
+        "rust_allocation_calls": 5152,
+        "rust_requested_bytes": 1721984
+      },
+      "fetch_heads": {
+        "calls": 32,
+        "inclusive_ns": 1560441,
+        "rust_allocation_calls": 6912,
+        "rust_requested_bytes": 1174528
+      },
+      "fetch_payloads": {
+        "calls": 32,
+        "inclusive_ns": 2397941,
+        "rust_allocation_calls": 9952,
+        "rust_requested_bytes": 1388928
+      },
+      "fold_series": {
+        "calls": 2048,
+        "inclusive_ns": 25986304,
+        "rust_allocation_calls": 146400,
+        "rust_requested_bytes": 15169280
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 2515331,
+        "rust_allocation_calls": 30112,
+        "rust_requested_bytes": 2793888
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 42315760,
+        "rust_allocation_calls": 379104,
+        "rust_requested_bytes": 43792800
+      },
+      "parse_head": {
+        "calls": 2048,
+        "inclusive_ns": 287686,
+        "rust_allocation_calls": 4096,
+        "rust_requested_bytes": 294912
+      },
+      "read_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "read_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "select_group": {
+        "calls": 2048,
+        "inclusive_ns": 4698531,
+        "rust_allocation_calls": 135328,
+        "rust_requested_bytes": 18313728
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 14858963,
+        "rust_allocation_calls": 201856,
+        "rust_requested_bytes": 26800224
+      }
+    },
+    "variant": "lookaside_off"
+  },
+  {
+    "case": "aggregate_wide_cut_sum",
+    "iterations": 32,
+    "rust_allocation_calls": 379104,
+    "rust_requested_bytes": 43792800,
+    "sqlite_memory_used": 828352,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 14464,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 126888,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 23296
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 160
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 24
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 42816,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 32,
+        "inclusive_ns": 27870342,
+        "rust_allocation_calls": 176960,
+        "rust_requested_bytes": 16973248
+      },
+      "aggregate_total": {
+        "calls": 32,
+        "inclusive_ns": 42499343,
+        "rust_allocation_calls": 378912,
+        "rust_requested_bytes": 43791264
+      },
+      "decode_block": {
+        "calls": 6144,
+        "inclusive_ns": 14247271,
+        "rust_allocation_calls": 43008,
+        "rust_requested_bytes": 3145728
+      },
+      "decode_head_chunk": {
+        "calls": 2048,
+        "inclusive_ns": 114756,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 32,
+        "inclusive_ns": 2720273,
+        "rust_allocation_calls": 5152,
+        "rust_requested_bytes": 1721984
+      },
+      "fetch_heads": {
+        "calls": 32,
+        "inclusive_ns": 1528259,
+        "rust_allocation_calls": 6912,
+        "rust_requested_bytes": 1174528
+      },
+      "fetch_payloads": {
+        "calls": 32,
+        "inclusive_ns": 2150462,
+        "rust_allocation_calls": 9952,
+        "rust_requested_bytes": 1388928
+      },
+      "fold_series": {
+        "calls": 2048,
+        "inclusive_ns": 26565680,
+        "rust_allocation_calls": 146400,
+        "rust_requested_bytes": 15169280
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 2583557,
+        "rust_allocation_calls": 30112,
+        "rust_requested_bytes": 2793888
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 42663093,
+        "rust_allocation_calls": 379104,
+        "rust_requested_bytes": 43792800
+      },
+      "parse_head": {
+        "calls": 2048,
+        "inclusive_ns": 292687,
+        "rust_allocation_calls": 4096,
+        "rust_requested_bytes": 294912
+      },
+      "read_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "read_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "select_group": {
+        "calls": 2048,
+        "inclusive_ns": 4789715,
+        "rust_allocation_calls": 135328,
+        "rust_requested_bytes": 18313728
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 14609971,
+        "rust_allocation_calls": 201856,
+        "rust_requested_bytes": 26800224
+      }
+    },
+    "variant": "lookaside_512"
+  },
+  {
+    "case": "aggregate_wide_cut_sum",
+    "iterations": 32,
+    "rust_allocation_calls": 371008,
+    "rust_requested_bytes": 43982496,
+    "sqlite_memory_used": 828352,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 14464,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 126888,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 23296
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 160
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 24
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 42816,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 32,
+        "inclusive_ns": 27130786,
+        "rust_allocation_calls": 176960,
+        "rust_requested_bytes": 16973248
+      },
+      "aggregate_total": {
+        "calls": 32,
+        "inclusive_ns": 41430834,
+        "rust_allocation_calls": 370816,
+        "rust_requested_bytes": 43980960
+      },
+      "decode_block": {
+        "calls": 6144,
+        "inclusive_ns": 13829127,
+        "rust_allocation_calls": 43008,
+        "rust_requested_bytes": 3145728
+      },
+      "decode_head_chunk": {
+        "calls": 2048,
+        "inclusive_ns": 114077,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 32,
+        "inclusive_ns": 2833198,
+        "rust_allocation_calls": 5152,
+        "rust_requested_bytes": 1721984
+      },
+      "fetch_heads": {
+        "calls": 32,
+        "inclusive_ns": 1451557,
+        "rust_allocation_calls": 6912,
+        "rust_requested_bytes": 1174528
+      },
+      "fetch_payloads": {
+        "calls": 32,
+        "inclusive_ns": 1965558,
+        "rust_allocation_calls": 3904,
+        "rust_requested_bytes": 1586816
+      },
+      "fold_series": {
+        "calls": 2048,
+        "inclusive_ns": 25858276,
+        "rust_allocation_calls": 146400,
+        "rust_requested_bytes": 15169280
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 2377924,
+        "rust_allocation_calls": 28064,
+        "rust_requested_bytes": 2785696
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 41591394,
+        "rust_allocation_calls": 371008,
+        "rust_requested_bytes": 43982496
+      },
+      "parse_head": {
+        "calls": 2048,
+        "inclusive_ns": 287592,
+        "rust_allocation_calls": 4096,
+        "rust_requested_bytes": 294912
+      },
+      "read_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "read_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "select_group": {
+        "calls": 2048,
+        "inclusive_ns": 4847829,
+        "rust_allocation_calls": 135328,
+        "rust_requested_bytes": 18313728
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 14281637,
+        "rust_allocation_calls": 193760,
+        "rust_requested_bytes": 26989920
+      }
+    },
+    "variant": "both_lookaside_512"
+  },
+  {
+    "case": "aggregate_sum",
+    "iterations": 32,
+    "rust_allocation_calls": 85440,
+    "rust_requested_bytes": 13918432,
+    "sqlite_memory_used": 345472,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 1760,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 70312,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 3264
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 12
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 24000,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 32,
+        "inclusive_ns": 929980,
+        "rust_allocation_calls": 23200,
+        "rust_requested_bytes": 1645536
+      },
+      "aggregate_total": {
+        "calls": 32,
+        "inclusive_ns": 4435097,
+        "rust_allocation_calls": 85376,
+        "rust_requested_bytes": 13917984
+      },
+      "decode_block": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_head_chunk": {
+        "calls": 256,
+        "inclusive_ns": 15741,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 256,
+        "inclusive_ns": 249630,
+        "rust_allocation_calls": 768,
+        "rust_requested_bytes": 301312
+      },
+      "fetch_heads": {
+        "calls": 256,
+        "inclusive_ns": 215352,
+        "rust_allocation_calls": 1024,
+        "rust_requested_bytes": 93952
+      },
+      "fetch_payloads": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fold_series": {
+        "calls": 256,
+        "inclusive_ns": 695751,
+        "rust_allocation_calls": 19296,
+        "rust_requested_bytes": 1424864
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 487661,
+        "rust_allocation_calls": 4512,
+        "rust_requested_bytes": 377728
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 4459531,
+        "rust_allocation_calls": 85440,
+        "rust_requested_bytes": 13918432
+      },
+      "parse_head": {
+        "calls": 256,
+        "inclusive_ns": 40422,
+        "rust_allocation_calls": 512,
+        "rust_requested_bytes": 36864
+      },
+      "read_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "read_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "select_group": {
+        "calls": 256,
+        "inclusive_ns": 2377736,
+        "rust_allocation_calls": 53920,
+        "rust_requested_bytes": 11303520
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 3495976,
+        "rust_allocation_calls": 62080,
+        "rust_requested_bytes": 12254432
+      }
+    },
+    "variant": "control"
+  },
+  {
+    "case": "aggregate_sum",
+    "iterations": 32,
+    "rust_allocation_calls": 85184,
+    "rust_requested_bytes": 13917408,
+    "sqlite_memory_used": 345472,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 1760,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 70312,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 3264
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 12
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 24000,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 32,
+        "inclusive_ns": 915008,
+        "rust_allocation_calls": 23200,
+        "rust_requested_bytes": 1645536
+      },
+      "aggregate_total": {
+        "calls": 32,
+        "inclusive_ns": 4526172,
+        "rust_allocation_calls": 85120,
+        "rust_requested_bytes": 13916960
+      },
+      "decode_block": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_head_chunk": {
+        "calls": 256,
+        "inclusive_ns": 16093,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 256,
+        "inclusive_ns": 257313,
+        "rust_allocation_calls": 768,
+        "rust_requested_bytes": 301312
+      },
+      "fetch_heads": {
+        "calls": 256,
+        "inclusive_ns": 222049,
+        "rust_allocation_calls": 1024,
+        "rust_requested_bytes": 93952
+      },
+      "fetch_payloads": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fold_series": {
+        "calls": 256,
+        "inclusive_ns": 679506,
+        "rust_allocation_calls": 19296,
+        "rust_requested_bytes": 1424864
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 516264,
+        "rust_allocation_calls": 4256,
+        "rust_requested_bytes": 376704
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 4561383,
+        "rust_allocation_calls": 85184,
+        "rust_requested_bytes": 13917408
+      },
+      "parse_head": {
+        "calls": 256,
+        "inclusive_ns": 41192,
+        "rust_allocation_calls": 512,
+        "rust_requested_bytes": 36864
+      },
+      "read_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "read_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "select_group": {
+        "calls": 256,
+        "inclusive_ns": 2438552,
+        "rust_allocation_calls": 53920,
+        "rust_requested_bytes": 11303520
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 3601843,
+        "rust_allocation_calls": 61824,
+        "rust_requested_bytes": 12253408
+      }
+    },
+    "variant": "metadata"
+  },
+  {
+    "case": "aggregate_sum",
+    "iterations": 32,
+    "rust_allocation_calls": 85440,
+    "rust_requested_bytes": 13918432,
+    "sqlite_memory_used": 345472,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 1760,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 70312,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 3264
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 12
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 24000,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 32,
+        "inclusive_ns": 898888,
+        "rust_allocation_calls": 23200,
+        "rust_requested_bytes": 1645536
+      },
+      "aggregate_total": {
+        "calls": 32,
+        "inclusive_ns": 4504671,
+        "rust_allocation_calls": 85376,
+        "rust_requested_bytes": 13917984
+      },
+      "decode_block": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_head_chunk": {
+        "calls": 256,
+        "inclusive_ns": 16131,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 256,
+        "inclusive_ns": 272788,
+        "rust_allocation_calls": 768,
+        "rust_requested_bytes": 301312
+      },
+      "fetch_heads": {
+        "calls": 256,
+        "inclusive_ns": 229558,
+        "rust_allocation_calls": 1024,
+        "rust_requested_bytes": 93952
+      },
+      "fetch_payloads": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fold_series": {
+        "calls": 256,
+        "inclusive_ns": 665794,
+        "rust_allocation_calls": 19296,
+        "rust_requested_bytes": 1424864
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 539246,
+        "rust_allocation_calls": 4512,
+        "rust_requested_bytes": 377728
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 4529271,
+        "rust_allocation_calls": 85440,
+        "rust_requested_bytes": 13918432
+      },
+      "parse_head": {
+        "calls": 256,
+        "inclusive_ns": 39950,
+        "rust_allocation_calls": 512,
+        "rust_requested_bytes": 36864
+      },
+      "read_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "read_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "select_group": {
+        "calls": 256,
+        "inclusive_ns": 2379248,
+        "rust_allocation_calls": 53920,
+        "rust_requested_bytes": 11303520
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 3596803,
+        "rust_allocation_calls": 62080,
+        "rust_requested_bytes": 12254432
+      }
+    },
+    "variant": "arena"
+  },
+  {
+    "case": "aggregate_sum",
+    "iterations": 32,
+    "rust_allocation_calls": 85184,
+    "rust_requested_bytes": 13917408,
+    "sqlite_memory_used": 345472,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 1760,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 70312,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 3264
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 12
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 24000,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 32,
+        "inclusive_ns": 992244,
+        "rust_allocation_calls": 23200,
+        "rust_requested_bytes": 1645536
+      },
+      "aggregate_total": {
+        "calls": 32,
+        "inclusive_ns": 4544959,
+        "rust_allocation_calls": 85120,
+        "rust_requested_bytes": 13916960
+      },
+      "decode_block": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_head_chunk": {
+        "calls": 256,
+        "inclusive_ns": 16381,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 256,
+        "inclusive_ns": 269084,
+        "rust_allocation_calls": 768,
+        "rust_requested_bytes": 301312
+      },
+      "fetch_heads": {
+        "calls": 256,
+        "inclusive_ns": 276271,
+        "rust_allocation_calls": 1024,
+        "rust_requested_bytes": 93952
+      },
+      "fetch_payloads": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fold_series": {
+        "calls": 256,
+        "inclusive_ns": 685733,
+        "rust_allocation_calls": 19296,
+        "rust_requested_bytes": 1424864
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 449561,
+        "rust_allocation_calls": 4256,
+        "rust_requested_bytes": 376704
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 4570339,
+        "rust_allocation_calls": 85184,
+        "rust_requested_bytes": 13917408
+      },
+      "parse_head": {
+        "calls": 256,
+        "inclusive_ns": 51740,
+        "rust_allocation_calls": 512,
+        "rust_requested_bytes": 36864
+      },
+      "read_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "read_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "select_group": {
+        "calls": 256,
+        "inclusive_ns": 2363352,
+        "rust_allocation_calls": 53920,
+        "rust_requested_bytes": 11303520
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 3542305,
+        "rust_allocation_calls": 61824,
+        "rust_requested_bytes": 12253408
+      }
+    },
+    "variant": "both"
+  },
+  {
+    "case": "aggregate_sum",
+    "iterations": 32,
+    "rust_allocation_calls": 85440,
+    "rust_requested_bytes": 13918432,
+    "sqlite_memory_used": 249472,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 1760,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 70312,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 24000,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 32,
+        "inclusive_ns": 887627,
+        "rust_allocation_calls": 23200,
+        "rust_requested_bytes": 1645536
+      },
+      "aggregate_total": {
+        "calls": 32,
+        "inclusive_ns": 4371540,
+        "rust_allocation_calls": 85376,
+        "rust_requested_bytes": 13917984
+      },
+      "decode_block": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_head_chunk": {
+        "calls": 256,
+        "inclusive_ns": 14431,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 256,
+        "inclusive_ns": 270070,
+        "rust_allocation_calls": 768,
+        "rust_requested_bytes": 301312
+      },
+      "fetch_heads": {
+        "calls": 256,
+        "inclusive_ns": 256617,
+        "rust_allocation_calls": 1024,
+        "rust_requested_bytes": 93952
+      },
+      "fetch_payloads": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fold_series": {
+        "calls": 256,
+        "inclusive_ns": 647638,
+        "rust_allocation_calls": 19296,
+        "rust_requested_bytes": 1424864
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 459762,
+        "rust_allocation_calls": 4512,
+        "rust_requested_bytes": 377728
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 4394612,
+        "rust_allocation_calls": 85440,
+        "rust_requested_bytes": 13918432
+      },
+      "parse_head": {
+        "calls": 256,
+        "inclusive_ns": 36934,
+        "rust_allocation_calls": 512,
+        "rust_requested_bytes": 36864
+      },
+      "read_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "read_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "select_group": {
+        "calls": 256,
+        "inclusive_ns": 2326646,
+        "rust_allocation_calls": 53920,
+        "rust_requested_bytes": 11303520
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 3474213,
+        "rust_allocation_calls": 62080,
+        "rust_requested_bytes": 12254432
+      }
+    },
+    "variant": "lookaside_off"
+  },
+  {
+    "case": "aggregate_sum",
+    "iterations": 32,
+    "rust_allocation_calls": 85440,
+    "rust_requested_bytes": 13918432,
+    "sqlite_memory_used": 773760,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 1760,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 70312,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 2432
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 832
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 11
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 24000,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 32,
+        "inclusive_ns": 941802,
+        "rust_allocation_calls": 23200,
+        "rust_requested_bytes": 1645536
+      },
+      "aggregate_total": {
+        "calls": 32,
+        "inclusive_ns": 4648172,
+        "rust_allocation_calls": 85376,
+        "rust_requested_bytes": 13917984
+      },
+      "decode_block": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_head_chunk": {
+        "calls": 256,
+        "inclusive_ns": 16491,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 256,
+        "inclusive_ns": 298148,
+        "rust_allocation_calls": 768,
+        "rust_requested_bytes": 301312
+      },
+      "fetch_heads": {
+        "calls": 256,
+        "inclusive_ns": 225326,
+        "rust_allocation_calls": 1024,
+        "rust_requested_bytes": 93952
+      },
+      "fetch_payloads": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fold_series": {
+        "calls": 256,
+        "inclusive_ns": 701007,
+        "rust_allocation_calls": 19296,
+        "rust_requested_bytes": 1424864
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 547229,
+        "rust_allocation_calls": 4512,
+        "rust_requested_bytes": 377728
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 4674014,
+        "rust_allocation_calls": 85440,
+        "rust_requested_bytes": 13918432
+      },
+      "parse_head": {
+        "calls": 256,
+        "inclusive_ns": 41946,
+        "rust_allocation_calls": 512,
+        "rust_requested_bytes": 36864
+      },
+      "read_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "read_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "select_group": {
+        "calls": 256,
+        "inclusive_ns": 2449120,
+        "rust_allocation_calls": 53920,
+        "rust_requested_bytes": 11303520
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 3696860,
+        "rust_allocation_calls": 62080,
+        "rust_requested_bytes": 12254432
+      }
+    },
+    "variant": "lookaside_512"
+  },
+  {
+    "case": "aggregate_sum",
+    "iterations": 32,
+    "rust_allocation_calls": 85184,
+    "rust_requested_bytes": 13917408,
+    "sqlite_memory_used": 773760,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 1760,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 70312,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 2432
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 832
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 11
+      },
+      "schema_used": {
+        "current": 15336,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 24000,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15304,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 32,
+        "inclusive_ns": 1085379,
+        "rust_allocation_calls": 23200,
+        "rust_requested_bytes": 1645536
+      },
+      "aggregate_total": {
+        "calls": 32,
+        "inclusive_ns": 4622869,
+        "rust_allocation_calls": 85120,
+        "rust_requested_bytes": 13916960
+      },
+      "decode_block": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_head_chunk": {
+        "calls": 256,
+        "inclusive_ns": 36651,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_group_rows": {
+        "calls": 256,
+        "inclusive_ns": 268593,
+        "rust_allocation_calls": 768,
+        "rust_requested_bytes": 301312
+      },
+      "fetch_heads": {
+        "calls": 256,
+        "inclusive_ns": 218706,
+        "rust_allocation_calls": 1024,
+        "rust_requested_bytes": 93952
+      },
+      "fetch_payloads": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fold_series": {
+        "calls": 256,
+        "inclusive_ns": 845827,
+        "rust_allocation_calls": 19296,
+        "rust_requested_bytes": 1424864
+      },
+      "match_registry": {
+        "calls": 32,
+        "inclusive_ns": 517797,
+        "rust_allocation_calls": 4256,
+        "rust_requested_bytes": 376704
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 4647969,
+        "rust_allocation_calls": 85184,
+        "rust_requested_bytes": 13917408
+      },
+      "parse_head": {
+        "calls": 256,
+        "inclusive_ns": 40922,
+        "rust_allocation_calls": 512,
+        "rust_requested_bytes": 36864
+      },
+      "read_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "read_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "select_group": {
+        "calls": 256,
+        "inclusive_ns": 2349353,
+        "rust_allocation_calls": 53920,
+        "rust_requested_bytes": 11303520
+      },
+      "snapshot": {
+        "calls": 32,
+        "inclusive_ns": 3527498,
+        "rust_allocation_calls": 61824,
+        "rust_requested_bytes": 12253408
+      }
+    },
+    "variant": "both_lookaside_512"
+  },
+  {
+    "case": "ingest_scrape100",
+    "iterations": 32,
+    "rust_allocation_calls": 278245,
+    "rust_requested_bytes": 37555546,
+    "sqlite_memory_used": 348696,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15312,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 28835,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 79016,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 161,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 73856
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 13
+      },
+      "schema_used": {
+        "current": 15320,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 23320,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "aggregate_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_block": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_head_chunk": {
+        "calls": 3200,
+        "inclusive_ns": 1392902,
+        "rust_allocation_calls": 3396,
+        "rust_requested_bytes": 95104
+      },
+      "fetch_group_rows": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_heads": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_payloads": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fold_series": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "match_registry": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 154381609,
+        "rust_allocation_calls": 278245,
+        "rust_requested_bytes": 37555546
+      },
+      "parse_head": {
+        "calls": 3200,
+        "inclusive_ns": 605077,
+        "rust_allocation_calls": 6400,
+        "rust_requested_bytes": 1093768
+      },
+      "read_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "read_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "snapshot": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      }
+    },
+    "variant": "control"
+  },
+  {
+    "case": "ingest_scrape100",
+    "iterations": 32,
+    "rust_allocation_calls": 278245,
+    "rust_requested_bytes": 37555546,
+    "sqlite_memory_used": 348696,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15312,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 28835,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 79016,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 161,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 73856
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 13
+      },
+      "schema_used": {
+        "current": 15320,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 23320,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "aggregate_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_block": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_head_chunk": {
+        "calls": 3200,
+        "inclusive_ns": 1371487,
+        "rust_allocation_calls": 3396,
+        "rust_requested_bytes": 95104
+      },
+      "fetch_group_rows": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_heads": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_payloads": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fold_series": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "match_registry": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 148001797,
+        "rust_allocation_calls": 278245,
+        "rust_requested_bytes": 37555546
+      },
+      "parse_head": {
+        "calls": 3200,
+        "inclusive_ns": 608839,
+        "rust_allocation_calls": 6400,
+        "rust_requested_bytes": 1093768
+      },
+      "read_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "read_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "snapshot": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      }
+    },
+    "variant": "metadata"
+  },
+  {
+    "case": "ingest_scrape100",
+    "iterations": 32,
+    "rust_allocation_calls": 278245,
+    "rust_requested_bytes": 37555546,
+    "sqlite_memory_used": 348696,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15312,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 28835,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 79016,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 161,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 73856
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 13
+      },
+      "schema_used": {
+        "current": 15320,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 23320,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "aggregate_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_block": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_head_chunk": {
+        "calls": 3200,
+        "inclusive_ns": 1379051,
+        "rust_allocation_calls": 3396,
+        "rust_requested_bytes": 95104
+      },
+      "fetch_group_rows": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_heads": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_payloads": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fold_series": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "match_registry": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 148927583,
+        "rust_allocation_calls": 278245,
+        "rust_requested_bytes": 37555546
+      },
+      "parse_head": {
+        "calls": 3200,
+        "inclusive_ns": 603971,
+        "rust_allocation_calls": 6400,
+        "rust_requested_bytes": 1093768
+      },
+      "read_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "read_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "snapshot": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      }
+    },
+    "variant": "arena"
+  },
+  {
+    "case": "ingest_scrape100",
+    "iterations": 32,
+    "rust_allocation_calls": 278245,
+    "rust_requested_bytes": 37555546,
+    "sqlite_memory_used": 348696,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15312,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 28835,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 79016,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 161,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 73856
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 13
+      },
+      "schema_used": {
+        "current": 15320,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 23320,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "aggregate_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_block": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_head_chunk": {
+        "calls": 3200,
+        "inclusive_ns": 1414153,
+        "rust_allocation_calls": 3396,
+        "rust_requested_bytes": 95104
+      },
+      "fetch_group_rows": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_heads": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_payloads": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fold_series": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "match_registry": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 149608861,
+        "rust_allocation_calls": 278245,
+        "rust_requested_bytes": 37555546
+      },
+      "parse_head": {
+        "calls": 3200,
+        "inclusive_ns": 599358,
+        "rust_allocation_calls": 6400,
+        "rust_requested_bytes": 1093768
+      },
+      "read_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "read_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "snapshot": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      }
+    },
+    "variant": "both"
+  },
+  {
+    "case": "ingest_scrape100",
+    "iterations": 32,
+    "rust_allocation_calls": 278245,
+    "rust_requested_bytes": 37555546,
+    "sqlite_memory_used": 252696,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15312,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 28835,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 79016,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 161,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15320,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 23320,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "aggregate_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_block": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_head_chunk": {
+        "calls": 3200,
+        "inclusive_ns": 1994410,
+        "rust_allocation_calls": 3396,
+        "rust_requested_bytes": 95104
+      },
+      "fetch_group_rows": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_heads": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_payloads": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fold_series": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "match_registry": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 173754324,
+        "rust_allocation_calls": 278245,
+        "rust_requested_bytes": 37555546
+      },
+      "parse_head": {
+        "calls": 3200,
+        "inclusive_ns": 768879,
+        "rust_allocation_calls": 6400,
+        "rust_requested_bytes": 1093768
+      },
+      "read_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "read_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "snapshot": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      }
+    },
+    "variant": "lookaside_off"
+  },
+  {
+    "case": "ingest_scrape100",
+    "iterations": 32,
+    "rust_allocation_calls": 278245,
+    "rust_requested_bytes": 37555546,
+    "sqlite_memory_used": 776984,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15312,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 28835,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 79016,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 161,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 67392
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 6464
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 12
+      },
+      "schema_used": {
+        "current": 15320,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 23320,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "aggregate_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_block": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_head_chunk": {
+        "calls": 3200,
+        "inclusive_ns": 1374189,
+        "rust_allocation_calls": 3396,
+        "rust_requested_bytes": 95104
+      },
+      "fetch_group_rows": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_heads": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_payloads": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fold_series": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "match_registry": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 148928900,
+        "rust_allocation_calls": 278245,
+        "rust_requested_bytes": 37555546
+      },
+      "parse_head": {
+        "calls": 3200,
+        "inclusive_ns": 590612,
+        "rust_allocation_calls": 6400,
+        "rust_requested_bytes": 1093768
+      },
+      "read_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "read_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "snapshot": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      }
+    },
+    "variant": "lookaside_512"
+  },
+  {
+    "case": "ingest_scrape100",
+    "iterations": 32,
+    "rust_allocation_calls": 278245,
+    "rust_requested_bytes": 37555546,
+    "sqlite_memory_used": 776984,
+    "sqlite_reader": {
+      "cache_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 13736,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 0
+      },
+      "schema_used": {
+        "current": 15312,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 0,
+        "high": 0
+      }
+    },
+    "sqlite_writer": {
+      "cache_hit": {
+        "current": 28835,
+        "high": 0
+      },
+      "cache_miss": {
+        "current": 0,
+        "high": 0
+      },
+      "cache_used": {
+        "current": 79016,
+        "high": 0
+      },
+      "cache_write": {
+        "current": 161,
+        "high": 0
+      },
+      "lookaside_hit": {
+        "current": 0,
+        "high": 67392
+      },
+      "lookaside_miss_full": {
+        "current": 0,
+        "high": 0
+      },
+      "lookaside_miss_size": {
+        "current": 0,
+        "high": 6464
+      },
+      "lookaside_used": {
+        "current": 0,
+        "high": 12
+      },
+      "schema_used": {
+        "current": 15320,
+        "high": 0
+      },
+      "statement_used": {
+        "current": 23320,
+        "high": 0
+      }
+    },
+    "stages": {
+      "aggregate_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "aggregate_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_block": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "decode_head_chunk": {
+        "calls": 3200,
+        "inclusive_ns": 1411577,
+        "rust_allocation_calls": 3396,
+        "rust_requested_bytes": 95104
+      },
+      "fetch_group_rows": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_heads": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fetch_payloads": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "fold_series": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "match_registry": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "operation": {
+        "calls": 32,
+        "inclusive_ns": 152405665,
+        "rust_allocation_calls": 278245,
+        "rust_requested_bytes": 37555546
+      },
+      "parse_head": {
+        "calls": 3200,
+        "inclusive_ns": 635336,
+        "rust_allocation_calls": 6400,
+        "rust_requested_bytes": 1093768
+      },
+      "read_process": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "read_total": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      },
+      "snapshot": {
+        "calls": 0,
+        "inclusive_ns": 0,
+        "rust_allocation_calls": 0,
+        "rust_requested_bytes": 0
+      }
+    },
+    "variant": "both_lookaside_512"
+  }
+]

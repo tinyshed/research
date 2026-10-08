@@ -673,3 +673,26 @@ budget. PGO helped read/decode-heavy work, but scrape100 showed no additional
 benefit over previous Rust; Rayon helped Read16 and slowed several aggregates.
 Every pass and compiler/switch comparison is in the
 [deep round](reports/metrics-deep-2026-10-08.md).
+
+## SQLite adapter followup, 8 October 2026
+
+The [adapter and rusqlite report](reports/sqlite-adapter-2026-10-08.md) retains
+two exploratory sessions on local Linux/Docker Desktop/WSL2, Ryzen 7 7700,
+Rust 1.99.0, Go 1.27.1 and pinned native SQLite 3.53.4. These use their own
+remeasured Rust baselines and cannot be compared numerically with the EPYC
+figures above. Harnesses were uncommitted during collection by user request;
+source/binary hashes, minimal crate patches and every pass are preserved.
+
+An owned payload arena plus metadata borrowing reduced Rust allocation
+requests per Read16 from 7,495 to 7,162 and per wide Read from 9,305 to 8,860,
+without a useful RSS saving or a general whole-query improvement. Raw selected
+row loops were initially 1.12–1.17× faster for 64/240 rows; small rusqlite inline
+and scoped column-count-cache patches did not close that gap or establish a
+general engine gain. FULL scrape latency was materially unchanged.
+
+Larger lookaside increased tracked SQLite memory by 418.25 KiB per connection
+pair. One mutable-head full8 read improved by about 19% against its original
+Rust baseline in each of two sessions, but combining it with metadata borrowing
+lost the difference. Inclusive instrumentation located most of the change in
+post-snapshot processing; allocator/buffer placement remains a hypothesis.
+Keep this as a specific followup question rather than a default pool setting.

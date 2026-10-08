@@ -1,0 +1,176 @@
+{
+  "started_utc": "2026-10-08T17:08:53.636360+00:00",
+  "harness_status": "uncommitted during collection, by user request",
+  "baseline_revision": "8955ce2",
+  "variants": {
+    "baseline": [
+      "rust-baseline",
+      null
+    ],
+    "control": [
+      "rust-adapter",
+      0
+    ],
+    "fork_inline": [
+      "rust-fork-inline",
+      0
+    ],
+    "fork_count": [
+      "rust-fork-count",
+      0
+    ],
+    "both": [
+      "rust-fork-combined",
+      0
+    ],
+    "lookaside_512": [
+      "rust-adapter",
+      8
+    ],
+    "both_lookaside_512": [
+      "rust-adapter",
+      11
+    ]
+  },
+  "passes": 6,
+  "iterations": {
+    "read_head_point": 32768,
+    "read_head_full8": 1653,
+    "read_sealed_full8": 492,
+    "read_sealed_full16": 251,
+    "read_wide64": 198,
+    "stream_wide64": 268,
+    "aggregate_sum": 2857,
+    "aggregate_count": 3662,
+    "aggregate_cut_sum": 762,
+    "aggregate_wide_cut_sum": 315,
+    "aggregate_wide_grouped_cut_sum": 340,
+    "ingest_scrape100": 87,
+    "maintain_ready": 1
+  },
+  "warm": 32,
+  "build": {
+    "inline": {
+      "crate": "rusqlite 0.40.1",
+      "patch_sha256": "123b4f2591b2db101f2033c32a9a9b5e643ffe94da9c3a7b8ff7c77f20604bdb",
+      "original_sha256": {
+        "raw_statement.rs": "3814424bb427ad821a18af7cf09860a37aab0d8056f69d7d18d4268a6ea0bb5c",
+        "statement.rs": "cc53dcc82755d97a48f2fa3b33d4d65c0f06fa45af0896441100e2467bfcc478"
+      },
+      "patched_sha256": {
+        "raw_statement.rs": "6408e859510ebd0ccfccdec84d4ef12db191f12706b5c16774a954db406f5c68",
+        "statement.rs": "220d86032f50b18d091da4f21d5258278b4d9cdb1b43f7f81b0305bbd60b1f82"
+      },
+      "binary_sha256": "a450b803ecf6e74b7aea126745d73c787f53fe745230cc86d8616032ac510d66",
+      "lock_other_packages_unchanged": true,
+      "upstream_failures_equal_stock": [
+        "statement::test::test_query_and_then_by_name",
+        "statement::test::test_query_map_named",
+        "statement::test::test_query_named",
+        "test::query_and_then_tests::test_query_and_then",
+        "test::query_and_then_tests::test_query_and_then_custom_error",
+        "test::query_and_then_tests::test_query_and_then_custom_error_fails",
+        "test::query_and_then_tests::test_query_and_then_fails",
+        "test::query_and_then_tests::test_query_row_and_then_custom_error",
+        "test::query_and_then_tests::test_query_row_and_then_custom_error_fails",
+        "test::test_dynamic",
+        "test::test_query_map"
+      ],
+      "note": "11 upstream tests also fail on stock under the pinned SQLITE_DQS=0 build; all other tests and both added regressions pass"
+    },
+    "count": {
+      "crate": "rusqlite 0.40.1",
+      "patch_sha256": "0c0850013ce4f42be94245409669334c4a5ff1a3745e7e6c321a652e5b0a33b1",
+      "original_sha256": {
+        "raw_statement.rs": "3814424bb427ad821a18af7cf09860a37aab0d8056f69d7d18d4268a6ea0bb5c",
+        "statement.rs": "cc53dcc82755d97a48f2fa3b33d4d65c0f06fa45af0896441100e2467bfcc478"
+      },
+      "patched_sha256": {
+        "raw_statement.rs": "2c043869720943b1b284fd5addaa86951e10e225162163a79bebc885e1b3b711",
+        "statement.rs": "cc53dcc82755d97a48f2fa3b33d4d65c0f06fa45af0896441100e2467bfcc478"
+      },
+      "binary_sha256": "f7184d940d75189cccdb2e3564fe9e3f28e01682e18c042c0a5cc17889e026e0",
+      "lock_other_packages_unchanged": true,
+      "upstream_failures_equal_stock": [
+        "statement::test::test_query_and_then_by_name",
+        "statement::test::test_query_map_named",
+        "statement::test::test_query_named",
+        "test::query_and_then_tests::test_query_and_then",
+        "test::query_and_then_tests::test_query_and_then_custom_error",
+        "test::query_and_then_tests::test_query_and_then_custom_error_fails",
+        "test::query_and_then_tests::test_query_and_then_fails",
+        "test::query_and_then_tests::test_query_row_and_then_custom_error",
+        "test::query_and_then_tests::test_query_row_and_then_custom_error_fails",
+        "test::test_dynamic",
+        "test::test_query_map"
+      ],
+      "note": "11 upstream tests also fail on stock under the pinned SQLITE_DQS=0 build; all other tests and both added regressions pass"
+    },
+    "combined": {
+      "crate": "rusqlite 0.40.1",
+      "patch_sha256": "fa16a06ccc6db91604a93b1132cf8fe7e65da4ea5fd3baec5d68811dd6dc767d",
+      "original_sha256": {
+        "raw_statement.rs": "3814424bb427ad821a18af7cf09860a37aab0d8056f69d7d18d4268a6ea0bb5c",
+        "statement.rs": "cc53dcc82755d97a48f2fa3b33d4d65c0f06fa45af0896441100e2467bfcc478"
+      },
+      "patched_sha256": {
+        "raw_statement.rs": "2c043869720943b1b284fd5addaa86951e10e225162163a79bebc885e1b3b711",
+        "statement.rs": "220d86032f50b18d091da4f21d5258278b4d9cdb1b43f7f81b0305bbd60b1f82"
+      },
+      "binary_sha256": "8a220f2ed645ae5abdf86b0e0ae1fcbf089693b20863a81911a2430a3fbd486b",
+      "lock_other_packages_unchanged": true,
+      "upstream_failures_equal_stock": [
+        "statement::test::test_query_and_then_by_name",
+        "statement::test::test_query_map_named",
+        "statement::test::test_query_named",
+        "test::query_and_then_tests::test_query_and_then",
+        "test::query_and_then_tests::test_query_and_then_custom_error",
+        "test::query_and_then_tests::test_query_and_then_custom_error_fails",
+        "test::query_and_then_tests::test_query_and_then_fails",
+        "test::query_and_then_tests::test_query_row_and_then_custom_error",
+        "test::query_and_then_tests::test_query_row_and_then_custom_error_fails",
+        "test::test_dynamic",
+        "test::test_query_map"
+      ],
+      "note": "11 upstream tests also fail on stock under the pinned SQLITE_DQS=0 build; all other tests and both added regressions pass"
+    },
+    "builder_sha256": "8e38df5f716df93393f0303754830cff1acc397bbb3a5f55b40e35f12bd46dbe"
+  },
+  "engine_source_sha256": {
+    "adapter_run.py": "ae180c4346c9bf71a0fa286b18a1cb2d3a8bd81ffc4c20b9934708754f061e35",
+    "adapter_build.sh": "629831deb286fa357ae7f8f1a7835c478f4c6022c221be0b5e051ccdaaaa7aa1",
+    "rust/src/adapter.rs": "af860be3acc24120a9b79d614a0ef6352140041026f650295e0050bc10ef0aac",
+    "rust/src/adapter_probe.rs": "d873ea2184cfa796266b6dcecfbbaaf8167c9054a767f1afda96f6487bfc67eb",
+    "rust/src/codec/binary.rs": "8c3471212d32433a642ad0f2814cc05d2ef2ebe7e5c982383ab2f6c87c8b7f77",
+    "rust/src/codec/buffer_tests.rs": "1bfe9486a456e6a1cad32edd53ebc6eb8d3feeeeb5f4baca3fe0bd29537c68f7",
+    "rust/src/codec/clocks.rs": "78fcde6c8becfbc624b431c5bed4b08d2f1026b4e9c0b1ec3205bb75e0c3d605",
+    "rust/src/codec/directory.rs": "45e48e9a87c9e066f74f2de39db8b013b7e067719c3da2aeff1f02782cc46758",
+    "rust/src/codec/envelope.rs": "70a0d2ab10d9aecf904b927f857d76b06e6ad6627e5e72208e855d869316da34",
+    "rust/src/codec/huffman.rs": "f126979a8e29e89f6c3a9e9937e4fde4cfc9c8c63444a3e4bf8e90a42421be07",
+    "rust/src/codec/residuals.rs": "c1f0a58a6f274ea841b572a4f06a969a645abcb040544497e8d4f3fc4e5bf8b9",
+    "rust/src/codec/sealed.rs": "b7796a2783700ff2fd71bda9ad5c7fa950e885f49c51d5a52fa1b50910703b94",
+    "rust/src/codec/summaries.rs": "672836bb4d908fd5f7afcc17c6f04f6c891f6fd3c422408754796edec80c6ed4",
+    "rust/src/codec/tests.rs": "478e6f986c2f53edf96d75e945aeb40d44448d4dc5468e4a1ae8109e951542a0",
+    "rust/src/codec/values.rs": "6c39ec324e397ca677d0786f0f0b1ed17fe839d7e72b40ba965af982de1b8248",
+    "rust/src/codec.rs": "7c18e4b75560fef7ac0c077b5c0d4b2ea1d5a2d7dd5acdbf0629ead858d88f29",
+    "rust/src/engine.rs": "a3f3a3c5174f9204fd2a41221dafac8a7c03de1b5effc3dc7681ca1842c0eae2",
+    "rust/src/exact.rs": "de1234874f36704590d34cfc1f0ccbada8c1745134eeae4e4a7707202cda3ec7",
+    "rust/src/main.rs": "6e424c351f8ed8259f082e2fc28d2748d97c79e23fbc101db03c4b2085cef211",
+    "rust/src/profile.rs": "bcd3034bab95e2fe61c91bb61d5495121e5980ea10d92826a25ccf199f2572e4",
+    "rust/src/query/adapter_tests.rs": "08177c22af2cb3d8d1badc614c09f88fd013eb2aad056a59f1a0d9b2eece11fd",
+    "rust/src/query/optimization_tests.rs": "813bc9588dfa8d841fd9e19264b08e0a9fbf60e69d764d775f03bb3437815512",
+    "rust/src/query/parallel.rs": "aa8208c24520c3ba2189bbf6d5776075a61d54e39a65ddf95977bdb5372a93ee",
+    "rust/src/query/quote.rs": "836fe1209510581c2e26d82a6dc7049b7fda7cd5ce44f9f42b06090f36f66401",
+    "rust/src/query/specialized.rs": "bba8edf50a5c595ec78b496653a01291387102feffece731ca7935f6264bf4e0",
+    "rust/src/query.rs": "2dc52382818db8d7c2400c1bedaa2ae8ef32610e08e70c0fc384ab204d28d8fe",
+    "rust/src/tuning.rs": "7879b42215b4e2effe6eb9737242e376934fc9ce88aea42d10ef1678c3a8b162",
+    "rust/Cargo.toml": "3412b96481820e7cc0cc026447af538836737804fa732231a2e2d08ab3452281",
+    "rust/Cargo.lock": "b0b0fe2ea88fb1e371e15fd9490175c8b419b9ca025c3e26b5d6807d85a79b28"
+  },
+  "runner_sha256": "ee5638cb3901d4d0cbb24c834b1f81eaba36d6a4824de41d8f75fb472e1865fd",
+  "parent_environment": "../sqlite-adapter-2026-10-08/environment.json",
+  "affinity": [
+    0
+  ],
+  "finished_utc": "2026-10-08T17:11:59.546671+00:00"
+}

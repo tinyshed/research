@@ -113,3 +113,9 @@ plans. It compares the original prototype, modified-source stock dependency,
 and all three patched libraries in six same-session passes. It also repeats
 the head/lookaside case and compares safe/raw wrapper loops in every dependency
 build. Raw output is in `../reports/data/rusqlite-fork-2026-10-08/`.
+
+`adapter_guard_proof.py` verifies that the schema-change regression fails when
+both count-cache invalidations are deliberately removed, then restores the
+measured fork source and checks that the test passes. Run it after the timing
+session. `adapter_tables.py` renders pass tables, and `adapter_publish.py`
+checks sample/source consistency and sanitizes container paths in test logs.

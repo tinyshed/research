@@ -1,0 +1,57 @@
+--- a/src/raw_statement.rs
++++ b/src/raw_statement.rs
+@@ -4,6 +4,7 @@
+ use crate::util::SqliteMallocString;
+ use std::ffi::{c_int, CStr};
+ use std::ptr;
++use std::cell::Cell;
+ #[cfg(feature = "cache")]
+ use std::sync::Arc;
+ 
+@@ -11,6 +12,7 @@
+ #[derive(Debug)]
+ pub struct RawStatement {
+     ptr: *mut ffi::sqlite3_stmt,
++    row_column_count: Cell<Option<usize>>,
+     // Cached indices of named parameters, computed on the fly.
+     cache: ParamIndexCache,
+     // Cached SQL (trimmed) that we use as the key when we're in the statement
+@@ -32,6 +34,7 @@
+     pub unsafe fn new(stmt: *mut ffi::sqlite3_stmt) -> Self {
+         Self {
+             ptr: stmt,
++            row_column_count: Cell::new(None),
+             cache: ParamIndexCache::default(),
+             #[cfg(feature = "cache")]
+             statement_cache_key: None,
+@@ -62,8 +65,12 @@
+ 
+     #[inline]
+     pub fn column_count(&self) -> usize {
+-        // Note: Can't cache this as it changes if the schema is altered.
+-        unsafe { ffi::sqlite3_column_count(self.ptr) as usize }
++        // Cache only within one step/reset epoch. A new step may reprepare
++        // SELECT * after a schema change, so it invalidates this value first.
++        if let Some(count) = self.row_column_count.get() { return count; }
++        let count = unsafe { ffi::sqlite3_column_count(self.ptr) as usize };
++        self.row_column_count.set(Some(count));
++        count
+     }
+ 
+     #[inline]
+@@ -143,6 +150,7 @@
+ 
+     #[inline]
+     pub fn step(&self) -> c_int {
++        self.row_column_count.set(None);
+         cfg_select! {
+           feature = "unlock_notify" => {
+               use crate::unlock_notify;
+@@ -177,6 +185,7 @@
+ 
+     #[inline]
+     pub fn reset(&self) -> c_int {
++        self.row_column_count.set(None);
+         unsafe { ffi::sqlite3_reset(self.ptr) }
+     }
+ 

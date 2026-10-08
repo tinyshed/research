@@ -1,0 +1,145 @@
+{
+  "harness_commit": "uncommitted, by explicit user request",
+  "baseline_commit": "8955ce2",
+  "started_utc": "2026-10-08T16:57:36.610925+00:00",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.41",
+  "cpu": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           48 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  16\nOn-line CPU(s) list:                     0-15\nVendor ID:                               AuthenticAMD\nModel name:                              AMD Ryzen 7 7700 8-Core Processor\nCPU family:                              25\nModel:                                   97\nThread(s) per core:                      2\nCore(s) per socket:                      8\nSocket(s):                               1\nStepping:                                2\nBogoMIPS:                                7599.85\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext perfctr_core ssbd ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves avx512_bf16 clzero xsaveerptr arat npt nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avx512vbmi umip avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid fsrm\nVirtualization:                          AMD-V\nHypervisor vendor:                       Microsoft\nVirtualization type:                     full\nL1d cache:                               256 KiB (8 instances)\nL1i cache:                               256 KiB (8 instances)\nL2 cache:                                8 MiB (8 instances)\nL3 cache:                                32 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-15\nVulnerability Gather data sampling:      Not affected\nVulnerability Ghostwrite:                Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Old microcode:             Not affected\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Vulnerable: Safe RET, no microcode\nVulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Retpolines; IBPB conditional; IBRS_FW; STIBP always-on; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Vulnerable: No microcode\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Not affected",
+  "cpu_quota": "max 100000",
+  "memory_limit": "max",
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1",
+  "go": "go version go1.27.1 linux/amd64",
+  "source_sha256": {
+    "adapter_run.py": "ae180c4346c9bf71a0fa286b18a1cb2d3a8bd81ffc4c20b9934708754f061e35",
+    "adapter_build.sh": "629831deb286fa357ae7f8f1a7835c478f4c6022c221be0b5e051ccdaaaa7aa1",
+    "rust/src/adapter.rs": "af860be3acc24120a9b79d614a0ef6352140041026f650295e0050bc10ef0aac",
+    "rust/src/adapter_probe.rs": "d873ea2184cfa796266b6dcecfbbaaf8167c9054a767f1afda96f6487bfc67eb",
+    "rust/src/codec/binary.rs": "8c3471212d32433a642ad0f2814cc05d2ef2ebe7e5c982383ab2f6c87c8b7f77",
+    "rust/src/codec/buffer_tests.rs": "1bfe9486a456e6a1cad32edd53ebc6eb8d3feeeeb5f4baca3fe0bd29537c68f7",
+    "rust/src/codec/clocks.rs": "78fcde6c8becfbc624b431c5bed4b08d2f1026b4e9c0b1ec3205bb75e0c3d605",
+    "rust/src/codec/directory.rs": "45e48e9a87c9e066f74f2de39db8b013b7e067719c3da2aeff1f02782cc46758",
+    "rust/src/codec/envelope.rs": "70a0d2ab10d9aecf904b927f857d76b06e6ad6627e5e72208e855d869316da34",
+    "rust/src/codec/huffman.rs": "f126979a8e29e89f6c3a9e9937e4fde4cfc9c8c63444a3e4bf8e90a42421be07",
+    "rust/src/codec/residuals.rs": "c1f0a58a6f274ea841b572a4f06a969a645abcb040544497e8d4f3fc4e5bf8b9",
+    "rust/src/codec/sealed.rs": "b7796a2783700ff2fd71bda9ad5c7fa950e885f49c51d5a52fa1b50910703b94",
+    "rust/src/codec/summaries.rs": "672836bb4d908fd5f7afcc17c6f04f6c891f6fd3c422408754796edec80c6ed4",
+    "rust/src/codec/tests.rs": "478e6f986c2f53edf96d75e945aeb40d44448d4dc5468e4a1ae8109e951542a0",
+    "rust/src/codec/values.rs": "6c39ec324e397ca677d0786f0f0b1ed17fe839d7e72b40ba965af982de1b8248",
+    "rust/src/codec.rs": "7c18e4b75560fef7ac0c077b5c0d4b2ea1d5a2d7dd5acdbf0629ead858d88f29",
+    "rust/src/engine.rs": "a3f3a3c5174f9204fd2a41221dafac8a7c03de1b5effc3dc7681ca1842c0eae2",
+    "rust/src/exact.rs": "de1234874f36704590d34cfc1f0ccbada8c1745134eeae4e4a7707202cda3ec7",
+    "rust/src/main.rs": "6e424c351f8ed8259f082e2fc28d2748d97c79e23fbc101db03c4b2085cef211",
+    "rust/src/profile.rs": "bcd3034bab95e2fe61c91bb61d5495121e5980ea10d92826a25ccf199f2572e4",
+    "rust/src/query/adapter_tests.rs": "08177c22af2cb3d8d1badc614c09f88fd013eb2aad056a59f1a0d9b2eece11fd",
+    "rust/src/query/optimization_tests.rs": "813bc9588dfa8d841fd9e19264b08e0a9fbf60e69d764d775f03bb3437815512",
+    "rust/src/query/parallel.rs": "aa8208c24520c3ba2189bbf6d5776075a61d54e39a65ddf95977bdb5372a93ee",
+    "rust/src/query/quote.rs": "836fe1209510581c2e26d82a6dc7049b7fda7cd5ce44f9f42b06090f36f66401",
+    "rust/src/query/specialized.rs": "bba8edf50a5c595ec78b496653a01291387102feffece731ca7935f6264bf4e0",
+    "rust/src/query.rs": "2dc52382818db8d7c2400c1bedaa2ae8ef32610e08e70c0fc384ab204d28d8fe",
+    "rust/src/tuning.rs": "7879b42215b4e2effe6eb9737242e376934fc9ce88aea42d10ef1678c3a8b162",
+    "rust/Cargo.toml": "3412b96481820e7cc0cc026447af538836737804fa732231a2e2d08ab3452281",
+    "rust/Cargo.lock": "b0b0fe2ea88fb1e371e15fd9490175c8b419b9ca025c3e26b5d6807d85a79b28"
+  },
+  "binary_sha256": {
+    "rust-baseline": "8298709f41dc0dc50384bdcbbdc76f1456f3f5900e833efc667b7185fc283fa4",
+    "rust-adapter": "f3a3441eee44695fa3ea56d36ba561b4a99db39c88027fc32f22599fef240a64",
+    "rust-adapter-telemetry": "4a1d76fbe2c93b0ff29d39e0d348809da70b6951ec8482eb574b2f3106eac92a",
+    "go-reference": "74782483e11d72c795a2b1307dba83d0e0852a2e230ab4c7985f1d6dd6575fb1"
+  },
+  "iterations": {
+    "read_head_point": 16384,
+    "read_head_full8": 796,
+    "read_sealed_full8": 249,
+    "read_sealed_full16": 126,
+    "read_wide64": 101,
+    "stream_wide64": 137,
+    "aggregate_sum": 1517,
+    "aggregate_count": 1861,
+    "aggregate_cut_sum": 403,
+    "aggregate_wide_cut_sum": 122,
+    "aggregate_wide_grouped_cut_sum": 167,
+    "ingest_scrape100": 43,
+    "maintain_ready": 1
+  },
+  "warm": 32,
+  "passes": 6,
+  "variants": {
+    "baseline": [
+      "rust-baseline",
+      null
+    ],
+    "control": [
+      "rust-adapter",
+      0
+    ],
+    "metadata": [
+      "rust-adapter",
+      1
+    ],
+    "arena": [
+      "rust-adapter",
+      2
+    ],
+    "both": [
+      "rust-adapter",
+      3
+    ],
+    "lookaside_off": [
+      "rust-adapter",
+      4
+    ],
+    "lookaside_512": [
+      "rust-adapter",
+      8
+    ],
+    "both_lookaside_512": [
+      "rust-adapter",
+      11
+    ]
+  },
+  "native_build": {
+    "version": "3.53.4",
+    "download_url": "https://sqlite.org/2026/sqlite-amalgamation-3530400.zip",
+    "archive_sha256": "1e71ddf93849c6a6ecf58b827c0692073d2dd7ee40196158068f7b29f422e87d",
+    "sqlite3_c_sha256": "b1dd5d74ec7f29055a6684fa06fb3c2f6821c87dd38f9a458dfd2e8a1db28189",
+    "sqlite3_h_sha256": "919e7f2e8ed1d8f56ac17b412b8971c76aa5d1a879752cc6058f75e7d5910e1d",
+    "compiler": "cc (Debian 14.2.0-19) 14.2.0",
+    "flags": [
+      "-O2",
+      "-fPIC",
+      "-pthread",
+      "-DSQLITE_THREADSAFE=1",
+      "-DSQLITE_DQS=0",
+      "-DSQLITE_DEFAULT_WAL_SYNCHRONOUS=1",
+      "-DSQLITE_LIKE_DOESNT_MATCH_BLOBS",
+      "-DSQLITE_STRICT_SUBTYPE=1",
+      "-DSQLITE_OMIT_DEPRECATED",
+      "-DSQLITE_OMIT_SHARED_CACHE",
+      "-DSQLITE_USE_URI=1",
+      "-DSQLITE_ALLOW_URI_AUTHORITY",
+      "-DSQLITE_DEFAULT_FOREIGN_KEYS=1",
+      "-DSQLITE_TRUSTED_SCHEMA=0",
+      "-DSQLITE_ENABLE_API_ARMOR",
+      "-DSQLITE_ENABLE_ATOMIC_WRITE",
+      "-DSQLITE_ENABLE_BATCH_ATOMIC_WRITE",
+      "-DSQLITE_ENABLE_COLUMN_METADATA",
+      "-DSQLITE_ENABLE_MATH_FUNCTIONS",
+      "-DSQLITE_ENABLE_PREUPDATE_HOOK",
+      "-DSQLITE_ENABLE_SETLK_TIMEOUT=2",
+      "-DSQLITE_ENABLE_STAT4=1",
+      "-DSQLITE_SOUNDEX",
+      "-DSQLITE_OMIT_COMPLETE",
+      "-DSQLITE_OMIT_GET_TABLE",
+      "-DSQLITE_OMIT_DESERIALIZE",
+      "-DSQLITE_OMIT_LOAD_EXTENSION",
+      "-DSQLITE_MAX_MMAP_SIZE=1073741824",
+      "-DSQLITE_EXPERIMENTAL_PRAGMA_20251114"
+    ],
+    "intentional_differences": [
+      "native THREADSAFE=1",
+      "native Unix VFS",
+      "native automatic initialization"
+    ]
+  },
+  "note": "Local Docker Desktop/WSL2 experiment; compare ratios within this session, not bare-Linux latency or server throughput",
+  "finished_utc": "2026-10-08T17:00:09.802100+00:00"
+}

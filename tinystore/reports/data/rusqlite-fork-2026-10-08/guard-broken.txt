@@ -1,0 +1,25 @@
+
+running 1 test
+test raw_statement::tinystore_count_cache_regressions::schema_reprepare_refreshes_count_and_keeps_invalid_index_errors ... FAILED
+
+failures:
+
+---- raw_statement::tinystore_count_cache_regressions::schema_reprepare_refreshes_count_and_keeps_invalid_index_errors stdout ----
+
+thread 'raw_statement::tinystore_count_cache_regressions::schema_reprepare_refreshes_count_and_keeps_invalid_index_errors' (17888) panicked at src/raw_statement.rs:306:11:
+assertion `left == right` failed
+  left: 1
+ right: 2
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    raw_statement::tinystore_count_cache_regressions::schema_reprepare_refreshes_count_and_keeps_invalid_index_errors
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 178 filtered out; finished in 0.00s
+
+
+   Compiling rusqlite v0.40.1 (<tmp>/rusqlite-count)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.52s
+     Running unittests src/lib.rs (<tmp>/test-target-count/debug/deps/rusqlite-adf5207d26c1aea8)
+error: test failed, to rerun pass `--lib`

@@ -309,6 +309,15 @@ plausible where those costs matter. Replacing thin rusqlite calls with raw C
 calls alone has no demonstrated speed benefit; a custom allocator is primarily
 a memory-admission and failure-control candidate and can add overhead.
 
+The subsequent [SQLite adapter and rusqlite followup](sqlite-adapter-2026-10-08.md)
+tests metadata borrowing, an owned batch arena, lookaside, raw loops and small
+inline/column-count dependency patches on a local Linux/WSL2 host. Those
+changes did not establish a general engine speedup or an RSS saving. An
+isolated head-read/lookaside interaction repeated but moved time mainly after
+snapshot release. This updates the evidence for those candidates; native
+allocation admission, static binding, C compiler variants and concurrent
+WAL/checkpoint behavior in the plan below remain unmeasured.
+
 ### Adapter boundary and supported access
 
 Rusqlite 0.40.1 reexports libsqlite3-sys as `rusqlite::ffi` and exposes the

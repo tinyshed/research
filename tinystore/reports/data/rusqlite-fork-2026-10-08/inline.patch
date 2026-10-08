@@ -1,0 +1,10 @@
+--- a/src/statement.rs
++++ b/src/statement.rs
+@@ -790,6 +790,7 @@
+         Statement { conn, stmt }
+     }
+ 
++    #[inline]
+     pub(super) fn value_ref(&self, col: usize) -> ValueRef<'_> {
+         let raw = unsafe { self.stmt.ptr() };
+ 

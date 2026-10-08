@@ -1,0 +1,87 @@
+{
+  "inline": {
+    "crate": "rusqlite 0.40.1",
+    "patch_sha256": "123b4f2591b2db101f2033c32a9a9b5e643ffe94da9c3a7b8ff7c77f20604bdb",
+    "original_sha256": {
+      "raw_statement.rs": "3814424bb427ad821a18af7cf09860a37aab0d8056f69d7d18d4268a6ea0bb5c",
+      "statement.rs": "cc53dcc82755d97a48f2fa3b33d4d65c0f06fa45af0896441100e2467bfcc478"
+    },
+    "patched_sha256": {
+      "raw_statement.rs": "6408e859510ebd0ccfccdec84d4ef12db191f12706b5c16774a954db406f5c68",
+      "statement.rs": "220d86032f50b18d091da4f21d5258278b4d9cdb1b43f7f81b0305bbd60b1f82"
+    },
+    "binary_sha256": "a450b803ecf6e74b7aea126745d73c787f53fe745230cc86d8616032ac510d66",
+    "lock_other_packages_unchanged": true,
+    "upstream_failures_equal_stock": [
+      "statement::test::test_query_and_then_by_name",
+      "statement::test::test_query_map_named",
+      "statement::test::test_query_named",
+      "test::query_and_then_tests::test_query_and_then",
+      "test::query_and_then_tests::test_query_and_then_custom_error",
+      "test::query_and_then_tests::test_query_and_then_custom_error_fails",
+      "test::query_and_then_tests::test_query_and_then_fails",
+      "test::query_and_then_tests::test_query_row_and_then_custom_error",
+      "test::query_and_then_tests::test_query_row_and_then_custom_error_fails",
+      "test::test_dynamic",
+      "test::test_query_map"
+    ],
+    "note": "11 upstream tests also fail on stock under the pinned SQLITE_DQS=0 build; all other tests and both added regressions pass"
+  },
+  "count": {
+    "crate": "rusqlite 0.40.1",
+    "patch_sha256": "0c0850013ce4f42be94245409669334c4a5ff1a3745e7e6c321a652e5b0a33b1",
+    "original_sha256": {
+      "raw_statement.rs": "3814424bb427ad821a18af7cf09860a37aab0d8056f69d7d18d4268a6ea0bb5c",
+      "statement.rs": "cc53dcc82755d97a48f2fa3b33d4d65c0f06fa45af0896441100e2467bfcc478"
+    },
+    "patched_sha256": {
+      "raw_statement.rs": "2c043869720943b1b284fd5addaa86951e10e225162163a79bebc885e1b3b711",
+      "statement.rs": "cc53dcc82755d97a48f2fa3b33d4d65c0f06fa45af0896441100e2467bfcc478"
+    },
+    "binary_sha256": "f7184d940d75189cccdb2e3564fe9e3f28e01682e18c042c0a5cc17889e026e0",
+    "lock_other_packages_unchanged": true,
+    "upstream_failures_equal_stock": [
+      "statement::test::test_query_and_then_by_name",
+      "statement::test::test_query_map_named",
+      "statement::test::test_query_named",
+      "test::query_and_then_tests::test_query_and_then",
+      "test::query_and_then_tests::test_query_and_then_custom_error",
+      "test::query_and_then_tests::test_query_and_then_custom_error_fails",
+      "test::query_and_then_tests::test_query_and_then_fails",
+      "test::query_and_then_tests::test_query_row_and_then_custom_error",
+      "test::query_and_then_tests::test_query_row_and_then_custom_error_fails",
+      "test::test_dynamic",
+      "test::test_query_map"
+    ],
+    "note": "11 upstream tests also fail on stock under the pinned SQLITE_DQS=0 build; all other tests and both added regressions pass"
+  },
+  "combined": {
+    "crate": "rusqlite 0.40.1",
+    "patch_sha256": "fa16a06ccc6db91604a93b1132cf8fe7e65da4ea5fd3baec5d68811dd6dc767d",
+    "original_sha256": {
+      "raw_statement.rs": "3814424bb427ad821a18af7cf09860a37aab0d8056f69d7d18d4268a6ea0bb5c",
+      "statement.rs": "cc53dcc82755d97a48f2fa3b33d4d65c0f06fa45af0896441100e2467bfcc478"
+    },
+    "patched_sha256": {
+      "raw_statement.rs": "2c043869720943b1b284fd5addaa86951e10e225162163a79bebc885e1b3b711",
+      "statement.rs": "220d86032f50b18d091da4f21d5258278b4d9cdb1b43f7f81b0305bbd60b1f82"
+    },
+    "binary_sha256": "8a220f2ed645ae5abdf86b0e0ae1fcbf089693b20863a81911a2430a3fbd486b",
+    "lock_other_packages_unchanged": true,
+    "upstream_failures_equal_stock": [
+      "statement::test::test_query_and_then_by_name",
+      "statement::test::test_query_map_named",
+      "statement::test::test_query_named",
+      "test::query_and_then_tests::test_query_and_then",
+      "test::query_and_then_tests::test_query_and_then_custom_error",
+      "test::query_and_then_tests::test_query_and_then_custom_error_fails",
+      "test::query_and_then_tests::test_query_and_then_fails",
+      "test::query_and_then_tests::test_query_row_and_then_custom_error",
+      "test::query_and_then_tests::test_query_row_and_then_custom_error_fails",
+      "test::test_dynamic",
+      "test::test_query_map"
+    ],
+    "note": "11 upstream tests also fail on stock under the pinned SQLITE_DQS=0 build; all other tests and both added regressions pass"
+  },
+  "builder_sha256": "8e38df5f716df93393f0303754830cff1acc397bbb3a5f55b40e35f12bd46dbe"
+}
