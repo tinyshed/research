@@ -37,13 +37,13 @@ func multiStore(ctx context.Context, dir string, seriesCount, seconds int, share
 		})
 		defer closeMetrics(ctx, stores[index])
 	}
-	probe, err := stores[0].Read(ctx, metrics.Range{Matchers: []metrics.Label{{Name: "__name__", Value: "metric_0"}, {Name: "host", Value: "host_0"}}, From: 0, To: 1 << 62})
+	probe, err := stores[0].Read(ctx, metrics.Range{Match: metrics.Labels{"host": "host_0"}, From: 0, To: 1 << 62, Name: "metric_0"})
 	if err != nil || len(probe) != 1 {
 		log.Fatalf("multi-store probe: %v", err)
 	}
 	points := probe[0].Samples
 	from := points[0].At
-	request := metrics.Range{Matchers: []metrics.Label{{Name: "region", Value: regions[0]}}, From: from, To: from + 3600000}
+	request := metrics.Range{Match: metrics.Labels{"region": regions[0]}, From: from, To: from + 3600000}
 	runtime.GC()
 	w := watch("")
 	var queries, returned atomic.Int64

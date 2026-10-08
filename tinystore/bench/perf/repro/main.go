@@ -19,11 +19,13 @@ import (
 )
 
 func series(id int) metrics.Series {
-	return metrics.Series{Kind: metrics.Gauge, Labels: []metrics.Label{
-		{Name: "__name__", Value: "repro"},
-		{Name: "host", Value: "host_" + strconv.Itoa(id)},
-		{Name: "region", Value: "r" + strconv.Itoa(id%4)},
-	}}
+	return metrics.Series{
+		Name: "repro", Kind: metrics.Gauge,
+		Labels: metrics.Labels{
+			"host":   "host_" + strconv.Itoa(id),
+			"region": "r" + strconv.Itoa(id%4),
+		},
+	}
 }
 
 func sample(id, index int) metrics.Sample {
@@ -187,7 +189,7 @@ func main() {
 			id := (queries * 7919) % *seriesCount
 			from := sample(id, (queries*17)%140).At
 			at := time.Now()
-			result, err := s.Read(ctx, metrics.Range{Matchers: series(id).Labels, From: from, To: from + 3600000})
+			result, err := s.Read(ctx, metrics.Range{Name: "repro", Match: series(id).Labels, From: from, To: from + 3600000})
 			if err != nil {
 				log.Fatal(err)
 			}

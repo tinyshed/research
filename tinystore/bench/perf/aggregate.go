@@ -23,16 +23,17 @@ func aggregate(ctx context.Context, dir, shape string, seriesCount, readers, sec
 	defer cleanup()
 	store := openStore(ctx, path, seriesCount, readers)
 	defer closeMetrics(ctx, store)
-	probe, err := store.Read(ctx, metrics.Range{Matchers: []metrics.Label{{Name: "__name__", Value: "metric_0"}, {Name: "host", Value: "host_0"}}, From: 0, To: 1 << 62})
+	probe, err := store.Read(ctx, metrics.Range{Match: metrics.Labels{"host": "host_0"}, From: 0, To: 1 << 62, Name: "metric_0"})
 	if err != nil || len(probe) != 1 {
 		log.Fatalf("aggregate probe: %v", err)
 	}
 	from := probe[0].Samples[0].At
-	matchers := []metrics.Label{{Name: "__name__", Value: "metric_0"}, {Name: "host", Value: "host_0"}}
+	query := metrics.Range{Name: "metric_0", Match: metrics.Labels{"host": "host_0"}, From: from, To: from + 3600000}
 	if shape == "region" {
-		matchers = []metrics.Label{{Name: "region", Value: regions[0]}}
+		query.Name = ""
+		query.Match = metrics.Labels{"region": regions[0]}
 	}
-	request := metrics.AggregateRequest{Range: metrics.Range{Matchers: matchers, From: from, To: from + 3600000}, Width: time.Hour, Op: metrics.AggregateSum}
+	request := metrics.AggregateRequest{Range: query, Width: time.Hour, Op: metrics.AggregateSum}
 	runtime.GC()
 	w := watch("")
 	deadline := time.Now().Add(time.Duration(seconds) * time.Second)

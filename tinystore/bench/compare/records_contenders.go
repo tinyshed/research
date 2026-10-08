@@ -67,7 +67,7 @@ func (t *tinyStoreRecords) count(ctx context.Context, stream string, from, to ti
 	query := records.Query{From: from, To: to, Streams: []string{stream}, Limit: 10_000}
 	n := 0
 	for {
-		page, err := t.records.Read(ctx, query)
+		page, err := t.records.Scan(ctx, query)
 		if err != nil {
 			return n, err
 		}

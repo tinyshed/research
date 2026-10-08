@@ -133,7 +133,7 @@ func (l *loadRun) read(ctx context.Context, seed uint64) []time.Duration {
 	for ctx.Err() == nil {
 		from := time.Unix(0, fixtureBase+random.Int64N(l.appended.Load()-1000)*1_234_567).UTC()
 		start := time.Now()
-		_, err := l.h.logs.Read(ctx, records.Query{From: from, To: from.Add(time.Second), Limit: 10_000})
+		_, err := l.h.logs.Scan(ctx, records.Query{From: from, To: from.Add(time.Second), Limit: 10_000})
 		if err != nil && ctx.Err() == nil {
 			log.Fatal(err)
 		}

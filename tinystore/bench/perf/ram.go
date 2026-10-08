@@ -83,9 +83,13 @@ func tsbsIngestRSS(ctx context.Context, dir, corpus string, concurrentMaintenanc
 		if len(row.Values) != len(row.Times) || len(row.Values) == 0 {
 			log.Fatal("invalid normalized corpus row")
 		}
-		series := metrics.Series{Kind: metrics.Gauge}
+		series := metrics.Series{Kind: metrics.Gauge, Labels: metrics.Labels{}}
 		for name, value := range row.Metric {
-			series.Labels = append(series.Labels, metrics.Label{Name: name, Value: value})
+			if name == "__name__" {
+				series.Name = value
+			} else {
+				series.Labels[name] = value
+			}
 		}
 		points := make([]metrics.Sample, len(row.Values))
 		for index, value := range row.Values {
@@ -213,7 +217,7 @@ func maintenanceIngestRSS(ctx context.Context, dir string, seriesCount, seconds 
 }
 
 func streamRegionHour(ctx context.Context, store *metrics.Store, seriesCount, readers, seconds int, first, last int64) {
-	request := metrics.Range{Matchers: []metrics.Label{{Name: "region", Value: regions[0]}}, From: first + 10000, To: min(first+3600000+10000, last+1)}
+	request := metrics.Range{Match: metrics.Labels{"region": regions[0]}, From: first + 10000, To: min(first+3600000+10000, last+1)}
 	runtime.GC()
 	baseline := processRSS()
 	w := watch("")
@@ -278,9 +282,9 @@ func tsbsRSS(ctx context.Context, dir, shape string, workers, seconds int) {
 	request := metrics.Range{}
 	switch shape {
 	case "light":
-		request = metrics.Range{Matchers: []metrics.Label{{Name: "__name__", Value: "cpu_usage_guest"}, {Name: "hostname", Value: "host_0"}}, From: first, To: first + 3600000}
+		request = metrics.Range{Match: metrics.Labels{"hostname": "host_0"}, From: first, To: first + 3600000, Name: "cpu_usage_guest"}
 	case "wide", "wide_materialized":
-		request = metrics.Range{Matchers: []metrics.Label{{Name: "region", Value: "eu-west-1"}}, From: first, To: last + 1}
+		request = metrics.Range{Match: metrics.Labels{"region": "eu-west-1"}, From: first, To: last + 1}
 	}
 	runtime.GC()
 	baseline := processRSS()

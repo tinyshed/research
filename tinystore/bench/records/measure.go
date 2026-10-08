@@ -134,7 +134,7 @@ func secondReads(ctx context.Context, h *harness, fixture []records.Record) {
 	rows, start := 0, time.Now()
 	for i := range 100 {
 		from := fixture[len(fixture)/100+i*(len(fixture)*9/1000)].At
-		page, err := h.logs.Read(ctx, records.Query{From: from, To: from.Add(time.Second), Limit: 10_000})
+		page, err := h.logs.Scan(ctx, records.Query{From: from, To: from.Add(time.Second), Limit: 10_000})
 		if err != nil || page.More {
 			log.Fatalf("a one-second read: more %v, %v", page.More, err)
 		}
@@ -269,7 +269,7 @@ func readSeconds(ctx context.Context, h *harness, name string, first, step int) 
 	rows := 0
 	for i := range 100 {
 		from := time.Unix(0, fixtureBase+int64(first+i*step)*1_234_567).UTC()
-		page, err := h.logs.Read(ctx, records.Query{From: from, To: from.Add(time.Second), Limit: 10_000})
+		page, err := h.logs.Scan(ctx, records.Query{From: from, To: from.Add(time.Second), Limit: 10_000})
 		if err != nil || page.More {
 			log.Fatalf("a one-second read: more %v, %v", page.More, err)
 		}

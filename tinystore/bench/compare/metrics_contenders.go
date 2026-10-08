@@ -55,7 +55,9 @@ func (t *tinyStoreMetrics) ingest(ctx context.Context, window []seriesSamples) e
 	var batches []metrics.Batch
 	held := 0
 	for _, s := range window {
-		batch := metrics.Batch{Series: metrics.Series{Labels: tinyStoreLabels(s.Labels), Kind: metrics.Gauge}}
+		batch := metrics.Batch{Series: metrics.Series{
+			Name: s.Labels["__name__"], Labels: tinyStoreLabels(s.Labels), Kind: metrics.Gauge,
+		}}
 		for i := range s.Times {
 			batch.Samples = append(batch.Samples, metrics.Sample{At: s.Times[i], Value: s.Values[i]})
 		}
@@ -86,7 +88,9 @@ func (t *tinyStoreMetrics) settle(ctx context.Context) error {
 }
 
 func (t *tinyStoreMetrics) readSeries(ctx context.Context, lbls map[string]string, from, to int64) (int, error) {
-	results, err := t.metrics.Read(ctx, metrics.Range{Matchers: tinyStoreLabels(lbls), From: from, To: to})
+	results, err := t.metrics.Read(ctx, metrics.Range{
+		Name: lbls["__name__"], Match: tinyStoreLabels(lbls), From: from, To: to,
+	})
 	n := 0
 	for _, r := range results {
 		n += len(r.Samples)
@@ -95,8 +99,14 @@ func (t *tinyStoreMetrics) readSeries(ctx context.Context, lbls map[string]strin
 }
 
 func (t *tinyStoreMetrics) readMatching(ctx context.Context, name, value string, from, to int64) (int, error) {
+	query := metrics.Range{From: from, To: to}
+	if name == "__name__" {
+		query.Name = value
+	} else {
+		query.Match = metrics.Labels{name: value}
+	}
 	n := 0
-	err := t.metrics.Stream(ctx, metrics.Range{Matchers: []metrics.Label{{Name: name, Value: value}}, From: from, To: to},
+	err := t.metrics.Stream(ctx, query,
 		func(r metrics.Result) error {
 			n += len(r.Samples)
 			return nil
@@ -106,10 +116,12 @@ func (t *tinyStoreMetrics) readMatching(ctx context.Context, name, value string,
 
 func (t *tinyStoreMetrics) close() error { return t.store.Close(context.Background()) }
 
-func tinyStoreLabels(m map[string]string) []metrics.Label {
-	out := make([]metrics.Label, 0, len(m))
+func tinyStoreLabels(m map[string]string) metrics.Labels {
+	out := make(metrics.Labels, len(m))
 	for name, value := range m {
-		out = append(out, metrics.Label{Name: name, Value: value})
+		if name != "__name__" {
+			out[name] = value
+		}
 	}
 	return out
 }

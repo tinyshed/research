@@ -6,6 +6,7 @@ import (
 	"database/sql"
 	"encoding/json"
 	"log"
+	"maps"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -60,9 +61,13 @@ func corpusChurnIdentities(path string, count int) []churnIdentity {
 		if err := json.Unmarshal(scanner.Bytes(), &row); err != nil || len(row.Values) == 0 {
 			log.Fatalf("decode churn corpus: %v", err)
 		}
-		identity := churnIdentity{series: metrics.Series{Kind: metrics.Gauge}, value: row.Values[0]}
+		identity := churnIdentity{series: metrics.Series{Kind: metrics.Gauge, Labels: metrics.Labels{}}, value: row.Values[0]}
 		for name, value := range row.Metric {
-			identity.series.Labels = append(identity.series.Labels, metrics.Label{Name: name, Value: value})
+			if name == "__name__" {
+				identity.series.Name = value
+			} else {
+				identity.series.Labels[name] = value
+			}
 		}
 		identities = append(identities, identity)
 	}
@@ -101,18 +106,12 @@ func longChurn(ctx context.Context, dir string, seriesCount, epochs int, corpus 
 			value := float64(epoch*seriesCount + id)
 			if corpus != "" {
 				original := realIdentities[id]
-				series[id] = metrics.Series{Kind: original.series.Kind, Labels: append([]metrics.Label(nil), original.series.Labels...)}
+				series[id] = metrics.Series{Name: original.series.Name, Kind: original.series.Kind, Labels: maps.Clone(original.series.Labels)}
 				value = original.value
-				foundHost := false
-				for index := range series[id].Labels {
-					if series[id].Labels[index].Name == "host" {
-						series[id].Labels[index].Value += "-epoch-" + strconv.Itoa(epoch)
-						foundHost = true
-						break
-					}
-				}
-				if !foundHost {
-					series[id].Labels = append(series[id].Labels, metrics.Label{Name: "churn_epoch", Value: strconv.Itoa(epoch)})
+				if host, found := series[id].Labels["host"]; found {
+					series[id].Labels["host"] = host + "-epoch-" + strconv.Itoa(epoch)
+				} else {
+					series[id].Labels["churn_epoch"] = strconv.Itoa(epoch)
 				}
 			}
 			batches[id] = metrics.Batch{Series: series[id], Samples: []metrics.Sample{{At: stamp, Value: value}}}

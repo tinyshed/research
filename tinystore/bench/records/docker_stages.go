@@ -226,7 +226,7 @@ func ask(ctx context.Context, h *harness, name string, query records.Query, want
 	before, start := h.logs.Stats(), time.Now()
 	rows, pages := 0, 0
 	for {
-		page, err := h.logs.Read(ctx, query)
+		page, err := h.logs.Scan(ctx, query)
 		if err != nil {
 			log.Fatal(name, err)
 		}

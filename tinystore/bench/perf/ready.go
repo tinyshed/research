@@ -27,7 +27,7 @@ func readyChurn(ctx context.Context, dir string, rounds int) {
 		MaxSeries:  1,
 		MaxReaders: 1,
 	})
-	series := metrics.Series{Labels: []metrics.Label{{Name: "__name__", Value: "churn"}}}
+	series := metrics.Series{Name: "churn"}
 	start := time.Now().UnixMilli() - int64(240+rounds)*10000
 	initial := make([]metrics.Sample, 240)
 	for i := range initial {

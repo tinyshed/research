@@ -36,16 +36,18 @@ var (
 func buildSeries(n int) []metrics.Series {
 	out := make([]metrics.Series, n)
 	for i := range out {
-		out[i] = metrics.Series{Kind: metrics.Gauge, Labels: []metrics.Label{
-			{Name: "__name__", Value: "metric_" + strconv.Itoa(i%20)},
-			{Name: "host", Value: "host_" + strconv.Itoa(i/20)},
-			{Name: "job", Value: "bench"},
-			{Name: "region", Value: regions[i%len(regions)]},
-			{Name: "os", Value: systems[i%len(systems)]},
-			{Name: "service", Value: "svc_" + strconv.Itoa(i%16)},
-			{Name: "rack", Value: strconv.Itoa(i % 50)},
-			{Name: "environment", Value: staging[i%len(staging)]},
-		}}
+		out[i] = metrics.Series{
+			Name: "metric_" + strconv.Itoa(i%20), Kind: metrics.Gauge,
+			Labels: metrics.Labels{
+				"host":        "host_" + strconv.Itoa(i/20),
+				"job":         "bench",
+				"region":      regions[i%len(regions)],
+				"os":          systems[i%len(systems)],
+				"service":     "svc_" + strconv.Itoa(i%16),
+				"rack":        strconv.Itoa(i % 50),
+				"environment": staging[i%len(staging)],
+			},
+		}
 	}
 	return out
 }
@@ -299,10 +301,10 @@ func ingest(ctx context.Context, dir, label string, seriesCount, samples, batch,
 }
 
 type readShape struct {
-	name     string
-	matchers []metrics.Label
-	span     time.Duration
-	rotate   bool
+	name   string
+	query  metrics.Range
+	span   time.Duration
+	rotate bool
 }
 
 // read replays one shape of query at a chosen reader concurrency
@@ -317,8 +319,8 @@ func read(ctx context.Context, dir, label, only string, seriesCount, readers, ac
 	step := int64(10000)
 	var first, last int64
 	results, err := store.Read(ctx, metrics.Range{
-		Matchers: []metrics.Label{{Name: "__name__", Value: "metric_0"}, {Name: "host", Value: "host_0"}},
-		From:     0, To: 1 << 62,
+		Match: metrics.Labels{"host": "host_0"},
+		From:  0, To: 1 << 62, Name: "metric_0",
 	})
 	if err != nil || len(results) == 0 {
 		log.Fatalf("probe read: %v (%d results)", err, len(results))
@@ -330,17 +332,18 @@ func read(ctx context.Context, dir, label, only string, seriesCount, readers, ac
 		return
 	}
 
+	one := buildSeries(seriesCount)[0]
 	shapes := []readShape{
-		{"point", []metrics.Label{{Name: "__name__", Value: "metric_0"}, {Name: "host", Value: "host_0"}}, time.Duration(step) * time.Millisecond, false},
-		{"hour", []metrics.Label{{Name: "__name__", Value: "metric_0"}, {Name: "host", Value: "host_0"}}, time.Hour, false},
-		{"all_labels_hour", buildSeries(seriesCount)[0].Labels, time.Hour, false},
-		{"four_labels_hour", buildSeries(seriesCount)[0].Labels[:4], time.Hour, false},
-		{"rotating_hour", nil, time.Hour, true},
-		{"day", []metrics.Label{{Name: "__name__", Value: "metric_0"}, {Name: "host", Value: "host_0"}}, 24 * time.Hour, false},
-		{"series_full", []metrics.Label{{Name: "__name__", Value: "metric_0"}, {Name: "host", Value: "host_0"}}, 0, false},
-		{"selector_low_cardinality", []metrics.Label{{Name: "region", Value: regions[0]}}, time.Hour, false},
-		{"selector_high_cardinality", []metrics.Label{{Name: "host", Value: "host_1"}}, time.Hour, false},
-		{"scan_all", []metrics.Label{{Name: "job", Value: "bench"}}, 0, false},
+		{"point", metrics.Range{Name: "metric_0", Match: metrics.Labels{"host": "host_0"}}, time.Duration(step) * time.Millisecond, false},
+		{"hour", metrics.Range{Name: "metric_0", Match: metrics.Labels{"host": "host_0"}}, time.Hour, false},
+		{"all_labels_hour", metrics.Range{Name: one.Name, Match: one.Labels}, time.Hour, false},
+		{"four_labels_hour", metrics.Range{Name: one.Name, Match: metrics.Labels{"host": one.Labels["host"], "job": one.Labels["job"], "region": one.Labels["region"]}}, time.Hour, false},
+		{"rotating_hour", metrics.Range{}, time.Hour, true},
+		{"day", metrics.Range{Name: "metric_0", Match: metrics.Labels{"host": "host_0"}}, 24 * time.Hour, false},
+		{"series_full", metrics.Range{Name: "metric_0", Match: metrics.Labels{"host": "host_0"}}, 0, false},
+		{"selector_low_cardinality", metrics.Range{Match: metrics.Labels{"region": regions[0]}}, time.Hour, false},
+		{"selector_high_cardinality", metrics.Range{Match: metrics.Labels{"host": "host_1"}}, time.Hour, false},
+		{"scan_all", metrics.Range{Match: metrics.Labels{"job": "bench"}}, 0, false},
 	}
 	for _, shape := range shapes {
 		if only != "" && shape.name != only {
@@ -351,11 +354,11 @@ func read(ctx context.Context, dir, label, only string, seriesCount, readers, ac
 }
 
 func runShape(ctx context.Context, store *metrics.Store, label string, seriesCount, readers, activeReads, seconds int, shape readShape, first, last int64) {
-	var rotating [][]metrics.Label
+	var rotating []metrics.Range
 	if shape.rotate {
-		rotating = make([][]metrics.Label, seriesCount)
+		rotating = make([]metrics.Range, seriesCount)
 		for id := range rotating {
-			rotating[id] = []metrics.Label{{Name: "__name__", Value: "metric_" + strconv.Itoa(id%20)}, {Name: "host", Value: "host_" + strconv.Itoa(id/20)}}
+			rotating[id] = metrics.Range{Name: "metric_" + strconv.Itoa(id%20), Match: metrics.Labels{"host": "host_" + strconv.Itoa(id/20)}}
 		}
 	}
 	calls := &latencies{}
@@ -373,9 +376,9 @@ func runShape(ctx context.Context, store *metrics.Store, label string, seriesCou
 			defer wg.Done()
 			source := rand.New(rand.NewPCG(uint64(seed), 7))
 			for time.Now().Before(deadline) {
-				matchers := shape.matchers
+				query := shape.query
 				if shape.rotate {
-					matchers = rotating[source.IntN(len(rotating))]
+					query = rotating[source.IntN(len(rotating))]
 				}
 				from, to := first, last+1
 				if shape.span > 0 {
@@ -386,7 +389,8 @@ func runShape(ctx context.Context, store *metrics.Store, label string, seriesCou
 					to = from + width
 				}
 				at := time.Now()
-				result, err := store.Read(ctx, metrics.Range{Matchers: matchers, From: from, To: to})
+				query.From, query.To = from, to
+				result, err := store.Read(ctx, query)
 				if err != nil {
 					log.Fatalf("read %s: %v", shape.name, err)
 				}
@@ -432,8 +436,8 @@ func mixed(ctx context.Context, dir, label string, seriesCount, readers, activeR
 	// a repeated run must start after what an earlier one already sealed
 	at := time.Now().UnixMilli()
 	probe, err := store.Read(ctx, metrics.Range{
-		Matchers: []metrics.Label{{Name: "__name__", Value: "metric_0"}, {Name: "host", Value: "host_0"}},
-		From:     0, To: 1 << 62,
+		Match: metrics.Labels{"host": "host_0"},
+		From:  0, To: 1 << 62, Name: "metric_0",
 	})
 	if err != nil {
 		log.Fatalf("mixed probe: %v", err)
@@ -477,8 +481,7 @@ func mixed(ctx context.Context, dir, label string, seriesCount, readers, activeR
 			for time.Now().Before(deadline) {
 				begin := time.Now()
 				_, err := store.Read(ctx, metrics.Range{
-					Matchers: []metrics.Label{{Name: "__name__", Value: "metric_" + strconv.Itoa(seed%20)}},
-					From:     at - 3600000, To: at + 3600000,
+					From: at - 3600000, To: at + 3600000, Name: "metric_" + strconv.Itoa(seed%20),
 				})
 				if err != nil {
 					log.Fatalf("mixed read: %v", err)

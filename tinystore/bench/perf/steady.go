@@ -79,7 +79,7 @@ func steady(ctx context.Context, dir, label string, seriesCount, samples int) {
 		"wal_peak_bytes", w.walPeak)
 	store = openStore(ctx, path, seriesCount, 2)
 	for id, series := range all {
-		result, err := store.Read(ctx, metrics.Range{Matchers: series.Labels, From: steadySample(id, 0).At, To: steadySample(id, samples-1).At + 1})
+		result, err := store.Read(ctx, metrics.Range{Name: series.Name, Match: series.Labels, From: steadySample(id, 0).At, To: steadySample(id, samples-1).At + 1})
 		if err != nil || len(result) != 1 || len(result[0].Samples) != samples {
 			log.Fatalf("steady readback series %d: %v", id, err)
 		}
