@@ -1,0 +1,8 @@
+{
+  "mutation": "temporary mutant leaks a deep-cloned SetEntry value instead of borrowing caller input",
+  "mutated_source_sha256": "87786c0e1d16e97c41a6c790a99376515e45584c4516002fee830fd0a1cba857",
+  "mutated_binary_sha256": "a5d4c58fed68b374875ba07813b93c170456fedac6c2f955ff1d98bd4d187904",
+  "exit_code": 101,
+  "stderr": "\nthread 'main' (3682) panicked at src/main.rs:1520:5:\nSetEntry must borrow original input, without deep clone\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n",
+  "ownership_regression_rejected_mutation": true
+}

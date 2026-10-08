@@ -1,0 +1,42 @@
+[
+  [
+    {
+      "error": {
+        "bucket": "spill",
+        "code": "corrupt",
+        "path": "tenant/42/k000000"
+      },
+      "found": false,
+      "op": "get"
+    },
+    {
+      "error": {
+        "bucket": "spill",
+        "code": "corrupt",
+        "path": "tenant/42/k000000"
+      },
+      "found": false,
+      "op": "take"
+    }
+  ],
+  [
+    {
+      "error": {
+        "bucket": "spill",
+        "code": "corrupt",
+        "path": "tenant/42/k000000"
+      },
+      "found": false,
+      "op": "get"
+    },
+    {
+      "error": {
+        "bucket": "spill",
+        "code": "corrupt",
+        "path": "tenant/42/k000000"
+      },
+      "found": false,
+      "op": "take"
+    }
+  ]
+]

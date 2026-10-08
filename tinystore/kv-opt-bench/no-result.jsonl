@@ -1,0 +1,56 @@
+{"Op": "get", "Bucket": "shapes", "Key": "42"}
+{"Op": "take_bad", "Bucket": "trace", "Key": "bad"}
+{"Op": "has", "Bucket": "trace", "Key": "bad"}
+{"Op": "set_void", "Bucket": "trace", "Key": "live", "Value": {"Kind": 2, "Bytes": "Zmlyc3Q=", "Int": 0}, "Expiry": 1800000001000}
+{"Op": "get", "Bucket": "trace", "Key": "live"}
+{"Op": "set_void", "Bucket": "trace", "Key": "live", "Value": {"Kind": 2, "Bytes": "Y29uZmxpY3Q=", "Int": 0}, "Version": "1"}
+{"Op": "set_void", "Bucket": "trace", "Key": "live", "Value": {"Kind": 2, "Bytes": "c2Vjb25k", "Int": 0}, "Version": "d7o"}
+{"Op": "touch", "Bucket": "trace", "Key": "live", "Expiry": 1800000002000, "Version": "d7p"}
+{"Op": "get", "Bucket": "trace", "Key": "live"}
+{"Op": "rollback_set", "Bucket": "trace", "Key": "rolled", "Value": {"Kind": 2, "Bytes": "cm9sbGJhY2s=", "Int": 0}}
+{"Op": "has", "Bucket": "trace", "Key": "rolled"}
+{"Op": "set_void", "Bucket": "trace", "Key": "after-rollback", "Value": {"Kind": 2, "Bytes": "a2VwdA==", "Int": 0}}
+{"Op": "delete", "Bucket": "trace", "Key": "live", "Version": "1"}
+{"Op": "take", "Bucket": "trace", "Key": "live", "Version": "1"}
+{"Op": "take", "Bucket": "trace", "Key": "live", "Version": "d7p"}
+{"Op": "has", "Bucket": "trace", "Key": "live"}
+{"Op": "set_void", "Bucket": "trace", "Key": "live", "Value": {"Kind": 2, "Bytes": "cmVib3Ju", "Int": 0}, "Expiry": 1800000001000}
+{"Op": "absent", "Bucket": "trace", "Key": "live", "Value": {"Kind": 2, "Bytes": "ZXhpc3Rpbmc=", "Int": 0}}
+{"Op": "get", "Bucket": "trace", "Key": "live", "Now": 1800000001000}
+{"Op": "has", "Bucket": "trace", "Key": "live"}
+{"Op": "absent", "Bucket": "trace", "Key": "live", "Value": {"Kind": 2, "Bytes": "ZXhwaXJlZC1yZWNsYWlt", "Int": 0}}
+{"Op": "scan", "Bucket": "trace", "Limit": 2}
+{"Op": "scan", "Bucket": "trace", "Limit": 2, "After": "bad"}
+{"Op": "scan", "Bucket": "trace", "Limit": 1001}
+{"Op": "scan", "Bucket": "trace", "Limit": -1, "After": "bad"}
+{"Op": "set_void", "Bucket": "trace", "Key": "", "Value": {"Kind": 2, "Bytes": "aW52YWxpZA==", "Int": 0}}
+{"Op": "set_void", "Bucket": "trace", "Key": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "Value": {"Kind": 2, "Bytes": "aW52YWxpZA==", "Int": 0}}
+{"Op": "set_void", "Bucket": "trace", "Key": "zero\u0000key", "Owners": ["a\u0000b", "42"], "Value": {"Kind": 2, "Bytes": "emVybw==", "Int": 0}}
+{"Op": "get", "Bucket": "trace", "Key": "zero\u0000key", "Owners": ["a\u0000b", "42"]}
+{"Op": "scan", "Bucket": "trace", "Owners": ["a\u0000b", "42"], "Limit": 1}
+{"Op": "get", "Bucket": "shapes", "Owners": ["zero\u0000owner", "深い", "a", "b", "c", "d", "e"], "Key": "key\u0000x"}
+{"Op": "clear", "Bucket": "clear", "Owners": ["parent"]}
+{"Op": "get", "Bucket": "clear", "Owners": ["parent"], "Key": "k000001"}
+{"Op": "scan", "Bucket": "clear", "Owners": ["parent"], "Limit": 2}
+{"Op": "set_void", "Bucket": "clear", "Owners": ["parent"], "Key": "k000001", "Value": {"Kind": 2, "Bytes": "bmV3IGFmdGVyIGNsZWFy", "Int": 0}}
+{"Op": "get", "Bucket": "clear", "Owners": ["parent"], "Key": "k000001"}
+{"Op": "clear", "Bucket": "small", "Owners": ["parent"]}
+{"Op": "scan", "Bucket": "small", "Owners": ["parent"]}
+{"Op": "counter_add", "Bucket": "counters", "Key": "one", "N": 9223372036854775807}
+{"Op": "counter_add", "Bucket": "counters", "Key": "one", "N": 1}
+{"Op": "counter_get", "Bucket": "counters", "Key": "one"}
+{"Op": "counter_max", "Bucket": "counters", "Key": "negative", "N": -1}
+{"Op": "counter_max", "Bucket": "counters", "Key": "negative", "N": 42}
+{"Op": "counter_get", "Bucket": "counters", "Key": "one", "Now": 1800000002000}
+{"Op": "counter_add", "Bucket": "counters", "Key": "one", "N": -5}
+{"Op": "counter_max", "Bucket": "counters", "Key": "one", "N": -6}
+{"Op": "maintain", "Bucket": "trace"}
+{"Op": "get", "Bucket": "clear", "Owners": ["parent"], "Key": "k000001"}
+{"Op": "scan", "Bucket": "trace", "Limit": 100}
+{"Op": "set_void", "Bucket": "trace", "Key": "default-ttl", "Value": {"Kind": 2, "Bytes": "aW5pdGlhbA==", "Int": 0}, "DefaultTTL": 1000}
+{"Op": "set_void", "Bucket": "trace", "Key": "default-ttl", "Value": {"Kind": 2, "Bytes": "b3ZlcndyaXRl", "Int": 0}, "DefaultTTL": 9000, "Now": 1800000002200}
+{"Op": "get", "Bucket": "trace", "Key": "default-ttl", "Now": 1800000003000}
+{"Op": "set_void", "Bucket": "trace", "Key": "default-ttl", "Value": {"Kind": 2, "Bytes": "cmVjcmVhdGU=", "Int": 0}, "DefaultTTL": 9000}
+{"Op": "get", "Bucket": "trace", "Key": "default-ttl"}
+{"Op": "delete", "Bucket": "trace", "Key": "default-ttl"}
+{"Op": "set_void", "Bucket": "trace", "Key": "default-ttl", "Value": {"Kind": 2, "Bytes": "cmVkZWxldGU=", "Int": 0}, "DefaultTTL": 1000}

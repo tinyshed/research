@@ -489,3 +489,13 @@ scans favor native in its fixture, while FULL writes show no general gain.
 Both rounds also identify useful Go algorithm candidates. These findings add
 evidence for further engine-specific work without settling the complete-port,
 memory-admission, concurrency or recovery gates above.
+
+The [9 October records](records-optimization-2026-10-09.md) and
+[KV optimization](kv-optimization-2026-10-09.md) rounds subsequently remeasure
+old and improved native implementations against Go. Records' selective,
+page, Follow and owned-backing changes remove major costs and reduce retained
+RSS, with remaining Go wins and explicit cold/raw/decoded-cache controls.
+KV's normalized return work barely changes FULL write time, while an isolated
+Linux HAVE_FDATASYNC build recovers large-write time with unchanged sync
+counts, WAL/FULL and committed state. These update implementation-specific
+evidence without converting prior prototype regressions into language limits.

@@ -771,3 +771,82 @@ shared admission, general user transactions, custom codecs and arbitrary-byte
 keys, plus config/watch/once/limiter/quota/sliding/relaxed-counter runtimes.
 These exploratory local timings establish neither production readiness nor
 bare-Linux or concurrent-throughput guarantees.
+
+## KV work normalization, 9 October 2026
+
+The [KV optimization round](reports/kv-optimization-2026-10-09.md) remeasures
+public Go, the archived native slice, explicit no-result/borrowed-result
+writes, precomputed branch paths and cached transaction commands in six
+balanced same-session passes on the local Ryzen/WSL2 host. The no-result
+path removes two Rust allocations and 263 requested bytes per Set256,
+4,103 bytes per Set4KiB. Go's Set invokes SetEntry internally but reuses the
+caller's key/value; the old native path deep-cloned that input.
+
+Removing that work scarcely changed durable-write elapsed time: paired
+old/normalized ratios were 0.994× for Set256 and 1.001× for Set4KiB. A separate
+instrumented build attributed 98.2–99.4% of native write phase time to FULL
+COMMIT. Path reuse improved the selected point read by about 4%; the combined
+variant's Go/native ratios were 1.79× for Get256, 1.89× for Get4KiB and
+3.11× for Scan100. Durable Set256 was 1.10×, Set4KiB about parity and CAS
+1.09× in this session. These ratios do not explain changes from older sessions.
+
+The additional 64 KiB overwrite took 1.737 ms in Go and 2.638 ms in native
+Rust despite normalized return work. Separate whole-process syscall traces
+found Go using fdatasync and the native amalgamation build using fsync, with
+near-identical sync/write counts. This identifies a specific Unix-VFS build
+candidate; its effect must be measured independently rather than attributed
+to the return-copy change. The report retains fixed traces, phase/counter
+diagnostics, source/binary hashes and matching committed states for all
+variants. Production source remains unchanged.
+
+An independent six-pass supplement holds the Rust source and native flags
+fixed except for SQLite's documented Linux `HAVE_FDATASYNC=1` selection.
+Go/native-fsync/native-fdatasync medians are 1.881/2.696/1.812 ms for 4 KiB
+Set and 1.794/2.759/1.703 ms for 64 KiB Set. Native sync counts and pwrite
+counts are unchanged; syscall tracing confirms only fsync becomes fdatasync.
+All variants read back WAL/FULL and autocheckpoint 1000 and commit identical
+states. Small Set is essentially tied with Go. This isolates a Unix-VFS build
+effect in the local Linux/WSL2 environment, rather than a Rust-language or
+return-copy effect. It does not substitute for power-loss validation or
+establish a portable default on other operating systems.
+
+## Records query and ownership changes, 9 October 2026
+
+The [records optimization round](reports/records-optimization-2026-10-09.md)
+compares public Go, the archived/unchanged native reader and a new native
+reader on the same Go-head and compatible native-sealed files. It adds lazy
+query-column decoding, ready-before-return owned spans, shared dictionaries,
+bounded page selection, indexed Follow block fetching and explicit raw/off/
+decoded cache variants. Results remain valid after closing the engine and
+moving to another thread. The old codec restrictions remain explicit.
+
+Six balanced same-session passes show typed full-head read improving from
+4.002 ms in previous Rust to 1.370 ms in the new reader (Go 7.041 ms), and
+full sealed read from 3.191 to 1.259 ms (Go 8.003 ms). Typed sealed page read
+improves from 3.203 to 0.577 ms. Its filtered read improves from 3.872 to
+1.519 ms but still trails Go's 1.294 ms. Turning the heap off actually helps
+the full scan; changes are retained individually rather than declared
+universally beneficial.
+
+Warm repeated Follow127 is about 4.95 µs with the decoded cache, but that
+is an explicit cache/ownership result. The raw-only cache is about 0.309 ms
+and no cache 0.315 ms. Fresh-handle Follow127, with engine setup excluded on
+all paths, is 0.557/1.642/0.403 ms for Go/old/new. The cold advancing
+4096-record walk is 13.003/51.482/1.653 ms. Warm/cold and advancing/repeated
+cursor scenarios are separate, with fast-cache supplementary pairs retained.
+
+Keeping the same 64 results and 44.94 MiB logical content takes about
+272–289 MiB Go RSS, 335 MiB previous-native RSS and 141.5 MiB new-native RSS.
+Detaching new results into old String/Vec records raises it to about 291 MiB.
+Full sealed Rust allocation requests fall from 88,819 to 649 per operation.
+These observations concern the named owned representation and fixture, not
+a complete process-memory budget.
+
+The first fastest-candidate count plan was interrupted and retained
+separately. The completed plan keeps identical counts within each comparison
+but caps the slowest pilot's projected time at one second; fast variants can
+therefore have short samples. A separate cache-only group uses its own shared
+counts. Raw counts, durations and all six samples are preserved. The report
+also retains the allocation-binary execute-mode repair and diagnostic-only
+completion; successful timings were not repeated. Original code/fixture/
+binary hashes remain intact, and production source is unchanged.

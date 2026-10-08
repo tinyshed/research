@@ -1,0 +1,5 @@
+// Research-only post-run configuration readback through production File setup.
+package main
+import("context";"encoding/json";"os";"path/filepath";"github.com/tinyshed/tinystore/internal/sqlite")
+func must(e error){if e!=nil{panic(e)}}
+func main(){ctx:=context.Background();f,e:=sqlite.Open(ctx,filepath.Join(os.Args[1],"kv.db"),sqlite.Config{Readers:1,PageSize:4096,WriterCache:4<<20});must(e);defer f.Close();out:=map[string]any{};read:=func(r sqlite.Reader)map[string]any{m:=map[string]any{};for _,q:=range []string{"page_size","synchronous","cache_size","wal_autocheckpoint","fullfsync","checkpoint_fullfsync","foreign_keys","busy_timeout","query_only","journal_mode"}{var v any;must(sqlite.QueryRow(ctx,r,"pragma "+q).Scan(&v));m[q]=v};var source string;must(sqlite.QueryRow(ctx,r,"select sqlite_source_id()").Scan(&source));m["source_id"]=source;return m};must(f.Lookup(ctx,func(r sqlite.Reader)error{out["reader"]=read(r);return nil}));must(f.UpdatePrepared(ctx,func(w sqlite.Writer)error{out["writer"]=read(w);return nil}));must(json.NewEncoder(os.Stdout).Encode(out))}

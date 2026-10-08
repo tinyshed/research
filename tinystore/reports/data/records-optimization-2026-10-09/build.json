@@ -1,0 +1,109 @@
+{
+  "commands": [
+    {
+      "command": [
+        "gofmt",
+        "-w",
+        "."
+      ],
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "go",
+        "test",
+        "-count=1",
+        "./..."
+      ],
+      "stdout": "ok  \tgithub.com/tinyshed/tinystore/records-opt-bench\t0.005s\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "go",
+        "build",
+        "-trimpath",
+        "-o",
+        "/work/records-opt/go-records",
+        "."
+      ],
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "cargo",
+        "fmt"
+      ],
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--release",
+        "--locked",
+        "--offline"
+      ],
+      "stdout": "\nrunning 14 tests\ntest bits::tests::failed_read_preserves_consumed_bits ... ok\ntest bits::tests::shifts_by_64_and_mixed_alignment ... ok\ntest bits::tests::signed_range_wrapping ... ok\ntest codec::optimized::tests::cumulative_expansion_is_checked_before_allocation ... ok\ntest bits::tests::rice_round_trip_escape_and_truncation ... ok\ntest bits::tests::width_round_trip_and_truncation ... ok\ntest codec::optimized::tests::owned_rows_outlive_decode_inputs ... ok\ntest codec::optimized::tests::returned_fields_validate_before_return ... ok\ntest codec::tests::bounds_and_bits ... ok\ntest codec::optimized::tests::shared_rows_are_send_sync_and_survive_thread_handoff ... ok\ntest optimized::tests::bounded_selector_preserves_equal_time_boundary ... ok\ntest codec::optimized::tests::shared_head_and_block_match_original ... ok\ntest codec::tests::head_and_segment_guards ... ok\ntest optimized::tests::cache_eviction_preserves_owning_entries ... ok\n\ntest result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "    Finished `release` profile [optimized] target(s) in 0.03s\n     Running unittests src/main.rs (<tmp>/records-opt-target/release/deps/tinystore_records_opt_bench-321ff40da6d36df6)\n",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "cargo",
+        "build",
+        "--release",
+        "--locked",
+        "--offline"
+      ],
+      "stdout": "",
+      "stderr": "   Compiling tinystore-records-opt-bench v0.1.0 (<repo>/tinystore/records-opt-bench/rust)\n    Finished `release` profile [optimized] target(s) in 1.10s\n",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "cargo",
+        "build",
+        "--release",
+        "--locked",
+        "--offline",
+        "--features",
+        "counting-allocator"
+      ],
+      "stdout": "",
+      "stderr": "   Compiling tinystore-records-opt-bench v0.1.0 (<repo>/tinystore/records-opt-bench/rust)\n    Finished `release` profile [optimized] target(s) in 1.11s\n",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "ldd",
+        "/work/records-opt/rust-records"
+      ],
+      "stdout": "\tlinux-vdso.so.1 (0x00007a5725909000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007a57258d1000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007a5725510000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007a572531c000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007a572590b000)\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "readelf",
+        "-d",
+        "/work/records-opt/rust-records"
+      ],
+      "stdout": "\nDynamic section at offset 0x247738 contains 30 entries:\n  Tag        Type                         Name/Value\n 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]\n 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]\n 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]\n 0x0000000000000001 (NEEDED)             Shared library: [ld-linux-x86-64.so.2]\n 0x000000000000001e (FLAGS)              BIND_NOW\n 0x000000006ffffffb (FLAGS_1)            Flags: NOW PIE\n 0x0000000000000015 (DEBUG)              0x0\n 0x0000000000000007 (RELA)               0x18b0\n 0x0000000000000008 (RELASZ)             69096 (bytes)\n 0x0000000000000009 (RELAENT)            24 (bytes)\n 0x000000006ffffff9 (RELACOUNT)          2769\n 0x0000000000000017 (JMPREL)             0x12698\n 0x0000000000000002 (PLTRELSZ)           1032 (bytes)\n 0x0000000000000003 (PLTGOT)             0x24a7c0\n 0x0000000000000014 (PLTREL)             RELA\n 0x0000000000000006 (SYMTAB)             0x340\n 0x000000000000000b (SYMENT)             24 (bytes)\n 0x0000000000000005 (STRTAB)             0x1204\n 0x000000000000000a (STRSZ)              1705 (bytes)\n 0x000000006ffffef5 (GNU_HASH)           0x11e8\n 0x0000000000000019 (INIT_ARRAY)         0x242318\n 0x000000000000001b (INIT_ARRAYSZ)       16 (bytes)\n 0x000000000000001a (FINI_ARRAY)         0x242310\n 0x000000000000001c (FINI_ARRAYSZ)       8 (bytes)\n 0x000000000000000c (INIT)               0x240ff8\n 0x000000000000000d (FINI)               0x241010\n 0x000000006ffffff0 (VERSYM)             0xf70\n 0x000000006ffffffe (VERNEED)            0x1074\n 0x000000006fffffff (VERNEEDNUM)         4\n 0x0000000000000000 (NULL)               0x0\n",
+      "stderr": "",
+      "exit_code": 0
+    }
+  ],
+  "binary_sha256": {
+    "go-records": "84b95efaba54101f7c40409389e75660bb0635542b5d28c32f6d882eab45b529",
+    "rust-alloc-records": "870d5e7d19fb176a5a4602518fc74da9177b11702b6569f42df1593a293b97bc",
+    "rust-records": "0facba736509a37dbc68d2da7a15433734826347ec472fc553ecadc07366ea65"
+  }
+}

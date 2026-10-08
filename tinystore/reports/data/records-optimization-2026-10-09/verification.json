@@ -1,0 +1,1359 @@
+[
+  {
+    "fixture": "typed-go-head",
+    "variants": [
+      "previous",
+      "opt",
+      "prune_off",
+      "heap_off",
+      "sharing_off",
+      "cache_off",
+      "cache_raw",
+      "strict"
+    ],
+    "results": [
+      {
+        "case": "scan_full",
+        "count": 4096,
+        "from": 1699999970000000000,
+        "hash": "1caf43f982fa7910aeed36606eaf9651025e9ef7dae111c4a7116738ef6fe748",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_filtered",
+        "count": 274,
+        "from": 1699999970000000000,
+        "hash": "20fac86b6d9df4d736b77491b6c51e7c43f4590d7f8d6379d18fe1d7ed99c87f",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_search",
+        "count": 3510,
+        "from": 1699999970000000000,
+        "hash": "dc9557bb5ee4f3a28b94f211e7a86b5bc128d126af2279df3f726151654d80e0",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_trace",
+        "count": 1,
+        "from": 1699999970000000000,
+        "hash": "f200797aa1151bc341182f1cfd9b630f43358bc2f5db1151527bf31906f0414e",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_page",
+        "count": 126,
+        "from": 1700000000063000000,
+        "hash": "6f12ab8f5a788338d6bf0d0f776aebbd9c561140a5714d86ff5139949e3707b0",
+        "more": true,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_newest",
+        "count": 126,
+        "from": 1699999970000000000,
+        "hash": "8c1c80f991ba7f12b747fb581ad2a9228b1f74fc45f28a51aa2a9ba2c8156066",
+        "more": true,
+        "to": 1700000001984000001
+      },
+      {
+        "case": "scan_budget",
+        "count": 2,
+        "from": 1700000000001000000,
+        "hash": "0b20b8807b5c1c494a3b2266e6f76cc3518a674d75edbb0eb41f1cc7fc41cddd",
+        "more": true,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_none",
+        "count": 0,
+        "from": 1699999970000000000,
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_no_context",
+        "count": 0,
+        "from": 1699999970000000000,
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "follow",
+        "count": 0,
+        "expired": 0,
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "row": 0,
+        "segment": 1
+      }
+    ],
+    "sha256": "2c99d5e38e05aae6c88802dbbb2e6ea9abf652a202a02aa73f6bb4b2162a086a"
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "variants": [
+      "previous",
+      "opt",
+      "prune_off",
+      "heap_off",
+      "sharing_off",
+      "cache_off",
+      "cache_raw",
+      "strict"
+    ],
+    "results": [
+      {
+        "case": "scan_full",
+        "count": 4096,
+        "from": 1699999970000000000,
+        "hash": "1caf43f982fa7910aeed36606eaf9651025e9ef7dae111c4a7116738ef6fe748",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_filtered",
+        "count": 274,
+        "from": 1699999970000000000,
+        "hash": "20fac86b6d9df4d736b77491b6c51e7c43f4590d7f8d6379d18fe1d7ed99c87f",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_search",
+        "count": 3510,
+        "from": 1699999970000000000,
+        "hash": "dc9557bb5ee4f3a28b94f211e7a86b5bc128d126af2279df3f726151654d80e0",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_trace",
+        "count": 1,
+        "from": 1699999970000000000,
+        "hash": "f200797aa1151bc341182f1cfd9b630f43358bc2f5db1151527bf31906f0414e",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_page",
+        "count": 126,
+        "from": 1700000000063000000,
+        "hash": "6f12ab8f5a788338d6bf0d0f776aebbd9c561140a5714d86ff5139949e3707b0",
+        "more": true,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_newest",
+        "count": 126,
+        "from": 1699999970000000000,
+        "hash": "8c1c80f991ba7f12b747fb581ad2a9228b1f74fc45f28a51aa2a9ba2c8156066",
+        "more": true,
+        "to": 1700000001984000001
+      },
+      {
+        "case": "scan_budget",
+        "count": 2048,
+        "from": 1700000001024000000,
+        "hash": "ef4770fb3181981a0a0f57ac22ae3b77722150f5ba523fbd297a1882a99b5567",
+        "more": true,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_none",
+        "count": 0,
+        "from": 1699999970000000000,
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_no_context",
+        "count": 0,
+        "from": 1699999970000000000,
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "follow",
+        "count": 127,
+        "expired": 0,
+        "hash": "11df71d673581e1debcd6ee5fbaca966d0fcaabce101809d91665274af780af8",
+        "row": 127,
+        "segment": 1
+      }
+    ],
+    "sha256": "9bcacfd98395eeacab357b6f52baf3c1ad9eabf243ee92cb8044ba5ce6a619f7"
+  },
+  {
+    "fixture": "apache-go-head",
+    "variants": [
+      "previous",
+      "opt",
+      "prune_off",
+      "heap_off",
+      "sharing_off",
+      "cache_off",
+      "cache_raw",
+      "strict"
+    ],
+    "results": [
+      {
+        "case": "scan_full",
+        "count": 4096,
+        "from": 1699999970000000000,
+        "hash": "6bc5a1e85c2da5f40835da8bd2e922d13dbf63e95c49edc449b9e07d0cd2c9c4",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_filtered",
+        "count": 274,
+        "from": 1699999970000000000,
+        "hash": "913477914a5e456712054747aa2f20d2b0d97fb76d3e10e0a3d5dfaf65136406",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_search",
+        "count": 0,
+        "from": 1699999970000000000,
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_trace",
+        "count": 1,
+        "from": 1699999970000000000,
+        "hash": "f200797aa1151bc341182f1cfd9b630f43358bc2f5db1151527bf31906f0414e",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_page",
+        "count": 126,
+        "from": 1700000000063000000,
+        "hash": "8414c6ce25c9f289b38cd43b24763b038bfbdcaccf35bc064b3c4ec8fe92bc42",
+        "more": true,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_newest",
+        "count": 126,
+        "from": 1699999970000000000,
+        "hash": "f72a63bd9803ce7b24e7755422f7de1697e391f237a3599bf18108e9de8a34dd",
+        "more": true,
+        "to": 1700000001984000001
+      },
+      {
+        "case": "scan_budget",
+        "count": 2,
+        "from": 1700000000001000000,
+        "hash": "fb07caa6cc0f6b11bb55204abd8f27efae4593e09fa2fa790249e2e45fc4b3ff",
+        "more": true,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_none",
+        "count": 0,
+        "from": 1699999970000000000,
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_no_context",
+        "count": 0,
+        "from": 1699999970000000000,
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "follow",
+        "count": 0,
+        "expired": 0,
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "row": 0,
+        "segment": 1
+      }
+    ],
+    "sha256": "f854769ab687b0d9cb7aff16d6033590755831d179024bb294039d4befb4eae3"
+  },
+  {
+    "fixture": "apache-native-sealed",
+    "variants": [
+      "previous",
+      "opt",
+      "prune_off",
+      "heap_off",
+      "sharing_off",
+      "cache_off",
+      "cache_raw",
+      "strict"
+    ],
+    "results": [
+      {
+        "case": "scan_full",
+        "count": 4096,
+        "from": 1699999970000000000,
+        "hash": "6bc5a1e85c2da5f40835da8bd2e922d13dbf63e95c49edc449b9e07d0cd2c9c4",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_filtered",
+        "count": 274,
+        "from": 1699999970000000000,
+        "hash": "913477914a5e456712054747aa2f20d2b0d97fb76d3e10e0a3d5dfaf65136406",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_search",
+        "count": 0,
+        "from": 1699999970000000000,
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_trace",
+        "count": 1,
+        "from": 1699999970000000000,
+        "hash": "f200797aa1151bc341182f1cfd9b630f43358bc2f5db1151527bf31906f0414e",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_page",
+        "count": 126,
+        "from": 1700000000063000000,
+        "hash": "8414c6ce25c9f289b38cd43b24763b038bfbdcaccf35bc064b3c4ec8fe92bc42",
+        "more": true,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_newest",
+        "count": 126,
+        "from": 1699999970000000000,
+        "hash": "f72a63bd9803ce7b24e7755422f7de1697e391f237a3599bf18108e9de8a34dd",
+        "more": true,
+        "to": 1700000001984000001
+      },
+      {
+        "case": "scan_budget",
+        "count": 2048,
+        "from": 1700000001024000000,
+        "hash": "22ab1ba13d0e8c2e53c8afac9bb9b87d999a6d8733e4305b8b64b57318a296cd",
+        "more": true,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_none",
+        "count": 0,
+        "from": 1699999970000000000,
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_no_context",
+        "count": 0,
+        "from": 1699999970000000000,
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "follow",
+        "count": 127,
+        "expired": 0,
+        "hash": "8a5f35408b451d809d47e3fe2ecf55d9a3f9f5e52c814ff46730b193aef8f07e",
+        "row": 127,
+        "segment": 1
+      }
+    ],
+    "sha256": "5c1bb4b8dcefd996962743f07b86fb1863f6073670cceaaddfcb2359f3eb88ed"
+  },
+  {
+    "fixture": "typed-late-native-sealed",
+    "variants": [
+      "previous",
+      "opt",
+      "prune_off",
+      "heap_off",
+      "sharing_off",
+      "cache_off",
+      "cache_raw",
+      "strict"
+    ],
+    "results": [
+      {
+        "case": "scan_full",
+        "count": 4100,
+        "from": 1699999970000000000,
+        "hash": "d6a800ef1b1f33ba9efc978c0f9a4ceed9744e4514f3a69dbd946d173c77c5db",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_filtered",
+        "count": 275,
+        "from": 1699999970000000000,
+        "hash": "43f634bbdfe0f039e731e0544fb52a2fea5384eb27c2290f96fb81e19b2cd7bc",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_search",
+        "count": 3513,
+        "from": 1699999970000000000,
+        "hash": "8a4e0b57ffdf7a51c6646ea6f384165b21159438fdeb7dfe3a84626bcf567dc5",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_trace",
+        "count": 2,
+        "from": 1699999970000000000,
+        "hash": "bdb3f19edfd32d79a36d112655e4210e9e8d54630e0e4614621609e34bf6296c",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_page",
+        "count": 126,
+        "from": 1700000000061000000,
+        "hash": "7080d953f383c2239428e08cf540064b50d004bb4f9de6a623f2d3a31490fd32",
+        "more": true,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_newest",
+        "count": 126,
+        "from": 1699999970000000000,
+        "hash": "8c1c80f991ba7f12b747fb581ad2a9228b1f74fc45f28a51aa2a9ba2c8156066",
+        "more": true,
+        "to": 1700000001984000001
+      },
+      {
+        "case": "scan_budget",
+        "count": 4,
+        "from": 1700000000000000000,
+        "hash": "ba2888628d10778d3f93434b5e84c3d176d9a9a7cf5953f898155f38fde16674",
+        "more": true,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_none",
+        "count": 0,
+        "from": 1699999970000000000,
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "scan_no_context",
+        "count": 0,
+        "from": 1699999970000000000,
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "more": false,
+        "to": 1700003600000000000
+      },
+      {
+        "case": "follow",
+        "count": 127,
+        "expired": 0,
+        "hash": "11df71d673581e1debcd6ee5fbaca966d0fcaabce101809d91665274af780af8",
+        "row": 127,
+        "segment": 1
+      }
+    ],
+    "sha256": "b3a0adfda862785071bce236cc954d6581d023e31ed4fa0346d676a01d5b118e"
+  },
+  {
+    "fixture": "go-head",
+    "variant": "go",
+    "case": "scan_full",
+    "lifetime": [
+      {
+        "count": 4096,
+        "hash": "1caf43f982fa7910aeed36606eaf9651025e9ef7dae111c4a7116738ef6fe748",
+        "lifetime": "engine and connections destroyed"
+      }
+    ]
+  },
+  {
+    "fixture": "go-head",
+    "variant": "previous",
+    "case": "scan_full",
+    "lifetime": [
+      {
+        "lifetime": "engine and connections destroyed",
+        "result": {
+          "count": 4096,
+          "from": 1699999970000000000,
+          "hash": "1caf43f982fa7910aeed36606eaf9651025e9ef7dae111c4a7116738ef6fe748",
+          "more": false,
+          "to": 1700003600000000000
+        }
+      }
+    ]
+  },
+  {
+    "fixture": "go-head",
+    "variant": "opt",
+    "case": "scan_full",
+    "lifetime": [
+      {
+        "lifetime": "engine and connections destroyed",
+        "result": {
+          "count": 4096,
+          "from": 1699999970000000000,
+          "hash": "1caf43f982fa7910aeed36606eaf9651025e9ef7dae111c4a7116738ef6fe748",
+          "more": false,
+          "to": 1700003600000000000
+        }
+      }
+    ]
+  },
+  {
+    "fixture": "go-head",
+    "variant": "sharing_off",
+    "case": "scan_full",
+    "lifetime": [
+      {
+        "lifetime": "engine and connections destroyed",
+        "result": {
+          "count": 4096,
+          "from": 1699999970000000000,
+          "hash": "1caf43f982fa7910aeed36606eaf9651025e9ef7dae111c4a7116738ef6fe748",
+          "more": false,
+          "to": 1700003600000000000
+        }
+      }
+    ]
+  },
+  {
+    "fixture": "go-head",
+    "variant": "go",
+    "case": "scan_page",
+    "lifetime": [
+      {
+        "count": 126,
+        "hash": "6f12ab8f5a788338d6bf0d0f776aebbd9c561140a5714d86ff5139949e3707b0",
+        "lifetime": "engine and connections destroyed"
+      }
+    ]
+  },
+  {
+    "fixture": "go-head",
+    "variant": "previous",
+    "case": "scan_page",
+    "lifetime": [
+      {
+        "lifetime": "engine and connections destroyed",
+        "result": {
+          "count": 126,
+          "from": 1700000000063000000,
+          "hash": "6f12ab8f5a788338d6bf0d0f776aebbd9c561140a5714d86ff5139949e3707b0",
+          "more": true,
+          "to": 1700003600000000000
+        }
+      }
+    ]
+  },
+  {
+    "fixture": "go-head",
+    "variant": "opt",
+    "case": "scan_page",
+    "lifetime": [
+      {
+        "lifetime": "engine and connections destroyed",
+        "result": {
+          "count": 126,
+          "from": 1700000000063000000,
+          "hash": "6f12ab8f5a788338d6bf0d0f776aebbd9c561140a5714d86ff5139949e3707b0",
+          "more": true,
+          "to": 1700003600000000000
+        }
+      }
+    ]
+  },
+  {
+    "fixture": "go-head",
+    "variant": "sharing_off",
+    "case": "scan_page",
+    "lifetime": [
+      {
+        "lifetime": "engine and connections destroyed",
+        "result": {
+          "count": 126,
+          "from": 1700000000063000000,
+          "hash": "6f12ab8f5a788338d6bf0d0f776aebbd9c561140a5714d86ff5139949e3707b0",
+          "more": true,
+          "to": 1700003600000000000
+        }
+      }
+    ]
+  },
+  {
+    "fixture": "go-head",
+    "variant": "go",
+    "case": "follow",
+    "lifetime": [
+      {
+        "count": 0,
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "lifetime": "engine and connections destroyed"
+      }
+    ]
+  },
+  {
+    "fixture": "go-head",
+    "variant": "previous",
+    "case": "follow",
+    "lifetime": [
+      {
+        "lifetime": "engine and connections destroyed",
+        "result": {
+          "count": 0,
+          "expired": 0,
+          "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "row": 0,
+          "segment": 1
+        }
+      }
+    ]
+  },
+  {
+    "fixture": "go-head",
+    "variant": "opt",
+    "case": "follow",
+    "lifetime": [
+      {
+        "lifetime": "engine and connections destroyed",
+        "result": {
+          "count": 0,
+          "expired": 0,
+          "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "row": 0,
+          "segment": 1
+        }
+      }
+    ]
+  },
+  {
+    "fixture": "go-head",
+    "variant": "sharing_off",
+    "case": "follow",
+    "lifetime": [
+      {
+        "lifetime": "engine and connections destroyed",
+        "result": {
+          "count": 0,
+          "expired": 0,
+          "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "row": 0,
+          "segment": 1
+        }
+      }
+    ]
+  },
+  {
+    "fixture": "native-sealed",
+    "variant": "go",
+    "case": "scan_full",
+    "lifetime": [
+      {
+        "count": 4096,
+        "hash": "1caf43f982fa7910aeed36606eaf9651025e9ef7dae111c4a7116738ef6fe748",
+        "lifetime": "engine and connections destroyed"
+      }
+    ]
+  },
+  {
+    "fixture": "native-sealed",
+    "variant": "previous",
+    "case": "scan_full",
+    "lifetime": [
+      {
+        "lifetime": "engine and connections destroyed",
+        "result": {
+          "count": 4096,
+          "from": 1699999970000000000,
+          "hash": "1caf43f982fa7910aeed36606eaf9651025e9ef7dae111c4a7116738ef6fe748",
+          "more": false,
+          "to": 1700003600000000000
+        }
+      }
+    ]
+  },
+  {
+    "fixture": "native-sealed",
+    "variant": "opt",
+    "case": "scan_full",
+    "lifetime": [
+      {
+        "lifetime": "engine and connections destroyed",
+        "result": {
+          "count": 4096,
+          "from": 1699999970000000000,
+          "hash": "1caf43f982fa7910aeed36606eaf9651025e9ef7dae111c4a7116738ef6fe748",
+          "more": false,
+          "to": 1700003600000000000
+        }
+      }
+    ]
+  },
+  {
+    "fixture": "native-sealed",
+    "variant": "sharing_off",
+    "case": "scan_full",
+    "lifetime": [
+      {
+        "lifetime": "engine and connections destroyed",
+        "result": {
+          "count": 4096,
+          "from": 1699999970000000000,
+          "hash": "1caf43f982fa7910aeed36606eaf9651025e9ef7dae111c4a7116738ef6fe748",
+          "more": false,
+          "to": 1700003600000000000
+        }
+      }
+    ]
+  },
+  {
+    "fixture": "native-sealed",
+    "variant": "go",
+    "case": "scan_page",
+    "lifetime": [
+      {
+        "count": 126,
+        "hash": "6f12ab8f5a788338d6bf0d0f776aebbd9c561140a5714d86ff5139949e3707b0",
+        "lifetime": "engine and connections destroyed"
+      }
+    ]
+  },
+  {
+    "fixture": "native-sealed",
+    "variant": "previous",
+    "case": "scan_page",
+    "lifetime": [
+      {
+        "lifetime": "engine and connections destroyed",
+        "result": {
+          "count": 126,
+          "from": 1700000000063000000,
+          "hash": "6f12ab8f5a788338d6bf0d0f776aebbd9c561140a5714d86ff5139949e3707b0",
+          "more": true,
+          "to": 1700003600000000000
+        }
+      }
+    ]
+  },
+  {
+    "fixture": "native-sealed",
+    "variant": "opt",
+    "case": "scan_page",
+    "lifetime": [
+      {
+        "lifetime": "engine and connections destroyed",
+        "result": {
+          "count": 126,
+          "from": 1700000000063000000,
+          "hash": "6f12ab8f5a788338d6bf0d0f776aebbd9c561140a5714d86ff5139949e3707b0",
+          "more": true,
+          "to": 1700003600000000000
+        }
+      }
+    ]
+  },
+  {
+    "fixture": "native-sealed",
+    "variant": "sharing_off",
+    "case": "scan_page",
+    "lifetime": [
+      {
+        "lifetime": "engine and connections destroyed",
+        "result": {
+          "count": 126,
+          "from": 1700000000063000000,
+          "hash": "6f12ab8f5a788338d6bf0d0f776aebbd9c561140a5714d86ff5139949e3707b0",
+          "more": true,
+          "to": 1700003600000000000
+        }
+      }
+    ]
+  },
+  {
+    "fixture": "native-sealed",
+    "variant": "go",
+    "case": "follow",
+    "lifetime": [
+      {
+        "count": 127,
+        "hash": "11df71d673581e1debcd6ee5fbaca966d0fcaabce101809d91665274af780af8",
+        "lifetime": "engine and connections destroyed"
+      }
+    ]
+  },
+  {
+    "fixture": "native-sealed",
+    "variant": "previous",
+    "case": "follow",
+    "lifetime": [
+      {
+        "lifetime": "engine and connections destroyed",
+        "result": {
+          "count": 127,
+          "expired": 0,
+          "hash": "11df71d673581e1debcd6ee5fbaca966d0fcaabce101809d91665274af780af8",
+          "row": 127,
+          "segment": 1
+        }
+      }
+    ]
+  },
+  {
+    "fixture": "native-sealed",
+    "variant": "opt",
+    "case": "follow",
+    "lifetime": [
+      {
+        "lifetime": "engine and connections destroyed",
+        "result": {
+          "count": 127,
+          "expired": 0,
+          "hash": "11df71d673581e1debcd6ee5fbaca966d0fcaabce101809d91665274af780af8",
+          "row": 127,
+          "segment": 1
+        }
+      }
+    ]
+  },
+  {
+    "fixture": "native-sealed",
+    "variant": "sharing_off",
+    "case": "follow",
+    "lifetime": [
+      {
+        "lifetime": "engine and connections destroyed",
+        "result": {
+          "count": 127,
+          "expired": 0,
+          "hash": "11df71d673581e1debcd6ee5fbaca966d0fcaabce101809d91665274af780af8",
+          "row": 127,
+          "segment": 1
+        }
+      }
+    ]
+  },
+  {
+    "cache_guards": [
+      {
+        "cache_index_mutation_rejected": true,
+        "cleared_cache_crc_mutation_rejected": true,
+        "immutable_cached_bytes_survive_external_same_id_mutation": true,
+        "result_outlives_cache_engine_and_sibling": true
+      }
+    ]
+  },
+  {
+    "cursor_probe": [
+      0,
+      0
+    ],
+    "expected": [
+      {
+        "count": 127,
+        "expired": 0,
+        "hash": "11df71d673581e1debcd6ee5fbaca966d0fcaabce101809d91665274af780af8",
+        "row": 127,
+        "segment": 1
+      }
+    ]
+  },
+  {
+    "cursor_probe": [
+      1,
+      1023
+    ],
+    "expected": [
+      {
+        "count": 127,
+        "expired": 0,
+        "hash": "875c5700d4be87be99482e6dd24b9021734fbcce39f1dd2ef0f9087b41534f01",
+        "row": 1150,
+        "segment": 1
+      }
+    ]
+  },
+  {
+    "cursor_probe": [
+      1,
+      1024
+    ],
+    "expected": [
+      {
+        "count": 127,
+        "expired": 0,
+        "hash": "683d2a0bda4d19c4e47e3258fb4521cd9563a119ea2dac256f9ac74c518739eb",
+        "row": 1151,
+        "segment": 1
+      }
+    ]
+  },
+  {
+    "cursor_probe": [
+      1,
+      2048
+    ],
+    "expected": [
+      {
+        "count": 127,
+        "expired": 0,
+        "hash": "a8e3be2d5adc023e8c964edb61245ed8ef0d0a9c4c049df49b1d20a8dc93d8be",
+        "row": 127,
+        "segment": 2
+      }
+    ]
+  },
+  {
+    "cursor_probe": [
+      1,
+      9999
+    ],
+    "expected": [
+      {
+        "count": 127,
+        "expired": 0,
+        "hash": "a8e3be2d5adc023e8c964edb61245ed8ef0d0a9c4c049df49b1d20a8dc93d8be",
+        "row": 127,
+        "segment": 2
+      }
+    ]
+  },
+  {
+    "cursor_probe": [
+      2,
+      2048
+    ],
+    "expected": [
+      {
+        "count": 0,
+        "expired": 0,
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "row": 0,
+        "segment": 3
+      }
+    ]
+  },
+  {
+    "cursor_probe": [
+      3,
+      0
+    ],
+    "expected": [
+      {
+        "count": 0,
+        "expired": 0,
+        "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "row": 0,
+        "segment": 3
+      }
+    ]
+  },
+  {
+    "fixture": "typed-go-head",
+    "mutation": "crc",
+    "case": "scan_full",
+    "variant": "go",
+    "rejected": true,
+    "error": "panic: head row 1 of \"stream-0\": corrupt data: records: head row checksum"
+  },
+  {
+    "fixture": "typed-go-head",
+    "mutation": "crc",
+    "case": "scan_full",
+    "variant": "previous",
+    "rejected": true,
+    "error": "Error: \"row checksum\""
+  },
+  {
+    "fixture": "typed-go-head",
+    "mutation": "crc",
+    "case": "scan_full",
+    "variant": "opt",
+    "rejected": true,
+    "error": "Error: \"row checksum\""
+  },
+  {
+    "fixture": "typed-go-head",
+    "mutation": "crc",
+    "case": "scan_full",
+    "variant": "strict",
+    "rejected": true,
+    "error": "Error: \"row checksum\""
+  },
+  {
+    "fixture": "typed-go-head",
+    "mutation": "crc",
+    "case": "scan_no_context",
+    "variant": "go",
+    "rejected": true,
+    "error": "panic: head row 1 of \"stream-0\": corrupt data: records: head row checksum"
+  },
+  {
+    "fixture": "typed-go-head",
+    "mutation": "crc",
+    "case": "scan_no_context",
+    "variant": "previous",
+    "rejected": true,
+    "error": "Error: \"row checksum\""
+  },
+  {
+    "fixture": "typed-go-head",
+    "mutation": "crc",
+    "case": "scan_no_context",
+    "variant": "opt",
+    "rejected": true,
+    "error": "Error: \"row checksum\""
+  },
+  {
+    "fixture": "typed-go-head",
+    "mutation": "crc",
+    "case": "scan_no_context",
+    "variant": "strict",
+    "rejected": true,
+    "error": "Error: \"row checksum\""
+  },
+  {
+    "fixture": "typed-go-head",
+    "mutation": "index",
+    "case": "scan_full",
+    "variant": "go",
+    "rejected": true,
+    "error": "panic: head row 1 of \"stream-0\": corrupt data: records: head index differs from body"
+  },
+  {
+    "fixture": "typed-go-head",
+    "mutation": "index",
+    "case": "scan_full",
+    "variant": "previous",
+    "rejected": true,
+    "error": "Error: \"body count/time differs from index\""
+  },
+  {
+    "fixture": "typed-go-head",
+    "mutation": "index",
+    "case": "scan_full",
+    "variant": "opt",
+    "rejected": true,
+    "error": "Error: \"body count/time/stream differs from index\""
+  },
+  {
+    "fixture": "typed-go-head",
+    "mutation": "index",
+    "case": "scan_full",
+    "variant": "strict",
+    "rejected": true,
+    "error": "Error: \"body count/time/stream differs from index\""
+  },
+  {
+    "fixture": "typed-go-head",
+    "mutation": "index",
+    "case": "scan_no_context",
+    "variant": "go",
+    "rejected": true,
+    "error": "panic: head row 1 of \"stream-0\": corrupt data: records: head index differs from body"
+  },
+  {
+    "fixture": "typed-go-head",
+    "mutation": "index",
+    "case": "scan_no_context",
+    "variant": "previous",
+    "rejected": true,
+    "error": "Error: \"body count/time differs from index\""
+  },
+  {
+    "fixture": "typed-go-head",
+    "mutation": "index",
+    "case": "scan_no_context",
+    "variant": "opt",
+    "rejected": true,
+    "error": "Error: \"body count/time/stream differs from index\""
+  },
+  {
+    "fixture": "typed-go-head",
+    "mutation": "index",
+    "case": "scan_no_context",
+    "variant": "strict",
+    "rejected": true,
+    "error": "Error: \"body count/time/stream differs from index\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "crc",
+    "case": "scan_full",
+    "variant": "go",
+    "rejected": true,
+    "error": "panic: segment 1 of \"stream-0\": block 1: corrupt data: records: block checksum"
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "crc",
+    "case": "scan_full",
+    "variant": "previous",
+    "rejected": true,
+    "error": "Error: \"row checksum\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "crc",
+    "case": "scan_full",
+    "variant": "opt",
+    "rejected": true,
+    "error": "Error: \"row checksum\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "crc",
+    "case": "scan_full",
+    "variant": "strict",
+    "rejected": true,
+    "error": "Error: \"row checksum\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "crc",
+    "case": "scan_no_context",
+    "variant": "go",
+    "rejected": true,
+    "error": "panic: segment 1 of \"stream-0\": block 1: corrupt data: records: block checksum"
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "crc",
+    "case": "scan_no_context",
+    "variant": "previous",
+    "rejected": true,
+    "error": "Error: \"row checksum\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "crc",
+    "case": "scan_no_context",
+    "variant": "opt",
+    "rejected": true,
+    "error": "Error: \"row checksum\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "crc",
+    "case": "scan_no_context",
+    "variant": "strict",
+    "rejected": true,
+    "error": "Error: \"row checksum\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "index",
+    "case": "scan_full",
+    "variant": "go",
+    "rejected": true,
+    "error": "panic: segment 1 of \"stream-0\": block 1: corrupt data: records: block index differs from body"
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "index",
+    "case": "scan_full",
+    "variant": "previous",
+    "rejected": true,
+    "error": "Error: \"body count/time differs from index\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "index",
+    "case": "scan_full",
+    "variant": "opt",
+    "rejected": true,
+    "error": "Error: \"body count/time/stream differs from index\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "index",
+    "case": "scan_full",
+    "variant": "strict",
+    "rejected": true,
+    "error": "Error: \"body count/time/stream differs from index\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "index",
+    "case": "scan_no_context",
+    "variant": "go",
+    "rejected": true,
+    "error": "panic: segment 1 of \"stream-0\": block 1: corrupt data: records: block index differs from body"
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "index",
+    "case": "scan_no_context",
+    "variant": "previous",
+    "rejected": true,
+    "error": "Error: \"body count/time differs from index\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "index",
+    "case": "scan_no_context",
+    "variant": "opt",
+    "rejected": true,
+    "error": "Error: \"body count/time/stream differs from index\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "index",
+    "case": "scan_no_context",
+    "variant": "strict",
+    "rejected": true,
+    "error": "Error: \"body count/time/stream differs from index\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "body_column",
+    "case": "scan_full",
+    "variant": "go",
+    "rejected": true,
+    "error": "panic: segment 1 of \"stream-0\": block 1: corrupt data: records: value flags"
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "body_column",
+    "case": "scan_full",
+    "variant": "previous",
+    "rejected": true,
+    "error": "Error: \"unsupported typed/stamped value (slice accepts text)\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "body_column",
+    "case": "scan_full",
+    "variant": "opt",
+    "rejected": true,
+    "error": "Error: \"unsupported typed value\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "body_column",
+    "case": "scan_full",
+    "variant": "strict",
+    "rejected": true,
+    "error": "Error: \"unsupported typed value\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "body_column",
+    "case": "scan_no_context",
+    "variant": "go",
+    "rejected": false,
+    "error": ""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "body_column",
+    "case": "scan_no_context",
+    "variant": "previous",
+    "rejected": true,
+    "error": "Error: \"unsupported typed/stamped value (slice accepts text)\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "body_column",
+    "case": "scan_no_context",
+    "variant": "opt",
+    "rejected": false,
+    "error": ""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "body_column",
+    "case": "scan_no_context",
+    "variant": "strict",
+    "rejected": true,
+    "error": "Error: \"unsupported typed value\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "context_column",
+    "case": "scan_full",
+    "variant": "go",
+    "rejected": true,
+    "error": "panic: segment 1 of \"stream-0\": block 1: corrupt data: records: integer column layout"
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "context_column",
+    "case": "scan_full",
+    "variant": "previous",
+    "rejected": true,
+    "error": "Error: \"unsupported integer layout (slice accepts direct only)\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "context_column",
+    "case": "scan_full",
+    "variant": "opt",
+    "rejected": true,
+    "error": "Error: \"unsupported integer layout\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "context_column",
+    "case": "scan_full",
+    "variant": "strict",
+    "rejected": true,
+    "error": "Error: \"unsupported integer layout\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "context_column",
+    "case": "scan_no_context",
+    "variant": "go",
+    "rejected": true,
+    "error": "panic: segment 1 of \"stream-0\": block 1: corrupt data: records: integer column layout"
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "context_column",
+    "case": "scan_no_context",
+    "variant": "previous",
+    "rejected": true,
+    "error": "Error: \"unsupported integer layout (slice accepts direct only)\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "context_column",
+    "case": "scan_no_context",
+    "variant": "opt",
+    "rejected": true,
+    "error": "Error: \"unsupported integer layout\""
+  },
+  {
+    "fixture": "typed-native-sealed",
+    "mutation": "context_column",
+    "case": "scan_no_context",
+    "variant": "strict",
+    "rejected": true,
+    "error": "Error: \"unsupported integer layout\""
+  }
+]

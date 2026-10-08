@@ -8,6 +8,13 @@ advantages: selective reads, small pages and cached Follow are faster than
 this native slice, and retaining the native slice's owned strings uses more
 process memory.
 
+The [9 October query and ownership round](records-optimization-2026-10-09.md)
+implements selective materialization, bounded page selection, shared owning
+backing and distinct raw/decoded Follow caches, and remeasures Go, the old
+native code and the new variants in the same session. The regressions below
+describe this original prototype; they are not language-performance limits.
+Its original measurements remain unchanged.
+
 | Question | Answer in this round | What follows |
 |---|---|---|
 | Does a different bit-reader algorithm help both languages? | A word reader improves 64-bit residual decode 4.14× in Go and 3.89× in Rust, but makes 1-bit and Rice decode slower. | Consider a width-dependent Go reader first; do not replace every reader with the word reader. |

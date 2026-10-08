@@ -2,7 +2,7 @@
 
 The TinyStore-derived code in `rust-spike`, `sqlite-bench`, `metrics-bench`,
 `metrics-opt-bench`, `metrics-max-bench`, `records-native-bench` and
-`kv-native-bench` follows TinyStore's Apache License
+`kv-native-bench`, `records-opt-bench` and `kv-opt-bench` follow TinyStore's Apache License
 2.0; a copy is provided in [RUST-RESEARCH-LICENSE](RUST-RESEARCH-LICENSE).
 The upstream TinyStore source remains in the pinned `source` submodule.
 

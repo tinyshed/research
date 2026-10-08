@@ -1,0 +1,15 @@
+{
+  "guard": "all returned fields validated before returning an owning shared row",
+  "source_sha256_before": "94f75a8d16fcde36d2fc030cbe35d6677d96137b8bd0bca5710eb0f6ee2dfefd",
+  "source_sha256_after": "94f75a8d16fcde36d2fc030cbe35d6677d96137b8bd0bca5710eb0f6ee2dfefd",
+  "broken_implementation": {
+    "exit_code": 101,
+    "stdout": "\nrunning 1 test\ntest codec::optimized::tests::returned_fields_validate_before_return ... FAILED\n\nfailures:\n\n---- codec::optimized::tests::returned_fields_validate_before_return stdout ----\n\nthread 'codec::optimized::tests::returned_fields_validate_before_return' (7244) panicked at src/codec/optimized.rs:1045:9:\nselected record deferred malformed body validation\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n\n\nfailures:\n    codec::optimized::tests::returned_fields_validate_before_return\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 13 filtered out; finished in 0.00s\n\n",
+    "stderr": "   Compiling tinystore-records-opt-bench v0.1.0 (<repo>/tinystore/records-opt-bench/rust)\n    Finished `release` profile [optimized] target(s) in 1.01s\n     Running unittests src/main.rs (<tmp>/records-opt-target/release/deps/tinystore_records_opt_bench-321ff40da6d36df6)\nerror: test failed, to rerun pass `--bin tinystore-records-opt-bench`\n"
+  },
+  "restored_implementation": {
+    "exit_code": 0,
+    "stdout": "\nrunning 1 test\ntest codec::optimized::tests::returned_fields_validate_before_return ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 13 filtered out; finished in 0.00s\n\n",
+    "stderr": "   Compiling tinystore-records-opt-bench v0.1.0 (<repo>/tinystore/records-opt-bench/rust)\n    Finished `release` profile [optimized] target(s) in 0.99s\n     Running unittests src/main.rs (<tmp>/records-opt-target/release/deps/tinystore_records_opt_bench-321ff40da6d36df6)\n"
+  }
+}

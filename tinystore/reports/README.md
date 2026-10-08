@@ -203,3 +203,10 @@ before measurement. Each comparison uses its own same-session baseline.
 
 [Raw-data publication provenance](data/publication-provenance.json) preserves
 original hashes and distinguishes translated documentation from measured code.
+
+## 9 October 2026 — matching work in the native slices
+
+| Report | Scope |
+| --- | --- |
+| [Records query and ownership optimizations](records-optimization-2026-10-09.md) | old/new native and public Go comparisons: selective materialization, bounded page selection, Follow block/cache paths and shared owning strings |
+| [KV write normalization and optimizations](kv-optimization-2026-10-09.md) | equal-result writes, borrowed SetEntry, precomputed branch paths and cached transaction commands, with old/native/Go controls and separate phase/sync diagnostics |
