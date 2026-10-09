@@ -1,8 +1,8 @@
 * text=auto eol=lf
 # Retain exact measured source bytes, including their recorded CRLF endings.
-/tinystore/metrics-layout-bench/go/go.mod -text -whitespace
-/tinystore/metrics-layout-bench/rust/Cargo.toml -text -whitespace
-/tinystore/metrics-layout-bench/rust/Cargo.lock -text -whitespace
+/tinystore/metrics-layout-bench/go/go.mod -text -eol -whitespace
+/tinystore/metrics-layout-bench/rust/Cargo.toml -text -eol -whitespace
+/tinystore/metrics-layout-bench/rust/Cargo.lock -text -eol -whitespace
 # Compiler/test output is an evidence artifact, including its final blank line.
 /tinystore/reports/data/metrics-layout-2026-10-09/final-tests.txt -whitespace
 /tinystore/reports/data/metrics-payload-2026-10-09/format51-tests.txt -whitespace
