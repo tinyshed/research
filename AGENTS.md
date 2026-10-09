@@ -17,6 +17,7 @@ this one repeats only where a measurement needs them.
 | `tinystore/reports/` | the dated rounds and their raw output in `data/`; `README.md` indexes them |
 | `tinystore/measurements.md` | every number the rounds settled on |
 | `tinystore/open-questions.md` | what is not built, and the gate each question must pass |
+| `tinystore/design/` | TinyStore's design documents, moved from its `docs/` when the guides replaced them; kept as they were |
 | `tinystore/spike/` | prototypes and measurements, a module of its own |
 | `tinystore/server-spike/` | the server measured through `tinystore serve` |
 | `tinystore/bench/` | corpus runners and harnesses against other engines, a module each |
