@@ -1,0 +1,24 @@
+   Compiling tinystore-metrics-payload-bench v0.1.0 (/src/tinystore/metrics-payload-bench)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.12s
+     Running unittests src/main.rs (/work/metrics-payload-target/debug/deps/tinystore_metrics_payload_bench-13e1d1d7a083f106)
+
+running 16 tests
+test codec::tests::each_clock_decoder_mode_and_extent_guards ... ok
+test codec::tests::each_residual_decoder_mode_and_padding_guard ... ok
+test codec::tests::every_codec_envelope_time_value_and_compression_mode ... ok
+test codec::tests::huffman_native_single_stream_round_trip ... ok
+test exact::tests::cancellation_overflow_and_subnormal_ties ... ok
+test exact::tests::exact_roundtrips_finite_bits ... ok
+test codec::tests::residual_modes_and_canonical_exact_sums ... ok
+test pack::tests::addresses_are_charged_and_guarded ... ok
+test pack::tests::byte_target_is_bounded_even_for_large_body ... ok
+test codec::tests::reuse_mutable_chunk_and_replace_tail ... ok
+test codec::tests::heads_all_edge_value_bits_and_irregular_clocks ... ok
+test study::tests::merge_keeps_immutable_addresses_and_selected_crc ... ok
+test study::tests::compact_replaces_old_ids_and_keeps_exact_summary_tokens ... ok
+test study::tests::expected_crc_rejects_intact_same_head_and_clock_body_swap ... ok
+test codec::tests::sealed_group_directory_all_edge_values_round_trip ... ok
+test study::tests::blob_snapshot_ends_before_owned_body_is_decoded ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 1 filtered out; finished in 0.04s
+

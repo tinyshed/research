@@ -1,0 +1,107 @@
+[
+  {
+    "dataset": "tsbs",
+    "variant": "exact",
+    "go_public_api_bitwise_verified": true,
+    "samples": 5090400,
+    "verify_ns": 613570665
+  },
+  {
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "go_public_api_bitwise_verified": true,
+    "samples": 5090400,
+    "verify_ns": 605879894
+  },
+  {
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "go_public_api_bitwise_verified": true,
+    "samples": 5090400,
+    "verify_ns": 641148756
+  },
+  {
+    "dataset": "tsbs",
+    "variant": "page1024",
+    "go_public_api_bitwise_verified": true,
+    "samples": 5090400,
+    "verify_ns": 632562193
+  },
+  {
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "go_public_api_bitwise_verified": true,
+    "samples": 5090400,
+    "verify_ns": 664361011
+  },
+  {
+    "dataset": "alibaba",
+    "variant": "exact",
+    "go_public_api_bitwise_verified": true,
+    "samples": 12431885,
+    "verify_ns": 942326488
+  },
+  {
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "go_public_api_bitwise_verified": true,
+    "samples": 12431885,
+    "verify_ns": 865645675
+  },
+  {
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "go_public_api_bitwise_verified": true,
+    "samples": 12431885,
+    "verify_ns": 985547472
+  },
+  {
+    "dataset": "alibaba",
+    "variant": "page1024",
+    "go_public_api_bitwise_verified": true,
+    "samples": 12431885,
+    "verify_ns": 1015599911
+  },
+  {
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "go_public_api_bitwise_verified": true,
+    "samples": 12431885,
+    "verify_ns": 907846468
+  },
+  {
+    "dataset": "irregular",
+    "variant": "exact",
+    "go_public_api_bitwise_verified": true,
+    "samples": 491552,
+    "verify_ns": 51581408
+  },
+  {
+    "dataset": "irregular",
+    "variant": "rowid",
+    "go_public_api_bitwise_verified": true,
+    "samples": 491552,
+    "verify_ns": 51271778
+  },
+  {
+    "dataset": "irregular",
+    "variant": "cap16",
+    "go_public_api_bitwise_verified": true,
+    "samples": 491552,
+    "verify_ns": 59531425
+  },
+  {
+    "dataset": "irregular",
+    "variant": "page1024",
+    "go_public_api_bitwise_verified": true,
+    "samples": 491552,
+    "verify_ns": 53245344
+  },
+  {
+    "dataset": "irregular",
+    "variant": "native_control",
+    "go_public_api_bitwise_verified": true,
+    "samples": 491552,
+    "verify_ns": 51243886
+  }
+]

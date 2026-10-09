@@ -850,3 +850,55 @@ counts. Raw counts, durations and all six samples are preserved. The report
 also retains the allocation-binary execute-mode repair and diagnostic-only
 completion; successful timings were not repeated. Original code/fixture/
 binary hashes remain intact, and production source is unchanged.
+
+## Current metrics physical layout, 9 October 2026
+
+The [group/inline/page study](reports/metrics-layout-2026-10-09.md) starts from
+production e307c48 files with current v4 exact summaries, shared clocks,
+32-slot groups and inline16. Public Go APIs build and bitwise-check all
+5,090,400 TSBS and 12,431,885 Alibaba samples, including durable quiet heads.
+The original complete files occupy 4,665,344 and 7,843,840 bytes respectively.
+Heavy work runs serially in the same local Ryzen7 7700 Linux/WSL2 environment,
+with pinned native SQLite3.53.4/rusqlite0.40.1 and exact source/input hashes.
+
+Fresh original-byte controls occupy 4,534,272/6,774,784 bytes. Alibaba's large
+original-to-fresh difference is chiefly series_state occupancy after growing
+and shrinking heads: 1,253,376 to 188,416 bytes with identical rows, not a
+layout gain or nonzero freelist. Its WITHOUT ROWID groups own 1,904,640
+overflow-page bytes, of which 1,590,552 are unused.
+
+Changing only the groups table to ROWID plus its charged composite UNIQUE
+index gives 5,324,800 bytes on Alibaba, 21.40% below its fresh control; TSBS
+instead grows 0.45%. Rowid plus experimental inline32 gives 5,230,592 bytes
+on Alibaba, including a separately controlled native metadata-compression
+effect. Wider thresholds regress there; no universal page/group/inline winner
+is established. All microblock value/clock/exact-summary bytes remain checked.
+The study retains 126 density files, 504 read timings, 126 publication and
+126 retention traces, each timed candidate with six balanced passes, plus
+15 production Go public-API cross-reads of compatible formats. Retention
+reports live visibility, stable payload addresses, WAL, freelist and VACUUM
+separately. These synchronous layout operations omit production scheduling.
+
+The [payload-pack study](reports/metrics-payload-2026-10-09.md) has its own
+fresh controls and must not be multiplied into those layout percentages.
+The initial0x50 directory wraps old references; compact0x51 replaces obsolete
+IDs inside one compressed stream, with same-format unpacked and rowid controls.
+All120 variants replay immutable encoded bodies/clocks; eight full replays
+also check independent Go sample hashes and exact summaries. Sixteen Rust
+tests cover CRC/address swaps, extent bounds, immutable publication and
+snapshot/owned-buffer lifetime. Final sealed-query comparisons retain720
+timings in120 six-pass cells with identical per-case counts and digests.
+
+TSBS compact-count8 is 4,476,928 versus4,501,504 fresh bytes (0.55% smaller).
+Alibaba rowid-compact-count32 is5,419,008 bytes, larger than its simpler
+rowid-unpacked5,320,704-byte control; its saving versus WITHOUT ROWID is not
+a packing win. Nonsparse rowid-compact-count8 reaches3,559,424 versus4,571,136
+fresh bytes, but this is a specific fixture/row-occupancy result. Incremental
+BLOB copies are separate from SQLite cache misses and physical I/O claims.
+At50% sealed-prefix expiry, TSBS compact-count8 retains1,294,988 dead bytes
+beside1,299,371 live; Alibaba rowid-compact-count32 retains1,303,151 beside
+1,289,142. No unmeasured repacking saving or universal pack policy is credited.
+
+Both experiments remain exploratory uncommitted collection under the user's
+explicit waiver, with source/binary/lockfile/corpus hashes and raw output.
+Production schema/code and the previous round's measured files are unchanged.

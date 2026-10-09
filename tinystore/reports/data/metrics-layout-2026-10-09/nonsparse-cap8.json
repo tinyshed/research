@@ -1,0 +1,456 @@
+{
+  "elapsed_ns": 69217437,
+  "mode": "rewrite",
+  "result": {
+    "blobs": {
+      "clock_stored": 822,
+      "directory_stored": 138191,
+      "head_samples": 32,
+      "head_stored": 992,
+      "payload_stored": 3295691
+    },
+    "block_clock_residual_bytes": 0,
+    "body_size_histogram": {
+      "1602": 1,
+      "1603": 7,
+      "1604": 12,
+      "1605": 41,
+      "1606": 116,
+      "1607": 191,
+      "1608": 324,
+      "1609": 417,
+      "1610": 402,
+      "1611": 300,
+      "1612": 170,
+      "1613": 61,
+      "1614": 6
+    },
+    "directory_size_histogram": {
+      "445": 1,
+      "447": 2,
+      "452": 1,
+      "453": 1,
+      "454": 2,
+      "455": 1,
+      "456": 2,
+      "459": 1,
+      "460": 1,
+      "461": 1,
+      "462": 3,
+      "463": 3,
+      "464": 5,
+      "498": 1,
+      "500": 2,
+      "501": 1,
+      "502": 1,
+      "503": 2,
+      "504": 1,
+      "505": 3,
+      "506": 3,
+      "507": 4,
+      "508": 4,
+      "509": 2,
+      "510": 6,
+      "511": 5,
+      "512": 6,
+      "513": 9,
+      "514": 5,
+      "515": 4,
+      "516": 8,
+      "517": 12,
+      "518": 16,
+      "519": 9,
+      "520": 11,
+      "521": 2,
+      "522": 12,
+      "523": 11,
+      "524": 8,
+      "525": 6,
+      "526": 13,
+      "527": 6,
+      "528": 1,
+      "529": 1,
+      "530": 1,
+      "582": 1,
+      "584": 1,
+      "586": 1,
+      "587": 3,
+      "588": 1,
+      "589": 1,
+      "590": 5,
+      "591": 2,
+      "592": 5,
+      "593": 3,
+      "595": 7,
+      "596": 7,
+      "597": 4,
+      "598": 2,
+      "599": 1,
+      "600": 1,
+      "601": 2,
+      "602": 4,
+      "603": 2,
+      "604": 2,
+      "607": 1,
+      "77": 1,
+      "85": 1,
+      "86": 22,
+      "96": 1,
+      "97": 6,
+      "98": 1
+    },
+    "expanded_directory_parts": {
+      "address_or_inline": 3969,
+      "exact_summary": 29598,
+      "first": 18432,
+      "summary_scalars_flags_resets": 77897,
+      "value_length": 4096
+    },
+    "file_bytes": 4431872,
+    "group_slots_histogram": {
+      "1": 32,
+      "7": 32,
+      "8": 224
+    },
+    "immutable_block_sha256": "055ab3db8e62e7864063d3b38bba0273860fd221f716859f26607cb484fec752",
+    "inline_value_bytes": 0,
+    "live_blocks": 2048,
+    "objects": [],
+    "sealed_samples": 491520,
+    "settings": {
+      "cache_size": -1024,
+      "checkpoint_fullfsync": 1,
+      "freelist_count": 0,
+      "fullfsync": 1,
+      "mmap_size": 0,
+      "page_count": 1082,
+      "page_size": 4096,
+      "sqlite_source_id": "2026-07-24 19:02:57 bf7c7f30031888f4e796e429ab3978879485813aaca6f641c7b33e4e09459bcc",
+      "synchronous": 2,
+      "trusted_schema": 0,
+      "wal_autocheckpoint": 1000
+    },
+    "shm_bytes": 32768,
+    "stable_external_payload_addresses": 2048,
+    "tables": {
+      "clocks": 9,
+      "groups": 288,
+      "label_values": 33,
+      "payloads": 2048,
+      "postings": 64,
+      "series": 32,
+      "series_state": 32
+    },
+    "value_bytes_total": 3295691,
+    "wal_bytes": 0,
+    "physical": {
+      "reader_sqlite_version": "3.46.1",
+      "objects": [
+        {
+          "name": "_tinystore_migrations",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 51,
+          "unused": 4033,
+          "cells": 1,
+          "max_cell_payload": 51
+        },
+        {
+          "name": "clocks",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 1172,
+          "unused": 2872,
+          "cells": 9,
+          "max_cell_payload": 141
+        },
+        {
+          "name": "groups",
+          "type": "internal",
+          "pages": 6,
+          "bytes": 24576,
+          "cell_payload": 17800,
+          "unused": 6441,
+          "cells": 33,
+          "max_cell_payload": 623
+        },
+        {
+          "name": "groups",
+          "type": "leaf",
+          "pages": 34,
+          "bytes": 139264,
+          "cell_payload": 126398,
+          "unused": 11605,
+          "cells": 255,
+          "max_cell_payload": 628
+        },
+        {
+          "name": "label_values",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 308,
+          "unused": 3648,
+          "cells": 33,
+          "max_cell_payload": 30
+        },
+        {
+          "name": "payloads",
+          "type": "internal",
+          "pages": 3,
+          "bytes": 12288,
+          "cell_payload": 0,
+          "unused": 4131,
+          "cells": 1023,
+          "max_cell_payload": 0
+        },
+        {
+          "name": "payloads",
+          "type": "leaf",
+          "pages": 1024,
+          "bytes": 4194304,
+          "cell_payload": 3303883,
+          "unused": 870068,
+          "cells": 2048,
+          "max_cell_payload": 1618
+        },
+        {
+          "name": "postings",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 286,
+          "unused": 3610,
+          "cells": 64,
+          "max_cell_payload": 5
+        },
+        {
+          "name": "series",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 1840,
+          "unused": 2120,
+          "cells": 32,
+          "max_cell_payload": 59
+        },
+        {
+          "name": "series_due",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 319,
+          "unused": 3673,
+          "cells": 32,
+          "max_cell_payload": 10
+        },
+        {
+          "name": "series_failed",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 0,
+          "unused": 4088,
+          "cells": 0,
+          "max_cell_payload": 0
+        },
+        {
+          "name": "series_failed_id",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 0,
+          "unused": 4088,
+          "cells": 0,
+          "max_cell_payload": 0
+        },
+        {
+          "name": "series_ready",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 0,
+          "unused": 4088,
+          "cells": 0,
+          "max_cell_payload": 0
+        },
+        {
+          "name": "series_state",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 2432,
+          "unused": 1528,
+          "cells": 32,
+          "max_cell_payload": 76
+        },
+        {
+          "name": "sqlite_autoindex_clocks_1",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 323,
+          "unused": 3738,
+          "cells": 9,
+          "max_cell_payload": 36
+        },
+        {
+          "name": "sqlite_autoindex_label_values_1",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 306,
+          "unused": 3683,
+          "cells": 33,
+          "max_cell_payload": 28
+        },
+        {
+          "name": "sqlite_autoindex_series_1",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 1535,
+          "unused": 2457,
+          "cells": 32,
+          "max_cell_payload": 48
+        },
+        {
+          "name": "sqlite_schema",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 3284,
+          "unused": 628,
+          "cells": 16,
+          "max_cell_payload": 733
+        },
+        {
+          "name": "store_state",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 7,
+          "unused": 4077,
+          "cells": 1,
+          "max_cell_payload": 7
+        }
+      ],
+      "go_dbstat_audit": [
+        {
+          "Name": "sqlite_schema",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "_tinystore_migrations",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "store_state",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_series_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "label_values",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_label_values_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "postings",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_state",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "clocks",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_clocks_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "groups",
+          "Pages": 40,
+          "Bytes": 163840
+        },
+        {
+          "Name": "payloads",
+          "Pages": 1027,
+          "Bytes": 4206592
+        },
+        {
+          "Name": "series_ready",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_due",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_failed",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_failed_id",
+          "Pages": 1,
+          "Bytes": 4096
+        }
+      ],
+      "file_sha256": "643fa7bf2fb04d35f4cb329694a065ca1f60d05f4c569a91bf96e9a261b4a663",
+      "file_bytes": 4431872,
+      "freelist_bytes": 0
+    }
+  },
+  "build_wall_ns": 71029814,
+  "config": {
+    "variant": "cap8",
+    "page": 4096,
+    "rowid": 0,
+    "cap": 8,
+    "inline": 16,
+    "reencode": 1
+  },
+  "verify": {
+    "elapsed_ns": 31503228,
+    "mode": "verify",
+    "result": {
+      "series": 32,
+      "verified_samples": 491552
+    }
+  },
+  "summary_check": {
+    "elapsed_ns": 35635985,
+    "mode": "check_summary",
+    "result": {
+      "summary_matches_raw": true
+    }
+  }
+}

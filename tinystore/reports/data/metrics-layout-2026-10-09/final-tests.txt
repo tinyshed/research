@@ -1,0 +1,37 @@
+    Finished `release` profile [optimized] target(s) in 0.14s
+     Running unittests src/main.rs (/work/metrics-layout-target/release/deps/tinystore_metrics_layout_bench-992170ec85b5ea5b)
+
+running 30 tests
+test codec::buffer_tests::consumers_never_hide_trailing_corruption_and_decode_rolls_back ... ok
+test codec::buffer_tests::compressed_storage_is_reused_with_the_same_limits_and_errors ... ok
+test codec::buffer_tests::visitor_scratch_allows_recursion_and_does_not_retain_oversized_heads ... ok
+test codec::buffer_tests::indexed_value_encoding_copy_can_be_removed_without_changing_bytes ... ok
+test codec::buffer_tests::shared_heads_preserve_bytes_and_share_one_backing_allocation ... ok
+test codec::huffman::word_tests::huffman_end_marker_tail_and_output_bounds_match ... ok
+test codec::buffer_tests::every_truncation_keeps_partial_samples_private ... ok
+test codec::residuals::word_tests::hand_written_little_endian_vectors_match_go_layout ... ok
+test codec::tests::each_clock_decoder_mode_and_extent_guards ... ok
+test codec::tests::each_residual_decoder_mode_and_padding_guard ... ok
+test codec::tests::every_codec_envelope_time_value_and_compression_mode ... ok
+test codec::residuals::word_tests::word_reader_preserves_size_padding_and_count_guards ... ok
+test codec::tests::huffman_native_single_stream_round_trip ... ok
+test codec::tests::optimized_plain_stream_borrows_input_and_compression_stays_owned ... ok
+test codec::tests::regular_clock_direct_fill_matches_baseline_and_errors ... ok
+test codec::huffman::word_tests::backward_word_lookahead_matches_each_scalar_bit ... ok
+test codec::tests::heads_all_edge_value_bits_and_irregular_clocks ... ok
+test exact::tests::cancellation_overflow_and_subnormal_ties ... ok
+test codec::tests::residual_modes_and_canonical_exact_sums ... ok
+test exact::tests::exact_roundtrips_finite_bits ... ok
+test exact::tests::fixed_sum_extremes_cancellation_and_rounding ... ok
+test codec::tests::reuse_mutable_chunk_and_replace_tail ... ok
+test codec::tests::experimental_inline_formats_preserve_bodies_and_require_matching_decoder ... ok
+test exact::tests::fixed_sum_summary_and_group_merges_match_reference ... ok
+test codec::tests::decode_go_production_fixture_manifest ... ok
+test codec::buffer_tests::reusable_block_output_preserves_all_float_bits_and_capacity ... ok
+test exact::tests::fixed_sum_every_finite_exponent_and_deterministic_random_bits ... ok
+test codec::tests::sealed_group_directory_all_edge_values_round_trip ... ok
+test codec::huffman::word_tests::native_random_roundtrips_and_corruptions_match_scalar ... ok
+test codec::residuals::word_tests::every_width_and_count_matches_scalar_bits ... ok
+
+test result: ok. 30 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+

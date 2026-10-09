@@ -1,0 +1,24 @@
+{
+  "source_url": "https://clusterdata2018pubcn.oss-cn-beijing.aliyuncs.com/machine_usage.tar.gz",
+  "archive_sha256": "3e6ee87fd204bb85b9e234c5c75a5096580fdabc8f085b224033080090753a7a",
+  "archive_bytes": 1774523160,
+  "selection": {
+    "machine_modulus": 16,
+    "trace_second_exclusive": 172800,
+    "base_milliseconds": 1767225600000
+  },
+  "line_protocol_sha256": "50054799034b31c838c2ce7c02128d1454f1e989b8e9f0c1895679191191c084",
+  "normalized_sha256": "7ace58aaba7b3c34efc34c41585014521121c76aa991646c30735127a619afdd",
+  "normalized_bytes": 223046512,
+  "selector_sha256": "51419bc86c89a6edad9438585505a9ab6d7713eceeedd73a8082464bca9ae0e5",
+  "converter_sha256": "36559f36a2988e5249b2b5f629e1abc5cdab6baf1f8242ea269444cb6bba3f07",
+  "source_files": {
+    "tinystore/bench/alibaba/main.go": "462b167c16f90051bb16689a090c779ef5e6dc24a14d1db58dd98ee35f40bfe9",
+    "tinystore/bench/alibaba/go.mod": "113195de1ff37b53109f43ab18b689b53ed8821c9c491a85e092542e62678577",
+    "tinystore/bench/tsbs/main.go": "23b805d94348a06d1fe54ceaedcc17881a7e34ee32770608f537e54fa21fafac",
+    "tinystore/bench/tsbs/go.mod": "fa90d90b4b639f91a5d62a5a0db017bcbc2be9ecb2c2444008ff99d6dcf9ba21"
+  },
+  "selection_output": "rows-read=246934820 rows-selected=2486377 machines=248 samples=12431885 duplicate-timestamps=0 empty-rows=0\n",
+  "conversion_output": "series=1240 samples=12431885 integers=0 floats=12431885 text-round-trip-checked=12431885\n",
+  "note": "Input preparation only; elapsed time is not a storage-performance measurement. Corpus bytes are not committed."
+}

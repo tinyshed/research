@@ -1,0 +1,7058 @@
+[
+  {
+    "elapsed_ns": 23041088,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 13168590,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 28864720,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 16702787,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 28549392,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 19300909,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 16942576,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8224386,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 26213900,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 18007384,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 21108039,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 11606929,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 20945418,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 11712932,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 16740278,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8288019,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 16359387,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 7479789,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 18292714,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8724326,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 17362717,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8908853,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 16401295,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 7625797,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 19551564,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 9849258,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 17933864,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8566466,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 20487125,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 9667520,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 17145764,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8156382,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 16259231,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 7732800,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 20507580,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 10018362,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 16364206,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 7840659,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 16674773,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 7618982,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 16467422,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 7680390,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 15816847,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 7618792,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 17555050,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8491257,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 20443053,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 9266334,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 16887832,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 7925075,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 18708447,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 9275088,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 18807379,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 9681044,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 18742382,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8404058,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 16042128,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 7664974,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 15750692,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 7210918,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 16806567,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 7638788,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:38Z"
+  },
+  {
+    "elapsed_ns": 19123383,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8755967,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 17303579,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8351818,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 17166458,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8291725,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 18551074,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 9324830,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 17246116,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 7920260,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 19366284,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 9599366,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 17452438,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 7716099,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 18593734,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8611152,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 16602837,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 7797202,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 16323445,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 7368308,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 16567684,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 7904423,
+      "iterations": 417,
+      "result_sha256": "a52d1e37983286a10989b2ebafea4be5b2018c652f4e4da693190a8280f5a1cf"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 32317561,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 23654550,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 32641809,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 24091684,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 36797310,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 28008361,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 35476496,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 26833144,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 40147366,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 28437629,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 33216481,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 24864659,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 38032392,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 28562781,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 36778238,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 26732981,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 35692241,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 26106469,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 35083288,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 26064208,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 34739933,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 25810767,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 37265703,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 26898623,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 38933913,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 30143794,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 34449370,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 25789930,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 39520921,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 28772416,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 34877024,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 26213971,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 36640964,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 25663604,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 32505246,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 24059517,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 36215000,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 25759331,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 37061024,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 26585098,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 33265394,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 24407726,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:39Z"
+  },
+  {
+    "elapsed_ns": 37336402,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 27824153,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 35926356,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 26037222,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 37369052,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 27752178,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 36302855,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 24998655,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 34802879,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 26173680,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 32146102,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 23555635,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 35574842,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 25948814,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 36524429,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 26504736,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 38326424,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 28863297,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 32808669,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 23770808,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 35614220,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 26378507,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 35517578,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 25819452,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 34431299,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 25485657,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 34325613,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 25492244,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 35395742,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 25426202,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 34370315,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 25221945,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 34034601,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 24923276,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 33963537,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 24610918,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 34332028,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 25256750,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 38752742,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 29125157,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 33564510,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 24738940,
+      "iterations": 1238,
+      "result_sha256": "8f6c42ab7e04753497f4341ed62672f1c4dc6c54fa18f3cdbfb4f936bf5b10a2"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 78956698,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 69786530,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 75930819,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 66828509,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:40Z"
+  },
+  {
+    "elapsed_ns": 79665436,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 70795294,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:41Z"
+  },
+  {
+    "elapsed_ns": 79539871,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 69906461,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:41Z"
+  },
+  {
+    "elapsed_ns": 91963181,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 82441615,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:41Z"
+  },
+  {
+    "elapsed_ns": 85481164,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 75982367,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:41Z"
+  },
+  {
+    "elapsed_ns": 88122950,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 78317880,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:41Z"
+  },
+  {
+    "elapsed_ns": 87121915,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 77886517,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:41Z"
+  },
+  {
+    "elapsed_ns": 94939975,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 84055393,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:41Z"
+  },
+  {
+    "elapsed_ns": 89593812,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 79383186,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:41Z"
+  },
+  {
+    "elapsed_ns": 90964529,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 78818566,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:41Z"
+  },
+  {
+    "elapsed_ns": 78002769,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 68475110,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:41Z"
+  },
+  {
+    "elapsed_ns": 80250097,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 71519845,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:41Z"
+  },
+  {
+    "elapsed_ns": 95364312,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 85029571,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:41Z"
+  },
+  {
+    "elapsed_ns": 78547819,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 69068333,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:42Z"
+  },
+  {
+    "elapsed_ns": 85195126,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 75320428,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:42Z"
+  },
+  {
+    "elapsed_ns": 84224604,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 74823873,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:42Z"
+  },
+  {
+    "elapsed_ns": 82847552,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 74137169,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:42Z"
+  },
+  {
+    "elapsed_ns": 89335318,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 78705978,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:42Z"
+  },
+  {
+    "elapsed_ns": 80013800,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 70088912,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:42Z"
+  },
+  {
+    "elapsed_ns": 80249838,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 68418886,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:42Z"
+  },
+  {
+    "elapsed_ns": 87087945,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 75339706,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:42Z"
+  },
+  {
+    "elapsed_ns": 83999285,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 74960464,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:42Z"
+  },
+  {
+    "elapsed_ns": 80982212,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 70492295,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:42Z"
+  },
+  {
+    "elapsed_ns": 84278849,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 74724832,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:42Z"
+  },
+  {
+    "elapsed_ns": 83584022,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 74281917,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:43Z"
+  },
+  {
+    "elapsed_ns": 80265319,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 71150814,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:43Z"
+  },
+  {
+    "elapsed_ns": 81900759,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 72436808,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:43Z"
+  },
+  {
+    "elapsed_ns": 82549356,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 73137354,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:43Z"
+  },
+  {
+    "elapsed_ns": 75550288,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 66741281,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:43Z"
+  },
+  {
+    "elapsed_ns": 78390854,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 69320722,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:43Z"
+  },
+  {
+    "elapsed_ns": 82727981,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 74326144,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:43Z"
+  },
+  {
+    "elapsed_ns": 80879238,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 71804610,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:43Z"
+  },
+  {
+    "elapsed_ns": 83679316,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 73643157,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:43Z"
+  },
+  {
+    "elapsed_ns": 82715358,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 71570900,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:43Z"
+  },
+  {
+    "elapsed_ns": 78160657,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 69094920,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:43Z"
+  },
+  {
+    "elapsed_ns": 77367567,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 68680253,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:43Z"
+  },
+  {
+    "elapsed_ns": 80510893,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 71861289,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:44Z"
+  },
+  {
+    "elapsed_ns": 79981781,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 70593181,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:44Z"
+  },
+  {
+    "elapsed_ns": 90953591,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 79424833,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:44Z"
+  },
+  {
+    "elapsed_ns": 80505851,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 69679534,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:44Z"
+  },
+  {
+    "elapsed_ns": 83356326,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 74183527,
+      "iterations": 2835,
+      "result_sha256": "e2bab904c6766dbedd8b0298087ee5187d8ce809ddcbac1e518807f3c7197883"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:44Z"
+  },
+  {
+    "elapsed_ns": 56501052,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 47533254,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:44Z"
+  },
+  {
+    "elapsed_ns": 49936669,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 41226597,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:44Z"
+  },
+  {
+    "elapsed_ns": 52544141,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 43189422,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:44Z"
+  },
+  {
+    "elapsed_ns": 53604682,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 44127329,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:44Z"
+  },
+  {
+    "elapsed_ns": 52782445,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 44359149,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:44Z"
+  },
+  {
+    "elapsed_ns": 55115805,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 43675835,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:44Z"
+  },
+  {
+    "elapsed_ns": 56083438,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 47522824,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:44Z"
+  },
+  {
+    "elapsed_ns": 51839364,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 43327297,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:44Z"
+  },
+  {
+    "elapsed_ns": 54308010,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 45513164,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:44Z"
+  },
+  {
+    "elapsed_ns": 53456876,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 44525691,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:44Z"
+  },
+  {
+    "elapsed_ns": 50106949,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 40868326,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:44Z"
+  },
+  {
+    "elapsed_ns": 56334687,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 45193764,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:45Z"
+  },
+  {
+    "elapsed_ns": 52862920,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 42218881,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:45Z"
+  },
+  {
+    "elapsed_ns": 51324574,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 42185019,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:45Z"
+  },
+  {
+    "elapsed_ns": 52319350,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 42989052,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:45Z"
+  },
+  {
+    "elapsed_ns": 49665812,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 40891205,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:45Z"
+  },
+  {
+    "elapsed_ns": 49752082,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 40981902,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:45Z"
+  },
+  {
+    "elapsed_ns": 52794634,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 43786524,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:45Z"
+  },
+  {
+    "elapsed_ns": 50151981,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 41273344,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:45Z"
+  },
+  {
+    "elapsed_ns": 51047233,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 41667304,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:45Z"
+  },
+  {
+    "elapsed_ns": 52685640,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 44044047,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:45Z"
+  },
+  {
+    "elapsed_ns": 50572376,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 41656441,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:45Z"
+  },
+  {
+    "elapsed_ns": 57819315,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 45256112,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:45Z"
+  },
+  {
+    "elapsed_ns": 52559053,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 42549051,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:45Z"
+  },
+  {
+    "elapsed_ns": 49878994,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 41539411,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:45Z"
+  },
+  {
+    "elapsed_ns": 51553968,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 42932730,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:45Z"
+  },
+  {
+    "elapsed_ns": 49766969,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 41197829,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:45Z"
+  },
+  {
+    "elapsed_ns": 52775022,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 44128929,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:45Z"
+  },
+  {
+    "elapsed_ns": 51297935,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 40964014,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:45Z"
+  },
+  {
+    "elapsed_ns": 49392318,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 40532282,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:45Z"
+  },
+  {
+    "elapsed_ns": 55258763,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 44807174,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 53107313,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 44022300,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 56201805,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 46146561,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 55642449,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 45670718,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 56737487,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 46340299,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 56193605,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 46268136,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline64",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 60083524,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 49559190,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_inline32",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 56423027,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 46791197,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "cap16",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 54721633,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 45740366,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid_native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 52375897,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 43542484,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 50815794,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 41135697,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "rowid",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 51876734,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 42989751,
+      "iterations": 1639,
+      "result_sha256": "929fc5530cbcd15c170dac8a540b66ef746a0da33dc045bcfeb54046d6286d6a"
+    },
+    "dataset": "tsbs",
+    "variant": "exact",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 38996019,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 35953728,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 23836851,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 21160393,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 36692496,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 33417093,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 21561246,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 18591590,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 26067736,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 22705679,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 24938321,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 21333898,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 25161376,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 22020581,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 15993366,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 11737721,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 11078467,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8212215,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 9670788,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 6340551,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 14821492,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 10790839,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 11401701,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8626729,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 11498857,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8319441,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 11530010,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8535744,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 12978421,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 10303968,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 11312906,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8300980,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:46Z"
+  },
+  {
+    "elapsed_ns": 12992569,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 10022060,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 10930296,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8087698,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 9742280,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 6479390,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 11406235,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8381568,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 12490747,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 9474228,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 13247213,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 9718477,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 12955578,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 9824865,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 11401571,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8303346,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 12432494,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8931394,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 11389682,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8654160,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 13843800,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 9752123,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 11854347,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8983607,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 11100345,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8331511,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 10836632,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 7792982,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 13827410,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 10768524,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 14490805,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 11469638,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 8969158,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 6067196,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 12644132,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 9714442,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 14943078,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 11630465,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 11098665,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8224651,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 11279242,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8254005,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 9199431,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 6185323,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 10796827,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8009743,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 11236283,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8271209,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 10731890,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 8060797,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 11926971,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 9018019,
+      "iterations": 195,
+      "result_sha256": "b648444402efe4e2155d9c7e4d1d67bb17fbb9e5431c6be2735f6b4e504a5677"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 53799713,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 50799906,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 63141516,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 59592929,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 56623979,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 53838284,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 48817437,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 46010901,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 47786169,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 44852137,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 53023929,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 50183250,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 51671531,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 48902767,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 48178700,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 45205275,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 53114574,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 50035334,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 45031322,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 41999695,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 54914686,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 51518568,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 53844171,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 50388638,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:47Z"
+  },
+  {
+    "elapsed_ns": 57371840,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 54176666,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:48Z"
+  },
+  {
+    "elapsed_ns": 58933017,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 55979153,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:48Z"
+  },
+  {
+    "elapsed_ns": 53004859,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 49907947,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:48Z"
+  },
+  {
+    "elapsed_ns": 54785820,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 51657717,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:48Z"
+  },
+  {
+    "elapsed_ns": 51937811,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 49165902,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:48Z"
+  },
+  {
+    "elapsed_ns": 51728383,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 48702626,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:48Z"
+  },
+  {
+    "elapsed_ns": 45193514,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 42382242,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:48Z"
+  },
+  {
+    "elapsed_ns": 47010536,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 44225422,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:48Z"
+  },
+  {
+    "elapsed_ns": 54940913,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 51538215,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:48Z"
+  },
+  {
+    "elapsed_ns": 47779819,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 44862944,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:48Z"
+  },
+  {
+    "elapsed_ns": 53073841,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 49994446,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:48Z"
+  },
+  {
+    "elapsed_ns": 44235765,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 41052938,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:48Z"
+  },
+  {
+    "elapsed_ns": 56307109,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 53103741,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:48Z"
+  },
+  {
+    "elapsed_ns": 55643582,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 52797003,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:48Z"
+  },
+  {
+    "elapsed_ns": 50926542,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 47507552,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:48Z"
+  },
+  {
+    "elapsed_ns": 55407296,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 52217850,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:48Z"
+  },
+  {
+    "elapsed_ns": 55607877,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 52644378,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:48Z"
+  },
+  {
+    "elapsed_ns": 50114988,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 47207747,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:48Z"
+  },
+  {
+    "elapsed_ns": 54728180,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 51458705,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:49Z"
+  },
+  {
+    "elapsed_ns": 49851235,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 46613360,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:49Z"
+  },
+  {
+    "elapsed_ns": 50850518,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 46910861,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:49Z"
+  },
+  {
+    "elapsed_ns": 49017086,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 46149332,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:49Z"
+  },
+  {
+    "elapsed_ns": 49343123,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 46458174,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:49Z"
+  },
+  {
+    "elapsed_ns": 47916097,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 44949662,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:49Z"
+  },
+  {
+    "elapsed_ns": 49486446,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 46325712,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:49Z"
+  },
+  {
+    "elapsed_ns": 45340602,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 42167386,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:49Z"
+  },
+  {
+    "elapsed_ns": 51623098,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 48355127,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:49Z"
+  },
+  {
+    "elapsed_ns": 55013475,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 51938215,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:49Z"
+  },
+  {
+    "elapsed_ns": 49804392,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 46710616,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:49Z"
+  },
+  {
+    "elapsed_ns": 51844113,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 48909686,
+      "iterations": 838,
+      "result_sha256": "9bb1994ac8d2a2175102516ca009e4e68565e5d3dd9f4a779ace4291124d6f72"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:49Z"
+  },
+  {
+    "elapsed_ns": 77632572,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 74851378,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:49Z"
+  },
+  {
+    "elapsed_ns": 81089560,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 77893393,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:49Z"
+  },
+  {
+    "elapsed_ns": 79682106,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 76718842,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:49Z"
+  },
+  {
+    "elapsed_ns": 76264655,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 73452048,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:49Z"
+  },
+  {
+    "elapsed_ns": 80339224,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 77457723,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:50Z"
+  },
+  {
+    "elapsed_ns": 76976857,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 73216118,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:50Z"
+  },
+  {
+    "elapsed_ns": 74157772,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 70932012,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:50Z"
+  },
+  {
+    "elapsed_ns": 70490623,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 67649121,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:50Z"
+  },
+  {
+    "elapsed_ns": 71676763,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 68819685,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:50Z"
+  },
+  {
+    "elapsed_ns": 75013142,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 71806550,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:50Z"
+  },
+  {
+    "elapsed_ns": 73777493,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 70901584,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:50Z"
+  },
+  {
+    "elapsed_ns": 77706252,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 74731628,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:50Z"
+  },
+  {
+    "elapsed_ns": 76888033,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 73820163,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:50Z"
+  },
+  {
+    "elapsed_ns": 79868277,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 76774825,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:50Z"
+  },
+  {
+    "elapsed_ns": 75620174,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 72789522,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:50Z"
+  },
+  {
+    "elapsed_ns": 74798543,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 71878841,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:50Z"
+  },
+  {
+    "elapsed_ns": 78437120,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 75313147,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:50Z"
+  },
+  {
+    "elapsed_ns": 73669594,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 70781653,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:51Z"
+  },
+  {
+    "elapsed_ns": 79687159,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 76793728,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:51Z"
+  },
+  {
+    "elapsed_ns": 79253623,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 76310160,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:51Z"
+  },
+  {
+    "elapsed_ns": 77420874,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 74351892,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:51Z"
+  },
+  {
+    "elapsed_ns": 79339447,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 76208654,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:51Z"
+  },
+  {
+    "elapsed_ns": 73400814,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 70381747,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:51Z"
+  },
+  {
+    "elapsed_ns": 88945008,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 85757272,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:51Z"
+  },
+  {
+    "elapsed_ns": 74361137,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 71088647,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:51Z"
+  },
+  {
+    "elapsed_ns": 79042300,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 75988331,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:51Z"
+  },
+  {
+    "elapsed_ns": 73345297,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 70424615,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:51Z"
+  },
+  {
+    "elapsed_ns": 77046729,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 73746573,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:51Z"
+  },
+  {
+    "elapsed_ns": 75025760,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 71600425,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:51Z"
+  },
+  {
+    "elapsed_ns": 76127339,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 73167724,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:51Z"
+  },
+  {
+    "elapsed_ns": 81074694,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 77244199,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:52Z"
+  },
+  {
+    "elapsed_ns": 81098339,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 77666695,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:52Z"
+  },
+  {
+    "elapsed_ns": 77696583,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 74825744,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:52Z"
+  },
+  {
+    "elapsed_ns": 80247491,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 76808379,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:52Z"
+  },
+  {
+    "elapsed_ns": 87254385,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 83721498,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:52Z"
+  },
+  {
+    "elapsed_ns": 81076814,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 78085539,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:52Z"
+  },
+  {
+    "elapsed_ns": 71501439,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 68713415,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:52Z"
+  },
+  {
+    "elapsed_ns": 81458185,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 78576736,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:52Z"
+  },
+  {
+    "elapsed_ns": 71578109,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 68776684,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:52Z"
+  },
+  {
+    "elapsed_ns": 83663216,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 79610100,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:52Z"
+  },
+  {
+    "elapsed_ns": 78257372,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 74573567,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:52Z"
+  },
+  {
+    "elapsed_ns": 77567781,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 73628013,
+      "iterations": 1105,
+      "result_sha256": "9c9978855b765a382371b3387f26d1e09851ed3b62f55b52117bbfc242f851fb"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:52Z"
+  },
+  {
+    "elapsed_ns": 52983218,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 49927348,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:52Z"
+  },
+  {
+    "elapsed_ns": 51461548,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 48622450,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:53Z"
+  },
+  {
+    "elapsed_ns": 58003715,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 55256002,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:53Z"
+  },
+  {
+    "elapsed_ns": 51657185,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 48617516,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:53Z"
+  },
+  {
+    "elapsed_ns": 49970002,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 47074436,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:53Z"
+  },
+  {
+    "elapsed_ns": 52392992,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 49501209,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:53Z"
+  },
+  {
+    "elapsed_ns": 52325872,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 49379618,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:53Z"
+  },
+  {
+    "elapsed_ns": 48515009,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 45590558,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:53Z"
+  },
+  {
+    "elapsed_ns": 50734012,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 47740692,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:53Z"
+  },
+  {
+    "elapsed_ns": 49985992,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 46733541,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:53Z"
+  },
+  {
+    "elapsed_ns": 51135323,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 48039176,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:53Z"
+  },
+  {
+    "elapsed_ns": 51265527,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 48392397,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:53Z"
+  },
+  {
+    "elapsed_ns": 51581791,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 48751063,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:53Z"
+  },
+  {
+    "elapsed_ns": 51317894,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 48573372,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:53Z"
+  },
+  {
+    "elapsed_ns": 52848315,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 49970765,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:53Z"
+  },
+  {
+    "elapsed_ns": 50945905,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 48223394,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:53Z"
+  },
+  {
+    "elapsed_ns": 55885703,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 52599905,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:53Z"
+  },
+  {
+    "elapsed_ns": 50520705,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 47509898,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:53Z"
+  },
+  {
+    "elapsed_ns": 50939753,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 48124737,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:53Z"
+  },
+  {
+    "elapsed_ns": 50052126,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 47308944,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:54Z"
+  },
+  {
+    "elapsed_ns": 50231816,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 47108102,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:54Z"
+  },
+  {
+    "elapsed_ns": 51232130,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 48528070,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:54Z"
+  },
+  {
+    "elapsed_ns": 50632547,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 47473291,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:54Z"
+  },
+  {
+    "elapsed_ns": 54086219,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 51371308,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:54Z"
+  },
+  {
+    "elapsed_ns": 50987542,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 47447625,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:54Z"
+  },
+  {
+    "elapsed_ns": 51317856,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 48594715,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:54Z"
+  },
+  {
+    "elapsed_ns": 49802489,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 46963932,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:54Z"
+  },
+  {
+    "elapsed_ns": 52725149,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 49740388,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:54Z"
+  },
+  {
+    "elapsed_ns": 51521777,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 48832449,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:54Z"
+  },
+  {
+    "elapsed_ns": 50056185,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 47296168,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:54Z"
+  },
+  {
+    "elapsed_ns": 52463468,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 49606591,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:54Z"
+  },
+  {
+    "elapsed_ns": 51230401,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 48456078,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:54Z"
+  },
+  {
+    "elapsed_ns": 49772869,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 46902061,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:54Z"
+  },
+  {
+    "elapsed_ns": 51935500,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 49072941,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:54Z"
+  },
+  {
+    "elapsed_ns": 50564442,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 47680294,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:54Z"
+  },
+  {
+    "elapsed_ns": 55155579,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 51791393,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline64",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:54Z"
+  },
+  {
+    "elapsed_ns": 55448863,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 52507820,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_inline32",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:54Z"
+  },
+  {
+    "elapsed_ns": 53113115,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 50040975,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "cap16",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:54Z"
+  },
+  {
+    "elapsed_ns": 57588233,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 54407945,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid_native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 54236308,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 51245341,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 52460537,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 49551047,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "rowid",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 54515333,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 51631024,
+      "iterations": 698,
+      "result_sha256": "5255b292b88647c889d36b4ff36ddf3edbbd0b926a3b8d751a06c64b837abf32"
+    },
+    "dataset": "alibaba",
+    "variant": "exact",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 19624038,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 19125461,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 19255058,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 18796064,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 18460204,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 17894423,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 18541049,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 18031401,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 11785112,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 11255073,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 18435272,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 17912482,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 19476230,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 19003503,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 20008567,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 19545882,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 18773521,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 18275143,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 11347120,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 10824321,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 19944026,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 19467099,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 18826104,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 18332026,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 19586546,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 19097689,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 19841930,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 19260918,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 20604242,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 20053921,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 21588857,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 21135851,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 17754185,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 17262527,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 18134856,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 17555284,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 10963823,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 10521499,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 18231421,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 17753974,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 20234061,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 19792916,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 18707606,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 18183157,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 18056567,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 17544278,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 11761793,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 11228514,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 18243961,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 17647309,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 19338812,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 18829414,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 18344847,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 17817998,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 19468169,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 18899747,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 19165963,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 18665875,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 18003608,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 17557253,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 26386696,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 25712799,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 19454928,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 18970852,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 13566511,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 13057442,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 19833040,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 19279800,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 22327338,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 21774397,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 20496747,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 20016350,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 18569850,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 18057121,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 11756042,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 11293526,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 18660445,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 18085533,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 18468584,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 17917453,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:55Z"
+  },
+  {
+    "elapsed_ns": 20012521,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 19471220,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:56Z"
+  },
+  {
+    "elapsed_ns": 26092127,
+    "mode": "bench",
+    "result": {
+      "case": "point",
+      "elapsed_ns": 25543666,
+      "iterations": 324,
+      "result_sha256": "76ad9158dbe865154ffd8728731fc810587def2f47fef5c26396819c8d79a174"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:56Z"
+  },
+  {
+    "elapsed_ns": 102204015,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 101696627,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:56Z"
+  },
+  {
+    "elapsed_ns": 107318750,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 106593070,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:56Z"
+  },
+  {
+    "elapsed_ns": 97826135,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 97335558,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:56Z"
+  },
+  {
+    "elapsed_ns": 99801028,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 99228736,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:56Z"
+  },
+  {
+    "elapsed_ns": 69661418,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 69156110,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:56Z"
+  },
+  {
+    "elapsed_ns": 100590865,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 100037965,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:56Z"
+  },
+  {
+    "elapsed_ns": 91983144,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 91396201,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:56Z"
+  },
+  {
+    "elapsed_ns": 91265795,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 90741076,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:56Z"
+  },
+  {
+    "elapsed_ns": 88341674,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 87810694,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:56Z"
+  },
+  {
+    "elapsed_ns": 64454114,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 63939996,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:56Z"
+  },
+  {
+    "elapsed_ns": 88107231,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 85354012,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:57Z"
+  },
+  {
+    "elapsed_ns": 117783048,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 117281770,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:57Z"
+  },
+  {
+    "elapsed_ns": 106337117,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 105711845,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:57Z"
+  },
+  {
+    "elapsed_ns": 83320749,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 82870033,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:36:57Z"
+  },
+  {
+    "elapsed_ns": 83339800,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 82893395,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:57Z"
+  },
+  {
+    "elapsed_ns": 82803070,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 82366246,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:57Z"
+  },
+  {
+    "elapsed_ns": 83700131,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 83257258,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:57Z"
+  },
+  {
+    "elapsed_ns": 87268214,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 86710273,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:57Z"
+  },
+  {
+    "elapsed_ns": 73420395,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 72891895,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:57Z"
+  },
+  {
+    "elapsed_ns": 82266541,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 81814616,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:57Z"
+  },
+  {
+    "elapsed_ns": 88053810,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 87593664,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:36:57Z"
+  },
+  {
+    "elapsed_ns": 82192189,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 81701902,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:58Z"
+  },
+  {
+    "elapsed_ns": 86780704,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 86222373,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:58Z"
+  },
+  {
+    "elapsed_ns": 56859412,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 56398917,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:58Z"
+  },
+  {
+    "elapsed_ns": 90359898,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 89850189,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:58Z"
+  },
+  {
+    "elapsed_ns": 81331639,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 80882074,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:58Z"
+  },
+  {
+    "elapsed_ns": 89283089,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 88841845,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:58Z"
+  },
+  {
+    "elapsed_ns": 83234571,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 82653028,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:36:58Z"
+  },
+  {
+    "elapsed_ns": 88339719,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 87829270,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:58Z"
+  },
+  {
+    "elapsed_ns": 92940767,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 92440010,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:58Z"
+  },
+  {
+    "elapsed_ns": 83522957,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 83061381,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:58Z"
+  },
+  {
+    "elapsed_ns": 84752780,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 84286954,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:58Z"
+  },
+  {
+    "elapsed_ns": 60576790,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 60054600,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:58Z"
+  },
+  {
+    "elapsed_ns": 92200976,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 91608643,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:59Z"
+  },
+  {
+    "elapsed_ns": 88349454,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 87822834,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:36:59Z"
+  },
+  {
+    "elapsed_ns": 97899965,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 97422918,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:59Z"
+  },
+  {
+    "elapsed_ns": 85279027,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 84830972,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:59Z"
+  },
+  {
+    "elapsed_ns": 63401939,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 62940624,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:59Z"
+  },
+  {
+    "elapsed_ns": 81427039,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 80913840,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:59Z"
+  },
+  {
+    "elapsed_ns": 93331959,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 92750427,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:59Z"
+  },
+  {
+    "elapsed_ns": 92270835,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 91824570,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:59Z"
+  },
+  {
+    "elapsed_ns": 95028410,
+    "mode": "bench",
+    "result": {
+      "case": "range",
+      "elapsed_ns": 94554324,
+      "iterations": 1059,
+      "result_sha256": "e19506746d82aacac6bdaf66d3ee7a25e0735cc90e03e2f4aab3312384874de7"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:36:59Z"
+  },
+  {
+    "elapsed_ns": 101880098,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 101404461,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:59Z"
+  },
+  {
+    "elapsed_ns": 92621706,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 92168161,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:36:59Z"
+  },
+  {
+    "elapsed_ns": 99303932,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 98845386,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:37:00Z"
+  },
+  {
+    "elapsed_ns": 91435770,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 90946623,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:37:00Z"
+  },
+  {
+    "elapsed_ns": 103830538,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 103375803,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:37:00Z"
+  },
+  {
+    "elapsed_ns": 95366723,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 94818682,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:37:00Z"
+  },
+  {
+    "elapsed_ns": 103357442,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 102898297,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:37:00Z"
+  },
+  {
+    "elapsed_ns": 98103991,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 97656536,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:37:00Z"
+  },
+  {
+    "elapsed_ns": 99901368,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 99326466,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:37:00Z"
+  },
+  {
+    "elapsed_ns": 93165626,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 92729642,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:37:00Z"
+  },
+  {
+    "elapsed_ns": 98807766,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 98362212,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:37:00Z"
+  },
+  {
+    "elapsed_ns": 94184646,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 93739322,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:37:00Z"
+  },
+  {
+    "elapsed_ns": 103804502,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 103228400,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:37:01Z"
+  },
+  {
+    "elapsed_ns": 104724238,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 104232910,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:37:01Z"
+  },
+  {
+    "elapsed_ns": 118022755,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 117461014,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:37:01Z"
+  },
+  {
+    "elapsed_ns": 91825782,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 91350845,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:37:01Z"
+  },
+  {
+    "elapsed_ns": 113731850,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 113199480,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:37:01Z"
+  },
+  {
+    "elapsed_ns": 95389056,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 94837695,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:37:01Z"
+  },
+  {
+    "elapsed_ns": 98956528,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 98428769,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:37:01Z"
+  },
+  {
+    "elapsed_ns": 89381517,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 88939382,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:37:01Z"
+  },
+  {
+    "elapsed_ns": 95769720,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 95318806,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:37:01Z"
+  },
+  {
+    "elapsed_ns": 94459270,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 94025356,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:37:01Z"
+  },
+  {
+    "elapsed_ns": 102658484,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 100817038,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:37:02Z"
+  },
+  {
+    "elapsed_ns": 95597864,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 95133788,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:37:02Z"
+  },
+  {
+    "elapsed_ns": 100009057,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 99565612,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:37:02Z"
+  },
+  {
+    "elapsed_ns": 92351817,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 91904673,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:37:02Z"
+  },
+  {
+    "elapsed_ns": 103545083,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 103020803,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:37:02Z"
+  },
+  {
+    "elapsed_ns": 93835714,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 93371208,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:37:02Z"
+  },
+  {
+    "elapsed_ns": 93703573,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 93272510,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:37:02Z"
+  },
+  {
+    "elapsed_ns": 96868979,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 96422515,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:37:02Z"
+  },
+  {
+    "elapsed_ns": 100565517,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 99823586,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:37:02Z"
+  },
+  {
+    "elapsed_ns": 94523415,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 94004426,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:37:02Z"
+  },
+  {
+    "elapsed_ns": 96623348,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 96157872,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:37:03Z"
+  },
+  {
+    "elapsed_ns": 92578530,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 92076642,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:37:03Z"
+  },
+  {
+    "elapsed_ns": 110444323,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 109985367,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:37:03Z"
+  },
+  {
+    "elapsed_ns": 102106110,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 101674667,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:37:03Z"
+  },
+  {
+    "elapsed_ns": 93301219,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 92856474,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:37:03Z"
+  },
+  {
+    "elapsed_ns": 94996871,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 94533255,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:37:03Z"
+  },
+  {
+    "elapsed_ns": 91235140,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 90724921,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:37:03Z"
+  },
+  {
+    "elapsed_ns": 96508046,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 96046320,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:37:03Z"
+  },
+  {
+    "elapsed_ns": 94963670,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 94530586,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:37:03Z"
+  },
+  {
+    "elapsed_ns": 95641147,
+    "mode": "bench",
+    "result": {
+      "case": "whole_summary",
+      "elapsed_ns": 95201603,
+      "iterations": 889,
+      "result_sha256": "fdcd781626b20d0ac32fc35bf5d33f321948a7f0812fe735c72981652f7715a1"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:37:03Z"
+  },
+  {
+    "elapsed_ns": 101209078,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 100693550,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:37:04Z"
+  },
+  {
+    "elapsed_ns": 101434479,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 101000675,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:37:04Z"
+  },
+  {
+    "elapsed_ns": 89665286,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 89215051,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:37:04Z"
+  },
+  {
+    "elapsed_ns": 94203359,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 93749144,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:37:04Z"
+  },
+  {
+    "elapsed_ns": 58697052,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 58237536,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:37:04Z"
+  },
+  {
+    "elapsed_ns": 95819674,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 95330357,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:37:04Z"
+  },
+  {
+    "elapsed_ns": 96469199,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 95907168,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 0,
+    "utc": "2026-10-09T10:37:04Z"
+  },
+  {
+    "elapsed_ns": 93692778,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 93248924,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:37:04Z"
+  },
+  {
+    "elapsed_ns": 88208417,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 87729981,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:37:04Z"
+  },
+  {
+    "elapsed_ns": 55936297,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 55499473,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:37:04Z"
+  },
+  {
+    "elapsed_ns": 88380857,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 87927281,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:37:04Z"
+  },
+  {
+    "elapsed_ns": 95348147,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 94845170,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:37:05Z"
+  },
+  {
+    "elapsed_ns": 111483353,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 110911042,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:37:05Z"
+  },
+  {
+    "elapsed_ns": 100435747,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 99925108,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 1,
+    "utc": "2026-10-09T10:37:05Z"
+  },
+  {
+    "elapsed_ns": 108167899,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 107703944,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:37:05Z"
+  },
+  {
+    "elapsed_ns": 100108846,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 99621689,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:37:05Z"
+  },
+  {
+    "elapsed_ns": 94408020,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 93950084,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:37:05Z"
+  },
+  {
+    "elapsed_ns": 93570760,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 93081493,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:37:05Z"
+  },
+  {
+    "elapsed_ns": 68156376,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 67668370,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:37:05Z"
+  },
+  {
+    "elapsed_ns": 95020909,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 94562873,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:37:05Z"
+  },
+  {
+    "elapsed_ns": 97670337,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 97223602,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 2,
+    "utc": "2026-10-09T10:37:05Z"
+  },
+  {
+    "elapsed_ns": 103788837,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 103305199,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:37:06Z"
+  },
+  {
+    "elapsed_ns": 95084483,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 94645879,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:37:06Z"
+  },
+  {
+    "elapsed_ns": 66874813,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 66350003,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:37:06Z"
+  },
+  {
+    "elapsed_ns": 96725891,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 96279276,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:37:06Z"
+  },
+  {
+    "elapsed_ns": 101071716,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 100550326,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:37:06Z"
+  },
+  {
+    "elapsed_ns": 101642897,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 101135249,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:37:06Z"
+  },
+  {
+    "elapsed_ns": 105588166,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 104949231,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 3,
+    "utc": "2026-10-09T10:37:06Z"
+  },
+  {
+    "elapsed_ns": 101472441,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 100868607,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:37:06Z"
+  },
+  {
+    "elapsed_ns": 97428601,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 96832538,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:37:06Z"
+  },
+  {
+    "elapsed_ns": 103245932,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 102721433,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:37:06Z"
+  },
+  {
+    "elapsed_ns": 111990808,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 111411386,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:37:07Z"
+  },
+  {
+    "elapsed_ns": 66690154,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 65213451,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:37:07Z"
+  },
+  {
+    "elapsed_ns": 106308786,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 105737644,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:37:07Z"
+  },
+  {
+    "elapsed_ns": 100351121,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 99879515,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 4,
+    "utc": "2026-10-09T10:37:07Z"
+  },
+  {
+    "elapsed_ns": 110572890,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 110108225,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline64",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:37:07Z"
+  },
+  {
+    "elapsed_ns": 99510162,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 98923519,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_inline32",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:37:07Z"
+  },
+  {
+    "elapsed_ns": 62314772,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 61704867,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "cap16",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:37:07Z"
+  },
+  {
+    "elapsed_ns": 111659680,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 111067258,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid_native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:37:07Z"
+  },
+  {
+    "elapsed_ns": 96129877,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 95643680,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "native_control",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:37:07Z"
+  },
+  {
+    "elapsed_ns": 106275327,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 105791740,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "rowid",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:37:07Z"
+  },
+  {
+    "elapsed_ns": 98211860,
+    "mode": "bench",
+    "result": {
+      "case": "cut_summary",
+      "elapsed_ns": 97742873,
+      "iterations": 715,
+      "result_sha256": "852a2f8ae7acf34d45a565fe06ef0fac166387ebd4246ba631b9dc7266542f39"
+    },
+    "dataset": "irregular",
+    "variant": "exact",
+    "pass_no": 5,
+    "utc": "2026-10-09T10:37:07Z"
+  }
+]

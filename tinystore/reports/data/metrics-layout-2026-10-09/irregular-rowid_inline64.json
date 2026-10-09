@@ -1,0 +1,465 @@
+{
+  "elapsed_ns": 42770047,
+  "mode": "rewrite",
+  "result": {
+    "blobs": {
+      "clock_stored": 212394,
+      "directory_stored": 78565,
+      "head_samples": 32,
+      "head_stored": 992,
+      "payload_stored": 0
+    },
+    "block_clock_residual_bytes": 495616,
+    "body_size_histogram": {
+      "47": 2048
+    },
+    "directory_size_histogram": {
+      "100": 1,
+      "101": 4,
+      "102": 3,
+      "103": 2,
+      "104": 1,
+      "106": 2,
+      "107": 2,
+      "108": 1,
+      "109": 3,
+      "110": 1,
+      "1115": 1,
+      "1120": 1,
+      "1123": 1,
+      "1129": 2,
+      "113": 1,
+      "1130": 3,
+      "1131": 3,
+      "1134": 1,
+      "1136": 1,
+      "1137": 1,
+      "1139": 1,
+      "1141": 1,
+      "1142": 1,
+      "1143": 1,
+      "1145": 2,
+      "1147": 2,
+      "1148": 1,
+      "115": 1,
+      "1151": 1,
+      "1153": 1,
+      "1154": 3,
+      "1155": 2,
+      "1158": 1,
+      "116": 1,
+      "1161": 1,
+      "1162": 1,
+      "1163": 1,
+      "1167": 1,
+      "1169": 1,
+      "1170": 1,
+      "1171": 1,
+      "1172": 1,
+      "1173": 2,
+      "1176": 2,
+      "1177": 1,
+      "1178": 1,
+      "1182": 1,
+      "1188": 1,
+      "1193": 1,
+      "1203": 1,
+      "1218": 1,
+      "1228": 1,
+      "1229": 2,
+      "1235": 1,
+      "1237": 1,
+      "1243": 1,
+      "1251": 1,
+      "1255": 1,
+      "1258": 1,
+      "1259": 1,
+      "1267": 1,
+      "1273": 1,
+      "1275": 1,
+      "1299": 1,
+      "97": 2,
+      "98": 4,
+      "99": 3
+    },
+    "expanded_directory_parts": {
+      "address_or_inline": 96256,
+      "exact_summary": 30931,
+      "first": 5519,
+      "summary_scalars_flags_resets": 33178,
+      "value_length": 2048
+    },
+    "file_bytes": 430080,
+    "group_slots_histogram": {
+      "1": 32,
+      "31": 32,
+      "32": 32
+    },
+    "immutable_block_sha256": "b55807968e041e97283fb937f668a8ea66083233d2a5c7e27030fd672241c26c",
+    "inline_value_bytes": 96256,
+    "live_blocks": 2048,
+    "objects": [],
+    "publication_ns": 29577651,
+    "sealed_samples": 491520,
+    "settings": {
+      "cache_size": -1024,
+      "checkpoint_fullfsync": 1,
+      "freelist_count": 0,
+      "fullfsync": 1,
+      "mmap_size": 0,
+      "page_count": 105,
+      "page_size": 4096,
+      "sqlite_source_id": "2026-07-24 19:02:57 bf7c7f30031888f4e796e429ab3978879485813aaca6f641c7b33e4e09459bcc",
+      "synchronous": 2,
+      "trusted_schema": 0,
+      "wal_autocheckpoint": 1000
+    },
+    "shm_bytes": 32768,
+    "stable_external_payload_addresses": 0,
+    "tables": {
+      "clocks": 39,
+      "groups": 96,
+      "label_values": 33,
+      "payloads": 0,
+      "postings": 64,
+      "series": 32,
+      "series_state": 32
+    },
+    "value_bytes_total": 96256,
+    "wal_bytes": 0,
+    "physical": {
+      "reader_sqlite_version": "3.46.1",
+      "objects": [
+        {
+          "name": "_tinystore_migrations",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 51,
+          "unused": 4033,
+          "cells": 1,
+          "max_cell_payload": 51
+        },
+        {
+          "name": "clocks",
+          "type": "internal",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 0,
+          "unused": 3909,
+          "cells": 25,
+          "max_cell_payload": 0
+        },
+        {
+          "name": "clocks",
+          "type": "leaf",
+          "pages": 26,
+          "bytes": 106496,
+          "cell_payload": 60411,
+          "unused": 45578,
+          "cells": 39,
+          "max_cell_payload": 8205
+        },
+        {
+          "name": "clocks",
+          "type": "overflow",
+          "pages": 39,
+          "bytes": 159744,
+          "cell_payload": 153504,
+          "unused": 6084,
+          "cells": 0,
+          "max_cell_payload": 0
+        },
+        {
+          "name": "groups",
+          "type": "internal",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 0,
+          "unused": 3937,
+          "cells": 21,
+          "max_cell_payload": 0
+        },
+        {
+          "name": "groups",
+          "type": "leaf",
+          "pages": 22,
+          "bytes": 90112,
+          "cell_payload": 80575,
+          "unused": 8903,
+          "cells": 96,
+          "max_cell_payload": 1320
+        },
+        {
+          "name": "label_values",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 308,
+          "unused": 3648,
+          "cells": 33,
+          "max_cell_payload": 30
+        },
+        {
+          "name": "payloads",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 0,
+          "unused": 4088,
+          "cells": 0,
+          "max_cell_payload": 0
+        },
+        {
+          "name": "postings",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 286,
+          "unused": 3610,
+          "cells": 64,
+          "max_cell_payload": 5
+        },
+        {
+          "name": "series",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 1840,
+          "unused": 2120,
+          "cells": 32,
+          "max_cell_payload": 59
+        },
+        {
+          "name": "series_due",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 319,
+          "unused": 3673,
+          "cells": 32,
+          "max_cell_payload": 10
+        },
+        {
+          "name": "series_failed",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 0,
+          "unused": 4088,
+          "cells": 0,
+          "max_cell_payload": 0
+        },
+        {
+          "name": "series_failed_id",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 0,
+          "unused": 4088,
+          "cells": 0,
+          "max_cell_payload": 0
+        },
+        {
+          "name": "series_ready",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 0,
+          "unused": 4088,
+          "cells": 0,
+          "max_cell_payload": 0
+        },
+        {
+          "name": "series_state",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 2464,
+          "unused": 1496,
+          "cells": 32,
+          "max_cell_payload": 77
+        },
+        {
+          "name": "sqlite_autoindex_clocks_1",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 1403,
+          "unused": 2568,
+          "cells": 39,
+          "max_cell_payload": 36
+        },
+        {
+          "name": "sqlite_autoindex_groups_1",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 1148,
+          "unused": 2652,
+          "cells": 96,
+          "max_cell_payload": 12
+        },
+        {
+          "name": "sqlite_autoindex_label_values_1",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 306,
+          "unused": 3683,
+          "cells": 33,
+          "max_cell_payload": 28
+        },
+        {
+          "name": "sqlite_autoindex_series_1",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 1535,
+          "unused": 2457,
+          "cells": 32,
+          "max_cell_payload": 48
+        },
+        {
+          "name": "sqlite_schema",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 3308,
+          "unused": 601,
+          "cells": 17,
+          "max_cell_payload": 733
+        },
+        {
+          "name": "store_state",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 7,
+          "unused": 4077,
+          "cells": 1,
+          "max_cell_payload": 7
+        }
+      ],
+      "go_dbstat_audit": [
+        {
+          "Name": "sqlite_schema",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "_tinystore_migrations",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "store_state",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_series_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "label_values",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_label_values_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "postings",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_state",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "clocks",
+          "Pages": 66,
+          "Bytes": 270336
+        },
+        {
+          "Name": "sqlite_autoindex_clocks_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "groups",
+          "Pages": 23,
+          "Bytes": 94208
+        },
+        {
+          "Name": "sqlite_autoindex_groups_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "payloads",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_ready",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_due",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_failed",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_failed_id",
+          "Pages": 1,
+          "Bytes": 4096
+        }
+      ],
+      "file_sha256": "f7a4ef5058e945e859667ba4de3675dd5cb248dcb23d59c041aa1503ffcafff4",
+      "file_bytes": 430080,
+      "freelist_bytes": 0
+    }
+  },
+  "build_wall_ns": 44425691,
+  "config": {
+    "variant": "rowid_inline64",
+    "page": 4096,
+    "rowid": 1,
+    "cap": 32,
+    "inline": 64,
+    "reencode": 1
+  },
+  "verify": {
+    "elapsed_ns": 16219526,
+    "mode": "verify",
+    "result": {
+      "series": 32,
+      "verified_samples": 491552
+    }
+  },
+  "summary_check": {
+    "elapsed_ns": 28253840,
+    "mode": "check_summary",
+    "result": {
+      "summary_matches_raw": true
+    }
+  }
+}

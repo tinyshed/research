@@ -1,0 +1,1033 @@
+{
+  "rows": [
+    {
+      "elapsed_ns": 17353505,
+      "mode": "bench",
+      "result": {
+        "case": "point",
+        "elapsed_ns": 5106392,
+        "iterations": 32,
+        "result_sha256": "c2b7c0bf1e2d1326f3c377199fe49db527eb0fe7dfd18735b8c5f1dbbc3d33d9"
+      },
+      "dataset": "tsbs",
+      "variant": "exact"
+    },
+    {
+      "elapsed_ns": 19047101,
+      "mode": "bench",
+      "result": {
+        "case": "point",
+        "elapsed_ns": 6327212,
+        "iterations": 32,
+        "result_sha256": "c2b7c0bf1e2d1326f3c377199fe49db527eb0fe7dfd18735b8c5f1dbbc3d33d9"
+      },
+      "dataset": "tsbs",
+      "variant": "rowid"
+    },
+    {
+      "elapsed_ns": 16154846,
+      "mode": "bench",
+      "result": {
+        "case": "point",
+        "elapsed_ns": 6855989,
+        "iterations": 32,
+        "result_sha256": "c2b7c0bf1e2d1326f3c377199fe49db527eb0fe7dfd18735b8c5f1dbbc3d33d9"
+      },
+      "dataset": "tsbs",
+      "variant": "native_control"
+    },
+    {
+      "elapsed_ns": 18353762,
+      "mode": "bench",
+      "result": {
+        "case": "point",
+        "elapsed_ns": 9205779,
+        "iterations": 32,
+        "result_sha256": "c2b7c0bf1e2d1326f3c377199fe49db527eb0fe7dfd18735b8c5f1dbbc3d33d9"
+      },
+      "dataset": "tsbs",
+      "variant": "rowid_native_control"
+    },
+    {
+      "elapsed_ns": 19832189,
+      "mode": "bench",
+      "result": {
+        "case": "point",
+        "elapsed_ns": 7632385,
+        "iterations": 32,
+        "result_sha256": "c2b7c0bf1e2d1326f3c377199fe49db527eb0fe7dfd18735b8c5f1dbbc3d33d9"
+      },
+      "dataset": "tsbs",
+      "variant": "cap16"
+    },
+    {
+      "elapsed_ns": 18791519,
+      "mode": "bench",
+      "result": {
+        "case": "point",
+        "elapsed_ns": 7002942,
+        "iterations": 32,
+        "result_sha256": "c2b7c0bf1e2d1326f3c377199fe49db527eb0fe7dfd18735b8c5f1dbbc3d33d9"
+      },
+      "dataset": "tsbs",
+      "variant": "rowid_inline32"
+    },
+    {
+      "elapsed_ns": 17024293,
+      "mode": "bench",
+      "result": {
+        "case": "point",
+        "elapsed_ns": 6886919,
+        "iterations": 32,
+        "result_sha256": "c2b7c0bf1e2d1326f3c377199fe49db527eb0fe7dfd18735b8c5f1dbbc3d33d9"
+      },
+      "dataset": "tsbs",
+      "variant": "rowid_inline64"
+    },
+    {
+      "elapsed_ns": 13125884,
+      "mode": "bench",
+      "result": {
+        "case": "range",
+        "elapsed_ns": 1312523,
+        "iterations": 32,
+        "result_sha256": "b233efd60036d099eee39ebb3862a986f879d23278c4b4572e33d9155f7c0300"
+      },
+      "dataset": "tsbs",
+      "variant": "exact"
+    },
+    {
+      "elapsed_ns": 13826475,
+      "mode": "bench",
+      "result": {
+        "case": "range",
+        "elapsed_ns": 1310423,
+        "iterations": 32,
+        "result_sha256": "b233efd60036d099eee39ebb3862a986f879d23278c4b4572e33d9155f7c0300"
+      },
+      "dataset": "tsbs",
+      "variant": "rowid"
+    },
+    {
+      "elapsed_ns": 10267949,
+      "mode": "bench",
+      "result": {
+        "case": "range",
+        "elapsed_ns": 1116842,
+        "iterations": 32,
+        "result_sha256": "b233efd60036d099eee39ebb3862a986f879d23278c4b4572e33d9155f7c0300"
+      },
+      "dataset": "tsbs",
+      "variant": "native_control"
+    },
+    {
+      "elapsed_ns": 12378655,
+      "mode": "bench",
+      "result": {
+        "case": "range",
+        "elapsed_ns": 3100022,
+        "iterations": 32,
+        "result_sha256": "b233efd60036d099eee39ebb3862a986f879d23278c4b4572e33d9155f7c0300"
+      },
+      "dataset": "tsbs",
+      "variant": "rowid_native_control"
+    },
+    {
+      "elapsed_ns": 11791102,
+      "mode": "bench",
+      "result": {
+        "case": "range",
+        "elapsed_ns": 1824971,
+        "iterations": 32,
+        "result_sha256": "b233efd60036d099eee39ebb3862a986f879d23278c4b4572e33d9155f7c0300"
+      },
+      "dataset": "tsbs",
+      "variant": "cap16"
+    },
+    {
+      "elapsed_ns": 13448238,
+      "mode": "bench",
+      "result": {
+        "case": "range",
+        "elapsed_ns": 1857123,
+        "iterations": 32,
+        "result_sha256": "b233efd60036d099eee39ebb3862a986f879d23278c4b4572e33d9155f7c0300"
+      },
+      "dataset": "tsbs",
+      "variant": "rowid_inline32"
+    },
+    {
+      "elapsed_ns": 10083460,
+      "mode": "bench",
+      "result": {
+        "case": "range",
+        "elapsed_ns": 1220210,
+        "iterations": 32,
+        "result_sha256": "b233efd60036d099eee39ebb3862a986f879d23278c4b4572e33d9155f7c0300"
+      },
+      "dataset": "tsbs",
+      "variant": "rowid_inline64"
+    },
+    {
+      "elapsed_ns": 9674495,
+      "mode": "bench",
+      "result": {
+        "case": "whole_summary",
+        "elapsed_ns": 997175,
+        "iterations": 32,
+        "result_sha256": "76063bcc9a57093881bd5a5ee8366ef25c33e008b1cb4292f1499846c27bb7e7"
+      },
+      "dataset": "tsbs",
+      "variant": "exact"
+    },
+    {
+      "elapsed_ns": 11588400,
+      "mode": "bench",
+      "result": {
+        "case": "whole_summary",
+        "elapsed_ns": 1354455,
+        "iterations": 32,
+        "result_sha256": "76063bcc9a57093881bd5a5ee8366ef25c33e008b1cb4292f1499846c27bb7e7"
+      },
+      "dataset": "tsbs",
+      "variant": "rowid"
+    },
+    {
+      "elapsed_ns": 9960721,
+      "mode": "bench",
+      "result": {
+        "case": "whole_summary",
+        "elapsed_ns": 1037418,
+        "iterations": 32,
+        "result_sha256": "76063bcc9a57093881bd5a5ee8366ef25c33e008b1cb4292f1499846c27bb7e7"
+      },
+      "dataset": "tsbs",
+      "variant": "native_control"
+    },
+    {
+      "elapsed_ns": 10851783,
+      "mode": "bench",
+      "result": {
+        "case": "whole_summary",
+        "elapsed_ns": 1033557,
+        "iterations": 32,
+        "result_sha256": "76063bcc9a57093881bd5a5ee8366ef25c33e008b1cb4292f1499846c27bb7e7"
+      },
+      "dataset": "tsbs",
+      "variant": "rowid_native_control"
+    },
+    {
+      "elapsed_ns": 10578188,
+      "mode": "bench",
+      "result": {
+        "case": "whole_summary",
+        "elapsed_ns": 1029497,
+        "iterations": 32,
+        "result_sha256": "76063bcc9a57093881bd5a5ee8366ef25c33e008b1cb4292f1499846c27bb7e7"
+      },
+      "dataset": "tsbs",
+      "variant": "cap16"
+    },
+    {
+      "elapsed_ns": 9808372,
+      "mode": "bench",
+      "result": {
+        "case": "whole_summary",
+        "elapsed_ns": 1118072,
+        "iterations": 32,
+        "result_sha256": "76063bcc9a57093881bd5a5ee8366ef25c33e008b1cb4292f1499846c27bb7e7"
+      },
+      "dataset": "tsbs",
+      "variant": "rowid_inline32"
+    },
+    {
+      "elapsed_ns": 10486811,
+      "mode": "bench",
+      "result": {
+        "case": "whole_summary",
+        "elapsed_ns": 1034647,
+        "iterations": 32,
+        "result_sha256": "76063bcc9a57093881bd5a5ee8366ef25c33e008b1cb4292f1499846c27bb7e7"
+      },
+      "dataset": "tsbs",
+      "variant": "rowid_inline64"
+    },
+    {
+      "elapsed_ns": 9998240,
+      "mode": "bench",
+      "result": {
+        "case": "cut_summary",
+        "elapsed_ns": 1213622,
+        "iterations": 32,
+        "result_sha256": "e2bb6a403b63b32f02d2a4fb7ec6aad9b02aeaa619c810d46108984ca3840f11"
+      },
+      "dataset": "tsbs",
+      "variant": "exact"
+    },
+    {
+      "elapsed_ns": 9909989,
+      "mode": "bench",
+      "result": {
+        "case": "cut_summary",
+        "elapsed_ns": 1237299,
+        "iterations": 32,
+        "result_sha256": "e2bb6a403b63b32f02d2a4fb7ec6aad9b02aeaa619c810d46108984ca3840f11"
+      },
+      "dataset": "tsbs",
+      "variant": "rowid"
+    },
+    {
+      "elapsed_ns": 12385928,
+      "mode": "bench",
+      "result": {
+        "case": "cut_summary",
+        "elapsed_ns": 1840071,
+        "iterations": 32,
+        "result_sha256": "e2bb6a403b63b32f02d2a4fb7ec6aad9b02aeaa619c810d46108984ca3840f11"
+      },
+      "dataset": "tsbs",
+      "variant": "native_control"
+    },
+    {
+      "elapsed_ns": 10107251,
+      "mode": "bench",
+      "result": {
+        "case": "cut_summary",
+        "elapsed_ns": 1252099,
+        "iterations": 32,
+        "result_sha256": "e2bb6a403b63b32f02d2a4fb7ec6aad9b02aeaa619c810d46108984ca3840f11"
+      },
+      "dataset": "tsbs",
+      "variant": "rowid_native_control"
+    },
+    {
+      "elapsed_ns": 10239518,
+      "mode": "bench",
+      "result": {
+        "case": "cut_summary",
+        "elapsed_ns": 1251940,
+        "iterations": 32,
+        "result_sha256": "e2bb6a403b63b32f02d2a4fb7ec6aad9b02aeaa619c810d46108984ca3840f11"
+      },
+      "dataset": "tsbs",
+      "variant": "cap16"
+    },
+    {
+      "elapsed_ns": 11391177,
+      "mode": "bench",
+      "result": {
+        "case": "cut_summary",
+        "elapsed_ns": 2341990,
+        "iterations": 32,
+        "result_sha256": "e2bb6a403b63b32f02d2a4fb7ec6aad9b02aeaa619c810d46108984ca3840f11"
+      },
+      "dataset": "tsbs",
+      "variant": "rowid_inline32"
+    },
+    {
+      "elapsed_ns": 12575876,
+      "mode": "bench",
+      "result": {
+        "case": "cut_summary",
+        "elapsed_ns": 1602909,
+        "iterations": 32,
+        "result_sha256": "e2bb6a403b63b32f02d2a4fb7ec6aad9b02aeaa619c810d46108984ca3840f11"
+      },
+      "dataset": "tsbs",
+      "variant": "rowid_inline64"
+    },
+    {
+      "elapsed_ns": 20864237,
+      "mode": "bench",
+      "result": {
+        "case": "point",
+        "elapsed_ns": 16859644,
+        "iterations": 32,
+        "result_sha256": "6adbd6a497c218d260194e466850fd6bd0e95e7b1c406ecefd645bf487fc1683"
+      },
+      "dataset": "alibaba",
+      "variant": "exact"
+    },
+    {
+      "elapsed_ns": 20046091,
+      "mode": "bench",
+      "result": {
+        "case": "point",
+        "elapsed_ns": 16974180,
+        "iterations": 32,
+        "result_sha256": "6adbd6a497c218d260194e466850fd6bd0e95e7b1c406ecefd645bf487fc1683"
+      },
+      "dataset": "alibaba",
+      "variant": "rowid"
+    },
+    {
+      "elapsed_ns": 22805693,
+      "mode": "bench",
+      "result": {
+        "case": "point",
+        "elapsed_ns": 19631633,
+        "iterations": 32,
+        "result_sha256": "6adbd6a497c218d260194e466850fd6bd0e95e7b1c406ecefd645bf487fc1683"
+      },
+      "dataset": "alibaba",
+      "variant": "native_control"
+    },
+    {
+      "elapsed_ns": 21312532,
+      "mode": "bench",
+      "result": {
+        "case": "point",
+        "elapsed_ns": 17936474,
+        "iterations": 32,
+        "result_sha256": "6adbd6a497c218d260194e466850fd6bd0e95e7b1c406ecefd645bf487fc1683"
+      },
+      "dataset": "alibaba",
+      "variant": "rowid_native_control"
+    },
+    {
+      "elapsed_ns": 22773468,
+      "mode": "bench",
+      "result": {
+        "case": "point",
+        "elapsed_ns": 18638258,
+        "iterations": 32,
+        "result_sha256": "6adbd6a497c218d260194e466850fd6bd0e95e7b1c406ecefd645bf487fc1683"
+      },
+      "dataset": "alibaba",
+      "variant": "cap16"
+    },
+    {
+      "elapsed_ns": 20989534,
+      "mode": "bench",
+      "result": {
+        "case": "point",
+        "elapsed_ns": 17511451,
+        "iterations": 32,
+        "result_sha256": "6adbd6a497c218d260194e466850fd6bd0e95e7b1c406ecefd645bf487fc1683"
+      },
+      "dataset": "alibaba",
+      "variant": "rowid_inline32"
+    },
+    {
+      "elapsed_ns": 18458509,
+      "mode": "bench",
+      "result": {
+        "case": "point",
+        "elapsed_ns": 15381484,
+        "iterations": 32,
+        "result_sha256": "6adbd6a497c218d260194e466850fd6bd0e95e7b1c406ecefd645bf487fc1683"
+      },
+      "dataset": "alibaba",
+      "variant": "rowid_inline64"
+    },
+    {
+      "elapsed_ns": 7537317,
+      "mode": "bench",
+      "result": {
+        "case": "range",
+        "elapsed_ns": 4522771,
+        "iterations": 32,
+        "result_sha256": "6cb3d28a199eec7f890f3ee00355db3bd30fa32a6db6bad1ea10ca4520c4feaa"
+      },
+      "dataset": "alibaba",
+      "variant": "exact"
+    },
+    {
+      "elapsed_ns": 7354541,
+      "mode": "bench",
+      "result": {
+        "case": "range",
+        "elapsed_ns": 4461972,
+        "iterations": 32,
+        "result_sha256": "6cb3d28a199eec7f890f3ee00355db3bd30fa32a6db6bad1ea10ca4520c4feaa"
+      },
+      "dataset": "alibaba",
+      "variant": "rowid"
+    },
+    {
+      "elapsed_ns": 7506517,
+      "mode": "bench",
+      "result": {
+        "case": "range",
+        "elapsed_ns": 4580365,
+        "iterations": 32,
+        "result_sha256": "6cb3d28a199eec7f890f3ee00355db3bd30fa32a6db6bad1ea10ca4520c4feaa"
+      },
+      "dataset": "alibaba",
+      "variant": "native_control"
+    },
+    {
+      "elapsed_ns": 7127951,
+      "mode": "bench",
+      "result": {
+        "case": "range",
+        "elapsed_ns": 4265703,
+        "iterations": 32,
+        "result_sha256": "6cb3d28a199eec7f890f3ee00355db3bd30fa32a6db6bad1ea10ca4520c4feaa"
+      },
+      "dataset": "alibaba",
+      "variant": "rowid_native_control"
+    },
+    {
+      "elapsed_ns": 7840908,
+      "mode": "bench",
+      "result": {
+        "case": "range",
+        "elapsed_ns": 4426949,
+        "iterations": 32,
+        "result_sha256": "6cb3d28a199eec7f890f3ee00355db3bd30fa32a6db6bad1ea10ca4520c4feaa"
+      },
+      "dataset": "alibaba",
+      "variant": "cap16"
+    },
+    {
+      "elapsed_ns": 7245281,
+      "mode": "bench",
+      "result": {
+        "case": "range",
+        "elapsed_ns": 4171871,
+        "iterations": 32,
+        "result_sha256": "6cb3d28a199eec7f890f3ee00355db3bd30fa32a6db6bad1ea10ca4520c4feaa"
+      },
+      "dataset": "alibaba",
+      "variant": "rowid_inline32"
+    },
+    {
+      "elapsed_ns": 7961502,
+      "mode": "bench",
+      "result": {
+        "case": "range",
+        "elapsed_ns": 4371913,
+        "iterations": 32,
+        "result_sha256": "6cb3d28a199eec7f890f3ee00355db3bd30fa32a6db6bad1ea10ca4520c4feaa"
+      },
+      "dataset": "alibaba",
+      "variant": "rowid_inline64"
+    },
+    {
+      "elapsed_ns": 5691923,
+      "mode": "bench",
+      "result": {
+        "case": "whole_summary",
+        "elapsed_ns": 2936137,
+        "iterations": 32,
+        "result_sha256": "785154c51dda1c314aacc57ae2e19d7eb2f91b3badfa9beaaef84a9bffc9ad9c"
+      },
+      "dataset": "alibaba",
+      "variant": "exact"
+    },
+    {
+      "elapsed_ns": 5396390,
+      "mode": "bench",
+      "result": {
+        "case": "whole_summary",
+        "elapsed_ns": 2552522,
+        "iterations": 32,
+        "result_sha256": "785154c51dda1c314aacc57ae2e19d7eb2f91b3badfa9beaaef84a9bffc9ad9c"
+      },
+      "dataset": "alibaba",
+      "variant": "rowid"
+    },
+    {
+      "elapsed_ns": 5229231,
+      "mode": "bench",
+      "result": {
+        "case": "whole_summary",
+        "elapsed_ns": 2516511,
+        "iterations": 32,
+        "result_sha256": "785154c51dda1c314aacc57ae2e19d7eb2f91b3badfa9beaaef84a9bffc9ad9c"
+      },
+      "dataset": "alibaba",
+      "variant": "native_control"
+    },
+    {
+      "elapsed_ns": 5232350,
+      "mode": "bench",
+      "result": {
+        "case": "whole_summary",
+        "elapsed_ns": 2472307,
+        "iterations": 32,
+        "result_sha256": "785154c51dda1c314aacc57ae2e19d7eb2f91b3badfa9beaaef84a9bffc9ad9c"
+      },
+      "dataset": "alibaba",
+      "variant": "rowid_native_control"
+    },
+    {
+      "elapsed_ns": 6149730,
+      "mode": "bench",
+      "result": {
+        "case": "whole_summary",
+        "elapsed_ns": 3185536,
+        "iterations": 32,
+        "result_sha256": "785154c51dda1c314aacc57ae2e19d7eb2f91b3badfa9beaaef84a9bffc9ad9c"
+      },
+      "dataset": "alibaba",
+      "variant": "cap16"
+    },
+    {
+      "elapsed_ns": 5672435,
+      "mode": "bench",
+      "result": {
+        "case": "whole_summary",
+        "elapsed_ns": 2996486,
+        "iterations": 32,
+        "result_sha256": "785154c51dda1c314aacc57ae2e19d7eb2f91b3badfa9beaaef84a9bffc9ad9c"
+      },
+      "dataset": "alibaba",
+      "variant": "rowid_inline32"
+    },
+    {
+      "elapsed_ns": 6637708,
+      "mode": "bench",
+      "result": {
+        "case": "whole_summary",
+        "elapsed_ns": 3473942,
+        "iterations": 32,
+        "result_sha256": "785154c51dda1c314aacc57ae2e19d7eb2f91b3badfa9beaaef84a9bffc9ad9c"
+      },
+      "dataset": "alibaba",
+      "variant": "rowid_inline64"
+    },
+    {
+      "elapsed_ns": 8389715,
+      "mode": "bench",
+      "result": {
+        "case": "cut_summary",
+        "elapsed_ns": 5494595,
+        "iterations": 32,
+        "result_sha256": "afafd34b21055a0e99fd177a49bdfc1510feb02a8cdaab5b7353850307ca7e49"
+      },
+      "dataset": "alibaba",
+      "variant": "exact"
+    },
+    {
+      "elapsed_ns": 8261653,
+      "mode": "bench",
+      "result": {
+        "case": "cut_summary",
+        "elapsed_ns": 5440570,
+        "iterations": 32,
+        "result_sha256": "afafd34b21055a0e99fd177a49bdfc1510feb02a8cdaab5b7353850307ca7e49"
+      },
+      "dataset": "alibaba",
+      "variant": "rowid"
+    },
+    {
+      "elapsed_ns": 6619166,
+      "mode": "bench",
+      "result": {
+        "case": "cut_summary",
+        "elapsed_ns": 3709012,
+        "iterations": 32,
+        "result_sha256": "afafd34b21055a0e99fd177a49bdfc1510feb02a8cdaab5b7353850307ca7e49"
+      },
+      "dataset": "alibaba",
+      "variant": "native_control"
+    },
+    {
+      "elapsed_ns": 6930010,
+      "mode": "bench",
+      "result": {
+        "case": "cut_summary",
+        "elapsed_ns": 3943565,
+        "iterations": 32,
+        "result_sha256": "afafd34b21055a0e99fd177a49bdfc1510feb02a8cdaab5b7353850307ca7e49"
+      },
+      "dataset": "alibaba",
+      "variant": "rowid_native_control"
+    },
+    {
+      "elapsed_ns": 6186483,
+      "mode": "bench",
+      "result": {
+        "case": "cut_summary",
+        "elapsed_ns": 3336395,
+        "iterations": 32,
+        "result_sha256": "afafd34b21055a0e99fd177a49bdfc1510feb02a8cdaab5b7353850307ca7e49"
+      },
+      "dataset": "alibaba",
+      "variant": "cap16"
+    },
+    {
+      "elapsed_ns": 7564988,
+      "mode": "bench",
+      "result": {
+        "case": "cut_summary",
+        "elapsed_ns": 4769023,
+        "iterations": 32,
+        "result_sha256": "afafd34b21055a0e99fd177a49bdfc1510feb02a8cdaab5b7353850307ca7e49"
+      },
+      "dataset": "alibaba",
+      "variant": "rowid_inline32"
+    },
+    {
+      "elapsed_ns": 7878877,
+      "mode": "bench",
+      "result": {
+        "case": "cut_summary",
+        "elapsed_ns": 4785086,
+        "iterations": 32,
+        "result_sha256": "afafd34b21055a0e99fd177a49bdfc1510feb02a8cdaab5b7353850307ca7e49"
+      },
+      "dataset": "alibaba",
+      "variant": "rowid_inline64"
+    },
+    {
+      "elapsed_ns": 9182079,
+      "mode": "bench",
+      "result": {
+        "case": "point",
+        "elapsed_ns": 8101925,
+        "iterations": 32,
+        "result_sha256": "6d11b4b71ebc8217eb94cacd332aa4219d8f38e665b249cbe93ef5c604b7ef47"
+      },
+      "dataset": "irregular",
+      "variant": "exact"
+    },
+    {
+      "elapsed_ns": 9487863,
+      "mode": "bench",
+      "result": {
+        "case": "point",
+        "elapsed_ns": 8626475,
+        "iterations": 32,
+        "result_sha256": "6d11b4b71ebc8217eb94cacd332aa4219d8f38e665b249cbe93ef5c604b7ef47"
+      },
+      "dataset": "irregular",
+      "variant": "rowid"
+    },
+    {
+      "elapsed_ns": 12674621,
+      "mode": "bench",
+      "result": {
+        "case": "point",
+        "elapsed_ns": 11827441,
+        "iterations": 32,
+        "result_sha256": "6d11b4b71ebc8217eb94cacd332aa4219d8f38e665b249cbe93ef5c604b7ef47"
+      },
+      "dataset": "irregular",
+      "variant": "native_control"
+    },
+    {
+      "elapsed_ns": 12085231,
+      "mode": "bench",
+      "result": {
+        "case": "point",
+        "elapsed_ns": 11054938,
+        "iterations": 32,
+        "result_sha256": "6d11b4b71ebc8217eb94cacd332aa4219d8f38e665b249cbe93ef5c604b7ef47"
+      },
+      "dataset": "irregular",
+      "variant": "rowid_native_control"
+    },
+    {
+      "elapsed_ns": 11181219,
+      "mode": "bench",
+      "result": {
+        "case": "point",
+        "elapsed_ns": 10317961,
+        "iterations": 32,
+        "result_sha256": "6d11b4b71ebc8217eb94cacd332aa4219d8f38e665b249cbe93ef5c604b7ef47"
+      },
+      "dataset": "irregular",
+      "variant": "cap16"
+    },
+    {
+      "elapsed_ns": 11643924,
+      "mode": "bench",
+      "result": {
+        "case": "point",
+        "elapsed_ns": 10821369,
+        "iterations": 32,
+        "result_sha256": "6d11b4b71ebc8217eb94cacd332aa4219d8f38e665b249cbe93ef5c604b7ef47"
+      },
+      "dataset": "irregular",
+      "variant": "rowid_inline32"
+    },
+    {
+      "elapsed_ns": 9790134,
+      "mode": "bench",
+      "result": {
+        "case": "point",
+        "elapsed_ns": 8948662,
+        "iterations": 32,
+        "result_sha256": "6d11b4b71ebc8217eb94cacd332aa4219d8f38e665b249cbe93ef5c604b7ef47"
+      },
+      "dataset": "irregular",
+      "variant": "rowid_inline64"
+    },
+    {
+      "elapsed_ns": 3649102,
+      "mode": "bench",
+      "result": {
+        "case": "range",
+        "elapsed_ns": 3173836,
+        "iterations": 32,
+        "result_sha256": "da0b3b0584c63fb6fd016b8720e3f06e6f7fde3d56c3c7c335c813809f98bd7c"
+      },
+      "dataset": "irregular",
+      "variant": "exact"
+    },
+    {
+      "elapsed_ns": 3393948,
+      "mode": "bench",
+      "result": {
+        "case": "range",
+        "elapsed_ns": 2956223,
+        "iterations": 32,
+        "result_sha256": "da0b3b0584c63fb6fd016b8720e3f06e6f7fde3d56c3c7c335c813809f98bd7c"
+      },
+      "dataset": "irregular",
+      "variant": "rowid"
+    },
+    {
+      "elapsed_ns": 3422420,
+      "mode": "bench",
+      "result": {
+        "case": "range",
+        "elapsed_ns": 2965915,
+        "iterations": 32,
+        "result_sha256": "da0b3b0584c63fb6fd016b8720e3f06e6f7fde3d56c3c7c335c813809f98bd7c"
+      },
+      "dataset": "irregular",
+      "variant": "native_control"
+    },
+    {
+      "elapsed_ns": 3241000,
+      "mode": "bench",
+      "result": {
+        "case": "range",
+        "elapsed_ns": 2819416,
+        "iterations": 32,
+        "result_sha256": "da0b3b0584c63fb6fd016b8720e3f06e6f7fde3d56c3c7c335c813809f98bd7c"
+      },
+      "dataset": "irregular",
+      "variant": "rowid_native_control"
+    },
+    {
+      "elapsed_ns": 3280373,
+      "mode": "bench",
+      "result": {
+        "case": "range",
+        "elapsed_ns": 2618797,
+        "iterations": 32,
+        "result_sha256": "da0b3b0584c63fb6fd016b8720e3f06e6f7fde3d56c3c7c335c813809f98bd7c"
+      },
+      "dataset": "irregular",
+      "variant": "cap16"
+    },
+    {
+      "elapsed_ns": 3180467,
+      "mode": "bench",
+      "result": {
+        "case": "range",
+        "elapsed_ns": 2753173,
+        "iterations": 32,
+        "result_sha256": "da0b3b0584c63fb6fd016b8720e3f06e6f7fde3d56c3c7c335c813809f98bd7c"
+      },
+      "dataset": "irregular",
+      "variant": "rowid_inline32"
+    },
+    {
+      "elapsed_ns": 4121629,
+      "mode": "bench",
+      "result": {
+        "case": "range",
+        "elapsed_ns": 3625811,
+        "iterations": 32,
+        "result_sha256": "da0b3b0584c63fb6fd016b8720e3f06e6f7fde3d56c3c7c335c813809f98bd7c"
+      },
+      "dataset": "irregular",
+      "variant": "rowid_inline64"
+    },
+    {
+      "elapsed_ns": 4400133,
+      "mode": "bench",
+      "result": {
+        "case": "whole_summary",
+        "elapsed_ns": 3909136,
+        "iterations": 32,
+        "result_sha256": "37843f4a44ad9a27e9e07fbfbb0e714056fa7d20ea713a155857ad161f535df9"
+      },
+      "dataset": "irregular",
+      "variant": "exact"
+    },
+    {
+      "elapsed_ns": 4542596,
+      "mode": "bench",
+      "result": {
+        "case": "whole_summary",
+        "elapsed_ns": 4062850,
+        "iterations": 32,
+        "result_sha256": "37843f4a44ad9a27e9e07fbfbb0e714056fa7d20ea713a155857ad161f535df9"
+      },
+      "dataset": "irregular",
+      "variant": "rowid"
+    },
+    {
+      "elapsed_ns": 4347351,
+      "mode": "bench",
+      "result": {
+        "case": "whole_summary",
+        "elapsed_ns": 3893715,
+        "iterations": 32,
+        "result_sha256": "37843f4a44ad9a27e9e07fbfbb0e714056fa7d20ea713a155857ad161f535df9"
+      },
+      "dataset": "irregular",
+      "variant": "native_control"
+    },
+    {
+      "elapsed_ns": 4341322,
+      "mode": "bench",
+      "result": {
+        "case": "whole_summary",
+        "elapsed_ns": 3912737,
+        "iterations": 32,
+        "result_sha256": "37843f4a44ad9a27e9e07fbfbb0e714056fa7d20ea713a155857ad161f535df9"
+      },
+      "dataset": "irregular",
+      "variant": "rowid_native_control"
+    },
+    {
+      "elapsed_ns": 4564457,
+      "mode": "bench",
+      "result": {
+        "case": "whole_summary",
+        "elapsed_ns": 4157725,
+        "iterations": 32,
+        "result_sha256": "37843f4a44ad9a27e9e07fbfbb0e714056fa7d20ea713a155857ad161f535df9"
+      },
+      "dataset": "irregular",
+      "variant": "cap16"
+    },
+    {
+      "elapsed_ns": 4461804,
+      "mode": "bench",
+      "result": {
+        "case": "whole_summary",
+        "elapsed_ns": 3980967,
+        "iterations": 32,
+        "result_sha256": "37843f4a44ad9a27e9e07fbfbb0e714056fa7d20ea713a155857ad161f535df9"
+      },
+      "dataset": "irregular",
+      "variant": "rowid_inline32"
+    },
+    {
+      "elapsed_ns": 4818807,
+      "mode": "bench",
+      "result": {
+        "case": "whole_summary",
+        "elapsed_ns": 4316449,
+        "iterations": 32,
+        "result_sha256": "37843f4a44ad9a27e9e07fbfbb0e714056fa7d20ea713a155857ad161f535df9"
+      },
+      "dataset": "irregular",
+      "variant": "rowid_inline64"
+    },
+    {
+      "elapsed_ns": 5044730,
+      "mode": "bench",
+      "result": {
+        "case": "cut_summary",
+        "elapsed_ns": 4570544,
+        "iterations": 32,
+        "result_sha256": "a3ff6723428738d790a971ce292d5dab08f4f8c22875d98b332447776d890fb8"
+      },
+      "dataset": "irregular",
+      "variant": "exact"
+    },
+    {
+      "elapsed_ns": 5584790,
+      "mode": "bench",
+      "result": {
+        "case": "cut_summary",
+        "elapsed_ns": 5059591,
+        "iterations": 32,
+        "result_sha256": "a3ff6723428738d790a971ce292d5dab08f4f8c22875d98b332447776d890fb8"
+      },
+      "dataset": "irregular",
+      "variant": "rowid"
+    },
+    {
+      "elapsed_ns": 4744283,
+      "mode": "bench",
+      "result": {
+        "case": "cut_summary",
+        "elapsed_ns": 4280957,
+        "iterations": 32,
+        "result_sha256": "a3ff6723428738d790a971ce292d5dab08f4f8c22875d98b332447776d890fb8"
+      },
+      "dataset": "irregular",
+      "variant": "native_control"
+    },
+    {
+      "elapsed_ns": 4920387,
+      "mode": "bench",
+      "result": {
+        "case": "cut_summary",
+        "elapsed_ns": 4418900,
+        "iterations": 32,
+        "result_sha256": "a3ff6723428738d790a971ce292d5dab08f4f8c22875d98b332447776d890fb8"
+      },
+      "dataset": "irregular",
+      "variant": "rowid_native_control"
+    },
+    {
+      "elapsed_ns": 4214794,
+      "mode": "bench",
+      "result": {
+        "case": "cut_summary",
+        "elapsed_ns": 3740018,
+        "iterations": 32,
+        "result_sha256": "a3ff6723428738d790a971ce292d5dab08f4f8c22875d98b332447776d890fb8"
+      },
+      "dataset": "irregular",
+      "variant": "cap16"
+    },
+    {
+      "elapsed_ns": 5821621,
+      "mode": "bench",
+      "result": {
+        "case": "cut_summary",
+        "elapsed_ns": 5368017,
+        "iterations": 32,
+        "result_sha256": "a3ff6723428738d790a971ce292d5dab08f4f8c22875d98b332447776d890fb8"
+      },
+      "dataset": "irregular",
+      "variant": "rowid_inline32"
+    },
+    {
+      "elapsed_ns": 5260342,
+      "mode": "bench",
+      "result": {
+        "case": "cut_summary",
+        "elapsed_ns": 4790356,
+        "iterations": 32,
+        "result_sha256": "a3ff6723428738d790a971ce292d5dab08f4f8c22875d98b332447776d890fb8"
+      },
+      "dataset": "irregular",
+      "variant": "rowid_inline64"
+    }
+  ],
+  "counts": {
+    "tsbs": {
+      "point": 417,
+      "range": 1238,
+      "whole_summary": 2835,
+      "cut_summary": 1639
+    },
+    "alibaba": {
+      "point": 195,
+      "range": 838,
+      "whole_summary": 1105,
+      "cut_summary": 698
+    },
+    "irregular": {
+      "point": 324,
+      "range": 1059,
+      "whole_summary": 889,
+      "cut_summary": 715
+    }
+  },
+  "projected_read_seconds": 48.9402774706875
+}

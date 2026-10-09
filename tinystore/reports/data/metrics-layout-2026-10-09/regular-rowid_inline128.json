@@ -1,0 +1,393 @@
+{
+  "elapsed_ns": 34604559,
+  "mode": "rewrite",
+  "result": {
+    "blobs": {
+      "clock_stored": 786,
+      "directory_stored": 10538,
+      "head_samples": 32,
+      "head_stored": 992,
+      "payload_stored": 0
+    },
+    "block_clock_residual_bytes": 0,
+    "body_size_histogram": {
+      "0": 2048
+    },
+    "directory_size_histogram": {
+      "142": 4,
+      "143": 12,
+      "144": 13,
+      "145": 9,
+      "146": 8,
+      "147": 2,
+      "153": 3,
+      "156": 2,
+      "158": 1,
+      "159": 8,
+      "160": 1,
+      "162": 1,
+      "31": 2,
+      "34": 20,
+      "35": 10
+    },
+    "expanded_directory_parts": {
+      "address_or_inline": 0,
+      "exact_summary": 9880,
+      "first": 2168,
+      "summary_scalars_flags_resets": 4578,
+      "value_length": 2048
+    },
+    "file_bytes": 90112,
+    "group_slots_histogram": {
+      "1": 32,
+      "31": 32,
+      "32": 32
+    },
+    "immutable_block_sha256": "1077683e57e813657fd5244571a9c7283492c667e169704ac317d6b955265638",
+    "inline_value_bytes": 0,
+    "live_blocks": 2048,
+    "objects": [],
+    "publication_ns": 30532239,
+    "sealed_samples": 491520,
+    "settings": {
+      "cache_size": -1024,
+      "checkpoint_fullfsync": 1,
+      "freelist_count": 0,
+      "fullfsync": 1,
+      "mmap_size": 0,
+      "page_count": 22,
+      "page_size": 4096,
+      "sqlite_source_id": "2026-07-24 19:02:57 bf7c7f30031888f4e796e429ab3978879485813aaca6f641c7b33e4e09459bcc",
+      "synchronous": 2,
+      "trusted_schema": 0,
+      "wal_autocheckpoint": 1000
+    },
+    "shm_bytes": 32768,
+    "stable_external_payload_addresses": 0,
+    "tables": {
+      "clocks": 3,
+      "groups": 96,
+      "label_values": 33,
+      "payloads": 0,
+      "postings": 64,
+      "series": 32,
+      "series_state": 32
+    },
+    "value_bytes_total": 0,
+    "wal_bytes": 0,
+    "physical": {
+      "reader_sqlite_version": "3.46.1",
+      "objects": [
+        {
+          "name": "_tinystore_migrations",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 51,
+          "unused": 4033,
+          "cells": 1,
+          "max_cell_payload": 51
+        },
+        {
+          "name": "clocks",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 902,
+          "unused": 3172,
+          "cells": 3,
+          "max_cell_payload": 429
+        },
+        {
+          "name": "groups",
+          "type": "internal",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 0,
+          "unused": 4063,
+          "cells": 3,
+          "max_cell_payload": 0
+        },
+        {
+          "name": "groups",
+          "type": "leaf",
+          "pages": 4,
+          "bytes": 16384,
+          "cell_payload": 12487,
+          "unused": 3417,
+          "cells": 96,
+          "max_cell_payload": 183
+        },
+        {
+          "name": "label_values",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 306,
+          "unused": 3650,
+          "cells": 33,
+          "max_cell_payload": 28
+        },
+        {
+          "name": "payloads",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 0,
+          "unused": 4088,
+          "cells": 0,
+          "max_cell_payload": 0
+        },
+        {
+          "name": "postings",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 286,
+          "unused": 3610,
+          "cells": 64,
+          "max_cell_payload": 5
+        },
+        {
+          "name": "series",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 1840,
+          "unused": 2120,
+          "cells": 32,
+          "max_cell_payload": 59
+        },
+        {
+          "name": "series_due",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 319,
+          "unused": 3673,
+          "cells": 32,
+          "max_cell_payload": 10
+        },
+        {
+          "name": "series_failed",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 0,
+          "unused": 4088,
+          "cells": 0,
+          "max_cell_payload": 0
+        },
+        {
+          "name": "series_failed_id",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 0,
+          "unused": 4088,
+          "cells": 0,
+          "max_cell_payload": 0
+        },
+        {
+          "name": "series_ready",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 0,
+          "unused": 4088,
+          "cells": 0,
+          "max_cell_payload": 0
+        },
+        {
+          "name": "series_state",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 2464,
+          "unused": 1496,
+          "cells": 32,
+          "max_cell_payload": 77
+        },
+        {
+          "name": "sqlite_autoindex_clocks_1",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 107,
+          "unused": 3972,
+          "cells": 3,
+          "max_cell_payload": 36
+        },
+        {
+          "name": "sqlite_autoindex_groups_1",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 1148,
+          "unused": 2652,
+          "cells": 96,
+          "max_cell_payload": 12
+        },
+        {
+          "name": "sqlite_autoindex_label_values_1",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 304,
+          "unused": 3685,
+          "cells": 33,
+          "max_cell_payload": 26
+        },
+        {
+          "name": "sqlite_autoindex_series_1",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 1535,
+          "unused": 2457,
+          "cells": 32,
+          "max_cell_payload": 48
+        },
+        {
+          "name": "sqlite_schema",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 3308,
+          "unused": 601,
+          "cells": 17,
+          "max_cell_payload": 733
+        },
+        {
+          "name": "store_state",
+          "type": "leaf",
+          "pages": 1,
+          "bytes": 4096,
+          "cell_payload": 5,
+          "unused": 4079,
+          "cells": 1,
+          "max_cell_payload": 5
+        }
+      ],
+      "go_dbstat_audit": [
+        {
+          "Name": "sqlite_schema",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "_tinystore_migrations",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "store_state",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_series_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "label_values",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_label_values_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "postings",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_state",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "clocks",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "sqlite_autoindex_clocks_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "groups",
+          "Pages": 5,
+          "Bytes": 20480
+        },
+        {
+          "Name": "sqlite_autoindex_groups_1",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "payloads",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_ready",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_due",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_failed",
+          "Pages": 1,
+          "Bytes": 4096
+        },
+        {
+          "Name": "series_failed_id",
+          "Pages": 1,
+          "Bytes": 4096
+        }
+      ],
+      "file_sha256": "36052ae464fd7542a5c26885ae52fe555ed01a77a1287c9d72f269f7aec0b67c",
+      "file_bytes": 90112,
+      "freelist_bytes": 0
+    }
+  },
+  "build_wall_ns": 36097040,
+  "config": {
+    "variant": "rowid_inline128",
+    "page": 4096,
+    "rowid": 1,
+    "cap": 32,
+    "inline": 128,
+    "reencode": 1
+  },
+  "verify": {
+    "elapsed_ns": 7096128,
+    "mode": "verify",
+    "result": {
+      "series": 32,
+      "verified_samples": 491552
+    }
+  },
+  "summary_check": {
+    "elapsed_ns": 19594589,
+    "mode": "check_summary",
+    "result": {
+      "summary_matches_raw": true
+    }
+  }
+}

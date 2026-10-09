@@ -1,0 +1,6 @@
+This research prototype reuses the Rust codec and exact-arithmetic translation
+from ../metrics-max-bench, originating in tinyshed/tinystore commit
+e307c48a40126aad0e2873b6bf3aaedef8115483 (Apache-2.0). The layout experiment,
+experimental directory version 5 and synchronous SQLite harness are research
+modifications. Original value bodies, clocks and exact summaries are copied,
+not re-encoded, for density comparisons.

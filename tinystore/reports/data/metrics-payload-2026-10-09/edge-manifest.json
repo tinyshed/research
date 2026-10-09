@@ -1,0 +1,110 @@
+{
+  "format": "tinystore-storage-input-v1",
+  "source_commit": "e307c48a40126aad0e2873b6bf3aaedef8115483",
+  "dataset": "edge",
+  "corpus_sha256": "",
+  "now": 1767234974000,
+  "sample_count": 5768,
+  "head_sample_count": 8,
+  "series": [
+    {
+      "id": 1,
+      "name": "layout_edge",
+      "kind": "gauge",
+      "labels": {
+        "id": "0"
+      },
+      "count": 721,
+      "from": 1767225601000,
+      "to": 1767226321001,
+      "sha256": "f565a580f0b3d8e847124e3d4989e0e0b41e77d98f8df8c87e0c85fe0120c6be"
+    },
+    {
+      "id": 2,
+      "name": "layout_edge",
+      "kind": "gauge",
+      "labels": {
+        "id": "1"
+      },
+      "count": 721,
+      "from": 1767225601000,
+      "to": 1767226321001,
+      "sha256": "66c426876352afd8e371d6f58554ca2841d6b31aedf2db2610210a1a8a7c6143"
+    },
+    {
+      "id": 3,
+      "name": "layout_edge",
+      "kind": "gauge",
+      "labels": {
+        "id": "2"
+      },
+      "count": 721,
+      "from": 1767225601000,
+      "to": 1767226321001,
+      "sha256": "02d54a88c11515662cb75351c67260a67956d7556aee67f761e4f0f8c28cd9d2"
+    },
+    {
+      "id": 4,
+      "name": "layout_edge",
+      "kind": "counter",
+      "labels": {
+        "id": "3"
+      },
+      "count": 721,
+      "from": 1767225601000,
+      "to": 1767226321001,
+      "sha256": "28bdcc1681a82372f4bd727e4f42eda22e80bc22d83f8a0b73b2a379df6974a6"
+    },
+    {
+      "id": 5,
+      "name": "layout_edge",
+      "kind": "gauge",
+      "labels": {
+        "id": "4"
+      },
+      "count": 721,
+      "from": 1767225601000,
+      "to": 1767226321001,
+      "sha256": "056d4f1f30a83b0aef3bc9b3b9467fe7e16de574993dcb39e322548088ef5f91"
+    },
+    {
+      "id": 6,
+      "name": "layout_edge",
+      "kind": "gauge",
+      "labels": {
+        "id": "5"
+      },
+      "count": 721,
+      "from": 1767225601000,
+      "to": 1767226321001,
+      "sha256": "2a711710068c1e478f5d93d6a6a334808d093a91c9cead963a2ab5febaa42ce5"
+    },
+    {
+      "id": 7,
+      "name": "layout_edge",
+      "kind": "gauge",
+      "labels": {
+        "id": "6"
+      },
+      "count": 721,
+      "from": 1767225601000,
+      "to": 1767226321001,
+      "sha256": "c161c061fe11087ce67f33a1579bb00b9991dd034a4cabedf8051a1cc04cf743"
+    },
+    {
+      "id": 8,
+      "name": "layout_edge",
+      "kind": "counter",
+      "labels": {
+        "id": "7"
+      },
+      "count": 721,
+      "from": 1767225601000,
+      "to": 1767226321001,
+      "sha256": "28bdcc1681a82372f4bd727e4f42eda22e80bc22d83f8a0b73b2a379df6974a6"
+    }
+  ],
+  "build_ns": 72969612,
+  "verify_ns": 2041264,
+  "maintenance_calls": 11
+}

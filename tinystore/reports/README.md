@@ -210,3 +210,10 @@ original hashes and distinguishes translated documentation from measured code.
 | --- | --- |
 | [Records query and ownership optimizations](records-optimization-2026-10-09.md) | old/new native and public Go comparisons: selective materialization, bounded page selection, Follow block/cache paths and shared owning strings |
 | [KV write normalization and optimizations](kv-optimization-2026-10-09.md) | equal-result writes, borrowed SetEntry, precomputed branch paths and cached transaction commands, with old/native/Go controls and separate phase/sync diagnostics |
+
+## 9 October 2026 — current metrics storage density
+
+| Report | Scope |
+| --- | --- |
+| [Groups, inline bodies and page layout](metrics-layout-2026-10-09.md) | current production-Go files, exact-byte controls, rowid versus WITHOUT ROWID, group/inline/page variants, full-file/dbstat accounting and read/retention controls |
+| [Immutable payload packs and range reads](metrics-payload-2026-10-09.md) | fixed encoded blocks, compact pack addresses, incremental BLOB reads, metadata/index costs and partial-retention dead space |

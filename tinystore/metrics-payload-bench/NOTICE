@@ -1,0 +1,8 @@
+TinyStore metrics immutable payload pack research harness.
+Copyright 2026 tinyshed contributors.
+
+The codec is reused by source path from ../metrics-bench/rust/src/codec.rs,
+a research port of tinyshed/tinystore e307c48a40126aad0e2873b6bf3aaedef8115483.
+SQLite is separately downloaded from sqlite.org and built by the existing
+../sqlite-bench/build_native.py. SQLite is in the public domain. Rust package
+licenses and native zstd notices remain with their pinned dependencies.
