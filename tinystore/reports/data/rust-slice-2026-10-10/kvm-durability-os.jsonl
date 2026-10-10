@@ -1,0 +1,22 @@
+{"host": {"processors": 4, "model": "AMD EPYC 7502P 32-Core Processor", "kernel": "Linux 7.0.0-38-generic", "libc": "ldd (Ubuntu GLIBC 2.43-2ubuntu2.4) 2.43", "virtualization": "kvm", "started_utc": "2026-10-10T15:34:07+00:00", "passes": 2, "seconds_a_case": 3}}
+{"program": "full", "pass": 0, "row": {"callers":1,"case":"kv-set","elapsed_ns":3000823876,"engine":"rust","ops":2512,"p50_ns":708121,"p99_ns":7213167,"per_second":837.1034435211218}}
+{"program": "os", "pass": 0, "row": {"callers":1,"case":"kv-set","elapsed_ns":3003628153,"engine":"rust","ops":45197,"p50_ns":23056,"p99_ns":285123,"per_second":15047.46849401368}}
+{"program": "full", "pass": 0, "row": {"callers":16,"case":"kv-set","elapsed_ns":3001115353,"engine":"rust","ops":21616,"p50_ns":1672276,"p99_ns":10212306,"per_second":7202.65549886046}}
+{"program": "os", "pass": 0, "row": {"callers":16,"case":"kv-set","elapsed_ns":3007966360,"engine":"rust","ops":37778,"p50_ns":587920,"p99_ns":15304415,"per_second":12559.315989158868}}
+{"program": "full", "pass": 0, "row": {"callers":64,"case":"kv-set","elapsed_ns":3008111273,"engine":"rust","ops":39797,"p50_ns":3824695,"p99_ns":16041937,"per_second":13229.896233296686}}
+{"program": "os", "pass": 0, "row": {"callers":64,"case":"kv-set","elapsed_ns":3012360080,"engine":"rust","ops":46011,"p50_ns":2101327,"p99_ns":25131971,"per_second":15274.070422550547}}
+{"program": "full", "pass": 0, "row": {"callers":256,"case":"kv-set","elapsed_ns":3060230557,"engine":"rust","ops":41244,"p50_ns":15293074,"p99_ns":46905060,"per_second":13477.41591092151}}
+{"program": "os", "pass": 0, "row": {"callers":256,"case":"kv-set","elapsed_ns":3038193941,"engine":"rust","ops":41349,"p50_ns":10945067,"p99_ns":61380281,"per_second":13609.730255202297}}
+{"program": "full", "pass": 0, "row": {"callers":64,"case":"jobs-add","elapsed_ns":3010875398,"engine":"rust","ops":32814,"p50_ns":4700013,"p99_ns":21476985,"per_second":10898.491522364886}}
+{"program": "os", "pass": 0, "row": {"callers":64,"case":"jobs-add","elapsed_ns":3007343351,"engine":"rust","ops":68279,"p50_ns":2191017,"p99_ns":13716880,"per_second":22704.09196119755}}
+{"program": "os", "pass": 1, "row": {"callers":1,"case":"kv-set","elapsed_ns":3001241896,"engine":"rust","ops":52097,"p50_ns":22374,"p99_ns":160493,"per_second":17358.480857352395}}
+{"program": "full", "pass": 1, "row": {"callers":1,"case":"kv-set","elapsed_ns":3003838235,"engine":"rust","ops":1959,"p50_ns":943044,"p99_ns":7635916,"per_second":652.1656117077823}}
+{"program": "os", "pass": 1, "row": {"callers":16,"case":"kv-set","elapsed_ns":3028011155,"engine":"rust","ops":37237,"p50_ns":581656,"p99_ns":16290224,"per_second":12297.510839255809}}
+{"program": "full", "pass": 1, "row": {"callers":16,"case":"kv-set","elapsed_ns":3010635647,"engine":"rust","ops":20970,"p50_ns":1690762,"p99_ns":9535828,"per_second":6965.306486321558}}
+{"program": "os", "pass": 1, "row": {"callers":64,"case":"kv-set","elapsed_ns":3011097036,"engine":"rust","ops":46403,"p50_ns":2095165,"p99_ns":23525637,"per_second":15410.662441368098}}
+{"program": "full", "pass": 1, "row": {"callers":64,"case":"kv-set","elapsed_ns":3003837596,"engine":"rust","ops":37926,"p50_ns":3991079,"p99_ns":15231471,"per_second":12625.849030754325}}
+{"program": "os", "pass": 1, "row": {"callers":256,"case":"kv-set","elapsed_ns":3024720788,"engine":"rust","ops":43682,"p50_ns":10809536,"p99_ns":58940543,"per_second":14441.663565542962}}
+{"program": "full", "pass": 1, "row": {"callers":256,"case":"kv-set","elapsed_ns":3075913485,"engine":"rust","ops":38589,"p50_ns":15950734,"p99_ns":52291179,"per_second":12545.54141011544}}
+{"program": "os", "pass": 1, "row": {"callers":64,"case":"jobs-add","elapsed_ns":3008246325,"engine":"rust","ops":62920,"p50_ns":2311679,"p99_ns":14959193,"per_second":20915.840394153893}}
+{"program": "full", "pass": 1, "row": {"callers":64,"case":"jobs-add","elapsed_ns":3007717522,"engine":"rust","ops":36621,"p50_ns":4347274,"p99_ns":18222464,"per_second":12175.677979110433}}
+{"finished_utc": "2026-10-10T15:35:09+00:00"}

@@ -1,0 +1,92 @@
+# Looks at the Bun program, 10 October: single runs of three seconds a case,
+# each tree twice in turn unless said, on the round's host. They chose what
+# to build and what to leave; the runs named in the report measure what was
+# built. The trees are the round's `/perf/slice-then` (5f944e2) with the
+# checkout's sources laid over it and built again, so no commit names them.
+# Calls a second.
+
+## The linger and the crowd, set from the environment (tree c2)
+# A worker that found no job looks for the next for the linger before it
+# sleeps; a write that holds as many requests as the crowd sends its point
+# reads to the workers. crowd:linger, linger in microseconds. 100:0 answers
+# every point read where it is read; 4:0 is a crowd of four with no linger.
+# The SDK is the first step's, without a view of each message's buffer.
+
+kv-get, in flight   100:0     4:0     4:50    4:200    2:50   2:200   1:200
+  1                86,779  87,684  83,080  86,999  84,858  91,007  84,277
+  2                95,077  93,260  95,122  95,421  53,624  56,056  68,629
+  4                83,978  42,705  61,332  69,458  77,857  83,069  82,809
+  8                90,610  79,676  98,606 105,775 129,457 125,820 135,203
+ 16               100,029 125,388 140,627 143,063 163,377 163,244 171,412
+ 64                97,933 164,272 166,554 188,059 165,545 183,461 187,622
+
+## The same with a read following reads already with the workers (tree c3)
+# A point read goes to the workers while they have reads of its connection,
+# and a worker lingers only while jobs come closer together than the linger.
+
+kv-get, in flight   before    4:100   4:200   4:400   6:200   3:200
+  1                89,746  87,543  86,943  84,495  84,363  84,601
+  2                94,585  96,372  90,050  89,017  91,639  93,677
+  4                85,463  68,561  69,815  74,810  84,048  73,185
+  8                80,665 121,373 119,640 125,416 115,276 121,666
+ 16               103,011 153,364 151,772 158,978 153,981 154,230
+ 64               139,888 171,878 178,710 182,566 166,858 182,998
+# "before" is the same SDK over the core at 5f944e2.
+
+sql-point, in flight   all read here   6:50    6:100   6:200   5:100
+  1                        17,220    37,647  69,059  72,421  72,878
+  2                        30,131    51,396  51,835  52,888  53,938
+  4                        48,871    59,383  60,920  61,207  61,073
+kv-get 5                   90,536    91,530  90,242  88,329  88,129
+kv-get 6                   90,355    83,545  98,664 100,720 100,975
+
+# beside Bun, through the server, each setting twice
+                       all read here   6:100            6:200
+kv-get 8                   45,764    41,420; 44,643   62,965; 64,014
+kv-get 16                  65,061    63,037; 64,055   75,023; 75,804
+sql-point 8                32,917    33,190; 32,862   41,559; 42,073
+jobs-add 64                21,283    20,941; 20,979   21,017; 20,813
+
+## A write that takes what is ready wakes nobody for it (tree e1)
+kv-get, in flight   before             after
+  1                74,587; 72,954     73,562; 69,312
+  4                72,988; 70,370     70,940; 70,398
+ 16                89,494; 91,328     91,375; 93,991
+ 64               116,702; 125,312   123,455; 121,445
+# Not built.
+
+## A crowd's answers wake the host once as many are ready as are still away (tree d3 against d2)
+kv-get, in flight   before             after
+  1               116,512; 117,503   116,602; 113,217
+  8               193,063; 198,552   187,698; 181,518
+ 16               254,800; 253,411   248,111; 267,447
+ 64               322,567; 337,599   318,992; 322,192
+256               375,828; 376,862   359,713; 356,388
+# Built with its test, measured, taken out.
+
+## How a write of the SDK is shared out (tree d2, counters in its pipe)
+in flight   calls a write   writes    answered by the write   wakes     with answers
+  8             2.1         328,822        219,373            147,145     109,462
+ 64            12.1          82,783         71,861             15,257      10,931
+256            61.5          19,615         14,050              7,507       5,568
+# The counts take in the fill of 100,000 sets, 64 in flight.
+
+## One thread for Bun's collector (tree d2, BUN_JSC_numberOfGCMarkers=1)
+kv-get, 64 in flight       calls a second       p99, microseconds
+as it is                  313,886; 309,190      1,959; 2,020
+one collector thread      374,379; 366,220        755;   827
+bare loop, one thread     448,958
+
+## The program's thread, whole stacks (perf record -e cpu-clock -F 499 --call-graph dwarf, kv-get, 64 in flight)
+tree                    its thread on a processor   each of 16 workers   calls a second
+then (5f944e2)                  93.2%                    6.9-7.2%           119,895
+d2 (the SDK in place)           88.2%                   16.3-17.3%          337,641
+# At 5f944e2, 39% of the thread's samples were under the session's call of a
+# point read, and of the workers' samples 20% were in futex_wake.
+
+## A read that waits while thousands pass (the bare loop, 256 in flight, tree c4)
+# The loop's first version gave a call the place of its stream's number in a
+# table of 4,096. One call in a run of 1.3 million found its place taken:
+# 4,096 calls had started and ended since it was sent. The loop now passes
+# over a place still waited in.
+made 1,316,655; places taken while waited in 1; answers that found nobody 1
