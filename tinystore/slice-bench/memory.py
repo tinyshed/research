@@ -58,6 +58,9 @@ PROGRAMS = {
     "bun-rust-sidecar": bun("rust", "sidecar"),
     "bun-go-sidecar": bun("go", "sidecar"),
 }
+# ONLY=rust,go and CASES=sql-point:64 run some of them
+if os.environ.get("ONLY"):
+    PROGRAMS = {name: PROGRAMS[name] for name in os.environ["ONLY"].split(",")}
 
 
 def utc():
