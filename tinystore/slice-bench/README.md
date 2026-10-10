@@ -15,6 +15,8 @@ Bun. It measures the product's own code on both sides, not a prototype.
 | `run.py`       | the passes: a process and a fresh store a case, the programs' order turned round a pass        |
 | `summarize.py` | a round's `runs.jsonl` as the report's tables                                                  |
 | `mutex.sh`     | a diagnosis: reads by a few callers with SQLite's mutexes made to spin before they park        |
+| `profiles.sh`  | where a Bun program's time goes: its JavaScript by bun's profiler, the core's by perf           |
+| `cpuprof.py`   | a `.cpuprofile` summed by function, alone and with what it calls                               |
 
 Both sides write the same keys, rows and jobs, pick the same keys by the same
 xorshift, and commit as their defaults do: WAL and `synchronous=FULL`, a
