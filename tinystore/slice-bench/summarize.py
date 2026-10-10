@@ -103,6 +103,28 @@ if flag:
     table(flag, "The build's flag through Bun, calls a second, each pass", programs,
           [case for case in bun if (programs[2],) + case in flag], ratio=("bun-rust-sidecar-nomm", "bun-rust-sidecar-next"))
 
+callers = load("writes-native")
+if callers:
+    cases = [(case, n) for case in ("kv-set", "sql-insert", "jobs-add", "jobs-drain") for n in (1, 2, 4, 8, 16, 64)
+             if ("rust-wake", case, n) in callers]
+    commits = ["go", "rust-base", "rust-gather", "rust-wake"]
+    table(callers, "A commit's callers in process, calls a second, each pass", commits, cases, ratio=("rust-wake", "rust-base"))
+    table(callers, "A commit's callers in process, against Go", commits, cases, ratio=("rust-wake", "go"))
+callers = load("halves-native")
+if callers:
+    cases = [(case, n) for case in ("kv-set", "sql-insert", "jobs-add") for n in (1, 4, 16, 64)
+             if ("rust-halves", case, n) in callers]
+    commits = ["go", "rust-base", "rust-shares", "rust-halves"]
+    table(callers, "Shares and halves, calls a second, each pass", commits, cases, ratio=("rust-halves", "rust-base"))
+    table(callers, "Shares and halves, against Go", commits, cases, ratio=("rust-halves", "go"))
+    latencies(callers, "Shares and halves, latency", commits, cases)
+callers = load("writes-bun")
+if callers:
+    programs = ["bun-go-sidecar", "bun-rust-sidecar-base", "bun-rust-sidecar-wake", "bun-rust-embedded-base",
+                "bun-rust-embedded-wake"]
+    table(callers, "A commit's callers through Bun, calls a second, each pass", programs,
+          [("kv-set", 64), ("jobs-add", 64)], ratio=("bun-rust-embedded-wake", "bun-rust-embedded-base"))
+
 later = load("next-native")
 if later:
     cases = [case for case in native + [("kv-get", 8), ("kv-get", 16), ("sql-point", 16)] if ("rust-next",) + case in later]

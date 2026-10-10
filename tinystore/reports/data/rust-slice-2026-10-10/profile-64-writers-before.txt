@@ -1,0 +1,44 @@
+# perf record -e cpu-clock -F 1999 --call-graph dwarf,8192: kv-set by 64 callers for 3 s
+# tree slice-gather, cbe4a9ef3804d3290793db7a56549a33b6de911f, flags: SQLITE_DQS=0 -USQLITE_ENABLE_MEMORY_MANAGEMENT -DHAVE_FDATASYNC=1
+# {"callers":64,"case":"kv-set","elapsed_ns":3004699594,"engine":"rust","ops":44269,"p50_ns":3371546,"p99_ns":12236001,"per_second":14733.253230505812}
+# perf report --children --sort symbol -g none: share with children, own share, symbol; Rust symbols by their last names
+    93.71%     0.16%  [.] tinystore::sqlite::group::Group::write
+    78.64%     0.00%  [k] entry_SYSCALL_64_after_hwframe
+    78.23%     1.32%  [k] do_syscall_64
+    74.13%     0.46%  [k] x64_sys_call
+    61.68%     1.46%  [.] syscall
+    61.50%     0.25%  [.] tinystore::sqlite::group::Group::lead
+    56.30%     0.39%  [k] __x64_sys_futex
+    55.96%     0.36%  [k] do_futex
+    44.97%     0.66%  [k] futex_wake
+    44.20%    44.20%  [k] _raw_spin_unlock_irqrestore
+    42.74%     0.21%  [k] wake_up_q
+    42.56%     0.18%  [k] try_to_wake_up
+    27.03%     0.07%  [.] sqlite3_step
+    22.32%     0.78%  [.] sqlite3VdbeExec
+    15.87%     0.11%  [.] sqlite3VdbeHalt
+    15.07%     0.11%  [.] sqlite3PagerCommitPhaseOne.part.0
+    15.07%     0.00%  [.] sqlite3BtreeCommitPhaseOne.part.0
+    13.86%     0.27%  [.] tinystore::sqlite::group::Group::enqueue
+    11.01%     0.09%  [.] __libc_pwrite
+    10.37%     0.14%  [k] futex_wait
+     9.82%     0.21%  [k] __futex_wait
+     9.55%     0.05%  [k] __x64_sys_pwrite64
+     8.80%     0.25%  [k] vfs_write
+     8.71%     0.07%  [.] _RINvXs0_NtNtNtCsevLNFiNqfJP_4core4iter8adapters3mapINtB6_3MapINtNtNtBc_5slice4iter4IterINtNtCs1C1lLj4PWSY_5alloc4sync3ArcNtNtNtCs6zJuD6LNhl9_9tinystore6sqlite5group5WriteEENCNvB1X_6commits_0ENtNtNtBa_6traits8iterator8Iterator4folduNCINvNvB33_8for_each4callINtNtBc_6result6ResultuNtNtB21_5error5ErrorENCINvMsk_NtB1s_3vecINtB4X_3VecB46_E14extend_trustedBN_E0E0EB21_
+     8.71%     0.00%  [.] _RNvXs_NtNtCs1C1lLj4PWSY_5alloc3vec21spec_from_iter_nestedINtB6_3VecINtNtCsevLNFiNqfJP_4core6result6ResultuNtNtCs6zJuD6LNhl9_9tinystore5error5ErrorEEINtB4_18SpecFromIterNestedB13_INtNtNtNtB18_4iter8adapters3map3MapINtNtNtB18_5slice4iter4IterINtNtB8_4sync3ArcNtNtNtB1K_6sqlite5group5WriteEENCNvB49_6commits_0EE9from_iterB1K_
+     8.64%     0.00%  [.] _RNvNtNtCs6zJuD6LNhl9_9tinystore6sqlite5group3run
+     8.53%     0.25%  [k] ext4_file_write_iter
+     8.11%     0.25%  [k] schedule
+     8.02%     0.05%  [k] ext4_buffered_write_iter
+     7.93%     0.14%  [k] futex_do_wait
+     7.86%     0.25%  [k] __schedule
+     7.61%     7.57%  [k] finish_task_switch.isra.0
+     7.13%     0.48%  [k] generic_perform_write
+     5.31%     0.00%  [k] __x64_sys_fdatasync
+     5.31%     0.00%  [k] do_fsync
+     5.29%     0.00%  [k] ext4_sync_file
+     5.29%     0.00%  [k] vfs_fsync_range
+     4.72%     0.00%  [.] sqlite3Checkpoint
+     4.72%     0.00%  [.] sqlite3WalCheckpoint
+     4.70%     0.00%  [k] file_write_and_wait_range

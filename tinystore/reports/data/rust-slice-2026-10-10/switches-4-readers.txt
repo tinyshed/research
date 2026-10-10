@@ -1,0 +1,3 @@
+# perf record -e cs -c 1 --call-graph dwarf,4096 -D 7500: every context switch of kv-get by 4 callers, after the fill
+# tree slice-wake, 2ecab48c6532cbd551ee51f1f8cc6a8cad962565, flags: SQLITE_DQS=0 -USQLITE_ENABLE_MEMORY_MANAGEMENT -DHAVE_FDATASYNC=1
+# {"callers":4,"case":"kv-get","elapsed_ns":3002827027,"engine":"rust","ops":1202906,"p50_ns":4041,"p99_ns":103998,"per_second":400591.1726463224}

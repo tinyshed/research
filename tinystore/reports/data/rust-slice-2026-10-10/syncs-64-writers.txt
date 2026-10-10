@@ -1,0 +1,6 @@
+# strace -f -c -w --seccomp-bpf -e trace=fdatasync: kv-set by 64 callers for 3 s, one run a program; the trace slows the Rust programs more than Go
+go: 47156 writes, 1003 syncs, 47.0 writes a sync, 1814 us a sync
+base: 25477 writes, 753 syncs, 33.8 writes a sync, 1752 us a sync
+gather: 25604 writes, 666 syncs, 38.4 writes a sync, 1917 us a sync
+shares: 35042 writes, 760 syncs, 46.1 writes a sync, 1861 us a sync
+halves: 35152 writes, 770 syncs, 45.7 writes a sync, 1818 us a sync

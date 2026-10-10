@@ -13,6 +13,7 @@ Bun. It measures the product's own code on both sides, not a prototype.
 | `build.sh`     | builds each side from a `git archive` of its own commit, into `/perf/slice` on the volume      |
 | `run.py`       | the passes: a process and a fresh store a case, the programs' order turned round a pass        |
 | `summarize.py` | a round's `runs.jsonl` as the report's tables                                                  |
+| `mutex.sh`     | a diagnosis: reads by a few callers with SQLite's mutexes made to spin before they park        |
 
 Both sides write the same keys, rows and jobs, pick the same keys by the same
 xorshift, and commit as their defaults do: WAL and `synchronous=FULL`, a
