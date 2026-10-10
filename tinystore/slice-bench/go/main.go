@@ -5,8 +5,8 @@
 // line of JSON: the calls made, the time they took and their latencies. With
 // --rest <s> it keeps no latencies, rests that long after the case with the
 // store open, and says what the process held before the store opened, once it
-// was open, after the case and after the rest; it writes "loaded" to stderr as
-// the rest begins.
+// was open, after the case, after the rest, and once the runtime gave back what
+// it could (debug.FreeOSMemory); it writes "loaded" to stderr as the rest begins.
 package main
 
 import (
@@ -15,6 +15,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"runtime/debug"
 	"sort"
 	"strconv"
 	"strings"
@@ -87,6 +88,8 @@ func main() {
 		fmt.Fprintln(os.Stderr, "loaded")
 		time.Sleep(time.Duration(*rest * float64(time.Second)))
 		holds["rested"] = held()
+		debug.FreeOSMemory()
+		holds["trimmed"] = held()
 	}
 	check(store.Close(ctx))
 

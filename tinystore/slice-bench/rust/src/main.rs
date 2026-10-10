@@ -5,8 +5,8 @@
 //! one line of JSON: the calls made, the time they took and their latencies.
 //! With `--rest <s>` it keeps no latencies, rests that long after the case with
 //! the store open, and says what the process held before the store opened, once
-//! it was open, after the case and after the rest; it writes `loaded` to stderr
-//! as the rest begins.
+//! it was open, after the case, after the rest, and once glibc gave back what it
+//! keeps of freed memory; it writes `loaded` to stderr as the rest begins.
 
 use std::sync::atomic::{AtomicBool, AtomicU64, Ordering};
 use std::sync::{Arc, Barrier};
@@ -75,6 +75,8 @@ fn main() {
         eprintln!("loaded");
         std::thread::sleep(Duration::from_secs_f64(rest));
         holds.insert("rested".into(), held());
+        trim();
+        holds.insert("trimmed".into(), held());
     }
     store.close().unwrap();
     let at = |quantile: f64| {
@@ -96,6 +98,19 @@ fn main() {
 /// Whether `timed` keeps each call's latency: not while the program says what
 /// it holds, which they would be part of.
 static TIMING: AtomicBool = AtomicBool::new(true);
+
+/// Gives the system back what glibc keeps of freed memory for this process's
+/// later allocations: what the process holds after it is the store's own.
+#[allow(unsafe_code, reason = "malloc_trim is glibc's, and nothing the harness links binds it")]
+fn trim() {
+    unsafe extern "C" {
+        fn malloc_trim(pad: usize) -> std::ffi::c_int;
+    }
+    // SAFETY: malloc_trim takes no pointer and only hands free memory back to the system.
+    unsafe {
+        malloc_trim(0);
+    }
+}
 
 /// What this process holds, from its `smaps_rollup`, in KiB.
 fn held() -> serde_json::Value {
