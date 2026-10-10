@@ -217,3 +217,9 @@ original hashes and distinguishes translated documentation from measured code.
 | --- | --- |
 | [Groups, inline bodies and page layout](metrics-layout-2026-10-09.md) | current production-Go files, exact-byte controls, rowid versus WITHOUT ROWID, group/inline/page variants, full-file/dbstat accounting and read/retention controls |
 | [Immutable payload packs and range reads](metrics-payload-2026-10-09.md) | fixed encoded blocks, compact pack addresses, incremental BLOB reads, metadata/index costs and partial-retention dead space |
+
+## 10 October 2026 — the Rust core's own engines
+
+| Report | Scope |
+| --- | --- |
+| [The Rust slice against the Go engines](rust-slice-2026-10-10.md) | kv, sql and jobs of the `rust` branch beside the Go engines in process and through Bun: a call at a time and 64 at once, reads by the callers at once, memory, and a later commit measured against the round's for the two bounds it found |
