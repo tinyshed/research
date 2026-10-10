@@ -1,0 +1,14 @@
+[package]
+name = "slice-bench"
+description = "The Rust core's kv, sql and jobs under the slice round's load; build.sh copies it into the measured checkout's workspace"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+tinystore = { path = "../tinystore" }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.151"
+
+[lints]
+workspace = true
