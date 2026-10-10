@@ -25,16 +25,37 @@ if (arg('--case', 'kv-get') !== 'kv-get') {
 }
 const KEYS = 100_000
 
-const lib = dlopen(arg('--library'), {
-	tinystore_open: {
-		args: [FFIType.ptr, FFIType.u64, FFIType.function, FFIType.ptr, FFIType.ptr, FFIType.ptr],
-		returns: FFIType.u64_fast,
-	},
-	tinystore_send: { args: [FFIType.ptr, FFIType.ptr, FFIType.u64, FFIType.ptr], returns: FFIType.u64_fast },
-	tinystore_recv: { args: [FFIType.ptr, FFIType.u32, FFIType.ptr], returns: FFIType.u64_fast },
-	tinystore_close: { args: [FFIType.ptr], returns: FFIType.void },
-	tinystore_free: { args: [FFIType.ptr, FFIType.u64], returns: FFIType.void },
-})
+// The library's C functions came in two shapes. Until `597ecd5` the core
+// handed over bytes of its own, which the program wrapped, read and gave back
+// through tinystore_free; since, it writes into bytes the program gives. The
+// one that still has tinystore_free is the first.
+const { u64, u64_fast, u32, ptr: pointer, function: callback } = FFIType
+const closes = { tinystore_close: { args: [pointer], returns: FFIType.void } } as const
+const handing = (() => {
+	try {
+		return dlopen(arg('--library'), {
+			...closes,
+			tinystore_open: { args: [pointer, u64, callback, pointer, pointer, pointer], returns: u64_fast },
+			tinystore_send: { args: [pointer, pointer, u64, pointer], returns: u64_fast },
+			tinystore_recv: { args: [pointer, u32, pointer], returns: u64_fast },
+			tinystore_free: { args: [pointer, u64], returns: FFIType.void },
+		})
+	} catch {
+		return undefined
+	}
+})()
+const writing =
+	handing !== undefined
+		? undefined
+		: dlopen(arg('--library'), {
+				...closes,
+				tinystore_open: {
+					args: [pointer, u64, callback, pointer, pointer, pointer, u64],
+					returns: u64_fast,
+				},
+				tinystore_send: { args: [pointer, pointer, u64, pointer, u64], returns: u64_fast },
+				tinystore_recv: { args: [pointer, u32, pointer, u64], returns: u64_fast },
+			})
 
 const WELCOME = 2
 const REQUEST = 3
@@ -80,9 +101,15 @@ function flush(): void {
 	flushing = false
 	const length = outLength
 	outLength = 0
-	if (connection !== null && length > 0) {
-		take(lib.symbols.tinystore_send(connection, outAt, length, handedAt))
+	if (connection === null || length === 0) {
+		return
 	}
+	if (handing !== undefined) {
+		take(handing.symbols.tinystore_send(connection, outAt, length, handedAt))
+		return
+	}
+	const free = inbox.length - held
+	readOn(Number(writing?.symbols.tinystore_send(connection, outAt, length, ptr(inbox, held), free)))
 }
 
 function leave(): void {
@@ -92,17 +119,51 @@ function leave(): void {
 	}
 }
 
-/** Reads the frames the core handed over, each answer given to its call. */
+/** Reads the frames the core handed over, each answer given to its call, and gives the bytes back. */
 function take(length: number | bigint): void {
 	const n = Number(length)
 	if (n === 0) {
 		return
 	}
 	const address = Number(handed[0]) as Pointer
-	const bytes = new Uint8Array(toArrayBuffer(address, 0, n))
+	frames(new Uint8Array(toArrayBuffer(address, 0, n)), n)
+	handing?.symbols.tinystore_free(address, n)
+}
+
+// where the core writes what it owes, in its later shape: whole frames are
+// read from the front, a frame's first part held there for its rest
+let inbox = new Uint8Array(1 << 16)
+let held = 0
+
+/** Reads what a call wrote behind what is held, and on while the core fills the room. */
+function readOn(written: number): void {
+	for (;;) {
+		const length = held + written
+		const filled = length === inbox.length
+		const read = written === 0 ? 0 : frames(inbox, length)
+		inbox.copyWithin(0, read, length)
+		held = length - read
+		if (held === inbox.length) {
+			const grown = new Uint8Array(inbox.length * 2)
+			grown.set(inbox)
+			inbox = grown
+		}
+		if (!filled || connection === null || writing === undefined) {
+			return
+		}
+		const free = inbox.length - held
+		written = Number(writing.symbols.tinystore_recv(connection, 0, ptr(inbox, held), free))
+	}
+}
+
+/** Gives each whole frame in the first n bytes to its call, and says how many bytes they were. */
+function frames(bytes: Uint8Array, n: number): number {
 	let at = 0
-	while (at < n) {
+	while (n - at >= 12) {
 		const size = bytes[at]! | (bytes[at + 1]! << 8) | (bytes[at + 2]! << 16) | (bytes[at + 3]! << 24)
+		if (at + 12 + size > n) {
+			break
+		}
 		const stream = (bytes[at + 8]! | (bytes[at + 9]! << 8) | (bytes[at + 10]! << 16) | (bytes[at + 11]! << 24)) >>> 0
 		const kind = bytes[at + 4]!
 		if (kind === GOAWAY || (bytes[at + 5]! & ERROR) !== 0) {
@@ -117,21 +178,32 @@ function take(length: number | bigint): void {
 		}
 		at += 12 + size
 	}
-	lib.symbols.tinystore_free(address, n)
+	return at
 }
 
 const wake = new JSCallback(
 	() => {
-		if (connection !== null) {
-			take(lib.symbols.tinystore_recv(connection, 0, handedAt))
+		if (connection === null) {
+			return
 		}
+		if (handing !== undefined) {
+			take(handing.symbols.tinystore_recv(connection, 0, handedAt))
+			return
+		}
+		const free = inbox.length - held
+		readOn(Number(writing?.symbols.tinystore_recv(connection, 0, ptr(inbox, held), free)))
 	},
 	{ args: [FFIType.ptr], returns: FFIType.void, threadsafe: true },
 )
 
 const dir = new TextEncoder().encode(arg('--dir'))
 const opened = new BigUint64Array(1)
-if (Number(lib.symbols.tinystore_open(ptr(dir), dir.length, wake, null, ptr(opened), handedAt)) > 0) {
+const failure = new Uint8Array(256)
+const failed =
+	handing !== undefined
+		? handing.symbols.tinystore_open(ptr(dir), dir.length, wake, null, ptr(opened), handedAt)
+		: writing?.symbols.tinystore_open(ptr(dir), dir.length, wake, null, ptr(opened), ptr(failure), 256)
+if (Number(failed) > 0) {
 	throw new Error('the store did not open')
 }
 connection = Number(opened[0]) as Pointer
@@ -258,5 +330,5 @@ console.log(
 		per_second: made / (elapsed / 1000),
 	}),
 )
-lib.symbols.tinystore_close(connection)
+;(handing ?? writing)?.symbols.tinystore_close(connection)
 process.exit(0)
