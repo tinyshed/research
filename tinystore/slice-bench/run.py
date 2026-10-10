@@ -78,9 +78,13 @@ def also_bun(tree, mode):
 
 
 def also_raw(tree):
+    # since tinystore 9cb490f tinystore_open takes the store's options, which
+    # nothing in the library's symbols tells: the tree's own source does
+    ffi = tree / "rust-src/crates/ffi/src/lib.rs"
+    options = ["--options"] if ffi.exists() and "options_len" in ffi.read_text() else []
     return lambda case, callers, store: [
         "/perf/bin/bun", str(Path(__file__).resolve().parent / "bun/raw.ts"),
-        "--library", str(tree / "bin/libtinystore_ffi.so"),
+        "--library", str(tree / "bin/libtinystore_ffi.so"), *options,
         "--dir", store, "--case", case, "--callers", str(callers), "--seconds", SECONDS]
 
 

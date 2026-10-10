@@ -4,7 +4,7 @@
 // load is measured against this, not against a Rust program's threads.
 //
 // bun raw.ts --library <libtinystore_ffi> --dir <dir> --case kv-get --callers <n> --seconds <s>
-//   [--decode none|text|json]
+//   [--decode none|text|json] [--options]
 
 import { dlopen, FFIType, JSCallback, type Pointer, ptr, toArrayBuffer } from 'bun:ffi'
 
@@ -20,6 +20,8 @@ const arg = (name: string, otherwise?: string): string => {
 const callers = Number(arg('--callers'))
 const seconds = Number(arg('--seconds'))
 const decoding = arg('--decode', 'json')
+// a library since tinystore 9cb490f opens a store with its options, here none
+const withOptions = args.includes('--options')
 if (arg('--case', 'kv-get') !== 'kv-get') {
 	throw new Error('the bare loop reads keys and nothing else')
 }
@@ -50,7 +52,9 @@ const writing =
 		: dlopen(arg('--library'), {
 				...closes,
 				tinystore_open: {
-					args: [pointer, u64, callback, pointer, pointer, pointer, u64],
+					args: withOptions
+						? [pointer, u64, pointer, u64, callback, pointer, pointer, pointer, u64]
+						: [pointer, u64, callback, pointer, pointer, pointer, u64],
 					returns: u64_fast,
 				},
 				tinystore_send: { args: [pointer, pointer, u64, pointer, u64], returns: u64_fast },
@@ -202,7 +206,9 @@ const failure = new Uint8Array(256)
 const failed =
 	handing !== undefined
 		? handing.symbols.tinystore_open(ptr(dir), dir.length, wake, null, ptr(opened), handedAt)
-		: writing?.symbols.tinystore_open(ptr(dir), dir.length, wake, null, ptr(opened), ptr(failure), 256)
+		: withOptions
+			? writing?.symbols.tinystore_open(ptr(dir), dir.length, null, 0, wake, null, ptr(opened), ptr(failure), 256)
+			: writing?.symbols.tinystore_open(ptr(dir), dir.length, wake, null, ptr(opened), ptr(failure), 256)
 if (Number(failed) > 0) {
 	throw new Error('the store did not open')
 }
