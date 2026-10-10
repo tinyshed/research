@@ -12,6 +12,9 @@ set -eu
 RUST_COMMIT=${RUST_COMMIT:-51b2592}
 GO_COMMIT=${GO_COMMIT:-e81a050}
 WORK=${WORK:-/perf/slice}
+# what the bundled SQLite is built with beside libsqlite3-sys's own flags:
+# CI's on Linux, unless a round measures a flag
+SQLITE_FLAGS=${SQLITE_FLAGS:-SQLITE_DQS=0 -DHAVE_FDATASYNC=1}
 
 case "$1" in
 sources)
@@ -28,7 +31,8 @@ rust)
 	rm -rf "$WORK/rust-src/crates/slice-bench"
 	cp -r /src/tinystore/slice-bench/rust "$WORK/rust-src/crates/slice-bench"
 	cd "$WORK/rust-src"
-	export LIBSQLITE3_FLAGS='SQLITE_DQS=0 -DHAVE_FDATASYNC=1'
+	export LIBSQLITE3_FLAGS="$SQLITE_FLAGS"
+	echo "$SQLITE_FLAGS" > "$WORK/sqlite-flags"
 	cargo build --release -p slice-bench -p tinystore-ffi -p tinystore-cli
 	cp "$CARGO_TARGET_DIR/release/slice-bench" "$WORK/bin/rust-slice"
 	cp "$CARGO_TARGET_DIR/release/tinystore" "$WORK/bin/tinystore-rust"

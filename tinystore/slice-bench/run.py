@@ -55,23 +55,32 @@ PROGRAMS = {
 }
 GROUPS = [["go", "rust"], ["bun-go-sidecar", "bun-rust-sidecar", "bun-rust-embedded"]]
 
-# NEXT names the tree of a later commit built the same way, /perf/slice-next:
-# its programs run beside the round's own, under the same names with -next.
+# ALSO names trees built the same way, "label=/perf/dir,...": another commit
+# of the Rust core, or the same one with other flags. Each one's programs run
+# beside the round's own, under the same names with -label. NEXT=/perf/dir is
+# ALSO=next=/perf/dir.
+ALSO = dict(each.split("=", 1) for each in os.environ.get("ALSO", "").split(",") if each)
 if os.environ.get("NEXT"):
-    later = Path(os.environ["NEXT"])
+    ALSO["next"] = os.environ["NEXT"]
 
-    def next_bun(mode):
-        return lambda case, callers, store: [
-            "/perf/bin/bun", str(Path(__file__).resolve().parent / "bun/bench.ts"),
-            "--sdk", str(later / "rust-src/sdk/js/src/index.ts"), "--flavor", "rust", "--mode", mode,
-            "--binary", str(later / "bin/tinystore-rust"), "--library", str(later / "bin/libtinystore_ffi.so"),
-            "--dir", store, "--case", case, "--callers", str(callers), "--seconds", SECONDS]
 
-    PROGRAMS["rust-next"] = (lambda case, callers, store: [
-        str(later / "bin/rust-slice"), "--dir", store, "--case", case, "--callers", str(callers),
-        "--seconds", SECONDS], NATIVE)
-    PROGRAMS["bun-rust-sidecar-next"] = (next_bun("sidecar"), BUN)
-    PROGRAMS["bun-rust-embedded-next"] = (next_bun("embedded"), BUN)
+def also_native(tree):
+    return lambda case, callers, store: [
+        str(tree / "bin/rust-slice"), "--dir", store, "--case", case, "--callers", str(callers), "--seconds", SECONDS]
+
+
+def also_bun(tree, mode):
+    return lambda case, callers, store: [
+        "/perf/bin/bun", str(Path(__file__).resolve().parent / "bun/bench.ts"),
+        "--sdk", str(tree / "rust-src/sdk/js/src/index.ts"), "--flavor", "rust", "--mode", mode,
+        "--binary", str(tree / "bin/tinystore-rust"), "--library", str(tree / "bin/libtinystore_ffi.so"),
+        "--dir", store, "--case", case, "--callers", str(callers), "--seconds", SECONDS]
+
+
+for label, tree in ALSO.items():
+    PROGRAMS[f"rust-{label}"] = (also_native(Path(tree)), NATIVE)
+    PROGRAMS[f"bun-rust-sidecar-{label}"] = (also_bun(Path(tree), "sidecar"), BUN)
+    PROGRAMS[f"bun-rust-embedded-{label}"] = (also_bun(Path(tree), "embedded"), BUN)
 
 # A follow-up on the round's own programs: CASES="kv-get:4,kv-get:8" for the
 # programs of ONLY, written as RUNS beside the round's runs.
@@ -122,8 +131,12 @@ def main():
         "passes": PASSES, "seconds_a_case": SECONDS,
         "order": "each pass runs a group's programs in turn, case by case; every other pass turns their order round",
     }
-    if os.environ.get("NEXT"):
-        environment["tinystore_rust_next_commit"] = (Path(os.environ["NEXT"]) / "rust-commit").read_text().strip()
+    kept = lambda tree, name: (Path(tree) / name).read_text().strip() if (Path(tree) / name).exists() else None
+    environment["sqlite_flags"] = kept(WORK, "sqlite-flags") or "SQLITE_DQS=0 -DHAVE_FDATASYNC=1"
+    environment["also"] = {
+        label: {"tinystore_rust_commit": kept(tree, "rust-commit"),
+                "sqlite_flags": kept(tree, "sqlite-flags") or "SQLITE_DQS=0 -DHAVE_FDATASYNC=1"}
+        for label, tree in ALSO.items()}
     rows = 0
     with (OUT / f"{RUNS}.jsonl").open("w") as raw:
         for number in range(PASSES):
