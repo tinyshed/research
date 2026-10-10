@@ -14,6 +14,7 @@ Bun. It measures the product's own code on both sides, not a prototype.
 | `build.sh`     | builds each side from a `git archive` of its own commit, into `/perf/slice` on the volume      |
 | `run.py`       | the passes: a process and a fresh store a case, the programs' order turned round a pass        |
 | `summarize.py` | a round's `runs.jsonl` as the report's tables                                                  |
+| `memory.py`    | what each program holds before its store opens, once open, after a case and after a rest       |
 | `mutex.sh`     | a diagnosis: reads by a few callers with SQLite's mutexes made to spin before they park        |
 | `profiles.sh`  | where a Bun program's time goes: its JavaScript by bun's profiler, the core's by perf           |
 | `cpuprof.py`   | a `.cpuprofile` summed by function, alone and with what it calls                               |

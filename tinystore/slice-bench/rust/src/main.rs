@@ -3,6 +3,10 @@
 //!
 //! `slice-bench --dir <dir> --case <case> --callers <n> --seconds <s>` prints
 //! one line of JSON: the calls made, the time they took and their latencies.
+//! With `--rest <s>` it keeps no latencies, rests that long after the case with
+//! the store open, and says what the process held before the store opened, once
+//! it was open, after the case and after the rest; it writes `loaded` to stderr
+//! as the rest begins.
 
 use std::sync::atomic::{AtomicBool, AtomicU64, Ordering};
 use std::sync::{Arc, Barrier};
@@ -55,22 +59,57 @@ fn main() {
     let (dir, case) = (arg("--dir"), arg("--case"));
     let callers: usize = arg("--callers").parse().unwrap();
     let seconds: f64 = arg("--seconds").parse().unwrap();
+    let rest: Option<f64> = args.iter().position(|arg| arg == "--rest").map(|at| args[at + 1].parse().unwrap());
+    let mut holds = serde_json::Map::new();
+    if rest.is_some() {
+        TIMING.store(false, Ordering::Relaxed);
+        holds.insert("before".into(), held());
+    }
     let store = Store::open(&dir, Options::default()).unwrap();
+    if rest.is_some() {
+        holds.insert("opened".into(), held());
+    }
     let measured = run(&store, &case, callers, Duration::from_secs_f64(seconds)).unwrap();
+    if let Some(rest) = rest {
+        holds.insert("loaded".into(), held());
+        eprintln!("loaded");
+        std::thread::sleep(Duration::from_secs_f64(rest));
+        holds.insert("rested".into(), held());
+    }
     store.close().unwrap();
     let at = |quantile: f64| {
         let index = ((measured.latencies.len() as f64 - 1.0) * quantile).round() as usize;
         measured.latencies.get(index).copied().unwrap_or(0)
     };
-    println!(
-        "{}",
-        serde_json::json!({
-            "engine": "rust", "case": case, "callers": callers, "ops": measured.ops,
-            "elapsed_ns": measured.elapsed.as_nanos() as u64,
-            "per_second": measured.ops as f64 / measured.elapsed.as_secs_f64(),
-            "p50_ns": at(0.50), "p99_ns": at(0.99),
-        })
-    );
+    let mut row = serde_json::json!({
+        "engine": "rust", "case": case, "callers": callers, "ops": measured.ops,
+        "elapsed_ns": measured.elapsed.as_nanos() as u64,
+        "per_second": measured.ops as f64 / measured.elapsed.as_secs_f64(),
+        "p50_ns": at(0.50), "p99_ns": at(0.99),
+    });
+    if rest.is_some() {
+        row["holds"] = holds.into();
+    }
+    println!("{row}");
+}
+
+/// Whether `timed` keeps each call's latency: not while the program says what
+/// it holds, which they would be part of.
+static TIMING: AtomicBool = AtomicBool::new(true);
+
+/// What this process holds, from its `smaps_rollup`, in KiB.
+fn held() -> serde_json::Value {
+    let rollup = std::fs::read_to_string("/proc/self/smaps_rollup").unwrap();
+    let field = |name: &str| -> u64 {
+        rollup
+            .lines()
+            .find_map(|line| line.strip_prefix(name)?.strip_prefix(':')?.trim().strip_suffix(" kB")?.parse().ok())
+            .unwrap_or(0)
+    };
+    serde_json::json!({"self": {
+        "rss_kib": field("Rss"), "pss_kib": field("Pss"),
+        "private_kib": field("Private_Clean") + field("Private_Dirty"), "anonymous_kib": field("Anonymous"),
+    }})
 }
 
 fn run(store: &Store, case: &str, callers: usize, time: Duration) -> Result<Measured> {
@@ -198,21 +237,24 @@ fn fill(callers: u64, count: u64, call: impl Fn(u64) -> Result<()> + Sync) -> Re
 /// Calls `call` from `callers` threads for `time`, each call timed.
 fn timed(callers: usize, time: Duration, call: impl Fn(usize, u64) -> Result<()> + Sync) -> Result<Measured> {
     let (start, stop) = (Arc::new(Barrier::new(callers + 1)), AtomicBool::new(false));
-    let (elapsed, mut latencies) = std::thread::scope(|scope| {
+    let timing = TIMING.load(Ordering::Relaxed);
+    let (elapsed, ops, mut latencies) = std::thread::scope(|scope| {
         let workers: Vec<_> = (0..callers)
             .map(|caller| {
                 let (start, stop, call) = (Arc::clone(&start), &stop, &call);
-                scope.spawn(move || -> Result<Vec<u32>> {
-                    let mut latencies = Vec::with_capacity(1 << 16);
+                scope.spawn(move || -> Result<(u64, Vec<u32>)> {
+                    let mut latencies = Vec::with_capacity(if timing { 1 << 16 } else { 0 });
                     start.wait();
                     let mut made = 0u64;
                     while !stop.load(Ordering::Relaxed) {
                         let began = Instant::now();
                         call(caller, made)?;
-                        latencies.push(u32::try_from(began.elapsed().as_nanos()).unwrap_or(u32::MAX));
+                        if timing {
+                            latencies.push(u32::try_from(began.elapsed().as_nanos()).unwrap_or(u32::MAX));
+                        }
                         made += 1;
                     }
-                    Ok(latencies)
+                    Ok((made, latencies))
                 })
             })
             .collect();
@@ -220,12 +262,14 @@ fn timed(callers: usize, time: Duration, call: impl Fn(usize, u64) -> Result<()>
         let began = Instant::now();
         std::thread::sleep(time);
         stop.store(true, Ordering::Relaxed);
-        let mut all = Vec::new();
+        let (mut ops, mut all) = (0, Vec::new());
         for worker in workers {
-            all.extend(worker.join().unwrap().unwrap());
+            let (made, latencies) = worker.join().unwrap().unwrap();
+            ops += made;
+            all.extend(latencies);
         }
-        (began.elapsed(), all)
+        (began.elapsed(), ops, all)
     });
     latencies.sort_unstable();
-    Ok(Measured { ops: latencies.len() as u64, elapsed, latencies })
+    Ok(Measured { ops, elapsed, latencies })
 }

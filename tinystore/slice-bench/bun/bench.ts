@@ -4,7 +4,14 @@
 //
 // bun bench.ts --sdk <index.ts> --flavor rust|go --mode embedded|sidecar
 //   --binary <tinystore> [--library <libtinystore_ffi>] --dir <dir>
-//   --case <case> --callers <n> --seconds <s>
+//   --case <case> --callers <n> --seconds <s> [--rest <s>]
+//
+// With --rest it keeps no latencies, rests that long after the case with the
+// store open, and says what this process held, and the server beside it, before
+// the SDK loaded, once the store was open, after the case and after the rest;
+// it writes "loaded" to stderr as the rest begins.
+
+import { readdirSync, readFileSync, readlinkSync } from 'node:fs'
 
 const args = process.argv.slice(2)
 const arg = (name: string): string => {
@@ -34,6 +41,64 @@ const name = arg('--case')
 const callers = Number(arg('--callers'))
 const seconds = Number(arg('--seconds'))
 const dir = arg('--dir')
+const rest = Number(optional('--rest') ?? 0)
+
+const key = (n: number) => `k${String(n).padStart(8, '0')}`
+const value = 'v'.repeat(128)
+
+// every key spelled before the clock starts, and before what the program holds
+// is first read: spelling one a call is the program's work, not the store's
+const keys = Array.from({ length: KEYS }, (_, n) => key(n))
+
+/** What a process holds, from its smaps_rollup, in KiB. */
+function rollup(pid: number | 'self'): Record<string, number> {
+	const text = readFileSync(`/proc/${pid}/smaps_rollup`, 'utf8')
+	const field = (name: string) => Number(new RegExp(`^${name}:\\s+(\\d+) kB$`, 'm').exec(text)?.[1] ?? 0)
+	return {
+		rss_kib: field('Rss'),
+		pss_kib: field('Pss'),
+		private_kib: field('Private_Clean') + field('Private_Dirty'),
+		anonymous_kib: field('Anonymous'),
+	}
+}
+
+/** The server beside this program: the other process with a file of its store open. */
+function server(): number | undefined {
+	const target = (pid: number, fd: string) => {
+		try {
+			return readlinkSync(`/proc/${pid}/fd/${fd}`)
+		} catch {
+			return ''
+		}
+	}
+	for (const entry of readdirSync('/proc')) {
+		const pid = Number(entry)
+		if (!Number.isInteger(pid) || pid === process.pid) {
+			continue
+		}
+		let files: string[] = []
+		try {
+			files = readdirSync(`/proc/${pid}/fd`)
+		} catch {
+			continue
+		}
+		if (files.some(fd => target(pid, fd).startsWith(`${dir}/`))) {
+			return pid
+		}
+	}
+	return undefined
+}
+
+function held(): Record<string, unknown> {
+	const beside = mode === 'sidecar' ? server() : undefined
+	return beside === undefined ? { self: rollup('self') } : { self: rollup('self'), server: rollup(beside) }
+}
+
+/** What was held at each point of a case that rests. */
+const holds: Record<string, unknown> = {}
+if (rest > 0) {
+	holds.before = held()
+}
 
 const sdk = await import(arg('--sdk'))
 const options: Record<string, unknown> =
@@ -41,6 +106,9 @@ const options: Record<string, unknown> =
 		? { embedded: true, library: arg('--library') }
 		: { idle: '1s', binary: arg('--binary') }
 const store = await sdk.open(dir, options)
+if (rest > 0) {
+	holds.opened = held()
+}
 
 /** The call'th choice of a caller: the xorshift of the Rust and Go programs. */
 function pickExactly(caller: number, call: number): bigint {
@@ -101,11 +169,6 @@ for (const [caller, call] of [[0, 0], [1, 1], [63, 123_456_789], [255, 5_000_000
 	}
 }
 
-const key = (n: number) => `k${String(n).padStart(8, '0')}`
-const value = 'v'.repeat(128)
-
-// every key spelled before the clock starts: spelling one a call is the program's work, not the store's
-const keys = Array.from({ length: KEYS }, (_, n) => key(n))
 
 /** Makes count calls, 64 in flight, untimed. */
 async function fill(count: number, call: (n: number) => Promise<unknown>): Promise<void> {
@@ -144,7 +207,9 @@ async function timed(
 				return
 			}
 			await call(caller, made++)
-			latencies.push(performance.now() - at)
+			if (rest === 0) {
+				latencies.push(performance.now() - at)
+			}
 			ops++
 			unread = (at - began) / ops < 0.02 ? 7 : 0
 		}
@@ -251,6 +316,12 @@ async function run() {
 }
 
 const measured = await run()
+if (rest > 0) {
+	holds.loaded = held()
+	console.error('loaded')
+	await Bun.sleep(rest * 1000)
+	holds.rested = held()
+}
 await store.close()
 const sorted = measured.latencies.sort((a, b) => a - b)
 const at = (quantile: number) =>
@@ -266,6 +337,7 @@ console.log(
 		p50_ns: at(0.5),
 		p99_ns: at(0.99),
 		...(memory === undefined ? {} : { memory }),
+		...(rest > 0 ? { holds } : {}),
 	}),
 )
 process.exit(0)

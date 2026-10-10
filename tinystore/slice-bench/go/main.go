@@ -2,7 +2,11 @@
 // its own, the same keys, rows and jobs as the Rust program beside it.
 //
 // slice-bench --dir <dir> --case <case> --callers <n> --seconds <s> prints one
-// line of JSON: the calls made, the time they took and their latencies.
+// line of JSON: the calls made, the time they took and their latencies. With
+// --rest <s> it keeps no latencies, rests that long after the case with the
+// store open, and says what the process held before the store opened, once it
+// was open, after the case and after the rest; it writes "loaded" to stderr as
+// the rest begins.
 package main
 
 import (
@@ -12,6 +16,7 @@ import (
 	"fmt"
 	"os"
 	"sort"
+	"strconv"
 	"strings"
 	"sync"
 	"sync/atomic"
@@ -61,13 +66,28 @@ func main() {
 	name := flag.String("case", "", "the case to run")
 	callers := flag.Int("callers", 1, "goroutines calling at once")
 	seconds := flag.Float64("seconds", 3, "how long the timed part runs")
+	rest := flag.Float64("rest", 0, "seconds to rest after the case with the store open, then say what the process held")
 	flag.Parse()
 
+	holds := map[string]any{}
+	if *rest > 0 {
+		timing = false
+		holds["before"] = held()
+	}
 	ctx := context.Background()
 	store, err := tinystore.Open(ctx, *dir, tinystore.Options{})
 	check(err)
+	if *rest > 0 {
+		holds["opened"] = held()
+	}
 	m, err := run(ctx, store, *name, *callers, time.Duration(*seconds*float64(time.Second)))
 	check(err)
+	if *rest > 0 {
+		holds["loaded"] = held()
+		fmt.Fprintln(os.Stderr, "loaded")
+		time.Sleep(time.Duration(*rest * float64(time.Second)))
+		holds["rested"] = held()
+	}
 	check(store.Close(ctx))
 
 	at := func(quantile float64) uint32 {
@@ -76,11 +96,39 @@ func main() {
 		}
 		return m.latencies[int(float64(len(m.latencies)-1)*quantile+0.5)]
 	}
-	check(json.NewEncoder(os.Stdout).Encode(map[string]any{
+	row := map[string]any{
 		"engine": "go", "case": *name, "callers": *callers, "ops": m.ops,
 		"elapsed_ns": m.elapsed.Nanoseconds(), "per_second": float64(m.ops) / m.elapsed.Seconds(),
 		"p50_ns": at(0.50), "p99_ns": at(0.99),
-	}))
+	}
+	if *rest > 0 {
+		row["holds"] = holds
+	}
+	check(json.NewEncoder(os.Stdout).Encode(row))
+}
+
+// timing says whether timed keeps each call's latency: not while the program
+// says what it holds, which they would be part of.
+var timing = true
+
+// held is what this process holds, from its smaps_rollup, in KiB.
+func held() map[string]any {
+	rollup, err := os.ReadFile("/proc/self/smaps_rollup")
+	check(err)
+	field := func(name string) int64 {
+		for _, line := range strings.Split(string(rollup), "\n") {
+			if rest, ok := strings.CutPrefix(line, name+":"); ok {
+				n, err := strconv.ParseInt(strings.TrimSuffix(strings.TrimSpace(rest), " kB"), 10, 64)
+				check(err)
+				return n
+			}
+		}
+		return 0
+	}
+	return map[string]any{"self": map[string]int64{
+		"rss_kib": field("Rss"), "pss_kib": field("Pss"),
+		"private_kib": field("Private_Clean") + field("Private_Dirty"), "anonymous_kib": field("Anonymous"),
+	}}
 }
 
 func check(err error) {
@@ -254,20 +302,28 @@ func timed(callers int, d time.Duration, call func(caller int, n uint64) error) 
 	var wg sync.WaitGroup
 	start := make(chan struct{})
 	all := make([][]uint32, callers)
+	counts := make([]int64, callers)
 	errs := make(chan error, callers)
 	for caller := range callers {
 		wg.Go(func() {
-			latencies := make([]uint32, 0, 1<<16)
+			capacity := 0
+			if timing {
+				capacity = 1 << 16
+			}
+			latencies := make([]uint32, 0, capacity)
 			<-start
-			for made := uint64(0); !stop.Load(); made++ {
+			made := uint64(0)
+			for ; !stop.Load(); made++ {
 				began := time.Now()
 				if err := call(caller, made); err != nil {
 					errs <- err
 					return
 				}
-				latencies = append(latencies, uint32(min(time.Since(began).Nanoseconds(), 1<<32-1)))
+				if timing {
+					latencies = append(latencies, uint32(min(time.Since(began).Nanoseconds(), 1<<32-1)))
+				}
 			}
-			all[caller] = latencies
+			all[caller], counts[caller] = latencies, int64(made)
 		})
 	}
 	began := time.Now()
@@ -281,9 +337,11 @@ func timed(callers int, d time.Duration, call func(caller int, n uint64) error) 
 		return measured{}, err
 	}
 	var latencies []uint32
-	for _, one := range all {
+	var ops int64
+	for caller, one := range all {
 		latencies = append(latencies, one...)
+		ops += counts[caller]
 	}
 	sort.Slice(latencies, func(a, b int) bool { return latencies[a] < latencies[b] })
-	return measured{ops: int64(len(latencies)), elapsed: elapsed, latencies: latencies}, nil
+	return measured{ops: ops, elapsed: elapsed, latencies: latencies}, nil
 }
