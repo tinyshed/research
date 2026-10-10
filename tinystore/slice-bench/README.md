@@ -10,6 +10,7 @@ Bun. It measures the product's own code on both sides, not a prototype.
 | `rust/`        | the Rust program: a member of the measured checkout's workspace once `build.sh` copies it in   |
 | `go/`          | the Go program, on the public Go API                                                           |
 | `bun/bench.ts` | the Bun program, through either SDK: the Rust core in process or beside it, or Go's server     |
+| `bun/raw.ts`   | the most a Bun program makes of the core in its process: kv gets over the C ABI, with no SDK   |
 | `build.sh`     | builds each side from a `git archive` of its own commit, into `/perf/slice` on the volume      |
 | `run.py`       | the passes: a process and a fresh store a case, the programs' order turned round a pass        |
 | `summarize.py` | a round's `runs.jsonl` as the report's tables                                                  |

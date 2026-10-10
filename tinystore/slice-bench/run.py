@@ -77,8 +77,16 @@ def also_bun(tree, mode):
         "--dir", store, "--case", case, "--callers", str(callers), "--seconds", SECONDS]
 
 
+def also_raw(tree):
+    return lambda case, callers, store: [
+        "/perf/bin/bun", str(Path(__file__).resolve().parent / "bun/raw.ts"),
+        "--library", str(tree / "bin/libtinystore_ffi.so"),
+        "--dir", store, "--case", case, "--callers", str(callers), "--seconds", SECONDS]
+
+
 for label, tree in ALSO.items():
     PROGRAMS[f"rust-{label}"] = (also_native(Path(tree)), NATIVE)
+    PROGRAMS[f"bun-raw-{label}"] = (also_raw(Path(tree)), [("kv-get", 1), ("kv-get", 64)])
     PROGRAMS[f"bun-rust-sidecar-{label}"] = (also_bun(Path(tree), "sidecar"), BUN)
     PROGRAMS[f"bun-rust-embedded-{label}"] = (also_bun(Path(tree), "embedded"), BUN)
 
