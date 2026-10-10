@@ -1,0 +1,49 @@
+# perf record -e cpu-clock -F 499 --call-graph dwarf,8192, the whole process: the fill of 100,000 keys by 64 callers, then kv-get by 16 callers for 3 s
+# tree slice-nomm, 6e318652225a0720e24758f69ba22572e2f70e42, flags: SQLITE_DQS=0 -DHAVE_FDATASYNC=1 -USQLITE_ENABLE_MEMORY_MANAGEMENT
+# {"callers":16,"case":"kv-get","elapsed_ns":3012764527,"engine":"rust","ops":6511993,"p50_ns":5670,"p99_ns":32142,"per_second":2161467.6293617953}
+# perf report --children --sort symbol -g none: share with children, own share, symbol; Rust symbols left out
+    58.36%     1.02%  [.] sqlite3_step
+    57.27%     6.45%  [.] sqlite3VdbeExec
+    37.80%     3.17%  [.] sqlite3BtreeIndexMoveto
+    35.76%     0.00%  [k] entry_SYSCALL_64_after_hwframe
+    34.72%     3.20%  [k] do_syscall_64
+    31.80%     0.57%  [.] getPageNormal
+    31.49%     0.49%  [.] getAndInitPage
+    30.60%     1.05%  [k] x64_sys_call
+    23.43%     0.32%  [.] readDbPage
+    22.59%     0.31%  [.] unixRead
+    22.28%     0.12%  [.] __libc_pread
+    17.49%     0.41%  [k] __x64_sys_pread64
+    15.81%     0.69%  [k] vfs_read
+    14.51%     0.88%  [k] ext4_file_read_iter
+    13.63%     0.15%  [k] generic_file_read_iter
+    12.99%     1.05%  [k] filemap_read
+    11.27%     0.79%  [.] syscall
+    10.77%     0.48%  [k] do_futex
+    10.75%     0.31%  [k] __x64_sys_futex
+     7.85%     0.39%  [k] futex_wake
+     7.21%     0.47%  [k] copy_page_to_iter
+     6.75%     6.74%  [k] _copy_to_iter
+     6.50%     0.44%  [.] btreeBeginTrans
+     6.36%     6.35%  [.] pcache1Fetch
+     5.59%     0.76%  [.] sqlite3VdbeHalt
+     5.53%     5.52%  [k] _raw_spin_unlock_irqrestore
+     5.49%     0.03%  [k] wake_up_q
+     5.46%     0.00%  [k] try_to_wake_up
+     4.93%     0.78%  [.] sqlite3PagerSharedLock
+     4.89%     0.50%  [.] unixShmLock
+     3.18%     0.25%  [k] filemap_get_pages
+     3.13%     0.02%  [.] sqlite3BtreeCommitPhaseTwo
+     2.83%     0.16%  [.] pager_unlock
+     2.65%     1.57%  [k] filemap_get_read_batch
+     2.48%     1.19%  [.] pthread_mutex_lock
+     2.45%     0.96%  [.] sqlite3VdbeRecordCompareWithSkip
+     2.27%     0.14%  [.] moveToRoot
+     2.20%     0.06%  [k] futex_wait
+     2.12%     0.09%  [k] __futex_wait
+     2.02%     0.42%  [.] sqlite3_reset
+     1.80%     1.80%  [.] sqlite3DbMallocRawNN
+     1.78%     0.16%  [.] clock_gettime
+     1.64%     0.29%  [k] touch_atime
+     1.62%     0.39%  [.] __vdso_clock_gettime
+     1.58%     0.54%  [.] allocateCursor

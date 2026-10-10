@@ -39,3 +39,10 @@ python3 summarize.py
 ```
 
 Bun is `/perf/bin/bun` on the volume, as the `measure` skill has it.
+
+A round that compares builds of the Rust core gives each a tree of its own:
+`WORK=/perf/<tree>` and `RUST_COMMIT` for `build.sh`, and `SQLITE_FLAGS` for
+what the bundled SQLite is built with beside libsqlite3-sys's own flags.
+`run.py` takes them as `ALSO=label=/perf/<tree>,…` and runs each tree's
+programs beside the round's, as `rust-<label>` and `bun-rust-<mode>-<label>`,
+`ONLY` and `CASES` choosing what runs and `RUNS` the file it is written to.

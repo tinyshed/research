@@ -88,6 +88,21 @@ scaling = load("runs", "scaling")
 reads = [(case, callers) for case in ("kv-get", "sql-point") for callers in (1, 4, 8, 16, 64)]
 table(scaling, "Reads by the callers at once, calls a second, each pass", ["go", "rust"], reads)
 
+flag = load("pcache-native")
+if flag:
+    cases = [(case, callers) for case in ("kv-get", "sql-point", "kv-set", "sql-insert", "sql-rows", "jobs-add", "jobs-drain")
+             for callers in (1, 4, 8, 16, 64) if ("rust-nomm", case, callers) in flag]
+    builds = ["go", "rust-next", "rust-nomm"]
+    table(flag, "The build's flag in process, calls a second, each pass", builds, cases, ratio=("rust-nomm", "rust-next"))
+    table(flag, "The build's flag in process, against Go", builds, cases, ratio=("rust-nomm", "go"))
+    memory(flag, "The build's flag in process, the program's peak resident memory", builds, cases)
+flag = load("pcache-bun")
+if flag:
+    programs = ["bun-go-sidecar", "bun-rust-sidecar-next", "bun-rust-sidecar-nomm", "bun-rust-embedded-next",
+                "bun-rust-embedded-nomm"]
+    table(flag, "The build's flag through Bun, calls a second, each pass", programs,
+          [case for case in bun if (programs[2],) + case in flag], ratio=("bun-rust-sidecar-nomm", "bun-rust-sidecar-next"))
+
 later = load("next-native")
 if later:
     cases = [case for case in native + [("kv-get", 8), ("kv-get", 16), ("sql-point", 16)] if ("rust-next",) + case in later]

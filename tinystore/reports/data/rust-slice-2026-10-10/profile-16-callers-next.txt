@@ -1,0 +1,49 @@
+# perf record -e cpu-clock -F 499 --call-graph dwarf,8192, the whole process: the fill of 100,000 keys by 64 callers, then kv-get by 16 callers for 3 s
+# tree slice-next, 6e318652225a0720e24758f69ba22572e2f70e42, flags: SQLITE_DQS=0 -DHAVE_FDATASYNC=1
+# {"callers":16,"case":"kv-get","elapsed_ns":3002263385,"engine":"rust","ops":935809,"p50_ns":36153,"p99_ns":285104,"per_second":311701.166751564}
+# perf report --children --sort symbol -g none: share with children, own share, symbol; Rust symbols left out
+    70.11%     0.00%  [k] entry_SYSCALL_64_after_hwframe
+    69.27%     3.10%  [k] do_syscall_64
+    63.96%     0.91%  [k] x64_sys_call
+    63.89%     0.37%  [.] sqlite3_step
+    63.47%     3.29%  [.] sqlite3VdbeExec
+    56.30%     0.43%  [k] __x64_sys_futex
+    56.12%     0.64%  [k] do_futex
+    49.26%     0.41%  [.] getPageNormal
+    44.95%     1.28%  [.] sqlite3BtreeIndexMoveto
+    42.63%     0.22%  [.] getAndInitPage
+    41.42%     1.51%  [.] pcache1Fetch
+    36.38%     1.02%  [k] futex_wake
+    27.27%     0.23%  [k] wake_up_q
+    27.06%     0.16%  [k] try_to_wake_up
+    26.91%    26.88%  [k] _raw_spin_unlock_irqrestore
+    24.02%     0.52%  [.] sqlite3VdbeHalt
+    24.01%     1.58%  [.] pthread_mutex_lock
+    18.34%     0.35%  [k] futex_wait
+    17.96%     0.20%  [.] sqlite3_reset
+    17.85%     0.56%  [k] __futex_wait
+    17.31%     0.20%  [.] sqlite3VdbeFreeCursorNN
+    17.12%     0.23%  [.] btreeReleaseAllCursorPages.part.0
+    12.50%     0.09%  [.] moveToRoot
+    10.56%     0.77%  [k] _raw_spin_lock
+    10.19%     0.49%  [.] pcache1Unpin
+     9.81%     9.55%  [k] __pv_queued_spin_lock_slowpath
+     8.49%     1.08%  [k] futex_wait_setup
+     8.36%     0.34%  [k] futex_do_wait
+     8.04%     0.14%  [k] schedule
+     7.91%     0.22%  [k] __schedule
+     7.88%     0.19%  [.] btreeBeginTrans
+     7.69%     7.68%  [k] finish_task_switch.isra.0
+     7.55%     0.23%  [.] syscall
+     7.28%     0.16%  [.] readDbPage
+     6.94%     0.11%  [.] unixRead
+     6.83%     0.08%  [.] __libc_pread
+     5.65%     0.19%  [k] __x64_sys_pread64
+     5.52%     0.03%  [.] sqlite3BtreeCommitPhaseTwo
+     5.10%     0.11%  [.] btreeEndTransaction
+     5.09%     0.23%  [k] vfs_read
+     4.93%     0.51%  [k] futex_q_lock
+     4.58%     0.24%  [k] ext4_file_read_iter
+     4.35%     0.04%  [k] generic_file_read_iter
+     4.10%     0.42%  [k] filemap_read
+     3.47%     0.74%  [.] pcache1FetchStage2

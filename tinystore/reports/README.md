@@ -222,4 +222,4 @@ original hashes and distinguishes translated documentation from measured code.
 
 | Report | Scope |
 | --- | --- |
-| [The Rust slice against the Go engines](rust-slice-2026-10-10.md) | kv, sql and jobs of the `rust` branch beside the Go engines in process and through Bun: a call at a time and 64 at once, reads by the callers at once, memory, and a later commit measured against the round's for the two bounds it found |
+| [The Rust slice against the Go engines](rust-slice-2026-10-10.md) | kv, sql and jobs of the `rust` branch beside the Go engines in process and through Bun: a call at a time and 64 at once, reads by the callers at once, memory, a later commit measured against the round's for the two bounds it found, and the SQLite build's shared page cache, whose flag cost reads by many callers 4.6–9.3× |

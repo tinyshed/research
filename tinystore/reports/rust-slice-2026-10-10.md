@@ -7,21 +7,28 @@ SDK calls them. Both sides are the product's code and neither is a prototype.
 
 One caller at a time, Rust reads 1.5–1.7× as fast as Go, hands back 25,000
 rows 2.2× as fast and drains a queue 1.8× as fast. A durable write alone costs
-the same on both sides. With 64 callers at once Go is ahead everywhere: 2–3× on
-reads, 1.2–1.4× on writes that share a commit. The round found two bounds of
-the Rust core, and a later commit that moves both is measured beside the
-round's own at the end. It closes the jobs' one and half of the readers'; what
-still holds Rust's reads back with many callers is not known.
+the same on both sides. In the round's own commit, with 64 callers at once Go
+is ahead everywhere: 2–3× on reads, 1.2–1.4× on writes that share a commit.
 
-| Question                                  | Observation                                                                                                                                          | What follows                                                                                       |
-|-------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
-| Is the core faster a call at a time?      | kv get 1.69×, sql point read 1.48×, 25,000 rows 2.18×, a queue's drain 1.83× of Go; a durable write alone 0.95–1.04×.                                | Nothing: a lone write is its sync on both sides.                                                   |
-| And with 64 callers?                      | Reads 0.31× (kv) and 0.50× (sql) of Go; grouped writes 0.73–0.82×.                                                                                   | The two rows below for reads; the writes are not looked into yet.                                  |
-| Where do the reads fall?                  | Where callers outnumber a file's readers: kv, four readers, is 1.09× of Go at 4 callers and 0.46× at 8; sql, eight readers, 1.00× at 8, 0.57× at 16. | `6e31865` opens a reader a processor, four to sixteen.                                             |
-| Did more readers close it?                | In part: kv get 1.81× of the round's commit at 8 callers, 1.37× at 64; sql 1.18× at 64. Reads still do not grow with callers as Go's do.             | Find what contends at 16 callers on 16 readers before changing anything else.                      |
-| Does the core inside Bun pay?             | A call at a time, 11.6× the Go sidecar and 7.7× its own sidecar. At 64 in flight it is the sidecar's rate, 0.75× of Go's.                            | A point read is answered on one thread of a session; measure spreading it when many are in flight. |
-| Why were jobs slow through Rust's server? | 0.30× of Go at 64 in flight: each add held one of a session's sixteen threads until its commit.                                                      | `08b36e4` answers from the commit's completion: 2.38× through the sidecar, 2.72× in process.       |
-| What does it cost in memory?              | Rust's peak resident memory is 13–23 MiB in every case in process, Go's 13–73 MiB.                                                                   | Nothing.                                                                                           |
+The round found three bounds and moved them, each measured against what it
+replaces. Two are the core's own: a job's write that held a thread of its
+session, and a file's count of readers. The third is a flag of the SQLite
+build. libsqlite3-sys defines `SQLITE_ENABLE_MEMORY_MANAGEMENT`, which makes
+one page cache of every connection's in the process, behind one mutex. The
+same commit built without it reads 4.6–9.3× as fast with 8 to 64 callers,
+which is 3.3–5.2× Go where it had been 0.42–0.82×. Writes that share a commit
+stay 0.69–0.82× of Go's, and reads through Bun do not move.
+
+| Question                                  | Observation                                                                                                                                                                                                                                                                      | What follows                                                                                       |
+|-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
+| Is the core faster a call at a time?      | kv get 1.69×, sql point read 1.48×, 25,000 rows 2.18×, a queue's drain 1.83× of Go; a durable write alone 0.95–1.04×.                                                                                                                                                            | Nothing: a lone write is its sync on both sides.                                                   |
+| And with 64 callers?                      | Reads 0.31× (kv) and 0.50× (sql) of Go; grouped writes 0.73–0.82×.                                                                                                                                                                                                               | The two rows below for reads; the writes are not looked into yet.                                  |
+| Where do the reads fall?                  | Where callers outnumber a file's readers: kv, four readers, is 1.09× of Go at 4 callers and 0.46× at 8; sql, eight readers, 1.00× at 8, 0.57× at 16.                                                                                                                             | `6e31865` opens a reader a processor, four to sixteen.                                             |
+| Did more readers close it?                | In part: kv get 1.81× of the round's commit at 8 callers, 1.37× at 64; sql 1.18× at 64. Reads still do not grow with callers as Go's do.                                                                                                                                         | A profile at 16 callers, which found the row below.                                                |
+| What held the reads back?                 | One mutex of the process, taken for each page a read fetches and lets go: 56% of the samples at 16 callers were in futex calls. Without `SQLITE_ENABLE_MEMORY_MANAGEMENT` the same commit reads a key 4.6× as fast at 8 callers, 9.3× at 16, 7.8× at 64: 3.7×, 5.2× and 3.3× Go. | `1c85629` builds without the flag, and a test fails where it is defined.                           |
+| Does the core inside Bun pay?             | A call at a time, 11.6× the Go sidecar and 7.7× its own sidecar. At 64 in flight it is the sidecar's rate, 0.75× of Go's.                                                                                                                                                        | A point read is answered on one thread of a session; measure spreading it when many are in flight. |
+| Why were jobs slow through Rust's server? | 0.30× of Go at 64 in flight: each add held one of a session's sixteen threads until its commit.                                                                                                                                                                                  | `08b36e4` answers from the commit's completion: 2.38× through the sidecar, 2.72× in process.       |
+| What does it cost in memory?              | Rust's peak resident memory is 13–23 MiB in every case in process, Go's 13–73 MiB; with a page cache a connection, sixteen readers hold 54–57 MiB, Go's level.                                                                                                                   | Nothing.                                                                                           |
 
 ## Environment and reproduction
 
@@ -38,14 +45,15 @@ meant for the follow-up on callers repeated the whole round and wrote over the
 first run's rows. The two runs agreed within a few percent case by case; the
 second is the one kept, and the first is gone.
 
-| What           | Commit or version                                                                           |
-|----------------|---------------------------------------------------------------------------------------------|
-| TinyStore Rust | `51b25920a9d14886f327789d2ad29e25c17539d1`, branch `rust`                                   |
-| later commit   | `6e318652225a0720e24758f69ba22572e2f70e42`, branch `rust`: `08b36e4` and `6e31865` together |
-| TinyStore Go   | `e81a0503cb5ba2d12a359662ab0163578ddfe581`                                                  |
-| Rust           | rustc 1.99.0, the release profile, rusqlite 0.40.2 with its bundled SQLite                  |
-| Go             | go1.27.1, `CGO_ENABLED=0`, ncruces/go-sqlite3 v0.35.6                                       |
-| Bun            | 1.4.2                                                                                       |
+| What             | Commit or version                                                                                                                                       |
+|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| TinyStore Rust   | `51b25920a9d14886f327789d2ad29e25c17539d1`, branch `rust`                                                                                               |
+| later commit     | `6e318652225a0720e24758f69ba22572e2f70e42`, branch `rust`: `08b36e4` and `6e31865` together                                                             |
+| the build's flag | the later commit twice, with and without `-USQLITE_ENABLE_MEMORY_MANAGEMENT`; `1c85629695772baff9974e83f4d4cbdc60bfd2c8` on `rust` puts it in the build |
+| TinyStore Go     | `e81a0503cb5ba2d12a359662ab0163578ddfe581`                                                                                                              |
+| Rust             | rustc 1.99.0, the release profile, rusqlite 0.40.2 with its bundled SQLite                                                                              |
+| Go               | go1.27.1, `CGO_ENABLED=0`, ncruces/go-sqlite3 v0.35.6                                                                                                   |
+| Bun              | 1.4.2                                                                                                                                                   |
 
 The Rust side builds with the flags CI gives SQLite on Linux,
 `LIBSQLITE3_FLAGS='SQLITE_DQS=0 -DHAVE_FDATASYNC=1'`. Both sides keep their own
@@ -55,14 +63,19 @@ synced, each side's own readers, group commit and threads or goroutines.
 The harness is [slice-bench](../slice-bench/README.md). It was not committed
 while the round ran, against the `measure` skill; it is committed with this
 report, unchanged but for `run.py` recording the later commit's hash, which
-the two `environment-next-*.json` files here do not carry.
+the two `environment-next-*.json` files here do not carry. For the last two
+runs, of the build's flag, the harness was committed first, research
+`c8b3fee81209629206ebd0393169c21858955784`, and their environment files name
+each tree's commit and flags.
 
-| Run                           | UTC, 10 October   | Rows | File                |
-|-------------------------------|-------------------|------|---------------------|
-| the round                     | 01:26:02–01:35:54 | 126  | `runs.jsonl`        |
-| reads by the callers at once  | 01:36:23–01:39:43 | 36   | `scaling.jsonl`     |
-| the later commit, in process  | 01:47:40–01:53:37 | 72   | `next-native.jsonl` |
-| the later commit, through Bun | 01:53:37–01:56:59 | 36   | `next-bun.jsonl`    |
+| Run                           | UTC, 10 October   | Rows | File                  |
+|-------------------------------|-------------------|------|-----------------------|
+| the round                     | 01:26:02–01:35:54 | 126  | `runs.jsonl`          |
+| reads by the callers at once  | 01:36:23–01:39:43 | 36   | `scaling.jsonl`       |
+| the later commit, in process  | 01:47:40–01:53:37 | 72   | `next-native.jsonl`   |
+| the later commit, through Bun | 01:53:37–01:56:59 | 36   | `next-bun.jsonl`      |
+| the build's flag, in process  | 02:28:44–02:39:13 | 126  | `pcache-native.jsonl` |
+| the build's flag, through Bun | 02:39:13–02:44:52 | 45   | `pcache-bun.jsonl`    |
 
 The raw rows and each run's environment are in
 [data/rust-slice-2026-10-10](data/rust-slice-2026-10-10). The later commit's
@@ -97,6 +110,18 @@ docker run --rm -v <research>:/src -v tinystore-perf:/perf -w /src/tinystore/sli
   -e NEXT=/perf/slice-next -e RUNS=next-bun \
   -e ONLY=bun-rust-sidecar,bun-rust-sidecar-next,bun-rust-embedded,bun-rust-embedded-next \
   -e CASES=kv-get:64,sql-point:64,jobs-add:64 golang:1.27 python3 run.py
+
+# the build's flag: the later commit again into /perf/slice-nomm, with -e WORK=/perf/slice-nomm
+# -e RUST_COMMIT=6e31865 and, for build.sh rust, CARGO_TARGET_DIR=/perf/slice-nomm/target and
+# -e 'SQLITE_FLAGS=SQLITE_DQS=0 -DHAVE_FDATASYNC=1 -USQLITE_ENABLE_MEMORY_MANAGEMENT', then
+docker run --rm -v <research>:/src -v tinystore-perf:/perf -w /src/tinystore/slice-bench \
+  -e ALSO=next=/perf/slice-next,nomm=/perf/slice-nomm -e RUNS=pcache-native -e ONLY=go,rust-next,rust-nomm \
+  -e CASES=kv-get:1,kv-get:4,kv-get:8,kv-get:16,kv-get:64,sql-point:1,sql-point:8,sql-point:16,sql-point:64,kv-set:64,sql-insert:64,sql-rows:1,jobs-add:64,jobs-drain:8 \
+  golang:1.27 python3 run.py
+docker run --rm -v <research>:/src -v tinystore-perf:/perf -w /src/tinystore/slice-bench \
+  -e ALSO=next=/perf/slice-next,nomm=/perf/slice-nomm -e RUNS=pcache-bun \
+  -e ONLY=bun-go-sidecar,bun-rust-sidecar-next,bun-rust-sidecar-nomm,bun-rust-embedded-next,bun-rust-embedded-nomm \
+  -e CASES=kv-get:1,kv-get:64,sql-point:64 golang:1.27 python3 run.py
 
 python3 summarize.py
 ```
@@ -274,21 +299,107 @@ round's figure for Go's sidecar where they were 0.30×. Reads through Bun do
 not move with the readers, which fits their bound being the session's one
 thread and not the file.
 
+## The page cache's mutex
+
+A profile of the later commit reading keys with 16 callers,
+`perf record -e cpu-clock --call-graph dwarf` in the same container, put 56%
+of the processor's samples in futex calls: 36% waking a thread and 18% parking
+one. They come from `pthread_mutex_lock` and its unlock under `pcache1Fetch`,
+41% with what it calls, and `pcache1Unpin`, 10%. The profile is of the whole
+process, the fill by 64 writers before the reads among it; it is kept in
+`profile-16-callers-next.txt`.
+
+SQLite takes that mutex only when its page caches are one group. They are one
+group when the build defines `SQLITE_ENABLE_MEMORY_MANAGEMENT`, which
+libsqlite3-sys's bundled build does and SQLite's own default does not: then
+every connection of the process shares one cache and one LRU list, and each
+page a statement fetches or lets go takes the group's mutex, a pthread mutex
+that parks a thread that finds it held. Sixteen readers of one file spend
+their time waking one another.
+
+The same commit, `6e31865`, built twice, the second with
+`-USQLITE_ENABLE_MEMORY_MANAGEMENT` after the flags of the first, and Go
+beside them in the same run. Calls a second, each pass.
+
+| Case       | In flight | go                        | with the flag             | without it                      | without to with | without to go |
+|------------|-----------|---------------------------|---------------------------|---------------------------------|-----------------|---------------|
+| kv-get     | 1         | 130,340; 130,429; 130,886 | 221,400; 225,608; 224,046 | 218,985; 217,201; 211,911       | 0.97×           | 1.67×         |
+| kv-get     | 4         | 371,577; 372,979; 379,744 | 421,190; 423,232; 415,168 | 410,714; 420,835; 407,872       | 0.98×           | 1.10×         |
+| kv-get     | 8         | 425,201; 431,323; 428,845 | 351,164; 354,304; 349,912 | 1,602,393; 1,593,501; 1,631,889 | 4.56×           | 3.74×         |
+| kv-get     | 16        | 456,630; 460,818; 447,216 | 272,704; 248,875; 255,800 | 2,372,148; 2,377,247; 2,267,038 | 9.27×           | 5.19×         |
+| kv-get     | 64        | 537,064; 557,154; 555,278 | 243,167; 232,076; 226,065 | 1,879,154; 1,709,134; 1,821,306 | 7.85×           | 3.28×         |
+| sql-point  | 1         | 168,618; 169,105; 169,861 | 252,400; 252,411; 255,108 | 250,909; 248,362; 252,965       | 0.99×           | 1.48×         |
+| sql-point  | 8         | 462,726; 484,342; 487,089 | 488,284; 502,260; 498,858 | 1,572,546; 1,538,787; 1,542,039 | 3.09×           | 3.18×         |
+| sql-point  | 16        | 517,475; 559,342; 526,177 | 354,666; 366,435; 352,826 | 2,559,735; 2,538,483; 2,529,963 | 7.16×           | 4.82×         |
+| sql-point  | 64        | 595,964; 615,643; 603,182 | 319,974; 338,351; 339,622 | 2,061,818; 1,926,428; 2,021,115 | 5.97×           | 3.35×         |
+| kv-set     | 64        | 17,887; 17,924; 17,766    | 14,580; 14,516; 14,934    | 14,750; 14,674; 14,702          | 1.01×           | 0.82×         |
+| sql-insert | 64        | 21,522; 21,554; 21,590    | 15,707; 15,862; 16,014    | 16,167; 16,187; 15,977          | 1.02×           | 0.75×         |
+| sql-rows   | 1         | 72.4; 72.4; 73.4          | 147; 157; 164             | 165; 165; 164                   | 1.05×           | 2.27×         |
+| jobs-add   | 64        | 23,724; 23,649; 24,055    | 18,266; 18,093; 17,929    | 16,470; 16,373; 16,142          | 0.90×           | 0.69×         |
+| jobs-drain | 8         | 4,583; 4,592; 4,562       | 8,203; 8,302; 8,520       | 8,119; 8,336; 8,200             | 0.99×           | 1.79×         |
+
+Reads by eight callers or more are 3–9× what they were and 3.2–5.2× Go's. One
+caller reads as before, within 3%. The same profile of the build without the
+flag, `profile-16-callers-nomm.txt`, has 11% of its samples in futex calls
+where there were 56%, and 22% in `pread`.
+
+Two cases did not gain. Four callers give 410,000–420,000 gets a second in
+both builds, half of what eight give without the flag. Pinning the process to
+two cores of the sixteen or to four changed nothing, 411,000–420,000 in each
+of two runs, so it is not where the host puts four threads; it is not
+explained. And jobs' adds by 64 callers fell a tenth, 18,093 to 16,373 a
+second. A writer that could borrow idle readers' share of the one cache now
+has its own 1 MiB alone, which fits and was not measured apart.
+
+The program's peak resident memory, MiB, the median of the passes:
+
+| Case      | In flight | go | with the flag | without it |
+|-----------|-----------|----|---------------|------------|
+| kv-get    | 1         | 24 | 17            | 17         |
+| kv-get    | 8         | 55 | 27            | 40         |
+| kv-get    | 16        | 58 | 36            | 57         |
+| kv-get    | 64        | 67 | 36            | 47         |
+| sql-point | 16        | 53 | 31            | 54         |
+| sql-point | 64        | 65 | 36            | 48         |
+| jobs-add  | 64        | 34 | 13            | 17         |
+
+Sixteen readers each with a cache of their own hold some 20 MiB more than
+sixteen sharing one, which is Go's level; the readers past the first close
+after a minute unused.
+
+Through Bun nothing moved, calls a second, each pass:
+
+| Case      | In flight | Go beside                 | Rust beside, with      | Rust beside, without   | Rust inside, with      | Rust inside, without   |
+|-----------|-----------|---------------------------|------------------------|------------------------|------------------------|------------------------|
+| kv-get    | 1         | 6,744; 6,681; 6,671       | 10,173; 10,237; 10,034 | 10,140; 10,110; 10,019 | 78,065; 79,447; 78,019 | 77,695; 78,340; 78,665 |
+| kv-get    | 64        | 120,073; 118,261; 119,329 | 85,943; 86,024; 87,699 | 85,944; 83,709; 86,439 | 90,005; 86,348; 90,485 | 89,223; 86,302; 86,482 |
+| sql-point | 64        | 95,387; 96,197; 96,979    | 61,796; 62,834; 61,634 | 63,451; 63,033; 62,721 | 50,376; 50,459; 51,794 | 49,275; 50,984; 49,817 |
+
+Reads through a session were not waiting for the file, so freeing the file
+gives them nothing: their bound is ahead of it, in the session or the SDK.
+
+`1c85629` on `rust` undefines the flag in the workspace's build and in CI, and
+a test of the SQLite adapter fails where the build still has it. A Rust
+program that builds the crate outside the workspace sets `LIBSQLITE3_FLAGS`
+itself, as it does for `HAVE_FDATASYNC`.
+
 ## What follows
 
 Nothing below is built.
 
-- **What holds reads back past eight callers.** With a reader for every
-  caller the rate still falls from 8 callers to 16. The candidates are not
-  separated: a reader's handoff through the pool's mutex, the `begin` and
-  `commit` the core puts round a lone statement where Go lets the statement
-  be its own snapshot, sixteen page caches where calls take whichever reader
-  is free, and two threads a core past eight callers, which Go has too. A
-  profile at 16 callers comes first.
+- **A connection's cache.** With a cache each, 22% of the samples at 16
+  callers are `pread` of pages a reader's 1 MiB does not hold, and jobs' adds
+  lost a tenth. Measure a larger cache for the writer and for readers, and
+  reads through a memory map, against the memory each holds.
+- **Four callers**, which give half of what eight do, in both builds.
+- **A reader's handoff.** What is left of the futex time comes through the
+  readers' pool, which wakes a waiter each time a reader comes back, whether
+  one waits or not.
 - **Writes that share a commit**, 0.73–0.82× of Go's at 64 callers on all
   three engines. Count commits a second and writes a commit on each side.
 - **Point reads through a session at many in flight**, 0.51–0.75× of Go's
-  sidecar: measure answering them off the reading thread once several wait.
+  sidecar, and now 20–40 times below the same reads in process: measure
+  answering them off the reading thread once several wait.
 - **The other writes that hold a session's thread until their commit**: kv's
   durable counter, `kv.clear`, `kv.tx`, a write sent through `sql.query`.
   Jobs' were found because a case measured them; these have no case yet.
