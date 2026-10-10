@@ -21,23 +21,34 @@ its callers: one thread woke each of 64, which on this host took as long as
 their commit. With the callers waking one another, 64 writers write 1.3–1.5×
 as fast, 1.02–1.12× Go where they had been 0.67–0.84×.
 
-What is left behind Go is whatever goes through Bun with many calls in flight,
-0.5–0.95× of Go's sidecar, and what is left on the table is reads by two to
-four callers, which a mutex of SQLite's own holds to half of what they could
-be. Neither is built here.
+Two more bounds fell after those, in commits the last sections measure. Two
+to four threads reading one file were held to half of what they could read
+by a mutex of SQLite's own, which parks a thread the moment it finds it held:
+the core now gives SQLite mutexes that spin first, and two readers read 3.7×
+of what they did, four 2.3×. And whatever went through Bun with many calls in
+flight was 0.5–0.95× of Go's sidecar, since every call woke a thread of the
+connection and point reads took their turn on one: with one wake for a crowd
+and the crowd's reads on the store's threads it is 1.0–1.3× of Go's.
 
-| Question                                  | Observation                                                                                                                                                                                                                                                                                                                         | What follows                                                                                       |
-|-------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
-| Is the core faster a call at a time?      | kv get 1.69×, sql point read 1.48×, 25,000 rows 2.18×, a queue's drain 1.83× of Go; a durable write alone 0.95–1.04×.                                                                                                                                                                                                               | Nothing: a lone write is its sync on both sides.                                                   |
-| And with 64 callers?                      | Reads 0.31× (kv) and 0.50× (sql) of Go; grouped writes 0.73–0.82×.                                                                                                                                                                                                                                                                  | The two rows below for reads; the writes are not looked into yet.                                  |
-| Where do the reads fall?                  | Where callers outnumber a file's readers: kv, four readers, is 1.09× of Go at 4 callers and 0.46× at 8; sql, eight readers, 1.00× at 8, 0.57× at 16.                                                                                                                                                                                | `6e31865` opens a reader a processor, four to sixteen.                                             |
-| Did more readers close it?                | In part: kv get 1.81× of the round's commit at 8 callers, 1.37× at 64; sql 1.18× at 64. Reads still do not grow with callers as Go's do.                                                                                                                                                                                            | A profile at 16 callers, which found the row below.                                                |
-| What held the reads back?                 | One mutex of the process, taken for each page a read fetches and lets go: 56% of the samples at 16 callers were in futex calls. Without `SQLITE_ENABLE_MEMORY_MANAGEMENT` the same commit reads a key 4.6× as fast at 8 callers, 9.3× at 16, 7.8× at 64: 3.7×, 5.2× and 3.3× Go.                                                    | `1c85629` builds without the flag, and a test fails where it is defined.                           |
-| Why were grouped writes behind Go's?      | A commit's leader woke its callers one at a time: 45% of the samples of 64 writers were in `futex_wake`, and a commit carried 34 writes of 64 where Go's carried 47. With the callers waking one another it carries 46: kv set 1.33×, sql insert 1.35×, jobs add 1.53× of before, 1.02–1.12× Go. One to four writers are as before. | `cbe4a9e`, `2ecab48` and `c729a30`.                                                                |
-| Why do four readers give half of eight?   | The mutex of SQLite's WAL index parks a thread that finds it held: 99% of four readers' context switches. Two readers read 0.7× of what one does. With that mutex made to spin first, by a shim, two read 2.1× of one and four 3.7×.                                                                                                | Not built: the core would give SQLite its mutexes through `SQLITE_CONFIG_MUTEX`.                   |
-| Does the core inside Bun pay?             | A call at a time, 11.6× the Go sidecar and 7.7× its own sidecar. At 64 in flight it is the sidecar's rate, 0.75× of Go's.                                                                                                                                                                                                           | A point read is answered on one thread of a session; measure spreading it when many are in flight. |
-| Why were jobs slow through Rust's server? | 0.30× of Go at 64 in flight: each add held one of a session's sixteen threads until its commit.                                                                                                                                                                                                                                     | `08b36e4` answers from the commit's completion: 2.38× through the sidecar, 2.72× in process.       |
-| What does it cost in memory?              | Rust's peak resident memory is 13–23 MiB in every case in process, Go's 13–73 MiB; with a page cache a connection, sixteen readers hold 54–57 MiB, Go's level.                                                                                                                                                                      | Nothing.                                                                                           |
+A rented server under KVM, four processors, says how much of this is the
+host the round ran on. There the mutexes give two readers 1.3× and four
+1.1×, and the callers waking one another give 64 writers nothing; the Rust
+core is ahead of Go there in every case measured, before and after.
+
+| Question                                         | Observation                                                                                                                                                                                                                                                                                                                                                       | What follows                                                                                       |
+|--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
+| Is the core faster a call at a time?             | kv get 1.69×, sql point read 1.48×, 25,000 rows 2.18×, a queue's drain 1.83× of Go; a durable write alone 0.95–1.04×.                                                                                                                                                                                                                                             | Nothing: a lone write is its sync on both sides.                                                   |
+| And with 64 callers?                             | Reads 0.31× (kv) and 0.50× (sql) of Go; grouped writes 0.73–0.82×.                                                                                                                                                                                                                                                                                                | The two rows below for reads; the writes are not looked into yet.                                  |
+| Where do the reads fall?                         | Where callers outnumber a file's readers: kv, four readers, is 1.09× of Go at 4 callers and 0.46× at 8; sql, eight readers, 1.00× at 8, 0.57× at 16.                                                                                                                                                                                                              | `6e31865` opens a reader a processor, four to sixteen.                                             |
+| Did more readers close it?                       | In part: kv get 1.81× of the round's commit at 8 callers, 1.37× at 64; sql 1.18× at 64. Reads still do not grow with callers as Go's do.                                                                                                                                                                                                                          | A profile at 16 callers, which found the row below.                                                |
+| What held the reads back?                        | One mutex of the process, taken for each page a read fetches and lets go: 56% of the samples at 16 callers were in futex calls. Without `SQLITE_ENABLE_MEMORY_MANAGEMENT` the same commit reads a key 4.6× as fast at 8 callers, 9.3× at 16, 7.8× at 64: 3.7×, 5.2× and 3.3× Go.                                                                                  | `1c85629` builds without the flag, and a test fails where it is defined.                           |
+| Why were grouped writes behind Go's?             | A commit's leader woke its callers one at a time: 45% of the samples of 64 writers were in `futex_wake`, and a commit carried 34 writes of 64 where Go's carried 47. With the callers waking one another it carries 46: kv set 1.33×, sql insert 1.35×, jobs add 1.53× of before, 1.02–1.12× Go. One to four writers are as before.                               | `cbe4a9e`, `2ecab48` and `c729a30`.                                                                |
+| Why do four readers give half of eight?          | The mutex of SQLite's WAL index parks a thread that finds it held: 99% of four readers' context switches. Two readers read 0.7× of what one does. With the core's own mutexes, which spin first, and a readers' pool that wakes nobody for nothing, two read 3.7× of before and four 2.3×: 2.5× and 2.7× Go.                                                      | `63cdb4c` and `df103b6`.                                                                           |
+| Why was Bun with many calls in flight behind Go? | Every call a connection handed to the store's threads woke one, and a wake cost more than the call; point reads waited their turn on the thread that read them. With one wake for the crowd, which the woken thread passes on, and a crowd's reads on those threads: kv get 1.4×, sql point read 2.5×, jobs add 1.3× of before inside Bun, 1.0–1.3× Go's sidecar. | `760231e`.                                                                                         |
+| How much of it is this host?                     | Much of the size. On a rented KVM server of four processors the mutexes give two readers 1.31× and four 1.08×, and the callers waking one another give 64 writers 1.00×. Rust is ahead of Go there throughout: 2.4–2.7× on reads, 1.1–1.35× on writes.                                                                                                            | Quote this host's ratios as this host's.                                                           |
+| Does the core inside Bun pay?                    | A call at a time, 11.6× the Go sidecar and 7.7× its own sidecar. At 64 in flight it is the sidecar's rate, 0.75× of Go's.                                                                                                                                                                                                                                         | A point read is answered on one thread of a session; measure spreading it when many are in flight. |
+| Why were jobs slow through Rust's server?        | 0.30× of Go at 64 in flight: each add held one of a session's sixteen threads until its commit.                                                                                                                                                                                                                                                                   | `08b36e4` answers from the commit's completion: 2.38× through the sidecar, 2.72× in process.       |
+| What does it cost in memory?                     | Rust's peak resident memory is 13–23 MiB in every case in process, Go's 13–73 MiB; with a page cache a connection, sixteen readers hold 54–57 MiB, Go's level.                                                                                                                                                                                                    | Nothing.                                                                                           |
 
 ## Environment and reproduction
 
@@ -54,16 +65,17 @@ meant for the follow-up on callers repeated the whole round and wrote over the
 first run's rows. The two runs agreed within a few percent case by case; the
 second is the one kept, and the first is gone.
 
-| What                 | Commit or version                                                                                                                                                                          |
-|----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| TinyStore Rust       | `51b25920a9d14886f327789d2ad29e25c17539d1`, branch `rust`                                                                                                                                  |
-| later commit         | `6e318652225a0720e24758f69ba22572e2f70e42`, branch `rust`: `08b36e4` and `6e31865` together                                                                                                |
-| the build's flag     | the later commit twice, with and without `-USQLITE_ENABLE_MEMORY_MANAGEMENT`; `1c85629695772baff9974e83f4d4cbdc60bfd2c8` on `rust` puts it in the build                                    |
-| the commit's callers | `1c85629…` before; `cbe4a9ef3804d3290793db7a56549a33b6de911f`, `2ecab48c6532cbd551ee51f1f8cc6a8cad962565` and `c729a30059d65d17db67b5308d3fb3125346ebc7` on `rust`, each on the one before |
-| TinyStore Go         | `e81a0503cb5ba2d12a359662ab0163578ddfe581`                                                                                                                                                 |
-| Rust                 | rustc 1.99.0, the release profile, rusqlite 0.40.2 with its bundled SQLite                                                                                                                 |
-| Go                   | go1.27.1, `CGO_ENABLED=0`, ncruces/go-sqlite3 v0.35.6                                                                                                                                      |
-| Bun                  | 1.4.2                                                                                                                                                                                      |
+| What                      | Commit or version                                                                                                                                                                          |
+|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| TinyStore Rust            | `51b25920a9d14886f327789d2ad29e25c17539d1`, branch `rust`                                                                                                                                  |
+| later commit              | `6e318652225a0720e24758f69ba22572e2f70e42`, branch `rust`: `08b36e4` and `6e31865` together                                                                                                |
+| the build's flag          | the later commit twice, with and without `-USQLITE_ENABLE_MEMORY_MANAGEMENT`; `1c85629695772baff9974e83f4d4cbdc60bfd2c8` on `rust` puts it in the build                                    |
+| the commit's callers      | `1c85629…` before; `cbe4a9ef3804d3290793db7a56549a33b6de911f`, `2ecab48c6532cbd551ee51f1f8cc6a8cad962565` and `c729a30059d65d17db67b5308d3fb3125346ebc7` on `rust`, each on the one before |
+| the readers and the crowd | `63cdb4c38ec6ed37cfa5bd676eb8edc5eb3061a0`, `df103b63f42992718923f44d0c207ddb457ee567` and `760231eef9b14a2bd5d7b53f1a897076dcfba02e` on `rust`, each on the one before                    |
+| TinyStore Go              | `e81a0503cb5ba2d12a359662ab0163578ddfe581`                                                                                                                                                 |
+| Rust                      | rustc 1.99.0, the release profile, rusqlite 0.40.2 with its bundled SQLite                                                                                                                 |
+| Go                        | go1.27.1, `CGO_ENABLED=0`, ncruces/go-sqlite3 v0.35.6                                                                                                                                      |
+| Bun                       | 1.4.2                                                                                                                                                                                      |
 
 The Rust side builds with the flags CI gives SQLite on Linux,
 `LIBSQLITE3_FLAGS='SQLITE_DQS=0 -DHAVE_FDATASYNC=1'`. Both sides keep their own
@@ -90,6 +102,9 @@ each tree's commit and flags.
 | the callers' commits, in process        | 09:12:43–09:20:32 | 132  | `writes-native.jsonl`                     |
 | the callers' commits, through Bun       | 09:20:32–09:22:22 | 30   | `writes-bun.jsonl`                        |
 | shares and halves                       | 09:36:15–09:39:53 | 72   | `halves-native.jsonl`                     |
+| the core's mutexes and the pool         | 10:02:23–10:15:02 | 156  | `readers-native.jsonl`                    |
+| a crowd through Bun                     | 10:23:43–10:36:38 | 120  | `crowd-bun.jsonl`                         |
+| a rented server, KVM                    | 10:15:42–10:21:50 | 72   | `kvm-reads.jsonl`, `kvm-writes.jsonl`     |
 
 The raw rows and each run's environment are in
 [data/rust-slice-2026-10-10](data/rust-slice-2026-10-10). The later commit's
@@ -548,10 +563,97 @@ line: two callers read 2.1× of one and four 3.7×. Four callers by how long it
 spins, one run each: 429,174 at 30 times, 703,111 at 300, 738,742 at 3,000
 and 743,527 at 30,000. The gain is there by 300 and flat after.
 
-It is not built. SQLite's mutexes are its build's own, and the core would
-have to give it others before it starts, through `SQLITE_CONFIG_MUTEX`, in
-unsafe code and for the whole process. How much of the parked thread's cost
-is this host's hypervisor is not known either: a bare host would say.
+SQLite lets a program give it mutexes before it starts, through
+`SQLITE_CONFIG_MUTEX`, and `63cdb4c` does: the core's own, which look at a
+held lock 300 times before they park. A program that started SQLite itself
+before the store opened keeps the ones it started with. `df103b6` takes the
+last system call out of a read that waits for nothing: a reader that came
+back woke a waiter whether one waited or not. The three commits one on
+another, with Go, calls a second, each pass:
+
+| Case       | In flight | go                        | before                          | the core's mutexes              | and the pool                    | last to before | last to go |
+|------------|-----------|---------------------------|---------------------------------|---------------------------------|---------------------------------|----------------|------------|
+| kv-get     | 1         | 122,565; 123,347; 120,746 | 213,336; 206,306; 203,468       | 210,196; 211,871; 196,689       | 223,494; 217,261; 212,544       | 1.05×          | 1.77×      |
+| kv-get     | 2         | 218,287; 225,148; 215,619 | 146,471; 148,243; 146,202       | 480,488; 473,783; 477,209       | 552,187; 546,458; 535,693       | 3.73×          | 2.50×      |
+| kv-get     | 4         | 373,611; 353,377; 341,201 | 422,718; 415,962; 414,264       | 879,700; 875,453; 875,565       | 943,822; 963,475; 987,231       | 2.32×          | 2.73×      |
+| kv-get     | 8         | 375,738; 395,284; 422,016 | 1,449,218; 1,509,694; 1,564,929 | 1,650,322; 1,673,734; 1,761,126 | 1,820,167; 1,863,736; 1,872,380 | 1.23×          | 4.71×      |
+| kv-get     | 16        | 425,752; 455,243; 455,686 | 2,134,732; 2,137,493; 2,197,882 | 1,938,812; 2,035,566; 2,214,684 | 2,293,282; 2,002,745; 2,366,503 | 1.07×          | 5.04×      |
+| kv-get     | 64        | 534,558; 530,128; 554,889 | 1,610,052; 1,706,032; 1,730,234 | 1,647,226; 1,708,880; 1,774,600 | 1,672,532; 1,643,916; 1,352,276 | 0.96×          | 3.08×      |
+| sql-point  | 2         | 286,457; 281,778; 268,223 | 138,189; 133,763; 140,763       | 553,837; 540,188; 550,561       | 620,411; 613,831; 622,913       | 4.49×          | 2.20×      |
+| sql-point  | 4         | 453,135; 436,449; 443,508 | 359,433; 359,327; 355,055       | 1,003,753; 1,009,250; 997,452   | 1,105,973; 1,085,005; 1,060,274 | 3.02×          | 2.45×      |
+| sql-point  | 16        | 516,199; 465,430; 473,800 | 2,253,145; 2,049,842; 2,209,728 | 2,378,190; 2,305,858; 2,209,760 | 2,529,442; 2,371,078; 2,405,401 | 1.09×          | 5.08×      |
+| kv-set     | 64        | 17,506; 17,426; 17,292    | 18,922; 18,745; 18,897          | 19,055; 19,033; 19,204          | 19,123; 18,620; 18,813          | 1.00×          | 1.08×      |
+| jobs-add   | 64        | 23,769; 22,981; 23,734    | 24,346; 24,631; 24,363          | 24,278; 24,506; 24,280          | 24,543; 24,662; 24,192          | 1.01×          | 1.03×      |
+| sql-rows   | 1         | 69.9; 70.2; 69.4          | 155; 153; 152                   | 150; 153; 154                   | 157; 154; 153                   | 1.01×          | 2.20×      |
+| jobs-drain | 8         | 4,621; 4,639; 4,613       | 8,325; 8,385; 8,257             | 8,240; 8,383; 8,312             | 8,366; 8,396; 8,105             | 1.00×          | 1.81×      |
+
+Two readers read 3.7× of what they did through kv and 4.5× through sql, four
+2.3× and 3.0×, and one to four now read in a line: 217,000, 546,000 and
+963,000 keys a second. Sixteen and 64 callers, the writes and the rows are as
+before.
+
+## A crowd of calls on one connection
+
+Through Bun with 64 calls in flight everything stayed behind Go's sidecar,
+and the Bun process was not the bound: with the Rust server beside it it
+used a third of a processor. The bound was how a connection hands its calls
+to the store's sixteen threads. Each call queued woke a thread, a system call
+a call on the one thread that reads the connection, which inside Bun is the
+program's own; and a point read, answered where it is read, took its turn on
+that one thread however many waited behind it.
+
+`760231e` wakes one thread for the calls queued, which wakes the next when
+calls still wait, as a commit's callers wake one another. A point read with
+four requests waiting behind it goes to those threads, and one alone is
+still answered where it is read. Calls a second, each pass:
+
+| Case      | In flight | Go beside                 | Rust beside, before    | Rust beside, after        | Rust inside, before    | Rust inside, after        | beside, after to Go | inside, after to before | inside, after to Go |
+|-----------|-----------|---------------------------|------------------------|---------------------------|------------------------|---------------------------|---------------------|-------------------------|---------------------|
+| kv-get    | 1         | 6,298; 6,263; 6,198       | 9,584; 9,293; 9,341    | 9,591; 9,166; 9,168       | 74,103; 68,856; 68,787 | 68,576; 61,870; 66,330    | 1.46×               | 0.96×                   | 10.59×              |
+| kv-get    | 4         | 22,014; 23,545; 22,548    | 25,394; 28,001; 24,825 | 25,861; 25,079; 26,787    | 68,120; 70,313; 68,187 | 71,391; 75,177; 70,690    | 1.15×               | 1.05×                   | 3.17×               |
+| kv-get    | 16        | 64,181; 65,411; 64,696    | 54,765; 55,263; 55,944 | 73,876; 68,795; 72,926    | 78,840; 82,329; 82,698 | 86,766; 78,888; 82,418    | 1.13×               | 1.00×                   | 1.27×               |
+| kv-get    | 64        | 107,373; 101,629; 106,047 | 78,004; 71,438; 76,786 | 117,092; 112,059; 115,208 | 83,132; 74,473; 83,412 | 116,902; 104,231; 118,141 | 1.09×               | 1.41×                   | 1.10×               |
+| sql-point | 64        | 87,492; 89,132; 86,621    | 60,595; 58,814; 60,251 | 90,919; 96,159; 100,346   | 44,672; 42,857; 45,676 | 111,797; 106,868; 113,281 | 1.10×               | 2.50×                   | 1.28×               |
+| kv-set    | 64        | 14,089; 14,156; 14,217    | 12,540; 12,562; 12,738 | 15,338; 15,098; 15,709    | 13,953; 13,691; 13,792 | 16,803; 16,889; 16,358    | 1.08×               | 1.22×                   | 1.19×               |
+| jobs-add  | 64        | 18,742; 18,887; 18,967    | 14,402; 13,960; 14,366 | 19,402; 19,840; 19,573    | 15,745; 15,734; 15,711 | 20,675; 20,984; 20,350    | 1.04×               | 1.31×                   | 1.09×               |
+| sql-rows  | 1         | 18.4; 18.7; 18.9          | 30.3; 31.0; 30.2       | 31.8; 29.3; 30.8          | 42.0; 42.2; 41.9       | 41.3; 42.9; 40.9          | 1.65×               | 0.98×                   | 2.21×               |
+
+A call at a time is within its passes' spread, 0.96× inside Bun. With 64 in
+flight, kv's point read through the sidecar and inside Bun, the sql point
+read, the writes and the jobs are all past Go's sidecar, 1.04–1.28× of it,
+where they had been 0.5–0.95×.
+
+## A rented server
+
+The round's host is Windows with Linux under its hypervisor, where waking a
+thread costs tens of microseconds, and three of the round's findings are
+about wakes. A rented server says what they are worth elsewhere: four
+processors of an AMD EPYC 7502P under KVM, Linux 7.0, glibc 2.43, a server
+that does other work, load 0.3 before the run. The programs are the round's
+own binaries, copied there and run without a container by `remote.sh`; three
+passes of three seconds.
+
+| Case   | In flight | go                        | before                    | the core's mutexes        | and the pool              | last to before | last to go |
+|--------|-----------|---------------------------|---------------------------|---------------------------|---------------------------|----------------|------------|
+| kv-get | 1         | 44,271; 46,681; 46,206    | 111,098; 112,925; 112,527 | 114,418; 107,641; 112,716 | 123,228; 112,939; 107,824 | 1.00×          | 2.44×      |
+| kv-get | 2         | 74,072; 64,202; 80,515    | 171,692; 151,003; 138,150 | 189,574; 161,738; 206,320 | 190,697; 197,738; 225,857 | 1.31×          | 2.67×      |
+| kv-get | 4         | 101,311; 107,255; 114,318 | 257,495; 274,270; 264,368 | 253,188; 278,529; 274,315 | 256,925; 291,379; 285,557 | 1.08×          | 2.66×      |
+
+| Case   | In flight | go                     | the leader wakes each  | callers wake callers   | last to before | last to go |
+|--------|-----------|------------------------|------------------------|------------------------|----------------|------------|
+| kv-set | 1         | 988; 943; 1,079        | 1,440; 1,129; 1,017    | 1,361; 1,282; 1,215    | 1.14×          | 1.30×      |
+| kv-set | 4         | 3,109; 2,335; 2,571    | 3,894; 3,762; 3,036    | 3,646; 3,147; 3,462    | 0.92×          | 1.35×      |
+| kv-set | 16        | 6,504; 6,092; 6,149    | 6,944; 8,272; 7,756    | 7,648; 7,806; 8,987    | 1.01×          | 1.27×      |
+| kv-set | 64        | 10,643; 11,192; 10,297 | 12,140; 12,727; 11,662 | 13,828; 12,134; 11,513 | 1.00×          | 1.14×      |
+
+The readers' mutexes are worth 1.31× to two readers there and 1.08× to four,
+and the commit before them did not fall below one reader's rate at two. The
+callers waking one another are worth nothing to 64 writers there, in either
+direction. So the size of both findings is this host's, and what holds
+elsewhere is their sign: neither costs anything, and the mutexes still gain.
+The Rust core is ahead of Go on that server in every row, 2.4–2.7× on reads
+and 1.1–1.35× on writes. Four processors shared with other work make a noisy
+run: the passes spread by a fifth.
 
 ## What follows
 
@@ -561,19 +663,10 @@ Nothing below is built.
   callers are `pread` of pages a reader's 1 MiB does not hold, and jobs' adds
   lost a tenth. Measure a larger cache for the writer and for readers, and
   reads through a memory map, against the memory each holds.
-- **SQLite's mutexes, spinning before they park**, for two to four readers,
-  as the section above has it: first on a bare host, to see what is left of
-  the cost there.
-- **A reader's handoff.** The readers' pool wakes a waiter each time a reader
-  comes back, whether one waits or not: a system call a read, with nobody to
-  wake.
-- **Writes through Bun at many in flight**, 0.74–0.95× of Go's sidecar, where
-  the same writes in process are ahead of Go: the bound is in the session or
-  the SDK, as it is for reads.
 - **The last writes a sync could carry**: 46 of 64 on both sides.
-- **Point reads through a session at many in flight**, 0.51–0.75× of Go's
-  sidecar, and now 20–40 times below the same reads in process: measure
-  answering them off the reading thread once several wait.
+- **Reads through Bun against reads in process**: 117,000 a second against
+  1.8 million, both with 64 in flight. What is left is the SDK's own work a
+  call, which nothing here measured apart.
 - **The other writes that hold a session's thread until their commit**: kv's
   durable counter, `kv.clear`, `kv.tx`, a write sent through `sql.query`.
   Jobs' were found because a case measured them; these have no case yet.
