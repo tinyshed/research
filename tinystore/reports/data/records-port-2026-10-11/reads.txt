@@ -1,0 +1,7 @@
+go   read=exact   found=896   median=18.535ms min=16.601ms
+go   read=trace   found=1     median=0.450ms min=0.399ms
+go   read=absent  found=0     median=2.999ms min=2.795ms
+rust packed 65536 events into 6 segments
+rust read=exact   found=896   median=14.106ms min=13.874ms
+rust read=trace   found=1     median=0.171ms min=0.165ms
+rust read=absent  found=0     median=1.942ms min=1.871ms

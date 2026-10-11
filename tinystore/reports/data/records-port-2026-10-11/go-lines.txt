@@ -1,0 +1,23 @@
+go   records=1534747 plain=215.30 times=4.253 bodies=8.307 blocks=17.504 segment_rows=0.002 whole=17.506 took=8.106s
+go   stamp behind dictionary                      columns=2     bytes_a_record=0.0003
+go   stamp behind direct transform=0 packer=0     columns=158   bytes_a_record=0.0006
+go   stamp behind direct transform=0 packer=2     columns=601   bytes_a_record=0.4531
+go   stamp behind direct transform=0 packer=3     columns=532   bytes_a_record=0.0604
+go   stamp behind direct transform=1 packer=3     columns=3     bytes_a_record=0.0000
+go   stamp counts direct transform=0 packer=0     columns=1242  bytes_a_record=0.0049
+go   stamp counts direct transform=0 packer=3     columns=38    bytes_a_record=0.0004
+go   stamp counts direct transform=1 packer=3     columns=12    bytes_a_record=0.0002
+go   stamp counts dominant                        columns=4     bytes_a_record=0.0001
+go   stamp gaps direct transform=0 packer=0       columns=1081  bytes_a_record=0.0148
+go   stamp gaps direct transform=0 packer=3       columns=213   bytes_a_record=0.0409
+go   stamp gaps direct transform=1 packer=3       columns=1     bytes_a_record=0.0000
+go   stamp gaps dominant                          columns=1     bytes_a_record=0.0000
+go   stamp layouts direct transform=0 packer=0    columns=1286  bytes_a_record=0.0480
+go   stamp layouts direct transform=0 packer=3    columns=9     bytes_a_record=0.0001
+go   stamp layouts direct transform=1 packer=3    columns=1     bytes_a_record=0.0000
+go   times direct transform=0 packer=0            columns=2     bytes_a_record=0.0000
+go   times direct transform=1 packer=0            columns=433   bytes_a_record=1.2248
+go   times direct transform=1 packer=2            columns=945   bytes_a_record=2.5878
+go   times direct transform=2 packer=0            columns=70    bytes_a_record=0.1994
+go   times direct transform=2 packer=2            columns=85    bytes_a_record=0.2411
+go   blocks=2098 in_block: time=4.258 body=13.231 others=map[0:6534471 5:20306935]

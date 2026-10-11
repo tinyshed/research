@@ -902,3 +902,25 @@ beside1,299,371 live; Alibaba rowid-compact-count32 retains1,303,151 beside
 Both experiments remain exploratory uncommitted collection under the user's
 explicit waiver, with source/binary/lockfile/corpus hashes and raw output.
 Production schema/code and the previous round's measured files are unchanged.
+
+## Records of the Rust port, 11 October 2026
+
+The [records port round](reports/records-port-2026-10-11.md) measures the Rust
+engine of TinyStore's `rust` branch beside the Go engine at `e81a050` on the
+same production records, cut into the same segments: a block and its
+segment's row take 17.500 B a record against 17.639 on 1,713,543 records,
+178,796 of them JSON and logfmt lines with fields, and 17.297 against 17.506
+on their 1,534,747 lines of text, the port without FSE. Turned off one at a
+time on the records, the Go engine's codings are worth: FSE 0.154 B a record,
+quotes taken off with every quoted type 0.264 (uuids 0.163), integers that
+count time 0.101, dictionaries of integers 0.021, radix words 0.001, hex 0.001.
+The port's own dictionaries of integers are worth it 0.202, where the Go
+engine's FSE takes the same. On the same 1,535 blobs of lines, libzstd 1.5.7
+at level 7 makes 10.44 B a line and klauspost/compress's
+`SpeedBetterCompression` 13.06. These are payload bytes; the file was not
+divided.
+
+On 65,536 generated requests packed, medians of fifteen runs of ten on Windows,
+the Go engine first and the port after: an exact filter 18.535 against 14.106
+ms, a single trace 0.450 against 0.171, an absent context value 2.999 against
+1.942. Not yet run in the Linux container.
