@@ -86,7 +86,7 @@ def static():
             for p in SCRATCH.glob(f'template-*-{n}-{shape}-*.db'):p.unlink()
 
 def rebuilds():
-    candidates=[('none',0,0,'selective',1,10),('monolithic',0,0,'selective',1,10),('frontier',1000,32,'selective',1,10),('frontier',5000,256,'selective',1,10),('seen',2000,64,'selective',1,10),('delta',2000,64,'selective',1,10),('frontier',2000,64,'full',1,10),('frontier',2000,64,'selective',32,90)]
+    candidates=[('none',0,0,'selective',1,10),('monolithic',0,0,'selective',1,10),('frontier',1000,32,'selective',1,10),('frontier',5000,256,'selective',1,10),('seen',2000,64,'selective',1,10),('delta',2000,64,'selective',1,10),('frontier',2000,64,'selective',1,10),('frontier',2000,64,'full',1,10),('frontier',2000,64,'selective',32,90),('none',0,0,'selective',32,90)]
     for n in (100000,1000000):
         for kind,shape in [('fts','russian'),('geo','uniform'),('geo','clustered')]:
             for passno in (1,2):
