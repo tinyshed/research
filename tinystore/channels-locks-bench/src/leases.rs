@@ -607,3 +607,54 @@ pub fn crash_recover(stage: &str) {
         "token_after_recovery":after.token,"early_rejected":stage=="committed"})
     );
 }
+
+pub fn waiter_memory(a: &[String]) {
+    use std::sync::atomic::AtomicUsize;
+    let kind = &a[0];
+    let clients: usize = a[1].parse().unwrap();
+    let path = std::env::var("BENCH_DB").unwrap();
+    let c = open(&path, "FULL");
+    seed(&c, 1, 1);
+    let rt = tokio::runtime::Builder::new_multi_thread()
+        .worker_threads(2)
+        .enable_time()
+        .build()
+        .unwrap();
+    rt.block_on(async {
+        let before=memory();
+        let gate=Arc::new(tokio::sync::Semaphore::new(0));
+        let changed=Arc::new(Notify::new());
+        let registered=Arc::new(AtomicUsize::new(0));
+        let mut tasks=vec![];
+        for _ in 0..clients {
+            let (g,n,r)=(gate.clone(),changed.clone(),registered.clone());
+            let fifo=kind=="fifo";
+            tasks.push(tokio::spawn(async move {
+                if fifo {
+                    let waiting=g.acquire();tokio::pin!(waiting);
+                    // Poll once so the semaphore's waiter is actually linked before the RSS sample.
+                    let mut counted=false;
+                    std::future::poll_fn(|cx| {
+                        let result=waiting.as_mut().poll(cx);
+                        assert!(result.is_pending());
+                        if !counted {r.fetch_add(1,Ordering::Release);counted=true;}
+                        std::task::Poll::<()>::Pending
+                    }).await;
+                } else {
+                    let waiting=n.notified();tokio::pin!(waiting);waiting.as_mut().enable();
+                    r.fetch_add(1,Ordering::Release);waiting.await;
+                }
+            }));
+        }
+        while registered.load(Ordering::Acquire)!=clients {tokio::task::yield_now().await;}
+        tokio::time::sleep(Duration::from_millis(20)).await;
+        let idle=memory();
+        for task in &tasks {task.abort();}
+        for task in tasks {assert!(task.await.unwrap_err().is_cancelled());}
+        tokio::time::sleep(Duration::from_millis(20)).await;
+        println!("{}",json!({"experiment":"lease-memory","kind":kind,"waiters":clients,
+            "before_waiters":before,"idle_waiters":idle,"after_cancel":memory(),
+            "registered":registered.load(Ordering::Acquire),"status":"pass",
+            "note":"waiter admission only; one seeded SQLite file; no latency sample vectors, sockets or SDK objects"}));
+    });
+}

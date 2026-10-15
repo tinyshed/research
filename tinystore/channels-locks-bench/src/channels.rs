@@ -216,7 +216,7 @@ pub fn run(a: &[String]) {
                 if target > Instant::now() { tokio::time::sleep_until(target.into()).await; }
             }
             let now = Instant::now();
-            // One allocation for the payload per publication, shared by every recipient.
+            // Payload construction allocates here; every recipient shares the resulting Arc.
             let e = Arc::new(Event { seq, sent: now, bytes: vec![(seq % 251) as u8; size].into() });
             match &tx {
                 Tx::Broadcast(b) => { b.send(e).unwrap(); },

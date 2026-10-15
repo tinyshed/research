@@ -53,6 +53,7 @@ fn main() {
         "commit-check" => leases::commit_check(),
         "lease-owner" => leases::crash_owner(&a[1]),
         "lease-recover" => leases::crash_recover(&a[1]),
+        "lease-memory" => leases::waiter_memory(&a[1..]),
         _ => panic!("unknown experiment"),
     }
 }
