@@ -24,6 +24,11 @@ The earlier [cascade](scaling-cascade-2026-10-15.md) and
 this round replaces their full-snapshot capture as the candidate hot path.
 It does not turn either prototype into a product replication API.
 
+The [sustained mixed-load follow-up](scaling-wal-load-2026-10-15.md) supersedes
+this round's short-load checkpoint/hot-path recommendation. It keeps these
+numbers intact, measures a bounded-cache/owned-encoding candidate, separates
+component costs and adds reader-pressure admission and a longer soak.
+
 ## Environment and reproduction
 
 - TinyStore: `690cdf3d45e99e8f19ca3bf651461f35cfe45673`, branch

@@ -1,0 +1,20 @@
+test wire::sql::tests::a_client_says_how_far_a_databases_commits_go_and_one_open_keeps_what_it_has ... ok
+test wire::sql::tests::a_connection_that_writes_attaches_no_file_and_ends_no_transaction ... ok
+test wire::jobs::tests::the_server_sends_a_worker_no_more_than_the_credit_its_client_granted ... ok
+test wire::sql::tests::a_read_connection_queries_on_a_reader_and_changes_nothing ... ok
+test wire::sql::tests::a_row_larger_than_a_message_is_limit_by_columns_as_by_rows ... ok
+test wire::sql::tests::a_statements_columns_hold_what_its_rows_hold ... ok
+test wire::sql::tests::a_transaction_holds_its_calls_until_its_last_data_commits_or_rolls_back ... ok
+test wire::sql::tests::a_download_holds_the_stores_memory_until_its_last_part_is_sent ... ok
+test wire::sql::tests::a_transaction_whose_client_stalls_or_cancels_is_rolled_back_by_the_server ... ok
+test wire::sql::tests::columns_past_one_message_come_in_parts_of_the_same_rows_within_the_clients_credit ... ok
+test wire::sql::tests::rows_written_as_they_are_read_are_the_message_its_codec_writes ... ok
+test wire::sql::tests::writes_through_a_query_in_flight_hold_no_thread_of_the_session ... ok
+test wire::workers::tests::a_thread_sleeps_once_no_job_comes_within_the_linger ... ok
+test wire::workers::tests::a_thread_that_lingers_takes_the_next_job_with_no_wake_and_no_thread_more ... ok
+test wire::workers::tests::jobs_queued_for_sleeping_threads_wake_them_one_through_another ... ok
+test wire::workers::tests::the_jobs_behind_one_that_blocks_its_thread_get_a_thread_of_their_own ... ok
+test wire::sql::tests::rows_past_one_message_come_in_parts_within_the_clients_credit ... ok
+
+test result: ok. 830 passed; 0 failed; 5 ignored; 0 measured; 0 filtered out; finished in 15.51s
+

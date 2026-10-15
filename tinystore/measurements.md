@@ -950,3 +950,34 @@ A threshold-only follow-up retains 64.1–85.0% of its own uncaptured grouped
 controls at 4 MiB rather than 256 KiB: p50/p95 improve in all six paired cases,
 throughput in five, with one 4.9% regression. It changes retention/checkpoint
 frequency, not durability; it is a candidate policy rather than a release default.
+
+## Sustained mixed-load WAL capture, 15 October 2026
+
+The [sustained follow-up](reports/scaling-wal-load-2026-10-15.md) compares
+committed `31b10e4` product seams and `b09de68`/`3654372` research harnesses in
+one Linux 2-CPU-quota / 8-GiB container, SQLite 3.53.2 FULL. Three rotated
+60-second cases per mode use a 8,978,432-byte synthetic database, 64 writers,
+eight readers and periodic 100-ms pinned snapshots. Candidate writes/s are
+12,823; 12,854; 12,873 versus legacy 10,750; 10,572; 10,790 and uncaptured
+14,225; 14,008; 14,389. This retains 89.5–91.8% of same-pass uncaptured write
+throughput, a 19.3–21.6% increase over the instrumented legacy control. Read
+rates are reported separately because this is a client-concurrency workload,
+not a fixed read/write request ratio.
+
+Sampled RSS falls from 373–384 MiB to 52–54 MiB; a separate 180-second soak
+completes 2,358,498 ACKed writes at 13,102/s, with RSS maximum 56.68 MiB,
+native WAL peak 7,350,112 bytes and cache reservation below 8 MiB. RSS still
+drifts upward slowly; this proves neither a whole-process native memory cap
+nor hour-scale stability. The feed reaches 618,542,270 bytes; retention remains
+unbuilt and a 2-GiB disk guard eventually backpressures writers.
+
+Component controls show 4.2–5.7x lower encode wall time per group, three-to-one
+explicit payload copies and fewer branch hashes, but individual throughput
+gains change sign. Additional feed sync every group reduces same-pass write
+rate by 16.8–26.7%; native FULL is preserved. A strict arbitrary-SQL WAL/disk
+cap remains open: pre-BEGIN admission assumes a declared transaction reserve,
+and over-reserve native commits return OutcomeUnknown and require recovery.
+Eight parent tests and 16 abrupt workers pass; every measured case verifies
+ACK counts, source/feed roots and SQLite integrity. Product CI still has an
+unresolved Linux SDK events teardown timeout. Raw data and precise reliability
+limits accompany the report.

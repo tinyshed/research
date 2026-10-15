@@ -1,0 +1,17 @@
+   Compiling tinystore-wal-load v0.1.0 (<spike>)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.06s
+     Running unittests src/main.rs (target/debug/deps/tinystore_wal_load-a3b5af8bfb32125c)
+
+running 9 tests
+test tests::batched_tree_matches_legacy_through_growth_and_shrink ... ok
+test tests::bounded_history_replays_without_retained_seed ... ok
+test tests::crash_worker ... ignored, controlled abrupt worker
+test tests::feed_disk_admission_refuses_without_committing ... ok
+test tests::optimized_and_control_recover_across_process_death ... ok
+test tests::oversized_transaction_is_unknown_and_recoverable ... ok
+test tests::owned_codec_and_batched_tree_preserve_exact_feed_bytes ... ok
+test tests::pinned_reader_gets_definite_admission_refusal_then_resumes ... ok
+test tests::zero_cache_keeps_sequence_and_recovers ... ok
+
+test result: ok. 8 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 5.49s
+

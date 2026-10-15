@@ -48,3 +48,6 @@ The experimental product seam is pinned at `31b10e4` on `experiment/wal-load`.
 Default and capture-enabled core checks pass locally; the Docker actionlint
 wrapper cannot see this checkout, while local actionlint passes. Timing results
 and CI status will be recorded in the measured follow-up.
+
+The [measured follow-up](scaling-wal-load-2026-10-15.md) records the completed
+controls, raw data, bounds and implementation handoff.

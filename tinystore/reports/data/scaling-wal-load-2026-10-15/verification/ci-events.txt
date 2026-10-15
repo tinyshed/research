@@ -1,0 +1,13 @@
+test (ubuntu-latest)	Bun over the core and tinystore serve	2026-10-15T14:51:51.6078245Z killed 1 dangling process
+test (ubuntu-latest)	Bun over the core and tinystore serve	2026-10-15T14:51:51.6102439Z (fail) events through a sidecar > (unnamed) [5000.14ms]
+test (ubuntu-latest)	Bun over the core and tinystore serve	2026-10-15T14:51:51.6102787Z   ^ a beforeEach/afterEach hook timed out for this test.
+test (ubuntu-latest)	Bun over the core and tinystore serve	2026-10-15T14:51:56.6655108Z killed 1 dangling process
+test (ubuntu-latest)	Bun over the core and tinystore serve	2026-10-15T14:51:56.6659411Z (fail) events through a remote server over TCP > (unnamed) [5000.09ms]
+test (ubuntu-latest)	Bun over the core and tinystore serve	2026-10-15T14:51:56.6659764Z   ^ a beforeEach/afterEach hook timed out for this test.
+test (ubuntu-latest)	Bun over the core and tinystore serve	2026-10-15T14:52:00.9813133Z 2 tests failed:
+test (ubuntu-latest)	Bun over the core and tinystore serve	2026-10-15T14:52:00.9813357Z (fail) events through a sidecar > (unnamed) [5000.14ms]
+test (ubuntu-latest)	Bun over the core and tinystore serve	2026-10-15T14:52:00.9813677Z   ^ a beforeEach/afterEach hook timed out for this test.
+test (ubuntu-latest)	Bun over the core and tinystore serve	2026-10-15T14:52:00.9814003Z (fail) events through a remote server over TCP > (unnamed) [5000.09ms]
+test (ubuntu-latest)	Bun over the core and tinystore serve	2026-10-15T14:52:00.9814311Z   ^ a beforeEach/afterEach hook timed out for this test.
+test (ubuntu-latest)	Bun over the core and tinystore serve	2026-10-15T14:52:00.9814557Z  839 pass
+test (ubuntu-latest)	Bun over the core and tinystore serve	2026-10-15T14:52:00.9814862Z  2 fail

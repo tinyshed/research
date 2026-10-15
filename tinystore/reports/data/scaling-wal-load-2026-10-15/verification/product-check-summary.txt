@@ -1,0 +1,14 @@
+881: test result: ok. 828 passed; 0 failed; 5 ignored; 0 measured; 0 filtered out; finished in 12.92s
+903: test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+911: test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+924: test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 5.04s
+934: test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+956: test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+992: test result: ok. 30 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2064: 1 tests skipped:
+2067:  991 pass
+2068:  1 skip
+2069:  0 fail
+2077: $ biome check . && tsc --noEmit
+2208: docker run --rm -v "<product>:/repo" -w /repo rhysd/actionlint:1.7.12 -color
+2210: error: recipe `lint-actions` failed on line 74 with exit code 3

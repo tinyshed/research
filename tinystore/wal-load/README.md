@@ -16,7 +16,7 @@ Arguments: mode, measurement seconds, long-reader hold milliseconds (0 disables)
 Each process prepares 32768 rows with 256-byte bodies, warms for 2 seconds,
 then runs 64 writers on 32 hot keys, 8 readers on the whole database (1/64
 queries aggregate 128 rows), and one reader holding a snapshot for the selected
-interval every 2 seconds. All modes use SQLite FULL. Update counters, source
+interval, then pausing for 2 seconds. All modes use SQLite FULL. Update counters, source
 Merkle root and SQLite integrity_check are verified after drain. Native startup,
 seed and warmup are outside timing. Samples are emitted each second.
 

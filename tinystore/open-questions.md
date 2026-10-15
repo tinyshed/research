@@ -548,8 +548,18 @@ settle a production migration or an exact native memory budget.
 
 | Question | Evidence | Gate still required |
 | --- | --- | --- |
-| Can capture avoid scanning the database per commit? | [Native WAL round](reports/scaling-wal-2026-10-15.md): 11–87x faster guarded p50 versus same-session snapshot capture; 69–76 captures for 4096 grouped writes. | Sustained mixed workloads, threshold/copy/hash ablations, larger files and budget accounting. |
+| Can capture avoid scanning the database per commit? | [Native WAL round](reports/scaling-wal-2026-10-15.md): 11–87x faster guarded p50 versus same-session snapshot capture. [Sustained follow-up](reports/scaling-wal-load-2026-10-15.md): bounded/owned candidate retains 89.5–91.8% of uncaptured write throughput in three 60-second mixed passes. | Larger/colder files, real engine churn, global budget/native allocation accounting and enforceable transaction admission. |
 | Can acknowledged changes survive capture crashes? | 33 controlled abrupt workers, including eight SIGKILL acknowledged-prefix checks and loss of the complete unsynced feed suffix. | Fault-injecting VFS, power-loss, directory sync, long readers, disk full and portable WAL/checkpoint ownership. |
 | Can cascading propagation approach network RTT? | Early forwarding plus separate apply reduces three-hop local durable receipt to 0.764–0.974 ms; 2.0–2.5% above echo with injected 30.9 ms round trip. | Notification-driven sender, explicit stream-position ACKs, time/byte batching, 140-child WAL fanout, real WAN/bandwidth/loss and visibility lag. |
 | Does standby permit lossless failover? | Durable standby rebuilds after the primary directory is deleted. | Product client ACK policy, independent failure domains, promotion fencing and durable epochs; async ACK still permits lost suffixes. |
-| Can retained history stay bounded? | Prototype rejects images above 16 MiB and feed above 256 MiB; applier queue has eight shared-entry batch slots. | Segmented retention, snapshot fallback, applied watermark recovery and shared native/codec/history memory admission. |
+| Can retained history stay bounded? | Initial prototype limits images to 16 MiB, feed to 256 MiB and applier queue to eight shared-entry batches. Sustained follow-up caps the resident cache at 8 MiB per file and raises feed disk guard to 2 GiB; 180-second RSS stays below 57 MiB sampled but still drifts slowly upward. | Segmented retention, snapshot fallback, applied watermark recovery, global multi-file/native memory accounting and longer leak/endurance controls. |
+
+The sustained follow-up also isolates copying, hashing, feed sync and checkpoint.
+Encoding work falls consistently; standalone throughput effects for hash/copy
+change sign. Per-group feed sync costs 16.8–26.7% in those mixed controls.
+Keep source SQLite FULL and sync covered feed before checkpoint; do not turn
+these measurements into permission to weaken durability. A pinned reader now
+causes definite refusal before BEGIN under a declared WAL reserve and can
+resume after release. Arbitrary SQL can exceed that reserve after native COMMIT;
+it returns OutcomeUnknown and stops writes until recovery. A strict generic
+WAL/disk bound still needs an enforced transaction contract or VFS admission.

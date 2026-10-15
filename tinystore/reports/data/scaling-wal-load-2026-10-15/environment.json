@@ -1,0 +1,19 @@
+{
+  "utc": "2026-10-15T14:51:21.083889+00:00",
+  "kernel": "6.18.44",
+  "machine": "x86_64",
+  "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+  "visible_cpus": 3,
+  "affinity_cpus": 3,
+  "cpu_max": "200000 100000",
+  "memory_max": "8589934592",
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+  "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+  "bun": "1.4.2",
+  "research": "b09de68cc6c1dd891a5bbc5ae2df39ec907893da",
+  "product": "31b10e441a61f75171601c45111c20d8ba5b65d6",
+  "tmp_filesystem": "overlay",
+  "tmpdir": "<disk-backed-scratch>",
+  "sqlite_flags": "[env]\nLIBSQLITE3_FLAGS = \"SQLITE_DQS=0 -USQLITE_ENABLE_MEMORY_MANAGEMENT SQLITE_ENABLE_DBPAGE_VTAB -DHAVE_FDATASYNC=1\"",
+  "method": "release build; no concurrent build, test or lint; synthetic fixture and 2 s warmup outside timing; 64 writer threads, 8 readers and periodic pinned reader; source SQLite FULL"
+}

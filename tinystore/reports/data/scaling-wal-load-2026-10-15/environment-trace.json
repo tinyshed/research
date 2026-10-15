@@ -1,0 +1,10 @@
+{
+  "research_helper": "400b85931daba4db0f611d10670446bf3b1e7832",
+  "measured_binary_harness": "365437234ffd5e889de401552705b62bda332ca2",
+  "product": "31b10e441a61f75171601c45111c20d8ba5b65d6",
+  "strace": "strace -- version 6.13",
+  "command": "TMPDIR=<disk-backed-scratch> python3 <data>/trace.py",
+  "scope": "separate diagnostic; not normal throughput; warm/seed/drain outside timed-begin/timed-end marker interval",
+  "analysis_parser_revision": "61a3d47955542c1d342e744b75534b99e5989c7b",
+  "analysis_note": "Post-run parser correction accepts whitespace before resumed closing parentheses; asserts feed sync count equals observer count. No traced process rerun or raw numeric edits."
+}

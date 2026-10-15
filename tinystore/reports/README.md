@@ -252,3 +252,4 @@ original hashes and distinguishes translated documentation from measured code.
 | Report | Scope |
 | --- | --- |
 | [Sustained WAL experiment plan](scaling-wal-load-design-2026-10-15.md) | component controls, mixed workload, bounded cache, WAL/disk admission and explicit transaction-envelope limits |
+| [Sustained WAL capture costs and bounds](scaling-wal-load-2026-10-15.md) | minute-long mixed controls, component ablations, RSS/WAL pressure, three-minute soak and sync attribution |

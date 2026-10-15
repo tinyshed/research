@@ -1,0 +1,22 @@
+   Compiling tinystore v0.0.0 (<product>/crates/tinystore)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.17s
+     Running unittests src/lib.rs (target/debug/deps/tinystore-423961a9c68e3283)
+
+running 1 test
+test capture_experiment::tests::admission_refuses_before_begin_and_can_resume ... FAILED
+
+failures:
+
+---- capture_experiment::tests::admission_refuses_before_begin_and_can_resume stdout ----
+
+thread 'capture_experiment::tests::admission_refuses_before_begin_and_can_resume' (38628) panicked at crates/tinystore/src/capture_experiment.rs:152:59:
+called `Result::unwrap_err()` on an `Ok` value: Done { changes: 1, last_insert_rowid: 1 }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    capture_experiment::tests::admission_refuses_before_begin_and_can_resume
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 834 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p tinystore --lib`
