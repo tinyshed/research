@@ -13,8 +13,8 @@ pub fn run(a: &[String]) {
     let idle = memory();
     let cpu0 = cpu();
     let begin = Instant::now();
-    let mut times = vec![];
-    let mut samples = vec![];
+    let mut times: Vec<u64> = vec![];
+    let mut samples: Vec<serde_json::Value> = vec![];
     let mut checksum = 0u64;
     #[cfg(feature = "geo")]
     if kind == "rstar" {
