@@ -1,0 +1,13 @@
+{
+  "revision": "d9befd75f8163cae94862295beaf4f428072a326",
+  "utc": "2026-10-15T23:07:51.121460+00:00",
+  "profile": "release, stripped ELF, no default features; each variant adds only its named optional dependency",
+  "bytes": {
+    "baseline": 2871944,
+    "text": 6888760,
+    "geo": 2963144,
+    "bitmap": 2923720
+  },
+  "command": "sh size-builds.sh",
+  "interpretation": "Reachable whole research CLI, not incremental library artifact size; source baseline includes SQLite and Snowball. Shared code removal and linker reachability matter."
+}

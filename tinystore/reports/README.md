@@ -277,3 +277,4 @@ Incremental publication; static measurements are complete, concurrent matrices a
 - [Channels with real Bun receivers](channels-wire-followup-2026-10-15.md)
 - [Locks with the actual grouped Core writer](core-locks-followup-2026-10-15.md)
 - [Per-pass measurement tables](index-foundations-measurements-2026-10-15.md)
+- [Additional research decision matrix and handoff](followup-handoff-2026-10-15.md)

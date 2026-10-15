@@ -231,38 +231,16 @@ Generated with `python3 tinystore/index-foundations/summarize.py`. Values separa
 | 1000000-clustered-rstar | 2 | 9982; 9982 | 0.82; 1.00 |
 | 1000000-clustered-rstar | 3 | 1000000; 1000000 | 63.35; 61.89 |
 
-## rebuilds: writer and build
-
-| Scenario | Rebuild s | Write service p50 ms | p95 | p99 | Writer queue p99 ms | Scheduled p99 ms | Max builder hold ms² |
-|---|---|---|---|---|---|---|---|
-| 100000-russian-fts-none-0-0-selective-tx1-u10 | 0.00 | 0.90 | 5.57 | 16.60 | 0.00 | 1712.77 | 0.00 |
-| 100000-russian-fts-monolithic-0-0-selective-tx1-u10 | 3.08 | 0.84 | 5.03 | 17.80 | 0.00 | 4641.18 | 3081.19 |
-| 100000-russian-fts-frontier-1000-32-selective-tx1-u10 | 12.73 | 1.00 | 5.89 | 16.95 | 12.79 | 6116.15 | 61.32 |
-| 100000-russian-fts-frontier-5000-256-selective-tx1-u10 | 8.27 | 0.74 | 5.01 | 22.69 | 30.54 | 7197.29 | 80.00 |
-| 100000-russian-fts-seen-2000-64-selective-tx1-u10 | 15.51 | 0.96 | 4.85 | 17.39 | 4.30 | 1917.04 | 108.59 |
-| 100000-russian-fts-delta-2000-64-selective-tx1-u10 | 10.84 | 0.89 | 3.76 | 20.65 | 10.31 | 3257.02 | 78.59 |
-| 100000-russian-fts-frontier-2000-64-selective-tx1-u10 | 12.51 | 1.08 | 6.99 | 19.85 | 20.41 | 6599.21 | 115.63 |
-| 100000-russian-fts-frontier-2000-64-full-tx1-u10 | 13.68 | 1.29 | 9.16 | 30.59 | 25.52 | 11363.04 | 71.13 |
-
-## rebuilds: reads and resources
-
-| Scenario | Query/s | Readers p99 ms | Total WAL MiB | Peak logical WAL MiB | Peak DB+WAL MiB | Peak RSS MiB | Activation ms | Time/frame overruns |
-|---|---|---|---|---|---|---|---|---|
-| 100000-russian-fts-none-0-0-selective-tx1-u10 | 6342.96 | 3.10/4.26 | 52.76 | 33.79 | 107.82 | 17.09 | 0.00 | 0/0 |
-| 100000-russian-fts-monolithic-0-0-selective-tx1-u10 | 5161.01 | 1.87/3.63 | 82.18 | 33.43 | 135.14 | 20.73 | 0.00 | 0/0 |
-| 100000-russian-fts-frontier-1000-32-selective-tx1-u10 | 6066.93 | 1.45/2.57 | 265.92 | 35.50 | 132.62 | 17.80 | 0.40 | 2067/163 |
-| 100000-russian-fts-frontier-5000-256-selective-tx1-u10 | 5143.32 | 2.15/5.59 | 146.91 | 34.32 | 136.87 | 18.81 | 0.24 | 438/9 |
-| 100000-russian-fts-seen-2000-64-selective-tx1-u10 | 5720.83 | 2.83/3.62 | 287.64 | 34.48 | 133.81 | 17.83 | 0.62 | 1657/75 |
-| 100000-russian-fts-delta-2000-64-selective-tx1-u10 | 5750.36 | 3.19/2.54 | 177.95 | 33.08 | 132.53 | 18.06 | 56.49 | 1014/80 |
-| 100000-russian-fts-frontier-2000-64-selective-tx1-u10 | 5532.49 | 4.00/2.06 | 203.32 | 33.55 | 134.85 | 18.21 | 0.61 | 1113/65 |
-| 100000-russian-fts-frontier-2000-64-full-tx1-u10 | 6351.93 | 1.36/9.88 | 254.71 | 35.90 | 137.00 | 18.31 | 0.65 | 1091/49 |
-
 ² Maximum across setup, chunk/monolithic build, checkpoint and activation holds. Foreground service excludes queue time; scheduled latency includes offered-workload backlog. Fixed main scenarios perform the same minimum 2000 transactions; long builds can outlast that write window. `continuous-*` keeps writes through publication. Different tx sizes, update ratios, caches and distributions are separate scenarios.
 
 ## Actual Core lease admission
 
 | Scenario | Grant/s | Attempts/grant | Completed wait p99 ms | Jain fairness | Deadline cancels | CPU s | HWM MiB |
 |---|---|---|---|---|---|---|---|
+| poll-10-1 | 891.28; 883.53 | 7.50; 7.59 | 320.45; 334.88 | 0.879; 0.916 | 9; 8 | 1.37; 1.40 | 9.16; 9.15 |
+| fifo-10-1 | 778.69; 678.49 | 1.00; 1.00 | 31.11; 36.03 | 1.000; 1.000 | 9; 9 | 1.04; 0.97 | 8.52; 8.56 |
+| poll-10-10 | 4661.94 | 1.00 | 3.53 | 1.000 | 0 | 1.72 | 9.32 |
+| fifo-10-10 | 4122.87; 3336.37 | 1.00; 1.00 | 4.46; 5.31 | 1.000; 1.000 | 0; 0 | 1.74; 1.74 | 9.41; 9.17 |
 
 ## Real Bun receivers
 
@@ -299,10 +277,10 @@ Generated with `python3 tinystore/index-foundations/summarize.py`. Values separa
 | File | Records | Failed process exits | Revisions |
 |---|---|---|---|
 | core-sql.jsonl | 2 | 0 | 2f47fb3c3747 |
-| correctness.jsonl | 52 | 0 | 2f47fb3c3747, f1856d9b658f |
-| crashes.jsonl | 144 | 0 | 2f47fb3c3747, f1856d9b658f |
+| correctness.jsonl | 78 | 0 | 2f47fb3c3747, 344c615f65fe, f1856d9b658f |
+| crashes.jsonl | 216 | 0 | 2f47fb3c3747, 344c615f65fe, f1856d9b658f |
 | lease-correctness.jsonl | 4 | 0 | 14bfbe819eac |
+| locks.jsonl | 7 | 0 | 344c615f65fe |
 | preparations.jsonl | 13 | 0 | 2f47fb3c3747, 8d4d7b79baaa, b08e6f8df1fc, f1856d9b658f |
 | pressure.jsonl | 4 | 0 | 14bfbe819eac |
-| rebuilds.jsonl | 8 | 0 | 2f47fb3c3747 |
 | static.jsonl | 96 | 0 | f1856d9b658f |

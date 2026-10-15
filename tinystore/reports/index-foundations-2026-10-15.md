@@ -159,7 +159,12 @@ worker, reopens SQLite, resumes the generation and builds a fresh oracle from
 the current source. Search results, projection cardinality/definition markers,
 bidirectional RTree differences and SQLite/FTS integrity checks must agree.
 These are process-crash tests on Linux, not simulated power-loss or torn-write
-tests.
+tests. Geo validation compares every stored bound in both directions plus eight
+queries (two per selectivity); FTS compares complete stored terms/cardinality
+and 120 queries. Large crash probes repeat resume and committed switch at both
+sizes; the small suite covers all six stages and three online algorithms.
+Definition changes append a deterministic marker, not arbitrary tokenizer/DDL
+changes. That wider schema-change lifecycle remains a product gate.
 
 ### Russian text
 
@@ -178,6 +183,13 @@ license/size and a much larger gold set need a product decision.
 RTree coordinates are outward-rounded float32 bounds. Two points separated by
 1e-8 degrees become candidates for a rectangle that should contain one; joining
 the authoritative f64 source and applying the exact predicate returns one.
+A certified alternative can skip a source lookup when its outward box is
+wholly inside the query, using SQLite lazy CASE; only boundary candidates need
+source refinement. This is correct only for finite, non-NULL, validated earth
+coordinates and an atomically consistent source/index snapshot. The quality
+probe shows RTree accepts NULL as zero and that skipping refinement can then
+return a false positive. Input validation is part of the proof.
+
 Inclusive overlap for candidate selection is necessary: containment against
 rounded bounds can introduce false negatives. Longitude wrap must split a
 dateline-crossing box; Euclidean degree distance is not a spherical radius or
@@ -248,3 +260,25 @@ checkpoint/merge/publication work in writer budgets. Physical replication cost
 is the source **plus** derived-index WAL; an online rebuild can lower peak
 writer pause while increasing cumulative physical bytes. This round does not
 measure a replica sender or establish a production SLO.
+
+## Environment and reproducibility
+
+Linux 6.18.44, Xeon Platinum 8573C, three visible CPUs/two-CPU quota,
+6 GiB container RAM, disk-backed named volume, Rust 1.99.0, Bun 1.4.2,
+SQLite 3.53.2 via rusqlite 0.40.2. Research native connections use FULL WAL,
+4096-byte pages, 4 MiB cache per connection and a common WAL observer/manual
+PASSIVE checkpoint policy. The actual Core default is 1 MiB cache and
+`trusted_schema=0`; cache sensitivity is reported separately. Native timing is
+not a claim to measure a future Core index API. Two unpaced reader threads
+compete with an offered 1000 foreground transactions/s; 20% inserts, 10%
+deletes, 10% identity moves and 60% updates. Update-column share and transaction
+size are separate cases. Scheduled latency includes overload backlog, whereas
+writer service excludes admission wait.
+
+The [evidence ledger](data/index-foundations-2026-10-15/README.md) provides
+commands, configuration, cohort boundaries, fixes and raw-file provenance.
+The [measurement tables](index-foundations-measurements-2026-10-15.md) keep
+each pass separate. Stripped whole research CLI sizes are 2,871,944 bytes
+for native baseline, 6,888,760 with text, 2,963,144 with geo and 2,923,720
+with bitmap. These reachable executable sizes are not incremental library
+artifact sizes; baseline already includes SQLite and Snowball.
