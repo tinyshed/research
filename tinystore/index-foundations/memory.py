@@ -3,6 +3,7 @@
 import datetime as dt
 import json
 import os
+import shlex
 from pathlib import Path
 import subprocess as sp
 
@@ -39,7 +40,7 @@ for n in (100000,1000000):
             assert recovery.returncode==0,recovery.stderr
             recovered=json.loads(recovery.stdout.strip().splitlines()[-1]);assert recovered['rows']==n and recovered['id_bounds']==[1,n],recovered
             r={'revision':REV,'utc':stamp,'label':f'{kind}-{n}-64m','pass_number':passno,'memory_limit_bytes':64*1024**2,'swap_limit_bytes':64*1024**2,'source_copy_inside_cgroup':True,'exit':p.returncode,'oom_killed':state['OOMKilled'],'stderr':p.stderr.replace(SCRATCH,'<scratch>'),'recovery':recovered,
-                'command':f'docker run --cpus 2 --memory 64m --memory-swap 64m --network none -v <target>:/target:ro -v <data>:/data -e BENCH_DB=<scratch>/case.db -e BENCH_TEMPLATE=<scratch>/template.db -e BENCH_CACHE_KIB=1024 -e BENCH_BUILD_ONLY=1 <rust-image> sh -ec '+repr('cp "$BENCH_TEMPLATE" "$BENCH_DB"\nexec "$@"')+' probe <bin> '+ ' '.join(args)}
+                'command':shlex.join(command).replace(SCRATCH,'<scratch>').replace(BIN,'<bin>').replace('channels-locks-target','<target-volume>').replace('channels-locks-data','<data-volume>')}
             if p.returncode==0:r['result']=json.loads(p.stdout.strip().splitlines()[-1])
             else:r['stdout']=p.stdout
             with OUT.open('a') as f:f.write(json.dumps(r)+'\n')
