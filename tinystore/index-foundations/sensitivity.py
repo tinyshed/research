@@ -46,7 +46,7 @@ elif sys.argv[1]=='continuous':
         for kind,shape in [('fts','russian'),('geo','clustered')]:
             template=run.template(kind,n,shape)
             for passno in (1,2):
-                for cache in (1024,4096):
+                for cache in (1024,):
                     for algorithm in ('none','frontier','delta'):
                         env={'BENCH_CONTINUOUS':'1','BENCH_CACHE_KIB':str(cache)}
                         case(['rebuild',kind,algorithm,n,shape,2000,64,'selective',1,10,2000],template,env,f'continuous-{n}-{kind}-{algorithm}-cache{cache}',passno)

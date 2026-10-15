@@ -6,7 +6,7 @@ import datetime
 import json
 import subprocess
 P=Path(__file__).resolve().parent.parent/'reports/data/index-foundations-2026-10-15'
-expected={'static':96,'locks':24,'channels':108,'rebuilds':120,'outbox':18,'geo-certified':8,'sensitivity':112,'large-crashes':16,'allocations':10,'memory':16,'core-sql':2,'pressure':4,'lease-correctness':4}
+expected={'static':96,'locks':24,'channels':108,'rebuilds':120,'outbox':18,'geo-certified':8,'sensitivity':88,'large-crashes':16,'allocations':10,'memory':16,'core-sql':2,'pressure':4,'lease-correctness':4}
 rows={k:[json.loads(s) for s in (P/(k+'.jsonl')).read_text().splitlines()] for k in expected}
 for k,n in expected.items():
  assert len(rows[k])==n,(k,len(rows[k]),n)

@@ -62,8 +62,11 @@ logical WAL high-water and sampled file footprint are distinct metrics.
 - `rebuilds.jsonl`: fixed minimum 2000 foreground transactions, two unpaced
   reader threads. Compare tx1/u10 against its baseline and tx32/u90 against its
   own baseline. Long builds can outlast the fixed foreground write window.
-- `sensitivity.jsonl`: separate WAL-page observer/cache/order diagnostics and
-  continuous-write scenarios. Do not mix instrumented timing with main timing,
+- `sensitivity.jsonl`: 64 separate WAL-page observer/cache/order diagnostics and
+  24 continuous-write scenarios. Continuous load uses the actual Core
+  1 MiB cache at both sizes, with none/frontier/delta and two passes. The main
+  fixed-write matrix already covers 4 MiB, while WAL diagnostics isolate cache
+  1/4/64 MiB; the extra continuous 4 MiB cross-product is deliberately omitted. Do not mix instrumented timing with main timing,
   or compare cumulative WAL over different mutation counts as identical work.
 - `channels.jsonl`: private research route around unchanged Core and unchanged
   Bun receiver internals. Does not assert a native public Channels API exists.
