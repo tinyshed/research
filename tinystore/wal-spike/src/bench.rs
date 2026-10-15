@@ -142,6 +142,12 @@ fn cost(pass: usize, rows: usize, workers: usize, mode: &str) -> Result<()> {
     let (commits, captured_bytes, dirty_pages) = if let Some(source) = source {
         let f = source.feed(&path)?;
         let f = f.lock().unwrap();
+        let mut actual = crate::tree::Tree::default();
+        actual.apply(&image.pages, image.pages.len() as u32, image.page_size)?;
+        require(
+            actual.root() == f.tree.root(),
+            "capture benchmark root mismatch",
+        )?;
         (
             f.entries.len() - 1,
             f.entries.iter().skip(1).map(|e| e.raw.len()).sum::<usize>(),
@@ -158,9 +164,29 @@ fn cost(pass: usize, rows: usize, workers: usize, mode: &str) -> Result<()> {
         .prepare("select name,sum(pgsize) from dbstat group by name")?
         .query_map([], |r| Ok((r.get::<_, String>(0)?, r.get::<_, i64>(1)?)))?
         .collect::<rusqlite::Result<_>>()?;
+    let mut storage = std::collections::BTreeMap::new();
+    for name in [
+        "sql/app.db",
+        "sql/app.db-wal",
+        "replication.db",
+        "replication.db-wal",
+    ] {
+        if let Ok(metadata) = std::fs::metadata(dir.path().join(name)) {
+            storage.insert(name.to_owned(), metadata.len());
+        }
+    }
+    if let Ok(files) = std::fs::read_dir(dir.path().join("feed")) {
+        for file in files {
+            let file = file?;
+            storage.insert(
+                format!("feed/{}", file.file_name().to_string_lossy()),
+                file.metadata()?.len(),
+            );
+        }
+    }
     println!(
         "{}",
-        json!({"case":"capture","pass":pass,"mode":mode,"rows":rows,"workers":workers,"writes":256,"seconds":elapsed,"writes_per_second":256.0/elapsed,"p50_us":percentile(&times,50),"p95_us":percentile(&times,95),"p99_us":percentile(&times,99),"file_bytes":image.pages.len()*image.page_size as usize,"objects":objects,"captured_commits":commits,"feed_raw_bytes":captured_bytes,"dirty_pages":dirty_pages})
+        json!({"case":"capture","pass":pass,"mode":mode,"rows":rows,"workers":workers,"writes":256,"seconds":elapsed,"writes_per_second":256.0/elapsed,"p50_us":percentile(&times,50),"p95_us":percentile(&times,95),"p99_us":percentile(&times,99),"file_bytes":image.pages.len()*image.page_size as usize,"objects":objects,"captured_commits":commits,"feed_raw_bytes":captured_bytes,"dirty_pages":dirty_pages,"storage_logical_bytes":storage,"verified":true})
     );
     store.close()?;
     Ok(())

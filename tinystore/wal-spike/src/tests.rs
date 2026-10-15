@@ -457,3 +457,84 @@ fn weaker_sqlite_durability_is_rejected() -> Result<()> {
     assert!(store.database("app").open().is_err());
     Ok(())
 }
+
+#[test]
+fn sigkill_never_loses_the_acknowledged_prefix() -> Result<()> {
+    use std::io::{BufRead, BufReader};
+    for mode in ["full", "guarded"] {
+        for target in [1, 8, 31, 64] {
+            let dir = tempfile::tempdir()?;
+            let mut child = std::process::Command::new(std::env::current_exe()?)
+                .args([
+                    "--ignored",
+                    "--exact",
+                    "tests::sigkill_worker",
+                    "--nocapture",
+                ])
+                .env("WAL_RESEARCH_ROOT", dir.path())
+                .env("WAL_RESEARCH_MODE", mode)
+                .stdout(std::process::Stdio::piped())
+                .spawn()?;
+            let mut output = BufReader::new(child.stdout.take().ok_or("missing output")?);
+            loop {
+                let mut line = String::new();
+                require(
+                    output.read_line(&mut line)? > 0,
+                    "worker stopped before ACK",
+                )?;
+                if line.trim().ends_with(&format!("ACK {target}")) {
+                    break;
+                }
+            }
+            child.kill()?;
+            let status = child.wait()?;
+            assert!(!status.success());
+            let f = fixture(
+                dir.path(),
+                if mode == "full" {
+                    Mode::LogFull
+                } else {
+                    Mode::WalGuarded
+                },
+            )?;
+            verify(&f)?;
+            let rows = f.db.scalar::<u32>("select count(*) from items")?;
+            assert!(
+                rows >= target,
+                "{mode}: acknowledged {target}, recovered {rows}"
+            );
+            for id in 1..=target {
+                assert_eq!(
+                    f.db.scalar::<u32>(
+                        tinystore::sql::Sql::new("select count(*) from items where id=?1")
+                            .bind(&id)
+                    )?,
+                    1
+                );
+            }
+        }
+    }
+    Ok(())
+}
+
+#[test]
+#[ignore = "SIGKILL worker controlled by parent"]
+fn sigkill_worker() -> Result<()> {
+    use std::io::Write;
+    let root = std::env::var_os("WAL_RESEARCH_ROOT").ok_or("missing root")?;
+    let mode = if std::env::var("WAL_RESEARCH_MODE")? == "full" {
+        Mode::LogFull
+    } else {
+        Mode::WalGuarded
+    };
+    let f = fixture(Path::new(&root), mode)?;
+    for id in 1..=100000 {
+        f.db.exec(
+            tinystore::sql::Sql::new("insert into items(id,value) values(?1,'acknowledged')")
+                .bind(&id),
+        )?;
+        println!("ACK {id}");
+        std::io::stdout().flush()?;
+    }
+    Err("parent did not stop worker".into())
+}
