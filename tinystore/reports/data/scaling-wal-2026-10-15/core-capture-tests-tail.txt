@@ -1,0 +1,7 @@
+test wire::workers::tests::a_thread_sleeps_once_no_job_comes_within_the_linger ... ok
+test wire::workers::tests::a_thread_that_lingers_takes_the_next_job_with_no_wake_and_no_thread_more ... ok
+test wire::workers::tests::jobs_queued_for_sleeping_threads_wake_them_one_through_another ... ok
+test wire::workers::tests::the_jobs_behind_one_that_blocks_its_thread_get_a_thread_of_their_own ... ok
+test wire::sql::tests::rows_past_one_message_come_in_parts_within_the_clients_credit ... ok
+
+test result: ok. 829 passed; 0 failed; 5 ignored; 0 measured; 0 filtered out; finished in 26.03s

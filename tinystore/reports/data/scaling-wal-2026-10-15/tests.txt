@@ -1,0 +1,26 @@
+   Compiling tinystore-wal-spike v0.1.0 (<spike>)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.12s
+     Running unittests src/main.rs (target/debug/deps/tinystore_wal_spike-3fc387c9a9ecc7dc)
+
+running 19 tests
+test tests::capture_prefix_is_recovered_after_process_death ... ok
+test tests::capture_survives_controlled_wal_generations ... ok
+test tests::crash_worker ... ignored, subprocess fault-injection worker
+test tests::durable_receiver_replays_after_death_before_apply_and_accepts_retries ... ok
+test tests::durable_standby_survives_primary_directory_loss ... ok
+test tests::every_commit_reaches_the_feed_without_explicit_capture ... ok
+test tests::exclusive_transactions_and_rollbacks_preserve_the_commit_boundary ... ok
+test tests::grouped_callers_are_captured_and_materialized_with_schema_changes ... ok
+test tests::guarded_rebuilds_a_lost_unsynced_feed_tail_from_durable_wal ... ok
+test tests::checkpoint_crash_retains_a_complete_feed_prefix ... ok
+test tests::larger_flush_limit_recovers_across_crash_boundaries ... ok
+test tests::merkle_root_has_a_canonical_width_after_shrink ... ok
+test tests::missing_published_wal_and_gapped_or_conflicting_batches_fail_closed ... ok
+test tests::receiver_crash_worker ... ignored, subprocess receiver fault worker
+test tests::sigkill_never_loses_the_acknowledged_prefix ... ok
+test tests::sigkill_worker ... ignored, SIGKILL worker controlled by parent
+test tests::wal_validation_rejects_damaged_committed_bytes ... ok
+test tests::weaker_sqlite_durability_is_rejected ... ok
+test tests::larger_flush_limit_preserves_generation_recovery ... ok
+
+test result: ok. 16 passed; 0 failed; 3 ignored; 0 measured; 0 filtered out; finished in 5.07s

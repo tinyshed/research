@@ -95,3 +95,10 @@ one and three hops, batches of 1 and 32. The added 5 ms in each direction is
 explicit application delay injection, not a geographically distributed network.
 Batch creation is explicit in this harness; no hidden polling interval is
 included and no automatic maximum batch wait has been implemented.
+
+## Measured follow-up
+
+[The final round](scaling-wal-2026-10-15.md) isolates early forwarding after
+append, sync in parallel with downstream work, and a separate bounded applier.
+It supersedes durable-before-forward as the recommended schedule; the ACK
+still waits for local sync and downstream durable receipt.

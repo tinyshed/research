@@ -1,0 +1,24 @@
+   Compiling tinystore v0.0.0 (<product>/crates/tinystore)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 15.55s
+     Running unittests src/lib.rs (target/debug/deps/tinystore-423961a9c68e3283)
+
+running 1 test
+test capture_experiment::tests::capture_runs_before_ack_and_failure_stops_further_writes ... FAILED
+
+failures:
+
+---- capture_experiment::tests::capture_runs_before_ack_and_failure_stops_further_writes stdout ----
+
+thread 'capture_experiment::tests::capture_runs_before_ack_and_failure_stops_further_writes' (23239) panicked at crates/tinystore/src/capture_experiment.rs:103:9:
+assertion `left == right` failed
+  left: 0
+ right: 1
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    capture_experiment::tests::capture_runs_before_ack_and_failure_stops_further_writes
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 833 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p tinystore --lib`

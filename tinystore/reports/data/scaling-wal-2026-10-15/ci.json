@@ -1,0 +1,37 @@
+{
+  "url": "https://github.com/tinyshed/tinystore/actions/runs/38742104053",
+  "source": "690cdf3d45e99e8f19ca3bf651461f35cfe45673",
+  "attempt_1": {
+    "quality": "success",
+    "windows": "success",
+    "linux": "failure: events private-child and TCP-remote shutdown hooks timeout after 5s",
+    "macos": "failure: same two shutdown hooks"
+  },
+  "attempt_2": {
+    "quality": "success (retained)",
+    "windows": "success (retained)",
+    "linux": "failure: events private-child shutdown hook timeout after 5s",
+    "macos": "failure: events private-child shutdown hook timeout after 5s"
+  },
+  "local_exact_ci_sdk_command": [
+    {
+      "pass": 1,
+      "passed": 839,
+      "skipped": 1,
+      "failed": 0
+    },
+    {
+      "pass": 2,
+      "passed": 839,
+      "skipped": 1,
+      "failed": 0
+    },
+    {
+      "pass": 3,
+      "passed": 839,
+      "skipped": 1,
+      "failed": 0
+    }
+  ],
+  "attribution": "unresolved; WAL capture feature is disabled in CI default builds; no claim the shutdown issue is pre-existing or caused by capture"
+}

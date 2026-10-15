@@ -229,3 +229,12 @@ bound retention and snapshot transfer, and integrate capture at every commit
 path. Keep offline intents separate and make acknowledgement semantics
 explicit. [The implementation handoff](scaling-handoff-2026-10-15.md) maps
 those changes to the current Rust code and lists the gates still missing.
+
+## WAL follow-up — 15 October 2026
+
+[The WAL capture/recovery round](scaling-wal-2026-10-15.md) supersedes the
+full-snapshot capture as the candidate hot path and measures early forwarding
+with a separate applier. The figures above remain measurements of the older
+pipeline; do not combine their timings with the new same-session comparisons.
+Native capture, recovery and durable receipt are now prototyped; release,
+retention, real power-loss and fencing gates remain open.

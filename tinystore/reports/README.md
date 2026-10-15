@@ -245,3 +245,4 @@ original hashes and distinguishes translated documentation from measured code.
 | Report | Scope |
 | --- | --- |
 | [WAL architecture and recovery boundaries](scaling-wal-design-2026-10-15.md) | interim design, native commit capture, FULL vs guarded feed, ACK and failure contracts before timing |
+| [WAL capture, crash recovery and propagation](scaling-wal-2026-10-15.md) | paired snapshot/WAL comparison, 27 abrupt workers, sync/forward/apply ablations, batching and explicit reliability limits |

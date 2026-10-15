@@ -215,3 +215,12 @@ mechanism's shape and its first traps. They do not close those production
 gates. The immediate next implementation slice should be WAL capture,
 checkpoint recovery and a physical follower reader, before automatic failover
 or a broader distributed feature set.
+
+## WAL follow-up — 15 October 2026
+
+[The WAL capture/recovery round](scaling-wal-2026-10-15.md) supersedes the
+full-snapshot capture as the candidate hot path and measures early forwarding
+with a separate applier. The figures above remain measurements of the older
+pipeline; do not combine their timings with the new same-session comparisons.
+Native capture, recovery and durable receipt are now prototyped; release,
+retention, real power-loss and fencing gates remain open.

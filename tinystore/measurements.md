@@ -924,3 +924,29 @@ On 65,536 generated requests packed, medians of fifteen runs of ten on Windows,
 the Go engine first and the port after: an exact filter 18.535 against 14.106
 ms, a single trace 0.450 against 0.171, an absent context value 2.999 against
 1.942. Not yet run in the Linux container.
+
+## WAL capture and cascading propagation, 15 October 2026
+
+The [WAL round](reports/scaling-wal-2026-10-15.md), Linux EPYC container with
+2 CPU quota / 8 GiB, SQLite 3.53.2 FULL, three same-session rotated passes,
+compares the frozen snapshot pipeline with native WAL capture. On the
+1,130,496-byte file, guarded write+capture p50 is 0.250–0.329 ms against
+3.170–3.904 ms for snapshot capture; on 8,978,432 bytes it is 0.281–0.296 ms
+against 24.373–25.846 ms. Uncaptured p50 is 0.221–0.273 ms; capture is not free.
+4096 updates / 64 callers retain 54.6–77.1% of same-pass uncaptured throughput.
+
+Through three real loopback TCP connections, early forwarding with separate
+apply gives durable receipt p50 0.764–0.974 ms, versus 2.212–2.956 ms serially.
+With an injected 5 ms in each direction per hop, it is 31.478–31.735 ms versus
+30.853–30.989 ms echo (2.0–2.5% excess). This is a delay-injected local model,
+not a geographical WAN measurement; source write/capture adds more latency.
+128 updates use about 308 KB per edge at batch=1 and 50.9 KB at batch=32,
+excluding initial snapshot, ACKs and TCP overhead. Every final image is
+verified. Thirty-three abrupt-worker scenarios pass; real power loss and
+production memory/retention/fencing remain unverified. See raw output, commits
+and reproduction commands in the round before quoting these numbers.
+
+A threshold-only follow-up retains 64.1–85.0% of its own uncaptured grouped
+controls at 4 MiB rather than 256 KiB: p50/p95 improve in all six paired cases,
+throughput in five, with one 4.9% regression. It changes retention/checkpoint
+frequency, not durability; it is a candidate policy rather than a release default.
