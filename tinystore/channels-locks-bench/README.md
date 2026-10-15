@@ -42,6 +42,7 @@ python3 run.py resources <output>/resources.jsonl
 python3 run.py leases <output>/leases.jsonl
 python3 run.py lease-controls <output>/lease-controls.jsonl
 python3 run.py indexes <output>/indexes.jsonl
+python3 soak.py <output>/soak.jsonl
 ```
 
 `preflight` is calibration and correctness, excluded from comparison tables.
@@ -50,6 +51,9 @@ JSONL records command arguments, UTC start/end, exit code and results. Never
 overwrite a raw evidence file. Each case removes its SQLite files after
 measuring live WAL and per-object dbstat. The kill suite kills the actual
 owner binary with SIGKILL at a flushed handshake, then reopens its database.
+The soak adds two alternating 30-second paced Channels passes per algorithm
+and two 30-second hot-lock passes for SQL polling versus FIFO admission.
+It uses the same release binary; it does not add a new candidate.
 
 ## What is being compared
 
