@@ -124,6 +124,13 @@ design an explicit outbox. Merely using the same Store does not make files
 atomic together. Cross-file contention shares CPU/disk even when writer locks
 are independent.
 
+A concrete source boundary: Jobs [`EXTEND_LEASE`](https://github.com/tinyshed/tinystore/blob/76b844cdc8c3410e746a5d5dc3e9aafec83c9962/crates/tinystore/src/jobs/claim.rs#L52)
+checks identity/attempt, without `until > now`. That can be a valid Jobs policy
+until another claim takes ownership; it is not the proposed resource-lock
+contract that forbids reviving an expired lease. Jobs also computes its claim
+deadline before submitting the grouped write. Reuse infrastructure and SQL
+patterns, not those TTL semantics without a deliberate decision.
+
 ## Recommendation for Opus
 
 Keep SQLite authoritative, with one atomic writer operation per acquire, renew

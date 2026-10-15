@@ -188,6 +188,21 @@ durable replay system by accepting a last-seen cursor. Durable history, if
 required later, belongs to a separately specified Records-based stream with
 Channels as a wakeup hint.
 
+## Concrete writer seam (source inspection, not native-path measurement)
+
+In pinned [`Group::lead`](https://github.com/tinyshed/tinystore/blob/76b844cdc8c3410e746a5d5dc3e9aafec83c9962/crates/tinystore/src/sqlite/group.rs#L175),
+`commit` returns, the writer mutex is dropped, leadership is handed off, then
+`answer_all` answers callers. [`answer_in_halves`](https://github.com/tinyshed/tinystore/blob/76b844cdc8c3410e746a5d5dc3e9aafec83c9962/crates/tinystore/src/sqlite/group.rs#L341)
+deliberately propagates synchronous caller answers through a wake tree, not
+FIFO wake order. A resumed caller or generic completion callback therefore is
+not a commit-order sequencer. The proposed native seam is bounded staging per
+savepoint, promotion only for successful writes, then sequence assignment and
+bounded dispatch-queue append after successful outer COMMIT while writer order
+is still owned. Network draining happens later. Account this extra queue in
+global memory admission; it must not become unbounded to preserve ordering.
+This is an implementation proposal that needs the native failure/order tests,
+not a claim the adapter measures such a hook.
+
 ## Owner decisions and product acceptance gates
 
 Agree channel naming/path matching and authorization, event count/byte limits,
