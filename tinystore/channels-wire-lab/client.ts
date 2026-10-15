@@ -31,29 +31,32 @@ const idle=memory(),connections:any[]=[]
 for(let i=0;i<connectionCount;i++)connections.push(await connect())
 const publisher=await connect()
 const streams:any[]=[],delivered=Array(subscribers).fill(0),last=Array(subscribers).fill(-1),gaps=Array(subscribers).fill(0)
+let resumeSlow!:()=>void;const slowGate=new Promise<void>(resolve=>{resumeSlow=resolve});
+const slowLatencies:number[]=[],fastLatencies:number[]=[];
 const latencies:number[]=[],tasks:Promise<void>[]=[];let orderingErrors=0,missed=0
 for(let i=0;i<subscribers;i++){
- const c=connections[i%connections.length];const slow=profile==='slow'&&i%100===0
+ const c=connections[i%connections.length];const slow=profile.startsWith('slow')&&i%100===0
  // Voluntarily withhold the server's send allowance on selected streams. The
  // actual SDK/Wire CREDIT resumes them after the bounded log has overflowed.
- const body=new Uint8Array(4);new DataView(body.buffer).setUint32(0,slow?0:2<<20,true)
+ const body=new Uint8Array(4);new DataView(body.buffer).setUint32(0,slow&&profile==='slow'?0:2<<20,true)
  const stream=await c.session.open(60000,body,true);await stream.next();streams.push({stream,c,slow})
- tasks.push((async()=>{try{while(true){const e=await stream.next();if(e.end)break;const bytes=e.body;const view=new DataView(bytes.buffer,bytes.byteOffset,bytes.byteLength)
+ tasks.push((async()=>{try{if(slow&&profile==='slow-window')await slowGate;while(true){const e=await stream.next();if(e.end)break;const bytes=e.body;const view=new DataView(bytes.buffer,bytes.byteOffset,bytes.byteLength)
   if(bytes[bytes.length-1]===255){gaps[i]++;missed+=Number(view.getBigUint64(0,true))}
-  else {const seq=Number(view.getBigUint64(0,true));if(seq<=last[i])orderingErrors++;last[i]=seq;delivered[i]++;if((delivered[i]&15)===0)latencies.push((performance.now()-view.getFloat64(8,true))*1000)}
+  else {const seq=Number(view.getBigUint64(0,true));if(seq<=last[i])orderingErrors++;last[i]=seq;delivered[i]++;if((delivered[i]&15)===0){const latency=(performance.now()-view.getFloat64(8,true))*1000;latencies.push(latency);(slow?slowLatencies:fastLatencies).push(latency)}}
   stream.consumed(bytes.length)
  } }catch(e){if(!(e as Error).message.includes('cancel'))throw e}})())
 }
 const subscribed=memory();const cpu0=process.cpuUsage();const started=performance.now()
-const count=profile==='slow'?1200:1000,rate=profile==='slow'?400:200
+const count=profile==='slow'?1200:profile==='slow-window'?2600:profile==='burst'?2000:1000,rate=profile==='slow'||profile==='slow-window'?400:profile==='burst'?0:200
 const rollbacks=10
 for(let i=0;i<rollbacks;i++)await call(publisher,60002,new Uint8Array(1024))
 for(let seq=0;seq<count;seq++){
- const target=started+seq*1000/rate;const wait=target-performance.now();if(wait>0)await Bun.sleep(wait)
+ const target=rate===0?started:started+seq*1000/rate;const wait=target-performance.now();if(wait>0)await Bun.sleep(wait)
  const payload=new Uint8Array(1024).fill(7);const v=new DataView(payload.buffer);v.setBigUint64(0,BigInt(seq),true);v.setFloat64(8,performance.now(),true)
  await call(publisher,60001,payload)
 }
 const publishMs=performance.now()-started
+resumeSlow();
 if(profile==='slow')for(const {slow,c,stream} of streams)if(slow)c.session.post(credit(stream.id,2<<20))
 await Bun.sleep(500)
 const status=JSON.parse(new TextDecoder().decode(await call(publisher,60003)))
@@ -68,5 +71,6 @@ const pending=stream.next().then(()=>{replay=true}).catch(()=>{})
 await Bun.sleep(20);const noReplay=!replay;stream.cancel();await pending;await fresh.close()
 for(const c of connections)await c.close();await publisher.close();clearInterval(pump);if(hub)symbols.lab_close(hub)
 latencies.sort((a,b)=>a-b);const pct=(q:number)=>latencies[Math.ceil((latencies.length-1)*q)]??0
-console.log(JSON.stringify({experiment:'channels-wire',mode,algorithm,profile,subscribers,connectionCount,payloadBytes:1024,offeredRate:rate,published:count,rollbackAttempts:rollbacks,publishMs,publishedPerS:count*1000/publishMs,delivered:received,expectedDeliveries:count*subscribers,lost:count*subscribers-received,deliveredBySubscriber:delivered,gapFrames:gaps.reduce((a,b)=>a+b,0),gapMissed:missed,orderingErrors,latency:{n:latencies.length,sampleEvery:16,p50Us:pct(.5),p99Us:pct(.99)},idleMemory:idle,subscribedMemory:subscribed,endMemory,cpuUs:cpu,status,afterCancel,noReplay,statusText:'pass'}))
+const subgroup=(values:number[])=>{values.sort((a,b)=>a-b);return {n:values.length,p50Us:values[Math.ceil((values.length-1)*.5)]??0,p99Us:values[Math.ceil((values.length-1)*.99)]??0}}
+console.log(JSON.stringify({experiment:'channels-wire',mode,algorithm,profile,subscribers,connectionCount,payloadBytes:1024,offeredRate:rate,published:count,rollbackAttempts:rollbacks,publishMs,publishedPerS:count*1000/publishMs,delivered:received,expectedDeliveries:count*subscribers,lost:count*subscribers-received,deliveredBySubscriber:delivered,gapFrames:gaps.reduce((a,b)=>a+b,0),gapMissed:missed,orderingErrors,latency:{n:latencies.length,sampleEvery:16,p50Us:pct(.5),p99Us:pct(.99)},fastLatency:subgroup(fastLatencies),slowLatency:subgroup(slowLatencies),idleMemory:idle,subscribedMemory:subscribed,endMemory,cpuUs:cpu,status,afterCancel,noReplay,statusText:'pass'}))
 if(status.published!==count||orderingErrors!==0||afterCancel.active_subscriptions!==0||!noReplay)throw Error('channel correctness invariant failed')
