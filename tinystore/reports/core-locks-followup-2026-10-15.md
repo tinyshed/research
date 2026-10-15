@@ -164,6 +164,11 @@ extra hot-page/write cost is unmeasured; it is a candidate, not the measured row
 layout. Either design needs overflow/restore epoch semantics and protection
 against ordinary bucket clear or user SQL resetting counters.
 
+Fences must survive SDK encoding exactly. Rust `u64` does not justify a Bun/JS
+`number`: values above 2^53 need bigint or an opaque lossless representation.
+This Core-only row prototype does not test the future public lease wire codec.
+Include 2^53 boundaries and counter exhaustion in that codec acceptance gate.
+
 Semaphores should share the resource ownership/fencing/deadline machinery, but
 weighted permits and FIFO head-of-line versus bypass behavior require an explicit
 contract. This round does not claim a real-Core semaphore implementation or

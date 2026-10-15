@@ -76,6 +76,10 @@ logical WAL high-water and sampled file footprint are distinct metrics.
   general cross-engine transaction protocol.
 - `allocations.jsonl`: Rust System allocation requests only; excludes C/mmap,
   includes queries/oracles and is not a phase-isolated allocator measurement.
+- `memory.jsonl`: a disposable 64 MiB cgroup with swap disabled. Source copying
+  runs inside that cgroup so private source pages are charged there; existing
+  shared executable/image pages retain Linux first-touch accounting. The limit
+  is a cgroup allocation/cache budget, not a mathematical per-process RSS cap.
 - Process-crash probes use SIGKILL after a handshake, not power-failure tests.
   Successful recovery is checked against a fresh index from current source.
   Small definition-change probes append a definition marker; they do not test
