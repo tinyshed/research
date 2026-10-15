@@ -202,7 +202,7 @@ fn crash_worker() -> Result<()> {
 
 #[test]
 fn guarded_rebuilds_a_lost_unsynced_feed_tail_from_durable_wal() -> Result<()> {
-    for lost_bytes in [1, 37, 4096, usize::MAX] {
+    for lost_bytes in [0, 1, 37, 4096, usize::MAX] {
         let dir = tempfile::tempdir()?;
         let status = std::process::Command::new(std::env::current_exe()?)
             .args(["--ignored", "--exact", "tests::crash_worker"])
@@ -230,8 +230,19 @@ fn guarded_rebuilds_a_lost_unsynced_feed_tail_from_durable_wal() -> Result<()> {
             let len = u32::from_be_bytes(bytes[offset..offset + 4].try_into()?) as usize;
             offset += 36 + len;
         }
-        let start = *boundaries.last().ok_or("record missing")?;
-        file.set_len(bytes.len().saturating_sub(lost_bytes).max(start) as u64)?;
+        let start = if lost_bytes == usize::MAX {
+            boundaries[1]
+        } else {
+            *boundaries.last().ok_or("record missing")?
+        };
+        if lost_bytes == 0 {
+            use std::io::{Seek, SeekFrom, Write};
+            let mut file = &file;
+            file.seek(SeekFrom::End(-1))?;
+            file.write_all(&[bytes[bytes.len() - 1] ^ 1])?;
+        } else {
+            file.set_len(bytes.len().saturating_sub(lost_bytes).max(start) as u64)?;
+        }
         file.sync_all()?;
         drop(file);
         let f = fixture(dir.path(), Mode::WalGuarded)?;
