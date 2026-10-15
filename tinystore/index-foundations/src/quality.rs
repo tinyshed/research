@@ -98,9 +98,50 @@ pub fn run() {
     c.execute_batch("begin;alter table old_index rename to retired_index;alter table new_index rename to old_index;commit").unwrap();
     let renamed = prepared.query_row([], |r| r.get::<_, i64>(0)).unwrap();
     assert_eq!(renamed, 2);
+    c.execute_batch(fixture::SCHEMA).unwrap();
+    native::create(&c, 42, "geo");
+    for (i, (x, y)) in points.iter().enumerate() {
+        let d = fixture::Doc {
+            id: i as i64,
+            body: String::new(),
+            terms: String::new(),
+            category: 0,
+            score: 0.,
+            x: *x,
+            y: *y,
+            other: 0,
+        };
+        fixture::insert(&c, &d);
+        native::add(&c, 42, "geo", &d, 1);
+    }
+    let mut certificates = vec![];
+    for (bounds, wanted) in [
+        (q, vec![4]),
+        ((-180., -180., -90., -90.), vec![0]),
+        ((180., 180., 90., 90.), vec![1]),
+        ((179.9, 180., -1., 1.), vec![2]),
+        ((-180., -179.9, -1., 1.), vec![3]),
+    ] {
+        let ids = native::certified_box(&c, 42, bounds);
+        assert_eq!(ids, wanted);
+        certificates.push(json!({"bounds":bounds,"actual":ids}));
+    }
+    c.execute(
+        "insert into documents values(100,'invalid','invalid',0,0,null,0,0)",
+        [],
+    )
+    .unwrap();
+    let invalid = c.execute("insert into g42 values(100,null,null,0,0)", []);
+    let invalid_certificate = if invalid.is_ok() {
+        native::certified_box(&c, 42, (-1., 1., -1., 1.)).contains(&100)
+    } else {
+        false
+    };
+    let invalid_exact:i64=c.query_row("select count(*) from documents where id=100 and x between -1 and 1 and y between -1 and 1",[],|r|r.get(0)).unwrap();
+    assert_eq!(invalid_exact, 0);
     println!(
         "{}",
-        json!({"experiment":"quality","russian_gold":results,"geo_candidates":candidates,"geo_exact_matches":refined,"dateline_matches":dateline,"prepared_rename_count":renamed,"sqlite":rusqlite::version(),"status":"pass"})
+        json!({"experiment":"quality","russian_gold":results,"certified_valid_boxes":certificates,"null_coordinate_rtree_accepted":invalid.is_ok(),"certified_false_positive_without_input_validation":invalid_certificate,"geo_candidates":candidates,"geo_exact_matches":refined,"dateline_matches":dateline,"prepared_rename_count":renamed,"sqlite":rusqlite::version(),"status":"pass"})
     );
     let _ = native::table(0);
 }

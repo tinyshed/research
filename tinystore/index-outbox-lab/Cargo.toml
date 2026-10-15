@@ -1,0 +1,18 @@
+[package]
+name = "index-outbox-lab"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[features]
+alloc-metrics = []
+
+[dependencies]
+rusqlite = { version = "=0.40.2", features = ["bundled", "hooks", "functions"] }
+serde_json = "=1.0.151"
+libc = "=0.2.190"
+rust-stemmers = "=1.2.0"
+tantivy = { version = "=0.26.2", default-features = false, features = ["mmap", "lz4-compression"] }
+
+[profile.release]
+debug = 1

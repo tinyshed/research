@@ -23,7 +23,18 @@ pub fn open(path: &str) -> Connection {
         |ctx| Ok(ctx.get::<f64>(0)?.floor()),
     )
     .unwrap();
+    c.pragma_update(None, "cache_size", -(cache_kib() as i64))
+        .unwrap();
     c
+}
+pub fn cache_kib() -> u32 {
+    std::env::var("BENCH_CACHE_KIB")
+        .ok()
+        .map(|s| s.parse().unwrap())
+        .unwrap_or(4096)
+}
+pub fn page_diagnostics() -> bool {
+    std::env::var_os("BENCH_PAGE_DIAGNOSTICS").is_some()
 }
 pub fn memory() -> Value {
     let text = std::fs::read_to_string("/proc/self/status").unwrap();
@@ -81,6 +92,8 @@ pub fn wal_bytes(path: &str) -> u64 {
     bytes(&format!("{path}-wal"))
 }
 static WAL_SALT: AtomicU64 = AtomicU64::new(0);
+pub static WAL_UNIQUE_SUM: AtomicU64 = AtomicU64::new(0);
+pub static WAL_COMMIT_UNIQUE: AtomicU64 = AtomicU64::new(0);
 pub static WAL_LAST: AtomicU64 = AtomicU64::new(0);
 pub static WAL_FRAMES: AtomicU64 = AtomicU64::new(0);
 pub static WAL_COMMIT_FRAMES: AtomicU64 = AtomicU64::new(0);
@@ -101,6 +114,28 @@ pub fn observe_wal(c: &Connection) {
         } else {
             now - previous
         };
+        if page_diagnostics() {
+            let first = if salt != oldsalt || now < previous {
+                0
+            } else {
+                previous
+            };
+            let mut unique = std::collections::HashSet::new();
+            let mut buffer = vec![0u8; 4120 * 1024];
+            let mut frame = first;
+            while frame < now {
+                let count = (now - frame).min(1024) as usize;
+                let len = count * 4120;
+                f.read_exact_at(&mut buffer[..len], 32 + frame * 4120)
+                    .unwrap();
+                for bytes in buffer[..len].chunks_exact(4120) {
+                    unique.insert(u32::from_be_bytes(bytes[..4].try_into().unwrap()));
+                }
+                frame += count as u64;
+            }
+            WAL_COMMIT_UNIQUE.store(unique.len() as u64, Ordering::Relaxed);
+            WAL_UNIQUE_SUM.fetch_add(unique.len() as u64, Ordering::Relaxed);
+        }
         WAL_FRAMES.fetch_add(delta, Ordering::Relaxed);
         WAL_COMMIT_FRAMES.store(delta, Ordering::Relaxed);
         WAL_COMMITS.fetch_add(1, Ordering::Relaxed);
@@ -110,7 +145,7 @@ pub fn observe_wal(c: &Connection) {
 }
 pub fn wal_stats() -> Value {
     json!({"frames":WAL_FRAMES.load(Ordering::Relaxed),
-    "frame_bytes":WAL_FRAMES.load(Ordering::Relaxed)*4120,"commits":WAL_COMMITS.load(Ordering::Relaxed),
+    "frame_bytes":WAL_FRAMES.load(Ordering::Relaxed)*4120,"distinct_pages_per_commit_sum":if page_diagnostics(){Some(WAL_UNIQUE_SUM.load(Ordering::Relaxed))}else{None},"page_diagnostics":page_diagnostics(),"commits":WAL_COMMITS.load(Ordering::Relaxed),
     "peak_logical_bytes":WAL_PEAK.load(Ordering::Relaxed)})
 }
 pub fn checkpoint(c: &Connection) {
@@ -173,4 +208,57 @@ pub fn allocations() -> Value {
     return json!({"rust_calls":allocations::CALLS.load(Ordering::Relaxed),"rust_requested_bytes":allocations::BYTES.load(Ordering::Relaxed),"scope":"Rust System allocations only; excludes SQLite C and mmap"});
     #[cfg(not(feature = "alloc-metrics"))]
     json!(null)
+}
+
+pub fn temporary_bytes() -> u64 {
+    std::fs::read_dir("/proc/self/fd")
+        .unwrap()
+        .filter_map(Result::ok)
+        .filter(|entry| {
+            std::fs::read_link(entry.path()).is_ok_and(|p| p.to_string_lossy().contains("etilqs"))
+        })
+        .map(|entry| bytes(entry.path().to_str().unwrap()))
+        .sum()
+}
+pub fn inspect() {
+    let c = open(&path());
+    validate(&c);
+    let count: i64 = c
+        .query_row("select count(*) from documents", [], |r| r.get(0))
+        .unwrap();
+    let bounds: (Option<i64>, Option<i64>) = c
+        .query_row("select min(id),max(id) from documents", [], |r| {
+            Ok((r.get(0)?, r.get(1)?))
+        })
+        .unwrap();
+    let generations:Vec<serde_json::Value>=c.prepare("select id,kind,state,definition,active from generation order by id").unwrap().query_map([],|r|Ok(json!({"id":r.get::<_,i64>(0)?,"kind":r.get::<_,String>(1)?,"state":r.get::<_,String>(2)?,"definition":r.get::<_,i64>(3)?,"active":r.get::<_,i64>(4)?}))).unwrap().map(Result::unwrap).collect();
+    for g in &generations {
+        if g["active"] == 1 {
+            let id = g["id"].as_i64().unwrap();
+            let kind = g["kind"].as_str().unwrap();
+            if kind.starts_with("fts") && g["definition"] == 1 {
+                c.execute_batch(&format!(
+                    "insert into g{id}(g{id},rank) values('integrity-check',1)"
+                ))
+                .unwrap();
+            }
+            if kind == "geo" {
+                let result: String = c
+                    .query_row("select rtreecheck(?1)", [format!("g{id}")], |r| r.get(0))
+                    .unwrap();
+                assert_eq!(result, "ok");
+            }
+        }
+    }
+    let options: Vec<String> = c
+        .prepare("pragma compile_options")
+        .unwrap()
+        .query_map([], |r| r.get(0))
+        .unwrap()
+        .map(Result::unwrap)
+        .collect();
+    println!(
+        "{}",
+        json!({"experiment":"inspect","rows":count,"id_bounds":bounds,"generation":generations,"sqlite":rusqlite::version(),"compile_options":options,"cache_kib":cache_kib(),"memory":memory(),"status":"pass"})
+    );
 }

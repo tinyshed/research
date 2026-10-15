@@ -1,3 +1,4 @@
+#![recursion_limit = "512"]
 mod alternatives;
 mod common;
 mod fixture;
@@ -18,6 +19,8 @@ fn main() {
         "crash" => rebuild::crash(&args[1..]),
         "recover" => rebuild::recover(&args[1..]),
         "quality" => quality::run(),
+        "inspect" => common::inspect(),
+        "geo-probe" => native::geo_probe(&args[1..]),
         "alternative" => alternatives::run(&args[1..]),
         "prepare" => {
             let c = common::open(&common::path());
@@ -36,6 +39,8 @@ fn main() {
         "locks" => integration::locks(&args[1..]),
         #[cfg(feature = "product")]
         "lease-check" => integration::check(),
+        #[cfg(feature = "product")]
+        "core-sql-check" => integration::sql_check(),
         #[cfg(feature = "product")]
         "lease-crash" => integration::crash(),
         #[cfg(feature = "product")]

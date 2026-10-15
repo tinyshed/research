@@ -174,6 +174,29 @@ pub fn triggers(c: &Connection, g: i64, kind: &str, algorithm: &str, guard: bool
         dirty("new"),dirty("old"),dirty("old"),dirty("new"))).unwrap();
 }
 pub fn build(c: &Connection, g: i64, kind: &str, definition: i64) {
+    if kind == "geo" && std::env::var_os("BENCH_SQL_BULK").is_some() {
+        let order = std::env::var("BENCH_BUILD_ORDER").unwrap_or("rowid".to_owned());
+        c.create_scalar_function(
+            "mixid",
+            1,
+            rusqlite::functions::FunctionFlags::SQLITE_DETERMINISTIC
+                | rusqlite::functions::FunctionFlags::SQLITE_UTF8,
+            |ctx| Ok(fixture::mix(ctx.get::<i64>(0)? as u64) as i64),
+        )
+        .unwrap();
+        let by = match order.as_str() {
+            "rowid" => "id",
+            "spatial" => "x,y,id",
+            "shuffled" => "mixid(id),id",
+            _ => panic!("unknown build order"),
+        };
+        c.execute_batch(&format!(
+            "insert into g{g} select id,x,x,y,y from documents order by {by}"
+        ))
+        .unwrap();
+        return;
+    }
+
     let mut cursor = None;
     loop {
         let docs = fixture::read(c, cursor, i64::MAX, 1000);
@@ -345,6 +368,20 @@ pub fn run(a: &[String]) {
     let initial = memory();
     let cpu0 = cpu();
     observe_wal(&c);
+    let build_only = std::env::var_os("BENCH_BUILD_ONLY").is_some();
+    let watching = std::sync::Arc::new(std::sync::atomic::AtomicBool::new(true));
+    let temp_peak = std::sync::Arc::new(std::sync::atomic::AtomicU64::new(0));
+    let monitor = if build_only {
+        let (s, p) = (watching.clone(), temp_peak.clone());
+        Some(std::thread::spawn(move || {
+            while s.load(std::sync::atomic::Ordering::Relaxed) {
+                p.fetch_max(temporary_bytes(), std::sync::atomic::Ordering::Relaxed);
+                std::thread::sleep(std::time::Duration::from_millis(10));
+            }
+        }))
+    } else {
+        None
+    };
     let begin = Instant::now();
     c.execute_batch("begin immediate").unwrap();
     generation(&c, 0, kind, "active", 1, true, true);
@@ -355,7 +392,21 @@ pub fn run(a: &[String]) {
     let build_us = us(begin);
     let build_wal = wal_stats();
     let build_objects = objects(&c);
+    let before_checkpoint_db = bytes(&path);
+    let before_checkpoint_wal = wal_bytes(&path);
     checkpoint(&c);
+    watching.store(false, std::sync::atomic::Ordering::Relaxed);
+    if let Some(h) = monitor {
+        h.join().unwrap();
+    }
+    if build_only {
+        let counts:(i64,i64)=c.query_row("select sum(length(cast(body as blob))),sum(length(cast(terms as blob))) from documents",[],|r|Ok((r.get(0)?,r.get(1)?))).unwrap();
+        println!(
+            "{}",
+            json!({"experiment":"build-only","kind":kind,"rows":n,"shape":shape,"source_order":order,"build_order":std::env::var("BENCH_BUILD_ORDER").unwrap_or("rowid".to_owned()),"sql_bulk":std::env::var_os("BENCH_SQL_BULK").is_some(),"cache_kib":cache_kib(),"build_us_including_diagnostic_observer":build_us,"build_wal":build_wal,"build_objects":build_objects,"initial_memory":initial,"final_memory":memory(),"db_bytes_before_checkpoint":before_checkpoint_db,"wal_file_before_checkpoint":before_checkpoint_wal,"db_bytes":bytes(&path),"checkpoint_peak_db_plus_wal_upper_bound":bytes(&path)+before_checkpoint_wal,"sampled_temp_file_peak_bytes":temp_peak.load(std::sync::atomic::Ordering::Relaxed),"source_body_utf8_bytes":counts.0,"source_terms_utf8_bytes":counts.1,"numeric_logical_bytes_per_row":48,"cpu_s_including_payload_sum":cpu()-cpu0,"allocations":allocations(),"status":"pass"})
+        );
+        return;
+    }
     let mut query_times = vec![];
     let mut query_samples = vec![];
     let mut checksum = 0u64;
@@ -410,5 +461,50 @@ pub fn run(a: &[String]) {
         "all_wal":wal_stats(),"initial_memory":initial,"final_memory":memory(),
         "disk_bytes":bytes(&path),"wal_file_bytes":wal_bytes(&path),"objects":objects(&c),"cpu_s":cpu()-cpu0,
         "allocations":allocations(),"sqlite":rusqlite::version(),"status":"pass"})
+    );
+}
+
+pub fn certified_box(c: &Connection, g: i64, rect: (f64, f64, f64, f64)) -> Vec<i64> {
+    let (x0, x1, y0, y1) = rect;
+    c.prepare_cached(&format!("select g.id from g{g} g
+    where g.minx<=?2 and g.maxx>=?1 and g.miny<=?4 and g.maxy>=?3
+    and case when g.minx>=?1 and g.maxx<=?2 and g.miny>=?3 and g.maxy<=?4 then 1
+    else exists(select 1 from documents d where d.id=g.id and d.x>=?1 and d.x<=?2 and d.y>=?3 and d.y<=?4) end
+    order by g.id")).unwrap().query_map(params![x0,x1,y0,y1],|r|r.get(0)).unwrap().map(Result::unwrap).collect()
+}
+pub fn geo_probe(a: &[String]) {
+    let n: usize = a[0].parse().unwrap();
+    let shape = &a[1];
+    let c = open(&path());
+    if !a.get(2).is_some_and(|v| v == "prepared") {
+        fixture::seed(&c, n, shape, "ordered", 1000);
+        initialize_active(&c, "geo", true);
+    }
+    let mut samples = vec![];
+    let cpu0 = cpu();
+    for q in 0..32 {
+        let (plain, certified, plain_us, certified_us) = if q % 2 == 0 {
+            let t = Instant::now();
+            let a = query(&c, 0, "geo", q, shape);
+            let au = us(t);
+            let t = Instant::now();
+            let b = certified_box(&c, 0, rect(q, shape));
+            let bu = us(t);
+            (a, b, au, bu)
+        } else {
+            let t = Instant::now();
+            let b = certified_box(&c, 0, rect(q, shape));
+            let bu = us(t);
+            let t = Instant::now();
+            let a = query(&c, 0, "geo", q, shape);
+            let au = us(t);
+            (a, b, au, bu)
+        };
+        assert_eq!(plain, certified);
+        samples.push(json!({"q":q,"bucket":q%4,"plain_us":plain_us,"certified_us":certified_us,"matched":plain.len(),"checksum":hash_ids(&plain)}));
+    }
+    println!(
+        "{}",
+        json!({"experiment":"geo-certified","rows":n,"shape":shape,"cache_kib":cache_kib(),"samples":samples,"samples_per_selectivity":8,"memory":memory(),"cpu_s":cpu()-cpu0,"status":"pass"})
     );
 }

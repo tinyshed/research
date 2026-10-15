@@ -313,3 +313,78 @@ pub fn recover() {
     );
     store.close().unwrap();
 }
+
+pub fn sql_check() {
+    let store = tinystore::Store::open(
+        path(),
+        tinystore::Options {
+            background: false,
+            ..Default::default()
+        },
+    )
+    .unwrap();
+    let db = store.database("native-index-probe").open().unwrap();
+    db.exec("create table docs(id integer primary key,body text,x real,y real)")
+        .unwrap();
+    db.exec("create virtual table words using fts5(body,content='docs',content_rowid='id',detail=none,columnsize=0)").unwrap();
+    db.exec("create virtual table points using rtree(id,x0,x1,y0,y1)")
+        .unwrap();
+    db.exec("create trigger maintain_words after insert on docs begin insert into words(rowid,body) values(new.id,new.body);insert into points values(new.id,new.x,new.x,new.y,new.y);end").unwrap();
+    let trigger_result =
+        db.exec("insert into docs values(1,'город машина',37.60000001,55.70000001)");
+    let trigger_error = trigger_result.as_ref().err().map(ToString::to_string);
+    db.exec("drop trigger maintain_words").unwrap();
+    if trigger_result.is_err() {
+        let count: i64 = db.scalar("select count(*) from docs").unwrap();
+        assert_eq!(count, 0);
+        db.batch([
+            "insert into docs values(1,'город машина',37.60000001,55.70000001)",
+            "insert into words(rowid,body) values(1,'город машина')",
+            "insert into points values(1,37.60000001,37.60000001,55.70000001,55.70000001)",
+        ])
+        .unwrap();
+    }
+    let fts: i64 = db
+        .scalar("select count(*) from words where words match 'город'")
+        .unwrap();
+    assert_eq!(fts, 1);
+    let geo:i64=db.scalar("select count(*) from points p join docs d on d.id=p.id where p.x0<=37.600000015 and p.x1>=37.600000005 and p.y0<=55.700000015 and p.y1>=55.700000005 and d.x between 37.600000005 and 37.600000015 and d.y between 55.700000005 and 55.700000015").unwrap();
+    assert_eq!(geo, 1);
+    let rollback = db.tx(|tx| -> tinystore::Result<()> {
+        tx.exec("insert into docs values(2,'rollback',0,0)")?;
+        tx.exec("insert into words(rowid,body) values(2,'rollback')")?;
+        tx.exec("insert into points values(2,0,0,0,0)")?;
+        Err(tinystore::Error::invalid("research rollback"))
+    });
+    assert!(rollback.is_err());
+    let missing: i64 = db
+        .scalar("select count(*) from words where words match 'rollback'")
+        .unwrap();
+    assert_eq!(missing, 0);
+    let b = db.bucket::<String>("lease").open().unwrap();
+    let q = db.queue::<String>("work").open().unwrap();
+    db.tx(|tx| -> tinystore::Result<()> {
+        tx.with(&b).set("r", &"owner".to_owned())?;
+        tx.with(&q).set("job", &"payload".to_owned())?;
+        tx.exec("insert into docs values(2,'atomic',0,0)")?;
+        tx.exec("insert into words(rowid,body) values(2,'atomic')")?;
+        tx.exec("insert into points values(2,0,0,0,0)")?;
+        Ok(())
+    })
+    .unwrap();
+    assert_eq!(b.get("r").unwrap(), Some("owner".to_owned()));
+    assert!(q.get("job").unwrap().is_some());
+    let fts_integrity = db
+        .exec("insert into words(words,rank) values('integrity-check',1)")
+        .map(|_| "ok".to_owned())
+        .unwrap_or_else(|e| e.to_string());
+    let rtree_integrity: String = db.scalar("select rtreecheck('points')").unwrap();
+    assert_eq!(rtree_integrity, "ok");
+    let contentless_probe=db.exec("create virtual table contentless_probe using fts5(body,content='',contentless_delete=1,detail=none)").and_then(|_|{db.exec("insert into contentless_probe(rowid,body) values(1,'город')")?;db.exec("delete from contentless_probe where rowid=1")?;let count:i64=db.scalar("select count(*) from contentless_probe where contentless_probe match 'город'")?;assert_eq!(count,0);Ok(())}).map(|_|"ok".to_owned()).unwrap_or_else(|e|e.to_string());
+    let trusted_schema: Option<i64> = db.scalar("pragma trusted_schema").ok();
+    println!(
+        "{}",
+        json!({"experiment":"core-sql-index-check","trusted_schema":trusted_schema,"contentless_delete_probe":contentless_probe,"trigger_maintenance_error":trigger_error,"manual_same_file_batch":true,"rollback":true,"same_file_sql_kv_jobs_transaction":true,"fts_integrity":fts_integrity,"rtree_integrity":rtree_integrity,"status":"pass"})
+    );
+    store.close().unwrap();
+}

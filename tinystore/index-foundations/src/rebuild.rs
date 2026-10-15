@@ -24,6 +24,7 @@ struct BuildStats {
     holds: Vec<u64>,
     commit_frames: Vec<u64>,
     row_limit: usize,
+    activation_us: u64,
     checkpoint_holds: Vec<u64>,
     setup_us: u64,
 }
@@ -242,6 +243,9 @@ pub fn run(a: &[String]) {
     native::triggers(&c, 0, kind, "active", guard);
     checkpoint(&c);
     observe_wal(&c);
+    let continuous = std::env::var_os("BENCH_CONTINUOUS").is_some();
+    let builder_done = Arc::new(AtomicBool::new(false));
+    let foreground_done = builder_done.clone();
     let baseline_memory = memory();
     let cpu0 = cpu();
     let writer = Arc::new(Mutex::new(c));
@@ -269,7 +273,8 @@ pub fn run(a: &[String]) {
         let mut blocked = vec![];
         let mut service = vec![];
         let mut changed = 0u64;
-        for seq in 0..ops {
+        let mut seq = 0;
+        while seq < ops || (continuous && !foreground_done.load(Ordering::Relaxed)) {
             let target = origin + Duration::from_micros(seq as u64 * 1000);
             if target > Instant::now() {
                 std::thread::sleep(target.saturating_duration_since(Instant::now()));
@@ -318,8 +323,9 @@ pub fn run(a: &[String]) {
             service.push(us(held));
             drop(c);
             latencies.push(target.elapsed().as_micros() as u64);
+            seq += 1;
         }
-        json!({"transactions":ops,"affected_rows":changed,"scheduled_latency":distribution(&mut latencies),
+        json!({"transactions":seq,"minimum_transactions":ops,"affected_rows":changed,"scheduled_latency":distribution(&mut latencies),
             "writer_queue":distribution(&mut blocked),"writer_service":distribution(&mut service)})
     });
     let mut readers = vec![];
@@ -395,10 +401,12 @@ pub fn run(a: &[String]) {
             let c = writer.lock().unwrap();
             let held = Instant::now();
             reconciled = complete(&c, 1);
-            b.holds.push(us(held));
+            b.activation_us = us(held);
+            b.holds.push(b.activation_us);
         }
     }
     let rebuild_us = us(rebuilding);
+    builder_done.store(true, Ordering::Relaxed);
     let fg = foreground.join().unwrap();
     let total_s = origin.elapsed().as_secs_f64();
     stop.store(true, Ordering::Relaxed);
@@ -414,7 +422,7 @@ pub fn run(a: &[String]) {
     println!(
         "{}",
         json!({"experiment":"rebuild","kind":kind,"algorithm":algo,"rows":n,"shape":shape,"guard":if guard{"selective"}else{"full"},
-        "time_budget_us":time_budget,"wal_frame_budget":page_budget,"tx_rows":tx_rows,"indexed_update_percent":indexed_percent,
+        "activation_hold_us":b.activation_us,"continuous_foreground":continuous,"cache_kib":cache_kib(),"time_budget_us":time_budget,"wal_frame_budget":page_budget,"tx_rows":tx_rows,"indexed_update_percent":indexed_percent,
         "rebuild_us":rebuild_us,"rebuild_rows_per_s":b.rows as f64*1e6/rebuild_us.max(1) as f64,"chunks":b.chunks,
         "backfill_rows":b.rows,"backfill_input_bytes_lower_bound":b.input_bytes,"builder_wal_frames":b.frames,"reconciled_dirty_ids":reconciled,
         "time_budget_overruns":b.time_overruns,"frame_budget_overruns":b.page_overruns,"builder_holds":distribution(&mut b.holds),
@@ -451,6 +459,8 @@ pub fn check(a: &[String]) {
         fixture::insert(&c, &f.doc(id));
     }
     native::initialize_active(&c, kind, true);
+    let mut old = c.prepare("select count(*) from g0").unwrap();
+    let old_before: i64 = old.query_row([], |r| r.get(0)).unwrap();
     start(&c, 1, kind, algo, true, 2);
     chunk(&c, 1, 3, 0);
     // Changes on both sides, insertion into holes, rowid moves and reuse are all transactional.
@@ -467,6 +477,7 @@ pub fn check(a: &[String]) {
     fixture::insert(&c, &f.doc(-2));
     while !chunk(&c, 1, 3, 0).0 {}
     complete(&c, 1);
+    fixture::insert(&c, &f.doc(2000));
     // Re-request a different definition midway; the old build is retired, never relabelled in place.
     start(&c, 2, kind, algo, true, 3);
     chunk(&c, 2, 2, 0);
@@ -476,23 +487,27 @@ pub fn check(a: &[String]) {
     complete(&c, 3);
     let validation = verify(&c, "uniform");
     // Prepared direct SQL uses its physical table; registry switching does not retarget it.
-    let mut old = c
-        .prepare_cached(if kind == "fts" {
-            "select count(*) from g0"
-        } else {
-            "select count(*) from g0"
-        })
-        .unwrap();
     let old_count: i64 = old.query_row([], |r| r.get(0)).unwrap();
     let active_count: i64 = c
         .query_row("select count(*) from g3", [], |r| r.get(0))
         .unwrap();
+    assert_eq!(active_count, old_count + 1);
     println!(
         "{}",
-        json!({"experiment":"rebuild-check","kind":kind,"algorithm":algo,"validation":validation,
+        json!({"experiment":"rebuild-check","prepared_before_switch_count":old_before,"kind":kind,"algorithm":algo,"validation":validation,
         "old_physical_table_count":old_count,"active_count":active_count,"prepared_statement_auto_retarget":false,
         "checks":["minimum i64 id","holes","past/future update/delete","rowid crossing frontier both directions","insert above H","delete-reinsert","definition superseded"],"status":"pass"})
     );
+}
+
+fn resume_chunks(c: &Connection, g: i64) {
+    let mut count = 0;
+    while !chunk(c, g, 100, 0).0 {
+        count += 1;
+        if count % 100 == 0 {
+            checkpoint(c);
+        }
+    }
 }
 
 pub fn crash(a: &[String]) {
@@ -502,8 +517,11 @@ pub fn crash(a: &[String]) {
     let stage = &a[2];
     let path = path();
     let c = open(&path);
-    fixture::seed(&c, 300, "uniform", "ordered", 100);
-    native::initialize_active(&c, kind, true);
+    let n: usize = a.get(3).map(|v| v.parse().unwrap()).unwrap_or(300);
+    if !a.get(4).is_some_and(|v| v == "prepared") {
+        fixture::seed(&c, n, "uniform", "ordered", 100);
+        native::initialize_active(&c, kind, true);
+    }
     start(&c, 1, kind, algo, true, 2);
     match stage.as_str() {
         "prepared" => {}
@@ -514,9 +532,10 @@ pub fn crash(a: &[String]) {
         }
         "chunk-committed" => {
             chunk(&c, 1, 50, 0);
+            c.execute_batch(&format!("begin immediate;delete from documents where id=1;update documents set terms='changed future',x=179.99999999 where id={n};update documents set id={} where id=3;commit",n+1000)).unwrap();
         }
         "switch-uncommitted" | "switched" | "retire-uncommitted" => {
-            while !chunk(&c, 1, 100, 0).0 {}
+            resume_chunks(&c, 1);
             if stage == "switch-uncommitted" {
                 c.execute_batch("begin immediate").unwrap();
                 finish(&c, 1);
@@ -548,13 +567,15 @@ pub fn recover(_a: &[String]) {
         .optional()
         .unwrap();
     if let Some(g) = pending {
-        while !chunk(&c, g, 100, 0).0 {}
+        resume_chunks(&c, g);
         complete(&c, g);
     }
     let recovery_us = us(start);
+    let resume_memory = memory();
+    let resume_wal = wal_bytes(&path);
     let validation = verify(&c, "uniform");
     println!(
         "{}",
-        json!({"experiment":"recovery","recovery_us":recovery_us,"resumed":pending,"validation":validation,"status":"pass"})
+        json!({"experiment":"recovery","recovery_us":recovery_us,"resumed":pending,"memory_after_resume":resume_memory,"wal_after_resume_bytes":resume_wal,"validation_wal_bytes":wal_bytes(&path),"recovery_checkpoint_policy":"truncate per 100 chunks before serving","validation":validation,"status":"pass"})
     );
 }

@@ -66,3 +66,32 @@ Its research lease row is never TTL-deleted, preserving fencing counters. The
 FIFO prototype uses condition variables and is intentionally simple; per-resource
 admission must not become one global lock. Successful completed wait samples
 exclude canceled requests, which are counted separately.
+
+## Follow-up diagnostics
+
+The initial controlled matrix keeps 2000 foreground transactions, starting with
+the build, to compare identical mutations. BENCH_CONTINUOUS=1 instead keeps
+writes running until publication (at least 2000); compare its rates/tails and
+activation hold, not raw cumulative bytes against the shorter baseline.
+BENCH_CACHE_KIB selects cache size; the matrix uses 4096, current Core uses 1024.
+BENCH_PAGE_DIAGNOSTICS=1 parses WAL frame page numbers and reports distinct
+pages per commit. It adds observer work and is a separate diagnostic cohort.
+BENCH_BUILD_ONLY=1 omits query/mutation phases. BENCH_SQL_BULK=1 for geo uses
+SQLite INSERT SELECT with BENCH_BUILD_ORDER=rowid|spatial|shuffled.
+
+sensitivity.py covers cache/order/physical pages and continuous writes.
+large-crashes.py repeats key failures at 100k/1m; memory.py controls disposable
+64 MiB cgroups from the outer Docker host. inspect checks recovered SQLite,
+FTS rank-1 integrity and RTree structure. core-sql-check exercises actual public
+Core SQL, trigger compatibility and co-located KV/Jobs transactions.
+
+The certified geo query avoids source lookups only for outward RTree boxes
+wholly contained in the query, using lazy CASE. Its proof requires finite,
+non-NULL, validated earth coordinates and an atomically consistent source/index
+snapshot. quality contains a NULL counterexample when those invariants are not
+enforced. geo-probe is a same-connection A/B with eight samples per selectivity,
+intended to validate a large effect, not establish a production p99.
+
+The grid prototype registers a research-only floor scalar; it is not a function
+currently added to Core. A portable SQL implementation must express floor using
+standard arithmetic/CASE or arrange an approved connection function.

@@ -46,15 +46,18 @@ for(let i=0;i<subscribers;i++){
   stream.consumed(bytes.length)
  } }catch(e){if(!(e as Error).message.includes('cancel'))throw e}})())
 }
-const subscribed=memory();const cpu0=process.cpuUsage();const started=performance.now()
+const subscribed=memory();const idleCpu0=process.cpuUsage();const idleStatus0=JSON.parse(new TextDecoder().decode(await call(publisher,60003)));const idleStart=performance.now();await Bun.sleep(200);const idleMs=performance.now()-idleStart;const idleStatus1=JSON.parse(new TextDecoder().decode(await call(publisher,60003)));const idleCpu=process.cpuUsage(idleCpu0);const cpu0=process.cpuUsage();let started=performance.now()
 const count=profile==='slow'?1200:profile==='slow-window'?2600:profile==='burst'?2000:1000,rate=profile==='slow'||profile==='slow-window'?400:profile==='burst'?0:200
+const burst:Promise<any>[]=[]
 const rollbacks=10
 for(let i=0;i<rollbacks;i++)await call(publisher,60002,new Uint8Array(1024))
+started=performance.now()
 for(let seq=0;seq<count;seq++){
  const target=rate===0?started:started+seq*1000/rate;const wait=target-performance.now();if(wait>0)await Bun.sleep(wait)
  const payload=new Uint8Array(1024).fill(7);const v=new DataView(payload.buffer);v.setBigUint64(0,BigInt(seq),true);v.setFloat64(8,performance.now(),true)
- await call(publisher,60001,payload)
+ if(profile==='burst'){burst.push(call(publisher,60005,payload));if(burst.length===32){await Promise.all(burst);burst.length=0}}else{await call(publisher,profile==='commit'?60001:60005,payload)}
 }
+if(burst.length)await Promise.all(burst)
 const publishMs=performance.now()-started
 resumeSlow();
 if(profile==='slow')for(const {slow,c,stream} of streams)if(slow)c.session.post(credit(stream.id,2<<20))
@@ -72,5 +75,5 @@ await Bun.sleep(20);const noReplay=!replay;stream.cancel();await pending;await f
 for(const c of connections)await c.close();await publisher.close();clearInterval(pump);if(hub)symbols.lab_close(hub)
 latencies.sort((a,b)=>a-b);const pct=(q:number)=>latencies[Math.ceil((latencies.length-1)*q)]??0
 const subgroup=(values:number[])=>{values.sort((a,b)=>a-b);return {n:values.length,p50Us:values[Math.ceil((values.length-1)*.5)]??0,p99Us:values[Math.ceil((values.length-1)*.99)]??0}}
-console.log(JSON.stringify({experiment:'channels-wire',mode,algorithm,profile,subscribers,connectionCount,payloadBytes:1024,offeredRate:rate,published:count,rollbackAttempts:rollbacks,publishMs,publishedPerS:count*1000/publishMs,delivered:received,expectedDeliveries:count*subscribers,lost:count*subscribers-received,deliveredBySubscriber:delivered,gapFrames:gaps.reduce((a,b)=>a+b,0),gapMissed:missed,orderingErrors,latency:{n:latencies.length,sampleEvery:16,p50Us:pct(.5),p99Us:pct(.99)},fastLatency:subgroup(fastLatencies),slowLatency:subgroup(slowLatencies),idleMemory:idle,subscribedMemory:subscribed,endMemory,cpuUs:cpu,status,afterCancel,noReplay,statusText:'pass'}))
+console.log(JSON.stringify({experiment:'channels-wire',mode,algorithm,profile,commitPerPublish:profile==='commit',publishConcurrency:profile==='burst'?32:1,subscribers,connectionCount,payloadBytes:1024,offeredRate:rate,published:count,rollbackAttempts:rollbacks,publishMs,publishedPerS:count*1000/publishMs,delivered:received,expectedDeliveries:count*subscribers,lost:count*subscribers-received,deliveredBySubscriber:delivered,gapFrames:gaps.reduce((a,b)=>a+b,0),gapMissed:missed,orderingErrors,latency:{n:latencies.length,sampleEvery:16,p50Us:pct(.5),p99Us:pct(.99)},fastLatency:subgroup(fastLatencies),slowLatency:subgroup(slowLatencies),idleMemory:idle,subscribedMemory:subscribed,endMemory,cpuUs:cpu,idleCpuUs:idleCpu,idleMs,idleServerCpuS:idleStatus1.cpu_s-idleStatus0.cpu_s,status,afterCancel,noReplay,statusText:'pass'}))
 if(status.published!==count||orderingErrors!==0||afterCancel.active_subscriptions!==0||!noReplay)throw Error('channel correctness invariant failed')

@@ -9,6 +9,15 @@ use std::{
 use tinystore::{Store, pipe::Pipe};
 use tokio::sync::broadcast;
 
+fn cpu_s() -> f64 {
+    let mut r = std::mem::MaybeUninit::<libc::rusage>::uninit();
+    unsafe {
+        assert_eq!(libc::getrusage(libc::RUSAGE_SELF, r.as_mut_ptr()), 0);
+        let r = r.assume_init();
+        (r.ru_utime.tv_sec + r.ru_stime.tv_sec) as f64
+            + (r.ru_utime.tv_usec + r.ru_stime.tv_usec) as f64 / 1e6
+    }
+}
 const CAP: usize = 256;
 type Payload = Arc<Vec<u8>>;
 struct State {
@@ -120,7 +129,7 @@ impl Connection {
                     frame(&mut self.out, 4, 0, id, &[]);
                     frame(&mut self.out, 7, 0, 0, &(n as u32).to_le_bytes());
                 }
-                (3, 60001) | (3, 60002) => {
+                (3, 60001) | (3, 60002) | (3, 60005) => {
                     // Serialize completion -> sequence assignment. This is a research
                     // adapter, not a measured grouped-commit notification hook.
                     let mut state = self.hub.state.lock().unwrap();
@@ -132,7 +141,9 @@ impl Connection {
                         });
                         assert!(r.is_err());
                     } else {
-                        self.hub.bucket.set("last", &seq.to_string()).unwrap();
+                        if method == 60001 {
+                            self.hub.bucket.set("last", &seq.to_string()).unwrap();
+                        }
                         let payload = Arc::new(body.to_vec());
                         if self.hub.ring {
                             if state.ring.len() == CAP {
@@ -150,7 +161,7 @@ impl Connection {
                 }
                 (3, 60003) => {
                     let s = self.hub.state.lock().unwrap();
-                    let status = serde_json::json!({"published":s.published,"wire_sent":s.sent,"gap_frames":s.gaps,"active_subscriptions":s.active,"connections":s.connections,"retained_payloads":if self.hub.ring{s.ring.len()}else{s.tx.len()},"capacity":CAP,"rss":std::fs::read_to_string("/proc/self/status").unwrap().lines().filter(|l|l.starts_with("VmRSS:")||l.starts_with("VmHWM:")).collect::<Vec<_>>()});
+                    let status = serde_json::json!({"cpu_s":cpu_s(),"published":s.published,"wire_sent":s.sent,"gap_frames":s.gaps,"active_subscriptions":s.active,"connections":s.connections,"retained_payloads":if self.hub.ring{s.ring.len()}else{s.tx.len()},"capacity":CAP,"rss":std::fs::read_to_string("/proc/self/status").unwrap().lines().filter(|l|l.starts_with("VmRSS:")||l.starts_with("VmHWM:")).collect::<Vec<_>>()});
                     frame(&mut self.out, 4, 1, id, status.to_string().as_bytes());
                     frame(&mut self.out, 7, 0, 0, &(n as u32).to_le_bytes());
                 }

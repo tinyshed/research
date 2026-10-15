@@ -21,7 +21,7 @@ def cpu(pid):
     return (int(s[13])+int(s[14]))/os.sysconf('SC_CLK_TCK')
 
 for mode in ('embedded','unix','tcp'):
-    for n,connections,profile in [(100,1,'fast'),(100,100,'fast'),(1000,1,'fast'),(1000,1000,'fast'),(1000,1,'slow'),(1000,1,'slow-window'),(100,1,'burst'),(1000,1,'burst')]:
+    for n,connections,profile in [(100,1,'fast'),(100,100,'fast'),(1000,1,'fast'),(1000,1000,'fast'),(1000,1,'slow'),(1000,1,'slow-window'),(100,1,'burst'),(1000,1,'burst'),(1000,1,'commit')]:
         for passno in (1,2):
             for algo in ('broadcast','ring') if passno==1 else ('ring','broadcast'):
                 label=f'{mode}-{n}-{connections}-{profile}-{algo}'
