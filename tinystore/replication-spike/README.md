@@ -2,7 +2,8 @@
 
 Research against TinyStore's `rust` at the commit in `source-revision`.
 This is an independent crate; the product imports none of it. The research
-branch and the product checkout's branch are `experiment/cascading-replication`.
+work lands on `main`; product implementation work uses a separate branch
+in the TinyStore repository when needed.
 The product Rust code and the research submodule pointer are unchanged.
 
 ```sh

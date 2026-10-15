@@ -100,6 +100,9 @@ as its own commit there; the round here only reports it.
 
 ## Commits
 
+Research work lands on `main`. Isolate product implementation work on a
+branch in the product repository when needed.
+
 One Conventional Commits subject line, English, imperative, lower case after
 the type. No body, no footers, no trailers of any kind. A round is
 `test(spike):`, its report `docs:`, moving the submodule `chore(tinystore):`.
