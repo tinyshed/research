@@ -4,7 +4,7 @@ import subprocess,sys,json,datetime
 root=Path(__file__).resolve().parent
 stage=sys.argv[1];out=Path(sys.argv[2]).resolve();out.mkdir(parents=True,exist_ok=True)
 if stage=='main': modes=['off','legacy','optimized'];seconds=60;passes=3
-elif stage=='ablation':modes=['bounded','hash','copy','combined','optimized','full'];seconds=20;passes=3
+elif stage=='ablation':modes=['bounded','hash','copy','combined','optimized','nocache','full'];seconds=20;passes=3
 elif stage=='soak':modes=['optimized'];seconds=180;passes=1
 elif stage=='preflight':modes=['optimized','legacy','off','full'];seconds=3;passes=1
 else:raise SystemExit('stage: preflight|main|ablation|soak')

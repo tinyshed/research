@@ -252,3 +252,30 @@ fn owned_codec_and_batched_tree_preserve_exact_feed_bytes() -> Result<()> {
     assert_eq!(std::fs::read(a_path)?, std::fs::read(b_path)?);
     Ok(())
 }
+
+#[test]
+fn zero_cache_keeps_sequence_and_recovers() -> Result<()> {
+    let dir = tempfile::tempdir()?;
+    load::seed(dir.path(), 2048)?;
+    let cfg = load::configuration("nocache")?.ok_or("config")?;
+    let f = load::open(dir.path(), Some(cfg.clone()))?;
+    for _ in 0..100 {
+        f.db.exec("update documents set version=version+1 where id=0")?;
+    }
+    let h = f
+        .source
+        .as_ref()
+        .unwrap()
+        .feed(&f.store.dir().join("sql/app.db"))?;
+    assert_eq!(h.lock().unwrap().cache, 0);
+    drop(h);
+    f.store.close()?;
+    drop(f);
+    let f = load::open(dir.path(), Some(cfg))?;
+    load::verify(&f)?;
+    assert_eq!(
+        f.db.scalar::<u32>("select sum(version) from documents")?,
+        100
+    );
+    Ok(())
+}

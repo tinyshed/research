@@ -60,6 +60,9 @@ pub(super) fn configuration(mode: &str) -> Result<Option<Config>> {
             c.passive = false;
         }
         "optimized" => {}
+        "nocache" => {
+            c.cache_bytes = 0;
+        }
         "full" => {
             c.log_full = true;
         }

@@ -57,3 +57,9 @@ these cases. Every checkpoint follows feed sync.
 The nonblocking policy retries checkpoint at a configured frame stride rather
 than on every commit once a reader has pinned the threshold. Writer retries
 back off 1 ms after a definite admission refusal; refusals are counted.
+
+
+Additional control: `nocache` keeps no historical packets in RAM. Recovery still
+uses the same durable feed and canonical roots. No sender consumes this cache
+yet; compare it with the bounded cache before deciding what a persistent sender
+should retain. This control does not remove hashing, serialization or sync.
