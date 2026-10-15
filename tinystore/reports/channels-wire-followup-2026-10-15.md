@@ -174,6 +174,25 @@ consumers. Process death after data COMMIT but before ephemeral dispatch can
 still lose a notification; that is compatible with at-most-once Channels and
 must be documented.
 
+A separate **unmeasured** candidate addresses the measured amplification rather
+than replacing the broker: coalesce identical topic subscriptions within one SDK
+connection into one Wire stream, then fan out a shared immutable payload through
+bounded local subscriber cursors. At 1000 duplicate subscriptions, the current
+fast fixture sends 1m payload frames for 1000 publishes (about 1024 MB payload);
+one connection-level subscription would send 1000 frames (about 1.024 MB).
+That is a 1000× theoretical wire-byte reduction for this special case, not a
+measured throughput gain. Application callbacks still fan out 1000 ways, and
+1000 distinct remote connections still require 1000 network deliveries.
+
+Start evaluation with exact-topic reference counting; overlapping path filters,
+authorization/codec options, local slow-consumer gaps and cancellation semantics
+need a deliberate contract. A connection feed plus SDK selector routing is a
+broader protocol candidate, not automatically the preferred design. Measure it
+against the unchanged per-stream baseline before adoption. Shared local payloads
+and bounded cursors must not turn one slow iterator into connection-wide stalls
+or move the unbounded queue into the SDK. No such SDK/public API change is made
+by this round.
+
 Guarantee an order within a named channel/defined writer scope. Separate SQLite
 files have no implicit atomic transaction or universal commit order. If path
 subscriptions are wanted, begin with an owner-approved exact topic or prefix
