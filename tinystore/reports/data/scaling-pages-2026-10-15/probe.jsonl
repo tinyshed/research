@@ -1,0 +1,6 @@
+{"canonical_equal":true,"case":"initial_snapshot","page_size":4096,"pages":2,"pass":1,"raw_equal":true,"sqlite":"3.53.2"}
+{"canonical_equal":true,"case":"incremental_after_reopen","changed_pages":1,"differences":[{"copy":3,"offset":27,"page":1,"source":2},{"copy":3,"offset":95,"page":1,"source":2}],"pass":1,"raw_equal":false}
+{"canonical_equal":true,"case":"initial_snapshot","page_size":4096,"pages":2,"pass":2,"raw_equal":true,"sqlite":"3.53.2"}
+{"canonical_equal":true,"case":"incremental_after_reopen","changed_pages":1,"differences":[{"copy":3,"offset":27,"page":1,"source":2},{"copy":3,"offset":95,"page":1,"source":2}],"pass":2,"raw_equal":false}
+{"canonical_equal":true,"case":"initial_snapshot","page_size":4096,"pages":2,"pass":3,"raw_equal":true,"sqlite":"3.53.2"}
+{"canonical_equal":true,"case":"incremental_after_reopen","changed_pages":1,"differences":[{"copy":3,"offset":27,"page":1,"source":2},{"copy":3,"offset":95,"page":1,"source":2}],"pass":3,"raw_equal":false}

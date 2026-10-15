@@ -1,0 +1,124 @@
+{
+  "engine_sizes": {
+    "kv": {
+      "changed_pages": {
+        "min": 2,
+        "median": 2.0,
+        "max": 2
+      },
+      "packet_raw_bytes": {
+        "min": 8304,
+        "median": 8304.0,
+        "max": 8304
+      },
+      "packet_zstd_bytes": {
+        "min": 369,
+        "median": 1038.0,
+        "max": 1672
+      },
+      "file_bytes": {
+        "min": 49152,
+        "median": 49152.0,
+        "max": 49152
+      }
+    },
+    "jobs": {
+      "changed_pages": {
+        "min": 3,
+        "median": 3.0,
+        "max": 3
+      },
+      "packet_raw_bytes": {
+        "min": 12406,
+        "median": 12406.0,
+        "max": 12406
+      },
+      "packet_zstd_bytes": {
+        "min": 420,
+        "median": 1107.0,
+        "max": 1738
+      },
+      "file_bytes": {
+        "min": 81920,
+        "median": 81920.0,
+        "max": 81920
+      }
+    },
+    "sql": {
+      "changed_pages": {
+        "min": 1,
+        "median": 1.0,
+        "max": 1
+      },
+      "packet_raw_bytes": {
+        "min": 4205,
+        "median": 4205.0,
+        "max": 4205
+      },
+      "packet_zstd_bytes": {
+        "min": 331,
+        "median": 994.0,
+        "max": 1628
+      },
+      "file_bytes": {
+        "min": 8192,
+        "median": 8192.0,
+        "max": 8192
+      }
+    },
+    "records": {
+      "changed_pages": {
+        "min": 6,
+        "median": 6.0,
+        "max": 9
+      },
+      "packet_raw_bytes": {
+        "min": 6277,
+        "median": 6277.0,
+        "max": 9361
+      },
+      "packet_zstd_bytes": {
+        "min": 522,
+        "median": 997.5,
+        "max": 1709
+      },
+      "file_bytes": {
+        "min": 32768,
+        "median": 34816.0,
+        "max": 36864
+      }
+    },
+    "metrics": {
+      "changed_pages": {
+        "min": 3,
+        "median": 3.0,
+        "max": 14
+      },
+      "packet_raw_bytes": {
+        "min": 12409,
+        "median": 12409.0,
+        "max": 57509
+      },
+      "packet_zstd_bytes": {
+        "min": 266,
+        "median": 269.0,
+        "max": 534
+      },
+      "file_bytes": {
+        "min": 110592,
+        "median": 110592.0,
+        "max": 110592
+      }
+    }
+  },
+  "fanout": {
+    "star": 0.688875471,
+    "7x20": 0.787333556
+  },
+  "batching": {
+    "1": 0.300130391,
+    "32": 0.261480325
+  },
+  "root_egress_reduction": 20,
+  "tree_total_traffic_factor": 1.05
+}

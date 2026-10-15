@@ -1,0 +1,28 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/main.rs (target/debug/deps/tinystore_replication_spike-f74664386bac5713)
+
+running 22 tests
+test tests::apply_crash_worker ... ignored, subprocess worker launched by process_death_recovers_a_durable_packet_before_and_after_page_commit
+test tests::a_second_process_cannot_open_the_same_replication_directory ... ok
+test tests::batches_obey_entry_and_byte_limits ... ok
+test tests::asynchronous_promotion_loses_the_two_unshipped_checkpoints ... ok
+test tests::corruption_is_refused_before_changing_the_database ... ok
+test tests::duplicate_delivery_does_not_repeat_a_write ... ok
+test tests::following_a_catalog_discovers_the_relays_new_database ... ok
+test tests::gap_and_divergent_predecessor_are_refused ... ok
+test tests::outbox_survives_restart_and_lost_answers_without_duplicate_effects ... ok
+test tests::nondefault_page_sizes_replicate_and_survive_growth ... ok
+test tests::parser_rejects_truncation_bad_names_and_decompression_bombs ... ok
+test tests::process_death_recovers_a_durable_packet_before_and_after_page_commit ... ok
+test tests::promotion_fences_the_old_epoch_for_descendants ... ok
+test tests::pruned_feed_recovers_with_a_current_snapshot ... ok
+test tests::readers_see_whole_snapshots_while_pages_are_applied ... ok
+test tests::replicas_and_read_connections_refuse_writes ... ok
+test tests::relay_serves_inherited_and_owned_databases ... ok
+test tests::restart_keeps_the_feed_and_consumers_keep_their_positions ... ok
+test tests::restart_recovers_both_apply_crash_windows ... ok
+test tests::snapshot_and_incremental_apply_match_except_sqlite_change_counters ... ok
+test tests::schema_changes_and_truncation_replicate ... ok
+test tests::sql_keys_and_jobs_share_one_replicated_transaction ... ok
+
+test result: ok. 21 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.15s

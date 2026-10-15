@@ -1,0 +1,7 @@
+US -> EU (+ own database) -> RU -> embedded: both streams searchable locally
+140 child directories pulled both streams over TCP, with bounded batches
+Pruned relay history: a late child bootstrapped from the current snapshot
+SDK outbox: pending intent survived reopen and a lost answer; primary applied it once
+Upstream unavailable: local reads kept working; reconnect resumed the retained feed
+Fenced US, promoted EU stream to epoch 2: new writes reached RU and embedded
+PASS: all assertions passed; temporary directories removed
