@@ -63,14 +63,31 @@ pub(super) fn run() -> Result<()> {
             for workers in [1, 64] {
                 let modes = ["off", "snapshot", "full", "guarded"];
                 for offset in 0..4 {
-                    cost(pass, rows, workers, modes[(offset + pass - 1) % 4])?;
+                    cost(pass, rows, workers, modes[(offset + pass - 1) % 4], 256)?;
                 }
             }
         }
     }
     Ok(())
 }
-fn cost(pass: usize, rows: usize, workers: usize, mode: &str) -> Result<()> {
+pub(super) fn grouped() -> Result<()> {
+    for pass in 1..=3 {
+        for rows in [4096, 32768] {
+            for offset in 0..3 {
+                cost(
+                    pass,
+                    rows,
+                    64,
+                    ["off", "full", "guarded"][(offset + pass - 1) % 3],
+                    4096,
+                )?;
+            }
+        }
+    }
+    Ok(())
+}
+
+fn cost(pass: usize, rows: usize, workers: usize, mode: &str, updates: usize) -> Result<()> {
     let dir = tempfile::tempdir()?;
     seed(dir.path(), rows)?;
     let source = if mode == "full" || mode == "guarded" {
@@ -99,7 +116,7 @@ fn cost(pass: usize, rows: usize, workers: usize, mode: &str) -> Result<()> {
     } else {
         None
     };
-    let values: Vec<_> = (0..256).map(|i| body(10000 + i)).collect();
+    let values: Vec<_> = (0..updates).map(|i| body(10000 + i)).collect();
     let barrier = Barrier::new(workers);
     let started = Instant::now();
     let times = std::thread::scope(|scope| -> Result<Vec<f64>> {
@@ -112,7 +129,7 @@ fn cost(pass: usize, rows: usize, workers: usize, mode: &str) -> Result<()> {
                 scope.spawn(move || -> Result<Vec<f64>> {
                     barrier.wait();
                     let mut times = Vec::new();
-                    for index in (worker..256).step_by(workers) {
+                    for index in (worker..updates).step_by(workers) {
                         // The old explicit scanner serializes write+capture, as in the previous harness.
                         let started = Instant::now();
                         let mut old = snapshot.as_ref().map(|s| s.lock().unwrap());
@@ -186,7 +203,7 @@ fn cost(pass: usize, rows: usize, workers: usize, mode: &str) -> Result<()> {
     }
     println!(
         "{}",
-        json!({"case":"capture","pass":pass,"mode":mode,"rows":rows,"workers":workers,"writes":256,"seconds":elapsed,"writes_per_second":256.0/elapsed,"p50_us":percentile(&times,50),"p95_us":percentile(&times,95),"p99_us":percentile(&times,99),"file_bytes":image.pages.len()*image.page_size as usize,"objects":objects,"captured_commits":commits,"feed_raw_bytes":captured_bytes,"dirty_pages":dirty_pages,"storage_logical_bytes":storage,"verified":true})
+        json!({"case":"capture","pass":pass,"mode":mode,"rows":rows,"workers":workers,"writes":updates,"seconds":elapsed,"writes_per_second":updates as f64/elapsed,"p50_us":percentile(&times,50),"p95_us":percentile(&times,95),"p99_us":percentile(&times,99),"file_bytes":image.pages.len()*image.page_size as usize,"objects":objects,"captured_commits":commits,"feed_raw_bytes":captured_bytes,"dirty_pages":dirty_pages,"storage_logical_bytes":storage,"verified":true})
     );
     store.close()?;
     Ok(())
@@ -213,7 +230,7 @@ pub(super) fn network() -> Result<()> {
             for batch in [1, 32] {
                 for durable in [false, true] {
                     for delay_ms in [0, 5] {
-                        network_case(pass, hops, batch, durable, delay_ms)?;
+                        network_case(pass, hops, batch, durable, delay_ms, false, false)?;
                     }
                 }
             }
@@ -221,12 +238,32 @@ pub(super) fn network() -> Result<()> {
     }
     Ok(())
 }
+pub(super) fn pipeline() -> Result<()> {
+    let modes = [(false, false), (false, true), (true, true)];
+    for pass in 1..=3 {
+        for batch in [1, 32] {
+            for delay in [0, 5] {
+                if batch == 32 && delay == 5 {
+                    continue;
+                }
+                for offset in 0..3 {
+                    let (early, background) = modes[(offset + pass - 1) % 3];
+                    network_case(pass, 3, batch, true, delay, early, background)?;
+                }
+            }
+        }
+    }
+    Ok(())
+}
+
 fn network_case(
     pass: usize,
     hops: usize,
     batch: usize,
     durable: bool,
     delay_ms: u64,
+    early: bool,
+    background: bool,
 ) -> Result<()> {
     let dir = tempfile::tempdir()?;
     let root = dir.path().join("primary");
@@ -249,6 +286,7 @@ fn network_case(
         let next = addresses.get(index + 1).copied();
         workers.push(std::thread::spawn(move || -> Result<()> {
             let mut replica = replica::Replica::open(&root)?;
+            let applier = background.then(|| replica::Applier::start(replica.path.clone()));
             let (mut upstream, _) = listener.accept()?;
             upstream.set_nodelay(true)?;
             let mut downstream = next.map(TcpStream::connect).transpose()?;
@@ -274,10 +312,20 @@ fn network_case(
                     continue;
                 }
                 let before = replica.feed.entries.len();
-                replica.receive(&bytes)?;
-                // Forward the identical compressed frame after durable receipt, before local apply.
+                if early {
+                    replica.stage(&bytes)?;
+                } else {
+                    replica.receive(&bytes)?;
+                }
+                // Both schedules forward the original compressed bytes without recompression.
                 if let Some(stream) = &mut downstream {
                     transmit(stream, &bytes)?;
+                }
+                if early {
+                    replica.feed.sync()?;
+                }
+                if let Some(applier) = &applier {
+                    applier.submit(replica.feed.entries[before..].to_vec())?;
                 }
                 if !durable {
                     replica.apply_since(before)?;
@@ -287,9 +335,12 @@ fn network_case(
                 }
                 std::thread::sleep(Duration::from_millis(delay_ms));
                 transmit(&mut upstream, b"ack")?;
-                if durable {
+                if durable && !background {
                     replica.apply_since(before)?;
                 }
+            }
+            if let Some(applier) = applier {
+                applier.finish()?;
             }
             replica.verify()?;
             Ok(())
@@ -343,7 +394,7 @@ fn network_case(
     }
     println!(
         "{}",
-        json!({"case":"network","pass":pass,"hops":hops,"batch":batch,"updates":128,"tcp":"persistent loopback TCP_NODELAY","ack":if durable {"all hops durable"} else {"all hops durable and applied"},"injected_one_way_delay_ms":delay_ms,"echo_p50_us":percentile(&echo,50),"echo_p95_us":percentile(&echo,95),"capture_batch_p50_us":percentile(&capture,50),"encode_batch_p50_us":percentile(&encode,50),"ship_apply_batch_p50_us":percentile(&ship,50),"ship_apply_batch_p95_us":percentile(&ship,95),"end_to_end_batch_p50_us":percentile(&endtoend,50),"raw_bytes":raw,"wire_bytes_per_edge":wire,"all_edges_bytes":wire*hops,"all_replicas_verified":true})
+        json!({"case":"network","background_applier":background,"forward":if early {"after_append"} else {"after_sync"},"pass":pass,"hops":hops,"batch":batch,"updates":128,"tcp":"persistent loopback TCP_NODELAY","ack":if durable {"all hops durable"} else {"all hops durable and applied"},"injected_one_way_delay_ms":delay_ms,"echo_p50_us":percentile(&echo,50),"echo_p95_us":percentile(&echo,95),"capture_batch_p50_us":percentile(&capture,50),"encode_batch_p50_us":percentile(&encode,50),"ship_apply_batch_p50_us":percentile(&ship,50),"ship_apply_batch_p95_us":percentile(&ship,95),"end_to_end_batch_p50_us":percentile(&endtoend,50),"raw_bytes":raw,"wire_bytes_per_edge":wire,"all_edges_bytes":wire*hops,"all_replicas_verified":true})
     );
     store.close()?;
     Ok(())

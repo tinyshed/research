@@ -75,6 +75,10 @@ impl Replica {
         Ok(replica)
     }
     pub(super) fn receive(&mut self, bytes: &[u8]) -> Result<()> {
+        self.stage(bytes)?;
+        self.feed.sync()
+    }
+    pub(super) fn stage(&mut self, bytes: &[u8]) -> Result<()> {
         for entry in unpack(bytes)? {
             let seq = entry.packet.position.sequence;
             if let Some(known) = self.feed.entries.get(seq.saturating_sub(1) as usize) {
@@ -87,25 +91,10 @@ impl Replica {
             require(entry.packet.position.epoch == 1, "unfenced epoch change")?;
             self.feed.append(entry.packet, entry.cursor)?;
         }
-        self.feed.sync()
+        Ok(())
     }
     pub(super) fn apply_since(&mut self, sequence: usize) -> Result<()> {
-        let entries = &self.feed.entries[sequence..];
-        if entries.is_empty() {
-            return Ok(());
-        }
-        let last = &entries.last().ok_or("empty batch")?.packet;
-        let mut pages = Pages::new();
-        for entry in entries {
-            pages.extend(entry.packet.pages.clone());
-        }
-        pages.retain(|n, _| *n <= last.page_count);
-        Image {
-            page_size: last.page_size,
-            pages,
-        }
-        .apply(&self.path, last.page_count)?;
-        Ok(())
+        apply(&self.path, &self.feed.entries[sequence..])
     }
     fn materialize_all(&mut self) -> Result<()> {
         self.apply_since(0)?;
@@ -123,5 +112,51 @@ impl Replica {
             crate::pages::reader(&self.path)?
                 .query_row("pragma integrity_check", [], |r| r.get(0))?;
         require(check == "ok", "replica SQLite integrity check")
+    }
+}
+
+fn apply(path: &Path, entries: &[Arc<Entry>]) -> Result<()> {
+    if entries.is_empty() {
+        return Ok(());
+    }
+    let last = &entries.last().ok_or("empty batch")?.packet;
+    let mut pages = Pages::new();
+    for entry in entries {
+        pages.extend(entry.packet.pages.clone());
+    }
+    pages.retain(|n, _| *n <= last.page_count);
+    Image {
+        page_size: last.page_size,
+        pages,
+    }
+    .apply(path, last.page_count)
+}
+
+pub(super) struct Applier {
+    queue: std::sync::mpsc::SyncSender<Vec<Arc<Entry>>>,
+    worker: std::thread::JoinHandle<Result<()>>,
+}
+impl Applier {
+    pub(super) fn start(path: PathBuf) -> Self {
+        let (queue, receiver) = std::sync::mpsc::sync_channel::<Vec<Arc<Entry>>>(8);
+        let worker = std::thread::spawn(move || -> Result<()> {
+            while let Ok(mut entries) = receiver.recv() {
+                for batch in receiver.try_iter().take(7) {
+                    entries.extend(batch);
+                }
+                apply(&path, &entries)?;
+            }
+            Ok(())
+        });
+        Self { queue, worker }
+    }
+    pub(super) fn submit(&self, entries: Vec<Arc<Entry>>) -> Result<()> {
+        self.queue
+            .send(entries)
+            .map_err(|_| "applier stopped".into())
+    }
+    pub(super) fn finish(self) -> Result<()> {
+        drop(self.queue);
+        self.worker.join().map_err(|_| "applier panicked")?
     }
 }

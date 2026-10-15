@@ -22,7 +22,9 @@ fn main() -> Result<()> {
     match std::env::args().nth(1).as_deref() {
         Some("bench") => bench::run(),
         Some("network") => bench::network(),
-        _ => Err("usage: tinystore-wal-spike bench|network".into()),
+        Some("grouped") => bench::grouped(),
+        Some("pipeline") => bench::pipeline(),
+        _ => Err("usage: tinystore-wal-spike bench|network|grouped|pipeline".into()),
     }
 }
 

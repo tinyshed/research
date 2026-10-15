@@ -48,3 +48,23 @@ Process-death workers exit without destructors. Tail truncation models loss of
 unsynced feed bytes while preserving synced SQLite WAL. These are not power-cut
 or disk-controller tests. A separate test deletes the primary only after the
 standby has synced its feed, then rebuilds its searchable SQLite copy.
+
+Follow-up commands address two risks exposed by the first run:
+
+```
+TMPDIR=<disk-backed-scratch> target/release/tinystore-wal-spike grouped
+TMPDIR=<disk-backed-scratch> target/release/tinystore-wal-spike pipeline
+```
+
+`grouped` uses 4096 updates / 64 callers (three rotated passes of off, full,
+guarded), instead of the exploratory 256-update runs. The serialized snapshot
+baseline is retained in the first round; it is not rerun at this longer depth.
+
+`pipeline` isolates three schedules with durable ACKs through three TCP hops:
+forward after local sync and apply on the network thread; forward after sync
+with a separate applier; forward after append with a separate applier and sync
+in parallel with downstream traffic. Every schedule waits for local sync and
+the downstream ACK before ACKing upstream. The applier's queue has eight batch
+slots, shares immutable history entries and collapses up to eight queued batches
+into one SQLite apply. Backpressure is explicit. The final images and integrity
+checks run after draining the appliers; durable latency is not visibility latency.
