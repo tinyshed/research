@@ -24,7 +24,8 @@ fn main() -> Result<()> {
         Some("network") => bench::network(),
         Some("grouped") => bench::grouped(),
         Some("pipeline") => bench::pipeline(),
-        _ => Err("usage: tinystore-wal-spike bench|network|grouped|pipeline".into()),
+        Some("checkpoint") => bench::checkpoint(),
+        _ => Err("usage: tinystore-wal-spike bench|network|grouped|pipeline|checkpoint".into()),
     }
 }
 

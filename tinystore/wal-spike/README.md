@@ -68,3 +68,9 @@ the downstream ACK before ACKing upstream. The applier's queue has eight batch
 slots, shares immutable history entries and collapses up to eight queued batches
 into one SQLite apply. Backpressure is explicit. The final images and integrity
 checks run after draining the appliers; durable latency is not visibility latency.
+
+`checkpoint` is a threshold-only follow-up: three rotated passes of off,
+guarded at 256 KiB dirty feed, guarded at 4 MiB, 4096 updates / 64 callers.
+Both capture variants still sync the feed before any checkpoint and keep the
+same independent 1024-native-WAL-frame trigger. This changes neither SQLite
+FULL nor the acknowledgement contract; it changes retention/checkpoint work.

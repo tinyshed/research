@@ -87,16 +87,38 @@ pub(super) fn grouped() -> Result<()> {
     Ok(())
 }
 
+pub(super) fn checkpoint() -> Result<()> {
+    for pass in 1..=3 {
+        for rows in [4096, 32768] {
+            for offset in 0..3 {
+                cost(
+                    pass,
+                    rows,
+                    64,
+                    ["off", "guarded", "guarded4m"][(offset + pass - 1) % 3],
+                    4096,
+                )?;
+            }
+        }
+    }
+    Ok(())
+}
+
 fn cost(pass: usize, rows: usize, workers: usize, mode: &str, updates: usize) -> Result<()> {
     let dir = tempfile::tempdir()?;
     seed(dir.path(), rows)?;
-    let source = if mode == "full" || mode == "guarded" {
-        Some(Source::new(
+    let source = if mode == "full" || mode.starts_with("guarded") {
+        Some(Source::with_flush_limit(
             dir.path(),
             if mode == "full" {
                 Mode::LogFull
             } else {
                 Mode::WalGuarded
+            },
+            if mode == "guarded4m" {
+                4 * 1024 * 1024
+            } else {
+                256 * 1024
             },
         )?)
     } else {

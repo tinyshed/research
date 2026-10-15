@@ -19,6 +19,7 @@ pub(super) enum Mode {
 pub(super) struct Source {
     pub root: PathBuf,
     pub mode: Mode,
+    flush_bytes: usize,
     files: Mutex<BTreeMap<PathBuf, Arc<Mutex<Feed>>>>,
     pub changed: Condvar,
     pub generation: Mutex<u64>,
@@ -28,6 +29,14 @@ pub(super) struct Source {
 
 impl Source {
     pub(super) fn new(root: &Path, mode: Mode) -> Result<Arc<Self>> {
+        Self::with_flush_limit(root, mode, 256 * 1024)
+    }
+    pub(super) fn with_flush_limit(
+        root: &Path,
+        mode: Mode,
+        flush_bytes: usize,
+    ) -> Result<Arc<Self>> {
+        require(flush_bytes > 0, "zero feed flush limit")?;
         std::fs::create_dir_all(root.join("feed"))?;
         std::fs::File::open(root)?.sync_all()?;
         if let Some(parent) = root.parent() {
@@ -36,6 +45,7 @@ impl Source {
         Ok(Arc::new(Self {
             root: root.canonicalize()?,
             mode,
+            flush_bytes,
             files: Mutex::default(),
             changed: Condvar::new(),
             generation: Mutex::new(0),
@@ -148,7 +158,7 @@ impl Source {
         let handle = self.feed(path)?;
         let mut feed = handle.lock().map_err(|_| "feed lock poisoned")?;
         self.recover(path, &mut feed, Some(frames))?;
-        let checkpoint = frames >= 1024 || feed.dirty >= 256 * 1024;
+        let checkpoint = frames >= 1024 || feed.dirty >= self.flush_bytes;
         if checkpoint {
             feed.sync()?;
             self.fault("before_checkpoint");

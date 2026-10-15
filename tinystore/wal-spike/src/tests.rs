@@ -12,7 +12,10 @@ struct Fixture {
     _registration: Registration,
 }
 fn fixture(path: &Path, mode: Mode) -> Result<Fixture> {
-    let source = Source::new(path, mode)?;
+    fixture_limit(path, mode, 256 * 1024)
+}
+fn fixture_limit(path: &Path, mode: Mode, limit: usize) -> Result<Fixture> {
+    let source = Source::with_flush_limit(path, mode, limit)?;
     let registration = register(path, source.clone())?;
     let store = Store::open(
         path,
@@ -183,7 +186,12 @@ fn crash_worker() -> Result<()> {
     } else {
         Mode::WalGuarded
     };
-    let f = fixture(Path::new(&root), mode)?;
+    let limit = std::env::var("WAL_FLUSH_BYTES")
+        .ok()
+        .map(|n| n.parse())
+        .transpose()?
+        .unwrap_or(256 * 1024);
+    let f = fixture_limit(Path::new(&root), mode, limit)?;
     f.source.arm(&phase);
     if phase == "before_checkpoint" || phase == "after_checkpoint" {
         for _ in 0..1000 {
@@ -548,4 +556,77 @@ fn sigkill_worker() -> Result<()> {
         std::io::stdout().flush()?;
     }
     Err("parent did not stop worker".into())
+}
+
+#[test]
+fn larger_flush_limit_preserves_generation_recovery() -> Result<()> {
+    let dir = tempfile::tempdir()?;
+    let source = Source::with_flush_limit(dir.path(), Mode::WalGuarded, 4 * 1024 * 1024)?;
+    let registration = register(dir.path(), source.clone())?;
+    let store = Store::open(
+        dir.path(),
+        Options {
+            background: false,
+            ..Default::default()
+        },
+    )?;
+    let db = store.database("app").open()?;
+    db.exec("create table items(id integer primary key,value blob)")?;
+    for _ in 0..1100 {
+        db.exec("insert into items(value) values(zeroblob(4096))")?;
+    }
+    let f = Fixture {
+        store,
+        db,
+        source,
+        _registration: registration,
+    };
+    verify(&f)?;
+    let feed = f.source.feed(&f.store.dir().join("sql/app.db"))?;
+    assert!(
+        feed.lock()
+            .unwrap()
+            .entries
+            .iter()
+            .map(|e| e.cursor.salts)
+            .collect::<std::collections::BTreeSet<_>>()
+            .len()
+            > 2
+    );
+    f.store.close()?;
+    drop(f);
+    let reopened = fixture(dir.path(), Mode::WalGuarded)?;
+    verify(&reopened)?;
+    assert_eq!(
+        reopened.db.scalar::<u32>("select count(*) from items")?,
+        1100
+    );
+    Ok(())
+}
+
+#[test]
+fn larger_flush_limit_recovers_across_crash_boundaries() -> Result<()> {
+    for phase in [
+        "after_sqlite_commit",
+        "after_log_append",
+        "after_ack",
+        "before_checkpoint",
+        "after_checkpoint",
+        "before_close_checkpoint",
+    ] {
+        let dir = tempfile::tempdir()?;
+        let status = std::process::Command::new(std::env::current_exe()?)
+            .args(["--ignored", "--exact", "tests::crash_worker"])
+            .env("WAL_RESEARCH_ROOT", dir.path())
+            .env("WAL_RESEARCH_MODE", "guarded")
+            .env("WAL_FLUSH_BYTES", "4194304")
+            .env("WAL_RESEARCH_PHASE", phase)
+            .stdout(std::process::Stdio::null())
+            .status()?;
+        assert_eq!(status.code(), Some(86));
+        let f = fixture_limit(dir.path(), Mode::WalGuarded, 4 * 1024 * 1024)?;
+        verify(&f)?;
+        assert!(f.db.scalar::<u32>("select count(*) from items")? > 0);
+    }
+    Ok(())
 }
