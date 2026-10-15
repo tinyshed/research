@@ -1,0 +1,29 @@
+[package]
+name = "index-foundations"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[features]
+default = ["text", "geo", "bitmap", "product"]
+text = ["dep:tantivy"]
+geo = ["dep:rstar"]
+bitmap = ["dep:roaring"]
+product = ["dep:tinystore", "dep:tokio", "dep:rmpv"]
+alloc-metrics = []
+
+[dependencies]
+rusqlite = { version = "=0.40.2", features = ["bundled", "hooks", "functions"] }
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = "=1.0.151"
+libc = "=0.2.190"
+rust-stemmers = "=1.2.0"
+tantivy = { version = "=0.26.2", optional = true, default-features = false, features = ["mmap", "lz4-compression"] }
+rstar = { version = "=0.12.2", optional = true }
+roaring = { version = "=0.11.3", optional = true }
+tinystore = { git = "https://github.com/tinyshed/tinystore.git", rev = "76b844cdc8c3410e746a5d5dc3e9aafec83c9962", optional = true, default-features = false, features = ["kv", "sql", "jobs", "wire"] }
+tokio = { version = "=1.53.2", optional = true, features = ["rt-multi-thread", "sync", "time", "net", "io-util", "macros"] }
+rmpv = { version = "=1.3.0", optional = true }
+
+[profile.release]
+debug = 1
