@@ -231,3 +231,11 @@ original hashes and distinguishes translated documentation from measured code.
 | Report | Scope |
 | --- | --- |
 | [The Rust port against the Go engine](records-port-2026-10-11.md) | records of the `rust` branch beside the Go engine at `e81a050` on 1.71 million production records: 17.50 B a record against 17.64 without FSE, by column; each of the Go engine's codings turned off in turn, FSE worth 0.15 and typed quoted values 0.26; libzstd 1.5.7 against klauspost/compress on the same lines, 10.44 B a line at level 7 against 13.06; and the exact filter, single trace and absent context the port lost on 9 October, now 14.1, 0.17 and 1.9 ms against 18.5, 0.45 and 3.0, on Windows |
+
+## 15 October 2026 — scaling research before implementation
+
+| Report                                                         | Scope                                                                                                                                                                                                           |
+| -------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Applying SQLite pages](scaling-pages-2026-10-15.md)           | interim probe of SQLite 3.53.2: the two header counters that defeat raw byte equality, schema replacement in one statement, and the exact boundary of a canonical page checksum                                 |
+| [Cascade, recovery and fan-out](scaling-cascade-2026-10-15.md) | paired measurements: 140 children, star versus 7 × 20, 20× lower root egress and 5% more total traffic; 100-state catch-up in 4 requests; page amplification for five engines and the cost of snapshot scanning |
+| [Implementation handoff](scaling-handoff-2026-10-15.md)        | per-file ownership, a relay's local databases, embedded readers and pending intents, sync acknowledgements and fencing, commit and checkpoint seams, and the remaining product gates                            |
