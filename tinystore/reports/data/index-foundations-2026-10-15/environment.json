@@ -23,7 +23,7 @@
   "historical_submodule_unchanged": true,
   "network": "unrestricted HTTP policy; CA trusted via CARGO_HTTP_CAINFO, no credential values recorded",
   "timing_policy": "fresh sequential processes; two passes in forward/reverse candidate order; no builds/tests/lint during performance runs; later source revisions before final report only add drivers/report reduction, no Rust algorithm change",
-  "clock": "UTC ISO-8601 in raw; report date Europe/Moscow",
+  "clock": "UTC ISO-8601 per raw record; round identifier is its 2026-10-15 start date",
   "preflight_failures": [
     "SQLite floor function missing, registered as deterministic research scalar",
     "postings DELETE by id caused full scans; interrupted first 1m pass and fixed trigger to use OLD category and id",
@@ -31,5 +31,6 @@
   ],
   "environment_refresh": "Executor control reattached during initial exploratory static run; existing containers and subprocess survived. Main measurements follow the subsequent harness correction.",
   "actual_core_cache_kib": 1024,
-  "static_binary_source_revision": "2f47fb3c37479d0aeb67140b6f65f5974a9eb15c"
+  "static_binary_source_revision": "f1856d9b658fca93f420020955b7e44fd6b3f500",
+  "rebuild_binary_source_revision": "5101b43"
 }

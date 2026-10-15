@@ -102,6 +102,28 @@ repeat, with document/order identifiers appended; neither dataset contains
 are in `corpus.json`. Its CC BY-NC-SA 4.0 text is downloaded and ignored, not
 redistributed in this repository.
 
+## Incremental WAL is not index size
+
+For 1m uniform source rows, 100-row transactions and 10,000 rows per mutation
+phase, both passes have identical WAL frame counts. Total source-plus-index
+WAL divided by the matched source-only scan baseline is:
+
+| Projection | Insert amplification | Indexed update | Delete |
+|---|---|---|---|
+| B-tree | 20.475× | 22.787× | 12.152× |
+| Relational postings | 13.075× | 11.740× | 12.095× |
+| Compact FTS term set | 12.910× | 8.563× | 3.452× |
+| Positional external-content FTS | 20.797× | 14.938× | 3.466× |
+| RTree | 22.734× | 28.212× | 26.140× |
+| One-degree grid | 13.671× | 11.785× | 12.274× |
+
+These ratios describe this fixture/transaction locality, not a constant per
+index type or amplification relative to logical payload bytes. Ordinary B-tree
+maintenance also dirties many pages when category inserts scatter across leaves.
+Absolute WAL bytes/row and batch tails are in the tables. A future physical
+replica would receive source and derived-page frames, including repeated page
+versions; a small final index does not guarantee a cheap update stream.
+
 ## Online rebuild algorithms
 
 All generations carry an immutable definition, state, optional fixed maximum
@@ -111,6 +133,16 @@ The writer is shared with foreground writes. Readers fetch the active generation
 and search it inside **one** SQLite read transaction. Retiring generations stay
 present in this prototype; cleanup and old-reader admission require a separate
 lifecycle contract.
+
+The lifecycle matrix uses contentful positional FTS (`fts`) and RTree. Its new
+FTS definition appends a common `def2` marker, allowing definition/cardinality
+checks; it is not a byte-identical rebuild of the compact external-content
+format. All competing rebuild algorithms build that same definition, but the
+no-rebuild control keeps the original definition. Static compact FTS savings
+cannot be multiplied into these rebuild timings. A compact managed projection
+needs its own OLD-token/delete and generation-specific-content integrity gate;
+especially dirty-ID replay cannot delete external-content postings using only
+the source's already changed text.
 
 | Algorithm | Backfill rule | Concurrent source-write rule | Main cost / failure mode |
 |---|---|---|---|
@@ -142,6 +174,31 @@ Selective maintenance compares only indexed columns and identity. Unrelated
 column updates still change the source but do not delete/reinsert a projection.
 Both the old active and new building projection use the same policy in each
 comparison; therefore the measured savings include both generations' work.
+
+```text
+writer transaction:
+  retain OLD identity and indexed values; apply source mutation
+  for active/building generation G:
+    if OLD is covered by G: delete OLD projection using OLD token values
+    if NEW is covered by G: insert projection from NEW using G.definition
+  commit source, projections and any capture metadata together
+
+builder transaction:
+  read next keyset chunk within fixed H
+  index rows using immutable G.definition
+  advance F in this same transaction; commit; yield writer
+
+publication transaction:
+  verify G is still the requested definition and backfill is complete
+  reconcile remaining capture if the algorithm requires it
+  atomically retire previous generation and activate G
+```
+
+The logical handle's prepared-query cache must include generation/definition;
+SQL table identifiers cannot be replaced by value parameters. A same-file
+projection also needs an ownership boundary: arbitrary raw SQL can corrupt a
+managed virtual table even when SQLite itself is transactionally correct.
+Choose user-owned raw SQL or protect managed objects and resolve logical names.
 
 ## Correctness and failure evidence
 
@@ -177,6 +234,15 @@ demonstrate these counterexamples; they are not an estimate of search quality
 on a population. Neither FTS5 nor Tantivy supplies correct Russian lemmatization
 merely by selecting it as the storage engine. A dictionary/lemmatizer, its
 license/size and a much larger gold set need a product decision.
+
+The common stored `terms` field is a fixture choice, not a universal schema
+recommendation. Its disk cost is included for every candidate. A new normalizer
+must recompute a generation-specific projection from original body; one global
+normalized source column cannot represent two concurrent definitions. Native
+Unicode61 works today, but Snowball here runs in the research producer, not a
+new Core FTS tokenizer. A product must choose application-provided terms,
+managed projection storage or a versioned custom tokenizer, account for its
+space/CPU, and verify connection registration/trusted-schema compatibility.
 
 ### Geo and direct SQL
 

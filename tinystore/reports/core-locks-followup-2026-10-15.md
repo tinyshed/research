@@ -1,8 +1,8 @@
 # Locks with the real grouped writer — 15 October 2026
 
-**Incremental publication:** harness and correctness findings are available;
-the performance matrix is still running. Numerical tables will be added after
-both passes complete. No unmeasured performance claim is made here.
+Both passes of the actual Core admission matrix are complete (24 fresh
+processes). Full per-scenario counters, CPU, RSS and tails are in the
+[measurement tables](index-foundations-measurements-2026-10-15.md).
 
 This extends [the standalone lease round](locks-2026-10-15.md). The new harness
 uses TinyStore's public KV entry/version CAS on the actual Core at
@@ -30,7 +30,11 @@ is part of the measurement. It is not an optimized one-waiter notification
 queue. At the deadline, queued requests leave without acquiring. Successful
 wait samples exclude those canceled requests; cancellations and grants per
 client are present in raw data. Jain fairness describes completed grants over
-this short run, not a mathematical proof of starvation freedom.
+this short run, not a mathematical proof of starvation freedom. With 1000
+clients and fewer than 1000 total grants, even a perfect first-in-first-out
+first round cannot have Jain fairness 1. Throughput divides by wall time through
+all waiter joins, including cancellation drain after the nominal 3-second
+window; queue-drain overhead can materially extend that duration.
 
 There are 10, 100 and 1000 clients, a single hot resource or one resource per
 client, and two forward/reverse passes. Each client is a synchronous thread with
@@ -42,6 +46,35 @@ never a store-global mutex.
 This is a performance candidate for admission, **not a complete correct lease
 implementation**. The delayed-COMMIT check below deliberately demonstrates why
 public read/CAS calls alone are insufficient to implement short leases.
+
+## Measured admission result
+
+Values are pass 1; pass 2, not averages. With 1000 clients on one hot resource:
+
+| Admission | Completed grant/s including drain | Attempts/grant | Completed wait p99 ms | Jain | Process CPU s | HWM MiB |
+|---|---|---|---|---|---|---|
+| Polling | 85.87; 88.76 | 592.09; 599.60 | 3085.74; 3045.78 | 0.173; 0.196 | 5.80; 5.75 | 31.09; 31.16 |
+| FIFO notify-all | 46.46; 48.42 | 1; 1 | 2977.92; 2963.38 | 0.298; 0.309 | 5.97; 5.97 | 19.81; 20.09 |
+
+Polling completes 269/275 grants in 3.133/3.098 s. FIFO completes 298/309,
+but draining canceled waiters extends the run to 6.414/6.382 s. FIFO grants
+more owners within the nominal three-second admission window, but total
+completion throughput is worse. Its 1000 deadline cancellations must not be
+omitted from a fairness/latency claim. A completed-only p99 of about three
+seconds is not acceptable evidence of short-wait service.
+
+At ten clients, hot polling is 891/883 grant/s versus FIFO 779/678; FIFO
+improves completed wait p99 from 320/335 ms to 31/36 ms. At 1000 independent
+resources both need one attempt per grant: polling 16,652/15,511 grant/s and
+FIFO 15,853/15,580. Independent resources can share Core commit groups;
+serializing them behind a global admission gate would discard that benefit.
+
+These results support removing failed-attempt storms and making admission
+per resource. They **do not** prove the hypothesis that a targeted FIFO queue
+will be faster: this particular notify-all FIFO is not the implementation to
+ship. The next product candidate needs per-waiter notification, bounded queue
+removal and a longer run that can serve many full rounds. No extra lock-free
+algorithm is justified by these measurements.
 
 ## Correctness findings
 

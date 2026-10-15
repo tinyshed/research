@@ -1,7 +1,8 @@
 # Additional research handoff — 15 October 2026
 
-**Publication in progress.** Static index comparisons and correctness findings
-are published; transport/admission/rebuild matrices are being completed. This
+**Publication in progress.** Static index comparisons, the 108-process transport matrix and the 24-process
+actual Core admission matrix are complete. Concurrent rebuild and additional
+resource/recovery diagnostics are still being completed. This
 document will identify their final evidence before calling the round complete.
 Product Core and public API are unchanged. The pinned Rust source is
 `76b844cdc8c3410e746a5d5dc3e9aafec83c9962`.
@@ -41,7 +42,7 @@ not establish a throughput or production availability SLO.
 
 **Architecture hypotheses / remaining product work:** cleanup with pinned old
 readers, hard dirty-page/time limits, portable global memory admission,
-arbitrary tokenizer/DDL replacement, exact public SDK reset/gap semantics,
+arbitrary tokenizer/DDL replacement, compact external-content rebuild/OLD-token integrity, exact public SDK reset/gap semantics,
 targeted FIFO wakeup, protected-resource fence enforcement and cross-platform
 power-failure behavior. No distributed Channels/Locks, ANN or replication
 engine is implemented. WAL measurements estimate derived-index replication

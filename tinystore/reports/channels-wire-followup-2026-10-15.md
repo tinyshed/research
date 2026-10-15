@@ -1,8 +1,8 @@
 # Channels with real receivers — 15 October 2026
 
-**Incremental publication:** harness and correctness findings are available;
-the performance matrix is still running. Numerical tables will be added after
-both passes complete. No unmeasured performance claim is made here.
+Both passes of the transport matrix are complete: 108 fresh Bun processes.
+See [per-pass tables](index-foundations-measurements-2026-10-15.md) for every
+scenario, memory delta, workload CPU, daemon CPU and idle CPU sample.
 
 This extends [the first channel round](channels-2026-10-15.md), whose in-process
 publisher rates did not establish delivered SDK throughput. Source is
@@ -68,6 +68,55 @@ and cleanup, whereas client CPU counters cover publish/drain, so those windows
 must not be summed and labelled one precise steady-state CPU rate. Embedded
 Core and client share a process; counting its RSS twice would be wrong.
 
+## Measured result
+
+At 1000 subscriptions over one connection, 1000 volatile publications at 200/s
+have 1,000,000 expected logical deliveries. Values below are pass 1; pass 2:
+
+| Transport | Algorithm | Delivered by drain | Receipt p99 ms |
+|---|---|---|---|
+| Embedded | broadcast | 980,395; 1,000,000 | 683; 555 |
+| Embedded | shared log | 932,321; 1,000,000 | 972; 566 |
+| Unix sidecar adapter | broadcast | 1,000,000; 1,000,000 | 337; 127 |
+| Unix sidecar adapter | shared log | 1,000,000; 1,000,000 | 69; 131 |
+| TCP loopback | broadcast | 868,423; 1,000,000 | 1109; 93 |
+| TCP loopback | shared log | 1,000,000; 1,000,000 | 66; 316 |
+
+Every 1000-connection fast case delivers all 1m events, both algorithms and
+passes. Embedded p99 there is 9.80/7.94 ms for broadcast and 7.41/8.31 ms for
+the shared log. Unix/TCP tails are much more variable; they cannot be averaged
+with embedded or one-connection results. The scheduling/transport difference
+is larger than a stable backend winner. Two passes do not establish statistical
+significance or long-run delivery capacity.
+
+An unpaced embedded burst at 1000 subscribers publishes 2000 events (2m expected
+deliveries). Broadcast publishes at 23,612/18,089 per second but delivers only
+115,478/109,659 by drain; the shared log publishes at 20,591/22,019 and delivers
+114,719/113,960. Both report 1,728,863 confirmed missed events. High publication
+rate here principally measures successful dropping under overload.
+
+At 400 publications/s, slow/no-credit runs also overload the fast consumers
+through the adapter's finite scheduling path. The results are not solely the
+1% slow subscribers' losses. `slow-window` does exercise a real unread SDK
+window, but is not a bandwidth-limited external network experiment. The
+separate post-commit profile can also miss the drain deadline; completion of
+a durable data write does not imply timely delivery of its notification.
+
+For embedded multiplexed broadcast at 1000 subscriptions, the subscription RSS
+delta is 6.87/7.81 KiB per subscriber; with one connection per subscription it
+is 17.81/18.84 KiB. At only 100 subscriptions fixed setup dominates that division,
+so it is not a constant object-size estimate. Embedded 1000-connection idle
+samples consume 54.8/47.1 ms of CPU in about 200 ms: copying this polling loop
+would impose material idle cost. Full server/client memory and separate CPU
+windows are retained in raw output and tables, without double-counting embedded.
+
+All 108 runs report zero ordering errors, zero active subscriptions after cancel,
+no replay to a fresh subscription and no event for ten rolled-back transactions.
+The comparison supplies no consistent across-scenario advantage large enough to
+justify replacing standard broadcast with a custom log as the default. The log
+remains a simple alternative if a future native route demonstrates a concrete
+benefit after fixing scheduling and global buffer admission.
+
 ## Correctness interpretation
 
 Each run checks total committed publishes versus rollback attempts, per-stream
@@ -77,6 +126,12 @@ live subscription. Reconnection has a new tail and cannot count events lost
 while disconnected. A restart/epoch reset is an API contract still to be
 implemented in a native module; reconnection here does not prove a production
 reset event format.
+
+Cancellation removes subscriber state, but the shared-log prototype retains its
+last 256 payloads after the last subscriber leaves; broadcast can release
+consumed slots. This is bounded for the one measured topic, not an idle-topic
+reclamation policy. Product topic registries must reclaim empty topics and
+account for their retained bytes.
 
 A gap itself cannot be delivered without credit. The server must coalesce
 missed ranges/counters in bounded state until the subscriber resumes; enqueueing
@@ -90,6 +145,16 @@ retention are additional buffers. The measured one-versus-many connections is
 therefore as relevant as the core ring's payload storage. Millions of successful
 publishes with very few deliveries are a loss policy measurement, not useful
 fanout throughput.
+
+Configured buffer ceilings are 256 KiB shared payload history, 256 KiB output
+per connection and 2 MiB initial stream credit per subscription. At 1000 streams
+the initial permissions sum to 2000 MiB; at 1000 connections output caps sum
+to 250 MiB. Credit is permission, not preallocated RSS. RSS measures resident
+user-space buffers, not socket kernel memory or a complete instantaneous sum of
+SDK/transport queues. This adapter does not expose every queue high-water
+counter; an exact aggregate-buffer admission proof remains a native-path gate.
+The fixed polling/output budget also constrains delivery capacity. These rates
+are not a limit of the future event-driven implementation.
 
 ## Recommendation for Opus
 

@@ -4,6 +4,7 @@ from pathlib import Path
 import collections
 import json
 import math
+import re
 
 ROOT=Path(__file__).resolve().parent
 DATA=ROOT.parent/'reports/data/index-foundations-2026-10-15'
@@ -50,8 +51,8 @@ for label,rs in groups('static'):
   def quant(r):
    a=sorted(s['us'] for s in r['query_samples'] if s['bucket']==bucket)
    return a[min(len(a)-1,math.ceil(.99*len(a))-1)]
-  rows.append([label,bucket,values(rs,lambda r:next(s['matched'] for s in r['query_samples'] if s['bucket']==bucket)),values(rs,lambda r:ms(quant(r)))])
-table('Geo selectivity buckets (75 samples/bucket/pass)',['Scenario','Bucket','Matches','Query p99 ms'],rows)
+  rows.append([label,bucket,values(rs,lambda r:str(min(s['matched'] for s in r['query_samples'] if s['bucket']==bucket))+'–'+str(max(s['matched'] for s in r['query_samples'] if s['bucket']==bucket))),values(rs,lambda r:ms(quant(r)))])
+table('Geo selectivity buckets (75 samples/bucket/pass)',['Scenario','Bucket','Match range','Query p99 ms'],rows)
 for name in ('rebuilds','sensitivity'):
  rebuilds=[(k,v) for k,v in groups(name) if v[0]['result']['experiment']=='rebuild']
  if not rebuilds:continue
@@ -73,6 +74,13 @@ for label,rs in groups('channels'):
  rows.append([label,values(rs,lambda r:f(r['publishedPerS'])),values(rs,lambda r:r['delivered']),values(rs,lambda r:r['lost']),values(rs,lambda r:r['gapMissed']),values(rs,lambda r:f(r['latency']['p50Us']/1000)),values(rs,lambda r:f(r['latency']['p99Us']/1000)),values(rs,lambda r:mib(r['subscribedMemory']['rss']-r['idleMemory']['rss'])),values(rs,lambda r:mib(r['endMemory']['rss'])),values(rs,lambda r:f((r['cpuUs']['user']+r['cpuUs']['system'])/1e6))])
 table('Real Bun receivers',['Scenario','Publish/s','Delivered','Undelivered at drain','Gap missed','p50 ms','p99 ms','Client subscription delta MiB','Client end RSS MiB','Client CPU s'],rows)
 rows=[]
+for label,rs in groups('channels'):
+ def server_rss(r):
+  return int(re.search(r'VmRSS:\s+(\d+)', '\n'.join(r['status']['rss'])).group(1))/1024
+ rows.append([label,values(rs,lambda r:f(server_rss(r))),values(rs,lambda r:f((r['subscribedMemory']['rss']-r['idleMemory']['rss'])/r['subscribers']/1024)),values(rs,lambda r:r['status']['retained_payloads']),'; '.join(f(r['daemon_cpu_s']) if 'daemon_cpu_s' in r else 'shared Bun process' for r in rs),values(rs,lambda r:f((r['idleCpuUs']['user']+r['idleCpuUs']['system'])/1000)),values(rs,lambda r:f(r['idleServerCpuS']*1000))])
+table('Channels memory and idle CPU',['Scenario','Server RSS MiB³','Client subscription delta KiB/sub⁴','Retained payloads','Daemon full-window CPU s','Client idle CPU ms/200 ms','Server idle CPU ms/200 ms'],rows)
+lines.extend(['³ Embedded server shares Bun RSS; never add it twice. ⁴ Multiplexed cases estimate subscription cost; one-connection-per-subscription cases include connection/session setup. This finite-run delta includes allocator granularity, not a constant object size. Daemon CPU includes setup/cleanup, whereas client workload CPU does not.',''])
+rows=[]
 for label,rs in groups('outbox'):
  if rs[0]['result'].get('experiment')!='outbox':continue
  rows.append([label,values(rs,lambda r:f(r['build_us']/1e6)),values(rs,lambda r:ms(r['build_foreground']['service']['p99_us'])),values(rs,lambda r:ms(r['steady_foreground']['service']['p99_us'])),values(rs,lambda r:ms(r['query_service']['p50_us'])),values(rs,lambda r:ms(r['query_service']['p99_us'])),values(rs,lambda r:ms(r['query_scheduled']['p99_us'])),values(rs,lambda r:mib(r['wal']['frame_bytes'])),values(rs,lambda r:mib(r['external_bytes'])),values(rs,lambda r:f(mem(r)))])
@@ -85,7 +93,7 @@ table('Instrumented WAL/cache/order sensitivity',['Scenario','Build+observer s',
 rows=[]
 for label,rs in groups('geo-certified'):
  for bucket in range(4):
-  rows.append([label,bucket,values(rs,lambda r:next(s['matched'] for s in r['samples'] if s['bucket']==bucket)),values(rs,lambda r:ms(sorted(s['plain_us'] for s in r['samples'] if s['bucket']==bucket)[3])),values(rs,lambda r:ms(sorted(s['certified_us'] for s in r['samples'] if s['bucket']==bucket)[3]))])
+  rows.append([label,bucket,values(rs,lambda r:str(min(s['matched'] for s in r['samples'] if s['bucket']==bucket))+'–'+str(max(s['matched'] for s in r['samples'] if s['bucket']==bucket))),values(rs,lambda r:ms(sorted(s['plain_us'] for s in r['samples'] if s['bucket']==bucket)[3])),values(rs,lambda r:ms(sorted(s['certified_us'] for s in r['samples'] if s['bucket']==bucket)[3]))])
 table('Certified geo same-connection diagnostic (8/bucket, lower median)',['Scenario','Bucket','Matches','Plain ms','Certified ms'],rows)
 rows=[]
 for label,rs in groups('large-crashes'):
@@ -95,6 +103,10 @@ rows=[]
 for label,rs in groups('memory'):
  rows.append([label,'; '.join(str(r['exit']) for r in rs),'; '.join(str(r['oom_killed']) for r in rs),'; '.join(str(r['recovery']['rows']) for r in rs)])
 table('64 MiB cgroup / no swap correctness',['Scenario','Exit','OOM killed','Source rows after reopen'],rows)
+rows=[]
+for label,rs in groups('allocations'):
+ rows.append([label,values(rs,lambda r:r['allocations']['rust_calls']),values(rs,lambda r:mib(r['allocations']['rust_requested_bytes'])),values(rs,lambda r:f(mem(r)))])
+table('Separate allocation-observer cohort (100k rows, process lifetime)',['Candidate','Rust allocation/reallocation requests','Requested MiB','HWM MiB'],rows)
 lines.extend(['## Raw inventory','','| File | Records | Failed process exits | Revisions |','|---|---|---|---|'])
 for p in sorted(DATA.glob('*.jsonl')):
  rs=read(p.stem);lines.append('| '+p.name+' | '+str(len(rs))+' | '+str(sum(r.get('exit',0)!=0 for r in rs))+' | '+', '.join(sorted({r.get('revision','unrecorded')[:12] for r in rs}))+' |')
