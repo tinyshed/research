@@ -1,0 +1,32 @@
+{
+  "os": "Linux container on managed Linux VM",
+  "kernel": "6.18.44",
+  "cpu_model": "Intel Xeon Platinum 8573C",
+  "visible_vcpus": 3,
+  "cpu_quota": 2,
+  "memory_limit_bytes": 6442450944,
+  "outer_memory_bytes": 8589934592,
+  "storage": "Docker disk-backed named volume on overlay-backed host; tmpfs only for ENOSPC correctness probes",
+  "rust_image": "rust@sha256:114c7a4425406451c2866b6aafe69fe29b1b298832db1277d411ac73c82d04d6",
+  "rust": "1.99.0",
+  "bun": "1.4.2",
+  "sqlite": "3.53.2, rusqlite 0.40.2 bundled",
+  "native_settings": {
+    "journal_mode": "WAL",
+    "synchronous": "FULL",
+    "page_size": 4096,
+    "cache_kib_per_connection": 4096,
+    "readers": 2,
+    "wal_checkpoint": "manual PASSIVE after >8192 frames, hook replaces auto-checkpoint"
+  },
+  "product_revision": "76b844cdc8c3410e746a5d5dc3e9aafec83c9962",
+  "historical_submodule_unchanged": true,
+  "network": "unrestricted HTTP policy; CA trusted via CARGO_HTTP_CAINFO, no credential values recorded",
+  "timing_policy": "fresh sequential processes; two passes in forward/reverse candidate order; no builds/tests/lint during performance runs",
+  "clock": "UTC ISO-8601 in raw; report date Europe/Moscow",
+  "preflight_failures": [
+    "SQLite floor function missing, registered as deterministic research scalar",
+    "postings DELETE by id caused full scans; interrupted first 1m pass and fixed trigger to use OLD category and id"
+  ],
+  "environment_refresh": "Executor control reattached during initial exploratory static run; existing containers and subprocess survived. Main measurements follow the subsequent harness correction."
+}

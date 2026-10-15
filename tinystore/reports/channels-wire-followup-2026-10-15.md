@@ -1,0 +1,140 @@
+# Channels with real receivers — 15 October 2026
+
+**Incremental publication:** harness and correctness findings are available;
+the performance matrix is still running. Numerical tables will be added after
+both passes complete. No unmeasured performance claim is made here.
+
+This extends [the first channel round](channels-2026-10-15.md), whose in-process
+publisher rates did not establish delivered SDK throughput. Source is
+[`channels-wire-lab`](../channels-wire-lab/README.md); raw runs are in
+`data/index-foundations-2026-10-15/channels.jsonl`.
+
+## Integration boundary
+
+There is no native Channels router or SDK Channels handle at the pinned Rust
+revision. This round does not modify Core, generated protocol or public API.
+A research adapter reserves private methods 60000–60005 around a real Core
+Pipe. HELLO/WELCOME and ordinary traffic use unmodified Core; experimental
+subscriptions, log dispatch, CREDIT scheduling and channel frames belong to
+the adapter. The receiver uses unchanged Bun SDK Session, Connection, frame
+parser, stream lifecycle and Bun runtime sockets. Embedded uses a research FFI
+wrapper; sidecar means the adapter's Unix socket. Production SERVE discovery,
+sidecar startup/proof, TLS/auth and a future public Channels iterator are not
+included. The experimental event envelope is a minimal binary codec; the cost
+of a future generated Channels MessagePack/JSON codec is not included.
+
+Ordinary publications are volatile. A separate `commit` profile follows a real
+FULL Core KV write for each event. Ten deliberately rolled-back Core transactions
+in every profile must produce no events. The adapter serializes
+commit completion and sequence assignment; it **does not** measure a native
+grouped-commit notification hook. It polls connections at 1 ms; that scheduler's
+CPU/latency is part of the prototype result, not the recommended production
+path. These limits are material when interpreting the numbers as Core →
+experimental Wire boundary → real Bun receiver, rather than an existing product
+Channels feature.
+
+## Compared paths
+
+Both candidates retain at most 256 shared 1024-byte Arc payloads. Baseline is
+`tokio::sync::broadcast`; candidate is a simple mutex/VecDeque log with cursors.
+No new lock-free algorithm is built. Both have identical framing, per-stream
+send allowances, output scheduling and Core commit path. Fast runs offer
+1000 publishes at 200/s, with 100 or 1000 subscriptions, multiplexed over one
+connection or one connection per subscription. An unpaced `burst` profile offers
+2000 events with 32 publish calls in flight. Thus the matrix separates
+subscription overhead from transport/session overhead.
+
+In the slow/credit scenario, 1% of subscriptions voluntarily start with zero
+send allowance. After 1200 events at an offered 400/s, real Wire CREDIT resumes
+them. The bounded log has already overflowed, so they receive a gap followed by
+the retained tail. This measures absent credit and resynchronization, not a
+particular slow socket's bandwidth. A separate `slow-window` profile pauses 1%
+of real SDK consumers for 2600 events, exhausting their ordinary 2 MiB windows,
+then resumes them. Filling all 1000 windows is a different multi-GiB workload;
+a small shared log does not make it free.
+
+Latency is measured on one Bun monotonic clock from payload timestamp before
+the publish call to actual receipt/decoding, sampled every 16 delivered events.
+It includes scheduling/transports and, in the `commit` profile, the Core commit.
+It excludes time before
+the publisher actually starts that call. `publishedPerS` measures achieved rate,
+which can fall below the offered schedule. Delivered counts, missed gap counts,
+wire-sent counts and per-subscriber counts are separate. Undelivered-by-drain
+deadline must not automatically be called confirmed permanent loss.
+
+Client RSS/heap and CPU are measured in Bun; daemon RSS comes from the actual
+server process and its CPU from `/proc`. Daemon CPU includes connection setup
+and cleanup, whereas client CPU counters cover publish/drain, so those windows
+must not be summed and labelled one precise steady-state CPU rate. Embedded
+Core and client share a process; counting its RSS twice would be wrong.
+
+## Correctness interpretation
+
+Each run checks total committed publishes versus rollback attempts, per-stream
+monotonic delivery, cancellation/removal of every subscription, and a fresh
+connection receiving no replay. Gaps count only overflow visible within the
+live subscription. Reconnection has a new tail and cannot count events lost
+while disconnected. A restart/epoch reset is an API contract still to be
+implemented in a native module; reconnection here does not prove a production
+reset event format.
+
+A gap itself cannot be delivered without credit. The server must coalesce
+missed ranges/counters in bounded state until the subscriber resumes; enqueueing
+one gap for every missed event would defeat bounded memory. The prototype
+implements this through broadcast lag state or cursor distance, not an
+unbounded per-subscriber event queue.
+
+No slow subscription may stall publisher progress or grow the log beyond its
+bound. Per-connection output, kernel buffers, SDK DATA copies and application
+retention are additional buffers. The measured one-versus-many connections is
+therefore as relevant as the core ring's payload storage. Millions of successful
+publishes with very few deliveries are a loss policy measurement, not useful
+fanout throughput.
+
+## Recommendation for Opus
+
+Start with standard broadcast unless a native-path delivered-throughput/RSS
+gate demonstrates a material shared-log advantage. Keep one immutable payload
+per event; bound by bytes as well as event count; cap message size, topics,
+subscriptions and total connection send allowance. Wake/drain per connection
+with coalescing and a fair byte budget. Do not copy the adapter's polling loop
+or serialize every production publish behind an extra global commit mutex.
+
+Attach staged publications to successful savepoints and commit completion in
+the real writer. Drop publications on savepoint rollback or failed group COMMIT.
+Assign sequence/order at an explicit commit-dispatch boundary; waking a caller
+and publishing when it resumes can reorder events from separate completed
+commits. A commit hook must remain bounded and cannot wait for slow network
+consumers. Process death after data COMMIT but before ephemeral dispatch can
+still lose a notification; that is compatible with at-most-once Channels and
+must be documented.
+
+Guarantee an order within a named channel/defined writer scope. Separate SQLite
+files have no implicit atomic transaction or universal commit order. If path
+subscriptions are wanted, begin with an owner-approved exact topic or prefix
+model; arbitrary glob/regex matching and authorization are not proven cheap by
+this log benchmark. Clear unneeded channel state when the last subscriber goes,
+and bound the registry as well as individual queues.
+
+For UI recovery, subscribe and await acknowledgement **before** fetching a
+snapshot, then reconcile versioned changes; snapshot-then-subscribe has a race.
+On gap/reset reconnect, reload authoritative state. Channels do not become a
+durable replay system by accepting a last-seen cursor. Durable history, if
+required later, belongs to a separately specified Records-based stream with
+Channels as a wakeup hint.
+
+## Owner decisions and product acceptance gates
+
+Agree channel naming/path matching and authorization, event count/byte limits,
+drop/disconnect policy, gap range/count and epoch reset format, scope of ordering,
+transaction publication semantics, subscription acknowledgement/snapshot recipe,
+and whether SDKs ever expose replay. This round changes none of them.
+
+The native implementation must pass rollback/savepoint/group-commit failure and
+ordering tests, empty/no-subscriber cleanup, cancel/disconnect while blocked for
+credit, gap after multiple overflows, restart/reset, bounded queue/SDK/kernel
+buffers and fair multiplexing. Measure actual delivered throughput and p99 at
+100/1000 subscriptions through the real public SDK handle over embedded,
+production sidecar and TCP/TLS, with a no-credit consumer and a real bandwidth
+limited socket. Those remaining gates are explicit; this adapter is evidence
+for algorithm selection, not a claim that the product integration is complete.

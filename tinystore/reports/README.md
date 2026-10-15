@@ -268,3 +268,12 @@ original hashes and distinguishes translated documentation from measured code.
 | [Locks: contention and fencing](locks-2026-10-15.md)               | transactional KV baseline, conditional SQL, wake-all and FIFO admission at 10/100/1000 clients; TTL/renewal/semaphores, SIGKILL, fairness and Jobs reuse boundaries |
 | [FTS5 and R*Tree costs](indexes-2026-10-15.md)                     | 100k synthetic rows, insert/update/delete/query, per-object storage, WAL, held readers and monolithic rebuild; proposed chunked frontier algorithm                  |
 | [Implementation handoff](channels-locks-handoff-2026-10-15.md)     | committed prototypes, raw evidence, runtime-neutral architecture, current-source traps and the gates still required before product implementation                   |
+
+## Follow-up: first-principles architecture and integration
+
+Incremental publication; static measurements are complete, concurrent matrices are in progress.
+
+- [Indexes from first principles](index-foundations-2026-10-15.md)
+- [Channels with real Bun receivers](channels-wire-followup-2026-10-15.md)
+- [Locks with the actual grouped Core writer](core-locks-followup-2026-10-15.md)
+- [Per-pass measurement tables](index-foundations-measurements-2026-10-15.md)
