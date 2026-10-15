@@ -239,3 +239,9 @@ original hashes and distinguishes translated documentation from measured code.
 | [Applying SQLite pages](scaling-pages-2026-10-15.md)           | interim probe of SQLite 3.53.2: the two header counters that defeat raw byte equality, schema replacement in one statement, and the exact boundary of a canonical page checksum                                 |
 | [Cascade, recovery and fan-out](scaling-cascade-2026-10-15.md) | paired measurements: 140 children, star versus 7 × 20, 20× lower root egress and 5% more total traffic; 100-state catch-up in 4 requests; page amplification for five engines and the cost of snapshot scanning |
 | [Implementation handoff](scaling-handoff-2026-10-15.md)        | per-file ownership, a relay's local databases, embedded readers and pending intents, sync acknowledgements and fencing, commit and checkpoint seams, and the remaining product gates                            |
+
+## 15 October 2026 — WAL capture and recovery
+
+| Report | Scope |
+| --- | --- |
+| [WAL architecture and recovery boundaries](scaling-wal-design-2026-10-15.md) | interim design, native commit capture, FULL vs guarded feed, ACK and failure contracts before timing |
