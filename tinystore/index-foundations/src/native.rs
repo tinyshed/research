@@ -28,6 +28,9 @@ pub fn create(c: &Connection, g: i64, kind: &str) {
         "fts-external" => format!(
             "create virtual table {name} using fts5(terms,content='documents',content_rowid='id',tokenize='unicode61 remove_diacritics 2')"
         ),
+        "fts-set" => format!(
+            "create virtual table {name} using fts5(terms,content='documents',content_rowid='id',detail=none,columnsize=0,tokenize='unicode61 remove_diacritics 2')"
+        ),
         "geo" => format!("create virtual table {name} using rtree(id,minx,maxx,miny,maxy)"),
         "grid" => format!(
             "create table {name}(id integer primary key,cx integer,cy integer); create index {name}_cell on {name}(cx,cy,id)"
@@ -44,7 +47,7 @@ pub fn add(c: &Connection, g: i64, kind: &str, d: &Doc, definition: i64) {
     let name = table(g);
     match kind {
         k if k.starts_with("scan-") => {}
-        "fts" | "fts-external" => {
+        "fts" | "fts-external" | "fts-set" => {
             c.prepare_cached(&format!("insert into {name}(rowid,terms) values(?1,?2)"))
                 .unwrap()
                 .execute(params![d.id, projected(&d.terms, definition)])
@@ -109,15 +112,18 @@ pub fn triggers(c: &Connection, g: i64, kind: &str, algorithm: &str, guard: bool
     let old_where = format!("{enabled} and {}", covered("old"));
     let new_where = format!("{enabled} and {}", covered("new"));
     let del = match kind {
-        "fts-external" => format!(
+        "fts-external" | "fts-set" => format!(
             "insert into {name}({name},rowid,terms) select 'delete',old.id,{} where {old_where};",
             expr_terms("old", g)
         ),
         "fts" => format!("delete from {name} where rowid=old.id and {old_where};"),
+        "postings" => {
+            format!("delete from {name} where category=old.category and id=old.id and {old_where};")
+        }
         _ => format!("delete from {name} where id=old.id and {old_where};"),
     };
     let ins = match kind {
-        "fts" | "fts-external" => format!(
+        "fts" | "fts-external" | "fts-set" => format!(
             "insert into {name}(rowid,terms) select new.id,{} where {new_where};",
             expr_terms("new", g)
         ),
@@ -153,7 +159,7 @@ pub fn triggers(c: &Connection, g: i64, kind: &str, algorithm: &str, guard: bool
         "1".to_owned()
     } else {
         match kind {
-            "fts" | "fts-external" => {
+            "fts" | "fts-external" | "fts-set" => {
                 "old.id is not new.id or old.terms is not new.terms".to_owned()
             }
             "geo" | "grid" => {
@@ -215,7 +221,7 @@ pub fn query(c: &Connection, g: i64, kind: &str, q: usize, shape: &str) -> Vec<i
             .map(Result::unwrap)
             .collect(),
 
-        "fts" | "fts-external" => {
+        "fts" | "fts-external" | "fts-set" => {
             let term = query_term(q, shape);
             c.prepare_cached(&format!(
                 "select rowid from {name} where {name} match ?1 order by rowid"
@@ -316,11 +322,6 @@ pub fn generation(
     create(c, g, kind);
     triggers(c, g, kind, algo, guard);
 }
-pub fn ensure_source(n: usize, shape: &str, order: &str, batch: usize) {
-    let path = path();
-    let c = open(&path);
-    fixture::seed(&c, n, shape, order, batch);
-}
 pub fn initialize_active(c: &Connection, kind: &str, guard: bool) {
     c.execute_batch("begin immediate").unwrap();
     generation(c, 0, kind, "active", 1, true, guard);
@@ -356,13 +357,16 @@ pub fn run(a: &[String]) {
     let build_objects = objects(&c);
     checkpoint(&c);
     let mut query_times = vec![];
+    let mut query_samples = vec![];
     let mut checksum = 0u64;
     let qstart = Instant::now();
     for q in 0..300 {
         let t = Instant::now();
         let ids = query(&c, 0, kind, q, shape);
         checksum = checksum.wrapping_mul(0x100000001b3) ^ hash_ids(&ids);
-        query_times.push(us(t));
+        let elapsed = us(t);
+        query_times.push(elapsed);
+        query_samples.push(json!({"q":q,"bucket":q % if kind.starts_with("fts")||kind=="scan-text"{6}else if ["geo","grid","scan-geo"].contains(&kind.as_str()){4}else{8},"us":elapsed,"matched":ids.len()}));
     }
     let query_seconds = qstart.elapsed().as_secs_f64();
     let f = Fixture::new(shape);
@@ -402,7 +406,7 @@ pub fn run(a: &[String]) {
         json!({"experiment":"native","kind":kind,"rows":n,"shape":shape,"order":order,"batch":batch,
         "build_us":build_us,"build_rows_per_s":n as f64*1e6/build_us.max(1) as f64,"build_wal":build_wal,
         "build_objects":build_objects,"queries":distribution(&mut query_times),"query_per_s":300./query_seconds,
-        "query_checksum":checksum,"mutations_each":mutations,"mutation_phases":phases,
+        "query_checksum":checksum,"query_samples":query_samples,"mutations_each":mutations,"mutation_phases":phases,
         "all_wal":wal_stats(),"initial_memory":initial,"final_memory":memory(),
         "disk_bytes":bytes(&path),"wal_file_bytes":wal_bytes(&path),"objects":objects(&c),"cpu_s":cpu()-cpu0,
         "allocations":allocations(),"sqlite":rusqlite::version(),"status":"pass"})

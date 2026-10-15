@@ -178,6 +178,8 @@ fn verify(c: &Connection, shape: &str) -> Value {
             .query_row(&format!("select count(*) from g{active}"), [], |r| r.get(0))
             .unwrap();
         assert_eq!(all, rows);
+        let diff:i64=c.query_row(&format!("select count(*) from (select rowid,terms from g{active} except select rowid,terms from g9999)"),[],|r|r.get(0)).unwrap();
+        assert_eq!(diff, 0);
         if definition > 1 {
             let matched: i64 = c
                 .query_row(
@@ -431,6 +433,20 @@ pub fn check(a: &[String]) {
     let c = open(&path);
     c.execute_batch(fixture::SCHEMA).unwrap();
     let f = Fixture::new("uniform");
+    if a.get(2).is_some_and(|v| v == "empty") {
+        native::initialize_active(&c, kind, true);
+        start(&c, 1, kind, algo, true, 2);
+        assert!(chunk(&c, 1, 3, 0).0);
+        fixture::insert(&c, &f.doc(-100));
+        fixture::insert(&c, &f.doc(500));
+        complete(&c, 1);
+        let validation = verify(&c, "uniform");
+        println!(
+            "{}",
+            json!({"experiment":"empty-rebuild","kind":kind,"algorithm":algo,"validation":validation,"status":"pass"})
+        );
+        return;
+    }
     for id in [i64::MIN, -20, -2, 0, 2, 7, 11, 50] {
         fixture::insert(&c, &f.doc(id));
     }

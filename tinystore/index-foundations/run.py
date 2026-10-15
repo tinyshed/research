@@ -60,6 +60,7 @@ def checks():
             for algo in ('frontier','seen','delta'):
                 db=SCRATCH/'check.db';tidy(db)
                 save('correctness',kind+'-'+algo,passno,command(['rebuild-check',kind,algo],db));tidy(db)
+                save('correctness',kind+'-'+algo+'-empty',passno,command(['rebuild-check',kind,algo,'empty'],db));tidy(db)
         db=SCRATCH/'quality.db';tidy(db);save('correctness','quality',passno,command(['quality'],db));tidy(db)
         for kind in ('fts','geo'):
             for algo in ('frontier','seen','delta'):
@@ -73,7 +74,7 @@ def checks():
 
 def static():
     for n in (100000,1000000):
-        for shape,kinds in [('uniform',['btree','postings','roaring','scan-secondary','geo','grid','rstar','scan-geo','fts','fts-external','tantivy','scan-text']),('russian',['fts','fts-external','tantivy']),('zipf',['fts','fts-external','tantivy']),('clustered',['geo','grid','rstar'])]:
+        for shape,kinds in [('uniform',['btree','postings','roaring','scan-secondary','geo','grid','rstar','scan-geo','fts','fts-external','fts-set','tantivy','scan-text']),('russian',['fts','fts-external','fts-set','tantivy']),('zipf',['fts','fts-external','fts-set','tantivy']),('clustered',['geo','grid','rstar'])]:
             for passno in (1,2):
                 # Reverse the second pass to expose order/temperature effects.
                 for kind in kinds if passno==1 else reversed(kinds):

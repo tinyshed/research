@@ -67,6 +67,7 @@ pub fn run(a: &[String]) {
     let index_bytes = size(std::path::Path::new(&dir));
     let searcher = reader.searcher();
     let mut times = vec![];
+    let mut query_samples = vec![];
     let mut checksum = 0u64;
     let qstart = Instant::now();
     for q in 0..300 {
@@ -92,7 +93,9 @@ pub fn run(a: &[String]) {
             })
             .collect();
         ids.sort_unstable();
-        times.push(us(t));
+        let elapsed = us(t);
+        times.push(elapsed);
+        query_samples.push(json!({"q":q,"bucket":q%6,"us":elapsed,"matched":ids.len()}));
         checksum = checksum.wrapping_mul(0x100000001b3) ^ hash_ids(&ids);
     }
     let query_s = qstart.elapsed().as_secs_f64();
@@ -124,6 +127,6 @@ pub fn run(a: &[String]) {
     let recovery_us = us(t);
     println!(
         "{}",
-        json!({"experiment":"tantivy","rows":n,"shape":shape,"build_us":build_us,"build_rows_per_s":n as f64*1e6/build_us as f64,"queries":distribution(&mut times),"query_per_s":300./query_s,"query_checksum":checksum,"index_bytes":index_bytes,"final_index_bytes":size(std::path::Path::new(&dir)),"update_1000_commit_reload_us":update_us,"reopen_us":recovery_us,"idle_memory":idle,"resident_memory":resident,"final_memory":memory(),"cpu_s":workcpu,"allocations":allocations(),"tokenizer":"shared pre-normalized Russian Snowball + whitespace; term set, no ranking","atomicity":"independent commit; requires outbox/barrier or weaker semantics","status":"pass"})
+        json!({"experiment":"tantivy","rows":n,"shape":shape,"build_us":build_us,"build_rows_per_s":n as f64*1e6/build_us as f64,"queries":distribution(&mut times),"query_per_s":300./query_s,"query_checksum":checksum,"query_samples":query_samples,"index_bytes":index_bytes,"final_index_bytes":size(std::path::Path::new(&dir)),"update_1000_commit_reload_us":update_us,"reopen_us":recovery_us,"idle_memory":idle,"resident_memory":resident,"final_memory":memory(),"cpu_s":workcpu,"allocations":allocations(),"tokenizer":"shared pre-normalized Russian Snowball + whitespace; term set, no ranking","atomicity":"independent commit; requires outbox/barrier or weaker semantics","status":"pass"})
     );
 }

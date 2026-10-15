@@ -12,24 +12,29 @@ pub fn run(a: &[String]) {
     }
     let idle = memory();
     let cpu0 = cpu();
-    let t = Instant::now();
-    let docs = fixture::read(&c, None, i64::MAX, n + 1);
-    let load_us = us(t);
     let begin = Instant::now();
     let mut times = vec![];
+    let mut samples = vec![];
     let mut checksum = 0u64;
-    let mut matched = 0;
     #[cfg(feature = "geo")]
     if kind == "rstar" {
         use rstar::{AABB, RTree, primitives::GeomWithData};
-        let tree = RTree::bulk_load(
-            docs.iter()
-                .map(|d| GeomWithData::new([d.x, d.y], d.id))
-                .collect(),
-        );
+        let points: Vec<_> = c
+            .prepare("select id,x,y from documents order by id")
+            .unwrap()
+            .query_map([], |r| {
+                Ok(GeomWithData::new(
+                    [r.get::<_, f64>(1)?, r.get::<_, f64>(2)?],
+                    r.get::<_, i64>(0)?,
+                ))
+            })
+            .unwrap()
+            .map(Result::unwrap)
+            .collect();
+        let load_us = us(begin);
+        let tree = RTree::bulk_load(points);
         let build_us = us(begin);
         let resident = memory();
-        let query_start = Instant::now();
         for q in 0..300 {
             let t = Instant::now();
             let (x0, x1, y0, y1) = native::rect(q, shape);
@@ -38,29 +43,37 @@ pub fn run(a: &[String]) {
                 .map(|v| v.data)
                 .collect();
             ids.sort_unstable();
-            times.push(us(t));
+            let elapsed = us(t);
+            times.push(elapsed);
+            samples.push(json!({"q":q,"bucket":q%4,"us":elapsed,"matched":ids.len()}));
             checksum = checksum.wrapping_mul(0x100000001b3) ^ hash_ids(&ids);
-            matched += ids.len();
             if q < 20 {
-                let mut exact: Vec<i64> = docs
-                    .iter()
-                    .filter(|d| d.x >= x0 && d.x <= x1 && d.y >= y0 && d.y <= y1)
-                    .map(|d| d.id)
-                    .collect();
-                exact.sort_unstable();
-                assert_eq!(ids, exact);
+                assert_eq!(ids, native::query(&c, 0, "scan-geo", q, shape));
             }
         }
-        let query_s = query_start.elapsed().as_secs_f64();
+        let query_us: u64 = times.iter().sum();
         let t = Instant::now();
         let mut tree = tree;
-        for d in docs.iter().take(1000) {
-            assert!(tree.remove(&GeomWithData::new([d.x, d.y], d.id)).is_some());
-            tree.insert(GeomWithData::new([d.x + 1e-7, d.y], d.id));
+        let old: Vec<_> = c
+            .prepare("select id,x,y from documents order by id limit 1000")
+            .unwrap()
+            .query_map([], |r| {
+                Ok(GeomWithData::new(
+                    [r.get::<_, f64>(1)?, r.get::<_, f64>(2)?],
+                    r.get::<_, i64>(0)?,
+                ))
+            })
+            .unwrap()
+            .map(Result::unwrap)
+            .collect();
+        for d in old {
+            assert!(tree.remove(&d).is_some());
+            let p = *d.geom();
+            tree.insert(GeomWithData::new([p[0] + 1e-7, p[1]], d.data));
         }
         println!(
             "{}",
-            json!({"experiment":"alternative","kind":kind,"rows":n,"shape":shape,"load_us":load_us,"build_us":build_us,"queries":distribution(&mut times),"query_per_s":300./query_s,"query_checksum":checksum,"matched_total":matched,"update_1000_us":us(t),"idle_memory":idle,"resident_memory":resident,"final_memory":memory(),"cpu_s":cpu()-cpu0,"allocations":allocations(),"durability":"rebuild-from-source cache; not transactional storage","status":"pass"})
+            json!({"experiment":"alternative","kind":kind,"rows":n,"shape":shape,"load_us":load_us,"build_us":build_us,"queries":distribution(&mut times),"query_samples":samples,"query_per_s":300e6/query_us.max(1) as f64,"query_checksum":checksum,"update_1000_us":us(t),"idle_memory":idle,"resident_memory":resident,"final_memory":memory(),"cpu_s_including_oracles":cpu()-cpu0,"allocations":allocations(),"durability":"rebuild-from-source cache; not transactional storage","status":"pass"})
         );
         return;
     }
@@ -69,14 +82,20 @@ pub fn run(a: &[String]) {
         let mut maps: Vec<roaring::RoaringTreemap> =
             (0..100).map(|_| roaring::RoaringTreemap::new()).collect();
         let mut scores = vec![0.; n + 1];
-        for d in &docs {
-            maps[d.category as usize].insert(d.id as u64);
-            scores[d.id as usize] = d.score;
+        let mut stmt = c
+            .prepare("select id,category,score from documents order by id")
+            .unwrap();
+        let mut rows = stmt.query([]).unwrap();
+        while let Some(row) = rows.next().unwrap() {
+            let id: i64 = row.get(0).unwrap();
+            let cat: i64 = row.get(1).unwrap();
+            assert!(id > 0 && id <= n as i64);
+            maps[cat as usize].insert(id as u64);
+            scores[id as usize] = row.get(2).unwrap();
         }
         let build_us = us(begin);
         let resident = memory();
         let serialized: u64 = maps.iter().map(|m| m.serialized_size() as u64).sum();
-        let qstart = Instant::now();
         for q in 0..300 {
             let t = Instant::now();
             let ids: Vec<i64> = maps[q % 100]
@@ -84,27 +103,23 @@ pub fn run(a: &[String]) {
                 .filter(|id| scores[*id as usize] >= (q % 8 * 100) as f64)
                 .map(|id| id as i64)
                 .collect();
-            times.push(us(t));
+            let elapsed = us(t);
+            times.push(elapsed);
+            samples.push(json!({"q":q,"bucket":q%8,"us":elapsed,"matched":ids.len()}));
             checksum = checksum.wrapping_mul(0x100000001b3) ^ hash_ids(&ids);
-            matched += ids.len();
             if q < 20 {
-                let exact: Vec<i64> = docs
-                    .iter()
-                    .filter(|d| d.category == q as i64 % 100 && d.score >= (q % 8 * 100) as f64)
-                    .map(|d| d.id)
-                    .collect();
-                assert_eq!(ids, exact);
+                assert_eq!(ids, native::query(&c, 0, "scan-secondary", q, shape));
             }
         }
-        let query_s = qstart.elapsed().as_secs_f64();
+        let query_us: u64 = times.iter().sum();
         let t = Instant::now();
-        for d in docs.iter().take(1000) {
-            maps[d.category as usize].remove(d.id as u64);
-            maps[(d.category as usize + 1) % 100].insert(d.id as u64);
+        for i in 1..=1000 {
+            maps[i % 100].remove(i as u64);
+            maps[(i % 100 + 1) % 100].insert(i as u64);
         }
         println!(
             "{}",
-            json!({"experiment":"alternative","kind":kind,"rows":n,"shape":shape,"load_us":load_us,"build_us":build_us,"queries":distribution(&mut times),"query_per_s":300./query_s,"query_checksum":checksum,"matched_total":matched,"update_1000_us":us(t),"serialized_bitmap_bytes":serialized,"score_array_bytes":scores.len()*8,"idle_memory":idle,"resident_memory":resident,"final_memory":memory(),"cpu_s":cpu()-cpu0,"allocations":allocations(),"durability":"rebuild-from-source cache; not transactional storage","status":"pass"})
+            json!({"experiment":"alternative","kind":kind,"rows":n,"shape":shape,"build_us":build_us,"queries":distribution(&mut times),"query_samples":samples,"query_per_s":300e6/query_us.max(1) as f64,"query_checksum":checksum,"update_1000_us":us(t),"serialized_bitmap_bytes":serialized,"score_array_bytes":scores.len()*8,"idle_memory":idle,"resident_memory":resident,"final_memory":memory(),"cpu_s_including_oracles":cpu()-cpu0,"allocations":allocations(),"durability":"rebuild-from-source cache; not transactional storage","status":"pass"})
         );
         return;
     }
