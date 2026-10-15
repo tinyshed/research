@@ -43,7 +43,7 @@ for label,rs in groups('static'):
  if 'mutation_phases'not in rs[0]['result']:continue
  for i,phase in enumerate(rs[0]['result']['mutation_phases']):
   rows.append([label,phase['operation'],phase['rows'],values(rs,lambda r,i=i:ms(r['mutation_phases'][i]['batches']['p99_us'])),values(rs,lambda r,i=i:f(r['mutation_phases'][i]['wal_frames']*4120/r['mutation_phases'][i]['rows'],1))])
-table('Native incremental transactions (100 rows/transaction)',['Scenario','Operation','Rows','Batch p99 ms','Physical WAL bytes/row'],rows)
+table('Native incremental transactions (100 rows/transaction)',['Scenario','Operation','Rows','Batch p99 ms','Committed WAL bytes/row'],rows)
 rows=[]
 for label,rs in groups('static'):
  if not any(k in label for k in ('-geo','-grid','-rstar','scan-geo')):continue
@@ -62,9 +62,13 @@ for name in ('rebuilds','sensitivity'):
  table(name+': writer and build',['Scenario','Rebuild s','Write service p50 ms','p95','p99','Writer queue p99 ms','Scheduled p99 ms','Max builder hold ms²'],rows)
  rows=[]
  for label,rs in rebuilds:
+  rows.append([label,values(rs,lambda r:ms(r['foreground']['scheduled_latency']['p50_us'])),values(rs,lambda r:ms(r['foreground']['scheduled_latency']['p95_us'])),values(rs,lambda r:ms(r['foreground']['scheduled_latency']['p99_us'])),values(rs,lambda r:ms(r['foreground']['writer_queue']['max_us'])),values(rs,lambda r:r['foreground']['transactions'])])
+ table(name+': offered-arrival latency',['Scenario','Scheduled p50 ms','p95 ms','p99 ms','Max writer queue ms','Transactions'],rows)
+ rows=[]
+ for label,rs in rebuilds:
   rows.append([label,values(rs,lambda r:f(r['query_per_s'])),values(rs,lambda r:'/'.join(ms(a['latency']['p99_us']) for a in r['readers'])),values(rs,lambda r:mib(r['workload_wal']['frame_bytes'])),values(rs,lambda r:mib(r['workload_wal']['peak_logical_bytes'])),values(rs,lambda r:mib(r['peak_db_plus_wal_bytes'])),values(rs,lambda r:f(r['sampled_rss_peak_kib']/1024)),values(rs,lambda r:ms(r['activation_hold_us'])),values(rs,lambda r:str(r['time_budget_overruns'])+'/'+str(r['frame_budget_overruns']))])
  table(name+': reads and resources',['Scenario','Query/s','Readers p99 ms','Total WAL MiB','Peak logical WAL MiB','Peak DB+WAL MiB','Peak RSS MiB','Activation ms','Time/frame overruns'],rows)
-lines.extend(['² Maximum across setup, chunk/monolithic build, checkpoint and activation holds. Foreground service excludes queue time; scheduled latency includes offered-workload backlog. Fixed main scenarios perform the same minimum 2000 transactions; long builds can outlast that write window. `continuous-*` keeps writes through publication. Different tx sizes, update ratios, caches and distributions are separate scenarios.',''])
+lines.extend(['² Maximum across setup, chunk/monolithic build, checkpoint and activation holds. Foreground service excludes queue time; scheduled latency includes offered-workload backlog. Fixed main scenarios perform the same minimum 2000 transactions; long builds can outlast that write window. `continuous-*` keeps writes through publication. Zero activation for monolithic means switching is included in the monolithic hold, not separately timed. Different tx sizes, update ratios, caches and distributions are separate scenarios.',''])
 rows=[]
 for label,rs in groups('locks'):
  rows.append([label,values(rs,lambda r:f(r['grants_per_s'])),values(rs,lambda r:f(r['attempts_per_grant'])),values(rs,lambda r:ms(r['wait']['p99_us'])),values(rs,lambda r:f(r['jain_fairness'],3)),values(rs,lambda r:r['deadline_canceled']),values(rs,lambda r:f(r['cpu_s'])),values(rs,lambda r:f(mem(r)))])

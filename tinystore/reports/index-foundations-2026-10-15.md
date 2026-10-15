@@ -120,6 +120,9 @@ WAL divided by the matched source-only scan baseline is:
 These ratios describe this fixture/transaction locality, not a constant per
 index type or amplification relative to logical payload bytes. Ordinary B-tree
 maintenance also dirties many pages when category inserts scatter across leaves.
+These counters measure committed WAL frame positions (page plus frame header),
+not device-level write amplification; repeated overwrites of an uncommitted
+frame position, filesystem metadata and SSD internals are not counted.
 Absolute WAL bytes/row and batch tails are in the tables. A future physical
 replica would receive source and derived-page frames, including repeated page
 versions; a small final index does not guarantee a cheap update stream.
@@ -133,6 +136,11 @@ The writer is shared with foreground writes. Readers fetch the active generation
 and search it inside **one** SQLite read transaction. Retiring generations stay
 present in this prototype; cleanup and old-reader admission require a separate
 lifecycle contract.
+
+This catalog has one logical index and one building generation per source.
+Its global dirty-ID set and active lookup are not a multi-index catalog. A
+product must scope metadata/capture by index and generation, define concurrent
+build admission and count their combined native/Rust memory and disk reserve.
 
 The lifecycle matrix uses contentful positional FTS (`fts`) and RTree. Its new
 FTS definition appends a common `def2` marker, allowing definition/cardinality
@@ -194,11 +202,66 @@ publication transaction:
   atomically retire previous generation and activate G
 ```
 
+The prototype source has an explicit `INTEGER PRIMARY KEY`. That is an API
+precondition, not proof that arbitrary SQL tables are supported: FTS/RTree need
+integer document identities, while UUID/composite/WITHOUT ROWID sources need a
+stable mapping or another structure. An implicit SQLite rowid can change during
+VACUUM when no INTEGER PRIMARY KEY aliases it; do not promise stable managed
+identity from it. Source rename/drop, arbitrary ALTER and VACUUM/mapping
+histories are product acceptance gates beyond the marker-definition test.
+
 The logical handle's prepared-query cache must include generation/definition;
 SQL table identifiers cannot be replaced by value parameters. A same-file
 projection also needs an ownership boundary: arbitrary raw SQL can corrupt a
 managed virtual table even when SQLite itself is transactionally correct.
 Choose user-owned raw SQL or protect managed objects and resolve logical names.
+
+The common PASSIVE-only checkpoint policy is another boundary: overlapping
+unpaced reader snapshots can prevent WAL restart/truncation even as PASSIVE
+checkpoints copy pages. Peak WAL under that policy is not a Core checkpoint
+SLO or an unavoidable index size. A product needs reader/checkpoint admission
+and a disk guard; checkpoint work and any RESTART pause must enter the same
+availability budget. The reported DB+WAL footprint excludes SHM and templates;
+temporary-file peaks are separate sampled diagnostics.
+
+## Completed 100k Russian FTS rebuild comparison
+
+This fixed-work cohort has two unpaced readers and 2000 single-row foreground
+transactions. Values are pass 1; pass 2; no averaging across passes or budgets:
+
+| Build policy | Build s | Max builder writer hold ms | Scheduled write p99 ms | Total workload WAL MiB |
+|---|---|---|---|---|
+| No rebuild | — | 0 | 1243; 1144 | 52.8; 52.8 |
+| Monolithic | 3.56; 4.40 | 3423; 3817 | 5009; 6310 | 81.8; 82.0 |
+| Frontier 1 ms / 32 frames | 12.72; 12.95 | 61; 78 | 3401; 4441 | 272.4; 289.2 |
+| Frontier 2 ms / 64 frames | 10.15; 10.87 | 64; 70 | 5479; 7191 | 200.0; 198.3 |
+| Frontier 5 ms / 256 frames | 13.98; 11.17 | 465; 198 | 9258; 9682 | 156.9; 164.0 |
+| Seen IDs 2 ms / 64 frames | 13.60; 15.86 | 110; 155 | 7295; 5779 | 280.9; 290.6 |
+| Dirty IDs 2 ms / 64 frames | 9.88; 6.71 | 111; 330 | 7221; 4937 | 171.5; 148.6 |
+
+Frontier 1 ms/32 reduces the largest writer pause by about two orders of
+magnitude relative to monolithic, while emitting over three times its total
+WAL and taking longer to build. It does not meet a hard 1 ms bound: 2257/2285
+and 2428/2470 chunks overrun that target. Final activation is 0.61/0.50 ms;
+chunk/COMMIT/FTS-merge work dominates the largest pause. Dirty-ID activation
+alone holds 98.44/28.85 ms even with only the fixed initial mutation window.
+Continuous-write and million-row cases are separate scenarios, not extrapolated
+from this table.
+
+The no-build baseline already accumulates over a second of scheduled backlog
+at the offered 1000 transactions/s with two unpaced readers. A build cannot be
+said to satisfy an application SLO when that baseline is overloaded. In the
+single foreground caller, a monolithic build can block only one queued call;
+that outlier can disappear from queue p99. Scheduled p50/p95/p99, maximum queue
+wait and maximum builder hold therefore accompany service quantiles.
+
+At the matched 2 ms/64-frame setting, guarding unrelated columns reduces WAL
+from full-maintenance 268.5/223.9 MiB to 200.0/198.3 MiB. Write-service p99 is
+38.04/24.82 ms full versus 19.18/25.12 ms selective: the second pass does not
+show a latency gain. Build order, mutation interleaving and internal merge
+layout matter; the evidence supports avoiding redundant writes, not a stable
+latency multiplier. Full-maintenance build time 19.28/7.98 s is especially
+variable, so do not choose a policy from one fastest run.
 
 ## Correctness and failure evidence
 
@@ -279,6 +342,14 @@ and spatial search, implement narrow SQL-owned projections in the same database
 as their source; prototype measurements decide their default structure and
 rebuild policy, not the phase list. KV/Records indexing requires independent
 identity/projection/retention design; Metrics already has label postings.
+
+The lifecycle timings use one FULL SQLite transaction per builder chunk, not
+Core group-savepoint execution. Grouping can deduplicate page writes and syncs,
+but can also combine a chunk with foreground work into a larger writer hold.
+A native candidate should submit at most one low-priority chunk at a time,
+reserve its work in the file writer and include the entire group/COMMIT in
+latency accounting. Queuing many chunks ahead would defeat the intended yield.
+Retest WAL and tails on that exact integration before adopting numeric defaults.
 
 For a managed same-file rebuild, carry an immutable definition and durable
 generation state, maintain source/index atomically, use keyset batches, and

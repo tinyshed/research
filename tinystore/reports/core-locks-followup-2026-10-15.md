@@ -44,7 +44,7 @@ can share a grouped commit. The FIFO gate must therefore be per resource,
 never a store-global mutex.
 
 This is a performance candidate for admission, **not a complete correct lease
-implementation**. The delayed-COMMIT check below deliberately demonstrates why
+implementation**. The delayed-writer check below deliberately demonstrates why
 public read/CAS calls alone are insufficient to implement short leases.
 
 ## Measured admission result
@@ -94,6 +94,13 @@ that changes checkpoint behavior and is not used to claim ordinary peak WAL.
 SIGKILL recovery includes waiting for the old 100 ms TTL; it does not mean an
 owner is declared dead before its deadline. These probes use the default system
 clock, not arbitrary custom TinyStore clocks or simulated power failure.
+
+The delay probe holds an earlier writer transaction: it measures writer-admission
+delay, not an injected slow fsync inside the acquire COMMIT. Even with the
+clock evaluated inside the writer, COMMIT or response delay may consume the
+remaining TTL. Return the deadline and specify an already-expired/unknown
+outcome; do not promise a full TTL starting at receipt. Fault-injected fsync
+and delayed-response histories remain explicit native acceptance tests.
 
 Version CAS protects the row from concurrent replacement, but does not evaluate
 `expires_at > now` on the writer at execution time. A request can read a free
@@ -148,6 +155,14 @@ Registering a waiter and rechecking the row must close the missed-wakeup race.
 An expiry timer is only a hint; the SQL predicate remains authoritative. A
 restart rebuilds waiter notifications from current demand, not a persisted
 in-memory queue.
+
+Persistent per-resource fences retain metadata for every resource name ever
+used. They cannot be TTL-collected and silently restart at zero. An alternative
+is one durable monotonic sequence per SQLite file, each grant taking the next
+token. That bounds counter metadata while preserving increase per resource. Its
+extra hot-page/write cost is unmeasured; it is a candidate, not the measured row
+layout. Either design needs overflow/restore epoch semantics and protection
+against ordinary bucket clear or user SQL resetting counters.
 
 Semaphores should share the resource ownership/fencing/deadline machinery, but
 weighted permits and FIFO head-of-line versus bypass behavior require an explicit

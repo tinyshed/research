@@ -1,8 +1,8 @@
 # Additional research handoff — 15 October 2026
 
 **Publication in progress.** Static index comparisons, the 108-process transport matrix and the 24-process
-actual Core admission matrix are complete. Concurrent rebuild and additional
-resource/recovery diagnostics are still being completed. This
+actual Core admission matrix are complete. The full 100k concurrent rebuild matrix is complete; million-row rebuild and
+additional resource/recovery diagnostics are still being completed. This
 document will identify their final evidence before calling the round complete.
 Product Core and public API are unchanged. The pinned Rust source is
 `76b844cdc8c3410e746a5d5dc3e9aafec83c9962`.
