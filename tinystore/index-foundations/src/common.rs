@@ -15,6 +15,14 @@ pub fn open(path: &str) -> Connection {
         pragma wal_autocheckpoint=0; pragma busy_timeout=5000; pragma foreign_keys=on;",
     )
     .unwrap();
+    c.create_scalar_function(
+        "floor",
+        1,
+        rusqlite::functions::FunctionFlags::SQLITE_DETERMINISTIC
+            | rusqlite::functions::FunctionFlags::SQLITE_UTF8,
+        |ctx| Ok(ctx.get::<f64>(0)?.floor()),
+    )
+    .unwrap();
     c
 }
 pub fn memory() -> Value {

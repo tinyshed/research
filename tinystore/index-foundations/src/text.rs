@@ -67,7 +67,7 @@ pub fn run(a: &[String]) {
     let index_bytes = size(std::path::Path::new(&dir));
     let searcher = reader.searcher();
     let mut times = vec![];
-    let mut checksum = 0;
+    let mut checksum = 0u64;
     let qstart = Instant::now();
     for q in 0..300 {
         let t = Instant::now();
@@ -93,7 +93,7 @@ pub fn run(a: &[String]) {
             .collect();
         ids.sort_unstable();
         times.push(us(t));
-        checksum ^= hash_ids(&ids);
+        checksum = checksum.wrapping_mul(0x100000001b3) ^ hash_ids(&ids);
     }
     let query_s = qstart.elapsed().as_secs_f64();
     let t = Instant::now();

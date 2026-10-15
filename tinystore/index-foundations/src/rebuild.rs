@@ -24,6 +24,8 @@ struct BuildStats {
     holds: Vec<u64>,
     commit_frames: Vec<u64>,
     row_limit: usize,
+    checkpoint_holds: Vec<u64>,
+    setup_us: u64,
 }
 
 fn start(c: &Connection, g: i64, kind: &str, algo: &str, guard: bool, definition: i64) {
@@ -352,7 +354,9 @@ pub fn run(a: &[String]) {
     } else if algo != "none" {
         {
             let c = writer.lock().unwrap();
+            let t = Instant::now();
             start(&c, 1, kind, algo, guard, 2);
+            b.setup_us = us(t);
         }
         loop {
             let c = writer.lock().unwrap();
@@ -376,7 +380,9 @@ pub fn run(a: &[String]) {
                 b.row_limit = ((page_budget as f64 * rows as f64 / frames.max(1) as f64) * 0.8)
                     .clamp(1., 1000.) as usize;
             }
+            let checkpoint_start = Instant::now();
             maybe_checkpoint(&c);
+            b.checkpoint_holds.push(us(checkpoint_start));
             drop(c);
             if done {
                 break;
@@ -410,7 +416,7 @@ pub fn run(a: &[String]) {
         "rebuild_us":rebuild_us,"rebuild_rows_per_s":b.rows as f64*1e6/rebuild_us.max(1) as f64,"chunks":b.chunks,
         "backfill_rows":b.rows,"backfill_input_bytes_lower_bound":b.input_bytes,"builder_wal_frames":b.frames,"reconciled_dirty_ids":reconciled,
         "time_budget_overruns":b.time_overruns,"frame_budget_overruns":b.page_overruns,"builder_holds":distribution(&mut b.holds),
-        "builder_commit_frames":distribution(&mut b.commit_frames),"foreground":fg,"readers":reader_stats,"duration_s":total_s,
+        "builder_commit_frames":distribution(&mut b.commit_frames),"builder_checkpoint_holds":distribution(&mut b.checkpoint_holds),"builder_setup_us":b.setup_us,"foreground":fg,"readers":reader_stats,"duration_s":total_s,
         "query_per_s":reader_stats.iter().map(|r|r["queries"].as_u64().unwrap()).sum::<u64>() as f64/total_s,
         "baseline_memory":baseline_memory,"workload_memory":workload_memory,"sampled_rss_peak_kib":rss_peak.load(Ordering::Relaxed),
         "workload_wal":workload_wal,"peak_db_plus_wal_bytes":peak_file.load(Ordering::Relaxed),"db_bytes_before_validation":before_validation_bytes,

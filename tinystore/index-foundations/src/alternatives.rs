@@ -17,7 +17,7 @@ pub fn run(a: &[String]) {
     let load_us = us(t);
     let begin = Instant::now();
     let mut times = vec![];
-    let mut checksum = 0;
+    let mut checksum = 0u64;
     let mut matched = 0;
     #[cfg(feature = "geo")]
     if kind == "rstar" {
@@ -39,7 +39,7 @@ pub fn run(a: &[String]) {
                 .collect();
             ids.sort_unstable();
             times.push(us(t));
-            checksum ^= hash_ids(&ids);
+            checksum = checksum.wrapping_mul(0x100000001b3) ^ hash_ids(&ids);
             matched += ids.len();
             if q < 20 {
                 let mut exact: Vec<i64> = docs
@@ -60,7 +60,7 @@ pub fn run(a: &[String]) {
         }
         println!(
             "{}",
-            json!({"experiment":"alternative","kind":kind,"rows":n,"shape":shape,"load_us":load_us,"build_us":build_us,"queries":distribution(&mut times),"query_per_s_including_20_oracles":300./query_s,"query_checksum":checksum,"matched_total":matched,"update_1000_us":us(t),"idle_memory":idle,"resident_memory":resident,"final_memory":memory(),"cpu_s":cpu()-cpu0,"allocations":allocations(),"durability":"rebuild-from-source cache; not transactional storage","status":"pass"})
+            json!({"experiment":"alternative","kind":kind,"rows":n,"shape":shape,"load_us":load_us,"build_us":build_us,"queries":distribution(&mut times),"query_per_s":300./query_s,"query_checksum":checksum,"matched_total":matched,"update_1000_us":us(t),"idle_memory":idle,"resident_memory":resident,"final_memory":memory(),"cpu_s":cpu()-cpu0,"allocations":allocations(),"durability":"rebuild-from-source cache; not transactional storage","status":"pass"})
         );
         return;
     }
@@ -85,7 +85,7 @@ pub fn run(a: &[String]) {
                 .map(|id| id as i64)
                 .collect();
             times.push(us(t));
-            checksum ^= hash_ids(&ids);
+            checksum = checksum.wrapping_mul(0x100000001b3) ^ hash_ids(&ids);
             matched += ids.len();
             if q < 20 {
                 let exact: Vec<i64> = docs
@@ -104,7 +104,7 @@ pub fn run(a: &[String]) {
         }
         println!(
             "{}",
-            json!({"experiment":"alternative","kind":kind,"rows":n,"shape":shape,"load_us":load_us,"build_us":build_us,"queries":distribution(&mut times),"query_per_s_including_20_oracles":300./query_s,"query_checksum":checksum,"matched_total":matched,"update_1000_us":us(t),"serialized_bitmap_bytes":serialized,"score_array_bytes":scores.len()*8,"idle_memory":idle,"resident_memory":resident,"final_memory":memory(),"cpu_s":cpu()-cpu0,"allocations":allocations(),"durability":"rebuild-from-source cache; not transactional storage","status":"pass"})
+            json!({"experiment":"alternative","kind":kind,"rows":n,"shape":shape,"load_us":load_us,"build_us":build_us,"queries":distribution(&mut times),"query_per_s":300./query_s,"query_checksum":checksum,"matched_total":matched,"update_1000_us":us(t),"serialized_bitmap_bytes":serialized,"score_array_bytes":scores.len()*8,"idle_memory":idle,"resident_memory":resident,"final_memory":memory(),"cpu_s":cpu()-cpu0,"allocations":allocations(),"durability":"rebuild-from-source cache; not transactional storage","status":"pass"})
         );
         return;
     }

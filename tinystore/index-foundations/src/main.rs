@@ -34,6 +34,12 @@ fn main() {
         "tantivy" => text::run(&args[1..]),
         #[cfg(feature = "product")]
         "locks" => integration::locks(&args[1..]),
+        #[cfg(feature = "product")]
+        "lease-check" => integration::check(),
+        #[cfg(feature = "product")]
+        "lease-crash" => integration::crash(),
+        #[cfg(feature = "product")]
+        "lease-recover" => integration::recover(),
         _ => panic!("unknown experiment"),
     }
 }

@@ -95,6 +95,14 @@ def rebuilds():
                     save('rebuilds',label,passno,prepared(args,kind,n,shape))
             for p in SCRATCH.glob(f'template-*-{n}-{shape}-*.db'):p.unlink()
 
+def lease_checks():
+    for passno in (1,2):
+        db=SCRATCH/'lease-check';tidy(db);save('lease-correctness','lease-check',passno,command(['lease-check'],db));tidy(db)
+        db=SCRATCH/'lease-crash';tidy(db)
+        proc=sp.Popen([BIN,'lease-crash'],env=dict(BASE_ENV,BENCH_DB=str(db)),stdout=sp.PIPE,stderr=sp.PIPE,text=True)
+        assert json.loads(proc.stdout.readline())['ready'];proc.kill();proc.wait(timeout=5)
+        save('lease-correctness','SIGKILL-restart',passno,command(['lease-recover'],db));tidy(db)
+
 def locks():
     for clients in (10,100,1000):
         for resources in (1,clients):
@@ -105,4 +113,4 @@ def locks():
 
 if __name__=='__main__':
     group=sys.argv[1]
-    {'checks':checks,'static':static,'rebuilds':rebuilds,'locks':locks}[group]()
+    {'checks':checks,'static':static,'rebuilds':rebuilds,'locks':locks,'lease-checks':lease_checks}[group]()

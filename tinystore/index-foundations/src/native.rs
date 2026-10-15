@@ -361,7 +361,7 @@ pub fn run(a: &[String]) {
     for q in 0..300 {
         let t = Instant::now();
         let ids = query(&c, 0, kind, q, shape);
-        checksum ^= hash_ids(&ids);
+        checksum = checksum.wrapping_mul(0x100000001b3) ^ hash_ids(&ids);
         query_times.push(us(t));
     }
     let query_seconds = qstart.elapsed().as_secs_f64();
