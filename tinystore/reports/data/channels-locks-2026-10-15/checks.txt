@@ -1,0 +1,54 @@
+$ docker exec channels-locks-lab cargo fmt --check
+
+
+exit: 0
+$ docker exec channels-locks-lab cargo clippy --release --all-targets --locked -- -D warnings
+
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.04s
+
+exit: 0
+$ docker exec -e BENCH_DB=<fresh-db> channels-locks-lab /target/release/channels-locks-bench channel-check
+{"experiment":"channel-check","no_reconnect_replay":true,"overflow":[{"actual_lost":6,"delivered":4,"kind":"broadcast","observed_lost":6,"tail_gap_visible":true},{"actual_lost":6,"delivered":4,"kind":"ring","observed_lost":6,"tail_gap_visible":true},{"actual_lost":6,"delivered":4,"kind":"queues","observed_lost":0,"tail_gap_visible":false}],"status":"pass","wake_races":1000}
+
+
+exit: 0
+$ docker exec -e BENCH_DB=<fresh-db> channels-locks-lab /target/release/channels-locks-bench lease-check
+{"checks":["expiry boundary","expired owner cannot renew before takeover","stale release rejected","stale renewal rejected","renew does not shorten TTL","renew extends live lease","three permits only","expired semaphore slot reclaimed","fence persists after reopen"],"experiment":"lease-check","status":"pass"}
+
+
+exit: 0
+$ docker exec -e BENCH_DB=<fresh-db> channels-locks-lab /target/release/channels-locks-bench commit-check
+{"committed_delivered":[1],"experiment":"commit-check","failed_commit_suppressed":true,"note":"prototype staging checks, not tests of the product transaction hook","post_return_reordering_witness":[5,4],"savepoint_rollback_suppressed":true,"status":"pass","transaction_rollback_suppressed":true}
+
+
+exit: 0
+$ python3 summarize.py
+| Suite          | Cases | Start UTC                        | End UTC                          |
+| -------------- | ----- | -------------------------------- | -------------------------------- |
+| preflight      | 13    | 2026-10-15T18:06:09.587183+00:00 | 2026-10-15T18:06:21.234813+00:00 |
+| kill           | 6     | 2026-10-15T18:06:50.004069+00:00 | 2026-10-15T18:06:52.178513+00:00 |
+| channels       | 81    | 2026-10-15T18:06:52.324894+00:00 | 2026-10-15T18:09:17.634717+00:00 |
+| resources      | 48    | 2026-10-15T18:09:17.798959+00:00 | 2026-10-15T18:09:35.286604+00:00 |
+| leases         | 72    | 2026-10-15T18:09:35.436479+00:00 | 2026-10-15T18:15:02.340439+00:00 |
+| lease-controls | 28    | 2026-10-15T18:15:02.489338+00:00 | 2026-10-15T18:17:01.542139+00:00 |
+| indexes        | 9     | 2026-10-15T18:17:01.740337+00:00 | 2026-10-15T18:18:03.460458+00:00 |
+| soak           | 10    | 2026-10-15T18:18:36.429075+00:00 | 2026-10-15T18:23:39.052326+00:00 |
+| waiter-memory  | 12    | 2026-10-15T18:24:16.132155+00:00 | 2026-10-15T18:24:18.899952+00:00 |
+Audited 279 non-overlapping successful processes.
+
+exit: 0
+$ sha256sum --check SHA256SUMS
+channels.jsonl: OK
+environment.json: OK
+indexes.jsonl: OK
+kill.jsonl: OK
+lease-controls.jsonl: OK
+leases.jsonl: OK
+preflight.jsonl: OK
+resources.jsonl: OK
+soak.jsonl: OK
+waiter-memory.jsonl: OK
+
+exit: 0
+All new report local links resolve; all 17 generated comparison/timeline tables exactly match the reports.
+Privacy correction: all 4 original/public commit pairs have identical Git tree hashes and empty file diffs; raw SHA256SUMS still pass.

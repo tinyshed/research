@@ -981,3 +981,39 @@ Eight parent tests and 16 abrupt workers pass; every measured case verifies
 ACK counts, source/feed roots and SQLite integrity. Product CI still has an
 unresolved Linux SDK events teardown timeout. Raw data and precise reliability
 limits accompany the report.
+
+## Channels, local leases and index costs, 15 October 2026
+
+The [phase-5 handoff](reports/channels-locks-handoff-2026-10-15.md) reviews
+TinyStore rust `76b844c` with standalone Rust prototypes at research `65dfba8`.
+Linux 6.18.44, Xeon Platinum 8573C, three visible CPUs/two-CPU quota, 8 GiB
+outer/6 GiB container memory, Rust 1.99.0, Tokio 1.53.2, SQLite 3.53.2,
+release, FULL WAL on a disk-backed overlayfs volume. These are not product or
+SDK rates. Main comparisons rotate three passes; controls alternate twice.
+
+[Channels](reports/channels-2026-10-15.md): at 1000 publications/s and 1000
+subscribers all three algorithms deliver without loss in the short paced
+cases. Burst shared-log publication can exceed a million/s while losing
+about 95% of logical deliveries; do not quote it as delivery capacity. With
+1000 consumers parked, 1024 slots and 64-byte shared payloads, backlog RSS is
+4.37; 4.68 MiB for broadcast, 4.63; 4.63 for the mutex ring and 14.36; 14.28
+for separate bounded queues. At 100100 selector registrations, the prebuilt
+exact-plus-prefix lookup fixture gives 10,343; 10,807 list scans/s versus
+6,490,079; 6,664,617 segment-trie lookups/s. Churn and broad fan-out are not
+measured by that routing comparison.
+
+[Locks](reports/locks-2026-10-15.md): with 1000 clients on one hot resource,
+SQL polling needs 1146.8; 1169.6; 1152.8 acquire attempts/grant, whereas FIFO
+admission needs one. Hot hold is a 2 ms timer and TTL 1 s. The memory gate
+can cost commit grouping at lower concurrency; spread rates are too variable
+to rank direct SQL against the serialized-KV baseline. Three uncommitted and
+three committed SIGKILL owners recover correctly under injected time. This
+is not power-loss, wall-clock or distributed fencing evidence.
+
+[Indexes](reports/indexes-2026-10-15.md): for the same 100k deterministic
+synthetic documents and coordinates, in batches of 1000, native insert WAL
+is 12.35 MiB plain, 34.93 MiB FTS5, 209.67 MiB R*Tree in each pass. B-tree
+bytes are assigned with dbstat in the report, not inferred from WAL. A second
+index build preserves an old reader but holds the sole writer for its full
+transaction and prevents checkpoint progress past the held snapshot. The
+proposed chunked frontier build and protocol/SDK throughput remain unmeasured.

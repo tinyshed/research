@@ -34,6 +34,17 @@ directory to `/src/tinystore/channels-locks-bench` for SQLite build flags.
 Give the container two CPUs and six GiB; the outer VM in this round has
 a two-CPU quota and eight GiB. Preserve configured proxy/CA trust for builds.
 
+For a local Docker host (add that environment's CA/proxy mounts if required):
+
+```sh
+docker run -d --name channels-locks-lab --cpus=2 --memory=6g \
+  --mount type=bind,src=<repo>,dst=/src \
+  -v channels-locks-target:/target -v channels-locks-data:/data \
+  -e CARGO_TARGET_DIR=/target \
+  -w /src/tinystore/channels-locks-bench rust:1.99-bookworm sleep infinity
+docker exec channels-locks-lab cargo build --release --locked
+```
+
 ```sh
 python3 run.py preflight <output>/preflight.jsonl
 python3 run.py kill <output>/kill.jsonl
@@ -43,6 +54,7 @@ python3 run.py leases <output>/leases.jsonl
 python3 run.py lease-controls <output>/lease-controls.jsonl
 python3 run.py indexes <output>/indexes.jsonl
 python3 soak.py <output>/soak.jsonl
+python3 waiter_memory.py <output>/waiter-memory.jsonl
 ```
 
 `preflight` is calibration and correctness, excluded from comparison tables.
@@ -57,8 +69,9 @@ It uses the same release binary; it does not add a new candidate.
 
 ## What is being compared
 
-Channels use one 64-byte payload allocation per publication, shared through
-Arc, capacity 1024, one publisher and two Tokio workers. Consumers touch one
+Channels create a fresh 64-byte payload per publication, shared through
+Arc, capacity 1024, one publisher and two Tokio workers. Vec-to-Arc conversion
+and the Event Arc still allocate; this is not a one-allocation claim. Consumers touch one
 payload byte, check increasing sequence numbers and sample delivery time
 every 64 sequences, offset per subscriber. No serialization, socket, TLS or
 SDK is present. The three implementations are Tokio broadcast, a mutex
@@ -106,7 +119,8 @@ Latency is reported separately for end-to-end acquisition (successful
 clients only) and all acquire request round trips. Fairness reports clients
 with no success; queued admission deadlines are not counted as SQL attempts.
 Counters include read-only failed transactions as commits, not as disk writes.
-`mutations` counts changed rows, and WAL bytes measure actual WAL growth.
+`mutations` counts SQLite-reported affected rows (an unchanged renewal can
+still match a row); WAL bytes measure actual WAL growth.
 No allocation-free, distributed lock, HA fencing, power-loss or multi-host
 claim follows from these probes.
 

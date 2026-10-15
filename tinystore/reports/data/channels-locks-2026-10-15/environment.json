@@ -1,0 +1,21 @@
+{
+  "recorded_utc": "2026-10-15T18:06:25.259366+00:00",
+  "product_reviewed": "76b844cdc8c3410e746a5d5dc3e9aafec83c9962",
+  "harness_commit": "e2ccc8f12646e6a8f456df71dcefe7c3e31f3ac2",
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1",
+  "cargo": "cargo 1.99.0 (5f94df478 2026-08-27)",
+  "kernel": "6.18.44",
+  "cpu_model": "INTEL(R) XEON(R) PLATINUM 8573C",
+  "outer_cpu_max": "200000 100000",
+  "outer_memory_max": "8589934592",
+  "container_cpu_max": "200000 100000",
+  "container_memory_max": "6442450944",
+  "storage": "Filesystem     Type    1K-blocks    Used Available Use% Mounted on\noverlay        overlay  32978704 9988696  21295904  32% /data",
+  "image_digest": "rust@sha256:114c7a4425406451c2866b6aafe69fe29b1b298832db1277d411ac73c82d04d6",
+  "cpus_visible": "3",
+  "fixture": "deterministic synthetic; no external corpus",
+  "sqlite_flags": "SQLITE_DQS=0 -USQLITE_ENABLE_MEMORY_MANAGEMENT -DHAVE_FDATASYNC=1",
+  "build": "release --locked",
+  "runtime_workers": 2,
+  "disk_hardware": "unknown virtualized overlayfs backing; /data disk-backed volume, not /tmp tmpfs"
+}

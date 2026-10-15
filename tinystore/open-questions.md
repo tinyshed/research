@@ -563,3 +563,20 @@ causes definite refusal before BEGIN under a declared WAL reserve and can
 resume after release. Arbitrary SQL can exceed that reserve after native COMMIT;
 it returns OutcomeUnknown and stops writes until recovery. A strict generic
 WAL/disk bound still needs an enforced transaction contract or VFS admission.
+
+## Phase 5 and index implementation gates, 15 October 2026
+
+The [Channels/Locks handoff](reports/channels-locks-handoff-2026-10-15.md)
+adds measured prototypes and algorithms, not product features. A shared
+bounded event log plus selector trie and a file-local conditional lease
+primitive with targeted admission are the candidates to implement.
+
+Still open: byte admission across transaction staging/core/connection/SDK;
+loss of the final queue tail; savepoint-scoped publication staging and commit
+order; runtime-neutral subscriber wakeups; cancellation/expiry transfer of
+FIFO reservations; live-TTL renewal, exact fencing tokens and restore epoch;
+Jobs group atomicity without a cross-file KV dependency; and chunked FTS/geo
+backfill with foreground writer latency and crash/switch verification. The
+reports name the concrete current-source seams and failure gates. No result
+here authorizes durable Channels, distributed Locks, Primary election or
+vector search.

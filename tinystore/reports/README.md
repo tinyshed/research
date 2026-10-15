@@ -259,3 +259,12 @@ original hashes and distinguishes translated documentation from measured code.
 | Report | Scope |
 | --- | --- |
 | [Replication Engine interim design](scaling-history-design-2026-10-15.md) | short-reader snapshot plus WAL overlay, segmented byte/age retention, persistent delivery and slow-peer feasibility limits |
+
+## 15 October 2026 — Channels, Locks and index costs
+
+| Report                                                             | Scope                                                                                                                                                               |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Channels: fan-out and path subscriptions](channels-2026-10-15.md) | broadcast, shared ring and bounded queues; delivery/loss/p50/p99, slow subscribers, backlog RSS, exact/subtree routing, COMMIT order and stream credit              |
+| [Locks: contention and fencing](locks-2026-10-15.md)               | transactional KV baseline, conditional SQL, wake-all and FIFO admission at 10/100/1000 clients; TTL/renewal/semaphores, SIGKILL, fairness and Jobs reuse boundaries |
+| [FTS5 and R*Tree costs](indexes-2026-10-15.md)                     | 100k synthetic rows, insert/update/delete/query, per-object storage, WAL, held readers and monolithic rebuild; proposed chunked frontier algorithm                  |
+| [Implementation handoff](channels-locks-handoff-2026-10-15.md)     | committed prototypes, raw evidence, runtime-neutral architecture, current-source traps and the gates still required before product implementation                   |

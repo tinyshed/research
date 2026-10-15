@@ -1,0 +1,33 @@
+{
+  "reason": "GitHub GH007 rejected the first push because the configured Git email is private.",
+  "method": "Create public noreply commit envelopes with identical trees; retain all originals in local private refs; no public history or measured code rewritten.",
+  "timing": "Original trees were committed before their experiments. Public envelopes were created after runs. Author dates retained; committer dates are the time of privacy correction.",
+  "research": [
+    {
+      "original_commit": "e2ccc8f12646e6a8f456df71dcefe7c3e31f3ac2",
+      "public_commit": "65dfba8c9e2ccc34580e415cc24ddfeabd2d25a4",
+      "identical_tree": "a31897e757337c3bc2305c9d329932734c11ea1d",
+      "subject": "test(spike): add channels leases and index cost probes"
+    },
+    {
+      "original_commit": "9b518f7e913352c4911b79ec9f236cf778e9f323",
+      "public_commit": "82e70b84b196225727e2b78f4bdb0a252c2e409f",
+      "identical_tree": "ea5e061a61977592cffaf4bf0d6046cf5de4c780",
+      "subject": "test(spike): add sustained controls for fanout and lease contention"
+    },
+    {
+      "original_commit": "7a1ff6b457c097cd6b8d043e4709247d6e741c77",
+      "public_commit": "e6e298b3524fce68dbd0fe2a9cbed988e4cfd927",
+      "identical_tree": "7d016ce706561384e8c055bd779fcc05fc495db8",
+      "subject": "test(spike): isolate idle waiter memory from latency sampling"
+    }
+  ],
+  "tinystore": [
+    {
+      "original_commit": "493528c872f6b175663b05c9650ada2e2d1ee8df",
+      "public_commit": "844caee623f572801e0e0135a50609dc839bb03c",
+      "identical_tree": "fb703137f45c003e91a96f7a4180da6a3c4fd73d",
+      "subject": "docs(plan): link the channels and locks research handoff"
+    }
+  ]
+}
