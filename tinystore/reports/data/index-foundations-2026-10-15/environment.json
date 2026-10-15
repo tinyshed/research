@@ -26,9 +26,10 @@
   "clock": "UTC ISO-8601 in raw; report date Europe/Moscow",
   "preflight_failures": [
     "SQLite floor function missing, registered as deterministic research scalar",
-    "postings DELETE by id caused full scans; interrupted first 1m pass and fixed trigger to use OLD category and id"
+    "postings DELETE by id caused full scans; interrupted first 1m pass and fixed trigger to use OLD category and id",
+    "Rebuild reader sample stride 16 aliased geo selectivity buckets. Replaced with coprime stride 17; previous partial series retained under preflight and excluded. Whole writer hold now includes checkpoint, duration includes reader drain."
   ],
   "environment_refresh": "Executor control reattached during initial exploratory static run; existing containers and subprocess survived. Main measurements follow the subsequent harness correction.",
-  "main_binary_source_revision": "2f47fb3c37479d0aeb67140b6f65f5974a9eb15c",
-  "actual_core_cache_kib": 1024
+  "actual_core_cache_kib": 1024,
+  "static_binary_source_revision": "2f47fb3c37479d0aeb67140b6f65f5974a9eb15c"
 }

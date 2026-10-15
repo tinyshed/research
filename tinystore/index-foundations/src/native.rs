@@ -483,7 +483,7 @@ pub fn geo_probe(a: &[String]) {
     let mut samples = vec![];
     let cpu0 = cpu();
     for q in 0..32 {
-        let (plain, certified, plain_us, certified_us) = if q % 2 == 0 {
+        let (plain, certified, plain_us, certified_us) = if (q / 4) % 2 == 0 {
             let t = Instant::now();
             let a = query(&c, 0, "geo", q, shape);
             let au = us(t);

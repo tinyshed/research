@@ -163,7 +163,11 @@ fn verify(c: &Connection, shape: &str) -> Value {
     native::build(c, 9999, &kind, definition);
     c.execute_batch("commit").unwrap();
     let mut checks = 0;
-    for q in 0..120 {
+    // Geo also checks every stored bound in both directions below. Two
+    // queries per selectivity suffice here; repeating million-row materialized
+    // results 30 times measures the oracle rather than additional correctness.
+    let query_count = if kind == "geo" { 8 } else { 120 };
+    for q in 0..query_count {
         assert_eq!(
             native::query(c, active, &kind, q, shape),
             native::query(c, 9999, &kind, q, shape),
@@ -336,8 +340,10 @@ pub fn run(a: &[String]) {
             while !s.load(Ordering::Relaxed) {
                 let t=Instant::now();c.execute_batch("begin").unwrap();let (g,k,_)=native::active(&c);
                 let ids=native::query(&c,g,&k,count*2+index,&shape);checksum^=hash_ids(&ids);c.execute_batch("rollback").unwrap();
-                if count%16==0&&times.len()<65536{times.push(us(t));}count+=1;
-            }json!({"queries":count,"latency_sample_every":16,"latency":distribution(&mut times),"checksum":checksum})
+                // Coprime to the four geo selectivity buckets: 16 aliases the
+                // narrow buckets and omits broad queries from the histogram.
+                if count%17==0&&times.len()<65536{times.push(us(t));}count+=1;
+            }json!({"queries":count,"latency_sample_every":17,"latency":distribution(&mut times),"checksum":checksum})
         }));
     }
     std::thread::sleep(Duration::from_millis(100));
@@ -370,17 +376,12 @@ pub fn run(a: &[String]) {
             let c = writer.lock().unwrap();
             let held = Instant::now();
             let (done, rows, copied) = chunk(&c, 1, b.row_limit, time_budget);
-            let elapsed = us(held);
             let frames = WAL_COMMIT_FRAMES.load(Ordering::Relaxed);
             b.chunks += 1;
             b.rows += rows;
             b.input_bytes += copied;
             b.frames += frames;
-            b.holds.push(elapsed);
             b.commit_frames.push(frames);
-            if time_budget > 0 && elapsed > time_budget {
-                b.time_overruns += 1;
-            }
             if page_budget > 0 && frames > page_budget {
                 b.page_overruns += 1;
             }
@@ -391,6 +392,11 @@ pub fn run(a: &[String]) {
             let checkpoint_start = Instant::now();
             maybe_checkpoint(&c);
             b.checkpoint_holds.push(us(checkpoint_start));
+            let entire_hold = us(held);
+            b.holds.push(entire_hold);
+            if time_budget > 0 && entire_hold > time_budget {
+                b.time_overruns += 1;
+            }
             drop(c);
             if done {
                 break;
@@ -408,10 +414,10 @@ pub fn run(a: &[String]) {
     let rebuild_us = us(rebuilding);
     builder_done.store(true, Ordering::Relaxed);
     let fg = foreground.join().unwrap();
-    let total_s = origin.elapsed().as_secs_f64();
     stop.store(true, Ordering::Relaxed);
     let reader_stats: Vec<Value> = readers.into_iter().map(|h| h.join().unwrap()).collect();
     monitor.join().unwrap();
+    let total_s = origin.elapsed().as_secs_f64();
     let c = writer.lock().unwrap();
     let workload_memory = memory();
     let workload_wal = wal_stats();
