@@ -744,11 +744,19 @@ impl Blocks {
             average[field as usize] = (tokens as f64 / holding as f64).max(1.0);
             documents = holding as u64;
         }
+        // An index built before the packed tables existed has no `keys`.
         let packed = connection
-            .query_row("select exists (select 1 from keys)", [], |row| {
-                row.get::<_, bool>(0)
-            })
-            .unwrap();
+            .query_row(
+                "select exists (select 1 from sqlite_schema where name = 'keys')",
+                [],
+                |row| row.get::<_, bool>(0),
+            )
+            .unwrap()
+            && connection
+                .query_row("select exists (select 1 from keys)", [], |row| {
+                    row.get::<_, bool>(0)
+                })
+                .unwrap();
         let gone = connection
             .prepare("select doc from gone")
             .unwrap()
