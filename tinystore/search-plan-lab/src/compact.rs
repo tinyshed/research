@@ -560,6 +560,13 @@ impl Compact {
         self.gone.len()
     }
 
+    /// Forgets documents a purge took out of every block.
+    pub fn purged(&mut self, docs: &[u32]) {
+        for doc in docs {
+            self.gone.remove(doc);
+        }
+    }
+
     /// The bytes of field lengths the reader holds.
     pub fn norms_bytes(&self) -> usize {
         self.norms.bytes()
@@ -751,11 +758,32 @@ pub struct Packed {
 }
 
 /// Sets give a document a new number and write its postings to the head;
-/// `pack` appends the head to the keys' lists.
+/// `pack` appends the head to the keys' lists, all of it in one commit, and
+/// `pack_step` a few keys of it a commit. `purge_begin` and `purge_step`
+/// take the documents gone so far out of the blocks that hold them.
 pub struct Writer {
     connection: Connection,
     next_doc: u32,
     next_key: i64,
+    purge: Option<Purge>,
+}
+
+/// A purge under way: the documents it takes out, and each key that holds
+/// any of them with the ones it holds, a step of keys at a time.
+struct Purge {
+    docs: Vec<u32>,
+    keys: Vec<(String, Vec<u32>)>,
+    at: usize,
+}
+
+/// What a step of purging did; `purged` the documents a finished purge took
+/// out of every block, which readers may forget.
+#[derive(Default)]
+pub struct Purged {
+    pub keys: usize,
+    pub postings: usize,
+    pub millis: f64,
+    pub purged: Vec<u32>,
 }
 
 impl Writer {
@@ -773,10 +801,247 @@ impl Writer {
                 row.get(0)
             })
             .unwrap();
+        // The head read a key at a time, and a gone document's text kept
+        // until a purge has read which keys hold it.
+        connection
+            .execute_batch(
+                "create index if not exists head_key on head (key);
+                 create table if not exists gone_text (doc integer primary key, title text not null, body text not null);",
+            )
+            .unwrap();
         Writer {
             connection,
             next_doc: next_doc as u32,
             next_key,
+            purge: None,
+        }
+    }
+
+    /// Appends at most `most_keys` of the head's keys to their lists, in one
+    /// commit, so that a writer is held for a step and never for the head.
+    /// A document's lengths go to its norms the first time a step packs any
+    /// of its keys.
+    pub fn pack_step(&mut self, most_rows: usize) -> Packed {
+        let started = Instant::now();
+        let tx = self.connection.transaction().unwrap();
+        // The head's first rows in key order, one statement, and the last key
+        // left whole for the next step unless it is the only one.
+        let mut rows: Vec<(String, Posting)> = tx
+            .prepare_cached("select key, doc, tf, len from head order by key, doc limit ?1")
+            .unwrap()
+            .query_map([most_rows as i64 + 1], |row| {
+                Ok((
+                    row.get::<_, String>(0)?,
+                    Posting {
+                        doc: row.get::<_, i64>(1)? as u32,
+                        tf: row.get::<_, i64>(2)? as u32,
+                        len: row.get::<_, i64>(3)? as u32,
+                    },
+                ))
+            })
+            .unwrap()
+            .map(Result::unwrap)
+            .collect();
+        if rows.len() > most_rows {
+            let last = rows[rows.len() - 1].0.clone();
+            if rows[0].0 == last {
+                rows = tx
+                    .prepare_cached(
+                        "select key, doc, tf, len from head where key = ?1 order by doc",
+                    )
+                    .unwrap()
+                    .query_map([&last], |row| {
+                        Ok((
+                            row.get::<_, String>(0)?,
+                            Posting {
+                                doc: row.get::<_, i64>(1)? as u32,
+                                tf: row.get::<_, i64>(2)? as u32,
+                                len: row.get::<_, i64>(3)? as u32,
+                            },
+                        ))
+                    })
+                    .unwrap()
+                    .map(Result::unwrap)
+                    .collect();
+            } else {
+                rows.retain(|(key, _)| *key != last);
+            }
+        }
+        let mut lengths: HashMap<u32, [u16; 4]> = HashMap::new();
+        let postings = rows.len();
+        let mut keys = Vec::new();
+        let mut at = 0;
+        while at < rows.len() {
+            let key = rows[at].0.clone();
+            let field = field_of(&key);
+            let mut fresh = Vec::new();
+            while at < rows.len() && rows[at].0 == key {
+                let posting = rows[at].1;
+                lengths.entry(posting.doc).or_default()[field] =
+                    posting.len.min(u32::from(u16::MAX)) as u16;
+                fresh.push(posting);
+                at += 1;
+            }
+            append(&tx, &mut self.next_key, &key, &fresh);
+            keys.push(key);
+        }
+        if let (Some(first), Some(last)) = (keys.first(), keys.last()) {
+            tx.prepare_cached("delete from head where key >= ?1 and key <= ?2")
+                .unwrap()
+                .execute([first, last])
+                .unwrap();
+        }
+        let mut chunks: HashMap<u32, Vec<u16>> = HashMap::new();
+        // Only the rows of norms a step gave a document its lengths in are
+        // written again: a row holds 65,536 documents, 512 KiB.
+        let mut changed: HashSet<u32> = HashSet::new();
+        let mut added = [0u64; 4];
+        let mut documents = 0;
+        for (doc, fields) in &mut lengths {
+            let chunk = chunks
+                .entry(*doc / NORMS)
+                .or_insert_with(|| norms_of(&tx, *doc / NORMS));
+            let base = ((*doc % NORMS) as usize) * 4;
+            if chunk[base..base + 4].iter().any(|length| *length > 0) {
+                continue;
+            }
+            changed.insert(*doc / NORMS);
+            // Its other fields' lengths, from the keys of its still in the head.
+            let mut rest = tx
+                .prepare_cached("select key, len from head where doc = ?1")
+                .unwrap();
+            for (key, len) in rest
+                .query_map([*doc], |row| {
+                    Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)?))
+                })
+                .unwrap()
+                .map(Result::unwrap)
+            {
+                fields[field_of(&key)] = len.min(i64::from(u16::MAX)) as u16;
+            }
+            chunk[base..base + 4].copy_from_slice(fields);
+            for (sum, length) in added.iter_mut().zip(fields.iter()) {
+                *sum += u64::from(*length);
+            }
+            documents += 1;
+        }
+        chunks.retain(|chunk, _| changed.contains(chunk));
+        write_norms(&tx, chunks);
+        for (field, tokens) in added.iter().enumerate() {
+            tx.execute(
+                "update stats set tokens = tokens + ?1, documents = (select count(*) from docs) where field = ?2",
+                params![*tokens as i64, field as i64],
+            )
+            .unwrap();
+        }
+        tx.commit().unwrap();
+        Packed {
+            documents,
+            keys: keys.len(),
+            postings,
+            millis: started.elapsed().as_secs_f64() * 1e3,
+        }
+    }
+
+    /// Reads which keys hold the documents gone so far, from their texts;
+    /// says how many keys a purge will step through.
+    pub fn purge_begin(&mut self, analyzer: &Analyzer) -> usize {
+        let rows: Vec<(u32, String, String)> = self
+            .connection
+            .prepare("select doc, title, body from gone_text order by doc")
+            .unwrap()
+            .query_map([], |row| {
+                Ok((row.get::<_, i64>(0)? as u32, row.get(1)?, row.get(2)?))
+            })
+            .unwrap()
+            .map(Result::unwrap)
+            .collect();
+        let mut keys: std::collections::BTreeMap<String, Vec<u32>> =
+            std::collections::BTreeMap::new();
+        for (doc, title, body) in &rows {
+            let text = Doc {
+                id: String::new(),
+                title: title.clone(),
+                text: body.clone(),
+            };
+            for (field, terms) in fields(analyzer, &text).iter().enumerate() {
+                for (term, _) in crate::blocks::counted(terms) {
+                    keys.entry(key(field, term)).or_default().push(*doc);
+                }
+            }
+        }
+        let count = keys.len();
+        self.purge = Some(Purge {
+            docs: rows.into_iter().map(|(doc, _, _)| doc).collect(),
+            keys: keys.into_iter().collect(),
+            at: 0,
+        });
+        count
+    }
+
+    pub fn purging(&self) -> bool {
+        self.purge.is_some()
+    }
+
+    /// Takes the purge's documents out of at most `most_keys` keys' blocks,
+    /// in one commit: only the blocks whose range holds one are written
+    /// again. The last step forgets them, their texts and their lengths.
+    pub fn purge_step(&mut self, most_keys: usize) -> Purged {
+        let started = Instant::now();
+        let Writer {
+            connection, purge, ..
+        } = self;
+        let Some(under_way) = purge.as_mut() else {
+            return Purged::default();
+        };
+        let tx = connection.transaction().unwrap();
+        let end = (under_way.at + most_keys).min(under_way.keys.len());
+        let mut norms: HashMap<u32, Vec<u16>> = HashMap::new();
+        let mut postings = 0;
+        for (key, docs) in &under_way.keys[under_way.at..end] {
+            postings += take_out(&tx, key, docs, &mut norms);
+        }
+        let keys = end - under_way.at;
+        under_way.at = end;
+        let mut purged = Vec::new();
+        if end == under_way.keys.len() {
+            let mut chunks: HashMap<u32, Vec<u16>> = HashMap::new();
+            let mut removed = [0u64; 4];
+            for doc in &under_way.docs {
+                let chunk = chunks
+                    .entry(*doc / NORMS)
+                    .or_insert_with(|| norms_of(&tx, *doc / NORMS));
+                let base = ((*doc % NORMS) as usize) * 4;
+                for (sum, length) in removed.iter_mut().zip(&mut chunk[base..base + 4]) {
+                    *sum += u64::from(*length);
+                    *length = 0;
+                }
+                tx.prepare_cached("delete from gone where doc = ?1")
+                    .unwrap()
+                    .execute([*doc])
+                    .unwrap();
+                tx.prepare_cached("delete from gone_text where doc = ?1")
+                    .unwrap()
+                    .execute([*doc])
+                    .unwrap();
+            }
+            write_norms(&tx, chunks);
+            for (field, tokens) in removed.iter().enumerate() {
+                tx.execute(
+                    "update stats set tokens = tokens - ?1 where field = ?2",
+                    params![*tokens as i64, field as i64],
+                )
+                .unwrap();
+            }
+            purged = std::mem::take(&mut under_way.docs);
+            *purge = None;
+        }
+        tx.commit().unwrap();
+        Purged {
+            keys,
+            postings,
+            millis: started.elapsed().as_secs_f64() * 1e3,
+            purged,
         }
     }
 
@@ -1029,12 +1294,172 @@ fn forget(tx: &rusqlite::Transaction, key: &str) -> Option<u32> {
             .unwrap()
             .execute([old])
             .unwrap();
+        tx.prepare_cached("insert or replace into gone_text (doc, title, body) select id, title, body from docs where id = ?1")
+            .unwrap()
+            .execute([old])
+            .unwrap();
         tx.prepare_cached("delete from docs where id = ?1")
             .unwrap()
             .execute([old])
             .unwrap();
     }
     old.map(|old| old as u32)
+}
+
+/// A key's field, from the name it starts with.
+fn field_of(key: &str) -> usize {
+    FIELDS
+        .iter()
+        .position(|(name, _)| key.starts_with(&format!("{name}|")))
+        .unwrap()
+}
+
+fn norms_of(tx: &rusqlite::Transaction, chunk: u32) -> Vec<u16> {
+    let bytes: Vec<u8> = tx
+        .query_row(
+            "select lengths from norms where chunk = ?1",
+            [chunk],
+            |row| row.get(0),
+        )
+        .optional()
+        .unwrap()
+        .unwrap_or_default();
+    lengths_of(&bytes)
+}
+
+fn write_norms(tx: &rusqlite::Transaction, chunks: HashMap<u32, Vec<u16>>) {
+    for (chunk, values) in chunks {
+        let bytes: Vec<u8> = values
+            .iter()
+            .flat_map(|length| length.to_le_bytes())
+            .collect();
+        tx.execute(
+            "insert or replace into norms (chunk, lengths) values (?1, ?2)",
+            params![chunk, bytes],
+        )
+        .unwrap();
+    }
+}
+
+/// Takes `docs`, sorted, out of a key's list: from its own row if short,
+/// else from the blocks whose range holds one, each written again or dropped
+/// when emptied, its directory with them. Says how many postings it took.
+fn take_out(
+    tx: &rusqlite::Transaction,
+    key: &str,
+    docs: &[u32],
+    norms: &mut HashMap<u32, Vec<u16>>,
+) -> usize {
+    let found: Option<(i64, i64, Option<Vec<u8>>, Option<Vec<u8>>)> = tx
+        .prepare_cached("select id, documents, directory, inline from ckeys where key = ?1")
+        .unwrap()
+        .query_row([key], |row| {
+            Ok((row.get(0)?, row.get(1)?, row.get(2)?, row.get(3)?))
+        })
+        .optional()
+        .unwrap();
+    // A key no pack reached held its documents in the head, which a set empties.
+    let Some((id, documents, directory, inline)) = found else {
+        return 0;
+    };
+    let gone: HashSet<u32> = docs.iter().copied().collect();
+    let field = field_of(key);
+    if let Some(inline) = inline {
+        let before = unpack_inline(&inline, &HashSet::new()).len();
+        let kept = unpack_inline(&inline, &gone);
+        let taken = before - kept.len();
+        if taken > 0 {
+            write_key(
+                tx,
+                key,
+                id,
+                kept.len() as i64,
+                None,
+                (!kept.is_empty()).then(|| pack_inline(&kept)),
+            );
+        }
+        return taken;
+    }
+    let mut entries = decode_directory(&directory.unwrap());
+    let mut touched: Vec<usize> = docs
+        .iter()
+        .filter_map(|doc| {
+            let at = entries
+                .partition_point(|entry| entry.first <= *doc)
+                .checked_sub(1)?;
+            (*doc <= entries[at].last).then_some(at)
+        })
+        .collect();
+    touched.dedup();
+    let mut taken = 0;
+    for at in touched.into_iter().rev() {
+        let first = entries[at].first;
+        let held = unpack_raw(
+            &tx.query_row(
+                "select payload from cblob where id = ?1 and first = ?2",
+                params![id, first],
+                |row| row.get::<_, Vec<u8>>(0),
+            )
+            .unwrap(),
+        );
+        let kept: Vec<Posting> = held
+            .iter()
+            .filter(|(doc, _)| !gone.contains(doc))
+            .map(|(doc, tf)| {
+                let chunk = norms
+                    .entry(doc / NORMS)
+                    .or_insert_with(|| norms_of(tx, doc / NORMS));
+                Posting {
+                    doc: *doc,
+                    tf: *tf,
+                    len: u32::from(chunk[(doc % NORMS) as usize * 4 + field]),
+                }
+            })
+            .collect();
+        taken += held.len() - kept.len();
+        if kept.len() == held.len() {
+            continue;
+        }
+        tx.prepare_cached("delete from cblob where id = ?1 and first = ?2")
+            .unwrap()
+            .execute(params![id, first])
+            .unwrap();
+        if kept.is_empty() {
+            entries.remove(at);
+        } else {
+            entries[at] = entry_of(&kept);
+            tx.prepare_cached("insert into cblob (id, first, payload) values (?1, ?2, ?3)")
+                .unwrap()
+                .execute(params![id, kept[0].doc, pack(&kept)])
+                .unwrap();
+        }
+    }
+    let left = documents - taken as i64;
+    let directory = (!entries.is_empty()).then(|| encode_directory(&entries));
+    write_key(tx, key, id, left, directory, None);
+    taken
+}
+
+/// A key's row as it now stands, or none once it holds nothing.
+fn write_key(
+    tx: &rusqlite::Transaction,
+    key: &str,
+    id: i64,
+    documents: i64,
+    directory: Option<Vec<u8>>,
+    inline: Option<Vec<u8>>,
+) {
+    if directory.is_none() && inline.is_none() {
+        tx.prepare_cached("delete from ckeys where key = ?1")
+            .unwrap()
+            .execute([key])
+            .unwrap();
+        return;
+    }
+    tx.prepare_cached("insert or replace into ckeys (key, id, documents, directory, inline) values (?1, ?2, ?3, ?4, ?5)")
+        .unwrap()
+        .execute(params![key, id, documents, directory, inline])
+        .unwrap();
 }
 
 #[cfg(test)]

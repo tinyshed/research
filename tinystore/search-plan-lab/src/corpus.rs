@@ -51,11 +51,39 @@ pub fn languages(cohort: &str) -> Vec<&'static str> {
         "es" => vec!["es"],
         "ja" => vec!["ja"],
         "th" => vec!["th"],
+        "esci" => vec!["esci-us", "esci-es", "esci-jp"],
+        "cqa" => FORUMS.to_vec(),
         other => panic!("no cohort {other}"),
     }
 }
 
-fn folder(language: &str) -> &'static str {
+/// CQADupStack's twelve StackExchange forums, as hybrid-corpus.py lays them out.
+const FORUMS: [&str; 12] = [
+    "cqa-android",
+    "cqa-english",
+    "cqa-gaming",
+    "cqa-gis",
+    "cqa-mathematica",
+    "cqa-physics",
+    "cqa-programmers",
+    "cqa-stats",
+    "cqa-tex",
+    "cqa-unix",
+    "cqa-webmasters",
+    "cqa-wordpress",
+];
+
+/// Questions a language gives a cohort: CQADupStack's twelve forums fifty
+/// each, so that every cohort asks about 600.
+fn questions_each(language: &str) -> usize {
+    if language.starts_with("cqa-") {
+        50
+    } else {
+        QUESTIONS_EACH
+    }
+}
+
+fn folder(language: &'static str) -> &'static str {
     match language {
         "ru" => "russian",
         "en" => "english",
@@ -65,6 +93,7 @@ fn folder(language: &str) -> &'static str {
         "es" => "spanish",
         "ja" => "japanese",
         "th" => "thai",
+        hybrid if hybrid.starts_with("esci-") || hybrid.starts_with("cqa-") => hybrid,
         other => panic!("no language {other}"),
     }
 }
@@ -124,7 +153,7 @@ fn add_distractors(miracl: &Path, docs: &mut Vec<Doc>) {
 
 /// The first `n` passages of a language's judged pool: those a cohort that
 /// starts with that language holds at rowids 1 to n.
-pub fn first_docs(corpus: &Path, language: &str, n: usize) -> Vec<Doc> {
+pub fn first_docs(corpus: &Path, language: &'static str, n: usize) -> Vec<Doc> {
     let mut docs = Vec::new();
     read_docs(
         &corpus.join(folder(language)).join("corpus.jsonl.gz"),
@@ -187,7 +216,7 @@ fn read_questions(dir: &Path, language: &str, present: &HashSet<&str>) -> Vec<Qu
     questions.sort_by_cached_key(|question| {
         hex(&Sha256::digest(question.id.split_once(':').unwrap().1))
     });
-    questions.truncate(QUESTIONS_EACH);
+    questions.truncate(questions_each(language));
     questions
 }
 

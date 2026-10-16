@@ -221,6 +221,38 @@ fn fused(lists: &[(&[u32], f64)], k: usize) -> Vec<u32> {
     all.into_iter().take(k).map(|(doc, _)| doc).collect()
 }
 
+/// A convex combination of the two lists' scores: each list's turned to
+/// [0, 1] by its own lowest and highest, a document a list lacks counted 0
+/// there, the vectors' weighing `weight` and the words' the rest.
+fn convex(words: &[(u32, f64)], vectors: &[(u32, f64)], weight: f64, k: usize) -> Vec<u32> {
+    let scaled = |list: &[(u32, f64)]| -> HashMap<u32, f64> {
+        let low = list.iter().map(|(_, s)| *s).fold(f64::INFINITY, f64::min);
+        let high = list
+            .iter()
+            .map(|(_, s)| *s)
+            .fold(f64::NEG_INFINITY, f64::max);
+        let width = if high > low { high - low } else { 1.0 };
+        list.iter()
+            .map(|(doc, s)| (*doc, (s - low) / width))
+            .collect()
+    };
+    let (by_words, by_vectors) = (scaled(words), scaled(vectors));
+    let mut all: Vec<(u32, f64)> = by_words
+        .keys()
+        .chain(by_vectors.keys())
+        .copied()
+        .collect::<std::collections::HashSet<u32>>()
+        .into_iter()
+        .map(|doc| {
+            let score = (1.0 - weight) * by_words.get(&doc).copied().unwrap_or(0.0)
+                + weight * by_vectors.get(&doc).copied().unwrap_or(0.0);
+            (doc, score)
+        })
+        .collect();
+    all.sort_by(|a, b| b.1.total_cmp(&a.1).then(a.0.cmp(&b.0)));
+    all.into_iter().take(k).map(|(doc, _)| doc).collect()
+}
+
 /// `vhybrid <vectors> <out> <words index> <arm> <questions>`: the words'
 /// hundred best by `or` over the compact blocks, the vectors' hundred best
 /// by the arm, and the ten of their fusion, each judged on its own; and the
@@ -242,6 +274,7 @@ fn vhybrid(args: &[String]) {
         let (mut alone, mut near, mut both) = (Vec::new(), Vec::new(), Vec::new());
         let (mut rescored, mut reordered) = (Vec::new(), Vec::new());
         let (mut twice, mut four) = (Vec::new(), Vec::new());
+        let mut convexes: Vec<Vec<Ran>> = (0..3).map(|_| Vec::new()).collect();
         for (question, q) in given
             .asked
             .iter()
@@ -256,9 +289,27 @@ fn vhybrid(args: &[String]) {
                 100,
             )
             .ids;
+            let bm25: Vec<(u32, f64)> = found
+                .iter()
+                .copied()
+                .zip(index.scores.iter().copied())
+                .collect();
             let worded = started.elapsed().as_secs_f64() * 1e3;
-            let nearest: Vec<u32> = searcher.search(q, 100).iter().map(|s| s.doc).collect();
+            let searched = searcher.search(q, 100);
             let total = started.elapsed().as_secs_f64() * 1e3;
+            let nearest: Vec<u32> = searched.iter().map(|s| s.doc).collect();
+            let cosines: Vec<(u32, f64)> = searched
+                .iter()
+                .map(|s| (s.doc, f64::from(s.score)))
+                .collect();
+            for (ran, weight) in convexes.iter_mut().zip([0.5, 0.7, 0.9]) {
+                ran.push(Ran {
+                    ids: convex(&bm25, &cosines, weight, 10),
+                    millis: total,
+                    hydrate_millis: 0.0,
+                    queries: 0,
+                });
+            }
             let top = |list: &[u32]| list.iter().take(10).copied().collect::<Vec<u32>>();
             alone.push(Ran {
                 ids: top(&found),
@@ -315,6 +366,9 @@ fn vhybrid(args: &[String]) {
             ("hybrid", &both),
             ("hybrid, vectors ×2", &twice),
             ("hybrid, vectors ×4", &four),
+            ("convex, vectors 0.5", &convexes[0]),
+            ("convex, vectors 0.7", &convexes[1]),
+            ("convex, vectors 0.9", &convexes[2]),
             ("words rescored, fused", &rescored),
             ("words rescored", &reordered),
         ];
@@ -808,7 +862,12 @@ fn check(args: &[String]) {
 /// head packed every `pack_every` writes (0, never), every `check_every`th
 /// search checked against scoring every posting. A line every 5,000
 /// operations says what the searches and sets cost meanwhile.
+/// `churn <corpus> <out> <cohort> <analysis> <ops> <pack_every> <check_every> <seed> [<pack_keys> <purge_at>]`:
+/// with `pack_keys`, the head is packed that many of its rows a commit, keys
+/// whole, until it is empty, and with `purge_at`, once that share of the documents is gone, a
+/// purge takes them out of the blocks in steps of as many keys.
 fn churn(args: &[String]) {
+    let (args, steps) = args.split_at(8.min(args.len()));
     let [
         corpus,
         out,
@@ -820,8 +879,12 @@ fn churn(args: &[String]) {
         seed,
     ] = args
     else {
-        panic!("churn <corpus> <out> <cohort> <analysis> <ops> <pack_every> <check_every> <seed>")
+        panic!(
+            "churn <corpus> <out> <cohort> <analysis> <ops> <pack_every> <check_every> <seed> [<pack_keys> <purge_at>]"
+        )
     };
+    let pack_keys: usize = steps.first().map_or(0, |keys| keys.parse().unwrap());
+    let purge_at: f64 = steps.get(1).map_or(0.0, |share| share.parse().unwrap());
     let (ops, pack_every, check_every): (usize, usize, usize) = (
         ops.parse().unwrap(),
         pack_every.parse().unwrap(),
@@ -843,7 +906,10 @@ fn churn(args: &[String]) {
     let mut reader = compact::Compact::open(&path.join("index.db"));
     reader.shared_gone = true;
     let context = json!({"cohort": cohort, "pack_every": pack_every, "check_every": check_every, "seed": seed,
+        "pack_keys": pack_keys, "purge_at": purge_at,
         "executor": std::env::var("LAB_EXECUTOR").unwrap_or_else(|_| "cursor".to_owned())});
+    // Each commit that held the writer to pack or purge, and the purges done.
+    let (mut held, mut purges, mut purge_spent) = (Vec::new(), 0usize, 0.0f64);
     let mut spent: [Vec<f64>; 4] = Default::default(); // or, pruned-or, set, delete
     let (mut searches, mut writes, mut differ, mut checked) = (0usize, 0usize, 0usize, 0usize);
     let mut packs: Vec<f64> = Vec::new();
@@ -896,12 +962,51 @@ fn churn(args: &[String]) {
             reader.forget(&gone);
             writes += 1;
             if pack_every > 0 && writes % pack_every == 0 {
-                let packed = writer.pack();
-                packs.push(packed.millis);
-                emit(
-                    json!({"step": "pack", "context": context, "op": op, "documents": packed.documents,
-                    "keys": packed.keys, "postings": packed.postings, "millis": packed.millis}),
-                );
+                if pack_keys == 0 {
+                    let packed = writer.pack();
+                    packs.push(packed.millis);
+                    held.push(packed.millis);
+                    emit(
+                        json!({"step": "pack", "context": context, "op": op, "documents": packed.documents,
+                        "keys": packed.keys, "postings": packed.postings, "millis": packed.millis}),
+                    );
+                } else {
+                    let (mut total, mut keys, mut postings) = (0.0, 0, 0);
+                    while writer.head_rows() > 0 {
+                        let packed = writer.pack_step(pack_keys);
+                        held.push(packed.millis);
+                        total += packed.millis;
+                        keys += packed.keys;
+                        postings += packed.postings;
+                    }
+                    packs.push(total);
+                    emit(
+                        json!({"step": "pack", "context": context, "op": op, "keys": keys,
+                        "postings": postings, "millis": total}),
+                    );
+                }
+                let documents = reader.documents() as f64;
+                if purge_at > 0.0
+                    && !writer.purging()
+                    && reader.gone_count() as f64 >= purge_at * documents
+                {
+                    let started = Instant::now();
+                    let keys = writer.purge_begin(&analyzer);
+                    let read = started.elapsed().as_secs_f64() * 1e3;
+                    let mut total = read;
+                    while writer.purging() {
+                        let step = writer.purge_step(pack_keys.max(1));
+                        held.push(step.millis);
+                        total += step.millis;
+                        reader.purged(&step.purged);
+                    }
+                    purges += 1;
+                    purge_spent += total;
+                    emit(
+                        json!({"step": "purge", "context": context, "op": op, "keys": keys, "read_ms": read,
+                        "millis": total}),
+                    );
+                }
             }
         }
         if op % 5000 == 0 {
@@ -912,7 +1017,10 @@ fn churn(args: &[String]) {
                 "set_p50_ms": quantile(&mut spent[2], 0.5), "set_p99_ms": quantile(&mut spent[2], 0.99),
                 "delete_p50_ms": quantile(&mut spent[3], 0.5),
                 "head_rows": head, "gone": reader.gone_count(), "norms_bytes": reader.norms_bytes(),
+                "held_p99_ms": quantile(&mut held, 0.99), "held_max_ms": held.iter().copied().fold(0.0, f64::max),
+                "held_commits": held.len(), "purges": purges, "purge_ms": purge_spent,
                 "checked": checked, "differ": differ}));
+            held.clear();
             for values in &mut spent {
                 values.clear();
             }
