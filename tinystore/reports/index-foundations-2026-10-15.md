@@ -263,6 +263,19 @@ layout matter; the evidence supports avoiding redundant writes, not a stable
 latency multiplier. Full-maintenance build time 19.28/7.98 s is especially
 variable, so do not choose a policy from one fastest run.
 
+## Million-row baseline variability
+
+The fixed-work 1m Russian FTS no-rebuild control with tx32/u90 takes
+146.529/27.464 s, write-service p99 1863.863/88.731 ms. Both perform 2000
+transactions and emit exactly 277,349 committed WAL frames (1,142,677,880
+frame bytes). Workload CPU is 192.287/55.045 s. Reader p99 also changes sharply.
+The same nominal configuration and identical durable write stream do not
+produce a stable latency baseline in this pair. Host checks found no parallel
+build or competing benchmark; the cause is not isolated. Do not remove the
+slow run, average the pair or attribute adjacent-case speedups to a rebuild
+algorithm. WAL/storage accounting and correctness remain separate evidence;
+latency conclusions require matched native controls and more stable repeats.
+
 ## Correctness and failure evidence
 
 The deterministic suite exercises minimum/negative/zero IDs, holes, updates and

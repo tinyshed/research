@@ -37,7 +37,7 @@ rows=[]
 for label,rs in groups('static'):
  rows.append([label,values(rs,lambda r:f(r['build_us']/1e6)),values(rs,lambda r:ms(r['queries']['p50_us'])),values(rs,lambda r:ms(r['queries']['p95_us'])),values(rs,lambda r:ms(r['queries']['p99_us'])),values(rs,lambda r:f(r['query_per_s'])),values(rs,lambda r:mib(indexbytes(r))),values(rs,lambda r:f(mem(r))),values(rs,lambda r:mib(r.get('build_wal',{}).get('frame_bytes',0)))])
 table('Static build and full result-set queries',['Scenario','Build s','Query p50 ms','p95 ms','p99 ms','Query/s','Index MiB¹','HWM MiB','Build WAL MiB'],rows)
-lines.extend(['¹ Cache size for Roaring is serialized bitmaps plus score-array estimate, not durable disk. rstar has no standalone durable index bytes; its RAM is in HWM. Index objects exclude source. Native incremental work is excluded from build time, but process HWM spans the entire process. Scans create no secondary projection.',''])
+lines.extend(['¹ Cache size for Roaring is serialized bitmaps plus score-array estimate, not durable disk. rstar has no standalone durable index bytes; its RAM is in HWM. Index objects exclude source. Native incremental work is excluded from build time, but process HWM spans the entire process. Scans create no secondary projection. Standalone Tantivy has no SQLite WAL: zero in that column is not zero I/O or source atomicity; its own index files/commit and the full outbox scenario must be included.',''])
 rows=[]
 for label,rs in groups('static'):
  if 'mutation_phases'not in rs[0]['result']:continue

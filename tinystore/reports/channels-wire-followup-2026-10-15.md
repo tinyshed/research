@@ -29,7 +29,10 @@ in every profile must produce no events. The adapter serializes
 commit completion and sequence assignment; it **does not** measure a native
 grouped-commit notification hook. It polls connections at 1 ms; that scheduler's
 CPU/latency is part of the prototype result, not the recommended production
-path. These limits are material when interpreting the numbers as Core →
+path. `Connection::take` also holds the shared Hub state mutex while draining
+and framing a connection budget. That imposed critical section constrains both
+candidates and does not measure unconstrained parallel broadcast receivers.
+These limits are material when interpreting the numbers as Core →
 experimental Wire boundary → real Bun receiver, rather than an existing product
 Channels feature.
 
@@ -146,10 +149,13 @@ therefore as relevant as the core ring's payload storage. Millions of successful
 publishes with very few deliveries are a loss policy measurement, not useful
 fanout throughput.
 
-Configured buffer ceilings are 256 KiB shared payload history, 256 KiB output
-per connection and 2 MiB initial stream credit per subscription. At 1000 streams
-the initial permissions sum to 2000 MiB; at 1000 connections output caps sum
-to 250 MiB. Credit is permission, not preallocated RSS. RSS measures resident
+The shared history holds 256 KiB payload, data-drain budget is 256 KiB per
+connection and initial stream credit is 2 MiB per subscription. At 1000 streams
+the initial permissions sum to 2000 MiB; 1000 per-connection drain budgets sum
+to 250 MiB. These are not a proof of a hard aggregate output cap: private unary
+replies/cancel END frames append outside the data scheduling check. The bench
+uses a well-behaved SDK with bounded calls in flight. Native admission must
+include those control buffers too. Credit is permission, not preallocated RSS. RSS measures resident
 user-space buffers, not socket kernel memory or a complete instantaneous sum of
 SDK/transport queues. This adapter does not expose every queue high-water
 counter; an exact aggregate-buffer admission proof remains a native-path gate.
@@ -164,6 +170,9 @@ per event; bound by bytes as well as event count; cap message size, topics,
 subscriptions and total connection send allowance. Wake/drain per connection
 with coalescing and a fair byte budget. Do not copy the adapter's polling loop
 or serialize every production publish behind an extra global commit mutex.
+Clone/reserve a payload under the necessary broker synchronization, then release
+it before connection framing/network work; independent connections should not
+share that whole critical section.
 
 Attach staged publications to successful savepoints and commit completion in
 the real writer. Drop publications on savepoint rollback or failed group COMMIT.
@@ -174,8 +183,8 @@ consumers. Process death after data COMMIT but before ephemeral dispatch can
 still lose a notification; that is compatible with at-most-once Channels and
 must be documented.
 
-A separate **unmeasured** candidate addresses the measured amplification rather
-than replacing the broker: coalesce identical topic subscriptions within one SDK
+A separate **unmeasured** candidate reduces the measured wire amplification:
+coalesce identical topic subscriptions within one SDK
 connection into one Wire stream, then fan out a shared immutable payload through
 bounded local subscriber cursors. At 1000 duplicate subscriptions, the current
 fast fixture sends 1m payload frames for 1000 publishes (about 1024 MB payload);

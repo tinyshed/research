@@ -55,7 +55,7 @@ Generated with `python3 tinystore/index-foundations/summarize.py`. Values separa
 | 1000000-clustered-grid | 2.23; 2.06 | 242.69; 210.46 | 746.73; 509.24 | 1086.77; 607.00 | 2.87; 3.54 | 28.90; 28.90 | 22.68; 22.82 | 29.08; 29.08 |
 | 1000000-clustered-rstar | 0.52; 0.51 | 0.27; 0.26 | 44.66; 47.23 | 52.80; 58.79 | 94.50; 90.89 | 0.00; 0.00 | 106.34; 106.42 | 0.00; 0.00 |
 
-¹ Cache size for Roaring is serialized bitmaps plus score-array estimate, not durable disk. rstar has no standalone durable index bytes; its RAM is in HWM. Index objects exclude source. Native incremental work is excluded from build time, but process HWM spans the entire process. Scans create no secondary projection.
+¹ Cache size for Roaring is serialized bitmaps plus score-array estimate, not durable disk. rstar has no standalone durable index bytes; its RAM is in HWM. Index objects exclude source. Native incremental work is excluded from build time, but process HWM spans the entire process. Scans create no secondary projection. Standalone Tantivy has no SQLite WAL: zero in that column is not zero I/O or source atomicity; its own index files/commit and the full outbox scenario must be included.
 
 ## Native incremental transactions (100 rows/transaction)
 
@@ -265,6 +265,16 @@ Generated with `python3 tinystore/index-foundations/summarize.py`. Values separa
 | 100000-clustered-geo-frontier-2000-64-full-tx1-u10 | 14.14; 11.50 | 1.29; 1.01 | 6.00; 4.48 | 15.76; 12.38 | 9.06; 8.41 | 6223.77; 3502.43 | 57.87; 44.45 |
 | 100000-clustered-geo-frontier-2000-64-selective-tx32-u90 | 28.07; 33.97 | 5.57; 7.88 | 28.72; 31.64 | 37.54; 38.84 | 13.79; 7.48 | 18619.04; 21458.30 | 43.65; 71.86 |
 | 100000-clustered-geo-none-0-0-selective-tx32-u90 | 0.00; 0.00 | 2.80; 4.29 | 17.32; 34.07 | 29.94; 193.92 | 0.00; 0.00 | 7106.39; 24551.83 | 0.00; 0.00 |
+| 1000000-russian-fts-none-0-0-selective-tx1-u10 | 0.00 | 0.92 | 4.55 | 20.64 | 0.00 | 1797.65 | 0.00 |
+| 1000000-russian-fts-monolithic-0-0-selective-tx1-u10 | 42.14 | 1.49 | 8.71 | 28.15 | 0.00 | 48234.20 | 41977.26 |
+| 1000000-russian-fts-frontier-1000-32-selective-tx1-u10 | 124.71 | 0.63 | 3.27 | 22.11 | 22.33 | 6205.55 | 2147.68 |
+| 1000000-russian-fts-frontier-5000-256-selective-tx1-u10 | 41.26 | 0.61 | 2.41 | 23.01 | 30.68 | 5077.49 | 90.27 |
+| 1000000-russian-fts-seen-2000-64-selective-tx1-u10 | 75.54 | 0.88 | 8.36 | 31.35 | 22.49 | 8855.42 | 295.66 |
+| 1000000-russian-fts-delta-2000-64-selective-tx1-u10 | 76.98; 69.26 | 1.27; 1.13 | 7.35; 6.17 | 26.56; 27.15 | 8.51; 23.02 | 4805.79; 8391.69 | 305.23; 235.79 |
+| 1000000-russian-fts-frontier-2000-64-selective-tx1-u10 | 109.84; 87.87 | 1.28; 0.73 | 7.37; 3.99 | 47.08; 26.03 | 16.54; 19.47 | 8647.70; 5203.23 | 607.42; 275.17 |
+| 1000000-russian-fts-frontier-2000-64-full-tx1-u10 | 70.66; 80.21 | 1.30; 1.04 | 9.38; 5.73 | 50.66; 41.40 | 21.99; 15.89 | 8227.28; 5358.24 | 325.81; 166.27 |
+| 1000000-russian-fts-frontier-2000-64-selective-tx32-u90 | 110.45; 101.78 | 10.05; 8.15 | 45.86; 42.12 | 92.18; 69.52 | 31.52; 13.83 | 35731.87; 27943.26 | 702.82; 176.59 |
+| 1000000-russian-fts-none-0-0-selective-tx32-u90 | 0.00; 0.00 | 6.93; 6.57 | 116.41; 57.43 | 1863.86; 88.73 | 0.00; 0.00 | 144130.81; 25349.53 | 0.00; 0.00 |
 
 ## rebuilds: offered-arrival latency
 
@@ -300,6 +310,16 @@ Generated with `python3 tinystore/index-foundations/summarize.py`. Values separa
 | 100000-clustered-geo-frontier-2000-64-full-tx1-u10 | 3247.81; 1585.01 | 5955.69; 3298.08 | 6223.77; 3502.43 | 21.68; 39.17 | 2000; 2000 |
 | 100000-clustered-geo-frontier-2000-64-selective-tx32-u90 | 7426.97; 11920.22 | 17764.53; 20710.58 | 18619.04; 21458.30 | 35.15; 23.13 | 2000; 2000 |
 | 100000-clustered-geo-none-0-0-selective-tx32-u90 | 3931.18; 14176.04 | 6857.81; 24290.08 | 7106.39; 24551.83 | 0.00; 0.00 | 2000; 2000 |
+| 1000000-russian-fts-none-0-0-selective-tx1-u10 | 848.44 | 1724.99 | 1797.65 | 0.00 | 2000 |
+| 1000000-russian-fts-monolithic-0-0-selective-tx1-u10 | 46073.42 | 47950.60 | 48234.20 | 41977.40 | 2000 |
+| 1000000-russian-fts-frontier-1000-32-selective-tx1-u10 | 1923.31 | 4860.30 | 6205.55 | 314.06 | 2000 |
+| 1000000-russian-fts-frontier-5000-256-selective-tx1-u10 | 2183.15 | 4731.43 | 5077.49 | 57.65 | 2000 |
+| 1000000-russian-fts-seen-2000-64-selective-tx1-u10 | 2731.35 | 8256.39 | 8855.42 | 73.08 | 2000 |
+| 1000000-russian-fts-delta-2000-64-selective-tx1-u10 | 2050.84; 3932.25 | 4357.08; 8063.51 | 4805.79; 8391.69 | 39.66; 118.50 | 2000; 2000 |
+| 1000000-russian-fts-frontier-2000-64-selective-tx1-u10 | 6019.34; 2468.53 | 8587.39; 4845.52 | 8647.70; 5203.23 | 91.68; 40.93 | 2000; 2000 |
+| 1000000-russian-fts-frontier-2000-64-full-tx1-u10 | 4906.60; 1454.17 | 7759.74; 4983.30 | 8227.28; 5358.24 | 90.17; 82.37 | 2000; 2000 |
+| 1000000-russian-fts-frontier-2000-64-selective-tx32-u90 | 16821.68; 12189.21 | 34629.52; 26080.85 | 35731.87; 27943.26 | 213.34; 175.93 | 2000; 2000 |
+| 1000000-russian-fts-none-0-0-selective-tx32-u90 | 133991.46; 16170.19 | 143191.92; 24857.72 | 144130.81; 25349.53 | 0.00; 0.00 | 2000; 2000 |
 
 ## rebuilds: reads and resources
 
@@ -335,6 +355,16 @@ Generated with `python3 tinystore/index-foundations/summarize.py`. Values separa
 | 100000-clustered-geo-frontier-2000-64-full-tx1-u10 | 545.10; 344.84 | 21.18/441.59; 25.58/802.32 | 746.34; 742.90 | 746.34; 742.90 | 778.97; 776.13 | 25.83; 25.48 | 0.53; 0.47 | 1551/1122; 868/1107 |
 | 100000-clustered-geo-frontier-2000-64-selective-tx32-u90 | 333.11; 529.11 | 28.60/526.23; 23.67/564.51 | 1780.98; 1731.92 | 1780.98; 1731.92 | 1819.45; 1770.68 | 29.08; 28.51 | 0.57; 0.80 | 1587/1177; 1869/1161 |
 | 100000-clustered-geo-none-0-0-selective-tx32-u90 | 317.74; 159.41 | 32.95/734.77; 121.30/497.51 | 873.72; 873.72 | 873.72; 873.72 | 905.36; 906.16 | 25.28; 25.25 | 0.00; 0.00 | 0/0; 0/0 |
+| 1000000-russian-fts-none-0-0-selective-tx1-u10 | 810.00 | 10.83/16.75 | 61.29 | 61.29 | 792.33 | 19.42 | 0.00 | 0/0 |
+| 1000000-russian-fts-monolithic-0-0-selective-tx1-u10 | 689.04 | 35.34/35.93 | 339.48 | 339.48 | 1343.38 | 23.17 | 0.00 | 0/0 |
+| 1000000-russian-fts-frontier-1000-32-selective-tx1-u10 | 617.07 | 22.60/33.73 | 2198.55 | 303.71 | 1320.68 | 20.96 | 0.44 | 19832/1568 |
+| 1000000-russian-fts-frontier-5000-256-selective-tx1-u10 | 574.80 | 33.39/38.24 | 951.09 | 217.63 | 1231.93 | 21.30 | 1.26 | 2670/224 |
+| 1000000-russian-fts-seen-2000-64-selective-tx1-u10 | 598.31 | 28.89/37.11 | 1791.58 | 324.52 | 1345.11 | 20.89 | 0.99 | 10394/823 |
+| 1000000-russian-fts-delta-2000-64-selective-tx1-u10 | 753.50; 727.41 | 20.25/34.76; 23.48/33.36 | 1226.90; 1208.05 | 170.75; 279.59 | 1172.23; 1279.78 | 20.87; 21.59 | 64.88; 82.33 | 8194/668; 7968/641 |
+| 1000000-russian-fts-frontier-2000-64-selective-tx1-u10 | 700.37; 840.13 | 27.09/34.04; 24.91/33.31 | 1604.50; 1545.83 | 186.85; 253.83 | 1204.95; 1264.89 | 20.48; 20.67 | 0.70; 0.63 | 10987/830; 10507/825 |
+| 1000000-russian-fts-frontier-2000-64-full-tx1-u10 | 642.73; 805.24 | 29.07/37.62; 22.55/33.51 | 1417.83; 1538.54 | 214.11; 256.82 | 1218.11; 1273.91 | 20.79; 21.06 | 0.65; 0.84 | 7736/640; 9397/770 |
+| 1000000-russian-fts-frontier-2000-64-selective-tx32-u90 | 595.73; 714.14 | 28.22/35.98; 26.40/33.45 | 2564.29; 2617.38 | 378.31; 485.48 | 1416.09; 1523.53 | 21.42; 21.54 | 0.52; 2.76 | 8754/681; 9638/766 |
+| 1000000-russian-fts-none-0-0-selective-tx32-u90 | 147.27; 669.94 | 198.61/627.04; 28.92/33.54 | 1089.74; 1089.74 | 335.40; 388.36 | 1084.47; 1137.43 | 20.33; 20.37 | 0.00; 0.00 | 0/0; 0/0 |
 
 ² Maximum across setup, chunk/monolithic build, checkpoint and activation holds. Foreground service excludes queue time; scheduled latency includes offered-workload backlog. Fixed main scenarios perform the same minimum 2000 transactions; long builds can outlast that write window. `continuous-*` keeps writes through publication. Zero activation for monolithic means switching is included in the monolithic hold, not separately timed. Different tx sizes, update ratios, caches and distributions are separate scenarios.
 
@@ -517,5 +547,5 @@ Generated with `python3 tinystore/index-foundations/summarize.py`. Values separa
 | locks.jsonl | 24 | 0 | 344c615f65fe |
 | preparations.jsonl | 16 | 0 | 2f47fb3c3747, 50d354e483d0, 8d4d7b79baaa, b08e6f8df1fc, f1856d9b658f |
 | pressure.jsonl | 4 | 0 | 14bfbe819eac |
-| rebuilds.jsonl | 60 | 0 | 50d354e483d0 |
+| rebuilds.jsonl | 75 | 0 | 50d354e483d0 |
 | static.jsonl | 96 | 0 | f1856d9b658f |
