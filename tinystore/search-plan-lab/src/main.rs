@@ -11,6 +11,7 @@
 
 mod analyze;
 mod blocks;
+mod compact;
 mod corpus;
 mod fts;
 mod plan;
@@ -37,13 +38,14 @@ fn main() {
         Some("query") => query(&args[1..]),
         Some("write") => write(&args[1..]),
         Some("check") => check(&args[1..]),
+        Some("churn") => churn(&args[1..]),
         Some("tokens") => {
             let analyzer = Analyzer::new(Analysis::named(&args[1]));
             for token in analyzer.tokens(&args[2]) {
                 println!("{}\t{}", token.surface, token.stem.unwrap_or_default());
             }
         }
-        _ => panic!("lab build|query|write|check|tokens"),
+        _ => panic!("lab build|query|write|check|churn|tokens"),
     }
 }
 
@@ -105,6 +107,11 @@ fn build(args: &[String]) {
             let built = blocks::build(&path.join("index.db"), &analyzer, &loaded.docs);
             json!({"seconds": built.seconds, "bytes": built.file, "objects": built.objects,
                 "postings": built.postings, "blocks": built.blocks})
+        }
+        "compact" => {
+            let built = compact::build(&path.join("index.db"), &analyzer, &loaded.docs);
+            json!({"seconds": built.seconds, "bytes": built.file, "objects": built.objects,
+                "postings": built.postings, "blocks": built.blocks, "keys": built.keys, "inline": built.inline})
         }
         other => panic!("no backend {other}"),
     };
@@ -182,6 +189,10 @@ fn query(args: &[String]) {
         #[cfg(feature = "tantivy")]
         "tantivy" => (Box::new(tant::Tant::open(&path.join("tantivy"))), None),
         "blocks" => (Box::new(blocks::Blocks::open(&path.join("index.db"))), None),
+        "compact" => (
+            Box::new(compact::Compact::open(&path.join("index.db"))),
+            None,
+        ),
         other => panic!("no backend {other}"),
     };
     let open_millis = opened.elapsed().as_secs_f64() * 1e3;
@@ -366,6 +377,12 @@ fn write(args: &[String]) {
             let mut writer = blocks::Writer::open(&path.join("index.db"));
             Box::new(move |docs| writer.set(&analyzer, docs))
         }
+        "compact" => {
+            let mut writer = compact::Writer::open(&path.join("index.db"));
+            Box::new(move |docs| {
+                writer.set(&analyzer, docs);
+            })
+        }
         other => panic!("no backend {other}"),
     };
     let numbered: Vec<(u32, &corpus::Doc)> = docs
@@ -402,61 +419,239 @@ fn write(args: &[String]) {
 
 /// Answers every question by block-max MaxScore and by scoring every
 /// posting, and counts the questions whose ten scores differ.
+/// What the check asks of an index of blocks beyond a plan's answer.
+trait Checked: Backend {
+    fn set_exhaustive(&mut self, on: bool);
+    /// The last query's scores, blocks opened, statements, and time on
+    /// directories and on blocks.
+    fn last(&self) -> (Vec<f64>, usize, usize, f64, f64);
+}
+
+impl Checked for blocks::Blocks {
+    fn set_exhaustive(&mut self, on: bool) {
+        self.exhaustive = on;
+    }
+
+    fn last(&self) -> (Vec<f64>, usize, usize, f64, f64) {
+        (
+            self.scores.clone(),
+            self.opened,
+            self.opened,
+            self.directory_ms,
+            self.opening_ms,
+        )
+    }
+}
+
+impl Checked for compact::Compact {
+    fn set_exhaustive(&mut self, on: bool) {
+        self.exhaustive = on;
+    }
+
+    fn last(&self) -> (Vec<f64>, usize, usize, f64, f64) {
+        (
+            self.scores.clone(),
+            self.opened,
+            self.statements,
+            self.directory_ms,
+            self.opening_ms,
+        )
+    }
+}
+
+fn same_scores(pruned: &[f64], all: &[f64]) -> bool {
+    pruned.len() == all.len()
+        && pruned
+            .iter()
+            .zip(all)
+            .all(|(a, b)| (a - b).abs() <= 1e-9 * b.abs().max(1.0))
+}
+
+/// Answers every question by block-max MaxScore and by scoring every
+/// posting, and counts the questions whose ten scores differ.
 fn check(args: &[String]) {
-    let [out, cohort, analysis, plans, cut] = args else {
-        panic!("check <out> <cohort> <analysis> <plans> <cut>")
+    let (out, cohort, analysis, plans, cut, backend) = match args {
+        [out, cohort, analysis, plans, cut] => (out, cohort, analysis, plans, cut, "blocks"),
+        [out, cohort, analysis, plans, cut, backend] => {
+            (out, cohort, analysis, plans, cut, backend.as_str())
+        }
+        _ => panic!("check <out> <cohort> <analysis> <plans> <cut> [blocks|compact]"),
     };
-    let path = index_path(Path::new(out), cohort, analysis, "blocks");
+    let path = index_path(Path::new(out), cohort, analysis, backend);
     let asked: Vec<Asked> =
         serde_json::from_slice(&std::fs::read(path.join("questions.json")).unwrap()).unwrap();
     let analyzer = Analyzer::new(Analysis::named(analysis));
-    let mut index = blocks::Blocks::open(&path.join("index.db"));
+    let mut index: Box<dyn Checked> = match backend {
+        "compact" => Box::new(compact::Compact::open(&path.join("index.db"))),
+        _ => Box::new(blocks::Blocks::open(&path.join("index.db"))),
+    };
     let cut: f64 = cut.parse().unwrap();
     let executor = std::env::var("LAB_EXECUTOR").unwrap_or_else(|_| "cursor".to_owned());
+    let ahead = std::env::var("LAB_AHEAD").unwrap_or_else(|_| "1".to_owned());
     for plan in plans.split(',').map(Plan::named) {
-        // [pruned, every posting] × (ms, blocks opened, directory ms, opening ms)
-        let mut sums = [[0.0f64; 4]; 2];
+        // [pruned, every posting] × (ms, blocks opened, statements, directory ms, opening ms)
+        let mut sums = [[0.0f64; 5]; 2];
         let mut differ = 0;
         for question in &asked {
             let mut scores: [Vec<f64>; 2] = [Vec::new(), Vec::new()];
             for (at, exhaustive) in [false, true].into_iter().enumerate() {
-                index.exhaustive = exhaustive;
+                index.set_exhaustive(exhaustive);
                 let started = Instant::now();
                 plan::run(
-                    &mut index,
+                    &mut *index,
                     plan,
                     plan::words(&analyzer, &question.text),
                     cut,
                     10,
                 );
                 let took = started.elapsed().as_secs_f64() * 1e3;
+                let (found, opened, statements, directory_ms, opening_ms) = index.last();
                 for (sum, value) in sums[at].iter_mut().zip([
                     took,
-                    index.opened as f64,
-                    index.directory_ms,
-                    index.opening_ms,
+                    opened as f64,
+                    statements as f64,
+                    directory_ms,
+                    opening_ms,
                 ]) {
                     *sum += value;
                 }
-                scores[at] = index.scores.clone();
+                scores[at] = found;
             }
-            let [pruned, all] = &scores;
-            let same = pruned.len() == all.len()
-                && pruned
-                    .iter()
-                    .zip(all)
-                    .all(|(a, b)| (a - b).abs() <= 1e-9 * b.abs().max(1.0));
-            differ += usize::from(!same);
+            differ += usize::from(!same_scores(&scores[0], &scores[1]));
         }
         let n = asked.len() as f64;
         let mean = |at: usize, field: usize| sums[at][field] / n;
         emit(
-            json!({"step": "check", "plan": plan.name(), "cut": cut, "executor": executor, "questions": asked.len(),
-            "differ": differ, "mean_ms": mean(0, 0), "mean_ms_exhaustive": mean(1, 0),
-            "blocks_opened": mean(0, 1), "blocks_opened_exhaustive": mean(1, 1),
-            "directory_ms": mean(0, 2), "opening_ms": mean(0, 3), "opening_ms_exhaustive": mean(1, 3)}),
+            json!({"step": "check", "backend": backend, "plan": plan.name(), "cut": cut, "executor": executor,
+            "ahead": ahead, "questions": asked.len(), "differ": differ,
+            "mean_ms": mean(0, 0), "mean_ms_exhaustive": mean(1, 0),
+            "blocks_opened": mean(0, 1), "blocks_opened_exhaustive": mean(1, 1), "statements": mean(0, 2),
+            "directory_ms": mean(0, 3), "opening_ms": mean(0, 4), "opening_ms_exhaustive": mean(1, 4)}),
         );
     }
+}
+
+/// A long mix on a compact index: of every hundred operations 70 searches,
+/// 25 sets of a judged passage with its body changed and 5 deletes, the
+/// head packed every `pack_every` writes (0, never), every `check_every`th
+/// search checked against scoring every posting. A line every 5,000
+/// operations says what the searches and sets cost meanwhile.
+fn churn(args: &[String]) {
+    let [
+        corpus,
+        out,
+        cohort,
+        analysis,
+        ops,
+        pack_every,
+        check_every,
+        seed,
+    ] = args
+    else {
+        panic!("churn <corpus> <out> <cohort> <analysis> <ops> <pack_every> <check_every> <seed>")
+    };
+    let (ops, pack_every, check_every): (usize, usize, usize) = (
+        ops.parse().unwrap(),
+        pack_every.parse().unwrap(),
+        check_every.parse().unwrap(),
+    );
+    let mut rng: u64 = seed.parse().unwrap();
+    let mut next = move || {
+        rng ^= rng << 13;
+        rng ^= rng >> 7;
+        rng ^= rng << 17;
+        rng
+    };
+    let path = index_path(Path::new(out), cohort, analysis, "compact");
+    let asked: Vec<Asked> =
+        serde_json::from_slice(&std::fs::read(path.join("questions.json")).unwrap()).unwrap();
+    let pool = corpus::load(Path::new(corpus), "mixed").docs;
+    let analyzer = Analyzer::new(Analysis::named(analysis));
+    let mut writer = compact::Writer::open(&path.join("index.db"));
+    let mut reader = compact::Compact::open(&path.join("index.db"));
+    reader.shared_gone = true;
+    let context = json!({"cohort": cohort, "pack_every": pack_every, "check_every": check_every, "seed": seed,
+        "executor": std::env::var("LAB_EXECUTOR").unwrap_or_else(|_| "cursor".to_owned())});
+    let mut spent: [Vec<f64>; 4] = Default::default(); // or, pruned-or, set, delete
+    let (mut searches, mut writes, mut differ, mut checked) = (0usize, 0usize, 0usize, 0usize);
+    let mut packs: Vec<f64> = Vec::new();
+    let quantile = |values: &mut Vec<f64>, share: f64| -> f64 {
+        if values.is_empty() {
+            return 0.0;
+        }
+        values.sort_by(f64::total_cmp);
+        values[((values.len() as f64 * share).ceil() as usize).clamp(1, values.len()) - 1]
+    };
+    for op in 1..=ops {
+        let roll = next() % 100;
+        if roll < 70 {
+            let question = &asked[(next() % asked.len() as u64) as usize];
+            let plan = if op % 2 == 0 {
+                Plan::Or
+            } else {
+                Plan::PrunedOr
+            };
+            let words = plan::words(&analyzer, &question.text);
+            let started = Instant::now();
+            plan::run(&mut reader, plan, words.clone(), 0.05, 10);
+            spent[usize::from(plan == Plan::PrunedOr)].push(started.elapsed().as_secs_f64() * 1e3);
+            searches += 1;
+            if check_every > 0 && searches % check_every == 0 {
+                let pruned = reader.scores.clone();
+                reader.exhaustive = true;
+                plan::run(&mut reader, plan, words, 0.05, 10);
+                reader.exhaustive = false;
+                differ += usize::from(!same_scores(&pruned, &reader.scores));
+                checked += 1;
+            }
+        } else {
+            let doc = &pool[(next() % pool.len() as u64) as usize];
+            let started = Instant::now();
+            let gone = if roll < 95 {
+                let changed = corpus::Doc {
+                    id: doc.id.clone(),
+                    title: doc.title.clone(),
+                    text: format!("{} v{op}", doc.text),
+                };
+                let gone = writer.set(&analyzer, &[(0, &changed)]);
+                spent[2].push(started.elapsed().as_secs_f64() * 1e3);
+                gone
+            } else {
+                let gone = writer.delete(&doc.id);
+                spent[3].push(started.elapsed().as_secs_f64() * 1e3);
+                gone
+            };
+            reader.forget(&gone);
+            writes += 1;
+            if pack_every > 0 && writes % pack_every == 0 {
+                let packed = writer.pack();
+                packs.push(packed.millis);
+                emit(
+                    json!({"step": "pack", "context": context, "op": op, "documents": packed.documents,
+                    "keys": packed.keys, "postings": packed.postings, "millis": packed.millis}),
+                );
+            }
+        }
+        if op % 5000 == 0 {
+            let head = writer.head_rows();
+            emit(json!({"step": "churn", "context": context, "op": op,
+                "or_p50_ms": quantile(&mut spent[0], 0.5), "or_p99_ms": quantile(&mut spent[0], 0.99),
+                "pruned_p50_ms": quantile(&mut spent[1], 0.5), "pruned_p99_ms": quantile(&mut spent[1], 0.99),
+                "set_p50_ms": quantile(&mut spent[2], 0.5), "set_p99_ms": quantile(&mut spent[2], 0.99),
+                "delete_p50_ms": quantile(&mut spent[3], 0.5),
+                "head_rows": head, "gone": reader.gone_count(), "norms_bytes": reader.norms_bytes(),
+                "checked": checked, "differ": differ}));
+            for values in &mut spent {
+                values.clear();
+            }
+        }
+    }
+    emit(
+        json!({"step": "churned", "context": context, "ops": ops, "searches": searches, "writes": writes,
+        "checked": checked, "differ": differ, "packs": packs.len(),
+        "pack_mean_ms": if packs.is_empty() { 0.0 } else { packs.iter().sum::<f64>() / packs.len() as f64 },
+        "pack_max_ms": packs.iter().copied().fold(0.0, f64::max), "memory": memory()}),
+    );
 }
 
 /// The process's peak and current resident memory in KiB, on Linux.

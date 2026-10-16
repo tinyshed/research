@@ -40,16 +40,16 @@ use crate::corpus::Doc;
 use crate::fts::open;
 use crate::plan::{Backend, Word};
 
-const BLOCK: usize = 128;
+pub(crate) const BLOCK: usize = 128;
 /// Documents built into blocks at a time: a key's documents in one chunk
 /// make its blocks, and its last block of each chunk may be short.
 const CHUNK: usize = 250_000;
 const K1: f64 = 1.2;
 const B: f64 = 0.75;
-const END: u32 = u32::MAX;
+pub(crate) const END: u32 = u32::MAX;
 
 /// The fields and their weights: a title's words, its stems, a body's, its stems.
-const FIELDS: [(&str, f64); 4] = [("t", 2.0), ("ts", 1.5), ("b", 1.0), ("bs", 0.75)];
+pub(crate) const FIELDS: [(&str, f64); 4] = [("t", 2.0), ("ts", 1.5), ("b", 1.0), ("bs", 0.75)];
 
 const SCHEMA: &str = "
 create table skip (key text not null, first integer not null, last integer not null,
@@ -70,24 +70,24 @@ create table blob (id integer not null, first integer not null, payload blob not
   primary key (id, first)) without rowid;
 ";
 
-fn key(field: usize, term: &str) -> String {
+pub(crate) fn key(field: usize, term: &str) -> String {
     format!("{}|{term}", FIELDS[field].0)
 }
 
 /// BM25's saturated frequency: what a term's `tf` in a field of `len`
 /// tokens adds, before its weight and idf.
-fn saturated(tf: u32, len: u32, average: f64) -> f64 {
+pub(crate) fn saturated(tf: u32, len: u32, average: f64) -> f64 {
     let tf = f64::from(tf);
     tf * (K1 + 1.0) / (tf + K1 * (1.0 - B + B * f64::from(len) / average))
 }
 
-fn idf(documents: u64, holding: u64) -> f64 {
+pub(crate) fn idf(documents: u64, holding: u64) -> f64 {
     let (n, df) = (documents as f64, holding as f64);
     (1.0 + (n - df + 0.5) / (df + 0.5)).ln()
 }
 
 /// A document's four fields as tokens, as FTS5's four columns hold them.
-fn fields(analyzer: &Analyzer, doc: &Doc) -> [Vec<String>; 4] {
+pub(crate) fn fields(analyzer: &Analyzer, doc: &Doc) -> [Vec<String>; 4] {
     let title = analyzer.tokens(&doc.title);
     let body = analyzer.tokens(&doc.text);
     let surface = |tokens: &[crate::analyze::Token]| {
@@ -103,7 +103,7 @@ fn fields(analyzer: &Analyzer, doc: &Doc) -> [Vec<String>; 4] {
 }
 
 /// Each term of a field once, with how often it occurs.
-fn counted(terms: &[String]) -> Vec<(&str, u32)> {
+pub(crate) fn counted(terms: &[String]) -> Vec<(&str, u32)> {
     let mut counts: HashMap<&str, u32> = HashMap::new();
     for term in terms {
         *counts.entry(term.as_str()).or_default() += 1;
@@ -111,7 +111,7 @@ fn counted(terms: &[String]) -> Vec<(&str, u32)> {
     counts.into_iter().collect()
 }
 
-fn put_varint(out: &mut Vec<u8>, mut value: u32) {
+pub(crate) fn put_varint(out: &mut Vec<u8>, mut value: u32) {
     while value >= 0x80 {
         out.push((value as u8) | 0x80);
         value >>= 7;
@@ -119,7 +119,7 @@ fn put_varint(out: &mut Vec<u8>, mut value: u32) {
     out.push(value as u8);
 }
 
-fn get_varint(bytes: &[u8], at: &mut usize) -> u32 {
+pub(crate) fn get_varint(bytes: &[u8], at: &mut usize) -> u32 {
     let mut value = 0u32;
     let mut shift = 0;
     loop {
@@ -134,10 +134,10 @@ fn get_varint(bytes: &[u8], at: &mut usize) -> u32 {
 }
 
 #[derive(Clone, Copy)]
-struct Posting {
-    doc: u32,
-    tf: u32,
-    len: u32,
+pub(crate) struct Posting {
+    pub(crate) doc: u32,
+    pub(crate) tf: u32,
+    pub(crate) len: u32,
 }
 
 fn pack(block: &[Posting]) -> Vec<u8> {
@@ -349,27 +349,69 @@ fn write_packed(
 
 /// A block as the directory says it: its documents' range and the most its
 /// key adds to any of them.
-struct Skip {
-    first: u32,
-    last: u32,
-    bound: f64,
+pub(crate) struct Skip {
+    pub(crate) first: u32,
+    pub(crate) last: u32,
+    pub(crate) bound: f64,
 }
 
 /// A key's postings in a query: its directory, the block its cursor is in,
 /// decoded, and the cursor.
-struct List {
-    key: String,
+pub(crate) struct List {
+    pub(crate) key: String,
     /// The key's number in a packed index, -1 in the other.
-    id: i64,
+    pub(crate) id: i64,
+    pub(crate) field: usize,
     /// The key's weight × idf.
-    scale: f64,
-    average: f64,
-    skips: Vec<Skip>,
-    max: f64,
-    block: usize,
-    decoded: usize,
-    postings: Vec<Posting>,
-    at: usize,
+    pub(crate) scale: f64,
+    pub(crate) average: f64,
+    pub(crate) skips: Vec<Skip>,
+    pub(crate) max: f64,
+    pub(crate) block: usize,
+    pub(crate) decoded: usize,
+    pub(crate) postings: Vec<Posting>,
+    pub(crate) at: usize,
+}
+
+impl List {
+    /// A list whose postings are all here already: a key's head, or one
+    /// short enough to live in its key's row.
+    pub(crate) fn whole(
+        key: String,
+        field: usize,
+        scale: f64,
+        average: f64,
+        postings: Vec<Posting>,
+    ) -> List {
+        let bound = postings
+            .iter()
+            .map(|posting| scale * saturated(posting.tf, posting.len, average))
+            .fold(0.0, f64::max);
+        let skip = Skip {
+            first: postings[0].doc,
+            last: postings[postings.len() - 1].doc,
+            bound,
+        };
+        List {
+            key,
+            id: -1,
+            field,
+            scale,
+            average,
+            skips: vec![skip],
+            max: bound,
+            block: 0,
+            decoded: 0,
+            postings,
+            at: 0,
+        }
+    }
+}
+
+/// What gives an executor a list's block: the store the format keeps it in.
+pub(crate) trait Fetch {
+    /// The postings of block `index` of `list`, documents a set replaced left out.
+    fn block(&mut self, list: &List, index: usize) -> Vec<Posting>;
 }
 
 /// Where a block's payload comes from.
@@ -381,9 +423,28 @@ struct Source<'a> {
     opening: std::time::Duration,
 }
 
+impl Fetch for Source<'_> {
+    fn block(&mut self, list: &List, index: usize) -> Vec<Posting> {
+        let started = Instant::now();
+        let first = list.skips[index].first;
+        let payload: Vec<u8> = if list.id >= 0 {
+            self.payload
+                .query_row(params![list.id, first], |row| row.get(0))
+        } else {
+            self.payload
+                .query_row(params![list.key, first], |row| row.get(0))
+        }
+        .unwrap();
+        let postings = unpack(&payload, self.gone);
+        self.opened += 1;
+        self.opening += started.elapsed();
+        postings
+    }
+}
+
 impl List {
     /// The cursor's document, the next block opened when this one is done.
-    fn doc(&mut self, source: &mut Source) -> u32 {
+    fn doc(&mut self, source: &mut dyn Fetch) -> u32 {
         loop {
             if self.block >= self.skips.len() {
                 return END;
@@ -397,26 +458,13 @@ impl List {
         }
     }
 
-    fn open(&mut self, source: &mut Source) {
+    fn open(&mut self, source: &mut dyn Fetch) {
         if self.decoded == self.block {
             return;
         }
-        let started = Instant::now();
-        let first = self.skips[self.block].first;
-        let payload: Vec<u8> = if self.id >= 0 {
-            source
-                .payload
-                .query_row(params![self.id, first], |row| row.get(0))
-        } else {
-            source
-                .payload
-                .query_row(params![self.key, first], |row| row.get(0))
-        }
-        .unwrap();
-        self.postings = unpack(&payload, source.gone);
+        let postings = source.block(self, self.block);
+        self.postings = postings;
         self.decoded = self.block;
-        source.opened += 1;
-        source.opening += started.elapsed();
     }
 
     fn next(&mut self) {
@@ -425,7 +473,7 @@ impl List {
 
     /// Moves to the first posting at `doc` or after it, passing whole blocks
     /// before it unopened.
-    fn seek(&mut self, doc: u32, source: &mut Source) -> u32 {
+    fn seek(&mut self, doc: u32, source: &mut dyn Fetch) -> u32 {
         while self.block < self.skips.len() && self.skips[self.block].last < doc {
             self.block += 1;
             self.at = 0;
@@ -498,7 +546,7 @@ impl Ord for Scored {
 /// from the others, and a non-essential list is asked about a candidate only
 /// while the bounds of the blocks that could hold it might still lift it
 /// past θ.
-fn max_score(lists: &mut [List], source: &mut Source, k: usize) -> Vec<(f64, u32)> {
+pub(crate) fn max_score(lists: &mut [List], source: &mut dyn Fetch, k: usize) -> Vec<(f64, u32)> {
     lists.sort_by(|a, b| a.max.total_cmp(&b.max));
     let prefix: Vec<f64> = lists
         .iter()
@@ -588,7 +636,7 @@ const WINDOW: u32 = 4096;
 /// can lift past θ is passed unread; the essential lists add their postings
 /// into an array one list after another, and the documents it holds are
 /// completed from the other lists in order.
-fn windowed(lists: &mut [List], source: &mut Source, k: usize) -> Vec<(f64, u32)> {
+pub(crate) fn windowed(lists: &mut [List], source: &mut dyn Fetch, k: usize) -> Vec<(f64, u32)> {
     let mut best: BinaryHeap<Reverse<Scored>> = BinaryHeap::new();
     let mut scores = vec![0.0f64; WINDOW as usize];
     let mut touched: Vec<u32> = Vec::new();
@@ -679,7 +727,7 @@ fn windowed(lists: &mut [List], source: &mut Source, k: usize) -> Vec<(f64, u32)
 }
 
 /// The best `k` by every posting of every list, for the check.
-fn exhaustive(lists: &mut [List], source: &mut Source, k: usize) -> Vec<(f64, u32)> {
+pub(crate) fn exhaustive(lists: &mut [List], source: &mut dyn Fetch, k: usize) -> Vec<(f64, u32)> {
     let mut scores: HashMap<u32, f64> = HashMap::new();
     for list in lists.iter_mut() {
         while list.doc(source) != END {
@@ -897,6 +945,7 @@ impl Blocks {
                     lists.push(List {
                         key: key.clone(),
                         id,
+                        field,
                         scale,
                         average,
                         skips: directory,
@@ -919,27 +968,7 @@ impl Blocks {
                     .map(Result::unwrap)
                     .collect();
                 if !head.is_empty() {
-                    let bound = head
-                        .iter()
-                        .map(|posting| scale * saturated(posting.tf, posting.len, average))
-                        .fold(0.0, f64::max);
-                    let skip = Skip {
-                        first: head[0].doc,
-                        last: head[head.len() - 1].doc,
-                        bound,
-                    };
-                    lists.push(List {
-                        key,
-                        id: -1,
-                        scale,
-                        average,
-                        skips: vec![skip],
-                        max: bound,
-                        block: 0,
-                        decoded: 0,
-                        postings: head,
-                        at: 0,
-                    });
+                    lists.push(List::whole(key, field, scale, average, head));
                 }
             }
         }
