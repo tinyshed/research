@@ -67,7 +67,7 @@ table(["arm", "questions", "p50 ms", "p99 ms", "recall@10 of exact", "nDCG@10", 
 
 print("## Words, vectors and their fusion, 600 questions\n")
 rows = []
-for h in lines("hybrid.jsonl"):
+for h in lines("hybrid.jsonl") + lines("hybrid-weighted.jsonl"):
     rows.append([h["context"]["arm"], h["mode"], f"{h['ndcg10']:.4f}", f"{h['recall10']:.4f}", f"{h['mrr10']:.4f}",
                  f"{h['p50_ms']:.2f}", f"{h['p99_ms']:.2f}"])
 table(["vectors by", "mode", "nDCG@10", "Recall@10", "MRR@10", "p50 ms", "p99 ms"], rows)

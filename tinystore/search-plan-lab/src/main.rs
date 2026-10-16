@@ -206,12 +206,12 @@ fn vquery(args: &[String]) {
     );
 }
 
-/// Reciprocal rank fusion: each list adds 1 / (60 + rank) to a document.
-fn fused(lists: &[&[u32]], k: usize) -> Vec<u32> {
+/// Reciprocal rank fusion: each list adds its weight / (60 + rank) to a document.
+fn fused(lists: &[(&[u32], f64)], k: usize) -> Vec<u32> {
     let mut scores: HashMap<u32, f64> = HashMap::new();
-    for list in lists {
+    for (list, weight) in lists {
         for (rank, doc) in list.iter().enumerate() {
-            *scores.entry(*doc).or_default() += 1.0 / (60.0 + rank as f64 + 1.0);
+            *scores.entry(*doc).or_default() += weight / (60.0 + rank as f64 + 1.0);
         }
     }
     let mut all: Vec<(u32, f64)> = scores.into_iter().collect();
@@ -239,6 +239,7 @@ fn vhybrid(args: &[String]) {
     for pass in 0..2 {
         let (mut alone, mut near, mut both) = (Vec::new(), Vec::new(), Vec::new());
         let (mut rescored, mut reordered) = (Vec::new(), Vec::new());
+        let (mut twice, mut four) = (Vec::new(), Vec::new());
         for (question, q) in given
             .asked
             .iter()
@@ -269,8 +270,20 @@ fn vhybrid(args: &[String]) {
                 hydrate_millis: 0.0,
                 queries: 0,
             });
+            twice.push(Ran {
+                ids: fused(&[(&found, 1.0), (&nearest, 2.0)], 10),
+                millis: total,
+                hydrate_millis: 0.0,
+                queries: 0,
+            });
+            four.push(Ran {
+                ids: fused(&[(&found, 1.0), (&nearest, 4.0)], 10),
+                millis: total,
+                hydrate_millis: 0.0,
+                queries: 0,
+            });
             both.push(Ran {
-                ids: fused(&[&found, &nearest], 10),
+                ids: fused(&[(&found, 1.0), (&nearest, 1.0)], 10),
                 millis: total,
                 hydrate_millis: 0.0,
                 queries: 0,
@@ -279,7 +292,7 @@ fn vhybrid(args: &[String]) {
             let scored: Vec<u32> = reader.score(q, &found).iter().map(|s| s.doc).collect();
             let millis = worded + again.elapsed().as_secs_f64() * 1e3;
             rescored.push(Ran {
-                ids: fused(&[&found, &scored], 10),
+                ids: fused(&[(&found, 1.0), (&scored, 1.0)], 10),
                 millis,
                 hydrate_millis: 0.0,
                 queries: 0,
@@ -298,6 +311,8 @@ fn vhybrid(args: &[String]) {
             ("words", &alone),
             ("vectors", &near),
             ("hybrid", &both),
+            ("hybrid, vectors ×2", &twice),
+            ("hybrid, vectors ×4", &four),
             ("words rescored, fused", &rescored),
             ("words rescored", &reordered),
         ];
