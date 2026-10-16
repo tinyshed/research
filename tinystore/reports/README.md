@@ -16,6 +16,9 @@ collections owning them: reads, sets and memory, A B B A.
 by block-max MaxScore, a candidate or a window at a time, against FTS5 and Tantivy.
 [Compact blocks under a long mix of writes](search-compact-2026-10-16.md): lengths
 apart, short lists in their key's row, a head packed onto the blocks, five readers in one session.
+[Vectors beside the words](search-vectors-2026-10-16.md): bge-m3 on the same million, exact by a byte
+code's bound, clusters coded by a byte, signs or RaBitQ against HNSW, sqlite-vec and SQLite's vec1,
+and the words fused with the vectors or scored again on them.
 
 The 22–23 September architecture implementation rounds on
 `codex/architecture-measurements` measured intermediate uncommitted states.

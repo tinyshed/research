@@ -1,0 +1,118 @@
+{
+ "model": "BAAI/bge-m3",
+ "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+ "longest_tokens": 512,
+ "precision": "float16",
+ "torch": "2.11.0+cu128",
+ "transformers": "5.20.0",
+ "sentence_transformers": "6.1.0",
+ "gpu": "NVIDIA GeForce RTX 5070",
+ "documents": 1000000,
+ "parts": [
+  {
+   "part": 0,
+   "seconds": 169.579218400002,
+   "tokens": 9539842
+  },
+  {
+   "part": 1,
+   "seconds": 157.16742189999786,
+   "tokens": 6507536
+  },
+  {
+   "part": 2,
+   "seconds": 94.96758279998903,
+   "tokens": 5182758
+  },
+  {
+   "part": 3,
+   "seconds": 101.4047111000109,
+   "tokens": 5433240
+  },
+  {
+   "part": 4,
+   "seconds": 99.13915380000253,
+   "tokens": 5254501
+  },
+  {
+   "part": 5,
+   "seconds": 104.8038719999895,
+   "tokens": 5526224
+  },
+  {
+   "part": 6,
+   "seconds": 105.39609789999668,
+   "tokens": 5596896
+  },
+  {
+   "part": 7,
+   "seconds": 110.6892979999975,
+   "tokens": 5741602
+  },
+  {
+   "part": 8,
+   "seconds": 117.33352499999455,
+   "tokens": 6486404
+  },
+  {
+   "part": 9,
+   "seconds": 114.53996290000214,
+   "tokens": 6393393
+  },
+  {
+   "part": 10,
+   "seconds": 116.38133439999365,
+   "tokens": 6420850
+  },
+  {
+   "part": 11,
+   "seconds": 115.89008409999951,
+   "tokens": 6372177
+  },
+  {
+   "part": 12,
+   "seconds": 115.61459349999495,
+   "tokens": 6654305
+  },
+  {
+   "part": 13,
+   "seconds": 191.11870920000365,
+   "tokens": 6371222
+  },
+  {
+   "part": 14,
+   "seconds": 110.80597079999279,
+   "tokens": 6193187
+  },
+  {
+   "part": 15,
+   "seconds": 105.97439779998967,
+   "tokens": 5983622
+  },
+  {
+   "part": 16,
+   "seconds": 101.37880639999639,
+   "tokens": 5690229
+  },
+  {
+   "part": 17,
+   "seconds": 98.88568880000093,
+   "tokens": 5671220
+  },
+  {
+   "part": 18,
+   "seconds": 93.3035227000073,
+   "tokens": 5339514
+  },
+  {
+   "part": 19,
+   "seconds": 91.02130240001134,
+   "tokens": 5269405
+  }
+ ],
+ "questions": {
+  "count": 600,
+  "seconds": 0.1681609999941429,
+  "tokens": 7230
+ }
+}
