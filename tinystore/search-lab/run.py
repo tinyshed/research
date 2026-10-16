@@ -45,7 +45,9 @@ def analyzer():
   modes=['icu','auto','multi','detect','hybrid','jieba']
   for mode in modes if passno==1 else reversed(modes):run('analyzer',mode,passno,['analyze',mode,ROOT/'corpus/mixed.json'])
 def scale():
- for n in (100000,1000000):
+ # Million-row complete collection costs are measured by search-store-lab;
+ # do not repeat a separate postings-only million-row cross-product.
+ for n in (100000,):
   for passno in (1,2):
    for engine in ('fts','tant')if passno==1 else('tant','fts'):run('scale',f'mixed-{n}-{engine}-auto',passno,['run',engine,'auto',ROOT/'corpus/mixed.json',n],{'BENCH_QUERY_LIMIT':'60'})
 def concurrent():

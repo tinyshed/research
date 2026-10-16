@@ -35,8 +35,11 @@ retained in correctness.jsonl; query execution is the corrected registration tes
 candidate order per corpus. RU/EN/ZH each have 200 questions; mixed has 600.
 `gold.jsonl` has 12 one-pass diagnostics on an original small fixture, not an IR
 population or throughput comparison. `analyzer.jsonl` expects 12 paired samples,
-`concurrent.jsonl` four paired writer/read-load controls, `scale.jsonl` eight
-paired 100k/1m repeated-pool runs (60 queries, not valid population-quality).
+`concurrent.jsonl` four paired writer/read-load controls, `scale.jsonl` four
+paired 100k repeated-pool controls (60 queries, not valid population-quality).
+The 1m scenario is measured by the complete authoritative-store control below,
+including stored document bytes and hydration, rather than repeating an external
+postings-only 1m cross-product.
 Jieba's naive whole-text integration differs in multi-position phrase/OR
 interpretation between adapters; exclude it from matched backend claims.
 
