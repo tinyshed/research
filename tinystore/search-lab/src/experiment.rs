@@ -524,7 +524,11 @@ fn check() {
     assert_eq!(search(&r, "елка", "auto", true), vec![1]);
     let bare = Connection::open(&db).unwrap();
     let missing = bare
-        .prepare("select rowid from search where search match 'SQLite'")
+        .query_row(
+            "select count(*) from search where search match 'SQLite'",
+            [],
+            |r| r.get::<_, i64>(0),
+        )
         .err()
         .map(|e| e.to_string());
     assert!(missing.is_some());
