@@ -1,0 +1,277 @@
+{
+  "dataset": "miracl/nomiracl",
+  "revision": "ecd08778d0426a5ca28ac99763b0c9ddc2c78e68",
+  "upstream": "https://huggingface.co/datasets/miracl/nomiracl",
+  "license_note": "Read upstream README: human judgments CC BY-SA 4.0; Wikipedia passages retain source attribution/license. Text fetched and ignored, not redistributed.",
+  "selection": "200 dev.relevant queries/language sorted by SHA256(query id); entire released judged passage pool (dev/test union), not full Wikipedia corpus",
+  "cohorts": {
+    "ru": {
+      "upstream_files": {
+        "corpus.jsonl.gz": {
+          "url": "https://huggingface.co/datasets/miracl/nomiracl/resolve/ecd08778d0426a5ca28ac99763b0c9ddc2c78e68/data/russian/corpus.jsonl.gz",
+          "bytes": 10224428,
+          "sha256": "8beb1a33ff56a914ac9e88362e1d580ae972ecf79872e1bf7d6d5672e130f88d"
+        },
+        "topics/dev.relevant.tsv": {
+          "url": "https://huggingface.co/datasets/miracl/nomiracl/resolve/ecd08778d0426a5ca28ac99763b0c9ddc2c78e68/data/russian/topics/dev.relevant.tsv",
+          "bytes": 108525,
+          "sha256": "91a7c3b6d21f79a12b5330f0a62811962f9370a0bf539cba8b3fecaa095f0616"
+        },
+        "qrels/dev.relevant.tsv": {
+          "url": "https://huggingface.co/datasets/miracl/nomiracl/resolve/ecd08778d0426a5ca28ac99763b0c9ddc2c78e68/data/russian/qrels/dev.relevant.tsv",
+          "bytes": 255921,
+          "sha256": "f877b43c7f53b76aab25e406e5a607ef1c5adba4ffaa11e1b252a4326735a19b"
+        }
+      },
+      "upstream_rows": 26374,
+      "identical_duplicate_ids": 1288,
+      "missing_qrel_documents": [],
+      "queries_excluded_for_missing_judged_documents": [],
+      "documents": 25086,
+      "queries": 200,
+      "relevant_judgments": 529,
+      "derived_sha256": "406fd541402a2dba8034561fc1499af2e361886a1a4c1b5afe03cdd66fc02e60"
+    },
+    "en": {
+      "upstream_files": {
+        "corpus.jsonl.gz": {
+          "url": "https://huggingface.co/datasets/miracl/nomiracl/resolve/ecd08778d0426a5ca28ac99763b0c9ddc2c78e68/data/english/corpus.jsonl.gz",
+          "bytes": 9692742,
+          "sha256": "f333c75491c8dac69f946b021511a67666318efb799dff3a6d927a841f8148eb"
+        },
+        "topics/dev.relevant.tsv": {
+          "url": "https://huggingface.co/datasets/miracl/nomiracl/resolve/ecd08778d0426a5ca28ac99763b0c9ddc2c78e68/data/english/topics/dev.relevant.tsv",
+          "bytes": 36782,
+          "sha256": "25d9e6d17656674fd7aa3b67ee912c71545e664a842b147bfc17e9ff391db3da"
+        },
+        "qrels/dev.relevant.tsv": {
+          "url": "https://huggingface.co/datasets/miracl/nomiracl/resolve/ecd08778d0426a5ca28ac99763b0c9ddc2c78e68/data/english/qrels/dev.relevant.tsv",
+          "bytes": 167817,
+          "sha256": "a0af836c300e85088c4d73449492e2378280f967cac032853c9e11f3bc8a8d81"
+        }
+      },
+      "upstream_rows": 32711,
+      "identical_duplicate_ids": 1448,
+      "missing_qrel_documents": [],
+      "queries_excluded_for_missing_judged_documents": [],
+      "documents": 31263,
+      "queries": 200,
+      "relevant_judgments": 601,
+      "derived_sha256": "2cbfe9b1d6c87298586b1ff27d760ebe3d3b430fa4334b88f0c17b61c55e5930"
+    },
+    "zh": {
+      "upstream_files": {
+        "corpus.jsonl.gz": {
+          "url": "https://huggingface.co/datasets/miracl/nomiracl/resolve/ecd08778d0426a5ca28ac99763b0c9ddc2c78e68/data/chinese/corpus.jsonl.gz",
+          "bytes": 8657467,
+          "sha256": "d09a33559280fe5e7b4a6ce9330ff9e261906d1ef4bf991ea8c02d309657f9fa"
+        },
+        "topics/dev.relevant.tsv": {
+          "url": "https://huggingface.co/datasets/miracl/nomiracl/resolve/ecd08778d0426a5ca28ac99763b0c9ddc2c78e68/data/chinese/topics/dev.relevant.tsv",
+          "bytes": 16903,
+          "sha256": "5b284a9aabf08bb2d1c88ed7ea276025c9d23846457c5350dc8d391b5e0d0a13"
+        },
+        "qrels/dev.relevant.tsv": {
+          "url": "https://huggingface.co/datasets/miracl/nomiracl/resolve/ecd08778d0426a5ca28ac99763b0c9ddc2c78e68/data/chinese/qrels/dev.relevant.tsv",
+          "bytes": 94264,
+          "sha256": "c77ae7e0a18bbdea5544b7745273ee710e3d07d6b208e075e94a7db62f81859c"
+        }
+      },
+      "upstream_rows": 37599,
+      "identical_duplicate_ids": 5773,
+      "missing_qrel_documents": [
+        {
+          "query": "1022851#0",
+          "doc": "7997#02#01",
+          "relevance": 1
+        },
+        {
+          "query": "1045502#0",
+          "doc": "2174#10#01",
+          "relevance": 0
+        },
+        {
+          "query": "1574360#0",
+          "doc": "7284#01#01",
+          "relevance": 0
+        },
+        {
+          "query": "3479286#0",
+          "doc": "9268#01#01",
+          "relevance": 1
+        },
+        {
+          "query": "3722020#0",
+          "doc": "2134#07#01",
+          "relevance": 0
+        },
+        {
+          "query": "427995#0",
+          "doc": "7485#09#01",
+          "relevance": 0
+        },
+        {
+          "query": "427995#0",
+          "doc": "6007#12#01",
+          "relevance": 0
+        },
+        {
+          "query": "5073576#0",
+          "doc": "4698#08#01",
+          "relevance": 1
+        },
+        {
+          "query": "5494982#0",
+          "doc": "2207#09#01",
+          "relevance": 1
+        },
+        {
+          "query": "6084114#0",
+          "doc": "2134#07#01",
+          "relevance": 0
+        },
+        {
+          "query": "6086338#0",
+          "doc": "3444#01#01",
+          "relevance": 1
+        },
+        {
+          "query": "6086338#0",
+          "doc": "3444#10#01",
+          "relevance": 1
+        },
+        {
+          "query": "6481844#0",
+          "doc": "7288#01#01",
+          "relevance": 0
+        },
+        {
+          "query": "6481844#0",
+          "doc": "7665#02#01",
+          "relevance": 0
+        },
+        {
+          "query": "6595664#0",
+          "doc": "2226#06#01",
+          "relevance": 0
+        },
+        {
+          "query": "6595664#0",
+          "doc": "2226#04#01",
+          "relevance": 0
+        },
+        {
+          "query": "6595664#0",
+          "doc": "2226#05#01",
+          "relevance": 0
+        },
+        {
+          "query": "6647919#0",
+          "doc": "6179#01#01",
+          "relevance": 0
+        },
+        {
+          "query": "6911039#0",
+          "doc": "2813#05#01",
+          "relevance": 0
+        },
+        {
+          "query": "6930896#0",
+          "doc": "4880#12#01",
+          "relevance": 1
+        },
+        {
+          "query": "6930896#0",
+          "doc": "4880#01#01",
+          "relevance": 0
+        },
+        {
+          "query": "6947878#0",
+          "doc": "7658#05#01",
+          "relevance": 1
+        },
+        {
+          "query": "6947878#0",
+          "doc": "9939#02#01",
+          "relevance": 1
+        },
+        {
+          "query": "6947878#0",
+          "doc": "7658#06#01",
+          "relevance": 0
+        },
+        {
+          "query": "7309266#0",
+          "doc": "4022#02#01",
+          "relevance": 1
+        },
+        {
+          "query": "7309266#0",
+          "doc": "4022#06#01",
+          "relevance": 0
+        },
+        {
+          "query": "7443372#0",
+          "doc": "7997#02#01",
+          "relevance": 1
+        },
+        {
+          "query": "766127#0",
+          "doc": "4359#09#01",
+          "relevance": 1
+        },
+        {
+          "query": "801235#0",
+          "doc": "6164#03#01",
+          "relevance": 1
+        },
+        {
+          "query": "801235#0",
+          "doc": "6164#04#01",
+          "relevance": 0
+        },
+        {
+          "query": "801235#0",
+          "doc": "6164#02#01",
+          "relevance": 0
+        },
+        {
+          "query": "819295#0",
+          "doc": "7284#01#01",
+          "relevance": 0
+        }
+      ],
+      "queries_excluded_for_missing_judged_documents": [
+        "1022851#0",
+        "1045502#0",
+        "1574360#0",
+        "3479286#0",
+        "3722020#0",
+        "427995#0",
+        "5073576#0",
+        "5494982#0",
+        "6084114#0",
+        "6086338#0",
+        "6481844#0",
+        "6595664#0",
+        "6647919#0",
+        "6911039#0",
+        "6930896#0",
+        "6947878#0",
+        "7309266#0",
+        "7443372#0",
+        "766127#0",
+        "801235#0",
+        "819295#0"
+      ],
+      "documents": 31826,
+      "queries": 200,
+      "relevant_judgments": 483,
+      "derived_sha256": "c111e1208e923f6a03d58b004edd24b92d22b48ccec19d9ab9e9c4e504d2b0b4"
+    }
+  },
+  "mixed": {
+    "documents": 88175,
+    "queries": 600
+  }
+}

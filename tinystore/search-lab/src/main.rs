@@ -1,6 +1,8 @@
 mod analyzer;
+mod experiment;
 mod fts;
 #[cfg(feature = "text")]
 mod tant;
-mod experiment;
-fn main() { experiment::main(); }
+fn main() {
+    experiment::main();
+}
