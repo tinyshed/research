@@ -37,6 +37,16 @@ Whole reachable executables with the same release/thin-LTO profile. ICU segmenta
 | zh-tant-auto | 31826; 31826 | 3.240; 3.265 | 0.186; 0.178 | 0.689; 0.426 | 1.151; 1.025 | 3810.395; 4739.112 | 9.267; 9.267 | 17.098; 17.098 | 50.336; 50.418 | 0.000; 0.000 |
 | zh-fts-jieba | 31826; 31826 | 3.256; 2.371 | 19.388; 16.822 | 52.751; 46.654 | 70.909; 57.054 | 43.271; 47.893 | 13.504; 13.504 | 17.098; 17.098 | 62.340; 61.883 | 14.420; 14.420 |
 | zh-tant-jieba | 31826; 31826 | 3.084; 2.887 | 0.181; 0.184 | 0.501; 0.658 | 0.727; 1.189 | 4411.505; 3972.116 | 10.526; 10.526 | 17.098; 17.098 | 108.660; 108.633 | 0.000; 0.000 |
+| mixed-fts-unicode | 88175; 88175 | 4.905; 4.379 | 8.725; 8.360 | 75.001; 65.446 | 103.699; 89.102 | 44.378; 48.171 | 44.211; 44.211 | 85.965; 85.965 | 92.191; 91.734 | 46.030; 46.030 |
+| mixed-fts-icu | 88175; 88175 | 9.451; 8.235 | 27.801; 24.593 | 81.469; 66.037 | 91.974; 85.961 | 31.456; 36.055 | 43.094; 43.094 | 85.965; 85.965 | 95.492; 94.957 | 44.293; 44.293 |
+| mixed-tant-icu | 88175; 88175 | 7.968; 9.150 | 0.303; 0.291 | 1.160; 1.078 | 2.261; 2.038 | 2214.512; 2367.761 | 31.397; 31.397 | 85.965; 85.965 | 119.305; 119.441 | 0.000; 0.000 |
+| mixed-fts-auto | 88175; 88175 | 20.150; 16.852 | 33.383; 32.149 | 124.766; 119.202 | 225.780; 168.015 | 22.105; 22.956 | 69.438; 69.438 | 85.965; 85.965 | 95.027; 95.176 | 71.444; 71.444 |
+| mixed-tant-auto | 88175; 88175 | 15.275; 17.601 | 0.616; 0.640 | 3.408; 2.943 | 6.453; 4.009 | 872.014; 955.358 | 51.712; 51.712 | 85.965; 85.965 | 119.914; 120.574 | 0.000; 0.000 |
+| mixed-fts-multi | 88175; 88175 | 31.083; 31.598 | 36.230; 38.260 | 165.406; 252.314 | 247.004; 785.807 | 18.745; 10.704 | 116.219; 116.219 | 85.965; 85.965 | 95.555; 95.359 | 118.255; 118.255 |
+| mixed-tant-multi | 88175; 88175 | 31.217; 29.287 | 0.920; 0.544 | 12.103; 11.759 | 20.649; 24.046 | 303.950; 356.408 | 83.883; 83.883 | 85.965; 85.965 | 174.469; 170.953 | 0.000; 0.000 |
+| mixed-fts-detect | 88175; 88175 | 27.060; 30.811 | 33.780; 39.209 | 115.143; 329.969 | 158.771; 770.836 | 23.793; 11.629 | 69.426; 69.426 | 85.965; 85.965 | 95.262; 95.332 | 71.420; 71.420 |
+| mixed-fts-hybrid | 88175; 88175 | 28.009; 33.542 | 31.977; 32.062 | 135.199; 130.040 | 210.271; 178.332 | 22.466; 23.101 | 69.426; 69.426 | 85.965; 85.965 | 95.191; 95.234 | 71.420; 71.420 |
+| mixed-tant-hybrid | 88175; 88175 | 60.563; 29.748 | 0.839; 0.635 | 4.856; 3.238 | 6.800; 5.643 | 672.420; 910.162 | 51.712; 51.712 | 85.965; 85.965 | 120.645; 120.465 | 0.000; 0.000 |
 
 ## Natural query relevance (200 queries/language; mixed=600)
 
@@ -59,8 +69,27 @@ Whole reachable executables with the same release/thin-LTO profile. ICU segmenta
 | zh-tant-auto | 0.403; 0.403 | 0.382; 0.382 | 0.577; 0.577 | 3.680; 3.680 | 5.090; 5.090 | 0.604; 0.604 | 0.962; 0.962 |
 | zh-fts-jieba | 0.274; 0.274 | 0.268; 0.268 | 0.398; 0.398 | 2.765; 2.765 | 3.650; 3.650 | 0.584; 0.584 | 0.953; 0.953 |
 | zh-tant-jieba | 0.266; 0.266 | 0.266; 0.266 | 0.392; 0.392 | 2.365; 2.365 | 3.195; 3.195 | 0.592; 0.592 | 0.953; 0.953 |
+| mixed-fts-unicode | 0.367; 0.367 | 0.379; 0.379 | 0.470; 0.470 | 2.947; 2.947 | 4.315; 4.315 | 0.448; 0.448 | 0.618; 0.618 |
+| mixed-fts-icu | 0.478; 0.478 | 0.484; 0.484 | 0.638; 0.638 | 4.198; 4.198 | 6.002; 6.002 | 0.632; 0.632 | 0.932; 0.932 |
+| mixed-tant-icu | 0.476; 0.476 | 0.489; 0.489 | 0.634; 0.634 | 4.007; 4.007 | 5.738; 5.738 | 0.640; 0.640 | 0.929; 0.929 |
+| mixed-fts-auto | 0.511; 0.511 | 0.500; 0.500 | 0.697; 0.697 | 4.740; 4.740 | 6.727; 6.727 | 0.636; 0.636 | 0.941; 0.941 |
+| mixed-tant-auto | 0.504; 0.504 | 0.505; 0.505 | 0.684; 0.684 | 4.305; 4.305 | 6.178; 6.178 | 0.646; 0.646 | 0.946; 0.946 |
+| mixed-fts-multi | 0.511; 0.511 | 0.501; 0.501 | 0.692; 0.692 | 4.725; 4.725 | 6.705; 6.705 | 0.638; 0.638 | 0.942; 0.942 |
+| mixed-tant-multi | 0.500; 0.500 | 0.508; 0.508 | 0.672; 0.672 | 4.228; 4.228 | 6.072; 6.072 | 0.650; 0.650 | 0.947; 0.947 |
+| mixed-fts-detect | 0.511; 0.511 | 0.500; 0.500 | 0.697; 0.697 | 4.740; 4.740 | 6.727; 6.727 | 0.636; 0.636 | 0.941; 0.941 |
+| mixed-fts-hybrid | 0.511; 0.511 | 0.500; 0.500 | 0.697; 0.697 | 4.740; 4.740 | 6.727; 6.727 | 0.636; 0.636 | 0.941; 0.941 |
+| mixed-tant-hybrid | 0.504; 0.504 | 0.505; 0.505 | 0.684; 0.684 | 4.305; 4.305 | 6.178; 6.178 | 0.646; 0.646 | 0.946; 0.946 |
 
-Main query timings return IDs, not hydrated source documents. Both engines index full positions/frequencies. Ranked BM25 defaults, field normalization and synonym scoring differ; same analyzer does not imply identical ranks. Unicode61 is an analyzer baseline, not the same token semantics as ICU. Standalone source/index commits in the Tantivy arm are independent. Scale repeats the natural pool and limits to 60 queries; its relevance values are not population-quality measurements.
+Main query timings return IDs, not hydrated source documents. Both engines index full positions/frequencies. Ranked BM25 defaults, field normalization and synonym scoring differ; same analyzer does not imply identical ranks. Unicode61 is an analyzer baseline, not the same token semantics as ICU. Standalone source/index commits in the Tantivy arm are independent. Scale repeats the natural pool and limits to the first 60 queries (RU, over mixed RU/EN/ZH documents); its relevance values are not population-quality measurements.
+
+## Scale build/top-10
+
+| Scenario | Docs | Build s | Query p50 ms | p95 ms | p99 ms | Query/s | Index MiB | Source MiB | Build RSS MiB | Build WAL file MiB |
+|---|---|---|---|---|---|---|---|---|---|---|
+| mixed-100000-fts-auto | 100000; 100000 | 19.149; 17.725 | 41.987; 41.624 | 110.381; 123.975 | 286.020; 131.031 | 19.041; 19.328 | 81.473; 81.473 | 105.957; 105.957 | 193.188; 193.219 | 84.779; 84.779 |
+| mixed-100000-tant-auto | 100000; 100000 | 19.712; 16.742 | 1.297; 1.473 | 3.441; 2.895 | 4.434; 6.587 | 671.321; 674.893 | 62.607; 62.607 | 105.957; 105.957 | 261.480; 219.820 | 0.000; 0.000 |
+
+Main query timings return IDs, not hydrated source documents. Both engines index full positions/frequencies. Ranked BM25 defaults, field normalization and synonym scoring differ; same analyzer does not imply identical ranks. Unicode61 is an analyzer baseline, not the same token semantics as ICU. Standalone source/index commits in the Tantivy arm are independent. Scale repeats the natural pool and limits to the first 60 queries (RU, over mixed RU/EN/ZH documents); its relevance values are not population-quality measurements.
 
 ## Source-backed incremental phases: 1000 rows, 100 rows/commit
 
@@ -134,16 +163,103 @@ Main query timings return IDs, not hydrated source documents. Both engines index
 | zh-tant-jieba | update | 4.452; 6.543 | 302.975; 501.410 | 0.695; 0.695 |
 | zh-tant-jieba | unrelated | 1.689; 3.545 | 0.000; 0.000 | 0.625; 0.625 |
 | zh-tant-jieba | delete | 1.624; 9.268 | 49.056; 71.203 | 0.409; 0.409 |
+| mixed-fts-unicode | insert | 87.012; 79.866 | 0.000; 0.000 | 21.437; 21.437 |
+| mixed-fts-unicode | update | 80.976; 127.018 | 0.000; 0.000 | 24.188; 24.188 |
+| mixed-fts-unicode | unrelated | 3.580; 7.717 | 0.000; 0.000 | 1.693; 1.693 |
+| mixed-fts-unicode | delete | 96.190; 75.432 | 0.000; 0.000 | 22.318; 22.318 |
+| mixed-fts-icu | insert | 70.000; 63.176 | 0.000; 0.000 | 20.569; 20.569 |
+| mixed-fts-icu | update | 74.173; 69.405 | 0.000; 0.000 | 24.262; 24.262 |
+| mixed-fts-icu | unrelated | 4.468; 3.611 | 0.000; 0.000 | 1.693; 1.693 |
+| mixed-fts-icu | delete | 63.718; 63.092 | 0.000; 0.000 | 23.096; 23.096 |
+| mixed-tant-icu | insert | 5.567; 2.895 | 385.403; 293.875 | 2.039; 2.039 |
+| mixed-tant-icu | update | 3.223; 4.261 | 399.496; 412.526 | 1.843; 1.843 |
+| mixed-tant-icu | unrelated | 1.953; 4.669 | 0.000; 0.000 | 1.693; 1.693 |
+| mixed-tant-icu | delete | 2.070; 5.861 | 56.647; 65.881 | 0.644; 0.644 |
+| mixed-fts-auto | insert | 83.470; 83.761 | 0.000; 0.000 | 24.805; 24.805 |
+| mixed-fts-auto | update | 92.470; 104.343 | 0.000; 0.000 | 29.524; 29.524 |
+| mixed-fts-auto | unrelated | 2.743; 4.620 | 0.000; 0.000 | 1.693; 1.693 |
+| mixed-fts-auto | delete | 80.182; 93.050 | 0.000; 0.000 | 26.510; 26.510 |
+| mixed-tant-auto | insert | 4.184; 11.189 | 471.648; 424.762 | 2.039; 2.039 |
+| mixed-tant-auto | update | 7.947; 8.663 | 942.702; 815.967 | 1.843; 1.843 |
+| mixed-tant-auto | unrelated | 12.060; 23.134 | 0.000; 0.000 | 1.693; 1.693 |
+| mixed-tant-auto | delete | 11.554; 3.672 | 132.390; 94.168 | 0.644; 0.644 |
+| mixed-fts-multi | insert | 96.077; 86.586 | 0.000; 0.000 | 30.683; 30.683 |
+| mixed-fts-multi | update | 109.956; 113.243 | 0.000; 0.000 | 29.319; 29.319 |
+| mixed-fts-multi | unrelated | 2.421; 3.684 | 0.000; 0.000 | 1.693; 1.693 |
+| mixed-fts-multi | delete | 82.730; 73.897 | 0.000; 0.000 | 25.732; 25.732 |
+| mixed-tant-multi | insert | 11.107; 4.855 | 480.385; 493.848 | 2.039; 2.039 |
+| mixed-tant-multi | update | 11.241; 11.780 | 870.489; 780.401 | 1.843; 1.843 |
+| mixed-tant-multi | unrelated | 4.273; 7.591 | 0.000; 0.000 | 1.693; 1.693 |
+| mixed-tant-multi | delete | 24.088; 9.011 | 104.008; 56.630 | 0.644; 0.644 |
+| mixed-fts-detect | insert | 86.634; 89.810 | 0.000; 0.000 | 24.813; 24.813 |
+| mixed-fts-detect | update | 114.879; 127.758 | 0.000; 0.000 | 29.696; 29.696 |
+| mixed-fts-detect | unrelated | 2.669; 3.444 | 0.000; 0.000 | 1.693; 1.693 |
+| mixed-fts-detect | delete | 88.300; 96.737 | 0.000; 0.000 | 26.451; 26.451 |
+| mixed-fts-hybrid | insert | 86.882; 82.072 | 0.000; 0.000 | 24.813; 24.813 |
+| mixed-fts-hybrid | update | 129.362; 112.689 | 0.000; 0.000 | 29.696; 29.696 |
+| mixed-fts-hybrid | unrelated | 3.561; 1.989 | 0.000; 0.000 | 1.693; 1.693 |
+| mixed-fts-hybrid | delete | 87.365; 112.962 | 0.000; 0.000 | 26.451; 26.451 |
+| mixed-tant-hybrid | insert | 9.686; 5.184 | 898.096; 523.127 | 2.039; 2.039 |
+| mixed-tant-hybrid | update | 12.311; 15.502 | 1648.730; 873.104 | 1.843; 1.843 |
+| mixed-tant-hybrid | unrelated | 15.403; 16.194 | 0.000; 0.000 | 1.693; 1.693 |
+| mixed-tant-hybrid | delete | 5.333; 8.068 | 97.959; 85.809 | 0.644; 0.644 |
 
 For Tantivy the first latency includes SQLite work and enqueue; its separate durable commits/reloads are the next column, a total over ten commits. Do not quote the first column as complete durable Search write latency or zero SQLite WAL as zero external I/O. The owned-store control below measures complete commit/visibility latency.
 
-Bulk import is one durable commit through upsert; incremental batch=1 and batch=100 are distinct workloads. SQLite checkpoints occur outside operation latency; Tantivy uses synchronous commit/reload and its normal background merge behavior. These timings do not establish TinyStore grouped-commit integration or cross-engine transactions.
+## Analyzer sample (every floor(N/5000)-th mixed document, both fields)
+
+| Mode | Input MiB | Emitted tokens | MiB/s | Init ms | Init RSS delta MiB | HWM MiB |
+|---|---|---|---|---|---|---|
+| icu | 4.084; 4.084 | 557425; 557425 | 11.729; 14.290 | 0.066; 0.116 | 0.387; 0.387 | 89.203; 89.469 |
+| auto | 4.084; 4.084 | 928943; 928943 | 8.289; 7.216 | 0.014; 0.151 | 0.371; 0.375 | 89.230; 89.473 |
+| multi | 4.084; 4.084 | 1625027; 1625027 | 2.075; 4.010 | 0.044; 0.012 | 0.375; 0.250 | 89.641; 89.508 |
+| detect | 4.084; 4.084 | 928943; 928943 | 3.152; 3.530 | 0.041; 0.065 | 0.418; 0.375 | 89.684; 89.598 |
+| hybrid | 4.084; 4.084 | 928943; 928943 | 2.870; 3.553 | 0.066; 0.038 | 0.469; 0.188 | 89.672; 89.766 |
+| jieba | 4.084; 4.084 | 2349376; 2349376 | 5.258; 4.954 | 234.774; 117.997 | 32.660; 32.578 | 121.066; 121.164 |
+
+## Concurrent SQLite Search: 100k docs, 1000 tx, 10% indexed updates, rollback every 33rd
+
+| Scenario | Indexed ingest s | Write p50 ms | p95 ms | p99 ms | Scheduled write p99 ms | Reader p99 ms each | CPU s | WAL MiB |
+|---|---|---|---|---|---|---|---|---|
+| fts-auto-100k-readers0 | 34.143; 31.376 | 0.461; 0.432 | 2.387; 1.273 | 4.241; 2.279 | 35.516; 3.809 | ;  | 0.271; 0.204 | 7.862; 7.862 |
+| fts-auto-100k-readers2 | 32.809; 34.967 | 0.661; 0.667 | 2.814; 3.154 | 6.092; 6.618 | 171.694; 117.839 | 263.066,208.633; 241.827,231.119 | 2.327; 2.231 | 7.862; 7.862 |
+
+## Authoritative standalone collections: actual stored fields hydrated, 60 queries
+
+| Scenario | Import s | Query p50 ms | p95 ms | p99 ms | Query/s | Backend MiB | WAL MiB | Build RSS MiB | After churn MiB |
+|---|---|---|---|---|---|---|---|---|---|
+| 100000-fts-owned-hydrated | 28.144; 24.321 | 43.957; 45.689 | 122.968; 109.640 | 135.066; 118.623 | 19.540; 20.208 | 193.434; 193.434 | 194.602; 194.602 | 192.430; 192.516 | 193.434; 193.434 |
+| 100000-tant-owned-hydrated | 19.884; 25.230 | 1.399; 1.943 | 3.953; 4.866 | 4.257; 5.758 | 638.808; 450.775 | 116.068; 116.068 | 0.000; 0.000 | 380.152; 384.883 | 150.667; 139.554 |
+
+## Owned-store individual commits: 100 operations/pass, commit and visibility included
+
+| Scenario | Operation | p50 ms | p95 ms | p99 ms | Observed Doc/s |
+|---|---|---|---|---|---|
+| 100000-fts-owned-hydrated | set | 1.051; 1.017 | 3.614; 4.894 | 22.145; 23.769 | 601.395; 583.734 |
+| 100000-fts-owned-hydrated | delete | 1.186; 0.764 | 2.798; 1.507 | 19.945; 20.711 | 653.637; 981.210 |
+| 100000-tant-owned-hydrated | set | 24.367; 15.979 | 145.707; 36.397 | 246.224; 52.784 | 25.879; 53.735 |
+| 100000-tant-owned-hydrated | delete | 6.225; 4.899 | 48.768; 10.635 | 235.658; 19.347 | 82.075; 178.524 |
+
+## One 100-document commit/pass: observed batch time, not latency quantiles
+
+| Scenario | Operation | Complete commit ms | Amortized Doc/s |
+|---|---|---|---|
+| 100000-fts-owned-hydrated | set | 50.705; 55.022 | 1972.192; 1817.455 |
+| 100000-fts-owned-hydrated | delete | 24.659; 17.979 | 4055.314; 5562.045 |
+| 100000-tant-owned-hydrated | set | 85.231; 42.247 | 1173.282; 2367.032 |
+| 100000-tant-owned-hydrated | delete | 5.017; 9.922 | 19932.230; 10078.613 |
+
+The owned-store query sample is the first 60 natural RU queries over mixed RU/EN/ZH documents; it is not a balanced multilingual latency distribution. Mutations change the first 100 RU documents. Bulk import is one durable commit through upsert; incremental batch=1 and batch=100 are distinct workloads. Batch=100 has one sample/pass: its amortized rate is not steady-state throughput. SQLite checkpoints occur outside operation latency; Tantivy uses synchronous commit/reload and its normal background merge behavior. These timings do not establish TinyStore grouped-commit integration or cross-engine transactions.
 
 ## Raw inventory
 
 | File | Records | Nonzero process exits |
 |---|---|---|
+| analyzer.jsonl | 12 | 0 |
+| concurrent.jsonl | 4 | 0 |
 | correctness.jsonl | 3 | 1 |
 | gold.jsonl | 12 | 0 |
-| retrieval.jsonl | 34 | 0 |
+| owned-store.jsonl | 4 | 0 |
+| retrieval.jsonl | 54 | 0 |
+| scale.jsonl | 4 | 0 |
 
