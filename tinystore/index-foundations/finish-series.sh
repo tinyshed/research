@@ -1,6 +1,7 @@
 #!/bin/sh
 set -eu
-# All builds must finish first. Sequential phases; fail visibly on any error.
+# Initial binaries must be built first. All phases and the later SQL-control
+# bootstrap builds are serialized; fail visibly on any error.
 python3 run.py checks
 python3 run.py locks
 python3 /src/tinystore/channels-wire-lab/run.py

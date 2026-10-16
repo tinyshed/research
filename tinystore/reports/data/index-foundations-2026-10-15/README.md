@@ -21,9 +21,16 @@ sh finish-series.sh
 ```
 
 `finish-series.sh` runs correctness, actual Core admission, Bun/Wire delivery,
-concurrent rebuild, external durable outbox, geo query, WAL/cache/order,
+concurrent rebuild, 16 paired direct-SQL/row-loop FTS controls, external durable
+outbox, geo query, WAL/cache/order,
 continuous-writer and large-crash series, then a separate allocation cohort.
-The Channels adapter and outbox binaries must also have been built first:
+The direct-SQL control compiles its own binary only after main rebuilds finish,
+restores the original main binary, then measures row-loop/SQL-select pairs. It
+enables rank-1 FTS verification after build timing in both candidates, so query
+warmup differs from the earlier static cohort. Outbox is rebuilt afterward and
+uses the direct SQL compact-FTS baseline (`BENCH_SQL_BULK=1`); no build overlaps
+performance. The Channels adapter and initial outbox binaries must also have
+been built first:
 
 ```sh
 cargo build --release --locked --manifest-path ../channels-wire-lab/Cargo.toml
@@ -74,6 +81,9 @@ logical WAL high-water and sampled file footprint are distinct metrics.
 - `locks.jsonl`: real public Core version CAS/grouped writer; synchronous caller
   threads, 10-second TTL. Delayed-commit correctness demonstrates why the
   public CAS prototype is not a complete correct short-lease implementation.
+- `native-sql.jsonl`: 16 paired 100k/1m Russian FTS/full and compact controls,
+  row-loop versus direct INSERT SELECT, forward/reverse order. Each checks
+  rank-1 integrity and matches the original static query checksum.
 - `outbox.jsonl`: SQLite source plus Tantivy durable watermark/read barrier,
   and matched native compact FTS. Independent single-index dispatch; not a
   general cross-engine transaction protocol.

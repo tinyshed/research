@@ -95,3 +95,10 @@ intended to validate a large effect, not establish a production p99.
 The grid prototype registers a research-only floor scalar; it is not a function
 currently added to Core. A portable SQL implementation must express floor using
 standard arithmetic/CASE or arrange an approved connection function.
+
+`native-sql.py` adds a matched direct-SQL FTS build baseline after main rebuilds.
+The outbox driver invokes it serially, then rebuilds itself and uses direct SQL
+for its compact native baseline. Row-loop and SQL-select controls both perform
+rank-1 verification outside build timing and check the static query checksum.
+The original main binary is restored, so remaining diagnostic cohorts retain
+their original code path.
