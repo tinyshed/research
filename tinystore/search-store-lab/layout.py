@@ -27,7 +27,7 @@ with tempfile.TemporaryDirectory(prefix='search-layout-', dir='/data') as scratc
         item = {'engine': engine, 'rows': a['rows'], 'exit': p.returncode,
                 'command': f'BENCH_DB=<scratch>/{engine} <bin> {engine} <corpus>/mixed.json 100000',
                 'stage': 'after the same 100-document SET/DELETE and restore phases',
-                'backend_bytes': a['final_backend_bytes']}
+                'backend_bytes_at_output': a['final_backend_bytes']}
         if engine == 'fts':
             with sqlite3.connect(f'file:{path}?mode=ro', uri=True) as c:
                 item['objects'] = [{'name': name, 'pages': pages, 'bytes': size,
@@ -36,11 +36,13 @@ with tempfile.TemporaryDirectory(prefix='search-layout-', dir='/data') as scratc
                     'select name,count(*),sum(pgsize),sum(payload),sum(unused) from dbstat group by name order by name')]
                 item['freelist_pages'] = c.execute('pragma freelist_count').fetchone()[0]
                 item['page_size'] = c.execute('pragma page_size').fetchone()[0]
-                assert sum(o['bytes'] for o in item['objects']) + item['freelist_pages'] * item['page_size'] == item['backend_bytes']
+                item['backend_bytes_after_close'] = path.stat().st_size
+                assert sum(o['bytes'] for o in item['objects']) + item['freelist_pages'] * item['page_size'] == item['backend_bytes_after_close']
         else:
             item['files'] = [{'name': f.name, 'bytes': f.stat().st_size}
                              for f in sorted(path.iterdir()) if f.is_file()]
-            assert sum(f['bytes'] for f in item['files']) == item['backend_bytes']
+            item['backend_bytes_after_close'] = sum(f['bytes'] for f in item['files'])
+        item['close_delta_bytes'] = item['backend_bytes_after_close'] - item['backend_bytes_at_output']
         results.append(item)
 out = {'utc': dt.datetime.now(dt.timezone.utc).isoformat(),
        'audit_revision': sp.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
