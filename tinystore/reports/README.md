@@ -10,6 +10,8 @@ is paused and product implementation/fault/resource gates remain open.
 Search's query rather than its store: [search plans](search-plan-2026-10-16.md),
 FTS5 with the statistics' stop words against Tantivy, bigrams against ICU4X,
 stems by script and typo candidates, with [every pass](search-plan-measurements-2026-10-16.md).
+At [a million documents](search-1m-2026-10-16.md), FTS5 and Tantivy as
+collections owning them: reads, sets and memory, A B B A.
 
 The 22–23 September architecture implementation rounds on
 `codex/architecture-measurements` measured intermediate uncommitted states.
