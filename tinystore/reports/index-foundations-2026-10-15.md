@@ -276,6 +276,14 @@ slow run, average the pair or attribute adjacent-case speedups to a rebuild
 algorithm. WAL/storage accounting and correctness remain separate evidence;
 latency conclusions require matched native controls and more stable repeats.
 
+The million-row tx1/u10 guard comparison is also non-monotonic in this adaptive
+whole-build workload: selective/full WAL is 1604.5/1417.8 MiB in pass 1 and
+1545.8/1538.5 MiB in pass 2. Chunk counts are 11,640/8360 and 10,957/9944,
+respectively. Avoiding unchanged-column maintenance is semantically valid,
+but those results do not establish a reduction in total rebuild WAL. They
+include feedback-controlled chunking and different interleaving/merge layouts;
+a no-rebuild or fixed-chunk guard control is needed to isolate its own cost.
+
 ## Correctness and failure evidence
 
 The deterministic suite exercises minimum/negative/zero IDs, holes, updates and

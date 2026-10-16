@@ -1,5 +1,7 @@
 # Reports
 
+Current handoff: [16 October 2026 status, including completed Channels and Locks](followup-status-2026-10-16.md).
+
 The 22–23 September architecture implementation rounds on
 `codex/architecture-measurements` measured intermediate uncommitted states.
 Implementation revisions run through `7bcc8ec` and harness revisions through
