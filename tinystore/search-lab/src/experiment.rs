@@ -208,7 +208,7 @@ fn run(engine: &str, mode: &str, file: &str, scale: usize) {
     }
     let loaded = memory();
     let db = std::env::var("BENCH_DB").unwrap();
-    let c = open(&db, mode);
+    let c = open(&db, if engine == "fts" { mode } else { "unicode" });
     schema(&c);
     let docs: Vec<_> = if scale == 0 {
         corpus.docs
@@ -537,6 +537,111 @@ fn check() {
         json!({"status":"pass","checks":["actual C tokenizer callbacks","RU/EN forms","Chinese segmentation","source/FTS rollback","OLD-token delete/update","signed id moves via direct SQL","string identity mapping","NFKC highlight original UTF8 offsets","rank-1 external-content integrity","reopen with registration","missing per-connection registration fails"],"highlight":snippet,"missing_registration":missing})
     );
 }
+fn concurrent(file: &str, readers: usize) {
+    use std::sync::{
+        Arc, Barrier,
+        atomic::{AtomicBool, Ordering},
+    };
+    let corpus: Corpus = serde_json::from_reader(std::fs::File::open(file).unwrap()).unwrap();
+    let db = std::env::var("BENCH_DB").unwrap();
+    let c = open(&db, "auto");
+    schema(&c);
+    create_index(&c, "auto");
+    let build = Instant::now();
+    for batch in 0..200 {
+        let ds: Vec<_> = (0..500)
+            .map(|j| {
+                let i = batch * 500 + j;
+                let mut d = corpus.docs[i % corpus.docs.len()].clone();
+                d.id = i as u64 + 1;
+                d.key = format!("{i}");
+                d
+            })
+            .collect();
+        insert(&c, &ds);
+    }
+    let ingest_us = us(build);
+    c.execute_batch("pragma wal_checkpoint(truncate)").unwrap();
+    let baseline = memory();
+    let start = Arc::new(Barrier::new(readers + 1));
+    let stop = Arc::new(AtomicBool::new(false));
+    let mut handles = vec![];
+    let queries = Arc::new(
+        corpus
+            .queries
+            .into_iter()
+            .map(|q| q.text)
+            .collect::<Vec<_>>(),
+    );
+    for _ in 0..readers {
+        let db = db.clone();
+        let start = start.clone();
+        let stop = stop.clone();
+        let queries = queries.clone();
+        handles.push(std::thread::spawn(move || {
+            let r = open(&db, "auto");
+            let mut ts = vec![];
+            let mut i = 0;
+            start.wait();
+            while !stop.load(Ordering::Relaxed) {
+                let t = Instant::now();
+                let _ids = search(&r, &queries[i % queries.len()], "auto", false);
+                ts.push(us(t));
+                i += 1;
+            }
+            distribution(&mut ts)
+        }));
+    }
+    let cpu0 = cpu();
+    start.wait();
+    let origin = Instant::now();
+    let mut service = vec![];
+    let mut scheduled = vec![];
+    let mut rollbacks = 0;
+    for i in 0..1000 {
+        let target = origin + std::time::Duration::from_micros(i * 1000);
+        std::thread::sleep(target.saturating_duration_since(Instant::now()));
+        let t = Instant::now();
+        c.execute_batch("begin immediate").unwrap();
+        if i % 10 == 0 {
+            c.execute(
+                "update documents set title=title||' modified' where id=?1",
+                [i as i64 + 1],
+            )
+            .unwrap();
+        } else {
+            c.execute(
+                "update documents set other=other+1 where id=?1",
+                [i as i64 + 1],
+            )
+            .unwrap();
+        }
+        if i % 33 == 0 {
+            c.execute_batch("rollback").unwrap();
+            rollbacks += 1;
+        } else {
+            c.execute_batch("commit").unwrap();
+        }
+        service.push(us(t));
+        scheduled.push(target.elapsed().as_micros() as u64);
+    }
+    stop.store(true, Ordering::Relaxed);
+    let samples: Vec<_> = handles.into_iter().map(|h| h.join().unwrap()).collect();
+    let duration = origin.elapsed().as_secs_f64();
+    let cpu_s = cpu() - cpu0;
+    let work_memory = memory();
+    let wal = bytes(&format!("{db}-wal"));
+    let integrity = Instant::now();
+    c.execute(
+        "insert into search(search,rank)values('integrity-check',1)",
+        [],
+    )
+    .unwrap();
+    println!(
+        "{}",
+        json!({"rows":100000,"readers":readers,"initial_indexed_ingest_us":ingest_us,"writer_transactions":1000,"indexed_update_fraction":0.1,"rollback_transactions":rollbacks,"writer_service":distribution(&mut service),"writer_scheduled":distribution(&mut scheduled),"reader_samples":samples,"duration_s":duration,"cpu_s":cpu_s,"baseline_memory":baseline,"work_memory":work_memory,"wal_file_bytes":wal,"post_workload_rank1_integrity_us":us(integrity),"status":"pass"})
+    );
+}
 pub fn main() {
     let a: Vec<_> = std::env::args().skip(1).collect();
     match a[0].as_str() {
@@ -548,6 +653,7 @@ pub fn main() {
         ),
         "analyze" => analyze(&a[1], &a[2]),
         "check" => check(),
+        "concurrent" => concurrent(&a[1], a[2].parse().unwrap()),
         _ => panic!("run ENGINE MODE CORPUS [SCALE] | analyze MODE CORPUS | check"),
     }
 }

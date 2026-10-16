@@ -48,5 +48,8 @@ def scale():
  for n in (100000,1000000):
   for passno in (1,2):
    for engine in ('fts','tant')if passno==1 else('tant','fts'):run('scale',f'mixed-{n}-{engine}-auto',passno,['run',engine,'auto',ROOT/'corpus/mixed.json',n],{'BENCH_QUERY_LIMIT':'60'})
+def concurrent():
+ for passno in (1,2):
+  for readers in (0,2)if passno==1 else(2,0):run('concurrent',f'fts-auto-100k-readers{readers}',passno,['concurrent',ROOT/'corpus/mixed.json',readers])
 if __name__=='__main__':
- {'checks':checks,'quality':quality,'analyzer':analyzer,'scale':scale}[sys.argv[1]]()
+ {'checks':checks,'quality':quality,'analyzer':analyzer,'scale':scale,'concurrent':concurrent}[sys.argv[1]]()

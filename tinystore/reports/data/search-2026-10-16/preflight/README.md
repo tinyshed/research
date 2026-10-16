@@ -1,0 +1,1 @@
+The first small gold probe registered an unused FTS analyzer in the Tantivy source connection. Quality results remain diagnostic, but its RAM/setup are excluded from final comparisons. The corrected run registers a single analyzer in each candidate. A prior missing-tokenizer assertion also tested prepare rather than step; that failed probe remains in correctness.jsonl.
