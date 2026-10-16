@@ -13,6 +13,16 @@
 //! gone  (doc)                                       documents in blocks a set replaced
 //! ```
 //!
+//! LAB_FORMAT=packed builds the same blocks with fewer rows to read: a key
+//! is a number, and its directory one row a chunk of the build rather than
+//! a row a block.
+//!
+//! ```text
+//! keys (key)        → id, documents
+//! dirs (id, chunk)  → directory     (first delta, last − first, most_tf, least_len) a block, varints
+//! blob (id, first)  → payload
+//! ```
+//!
 //! A key is a field and a term, `b|война`. The fields and their weights are
 //! FTS5's columns and Tantivy's boosts in this lab, and a document's score
 //! is the sum over its keys of weight × idf × BM25's saturated frequency.
@@ -53,6 +63,11 @@ create table head (doc integer not null, key text not null, tf integer not null,
   primary key (doc, key)) without rowid;
 create index head_by_key on head (key, doc);
 create table gone (doc integer primary key);
+create table keys (key text primary key, id integer not null, documents integer not null) without rowid;
+create table dirs (id integer not null, chunk integer not null, directory blob not null,
+  primary key (id, chunk)) without rowid;
+create table blob (id integer not null, first integer not null, payload blob not null,
+  primary key (id, first)) without rowid;
 ";
 
 fn key(field: usize, term: &str) -> String {
@@ -164,8 +179,11 @@ pub fn build(path: &Path, analyzer: &Analyzer, docs: &[Doc]) -> Built {
     let started = Instant::now();
     let mut connection = open(path);
     connection.execute_batch(SCHEMA).unwrap();
+    let packed = std::env::var("LAB_FORMAT").as_deref() == Ok("packed");
     let mut tokens = [0u64; 4];
     let (mut postings, mut blocks) = (0u64, 0u64);
+    // A packed build's keys: each one's number and the documents it is in.
+    let mut ids: HashMap<String, (i64, u64)> = HashMap::new();
     for (chunk, docs) in docs.chunks(CHUNK).enumerate() {
         let tx = connection.transaction().unwrap();
         let mut lists: HashMap<String, Vec<Posting>> = HashMap::new();
@@ -188,6 +206,12 @@ pub fn build(path: &Path, analyzer: &Analyzer, docs: &[Doc]) -> Built {
                 }
                 keep.execute(params![id, doc.id, doc.title, doc.text])
                     .unwrap();
+            }
+            if packed {
+                let (added, blocked) = write_packed(&tx, chunk, &lists, &mut ids);
+                postings += added;
+                blocks += blocked;
+                lists.clear();
             }
             let mut keys: Vec<&String> = lists.keys().collect();
             keys.sort();
@@ -226,6 +250,20 @@ pub fn build(path: &Path, analyzer: &Analyzer, docs: &[Doc]) -> Built {
         }
         tx.commit().unwrap();
     }
+    if packed {
+        let tx = connection.transaction().unwrap();
+        {
+            let mut insert = tx
+                .prepare("insert into keys (key, id, documents) values (?1, ?2, ?3)")
+                .unwrap();
+            let mut all: Vec<(&String, &(i64, u64))> = ids.iter().collect();
+            all.sort();
+            for (key, (id, documents)) in all {
+                insert.execute(params![key, id, *documents as i64]).unwrap();
+            }
+        }
+        tx.commit().unwrap();
+    }
     for (field, tokens) in tokens.iter().enumerate() {
         connection
             .execute(
@@ -257,6 +295,58 @@ pub fn build(path: &Path, analyzer: &Analyzer, docs: &[Doc]) -> Built {
     }
 }
 
+/// Writes a chunk's lists as packed rows: a key's number, given the first
+/// time it is met, one directory row and its blocks; says the postings and
+/// blocks it wrote.
+fn write_packed(
+    tx: &rusqlite::Transaction,
+    chunk: usize,
+    lists: &HashMap<String, Vec<Posting>>,
+    ids: &mut HashMap<String, (i64, u64)>,
+) -> (u64, u64) {
+    let mut numbered: Vec<(i64, &String)> = lists
+        .keys()
+        .map(|key| {
+            let next = ids.len() as i64 + 1;
+            let entry = ids.entry(key.clone()).or_insert((next, 0));
+            entry.1 += lists[key].len() as u64;
+            (entry.0, key)
+        })
+        .collect();
+    numbered.sort();
+    let mut dir = tx
+        .prepare("insert into dirs (id, chunk, directory) values (?1, ?2, ?3)")
+        .unwrap();
+    let mut blob = tx
+        .prepare("insert into blob (id, first, payload) values (?1, ?2, ?3)")
+        .unwrap();
+    let (mut postings, mut blocks) = (0, 0);
+    for (id, key) in numbered {
+        let list = &lists[key];
+        postings += list.len() as u64;
+        let mut directory = Vec::new();
+        let mut previous = 0;
+        for block in list.chunks(BLOCK) {
+            blocks += 1;
+            let (first, last) = (block[0].doc, block[block.len() - 1].doc);
+            put_varint(&mut directory, first - previous);
+            put_varint(&mut directory, last - first);
+            put_varint(
+                &mut directory,
+                block.iter().map(|posting| posting.tf).max().unwrap(),
+            );
+            put_varint(
+                &mut directory,
+                block.iter().map(|posting| posting.len).min().unwrap(),
+            );
+            previous = last;
+            blob.execute(params![id, first, pack(block)]).unwrap();
+        }
+        dir.execute(params![id, chunk as i64, directory]).unwrap();
+    }
+    (postings, blocks)
+}
+
 /// A block as the directory says it: its documents' range and the most its
 /// key adds to any of them.
 struct Skip {
@@ -269,6 +359,8 @@ struct Skip {
 /// decoded, and the cursor.
 struct List {
     key: String,
+    /// The key's number in a packed index, -1 in the other.
+    id: i64,
     /// The key's weight × idf.
     scale: f64,
     average: f64,
@@ -311,10 +403,16 @@ impl List {
         }
         let started = Instant::now();
         let first = self.skips[self.block].first;
-        let payload: Vec<u8> = source
-            .payload
-            .query_row(params![self.key, first], |row| row.get(0))
-            .unwrap();
+        let payload: Vec<u8> = if self.id >= 0 {
+            source
+                .payload
+                .query_row(params![self.id, first], |row| row.get(0))
+        } else {
+            source
+                .payload
+                .query_row(params![self.key, first], |row| row.get(0))
+        }
+        .unwrap();
         self.postings = unpack(&payload, source.gone);
         self.decoded = self.block;
         source.opened += 1;
@@ -613,6 +711,8 @@ pub struct Blocks {
     pub exhaustive: bool,
     /// LAB_EXECUTOR=window answers by `windowed`, anything else by `max_score`.
     windows: bool,
+    /// Built with LAB_FORMAT=packed: keys by number, a directory row a chunk.
+    packed: bool,
     /// The scores of the last query's documents, for the check.
     pub scores: Vec<f64>,
     /// Blocks the last query opened.
@@ -644,6 +744,11 @@ impl Blocks {
             average[field as usize] = (tokens as f64 / holding as f64).max(1.0);
             documents = holding as u64;
         }
+        let packed = connection
+            .query_row("select exists (select 1 from keys)", [], |row| {
+                row.get::<_, bool>(0)
+            })
+            .unwrap();
         let gone = connection
             .prepare("select doc from gone")
             .unwrap()
@@ -658,6 +763,7 @@ impl Blocks {
             gone,
             exhaustive: false,
             windows: std::env::var("LAB_EXECUTOR").as_deref() == Ok("window"),
+            packed,
             scores: Vec::new(),
             opened: 0,
             directory_ms: 0.0,
@@ -666,15 +772,73 @@ impl Blocks {
     }
 
     fn holding(&self, key: &str) -> u64 {
-        let mut statement = self
-            .connection
-            .prepare_cached("select documents from terms where key = ?1")
-            .unwrap();
+        self.find(key).map_or(0, |(_, documents)| documents)
+    }
+
+    /// A key's number, -1 when the index numbers none, and the documents it is in.
+    fn find(&self, key: &str) -> Option<(i64, u64)> {
+        let sql = if self.packed {
+            "select id, documents from keys where key = ?1"
+        } else {
+            "select -1, documents from terms where key = ?1"
+        };
+        let mut statement = self.connection.prepare_cached(sql).unwrap();
         statement
-            .query_row([key], |row| row.get::<_, i64>(0))
+            .query_row([key], |row| {
+                Ok((row.get::<_, i64>(0)?, row.get::<_, i64>(1)? as u64))
+            })
             .optional()
             .unwrap()
-            .unwrap_or(0) as u64
+    }
+
+    /// A key's directory, from its rows a block or its packed rows a chunk.
+    fn directory(&self, key: &str, id: i64, scale: f64, average: f64) -> Vec<Skip> {
+        let bound = |most_tf: u32, least_len: u32| scale * saturated(most_tf, least_len, average);
+        if !self.packed {
+            let mut skips = self
+                .connection
+                .prepare_cached(
+                    "select first, last, most_tf, least_len from skip where key = ?1 order by first",
+                )
+                .unwrap();
+            return skips
+                .query_map([key], |row| {
+                    let (most_tf, least_len): (i64, i64) = (row.get(2)?, row.get(3)?);
+                    Ok(Skip {
+                        first: row.get::<_, i64>(0)? as u32,
+                        last: row.get::<_, i64>(1)? as u32,
+                        bound: bound(most_tf as u32, least_len as u32),
+                    })
+                })
+                .unwrap()
+                .map(Result::unwrap)
+                .collect();
+        }
+        let mut dirs = self
+            .connection
+            .prepare_cached("select directory from dirs where id = ?1 order by chunk")
+            .unwrap();
+        let mut skips = Vec::new();
+        for directory in dirs
+            .query_map([id], |row| row.get::<_, Vec<u8>>(0))
+            .unwrap()
+        {
+            let directory = directory.unwrap();
+            let (mut at, mut previous) = (0, 0);
+            while at < directory.len() {
+                let first = previous + get_varint(&directory, &mut at);
+                let last = first + get_varint(&directory, &mut at);
+                let most_tf = get_varint(&directory, &mut at);
+                let least_len = get_varint(&directory, &mut at);
+                skips.push(Skip {
+                    first,
+                    last,
+                    bound: bound(most_tf, least_len),
+                });
+                previous = last;
+            }
+        }
+        skips
     }
 
     /// A word's keys and weights, as the other engines ask its forms.
@@ -698,12 +862,6 @@ impl Blocks {
 
     /// The lists of a query: each key's blocks, and what sets put in the head.
     fn lists(&self, words: &[Word]) -> Vec<List> {
-        let mut skips = self
-            .connection
-            .prepare_cached(
-                "select first, last, most_tf, least_len from skip where key = ?1 order by first",
-            )
-            .unwrap();
         let mut heads = self
             .connection
             .prepare_cached("select doc, tf, len from head where key = ?1 order by doc")
@@ -712,25 +870,19 @@ impl Blocks {
         for word in words {
             for (field, term) in Self::forms(word) {
                 let key = key(field, &term);
-                let holding = self.holding(&key);
+                let (id, holding) = self.find(&key).unwrap_or((-1, 0));
                 let scale = FIELDS[field].1 * idf(self.documents, holding.max(1));
                 let average = self.average[field];
-                let directory: Vec<Skip> = skips
-                    .query_map([&key], |row| {
-                        let (most_tf, least_len): (i64, i64) = (row.get(2)?, row.get(3)?);
-                        Ok(Skip {
-                            first: row.get::<_, i64>(0)? as u32,
-                            last: row.get::<_, i64>(1)? as u32,
-                            bound: scale * saturated(most_tf as u32, least_len as u32, average),
-                        })
-                    })
-                    .unwrap()
-                    .map(Result::unwrap)
-                    .collect();
+                let directory = if holding > 0 {
+                    self.directory(&key, id, scale, average)
+                } else {
+                    Vec::new()
+                };
                 if !directory.is_empty() {
                     let max = directory.iter().map(|skip| skip.bound).fold(0.0, f64::max);
                     lists.push(List {
                         key: key.clone(),
+                        id,
                         scale,
                         average,
                         skips: directory,
@@ -764,6 +916,7 @@ impl Blocks {
                     };
                     lists.push(List {
                         key,
+                        id: -1,
                         scale,
                         average,
                         skips: vec![skip],
@@ -801,7 +954,11 @@ impl Backend for Blocks {
         let mut source = Source {
             payload: self
                 .connection
-                .prepare_cached("select payload from post where key = ?1 and first = ?2")
+                .prepare_cached(if self.packed {
+                    "select payload from blob where id = ?1 and first = ?2"
+                } else {
+                    "select payload from post where key = ?1 and first = ?2"
+                })
                 .unwrap(),
             gone: &self.gone,
             opened: 0,
