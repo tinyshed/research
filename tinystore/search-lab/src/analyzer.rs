@@ -19,7 +19,7 @@ impl Analyzer {
     pub fn new(mode: &str) -> Self {
         assert!(matches!(
             mode,
-            "unicode" | "icu" | "auto" | "multi" | "detect" | "jieba"
+            "unicode" | "icu" | "auto" | "multi" | "detect" | "hybrid" | "jieba"
         ));
         #[cfg(not(feature = "icu"))]
         assert_eq!(mode, "unicode", "ICU feature required");
@@ -53,6 +53,12 @@ impl Analyzer {
         }
     }
     pub fn tokens(&self, text: &str) -> Vec<Token> {
+        self.tokens_role(text, false)
+    }
+    pub fn query_tokens(&self, text: &str) -> Vec<Token> {
+        self.tokens_role(text, true)
+    }
+    pub fn tokens_role(&self, text: &str, is_query: bool) -> Vec<Token> {
         #[cfg(not(feature = "icu"))]
         {
             let _ = text;
@@ -77,7 +83,7 @@ impl Analyzer {
                 }
             }
             #[cfg(feature = "detect")]
-            let detected = if self.mode == "detect" {
+            let detected = if self.mode == "detect" || self.mode == "hybrid" && !is_query {
                 whatlang::detect(text)
                     .filter(|i| i.is_reliable())
                     .map(|i| i.lang().code())
@@ -106,7 +112,6 @@ impl Analyzer {
                         .chars()
                         .any(|c| c.is_ascii_alphabetic() || ('\u{00c0}'..='\u{024f}').contains(&c));
                     let lang = match detected {
-                        Some("rus") => "ru",
                         Some("deu") => "de",
                         Some("fra") => "fr",
                         Some("spa") => "es",
@@ -115,8 +120,14 @@ impl Analyzer {
                     for (n, s) in self.stems.iter() {
                         if (cyr && *n == "ru")
                             || (latin
-                                && (*n == if self.mode == "detect" { lang } else { "en" }
-                                    || self.mode == "multi" && *n != "ru"))
+                                && (*n
+                                    == if matches!(self.mode.as_str(), "detect" | "hybrid") {
+                                        lang
+                                    } else {
+                                        "en"
+                                    }
+                                    || (self.mode == "multi" || self.mode == "hybrid" && is_query)
+                                        && *n != "ru"))
                         {
                             terms.push(format!("s_{n}_{}", s.stem(&word)));
                         }

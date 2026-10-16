@@ -98,7 +98,7 @@ impl TextIndex {
         let words = Analyzer::new("icu").tokens(q);
         let mut terms = std::collections::BTreeSet::new();
         for w in words {
-            for t in self.analyzer.tokens(&q[w.start..w.end]) {
+            for t in self.analyzer.query_tokens(&q[w.start..w.end]) {
                 terms.insert(t.text);
             }
         }

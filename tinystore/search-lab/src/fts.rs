@@ -30,7 +30,7 @@ unsafe extern "C" fn context_destroy(a: *mut c_void) {
 unsafe extern "C" fn tokenize(
     a: *mut ffi::Fts5Tokenizer,
     context: *mut c_void,
-    _flags: i32,
+    flags: i32,
     text: *const c_char,
     len: i32,
     emit: Option<unsafe extern "C" fn(*mut c_void, i32, *const c_char, i32, i32, i32) -> i32>,
@@ -45,7 +45,7 @@ unsafe extern "C" fn tokenize(
         };
         let a = unsafe { &*a.cast::<Analyzer>() };
         let mut prev = None;
-        for t in a.tokens(text) {
+        for t in a.tokens_role(text, flags & 1 != 0) {
             let flags = if prev == Some(t.position) { 1 } else { 0 };
             prev = Some(t.position);
             let rc = unsafe {

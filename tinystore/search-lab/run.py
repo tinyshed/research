@@ -32,17 +32,17 @@ def run(group,label,passno,args,env={}):
 def quality():
  for corpus in ('ru','en','zh','mixed'):
   pairs=[('fts','unicode'),('fts','icu'),('tant','icu'),('fts','auto'),('tant','auto')]
-  if corpus=='mixed':pairs += [('fts','multi'),('tant','multi'),('fts','detect')]
+  if corpus=='mixed':pairs += [('fts','multi'),('tant','multi'),('fts','detect'),('fts','hybrid'),('tant','hybrid')]
   if corpus=='zh':pairs += [('fts','jieba'),('tant','jieba')]
   for passno in (1,2):
    for engine,mode in pairs if passno==1 else reversed(pairs):run('retrieval',f'{corpus}-{engine}-{mode}',passno,['run',engine,mode,ROOT/'corpus'/f'{corpus}.json'])
 def checks():
  for passno in (1,2):run('correctness','custom-tokenizer-lifecycle',passno,['check'])
- for engine,mode in [('fts',m)for m in ('unicode','icu','auto','multi','detect','jieba')]+[('tant',m)for m in ('icu','auto','multi','jieba')]:
+ for engine,mode in [('fts',m)for m in ('unicode','icu','auto','multi','detect','hybrid','jieba')]+[('tant',m)for m in ('icu','auto','multi','hybrid','jieba')]:
   run('gold',f'{engine}-{mode}',1,['run',engine,mode,ROOT/'corpus/gold.json'])
 def analyzer():
  for passno in (1,2):
-  modes=['icu','auto','multi','detect','jieba']
+  modes=['icu','auto','multi','detect','hybrid','jieba']
   for mode in modes if passno==1 else reversed(modes):run('analyzer',mode,passno,['analyze',mode,ROOT/'corpus/mixed.json'])
 def scale():
  for n in (100000,1000000):

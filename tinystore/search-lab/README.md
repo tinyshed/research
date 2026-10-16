@@ -16,6 +16,10 @@ Registered before timing:
   that every Cyrillic/Latin language is Russian/English.
 - Controls: ICU only, language-detected stemming, colocated language-tagged
   RU/EN/DE/FR/ES stem alternatives, Jieba Chinese segmentation, native Unicode61.
+- Hybrid candidate detects the document field's Latin language, stores one
+  tagged stem plus raw surface form, and expands short query terms across
+  EN/DE/FR/ES. Query/index roles use FTS5's actual tokenization flags. Cyrillic
+  uses RU in this prototype; unsupported-language morphology remains unproven.
 - Natural MIRACL/NoMIRACL judged passages and queries for RU/EN/ZH, kept separate
   per language, plus a declared small adversarial/mixed-language gold fixture.
   Report pooled-corpus retrieval and judged-pool reranking separately; never
