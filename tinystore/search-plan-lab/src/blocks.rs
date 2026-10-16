@@ -285,6 +285,8 @@ struct Source<'a> {
     payload: CachedStatement<'a>,
     gone: &'a HashSet<u32>,
     opened: usize,
+    /// Time spent finding and unpacking blocks.
+    opening: std::time::Duration,
 }
 
 impl List {
@@ -307,6 +309,7 @@ impl List {
         if self.decoded == self.block {
             return;
         }
+        let started = Instant::now();
         let first = self.skips[self.block].first;
         let payload: Vec<u8> = source
             .payload
@@ -315,6 +318,7 @@ impl List {
         self.postings = unpack(&payload, source.gone);
         self.decoded = self.block;
         source.opened += 1;
+        source.opening += started.elapsed();
     }
 
     fn next(&mut self) {
@@ -349,6 +353,25 @@ impl List {
 
     fn current_bound(&self) -> f64 {
         self.skips[self.block].bound
+    }
+
+    /// The most the key adds to any document in `[start, end)`.
+    fn bound_over(&self, start: u32, end: u32) -> f64 {
+        let rest = &self.skips[self.block.min(self.skips.len())..];
+        let from = rest.partition_point(|skip| skip.last < start);
+        rest[from..]
+            .iter()
+            .take_while(|skip| skip.first < end)
+            .map(|skip| skip.bound)
+            .fold(0.0, f64::max)
+    }
+
+    /// A document no later than the key's first at `end` or after it, read
+    /// from the directory without opening a block.
+    fn next_from(&self, end: u32) -> u32 {
+        let rest = &self.skips[self.block.min(self.skips.len())..];
+        let from = rest.partition_point(|skip| skip.last < end);
+        rest.get(from).map_or(END, |skip| skip.first.max(end))
     }
 
     fn score(&self) -> f64 {
@@ -458,6 +481,105 @@ fn max_score(lists: &mut [List], source: &mut Source, k: usize) -> Vec<(f64, u32
     )
 }
 
+/// Documents a window of `windowed` holds.
+const WINDOW: u32 = 4096;
+
+/// The best `k` by block-max MaxScore a window of documents at a time, as
+/// Lucene's MaxScoreBulkScorer goes: in each window the lists are split into
+/// essential and not by the most each adds inside it, and a window no list
+/// can lift past θ is passed unread; the essential lists add their postings
+/// into an array one list after another, and the documents it holds are
+/// completed from the other lists in order.
+fn windowed(lists: &mut [List], source: &mut Source, k: usize) -> Vec<(f64, u32)> {
+    let mut best: BinaryHeap<Reverse<Scored>> = BinaryHeap::new();
+    let mut scores = vec![0.0f64; WINDOW as usize];
+    let mut touched: Vec<u32> = Vec::new();
+    let mut start = lists
+        .iter()
+        .map(|list| list.next_from(0))
+        .min()
+        .unwrap_or(END);
+    while start != END {
+        let end = start.saturating_add(WINDOW);
+        let bounds: Vec<f64> = lists
+            .iter()
+            .map(|list| list.bound_over(start, end))
+            .collect();
+        let mut order: Vec<usize> = (0..lists.len()).collect();
+        order.sort_by(|a, b| bounds[*a].total_cmp(&bounds[*b]));
+        // The lists whose window maxima together cannot lift a document past θ.
+        let passive = if best.len() < k {
+            0
+        } else {
+            let theta = best.peek().unwrap().0.0;
+            let mut sum = 0.0;
+            order
+                .iter()
+                .take_while(|list| {
+                    sum += bounds[**list];
+                    sum <= theta
+                })
+                .count()
+        };
+        if passive < order.len() {
+            for &at in &order[passive..] {
+                let list = &mut lists[at];
+                let mut doc = list.seek(start, source);
+                while doc < end {
+                    let slot = (doc - start) as usize;
+                    if scores[slot] == 0.0 {
+                        touched.push(doc);
+                    }
+                    scores[slot] += list.score();
+                    list.next();
+                    doc = list.doc(source);
+                }
+            }
+            touched.sort_unstable();
+            let window_rest: f64 = order[..passive].iter().map(|at| bounds[*at]).sum();
+            for &doc in &touched {
+                let mut score = std::mem::take(&mut scores[(doc - start) as usize]);
+                let full = best.len() >= k;
+                let theta = if full { best.peek().unwrap().0.0 } else { 0.0 };
+                if full && score + window_rest <= theta {
+                    continue;
+                }
+                let mut rest: f64 = order[..passive]
+                    .iter()
+                    .map(|at| lists[*at].bound_at(doc))
+                    .sum();
+                for &at in order[..passive].iter().rev() {
+                    if full && score + rest <= theta {
+                        break;
+                    }
+                    let bound = lists[at].bound_at(doc);
+                    rest -= bound;
+                    if bound > 0.0 && lists[at].seek(doc, source) == doc {
+                        score += lists[at].score();
+                    }
+                }
+                if !full {
+                    best.push(Reverse(Scored(score, Reverse(doc))));
+                } else if score > theta {
+                    best.pop();
+                    best.push(Reverse(Scored(score, Reverse(doc))));
+                }
+            }
+            touched.clear();
+        }
+        start = lists
+            .iter()
+            .map(|list| list.next_from(end))
+            .min()
+            .unwrap_or(END);
+    }
+    sorted(
+        best.into_iter()
+            .map(|Reverse(Scored(score, Reverse(doc)))| (score, doc))
+            .collect(),
+    )
+}
+
 /// The best `k` by every posting of every list, for the check.
 fn exhaustive(lists: &mut [List], source: &mut Source, k: usize) -> Vec<(f64, u32)> {
     let mut scores: HashMap<u32, f64> = HashMap::new();
@@ -489,10 +611,15 @@ pub struct Blocks {
     gone: HashSet<u32>,
     /// Scores every posting instead of skipping, for the check.
     pub exhaustive: bool,
+    /// LAB_EXECUTOR=window answers by `windowed`, anything else by `max_score`.
+    windows: bool,
     /// The scores of the last query's documents, for the check.
     pub scores: Vec<f64>,
     /// Blocks the last query opened.
     pub opened: usize,
+    /// The last query's time reading directories, and finding and unpacking blocks.
+    pub directory_ms: f64,
+    pub opening_ms: f64,
 }
 
 impl Blocks {
@@ -530,8 +657,11 @@ impl Blocks {
             average,
             gone,
             exhaustive: false,
+            windows: std::env::var("LAB_EXECUTOR").as_deref() == Ok("window"),
             scores: Vec::new(),
             opened: 0,
+            directory_ms: 0.0,
+            opening_ms: 0.0,
         }
     }
 
@@ -665,7 +795,9 @@ impl Backend for Blocks {
 
     fn top(&mut self, words: &[Word], every: bool, k: usize) -> Vec<u32> {
         assert!(!every, "these blocks answer plans of any word");
+        let reading = Instant::now();
         let mut lists = self.lists(words);
+        self.directory_ms = reading.elapsed().as_secs_f64() * 1e3;
         let mut source = Source {
             payload: self
                 .connection
@@ -673,13 +805,17 @@ impl Backend for Blocks {
                 .unwrap(),
             gone: &self.gone,
             opened: 0,
+            opening: std::time::Duration::ZERO,
         };
         let found = if self.exhaustive {
             exhaustive(&mut lists, &mut source, k)
+        } else if self.windows {
+            windowed(&mut lists, &mut source, k)
         } else {
             max_score(&mut lists, &mut source, k)
         };
         self.opened = source.opened;
+        self.opening_ms = source.opening.as_secs_f64() * 1e3;
         self.scores = found.iter().map(|(score, _)| *score).collect();
         found.into_iter().map(|(_, doc)| doc).collect()
     }

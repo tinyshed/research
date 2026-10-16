@@ -188,13 +188,15 @@ fn query(args: &[String]) {
     // Which of run.sh's alternating runs this process is.
     let round = std::env::var("LAB_ROUND").unwrap_or_default();
     let fst = std::env::var("LAB_TYPOS").unwrap_or_else(|_| "one".to_owned());
+    let executor = std::env::var("LAB_EXECUTOR").unwrap_or_else(|_| "cursor".to_owned());
     let raw_dir = Path::new(out).join("raw");
     std::fs::create_dir_all(&raw_dir).unwrap();
-    let raw_name =
-        format!("{cohort}-{analysis}-{backend}-{variant}-{matching}-{cut}-{fst}-r{round}.jsonl");
+    let raw_name = format!(
+        "{cohort}-{analysis}-{backend}-{variant}-{matching}-{cut}-{fst}-{executor}-r{round}.jsonl"
+    );
     let mut raw = std::fs::File::create(raw_dir.join(raw_name)).unwrap();
     let context = json!({"cohort": cohort, "analysis": analysis, "backend": backend, "variant": variant,
-        "matching": matching, "cut": settings.cut, "round": round, "fst": fst});
+        "matching": matching, "cut": settings.cut, "round": round, "fst": fst, "executor": executor});
     // A pass unrecorded first, so that every recorded pass finds the index's pages warm.
     for pass in 0..=settings.passes {
         for plan in &settings.plans {
@@ -409,36 +411,49 @@ fn check(args: &[String]) {
     let analyzer = Analyzer::new(Analysis::named(analysis));
     let mut index = blocks::Blocks::open(&path.join("index.db"));
     let cut: f64 = cut.parse().unwrap();
+    let executor = std::env::var("LAB_EXECUTOR").unwrap_or_else(|_| "cursor".to_owned());
     for plan in plans.split(',').map(Plan::named) {
-        let (mut differ, mut opened, mut opened_all) = (0, 0, 0);
-        let (mut millis, mut millis_all) = (0.0, 0.0);
+        // [pruned, every posting] × (ms, blocks opened, directory ms, opening ms)
+        let mut sums = [[0.0f64; 4]; 2];
+        let mut differ = 0;
         for question in &asked {
-            let answer = |exhaustive: bool, index: &mut blocks::Blocks| {
+            let mut scores: [Vec<f64>; 2] = [Vec::new(), Vec::new()];
+            for (at, exhaustive) in [false, true].into_iter().enumerate() {
                 index.exhaustive = exhaustive;
                 let started = Instant::now();
-                plan::run(index, plan, plan::words(&analyzer, &question.text), cut, 10);
-                (
-                    started.elapsed().as_secs_f64() * 1e3,
-                    index.scores.clone(),
-                    index.opened,
-                )
-            };
-            let (took, pruned, blocks_opened) = answer(false, &mut index);
-            let (took_all, all, blocks_all) = answer(true, &mut index);
+                plan::run(
+                    &mut index,
+                    plan,
+                    plan::words(&analyzer, &question.text),
+                    cut,
+                    10,
+                );
+                let took = started.elapsed().as_secs_f64() * 1e3;
+                for (sum, value) in sums[at].iter_mut().zip([
+                    took,
+                    index.opened as f64,
+                    index.directory_ms,
+                    index.opening_ms,
+                ]) {
+                    *sum += value;
+                }
+                scores[at] = index.scores.clone();
+            }
+            let [pruned, all] = &scores;
             let same = pruned.len() == all.len()
                 && pruned
                     .iter()
-                    .zip(&all)
+                    .zip(all)
                     .all(|(a, b)| (a - b).abs() <= 1e-9 * b.abs().max(1.0));
             differ += usize::from(!same);
-            (opened, opened_all) = (opened + blocks_opened, opened_all + blocks_all);
-            (millis, millis_all) = (millis + took, millis_all + took_all);
         }
         let n = asked.len() as f64;
+        let mean = |at: usize, field: usize| sums[at][field] / n;
         emit(
-            json!({"step": "check", "plan": plan.name(), "cut": cut, "questions": asked.len(),
-            "differ": differ, "blocks_opened": opened as f64 / n, "blocks_opened_exhaustive": opened_all as f64 / n,
-            "mean_ms": millis / n, "mean_ms_exhaustive": millis_all / n}),
+            json!({"step": "check", "plan": plan.name(), "cut": cut, "executor": executor, "questions": asked.len(),
+            "differ": differ, "mean_ms": mean(0, 0), "mean_ms_exhaustive": mean(1, 0),
+            "blocks_opened": mean(0, 1), "blocks_opened_exhaustive": mean(1, 1),
+            "directory_ms": mean(0, 2), "opening_ms": mean(0, 3), "opening_ms_exhaustive": mean(1, 3)}),
         );
     }
 }
