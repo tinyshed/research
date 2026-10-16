@@ -7,6 +7,10 @@ New direction: [multilingual Search research](search-2026-10-16.md), with
 suite is complete through paired 1m owned-store controls; the older Index sweep
 is paused and product implementation/fault/resource gates remain open.
 
+Search's query rather than its store: [search plans](search-plan-2026-10-16.md),
+FTS5 with the statistics' stop words against Tantivy, bigrams against ICU4X,
+stems by script and typo candidates, with [every pass](search-plan-measurements-2026-10-16.md).
+
 The 22–23 September architecture implementation rounds on
 `codex/architecture-measurements` measured intermediate uncommitted states.
 Implementation revisions run through `7bcc8ec` and harness revisions through
