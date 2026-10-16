@@ -43,7 +43,7 @@ for spec in ${SPECS:-esci:4096:rabitq:128:200 cqa:2048:rabitq:64:200}; do
   "$lab" vbuild "$vectors" "$out" vectors "$clusters" 131072 8 >> "$data/builds.jsonl"
   words=$out/$cohort-auto-compact
   for vectors_arm in truth "$arm"; do
-    LAB_EXECUTOR=window LAB_AHEAD=8 "$lab" vhybrid "$vectors" "$out" "$words" "$vectors_arm" 600 >> "$data/hybrid.jsonl"
+    LAB_ROUND=$cohort LAB_EXECUTOR=window LAB_AHEAD=8 "$lab" vhybrid "$vectors" "$out" "$words" "$vectors_arm" 600 >> "$data/hybrid.jsonl"
   done
   mkdir -p "$data/raw-$cohort"
   cp "$out"/raw/hybrid-*.jsonl "$data/raw-$cohort/"

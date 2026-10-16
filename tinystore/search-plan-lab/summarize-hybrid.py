@@ -3,11 +3,14 @@
 Every mode's nDCG@10 over each cohort's 600 questions, then by the kind of
 question: one naming a thing by a code (a model number, a version, an
 identifier in code) against one in words alone; ESCI's also by its graded
-labels, Exact 3, Substitute 2, Complement 1, Irrelevant 0.
+labels, Exact 3, Substitute 2, Complement 1, Irrelevant 0; then the
+differences that decide the fusion, each question paired with itself, with a
+95 % interval from 2,000 resamples of the questions.
 """
 
 import json
 import math
+import random
 import re
 import sys
 from collections import defaultdict
@@ -58,13 +61,32 @@ def graded(cohort):
     return gains
 
 
+# The truth arm reads each question's exact vectors from a file, so only its
+# words' and its rescoring's times were spent searching.
+TIMED = ("words", "words rescored", "words rescored, fused")
+
 print("## Every mode, all questions\n")
 rows = []
 for line in (data / "hybrid.jsonl").read_text(encoding="utf-8").splitlines():
     h = json.loads(line)
-    rows.append([h["context"]["arm"], h["mode"], f"{h['ndcg10']:.4f}", f"{h['recall10']:.4f}", f"{h['p50_ms']:.2f}",
-                 f"{h['p99_ms']:.2f}"])
-table(["vectors by", "mode", "nDCG@10", "Recall@10", "p50 ms", "p99 ms"], rows)
+    arm = h["context"]["arm"]
+    # The ESCI run went before the script named each line's cohort.
+    cohort = h["context"]["round"] or "esci"
+    timed = arm != "truth" or h["mode"] in TIMED
+    rows.append([cohort, arm, h["mode"], f"{h['ndcg10']:.4f}", f"{h['recall10']:.4f}",
+                 f"{h['p50_ms']:.2f}" if timed else "", f"{h['p99_ms']:.2f}" if timed else ""])
+table(["cohort", "vectors by", "mode", "nDCG@10", "Recall@10", "p50 ms", "p99 ms"], rows)
+
+
+def paired(scores, a, b):
+    """The mean of a's nDCG@10 less b's, its interval, and the questions each wins."""
+    diff = [scores[a][q] - scores[b][q] for q in sorted(scores[a])]
+    rng = random.Random(1)
+    means = sorted(sum(rng.choice(diff) for _ in diff) / len(diff) for _ in range(2000))
+    wins = sum(d > 1e-12 for d in diff)
+    losses = sum(d < -1e-12 for d in diff)
+    return [f"{sum(diff) / len(diff):+.4f}", f"{means[50]:+.4f} … {means[1949]:+.4f}", wins, losses]
+
 
 for cohort in ("esci", "cqa"):
     folder = data / f"raw-{cohort}"
@@ -80,6 +102,7 @@ for cohort in ("esci", "cqa"):
         counted[k] += 1
     print(f"## {cohort}: by kind of question ({dict(counted)})\n")
     rows = []
+    scores = defaultdict(dict)
     for path in sorted(folder.glob("hybrid-*.jsonl")):
         arm = path.stem.removeprefix("hybrid-")
         sums = defaultdict(lambda: defaultdict(list))
@@ -87,6 +110,7 @@ for cohort in ("esci", "cqa"):
             r = json.loads(line)
             q = r["question"]
             score = ndcg(r["found"], binary[q])
+            scores[(arm, r["mode"])][q] = score
             sums[r["mode"]]["all"].append(score)
             sums[r["mode"]][kinds[q]].append(score)
             sums[r["mode"]][sets[q]].append(score)
@@ -102,3 +126,16 @@ for cohort in ("esci", "cqa"):
     if cohort == "esci":
         header += ["graded", "us", "es", "jp"]
     table(header, rows)
+
+    pairs = [(("truth", "hybrid"), ("truth", "words")),
+             (("truth", "convex, vectors 0.5"), ("truth", "hybrid")),
+             (("truth", "words rescored"), ("truth", "hybrid")),
+             (("truth", "words rescored"), ("truth", "convex, vectors 0.5"))]
+    for arm in sorted({arm for arm, _ in scores} - {"truth"}):
+        pairs += [((arm, "vectors"), ("truth", "vectors")),
+                  ((arm, "hybrid"), (arm, "words")),
+                  ((arm, "convex, vectors 0.5"), (arm, "hybrid")),
+                  ((arm, "words rescored"), (arm, "convex, vectors 0.5"))]
+    print(f"## {cohort}: paired differences\n")
+    table(["this", "less that", "nDCG@10", "95 %", "wins", "losses"],
+          [[f"{a[0]} {a[1]}", f"{b[0]} {b[1]}", *paired(scores, a, b)] for a, b in pairs])
