@@ -726,6 +726,12 @@ impl Blocks {
     pub fn open(path: &Path) -> Blocks {
         let connection = open(path);
         connection.pragma_update(None, "query_only", true).unwrap();
+        // LAB_MMAP=bytes reads the file through a map that size rather than read calls.
+        if let Ok(bytes) = std::env::var("LAB_MMAP") {
+            connection
+                .pragma_update(None, "mmap_size", bytes.parse::<i64>().unwrap())
+                .unwrap();
+        }
         let mut average = [0.0; 4];
         let mut documents = 0;
         for (field, tokens, holding) in connection

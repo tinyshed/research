@@ -189,14 +189,15 @@ fn query(args: &[String]) {
     let round = std::env::var("LAB_ROUND").unwrap_or_default();
     let fst = std::env::var("LAB_TYPOS").unwrap_or_else(|_| "one".to_owned());
     let executor = std::env::var("LAB_EXECUTOR").unwrap_or_else(|_| "cursor".to_owned());
+    let mmap = std::env::var("LAB_MMAP").unwrap_or_else(|_| "0".to_owned());
     let raw_dir = Path::new(out).join("raw");
     std::fs::create_dir_all(&raw_dir).unwrap();
     let raw_name = format!(
-        "{cohort}-{analysis}-{backend}-{variant}-{matching}-{cut}-{fst}-{executor}-r{round}.jsonl"
+        "{cohort}-{analysis}-{backend}-{variant}-{matching}-{cut}-{fst}-{executor}-m{mmap}-r{round}.jsonl"
     );
     let mut raw = std::fs::File::create(raw_dir.join(raw_name)).unwrap();
     let context = json!({"cohort": cohort, "analysis": analysis, "backend": backend, "variant": variant,
-        "matching": matching, "cut": settings.cut, "round": round, "fst": fst, "executor": executor});
+        "matching": matching, "cut": settings.cut, "round": round, "fst": fst, "executor": executor, "mmap": mmap});
     // A pass unrecorded first, so that every recorded pass finds the index's pages warm.
     for pass in 0..=settings.passes {
         for plan in &settings.plans {
