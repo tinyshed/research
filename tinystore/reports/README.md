@@ -14,6 +14,8 @@ At [a million documents](search-1m-2026-10-16.md), FTS5 and Tantivy as
 collections owning them: reads, sets and memory, A B B A.
 [Blocks of our own over SQLite's pages](search-blocks-2026-10-16.md), exact top ten
 by block-max MaxScore, a candidate or a window at a time, against FTS5 and Tantivy.
+[Compact blocks under a long mix of writes](search-compact-2026-10-16.md): lengths
+apart, short lists in their key's row, a head packed onto the blocks, five readers in one session.
 
 The 22–23 September architecture implementation rounds on
 `codex/architecture-measurements` measured intermediate uncommitted states.
