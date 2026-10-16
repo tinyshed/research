@@ -19,6 +19,8 @@ apart, short lists in their key's row, a head packed onto the blocks, five reade
 [Vectors beside the words](search-vectors-2026-10-16.md): bge-m3 on the same million, exact by a byte
 code's bound, clusters coded by a byte, signs or RaBitQ against HNSW, sqlite-vec and SQLite's vec1,
 and the words fused with the vectors or scored again on them.
+[Writes into the vectors' lists](search-vchurn-2026-10-16.md): a head a cluster, a cluster packed in a
+commit of its own and split past twice the mean, under 130,000 writes and a language the clusters never saw.
 
 The 22–23 September architecture implementation rounds on
 `codex/architecture-measurements` measured intermediate uncommitted states.
