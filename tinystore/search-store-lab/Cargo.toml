@@ -1,0 +1,28 @@
+[package]
+name = "search-store-lab"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[features]
+default = ["stems"]
+icu = ["dep:icu_segmenter", "dep:unicode-normalization"]
+stems = ["icu", "dep:rust-stemmers"]
+detect = []
+jieba = []
+
+[dependencies]
+rusqlite = { version = "=0.40.2", features = ["bundled", "hooks", "functions"] }
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = "=1.0.151"
+libc = "=0.2.190"
+icu_segmenter = { version = "=2.3.0", optional = true }
+unicode-normalization = { version = "=0.1.25", optional = true }
+rust-stemmers = { version = "=1.2.0", optional = true }
+tantivy = { version = "=0.26.2", default-features = false, features = ["mmap", "lz4-compression"] }
+
+[profile.release]
+debug = 0
+strip = "symbols"
+lto = "thin"
+codegen-units = 1
