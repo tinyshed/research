@@ -12,8 +12,11 @@ This is an incremental publication: the static 96-process matrix and the
 [Channels](channels-wire-followup-2026-10-15.md) and
 [Locks](core-locks-followup-2026-10-15.md) follow-ups are complete. The full
 100k concurrent rebuild matrix and both million-row Russian FTS passes are
-complete. Remaining million-row geo and resource/recovery cohorts are running;
-this revision does not claim their final results.
+complete. Remaining million-row geo and resource/recovery cohorts are incomplete.
+On 16 October the owner redirected priority to multilingual Search; the old sweep
+was stopped after 87 completed rebuild records. Its interrupted candidate is
+excluded; the reason and commands are in `priority-change-2026-10-16.json`.
+This revision does not claim the outstanding results.
 [Measurement tables](index-foundations-measurements-2026-10-15.md) retain each pass.
 
 At 1m repeated Russian rows, compact external-content FTS5 (`detail=none`,
