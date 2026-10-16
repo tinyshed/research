@@ -9,7 +9,7 @@
 //! and usearch's HNSW graph in memory.
 
 use std::cmp::{Ordering, Reverse};
-use std::collections::BinaryHeap;
+use std::collections::{BinaryHeap, HashSet};
 use std::fs::File;
 use std::io::{BufReader, Read};
 use std::path::Path;
@@ -21,12 +21,12 @@ use serde_json::json;
 pub const DIM: usize = 1024;
 const SIGN_BYTES: usize = DIM / 8;
 /// Members a row of a cluster's list holds at most.
-const PART: usize = 256;
+pub(crate) const PART: usize = 256;
 /// What a kernel's rounding may move a score by: far more than a sum of
 /// 1,024 products of numbers below one loses in f32.
 const SLACK: f32 = 1e-4;
 /// A cluster's rows are numbered cluster × 2¹⁶ + part.
-const PARTS: i64 = 1 << 16;
+pub(crate) const PARTS: i64 = 1 << 16;
 
 const SCHEMA: &str = "
 create table vf32 (doc integer primary key, v blob not null);
@@ -207,6 +207,12 @@ impl Rows {
         }
     }
 
+    /// The first `n` rows alone.
+    pub fn first(mut self, n: usize) -> Rows {
+        self.count = self.count.min(n);
+        self
+    }
+
     /// Up to `most` rows into `out`; the number read, 0 at the end.
     pub fn next(&mut self, most: usize, out: &mut Vec<f32>) -> usize {
         let rows = most.min(self.count - self.read);
@@ -230,35 +236,35 @@ pub fn read_all(path: &Path) -> Vec<f32> {
     out
 }
 
-fn floats(bytes: &[u8]) -> Vec<f32> {
+pub(crate) fn floats(bytes: &[u8]) -> Vec<f32> {
     bytes
         .chunks_exact(4)
         .map(|b| f32::from_le_bytes(b.try_into().unwrap()))
         .collect()
 }
 
-fn float_bytes(values: &[f32]) -> Vec<u8> {
+pub(crate) fn float_bytes(values: &[f32]) -> Vec<u8> {
     values
         .iter()
         .flat_map(|value| value.to_le_bytes())
         .collect()
 }
 
-fn word_bytes(values: &[u32]) -> Vec<u8> {
+pub(crate) fn word_bytes(values: &[u32]) -> Vec<u8> {
     values
         .iter()
         .flat_map(|value| value.to_le_bytes())
         .collect()
 }
 
-fn norm(v: &[f32]) -> f64 {
+pub(crate) fn norm(v: &[f32]) -> f64 {
     v.iter()
         .map(|x| f64::from(*x) * f64::from(*x))
         .sum::<f64>()
         .sqrt()
 }
 
-fn threads() -> usize {
+pub(crate) fn threads() -> usize {
     std::thread::available_parallelism().map_or(1, |n| n.get())
 }
 
@@ -346,7 +352,7 @@ fn train(sample: &[f32], clusters: usize, iterations: usize) -> (Vec<f32>, Vec<f
 /// A byte a dimension, scaled by the vector's largest magnitude, and the
 /// length of what the bytes leave out, rounded up: |q·v − scale·q·code| is at
 /// most |q| times it.
-fn quantize(v: &[f32], code: &mut Vec<u8>) -> (f32, f32) {
+pub(crate) fn quantize(v: &[f32], code: &mut Vec<u8>) -> (f32, f32) {
     let largest = v.iter().fold(0f32, |most, x| most.max(x.abs()));
     let scale = if largest > 0.0 { largest / 127.0 } else { 1.0 };
     let mut left = 0f64;
@@ -423,7 +429,12 @@ impl Rotation {
 /// RaBitQ's code of `v` in a cluster centred on `center`: the bits of its
 /// turned offset's signs, the offset's length, and ⟨ō, o⟩, the cosine of
 /// the offset with what its bits stand for, which the estimate divides by.
-fn rabitq(v: &[f32], center: &[f32], rotation: &Rotation, bits: &mut Vec<u8>) -> (f32, f32) {
+pub(crate) fn rabitq(
+    v: &[f32],
+    center: &[f32],
+    rotation: &Rotation,
+    bits: &mut Vec<u8>,
+) -> (f32, f32) {
     let offset: Vec<f32> = v.iter().zip(center).map(|(x, c)| x - c).collect();
     let length = norm(&offset);
     let unit: Vec<f32> = offset
@@ -553,7 +564,9 @@ pub fn build(
     std::fs::create_dir_all(out).unwrap();
 
     let started = Instant::now();
-    let mut rows = Rows::open(&docs);
+    // LAB_ROWS builds from the first rows alone, for writes to add the rest.
+    let first: usize = std::env::var("LAB_ROWS").map_or(usize::MAX, |rows| rows.parse().unwrap());
+    let mut rows = Rows::open(&docs).first(first);
     let count = rows.count;
     let step = (count / sample).max(1);
     let mut taken = Vec::with_capacity(sample * DIM);
@@ -582,7 +595,7 @@ pub fn build(
         })
         .collect();
     let mut assigned = Vec::with_capacity(count);
-    let mut rows = Rows::open(&docs);
+    let mut rows = Rows::open(&docs).first(first);
     let mut doc = 0u32;
     while rows.next(16_384, &mut block) > 0 {
         let best = nearest(&block, &centroids);
@@ -624,7 +637,7 @@ pub fn build(
         .iter()
         .map(|list| list.projections / list.docs.len().max(1) as f64)
         .collect();
-    let mut rows = Rows::open(&docs);
+    let mut rows = Rows::open(&docs).first(first);
     let mut at = 0;
     while rows.next(16_384, &mut block) > 0 {
         for row in block.chunks_exact(DIM) {
@@ -761,6 +774,11 @@ pub struct Reader {
     norm_max: Vec<f64>,
     rotation: Rotation,
     pub counts: Counts,
+    /// Documents a set or a delete replaced, which the lists may still hold;
+    /// a store's readers share them with its writer.
+    pub gone: HashSet<u32>,
+    /// Whether writes keep a head of members not yet packed into the lists.
+    head: bool,
 }
 
 impl Reader {
@@ -784,6 +802,14 @@ impl Reader {
                 norm_max.push(row.get(3).unwrap());
             }
         }
+        let head = connection
+            .query_row(
+                "select count(*) from sqlite_schema where name = 'vhead'",
+                [],
+                |row| row.get::<_, i64>(0),
+            )
+            .unwrap()
+            > 0;
         Reader {
             connection,
             centroids,
@@ -792,7 +818,31 @@ impl Reader {
             norm_max,
             rotation: Rotation::new(),
             counts: Counts::default(),
+            gone: HashSet::new(),
+            head,
         }
+    }
+
+    /// A cluster as the writer now has it: new, moved by a split, or its cap
+    /// widened by a member it took.
+    pub fn set_cluster(
+        &mut self,
+        cluster: usize,
+        centroid: &[f32],
+        center: f32,
+        cos_min: f64,
+        norm_max: f64,
+    ) {
+        if cluster == self.angles.len() {
+            self.centroids.extend_from_slice(centroid);
+            self.centers.push(center);
+            self.angles.push(0.0);
+            self.norm_max.push(0.0);
+        }
+        self.centroids[cluster * DIM..][..DIM].copy_from_slice(centroid);
+        self.centers[cluster] = center;
+        self.angles[cluster] = cos_min.clamp(-1.0, 1.0).acos();
+        self.norm_max[cluster] = norm_max;
     }
 
     fn affinities(&self, q: &[f32]) -> Vec<Scored> {
@@ -856,11 +906,36 @@ impl Reader {
             let codes = row.get_ref(3).unwrap().as_blob().unwrap();
             for (at, doc) in docs.chunks_exact(4).enumerate() {
                 let doc = u32::from_le_bytes(doc.try_into().unwrap());
-                visit(doc, scales[at], errors[at], &codes[at * DIM..][..DIM]);
+                if !self.gone.contains(&doc) {
+                    visit(doc, scales[at], errors[at], &codes[at * DIM..][..DIM]);
+                }
             }
             self.counts.rows += 1;
             self.counts.members += scales.len() as u64;
             self.counts.bytes += (docs.len() + scales.len() * 8 + codes.len()) as u64;
+        }
+        drop(rows);
+        drop(statement);
+        if self.head {
+            let mut statement = self
+                .connection
+                .prepare_cached("select doc, scale, error, code from vhead where cluster = ?1")
+                .unwrap();
+            let mut rows = statement.query(params![cluster]).unwrap();
+            while let Some(row) = rows.next().unwrap() {
+                let doc: u32 = row.get(0).unwrap();
+                if !self.gone.contains(&doc) {
+                    let code = row.get_ref(3).unwrap().as_blob().unwrap();
+                    visit(
+                        doc,
+                        row.get::<_, f64>(1).unwrap() as f32,
+                        row.get::<_, f64>(2).unwrap() as f32,
+                        code,
+                    );
+                }
+                self.counts.members += 1;
+                self.counts.bytes += DIM as u64 + 12;
+            }
         }
         self.counts.clusters += 1;
     }
@@ -979,6 +1054,31 @@ impl Reader {
     /// q·c + |o| ⟨q', ō⟩ / ⟨ō, o⟩, q' the turned question held in four bits a
     /// dimension, so that ⟨q', ō⟩ comes from five popcounts a word.
     pub fn rabitq(&mut self, q: &[f32], k: usize, probes: usize, keep: usize) -> Vec<Scored> {
+        let affinities = self.affinities(q);
+        let order = Reader::nearest_clusters(affinities.clone(), probes);
+        self.rabitq_over(q, k, keep, &affinities, &order, u64::MAX)
+    }
+
+    /// As `rabitq`, reading clusters nearest first until `budget` members
+    /// were read, so that splitting clusters changes how many are probed and
+    /// not how much is read.
+    pub fn rabitq_budget(&mut self, q: &[f32], k: usize, budget: u64, keep: usize) -> Vec<Scored> {
+        let affinities = self.affinities(q);
+        let mut order = affinities.clone();
+        order.sort_unstable_by(|a, b| b.cmp(a));
+        let order: Vec<u32> = order.into_iter().map(|scored| scored.doc).collect();
+        self.rabitq_over(q, k, keep, &affinities, &order, budget)
+    }
+
+    fn rabitq_over(
+        &mut self,
+        q: &[f32],
+        k: usize,
+        keep: usize,
+        affinities: &[Scored],
+        order: &[u32],
+        budget: u64,
+    ) -> Vec<Scored> {
         let turned = self.rotation.turn(q);
         let low = turned.iter().copied().fold(f32::INFINITY, f32::min);
         let high = turned.iter().copied().fold(f32::NEG_INFINITY, f32::max);
@@ -1001,8 +1101,11 @@ impl Reader {
                 "select docs, norms, factors, bits from lrabitq where id >= ?1 and id < ?2",
             )
             .unwrap();
-        let affinities = self.affinities(q);
-        for cluster in Reader::nearest_clusters(affinities.clone(), probes) {
+        let started = self.counts.members;
+        for &cluster in order {
+            if self.counts.members - started >= budget {
+                break;
+            }
             let toward = affinities[cluster as usize].score * self.centers[cluster as usize];
             let first = i64::from(cluster) * PARTS;
             let mut rows = statement.query(params![first, first + PARTS]).unwrap();
@@ -1017,6 +1120,9 @@ impl Reader {
                     .enumerate()
                 {
                     let doc = u32::from_le_bytes(doc.try_into().unwrap());
+                    if self.gone.contains(&doc) {
+                        continue;
+                    }
                     let (ones, weighted) = kernel::planes(theirs, &planes);
                     let set = low * ones as f32 + step * weighted as f32;
                     let estimate = toward + norms[at] * ((2.0 * set - sum) / root) / factors[at];
@@ -1028,6 +1134,31 @@ impl Reader {
                 self.counts.rows += 1;
                 self.counts.members += norms.len() as u64;
                 self.counts.bytes += (docs.len() + norms.len() * 8 + bits.len()) as u64;
+            }
+            drop(rows);
+            if self.head {
+                let mut head = self
+                    .connection
+                    .prepare_cached("select doc, norm, factor, bits from vhead where cluster = ?1")
+                    .unwrap();
+                let mut rows = head.query(params![cluster]).unwrap();
+                while let Some(row) = rows.next().unwrap() {
+                    let doc: u32 = row.get(0).unwrap();
+                    if self.gone.contains(&doc) {
+                        continue;
+                    }
+                    let length = row.get::<_, f64>(1).unwrap() as f32;
+                    let factor = row.get::<_, f64>(2).unwrap() as f32;
+                    let (ones, weighted) =
+                        kernel::planes(row.get_ref(3).unwrap().as_blob().unwrap(), &planes);
+                    let set = low * ones as f32 + step * weighted as f32;
+                    top.push(Scored {
+                        score: toward + length * ((2.0 * set - sum) / root) / factor,
+                        doc,
+                    });
+                    self.counts.members += 1;
+                    self.counts.bytes += SIGN_BYTES as u64 + 12;
+                }
             }
             self.counts.clusters += 1;
         }

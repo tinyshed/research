@@ -19,6 +19,7 @@ mod plan;
 mod tant;
 mod typo;
 mod vectors;
+mod vwrite;
 
 use std::collections::HashMap;
 use std::io::Write;
@@ -48,6 +49,7 @@ fn main() {
         Some("vbuild") => vbuild(&args[1..]),
         Some("vquery") => vquery(&args[1..]),
         Some("vhybrid") => vhybrid(&args[1..]),
+        Some("vchurn") => vwrite::churn(&args[1..]),
         Some("tokens") => {
             let analyzer = Analyzer::new(Analysis::named(&args[1]));
             for token in analyzer.tokens(&args[2]) {
