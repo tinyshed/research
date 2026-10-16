@@ -34,7 +34,7 @@ for group in ('retrieval','scale'):
   if group=='retrieval':quality.append([label,vals(rs,lambda a:f(a['quality']['ndcg10'])),vals(rs,lambda a:f(a['quality']['mrr10'])),vals(rs,lambda a:f(a['quality']['recall10'])),vals(rs,lambda a:f(a['quality']['known_negative_per_query'])),vals(rs,lambda a:f(a['quality']['judged_per_query'])),vals(rs,lambda a:f(a['judged_pool_quality']['ndcg10'])),vals(rs,lambda a:f(a['judged_pool_quality']['recall10']))])
  table(group.capitalize()+' build/top-10',['Scenario','Docs','Build s','Query p50 ms','p95 ms','p99 ms','Query/s','Index MiB','Source MiB','Build RSS MiB','Build WAL file MiB'],rows)
  table('Natural query relevance (200 queries/language; mixed=600)',['Scenario','nDCG@10','MRR@10','Recall@10','Known negatives/query','Judged docs/query','Judged-pool nDCG@10','Judged-pool recall@10'],quality)
- if rows:lines.extend(['Main query timings return IDs, not hydrated source documents. Both engines index full positions/frequencies. Ranked BM25 defaults, field normalization and synonym scoring differ; same analyzer does not imply identical ranks. Unicode61 is an analyzer baseline, not the same token semantics as ICU. Standalone source/index commits in the Tantivy arm are independent. Scale repeats the natural pool and limits to 60 queries; its relevance values are not population-quality measurements.',''])
+ if rows:lines.extend(['Main query timings return IDs, not hydrated source documents. Both engines index full positions/frequencies. Ranked BM25 defaults, field normalization and synonym scoring differ; same analyzer does not imply identical ranks. Unicode61 is an analyzer baseline, not the same token semantics as ICU. Standalone source/index commits in the Tantivy arm are independent. Scale repeats the natural pool and limits to the first 60 queries (RU, over mixed RU/EN/ZH documents); its relevance values are not population-quality measurements.',''])
 rows=[]
 for label,rs in grouped('retrieval'):
  for i,phase in enumerate(rs[0]['result']['mutations']):
@@ -53,11 +53,15 @@ rows=[]
 for label,rs in grouped('owned-store'):
  rows.append([label,vals(rs,lambda a:f(a['bulk_import_us']/1e6)),vals(rs,lambda a:ms(a['query_top10_hydrated']['p50_us'])),vals(rs,lambda a:ms(a['query_top10_hydrated']['p95_us'])),vals(rs,lambda a:ms(a['query_top10_hydrated']['p99_us'])),vals(rs,lambda a:f(a['query_per_s'])),vals(rs,lambda a:mib(a['initial_backend_bytes'])),vals(rs,lambda a:mib(a['initial_wal_peak_bytes'])),vals(rs,lambda a:f(a['build_memory']['rss_kib']/1024)),vals(rs,lambda a:mib(a['final_backend_bytes']))])
 table('Authoritative standalone collections: actual stored fields hydrated, 60 queries',['Scenario','Import s','Query p50 ms','p95 ms','p99 ms','Query/s','Backend MiB','WAL MiB','Build RSS MiB','After churn MiB'],rows)
-rows=[]
+individual=[];batched=[]
 for label,rs in grouped('owned-store'):
  for i,phase in enumerate(rs[0]['result']['mutation_phases']):
-  rows.append([label,phase['operation'],phase['batch'],vals(rs,lambda a,i=i:ms(a['mutation_phases'][i]['commit_and_visibility']['p50_us'])),vals(rs,lambda a,i=i:ms(a['mutation_phases'][i]['commit_and_visibility']['p99_us'])),vals(rs,lambda a,i=i:f(a['mutation_phases'][i]['documents']*1e6/a['mutation_phases'][i]['commit_and_visibility']['sum_us']))])
-table('Owned-store mutations include durable commit and reader visibility',['Scenario','Operation','Docs/commit','Commit p50 ms','p99 ms','Doc/s'],rows)
-lines.extend(['Bulk import is one durable commit through upsert; incremental batch=1 and batch=100 are distinct workloads. SQLite checkpoints occur outside operation latency; Tantivy uses synchronous commit/reload and its normal background merge behavior. These timings do not establish TinyStore grouped-commit integration or cross-engine transactions.',''])
+  rate=vals(rs,lambda a,i=i:f(a['mutation_phases'][i]['documents']*1e6/a['mutation_phases'][i]['commit_and_visibility']['sum_us']))
+  if phase['batch']==1:
+   individual.append([label,phase['operation'],vals(rs,lambda a,i=i:ms(a['mutation_phases'][i]['commit_and_visibility']['p50_us'])),vals(rs,lambda a,i=i:ms(a['mutation_phases'][i]['commit_and_visibility']['p95_us'])),vals(rs,lambda a,i=i:ms(a['mutation_phases'][i]['commit_and_visibility']['p99_us'])),rate])
+  else:batched.append([label,phase['operation'],vals(rs,lambda a,i=i:ms(a['mutation_phases'][i]['commit_and_visibility']['sum_us'])),rate])
+table('Owned-store individual commits: 100 operations/pass, commit and visibility included',['Scenario','Operation','p50 ms','p95 ms','p99 ms','Observed Doc/s'],individual)
+table('One 100-document commit/pass: observed batch time, not latency quantiles',['Scenario','Operation','Complete commit ms','Amortized Doc/s'],batched)
+lines.extend(['The owned-store query sample is the first 60 natural RU queries over mixed RU/EN/ZH documents; it is not a balanced multilingual latency distribution. Mutations change the first 100 RU documents. Bulk import is one durable commit through upsert; incremental batch=1 and batch=100 are distinct workloads. Batch=100 has one sample/pass: its amortized rate is not steady-state throughput. SQLite checkpoints occur outside operation latency; Tantivy uses synchronous commit/reload and its normal background merge behavior. These timings do not establish TinyStore grouped-commit integration or cross-engine transactions.',''])
 table('Raw inventory',['File','Records','Nonzero process exits'],[[p.name,len(rs:=read(p.stem)),sum(r['exit']!=0 for r in rs)]for p in sorted(DATA.glob('*.jsonl'))])
 OUT.write_text('\n'.join(lines)+'\n');print(OUT)
