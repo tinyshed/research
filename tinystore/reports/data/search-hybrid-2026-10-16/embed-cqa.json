@@ -1,0 +1,68 @@
+{
+ "model": "BAAI/bge-m3",
+ "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+ "longest_tokens": 512,
+ "precision": "float16",
+ "torch": "2.11.0+cu128",
+ "transformers": "5.20.0",
+ "sentence_transformers": "6.1.0",
+ "gpu": "NVIDIA GeForce RTX 5070",
+ "documents": 457199,
+ "parts": [
+  {
+   "part": 0,
+   "seconds": 110.83030940000026,
+   "tokens": 6691323
+  },
+  {
+   "part": 1,
+   "seconds": 103.44935350000742,
+   "tokens": 6166107
+  },
+  {
+   "part": 2,
+   "seconds": 192.33089119999204,
+   "tokens": 10489383
+  },
+  {
+   "part": 3,
+   "seconds": 229.68275659999927,
+   "tokens": 11612462
+  },
+  {
+   "part": 4,
+   "seconds": 240.55863390000013,
+   "tokens": 11874210
+  },
+  {
+   "part": 5,
+   "seconds": 249.95605090000026,
+   "tokens": 13204129
+  },
+  {
+   "part": 6,
+   "seconds": 246.23634719999973,
+   "tokens": 14021140
+  },
+  {
+   "part": 7,
+   "seconds": 188.3785971999896,
+   "tokens": 10371090
+  },
+  {
+   "part": 8,
+   "seconds": 202.98615910000808,
+   "tokens": 11592448
+  },
+  {
+   "part": 9,
+   "seconds": 31.04228309998871,
+   "tokens": 1752415
+  }
+ ],
+ "questions": {
+  "count": 600,
+  "seconds": 0.21654409999609925,
+  "tokens": 8844
+ }
+}

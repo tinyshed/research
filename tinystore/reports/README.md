@@ -23,6 +23,8 @@ and the words fused with the vectors or scored again on them.
 commit of its own and split past twice the mean, under 130,000 writes and a language the clusters never saw.
 [The words' writer held in steps](search-wchurn-2026-10-16.md): the head packed and the gone purged a few
 thousand rows or keys a commit, the writer held 92 ms at most where a whole pack held it a second.
+[Words and vectors out of the model's domain](search-hybrid-2026-10-16.md): Amazon's products and
+StackExchange, fusion by rank against a convex sum of scores, the words' hundred scored again, codes apart.
 
 The 22–23 September architecture implementation rounds on
 `codex/architecture-measurements` measured intermediate uncommitted states.
