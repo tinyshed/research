@@ -2,7 +2,7 @@
   "dataset": "miracl/nomiracl",
   "revision": "ecd08778d0426a5ca28ac99763b0c9ddc2c78e68",
   "upstream": "https://huggingface.co/datasets/miracl/nomiracl",
-  "license_note": "Read upstream README: human judgments CC BY-SA 4.0; Wikipedia passages retain source attribution/license. Text fetched and ignored, not redistributed.",
+  "license_note": "Read upstream README: dataset card declares Apache-2.0; Wikipedia passages retain source attribution/license. Text fetched and ignored, not redistributed.",
   "selection": "200 dev.relevant queries/language sorted by SHA256(query id); entire released judged passage pool (dev/test union), not full Wikipedia corpus",
   "cohorts": {
     "ru": {

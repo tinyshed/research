@@ -3,14 +3,14 @@
 import json
 from pathlib import Path
 docs=[
- ('RU cats','Кошки спят на диване.'),('RU dogs','Собаки гуляют по улице.'),
- ('EN tests','Developers are running tests.'),('EN cats','The cats sleep on a sofa.'),
+ ('Кошки','Кошки спят на диване.'),('Собаки','Собаки гуляют по улице.'),
+ ('EN tests','Developers are running tests.'),('Cats','The cats sleep on a sofa.'),
  ('ZH database','我喜欢数据库系统。'),('ZH books','我买了一本数据库设计的书。'),
  ('ZH university','北京大学的研究生正在学习。'),('ZH students','北京的大学生喜欢运动。'),
  ('Mixed','SQLite хранит базы данных. Developers are running tests. 我喜欢数据库系统。'),
- ('RU replication','Как работает репликация SQLite. Разбираемся в WAL и распределённых системах.'),
+ ('Репликация','Как работает репликация SQLite. Разбираемся в WAL и распределённых системах.'),
  ('RU metal','Сталь используется для изготовления инструментов.'),('RU verb','Дети стали читать книги.'),
- ('RU people','Люди работают в лаборатории.'),('RU fir','Ёлки растут в лесу.'),
+ ('Люди','Люди работают в лаборатории.'),('Лес','Ёлки растут в лесу.'),
  ('DE houses','Die Häuser stehen am Fluss.'),('FR horses','Les chevaux courent dans le pré.'),
  ('JA database','データベースシステムを学ぶ。'),('TH','ฉันชอบระบบฐานข้อมูล'),
  ('Unicode width','ＡＢＣ Café Straße İstanbul'),('EN unrelated','The building has a roof.')]

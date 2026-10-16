@@ -65,7 +65,7 @@ impl Analyzer {
             #[cfg(feature = "jieba")]
             if let Some(j) = &self.jieba {
                 for t in j.cut(text, true) {
-                    let start = t.word.as_ptr() as usize - text.word.as_ptr() as usize;
+                    let start = t.word.as_ptr() as usize - text.as_ptr() as usize;
                     spans.push((start, start + t.word.len()));
                 }
             }
