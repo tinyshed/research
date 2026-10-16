@@ -18,6 +18,7 @@ mod plan;
 #[cfg(feature = "tantivy")]
 mod tant;
 mod typo;
+mod vectors;
 
 use std::collections::HashMap;
 use std::io::Write;
@@ -39,6 +40,14 @@ fn main() {
         Some("write") => write(&args[1..]),
         Some("check") => check(&args[1..]),
         Some("churn") => churn(&args[1..]),
+        Some("export") => export(&args[1..]),
+        Some("vtruth") => emit(vectors::truth(
+            Path::new(&args[1]),
+            args[2].parse().unwrap(),
+        )),
+        Some("vbuild") => vbuild(&args[1..]),
+        Some("vquery") => vquery(&args[1..]),
+        Some("vhybrid") => vhybrid(&args[1..]),
         Some("tokens") => {
             let analyzer = Analyzer::new(Analysis::named(&args[1]));
             for token in analyzer.tokens(&args[2]) {
@@ -54,6 +63,252 @@ struct Asked {
     id: String,
     text: String,
     judged: HashMap<String, u8>,
+}
+
+/// A cohort's passages and questions as JSON lines, in the order every index
+/// numbers them, for a model outside the lab to embed: passage n is document
+/// n + 1 of each index.
+fn export(args: &[String]) {
+    let [corpus, out, cohort] = args else {
+        panic!("export <corpus> <out> <cohort>")
+    };
+    let loaded = corpus::load(Path::new(corpus), cohort);
+    let out = Path::new(out);
+    std::fs::create_dir_all(out).unwrap();
+    let mut docs = std::io::BufWriter::new(std::fs::File::create(out.join("docs.jsonl")).unwrap());
+    for doc in &loaded.docs {
+        let line = json!({"id": doc.id, "title": doc.title, "text": doc.text});
+        writeln!(docs, "{line}").unwrap();
+    }
+    docs.flush().unwrap();
+    let mut questions =
+        std::io::BufWriter::new(std::fs::File::create(out.join("questions.jsonl")).unwrap());
+    for question in &loaded.questions {
+        writeln!(
+            questions,
+            "{}",
+            json!({"id": question.id, "text": question.text})
+        )
+        .unwrap();
+    }
+    questions.flush().unwrap();
+    emit(
+        json!({"step": "export", "cohort": cohort, "documents": loaded.docs.len(), "questions": loaded.questions.len()}),
+    );
+}
+
+/// `vbuild <vectors> <out> vectors <clusters> <sample> <iterations>`, or
+/// `hnsw`, `sqlitevec`, or `vec1 <buckets> <codesize> <sample>`.
+fn vbuild(args: &[String]) {
+    let (vectors, out) = (Path::new(&args[0]), Path::new(&args[1]));
+    std::fs::create_dir_all(out).unwrap();
+    let number = |at: usize| -> usize { args[at].parse().unwrap() };
+    let mut line = match args[2].as_str() {
+        "vectors" => vectors::build(vectors, out, number(3), number(4), number(5)),
+        #[cfg(feature = "usearch")]
+        "hnsw" => vectors::hnsw::build(vectors, out),
+        #[cfg(feature = "sqlitevec")]
+        "sqlitevec" => vectors::scan::build(vectors, out),
+        #[cfg(feature = "vec1")]
+        "vec1" => vectors::ivf1::build(vectors, out, number(3), number(4), number(5)),
+        other => panic!("no vector backend {other}"),
+    };
+    line["memory"] = memory();
+    emit(line);
+}
+
+/// What a vector arm asks: the words index's ids and judged questions, the
+/// questions' vectors and their exact answers, the first `questions` of each.
+struct VectorQuestions {
+    ids: Vec<String>,
+    asked: Vec<Asked>,
+    vectors: Vec<f32>,
+    truth: Vec<Vec<vectors::Scored>>,
+}
+
+fn vector_questions(vectors: &Path, words: &Path, questions: usize) -> VectorQuestions {
+    let ids = std::fs::read_to_string(words.join("ids.txt"))
+        .unwrap()
+        .lines()
+        .map(str::to_owned)
+        .collect();
+    let mut asked: Vec<Asked> =
+        serde_json::from_slice(&std::fs::read(words.join("questions.json")).unwrap()).unwrap();
+    asked.truncate(questions);
+    let mut asked_vectors = vectors::read_all(&vectors.join("questions.f32"));
+    asked_vectors.truncate(questions * vectors::DIM);
+    let mut truth = vectors::read_truth(vectors);
+    truth.truncate(questions);
+    VectorQuestions {
+        ids,
+        asked,
+        vectors: asked_vectors,
+        truth,
+    }
+}
+
+/// `vquery <vectors> <out> <words index> <arm> <questions>`: a pass to warm
+/// the pages, then one timed, each answer compared with the exact one.
+fn vquery(args: &[String]) {
+    let [vectors, out, words, arm, questions] = args else {
+        panic!("vquery <vectors> <out> <words index> <arm> <questions>")
+    };
+    let (vectors, out) = (Path::new(vectors), Path::new(out));
+    let k: usize = std::env::var("LAB_K").map_or(10, |k| k.parse().unwrap());
+    let given = vector_questions(vectors, Path::new(words), questions.parse().unwrap());
+    let n = given.asked.len();
+    let baseline = memory();
+    let opened = Instant::now();
+    let mut searcher = vectors::Searcher::open(vectors, out, arm);
+    let open_millis = opened.elapsed().as_secs_f64() * 1e3;
+    let round = std::env::var("LAB_ROUND").unwrap_or_default();
+    let context = json!({"arm": arm, "round": round, "questions": n, "k": k});
+    for pass in 0..2 {
+        searcher.take_counts();
+        let (mut ran, mut recall, mut differ) = (Vec::new(), 0.0, 0);
+        for (q, exact) in given.vectors.chunks_exact(vectors::DIM).zip(&given.truth) {
+            let started = Instant::now();
+            let found = searcher.search(q, k);
+            let millis = started.elapsed().as_secs_f64() * 1e3;
+            let exact = &exact[..k];
+            recall += found
+                .iter()
+                .filter(|s| exact.iter().any(|e| e.doc == s.doc))
+                .count() as f64
+                / k as f64;
+            let same = found.len() == k
+                && found
+                    .iter()
+                    .zip(exact)
+                    .all(|(a, b)| a.doc == b.doc && a.score.to_bits() == b.score.to_bits());
+            differ += usize::from(!same);
+            ran.push(Ran {
+                ids: found.iter().map(|s| s.doc).collect(),
+                millis,
+                hydrate_millis: 0.0,
+                queries: 0,
+            });
+        }
+        let counts = searcher.take_counts();
+        if pass == 0 {
+            continue;
+        }
+        let mut line = summary(&given.asked, &ran, &given.ids);
+        line["step"] = json!("vquery");
+        line["recall_exact"] = json!(recall / n as f64);
+        line["differ"] = json!(differ);
+        line["read"] = counts.per(n);
+        line["context"] = context.clone();
+        emit(line);
+    }
+    emit(
+        json!({"step": "memory", "context": context, "open_millis": open_millis, "baseline": baseline, "memory": memory()}),
+    );
+}
+
+/// Reciprocal rank fusion: each list adds 1 / (60 + rank) to a document.
+fn fused(lists: &[&[u32]], k: usize) -> Vec<u32> {
+    let mut scores: HashMap<u32, f64> = HashMap::new();
+    for list in lists {
+        for (rank, doc) in list.iter().enumerate() {
+            *scores.entry(*doc).or_default() += 1.0 / (60.0 + rank as f64 + 1.0);
+        }
+    }
+    let mut all: Vec<(u32, f64)> = scores.into_iter().collect();
+    all.sort_by(|a, b| b.1.total_cmp(&a.1).then(a.0.cmp(&b.0)));
+    all.into_iter().take(k).map(|(doc, _)| doc).collect()
+}
+
+/// `vhybrid <vectors> <out> <words index> <arm> <questions>`: the words'
+/// hundred best by `or` over the compact blocks, the vectors' hundred best
+/// by the arm, and the ten of their fusion, each judged on its own; and the
+/// words' hundred scored on their vectors as given, which needs no vector
+/// index: fused with the words, and alone.
+fn vhybrid(args: &[String]) {
+    let [vectors, out, words, arm, questions] = args else {
+        panic!("vhybrid <vectors> <out> <words index> <arm> <questions>")
+    };
+    let (vectors, out, words) = (Path::new(vectors), Path::new(out), Path::new(words));
+    let given = vector_questions(vectors, words, questions.parse().unwrap());
+    let analyzer = Analyzer::new(Analysis::named("auto"));
+    let mut index = compact::Compact::open(&words.join("index.db"));
+    let mut searcher = vectors::Searcher::open(vectors, out, arm);
+    let mut reader = vectors::Reader::open(out);
+    let round = std::env::var("LAB_ROUND").unwrap_or_default();
+    let context = json!({"arm": arm, "round": round, "questions": given.asked.len(), "depth": 100});
+    for pass in 0..2 {
+        let (mut alone, mut near, mut both) = (Vec::new(), Vec::new(), Vec::new());
+        let (mut rescored, mut reordered) = (Vec::new(), Vec::new());
+        for (question, q) in given
+            .asked
+            .iter()
+            .zip(given.vectors.chunks_exact(vectors::DIM))
+        {
+            let started = Instant::now();
+            let found = plan::run(
+                &mut index,
+                Plan::Or,
+                plan::words(&analyzer, &question.text),
+                0.05,
+                100,
+            )
+            .ids;
+            let worded = started.elapsed().as_secs_f64() * 1e3;
+            let nearest: Vec<u32> = searcher.search(q, 100).iter().map(|s| s.doc).collect();
+            let total = started.elapsed().as_secs_f64() * 1e3;
+            let top = |list: &[u32]| list.iter().take(10).copied().collect::<Vec<u32>>();
+            alone.push(Ran {
+                ids: top(&found),
+                millis: worded,
+                hydrate_millis: 0.0,
+                queries: 0,
+            });
+            near.push(Ran {
+                ids: top(&nearest),
+                millis: total - worded,
+                hydrate_millis: 0.0,
+                queries: 0,
+            });
+            both.push(Ran {
+                ids: fused(&[&found, &nearest], 10),
+                millis: total,
+                hydrate_millis: 0.0,
+                queries: 0,
+            });
+            let again = Instant::now();
+            let scored: Vec<u32> = reader.score(q, &found).iter().map(|s| s.doc).collect();
+            let millis = worded + again.elapsed().as_secs_f64() * 1e3;
+            rescored.push(Ran {
+                ids: fused(&[&found, &scored], 10),
+                millis,
+                hydrate_millis: 0.0,
+                queries: 0,
+            });
+            reordered.push(Ran {
+                ids: top(&scored),
+                millis,
+                hydrate_millis: 0.0,
+                queries: 0,
+            });
+        }
+        if pass == 0 {
+            continue;
+        }
+        let modes = [
+            ("words", &alone),
+            ("vectors", &near),
+            ("hybrid", &both),
+            ("words rescored, fused", &rescored),
+            ("words rescored", &reordered),
+        ];
+        for (mode, ran) in modes {
+            let mut line = summary(&given.asked, ran, &given.ids);
+            line["step"] = json!("vhybrid");
+            line["mode"] = json!(mode);
+            line["context"] = context.clone();
+            emit(line);
+        }
+    }
 }
 
 fn index_path(out: &Path, cohort: &str, analysis: &str, backend: &str) -> PathBuf {

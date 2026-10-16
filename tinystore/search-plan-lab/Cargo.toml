@@ -5,7 +5,7 @@ edition = "2024"
 publish = false
 
 [features]
-default = ["analyzer", "typo", "icu", "tantivy"]
+default = ["analyzer", "typo", "icu", "tantivy", "usearch", "sqlitevec"]
 # The analyzer TinyStore would ship: words by Unicode's rules, bigrams for
 # scripts written without spaces, Snowball stems, a typo's candidates.
 analyzer = ["dep:unicode-segmentation", "dep:unicode-normalization", "dep:rust-stemmers"]
@@ -13,6 +13,11 @@ typo = ["dep:fst", "dep:levenshtein_automata"]
 # Controls the round compares against, never shipped by it.
 icu = ["dep:icu_segmenter"]
 tantivy = ["dep:tantivy"]
+# The vectors' controls: an HNSW graph in memory, and a scan of every vector in SQLite.
+usearch = ["dep:usearch"]
+sqlitevec = ["dep:sqlite-vec"]
+# SQLite's own vector extension, IVF with OPQ codes; needs VEC1_C, see build.rs.
+vec1 = ["dep:libsqlite3-sys"]
 
 [dependencies]
 rusqlite = { version = "=0.40.2", default-features = false, features = ["bundled", "cache"] }
@@ -23,10 +28,17 @@ fst = { version = "=0.4.7", optional = true }
 levenshtein_automata = { version = "=0.2.1", optional = true }
 icu_segmenter = { version = "=2.3.0", optional = true }
 tantivy = { version = "=0.26.2", optional = true, default-features = false, features = ["mmap", "lz4-compression"] }
+usearch = { version = "=2.26.2", optional = true }
+sqlite-vec = { version = "=0.1.9", optional = true }
+# Named only so that build.rs learns where the bundled sqlite3.h is.
+libsqlite3-sys = { version = "=0.38.2", optional = true, features = ["bundled"] }
 serde = { version = "=1.0.229", features = ["derive"] }
 serde_json = "=1.0.151"
 flate2 = "1"
 sha2 = "0.10"
+
+[build-dependencies]
+cc = "1"
 
 [[bin]]
 name = "lab"

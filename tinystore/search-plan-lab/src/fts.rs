@@ -45,6 +45,19 @@ pub fn open(path: &Path) -> Connection {
     connection
 }
 
+/// Bytes by b-tree, from dbstat, the largest first.
+pub fn objects(connection: &Connection) -> Vec<(String, u64)> {
+    connection
+        .prepare("select name, sum(pgsize) from dbstat group by name order by 2 desc")
+        .unwrap()
+        .query_map([], |row| {
+            Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)? as u64))
+        })
+        .unwrap()
+        .map(Result::unwrap)
+        .collect()
+}
+
 pub struct Built {
     pub seconds: f64,
     /// Bytes by b-tree, from dbstat.
