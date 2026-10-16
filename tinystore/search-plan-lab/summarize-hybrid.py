@@ -1,13 +1,15 @@
-"""The hybrid round's tables: python summarize-hybrid.py <data dir>.
+"""The hybrid round's tables: python summarize-hybrid.py <data dir> <judged dir>.
 
 Every mode's nDCG@10 over each cohort's 600 questions, then by the kind of
 question: one naming a thing by a code (a model number, a version, an
 identifier in code) against one in words alone; ESCI's also by its graded
 labels, Exact 3, Substitute 2, Complement 1, Irrelevant 0; then the
 differences that decide the fusion, each question paired with itself, with a
-95 % interval from 2,000 resamples of the questions.
+95 % interval from 2,000 resamples of the questions. The questions and their
+judgments are the corpus's: run-hybrid.sh leaves them in <judged dir>, beside it.
 """
 
+import gzip
 import json
 import math
 import random
@@ -17,6 +19,7 @@ from collections import defaultdict
 from pathlib import Path
 
 data = Path(sys.argv[1])
+judged = Path(sys.argv[2])
 
 # A code: letters and digits in one token (s10e, rtx3080, 4k), an identifier
 # written as code (snake_case, camelCase, dotted.name, call(), --flag), or a
@@ -53,7 +56,7 @@ def ndcg(found, gains):
 
 def graded(cohort):
     gains = defaultdict(dict)
-    for path in sorted((data / f"raw-{cohort}").glob("graded-*.tsv")):
+    for path in sorted((judged / cohort).glob("graded-*.tsv")):
         locale = path.stem.split("-")[1]
         for line in path.read_text(encoding="utf-8").splitlines():
             question, _, doc, grade = line.split("\t")
@@ -65,15 +68,39 @@ def graded(cohort):
 # words' and its rescoring's times were spent searching.
 TIMED = ("words", "words rescored", "words rescored, fused")
 
+lines = [json.loads(line) for line in (data / "hybrid.jsonl").read_text(encoding="utf-8").splitlines()]
+for h in lines:
+    # The ESCI run went before the script named each line's cohort.
+    h["cohort"] = h["context"]["round"] or "esci"
+    h["exact"] = h["context"]["arm"] == "truth"
+
+print("## nDCG@10 by mode\n")
+columns = sorted({(h["cohort"], h["exact"]) for h in lines}, key=lambda c: (c[0] != "esci", not c[1]))
+modes = list(dict.fromkeys(h["mode"] for h in lines))
+found = {(h["cohort"], h["exact"], h["mode"]): h["ndcg10"] for h in lines}
+table(["mode"] + [f"{cohort} {'exact' if exact else 'clusters'}" for cohort, exact in columns],
+      [[mode] + [f"{found[(*column, mode)]:.4f}" for column in columns] for mode in modes])
+
+print("## Builds\n")
+built = [json.loads(line) for line in (data / "builds.jsonl").read_text(encoding="utf-8").splitlines()]
+rows = []
+for b in built:
+    if b["step"] == "build":
+        cohort = b["cohort"]
+        rows.append([cohort, "words", f"{b['documents']:,}", f"{b['index']['bytes'] / 2**20:,.0f}",
+                     ", ".join(f"{name} {size / 2**20:,.0f}" for name, size in b["index"]["objects"] if size > 2**20),
+                     f"{b['index']['seconds']:.0f}", f"{b['memory']['hwm_kib'] / 1024:,.0f}"])
+    elif b["step"] == "vbuild":
+        rows.append([cohort, f"vectors, {b['clusters']:,} clusters", f"{b['documents']:,}", f"{b['bytes'] / 2**20:,.0f}",
+                     ", ".join(f"{name} {size / 2**20:,.0f}" for name, size in b["objects"] if size > 2**20),
+                     f"{b['seconds']['total']:.0f}", f"{b['memory']['hwm_kib'] / 1024:,.0f}"])
+table(["cohort", "index", "documents", "MiB", "of which, MiB", "s", "HWM MiB"], rows)
+
 print("## Every mode, all questions\n")
 rows = []
-for line in (data / "hybrid.jsonl").read_text(encoding="utf-8").splitlines():
-    h = json.loads(line)
-    arm = h["context"]["arm"]
-    # The ESCI run went before the script named each line's cohort.
-    cohort = h["context"]["round"] or "esci"
-    timed = arm != "truth" or h["mode"] in TIMED
-    rows.append([cohort, arm, h["mode"], f"{h['ndcg10']:.4f}", f"{h['recall10']:.4f}",
+for h in lines:
+    timed = not h["exact"] or h["mode"] in TIMED
+    rows.append([h["cohort"], h["context"]["arm"], h["mode"], f"{h['ndcg10']:.4f}", f"{h['recall10']:.4f}",
                  f"{h['p50_ms']:.2f}" if timed else "", f"{h['p99_ms']:.2f}" if timed else ""])
 table(["cohort", "vectors by", "mode", "nDCG@10", "Recall@10", "p50 ms", "p99 ms"], rows)
 
@@ -92,7 +119,7 @@ for cohort in ("esci", "cqa"):
     folder = data / f"raw-{cohort}"
     if not folder.exists():
         continue
-    asked = json.loads((folder / "questions.json").read_text(encoding="utf-8"))
+    asked = json.loads((judged / cohort / "questions.json").read_text(encoding="utf-8"))
     binary = {q["id"]: {doc: grade for doc, grade in q["judged"].items()} for q in asked}
     kinds = {q["id"]: kind(q["text"]) for q in asked}
     sets = {q["id"]: q["id"].split(":")[0] for q in asked}
@@ -103,14 +130,16 @@ for cohort in ("esci", "cqa"):
     print(f"## {cohort}: by kind of question ({dict(counted)})\n")
     rows = []
     scores = defaultdict(dict)
-    for path in sorted(folder.glob("hybrid-*.jsonl")):
-        arm = path.stem.removeprefix("hybrid-")
+    found_by = defaultdict(dict)
+    for path in sorted(folder.glob("hybrid-*.jsonl.gz")):
+        arm = path.name.removeprefix("hybrid-").removesuffix(".jsonl.gz")
         sums = defaultdict(lambda: defaultdict(list))
-        for line in path.read_text(encoding="utf-8").splitlines():
+        for line in gzip.open(path, "rt", encoding="utf-8"):
             r = json.loads(line)
             q = r["question"]
             score = ndcg(r["found"], binary[q])
             scores[(arm, r["mode"])][q] = score
+            found_by[(arm, r["mode"])][q] = r["found"]
             sums[r["mode"]]["all"].append(score)
             sums[r["mode"]][kinds[q]].append(score)
             sums[r["mode"]][sets[q]].append(score)
@@ -126,6 +155,11 @@ for cohort in ("esci", "cqa"):
     if cohort == "esci":
         header += ["graded", "us", "es", "jp"]
     table(header, rows)
+
+    for arm in sorted({arm for arm, _ in found_by} - {"truth"}):
+        exact, near = found_by[("truth", "vectors")], found_by[(arm, "vectors")]
+        share = sum(len(set(exact[q][:10]) & set(near[q][:10])) / len(exact[q][:10]) for q in exact) / len(exact)
+        print(f"{cohort}: {arm}'s vectors find {share:.4f} of the exact ten\n")
 
     pairs = [(("truth", "hybrid"), ("truth", "words")),
              (("truth", "convex, vectors 0.5"), ("truth", "hybrid")),

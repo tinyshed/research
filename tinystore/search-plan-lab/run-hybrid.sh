@@ -45,12 +45,15 @@ for spec in ${SPECS:-esci:4096:rabitq:128:200 cqa:2048:rabitq:64:200}; do
   for vectors_arm in truth "$arm"; do
     LAB_ROUND=$cohort LAB_EXECUTOR=window LAB_AHEAD=8 "$lab" vhybrid "$vectors" "$out" "$words" "$vectors_arm" 600 >> "$data/hybrid.jsonl"
   done
-  mkdir -p "$data/raw-$cohort"
-  cp "$out"/raw/hybrid-*.jsonl "$data/raw-$cohort/"
-  cp "$words/questions.json" "$data/raw-$cohort/questions.json"
-done
-if [ -d "$data/raw-esci" ]; then
-  for locale in us es jp; do
-    cp "/perf/hybrid/corpus/esci-$locale/qrels/graded.tsv" "$data/raw-esci/graded-$locale.tsv"
+  mkdir -p "$data/raw-$cohort" "$given/judged/$cohort"
+  for raw in "$out"/raw/hybrid-*.jsonl; do
+    gzip -c "$raw" > "$data/raw-$cohort/$(basename "$raw").gz"
   done
-fi
+  # The questions and their judgments are the corpus's, so they stay beside it.
+  cp "$words/questions.json" "$given/judged/$cohort/questions.json"
+  if [ "$cohort" = esci ]; then
+    for locale in us es jp; do
+      cp "/perf/hybrid/corpus/esci-$locale/qrels/graded.tsv" "$given/judged/esci/graded-$locale.tsv"
+    done
+  fi
+done
