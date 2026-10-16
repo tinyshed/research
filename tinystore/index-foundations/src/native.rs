@@ -174,6 +174,13 @@ pub fn triggers(c: &Connection, g: i64, kind: &str, algorithm: &str, guard: bool
         dirty("new"),dirty("old"),dirty("old"),dirty("new"))).unwrap();
 }
 pub fn build(c: &Connection, g: i64, kind: &str, definition: i64) {
+    if kind.starts_with("fts") && std::env::var_os("BENCH_SQL_BULK").is_some() {
+        c.execute(
+            &format!("insert into g{g}(rowid,terms) select id,terms || case when ?1=1 then '' else ' def'||?1 end from documents order by id"),
+            [definition],
+        ).unwrap();
+        return;
+    }
     if kind == "geo" && std::env::var_os("BENCH_SQL_BULK").is_some() {
         let order = std::env::var("BENCH_BUILD_ORDER").unwrap_or("rowid".to_owned());
         c.create_scalar_function(
@@ -398,6 +405,12 @@ pub fn run(a: &[String]) {
     watching.store(false, std::sync::atomic::Ordering::Relaxed);
     if let Some(h) = monitor {
         h.join().unwrap();
+    }
+    // Optional correctness observer runs outside the captured build time/WAL.
+    // Both paired SQL-native controls enable it, preserving query warmup parity.
+    if kind.starts_with("fts") && std::env::var_os("BENCH_VERIFY_FTS").is_some() {
+        c.execute_batch("insert into g0(g0,rank) values('integrity-check',1)")
+            .unwrap();
     }
     if build_only {
         let counts:(i64,i64)=c.query_row("select sum(length(cast(body as blob))),sum(length(cast(terms as blob))) from documents",[],|r|Ok((r.get(0)?,r.get(1)?))).unwrap();

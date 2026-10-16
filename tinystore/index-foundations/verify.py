@@ -6,7 +6,7 @@ import datetime
 import json
 import subprocess
 P=Path(__file__).resolve().parent.parent/'reports/data/index-foundations-2026-10-15'
-expected={'static':96,'locks':24,'channels':108,'rebuilds':120,'outbox':18,'geo-certified':8,'sensitivity':88,'large-crashes':16,'allocations':10,'memory':16,'core-sql':2,'pressure':4,'lease-correctness':4}
+expected={'native-sql':16,'static':96,'locks':24,'channels':108,'rebuilds':120,'outbox':18,'geo-certified':8,'sensitivity':88,'large-crashes':16,'allocations':10,'memory':16,'core-sql':2,'pressure':4,'lease-correctness':4}
 rows={k:[json.loads(s) for s in (P/(k+'.jsonl')).read_text().splitlines()] for k in expected}
 for k,n in expected.items():
  assert len(rows[k])==n,(k,len(rows[k]),n)
@@ -14,6 +14,7 @@ for k,n in expected.items():
  labels=collections.defaultdict(list)
  for r in rows[k]:labels[r['label']].append(r['pass_number'])
  assert all(sorted(v)==[1,2] for v in labels.values()),(k,labels)
+assert all(r.get('matches_static_checksum') for r in rows['native-sql'])
 matched=collections.defaultdict(list)
 for r in rows['static']:
  a=r['result'];kind=a.get('kind','tantivy');family='text' if kind.startswith('fts')or kind in ('tantivy','scan-text')else'geo'if kind in ('geo','grid','rstar','scan-geo')else'secondary'

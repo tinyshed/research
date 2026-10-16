@@ -28,6 +28,8 @@ def run(args,db,label,passno):
     with OUT.open('a') as f:f.write(json.dumps(r)+'\n')
     print(label,passno,p.returncode,flush=True)
     if p.returncode:raise RuntimeError(r)
+# Serial best-native control; it restores the original main binary afterward.
+sp.run(['python3',str(ROOT.parent/'index-foundations/native-sql.py')],check=True)
 for n in (100000,1000000):
     template=SCRATCH/'template.db';tidy(template)
     sp.run([PREP,'prepare','source',str(n),'russian','ordered'],env=dict(ENV,BENCH_DB=str(template)),check=True,capture_output=True)
