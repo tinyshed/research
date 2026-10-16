@@ -22,7 +22,7 @@ def tidy(db):
 def run(args,db,label,passno):
     stamp=dt.datetime.now(dt.timezone.utc).isoformat()
     p=sp.run([BIN,*map(str,args)],env=dict(ENV,BENCH_DB=str(db)),capture_output=True,text=True,timeout=600)
-    r={'revision':REV,'utc':stamp,'label':label,'pass_number':passno,'command':'BENCH_DB=<scratch>/case.db <outbox-bin> '+' '.join(map(str,args)),'exit':p.returncode,'stderr':p.stderr.replace(str(ROOT),'<harness>').replace(str(SCRATCH),'<scratch>')}
+    r={'revision':REV,'binary_source_revision':BINARY_REV,'experimental_env':{'BENCH_SQL_BULK':'1'},'utc':stamp,'label':label,'pass_number':passno,'command':'BENCH_SQL_BULK=1 BENCH_DB=<scratch>/case.db <outbox-bin> '+' '.join(map(str,args)),'exit':p.returncode,'stderr':p.stderr.replace(str(ROOT),'<harness>').replace(str(SCRATCH),'<scratch>')}
     if p.returncode==0:r['result']=json.loads(p.stdout.strip().splitlines()[-1])
     else:r['stdout']=p.stdout
     with OUT.open('a') as f:f.write(json.dumps(r)+'\n')
@@ -30,6 +30,9 @@ def run(args,db,label,passno):
     if p.returncode:raise RuntimeError(r)
 # Serial best-native control; it restores the original main binary afterward.
 sp.run(['python3',str(ROOT.parent/'index-foundations/native-sql.py')],check=True)
+sp.run(['cargo','build','--release','--locked'],cwd=ROOT,check=True)
+BINARY_REV=sp.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip()
+ENV['BENCH_SQL_BULK']='1'
 for n in (100000,1000000):
     template=SCRATCH/'template.db';tidy(template)
     sp.run([PREP,'prepare','source',str(n),'russian','ordered'],env=dict(ENV,BENCH_DB=str(template)),check=True,capture_output=True)

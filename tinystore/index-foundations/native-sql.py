@@ -25,6 +25,7 @@ shutil.copyfile(MAIN,backup)
 try:
     sp.run(['cargo','build','--release','--locked'],cwd=ROOT,check=True)
     shutil.copyfile(MAIN,SQL)
+    SQL.chmod(0o755)
 finally:
     shutil.copyfile(backup,MAIN)
 run.BIN=str(SQL)
