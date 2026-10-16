@@ -1,5 +1,11 @@
 # Channels and Locks implementation handoff — 15 October 2026
 
+Implementation handoff has moved to the [follow-up decision matrix](followup-handoff-2026-10-15.md),
+[Channels transport report](channels-wire-followup-2026-10-15.md) and
+[actual Core Locks report](core-locks-followup-2026-10-15.md).
+They add the missing recipient/grouped-writer evidence and supersede the starting
+recommendations here. This earlier round and its measurements remain historical.
+
 This round is an implementation reference for the owner and the agent that
 will write the product code. It does not change TinyStore's API or implement
 phase 5. Prototype source, raw processes and limitations accompany every

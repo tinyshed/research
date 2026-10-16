@@ -580,3 +580,14 @@ backfill with foreground writer latency and crash/switch verification. The
 reports name the concrete current-source seams and failure gates. No result
 here authorizes durable Channels, distributed Locks, Primary election or
 vector search.
+
+The [additional handoff](reports/followup-handoff-2026-10-15.md) now supersedes
+the initial implementation preference above. Completed real-receiver measurements
+support standard broadcast as the initial Channels candidate. Completed actual
+Core admission probes require an execution-time lease predicate, bounded
+per-resource queues and explicit unknown-outcome reconciliation; the measured
+notify-all FIFO is not a demonstrated throughput winner. Concurrent generation
+rebuild is now prototyped, but hard writer-time/page bounds, old-reader cleanup,
+arbitrary definition changes and final resource/recovery evidence remain gates.
+Consult the [publication status](reports/index-foundations-2026-10-15.md) before
+treating the index round as complete.

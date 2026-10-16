@@ -280,6 +280,7 @@ Generated with `python3 tinystore/index-foundations/summarize.py`. Values separa
 | 1000000-uniform-geo-frontier-1000-32-selective-tx1-u10 | 266.98 | 1.02 | 3.80 | 14.61 | 2.08 | 1467.55 | 287.68 |
 | 1000000-uniform-geo-frontier-5000-256-selective-tx1-u10 | 100.49 | 0.70 | 3.10 | 10.61 | 30.61 | 9602.37 | 191.82 |
 | 1000000-uniform-geo-seen-2000-64-selective-tx1-u10 | 167.08 | 1.20 | 4.64 | 16.59 | 10.40 | 6250.54 | 226.06 |
+| 1000000-uniform-geo-delta-2000-64-selective-tx1-u10 | 163.93 | 1.26 | 4.73 | 14.41 | 11.00 | 5710.34 | 184.93 |
 
 ## rebuilds: offered-arrival latency
 
@@ -330,6 +331,7 @@ Generated with `python3 tinystore/index-foundations/summarize.py`. Values separa
 | 1000000-uniform-geo-frontier-1000-32-selective-tx1-u10 | 791.47 | 1390.91 | 1467.55 | 16.14 | 2000 |
 | 1000000-uniform-geo-frontier-5000-256-selective-tx1-u10 | 4173.82 | 9167.53 | 9602.37 | 58.85 | 2000 |
 | 1000000-uniform-geo-seen-2000-64-selective-tx1-u10 | 3065.24 | 5903.63 | 6250.54 | 29.86 | 2000 |
+| 1000000-uniform-geo-delta-2000-64-selective-tx1-u10 | 3035.58 | 5629.25 | 5710.34 | 21.90 | 2000 |
 
 ## rebuilds: reads and resources
 
@@ -380,6 +382,7 @@ Generated with `python3 tinystore/index-foundations/summarize.py`. Values separa
 | 1000000-uniform-geo-frontier-1000-32-selective-tx1-u10 | 261.04 | 28.92/1076.39 | 8557.88 | 8557.88 | 8890.98 | 50.02 | 2.41 | 60796/22868 |
 | 1000000-uniform-geo-frontier-5000-256-selective-tx1-u10 | 198.24 | 36.09/870.46 | 7506.80 | 7506.80 | 7839.28 | 42.79 | 0.90 | 6943/1979 |
 | 1000000-uniform-geo-seen-2000-64-selective-tx1-u10 | 214.68 | 32.86/1254.28 | 8764.47 | 8764.47 | 9106.20 | 51.71 | 0.52 | 24508/14148 |
+| 1000000-uniform-geo-delta-2000-64-selective-tx1-u10 | 235.77 | 30.17/809.36 | 8003.03 | 8003.03 | 8335.45 | 45.79 | 93.08 | 23539/13332 |
 
 ² Maximum across setup, chunk/monolithic build, checkpoint and activation holds. Foreground service excludes queue time; scheduled latency includes offered-workload backlog. Fixed main scenarios perform the same minimum 2000 transactions; long builds can outlast that write window. `continuous-*` keeps writes through publication. Zero activation for monolithic means switching is included in the monolithic hold, not separately timed. Different tx sizes, update ratios, caches and distributions are separate scenarios.
 
@@ -562,5 +565,5 @@ Generated with `python3 tinystore/index-foundations/summarize.py`. Values separa
 | locks.jsonl | 24 | 0 | 344c615f65fe |
 | preparations.jsonl | 17 | 0 | 2f47fb3c3747, 50d354e483d0, 8d4d7b79baaa, b08e6f8df1fc, f1856d9b658f |
 | pressure.jsonl | 4 | 0 | 14bfbe819eac |
-| rebuilds.jsonl | 85 | 0 | 50d354e483d0 |
+| rebuilds.jsonl | 86 | 0 | 50d354e483d0 |
 | static.jsonl | 96 | 0 | f1856d9b658f |

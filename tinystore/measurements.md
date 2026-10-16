@@ -1016,4 +1016,34 @@ is 12.35 MiB plain, 34.93 MiB FTS5, 209.67 MiB R*Tree in each pass. B-tree
 bytes are assigned with dbstat in the report, not inferred from WAL. A second
 index build preserves an old reader but holds the sole writer for its full
 transaction and prevents checkpoint progress past the held snapshot. The
-proposed chunked frontier build and protocol/SDK throughput remain unmeasured.
+proposed chunked frontier build and protocol/SDK throughput remain unmeasured
+in that earlier round; the follow-up below supersedes that evidence boundary.
+
+## Real recipients and grouped lease admission, 16 October 2026
+
+The [follow-up handoff](reports/followup-handoff-2026-10-15.md) retains the same
+Core revision `76b844c`, Linux two-CPU quota/six-GiB lab and separate paired
+passes. [Channels](reports/channels-wire-followup-2026-10-15.md) completes
+108 fresh Bun processes through embedded, Unix and TCP. It uses a private
+research route around Core with unchanged SDK internals, not a public Channels
+module. No stable shared-log advantage over standard broadcast is established.
+At 1000 connections, paced fast cases deliver all one million logical events
+in both passes; multiplexed and burst cases can lag or lose data. See the
+transport-specific delivered counts, gaps and memory budgets before quoting rates.
+
+[Locks](reports/core-locks-followup-2026-10-15.md) completes 24 processes against
+the real Core grouped writer. On one resource with 1000 synchronous callers,
+polling needs 592.09/599.60 attempts per grant; notify-all FIFO needs one but
+takes 6.414/6.382 seconds including cancellation drain, versus 3.133/3.098 for
+polling. Targeted admission is a design candidate, not a measured faster queue.
+A delayed-writer correctness probe returns an already-expired ten-millisecond
+lease after roughly 100 ms, proving that execution-time clock/predicate logic
+is needed inside the writer. Persistent fences and unknown-outcome handling
+remain product requirements.
+
+[Indexes from first principles](reports/index-foundations-2026-10-15.md) has
+96 completed static cases and concurrent rebuild evidence at 100k/1m. Its
+publication remains incremental; the report identifies outstanding cohorts.
+It does not justify a universal Index Engine. Ordinary SQL B-tree covers the
+measured secondary lookup, while online rebuild exchanges writer occupancy
+for additional WAL and needs workload-specific budgets.
