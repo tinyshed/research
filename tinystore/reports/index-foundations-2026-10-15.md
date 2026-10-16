@@ -19,6 +19,13 @@ excluded; the reason and commands are in `priority-change-2026-10-16.json`.
 This revision does not claim the outstanding results.
 [Measurement tables](index-foundations-measurements-2026-10-15.md) retain each pass.
 
+The later [multilingual Search round](search-2026-10-16.md) evaluates full
+positions, ranked natural-language queries and authoritative standalone stores.
+Its results supersede applying this round's single-term economics to that
+different Search contract. A Tantivy store owning its original documents does
+not require an outbox merely to exist; the outbox below concerns an external
+index over a separately committed source.
+
 At 1m repeated Russian rows, compact external-content FTS5 (`detail=none`,
 `columnsize=0`) builds in 11.858/14.835 s, occupies 29.99 MiB and has query p99
 6.166/6.151 ms. Tantivy Basic builds in 9.885/7.608 s, occupies 40.63/39.61 MiB

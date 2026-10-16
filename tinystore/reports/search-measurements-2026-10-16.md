@@ -230,6 +230,17 @@ For Tantivy the first latency includes SQLite work and enqueue; its separate dur
 |---|---|---|---|---|---|---|---|---|---|
 | 100000-fts-owned-hydrated | 28.144; 24.321 | 43.957; 45.689 | 122.968; 109.640 | 135.066; 118.623 | 19.540; 20.208 | 193.434; 193.434 | 194.602; 194.602 | 192.430; 192.516 | 193.434; 193.434 |
 | 100000-tant-owned-hydrated | 19.884; 25.230 | 1.399; 1.943 | 3.953; 4.866 | 4.257; 5.758 | 638.808; 450.775 | 116.068; 116.068 | 0.000; 0.000 | 380.152; 384.883 | 150.667; 139.554 |
+| 1000000-fts-owned-hydrated | 303.721; 247.646 | 363.173; 402.857 | 1228.455; 1068.141 | 1474.205; 1144.953 | 1.874; 2.227 | 1777.750; 1777.750 | 1788.194; 1788.194 | 1030.852; 1031.035 | 1777.750; 1777.750 |
+| 1000000-tant-owned-hydrated | 286.947; 216.555 | 22.816; 7.600 | 61.164; 25.141 | 67.579; 47.364 | 40.243; 105.014 | 1014.096; 1014.094 | 0.000; 0.000 | 2169.383; 2168.777 | 1012.959; 1012.957 |
+
+## Owned-store process memory and validation (includes retained parsed input)
+
+| Scenario | Idle RSS MiB | Loaded RSS MiB | Build RSS MiB | End RSS MiB | Process HWM MiB | Reopen + integrity s | Post-import checkpoint s |
+|---|---|---|---|---|---|---|---|
+| 100000-fts-owned-hydrated | 3.312; 3.508 | 183.516; 183.711 | 192.430; 192.516 | 193.223; 193.371 | 193.223; 193.371 | 14.485; 13.167 | 1.141; 0.766 |
+| 100000-tant-owned-hydrated | 3.395; 3.250 | 183.598; 183.578 | 380.152; 384.883 | 456.914; 440.578 | 458.898; 442.773 | 0.006; 0.009 | 0.000; 0.000 |
+| 1000000-fts-owned-hydrated | 3.316; 3.391 | 1018.984; 1019.184 | 1030.852; 1031.035 | 1031.906; 1031.961 | 1031.926; 1031.961 | 136.812; 159.919 | 9.786; 6.611 |
+| 1000000-tant-owned-hydrated | 3.441; 3.406 | 1019.125; 1019.074 | 2169.383; 2168.777 | 2454.090; 2439.160 | 2474.219; 2469.137 | 0.008; 0.004 | 0.000; 0.000 |
 
 ## Owned-store individual commits: 100 operations/pass, commit and visibility included
 
@@ -239,6 +250,10 @@ For Tantivy the first latency includes SQLite work and enqueue; its separate dur
 | 100000-fts-owned-hydrated | delete | 1.186; 0.764 | 2.798; 1.507 | 19.945; 20.711 | 653.637; 981.210 |
 | 100000-tant-owned-hydrated | set | 24.367; 15.979 | 145.707; 36.397 | 246.224; 52.784 | 25.879; 53.735 |
 | 100000-tant-owned-hydrated | delete | 6.225; 4.899 | 48.768; 10.635 | 235.658; 19.347 | 82.075; 178.524 |
+| 1000000-fts-owned-hydrated | set | 1.400; 1.260 | 4.102; 3.206 | 26.880; 25.365 | 461.757; 488.234 |
+| 1000000-fts-owned-hydrated | delete | 1.336; 1.068 | 3.494; 2.564 | 26.038; 28.046 | 488.229; 589.119 |
+| 1000000-tant-owned-hydrated | set | 41.219; 20.555 | 165.387; 45.839 | 213.078; 99.301 | 18.784; 40.675 |
+| 1000000-tant-owned-hydrated | delete | 9.437; 4.264 | 19.026; 7.397 | 23.115; 11.297 | 101.339; 215.297 |
 
 ## One 100-document commit/pass: observed batch time, not latency quantiles
 
@@ -248,8 +263,44 @@ For Tantivy the first latency includes SQLite work and enqueue; its separate dur
 | 100000-fts-owned-hydrated | delete | 24.659; 17.979 | 4055.314; 5562.045 |
 | 100000-tant-owned-hydrated | set | 85.231; 42.247 | 1173.282; 2367.032 |
 | 100000-tant-owned-hydrated | delete | 5.017; 9.922 | 19932.230; 10078.613 |
+| 1000000-fts-owned-hydrated | set | 63.434; 57.512 | 1576.442; 1738.768 |
+| 1000000-fts-owned-hydrated | delete | 42.092; 20.257 | 2375.748; 4936.565 |
+| 1000000-tant-owned-hydrated | set | 78.878; 40.667 | 1267.781; 2458.996 |
+| 1000000-tant-owned-hydrated | delete | 6.011; 6.171 | 16636.167; 16204.829 |
 
 The owned-store query sample is the first 60 natural RU queries over mixed RU/EN/ZH documents; it is not a balanced multilingual latency distribution. Mutations change the first 100 RU documents. Bulk import is one durable commit through upsert; incremental batch=1 and batch=100 are distinct workloads. Batch=100 has one sample/pass: its amortized rate is not steady-state throughput. SQLite checkpoints occur outside operation latency; Tantivy uses synchronous commit/reload and its normal background merge behavior. These timings do not establish TinyStore grouped-commit integration or cross-engine transactions.
+
+Quantiles use the recorded nearest upper index ceil((n-1)*p): at 60 queries and 100 mutations p99 equals the observed maximum. These small samples do not estimate a production tail SLO. FTS validation includes a full integrity scan, so its duration must not be compared with Tantivy metadata reopen as ordinary startup cost. Process RSS includes retained input; a low idle-before-load value is not steady-state index RAM.
+
+## Untimed 100k FTS file attribution after churn
+
+| Object | Pages | MiB | Payload MiB | Unused MiB |
+|---|---|---|---|---|
+| docs_config | 1 | 0.004 | 0.000 | 0.004 |
+| docs_content | 26666 | 104.164 | 86.695 | 16.397 |
+| docs_data | 20626 | 80.570 | 79.214 | 0.764 |
+| docs_docsize | 298 | 1.164 | 0.597 | 0.005 |
+| docs_idx | 162 | 0.633 | 0.462 | 0.094 |
+| keys | 562 | 2.195 | 1.611 | 0.019 |
+| sqlite_autoindex_keys_1 | 609 | 2.379 | 1.865 | 0.220 |
+| sqlite_schema | 1 | 0.004 | 0.001 | 0.003 |
+| freelist | 594 | 2.320 | — | — |
+
+## Untimed 100k Tantivy file attribution after churn
+
+| File type | MiB |
+|---|---|
+| .del | 0.002 |
+| .fast | 0.003 |
+| .fieldnorm | 0.459 |
+| .idx | 40.416 |
+| .json | 0.005 |
+| .lock | 0.000 |
+| .pos | 32.678 |
+| .store | 54.010 |
+| .term | 21.102 |
+
+This additional storage inspection is one structural sample per backend after mutation/restore, not a timing pass or a decomposition of the earlier initial-import totals. Full filenames and SQLite object pages/payload/unused bytes are retained in storage-layout.json. Do not extrapolate its split to one million rows.
 
 ## Raw inventory
 
@@ -259,7 +310,7 @@ The owned-store query sample is the first 60 natural RU queries over mixed RU/EN
 | concurrent.jsonl | 4 | 0 |
 | correctness.jsonl | 3 | 1 |
 | gold.jsonl | 12 | 0 |
-| owned-store.jsonl | 4 | 0 |
+| owned-store.jsonl | 8 | 0 |
 | retrieval.jsonl | 54 | 0 |
 | scale.jsonl | 4 | 0 |
 

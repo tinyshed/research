@@ -53,6 +53,9 @@ rows=[]
 for label,rs in grouped('owned-store'):
  rows.append([label,vals(rs,lambda a:f(a['bulk_import_us']/1e6)),vals(rs,lambda a:ms(a['query_top10_hydrated']['p50_us'])),vals(rs,lambda a:ms(a['query_top10_hydrated']['p95_us'])),vals(rs,lambda a:ms(a['query_top10_hydrated']['p99_us'])),vals(rs,lambda a:f(a['query_per_s'])),vals(rs,lambda a:mib(a['initial_backend_bytes'])),vals(rs,lambda a:mib(a['initial_wal_peak_bytes'])),vals(rs,lambda a:f(a['build_memory']['rss_kib']/1024)),vals(rs,lambda a:mib(a['final_backend_bytes']))])
 table('Authoritative standalone collections: actual stored fields hydrated, 60 queries',['Scenario','Import s','Query p50 ms','p95 ms','p99 ms','Query/s','Backend MiB','WAL MiB','Build RSS MiB','After churn MiB'],rows)
+table('Owned-store process memory and validation (includes retained parsed input)',
+      ['Scenario','Idle RSS MiB','Loaded RSS MiB','Build RSS MiB','End RSS MiB','Process HWM MiB','Reopen + integrity s','Post-import checkpoint s'],
+      [[label,vals(rs,lambda a:f(a['idle_memory']['rss_kib']/1024)),vals(rs,lambda a:f(a['loaded_memory']['rss_kib']/1024)),vals(rs,lambda a:f(a['build_memory']['rss_kib']/1024)),vals(rs,lambda a:f(a['end_memory']['rss_kib']/1024)),vals(rs,lambda a:f(a['end_memory']['hwm_kib']/1024)),vals(rs,lambda a:f(a['reopen_integrity_us']/1e6)),vals(rs,lambda a:f(a['post_import_checkpoint_us']/1e6))]for label,rs in grouped('owned-store')])
 individual=[];batched=[]
 for label,rs in grouped('owned-store'):
  for i,phase in enumerate(rs[0]['result']['mutation_phases']):
@@ -63,5 +66,17 @@ for label,rs in grouped('owned-store'):
 table('Owned-store individual commits: 100 operations/pass, commit and visibility included',['Scenario','Operation','p50 ms','p95 ms','p99 ms','Observed Doc/s'],individual)
 table('One 100-document commit/pass: observed batch time, not latency quantiles',['Scenario','Operation','Complete commit ms','Amortized Doc/s'],batched)
 lines.extend(['The owned-store query sample is the first 60 natural RU queries over mixed RU/EN/ZH documents; it is not a balanced multilingual latency distribution. Mutations change the first 100 RU documents. Bulk import is one durable commit through upsert; incremental batch=1 and batch=100 are distinct workloads. Batch=100 has one sample/pass: its amortized rate is not steady-state throughput. SQLite checkpoints occur outside operation latency; Tantivy uses synchronous commit/reload and its normal background merge behavior. These timings do not establish TinyStore grouped-commit integration or cross-engine transactions.',''])
+lines.extend(['Quantiles use the recorded nearest upper index ceil((n-1)*p): at 60 queries and 100 mutations p99 equals the observed maximum. These small samples do not estimate a production tail SLO. FTS validation includes a full integrity scan, so its duration must not be compared with Tantivy metadata reopen as ordinary startup cost. Process RSS includes retained input; a low idle-before-load value is not steady-state index RAM.',''])
+p=DATA/'storage-layout.json'
+if p.exists():
+ layout=json.loads(p.read_text())
+ for item in layout['results']:
+  if item['engine']=='fts':
+   table('Untimed 100k FTS file attribution after churn',['Object','Pages','MiB','Payload MiB','Unused MiB'],[[o['name'],o['pages'],mib(o['bytes']),mib(o['payload_bytes']),mib(o['unused_bytes'])]for o in item['objects']]+[['freelist',item['freelist_pages'],mib(item['freelist_pages']*item['page_size']),'—','—']])
+  else:
+   components=collections.Counter()
+   for file in item['files']:components[Path(file['name']).suffix or '(no suffix)']+=file['bytes']
+   table('Untimed 100k Tantivy file attribution after churn',['File type','MiB'],[[k,mib(v)]for k,v in sorted(components.items())])
+ lines.extend(['This additional storage inspection is one structural sample per backend after mutation/restore, not a timing pass or a decomposition of the earlier initial-import totals. Full filenames and SQLite object pages/payload/unused bytes are retained in storage-layout.json. Do not extrapolate its split to one million rows.',''])
 table('Raw inventory',['File','Records','Nonzero process exits'],[[p.name,len(rs:=read(p.stem)),sum(r['exit']!=0 for r in rs)]for p in sorted(DATA.glob('*.jsonl'))])
 OUT.write_text('\n'.join(lines)+'\n');print(OUT)

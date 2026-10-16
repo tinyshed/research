@@ -3,7 +3,9 @@
 Current handoff: [16 October 2026 status, including completed Channels and Locks](followup-status-2026-10-16.md).
 
 New direction: [multilingual Search research](search-2026-10-16.md), with
-[per-pass measurements](search-measurements-2026-10-16.md); publication in progress.
+[per-pass measurements](search-measurements-2026-10-16.md). Its declared Search
+suite is complete through paired 1m owned-store controls; the older Index sweep
+is paused and product implementation/fault/resource gates remain open.
 
 The 22–23 September architecture implementation rounds on
 `codex/architecture-measurements` measured intermediate uncommitted states.

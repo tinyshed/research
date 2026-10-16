@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-16T08:36:52.169552+00:00",
+  "revision": "1c1f891c03a18119da271243b264c464a0510592",
+  "binary_sha256": "a11da37a02e7353c960f71eff9283550a6153f2058b9cc71209566e210b47ab6",
+  "command": "python3 tinystore/search-store-lab/layout.py",
+  "exit": 1,
+  "error": "AssertionError: sum(files.bytes) == backend_bytes_at_output",
+  "scope": "Untimed post-close Tantivy layout inspection. Assumed pre-close directory size remained identical after backend shutdown; no numeric attribution saved on this failed attempt. Main performance records unchanged.",
+  "correction": "Record pre-close output and post-close file sum separately; attribute only the latter. Background merge/obsolete file lifecycle is a hypothesis, not isolated by this check."
+}

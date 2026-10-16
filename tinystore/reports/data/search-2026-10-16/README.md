@@ -58,6 +58,36 @@ cd <repo>
 python3 tinystore/search-lab/summarize.py
 ```
 
+The declared authoritative-store cohort is eight processes: 100k and 1m rows,
+FTS5 and Tantivy, two passes in opposite engine order. The frozen binary source
+is `31ec988e5d061a4a2ba82e1151f8a951ef8625cf`; it imports the unchanged analyzer
+from `f79080d22b4071adb88aa6d282e946079bc925d9`. Each record carries its binary
+SHA-256. Main analyzer/concurrent/scale driver revision is `4ad47b9`; it reuses
+the same `f79080d` binary. Initial lifecycle correctness probes predate that
+binary and retain their own source revisions and hashes.
+
+After all timings stop, run the evidence checks and untimed diagnostics in the
+same lab (they never rebuild or replace the frozen binaries):
+
+```sh
+cd <repo>
+python3 tinystore/search-lab/audit.py
+python3 tinystore/search-store-lab/layout.py
+python3 tinystore/search-lab/verify.py
+python3 tinystore/search-lab/summarize.py
+```
+
+`postflight-audit.json` contains a paired relevance bootstrap on the fixed mixed
+query set and an original literal/internal-token collision fixture. Its tiny
+query timings are excluded from performance claims. `storage-layout.json`
+attributes the 100k post-churn SQLite file by dbstat object/pages/payload/unused
+space and the Tantivy directory by file; its reruns are structural inspections,
+not extra timing passes. It does not decompose the original bulk-import totals
+or extrapolate to one million rows. `verification.json` checks cohort inventory,
+paired passes, binary identity, matched membership and independently recomputes
+relevance from raw returned IDs and fetched qrels. A pass of this evidence
+verifier is not a product correctness or crash-safety certificate.
+
 The old index sweep was stopped for this owner-directed priority change;
 completed old raw measurements remain in their original ledger. No benchmark
 results from the interrupted old candidate are included here. `preflight/`

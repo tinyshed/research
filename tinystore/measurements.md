@@ -1047,3 +1047,43 @@ publication remains incremental; the report identifies outstanding cohorts.
 It does not justify a universal Index Engine. Ordinary SQL B-tree covers the
 measured secondary lookup, while online rebuild exchanges writer occupancy
 for additional WAL and needs workload-specific budgets.
+
+## Multilingual Search, 16 October 2026
+
+The [Search round](reports/search-2026-10-16.md) addresses a separate product
+requirement from universal secondary indexing. Both actual FTS5 callbacks and
+Tantivy use the same ICU4X/normalized surface/RU-EN stem analyzer. Whole stripped
+Linux research executables are 2.458 MiB for SQLite alone, 4.963 with ICU/stems
+and 8.486 with Tantivy and that analyzer. These are not product binary deltas.
+
+On the pinned NoMIRACL judged passage pool, mixed 88,175 documents / 600 natural
+RU/EN/ZH questions, pass 1; pass 2: `auto` FTS5 ranked top-10 ID p99 is
+225.780; 168.015 ms versus Tantivy 6.453; 4.009 ms. FTS5 nDCG@10/Recall@10 is
+0.5109/0.6969 versus 0.5040/0.6844. Same-term membership controls are separate
+from ranking. These are literal OR queries with common terms, not every search
+workload or a proof FTS5 cannot be improved. Unjudged results are not confirmed
+false positives. Native Unicode61's Chinese Recall@10 is 0.005 versus ICU's
+0.597; Russian does not show the same blanket ICU advantage.
+
+The separate authoritative-store experiment charges both candidates for raw
+documents and field hydration. At 100k, FTS5 stores 193.4 MiB and Tantivy
+116.1 MiB; hydrated p99 is 135.066; 118.623 versus 4.257; 5.758 ms. Complete
+individual synchronous SET p99 is 22.145; 23.769 versus 246.224; 52.784 ms,
+100 samples/pass. Query samples here are 60 RU questions over a mixed corpus;
+large-scale rows repeat the source pool. Consult the report for 1m measurements,
+memory including retained input, WAL and the distinct one-batch diagnostics.
+
+At 1m, hydrated query p99 is FTS5 1474.205; 1144.953 ms versus Tantivy
+67.579; 47.364 ms. Stores are 1777.75 versus about 1014.10 MiB; process HWM
+is about 1032 versus 2470 MiB, including the retained input. FTS5 bulk WAL
+file length reaches 1788.19 MiB. These 60-query samples have p99 equal to
+their maximum under the recorded estimator. A paired 600-query mixed-pool
+bootstrap puts the nDCG difference's 95% interval across zero; the small
+observed difference does not establish a relevance winner.
+
+The evidence supports separate SQL-projection and standalone-store contracts,
+not an automatic winner on every cost. Standard stemming misses suppletion and
+some derivations and creates known collisions. An original diagnostic fixture
+also reproduces raw/stem token namespace collisions in both adapters: term
+encoding needs correction and remeasurement before product use. Actual Core admission, format
+recovery, backup, bounded memory and Wire/SDK search remain implementation gates.

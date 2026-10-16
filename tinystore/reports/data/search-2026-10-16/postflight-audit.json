@@ -1,0 +1,563 @@
+{
+  "utc": "2026-10-16T08:33:45.561222+00:00",
+  "audit_revision": "1c1f891c03a18119da271243b264c464a0510592",
+  "measured_binary_source_revision": "f79080d22b4071adb88aa6d282e946079bc925d9",
+  "binary_sha256": "8dc79b384e4c0b5d77d6d25f4cbd4a4eb0f40662a2fbce9f0e24688bcfc1d421",
+  "timings": "Diagnostic only: excludes these tiny-fixture timings from performance claims",
+  "quality_bootstrap": {
+    "metric": "paired mixed auto collection nDCG@10: FTS5 minus Tantivy",
+    "queries": 600,
+    "resamples": 2000,
+    "seed": 20261016,
+    "observed_difference": 0.006892096511951209,
+    "percentile_95_interval": [
+      -0.012742932087848269,
+      0.02640761299480774
+    ],
+    "scope": "Query resampling on the fixed judged-passage pool, not all-language population inference"
+  },
+  "namespace_fixture": {
+    "docs": [
+      {
+        "id": 1,
+        "key": "literal-ru",
+        "title": "s_ru_кошк",
+        "body": ""
+      },
+      {
+        "id": 2,
+        "key": "real-ru",
+        "title": "Кошки",
+        "body": ""
+      },
+      {
+        "id": 3,
+        "key": "literal-en",
+        "title": "s_en_run",
+        "body": ""
+      },
+      {
+        "id": 4,
+        "key": "real-en",
+        "title": "running",
+        "body": ""
+      }
+    ],
+    "queries": [
+      {
+        "key": "ru",
+        "text": "кошка",
+        "relevant": [
+          2
+        ],
+        "judged": {
+          "1": 0,
+          "2": 1,
+          "3": 0,
+          "4": 0
+        }
+      },
+      {
+        "key": "en",
+        "text": "run",
+        "relevant": [
+          4
+        ],
+        "judged": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 1
+        }
+      }
+    ]
+  },
+  "namespace_probes": [
+    {
+      "engine": "fts",
+      "exit": 0,
+      "command": "BENCH_DB=<scratch>/fts <bin> run fts auto <fixture>/namespace.json",
+      "result": {
+        "build_external_bytes": 0,
+        "build_memory": {
+          "hwm_kib": 6820,
+          "rss_kib": 6820
+        },
+        "build_objects": [
+          {
+            "bytes": 4096,
+            "name": "documents"
+          },
+          {
+            "bytes": 4096,
+            "name": "search_config"
+          },
+          {
+            "bytes": 4096,
+            "name": "search_data"
+          },
+          {
+            "bytes": 4096,
+            "name": "search_docsize"
+          },
+          {
+            "bytes": 4096,
+            "name": "search_idx"
+          },
+          {
+            "bytes": 4096,
+            "name": "sqlite_autoindex_documents_1"
+          },
+          {
+            "bytes": 4096,
+            "name": "sqlite_schema"
+          }
+        ],
+        "build_rows_per_s": 2592.352559948153,
+        "build_us": 1543,
+        "build_wal_file_bytes": 20632,
+        "cpu_through_queries_s": 0.0010750000000000004,
+        "cpu_total_s": 0.099237,
+        "end_memory": {
+          "hwm_kib": 7536,
+          "rss_kib": 7536
+        },
+        "engine": "fts",
+        "external_bytes": 0,
+        "idle_memory": {
+          "hwm_kib": 3724,
+          "rss_kib": 3724
+        },
+        "judged_pool_quality": {
+          "judged_per_query": 2.0,
+          "known_negative_per_query": 1.0,
+          "mrr10": 0.5,
+          "ndcg10": 0.6309297535714575,
+          "queries": 2,
+          "recall10": 1.0
+        },
+        "judged_pool_samples": [
+          {
+            "hits": 1,
+            "ids": [
+              1,
+              2
+            ],
+            "judged_at10": 2,
+            "key": "ru",
+            "known_negative_at10": 1,
+            "language": "",
+            "mrr10": 0.5,
+            "ndcg10": 0.6309297535714575,
+            "recall10": 1.0,
+            "relevant": 1,
+            "returned": 2
+          },
+          {
+            "hits": 1,
+            "ids": [
+              3,
+              4
+            ],
+            "judged_at10": 2,
+            "key": "en",
+            "known_negative_at10": 1,
+            "language": "",
+            "mrr10": 0.5,
+            "ndcg10": 0.6309297535714575,
+            "recall10": 1.0,
+            "relevant": 1,
+            "returned": 2
+          }
+        ],
+        "loaded_memory": {
+          "hwm_kib": 4112,
+          "rss_kib": 4112
+        },
+        "mode": "auto",
+        "mutations": [
+          {
+            "external_commit_reload_us": 0,
+            "operation": "insert",
+            "rows_per_transaction": 100,
+            "source_commit": {
+              "max_us": 2971,
+              "n": 10,
+              "p50_us": 2788,
+              "p95_us": 2971,
+              "p99_us": 2971
+            },
+            "transactions": 10,
+            "wal_file_bytes": 527392
+          },
+          {
+            "external_commit_reload_us": 0,
+            "operation": "update",
+            "rows_per_transaction": 100,
+            "source_commit": {
+              "max_us": 11438,
+              "n": 10,
+              "p50_us": 3668,
+              "p95_us": 11438,
+              "p99_us": 11438
+            },
+            "transactions": 10,
+            "wal_file_bytes": 634512
+          },
+          {
+            "external_commit_reload_us": 0,
+            "operation": "unrelated",
+            "rows_per_transaction": 100,
+            "source_commit": {
+              "max_us": 4424,
+              "n": 10,
+              "p50_us": 1204,
+              "p95_us": 4424,
+              "p99_us": 4424
+            },
+            "transactions": 10,
+            "wal_file_bytes": 82432
+          },
+          {
+            "external_commit_reload_us": 0,
+            "operation": "delete",
+            "rows_per_transaction": 100,
+            "source_commit": {
+              "max_us": 4249,
+              "n": 10,
+              "p50_us": 2827,
+              "p95_us": 4249,
+              "p99_us": 4249
+            },
+            "transactions": 10,
+            "wal_file_bytes": 844632
+          }
+        ],
+        "quality": {
+          "judged_per_query": 2.0,
+          "known_negative_per_query": 1.0,
+          "mrr10": 0.5,
+          "ndcg10": 0.6309297535714575,
+          "queries": 2,
+          "recall10": 1.0
+        },
+        "queries": {
+          "max_us": 113,
+          "n": 2,
+          "p50_us": 113,
+          "p95_us": 113,
+          "p99_us": 113
+        },
+        "query_memory": {
+          "hwm_kib": 7092,
+          "rss_kib": 7092
+        },
+        "query_per_s": 12738.853503184713,
+        "query_samples": [
+          {
+            "hits": 1,
+            "ids": [
+              1,
+              2
+            ],
+            "judged_at10": 2,
+            "key": "ru",
+            "known_negative_at10": 1,
+            "language": "",
+            "mrr10": 0.5,
+            "ndcg10": 0.6309297535714575,
+            "recall10": 1.0,
+            "relevant": 1,
+            "returned": 2
+          },
+          {
+            "hits": 1,
+            "ids": [
+              3,
+              4
+            ],
+            "judged_at10": 2,
+            "key": "en",
+            "known_negative_at10": 1,
+            "language": "",
+            "mrr10": 0.5,
+            "ndcg10": 0.6309297535714575,
+            "recall10": 1.0,
+            "relevant": 1,
+            "returned": 2
+          }
+        ],
+        "reopen_and_integrity_us": 1509,
+        "rows": 4,
+        "set_checks": [
+          {
+            "count": 2,
+            "hash": 589729691727335466,
+            "key": "ru"
+          },
+          {
+            "count": 2,
+            "hash": 591645040983300578,
+            "key": "en"
+          }
+        ],
+        "source_bytes": 12288,
+        "source_memory": {
+          "hwm_kib": 6496,
+          "rss_kib": 6496
+        },
+        "source_objects": [
+          {
+            "bytes": 4096,
+            "name": "documents"
+          },
+          {
+            "bytes": 4096,
+            "name": "sqlite_autoindex_documents_1"
+          },
+          {
+            "bytes": 4096,
+            "name": "sqlite_schema"
+          }
+        ],
+        "source_seed_us": 329,
+        "status": "pass"
+      }
+    },
+    {
+      "engine": "tant",
+      "exit": 0,
+      "command": "BENCH_DB=<scratch>/tant <bin> run tant auto <fixture>/namespace.json",
+      "result": {
+        "build_external_bytes": 2420,
+        "build_memory": {
+          "hwm_kib": 18628,
+          "rss_kib": 12412
+        },
+        "build_objects": [
+          {
+            "bytes": 4096,
+            "name": "documents"
+          },
+          {
+            "bytes": 4096,
+            "name": "sqlite_autoindex_documents_1"
+          },
+          {
+            "bytes": 4096,
+            "name": "sqlite_schema"
+          }
+        ],
+        "build_rows_per_s": 168.59141869678834,
+        "build_us": 23726,
+        "build_wal_file_bytes": 0,
+        "cpu_through_queries_s": 0.020340999999999998,
+        "cpu_total_s": 0.331088,
+        "end_memory": {
+          "hwm_kib": 32312,
+          "rss_kib": 19316
+        },
+        "engine": "tant",
+        "external_bytes": 21081,
+        "idle_memory": {
+          "hwm_kib": 3940,
+          "rss_kib": 3940
+        },
+        "judged_pool_quality": {
+          "judged_per_query": 2.0,
+          "known_negative_per_query": 1.0,
+          "mrr10": 0.75,
+          "ndcg10": 0.8154648767857288,
+          "queries": 2,
+          "recall10": 1.0
+        },
+        "judged_pool_samples": [
+          {
+            "hits": 1,
+            "ids": [
+              2,
+              1
+            ],
+            "judged_at10": 2,
+            "key": "ru",
+            "known_negative_at10": 1,
+            "language": "",
+            "mrr10": 1.0,
+            "ndcg10": 1.0,
+            "recall10": 1.0,
+            "relevant": 1,
+            "returned": 2
+          },
+          {
+            "hits": 1,
+            "ids": [
+              3,
+              4
+            ],
+            "judged_at10": 2,
+            "key": "en",
+            "known_negative_at10": 1,
+            "language": "",
+            "mrr10": 0.5,
+            "ndcg10": 0.6309297535714575,
+            "recall10": 1.0,
+            "relevant": 1,
+            "returned": 2
+          }
+        ],
+        "loaded_memory": {
+          "hwm_kib": 4200,
+          "rss_kib": 4200
+        },
+        "mode": "auto",
+        "mutations": [
+          {
+            "external_commit_reload_us": 146586,
+            "operation": "insert",
+            "rows_per_transaction": 100,
+            "source_commit": {
+              "max_us": 6645,
+              "n": 10,
+              "p50_us": 2437,
+              "p95_us": 6645,
+              "p99_us": 6645
+            },
+            "transactions": 10,
+            "wal_file_bytes": 284312
+          },
+          {
+            "external_commit_reload_us": 227667,
+            "operation": "update",
+            "rows_per_transaction": 100,
+            "source_commit": {
+              "max_us": 10917,
+              "n": 10,
+              "p50_us": 2544,
+              "p95_us": 10917,
+              "p99_us": 10917
+            },
+            "transactions": 10,
+            "wal_file_bytes": 173072
+          },
+          {
+            "external_commit_reload_us": 0,
+            "operation": "unrelated",
+            "rows_per_transaction": 100,
+            "source_commit": {
+              "max_us": 2689,
+              "n": 10,
+              "p50_us": 860,
+              "p95_us": 2689,
+              "p99_us": 2689
+            },
+            "transactions": 10,
+            "wal_file_bytes": 82432
+          },
+          {
+            "external_commit_reload_us": 33904,
+            "operation": "delete",
+            "rows_per_transaction": 100,
+            "source_commit": {
+              "max_us": 1475,
+              "n": 10,
+              "p50_us": 1072,
+              "p95_us": 1475,
+              "p99_us": 1475
+            },
+            "transactions": 10,
+            "wal_file_bytes": 350232
+          }
+        ],
+        "quality": {
+          "judged_per_query": 2.0,
+          "known_negative_per_query": 1.0,
+          "mrr10": 0.75,
+          "ndcg10": 0.8154648767857288,
+          "queries": 2,
+          "recall10": 1.0
+        },
+        "queries": {
+          "max_us": 2590,
+          "n": 2,
+          "p50_us": 2590,
+          "p95_us": 2590,
+          "p99_us": 2590
+        },
+        "query_memory": {
+          "hwm_kib": 18628,
+          "rss_kib": 13448
+        },
+        "query_per_s": 760.7455306200076,
+        "query_samples": [
+          {
+            "hits": 1,
+            "ids": [
+              2,
+              1
+            ],
+            "judged_at10": 2,
+            "key": "ru",
+            "known_negative_at10": 1,
+            "language": "",
+            "mrr10": 1.0,
+            "ndcg10": 1.0,
+            "recall10": 1.0,
+            "relevant": 1,
+            "returned": 2
+          },
+          {
+            "hits": 1,
+            "ids": [
+              3,
+              4
+            ],
+            "judged_at10": 2,
+            "key": "en",
+            "known_negative_at10": 1,
+            "language": "",
+            "mrr10": 0.5,
+            "ndcg10": 0.6309297535714575,
+            "recall10": 1.0,
+            "relevant": 1,
+            "returned": 2
+          }
+        ],
+        "reopen_and_integrity_us": 319,
+        "rows": 4,
+        "set_checks": [
+          {
+            "count": 2,
+            "hash": 589729691727335466,
+            "key": "ru"
+          },
+          {
+            "count": 2,
+            "hash": 591645040983300578,
+            "key": "en"
+          }
+        ],
+        "source_bytes": 12288,
+        "source_memory": {
+          "hwm_kib": 6312,
+          "rss_kib": 6312
+        },
+        "source_objects": [
+          {
+            "bytes": 4096,
+            "name": "documents"
+          },
+          {
+            "bytes": 4096,
+            "name": "sqlite_autoindex_documents_1"
+          },
+          {
+            "bytes": 4096,
+            "name": "sqlite_schema"
+          }
+        ],
+        "source_seed_us": 488,
+        "status": "pass"
+      }
+    }
+  ]
+}

@@ -1,0 +1,404 @@
+{
+  "utc": "2026-10-16T08:38:50.800603+00:00",
+  "audit_revision": "f8df582628cdc9f20bdb47e63ac1c4fe322eaa66",
+  "binary_source_revision": "31ec988e5d061a4a2ba82e1151f8a951ef8625cf",
+  "binary_sha256": "a11da37a02e7353c960f71eff9283550a6153f2058b9cc71209566e210b47ab6",
+  "scope": "One structural attribution at 100k after churn; timings deliberately excluded. Not a sustained write-amplification measurement or a million-row per-object extrapolation.",
+  "sqlite_inspector_version": "3.40.1",
+  "results": [
+    {
+      "engine": "fts",
+      "rows": 100000,
+      "exit": 0,
+      "command": "BENCH_DB=<scratch>/fts <bin> fts <corpus>/mixed.json 100000",
+      "stage": "after the same 100-document SET/DELETE and restore phases",
+      "backend_bytes_at_output": 202829824,
+      "objects": [
+        {
+          "name": "docs_config",
+          "pages": 1,
+          "bytes": 4096,
+          "payload_bytes": 11,
+          "unused_bytes": 4074
+        },
+        {
+          "name": "docs_content",
+          "pages": 26666,
+          "bytes": 109223936,
+          "payload_bytes": 90906695,
+          "unused_bytes": 17193169
+        },
+        {
+          "name": "docs_data",
+          "pages": 20626,
+          "bytes": 84484096,
+          "payload_bytes": 83062166,
+          "unused_bytes": 800649
+        },
+        {
+          "name": "docs_docsize",
+          "pages": 298,
+          "bytes": 1220608,
+          "payload_bytes": 626515,
+          "unused_bytes": 5596
+        },
+        {
+          "name": "docs_idx",
+          "pages": 162,
+          "bytes": 663552,
+          "payload_bytes": 484677,
+          "unused_bytes": 98215
+        },
+        {
+          "name": "keys",
+          "pages": 562,
+          "bytes": 2301952,
+          "payload_bytes": 1688890,
+          "unused_bytes": 20127
+        },
+        {
+          "name": "sqlite_autoindex_keys_1",
+          "pages": 609,
+          "bytes": 2494464,
+          "payload_bytes": 1955995,
+          "unused_bytes": 231165
+        },
+        {
+          "name": "sqlite_schema",
+          "pages": 1,
+          "bytes": 4096,
+          "payload_bytes": 724,
+          "unused_bytes": 3232
+        }
+      ],
+      "freelist_pages": 594,
+      "page_size": 4096,
+      "backend_bytes_after_close": 202829824,
+      "close_delta_bytes": 0
+    },
+    {
+      "engine": "tant",
+      "rows": 100000,
+      "exit": 0,
+      "command": "BENCH_DB=<scratch>/tant <bin> tant <corpus>/mixed.json 100000",
+      "stage": "after the same 100-document SET/DELETE and restore phases",
+      "backend_bytes_at_output": 155649738,
+      "files": [
+        {
+          "name": ".managed.json",
+          "bytes": 3034
+        },
+        {
+          "name": ".tantivy-meta.lock",
+          "bytes": 0
+        },
+        {
+          "name": ".tantivy-writer.lock",
+          "bytes": 0
+        },
+        {
+          "name": "2225ec74f4214f60b78f97fa7828a0dd.fast",
+          "bytes": 579
+        },
+        {
+          "name": "2225ec74f4214f60b78f97fa7828a0dd.fieldnorm",
+          "bytes": 72939
+        },
+        {
+          "name": "2225ec74f4214f60b78f97fa7828a0dd.idx",
+          "bytes": 3705087
+        },
+        {
+          "name": "2225ec74f4214f60b78f97fa7828a0dd.pos",
+          "bytes": 2678528
+        },
+        {
+          "name": "2225ec74f4214f60b78f97fa7828a0dd.store",
+          "bytes": 9069315
+        },
+        {
+          "name": "2225ec74f4214f60b78f97fa7828a0dd.term",
+          "bytes": 1935177
+        },
+        {
+          "name": "2c9f3182c2344e1d8f47b1ab2d8a7ca0.fast",
+          "bytes": 311
+        },
+        {
+          "name": "2c9f3182c2344e1d8f47b1ab2d8a7ca0.fieldnorm",
+          "bytes": 24926
+        },
+        {
+          "name": "2c9f3182c2344e1d8f47b1ab2d8a7ca0.idx",
+          "bytes": 2712274
+        },
+        {
+          "name": "2c9f3182c2344e1d8f47b1ab2d8a7ca0.pos",
+          "bytes": 1961294
+        },
+        {
+          "name": "2c9f3182c2344e1d8f47b1ab2d8a7ca0.store",
+          "bytes": 6448662
+        },
+        {
+          "name": "2c9f3182c2344e1d8f47b1ab2d8a7ca0.term",
+          "bytes": 2442453
+        },
+        {
+          "name": "37b95143788f4d6eb9fdb8668513d99b.fast",
+          "bytes": 361
+        },
+        {
+          "name": "37b95143788f4d6eb9fdb8668513d99b.fieldnorm",
+          "bytes": 35393
+        },
+        {
+          "name": "37b95143788f4d6eb9fdb8668513d99b.idx",
+          "bytes": 3441609
+        },
+        {
+          "name": "37b95143788f4d6eb9fdb8668513d99b.pos",
+          "bytes": 3272856
+        },
+        {
+          "name": "37b95143788f4d6eb9fdb8668513d99b.store",
+          "bytes": 5984156
+        },
+        {
+          "name": "37b95143788f4d6eb9fdb8668513d99b.term",
+          "bytes": 1676737
+        },
+        {
+          "name": "b1514c3990134d10871488990eaa8321.fast",
+          "bytes": 216
+        },
+        {
+          "name": "b1514c3990134d10871488990eaa8321.fieldnorm",
+          "bytes": 6785
+        },
+        {
+          "name": "b1514c3990134d10871488990eaa8321.idx",
+          "bytes": 775795
+        },
+        {
+          "name": "b1514c3990134d10871488990eaa8321.pos",
+          "bytes": 572589
+        },
+        {
+          "name": "b1514c3990134d10871488990eaa8321.store",
+          "bytes": 1770159
+        },
+        {
+          "name": "b1514c3990134d10871488990eaa8321.term",
+          "bytes": 1048721
+        },
+        {
+          "name": "b287cedae9f94ab3bf2cc51dabc2728e.fast",
+          "bytes": 313
+        },
+        {
+          "name": "b287cedae9f94ab3bf2cc51dabc2728e.fieldnorm",
+          "bytes": 25289
+        },
+        {
+          "name": "b287cedae9f94ab3bf2cc51dabc2728e.idx",
+          "bytes": 2676986
+        },
+        {
+          "name": "b287cedae9f94ab3bf2cc51dabc2728e.pos",
+          "bytes": 1907004
+        },
+        {
+          "name": "b287cedae9f94ab3bf2cc51dabc2728e.store",
+          "bytes": 6372210
+        },
+        {
+          "name": "b287cedae9f94ab3bf2cc51dabc2728e.term",
+          "bytes": 2462431
+        },
+        {
+          "name": "b2d32cdc4dc84faaa230c20d789ba052.fast",
+          "bytes": 169
+        },
+        {
+          "name": "b2d32cdc4dc84faaa230c20d789ba052.fieldnorm",
+          "bytes": 120
+        },
+        {
+          "name": "b2d32cdc4dc84faaa230c20d789ba052.idx",
+          "bytes": 383
+        },
+        {
+          "name": "b2d32cdc4dc84faaa230c20d789ba052.pos",
+          "bytes": 390
+        },
+        {
+          "name": "b2d32cdc4dc84faaa230c20d789ba052.store",
+          "bytes": 963
+        },
+        {
+          "name": "b2d32cdc4dc84faaa230c20d789ba052.term",
+          "bytes": 3220
+        },
+        {
+          "name": "c150ec1b0ae449389ac0fa490d667ba5.fast",
+          "bytes": 180
+        },
+        {
+          "name": "c150ec1b0ae449389ac0fa490d667ba5.fieldnorm",
+          "bytes": 416
+        },
+        {
+          "name": "c150ec1b0ae449389ac0fa490d667ba5.idx",
+          "bytes": 32341
+        },
+        {
+          "name": "c150ec1b0ae449389ac0fa490d667ba5.pos",
+          "bytes": 31928
+        },
+        {
+          "name": "c150ec1b0ae449389ac0fa490d667ba5.store",
+          "bytes": 84447
+        },
+        {
+          "name": "c150ec1b0ae449389ac0fa490d667ba5.term",
+          "bytes": 132672
+        },
+        {
+          "name": "c6a8fc9b26e84c9fa1e33a4b0c51aac5.fast",
+          "bytes": 0
+        },
+        {
+          "name": "c6a8fc9b26e84c9fa1e33a4b0c51aac5.fieldnorm",
+          "bytes": 180001
+        },
+        {
+          "name": "c6a8fc9b26e84c9fa1e33a4b0c51aac5.idx",
+          "bytes": 16260126
+        },
+        {
+          "name": "c6a8fc9b26e84c9fa1e33a4b0c51aac5.pos",
+          "bytes": 13310811
+        },
+        {
+          "name": "c6a8fc9b26e84c9fa1e33a4b0c51aac5.store",
+          "bytes": 0
+        },
+        {
+          "name": "c6a8fc9b26e84c9fa1e33a4b0c51aac5.term",
+          "bytes": 4150016
+        },
+        {
+          "name": "d01735943cf04bb781118b294d6eca67.fast",
+          "bytes": 376
+        },
+        {
+          "name": "d01735943cf04bb781118b294d6eca67.fieldnorm",
+          "bytes": 37589
+        },
+        {
+          "name": "d01735943cf04bb781118b294d6eca67.idx",
+          "bytes": 3588951
+        },
+        {
+          "name": "d01735943cf04bb781118b294d6eca67.pos",
+          "bytes": 3408337
+        },
+        {
+          "name": "d01735943cf04bb781118b294d6eca67.store",
+          "bytes": 6306056
+        },
+        {
+          "name": "d01735943cf04bb781118b294d6eca67.term",
+          "bytes": 1586263
+        },
+        {
+          "name": "d408431c3cf340b68279bdc806cc6a66.200014.del",
+          "bytes": 1154
+        },
+        {
+          "name": "d408431c3cf340b68279bdc806cc6a66.200522.del",
+          "bytes": 1153
+        },
+        {
+          "name": "d408431c3cf340b68279bdc806cc6a66.fast",
+          "bytes": 311
+        },
+        {
+          "name": "d408431c3cf340b68279bdc806cc6a66.fieldnorm",
+          "bytes": 25438
+        },
+        {
+          "name": "d408431c3cf340b68279bdc806cc6a66.idx",
+          "bytes": 2857263
+        },
+        {
+          "name": "d408431c3cf340b68279bdc806cc6a66.pos",
+          "bytes": 2094700
+        },
+        {
+          "name": "d408431c3cf340b68279bdc806cc6a66.store",
+          "bytes": 6861961
+        },
+        {
+          "name": "d408431c3cf340b68279bdc806cc6a66.term",
+          "bytes": 2439140
+        },
+        {
+          "name": "dd6d5e3441574722add7e979dd52be9c.fast",
+          "bytes": 312
+        },
+        {
+          "name": "dd6d5e3441574722add7e979dd52be9c.fieldnorm",
+          "bytes": 25292
+        },
+        {
+          "name": "dd6d5e3441574722add7e979dd52be9c.idx",
+          "bytes": 2853240
+        },
+        {
+          "name": "dd6d5e3441574722add7e979dd52be9c.pos",
+          "bytes": 2101325
+        },
+        {
+          "name": "dd6d5e3441574722add7e979dd52be9c.store",
+          "bytes": 6854747
+        },
+        {
+          "name": "dd6d5e3441574722add7e979dd52be9c.term",
+          "bytes": 2443664
+        },
+        {
+          "name": "fddb59468a8447dcb999d7e6c19fad91.fast",
+          "bytes": 425
+        },
+        {
+          "name": "fddb59468a8447dcb999d7e6c19fad91.fieldnorm",
+          "bytes": 47420
+        },
+        {
+          "name": "fddb59468a8447dcb999d7e6c19fad91.idx",
+          "bytes": 3474844
+        },
+        {
+          "name": "fddb59468a8447dcb999d7e6c19fad91.pos",
+          "bytes": 2925912
+        },
+        {
+          "name": "fddb59468a8447dcb999d7e6c19fad91.store",
+          "bytes": 6880737
+        },
+        {
+          "name": "fddb59468a8447dcb999d7e6c19fad91.term",
+          "bytes": 1806115
+        },
+        {
+          "name": "meta.json",
+          "bytes": 2349
+        }
+      ],
+      "backend_bytes_after_close": 155897446,
+      "close_delta_bytes": 247708
+    }
+  ]
+}

@@ -1,8 +1,9 @@
 # Zero-configuration multilingual Search experiment
 
-Research only. No Core/API changes. Source SQLite revision remains the pinned
-TinyStore Rust revision `76b844c`; this independent CLI uses its bundled SQLite
-3.53.2 through rusqlite 0.40.2. Search is a distinct product requirement from
+Research only. No Core/API changes. The architecture reference is TinyStore
+Rust `76b844c`; this independent CLI links rusqlite 0.40.2's bundled SQLite
+3.53.2 and does not execute the product Core writer or connection setup.
+Search is a distinct product requirement from
 general secondary indexing; the earlier recommendation against a universal
 Index Engine does not reject a high-level Search collection.
 

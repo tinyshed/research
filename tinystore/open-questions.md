@@ -591,3 +591,22 @@ rebuild is now prototyped, but hard writer-time/page bounds, old-reader cleanup,
 arbitrary definition changes and final resource/recovery evidence remain gates.
 Consult the [publication status](reports/index-foundations-2026-10-15.md) before
 treating the index round as complete.
+
+## Zero-configuration Search after the multilingual round
+
+The [Search research](reports/search-2026-10-16.md) supersedes any interpretation
+that rejecting a universal Index Engine rejects a high-level Search feature.
+It does not silently change a public API or authorize a product implementation.
+
+| Decision | Evidence | Gate / owner choice |
+|---|---|---|
+| Shared multilingual analysis | Real FTS5 and Tantivy adapters use identical ICU/stem analysis; RU/EN/ZH relevance and executable sizes are measured. | Fix token namespace isolation; choose supported language/normalization contract, test ambiguous and short/mixed text, version all model/data definitions. |
+| SQL-table Search | Same-file source/postings rollback, updates, identity moves and reopen probes pass. | Register on every Core connection; authorizer/managed tables, actual grouped-writer cost, memory admission, generation rebuild/recovery and query latency budget. |
+| Independent Search collection | Tantivy owns stored fields and gives much lower measured ranked-query tails with a smaller store; FTS5 has cheaper individual commits and lower process HWM. | Choose whether non-SQLite storage and its backup/restore/admission cost fit TinyStore; measure grouped commits, bounded memory and acknowledged-prefix crash recovery. |
+| SQL source + external postings | Main timing arm is independent commits, not a transactional protocol. | Durable outbox/watermark, replay, unknown outcomes and snapshot visibility before claiming cross-engine atomicity. |
+| Public query/document contract | Prototype is literal OR over title/body, top ten, backend-specific BM25. | Decide all/any/phrase, fields/types/weights, stable ties/pagination, return values, cancellation and transaction semantics. |
+| Before v0.1.0 | Analyzer and two ownership boundaries have reproducible prototypes, not product modules. | Limit first scope to declared languages and one approved ownership contract with explicit resource/latency/failure gates; defer generic indexing, ANN and distributed Search. |
+
+The older Index sweep remains deliberately paused at the owner's Search
+priority change. Do not quote its interrupted matrix as complete, or inherit
+its old single-term latency conclusion for ranked natural-language queries.

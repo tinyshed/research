@@ -1,0 +1,18 @@
+{
+  "utc": "2026-10-16T08:34:08.445819+00:00",
+  "revision": "1c1f891c03a18119da271243b264c464a0510592",
+  "status": "pass",
+  "cohorts": {
+    "retrieval": 54,
+    "gold": 12,
+    "analyzer": 12,
+    "concurrent": 4,
+    "scale": 4,
+    "owned-store": 8
+  },
+  "matched_membership_groups": 20,
+  "independently_recomputed_query_scores": 38032,
+  "retained_preflight_failure": "missing-tokenizer prepare-only probe",
+  "excluded_from_matched_backend_claims": "naive Jieba multi-position query handling",
+  "scope": "Inventory, paired passes, membership checksums and relevance recomputation; not product/OS/power-loss guarantees"
+}
