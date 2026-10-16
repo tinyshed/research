@@ -1,0 +1,20 @@
+{
+  "utc": "2026-10-16T00:48:10.234428+00:00",
+  "reason": "Owner redirected priority to zero-configuration multilingual Search. Stop old queued geo/resource matrix; completed measurements preserved.",
+  "completed_rebuild_records": 87,
+  "interrupted_processes": [
+    {
+      "elapsed_s": 5953,
+      "command": "sh finish-series.sh"
+    },
+    {
+      "elapsed_s": 5268,
+      "command": "python3 run.py rebuilds"
+    },
+    {
+      "elapsed_s": 195,
+      "command": "<bin> rebuild geo frontier 1000000 uniform 2000 64 full 1 10 2000 prepared"
+    }
+  ],
+  "interpretation": "Interrupted candidate is excluded from completed performance evidence. Outstanding index cohorts remain incomplete."
+}
