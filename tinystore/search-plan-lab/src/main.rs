@@ -34,13 +34,14 @@ fn main() {
     match args.first().map(String::as_str) {
         Some("build") => build(&args[1..]),
         Some("query") => query(&args[1..]),
+        Some("write") => write(&args[1..]),
         Some("tokens") => {
             let analyzer = Analyzer::new(Analysis::named(&args[1]));
             for token in analyzer.tokens(&args[2]) {
                 println!("{}\t{}", token.surface, token.stem.unwrap_or_default());
             }
         }
-        _ => panic!("lab build|query|tokens"),
+        _ => panic!("lab build|query|write|tokens"),
     }
 }
 
@@ -90,7 +91,8 @@ fn build(args: &[String]) {
     let line = match backend.as_str() {
         "fts" => {
             let built = fts::build(&path.join("index.db"), &analyzer, &loaded.docs);
-            json!({"seconds": built.seconds, "bytes": built.file, "objects": built.objects})
+            json!({"seconds": built.seconds, "bytes": built.file, "objects": built.objects,
+                "frequent_terms": built.frequent_terms, "frequent_seconds": built.frequent_seconds})
         }
         #[cfg(feature = "tantivy")]
         "tantivy" => {
@@ -153,6 +155,8 @@ fn query(args: &[String]) {
         }
     }
     let analyzer = Analyzer::new(Analysis::named(analysis));
+    // What the process holds before the index opens: the ids and the questions.
+    let baseline = memory();
     let opened = Instant::now();
     let (mut backend_box, typos): (Box<dyn Backend>, Option<Typos>) = match backend.as_str() {
         "fts" => {
@@ -204,7 +208,7 @@ fn query(args: &[String]) {
                     .map(|id| ids[*id as usize - 1].as_str())
                     .collect();
                 let line = json!({"pass": pass, "plan": plan.name(), "question": question.id, "millis": result.millis,
-                    "queries": result.queries, "found": found});
+                    "hydrate_millis": result.hydrate_millis, "queries": result.queries, "found": found});
                 writeln!(raw, "{line}").unwrap();
             }
             let mut line = summary(&asked, &ran, &ids);
@@ -216,13 +220,15 @@ fn query(args: &[String]) {
         }
     }
     emit(
-        json!({"step": "memory", "context": context, "open_millis": open_millis, "memory": memory()}),
+        json!({"step": "memory", "context": context, "open_millis": open_millis, "baseline": baseline, "memory": memory()}),
     );
 }
 
 struct Ran {
     ids: Vec<u32>,
     millis: f64,
+    /// Reading the ten documents' key, title and body after their ids.
+    hydrate_millis: f64,
     queries: usize,
 }
 
@@ -253,9 +259,13 @@ fn ask(
                 }
             }
             let answer = plan::run(backend, plan, words, settings.cut, 10);
+            let millis = started.elapsed().as_secs_f64() * 1e3;
+            let hydrating = Instant::now();
+            std::hint::black_box(backend.hydrate(&answer.ids));
             Ran {
                 ids: answer.ids,
-                millis: started.elapsed().as_secs_f64() * 1e3,
+                millis,
+                hydrate_millis: hydrating.elapsed().as_secs_f64() * 1e3,
                 queries: answer.queries,
             }
         })
@@ -268,6 +278,14 @@ fn summary(asked: &[Asked], ran: &[Ran], ids: &[String]) -> serde_json::Value {
     millis.sort_by(f64::total_cmp);
     let at = |share: f64| {
         millis[((millis.len() as f64 * share).ceil() as usize).clamp(1, millis.len()) - 1]
+    };
+    let mut hydrated: Vec<f64> = ran
+        .iter()
+        .map(|result| result.millis + result.hydrate_millis)
+        .collect();
+    hydrated.sort_by(f64::total_cmp);
+    let hydrated_at = |share: f64| {
+        hydrated[((hydrated.len() as f64 * share).ceil() as usize).clamp(1, hydrated.len()) - 1]
     };
     let total: f64 = millis.iter().sum();
     let (mut ndcg, mut recall, mut mrr) = (0.0, 0.0, 0.0);
@@ -302,10 +320,69 @@ fn summary(asked: &[Asked], ran: &[Ran], ids: &[String]) -> serde_json::Value {
         "questions": asked.len(),
         "p50_ms": at(0.50), "p90_ms": at(0.90), "p99_ms": at(0.99), "max_ms": millis[millis.len() - 1],
         "mean_ms": total / n, "per_second": n / (total / 1e3),
+        "hydrated_p50_ms": hydrated_at(0.50), "hydrated_p99_ms": hydrated_at(0.99),
         "ndcg10": ndcg / n, "recall10": recall / n, "mrr10": mrr / n,
         "empty": ran.iter().filter(|result| result.ids.is_empty()).count(),
         "index_queries": ran.iter().map(|result| result.queries).sum::<usize>() as f64 / n,
     })
+}
+
+/// Sets the first 600 Russian passages again, their bodies changed: 100
+/// one a commit, then five commits of 100. The cohort must start with the
+/// Russian pool, so that its passage n is rowid n.
+fn write(args: &[String]) {
+    let [corpus, out, cohort, analysis, backend] = args else {
+        panic!("write <corpus> <out> <cohort> <analysis> <backend>")
+    };
+    let round = std::env::var("LAB_ROUND").unwrap_or_default();
+    let analyzer = Analyzer::new(Analysis::named(analysis));
+    let mut docs = corpus::first_docs(Path::new(corpus), "ru", 600);
+    for doc in &mut docs {
+        doc.text.push_str(&format!(" обновлено {round}"));
+    }
+    let path = index_path(Path::new(out), cohort, analysis, backend);
+    let mut set: Box<dyn FnMut(&[(u32, &corpus::Doc)])> = match backend.as_str() {
+        "fts" => {
+            let mut writer = fts::Writer::open(&path.join("index.db"));
+            Box::new(move |docs| writer.set(&analyzer, docs))
+        }
+        #[cfg(feature = "tantivy")]
+        "tantivy" => {
+            let mut writer = tant::Writer::open(&path.join("tantivy"));
+            Box::new(move |docs| writer.set(&analyzer, docs))
+        }
+        other => panic!("no backend {other}"),
+    };
+    let numbered: Vec<(u32, &corpus::Doc)> = docs
+        .iter()
+        .enumerate()
+        .map(|(at, doc)| (at as u32 + 1, doc))
+        .collect();
+    let mut singles: Vec<f64> = numbered[..100]
+        .iter()
+        .map(|one| {
+            let started = Instant::now();
+            set(std::slice::from_ref(one));
+            started.elapsed().as_secs_f64() * 1e3
+        })
+        .collect();
+    let batches: Vec<f64> = numbered[100..]
+        .chunks(100)
+        .map(|batch| {
+            let started = Instant::now();
+            set(batch);
+            started.elapsed().as_secs_f64() * 1e3
+        })
+        .collect();
+    singles.sort_by(f64::total_cmp);
+    let at = |share: f64| singles[((singles.len() as f64 * share).ceil() as usize) - 1];
+    emit(json!({
+        "step": "write", "cohort": cohort, "analysis": analysis, "backend": backend, "round": round,
+        "single_p50_ms": at(0.50), "single_p90_ms": at(0.90), "single_p99_ms": at(0.99),
+        "single_max_ms": singles[singles.len() - 1],
+        "single_mean_ms": singles.iter().sum::<f64>() / singles.len() as f64,
+        "batches_ms": batches, "memory": memory(),
+    }));
 }
 
 /// The process's peak and current resident memory in KiB, on Linux.

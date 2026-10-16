@@ -42,7 +42,7 @@ pub const QUESTIONS_EACH: usize = 200;
 /// The languages of a cohort: one, or `mixed`, Russian, English and Chinese.
 pub fn languages(cohort: &str) -> Vec<&'static str> {
     match cohort {
-        "mixed" => vec!["ru", "en", "zh"],
+        "mixed" | "mixed-1m" => vec!["ru", "en", "zh"],
         "ru" => vec!["ru"],
         "en" => vec!["en"],
         "zh" => vec!["zh"],
@@ -69,6 +69,10 @@ fn folder(language: &str) -> &'static str {
     }
 }
 
+/// The documents of `mixed-1m`: the judged pool, then MIRACL's passages of
+/// the same Wikipedias in equal shares, those the pool holds left out.
+pub const MILLION: usize = 1_000_000;
+
 pub fn load(corpus: &Path, cohort: &str) -> Cohort {
     let mut docs = Vec::new();
     let mut questions = Vec::new();
@@ -79,7 +83,56 @@ pub fn load(corpus: &Path, cohort: &str) -> Cohort {
         let present: HashSet<&str> = docs[start..].iter().map(|doc| doc.id.as_str()).collect();
         questions.extend(read_questions(&dir, language, &present));
     }
+    if cohort == "mixed-1m" {
+        add_distractors(&corpus.parent().unwrap().join("miracl"), &mut docs);
+    }
     Cohort { docs, questions }
+}
+
+/// Passages nobody judged, from one shard of MIRACL's corpus a language,
+/// until the cohort holds a million: a passage the pool holds counts as the
+/// pool's, so a judged passage is never there twice.
+fn add_distractors(miracl: &Path, docs: &mut Vec<Doc>) {
+    let pool: HashSet<String> = docs.iter().map(|doc| doc.id.clone()).collect();
+    let languages = ["ru", "en", "zh"];
+    let wanted = MILLION - docs.len();
+    for (at, language) in languages.iter().enumerate() {
+        let share = wanted / languages.len() + if at == 0 { wanted % languages.len() } else { 0 };
+        let path = miracl.join(language).join("docs-0.jsonl.gz");
+        let file = std::fs::File::open(&path)
+            .unwrap_or_else(|error| panic!("{}: {error}", path.display()));
+        let mut taken = 0;
+        for line in BufReader::new(GzDecoder::new(file)).lines() {
+            let line: Line = serde_json::from_str(&line.unwrap()).unwrap();
+            let id = format!("{language}:{}", line.docid);
+            if pool.contains(&id) {
+                continue;
+            }
+            docs.push(Doc {
+                id,
+                title: line.title,
+                text: line.text,
+            });
+            taken += 1;
+            if taken == share {
+                break;
+            }
+        }
+        assert_eq!(taken, share, "{language}: a shard short of its share");
+    }
+}
+
+/// The first `n` passages of a language's judged pool: those a cohort that
+/// starts with that language holds at rowids 1 to n.
+pub fn first_docs(corpus: &Path, language: &str, n: usize) -> Vec<Doc> {
+    let mut docs = Vec::new();
+    read_docs(
+        &corpus.join(folder(language)).join("corpus.jsonl.gz"),
+        language,
+        &mut docs,
+    );
+    docs.truncate(n);
+    docs
 }
 
 /// Passages in the file's order; an id seen again is the same passage again.

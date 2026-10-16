@@ -14,6 +14,10 @@
 //! A query word `w` with stem `s` asks `{t b}:"w" OR {ts bs}:"s" OR {t b}:"s"`,
 //! which finds a document's word whose stem is `s` whether it was kept as
 //! written (its stem was itself) or as a stem.
+//!
+//! The collection owns its documents, as Tantivy's stored fields do: `docs`
+//! holds each one's key, title and body in the same file, by the rowid its
+//! postings carry, and a set replaces both in one transaction.
 
 use std::collections::HashMap;
 use std::path::Path;
@@ -46,6 +50,8 @@ pub struct Built {
     /// Bytes by b-tree, from dbstat.
     pub objects: Vec<(String, u64)>,
     pub file: u64,
+    pub frequent_terms: u64,
+    pub frequent_seconds: f64,
 }
 
 /// Indexes every document, a thousand a transaction, then merges FTS5's
@@ -56,7 +62,8 @@ pub fn build(path: &Path, analyzer: &Analyzer, docs: &[Doc]) -> Built {
     connection
         .execute_batch(&format!(
             "create virtual table idx using fts5(t, ts, b, bs, content='', contentless_delete=1, tokenize='ascii');
-             insert into idx(idx, rank) values ('rank', '{RANK}');"
+             insert into idx(idx, rank) values ('rank', '{RANK}');
+             create table docs (id integer primary key, key text not null unique, title text not null, body text not null);"
         ))
         .unwrap();
     for (chunk, docs) in docs.chunks(1000).enumerate() {
@@ -65,11 +72,15 @@ pub fn build(path: &Path, analyzer: &Analyzer, docs: &[Doc]) -> Built {
             let mut insert = tx
                 .prepare("insert into idx(rowid, t, ts, b, bs) values (?1, ?2, ?3, ?4, ?5)")
                 .unwrap();
+            let mut keep = tx
+                .prepare("insert into docs (id, key, title, body) values (?1, ?2, ?3, ?4)")
+                .unwrap();
             for (at, doc) in docs.iter().enumerate() {
+                let id = (chunk * 1000 + at + 1) as i64;
                 let (t, ts) = columns(analyzer, &doc.title);
                 let (b, bs) = columns(analyzer, &doc.text);
-                insert
-                    .execute(params![(chunk * 1000 + at + 1) as i64, t, ts, b, bs])
+                insert.execute(params![id, t, ts, b, bs]).unwrap();
+                keep.execute(params![id, doc.id, doc.title, doc.text])
                     .unwrap();
             }
         }
@@ -78,6 +89,9 @@ pub fn build(path: &Path, analyzer: &Analyzer, docs: &[Doc]) -> Built {
     connection
         .execute("insert into idx(idx) values ('optimize')", [])
         .unwrap();
+    let frequent_started = Instant::now();
+    let frequent_terms = keep_frequent(&connection, docs.len() as u64);
+    let frequent_seconds = frequent_started.elapsed().as_secs_f64();
     connection
         .pragma_update(None, "wal_checkpoint", "truncate")
         .unwrap();
@@ -96,7 +110,28 @@ pub fn build(path: &Path, analyzer: &Analyzer, docs: &[Doc]) -> Built {
         seconds,
         objects,
         file: std::fs::metadata(path).unwrap().len(),
+        frequent_terms,
+        frequent_seconds,
     }
+}
+
+/// Keeps the terms in more than `KEPT` of the documents with their counts,
+/// as a store would beside its index: counting a frequent term at query time
+/// reads its whole doclist, and counting them all at open the whole index.
+fn keep_frequent(connection: &Connection, documents: u64) -> u64 {
+    let least = (documents as f64 * KEPT) as i64;
+    connection
+        .execute_batch(
+            "create virtual table temp.vocab using fts5vocab(main, idx, 'row');
+             create table frequent (term text primary key, docs integer not null) without rowid;",
+        )
+        .unwrap();
+    connection
+        .execute(
+            "insert into frequent select term, doc from temp.vocab where doc > ?1",
+            [least],
+        )
+        .unwrap() as u64
 }
 
 /// A text's words as written and its stems, each joined by spaces.
@@ -118,9 +153,7 @@ pub fn columns(analyzer: &Analyzer, text: &str) -> (String, String) {
 pub struct Fts {
     connection: Connection,
     documents: u64,
-    /// Documents a term is in, for the terms in more than `KEPT` of them:
-    /// the statistics a store would keep beside an index, since counting a
-    /// frequent term reads its whole doclist.
+    /// Documents a term is in, for the terms in more than `KEPT` of them.
     frequent: HashMap<String, u64>,
     pub opened: Opened,
 }
@@ -146,9 +179,23 @@ impl Fts {
             .query_row("select count(*) from idx", [], |row| row.get::<_, i64>(0))
             .unwrap() as u64;
         let started = Instant::now();
+        let kept = connection
+            .query_row(
+                "select count(*) from sqlite_schema where name = 'frequent'",
+                [],
+                |row| row.get::<_, i64>(0),
+            )
+            .unwrap()
+            > 0;
+        // An index built before the table was kept counts its terms here.
+        let sql = if kept {
+            "select term, docs from frequent where ?1 >= 0"
+        } else {
+            "select term, doc from temp.vocab where doc > ?1"
+        };
         let least = (documents as f64 * KEPT) as i64;
         let frequent: HashMap<String, u64> = connection
-            .prepare("select term, doc from temp.vocab where doc > ?1")
+            .prepare(sql)
             .unwrap()
             .query_map([least], |row| {
                 Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)? as u64))
@@ -170,6 +217,47 @@ impl Fts {
 
     pub fn connection(&self) -> &Connection {
         &self.connection
+    }
+}
+
+/// A collection's writer: a set replaces a document's postings and its
+/// stored fields in one transaction.
+pub struct Writer {
+    connection: Connection,
+}
+
+impl Writer {
+    pub fn open(path: &Path) -> Writer {
+        Writer {
+            connection: open(path),
+        }
+    }
+
+    /// Sets each document by its rowid and key, all in one commit.
+    pub fn set(&mut self, analyzer: &Analyzer, docs: &[(u32, &Doc)]) {
+        let tx = self.connection.transaction().unwrap();
+        {
+            let mut forget = tx
+                .prepare_cached("delete from idx where rowid = ?1")
+                .unwrap();
+            let mut insert = tx
+                .prepare_cached("insert into idx(rowid, t, ts, b, bs) values (?1, ?2, ?3, ?4, ?5)")
+                .unwrap();
+            let mut keep = tx
+                .prepare_cached(
+                    "insert or replace into docs (id, key, title, body) values (?1, ?2, ?3, ?4)",
+                )
+                .unwrap();
+            for (id, doc) in docs {
+                let (t, ts) = columns(analyzer, &doc.title);
+                let (b, bs) = columns(analyzer, &doc.text);
+                forget.execute([*id]).unwrap();
+                insert.execute(params![*id, t, ts, b, bs]).unwrap();
+                keep.execute(params![*id, doc.id, doc.title, doc.text])
+                    .unwrap();
+            }
+        }
+        tx.commit().unwrap();
     }
 }
 
@@ -208,6 +296,25 @@ impl Backend for Fts {
             .unwrap()
             .map(|id| id.unwrap() as u32)
             .collect()
+    }
+
+    fn hydrate(&mut self, ids: &[u32]) -> usize {
+        let mut statement = self
+            .connection
+            .prepare_cached("select key, title, body from docs where id = ?1")
+            .unwrap();
+        ids.iter()
+            .map(|id| {
+                statement
+                    .query_row([*id], |row| {
+                        let key: String = row.get(0)?;
+                        let title: String = row.get(1)?;
+                        let body: String = row.get(2)?;
+                        Ok(key.len() + title.len() + body.len())
+                    })
+                    .unwrap()
+            })
+            .sum()
     }
 }
 

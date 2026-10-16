@@ -32,6 +32,8 @@ pub trait Backend {
     fn frequency(&mut self, term: &str) -> u64;
     /// The best `k` documents, holding every word or any.
     fn top(&mut self, words: &[Word], every: bool, k: usize) -> Vec<u32>;
+    /// Reads the stored key, title and body of `ids`; says their bytes.
+    fn hydrate(&mut self, ids: &[u32]) -> usize;
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
