@@ -1,0 +1,37 @@
+{
+  "revision": "f79080d22b4071adb88aa6d282e946079bc925d9",
+  "utc": "2026-10-16T01:12:43.595536+00:00",
+  "command": "sh sizes.sh",
+  "settings": "release opt-level=3, thin LTO, codegen-units=1, strip=symbols; same reachable research CLI",
+  "artifacts": {
+    "baseline": {
+      "bytes": 2577456,
+      "sha256": "5707368d8818357795db0db18f019d3eb9f22940e9cde7d1e112583415e211d3"
+    },
+    "icu": {
+      "bytes": 5122704,
+      "sha256": "529d22a91dbbcda4c7733c3eaae243274639001a1910a11518669153818d3d96"
+    },
+    "auto": {
+      "bytes": 5204528,
+      "sha256": "fe15e71308032a7bccc6790142bbf13e11ebac11c328f346f868ffd10364eb0a"
+    },
+    "detect": {
+      "bytes": 5470352,
+      "sha256": "cdcaa74eeaecbe91aa75748aa38999a62636c7bb86472b8c087f486e1b95ae08"
+    },
+    "jieba": {
+      "bytes": 8329296,
+      "sha256": "ab11656be948f63ee77f9468b2b695564e033d4d573f54908a3d3cdee5d2b494"
+    },
+    "tantivy": {
+      "bytes": 8897712,
+      "sha256": "515eb1c56bc8e491baa8feff718a71facede68f97a5bd3608a4646996de0da7b"
+    },
+    "full": {
+      "bytes": 12281328,
+      "sha256": "8dc79b384e4c0b5d77d6d25f4cbd4a4eb0f40662a2fbce9f0e24688bcfc1d421"
+    }
+  },
+  "boundary": "Whole Linux ELF executables, not projected TinyStore binary deltas. ICU compiled segmenter dictionaries/models and Jieba compressed dictionary included; no runtime download."
+}
