@@ -10,6 +10,7 @@
 //! ```
 
 mod analyze;
+mod blocks;
 mod corpus;
 mod fts;
 mod plan;
@@ -35,13 +36,14 @@ fn main() {
         Some("build") => build(&args[1..]),
         Some("query") => query(&args[1..]),
         Some("write") => write(&args[1..]),
+        Some("check") => check(&args[1..]),
         Some("tokens") => {
             let analyzer = Analyzer::new(Analysis::named(&args[1]));
             for token in analyzer.tokens(&args[2]) {
                 println!("{}\t{}", token.surface, token.stem.unwrap_or_default());
             }
         }
-        _ => panic!("lab build|query|write|tokens"),
+        _ => panic!("lab build|query|write|check|tokens"),
     }
 }
 
@@ -98,6 +100,11 @@ fn build(args: &[String]) {
         "tantivy" => {
             let built = tant::build(&path.join("tantivy"), &analyzer, &loaded.docs);
             json!({"seconds": built.seconds, "bytes": built.bytes})
+        }
+        "blocks" => {
+            let built = blocks::build(&path.join("index.db"), &analyzer, &loaded.docs);
+            json!({"seconds": built.seconds, "bytes": built.file, "objects": built.objects,
+                "postings": built.postings, "blocks": built.blocks})
         }
         other => panic!("no backend {other}"),
     };
@@ -174,6 +181,7 @@ fn query(args: &[String]) {
         }
         #[cfg(feature = "tantivy")]
         "tantivy" => (Box::new(tant::Tant::open(&path.join("tantivy"))), None),
+        "blocks" => (Box::new(blocks::Blocks::open(&path.join("index.db"))), None),
         other => panic!("no backend {other}"),
     };
     let open_millis = opened.elapsed().as_secs_f64() * 1e3;
@@ -351,6 +359,10 @@ fn write(args: &[String]) {
             let mut writer = tant::Writer::open(&path.join("tantivy"));
             Box::new(move |docs| writer.set(&analyzer, docs))
         }
+        "blocks" => {
+            let mut writer = blocks::Writer::open(&path.join("index.db"));
+            Box::new(move |docs| writer.set(&analyzer, docs))
+        }
         other => panic!("no backend {other}"),
     };
     let numbered: Vec<(u32, &corpus::Doc)> = docs
@@ -383,6 +395,52 @@ fn write(args: &[String]) {
         "single_mean_ms": singles.iter().sum::<f64>() / singles.len() as f64,
         "batches_ms": batches, "memory": memory(),
     }));
+}
+
+/// Answers every question by block-max MaxScore and by scoring every
+/// posting, and counts the questions whose ten scores differ.
+fn check(args: &[String]) {
+    let [out, cohort, analysis, plans, cut] = args else {
+        panic!("check <out> <cohort> <analysis> <plans> <cut>")
+    };
+    let path = index_path(Path::new(out), cohort, analysis, "blocks");
+    let asked: Vec<Asked> =
+        serde_json::from_slice(&std::fs::read(path.join("questions.json")).unwrap()).unwrap();
+    let analyzer = Analyzer::new(Analysis::named(analysis));
+    let mut index = blocks::Blocks::open(&path.join("index.db"));
+    let cut: f64 = cut.parse().unwrap();
+    for plan in plans.split(',').map(Plan::named) {
+        let (mut differ, mut opened, mut opened_all) = (0, 0, 0);
+        let (mut millis, mut millis_all) = (0.0, 0.0);
+        for question in &asked {
+            let answer = |exhaustive: bool, index: &mut blocks::Blocks| {
+                index.exhaustive = exhaustive;
+                let started = Instant::now();
+                plan::run(index, plan, plan::words(&analyzer, &question.text), cut, 10);
+                (
+                    started.elapsed().as_secs_f64() * 1e3,
+                    index.scores.clone(),
+                    index.opened,
+                )
+            };
+            let (took, pruned, blocks_opened) = answer(false, &mut index);
+            let (took_all, all, blocks_all) = answer(true, &mut index);
+            let same = pruned.len() == all.len()
+                && pruned
+                    .iter()
+                    .zip(&all)
+                    .all(|(a, b)| (a - b).abs() <= 1e-9 * b.abs().max(1.0));
+            differ += usize::from(!same);
+            (opened, opened_all) = (opened + blocks_opened, opened_all + blocks_all);
+            (millis, millis_all) = (millis + took, millis_all + took_all);
+        }
+        let n = asked.len() as f64;
+        emit(
+            json!({"step": "check", "plan": plan.name(), "cut": cut, "questions": asked.len(),
+            "differ": differ, "blocks_opened": opened as f64 / n, "blocks_opened_exhaustive": opened_all as f64 / n,
+            "mean_ms": millis / n, "mean_ms_exhaustive": millis_all / n}),
+        );
+    }
 }
 
 /// The process's peak and current resident memory in KiB, on Linux.
