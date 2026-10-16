@@ -109,7 +109,8 @@ fn insert(c: &Connection, ds: &[Doc]) {
             .prepare_cached("insert into documents(id,key,title,body) values(?1,?2,?3,?4)")
             .unwrap();
         for d in ds {
-            s.execute(params![d.id, d.key, d.title, d.body]).unwrap();
+            s.execute(params![d.id as i64, d.key, d.title, d.body])
+                .unwrap();
         }
     }
     c.execute_batch("commit").unwrap();
@@ -149,7 +150,9 @@ fn search_filtered(
     };
     c.prepare_cached(&sql)
         .unwrap()
-        .query_map([q], |r| r.get(0))
+        .query_map([q], |r| {
+            r.get::<_, i64>(0).map(|i| u64::try_from(i).unwrap())
+        })
         .unwrap()
         .map(Result::unwrap)
         .collect()
@@ -190,7 +193,7 @@ fn objects(c: &Connection) -> Value {
         c.prepare("select name,sum(pgsize) from dbstat group by name order by name")
             .unwrap()
             .query_map([], |r| Ok(
-                json!({"name":r.get::<_,String>(0)?,"bytes":r.get::<_,u64>(1)?})
+                json!({"name":r.get::<_,String>(0)?,"bytes":r.get::<_,i64>(1)?})
             ))
             .unwrap()
             .map(Result::unwrap)
@@ -346,24 +349,27 @@ fn run(engine: &str, mode: &str, file: &str, scale: usize) {
                     "insert" => {
                         c.execute(
                             "insert into documents(id,key,title,body)values(?1,?2,?3,?4)",
-                            params![d.id, d.key, d.title, d.body],
+                            params![d.id as i64, d.key, d.title, d.body],
                         )
                         .unwrap();
                     }
                     "update" => {
                         c.execute(
                             "update documents set title=title||' revised' where id=?1",
-                            [d.id],
+                            [d.id as i64],
                         )
                         .unwrap();
                         d.title.push_str(" revised");
                     }
                     "unrelated" => {
-                        c.execute("update documents set other=other+1 where id=?1", [d.id])
-                            .unwrap();
+                        c.execute(
+                            "update documents set other=other+1 where id=?1",
+                            [d.id as i64],
+                        )
+                        .unwrap();
                     }
                     _ => {
-                        c.execute("delete from documents where id=?1", [d.id])
+                        c.execute("delete from documents where id=?1", [d.id as i64])
                             .unwrap();
                     }
                 }

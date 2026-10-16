@@ -146,7 +146,7 @@ impl TextIndex {
                 .into_iter()
                 .collect()
         } else {
-            s.search(q.as_ref(), &TopDocs::with_limit(10))
+            s.search(q.as_ref(), &TopDocs::with_limit(10).order_by_score())
                 .unwrap()
                 .into_iter()
                 .map(|(_, a)| a)
