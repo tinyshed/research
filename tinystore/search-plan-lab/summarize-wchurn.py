@@ -18,7 +18,7 @@ def table(header, rows):
 
 def arm(context):
     if context.get("purge_at"):
-        return f"steps of {context['pack_keys']}, purged at {context['purge_at']:.0%}"
+        return f"steps of {context['pack_keys']}, purged at {context['purge_at']:.1%}"
     if context.get("pack_keys"):
         return f"steps of {context['pack_keys']}"
     return "whole"
