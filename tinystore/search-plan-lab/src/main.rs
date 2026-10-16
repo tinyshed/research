@@ -372,13 +372,33 @@ fn vhybrid(args: &[String]) {
             ("words rescored, fused", &rescored),
             ("words rescored", &reordered),
         ];
+        // Every question's ten by every mode, for judging them by kind of
+        // question and by graded labels outside the lab.
+        let raw_dir = out.join("raw");
+        std::fs::create_dir_all(&raw_dir).unwrap();
+        let name = format!("hybrid-{}.jsonl", arm.replace(':', "-"));
+        let mut raw = std::io::BufWriter::new(std::fs::File::create(raw_dir.join(name)).unwrap());
         for (mode, ran) in modes {
+            for (question, answer) in given.asked.iter().zip(ran.iter()) {
+                let found: Vec<&str> = answer
+                    .ids
+                    .iter()
+                    .map(|id| given.ids[*id as usize - 1].as_str())
+                    .collect();
+                writeln!(
+                    raw,
+                    "{}",
+                    json!({"mode": mode, "question": question.id, "found": found})
+                )
+                .unwrap();
+            }
             let mut line = summary(&given.asked, ran, &given.ids);
             line["step"] = json!("vhybrid");
             line["mode"] = json!(mode);
             line["context"] = context.clone();
             emit(line);
         }
+        raw.flush().unwrap();
     }
 }
 
