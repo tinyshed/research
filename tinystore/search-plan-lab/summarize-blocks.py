@@ -80,3 +80,36 @@ for w in lines("writes.jsonl"):
                  "; ".join(f"{batch:.0f}" for batch in w["batches_ms"]), f"{w['memory']['hwm_kib'] / 1024:.0f}"])
 table(["backend", "round", "one set p50 ms", "p90 ms", "p99 ms", "max ms", "100 sets a commit, ms each",
        "HWM MiB"], rows)
+
+print("## Executors, formats and maps, each alternated with the other\n")
+for name, label in (("window-queries.jsonl", "executor"), ("packed-queries.jsonl", "format"), ("mmap-queries.jsonl", "mmap")):
+    path = data / name
+    if not path.exists():
+        continue
+    groups = defaultdict(list)
+    for q in lines(name):
+        if q["step"] == "query":
+            c = q["context"]
+            groups[(c.get(label, "-"), q["plan"], c["cut"] if q["plan"] != "or" else "-")].append(q)
+    rows = []
+    for (variant, plan, cut), members in sorted(groups.items()):
+        members.sort(key=lambda m: m["context"]["round"])
+        cell = lambda field, digits: "; ".join(f"{m[field]:.{digits}f}" for m in members)
+        rows.append([variant, plan, cut, cell("p50_ms", 2), cell("p99_ms", 2), cell("ndcg10", 4)])
+    print(f"### {name}\n")
+    table([label, "plan", "cut", "p50 ms", "p99 ms", "nDCG@10"], rows)
+    memory = [(q["context"].get(label, "-"), q["memory"]["hwm_kib"] / 1024) for q in lines(name) if q["step"] == "memory"]
+    table([label, "reader HWM MiB"], sorted({(variant, f"{hwm:.0f}") for variant, hwm in memory}))
+
+for name in ("window-checks.jsonl", "packed-checks.jsonl"):
+    path = data / name
+    if not path.exists():
+        continue
+    print(f"### {name}\n")
+    rows = []
+    for c in lines(name):
+        rows.append([c.get("executor", "-"), c["plan"], c["cut"], c["differ"], f"{c['blocks_opened']:.1f}",
+                     f"{c['mean_ms']:.2f}", f"{c['directory_ms']:.2f}", f"{c['opening_ms']:.2f}",
+                     f"{c['mean_ms_exhaustive']:.2f}"])
+    table(["executor", "plan", "cut", "differ", "blocks opened", "mean ms", "directories ms", "opening ms",
+           "every posting ms"], rows)
