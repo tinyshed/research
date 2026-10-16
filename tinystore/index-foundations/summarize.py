@@ -39,6 +39,12 @@ for label,rs in groups('static'):
 table('Static build and full result-set queries',['Scenario','Build s','Query p50 ms','p95 ms','p99 ms','Query/s','Index MiB¹','HWM MiB','Build WAL MiB'],rows)
 lines.extend(['¹ Cache size for Roaring is serialized bitmaps plus score-array estimate, not durable disk. rstar has no standalone durable index bytes; its RAM is in HWM. Index objects exclude source. Native incremental work is excluded from build time, but process HWM spans the entire process. Scans create no secondary projection. Standalone Tantivy has no SQLite WAL: zero in that column is not zero I/O or source atomicity; its own index files/commit and the full outbox scenario must be included.',''])
 rows=[]
+for label,rs in groups('native-sql'):
+ rows.append([label,values(rs,lambda r:f(r['build_us']/1e6)),values(rs,lambda r:ms(r['queries']['p99_us'])),values(rs,lambda r:mib(indexbytes(r))),values(rs,lambda r:mib(r['build_wal']['frame_bytes'])),values(rs,lambda r:f(mem(r)))])
+if rows:
+ table('Paired FTS row-loop versus direct INSERT SELECT controls',['Scenario','Build s','Query p99 ms','Index MiB','Build WAL MiB','HWM MiB'],rows)
+ lines.extend(['Both paths run rank-1 FTS integrity verification after build timing and before queries. Compare these paired controls with each other; their query warmup differs from the original static cohort. Every query checksum must match its static counterpart.',''])
+rows=[]
 for label,rs in groups('static'):
  if 'mutation_phases'not in rs[0]['result']:continue
  for i,phase in enumerate(rs[0]['result']['mutation_phases']):
@@ -89,6 +95,14 @@ for label,rs in groups('outbox'):
  if rs[0]['result'].get('experiment')!='outbox':continue
  rows.append([label,values(rs,lambda r:f(r['build_us']/1e6)),values(rs,lambda r:ms(r['build_foreground']['service']['p99_us'])),values(rs,lambda r:ms(r['steady_foreground']['service']['p99_us'])),values(rs,lambda r:ms(r['query_service']['p50_us'])),values(rs,lambda r:ms(r['query_service']['p99_us'])),values(rs,lambda r:ms(r['query_scheduled']['p99_us'])),values(rs,lambda r:mib(r['wal']['frame_bytes'])),values(rs,lambda r:mib(r['external_bytes'])),values(rs,lambda r:f(mem(r)))])
 table('SQLite source with native term index or durable Tantivy outbox',['Scenario','Build s','Build write p99 ms','Steady write p99 ms','Query p50 ms','Query p99 ms','Scheduled query p99 ms','WAL MiB','External files MiB','HWM MiB'],rows)
+rows=[]
+for label,rs in groups('outbox'):
+ if rs[0]['result'].get('experiment')!='outbox':continue
+ for phase in ('build_foreground','steady_foreground'):
+  rows.append([label,phase,values(rs,lambda r,p=phase:ms(r[p]['scheduled']['p50_us'])),values(rs,lambda r,p=phase:ms(r[p]['scheduled']['p95_us'])),values(rs,lambda r,p=phase:ms(r[p]['scheduled']['p99_us'])),values(rs,lambda r,p=phase:ms(r[p]['queue']['max_us'])),values(rs,lambda r,p=phase:ms(r[p]['service']['max_us']))])
+if rows:
+ table('Outbox comparison foreground scheduling and maximum writer stalls',['Scenario','Phase','Scheduled p50 ms','p95 ms','p99 ms','Max writer queue ms','Max writer service ms'],rows)
+ lines.extend(['A single blocked foreground call can disappear from a queue p99; scheduled latency and maximum stalls retain the cost of a monolithic build. Native uses direct SQL compact FTS. External build time excludes the separately recorded initial catch-up; both must be considered before the index is current. Query throughput spans the steady phase including completion of its foreground writer.',''])
 rows=[]
 for label,rs in groups('sensitivity'):
  if rs[0]['result']['experiment']!='build-only':continue

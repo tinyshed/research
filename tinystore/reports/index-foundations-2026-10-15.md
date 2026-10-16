@@ -8,9 +8,12 @@ remain historical evidence, not architectural premises. The runnable harness is
 
 ## Publication status and measured findings
 
-This is an incremental publication: the static 96-process matrix is complete,
-with two separate passes at 100k/1m rows. Concurrent rebuild and transport
-matrices are still running; this revision does not claim their final results.
+This is an incremental publication: the static 96-process matrix and the
+[Channels](channels-wire-followup-2026-10-15.md) and
+[Locks](core-locks-followup-2026-10-15.md) follow-ups are complete. The full
+100k concurrent rebuild matrix and both million-row Russian FTS passes are
+complete. Remaining million-row geo and resource/recovery cohorts are running;
+this revision does not claim their final results.
 [Measurement tables](index-foundations-measurements-2026-10-15.md) retain each pass.
 
 At 1m repeated Russian rows, compact external-content FTS5 (`detail=none`,
