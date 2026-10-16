@@ -20,11 +20,14 @@ mkdir -p "$data" /perf/hybrid
   echo " \"memory_kib\": $(grep MemTotal /proc/meminfo | tr -s ' ' | cut -d' ' -f2), \"rustc\": \"$(rustc --version)\","
   echo " \"cgroup_cpu\": \"$(cat /sys/fs/cgroup/cpu.max 2>/dev/null || echo none)\", \"cgroup_memory\": \"$(cat /sys/fs/cgroup/memory.max 2>/dev/null || echo none)\"}"
 } > "$data/environment.json"
-for file in builds hybrid; do : > "$data/$file.jsonl"; done
-rm -rf /perf/hybrid/corpus && cp -r "$given/hybrid/lab" /perf/hybrid/corpus
+# SPECS runs some cohorts alone, and APPEND=1 adds them to what a run before wrote.
+if [ "${APPEND:-}" != 1 ]; then
+  for file in builds hybrid; do : > "$data/$file.jsonl"; done
+  rm -rf /perf/hybrid/corpus && cp -r "$given/hybrid/lab" /perf/hybrid/corpus
+fi
 
 # cohort, clusters, the RaBitQ arm
-for spec in esci:4096:rabitq:128:200 cqa:2048:rabitq:64:200; do
+for spec in ${SPECS:-esci:4096:rabitq:128:200 cqa:2048:rabitq:64:200}; do
   cohort=${spec%%:*}
   rest=${spec#*:}
   clusters=${rest%%:*}
@@ -46,6 +49,8 @@ for spec in esci:4096:rabitq:128:200 cqa:2048:rabitq:64:200; do
   cp "$out"/raw/hybrid-*.jsonl "$data/raw-$cohort/"
   cp "$words/questions.json" "$data/raw-$cohort/questions.json"
 done
-for locale in us es jp; do
-  cp "/perf/hybrid/corpus/esci-$locale/qrels/graded.tsv" "$data/raw-esci/graded-$locale.tsv"
-done
+if [ -d "$data/raw-esci" ]; then
+  for locale in us es jp; do
+    cp "/perf/hybrid/corpus/esci-$locale/qrels/graded.tsv" "$data/raw-esci/graded-$locale.tsv"
+  done
+fi
