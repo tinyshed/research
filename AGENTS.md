@@ -18,6 +18,7 @@ this one repeats only where a measurement needs them.
 | `tinystore/measurements.md` | every number the rounds settled on |
 | `tinystore/open-questions.md` | what is not built, and the gate each question must pass |
 | `tinystore/design/` | TinyStore's design documents, moved from its `docs/` when the guides replaced them; kept as they were |
+| `tinystore/plan/` | the Rust rewrite's plan: its decisions, evidence, architecture, the API books and phases, moved from TinyStore's `plan/` once the rewrite reached `main`; kept as it was |
 | `tinystore/spike/` | prototypes and measurements, a module of its own |
 | `tinystore/server-spike/` | the server measured through `tinystore serve` |
 | `tinystore/bench/` | corpus runners and harnesses against other engines, a module each |

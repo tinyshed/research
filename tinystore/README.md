@@ -11,6 +11,7 @@ where every file below had its history.
 | [measurements.md](measurements.md) | every number the rounds settled on |
 | [open-questions.md](open-questions.md) | what was left open, and the gate each question must pass |
 | [design/](design/README.md) | the design documents TinyStore was built to, as they were when its guides replaced them |
+| [plan/](plan/README.md) | the Rust rewrite's plan, as it was when the rewrite reached `main`: decisions, evidence, architecture, the API books, phases |
 | [storage-runtime-direction.md](storage-runtime-direction.md) | the 22 September assessment of outside designs for shared SQLite engines |
 | [rewrite.md](rewrite.md), [samples/](samples/) | how the metrics code was rewritten for people |
 | [spike/](spike/) | the prototypes and measurements behind the rounds |
