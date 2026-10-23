@@ -1,0 +1,4904 @@
+{
+ "idle": {
+  "contenders": {
+   "bun": {
+    "passes": 3,
+    "pss_total": 40019968,
+    "pss_services": 0,
+    "groups": {
+     "app": 40019968
+    },
+    "cgroup_anon": 11464704,
+    "cgroup_file": 83267584,
+    "open_ms": 0.3313090000001466,
+    "ready": {},
+    "disk": 0
+   },
+   "tinystore-embedded": {
+    "passes": 3,
+    "pss_total": 58331136,
+    "pss_services": 0,
+    "groups": {
+     "app": 58331136
+    },
+    "cgroup_anon": 16785408,
+    "cgroup_file": 99377152,
+    "open_ms": 125.83055100000001,
+    "ready": {},
+    "disk": 380928
+   },
+   "tinystore-sidecar": {
+    "passes": 3,
+    "pss_total": 63422464,
+    "pss_services": 14798848,
+    "groups": {
+     "app": 48657408,
+     "tinystore": 14798848
+    },
+    "cgroup_anon": 18022400,
+    "cgroup_file": 103620608,
+    "open_ms": 133.66220900000008,
+    "ready": {},
+    "disk": 389120
+   },
+   "tinystore-serve": {
+    "passes": 3,
+    "pss_total": 62001152,
+    "pss_services": 15377408,
+    "groups": {
+     "app": 46623744,
+     "tinystore": 15377408
+    },
+    "cgroup_anon": 17186816,
+    "cgroup_file": 103714816,
+    "open_ms": 112.17810099999951,
+    "ready": {
+     "tinystore": 0.020416270999703556
+    },
+    "disk": 385024
+   },
+   "services": {
+    "passes": 3,
+    "pss_total": 466732032,
+    "pss_services": 421587968,
+    "groups": {
+     "app": 44894208,
+     "loki": 139481088,
+     "minio": 113213440,
+     "postgres": 132081664,
+     "redis": 9031680,
+     "victoria-metrics": 27652096
+    },
+    "cgroup_anon": 217006080,
+    "cgroup_file": 571043840,
+    "open_ms": 27.539878999999928,
+    "ready": {
+     "postgres": 0.0652048509996348,
+     "redis": 0.010299010999915481,
+     "minio": 0.3669455280000875,
+     "victoria-metrics": 0.06175087200017515,
+     "loki": 15.509442569000385
+    },
+    "disk": 49422336
+   },
+   "valkey": {
+    "passes": 3,
+    "pss_total": 51125248,
+    "pss_services": 9887744,
+    "groups": {
+     "app": 41237504,
+     "valkey": 9887744
+    },
+    "cgroup_anon": 14557184,
+    "cgroup_file": 96706560,
+    "open_ms": 1.2712420000007114,
+    "ready": {
+     "valkey": 0.06135266600040268
+    },
+    "disk": 8192
+   },
+   "prometheus": {
+    "passes": 3,
+    "pss_total": 146580480,
+    "pss_services": 105381888,
+    "groups": {
+     "app": 40947712,
+     "prometheus": 105381888
+    },
+    "cgroup_anon": 54157312,
+    "cgroup_file": 191053824,
+    "open_ms": 1.5237399999996342,
+    "ready": {
+     "prometheus": 0.19761959300012677
+    },
+    "disk": 32768
+   }
+  },
+  "failed": []
+ },
+ "app": {
+  "contenders": {
+   "tinystore-embedded": {
+    "passes": 3,
+    "stages": {
+     "request@1": {
+      "perSecond": 788.1763370637469,
+      "p50us": 60.288649386965794,
+      "p99us": 14252.234551783977,
+      "errors": 0
+     },
+     "request@8": {
+      "perSecond": 4044.7660443661857,
+      "p50us": 70.63776162219496,
+      "p99us": 19181.631233615248,
+      "errors": 0
+     },
+     "request@64": {
+      "perSecond": 27532.573173305103,
+      "p50us": 288.1702371464505,
+      "p99us": 23849.947468977614,
+      "errors": 0
+     },
+     "request@256": {
+      "perSecond": 39379.29782123966,
+      "p50us": 1967.2782243809756,
+      "p99us": 54789.15983809318,
+      "errors": 0
+     }
+    },
+    "memory": {
+     "request@1": {
+      "total_max": 113857536,
+      "services_max": 0,
+      "app_max": 113857536,
+      "cpu_seconds": 34.4,
+      "cpu_us_per_call": 2182.689314453021
+     },
+     "request@8": {
+      "total_max": 147219456,
+      "services_max": 0,
+      "app_max": 147219456,
+      "cpu_seconds": 36.27,
+      "cpu_us_per_call": 447.97642540161166
+     },
+     "request@64": {
+      "total_max": 205286400,
+      "services_max": 0,
+      "app_max": 205286400,
+      "cpu_seconds": 47.51,
+      "cpu_us_per_call": 86.22357645447143
+     },
+     "request@256": {
+      "total_max": 221918208,
+      "services_max": 0,
+      "app_max": 221918208,
+      "cpu_seconds": 52.92,
+      "cpu_us_per_call": 67.04182175333564
+     }
+    },
+    "rest_total": 78457856,
+    "rest_services": 0,
+    "rest_app": 78457856,
+    "rest_cgroup_file": 122073088,
+    "disk": 200212480,
+    "kept": [
+     {
+      "requests": 1598575,
+      "writes": 159592,
+      "uploads": 32056,
+      "enqueued": 159592,
+      "handled": 159592,
+      "jobsLeft": 0,
+      "logsStored": 1598575,
+      "logsDropped": 0,
+      "versions": 159592
+     },
+     {
+      "requests": 1584082,
+      "writes": 158078,
+      "uploads": 31833,
+      "enqueued": 158078,
+      "handled": 158078,
+      "jobsLeft": 0,
+      "logsStored": 1584082,
+      "logsDropped": 0,
+      "versions": 158078
+     },
+     {
+      "requests": 1471326,
+      "writes": 146969,
+      "uploads": 29547,
+      "enqueued": 146969,
+      "handled": 146969,
+      "jobsLeft": 0,
+      "logsStored": 1471326,
+      "logsDropped": 0,
+      "versions": 146969
+     }
+    ]
+   },
+   "tinystore-embedded-joined": {
+    "passes": 3,
+    "stages": {
+     "request@1": {
+      "perSecond": 1109.6641511658443,
+      "p50us": 59.106519006829224,
+      "p99us": 9783.17219180444,
+      "errors": 0
+     },
+     "request@8": {
+      "perSecond": 2428.9812979395365,
+      "p50us": 57.94756765375414,
+      "p99us": 38361.14390713096,
+      "errors": 0
+     },
+     "request@64": {
+      "perSecond": 2755.8588334154983,
+      "p50us": 17032.739599099164,
+      "p99us": 136239.3433905474,
+      "errors": 0
+     },
+     "request@256": {
+      "perSecond": 2782.664135807411,
+      "p50us": 83042.08557704154,
+      "p99us": 241939.91456970855,
+      "errors": 0
+     }
+    },
+    "memory": {
+     "request@1": {
+      "total_max": 117820416,
+      "services_max": 0,
+      "app_max": 117820416,
+      "cpu_seconds": 34.28,
+      "cpu_us_per_call": 1544.765968460599
+     },
+     "request@8": {
+      "total_max": 138678272,
+      "services_max": 0,
+      "app_max": 138678272,
+      "cpu_seconds": 35.07,
+      "cpu_us_per_call": 721.0423248212182
+     },
+     "request@64": {
+      "total_max": 166800384,
+      "services_max": 0,
+      "app_max": 166800384,
+      "cpu_seconds": 34.62,
+      "cpu_us_per_call": 626.0815879018123
+     },
+     "request@256": {
+      "total_max": 174174208,
+      "services_max": 0,
+      "app_max": 174174208,
+      "cpu_seconds": 34.47,
+      "cpu_us_per_call": 614.4853140364097
+     }
+    },
+    "rest_total": 76962816,
+    "rest_services": 0,
+    "rest_app": 76962816,
+    "rest_cgroup_file": 110825472,
+    "disk": 62935040,
+    "kept": [
+     {
+      "requests": 202320,
+      "writes": 20019,
+      "uploads": 4060,
+      "enqueued": 20019,
+      "handled": 20019,
+      "jobsLeft": 0,
+      "logsStored": 202320,
+      "logsDropped": 0,
+      "versions": 20019
+     },
+     {
+      "requests": 200798,
+      "writes": 19878,
+      "uploads": 4027,
+      "enqueued": 19878,
+      "handled": 19878,
+      "jobsLeft": 0,
+      "logsStored": 200798,
+      "logsDropped": 0,
+      "versions": 19878
+     },
+     {
+      "requests": 178217,
+      "writes": 17581,
+      "uploads": 3601,
+      "enqueued": 17581,
+      "handled": 17581,
+      "jobsLeft": 0,
+      "logsStored": 178217,
+      "logsDropped": 0,
+      "versions": 17581
+     }
+    ]
+   },
+   "tinystore-sidecar": {
+    "passes": 3,
+    "stages": {
+     "request@1": {
+      "perSecond": 756.0132708236754,
+      "p50us": 305.8085610217105,
+      "p99us": 13698.80291405611,
+      "errors": 0
+     },
+     "request@8": {
+      "perSecond": 3730.506475938715,
+      "p50us": 324.5264914247273,
+      "p99us": 19956.569135453305,
+      "errors": 0
+     },
+     "request@64": {
+      "perSecond": 25564.843267788514,
+      "p50us": 419.8096210649343,
+      "p99us": 24326.946418357165,
+      "errors": 0
+     },
+     "request@256": {
+      "perSecond": 46818.70403800502,
+      "p50us": 1967.2782243809756,
+      "p99us": 35439.76733574783,
+      "errors": 0
+     }
+    },
+    "memory": {
+     "request@1": {
+      "total_max": 113836032,
+      "services_max": 30711808,
+      "app_max": 84250624,
+      "cpu_seconds": 8.18,
+      "cpu_us_per_call": 540.9417001953294
+     },
+     "request@8": {
+      "total_max": 152486912,
+      "services_max": 64289792,
+      "app_max": 92506112,
+      "cpu_seconds": 22.55,
+      "cpu_us_per_call": 302.05654726093485
+     },
+     "request@64": {
+      "total_max": 214593536,
+      "services_max": 115314688,
+      "app_max": 103421952,
+      "cpu_seconds": 65.16,
+      "cpu_us_per_call": 127.32604704478726
+     },
+     "request@256": {
+      "total_max": 226234368,
+      "services_max": 122769408,
+      "app_max": 105785344,
+      "cpu_seconds": 61.07,
+      "cpu_us_per_call": 65.10897561718383
+     }
+    },
+    "rest_total": 79340544,
+    "rest_services": 17244160,
+    "rest_app": 61595648,
+    "rest_cgroup_file": 115036160,
+    "disk": 203509760,
+    "kept": [
+     {
+      "requests": 1702856,
+      "writes": 170008,
+      "uploads": 34245,
+      "enqueued": 170008,
+      "handled": 170008,
+      "jobsLeft": 0,
+      "logsStored": 1702856,
+      "logsDropped": 0,
+      "versions": 170008
+     },
+     {
+      "requests": 1557866,
+      "writes": 155376,
+      "uploads": 31314,
+      "enqueued": 155376,
+      "handled": 155376,
+      "jobsLeft": 0,
+      "logsStored": 1557866,
+      "logsDropped": 0,
+      "versions": 155376
+     },
+     {
+      "requests": 1694340,
+      "writes": 169180,
+      "uploads": 34079,
+      "enqueued": 169180,
+      "handled": 169180,
+      "jobsLeft": 0,
+      "logsStored": 1694340,
+      "logsDropped": 0,
+      "versions": 169180
+     }
+    ]
+   },
+   "services": {
+    "passes": 3,
+    "stages": {
+     "request@1": {
+      "perSecond": 1976.3549084736553,
+      "p50us": 172.20456422374184,
+      "p99us": 5619.205153559543,
+      "errors": 0
+     },
+     "request@8": {
+      "perSecond": 8824.651053120599,
+      "p50us": 271.5492506148187,
+      "p99us": 10801.41261137135,
+      "errors": 0
+     },
+     "request@64": {
+      "perSecond": 15208.075525343316,
+      "p50us": 2754.6644528535703,
+      "p99us": 22923.824941347186,
+      "errors": 0
+     },
+     "request@256": {
+      "perSecond": 21241.57135788957,
+      "p50us": 9403.279692238026,
+      "p99us": 38361.14390713096,
+      "errors": 0
+     }
+    },
+    "memory": {
+     "request@1": {
+      "total_max": 691752960,
+      "services_max": 624944128,
+      "app_max": 72621056,
+      "cpu_seconds": 13.93,
+      "cpu_us_per_call": 352.41645972276757
+     },
+     "request@8": {
+      "total_max": 827300864,
+      "services_max": 752392192,
+      "app_max": 76692480,
+      "cpu_seconds": 40.519999999999996,
+      "cpu_us_per_call": 229.49235180401092
+     },
+     "request@64": {
+      "total_max": 920683520,
+      "services_max": 840385536,
+      "app_max": 92003328,
+      "cpu_seconds": 58.01,
+      "cpu_us_per_call": 190.5971531266302
+     },
+     "request@256": {
+      "total_max": 972729344,
+      "services_max": 886488064,
+      "app_max": 100006912,
+      "cpu_seconds": 65.99,
+      "cpu_us_per_call": 155.1847739714503
+     }
+    },
+    "rest_total": 491994112,
+    "rest_services": 437651456,
+    "rest_app": 53641216,
+    "rest_cgroup_file": 582270976,
+    "disk": 785014784,
+    "kept": [
+     {
+      "requests": 1047282,
+      "writes": 104593,
+      "uploads": 20825,
+      "enqueued": 104593,
+      "handled": 104593,
+      "jobsLeft": 0,
+      "logsSent": 1047282,
+      "logsStored": 1047282,
+      "logsDropped": 0,
+      "versions": 104593
+     },
+     {
+      "requests": 1043253,
+      "writes": 104183,
+      "uploads": 20755,
+      "enqueued": 104183,
+      "handled": 104183,
+      "jobsLeft": 0,
+      "logsSent": 1043253,
+      "logsStored": 1043253,
+      "logsDropped": 0,
+      "versions": 104183
+     },
+     {
+      "requests": 1037779,
+      "writes": 103644,
+      "uploads": 20635,
+      "enqueued": 103644,
+      "handled": 103644,
+      "jobsLeft": 0,
+      "logsSent": 1037779,
+      "logsStored": 1037779,
+      "logsDropped": 0,
+      "versions": 103644
+     }
+    ]
+   }
+  },
+  "failed": []
+ },
+ "kv": {
+  "contenders": {
+   "tinystore-embedded-synced": {
+    "passes": 3,
+    "stages": {
+     "get@1": {
+      "perSecond": 141181.44029436886,
+      "p50us": 6.183235704608184,
+      "p99us": 19.499602766762536,
+      "errors": 0
+     },
+     "get@8": {
+      "perSecond": 158835.40393560933,
+      "p50us": 33.28360826246044,
+      "p99us": 245.95052266806655,
+      "errors": 0
+     },
+     "get@64": {
+      "perSecond": 352344.84856754675,
+      "p50us": 111.38863432616658,
+      "p99us": 2259.7843006249514,
+      "errors": 0
+     },
+     "get@256": {
+      "perSecond": 394034.59501164797,
+      "p50us": 403.5079018309633,
+      "p99us": 3934.3391681198586,
+      "errors": 0
+     },
+     "set@1": {
+      "perSecond": 357.89664324313554,
+      "p50us": 3227.528447699359,
+      "p99us": 4519.319014090473,
+      "errors": 0
+     },
+     "set@8": {
+      "perSecond": 2348.4524291153484,
+      "p50us": 3425.0790089261404,
+      "p99us": 9038.138881428322,
+      "errors": 0
+     },
+     "set@64": {
+      "perSecond": 12053.951602367415,
+      "p50us": 4093.2864705119,
+      "p99us": 17032.739599099164,
+      "errors": 0
+     },
+     "set@256": {
+      "perSecond": 22573.90251857259,
+      "p50us": 9783.17219180444,
+      "p99us": 24813.485346724305,
+      "errors": 0
+     }
+    },
+    "memory": {
+     "get@1": {
+      "total_max": 98860032,
+      "services_max": 0,
+      "app_max": 98860032,
+      "cpu_seconds": 10.38,
+      "cpu_us_per_call": 7.3522411857800085
+     },
+     "get@8": {
+      "total_max": 105676800,
+      "services_max": 0,
+      "app_max": 105676800,
+      "cpu_seconds": 32.67,
+      "cpu_us_per_call": 20.568462188218547
+     },
+     "get@64": {
+      "total_max": 127844352,
+      "services_max": 0,
+      "app_max": 127844352,
+      "cpu_seconds": 43.16,
+      "cpu_us_per_call": 12.250588197082235
+     },
+     "get@256": {
+      "total_max": 129159168,
+      "services_max": 0,
+      "app_max": 129159168,
+      "cpu_seconds": 44.83,
+      "cpu_us_per_call": 11.377173620675308
+     },
+     "set@1": {
+      "total_max": 104741888,
+      "services_max": 0,
+      "app_max": 104741888,
+      "cpu_seconds": 16.53,
+      "cpu_us_per_call": 4620.037879738786
+     },
+     "set@8": {
+      "total_max": 104545280,
+      "services_max": 0,
+      "app_max": 104545280,
+      "cpu_seconds": 17.81,
+      "cpu_us_per_call": 758.1443158772524
+     },
+     "set@64": {
+      "total_max": 106496000,
+      "services_max": 0,
+      "app_max": 106496000,
+      "cpu_seconds": 18.94,
+      "cpu_us_per_call": 157.12689601541254
+     },
+     "set@256": {
+      "total_max": 108417024,
+      "services_max": 0,
+      "app_max": 108417024,
+      "cpu_seconds": 19.51,
+      "cpu_us_per_call": 86.39267891011093
+     }
+    },
+    "rest_total": null,
+    "rest_services": null,
+    "rest_app": null,
+    "rest_cgroup_file": null,
+    "disk": 16982016
+   },
+   "tinystore-sidecar-synced": {
+    "passes": 3,
+    "stages": {
+     "get@1": {
+      "perSecond": 11434.974394805335,
+      "p50us": 86.10703725837547,
+      "p99us": 175.64865550821668,
+      "errors": 0
+     },
+     "get@8": {
+      "perSecond": 72975.12603748034,
+      "p50us": 87.82917800354296,
+      "p99us": 395.595982187219,
+      "errors": 0
+     },
+     "get@64": {
+      "perSecond": 216633.06968911862,
+      "p50us": 214.11473094409743,
+      "p99us": 2544.8841550066013,
+      "errors": 0
+     },
+     "get@256": {
+      "perSecond": 322477.9478310421,
+      "p50us": 521.9804972490336,
+      "p99us": 4175.152199922139,
+      "errors": 0
+     },
+     "set@1": {
+      "perSecond": 344.0060451377532,
+      "p50us": 3227.528447699359,
+      "p99us": 4013.0259514822556,
+      "errors": 0
+     },
+     "set@8": {
+      "perSecond": 2238.011383870265,
+      "p50us": 3563.452200886757,
+      "p99us": 9038.138881428322,
+      "errors": 0
+     },
+     "set@64": {
+      "perSecond": 11600.476024805135,
+      "p50us": 4258.6552439205825,
+      "p99us": 16698.764312842315,
+      "errors": 0
+     },
+     "set@256": {
+      "perSecond": 21139.80078874916,
+      "p50us": 10381.980595320407,
+      "p99us": 26332.26915782661,
+      "errors": 0
+     }
+    },
+    "memory": {
+     "get@1": {
+      "total_max": 95205376,
+      "services_max": 17054720,
+      "app_max": 78596096,
+      "cpu_seconds": 12.53,
+      "cpu_us_per_call": 109.5761089390118
+     },
+     "get@8": {
+      "total_max": 99581952,
+      "services_max": 23918592,
+      "app_max": 75544576,
+      "cpu_seconds": 23.59,
+      "cpu_us_per_call": 32.32608325730616
+     },
+     "get@64": {
+      "total_max": 115675136,
+      "services_max": 33343488,
+      "app_max": 82619392,
+      "cpu_seconds": 47.14,
+      "cpu_us_per_call": 21.762473540675305
+     },
+     "get@256": {
+      "total_max": 118134784,
+      "services_max": 33921024,
+      "app_max": 84825088,
+      "cpu_seconds": 51.71,
+      "cpu_us_per_call": 16.035204995503364
+     },
+     "set@1": {
+      "total_max": 93831168,
+      "services_max": 34359296,
+      "app_max": 59460608,
+      "cpu_seconds": 1.4500000000000002,
+      "cpu_us_per_call": 421.4199367943906
+     },
+     "set@8": {
+      "total_max": 104359936,
+      "services_max": 33880064,
+      "app_max": 70405120,
+      "cpu_seconds": 2.15,
+      "cpu_us_per_call": 96.07703682828074
+     },
+     "set@64": {
+      "total_max": 106716160,
+      "services_max": 34895872,
+      "app_max": 71645184,
+      "cpu_seconds": 3.77,
+      "cpu_us_per_call": 32.488919688634496
+     },
+     "set@256": {
+      "total_max": 108104704,
+      "services_max": 36579328,
+      "app_max": 71564288,
+      "cpu_seconds": 6.07,
+      "cpu_us_per_call": 28.69352475377966
+     }
+    },
+    "rest_total": null,
+    "rest_services": null,
+    "rest_app": null,
+    "rest_cgroup_file": null,
+    "disk": 16982016
+   },
+   "redis-synced": {
+    "passes": 3,
+    "stages": {
+     "get@1": {
+      "perSecond": 19708.085439666476,
+      "p50us": 43.05589633374558,
+      "p99us": 127.95052778949413,
+      "errors": 0
+     },
+     "get@8": {
+      "perSecond": 142573.79279624866,
+      "p50us": 50.44684484689406,
+      "p99us": 127.95052778949413,
+      "errors": 0
+     },
+     "get@64": {
+      "perSecond": 356699.48861005995,
+      "p50us": 165.51765111855232,
+      "p99us": 372.7789294720912,
+      "errors": 0
+     },
+     "get@256": {
+      "perSecond": 406280.69197140285,
+      "p50us": 599.5915159824094,
+      "p99us": 1646.130413687395,
+      "errors": 0
+     },
+     "set@1": {
+      "perSecond": 304.99129689034845,
+      "p50us": 3292.079016653345,
+      "p99us": 3781.5639831986337,
+      "errors": 0
+     },
+     "set@8": {
+      "perSecond": 1247.4861151854104,
+      "p50us": 6454.7004234748165,
+      "p99us": 7126.510827965456,
+      "errors": 0
+     },
+     "set@64": {
+      "perSecond": 9696.308919765743,
+      "p50us": 6715.470320583199,
+      "p99us": 8349.84326539995,
+      "errors": 0
+     },
+     "set@256": {
+      "perSecond": 36745.4648632511,
+      "p50us": 6849.779726994864,
+      "p99us": 9978.83563564053,
+      "errors": 0
+     }
+    },
+    "memory": {
+     "get@1": {
+      "total_max": 92141568,
+      "services_max": 31548416,
+      "app_max": 60618752,
+      "cpu_seconds": 13.16,
+      "cpu_us_per_call": 66.78130238426596
+     },
+     "get@8": {
+      "total_max": 94495744,
+      "services_max": 31556608,
+      "app_max": 62939136,
+      "cpu_seconds": 15.29,
+      "cpu_us_per_call": 10.724271060005288
+     },
+     "get@64": {
+      "total_max": 99189760,
+      "services_max": 31568896,
+      "app_max": 67620864,
+      "cpu_seconds": 17.32,
+      "cpu_us_per_call": 4.855627931368872
+     },
+     "get@256": {
+      "total_max": 103421952,
+      "services_max": 31613952,
+      "app_max": 71822336,
+      "cpu_seconds": 17.85,
+      "cpu_us_per_call": 4.393953621545569
+     },
+     "set@1": {
+      "total_max": 86608896,
+      "services_max": 32926720,
+      "app_max": 54157312,
+      "cpu_seconds": 0.52,
+      "cpu_us_per_call": 170.51371973656381
+     },
+     "set@8": {
+      "total_max": 85150720,
+      "services_max": 31595520,
+      "app_max": 53610496,
+      "cpu_seconds": 0.5900000000000001,
+      "cpu_us_per_call": 47.29038653963125
+     },
+     "set@64": {
+      "total_max": 89996288,
+      "services_max": 31599616,
+      "app_max": 58396672,
+      "cpu_seconds": 1.22,
+      "cpu_us_per_call": 12.57707654750973
+     },
+     "set@256": {
+      "total_max": 101817344,
+      "services_max": 40098816,
+      "app_max": 65030144,
+      "cpu_seconds": 3.0300000000000002,
+      "cpu_us_per_call": 8.240970964485957
+     }
+    },
+    "rest_total": null,
+    "rest_services": null,
+    "rest_app": null,
+    "rest_cgroup_file": null,
+    "disk": 68829184
+   },
+   "valkey-synced": {
+    "passes": 3,
+    "stages": {
+     "get@1": {
+      "perSecond": 20144.775304519953,
+      "p50us": 42.21166307229958,
+      "p99us": 93.20502633078384,
+      "errors": 0
+     },
+     "get@8": {
+      "perSecond": 142638.21411022745,
+      "p50us": 50.44684484689406,
+      "p99us": 122.98205285418506,
+      "errors": 0
+     },
+     "get@64": {
+      "perSecond": 355481.9797072983,
+      "p50us": 165.51765111855232,
+      "p99us": 387.83919822276374,
+      "errors": 0
+     },
+     "get@256": {
+      "perSecond": 412378.99194390245,
+      "p50us": 587.8348195905974,
+      "p99us": 1613.8533467523478,
+      "errors": 0
+     },
+     "set@1": {
+      "perSecond": 305.1525108846156,
+      "p50us": 3292.079016653345,
+      "p99us": 4013.0259514822556,
+      "errors": 0
+     },
+     "set@8": {
+      "perSecond": 1259.28904559336,
+      "p50us": 6328.137670073351,
+      "p99us": 7269.041044524766,
+      "errors": 0
+     },
+     "set@64": {
+      "perSecond": 9889.00991525285,
+      "p50us": 6583.794431944314,
+      "p99us": 8186.120848431323,
+      "errors": 0
+     },
+     "set@256": {
+      "perSecond": 36607.80635235678,
+      "p50us": 6849.779726994864,
+      "p99us": 9978.83563564053,
+      "errors": 0
+     }
+    },
+    "memory": {
+     "get@1": {
+      "total_max": 90391552,
+      "services_max": 30703616,
+      "app_max": 59596800,
+      "cpu_seconds": 13.23,
+      "cpu_us_per_call": 65.67459701092591
+     },
+     "get@8": {
+      "total_max": 94020608,
+      "services_max": 30683136,
+      "app_max": 63221760,
+      "cpu_seconds": 15.35,
+      "cpu_us_per_call": 10.76256825653471
+     },
+     "get@64": {
+      "total_max": 96454656,
+      "services_max": 30744576,
+      "app_max": 65735680,
+      "cpu_seconds": 17.26,
+      "cpu_us_per_call": 4.855379733794603
+     },
+     "get@256": {
+      "total_max": 101398528,
+      "services_max": 30814208,
+      "app_max": 70675456,
+      "cpu_seconds": 18.03,
+      "cpu_us_per_call": 4.37219168585889
+     },
+     "set@1": {
+      "total_max": 88729600,
+      "services_max": 32295936,
+      "app_max": 56582144,
+      "cpu_seconds": 0.51,
+      "cpu_us_per_call": 167.14625864355764
+     },
+     "set@8": {
+      "total_max": 84102144,
+      "services_max": 30722048,
+      "app_max": 53392384,
+      "cpu_seconds": 0.6,
+      "cpu_us_per_call": 47.62688106121153
+     },
+     "set@64": {
+      "total_max": 87993344,
+      "services_max": 30742528,
+      "app_max": 57282560,
+      "cpu_seconds": 1.24,
+      "cpu_us_per_call": 12.536665047507771
+     },
+     "set@256": {
+      "total_max": 97074176,
+      "services_max": 36584448,
+      "app_max": 65784832,
+      "cpu_seconds": 3.1,
+      "cpu_us_per_call": 8.462215649089304
+     }
+    },
+    "rest_total": null,
+    "rest_services": null,
+    "rest_app": null,
+    "rest_cgroup_file": null,
+    "disk": 69263360
+   },
+   "tinystore-embedded-written": {
+    "passes": 3,
+    "stages": {
+     "set@1": {
+      "perSecond": 16197.178465851232,
+      "p50us": 25.72931173890518,
+      "p99us": 102.90588033356896,
+      "errors": 0
+     },
+     "set@8": {
+      "perSecond": 20039.347217662398,
+      "p50us": 197.80891482760217,
+      "p99us": 4343.828348798992,
+      "errors": 0
+     },
+     "set@64": {
+      "perSecond": 28846.41314727421,
+      "p50us": 873.491619436054,
+      "p99us": 19956.569135453305,
+      "errors": 0
+     },
+     "set@256": {
+      "perSecond": 32503.87289089058,
+      "p50us": 4013.0259514822556,
+      "p99us": 25309.755053658795,
+      "errors": 0
+     }
+    },
+    "memory": {
+     "set@1": {
+      "total_max": 95284224,
+      "services_max": 0,
+      "app_max": 95284224,
+      "cpu_seconds": 19.66,
+      "cpu_us_per_call": 121.37916515181635
+     },
+     "set@8": {
+      "total_max": 94338048,
+      "services_max": 0,
+      "app_max": 94338048,
+      "cpu_seconds": 23.59,
+      "cpu_us_per_call": 117.71840541396531
+     },
+     "set@64": {
+      "total_max": 95001600,
+      "services_max": 0,
+      "app_max": 95001600,
+      "cpu_seconds": 21.51,
+      "cpu_us_per_call": 74.56732970640599
+     },
+     "set@256": {
+      "total_max": 99294208,
+      "services_max": 0,
+      "app_max": 99294208,
+      "cpu_seconds": 20.56,
+      "cpu_us_per_call": 63.22870925958013
+     }
+    },
+    "rest_total": null,
+    "rest_services": null,
+    "rest_app": null,
+    "rest_cgroup_file": null,
+    "disk": 17035264
+   },
+   "tinystore-sidecar-written": {
+    "passes": 3,
+    "stages": {
+     "set@1": {
+      "perSecond": 5466.260158616207,
+      "p50us": 149.9144361887519,
+      "p99us": 318.16322688698756,
+      "errors": 0
+     },
+     "set@8": {
+      "perSecond": 16770.14377080373,
+      "p50us": 266.2247555047242,
+      "p99us": 13166.861701322672,
+      "errors": 0
+     },
+     "set@64": {
+      "perSecond": 29150.765267904506,
+      "p50us": 823.1106620342608,
+      "p99us": 19956.569135453305,
+      "errors": 0
+     },
+     "set@256": {
+      "perSecond": 31856.70544364825,
+      "p50us": 4795.937492304922,
+      "p99us": 24813.485346724305,
+      "errors": 0
+     }
+    },
+    "memory": {
+     "set@1": {
+      "total_max": 86334464,
+      "services_max": 15988736,
+      "app_max": 70374400,
+      "cpu_seconds": 15.69,
+      "cpu_us_per_call": 287.03353928862305
+     },
+     "set@8": {
+      "total_max": 86365184,
+      "services_max": 15980544,
+      "app_max": 70384640,
+      "cpu_seconds": 18.25,
+      "cpu_us_per_call": 108.82435028239085
+     },
+     "set@64": {
+      "total_max": 89146368,
+      "services_max": 16898048,
+      "app_max": 72514560,
+      "cpu_seconds": 10.21,
+      "cpu_us_per_call": 35.02130735939908
+     },
+     "set@256": {
+      "total_max": 90295296,
+      "services_max": 18638848,
+      "app_max": 71820288,
+      "cpu_seconds": 9.31,
+      "cpu_us_per_call": 29.195421093218293
+     }
+    },
+    "rest_total": null,
+    "rest_services": null,
+    "rest_app": null,
+    "rest_cgroup_file": null,
+    "disk": 17043456
+   },
+   "redis-written": {
+    "passes": 3,
+    "stages": {
+     "set@1": {
+      "perSecond": 14806.896339735224,
+      "p50us": 63.9787970386432,
+      "p99us": 133.11972911218967,
+      "errors": 0
+     },
+     "set@8": {
+      "perSecond": 100586.72855997986,
+      "p50us": 67.89481124778447,
+      "p99us": 214.11473094409743,
+      "errors": 0
+     },
+     "set@64": {
+      "perSecond": 188703.33736156352,
+      "p50us": 282.5198403396574,
+      "p99us": 1377.4082919660655,
+      "errors": 0
+     },
+     "set@256": {
+      "perSecond": 205042.28041907423,
+      "p50us": 1043.9033431418954,
+      "p99us": 2494.984465692746,
+      "errors": 0
+     }
+    },
+    "memory": {
+     "set@1": {
+      "total_max": 96618496,
+      "services_max": 31668224,
+      "app_max": 65052672,
+      "cpu_seconds": 12.41,
+      "cpu_us_per_call": 83.82067949517602
+     },
+     "set@8": {
+      "total_max": 119279616,
+      "services_max": 47776768,
+      "app_max": 70440960,
+      "cpu_seconds": 16.23,
+      "cpu_us_per_call": 16.135329414080758
+     },
+     "set@64": {
+      "total_max": 122896384,
+      "services_max": 51960832,
+      "app_max": 72722432,
+      "cpu_seconds": 18.130000000000003,
+      "cpu_us_per_call": 9.607673215266015
+     },
+     "set@256": {
+      "total_max": 127211520,
+      "services_max": 52249600,
+      "app_max": 75716608,
+      "cpu_seconds": 18.66,
+      "cpu_us_per_call": 9.10056207035051
+     }
+    },
+    "rest_total": null,
+    "rest_services": null,
+    "rest_app": null,
+    "rest_cgroup_file": null,
+    "disk": 77611008
+   },
+   "valkey-written": {
+    "passes": 3,
+    "stages": {
+     "set@1": {
+      "perSecond": 14473.667094117862,
+      "p50us": 63.9787970386432,
+      "p99us": 138.49776616832216,
+      "errors": 0
+     },
+     "set@8": {
+      "perSecond": 99893.14601561932,
+      "p50us": 67.89481124778447,
+      "p99us": 250.86953312142785,
+      "errors": 0
+     },
+     "set@64": {
+      "perSecond": 192031.9774873294,
+      "p50us": 282.5198403396574,
+      "p99us": 1350.4002862412406,
+      "errors": 0
+     },
+     "set@256": {
+      "perSecond": 204060.99296839643,
+      "p50us": 1064.7814100047335,
+      "p99us": 2595.781838106733,
+      "errors": 0
+     }
+    },
+    "memory": {
+     "set@1": {
+      "total_max": 96181248,
+      "services_max": 30950400,
+      "app_max": 65352704,
+      "cpu_seconds": 12.370000000000001,
+      "cpu_us_per_call": 85.46555561601387
+     },
+     "set@8": {
+      "total_max": 115817472,
+      "services_max": 48025600,
+      "app_max": 68877312,
+      "cpu_seconds": 16.15,
+      "cpu_us_per_call": 16.1688922671338
+     },
+     "set@64": {
+      "total_max": 120393728,
+      "services_max": 51699712,
+      "app_max": 71044096,
+      "cpu_seconds": 18.11,
+      "cpu_us_per_call": 9.430720985620704
+     },
+     "set@256": {
+      "total_max": 124553216,
+      "services_max": 51466240,
+      "app_max": 73579520,
+      "cpu_seconds": 18.63,
+      "cpu_us_per_call": 9.129623319477469
+     }
+    },
+    "rest_total": null,
+    "rest_services": null,
+    "rest_app": null,
+    "rest_cgroup_file": null,
+    "disk": 42266624
+   }
+  },
+  "failed": []
+ },
+ "sql": {
+  "contenders": {
+   "tinystore-embedded": {
+    "passes": 3,
+    "stages": {
+     "read@1": {
+      "perSecond": 32275.723471032074,
+      "p50us": 27.850234480856496,
+      "p99us": 79.54959251984482,
+      "errors": 0
+     },
+     "read@8": {
+      "perSecond": 122681.95439594572,
+      "p50us": 45.691261636541476,
+      "p99us": 1086.0770382048283,
+      "errors": 0
+     },
+     "read@64": {
+      "perSecond": 179811.94840578214,
+      "p50us": 218.39702556297942,
+      "p99us": 2304.97998663745,
+      "errors": 0
+     },
+     "read@256": {
+      "perSecond": 167073.452419046,
+      "p50us": 926.9562944784958,
+      "p99us": 4343.828348798992,
+      "errors": 0
+     },
+     "insert@1": {
+      "perSecond": 363.48034585439075,
+      "p50us": 3164.243576175841,
+      "p99us": 4343.828348798992,
+      "errors": 0
+     },
+     "insert@8": {
+      "perSecond": 2513.9754182566394,
+      "p50us": 3425.0790089261404,
+      "p99us": 7562.710302723566,
+      "errors": 0
+     },
+     "insert@64": {
+      "perSecond": 13683.51214406007,
+      "p50us": 3934.3391681198586,
+      "p99us": 10589.620207226813,
+      "errors": 0
+     },
+     "insert@256": {
+      "perSecond": 33355.84367407971,
+      "p50us": 7713.964508778036,
+      "p99us": 17373.394391081147,
+      "errors": 0
+     }
+    },
+    "memory": {
+     "read@1": {
+      "total_max": 112905216,
+      "services_max": 0,
+      "app_max": 112905216,
+      "cpu_seconds": 21.39,
+      "cpu_us_per_call": 66.27272048354806
+     },
+     "read@8": {
+      "total_max": 122713088,
+      "services_max": 0,
+      "app_max": 122713088,
+      "cpu_seconds": 28.51,
+      "cpu_us_per_call": 23.2389515967331
+     },
+     "read@64": {
+      "total_max": 133985280,
+      "services_max": 0,
+      "app_max": 133985280,
+      "cpu_seconds": 32.85,
+      "cpu_us_per_call": 18.269086282223757
+     },
+     "read@256": {
+      "total_max": 134611968,
+      "services_max": 0,
+      "app_max": 134611968,
+      "cpu_seconds": 31.36,
+      "cpu_us_per_call": 18.768310500294678
+     },
+     "insert@1": {
+      "total_max": 120488960,
+      "services_max": 0,
+      "app_max": 120488960,
+      "cpu_seconds": 16.55,
+      "cpu_us_per_call": 4553.203546975244
+     },
+     "insert@8": {
+      "total_max": 115848192,
+      "services_max": 0,
+      "app_max": 115848192,
+      "cpu_seconds": 17.41,
+      "cpu_us_per_call": 692.4594030499574
+     },
+     "insert@64": {
+      "total_max": 114877440,
+      "services_max": 0,
+      "app_max": 114877440,
+      "cpu_seconds": 17.69,
+      "cpu_us_per_call": 129.24090252150165
+     },
+     "insert@256": {
+      "total_max": 117101568,
+      "services_max": 0,
+      "app_max": 117101568,
+      "cpu_seconds": 18.15,
+      "cpu_us_per_call": 54.38606114265191
+     }
+    },
+    "rest_total": null,
+    "rest_services": null,
+    "rest_app": null,
+    "rest_cgroup_file": null,
+    "disk": 175161344
+   },
+   "tinystore-sidecar": {
+    "passes": 3,
+    "stages": {
+     "read@1": {
+      "perSecond": 6934.529633247454,
+      "p50us": 135.7821236944335,
+      "p99us": 245.95052266806655,
+      "errors": 0
+     },
+     "read@8": {
+      "perSecond": 46082.08563090033,
+      "p50us": 159.090398998993,
+      "p99us": 1323.921849256118,
+      "errors": 0
+     },
+     "read@64": {
+      "perSecond": 135691.9893296713,
+      "p50us": 331.0170212532219,
+      "p99us": 2595.781838106733,
+      "errors": 0
+     },
+     "read@256": {
+      "perSecond": 152300.45393464636,
+      "p50us": 1086.0770382048283,
+      "p99us": 4519.319014090473,
+      "errors": 0
+     },
+     "insert@1": {
+      "perSecond": 342.13589967593373,
+      "p50us": 3292.079016653345,
+      "p99us": 3857.1952628626063,
+      "errors": 0
+     },
+     "insert@8": {
+      "perSecond": 2329.752522038346,
+      "p50us": 3563.452200886757,
+      "p99us": 8516.840130707948,
+      "errors": 0
+     },
+     "insert@64": {
+      "perSecond": 12206.678975893015,
+      "p50us": 4175.152199922139,
+      "p99us": 11237.789680870752,
+      "errors": 0
+     },
+     "insert@256": {
+      "perSecond": 25602.73397212641,
+      "p50us": 9978.83563564053,
+      "p99us": 19956.569135453305,
+      "errors": 0
+     }
+    },
+    "memory": {
+     "read@1": {
+      "total_max": 103408640,
+      "services_max": 15053824,
+      "app_max": 88303616,
+      "cpu_seconds": 19.490000000000002,
+      "cpu_us_per_call": 281.0572746932339
+     },
+     "read@8": {
+      "total_max": 105499648,
+      "services_max": 24177664,
+      "app_max": 81350656,
+      "cpu_seconds": 32.41,
+      "cpu_us_per_call": 70.33101813054112
+     },
+     "read@64": {
+      "total_max": 116673536,
+      "services_max": 36002816,
+      "app_max": 80912384,
+      "cpu_seconds": 40.629999999999995,
+      "cpu_us_per_call": 29.94580859715888
+     },
+     "read@256": {
+      "total_max": 119712768,
+      "services_max": 36715520,
+      "app_max": 83054592,
+      "cpu_seconds": 39.66,
+      "cpu_us_per_call": 26.040631511852553
+     },
+     "insert@1": {
+      "total_max": 103476224,
+      "services_max": 36785152,
+      "app_max": 67073024,
+      "cpu_seconds": 1.55,
+      "cpu_us_per_call": 453.08166052432233
+     },
+     "insert@8": {
+      "total_max": 106516480,
+      "services_max": 37047296,
+      "app_max": 69417984,
+      "cpu_seconds": 1.9100000000000001,
+      "cpu_us_per_call": 81.98295664163092
+     },
+     "insert@64": {
+      "total_max": 111087616,
+      "services_max": 38622208,
+      "app_max": 72870912,
+      "cpu_seconds": 3.6799999999999997,
+      "cpu_us_per_call": 30.15647694650778
+     },
+     "insert@256": {
+      "total_max": 115891200,
+      "services_max": 39883776,
+      "app_max": 75960320,
+      "cpu_seconds": 7.22,
+      "cpu_us_per_call": 28.18602033655627
+     }
+    },
+    "rest_total": null,
+    "rest_services": null,
+    "rest_app": null,
+    "rest_cgroup_file": null,
+    "disk": 144613376
+   },
+   "postgres": {
+    "passes": 3,
+    "stages": {
+     "read@1": {
+      "perSecond": 11290.322296614859,
+      "p50us": 81.14058437024171,
+      "p99us": 172.20456422374184,
+      "errors": 0
+     },
+     "read@8": {
+      "perSecond": 25890.724543737913,
+      "p50us": 255.88692378385642,
+      "p99us": 890.9614518247747,
+      "errors": 0
+     },
+     "read@64": {
+      "perSecond": 27049.20575238024,
+      "p50us": 2215.4748045342662,
+      "p99us": 4519.319014090473,
+      "errors": 0
+     },
+     "read@256": {
+      "perSecond": 61538.61771658629,
+      "p50us": 3707.4156698025813,
+      "p99us": 8025.6086749326705,
+      "errors": 0
+     },
+     "insert@1": {
+      "perSecond": 598.5575228865423,
+      "p50us": 1781.8244993293404,
+      "p99us": 2215.4748045342662,
+      "errors": 0
+     },
+     "insert@8": {
+      "perSecond": 2541.4409315717453,
+      "p50us": 3164.243576175841,
+      "p99us": 3934.3391681198586,
+      "errors": 0
+     },
+     "insert@64": {
+      "perSecond": 18433.912719950484,
+      "p50us": 3357.9205969864124,
+      "p99us": 5295.102518601012,
+      "errors": 0
+     },
+     "insert@256": {
+      "perSecond": 19758.2938632578,
+      "p50us": 12655.576414189423,
+      "p99us": 18075.27952448082,
+      "errors": 0
+     }
+    },
+    "memory": {
+     "read@1": {
+      "total_max": 254081024,
+      "services_max": 163793920,
+      "app_max": 90369024,
+      "cpu_seconds": 12.629999999999999,
+      "cpu_us_per_call": 111.86571709991672
+     },
+     "read@8": {
+      "total_max": 247737344,
+      "services_max": 165127168,
+      "app_max": 82399232,
+      "cpu_seconds": 19.259999999999998,
+      "cpu_us_per_call": 74.3895751834351
+     },
+     "read@64": {
+      "total_max": 256869376,
+      "services_max": 175111168,
+      "app_max": 81530880,
+      "cpu_seconds": 19.91,
+      "cpu_us_per_call": 73.60659748114041
+     },
+     "read@256": {
+      "total_max": 257082368,
+      "services_max": 175106048,
+      "app_max": 81743872,
+      "cpu_seconds": 20.48,
+      "cpu_us_per_call": 33.27991553908449
+     },
+     "insert@1": {
+      "total_max": 238543872,
+      "services_max": 177174528,
+      "app_max": 61455360,
+      "cpu_seconds": 1.4500000000000002,
+      "cpu_us_per_call": 242.27329188147684
+     },
+     "insert@8": {
+      "total_max": 246903808,
+      "services_max": 185896960,
+      "app_max": 61452288,
+      "cpu_seconds": 4.75,
+      "cpu_us_per_call": 186.8831570505132
+     },
+     "insert@64": {
+      "total_max": 317199360,
+      "services_max": 248939520,
+      "app_max": 67934208,
+      "cpu_seconds": 25.049999999999997,
+      "cpu_us_per_call": 135.86367355799715
+     },
+     "insert@256": {
+      "total_max": 340717568,
+      "services_max": 273581056,
+      "app_max": 67156992,
+      "cpu_seconds": 21.03,
+      "cpu_us_per_call": 106.31936423115916
+     }
+    },
+    "rest_total": null,
+    "rest_services": null,
+    "rest_app": null,
+    "rest_cgroup_file": null,
+    "disk": 450453504
+   }
+  },
+  "failed": []
+ },
+ "files": {
+  "contenders": {
+   "tinystore-embedded": {
+    "passes": 2,
+    "stages": {
+     "get-16k@1": {
+      "perSecond": 16998.805224353808,
+      "p50us": 42.63377970302258,
+      "p99us": 498.7419721279964,
+      "errors": 0.0
+     },
+     "get-16k@16": {
+      "perSecond": 34297.34102907423,
+      "p50us": 205.84074800526218,
+      "p99us": 3102.19958448612,
+      "errors": 0.0
+     },
+     "get-16k@64": {
+      "perSecond": 30073.326022605797,
+      "p50us": 1986.9510066247856,
+      "p99us": 4748.918497282324,
+      "errors": 0.0
+     },
+     "put-16k@1": {
+      "perSecond": 251.8073167368512,
+      "p50us": 4505.232308969595,
+      "p99us": 12357.965305156178,
+      "errors": 0.0
+     },
+     "put-16k@16": {
+      "perSecond": 2233.7714661777427,
+      "p50us": 5755.7039064440605,
+      "p99us": 20371.667338691834,
+      "errors": 0.0
+     },
+     "put-16k@64": {
+      "perSecond": 2846.823291989009,
+      "p50us": 19956.569135453305,
+      "p99us": 35439.76733574783,
+      "errors": 0.0
+     },
+     "get-1m@1": {
+      "perSecond": 534.3089975746456,
+      "p50us": 1447.386142831109,
+      "p99us": 5140.38210667726,
+      "errors": 0.0
+     },
+     "get-1m@16": {
+      "perSecond": 989.9989413837752,
+      "p50us": 14112.506762060602,
+      "p99us": 34417.725813686906,
+      "errors": 0.0
+     },
+     "put-1m@1": {
+      "perSecond": 83.76726762369691,
+      "p50us": 11691.796383977933,
+      "p99us": 15892.974757041731,
+      "errors": 0.0
+     },
+     "put-1m@16": {
+      "perSecond": 494.5300090473836,
+      "p50us": 31173.19467373464,
+      "p99us": 60079.984772213444,
+      "errors": 0.0
+     }
+    },
+    "memory": {
+     "get-16k@1": {
+      "total_max": 98628096.0,
+      "services_max": 0.0,
+      "app_max": 98628096.0,
+      "cpu_seconds": 21.32,
+      "cpu_us_per_call": 125.43312269190297
+     },
+     "get-16k@16": {
+      "total_max": 117559808.0,
+      "services_max": 0.0,
+      "app_max": 117559808.0,
+      "cpu_seconds": 31.165,
+      "cpu_us_per_call": 90.87164600164242
+     },
+     "get-16k@64": {
+      "total_max": 141664768.0,
+      "services_max": 0.0,
+      "app_max": 141664768.0,
+      "cpu_seconds": 29.990000000000002,
+      "cpu_us_per_call": 99.717937924223
+     },
+     "put-16k@1": {
+      "total_max": 129600000.0,
+      "services_max": 0.0,
+      "app_max": 129600000.0,
+      "cpu_seconds": 16.29,
+      "cpu_us_per_call": 6470.849906004741
+     },
+     "put-16k@16": {
+      "total_max": 135275008.0,
+      "services_max": 0.0,
+      "app_max": 135275008.0,
+      "cpu_seconds": 19.02,
+      "cpu_us_per_call": 851.6024900508125
+     },
+     "put-16k@64": {
+      "total_max": 143231488.0,
+      "services_max": 0.0,
+      "app_max": 143231488.0,
+      "cpu_seconds": 19.200000000000003,
+      "cpu_us_per_call": 673.2577589629249
+     },
+     "get-1m@1": {
+      "total_max": 220631552.0,
+      "services_max": 0.0,
+      "app_max": 220631552.0,
+      "cpu_seconds": 19.924999999999997,
+      "cpu_us_per_call": 3728.5562827270296
+     },
+     "get-1m@16": {
+      "total_max": 551121408.0,
+      "services_max": 0.0,
+      "app_max": 551121408.0,
+      "cpu_seconds": 24.119999999999997,
+      "cpu_us_per_call": 2435.392084758857
+     },
+     "put-1m@1": {
+      "total_max": 388727296.0,
+      "services_max": 0.0,
+      "app_max": 388727296.0,
+      "cpu_seconds": 17.225,
+      "cpu_us_per_call": 20556.757476131104
+     },
+     "put-1m@16": {
+      "total_max": 453634560.0,
+      "services_max": 0.0,
+      "app_max": 453634560.0,
+      "cpu_seconds": 22.72,
+      "cpu_us_per_call": 4583.718580934118
+     }
+    },
+    "rest_total": null,
+    "rest_services": null,
+    "rest_app": null,
+    "rest_cgroup_file": null,
+    "disk": 122789888.0
+   },
+   "tinystore-sidecar": {
+    "passes": 2,
+    "stages": {
+     "get-16k@1": {
+      "perSecond": 5149.79624766766,
+      "p50us": 173.92660986597926,
+      "p99us": 799.3731113364745,
+      "errors": 0.0
+     },
+     "get-16k@16": {
+      "perSecond": 28404.80090765211,
+      "p50us": 296.87297830827333,
+      "p99us": 3324.999806819879,
+      "errors": 0.0
+     },
+     "get-16k@64": {
+      "perSecond": 21313.818288365914,
+      "p50us": 2981.7373937775083,
+      "p99us": 5401.004568973031,
+      "errors": 0.0
+     },
+     "put-16k@1": {
+      "perSecond": 157.01452935937618,
+      "p50us": 6145.641566335982,
+      "p99us": 14982.178136766906,
+      "errors": 0.0
+     },
+     "put-16k@16": {
+      "perSecond": 1570.8123633451742,
+      "p50us": 7946.926236943134,
+      "p99us": 26864.180994814706,
+      "errors": 0.0
+     },
+     "put-16k@64": {
+      "perSecond": 2792.5622385961783,
+      "p50us": 20978.666376820205,
+      "p99us": 41698.037963629744,
+      "errors": 0.0
+     },
+     "get-1m@1": {
+      "perSecond": 368.8286598870199,
+      "p50us": 2446.0632016595555,
+      "p99us": 6143.232455569092,
+      "errors": 0.0
+     },
+     "get-1m@16": {
+      "perSecond": 472.47622798825887,
+      "p50us": 33395.684291625985,
+      "p99us": 44073.53637647847,
+      "errors": 0.0
+     },
+     "put-1m@1": {
+      "perSecond": 81.59790263329401,
+      "p50us": 12044.888634774064,
+      "p99us": 16053.47806646928,
+      "errors": 0.0
+     },
+     "put-1m@16": {
+      "perSecond": 425.34054908206656,
+      "p50us": 36176.917275920976,
+      "p99us": 76778.22784750756,
+      "errors": 0.0
+     }
+    },
+    "memory": {
+     "get-16k@1": {
+      "total_max": 88552448.0,
+      "services_max": 16400896.0,
+      "app_max": 72154112.0,
+      "cpu_seconds": 18.465,
+      "cpu_us_per_call": 358.61166689631403
+     },
+     "get-16k@16": {
+      "total_max": 118413824.0,
+      "services_max": 38998528.0,
+      "app_max": 80576512.0,
+      "cpu_seconds": 35.385,
+      "cpu_us_per_call": 124.56778328950026
+     },
+     "get-16k@64": {
+      "total_max": 144982528.0,
+      "services_max": 57604608.0,
+      "app_max": 89225216.0,
+      "cpu_seconds": 29.88,
+      "cpu_us_per_call": 140.1557030414352
+     },
+     "put-16k@1": {
+      "total_max": 130175488.0,
+      "services_max": 57657856.0,
+      "app_max": 72613888.0,
+      "cpu_seconds": 0.99,
+      "cpu_us_per_call": 630.6410264374631
+     },
+     "put-16k@16": {
+      "total_max": 136995328.0,
+      "services_max": 58458624.0,
+      "app_max": 78843904.0,
+      "cpu_seconds": 3.99,
+      "cpu_us_per_call": 254.11034008893526
+     },
+     "put-16k@64": {
+      "total_max": 149101056.0,
+      "services_max": 60684800.0,
+      "app_max": 88506368.0,
+      "cpu_seconds": 6.03,
+      "cpu_us_per_call": 215.4674739460757
+     },
+     "get-1m@1": {
+      "total_max": 223951360.0,
+      "services_max": 73984512.0,
+      "app_max": 149966848.0,
+      "cpu_seconds": 15.16,
+      "cpu_us_per_call": 4110.926289132656
+     },
+     "get-1m@16": {
+      "total_max": 363932160.0,
+      "services_max": 199135744.0,
+      "app_max": 172666880.0,
+      "cpu_seconds": 22.715,
+      "cpu_us_per_call": 4794.464508306425
+     },
+     "put-1m@1": {
+      "total_max": 283585024.0,
+      "services_max": 170318336.0,
+      "app_max": 113266688.0,
+      "cpu_seconds": 3.375,
+      "cpu_us_per_call": 4134.48193018573
+     },
+     "put-1m@16": {
+      "total_max": 359856640.0,
+      "services_max": 173414912.0,
+      "app_max": 186914816.0,
+      "cpu_seconds": 14.655000000000001,
+      "cpu_us_per_call": 3431.9183855167244
+     }
+    },
+    "rest_total": null,
+    "rest_services": null,
+    "rest_app": null,
+    "rest_cgroup_file": null,
+    "disk": 122750976.0
+   },
+   "minio": {
+    "passes": 2,
+    "stages": {
+     "get-16k@1": {
+      "perSecond": 2482.8625466785516,
+      "p50us": 387.83919822276374,
+      "p99us": 655.5073111601391,
+      "errors": 0.0
+     },
+     "get-16k@16": {
+      "perSecond": 25232.072668451896,
+      "p50us": 548.4991944312735,
+      "p99us": 1986.9510066247856,
+      "errors": 0.0
+     },
+     "get-16k@64": {
+      "perSecond": 35882.2902484842,
+      "p50us": 1566.6973089387461,
+      "p99us": 5348.053543787022,
+      "errors": 0.0
+     },
+     "put-16k@1": {
+      "perSecond": 78.02956364267996,
+      "p50us": 12782.132178331318,
+      "p99us": 16062.920671778236,
+      "errors": 0.0
+     },
+     "put-16k@16": {
+      "perSecond": 697.7462277663323,
+      "p50us": 24570.215882540735,
+      "p99us": 55793.36431940751,
+      "errors": 0.0
+     },
+     "put-16k@64": {
+      "perSecond": 606.0391241493314,
+      "p50us": 92710.98206768735,
+      "p99us": 297872.6398928277,
+      "errors": 0.0
+     },
+     "get-1m@1": {
+      "perSecond": 872.1093218834492,
+      "p50us": 1013.4009770985338,
+      "p99us": 2701.1809638612194,
+      "errors": 0.0
+     },
+     "get-1m@16": {
+      "perSecond": 2653.456253414008,
+      "p50us": 5788.90514919704,
+      "p99us": 12285.786407469546,
+      "errors": 0.0
+     },
+     "put-1m@1": {
+      "perSecond": 75.84967483936683,
+      "p50us": 13169.443438911168,
+      "p99us": 16573.96965480846,
+      "errors": 0.0
+     },
+     "put-1m@16": {
+      "perSecond": 275.79898688828877,
+      "p50us": 51629.04900650315,
+      "p99us": 134223.2424009278,
+      "errors": 0.0
+     }
+    },
+    "memory": {
+     "get-16k@1": {
+      "total_max": 371896320.0,
+      "services_max": 312418304.0,
+      "app_max": 59831808.0,
+      "cpu_seconds": 15.745,
+      "cpu_us_per_call": 634.2422026294479
+     },
+     "get-16k@16": {
+      "total_max": 475822080.0,
+      "services_max": 412801024.0,
+      "app_max": 64784384.0,
+      "cpu_seconds": 101.80000000000001,
+      "cpu_us_per_call": 403.4345952949131
+     },
+     "get-16k@64": {
+      "total_max": 578009088.0,
+      "services_max": 513017856.0,
+      "app_max": 66973696.0,
+      "cpu_seconds": 124.48500000000001,
+      "cpu_us_per_call": 346.90867054244234
+     },
+     "put-16k@1": {
+      "total_max": 503347200.0,
+      "services_max": 454866944.0,
+      "app_max": 48498688.0,
+      "cpu_seconds": 1.6199999999999999,
+      "cpu_us_per_call": 2075.8248038677634
+     },
+     "put-16k@16": {
+      "total_max": 490266624.0,
+      "services_max": 440872960.0,
+      "app_max": 49539072.0,
+      "cpu_seconds": 17.98,
+      "cpu_us_per_call": 2571.3397249995273
+     },
+     "put-16k@64": {
+      "total_max": 519223296.0,
+      "services_max": 467922944.0,
+      "app_max": 51300352.0,
+      "cpu_seconds": 23.715,
+      "cpu_us_per_call": 3891.7092997674745
+     },
+     "get-1m@1": {
+      "total_max": 607182848.0,
+      "services_max": 501563392.0,
+      "app_max": 110886912.0,
+      "cpu_seconds": 17.825,
+      "cpu_us_per_call": 2043.7929451397758
+     },
+     "get-1m@16": {
+      "total_max": 645859328.0,
+      "services_max": 507465728.0,
+      "app_max": 149565440.0,
+      "cpu_seconds": 66.225,
+      "cpu_us_per_call": 2495.6766794384343
+     },
+     "put-1m@1": {
+      "total_max": 579895296.0,
+      "services_max": 520767488.0,
+      "app_max": 59686912.0,
+      "cpu_seconds": 3.615,
+      "cpu_us_per_call": 4767.197728469766
+     },
+     "put-1m@16": {
+      "total_max": 708573184.0,
+      "services_max": 616296448.0,
+      "app_max": 93054976.0,
+      "cpu_seconds": 15.71,
+      "cpu_us_per_call": 5663.611791532245
+     }
+    },
+    "rest_total": null,
+    "rest_services": null,
+    "rest_app": null,
+    "rest_cgroup_file": null,
+    "disk": 5456736256.0
+   }
+  },
+  "failed": []
+ },
+ "kv-memory": {
+  "contenders": {
+   "tinystore-embedded": {
+    "passes": 2,
+    "stages": {
+     "get@64": {
+      "perSecond": 349239.08158915245,
+      "p50us": 117.09352353290625,
+      "p99us": 2238.507054364934,
+      "errors": 0.0
+     }
+    },
+    "memory": {
+     "get@64": {
+      "total_max": 125458944.0,
+      "services_max": 0.0,
+      "app_max": 125458944.0,
+      "cpu_seconds": 45.89,
+      "cpu_us_per_call": 13.138681744912523
+     }
+    },
+    "rest_total": 68276736.0,
+    "rest_services": 0.0,
+    "rest_app": 68276736.0,
+    "rest_cgroup_file": 276690944.0,
+    "disk": 170199040.0
+   },
+   "tinystore-sidecar": {
+    "passes": 2,
+    "stages": {
+     "get@64": {
+      "perSecond": 213658.57569421298,
+      "p50us": 222.76496607423903,
+      "p99us": 2495.473678333078,
+      "errors": 0.0
+     }
+    },
+    "memory": {
+     "get@64": {
+      "total_max": 118515712.0,
+      "services_max": 35963392.0,
+      "app_max": 82589184.0,
+      "cpu_seconds": 49.495,
+      "cpu_us_per_call": 23.165463796237685
+     }
+    },
+    "rest_total": 75997184.0,
+    "rest_services": 18758144.0,
+    "rest_app": 57239040.0,
+    "rest_cgroup_file": 281327616.0,
+    "disk": 170162176.0
+   },
+   "redis": {
+    "passes": 2,
+    "stages": {
+     "get@64": {
+      "perSecond": 366879.13844946574,
+      "p50us": 160.68130298898294,
+      "p99us": 344.39010891185194,
+      "errors": 0.0
+     }
+    },
+    "memory": {
+     "get@64": {
+      "total_max": 294330368.0,
+      "services_max": 219506176.0,
+      "app_max": 74826240.0,
+      "cpu_seconds": 17.35,
+      "cpu_us_per_call": 4.729077830188429
+     }
+    },
+    "rest_total": 268791808.0,
+    "rest_services": 221531648.0,
+    "rest_app": 47260160.0,
+    "rest_cgroup_file": 102971392.0,
+    "disk": 138895360.0
+   },
+   "valkey": {
+    "passes": 2,
+    "stages": {
+     "get@64": {
+      "perSecond": 364391.32115117076,
+      "p50us": 160.68130298898294,
+      "p99us": 366.11465356730787,
+      "errors": 0.0
+     }
+    },
+    "memory": {
+     "get@64": {
+      "total_max": 299508224.0,
+      "services_max": 224728576.0,
+      "app_max": 74779648.0,
+      "cpu_seconds": 17.315,
+      "cpu_us_per_call": 4.752710256113329
+     }
+    },
+    "rest_total": 271841792.0,
+    "rest_services": 224656896.0,
+    "rest_app": 47184896.0,
+    "rest_cgroup_file": 102656000.0,
+    "disk": 138895360.0
+   }
+  },
+  "failed": []
+ },
+ "metrics": {
+  "cases": {
+   "tinystore-wide": {
+    "contender": "tinystore",
+    "corpus": "wide",
+    "passes": 2,
+    "samples": 5090400,
+    "series": 2020,
+    "ingest_per_second": 1480427.9306696341,
+    "ingest_seconds": 3.4387725465,
+    "inside_seconds": 2.1430321880000003,
+    "settle_seconds": 0.1803226325,
+    "disk_closed": 7616512.0,
+    "disk_closed_apparent": 7616512.0,
+    "queries": {
+     "raw-1-host-all": {
+      "ms": 0.0757145,
+      "size": 2520
+     },
+     "single-groupby-1-1-1": {
+      "ms": 0.047658500000000006,
+      "size": 60
+     },
+     "single-groupby-1-8-1": {
+      "ms": 0.23504400000000003,
+      "size": 60
+     },
+     "single-groupby-5-1-12": {
+      "ms": 0.8171390000000001,
+      "size": 2100
+     },
+     "cpu-max-all-8": {
+      "ms": 1.6704455,
+      "size": 70
+     },
+     "double-groupby-1": {
+      "ms": 0.3591515,
+      "size": 140
+     }
+    },
+    "memory_ingest_max": 18403328.0,
+    "memory_query_max": 17281536.0,
+    "memory_settled": 17281536.0,
+    "cpu_ingest": 4.525,
+    "dbstat": {
+     "payloads": {
+      "bytes": 3772416,
+      "payload": 3444312
+     },
+     "heads": {
+      "bytes": 1921024,
+      "payload": 324656
+     },
+     "groups": {
+      "bytes": 786432,
+      "payload": 708521
+     },
+     "name_labels": {
+      "bytes": 262144,
+      "payload": 203409
+     },
+     "postings": {
+      "bytes": 253952,
+      "payload": 147980
+     },
+     "series_state": {
+      "bytes": 143360,
+      "payload": 115120
+     },
+     "series": {
+      "bytes": 122880,
+      "payload": 104052
+     },
+     "groups_by_series": {
+      "bytes": 110592,
+      "payload": 73712
+     },
+     "sqlite_autoindex_series_1": {
+      "bytes": 90112,
+      "payload": 74612
+     },
+     "series_due": {
+      "bytes": 40960,
+      "payload": 22092
+     },
+     "series_by_name": {
+      "bytes": 40960,
+      "payload": 26112
+     },
+     "label_values": {
+      "bytes": 16384,
+      "payload": 7194
+     },
+     "sqlite_schema": {
+      "bytes": 12288,
+      "payload": 4414
+     },
+     "sqlite_autoindex_label_values_1": {
+      "bytes": 12288,
+      "payload": 7032
+     },
+     "names": {
+      "bytes": 12288,
+      "payload": 3864
+     },
+     "_tinystore_migrations": {
+      "bytes": 12288,
+      "payload": 6009
+     },
+     "store_state": {
+      "bytes": 4096,
+      "payload": 8
+     },
+     "sqlite_sequence": {
+      "bytes": 4096,
+      "payload": 11
+     },
+     "sqlite_autoindex_names_1": {
+      "bytes": 4096,
+      "payload": 2247
+     },
+     "sqlite_autoindex_clocks_1": {
+      "bytes": 4096,
+      "payload": 792
+     },
+     "series_ready": {
+      "bytes": 4096,
+      "payload": 0
+     },
+     "series_failed": {
+      "bytes": 4096,
+      "payload": 0
+     },
+     "clocks": {
+      "bytes": 4096,
+      "payload": 2506
+     }
+    },
+    "sample_payload": 3444312
+   },
+   "victoria-wide": {
+    "contender": "victoria",
+    "corpus": "wide",
+    "passes": 2,
+    "samples": 5090400,
+    "series": 2020,
+    "ingest_per_second": 2147750.88718058,
+    "ingest_seconds": 2.3707285770000004,
+    "inside_seconds": 1.0116173095,
+    "settle_seconds": 3.1138358475,
+    "disk_closed": 6219776.0,
+    "disk_closed_apparent": 6042975.5,
+    "queries": {
+     "raw-1-host-all": {
+      "ms": 0.5386795,
+      "size": 2519
+     },
+     "single-groupby-1-1-1": {
+      "ms": 0.280142,
+      "size": 60
+     },
+     "single-groupby-1-8-1": {
+      "ms": 0.3756705,
+      "size": 60
+     },
+     "single-groupby-5-1-12": {
+      "ms": 1.6386515,
+      "size": 2100
+     },
+     "cpu-max-all-8": {
+      "ms": 3.7659985,
+      "size": 70
+     },
+     "double-groupby-1": {
+      "ms": 0.4607955,
+      "size": 140
+     }
+    },
+    "memory_ingest_max": 341213184.0,
+    "memory_query_max": 284784640.0,
+    "memory_settled": 284784640.0,
+    "cpu_ingest": 6.279999999999999,
+    "disk_merged": 3211264.0,
+    "disk_merged_data": 3207168.0,
+    "disk_closed_cache": 2537472.0
+   },
+   "prometheus-wide": {
+    "contender": "prometheus",
+    "corpus": "wide",
+    "passes": 2,
+    "samples": 5090400,
+    "series": 2020,
+    "ingest_per_second": 301234.2963727358,
+    "ingest_seconds": 16.8994008005,
+    "inside_seconds": 16.8994005455,
+    "settle_seconds": 150.7792431135,
+    "disk_closed": 9043968.0,
+    "disk_closed_apparent": 8979499.0,
+    "queries": {
+     "raw-1-host-all": {
+      "ms": 0.5688515000000001,
+      "size": 2519
+     },
+     "single-groupby-1-1-1": {
+      "ms": 0.32777999999999996,
+      "size": 60
+     },
+     "single-groupby-1-8-1": {
+      "ms": 0.453293,
+      "size": 60
+     },
+     "single-groupby-5-1-12": {
+      "ms": 2.4795800000000003,
+      "size": 2100
+     },
+     "cpu-max-all-8": {
+      "ms": 12.4102975,
+      "size": 70
+     },
+     "double-groupby-1": {
+      "ms": 2.684265,
+      "size": 140
+     }
+    },
+    "memory_ingest_max": 1340096512.0,
+    "memory_query_max": 101117952.0,
+    "memory_settled": 100956160.0,
+    "cpu_ingest": 17.535,
+    "disk_backfilled": 9023488.0
+   },
+   "tinystore-long": {
+    "contender": "tinystore",
+    "corpus": "long",
+    "passes": 2,
+    "samples": 26179200,
+    "series": 1010,
+    "ingest_per_second": 1426213.6204221216,
+    "ingest_seconds": 18.355893319000003,
+    "inside_seconds": 11.8847552075,
+    "settle_seconds": 0.1113202865,
+    "disk_closed": 26064896.0,
+    "disk_closed_apparent": 26064896.0,
+    "queries": {
+     "raw-1-host-all": {
+      "ms": 0.3419355,
+      "size": 25920
+     },
+     "single-groupby-1-1-1": {
+      "ms": 0.0468625,
+      "size": 60
+     },
+     "single-groupby-1-8-1": {
+      "ms": 0.195332,
+      "size": 60
+     },
+     "single-groupby-5-1-12": {
+      "ms": 1.2800974999999999,
+      "size": 3600
+     },
+     "cpu-max-all-8": {
+      "ms": 2.2028685,
+      "size": 80
+     },
+     "double-groupby-1": {
+      "ms": 0.339055,
+      "size": 120
+     }
+    },
+    "memory_ingest_max": 15462400.0,
+    "memory_query_max": null,
+    "memory_settled": null,
+    "cpu_ingest": 23.165,
+    "dbstat": {
+     "payloads": {
+      "bytes": 20201472,
+      "payload": 18413894
+     },
+     "groups": {
+      "bytes": 3850240,
+      "payload": 2753584
+     },
+     "heads": {
+      "bytes": 913408,
+      "payload": 162308
+     },
+     "clocks": {
+      "bytes": 253952,
+      "payload": 165792
+     },
+     "groups_by_series": {
+      "bytes": 176128,
+      "payload": 124058
+     },
+     "name_labels": {
+      "bytes": 163840,
+      "payload": 123070
+     },
+     "postings": {
+      "bytes": 126976,
+      "payload": 72754
+     },
+     "series_state": {
+      "bytes": 77824,
+      "payload": 58570
+     },
+     "series": {
+      "bytes": 61440,
+      "payload": 51800
+     },
+     "sqlite_autoindex_series_1": {
+      "bytes": 49152,
+      "payload": 37242
+     },
+     "sqlite_autoindex_clocks_1": {
+      "bytes": 32768,
+      "payload": 21583
+     },
+     "series_by_name": {
+      "bytes": 24576,
+      "payload": 12992
+     },
+     "series_due": {
+      "bytes": 20480,
+      "payload": 10982
+     },
+     "sqlite_schema": {
+      "bytes": 12288,
+      "payload": 4414
+     },
+     "sqlite_autoindex_label_values_1": {
+      "bytes": 12288,
+      "payload": 5358
+     },
+     "names": {
+      "bytes": 12288,
+      "payload": 3864
+     },
+     "label_values": {
+      "bytes": 12288,
+      "payload": 5506
+     },
+     "_tinystore_migrations": {
+      "bytes": 12288,
+      "payload": 6009
+     },
+     "store_state": {
+      "bytes": 4096,
+      "payload": 9
+     },
+     "sqlite_sequence": {
+      "bytes": 4096,
+      "payload": 11
+     },
+     "sqlite_autoindex_names_1": {
+      "bytes": 4096,
+      "payload": 2247
+     },
+     "series_ready": {
+      "bytes": 4096,
+      "payload": 0
+     },
+     "series_failed": {
+      "bytes": 4096,
+      "payload": 0
+     }
+    },
+    "sample_payload": 18413894
+   },
+   "victoria-long": {
+    "contender": "victoria",
+    "corpus": "long",
+    "passes": 2,
+    "samples": 26179200,
+    "series": 1010,
+    "ingest_per_second": 2091693.2463509678,
+    "ingest_seconds": 12.5183816465,
+    "inside_seconds": 5.7261120155,
+    "settle_seconds": 2.6087432305,
+    "disk_closed": 18649088.0,
+    "disk_closed_apparent": 18457431.5,
+    "queries": {
+     "raw-1-host-all": {
+      "ms": 2.6269375000000004,
+      "size": 25919
+     },
+     "single-groupby-1-1-1": {
+      "ms": 0.2898495,
+      "size": 60
+     },
+     "single-groupby-1-8-1": {
+      "ms": 0.412433,
+      "size": 60
+     },
+     "single-groupby-5-1-12": {
+      "ms": 1.8668475,
+      "size": 3600
+     },
+     "cpu-max-all-8": {
+      "ms": 4.2969115,
+      "size": 80
+     },
+     "double-groupby-1": {
+      "ms": 0.473542,
+      "size": 120
+     }
+    },
+    "memory_ingest_max": 423849984.0,
+    "memory_query_max": 270383104.0,
+    "memory_settled": 270383104.0,
+    "cpu_ingest": 34.025,
+    "disk_merged": 16371712.0,
+    "disk_merged_data": 16367616.0,
+    "disk_closed_cache": 2172928.0
+   },
+   "prometheus-long": {
+    "contender": "prometheus",
+    "corpus": "long",
+    "passes": 2,
+    "samples": 26179200,
+    "series": 1010,
+    "ingest_per_second": 49992.43622305051,
+    "ingest_seconds": 523.676914241,
+    "inside_seconds": 523.676914136,
+    "settle_seconds": 212.0786354805,
+    "disk_closed": 41426944.0,
+    "disk_closed_apparent": 41304113.0,
+    "queries": {
+     "raw-1-host-all": {
+      "ms": 4.0336669999999994,
+      "size": 25919
+     },
+     "single-groupby-1-1-1": {
+      "ms": 0.332563,
+      "size": 60
+     },
+     "single-groupby-1-8-1": {
+      "ms": 0.47291550000000004,
+      "size": 60
+     },
+     "single-groupby-5-1-12": {
+      "ms": 3.149605,
+      "size": 3600
+     },
+     "cpu-max-all-8": {
+      "ms": 14.222214,
+      "size": 80
+     },
+     "double-groupby-1": {
+      "ms": 2.2707984999999997,
+      "size": 120
+     }
+    },
+    "memory_ingest_max": 6363817984.0,
+    "memory_query_max": 111015936.0,
+    "memory_settled": 109004800.0,
+    "cpu_ingest": 529.8199999999999,
+    "disk_backfilled": 45420544.0
+   }
+  },
+  "failed": []
+ },
+ "logs": {
+  "cases": {
+   "tinystore-Apache": {
+    "contender": "tinystore",
+    "dataset": "Apache",
+    "passes": 2,
+    "lines": 56482,
+    "bytes": 5135877,
+    "needle": "jk2_init",
+    "ingest_per_second": 2190643.113536137,
+    "settle_seconds": 0.076847378,
+    "disk_closed": 712704.0,
+    "disk_closed_apparent": 711680.0,
+    "queries": {
+     "needle-count": {
+      "ms": 15.523928999999999,
+      "size": 7306
+     },
+     "needle-lines": {
+      "ms": 0.6727015000000001,
+      "size": 100
+     },
+     "error-count": {
+      "ms": 17.9891255,
+      "size": 38081
+     },
+     "newest-100": {
+      "ms": 0.10667650000000001,
+      "size": 100
+     },
+     "minute": {
+      "ms": 0.092831,
+      "size": 5
+     }
+    },
+    "memory_ingest_max": null,
+    "memory_query_max": 13949440.0,
+    "cpu_ingest": null,
+    "dbstat": {
+     "blocks": {
+      "bytes": 405504,
+      "payload": 393014
+     },
+     "sqlite_schema": {
+      "bytes": 6144,
+      "payload": 3647
+     },
+     "_tinystore_migrations": {
+      "bytes": 6144,
+      "payload": 5262
+     },
+     "blocks_by_last": {
+      "bytes": 3072,
+      "payload": 1863
+     },
+     "blocks_by_first": {
+      "bytes": 3072,
+      "payload": 1863
+     },
+     "streams": {
+      "bytes": 1024,
+      "payload": 16
+     },
+     "sqlite_sequence": {
+      "bytes": 1024,
+      "payload": 31
+     },
+     "sqlite_autoindex_streams_1": {
+      "bytes": 1024,
+      "payload": 9
+     },
+     "segments_by_stream": {
+      "bytes": 1024,
+      "payload": 51
+     },
+     "segments_by_size": {
+      "bytes": 1024,
+      "payload": 27
+     },
+     "segments_by_holder": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "segments": {
+      "bytes": 1024,
+      "payload": 200
+     },
+     "segment_keys": {
+      "bytes": 1024,
+      "payload": 31
+     },
+     "heads_by_stream": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_last": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_first": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "head_state": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "expired": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "blocks_by_segment": {
+      "bytes": 1024,
+      "payload": 268
+     },
+     "block_traces": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "block_filters": {
+      "bytes": 1024,
+      "payload": 0
+     }
+    },
+    "pages": 441344,
+    "payload": 406282,
+    "gzip6": 243771,
+    "zstd3": 269952,
+    "zstd19": 177899,
+    "unparsed": 4478
+   },
+   "loki-Apache": {
+    "contender": "loki",
+    "dataset": "Apache",
+    "passes": 2,
+    "lines": 56482,
+    "bytes": 5135877,
+    "needle": "jk2_init",
+    "ingest_per_second": 245477.50969385385,
+    "settle_seconds": 29.6922475905,
+    "disk_closed": 9605120.0,
+    "disk_closed_apparent": 7594523.0,
+    "queries": {
+     "needle-count": {
+      "ms": 2520.674449,
+      "size": 7306
+     },
+     "needle-lines": {
+      "ms": 730.3277985,
+      "size": 100
+     },
+     "error-count": {
+      "ms": 2361.633565,
+      "size": 38081
+     },
+     "newest-100": {
+      "ms": 31.573916500000003,
+      "size": 100
+     },
+     "minute": {
+      "ms": 1.6031135,
+      "size": 5
+     }
+    },
+    "memory_ingest_max": 185049088.0,
+    "memory_query_max": 268752896.0,
+    "cpu_ingest": 0.15500000000000003,
+    "chunks": 634922.0,
+    "index": 143857.0,
+    "wal": 6815744.0,
+    "gzip6": 243771,
+    "zstd3": 269952,
+    "zstd19": 177899,
+    "unparsed": 4478
+   },
+   "tinystore-HealthApp": {
+    "contender": "tinystore",
+    "dataset": "HealthApp",
+    "passes": 2,
+    "lines": 253395,
+    "bytes": 23529930,
+    "needle": "1514525340000##2358##1273519##83501##100712##297244796",
+    "ingest_per_second": 1345973.5131199667,
+    "settle_seconds": 0.46647825249999997,
+    "disk_closed": 4374528.0,
+    "disk_closed_apparent": 4371456.0,
+    "queries": {
+     "needle-count": {
+      "ms": 82.1678555,
+      "size": 2
+     },
+     "needle-lines": {
+      "ms": 85.6168665,
+      "size": 2
+     },
+     "error-count": {
+      "ms": 57.225308999999996,
+      "size": 222
+     },
+     "newest-100": {
+      "ms": 0.2792465,
+      "size": 100
+     },
+     "minute": {
+      "ms": 0.289928,
+      "size": 666
+     }
+    },
+    "memory_ingest_max": 10688000.0,
+    "memory_query_max": 14542336.0,
+    "cpu_ingest": 0.07500000000000001,
+    "dbstat": {
+     "blocks": {
+      "bytes": 3074048,
+      "payload": 3014996
+     },
+     "blocks_by_last": {
+      "bytes": 11264,
+      "payload": 8617
+     },
+     "blocks_by_first": {
+      "bytes": 11264,
+      "payload": 8617
+     },
+     "sqlite_schema": {
+      "bytes": 6144,
+      "payload": 3647
+     },
+     "_tinystore_migrations": {
+      "bytes": 6144,
+      "payload": 5262
+     },
+     "blocks_by_segment": {
+      "bytes": 4096,
+      "payload": 1380
+     },
+     "streams": {
+      "bytes": 1024,
+      "payload": 19
+     },
+     "sqlite_sequence": {
+      "bytes": 1024,
+      "payload": 33
+     },
+     "sqlite_autoindex_streams_1": {
+      "bytes": 1024,
+      "payload": 12
+     },
+     "segments_by_stream": {
+      "bytes": 1024,
+      "payload": 207
+     },
+     "segments_by_size": {
+      "bytes": 1024,
+      "payload": 111
+     },
+     "segments_by_holder": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "segments": {
+      "bytes": 1024,
+      "payload": 800
+     },
+     "segment_keys": {
+      "bytes": 1024,
+      "payload": 127
+     },
+     "heads_by_stream": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_last": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_first": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "head_state": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "expired": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "block_traces": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "block_filters": {
+      "bytes": 1024,
+      "payload": 0
+     }
+    },
+    "pages": 3129344,
+    "payload": 3043828,
+    "gzip6": 2160356,
+    "zstd3": 2358621,
+    "zstd19": 1434585,
+    "unparsed": 1
+   },
+   "loki-HealthApp": {
+    "contender": "loki",
+    "dataset": "HealthApp",
+    "passes": 2,
+    "lines": 253395,
+    "bytes": 23529930,
+    "needle": "1514525340000##2358##1273519##83501##100712##297244796",
+    "ingest_per_second": 240452.64558452502,
+    "settle_seconds": 27.6803965705,
+    "disk_closed": 35706880.0,
+    "disk_closed_apparent": 35454357.5,
+    "queries": {
+     "needle-count": {
+      "ms": 205.008306,
+      "size": 2
+     },
+     "needle-lines": {
+      "ms": 180.4810625,
+      "size": 2
+     },
+     "error-count": {
+      "ms": 183.94059299999998,
+      "size": 222
+     },
+     "newest-100": {
+      "ms": 3.6810595,
+      "size": 100
+     },
+     "minute": {
+      "ms": 3.4698245,
+      "size": 666
+     }
+    },
+    "memory_ingest_max": 205182976.0,
+    "memory_query_max": 248780800.0,
+    "cpu_ingest": 1.325,
+    "chunks": 4510407.5,
+    "index": 10958.0,
+    "wal": 30932992.0,
+    "gzip6": 2160356,
+    "zstd3": 2358621,
+    "zstd19": 1434585,
+    "unparsed": 1
+   },
+   "tinystore-Linux": {
+    "contender": "tinystore",
+    "dataset": "Linux",
+    "passes": 2,
+    "lines": 25567,
+    "bytes": 2349686,
+    "needle": "c-67-176-148-16.hsd1.il.comcast.net",
+    "ingest_per_second": 1764483.33152415,
+    "settle_seconds": 0.031789214499999996,
+    "disk_closed": 552960.0,
+    "disk_closed_apparent": 550912.0,
+    "queries": {
+     "needle-count": {
+      "ms": 8.8818745,
+      "size": 10
+     },
+     "needle-lines": {
+      "ms": 9.2494285,
+      "size": 10
+     },
+     "error-count": {
+      "ms": 7.5797609999999995,
+      "size": 21
+     },
+     "newest-100": {
+      "ms": 0.132193,
+      "size": 100
+     },
+     "minute": {
+      "ms": 0.099911,
+      "size": 5
+     }
+    },
+    "memory_ingest_max": null,
+    "memory_query_max": 14197248.0,
+    "cpu_ingest": null,
+    "dbstat": {
+     "blocks": {
+      "bytes": 247808,
+      "payload": 239679
+     },
+     "sqlite_schema": {
+      "bytes": 6144,
+      "payload": 3647
+     },
+     "_tinystore_migrations": {
+      "bytes": 6144,
+      "payload": 5262
+     },
+     "streams": {
+      "bytes": 1024,
+      "payload": 15
+     },
+     "sqlite_sequence": {
+      "bytes": 1024,
+      "payload": 31
+     },
+     "sqlite_autoindex_streams_1": {
+      "bytes": 1024,
+      "payload": 8
+     },
+     "segments_by_stream": {
+      "bytes": 1024,
+      "payload": 25
+     },
+     "segments_by_size": {
+      "bytes": 1024,
+      "payload": 13
+     },
+     "segments_by_holder": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "segments": {
+      "bytes": 1024,
+      "payload": 100
+     },
+     "segment_keys": {
+      "bytes": 1024,
+      "payload": 15
+     },
+     "heads_by_stream": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_last": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_first": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "head_state": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "expired": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "blocks_by_segment": {
+      "bytes": 1024,
+      "payload": 113
+     },
+     "blocks_by_last": {
+      "bytes": 1024,
+      "payload": 840
+     },
+     "blocks_by_first": {
+      "bytes": 1024,
+      "payload": 840
+     },
+     "block_traces": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "block_filters": {
+      "bytes": 1024,
+      "payload": 0
+     }
+    },
+    "pages": 279552,
+    "payload": 250588,
+    "gzip6": 211540,
+    "zstd3": 190916,
+    "zstd19": 119984,
+    "unparsed": 0
+   },
+   "loki-Linux": {
+    "contender": "loki",
+    "dataset": "Linux",
+    "passes": 2,
+    "lines": 25567,
+    "bytes": 2349686,
+    "needle": "c-67-176-148-16.hsd1.il.comcast.net",
+    "ingest_per_second": 213310.65011849423,
+    "settle_seconds": 26.6728587315,
+    "disk_closed": 5771264.0,
+    "disk_closed_apparent": 3792773.0,
+    "queries": {
+     "needle-count": {
+      "ms": 2794.9174165,
+      "size": 10
+     },
+     "needle-lines": {
+      "ms": 2293.9616795,
+      "size": 10
+     },
+     "error-count": {
+      "ms": 2610.9146775,
+      "size": 21
+     },
+     "newest-100": {
+      "ms": 47.525124500000004,
+      "size": 100
+     },
+     "minute": {
+      "ms": 1.177319,
+      "size": 5
+     }
+    },
+    "memory_ingest_max": 163848192.0,
+    "memory_query_max": 266196992.0,
+    "cpu_ingest": 0.0,
+    "chunks": 470985.0,
+    "index": 143292.0,
+    "wal": 3178496.0,
+    "gzip6": 211540,
+    "zstd3": 190916,
+    "zstd19": 119984,
+    "unparsed": 0
+   },
+   "tinystore-Mac": {
+    "contender": "tinystore",
+    "dataset": "Mac",
+    "passes": 2,
+    "lines": 117283,
+    "bytes": 16879552,
+    "needle": "calvisitor-10-105-162-105",
+    "ingest_per_second": 1171117.926572837,
+    "settle_seconds": 0.2040053325,
+    "disk_closed": 2396160.0,
+    "disk_closed_apparent": 2393088.0,
+    "queries": {
+     "needle-count": {
+      "ms": 41.192527,
+      "size": 16826
+     },
+     "needle-lines": {
+      "ms": 16.648065000000003,
+      "size": 100
+     },
+     "error-count": {
+      "ms": 41.7352625,
+      "size": 10051
+     },
+     "newest-100": {
+      "ms": 0.0728285,
+      "size": 100
+     },
+     "minute": {
+      "ms": 0.1640145,
+      "size": 143
+     }
+    },
+    "memory_ingest_max": 10815488.0,
+    "memory_query_max": 18366464.0,
+    "cpu_ingest": 0.0,
+    "dbstat": {
+     "blocks": {
+      "bytes": 1503232,
+      "payload": 1472863
+     },
+     "sqlite_schema": {
+      "bytes": 6144,
+      "payload": 3647
+     },
+     "blocks_by_last": {
+      "bytes": 6144,
+      "payload": 3876
+     },
+     "blocks_by_first": {
+      "bytes": 6144,
+      "payload": 3876
+     },
+     "_tinystore_migrations": {
+      "bytes": 6144,
+      "payload": 5262
+     },
+     "streams": {
+      "bytes": 1024,
+      "payload": 13
+     },
+     "sqlite_sequence": {
+      "bytes": 1024,
+      "payload": 31
+     },
+     "sqlite_autoindex_streams_1": {
+      "bytes": 1024,
+      "payload": 6
+     },
+     "segments_by_stream": {
+      "bytes": 1024,
+      "payload": 103
+     },
+     "segments_by_size": {
+      "bytes": 1024,
+      "payload": 55
+     },
+     "segments_by_holder": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "segments": {
+      "bytes": 1024,
+      "payload": 400
+     },
+     "segment_keys": {
+      "bytes": 1024,
+      "payload": 63
+     },
+     "heads_by_stream": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_last": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_first": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "head_state": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "expired": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "blocks_by_segment": {
+      "bytes": 1024,
+      "payload": 573
+     },
+     "block_traces": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "block_filters": {
+      "bytes": 1024,
+      "payload": 0
+     }
+    },
+    "pages": 1545216,
+    "payload": 1490768,
+    "gzip6": 1451886,
+    "zstd3": 980417,
+    "zstd19": 630364,
+    "unparsed": 10138
+   },
+   "loki-Mac": {
+    "contender": "loki",
+    "dataset": "Mac",
+    "passes": 2,
+    "lines": 117283,
+    "bytes": 16879552,
+    "needle": "calvisitor-10-105-162-105",
+    "ingest_per_second": 188653.2617963265,
+    "settle_seconds": 25.919363952,
+    "disk_closed": 22953984.0,
+    "disk_closed_apparent": 22767994.0,
+    "queries": {
+     "needle-count": {
+      "ms": 93.585436,
+      "size": 16826
+     },
+     "needle-lines": {
+      "ms": 626.4828835,
+      "size": 100
+     },
+     "error-count": {
+      "ms": 138.9562985,
+      "size": 10051
+     },
+     "newest-100": {
+      "ms": 2.1219734999999997,
+      "size": 100
+     },
+     "minute": {
+      "ms": 2.0066315,
+      "size": 143
+     }
+    },
+    "memory_ingest_max": 195106816.0,
+    "memory_query_max": 229591040.0,
+    "cpu_ingest": 0.715,
+    "chunks": 2414034.0,
+    "index": 5032.0,
+    "wal": 20348928.0,
+    "gzip6": 1451886,
+    "zstd3": 980417,
+    "zstd19": 630364,
+    "unparsed": 10138
+   },
+   "tinystore-OpenStack": {
+    "contender": "tinystore",
+    "dataset": "OpenStack",
+    "passes": 2,
+    "lines": 207820,
+    "bytes": 61442082,
+    "needle": "/var/lib/nova/instances/_base/a489c868f0c37da93b76227c91bb03908ac0e742",
+    "ingest_per_second": 809336.9365391459,
+    "settle_seconds": 0.552203971,
+    "disk_closed": 7860224.0,
+    "disk_closed_apparent": 7858176.0,
+    "queries": {
+     "needle-count": {
+      "ms": 130.10258549999998,
+      "size": 45298
+     },
+     "needle-lines": {
+      "ms": 0.42198199999999997,
+      "size": 100
+     },
+     "error-count": {
+      "ms": 96.436926,
+      "size": 194
+     },
+     "newest-100": {
+      "ms": 0.055439,
+      "size": 100
+     },
+     "minute": {
+      "ms": 0.17948199999999997,
+      "size": 133
+     }
+    },
+    "memory_ingest_max": 11299328.0,
+    "memory_query_max": 20727296.0,
+    "cpu_ingest": 0.135,
+    "dbstat": {
+     "blocks": {
+      "bytes": 5035008,
+      "payload": 4929484
+     },
+     "blocks_by_last": {
+      "bytes": 14336,
+      "payload": 10745
+     },
+     "blocks_by_first": {
+      "bytes": 14336,
+      "payload": 10745
+     },
+     "sqlite_schema": {
+      "bytes": 6144,
+      "payload": 3647
+     },
+     "_tinystore_migrations": {
+      "bytes": 6144,
+      "payload": 5262
+     },
+     "blocks_by_segment": {
+      "bytes": 4096,
+      "payload": 1746
+     },
+     "segments": {
+      "bytes": 3072,
+      "payload": 1000
+     },
+     "streams": {
+      "bytes": 1024,
+      "payload": 19
+     },
+     "sqlite_sequence": {
+      "bytes": 1024,
+      "payload": 33
+     },
+     "sqlite_autoindex_streams_1": {
+      "bytes": 1024,
+      "payload": 12
+     },
+     "segments_by_stream": {
+      "bytes": 1024,
+      "payload": 259
+     },
+     "segments_by_size": {
+      "bytes": 1024,
+      "payload": 139
+     },
+     "segments_by_holder": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "segment_keys": {
+      "bytes": 1024,
+      "payload": 159
+     },
+     "heads_by_stream": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_last": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_first": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "head_state": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "expired": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "block_traces": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "block_filters": {
+      "bytes": 1024,
+      "payload": 0
+     }
+    },
+    "pages": 5098496,
+    "payload": 4963250,
+    "gzip6": 5195525,
+    "zstd3": 5038237,
+    "zstd19": 3797539,
+    "unparsed": 0
+   },
+   "loki-OpenStack": {
+    "contender": "loki",
+    "dataset": "OpenStack",
+    "passes": 2,
+    "lines": 207820,
+    "bytes": 61442082,
+    "needle": "/var/lib/nova/instances/_base/a489c868f0c37da93b76227c91bb03908ac0e742",
+    "ingest_per_second": 135934.87730226704,
+    "settle_seconds": 27.1808169325,
+    "disk_closed": 74948608.0,
+    "disk_closed_apparent": 74859095.0,
+    "queries": {
+     "needle-count": {
+      "ms": 57.36030099999999,
+      "size": 45298
+     },
+     "needle-lines": {
+      "ms": 361.1815535,
+      "size": 100
+     },
+     "error-count": {
+      "ms": 195.44694950000002,
+      "size": 194
+     },
+     "newest-100": {
+      "ms": 1.9655179999999999,
+      "size": 100
+     },
+     "minute": {
+      "ms": 2.494689,
+      "size": 133
+     }
+    },
+    "memory_ingest_max": 213315584.0,
+    "memory_query_max": 255049728.0,
+    "cpu_ingest": 1.915,
+    "chunks": 7550967.0,
+    "index": 2656.0,
+    "wal": 67305472.0,
+    "gzip6": 5195525,
+    "zstd3": 5038237,
+    "zstd19": 3797539,
+    "unparsed": 0
+   },
+   "tinystore-Proxifier": {
+    "contender": "tinystore",
+    "dataset": "Proxifier",
+    "passes": 2,
+    "lines": 21329,
+    "bytes": 2541814,
+    "needle": "error",
+    "ingest_per_second": 1799583.734260539,
+    "settle_seconds": 0.0306371905,
+    "disk_closed": 528384.0,
+    "disk_closed_apparent": 527360.0,
+    "queries": {
+     "needle-count": {
+      "ms": 5.3864605,
+      "size": 882
+     },
+     "needle-lines": {
+      "ms": 1.3985954999999999,
+      "size": 100
+     },
+     "error-count": {
+      "ms": 5.20668,
+      "size": 882
+     },
+     "newest-100": {
+      "ms": 0.0630685,
+      "size": 100
+     },
+     "minute": {
+      "ms": 0.1274625,
+      "size": 116
+     }
+    },
+    "memory_ingest_max": null,
+    "memory_query_max": 12657664.0,
+    "cpu_ingest": null,
+    "dbstat": {
+     "blocks": {
+      "bytes": 231424,
+      "payload": 224627
+     },
+     "sqlite_schema": {
+      "bytes": 6144,
+      "payload": 3647
+     },
+     "_tinystore_migrations": {
+      "bytes": 6144,
+      "payload": 5262
+     },
+     "streams": {
+      "bytes": 1024,
+      "payload": 19
+     },
+     "sqlite_sequence": {
+      "bytes": 1024,
+      "payload": 31
+     },
+     "sqlite_autoindex_streams_1": {
+      "bytes": 1024,
+      "payload": 12
+     },
+     "segments_by_stream": {
+      "bytes": 1024,
+      "payload": 25
+     },
+     "segments_by_size": {
+      "bytes": 1024,
+      "payload": 13
+     },
+     "segments_by_holder": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "segments": {
+      "bytes": 1024,
+      "payload": 100
+     },
+     "segment_keys": {
+      "bytes": 1024,
+      "payload": 15
+     },
+     "heads_by_stream": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_last": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_first": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "head_state": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "expired": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "blocks_by_segment": {
+      "bytes": 1024,
+      "payload": 93
+     },
+     "blocks_by_last": {
+      "bytes": 1024,
+      "payload": 708
+     },
+     "blocks_by_first": {
+      "bytes": 1024,
+      "payload": 708
+     },
+     "block_traces": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "block_filters": {
+      "bytes": 1024,
+      "payload": 0
+     }
+    },
+    "pages": 263168,
+    "payload": 235260,
+    "gzip6": 163204,
+    "zstd3": 184888,
+    "zstd19": 121027,
+    "unparsed": 0
+   },
+   "loki-Proxifier": {
+    "contender": "loki",
+    "dataset": "Proxifier",
+    "passes": 2,
+    "lines": 21329,
+    "bytes": 2541814,
+    "needle": "error",
+    "ingest_per_second": 200249.97496244774,
+    "settle_seconds": 23.155444129499998,
+    "disk_closed": 4288512.0,
+    "disk_closed_apparent": 3563519.0,
+    "queries": {
+     "needle-count": {
+      "ms": 1165.153875,
+      "size": 882
+     },
+     "needle-lines": {
+      "ms": 435.825632,
+      "size": 100
+     },
+     "error-count": {
+      "ms": 1120.297458,
+      "size": 882
+     },
+     "newest-100": {
+      "ms": 1.78029,
+      "size": 100
+     },
+     "minute": {
+      "ms": 1.490662,
+      "size": 116
+     }
+    },
+    "memory_ingest_max": 160094208.0,
+    "memory_query_max": 237436928.0,
+    "cpu_ingest": 0.0,
+    "chunks": 332135.0,
+    "index": 52888.0,
+    "wal": 3178496.0,
+    "gzip6": 163204,
+    "zstd3": 184888,
+    "zstd19": 121027,
+    "unparsed": 0
+   },
+   "tinystore-SSH": {
+    "contender": "tinystore",
+    "dataset": "SSH",
+    "passes": 2,
+    "lines": 655147,
+    "bytes": 73417507,
+    "needle": "218.65.30.30",
+    "ingest_per_second": 1524880.4262021324,
+    "settle_seconds": 0.8895202025,
+    "disk_closed": 8212480.0,
+    "disk_closed_apparent": 8209408.0,
+    "queries": {
+     "needle-count": {
+      "ms": 208.80665750000003,
+      "size": 20950
+     },
+     "needle-lines": {
+      "ms": 101.2370215,
+      "size": 100
+     },
+     "error-count": {
+      "ms": 208.18212900000003,
+      "size": 1127
+     },
+     "newest-100": {
+      "ms": 0.266667,
+      "size": 100
+     },
+     "minute": {
+      "ms": 0.1329185,
+      "size": 47
+     }
+    },
+    "memory_ingest_max": 11218944.0,
+    "memory_query_max": 14208000.0,
+    "cpu_ingest": 0.235,
+    "dbstat": {
+     "blocks": {
+      "bytes": 5514240,
+      "payload": 5353941
+     },
+     "blocks_by_last": {
+      "bytes": 30720,
+      "payload": 22653
+     },
+     "blocks_by_first": {
+      "bytes": 30720,
+      "payload": 22653
+     },
+     "blocks_by_segment": {
+      "bytes": 8192,
+      "payload": 3786
+     },
+     "sqlite_schema": {
+      "bytes": 6144,
+      "payload": 3647
+     },
+     "_tinystore_migrations": {
+      "bytes": 6144,
+      "payload": 5262
+     },
+     "segments": {
+      "bytes": 4096,
+      "payload": 2050
+     },
+     "streams": {
+      "bytes": 1024,
+      "payload": 13
+     },
+     "sqlite_sequence": {
+      "bytes": 1024,
+      "payload": 33
+     },
+     "sqlite_autoindex_streams_1": {
+      "bytes": 1024,
+      "payload": 6
+     },
+     "segments_by_stream": {
+      "bytes": 1024,
+      "payload": 532
+     },
+     "segments_by_size": {
+      "bytes": 1024,
+      "payload": 286
+     },
+     "segments_by_holder": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "segment_keys": {
+      "bytes": 1024,
+      "payload": 327
+     },
+     "heads_by_stream": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_last": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_first": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "head_state": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "expired": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "block_traces": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "block_filters": {
+      "bytes": 1024,
+      "payload": 0
+     }
+    },
+    "pages": 5615616,
+    "payload": 5415189,
+    "gzip6": 4426459,
+    "zstd3": 5135100,
+    "zstd19": 2999079,
+    "unparsed": 0
+   },
+   "loki-SSH": {
+    "contender": "loki",
+    "dataset": "SSH",
+    "passes": 2,
+    "lines": 655147,
+    "bytes": 73417507,
+    "needle": "218.65.30.30",
+    "ingest_per_second": 230295.81844334264,
+    "settle_seconds": 9.5667051735,
+    "disk_closed": 103964672.0,
+    "disk_closed_apparent": 103138263.5,
+    "queries": {
+     "needle-count": {
+      "ms": 539.032366,
+      "size": 20950
+     },
+     "needle-lines": {
+      "ms": 1599.4773195000002,
+      "size": 100
+     },
+     "error-count": {
+      "ms": 537.4731925,
+      "size": 1127
+     },
+     "newest-100": {
+      "ms": 7.732707999999999,
+      "size": 100
+     },
+     "minute": {
+      "ms": 2.1224465,
+      "size": 47
+     }
+    },
+    "memory_ingest_max": 215990272.0,
+    "memory_query_max": 264765440.0,
+    "cpu_ingest": 3.84,
+    "chunks": 10307702.5,
+    "index": 31585.0,
+    "wal": 92798976.0,
+    "gzip6": 4426459,
+    "zstd3": 5135100,
+    "zstd19": 2999079,
+    "unparsed": 0
+   },
+   "tinystore-Zookeeper": {
+    "contender": "tinystore",
+    "dataset": "Zookeeper",
+    "passes": 2,
+    "lines": 74380,
+    "bytes": 10426438,
+    "needle": "QuorumCnxManager$Listener@493",
+    "ingest_per_second": 1575883.837927048,
+    "settle_seconds": 0.0959914175,
+    "disk_closed": 966656.0,
+    "disk_closed_apparent": 966656.0,
+    "queries": {
+     "needle-count": {
+      "ms": 25.854661,
+      "size": 10429
+     },
+     "needle-lines": {
+      "ms": 0.34403249999999996,
+      "size": 100
+     },
+     "error-count": {
+      "ms": 23.9465955,
+      "size": 11028
+     },
+     "newest-100": {
+      "ms": 0.0804505,
+      "size": 100
+     },
+     "minute": {
+      "ms": 1.1494529999999998,
+      "size": 3325
+     }
+    },
+    "memory_ingest_max": null,
+    "memory_query_max": 17800192.0,
+    "cpu_ingest": null,
+    "dbstat": {
+     "blocks": {
+      "bytes": 472064,
+      "payload": 453810
+     },
+     "sqlite_schema": {
+      "bytes": 6144,
+      "payload": 3647
+     },
+     "_tinystore_migrations": {
+      "bytes": 6144,
+      "payload": 5262
+     },
+     "blocks_by_last": {
+      "bytes": 4096,
+      "payload": 2457
+     },
+     "blocks_by_first": {
+      "bytes": 4096,
+      "payload": 2457
+     },
+     "streams": {
+      "bytes": 1024,
+      "payload": 19
+     },
+     "sqlite_sequence": {
+      "bytes": 1024,
+      "payload": 31
+     },
+     "sqlite_autoindex_streams_1": {
+      "bytes": 1024,
+      "payload": 12
+     },
+     "segments_by_stream": {
+      "bytes": 1024,
+      "payload": 64
+     },
+     "segments_by_size": {
+      "bytes": 1024,
+      "payload": 34
+     },
+     "segments_by_holder": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "segments": {
+      "bytes": 1024,
+      "payload": 250
+     },
+     "segment_keys": {
+      "bytes": 1024,
+      "payload": 39
+     },
+     "heads_by_stream": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_last": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_first": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "head_state": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "expired": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "blocks_by_segment": {
+      "bytes": 1024,
+      "payload": 358
+     },
+     "block_traces": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "block_filters": {
+      "bytes": 1024,
+      "payload": 0
+     }
+    },
+    "pages": 509952,
+    "payload": 468440,
+    "gzip6": 418917,
+    "zstd3": 450423,
+    "zstd19": 267488,
+    "unparsed": 0
+   },
+   "loki-Zookeeper": {
+    "contender": "loki",
+    "dataset": "Zookeeper",
+    "passes": 2,
+    "lines": 74380,
+    "bytes": 10426438,
+    "needle": "QuorumCnxManager$Listener@493",
+    "ingest_per_second": 209140.81989881565,
+    "settle_seconds": 25.4169619045,
+    "disk_closed": 13578240.0,
+    "disk_closed_apparent": 13342021.0,
+    "queries": {
+     "needle-count": {
+      "ms": 269.862848,
+      "size": 10429
+     },
+     "needle-lines": {
+      "ms": 357.05871499999995,
+      "size": 100
+     },
+     "error-count": {
+      "ms": 317.306804,
+      "size": 11028
+     },
+     "newest-100": {
+      "ms": 1.889726,
+      "size": 100
+     },
+     "minute": {
+      "ms": 10.01292,
+      "size": 3325
+     }
+    },
+    "memory_ingest_max": 187697152.0,
+    "memory_query_max": 236269568.0,
+    "cpu_ingest": 0.355,
+    "chunks": 940261.0,
+    "index": 15456.0,
+    "wal": 12386304.0,
+    "gzip6": 418917,
+    "zstd3": 450423,
+    "zstd19": 267488,
+    "unparsed": 0
+   },
+   "tinystore-HPC": {
+    "contender": "tinystore",
+    "dataset": "HPC",
+    "passes": 2,
+    "lines": 433490,
+    "bytes": 33553504,
+    "needle": "1094603141",
+    "ingest_per_second": 1485484.0999002275,
+    "settle_seconds": 0.625428808,
+    "disk_closed": 6189056.0,
+    "disk_closed_apparent": 6187008.0,
+    "queries": {
+     "needle-count": {
+      "ms": 94.2690565,
+      "size": 1
+     },
+     "needle-lines": {
+      "ms": 104.1722555,
+      "size": 1
+     },
+     "error-count": {
+      "ms": 106.02669900000001,
+      "size": 109290
+     },
+     "newest-100": {
+      "ms": 0.151089,
+      "size": 100
+     },
+     "minute": {
+      "ms": 0.1758705,
+      "size": 2
+     }
+    },
+    "memory_ingest_max": 10989056.0,
+    "memory_query_max": 16910848.0,
+    "cpu_ingest": 0.15,
+    "dbstat": {
+     "blocks": {
+      "bytes": 4809728,
+      "payload": 4696382
+     },
+     "blocks_by_last": {
+      "bytes": 19456,
+      "payload": 14918
+     },
+     "blocks_by_first": {
+      "bytes": 19456,
+      "payload": 14918
+     },
+     "sqlite_schema": {
+      "bytes": 6144,
+      "payload": 3647
+     },
+     "_tinystore_migrations": {
+      "bytes": 6144,
+      "payload": 5262
+     },
+     "blocks_by_segment": {
+      "bytes": 5120,
+      "payload": 2460
+     },
+     "segments": {
+      "bytes": 3072,
+      "payload": 1400
+     },
+     "streams": {
+      "bytes": 1024,
+      "payload": 13
+     },
+     "sqlite_sequence": {
+      "bytes": 1024,
+      "payload": 33
+     },
+     "sqlite_autoindex_streams_1": {
+      "bytes": 1024,
+      "payload": 6
+     },
+     "segments_by_stream": {
+      "bytes": 1024,
+      "payload": 363
+     },
+     "segments_by_size": {
+      "bytes": 1024,
+      "payload": 195
+     },
+     "segments_by_holder": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "segment_keys": {
+      "bytes": 1024,
+      "payload": 223
+     },
+     "heads_by_stream": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_last": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_first": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "head_state": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "expired": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "block_traces": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "block_filters": {
+      "bytes": 1024,
+      "payload": 0
+     }
+    },
+    "pages": 4884480,
+    "payload": 4739820,
+    "gzip6": 3009786,
+    "zstd3": 3412069,
+    "zstd19": 1972247,
+    "unparsed": 97
+   },
+   "loki-HPC": {
+    "contender": "loki",
+    "dataset": "HPC",
+    "passes": 2,
+    "lines": 433490,
+    "bytes": 33553504,
+    "needle": "1094603141",
+    "ingest_per_second": 275822.9259210921,
+    "settle_seconds": 24.666658746,
+    "disk_closed": 61384704.0,
+    "disk_closed_apparent": 54143916.0,
+    "queries": {
+     "needle-count": {
+      "ms": 18768.772082,
+      "size": 0
+     },
+     "needle-lines": {
+      "ms": 17170.036552499998,
+      "size": 0
+     },
+     "error-count": {
+      "ms": 14517.4144735,
+      "size": 91676
+     },
+     "newest-100": {
+      "ms": 63.636799,
+      "size": 100
+     },
+     "minute": {
+      "ms": 1.108016,
+      "size": 0
+     }
+    },
+    "memory_ingest_max": 202532864.0,
+    "memory_query_max": 392835072.0,
+    "cpu_ingest": 2.135,
+    "chunks": 7076314.0,
+    "index": 881106.0,
+    "wal": 46186496.0,
+    "gzip6": 3009786,
+    "zstd3": 3412069,
+    "zstd19": 1972247,
+    "unparsed": 97
+   },
+   "tinystore-Hadoop": {
+    "contender": "tinystore",
+    "dataset": "Hadoop",
+    "passes": 2,
+    "lines": 393421,
+    "bytes": 48593969,
+    "needle": "error",
+    "ingest_per_second": 1486977.6282508103,
+    "settle_seconds": 0.4059824645,
+    "disk_closed": 5087232.0,
+    "disk_closed_apparent": 5085184.0,
+    "queries": {
+     "needle-count": {
+      "ms": 109.882418,
+      "size": 647
+     },
+     "needle-lines": {
+      "ms": 45.673474500000005,
+      "size": 100
+     },
+     "error-count": {
+      "ms": 110.0330515,
+      "size": 647
+     },
+     "newest-100": {
+      "ms": 0.1935625,
+      "size": 100
+     },
+     "minute": {
+      "ms": 2.003274,
+      "size": 5716
+     }
+    },
+    "memory_ingest_max": 11403264.0,
+    "memory_query_max": 21235712.0,
+    "cpu_ingest": 0.16,
+    "dbstat": {
+     "blocks": {
+      "bytes": 3098624,
+      "payload": 3010816
+     },
+     "blocks_by_last": {
+      "bytes": 17408,
+      "payload": 13621
+     },
+     "blocks_by_first": {
+      "bytes": 17408,
+      "payload": 13621
+     },
+     "sqlite_schema": {
+      "bytes": 6144,
+      "payload": 3647
+     },
+     "_tinystore_migrations": {
+      "bytes": 6144,
+      "payload": 5262
+     },
+     "blocks_by_segment": {
+      "bytes": 5120,
+      "payload": 2238
+     },
+     "segments": {
+      "bytes": 3072,
+      "payload": 1250
+     },
+     "streams": {
+      "bytes": 1024,
+      "payload": 16
+     },
+     "sqlite_sequence": {
+      "bytes": 1024,
+      "payload": 33
+     },
+     "sqlite_autoindex_streams_1": {
+      "bytes": 1024,
+      "payload": 9
+     },
+     "segments_by_stream": {
+      "bytes": 1024,
+      "payload": 324
+     },
+     "segments_by_size": {
+      "bytes": 1024,
+      "payload": 174
+     },
+     "segments_by_holder": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "segment_keys": {
+      "bytes": 1024,
+      "payload": 199
+     },
+     "heads_by_stream": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_last": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_first": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "head_state": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "expired": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "block_traces": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "block_filters": {
+      "bytes": 1024,
+      "payload": 0
+     }
+    },
+    "pages": 3169280,
+    "payload": 3051210,
+    "gzip6": 2416944,
+    "zstd3": 1823494,
+    "zstd19": 1135568,
+    "unparsed": 212536
+   },
+   "loki-Hadoop": {
+    "contender": "loki",
+    "dataset": "Hadoop",
+    "passes": 2,
+    "lines": 393421,
+    "bytes": 48593969,
+    "needle": "error",
+    "ingest_per_second": 219055.3050081337,
+    "settle_seconds": 33.4756667195,
+    "disk_closed": 65355776.0,
+    "disk_closed_apparent": 65267824.0,
+    "queries": {
+     "needle-count": {
+      "ms": 86.50878700000001,
+      "size": 27
+     },
+     "needle-lines": {
+      "ms": 91.1949695,
+      "size": 27
+     },
+     "error-count": {
+      "ms": 84.858892,
+      "size": 647
+     },
+     "newest-100": {
+      "ms": 7.3018625,
+      "size": 100
+     },
+     "minute": {
+      "ms": 16.8317625,
+      "size": 5716
+     }
+    },
+    "memory_ingest_max": 209516544.0,
+    "memory_query_max": 237893632.0,
+    "cpu_ingest": 2.495,
+    "chunks": 5838368.0,
+    "index": 4688.0,
+    "wal": 59424768.0,
+    "gzip6": 2416944,
+    "zstd3": 1823494,
+    "zstd19": 1135568,
+    "unparsed": 212536
+   },
+   "tinystore-Android_v1": {
+    "contender": "tinystore",
+    "dataset": "Android_v1",
+    "passes": 2,
+    "lines": 1555005,
+    "bytes": 192270829,
+    "needle": "47.242",
+    "ingest_per_second": 1092058.3164298395,
+    "settle_seconds": 2.9889395045000002,
+    "disk_closed": 35635200.0,
+    "disk_closed_apparent": 35633152.0,
+    "queries": {
+     "needle-count": {
+      "ms": 462.729013,
+      "size": 78
+     },
+     "needle-lines": {
+      "ms": 526.3500395,
+      "size": 78
+     },
+     "error-count": {
+      "ms": 470.060388,
+      "size": 49594
+     },
+     "newest-100": {
+      "ms": 0.2603825,
+      "size": 100
+     },
+     "minute": {
+      "ms": 0.21802500000000002,
+      "size": 317
+     }
+    },
+    "memory_ingest_max": 11360768.0,
+    "memory_query_max": 19226624.0,
+    "cpu_ingest": 1.005,
+    "dbstat": {
+     "blocks": {
+      "bytes": 28703744,
+      "payload": 28296546
+     },
+     "blocks_by_last": {
+      "bytes": 70656,
+      "payload": 54188
+     },
+     "blocks_by_first": {
+      "bytes": 70656,
+      "payload": 54188
+     },
+     "blocks_by_segment": {
+      "bytes": 17408,
+      "payload": 9192
+     },
+     "segments": {
+      "bytes": 7168,
+      "payload": 4900
+     },
+     "sqlite_schema": {
+      "bytes": 6144,
+      "payload": 3647
+     },
+     "_tinystore_migrations": {
+      "bytes": 6144,
+      "payload": 5262
+     },
+     "segments_by_stream": {
+      "bytes": 3072,
+      "payload": 1273
+     },
+     "segment_keys": {
+      "bytes": 3072,
+      "payload": 783
+     },
+     "streams": {
+      "bytes": 1024,
+      "payload": 20
+     },
+     "sqlite_sequence": {
+      "bytes": 1024,
+      "payload": 33
+     },
+     "sqlite_autoindex_streams_1": {
+      "bytes": 1024,
+      "payload": 13
+     },
+     "segments_by_size": {
+      "bytes": 1024,
+      "payload": 685
+     },
+     "segments_by_holder": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_stream": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_last": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_first": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "head_state": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "expired": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "block_traces": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "block_filters": {
+      "bytes": 1024,
+      "payload": 0
+     }
+    },
+    "pages": 28901376,
+    "payload": 28430730,
+    "gzip6": 24926934,
+    "zstd3": 14865321,
+    "zstd19": 8397501,
+    "unparsed": 0
+   },
+   "loki-Android_v1": {
+    "contender": "loki",
+    "dataset": "Android_v1",
+    "passes": 2,
+    "lines": 1555005,
+    "bytes": 192270829,
+    "needle": "47.242",
+    "ingest_per_second": 185761.8331944804,
+    "settle_seconds": 22.902517958,
+    "disk_closed": 290152448.0,
+    "disk_closed_apparent": 289701638.5,
+    "queries": {
+     "needle-count": {
+      "ms": 273.766805,
+      "size": 78
+     },
+     "needle-lines": {
+      "ms": 273.39148950000003,
+      "size": 78
+     },
+     "error-count": {
+      "ms": 298.2083705,
+      "size": 49594
+     },
+     "newest-100": {
+      "ms": 14.284924,
+      "size": 100
+     },
+     "minute": {
+      "ms": 13.413445,
+      "size": 317
+     }
+    },
+    "memory_ingest_max": 362252288.0,
+    "memory_query_max": 488798208.0,
+    "cpu_ingest": 10.765,
+    "chunks": 53092381.0,
+    "index": 7913.5,
+    "wal": 236601344.0,
+    "gzip6": 24926934,
+    "zstd3": 14865321,
+    "zstd19": 8397501,
+    "unparsed": 0
+   },
+   "tinystore-BGL": {
+    "contender": "tinystore",
+    "dataset": "BGL",
+    "passes": 2,
+    "lines": 4747963,
+    "bytes": 743185031,
+    "needle": "2005-07-17-04.26.47.182125",
+    "ingest_per_second": 1147612.65201709,
+    "settle_seconds": 10.641696121999999,
+    "disk_closed": 104046592.0,
+    "disk_closed_apparent": 104044544.0,
+    "queries": {
+     "needle-count": {
+      "ms": 1254.563735,
+      "size": 1
+     },
+     "needle-lines": {
+      "ms": 1672.140387,
+      "size": 1
+     },
+     "error-count": {
+      "ms": 1294.0472315,
+      "size": 687101
+     },
+     "newest-100": {
+      "ms": 0.2745185,
+      "size": 100
+     },
+     "minute": {
+      "ms": 0.7291934999999999,
+      "size": 2003
+     }
+    },
+    "memory_ingest_max": 11297792.0,
+    "memory_query_max": 21644288.0,
+    "cpu_ingest": 3.045,
+    "dbstat": {
+     "blocks": {
+      "bytes": 66944000,
+      "payload": 65712177
+     },
+     "blocks_by_last": {
+      "bytes": 222208,
+      "payload": 177033
+     },
+     "blocks_by_first": {
+      "bytes": 222208,
+      "payload": 177033
+     },
+     "blocks_by_segment": {
+      "bytes": 55296,
+      "payload": 32693
+     },
+     "segments": {
+      "bytes": 19456,
+      "payload": 15500
+     },
+     "segments_by_stream": {
+      "bytes": 7168,
+      "payload": 4212
+     },
+     "sqlite_schema": {
+      "bytes": 6144,
+      "payload": 3647
+     },
+     "_tinystore_migrations": {
+      "bytes": 6144,
+      "payload": 5262
+     },
+     "segments_by_size": {
+      "bytes": 5120,
+      "payload": 2352
+     },
+     "segment_keys": {
+      "bytes": 5120,
+      "payload": 2662
+     },
+     "streams": {
+      "bytes": 1024,
+      "payload": 13
+     },
+     "sqlite_sequence": {
+      "bytes": 1024,
+      "payload": 34
+     },
+     "sqlite_autoindex_streams_1": {
+      "bytes": 1024,
+      "payload": 6
+     },
+     "segments_by_holder": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_stream": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_last": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_first": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "head_state": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "expired": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "block_traces": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "block_filters": {
+      "bytes": 1024,
+      "payload": 0
+     }
+    },
+    "pages": 67505152,
+    "payload": 66132624,
+    "gzip6": 58208626,
+    "zstd3": 70487807,
+    "zstd19": 34254946,
+    "unparsed": 0
+   },
+   "loki-BGL": {
+    "contender": "loki",
+    "dataset": "BGL",
+    "passes": 2,
+    "lines": 4747963,
+    "bytes": 743185031,
+    "needle": "2005-07-17-04.26.47.182125",
+    "ingest_per_second": 206989.06253357913,
+    "settle_seconds": 22.902743212,
+    "disk_closed": 1010139136.0,
+    "disk_closed_apparent": 1004873436.5,
+    "queries": {
+     "needle-count": {
+      "ms": 14785.534185,
+      "size": 1
+     },
+     "needle-lines": {
+      "ms": 14540.209192999999,
+      "size": 1
+     },
+     "error-count": {
+      "ms": 9644.09908,
+      "size": 687101
+     },
+     "newest-100": {
+      "ms": 121.6078975,
+      "size": 100
+     },
+     "minute": {
+      "ms": 22.818109,
+      "size": 2003
+     }
+    },
+    "memory_ingest_max": 604073984.0,
+    "memory_query_max": 729479168.0,
+    "cpu_ingest": 30.335,
+    "chunks": 128186417.0,
+    "index": 765611.5,
+    "wal": 875921408.0,
+    "gzip6": 58208626,
+    "zstd3": 70487807,
+    "zstd19": 34254946,
+    "unparsed": 0
+   },
+   "tinystore-HDFS_v1": {
+    "contender": "tinystore",
+    "dataset": "HDFS_v1",
+    "passes": 2,
+    "lines": 11175629,
+    "bytes": 1577982906,
+    "needle": "blk_-780176872440040760",
+    "ingest_per_second": 1169727.930369065,
+    "settle_seconds": 19.180993094999998,
+    "disk_closed": 221192192.0,
+    "disk_closed_apparent": 221191168.0,
+    "queries": {
+     "needle-count": {
+      "ms": 3078.160872,
+      "size": 19
+     },
+     "needle-lines": {
+      "ms": 4726.381262500001,
+      "size": 19
+     },
+     "error-count": {
+      "ms": 3032.2682595,
+      "size": 5545
+     },
+     "newest-100": {
+      "ms": 0.1338235,
+      "size": 100
+     },
+     "minute": {
+      "ms": 2.6438214999999996,
+      "size": 7563
+     }
+    },
+    "memory_ingest_max": 11000832.0,
+    "memory_query_max": 19014144.0,
+    "cpu_ingest": 7.205,
+    "dbstat": {
+     "blocks": {
+      "bytes": 157047808,
+      "payload": 154385693
+     },
+     "blocks_by_last": {
+      "bytes": 498688,
+      "payload": 400032
+     },
+     "blocks_by_first": {
+      "bytes": 498688,
+      "payload": 400032
+     },
+     "blocks_by_segment": {
+      "bytes": 128000,
+      "payload": 76056
+     },
+     "segments": {
+      "bytes": 40960,
+      "payload": 34950
+     },
+     "segments_by_stream": {
+      "bytes": 14336,
+      "payload": 9658
+     },
+     "segment_keys": {
+      "bytes": 10240,
+      "payload": 6163
+     },
+     "segments_by_size": {
+      "bytes": 9216,
+      "payload": 5464
+     },
+     "sqlite_schema": {
+      "bytes": 6144,
+      "payload": 3647
+     },
+     "_tinystore_migrations": {
+      "bytes": 6144,
+      "payload": 5262
+     },
+     "streams": {
+      "bytes": 1024,
+      "payload": 17
+     },
+     "sqlite_sequence": {
+      "bytes": 1024,
+      "payload": 34
+     },
+     "sqlite_autoindex_streams_1": {
+      "bytes": 1024,
+      "payload": 10
+     },
+     "segments_by_holder": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_stream": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_last": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads_by_first": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "heads": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "head_state": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "expired": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "block_traces": {
+      "bytes": 1024,
+      "payload": 0
+     },
+     "block_filters": {
+      "bytes": 1024,
+      "payload": 0
+     }
+    },
+    "pages": 158272512,
+    "payload": 155327018,
+    "gzip6": 151702866,
+    "zstd3": 151502652,
+    "zstd19": 98273849,
+    "unparsed": 0
+   },
+   "loki-HDFS_v1": {
+    "contender": "loki",
+    "dataset": "HDFS_v1",
+    "passes": 2,
+    "lines": 11175629,
+    "bytes": 1577982906,
+    "needle": "blk_-780176872440040760",
+    "ingest_per_second": 204720.77170447612,
+    "settle_seconds": 4.2825220815,
+    "disk_closed": 2178783232.0,
+    "disk_closed_apparent": 2177349419.0,
+    "queries": {
+     "needle-count": {
+      "ms": 1396.4324975,
+      "size": 19
+     },
+     "needle-lines": {
+      "ms": 1427.98286,
+      "size": 19
+     },
+     "error-count": {
+      "ms": 1746.725954,
+      "size": 5545
+     },
+     "newest-100": {
+      "ms": 13.020917,
+      "size": 100
+     },
+     "minute": {
+      "ms": 33.380961,
+      "size": 7563
+     }
+    },
+    "memory_ingest_max": 1238765568.0,
+    "memory_query_max": 1347323904.0,
+    "cpu_ingest": 69.96000000000001,
+    "chunks": 314156381.5,
+    "index": 20941.5,
+    "wal": 1863172096.0,
+    "gzip6": 151702866,
+    "zstd3": 151502652,
+    "zstd19": 98273849,
+    "unparsed": 0
+   }
+  },
+  "failed": []
+ }
+}
