@@ -1,0 +1,15 @@
+[package]
+name = "archive"
+version = "0.0.0"
+edition = "2024"
+publish = false
+description = "The release round's archive cases: metrics and logs by the core, against VictoriaMetrics, Prometheus and Loki"
+
+[dependencies]
+# the release as crates.io publishes it, built with the flags .cargo/config.toml copies from CI
+tinystore = { version = "=0.1.0", default-features = false, features = ["metrics", "records", "kv"] }
+serde_json = "1"
+regex = "1"
+ureq = { version = "2", default-features = false }
+zstd = { version = "0.13", features = ["zstdmt"] }
+flate2 = "1"
