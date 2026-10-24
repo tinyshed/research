@@ -1,0 +1,29 @@
+[package]
+name = "plughost"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[features]
+default = ["web-apis", "jemalloc"]
+# the web platform from llrt; without it the binary is rquickjs alone, which is the baseline for its size
+web-apis = ["dep:llrt_modules"]
+jemalloc = ["dep:tikv-jemallocator", "dep:tikv-jemalloc-sys"]
+
+[dependencies]
+rquickjs = { version = "0.11", features = ["full-async"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time", "sync"] }
+llrt_modules = { version = "=0.8.1-beta", default-features = false, optional = true, features = [
+    "abort", "buffer", "console", "crypto", "crypto-rust", "events", "exceptions", "fetch", "tls-ring",
+    "timers", "url", "util", "stream-web", "string-decoder", "navigator", "path",
+] }
+tikv-jemallocator = { version = "0.7", features = ["unprefixed_malloc_on_supported_platforms"], optional = true }
+tikv-jemalloc-sys = { version = "0.7", optional = true }
+
+[patch.crates-io]
+llrt_fetch = { path = "vendor/llrt_fetch" }
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+strip = true

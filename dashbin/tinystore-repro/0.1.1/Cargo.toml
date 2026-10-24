@@ -1,0 +1,12 @@
+[package]
+name = "ts-repro-011"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+tinystore = { version = "=0.1.1", default-features = false, features = ["kv", "metrics", "records", "sql", "async"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt", "registry"] }
+serde = { version = "1", features = ["derive"] }

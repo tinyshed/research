@@ -12,3 +12,9 @@ go.work.sum
 /tinystore/release-bench/results/
 /tinystore/release-bench/node_modules/
 /tinystore/release-bench/archive/target/
+# what dashbin's probes build or download comes back from their commands
+/dashbin/**/target/
+/dashbin/**/target-flags/
+/dashbin/sdk-probe/node_modules/
+/dashbin/sdk-probe/dist/
+/dashbin/sdk-probe/llrt/
