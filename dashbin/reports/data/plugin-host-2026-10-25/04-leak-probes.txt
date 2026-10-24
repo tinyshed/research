@@ -1,0 +1,51 @@
+Copied from the session's terminal, 25 October 2026. llrt_modules' own timers, CAREFUL_DROP=1.
+"objects left" is rt.memory_usage().obj_count after the context is dropped and the GC has run: it is 572 even for an
+instance that frees cleanly, so it cannot tell a leak from a clean instance.
+
+-- leak/cleared.mjs
+set and cleared a timer
+  objects left before freeing the runtime: 572
+  objects left before freeing the runtime: 576
+all dropped, careful=true                      VmRSS   6.1 MiB  peak   6.1
+   exit=0
+-- leak/timer.mjs
+left a 60 s timer
+  objects left before freeing the runtime: 572
+  objects left before freeing the runtime: 577
+Assertion failed: list_empty(&rt->gc_obj_list) (... JS_FreeRuntime: 2205)
+   exit=134
+-- leak/interval.mjs
+left an interval
+  objects left before freeing the runtime: 572
+  objects left before freeing the runtime: 577
+Assertion failed: list_empty(&rt->gc_obj_list) (... JS_FreeRuntime: 2205)
+   exit=134
+-- leak/fetch.mjs
+left a request in flight
+  objects left before freeing the runtime: 572
+  objects left before freeing the runtime: 585
+all dropped, careful=true                      VmRSS   6.2 MiB  peak   6.2
+   exit=0
+-- leak/promise.mjs
+left a promise that never settles
+  objects left before freeing the runtime: 572
+  objects left before freeing the runtime: 577
+all dropped, careful=true                      VmRSS   6.1 MiB  peak   6.1
+   exit=0
+-- openai.qbc
+  objects left before freeing the runtime: 572
+  objects left before freeing the runtime: 3215
+all dropped, careful=true                      VmRSS  10.9 MiB  peak  10.9
+   exit=0
+-- stripe.qbc
+  objects left before freeing the runtime: 572
+  objects left before freeing the runtime: 2630
+Assertion failed: list_empty(&rt->gc_obj_list) (... JS_FreeRuntime: 2205)
+   exit=134
+-- stripe.qbc, PARK_LEAKS=1 (forget the runtime instead of freeing it)
+  objects left before freeing the runtime: 572
+  parked instead of freed
+  objects left before freeing the runtime: 2630
+  parked instead of freed
+all dropped, careful=true                      VmRSS   9.5 MiB  peak   9.5
+   exit=0

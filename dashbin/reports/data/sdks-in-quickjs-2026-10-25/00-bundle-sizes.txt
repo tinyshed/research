@@ -1,0 +1,15 @@
+Copied from the session's terminal, 25 October 2026. bun 1.4.2, `bun build`.
+
+web  = --target=browser --format=esm --conditions=worker
+node = --target=node --format=esm
+min  = web + --minify
+lrt  = min compiled by `llrt compile` (LLRT v0.9.0-beta)
+
+            web        node       min      lrt
+stripe      571927 B   577553 B   223 KB   83 KB
+octokit     151845 B   151845 B   105 KB   42 KB
+openai      826832 B   826832 B   378 KB   235 KB
+notion      1019414 B  99192 B    571 KB   320 KB      (node, minified: 54 KB; lrt: 35 KB)
+slack       673194 B   120915 B   -        -
+pg          fails      165852 B   -        -           web: "Browser build cannot require() Node.js builtin: "tls""
+libs        237905 B   259735 B   125 KB   104 KB

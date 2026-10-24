@@ -1,0 +1,23 @@
+llrt  web   empty    {"ok":true} {"rss_mib":7.4,"peak_mib":7.4} 
+llrt  web   stripe   {"ok":true,"rows":1,"first":{"time":1234567890000,"amount":100,"currency":"usd"},"refund":"re_RacJUMa0TXb63Qz"} {"rss_mib":13.4,"peak_mib":13.4} 
+llrt  web   octokit  {"ok":true,"repo":"tinyshed/tinystore","stars":42} {"rss_mib":10.3,"peak_mib":10.3} 
+llrt  web   openai   {"ok":true,"reply":"hello"} {"rss_mib":16.6,"peak_mib":16.6} 
+llrt  web   notion   {"ok":true,"results":0} {"rss_mib":19.6,"peak_mib":19.6} 
+llrt  web   slack    TypeError: Path must be a string. Received undefined   at assertPath (/p/dist/web/slack.mjs:236:73)       at basename (/p/dist/web/slack.mjs:427:14)       at <anonymous> (/p/dist/web/slack.mjs:692:117)       at <anonymous> (/p/dist/web/slack.mjs:51:45)       at <anonymous> (/p/dist/web/slack.mjs:15368:22)       at <anonymous> (/
+llrt  web   libs     {"ok":true,"rows":2,"label":"2026-10-24"} {"rss_mib":10.2,"peak_mib":10.2} 
+llrt  node  empty    {"ok":true} {"rss_mib":7.4,"peak_mib":7.4} 
+llrt  node  stripe   ReferenceError: Error resolving module 'http' from '/p/dist/node/stripe.mjs'    
+llrt  node  octokit  {"ok":true,"repo":"tinyshed/tinystore","stars":42} {"rss_mib":10.3,"peak_mib":10.3} 
+llrt  node  openai   {"ok":true,"reply":"hello"} {"rss_mib":16.6,"peak_mib":16.6} 
+llrt  node  notion   {"ok":true,"results":0} {"rss_mib":9.8,"peak_mib":9.8} 
+llrt  node  slack    TypeError: Error converting from js 'undefined' into type 'string'   at <anonymous> (/p/dist/node/slack.mjs:263:129)       at <anonymous> (/p/dist/node/slack.mjs:34:45)       at <anonymous> (/p/dist/node/slack.mjs:3197:22)       at <anonymous> (/p/dist/node/slack.mjs:34:45)       at <anonymous> (/p/dist/node/slack.mjs:3226:30) 
+llrt  node  pg       ReferenceError: Error resolving module 'util/types' from '/p/dist/node/pg.mjs'   at <anonymous> (/p/dist/node/pg.mjs:1003:20)       at <anonymous> (/p/dist/node/pg.mjs:34:45)       at <anonymous> (/p/dist/node/pg.mjs:3506:15)       at <anonymous> (/p/dist/node/pg.mjs:34:45)       at <anonymous> (/p/dist/node/pg.mjs:5040:16)     
+llrt  node  libs     {"ok":true,"rows":2,"label":"2026-10-24"} {"rss_mib":10.4,"peak_mib":10.4} 
+bun   web   empty    {"ok":true} {"rss_mib":16.8,"peak_mib":16.8} 
+bun   web   stripe   {"ok":true,"rows":1,"first":{"time":1234567890000,"amount":100,"currency":"usd"},"refund":"re_RacK9FQfLBXFM3s"} {"rss_mib":37.3,"peak_mib":37.3} 
+bun   web   octokit  {"ok":true,"repo":"tinyshed/tinystore","stars":42} {"rss_mib":31.9,"peak_mib":31.9} 
+bun   web   openai   {"ok":true,"reply":"hello"} {"rss_mib":41,"peak_mib":45} 
+bun   web   notion   {"ok":true,"results":0} {"rss_mib":34.9,"peak_mib":40} 
+bun   web   slack    {"ok":true,"ts":"1.2"} {"rss_mib":41.2,"peak_mib":44.2} 
+bun   web   libs     {"ok":true,"rows":2,"label":"2026-10-24"} {"rss_mib":39.2,"peak_mib":39.2} 
+bun   node  pg       {"ok":true,"one":1} {"rss_mib":36,"peak_mib":36} 

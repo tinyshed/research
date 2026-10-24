@@ -1,0 +1,24 @@
+Copied from the session's terminal, 25 October 2026. Each line is one LLRT v0.9.0-beta process in rust:1.99-bookworm,
+the bundle's own footer reading /proc/self/status after its call (tests/_footer.txt).
+
+empty        web  {"rss_mib":7.4,"peak_mib":7.4}
+empty        min  {"rss_mib":7.4,"peak_mib":7.4}
+empty        lrt  {"rss_mib":7.7,"peak_mib":7.7}
+stripe       web  {"rss_mib":13.3,"peak_mib":13.3}
+stripe       min  {"rss_mib":11.9,"peak_mib":11.9}
+stripe       lrt  {"rss_mib":11.6,"peak_mib":11.6}
+octokit      web  {"rss_mib":10.3,"peak_mib":10.3}
+octokit      min  {"rss_mib":10.2,"peak_mib":10.2}
+octokit      lrt  {"rss_mib":10.3,"peak_mib":10.3}
+openai       web  {"rss_mib":16.6,"peak_mib":16.6}
+openai       min  {"rss_mib":14.5,"peak_mib":14.5}
+openai       lrt  {"rss_mib":12.7,"peak_mib":12.7}
+notion       web  {"rss_mib":19.4,"peak_mib":19.4}
+notion       min  {"rss_mib":17.1,"peak_mib":17.1}
+notion       lrt  {"rss_mib":15.2,"peak_mib":15.2}
+notion-node  web  {"rss_mib":9.7,"peak_mib":9.7}
+notion-node  min  {"rss_mib":9.5,"peak_mib":9.5}
+notion-node  lrt  {"rss_mib":9.7,"peak_mib":9.7}
+libs         web  {"rss_mib":10.2,"peak_mib":10.2}
+libs         min  {"rss_mib":9.8,"peak_mib":9.8}
+libs         lrt  {"rss_mib":9.3,"peak_mib":9.3}

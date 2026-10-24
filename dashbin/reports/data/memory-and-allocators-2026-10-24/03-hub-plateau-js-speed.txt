@@ -1,0 +1,23 @@
+seeded                                       VmRSS 11.0 MiB  RssAnon 3.4  RssFile 7.7  VmHWM 11.0  threads 19
+after round 1 of 1000 panels                 VmRSS 20.1 MiB  RssAnon 12.2  RssFile 7.9  VmHWM 20.1  threads 28
+after round 2 of 1000 panels                 VmRSS 20.7 MiB  RssAnon 12.8  RssFile 7.9  VmHWM 20.7  threads 28
+after round 3 of 1000 panels                 VmRSS 21.3 MiB  RssAnon 13.4  RssFile 7.9  VmHWM 21.3  threads 28
+after round 4 of 1000 panels                 VmRSS 21.5 MiB  RssAnon 13.6  RssFile 7.9  VmHWM 21.5  threads 28
+after round 5 of 1000 panels                 VmRSS 21.7 MiB  RssAnon 13.8  RssFile 7.9  VmHWM 21.7  threads 28
+after round 6 of 1000 panels                 VmRSS 21.8 MiB  RssAnon 13.9  RssFile 7.9  VmHWM 21.8  threads 28
+plus 1000 page requests                      VmRSS 22.0 MiB  RssAnon 14.0  RssFile 8.0  VmHWM 22.0  threads 28
+== quickjs
+start, quickjs linked, no runtime            VmRSS 2.5 MiB  RssAnon 0.2  RssFile 2.4  VmHWM 2.5  threads 1
+1 instance, plugin loaded                    VmRSS 3.6 MiB  RssAnon 0.4  RssFile 3.2  VmHWM 3.6  threads 1
+1 instance, after one call                   VmRSS 5.4 MiB  RssAnon 1.8  RssFile 3.6  VmHWM 5.9  threads 1
+  quickjs's own count for it: malloc_size 0.1 MiB, memory_used 0.1 MiB
+  after its gc: malloc_size 0.1 MiB
+1 instance, after gc                         VmRSS 5.4 MiB  RssAnon 1.8  RssFile 3.6  VmHWM 5.9  threads 1
+  100 calls on one instance took 1.27853939s
+1 instance, after 100 calls                  VmRSS 6.1 MiB  RssAnon 2.4  RssFile 3.6  VmHWM 6.3  threads 1
+10 instances, each called once, gc'd         VmRSS 7.7 MiB  RssAnon 4.1  RssFile 3.6  VmHWM 7.7  threads 1
+write /dev/stdout: The pipe is being closed.
+== bun
+  100 calls took 210 ms
+== node
+  100 calls took 408 ms

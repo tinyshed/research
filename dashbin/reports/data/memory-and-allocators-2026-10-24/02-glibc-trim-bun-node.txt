@@ -1,0 +1,51 @@
+== bare axum
+idle, 3 s after bind                         VmRSS 3.2 MiB  RssAnon 0.4  RssFile 2.7  VmHWM 3.2  threads 17
+after 1000 requests, ten at once             VmRSS 3.8 MiB  RssAnon 0.8  RssFile 3.0  VmHWM 3.8  threads 17
+== hub: axum + tinystore::aio, TOKIO_WORKER_THREADS=default
+idle, engines open, 3 s after bind           VmRSS 9.4 MiB  RssAnon 2.2  RssFile 7.2  VmHWM 9.4  threads 19
+after seeding 50 series x 1 h                VmRSS 11.3 MiB  RssAnon 3.3  RssFile 7.9  VmHWM 11.3  threads 19
+after one page request                       VmRSS 11.3 MiB  RssAnon 3.4  RssFile 7.9  VmHWM 11.3  threads 19
+after 1000 page requests, ten at once        VmRSS 14.1 MiB  RssAnon 6.1  RssFile 7.9  VmHWM 14.1  threads 25
+after 1000 panels, ten at once               VmRSS 22.6 MiB  RssAnon 14.5  RssFile 8.1  VmHWM 22.6  threads 28
+30 s after the load                          VmRSS 22.6 MiB  RssAnon 14.5  RssFile 8.1  VmHWM 22.6  threads 28
+90 s after the load                          VmRSS 22.4 MiB  RssAnon 14.1  RssFile 8.3  VmHWM 22.4  threads 18
+after malloc_trim                            VmRSS 20.2 MiB  RssAnon 11.8  RssFile 8.3  VmHWM 21.2  threads 18
+== quickjs instances
+start, quickjs linked, no runtime            VmRSS 2.5 MiB  RssAnon 0.2  RssFile 2.3  VmHWM 2.5  threads 1
+1 instance, plugin loaded                    VmRSS 3.5 MiB  RssAnon 0.4  RssFile 3.2  VmHWM 3.5  threads 1
+1 instance, after one call                   VmRSS 5.4 MiB  RssAnon 1.8  RssFile 3.5  VmHWM 5.9  threads 1
+  quickjs's own count for it: malloc_size 0.1 MiB, memory_used 0.1 MiB
+  after its gc: malloc_size 0.1 MiB
+1 instance, after gc                         VmRSS 5.4 MiB  RssAnon 1.8  RssFile 3.5  VmHWM 5.9  threads 1
+10 instances, each called once, gc'd         VmRSS 7.5 MiB  RssAnon 4.0  RssFile 3.5  VmHWM 8.0  threads 1
+100 instances, each called once, gc'd        VmRSS 24.3 MiB  RssAnon 20.8  RssFile 3.5  VmHWM 24.8  threads 1
+100 instances, after malloc_trim             VmRSS 22.4 MiB  RssAnon 18.9  RssFile 3.5  VmHWM 24.8  threads 1
+all dropped                                  VmRSS 22.4 MiB  RssAnon 18.9  RssFile 3.5  VmHWM 24.8  threads 1
+all dropped, after malloc_trim               VmRSS 4.3 MiB  RssAnon 0.8  RssFile 3.5  VmHWM 24.8  threads 1
+== bun 1.4.2, plugin as its own process
+idle, 3 s after start                        VmRSS 22.4 MiB  RssAnon 4.7  RssFile 17.7  VmHWM 22.4  threads 11
+after one call                               VmRSS 32.1 MiB  RssAnon 8.0  RssFile 24.2  VmHWM 32.1  threads 12
+after 100 calls                              VmRSS 50.8 MiB  RssAnon 21.9  RssFile 28.8  VmHWM 56.5  threads 12
+10 s later                                   VmRSS 36.3 MiB  RssAnon 7.1  RssFile 29.2  VmHWM 56.5  threads 11
+after a full gc                              VmRSS 36.4 MiB  RssAnon 7.1  RssFile 29.3  VmHWM 56.5  threads 12
+== node 24, plugin as its own process
+idle, 3 s after start                        VmRSS 43.6 MiB  RssAnon 8.6  RssFile 35.0  VmHWM 43.6  threads 7
+after one call                               VmRSS 56.1 MiB  RssAnon 12.9  RssFile 43.2  VmHWM 56.1  threads 7
+after 100 calls                              VmRSS 99.0 MiB  RssAnon 55.4  RssFile 43.6  VmHWM 99.0  threads 7
+10 s later                                   VmRSS 99.0 MiB  RssAnon 55.4  RssFile 43.6  VmHWM 99.0  threads 7
+after a full gc                              VmRSS 92.8 MiB  RssAnon 49.1  RssFile 43.6  VmHWM 99.0  threads 7
+== agent, TOKIO_WORKER_THREADS=2
+connected to the hub, idle                   VmRSS 5.1 MiB  RssAnon 0.6  RssFile 4.5  VmHWM 5.1  threads 4
+plus a pg and a mysql connection, a plugin   VmRSS 7.3 MiB  RssAnon 1.2  RssFile 6.1  VmHWM 7.3  threads 4
+after one round of pg, mysql, plugin         VmRSS 10.8 MiB  RssAnon 4.5  RssFile 6.2  VmHWM 11.2  threads 4
+after 100 rounds                             VmRSS 12.3 MiB  RssAnon 6.1  RssFile 6.2  VmHWM 12.3  threads 4
+10 s later                                   VmRSS 12.3 MiB  RssAnon 6.1  RssFile 6.2  VmHWM 12.3  threads 3
+after malloc_trim                            VmRSS 7.7 MiB  RssAnon 1.4  RssFile 6.2  VmHWM 11.7  threads 3
+== agent-buffer, TOKIO_WORKER_THREADS=2
+connected to the hub, idle                   VmRSS 5.6 MiB  RssAnon 0.6  RssFile 4.9  VmHWM 5.6  threads 4
+plus a pg and a mysql connection, a plugin   VmRSS 8.0 MiB  RssAnon 1.2  RssFile 6.8  VmHWM 8.0  threads 4
+plus a tinystore with metrics open           VmRSS 10.4 MiB  RssAnon 1.4  RssFile 9.0  VmHWM 10.4  threads 5
+after one round of pg, mysql, plugin         VmRSS 14.3 MiB  RssAnon 5.3  RssFile 9.0  VmHWM 14.4  threads 6
+after 100 rounds                             VmRSS 16.7 MiB  RssAnon 7.4  RssFile 9.3  VmHWM 16.7  threads 6
+10 s later                                   VmRSS 16.7 MiB  RssAnon 7.4  RssFile 9.3  VmHWM 16.7  threads 5
+after malloc_trim                            VmRSS 12.4 MiB  RssAnon 3.1  RssFile 9.3  VmHWM 16.2  threads 5

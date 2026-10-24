@@ -1,0 +1,44 @@
+Copied from the session's terminal, 25 October 2026. CAREFUL_DROP=1 drops the context, runs the GC, then frees the runtime.
+
+-- plughost-bare empties 10        (NOTE: this "bare" binary was a stale copy of an earlier build; see 07)
+start, web-apis=false                          VmRSS   1.6 MiB  peak   1.6
+10 empty instances                             VmRSS   3.2 MiB  peak   3.2
+all dropped, careful=false                     VmRSS   3.2 MiB  peak   3.2
+all dropped, purged                            VmRSS   2.7 MiB  peak   3.0
+   exit=0
+-- plughost-web empties 1
+start, web-apis=true                           VmRSS   2.4 MiB  peak   2.4
+1 empty instances                              VmRSS   5.8 MiB  peak   5.8
+all dropped, careful=false                     VmRSS   5.9 MiB  peak   5.9
+all dropped, purged                            VmRSS   5.9 MiB  peak   5.9
+   exit=0
+-- plughost-web empties 10
+start, web-apis=true                           VmRSS   2.4 MiB  peak   2.4
+10 empty instances                             VmRSS   7.6 MiB  peak   7.6
+all dropped, careful=false                     VmRSS   7.7 MiB  peak   7.7
+all dropped, purged                            VmRSS   6.8 MiB  peak   7.6
+   exit=0
+-- CAREFUL_DROP=1 plughost-web empties 10
+10 empty instances                             VmRSS   7.6 MiB  peak   7.6
+all dropped, careful=true                      VmRSS   7.7 MiB  peak   7.7
+all dropped, purged                            VmRSS   6.8 MiB  peak   7.6
+   exit=0
+-- CAREFUL_DROP=1 plughost-web stripe octokit openai notion libs (bytecode)
+  took 5.164275ms / 10.096344ms / 4.776471ms / 3.775437ms / 2.414004ms
+all instances alive                            VmRSS  20.2 MiB  peak  20.2
+Assertion failed: list_empty(&rt->gc_obj_list) (... JS_FreeRuntime: 2205)
+   exit=134
+-- CAREFUL_DROP=1 plughost-web octokit libs
+all instances alive                            VmRSS   9.8 MiB  peak   9.8
+all dropped, careful=true                      VmRSS   9.8 MiB  peak   9.8
+all dropped, purged                            VmRSS   8.3 MiB  peak   9.6
+   exit=0
+
+-- one SDK at a time, CAREFUL_DROP=1
+stripe   took 5.373131ms   Assertion failed: list_empty(&rt->gc_obj_list)   exit=134
+openai   took 6.749904ms   all dropped, careful=true   VmRSS  10.8 MiB      exit=0
+notion   took 6.034108ms   all dropped, careful=true   VmRSS  12.9 MiB      exit=0
+-- the same with WAIT_IDLE=1 (rt.idle() before dropping)
+openai   took 5.038059ms   all dropped, careful=true   VmRSS  10.8 MiB      exit=0
+notion   took 5.897482ms   all dropped, careful=true   VmRSS  12.9 MiB      exit=0
+stripe   took 80.003607093s all dropped, careful=true  VmRSS   8.7 MiB      exit=0

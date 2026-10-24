@@ -7,6 +7,7 @@ or a promise; a product's guarantees live in its own repository.
 | Folder | Project |
 |---|---|
 | [tinystore/](tinystore/) | TinyStore, the embedded data runtime for Go on SQLite |
+| [dashbin/](dashbin/) | Dashbin's Rust rewrite: TinyStore as its store, memory and allocators, the plugin host |
 
 A number here is evidence for the day it was measured, with the machine,
 versions, corpus and command that produced it. A later round supersedes an

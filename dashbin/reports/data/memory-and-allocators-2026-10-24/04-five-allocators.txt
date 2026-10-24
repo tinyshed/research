@@ -1,0 +1,160 @@
+==================== glibc (dynamic)
+-- hub
+  idle, engines open, 3 s after bind         VmRSS 9.4 MiB  RssAnon 2.2  RssFile 7.1  VmHWM 9.4  threads 19
+  after seeding 50 series x 1 h              VmRSS 11.2 MiB  RssAnon 3.4  RssFile 7.8  VmHWM 11.2  threads 19
+  speed: work 10000 x10 conns                 20487 req/s  p50   0.46 ms  p99   0.79 ms
+  after 12000 page requests                  VmRSS 19.4 MiB  RssAnon 11.4  RssFile 8.0  VmHWM 19.4  threads 29
+  speed: panel 3000 x10 conns                  3637 req/s  p50   2.66 ms  p99   3.38 ms
+  after 3000 panels                          VmRSS 27.3 MiB  RssAnon 19.0  RssFile 8.3  VmHWM 27.3  threads 29
+  speed: panel 3000 x10 conns                  3736 req/s  p50   2.66 ms  p99   3.35 ms
+  after 6000 panels                          VmRSS 28.1 MiB  RssAnon 19.8  RssFile 8.3  VmHWM 28.1  threads 29
+  30 s after the load                        VmRSS 28.1 MiB  RssAnon 19.8  RssFile 8.3  VmHWM 28.1  threads 29
+  90 s after the load                        VmRSS 28.4 MiB  RssAnon 19.9  RssFile 8.5  VmHWM 28.4  threads 18
+  forced                                     VmRSS 25.3 MiB  RssAnon 16.8  RssFile 8.5  VmHWM 27.8  threads 18  [malloc_trim(0)]  (glibc)
+-- quickjs
+  start, quickjs linked, no runtime            VmRSS 2.5 MiB  RssAnon 0.2  RssFile 2.3  VmHWM 2.5  threads 1
+  1 instance, plugin loaded                    VmRSS 3.4 MiB  RssAnon 0.4  RssFile 3.1  VmHWM 3.4  threads 1
+  1 instance, after one call and gc            VmRSS 5.2 MiB  RssAnon 1.8  RssFile 3.4  VmHWM 5.8  threads 1
+    speed: 100 calls on one instance took 1.307363905s
+  10 instances, each called once, gc'd         VmRSS 7.5 MiB  RssAnon 4.1  RssFile 3.4  VmHWM 7.7  threads 1
+  100 instances, each called once, gc'd        VmRSS 24.3 MiB  RssAnon 20.9  RssFile 3.4  VmHWM 24.3  threads 1
+  all 100 unloaded, at once                    VmRSS 23.2 MiB  RssAnon 19.8  RssFile 3.4  VmHWM 24.3  threads 1
+  all 100 unloaded, 1 s later                  VmRSS 23.2 MiB  RssAnon 19.8  RssFile 3.4  VmHWM 24.3  threads 1
+  all 100 unloaded, 12 s later                 VmRSS 23.2 MiB  RssAnon 19.8  RssFile 3.4  VmHWM 24.3  threads 1
+  forced: malloc_trim(0)                       VmRSS 4.2 MiB  RssAnon 0.8  RssFile 3.4  VmHWM 24.3  threads 1
+-- agent, TOKIO_WORKER_THREADS=2
+  connected to the hub, idle                   VmRSS 4.9 MiB  RssAnon 0.6  RssFile 4.3  VmHWM 4.9  threads 4
+  plus a pg and a mysql connection, a plugin   VmRSS 7.4 MiB  RssAnon 1.2  RssFile 6.2  VmHWM 7.4  threads 4
+  after one round of pg, mysql, plugin         VmRSS 10.9 MiB  RssAnon 4.5  RssFile 6.4  VmHWM 11.1  threads 4
+    speed: 100 rounds took 2.258054222s
+  after 100 rounds                             VmRSS 12.9 MiB  RssAnon 6.6  RssFile 6.4  VmHWM 12.9  threads 4
+  10 s later                                   VmRSS 12.9 MiB  RssAnon 6.6  RssFile 6.4  VmHWM 12.9  threads 3
+  forced: malloc_trim(0)                       VmRSS 8.5 MiB  RssAnon 2.1  RssFile 6.4  VmHWM 12.2  threads 3
+==================== musl static, its own mallocng
+-- hub
+  idle, engines open, 3 s after bind         VmRSS 7.1 MiB  RssAnon 2.0  RssFile 5.1  VmHWM 7.1  threads 19
+  after seeding 50 series x 1 h              VmRSS 7.7 MiB  RssAnon 2.3  RssFile 5.4  VmHWM 8.0  threads 19
+  speed: work 10000 x10 conns                  8396 req/s  p50   1.17 ms  p99   1.82 ms
+  after 12000 page requests                  VmRSS 11.3 MiB  RssAnon 5.7  RssFile 5.6  VmHWM 11.5  threads 28
+  speed: panel 3000 x10 conns                   471 req/s  p50  20.82 ms  p99  28.99 ms
+  after 3000 panels                          VmRSS 14.1 MiB  RssAnon 8.3  RssFile 5.8  VmHWM 17.0  threads 28
+  speed: panel 3000 x10 conns                   464 req/s  p50  21.38 ms  p99  28.55 ms
+  after 6000 panels                          VmRSS 14.1 MiB  RssAnon 8.2  RssFile 5.8  VmHWM 17.1  threads 28
+  30 s after the load                        VmRSS 14.1 MiB  RssAnon 8.2  RssFile 5.8  VmHWM 17.1  threads 28
+  90 s after the load                        VmRSS 14.9 MiB  RssAnon 9.1  RssFile 5.8  VmHWM 17.1  threads 18
+  forced                                     VmRSS 14.9 MiB  RssAnon 9.1  RssFile 5.8  VmHWM 17.1  threads 18  [none]  (musl)
+-- quickjs
+  start, quickjs linked, no runtime            VmRSS 0.8 MiB  RssAnon 0.1  RssFile 0.7  VmHWM 0.8  threads 1
+  1 instance, plugin loaded                    VmRSS 1.7 MiB  RssAnon 0.3  RssFile 1.4  VmHWM 1.7  threads 1
+  1 instance, after one call and gc            VmRSS 1.8 MiB  RssAnon 0.4  RssFile 1.4  VmHWM 3.7  threads 1
+    speed: 100 calls on one instance took 1.924596427s
+  10 instances, each called once, gc'd         VmRSS 4.1 MiB  RssAnon 2.7  RssFile 1.4  VmHWM 5.5  threads 1
+  100 instances, each called once, gc'd        VmRSS 21.6 MiB  RssAnon 20.2  RssFile 1.4  VmHWM 23.0  threads 1
+  all 100 unloaded, at once                    VmRSS 1.5 MiB  RssAnon 0.1  RssFile 1.4  VmHWM 23.0  threads 1
+  all 100 unloaded, 1 s later                  VmRSS 1.5 MiB  RssAnon 0.1  RssFile 1.4  VmHWM 23.0  threads 1
+  all 100 unloaded, 12 s later                 VmRSS 1.5 MiB  RssAnon 0.1  RssFile 1.4  VmHWM 23.0  threads 1
+  forced: none                                 VmRSS 1.5 MiB  RssAnon 0.1  RssFile 1.4  VmHWM 23.0  threads 1
+-- agent, TOKIO_WORKER_THREADS=2
+  connected to the hub, idle                   VmRSS 2.5 MiB  RssAnon 0.5  RssFile 2.0  VmHWM 2.5  threads 4
+  plus a pg and a mysql connection, a plugin   VmRSS 4.6 MiB  RssAnon 0.9  RssFile 3.7  VmHWM 4.6  threads 4
+  after one round of pg, mysql, plugin         VmRSS 6.9 MiB  RssAnon 3.1  RssFile 3.8  VmHWM 8.4  threads 4
+    speed: 100 rounds took 2.870571722s
+  after 100 rounds                             VmRSS 5.0 MiB  RssAnon 1.3  RssFile 3.8  VmHWM 8.5  threads 4
+  10 s later                                   VmRSS 5.0 MiB  RssAnon 1.3  RssFile 3.8  VmHWM 8.5  threads 3
+  forced: none                                 VmRSS 5.0 MiB  RssAnon 1.3  RssFile 3.8  VmHWM 8.5  threads 3
+==================== musl static + mimalloc
+-- hub
+  idle, engines open, 3 s after bind         VmRSS 21.5 MiB  RssAnon 16.3  RssFile 5.1  VmHWM 21.5  threads 20
+  after seeding 50 series x 1 h              VmRSS 37.9 MiB  RssAnon 32.4  RssFile 5.5  VmHWM 37.9  threads 20
+  speed: work 10000 x10 conns                 20423 req/s  p50   0.45 ms  p99   1.57 ms
+  after 12000 page requests                  VmRSS 176.1 MiB  RssAnon 170.4  RssFile 5.7  VmHWM 176.1  threads 31
+  speed: panel 3000 x10 conns                  3484 req/s  p50   2.76 ms  p99   3.79 ms
+  after 3000 panels                          VmRSS 175.0 MiB  RssAnon 169.0  RssFile 6.0  VmHWM 175.8  threads 31
+  speed: panel 3000 x10 conns                  3602 req/s  p50   2.76 ms  p99   3.54 ms
+  after 6000 panels                          VmRSS 160.4 MiB  RssAnon 154.4  RssFile 6.0  VmHWM 175.8  threads 31
+  30 s after the load                        VmRSS 163.7 MiB  RssAnon 157.7  RssFile 6.0  VmHWM 175.8  threads 31
+  90 s after the load                        VmRSS 165.1 MiB  RssAnon 159.2  RssFile 6.0  VmHWM 175.8  threads 18
+  forced                                     VmRSS 149.9 MiB  RssAnon 143.9  RssFile 6.0  VmHWM 175.8  threads 18  [mi_collect(true)]  (mimalloc)
+-- quickjs
+  start, quickjs linked, no runtime            VmRSS 4.7 MiB  RssAnon 4.1  RssFile 0.6  VmHWM 4.7  threads 1
+  1 instance, plugin loaded                    VmRSS 5.4 MiB  RssAnon 4.1  RssFile 1.3  VmHWM 5.4  threads 1
+  1 instance, after one call and gc            VmRSS 17.5 MiB  RssAnon 16.1  RssFile 1.4  VmHWM 17.5  threads 1
+    speed: 100 calls on one instance took 1.703139873s
+  10 instances, each called once, gc'd         VmRSS 25.0 MiB  RssAnon 23.7  RssFile 1.4  VmHWM 27.4  threads 1
+  100 instances, each called once, gc'd        VmRSS 41.2 MiB  RssAnon 39.9  RssFile 1.4  VmHWM 41.2  threads 1
+  all 100 unloaded, at once                    VmRSS 41.2 MiB  RssAnon 39.9  RssFile 1.4  VmHWM 41.2  threads 1
+  all 100 unloaded, 1 s later                  VmRSS 41.2 MiB  RssAnon 39.9  RssFile 1.4  VmHWM 41.2  threads 1
+  all 100 unloaded, 12 s later                 VmRSS 41.2 MiB  RssAnon 39.9  RssFile 1.4  VmHWM 41.2  threads 1
+  forced: mi_collect(true)                     VmRSS 3.6 MiB  RssAnon 2.3  RssFile 1.4  VmHWM 41.1  threads 1
+-- agent, TOKIO_WORKER_THREADS=2
+  connected to the hub, idle                   VmRSS 8.5 MiB  RssAnon 6.4  RssFile 2.1  VmHWM 8.5  threads 4
+  plus a pg and a mysql connection, a plugin   VmRSS 18.1 MiB  RssAnon 14.4  RssFile 3.8  VmHWM 18.1  threads 4
+  after one round of pg, mysql, plugin         VmRSS 26.2 MiB  RssAnon 22.4  RssFile 3.8  VmHWM 26.2  threads 4
+    speed: 100 rounds took 2.679124088s
+  after 100 rounds                             VmRSS 30.2 MiB  RssAnon 26.4  RssFile 3.8  VmHWM 56.4  threads 4
+  10 s later                                   VmRSS 20.2 MiB  RssAnon 16.4  RssFile 3.8  VmHWM 56.4  threads 3
+  forced: mi_collect(true)                     VmRSS 14.1 MiB  RssAnon 10.3  RssFile 3.8  VmHWM 56.4  threads 3
+==================== musl static + jemalloc
+-- hub
+  idle, engines open, 3 s after bind         VmRSS 10.0 MiB  RssAnon 4.6  RssFile 5.4  VmHWM 10.0  threads 19
+  after seeding 50 series x 1 h              VmRSS 11.8 MiB  RssAnon 6.1  RssFile 5.8  VmHWM 11.8  threads 19
+  speed: work 10000 x10 conns                 20022 req/s  p50   0.47 ms  p99   0.81 ms
+  after 12000 page requests                  VmRSS 25.5 MiB  RssAnon 19.5  RssFile 6.0  VmHWM 25.5  threads 29
+  speed: panel 3000 x10 conns                  3518 req/s  p50   2.72 ms  p99   3.46 ms
+  after 3000 panels                          VmRSS 37.3 MiB  RssAnon 31.1  RssFile 6.2  VmHWM 37.3  threads 29
+  speed: panel 3000 x10 conns                  3586 req/s  p50   2.79 ms  p99   3.45 ms
+  after 6000 panels                          VmRSS 37.3 MiB  RssAnon 31.1  RssFile 6.2  VmHWM 37.3  threads 29
+  30 s after the load                        VmRSS 37.3 MiB  RssAnon 31.1  RssFile 6.2  VmHWM 37.3  threads 29
+  90 s after the load                        VmRSS 27.3 MiB  RssAnon 21.1  RssFile 6.2  VmHWM 37.0  threads 18
+  forced                                     VmRSS 24.7 MiB  RssAnon 18.5  RssFile 6.3  VmHWM 37.0  threads 18  [arena.all.purge]  (jemalloc)
+-- quickjs
+  start, quickjs linked, no runtime            VmRSS 1.2 MiB  RssAnon 0.2  RssFile 0.9  VmHWM 1.2  threads 1
+  1 instance, plugin loaded                    VmRSS 2.1 MiB  RssAnon 0.5  RssFile 1.6  VmHWM 2.1  threads 1
+  1 instance, after one call and gc            VmRSS 4.3 MiB  RssAnon 2.7  RssFile 1.7  VmHWM 4.3  threads 1
+    speed: 100 calls on one instance took 1.671526464s
+  10 instances, each called once, gc'd         VmRSS 7.5 MiB  RssAnon 5.8  RssFile 1.7  VmHWM 7.5  threads 1
+  100 instances, each called once, gc'd        VmRSS 24.6 MiB  RssAnon 22.9  RssFile 1.7  VmHWM 24.6  threads 1
+  all 100 unloaded, at once                    VmRSS 24.6 MiB  RssAnon 22.9  RssFile 1.7  VmHWM 24.6  threads 1
+  all 100 unloaded, 1 s later                  VmRSS 24.6 MiB  RssAnon 22.9  RssFile 1.7  VmHWM 24.6  threads 1
+  all 100 unloaded, 12 s later                 VmRSS 24.6 MiB  RssAnon 22.9  RssFile 1.7  VmHWM 24.6  threads 1
+  forced: arena.all.purge                      VmRSS 3.3 MiB  RssAnon 1.6  RssFile 1.7  VmHWM 24.4  threads 1
+-- agent, TOKIO_WORKER_THREADS=2
+  connected to the hub, idle                   VmRSS 3.5 MiB  RssAnon 1.1  RssFile 2.4  VmHWM 3.5  threads 4
+  plus a pg and a mysql connection, a plugin   VmRSS 6.0 MiB  RssAnon 1.9  RssFile 4.1  VmHWM 6.0  threads 4
+  after one round of pg, mysql, plugin         VmRSS 10.1 MiB  RssAnon 5.9  RssFile 4.2  VmHWM 10.1  threads 4
+    speed: 100 rounds took 2.695533423s
+  after 100 rounds                             VmRSS 11.4 MiB  RssAnon 7.2  RssFile 4.2  VmHWM 11.4  threads 4
+  10 s later                                   VmRSS 8.5 MiB  RssAnon 4.3  RssFile 4.2  VmHWM 11.2  threads 3
+  forced: arena.all.purge                      VmRSS 6.3 MiB  RssAnon 2.1  RssFile 4.2  VmHWM 11.2  threads 3
+==================== musl static + jemalloc, background_thread:true
+-- hub
+  idle, engines open, 3 s after bind         VmRSS 10.0 MiB  RssAnon 4.6  RssFile 5.4  VmHWM 10.0  threads 23
+  after seeding 50 series x 1 h              VmRSS 12.1 MiB  RssAnon 6.3  RssFile 5.8  VmHWM 12.1  threads 23
+  speed: work 10000 x10 conns                 19961 req/s  p50   0.47 ms  p99   0.82 ms
+  after 12000 page requests                  VmRSS 26.7 MiB  RssAnon 20.7  RssFile 6.0  VmHWM 26.7  threads 33
+  speed: panel 3000 x10 conns                  3553 req/s  p50   2.73 ms  p99   3.59 ms
+  after 3000 panels                          VmRSS 38.6 MiB  RssAnon 32.3  RssFile 6.2  VmHWM 38.6  threads 33
+  speed: panel 3000 x10 conns                  3639 req/s  p50   2.74 ms  p99   3.46 ms
+  after 6000 panels                          VmRSS 39.1 MiB  RssAnon 32.9  RssFile 6.2  VmHWM 39.1  threads 33
+  30 s after the load                        VmRSS 27.5 MiB  RssAnon 21.3  RssFile 6.2  VmHWM 37.8  threads 33
+  90 s after the load                        VmRSS 25.0 MiB  RssAnon 18.8  RssFile 6.2  VmHWM 37.8  threads 22
+  forced                                     VmRSS 25.1 MiB  RssAnon 18.8  RssFile 6.3  VmHWM 37.8  threads 22  [arena.all.purge]  (jemalloc)
+-- quickjs
+  start, quickjs linked, no runtime            VmRSS 1.2 MiB  RssAnon 0.2  RssFile 0.9  VmHWM 1.2  threads 2
+  1 instance, plugin loaded                    VmRSS 2.1 MiB  RssAnon 0.5  RssFile 1.6  VmHWM 2.1  threads 2
+  1 instance, after one call and gc            VmRSS 4.3 MiB  RssAnon 2.7  RssFile 1.7  VmHWM 4.3  threads 2
+    speed: 100 calls on one instance took 1.675509978s
+  10 instances, each called once, gc'd         VmRSS 8.2 MiB  RssAnon 6.5  RssFile 1.7  VmHWM 8.2  threads 2
+  100 instances, each called once, gc'd        VmRSS 24.8 MiB  RssAnon 23.1  RssFile 1.7  VmHWM 24.8  threads 2
+  all 100 unloaded, at once                    VmRSS 24.8 MiB  RssAnon 23.1  RssFile 1.7  VmHWM 24.8  threads 2
+  all 100 unloaded, 1 s later                  VmRSS 24.8 MiB  RssAnon 23.1  RssFile 1.7  VmHWM 24.8  threads 2
+  all 100 unloaded, 12 s later                 VmRSS 11.0 MiB  RssAnon 9.3  RssFile 1.7  VmHWM 24.7  threads 2
+  forced: arena.all.purge                      VmRSS 3.3 MiB  RssAnon 1.6  RssFile 1.7  VmHWM 24.7  threads 2
+-- agent, TOKIO_WORKER_THREADS=2
+  connected to the hub, idle                   VmRSS 3.5 MiB  RssAnon 1.1  RssFile 2.4  VmHWM 3.5  threads 8
+  plus a pg and a mysql connection, a plugin   VmRSS 6.0 MiB  RssAnon 1.9  RssFile 4.1  VmHWM 6.0  threads 8
+  after one round of pg, mysql, plugin         VmRSS 10.1 MiB  RssAnon 5.9  RssFile 4.2  VmHWM 10.1  threads 8
+    speed: 100 rounds took 2.706866302s
+  after 100 rounds                             VmRSS 13.6 MiB  RssAnon 9.4  RssFile 4.2  VmHWM 13.6  threads 8
+  10 s later                                   VmRSS 8.4 MiB  RssAnon 4.2  RssFile 4.2  VmHWM 13.2  threads 7
+  forced: arena.all.purge                      VmRSS 6.4 MiB  RssAnon 2.2  RssFile 4.2  VmHWM 13.2  threads 7

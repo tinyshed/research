@@ -1,0 +1,63 @@
+Copied from the session's terminal, 25 October 2026. plugin-host built with llrt_modules' default set (its timers),
+static musl + jemalloc, MALLOC_CONF=background_thread:true,narenas:2,dirty_decay_ms:1000,muzzy_decay_ms:0.
+Bundles: sdk-probe dist/min/*.mjs, compiled to bytecode by the host itself. `took` includes rt.idle() here.
+
+== compile in the host
+/p/dist/min/empty.mjs -> /tmp/empty.qbc: 0 KiB
+/p/dist/min/stripe.mjs -> /tmp/stripe.qbc: 624 KiB
+/p/dist/min/octokit.mjs -> /tmp/octokit.qbc: 149 KiB
+/p/dist/min/openai.mjs -> /tmp/openai.qbc: 1037 KiB
+/p/dist/min/notion.mjs -> /tmp/notion.qbc: 2312 KiB
+/p/dist/min/libs.mjs -> /tmp/libs.qbc: 366 KiB
+/p/dist/min/notion-node.mjs -> /tmp/notion-node.qbc: 152 KiB
+
+== bytecode, all instances kept alive
+start, web-apis=true                           VmRSS   2.4 MiB  peak   2.4
++ one empty instance with web apis             VmRSS   6.0 MiB  peak   6.0
+/tmp/stripe.qbc
+{"ok":true,"rows":1,"first":{"time":1234567890000,"amount":100,"currency":"usd"},"refund":"re_RacWSBLxjnFVjUa"}
+  took 80.002971443s
+  after it ran, instance kept                  VmRSS   8.8 MiB  peak   9.1
+/tmp/octokit.qbc
+{"ok":true,"repo":"tinyshed/tinystore","stars":42}
+  took 11.43305ms
+  after it ran, instance kept                  VmRSS  10.2 MiB  peak  10.2
+/tmp/openai.qbc
+{"ok":true,"reply":"hello"}
+  took 4.445126ms
+  after it ran, instance kept                  VmRSS  13.9 MiB  peak  13.9
+/tmp/notion.qbc
+{"ok":true,"results":0}
+  took 3.86362ms
+  after it ran, instance kept                  VmRSS  18.9 MiB  peak  18.9
+/tmp/libs.qbc
+{"ok":true,"rows":2,"label":"2026-10-24"}
+  took 2.369696ms
+  after it ran, instance kept                  VmRSS  20.2 MiB  peak  20.2
+/tmp/notion-node.qbc
+  FAILED: Error: Error converting from js 'undefined' into type 'string' |     at <anonymous> (plugin:1:677)
+  took 353.165µs
+  after it ran, instance kept                  VmRSS  20.5 MiB  peak  20.5
+all instances alive                            VmRSS  20.5 MiB  peak  20.5
+Assertion failed: list_empty(&rt->gc_obj_list) (<target>/rquickjs-sys-df6009bd62a93f8a/out/quickjs.c: JS_FreeRuntime: 2205)
+Aborted (core dumped)
+
+== source, all instances kept alive
+start, web-apis=true                           VmRSS   2.4 MiB  peak   2.4
++ one empty instance with web apis             VmRSS   6.0 MiB  peak   6.0
+/p/dist/min/stripe.mjs        took 80.016765927s   after it ran, instance kept   VmRSS   9.2 MiB  peak   9.4
+/p/dist/min/octokit.mjs       took 12.145098ms     after it ran, instance kept   VmRSS  10.4 MiB  peak  10.4
+/p/dist/min/openai.mjs        took 30.478865ms     after it ran, instance kept   VmRSS  15.1 MiB  peak  15.1
+/p/dist/min/notion.mjs        took 39.830597ms     after it ran, instance kept   VmRSS  20.2 MiB  peak  20.2
+/p/dist/min/libs.mjs          took 9.721398ms      after it ran, instance kept   VmRSS  20.5 MiB  peak  20.5
+all instances alive                            VmRSS  20.5 MiB  peak  20.5
+Assertion failed: list_empty(&rt->gc_obj_list) (... JS_FreeRuntime: 2205)
+Aborted (core dumped)
+
+== one at a time, bytecode (stripe, openai, notion)
++ one empty instance with web apis             VmRSS   6.0 MiB  peak   6.0
+  after it ran, instance kept                  VmRSS   8.8 MiB  peak   9.1
++ one empty instance with web apis             VmRSS   6.0 MiB  peak   6.0
+  after it ran, instance kept                  VmRSS  10.8 MiB  peak  10.8
++ one empty instance with web apis             VmRSS   6.0 MiB  peak   6.0
+  after it ran, instance kept                  VmRSS  13.0 MiB  peak  13.0

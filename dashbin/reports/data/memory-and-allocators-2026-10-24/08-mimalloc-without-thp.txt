@@ -1,0 +1,27 @@
+Copied from the session's terminal, 24 October 2026: the mimalloc builds of 04 again, with MIMALLOC_ALLOW_THP=0.
+
+$ cat /sys/kernel/mm/transparent_hugepage/enabled ; cat /sys/kernel/mm/transparent_hugepage/defrag   (inside rust:1.99-bookworm)
+always [madvise] never
+always defer defer+madvise [madvise] never
+
+--- qjs, mimalloc, MIMALLOC_ALLOW_THP=0
+start, quickjs linked, no runtime            VmRSS 0.9 MiB  RssAnon 0.3  RssFile 0.7  VmHWM 0.9  threads 1
+1 instance, plugin loaded                    VmRSS 2.0 MiB  RssAnon 0.5  RssFile 1.4  VmHWM 2.0  threads 1
+1 instance, after one call and gc            VmRSS 6.0 MiB  RssAnon 4.5  RssFile 1.5  VmHWM 6.0  threads 1
+  speed: 100 calls on one instance took 1.709670414s
+10 instances, each called once, gc'd         VmRSS 10.6 MiB  RssAnon 9.1  RssFile 1.5  VmHWM 10.6  threads 1
+100 instances, each called once, gc'd        VmRSS 27.1 MiB  RssAnon 25.6  RssFile 1.5  VmHWM 27.1  threads 1
+all 100 unloaded, at once                    VmRSS 27.1 MiB  RssAnon 25.6  RssFile 1.5  VmHWM 27.1  threads 1
+all 100 unloaded, 1 s later                  VmRSS 27.1 MiB  RssAnon 25.6  RssFile 1.5  VmHWM 27.1  threads 1
+all 100 unloaded, 12 s later                 VmRSS 27.1 MiB  RssAnon 25.6  RssFile 1.5  VmHWM 27.1  threads 1
+forced: mi_collect(true)                     VmRSS 1.9 MiB  RssAnon 0.4  RssFile 1.5  VmHWM 26.9  threads 1
+--- hub, mimalloc, MIMALLOC_ALLOW_THP=0
+  idle                           VmRSS 8.1 MiB  RssAnon 3.0  RssFile 5.1  VmHWM 8.1  threads 20
+  seeded                         VmRSS 10.6 MiB  RssAnon 5.1  RssFile 5.4  VmHWM 10.6  threads 20
+  speed work                      20281 req/s  p50   0.46 ms  p99   0.88 ms
+  after 12000 pages              VmRSS 21.4 MiB  RssAnon 15.6  RssFile 5.7  VmHWM 21.4  threads 30
+  speed panel                      3531 req/s  p50   2.74 ms  p99   3.58 ms
+  speed panel                      3597 req/s  p50   2.75 ms  p99   3.51 ms
+  after 6000 panels              VmRSS 35.8 MiB  RssAnon 29.8  RssFile 6.0  VmHWM 35.8  threads 30
+  30 s after                     VmRSS 35.8 MiB  RssAnon 29.8  RssFile 6.0  VmHWM 35.8  threads 30
+  forced                         VmRSS 33.7 MiB  RssAnon 27.7  RssFile 6.0  VmHWM 34.5  threads 30  [mi_collect(true)]  (mimalloc)

@@ -1,0 +1,34 @@
+Copied from the session's terminal, 24 October 2026, tinystore 0.1.1 from crates.io.
+Programs: tinystore-repro/0.1.1/src/bin/*.rs. The `prom` name listing was cut by `head -60` when captured.
+
+=== warning (docs order)
+{"time":"2026-10-24T16:42:04.658Z","level":"WARN","stream":"tinystore","msg":"SQLite was built with SQLITE_ENABLE_MEMORY_MANAGEMENT, so every connection shares one page cache behind one mutex and readers stop one another: point reads from 16 threads ran 7-9x slower (research rust-slice-2026-10-10); build with LIBSQLITE3_FLAGS=\"SQLITE_DQS=0 -USQLITE_ENABLE_MEMORY_MANAGEMENT SQLITE_ENABLE_DBPAGE_VTAB -DHAVE_FDATASYNC=1\""}
+{"time":"2026-10-24T16:42:04.680Z","level":"INFO","stream":"hello","msg":"bucket written"}
+=== once
+  caller 0 got 102400 bytes at 502.8644ms
+  caller 3 got 102400 bytes at 503.2787ms
+  caller 1 got 102400 bytes at 503.3858ms
+  caller 2 got 102400 bytes at 503.3981ms
+small: answer of 102400 bytes, work ran 1 times, took 503.4625ms
+ WARN tinystore: a once answer was not kept; the callers that waited have it, and the next run of its key runs again error=kv once big: key "panel-7": a value of 2097153 bytes, over 1048576: limit
+  caller 0 got 2097152 bytes at 501.3988ms
+  caller 3 got 2097152 bytes at 501.8094ms
+  caller 1 got 2097152 bytes at 501.857ms
+  caller 2 got 2097152 bytes at 501.9688ms
+big: answer of 2097152 bytes, work ran 1 times, took 502.1057ms
+=== series
+series 100001 with max_series 1M: accepted
+=== prom
+broken text: metrics: line 1, `node_load1{instance="x"} 1`: label instance, which the call gives every series: invalid
+NamePage {
+    names: [
+        NameInfo { name: "http_request_duration_seconds_bucket", kind: Histogram, series_count: 3, unit: "", help: "", keep: 2592000s, .. },
+        NameInfo { name: "http_request_duration_seconds_count", kind: Counter, series_count: 1, unit: "", help: "", keep: 2592000s, .. },
+        NameInfo { name: "http_request_duration_seconds_sum", kind: Counter, series_count: 1, unit: "", help: "", keep: 2592000s, .. },
+        NameInfo { name: "node_cpu_seconds_total", kind: Counter, series_count: 2, unit: "", help: "", keep: 2592000s, .. },
+        (cut)
+=== pileup (aio)
+36 reads abandoned at 108.3051ms
+a read under a 200 ms tokio timeout: true after 202.986ms
+one second later `select 1` = 1 in 86.1µs
+the next visitor's `select 1` answered 1 after 216.3µs

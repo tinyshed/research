@@ -1,0 +1,55 @@
+######## D. which half of the tuning cut the peak, and what two arenas cost on 8 cores
+== hub jemalloc background_thread:true,dirty_decay_ms:1000,muzzy_decay_ms:0, cpus 0,1
+  idle                                 VmRSS 8.2 MiB  RssAnon 2.8  RssFile 5.4  VmHWM 8.2  threads 9
+  speed: work 10000                     14468 req/s  p50   0.65 ms  p95   1.14 ms  p99   1.42 ms
+  after 12000 pages                    VmRSS 16.3 MiB  RssAnon 10.3  RssFile 6.0  VmHWM 18.2  threads 20
+  speed: panel 3000                      1281 req/s  p50   5.91 ms  p95  19.33 ms  p99  26.84 ms
+  speed: panel 3000                      1286 req/s  p50   5.91 ms  p95  19.74 ms  p99  26.76 ms
+  after 6000 panels                    VmRSS 26.9 MiB  RssAnon 20.7  RssFile 6.2  VmHWM 33.7  threads 20
+  cgroup                               current 57 MiB  peak 65 MiB  high 0 max 0 oom_kill 0 
+  30 s after                           VmRSS 21.1 MiB  RssAnon 14.8  RssFile 6.2  VmHWM 33.7  threads 20
+== hub jemalloc background_thread:true,dirty_decay_ms:1000,muzzy_decay_ms:0, cpus 0,1, limit 32m
+  idle                                 VmRSS 8.2 MiB  RssAnon 2.8  RssFile 5.4  VmHWM 8.2  threads 9
+  speed: work 10000                      5659 req/s  p50   0.74 ms  p95   2.26 ms  p99   4.81 ms
+  after 12000 pages                    VmRSS 16.4 MiB  RssAnon 10.4  RssFile 6.0  VmHWM 17.8  threads 19
+  speed: panel 3000                      1257 req/s  p50   5.89 ms  p95  20.53 ms  p99  28.26 ms
+  speed: panel 3000                      1265 req/s  p50   6.11 ms  p95  19.23 ms  p99  26.71 ms
+  after 6000 panels                    VmRSS 24.3 MiB  RssAnon 18.4  RssFile 5.9  VmHWM 35.9  threads 20
+  cgroup                               current 22 MiB  peak 32 MiB  high 0 max 222 oom_kill 0 
+  30 s after                           VmRSS 20.3 MiB  RssAnon 14.4  RssFile 5.9  VmHWM 35.9  threads 20
+== hub jemalloc background_thread:true, cpus 0-7
+  idle                                 VmRSS 9.3 MiB  RssAnon 3.8  RssFile 5.4  VmHWM 9.3  threads 16
+  speed: work 10000                     20001 req/s  p50   0.46 ms  p95   0.75 ms  p99   0.99 ms
+  after 12000 pages                    VmRSS 23.8 MiB  RssAnon 17.8  RssFile 6.0  VmHWM 23.8  threads 26
+  speed: panel 3000                      3537 req/s  p50   2.56 ms  p95   4.54 ms  p99   5.68 ms
+  speed: panel 3000                      3573 req/s  p50   2.50 ms  p95   4.49 ms  p99   5.53 ms
+  after 6000 panels                    VmRSS 39.0 MiB  RssAnon 32.7  RssFile 6.2  VmHWM 39.0  threads 26
+  cgroup                               current 71 MiB  peak 75 MiB  high 0 max 0 oom_kill 0 
+  30 s after                           VmRSS 26.1 MiB  RssAnon 19.8  RssFile 6.2  VmHWM 38.3  threads 26
+== hub jemalloc background_thread:true,narenas:2,dirty_decay_ms:1000,muzzy_decay_ms:0, cpus 0-7
+  idle                                 VmRSS 8.0 MiB  RssAnon 2.6  RssFile 5.4  VmHWM 8.0  threads 13
+  speed: work 10000                     20135 req/s  p50   0.46 ms  p95   0.74 ms  p99   0.97 ms
+  after 12000 pages                    VmRSS 17.6 MiB  RssAnon 11.6  RssFile 6.0  VmHWM 17.9  threads 24
+  speed: panel 3000                      3566 req/s  p50   2.43 ms  p95   4.50 ms  p99   6.14 ms
+  speed: panel 3000                      3527 req/s  p50   2.53 ms  p95   4.68 ms  p99   5.88 ms
+  after 6000 panels                    VmRSS 24.8 MiB  RssAnon 18.6  RssFile 6.2  VmHWM 28.4  threads 24
+  cgroup                               current 59 MiB  peak 63 MiB  high 0 max 0 oom_kill 0 
+  30 s after                           VmRSS 23.1 MiB  RssAnon 16.9  RssFile 6.2  VmHWM 28.4  threads 24
+== hub jemalloc background_thread:true,dirty_decay_ms:1000,muzzy_decay_ms:0, cpus 0-7
+  idle                                 VmRSS 9.0 MiB  RssAnon 3.5  RssFile 5.4  VmHWM 9.0  threads 15
+  speed: work 10000                     20204 req/s  p50   0.46 ms  p95   0.71 ms  p99   0.95 ms
+  after 12000 pages                    VmRSS 23.4 MiB  RssAnon 17.4  RssFile 6.0  VmHWM 23.4  threads 26
+  speed: panel 3000                      3490 req/s  p50   2.51 ms  p95   4.78 ms  p99   6.27 ms
+  speed: panel 3000                      3476 req/s  p50   2.55 ms  p95   4.54 ms  p99   5.71 ms
+  after 6000 panels                    VmRSS 31.1 MiB  RssAnon 24.9  RssFile 6.2  VmHWM 34.8  threads 26
+  cgroup                               current 66 MiB  peak 70 MiB  high 0 max 0 oom_kill 0 
+  30 s after                           VmRSS 25.7 MiB  RssAnon 19.5  RssFile 6.2  VmHWM 34.8  threads 26
+== hub musl, cpus 0-7
+  idle                                 VmRSS 7.0 MiB  RssAnon 1.9  RssFile 5.1  VmHWM 7.0  threads 11
+  speed: work 10000                      8553 req/s  p50   1.14 ms  p95   1.53 ms  p99   1.87 ms
+  after 12000 pages                    VmRSS 10.8 MiB  RssAnon 5.2  RssFile 5.6  VmHWM 11.1  threads 21
+  speed: panel 3000                       399 req/s  p50  25.71 ms  p95  30.52 ms  p99  33.08 ms
+  speed: panel 3000                       403 req/s  p50  25.68 ms  p95  30.27 ms  p99  31.99 ms
+  after 6000 panels                    VmRSS 13.3 MiB  RssAnon 7.5  RssFile 5.8  VmHWM 16.1  threads 21
+  cgroup                               current 48 MiB  peak 50 MiB  high 0 max 0 oom_kill 0 
+  30 s after                           VmRSS 13.3 MiB  RssAnon 7.5  RssFile 5.8  VmHWM 16.1  threads 21

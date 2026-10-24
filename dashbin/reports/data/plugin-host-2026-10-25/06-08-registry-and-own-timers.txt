@@ -1,0 +1,38 @@
+Copied from the session's terminal, 25 October 2026.
+
+######## 06: which plugin grows the process, 10 000 cycles each, our timers installed over llrt's
+soak 10000 cycles of nothing.qbc   cycle 1: 6.1 MiB   cycle 10000: 7.6 MiB (3.4 s)   after purge 7.1 MiB
+soak 10000 cycles of promise.qbc   cycle 1: 6.1 MiB   cycle 10000: 7.6 MiB (3.4 s)   after purge 7.1 MiB
+soak 10000 cycles of timer.qbc     cycle 1: 6.1 MiB   cycle 10000: 7.6 MiB (3.4 s)   after purge 7.2 MiB
+soak 10000 cycles of fetch.qbc     cycle 1: 6.1 MiB   cycle 10000: 7.6 MiB (3.5 s)   after purge 7.2 MiB
+-- nothing.qbc with llrt's timers, no override
+                                   cycle 1: 6.0 MiB   cycle 10000: 7.5 MiB (3.4 s)   after purge 7.1 MiB
+
+######## 07: 30 000 cycles of timer.qbc
+-- "bare rquickjs + our timers": INVALID. That build failed (tokio's `sync` feature missing) and the script copied the
+   previous binary; every cycle failed (no console) and the numbers below are not a bare host's.
+  cycle     1,    0.0 s, failures 1            VmRSS   2.4 MiB  peak   2.4
+  cycle 30000,    3.6 s, failures 30000        VmRSS   2.4 MiB  peak   2.4
+-- llrt default modules (llrt timers registered) + ours
+  cycle     1,    0.0 s, failures 0            VmRSS   6.2 MiB  peak   6.2
+  cycle 10000,    3.4 s, failures 0            VmRSS   7.7 MiB  peak   7.7
+  cycle 30000,   10.3 s, failures 0            VmRSS   9.4 MiB  peak   9.4
+  after purge                                  VmRSS   9.4 MiB  peak   9.4
+-- llrt modules WITHOUT llrt timers (NO_LLRT_TIMERS=1) + ours
+  cycle     1,    0.0 s, failures 0            VmRSS   6.2 MiB  peak   6.2
+  cycle 10000,    3.4 s, failures 0            VmRSS   6.2 MiB  peak   6.2
+  cycle 30000,   10.2 s, failures 0            VmRSS   6.2 MiB  peak   6.2
+  after purge                                  VmRSS   6.2 MiB  peak   6.2
+
+######## 08: our timers (OUR_TIMERS=1) behave like timers
+leak/sleep.mjs    slept 101 ms                   took 103.165423ms   exit=0
+leak/count.mjs    interval fired 3 times         took 65.125425ms    exit=0
+leak/nofire.mjs   cleared timer fired: false     took 52.837217ms    exit=0
+leak/args.mjs     callback got x 2               took 3.714447ms     exit=0
+-- what each left behind, unloaded with our timers
+leak/timer.mjs    left a 60 s timer              all unloaded  6.2 MiB   exit=0
+leak/interval.mjs left an interval               all unloaded  6.2 MiB   exit=0
+leak/fetch.mjs    left a request in flight       all unloaded  6.2 MiB   exit=0
+leak/promise.mjs  left a promise that never settles  all unloaded  6.1 MiB   exit=0
+-- control: llrt's timers
+leak/timer.mjs    left a 60 s timer              Assertion failed: list_empty(&rt->gc_obj_list)   exit=134

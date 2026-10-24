@@ -22,6 +22,8 @@ this one repeats only where a measurement needs them.
 | `tinystore/spike/` | prototypes and measurements, a module of its own |
 | `tinystore/server-spike/` | the server measured through `tinystore serve` |
 | `tinystore/bench/` | corpus runners and harnesses against other engines, a module each |
+| `dashbin/reports/` | Dashbin's dated rounds and their raw output in `data/`; `README.md` indexes them |
+| `dashbin/tinystore-repro/`, `memory-probe/`, `sdk-probe/`, `plugin-host/` | Dashbin's probes: Rust crates and JS tests, the measured ones built in the Linux container |
 | `.agents/skills/` | how the recurring work is done; `.claude/skills/` points to it |
 
 ## How the code builds
@@ -50,6 +52,14 @@ report waits until the commit is on TinyStore's `main`.
 
 A module that does not build against the pinned commit is broken, not
 archived: fix it or delete it, and say so in the round that noticed.
+
+### Dashbin's probes
+
+Dashbin's probes are Rust crates and JS tests, not Go modules, and nothing
+under `dashbin/` imports TinyStore's `internal/`: they take TinyStore and
+every other dependency from crates.io or npm at the versions their lock files
+pin. They build in the image of `dashbin/memory-probe/docker`; each report
+carries its commands.
 
 ## Measurements
 

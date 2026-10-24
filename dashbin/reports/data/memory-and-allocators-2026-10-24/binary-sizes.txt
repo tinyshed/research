@@ -1,0 +1,29 @@
+15:mimalloc = ["dep:mimalloc", "dep:libmimalloc-sys"]
+32:libmimalloc-sys = { version = "0.1", features = ["extended"], optional = true }
+exit 0
+building glibc/hub
+building glibc/qjs
+building glibc/agent
+building musl/hub
+building musl/qjs
+building musl/agent
+building mimalloc/hub
+building mimalloc/qjs
+building mimalloc/agent
+building jemalloc/hub
+building jemalloc/qjs
+building jemalloc/agent
+glibc     hub      6.73 MiB  pie executable, x86-64
+glibc     qjs      1.45 MiB  pie executable, x86-64
+glibc     agent    4.56 MiB  pie executable, x86-64
+musl      hub      6.86 MiB  pie executable, x86-64
+musl      qjs      1.58 MiB  pie executable, x86-64
+musl      agent    4.78 MiB  pie executable, x86-64
+mimalloc  hub      7.02 MiB  pie executable, x86-64
+mimalloc  qjs      1.71 MiB  pie executable, x86-64
+mimalloc  agent    4.92 MiB  pie executable, x86-64
+jemalloc  hub      7.33 MiB  pie executable, x86-64
+jemalloc  qjs      2.01 MiB  pie executable, x86-64
+jemalloc  agent    5.22 MiB  pie executable, x86-64
+
+[exited with code 0]
