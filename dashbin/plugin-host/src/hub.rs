@@ -29,9 +29,10 @@ enum Job {
 type Live = Rc<(Instance, Deadline)>;
 
 struct Plugin {
-    // bytecode when runtimes come and go, the source when they are loaded once at the start
+    // the source when a runtime is loaded once at the start; when runtimes come and go, the bytecode is a file
+    // of the plugin's, read at each load through the page cache, which the kernel may reclaim
     code: Vec<u8>,
-    compiled: bool,
+    compiled: Option<std::path::PathBuf>,
     typed: Vec<String>,
     function: &'static str,
     settings: String,
@@ -42,10 +43,12 @@ struct Plugin {
 }
 
 // what this run tries: GC_AFTER_CALL collects a runtime's garbage once its call has settled,
-// IDLE_UNLOAD_MS unloads a runtime that long after its last call, and 0 right after it
+// IDLE_UNLOAD_MS unloads a runtime that long after its last call, and 0 right after it,
+// MAX_LOADED is how many runtimes may be loaded at once: a call past it unloads an idle one or waits
 struct Knobs {
     gc_after_call: bool,
     idle: Option<Duration>,
+    max_loaded: Option<usize>,
 }
 
 #[derive(Default)]
@@ -53,6 +56,7 @@ struct Counts {
     loads: Cell<usize>,
     unloads: Cell<usize>,
     loading: Cell<Duration>,
+    waits: Cell<usize>,
 }
 
 // what each kind of plugin is asked, and where its mock answers
@@ -72,12 +76,38 @@ fn api_host(settings: &str) -> String {
     host_of(settings.split(r#""api":""#).nth(1).unwrap_or("").split('"').next().unwrap_or(""))
 }
 
+// a slot under MAX_LOADED: a free one, or one taken from the loaded runtime no call has used longest, or waited for
+async fn slot(one: &Plugin, all: &[Rc<Plugin>], free: &Cell<usize>, counts: &Counts) {
+    loop {
+        if free.get() > 0 {
+            free.set(free.get() - 1);
+            return;
+        }
+        let idle = all
+            .iter()
+            .filter(|other| !std::ptr::eq(Rc::as_ptr(other), one) && other.live.borrow().is_some())
+            .min_by_key(|other| other.last.get());
+        if let Some(other) = idle {
+            if let Ok(_turn) = other.turn.try_lock() {
+                unload(other, counts).await;
+                free.set(free.get() + 1);
+                continue;
+            }
+        }
+        counts.waits.set(counts.waits.get() + 1);
+        tokio::time::sleep(Duration::from_millis(2)).await;
+    }
+}
+
 async fn ensure(one: &Plugin, counts: &Counts) -> Result<Live, String> {
     if let Some(live) = one.live.borrow().clone() {
         return Ok(live);
     }
     let started = Instant::now();
-    let code = if one.compiled { Code::Bytecode(one.code.clone()) } else { Code::Source(one.code.clone()) };
+    let code = match &one.compiled {
+        Some(path) => Code::Bytecode(std::fs::read(path).map_err(|e| e.to_string())?),
+        None => Code::Source(one.code.clone()),
+    };
     let (instance, deadline) = instance_limited(code, vec![], one.typed.clone(), INSTANCE_MEMORY).await?;
     counts.loads.set(counts.loads.get() + 1);
     counts.loading.set(counts.loading.get() + started.elapsed());
@@ -101,17 +131,33 @@ fn plugins(specs: Vec<(String, String)>, mut jobs: mpsc::Receiver<Job>) {
     let knobs = Knobs {
         gc_after_call: std::env::var("GC_AFTER_CALL").is_ok(),
         idle: std::env::var("IDLE_UNLOAD_MS").ok().and_then(|v| v.parse().ok()).map(Duration::from_millis),
+        max_loaded: std::env::var("MAX_LOADED").ok().and_then(|v| v.parse().ok()),
     };
     let runtime = tokio::runtime::Builder::new_current_thread().enable_all().build().unwrap();
     tokio::task::LocalSet::new().block_on(&runtime, async move {
         let counts = Rc::new(Counts::default());
         let mut plugins: HashMap<String, Rc<Plugin>> = HashMap::new();
+        let mut bytecode: HashMap<String, std::path::PathBuf> = HashMap::new();
+        std::fs::create_dir_all("/tmp/bytecode").unwrap();
         for (name, bundle) in specs {
             let (function, settings) = kind_of(&bundle);
             let typed = vec![api_host(&settings)];
             let source = std::fs::read(&bundle).unwrap();
-            let compiled = knobs.idle.is_some();
-            let code = if compiled { compile(source).await.unwrap() } else { source };
+            // one file a plugin, however many instances it has
+            let compiled = match (knobs.idle, bytecode.get(&bundle)) {
+                (None, _) => None,
+                (Some(_), Some(path)) => Some(path.clone()),
+                (Some(_), None) => {
+                    let path = std::path::PathBuf::from(format!("/tmp/bytecode/{}.qbc", bundle.rsplit('/').next().unwrap()));
+                    let bytes = compile(source.clone()).await.unwrap();
+                    let mib = |n: usize| n as f64 / 1048576.0;
+                    println!("plugins: {bundle} compiles to {:.2} MiB of bytecode from {:.2} MiB of source", mib(bytes.len()), mib(source.len()));
+                    std::fs::write(&path, bytes).unwrap();
+                    bytecode.insert(bundle.clone(), path.clone());
+                    Some(path)
+                }
+            };
+            let code = if compiled.is_some() { Vec::new() } else { source };
             let mut one =
                 Plugin { code, compiled, typed, function, settings, live: RefCell::default(), last: Cell::new(Instant::now()), turn: Default::default() };
             if knobs.idle.is_none() {
@@ -125,14 +171,16 @@ fn plugins(specs: Vec<(String, String)>, mut jobs: mpsc::Receiver<Job>) {
         }
         let kept: usize = plugins.values().map(|one| one.code.len()).sum();
         println!(
-            "plugins: {} instances, gc after a call {}, unload when idle {:?}, {:.1} MiB of code kept to reload them",
+            "plugins: {} instances, gc after a call {}, unload when idle {:?}, at most {:?} loaded, {:.1} MiB of source kept",
             plugins.len(),
             knobs.gc_after_call,
             knobs.idle,
+            knobs.max_loaded,
             kept as f64 / 1048576.0
         );
+        let free = Rc::new(Cell::new(knobs.max_loaded.unwrap_or(usize::MAX)));
         if let Some(idle) = knobs.idle.filter(|d| !d.is_zero()) {
-            let (watched, counts) = (plugins.values().cloned().collect::<Vec<_>>(), counts.clone());
+            let (watched, counts, free) = (plugins.values().cloned().collect::<Vec<_>>(), counts.clone(), free.clone());
             tokio::task::spawn_local(async move {
                 loop {
                     tokio::time::sleep(Duration::from_millis(100)).await;
@@ -140,12 +188,14 @@ fn plugins(specs: Vec<(String, String)>, mut jobs: mpsc::Receiver<Job>) {
                         if one.live.borrow().is_some() && one.last.get().elapsed() >= idle {
                             if let Ok(_turn) = one.turn.try_lock() {
                                 unload(one, &counts).await;
+                                free.set(free.get() + 1);
                             }
                         }
                     }
                 }
             });
         }
+        let all: Rc<Vec<Rc<Plugin>>> = Rc::new(plugins.values().cloned().collect());
         let installing = Rc::new(tokio::sync::Mutex::new(()));
         let unload_at_once = knobs.idle.is_some_and(|d| d.is_zero());
         let gc_after_call = knobs.gc_after_call;
@@ -156,9 +206,12 @@ fn plugins(specs: Vec<(String, String)>, mut jobs: mpsc::Receiver<Job>) {
                         let _ = reply.send(Err(format!("no instance {instance}")));
                         continue;
                     };
-                    let counts = counts.clone();
+                    let (counts, all, free) = (counts.clone(), all.clone(), free.clone());
                     tokio::task::spawn_local(async move {
                         let _turn = one.turn.lock().await;
+                        if one.live.borrow().is_none() {
+                            slot(&one, &all, &free, &counts).await;
+                        }
                         let live = match ensure(&one, &counts).await {
                             Ok(live) => live,
                             Err(e) => return drop(reply.send(Err(e))),
@@ -174,6 +227,7 @@ fn plugins(specs: Vec<(String, String)>, mut jobs: mpsc::Receiver<Job>) {
                         one.last.set(Instant::now());
                         if unload_at_once {
                             unload(&one, &counts).await;
+                            free.set(free.get() + 1);
                         }
                         let _ = reply.send(match outcome {
                             Outcome::Done(result) => result,
@@ -206,12 +260,13 @@ fn plugins(specs: Vec<(String, String)>, mut jobs: mpsc::Receiver<Job>) {
                     let loads = counts.loads.get();
                     let mean = if loads > 0 { counts.loading.get() / loads as u32 } else { Duration::ZERO };
                     let _ = reply.send(format!(
-                        "{live} of {} instances loaded, holding {:.1} MiB of JavaScript, {:.1} MiB of code kept; {loads} loads, {:.1} ms each, {} unloads",
+                        "{live} of {} instances loaded, holding {:.1} MiB of JavaScript, {:.1} MiB of source kept; {loads} loads, {:.1} ms each, {} unloads, {} waits for a slot",
                         plugins.len(),
                         total as f64 / 1048576.0,
                         kept as f64 / 1048576.0,
                         mean.as_secs_f64() * 1e3,
-                        counts.unloads.get()
+                        counts.unloads.get(),
+                        counts.waits.get()
                     ));
                 }
             }
