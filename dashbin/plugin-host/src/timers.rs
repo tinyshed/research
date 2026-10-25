@@ -12,6 +12,8 @@ use tokio::sync::Notify;
 pub struct Timers {
     running: Rc<RefCell<HashMap<u32, Rc<Notify>>>>,
     last: Rc<Cell<u32>>,
+    // set between calls: a timer started then never fires, as no request started then is sent
+    closed: Rc<Cell<bool>>,
 }
 
 impl Timers {
@@ -35,6 +37,9 @@ impl Timers {
     fn start<'js>(&self, ctx: &Ctx<'js>, callback: Function<'js>, delay: f64, args: Vec<Value<'js>>, repeat: bool) -> u32 {
         let id = self.last.get().wrapping_add(1);
         self.last.set(id);
+        if self.closed.get() {
+            return id;
+        }
         let stop = Rc::new(Notify::new());
         self.running.borrow_mut().insert(id, stop.clone());
         let delay = Duration::from_millis(if delay.is_finite() && delay > 0.0 { delay as u64 } else { 0 });
@@ -61,6 +66,16 @@ impl Timers {
         if let Some(stop) = id.and_then(|id| self.running.borrow_mut().remove(&(id as u32))) {
             stop.notify_one();
         }
+    }
+
+    pub fn open(&self) {
+        self.closed.set(false);
+    }
+
+    // stops what the call left and refuses what its leftovers start, until the next call opens
+    pub fn close(&self) -> usize {
+        self.closed.set(true);
+        self.sweep()
     }
 
     // stops every timer a call left behind; says how many there were

@@ -114,6 +114,7 @@ async fn call(instance: &Instance, deadline: &Deadline, c: Call<'_>) -> (Outcome
     if let Some(net) = &instance.net {
         net.open_call();
     }
+    instance.timers.open();
     arm(deadline, CALL_TIME);
     let signal_only = matches!(c.stop_after, Some((_, Stop::Signal)));
     let (function, params, settings, id, rows) = (c.function.to_string(), c.params, c.settings, c.id.to_string(), c.rows);
@@ -155,7 +156,7 @@ async fn call(instance: &Instance, deadline: &Deadline, c: Call<'_>) -> (Outcome
             net.end_call();
         }
     }
-    instance.timers.sweep();
+    instance.timers.close();
     arm(deadline, GRACE);
     (outcome, ended)
 }
@@ -184,6 +185,7 @@ async fn instance_for(bytes: Vec<u8>, allow: Vec<String>, typed: Vec<String>) ->
     let deadline = guard(&instance).await;
     arm(&deadline, INSTALL_TIME);
     load(&instance, bytes).await.unwrap();
+    instance.timers.close();
     (instance, deadline)
 }
 
