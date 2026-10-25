@@ -1,11 +1,12 @@
 # 3. The frame
 
-**Status: decided, 25 October 2026**, except the wire encoding and the caps'
-defaults, which wait for measurements. Dmitry approved the third draft. The
+**Status: decided, 25 October 2026**, the wire included, except the caps'
+defaults, which wait for measurements. Dmitry approved the third draft, and
+then our own wire over Arrow as a recorded exception to the margins. The
 first draft's seven forks went through review: a decimal never falls back to a
 float, time is microseconds rather than milliseconds, a cut result is accepted
-only where a person sees it is cut, and the wire format waits for a
-measurement that includes Arrow IPC; a frame is any typed table. A second
+only where a person sees it is cut, and the wire format waited for a
+measurement that included Arrow IPC; a frame is any typed table. A second
 review added a type for a wall clock, withdrew a promise of zero-copy time in
 the browser, and asked that a column say why it became text.
 
@@ -234,28 +235,107 @@ The refusal says what to do: aggregate in the query, or raise the cap.
 
 ## Across a process, a socket and into the browser
 
-Hub to browser, agent to hub, process plugin to kernel: one encoding, not
-chosen yet. The candidates are JSON, Arrow IPC and a layout of our own; the
-first draft's claim that a layout of our own could later "just" become Arrow is
-withdrawn, since buffer alignment, metadata and type spellings differ even
-where the model is the same. The measurement goes first, in `research`:
+**Decided, 25 October 2026: Dashbin's own binary frame wire**, from the hub to
+a browser, from an agent to the hub and from a process plugin to the kernel.
+JSON stays for the public API, a person, `curl` and simple integrations,
+as `?format=json`. Arrow IPC is not a transport; it may come later as an
+import and export format, converted at the edge, for the analytical tools
+that read it.
 
-- 50 000 rows holding every type, nulls, `i64` bounds, decimals at both ends of
-  38 digits, dates before 1970 and long text;
-- size on the wire, raw and gzip;
-- decoding in the browser, time and allocations, to the point where a chart
-  and a table can read the values;
-- what each adds to the Rust binary and to the browser bundle.
+### What the measurement said, and what the rules did
 
-Whether time crosses as `i64` or as `f64` is measured with it.
+[The wire, 25 October](../reports/wire-format-2026-10-25.md) compared JSON,
+Arrow IPC and a layout of our own on 50 000 rows in V8, Chromium and
+JavaScriptCore, under margins committed before any timing.
 
-The rule is set before the run so the run cannot bend it: **Arrow IPC wins a
-tie.** A layout of our own is taken only if it beats Arrow clearly on browser
-decoding or on what it adds to the binary and the bundle, by margins the
-slice's report writes down before measuring. One more component of our own is
-a cost for as long as Dashbin exists.
+- **Round 1, text as text: JSON, by the rule.** Arrow and ours were 2.6–8×
+  faster to decode and draw, and 1.31× larger in gzip on the chart frame, past
+  the 1.25× allowed. All of that was the offsets of one label column.
+- **Round 2, labels as a dictionary in all three, JSON included.** Arrow beat
+  JSON 8–31× at 1.09× the gzip, inside the margins. Ours beat Arrow 1.74–2.11×
+  at equal gzip.
 
-`?format=json` stays for a person and a `curl`, whatever wins.
+**Ours over Arrow is an exception to the rules, not their outcome.** The 2×
+margin was missed in two cells of four, 1.74× in Node and 1.98× in Chromium;
+this chapter had given a tie to Arrow; no margin had been written for the
+binary or the bundle. Dmitry took our layout on the cost of the dependency,
+which the rules did not weigh: 41 KB against 2.27 MB in the binary, 0.75 MB of
+it in an agent that only writes; no crates against 30; 1.9 KB against 53 KB of
+gzip in the page, which also spends 7–8 ms and 1 MB of heap loading Arrow and
+parses its schema again on every frame. Round 1's verdict stays in the report
+as it was measured.
+
+Not measured, and to be: the network, where the break-even of about 30 Mbit/s,
+below which JSON arrives sooner, is computed; and the hub under load decoding
+agents' frames. Arrow JS's getters print a decimal without its scale, so any
+reader is ours whatever the transport.
+
+### The contract
+
+What is fixed now, so that it stops being reinvented. The Rust codec and the
+TypeScript one are written against this section and the test vectors, and
+nothing else. The probe's layout (`wire-probe/rust/src/own.rs`) is the
+measured body of a batch; the preamble, the frame and end messages and the
+checks below are new and cost a few dozen bytes a frame.
+
+```
+stream    = message*                                  one HTTP body, one WebSocket message each, or a pipe
+message   = preamble body
+preamble  = "DBFW" | version u16 = 1 | kind u16 | body bytes u32 | 0 u32      16 bytes
+
+kind 1  frame   frame u32 | origin | column count u16 | column*        starts a frame and names its columns
+kind 2  batch   frame u32 | rows u32 | encoding* | buffers             rows of that frame, independent of other batches
+kind 3  end     frame u32 | rows u64 | truncated u8                    the frame is complete; rows is the batches' sum
+kind 4  error   frame u32 | kind u8 | message                          the read failed after it began
+
+column    = type u8 | scale i8 | name | unit | source type | note        strings: u16 length, then UTF-8
+encoding  = plain | dictionary | time as f64,  and whether a validity bitmap follows
+buffers   = per column, each starting on an 8-byte boundary of the message:
+            validity bitmap, then the data of its encoding, lengths derived from rows,
+            except text bytes and a dictionary's size, which the encoding declares
+```
+
+`frame` is the frame's place in the response, since a query answers with a
+frame per instance; `origin` is that instance and its labels. Everything is
+little-endian. The content type is `application/vnd.dashbin.frames`;
+compression is HTTP's business, never the format's.
+
+1. **Batches are independent given their frame's columns.** A batch carries
+   its own dictionaries and leaves no state for the next one, so an agent sends
+   a million rows without holding the million, and a reader can draw or drop a
+   batch without the rest. The first version may send one batch a frame; the
+   format never requires it.
+2. **The encoder picks a column's encoding batch by batch.** A text column
+   goes as a dictionary when its distinct values are at most one per two rows,
+   and the encoder stops counting at a cap, so 50 000 UUIDs cost it a bounded
+   look and travel plain. Time goes as `f64` when every value of the column
+   reads back exactly, as `i64` otherwise. A reader takes any encoding; a
+   writer is never required to use the optional ones.
+3. **A version a reader does not know is refused whole.** Version 1 has no
+   optional parts to skip: a change of the format is a new version.
+4. **A malformed message is an error, never a panic and never a guess.**
+   Before it reads or allocates, a decoder checks: magic, version and kind;
+   the body length against its limit and against the bytes present; frame
+   numbers, so a batch for a frame never started, a frame started twice and an
+   end with no start are refused; the columns of a batch against its frame;
+   rows against the limit; every buffer length, computed with checked
+   arithmetic, inside the body; text offsets starting at 0, never decreasing,
+   ending at the byte length and each on a UTF-8 character boundary, the bytes
+   valid UTF-8; dictionary codes below the dictionary's size, under nulls too;
+   a decimal's scale within ±38 and its mantissa within 38 digits; a time sent
+   as `f64` whole and within `i64`; the end's row count equal to the batches'.
+   It never allocates more than the message it already holds.
+5. **The limits are the reader's**: bytes a message, rows a frame, columns,
+   the length of a name. Frames from an agent or a plugin meet the same limits
+   as the caps of this chapter.
+6. **The decoders are fuzzed as a gate.** One fuzz target for the Rust
+   decoder and one for the TypeScript one, seeded with the test vectors, run
+   in CI; a crash or a hang fails the build. TinyStore's own binary protocol is
+   why this is a gate and not a habit.
+
+`?format=json` mirrors the same model: a whole number past 2⁵³ and every
+decimal as a string, a non-finite float by name, a label column optionally as
+`"dictionary"` and codes.
 
 ## Test vectors
 
@@ -263,13 +343,18 @@ One set of frames, as bytes and as the values they mean, that the Rust codec,
 the TypeScript codec, the agent and every SDK must read and write the same,
 byte for byte: every type, null in every position, empty frames, `i64` and
 `i128` bounds, decimals with negative scales, dates before 1970 and past 2038,
-time at both ends of its range, text with every UTF-8 width, and malformed
-bytes each consumer must refuse the same way. `Wall` and `Time` holding the
+time at both ends of its range, text with every UTF-8 width, labels plain and
+as a dictionary, time as `i64` and as `f64`, a frame in one batch and in
+several, and malformed bytes each consumer must refuse the same way: a
+truncated message, an unknown version, a batch before its frame, an offset
+past its buffer, an offset inside a character, a code past its dictionary, a
+time with a fraction, a row count whose buffers overflow `usize`. `Wall` and `Time` holding the
 same digits are two different frames in the vectors, so no codec can confuse
 them.
 
 ## Open
 
-1. The wire encoding, and whether time crosses as `i64` or `f64`, after the
-   measurement above.
-2. The cap's defaults: rows and bytes, per receiver, from measurements.
+1. The cap's defaults: rows and bytes, per receiver, from measurements; and
+   the wire's own limits beside them.
+2. Whether a frame in memory keeps a label column as a dictionary too, or
+   only the wire does.

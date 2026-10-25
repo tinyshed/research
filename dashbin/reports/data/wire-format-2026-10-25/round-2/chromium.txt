@@ -1,0 +1,25 @@
+engine Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Claude/3.6556.2 Chrome/152.0.7977.167 Safari/537.36 MSIX, crossOriginIsolated true
+median of 12 rounds after 3 warm-up, ms
+
+frame                 decode   chart    both     min..max both   table
+series.json             8.22    3.77   12.51       9.23..16.84    1.10
+series.arrow            0.41    3.88    4.32        2.76..5.39    1.63
+series.own-i64          0.01    3.74    3.75        2.51..4.51    1.16
+series.own-f64          0.01    3.07    3.09        2.45..4.79    1.35
+series.json-dict        6.92    3.77   10.69       8.09..15.30    1.05
+series.arrow-dict       0.39    0.69    1.13        0.88..1.70    1.38
+series.own-i64-dict     0.02    0.67    0.69        0.59..1.07    1.12
+series.own-f64-dict     0.01    0.54    0.54        0.46..0.85    1.14
+mixed.json             32.72    5.89   39.53      36.66..45.12    2.23
+mixed.arrow             0.47    4.92    5.35        5.02..6.86    3.84
+mixed.own-i64           0.02    3.57    3.59        3.37..5.23    3.93
+mixed.own-f64           0.02    4.04    4.05        3.27..7.08    3.28
+mixed.json-dict        31.37    3.38   34.61      32.32..41.22    2.37
+mixed.arrow-dict        0.50    0.59    1.13        1.01..3.49    4.02
+mixed.own-i64-dict      0.02    0.59    0.61        0.58..0.93    2.88
+mixed.own-f64-dict      0.02    0.55    0.57        0.48..0.78    3.45
+
+agreed series: time=8.95415771250e+19/0 count=39414293.0000/1022 ratio=37264.3900000/1010 amount=24495491.9600/992 sites barnaul:2500,ekb:2500,irkutsk:2500,izhevsk:2500,kazan:2500,krasnodar:2500,msk:2500,nn:2500,nsk:2500,omsk:2500,perm:2500,rostov:2500,samara:2500,saratov:2500,spb:2500,tyumen:2500,ufa:2500,vladivostok:2500,volgograd:2500,voronezh:2500 table f52093b4
+agreed mixed: time=8.95600188613e+19/0 count=236701616.000/2466 ratio=23667.4731862/2534 amount=-1.00000000000e+36/2505 sites barnaul:2488,ekb:2433,irkutsk:2550,izhevsk:2500,kazan:2448,krasnodar:2458,msk:2496,nn:2485,nsk:2540,omsk:2479,perm:2545,rostov:2517,samara:2494,saratov:2457,spb:2484,tyumen:2581,ufa:2575,vladivostok:2475,volgograd:2481,voronezh:2514 table b880fc8f
+
+copied from the page by the harness's text reader; the browser pane was hidden while the page ran, so the tab ran as a background page

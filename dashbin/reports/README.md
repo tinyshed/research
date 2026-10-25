@@ -15,3 +15,7 @@ gives it, what its memory costs, and the plugin host it will carry.
 - [A plugin host on rquickjs and llrt_modules](plugin-host-2026-10-25.md):
   the SDKs in our own host, an abort on unload and a leak per instance traced to `llrt_timers`,
   timers of our own, a network policy per instance; 60 000 instances without a failure.
+- [A frame on the wire](wire-format-2026-10-25.md):
+  JSON, Arrow IPC and a layout of our own on 50 000 rows in V8, Chromium and JavaScriptCore;
+  JSON by the rule in round 1; labels as a dictionary in round 2, and our layout taken over Arrow
+  as an exception to the margins, on what Arrow weighs in the binary and the page.

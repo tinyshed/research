@@ -1,0 +1,52 @@
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Claude/3.6556.2 Chrome/152.0.7977.167 Safari/537.36 MSIX
+frame                     µs per frame
+1/series.json                     2.65
+1/series.arrow                   44.81
+1/series.own-i64                  4.62
+1/series.own-f64                  4.61
+1/series.json-dict                2.58
+1/series.arrow-dict              40.26
+1/series.own-i64-dict             4.59
+1/series.own-f64-dict             4.67
+1/mixed.json                      4.59
+1/mixed.arrow                    63.31
+1/mixed.own-i64                   7.79
+1/mixed.own-f64                   8.03
+1/mixed.json-dict                 4.62
+1/mixed.arrow-dict               59.49
+1/mixed.own-i64-dict              7.84
+1/mixed.own-f64-dict              8.26
+30/series.json                   24.73
+30/series.arrow                  74.61
+30/series.own-i64                37.76
+30/series.own-f64                37.15
+30/series.json-dict              23.77
+30/series.arrow-dict             77.11
+30/series.own-i64-dict           38.09
+30/series.own-f64-dict           36.87
+30/mixed.json                    64.65
+30/mixed.arrow                  141.84
+30/mixed.own-i64                 83.92
+30/mixed.own-f64                 82.49
+30/mixed.json-dict               64.63
+30/mixed.arrow-dict             143.08
+30/mixed.own-i64-dict            82.29
+30/mixed.own-f64-dict            83.14
+1000/series.json                785.93
+1000/series.arrow              1169.37
+1000/series.own-i64            1112.58
+1000/series.own-f64            1076.08
+1000/series.json-dict           812.88
+1000/series.arrow-dict          838.00
+1000/series.own-i64-dict        768.67
+1000/series.own-f64-dict        724.67
+1000/mixed.json                2741.93
+1000/mixed.arrow               2957.80
+1000/mixed.own-i64             2892.95
+1000/mixed.own-f64             2849.17
+1000/mixed.json-dict           2631.47
+1000/mixed.arrow-dict          2728.90
+1000/mixed.own-i64-dict        2570.92
+1000/mixed.own-f64-dict        2504.40
+
+copied from small.html by the harness's text reader; the pane was hidden, so the tab ran as a background page

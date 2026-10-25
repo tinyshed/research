@@ -1,0 +1,6 @@
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Claude/3.6556.2 Chrome/152.0.7977.167 Safari/537.36 MSIX
+json   median 1.98 ms, min 1.48, max 4.24
+own    median 1.64 ms, min 1.47, max 2.52
+arrow  median 8.44 ms, min 7.68, max 10.67
+
+load.html: each bundle imported fifteen times as new source text, fetch from 127.0.0.1 included; the pane was hidden

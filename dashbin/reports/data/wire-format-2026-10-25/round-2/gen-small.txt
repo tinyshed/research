@@ -1,0 +1,54 @@
+rows 1, gzip 6, zstd 3, brotli 5, median of 21
+dataset format              raw       gzip       zstd     brotli  encode ms  decode ms
+mixed   json                595        262        261        242       0.00       0.01
+mixed   arrow              2696        601        605        550       0.01       0.01
+mixed   own-i64             296        213        216        187       0.00       0.00
+mixed   own-f64             296        214        220        192       0.00       0.00
+mixed   json-dict           595        262        261        242       0.00       0.01
+mixed   arrow-dict         2696        601        605        550       0.01       0.01
+mixed   own-i64-dict        296        213        216        187       0.00       0.00
+mixed   own-f64-dict        296        214        220        192       0.00       0.00
+series  json                317        175        174        154       0.00       0.00
+series  arrow              1608        415        434        395       0.00       0.00
+series  own-i64             168        142        132        121       0.00       0.00
+series  own-f64             168        140        134        121       0.00       0.00
+series  json-dict           317        175        174        154       0.00       0.00
+series  arrow-dict         1608        415        434        395       0.00       0.00
+series  own-i64-dict        168        142        132        121       0.00       0.00
+series  own-f64-dict        168        140        134        121       0.00       0.00
+rows 30, gzip 6, zstd 3, brotli 5, median of 21
+dataset format              raw       gzip       zstd     brotli  encode ms  decode ms
+mixed   json               5154       2045       2022       1921       0.01       0.02
+mixed   arrow             11336       3237       3426       3064       0.02       0.02
+mixed   own-i64            9280       2833       2971       2702       0.00       0.00
+mixed   own-f64            9280       2834       2968       2703       0.00       0.00
+mixed   json-dict          5154       2045       2022       1921       0.01       0.02
+mixed   arrow-dict        11336       3237       3426       3064       0.02       0.01
+mixed   own-i64-dict       9280       2833       2971       2702       0.01       0.00
+mixed   own-f64-dict       9280       2834       2968       2703       0.00       0.00
+series  json               1609        546        572        538       0.01       0.01
+series  arrow              2824       1027       1058        949       0.00       0.00
+series  own-i64            1608        729        730        663       0.00       0.00
+series  own-f64            1608        726        730        664       0.00       0.00
+series  json-dict          1609        546        572        538       0.01       0.01
+series  arrow-dict         2824       1027       1058        949       0.01       0.00
+series  own-i64-dict       1608        729        730        663       0.00       0.00
+series  own-f64-dict       1608        726        730        664       0.00       0.00
+rows 1000, gzip 6, zstd 3, brotli 5, median of 21
+dataset format              raw       gzip       zstd     brotli  encode ms  decode ms
+mixed   json             155408      50316      52790      46703       0.33       0.44
+mixed   arrow            128392      53355      55167      47976       0.08       0.08
+mixed   own-i64          126800      53007      54720      47404       0.01       0.06
+mixed   own-f64          126800      52978      54997      47536       0.02       0.05
+mixed   json-dict        149444      49869      52265      46400       0.42       0.43
+mixed   arrow-dict       123208      51478      52214      45553       0.22       0.06
+mixed   own-i64-dict     121328      50959      51681      45069       0.17       0.09
+mixed   own-f64-dict     121328      50936      51950      45166       0.16       0.09
+series  json              45593       7606       7360       7221       0.13       0.18
+series  arrow             51272      12136      13012      10789       0.01       0.01
+series  own-i64           50160      11807      12633      10473       0.01       0.01
+series  own-f64           50160      11763      12580      10436       0.01       0.01
+series  json-dict         39631       7617       7403       7261       0.15       0.16
+series  arrow-dict        46152      10279      10508       9424       0.03       0.02
+series  own-i64-dict      44704       9891      10036       9134       0.02       0.04
+series  own-f64-dict      44704       9848       9985       9063       0.02       0.04

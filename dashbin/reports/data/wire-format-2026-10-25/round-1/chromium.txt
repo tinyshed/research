@@ -1,0 +1,17 @@
+engine Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Claude/3.6556.2 Chrome/152.0.7977.167 Safari/537.36 MSIX, crossOriginIsolated true
+median of 12 rounds after 3 warm-up, ms
+
+frame             decode   chart    both     min..max both   table
+series.json         7.43    3.96   11.30      10.37..15.22    0.86
+series.arrow        0.38    4.01    4.38        4.29..4.53    1.50
+series.own-i64      0.01    3.95    3.96        3.84..4.44    1.36
+series.own-f64      0.01    3.76    3.77        3.70..4.60    1.38
+mixed.json         31.69    4.88   36.35      35.33..37.83    2.19
+mixed.arrow         0.42    4.55    4.97        3.55..5.51    4.02
+mixed.own-i64       0.02    4.61    4.68        3.21..4.89    3.63
+mixed.own-f64       0.02    4.49    4.51        3.98..5.00    3.66
+
+agreed series: time=8.95415771250e+19/0 count=39414293.0000/1022 ratio=37264.3900000/1010 amount=24495491.9600/992 sites barnaul:2500,ekb:2500,irkutsk:2500,izhevsk:2500,kazan:2500,krasnodar:2500,msk:2500,nn:2500,nsk:2500,omsk:2500,perm:2500,rostov:2500,samara:2500,saratov:2500,spb:2500,tyumen:2500,ufa:2500,vladivostok:2500,volgograd:2500,voronezh:2500 table f52093b4
+agreed mixed: time=8.95600188613e+19/0 count=236701616.000/2466 ratio=23667.4731862/2534 amount=-1.00000000000e+36/2505 sites barnaul:2488,ekb:2433,irkutsk:2550,izhevsk:2500,kazan:2448,krasnodar:2458,msk:2496,nn:2485,nsk:2540,omsk:2479,perm:2545,rostov:2517,samara:2494,saratov:2457,spb:2484,tyumen:2581,ufa:2575,vladivostok:2475,volgograd:2481,voronezh:2514 table b880fc8f
+
+copied from the page by the harness's text reader; the browser pane was hidden while the page ran, so the tab ran as a background page

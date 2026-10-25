@@ -1,0 +1,10 @@
+rows 50000, gzip 6, zstd 3, brotli 5, median of 21
+dataset format          raw       gzip       zstd     brotli  encode ms  decode ms
+mixed   json        8116846    2392518    2500185    2483440      14.21      20.78
+mixed   arrow       6452936    2338189    2451337    2258696       3.59       3.81
+mixed   own-i64     6438840    2337649    2450625    2257019       1.20       3.01
+mixed   own-f64     6438840    2337934    2481677    2284650       1.07       3.06
+series  json        2267100     323174     325185     311060       6.56       8.04
+series  arrow       2514888     424535     455866     390567       0.28       0.29
+series  own-i64     2501392     424000     454706     389955       0.36       0.29
+series  own-f64     2501392     422076     453306     389025       0.34       0.25

@@ -1,0 +1,42 @@
+engine bun 1.4.2 (JavaScriptCore)
+median of 12 rounds after 3 warm-up, ms
+
+frame                 decode   chart    both     min..max both   table
+series.json             8.35    1.50    9.84       8.84..12.05    0.26
+series.arrow            0.25    2.56    2.82        2.48..4.21    0.59
+series.own-i64          0.01    2.48    2.51        2.19..3.26    0.57
+series.own-f64          0.01    2.33    2.34        2.09..2.66    0.54
+series.json-dict        8.09    1.29    9.48       8.77..10.64    0.25
+series.arrow-dict       0.35    0.50    0.84        0.67..1.29    0.46
+series.own-i64-dict     0.01    0.49    0.51        0.37..0.60    0.44
+series.own-f64-dict     0.01    0.40    0.41        0.29..0.56    0.42
+mixed.json             16.39    1.84   18.38      16.96..22.92    0.68
+mixed.arrow             0.35    2.76    3.10        2.63..4.25    1.35
+mixed.own-i64           0.01    2.56    2.57        2.32..3.01    1.31
+mixed.own-f64           0.01    2.58    2.59        2.33..4.51    1.33
+mixed.json-dict        17.16    1.48   18.51      16.09..21.42    0.67
+mixed.arrow-dict        0.44    0.55    0.90        0.76..1.77    1.23
+mixed.own-i64-dict      0.01    0.52    0.53        0.41..0.79    1.14
+mixed.own-f64-dict      0.01    0.36    0.36        0.33..0.58    1.07
+
+agreed series: time=8.95415771250e+19/0 count=39414293.0000/1022 ratio=37264.3900000/1010 amount=24495491.9600/992 sites barnaul:2500,ekb:2500,irkutsk:2500,izhevsk:2500,kazan:2500,krasnodar:2500,msk:2500,nn:2500,nsk:2500,omsk:2500,perm:2500,rostov:2500,samara:2500,saratov:2500,spb:2500,tyumen:2500,ufa:2500,vladivostok:2500,volgograd:2500,voronezh:2500 table f52093b4
+agreed mixed: time=8.95600188613e+19/0 count=236701616.000/2466 ratio=23667.4731862/2534 amount=-1.00000000000e+36/2505 sites barnaul:2488,ekb:2433,irkutsk:2550,izhevsk:2500,kazan:2448,krasnodar:2458,msk:2496,nn:2485,nsk:2540,omsk:2479,perm:2545,rostov:2517,samara:2494,saratov:2457,spb:2484,tyumen:2581,ufa:2575,vladivostok:2475,volgograd:2481,voronezh:2514 table b880fc8f
+
+retained beyond the received bytes, KiB, median of 5
+frame                  decoded   + drawn
+series.json               3108      4867
+series.arrow                 7      1768
+series.own-i64               2      1761
+series.own-f64               3      1370
+series.json-dict          2943      4701
+series.arrow-dict            6      1567
+series.own-i64-dict          3      1565
+series.own-f64-dict          3      1175
+mixed.json               25975     13275
+mixed.arrow                 16      1768
+mixed.own-i64                5      1763
+mixed.own-f64                5      1372
+mixed.json-dict          25293     13192
+mixed.arrow-dict            14      1567
+mixed.own-i64-dict           6      1567
+mixed.own-f64-dict           6      1177

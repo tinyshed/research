@@ -1,0 +1,26 @@
+engine bun 1.4.2 (JavaScriptCore)
+median of 12 rounds after 3 warm-up, ms
+
+frame             decode   chart    both     min..max both   table
+series.json         8.86    1.38   10.27       9.39..13.59    0.29
+series.arrow        0.33    2.29    2.57        2.44..3.57    0.56
+series.own-i64      0.01    2.33    2.35        2.15..2.65    0.56
+series.own-f64      0.01    2.31    2.35        2.09..2.69    0.54
+mixed.json         18.48    1.81   20.18      17.79..23.41    0.80
+mixed.arrow         0.39    2.45    2.84        2.63..5.31    1.31
+mixed.own-i64       0.01    2.43    2.45        2.35..2.59    1.20
+mixed.own-f64       0.01    2.37    2.38        2.29..4.55    1.18
+
+agreed series: time=8.95415771250e+19/0 count=39414293.0000/1022 ratio=37264.3900000/1010 amount=24495491.9600/992 sites barnaul:2500,ekb:2500,irkutsk:2500,izhevsk:2500,kazan:2500,krasnodar:2500,msk:2500,nn:2500,nsk:2500,omsk:2500,perm:2500,rostov:2500,samara:2500,saratov:2500,spb:2500,tyumen:2500,ufa:2500,vladivostok:2500,volgograd:2500,voronezh:2500 table f52093b4
+agreed mixed: time=8.95600188613e+19/0 count=236701616.000/2466 ratio=23667.4731862/2534 amount=-1.00000000000e+36/2505 sites barnaul:2488,ekb:2433,irkutsk:2550,izhevsk:2500,kazan:2448,krasnodar:2458,msk:2496,nn:2485,nsk:2540,omsk:2479,perm:2545,rostov:2517,samara:2494,saratov:2457,spb:2484,tyumen:2581,ufa:2575,vladivostok:2475,volgograd:2481,voronezh:2514 table b880fc8f
+
+retained beyond the received bytes, KiB, median of 5
+frame              decoded   + drawn
+series.json           3108      4867
+series.arrow             4      1766
+series.own-i64           2      1761
+series.own-f64           2      1370
+mixed.json           11516     13275
+mixed.arrow              7      1764
+mixed.own-i64            4      1763
+mixed.own-f64            4      1372
