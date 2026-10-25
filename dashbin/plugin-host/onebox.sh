@@ -7,6 +7,7 @@ SDK="$(cygpath -m "$PWD/../sdk-probe" 2>/dev/null || echo "$PWD/../sdk-probe")"
 NET=plughost
 IMG=rust:1.99-bookworm
 TUNED=background_thread:true,narenas:2,dirty_decay_ms:1000,muzzy_decay_ms:0
+DECAY0=background_thread:true,narenas:2,dirty_decay_ms:0,muzzy_decay_ms:0
 docker network create $NET >/dev/null 2>&1 || true
 docker rm -f plughost-stripe plughost-mock plughost-hub >/dev/null 2>&1
 docker run -d --name plughost-stripe --network $NET --cpuset-cpus=12-13 stripe/stripe-mock:latest >/dev/null
@@ -25,12 +26,12 @@ load() {
 }
 
 run() {
-  local label=$1 mem=$2 instances=$3 install_limit=$4
-  echo "== $label${mem:+, limit $mem}, install limit $install_limit MiB"
+  local label=$1 mem=$2 instances=$3 install_limit=$4 conf=${5:-$TUNED}
+  echo "== $label${mem:+, limit $mem}, install limit $install_limit MiB, MALLOC_CONF=$conf"
   docker rm -f plughost-hub >/dev/null 2>&1
   docker run -d --name plughost-hub --network $NET --cpuset-cpus=0,1 ${mem:+--memory=$mem --memory-swap=$mem} \
     -v plughost-target:/target:ro -v "$HERE/plugins/dist:/p:ro" \
-    -e OUR_TIMERS=1 -e NO_LLRT_TIMERS=1 -e MALLOC_CONF=$TUNED -e INSTALL_LIMIT_MIB=$install_limit \
+    -e OUR_TIMERS=1 -e NO_LLRT_TIMERS=1 -e MALLOC_CONF=$conf -e INSTALL_LIMIT_MIB=$install_limit \
     -e STRIPE_MOCK=http://plughost-stripe:12111 -e SDK_MOCK=http://plughost-mock:8080 -e INSTANCES="$instances" \
     $IMG /target/out/plughost-hub serve >/dev/null
   sleep 4
@@ -65,5 +66,6 @@ SIXTEEN=$EIGHT,stripe-3=/p/stripe.js,stripe-4=/p/stripe.js,openai-3=/p/openai.js
 run "no plugins" 64m "" 8
 run "eight instances, no limit" "" "$EIGHT" 8
 run "eight instances" 64m "$EIGHT" 8
+run "eight instances, jemalloc returning pages at once" 64m "$EIGHT" 8 $DECAY0
 run "sixteen instances" 64m "$SIXTEEN" 8
 docker rm -f plughost-stripe plughost-mock >/dev/null
