@@ -1,0 +1,115 @@
+== no plugins, limit 64m, install limit 8 MiB, MALLOC_CONF=background_thread:true,narenas:2,dirty_decay_ms:1000,muzzy_decay_ms:0
+  loaded, idle                   VmRSS 9.9 MiB  RssAnon 2.7  RssFile 7.1  VmHWM 9.9  threads 8
+                                 0 instances hold 0.0 MiB of JavaScript
+  one call each                  VmRSS 12.2 MiB  RssAnon 4.4  RssFile 7.8  VmHWM 12.2  threads 8
+                                 0 instances hold 0.0 MiB of JavaScript
+  cgroup                         current 9 MiB  peak 11 MiB  high 0 max 0 oom_kill 0 
+  load, all at once:
+    panel 3000:    1124 req/s  p50   6.49 ms  p95  22.78 ms  p99  30.62 ms
+    work 10000:    3133 req/s  p50   0.85 ms  p95  12.00 ms  p99  23.06 ms
+  after the load                 VmRSS 23.0 MiB  RssAnon 14.7  RssFile 8.2  VmHWM 32.9  threads 23
+                                 0 instances hold 0.0 MiB of JavaScript
+  cgroup                         current 43 MiB  peak 51 MiB  high 0 max 0 oom_kill 0 
+  the memory bomb installed      refused: Error: out of memory  then VmRSS 43.2 MiB  RssAnon 32.1  RssFile 11.1  VmHWM 44.3  threads 23
+  a real plugin installed        declared  then VmRSS 30.0 MiB  RssAnon 18.9  RssFile 11.1  VmHWM 44.3  threads 23
+  cgroup                         current 45 MiB  peak 63 MiB  high 0 max 0 oom_kill 0 
+  30 s later                     VmRSS 24.1 MiB  RssAnon 13.0  RssFile 11.1  VmHWM 44.3  threads 23
+                                 0 instances hold 0.0 MiB of JavaScript
+== eight instances, no limit, install limit 8 MiB, MALLOC_CONF=background_thread:true,narenas:2,dirty_decay_ms:1000,muzzy_decay_ms:0
+  loaded, idle                   VmRSS 39.9 MiB  RssAnon 29.7  RssFile 10.3  VmHWM 39.9  threads 8
+                                 8 instances hold 24.7 MiB of JavaScript
+  one call each                  VmRSS 42.1 MiB  RssAnon 31.1  RssFile 11.0  VmHWM 42.1  threads 9
+                                 8 instances hold 25.3 MiB of JavaScript
+  cgroup                         current 36 MiB  peak 38 MiB  high 0 max 0 oom_kill 0 
+  load, all at once:
+    panel 3000:     889 req/s  p50   8.00 ms  p95  29.12 ms  p99  39.86 ms
+    plugin/notion-1 400:     88 req/s  p50  13.35 ms  p95  59.95 ms  p99  77.34 ms
+    plugin/notion-2 400:     89 req/s  p50  13.07 ms  p95  61.79 ms  p99  91.28 ms
+    plugin/octokit-1 400:     89 req/s  p50  13.76 ms  p95  61.85 ms  p99  80.23 ms
+    plugin/octokit-2 400:     89 req/s  p50  13.41 ms  p95  61.38 ms  p99  87.90 ms
+    plugin/openai-1 400:     87 req/s  p50  13.58 ms  p95  63.74 ms  p99  87.84 ms
+    plugin/openai-2 400:     88 req/s  p50  13.56 ms  p95  61.16 ms  p99  85.58 ms
+    plugin/stripe-1 400:     81 req/s  p50  14.73 ms  p95  72.02 ms  p99 109.95 ms
+    plugin/stripe-2 400:     82 req/s  p50  14.87 ms  p95  74.00 ms  p99 114.50 ms
+    work 10000:    2282 req/s  p50   1.50 ms  p95  15.84 ms  p99  24.39 ms
+  after the load                 VmRSS 60.5 MiB  RssAnon 49.1  RssFile 11.4  VmHWM 70.6  threads 24
+                                 8 instances hold 33.2 MiB of JavaScript
+  cgroup                         current 74 MiB  peak 81 MiB  high 0 max 0 oom_kill 0 
+  the memory bomb installed      refused: Error: out of memory  then VmRSS 71.8 MiB  RssAnon 60.4  RssFile 11.4  VmHWM 71.8  threads 24
+  a real plugin installed        declared  then VmRSS 72.1 MiB  RssAnon 60.7  RssFile 11.4  VmHWM 72.1  threads 24
+  cgroup                         current 81 MiB  peak 89 MiB  high 0 max 0 oom_kill 0 
+  30 s later                     VmRSS 58.7 MiB  RssAnon 47.3  RssFile 11.4  VmHWM 72.0  threads 23
+                                 8 instances hold 33.2 MiB of JavaScript
+== eight instances, limit 64m, install limit 8 MiB, MALLOC_CONF=background_thread:true,narenas:2,dirty_decay_ms:1000,muzzy_decay_ms:0
+  loaded, idle                   VmRSS 40.0 MiB  RssAnon 29.7  RssFile 10.3  VmHWM 40.0  threads 8
+                                 8 instances hold 24.7 MiB of JavaScript
+  one call each                  VmRSS 42.0 MiB  RssAnon 31.0  RssFile 11.0  VmHWM 42.0  threads 9
+                                 8 instances hold 25.3 MiB of JavaScript
+  cgroup                         current 36 MiB  peak 37 MiB  high 0 max 0 oom_kill 0 
+  load, all at once:
+    panel 3000:     935 req/s  p50   7.91 ms  p95  25.47 ms  p99  36.83 ms
+    plugin/notion-1 400:     99 req/s  p50  11.83 ms  p95  53.92 ms  p99  65.04 ms
+    plugin/notion-2 400:     98 req/s  p50  11.58 ms  p95  53.49 ms  p99  63.41 ms
+    plugin/octokit-1 400:     99 req/s  p50  11.71 ms  p95  53.20 ms  p99  67.92 ms
+    plugin/octokit-2 400:     99 req/s  p50  11.73 ms  p95  52.99 ms  p99  63.39 ms
+    plugin/openai-1 400:     98 req/s  p50  11.77 ms  p95  53.84 ms  p99  67.21 ms
+    plugin/openai-2 400:     98 req/s  p50  11.91 ms  p95  53.58 ms  p99  72.60 ms
+    plugin/stripe-1 400:     89 req/s  p50  13.39 ms  p95  66.28 ms  p99  83.61 ms
+    plugin/stripe-2 400:     90 req/s  p50  13.05 ms  p95  66.08 ms  p99  90.70 ms
+    work 10000:    2378 req/s  p50   1.40 ms  p95  14.81 ms  p99  24.03 ms
+  after the load                 VmRSS 60.6 MiB  RssAnon 49.4  RssFile 11.3  VmHWM 70.1  threads 24
+                                 8 instances hold 33.2 MiB of JavaScript
+  cgroup                         current 58 MiB  peak 64 MiB  high 0 max 95 oom_kill 0 
+  the memory bomb installed      
+  DIED                           OOMKilled=true exit=137
+== eight instances, jemalloc returning pages at once, limit 64m, install limit 8 MiB, MALLOC_CONF=background_thread:true,narenas:2,dirty_decay_ms:0,muzzy_decay_ms:0
+  loaded, idle                   VmRSS 39.6 MiB  RssAnon 29.4  RssFile 10.3  VmHWM 39.6  threads 8
+                                 8 instances hold 24.7 MiB of JavaScript
+  one call each                  VmRSS 41.5 MiB  RssAnon 30.5  RssFile 11.0  VmHWM 41.5  threads 9
+                                 8 instances hold 25.3 MiB of JavaScript
+  cgroup                         current 36 MiB  peak 37 MiB  high 0 max 0 oom_kill 0 
+  load, all at once:
+    panel 3000:     739 req/s  p50  11.28 ms  p95  27.93 ms  p99  37.92 ms
+    plugin/notion-1 400:     84 req/s  p50  16.01 ms  p95  59.93 ms  p99  75.47 ms
+    plugin/notion-2 400:     84 req/s  p50  16.20 ms  p95  58.81 ms  p99  80.24 ms
+    plugin/octokit-1 400:     84 req/s  p50  17.31 ms  p95  59.75 ms  p99  76.87 ms
+    plugin/octokit-2 400:     84 req/s  p50  17.25 ms  p95  56.73 ms  p99  77.71 ms
+    plugin/openai-1 400:     84 req/s  p50  16.63 ms  p95  58.43 ms  p99  73.06 ms
+    plugin/openai-2 400:     84 req/s  p50  16.00 ms  p95  59.62 ms  p99  73.17 ms
+    plugin/stripe-1 400:     78 req/s  p50  15.31 ms  p95  70.62 ms  p99  96.44 ms
+    plugin/stripe-2 400:     79 req/s  p50  15.73 ms  p95  70.78 ms  p99  93.09 ms
+    work 10000:    1604 req/s  p50   1.70 ms  p95  20.00 ms  p99  32.02 ms
+  after the load                 VmRSS 57.2 MiB  RssAnon 45.8  RssFile 11.4  VmHWM 63.4  threads 24
+                                 8 instances hold 33.2 MiB of JavaScript
+  cgroup                         current 62 MiB  peak 64 MiB  high 0 max 71 oom_kill 0 
+  the memory bomb installed      refused: Error: out of memory  then VmRSS 57.3 MiB  RssAnon 45.9  RssFile 11.5  VmHWM 64.2  threads 24
+  a real plugin installed        declared  then VmRSS 58.2 MiB  RssAnon 46.7  RssFile 11.5  VmHWM 64.2  threads 24
+  cgroup                         current 56 MiB  peak 64 MiB  high 0 max 113 oom_kill 0 
+  30 s later                     VmRSS 58.0 MiB  RssAnon 46.5  RssFile 11.5  VmHWM 64.2  threads 23
+                                 8 instances hold 33.2 MiB of JavaScript
+== sixteen instances, limit 64m, install limit 8 MiB, MALLOC_CONF=background_thread:true,narenas:2,dirty_decay_ms:1000,muzzy_decay_ms:0
+  loaded, idle                   VmRSS 64.5 MiB  RssAnon 54.3  RssFile 10.3  VmHWM 64.5  threads 8
+                                 16 instances hold 49.5 MiB of JavaScript
+  one call each                  VmRSS 67.0 MiB  RssAnon 56.0  RssFile 11.0  VmHWM 67.0  threads 9
+                                 16 instances hold 50.6 MiB of JavaScript
+  cgroup                         current 61 MiB  peak 63 MiB  high 0 max 0 oom_kill 0 
+  load, all at once:
+    panel 3000:  called `Result::unwrap()` on an `Err` value: Os { code: 104, kind: ConnectionReset, message: "Connection reset by peer" }
+    plugin/notion-1 400: Run 'docker run --help' for more information
+    plugin/notion-2 400: Run 'docker run --help' for more information
+    plugin/notion-3 400: Run 'docker run --help' for more information
+    plugin/notion-4 400: Run 'docker run --help' for more information
+    plugin/octokit-1 400: Run 'docker run --help' for more information
+    plugin/octokit-2 400: Run 'docker run --help' for more information
+    plugin/octokit-3 400: Run 'docker run --help' for more information
+    plugin/octokit-4 400: Run 'docker run --help' for more information
+    plugin/openai-1 400: Run 'docker run --help' for more information
+    plugin/openai-2 400: Run 'docker run --help' for more information
+    plugin/openai-3 400: Run 'docker run --help' for more information
+    plugin/openai-4 400: Run 'docker run --help' for more information
+    plugin/stripe-1 400: Run 'docker run --help' for more information
+    plugin/stripe-2 400: Run 'docker run --help' for more information
+    plugin/stripe-3 400: Run 'docker run --help' for more information
+    plugin/stripe-4 400: Run 'docker run --help' for more information
+    work 10000:  called `Result::unwrap()` on an `Err` value: JoinError::Panic(Id(5), "called `Result::unwrap()` on an `Err` value: Os { code: 111, kind: ConnectionRefused, message: \"Connection refused\" }", ...)
+  DIED                           OOMKilled=true exit=137

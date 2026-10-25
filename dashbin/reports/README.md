@@ -22,3 +22,7 @@ gives it, what its memory costs, and the plugin host it will carry.
 - [Chapter 6's plugins in the host](plugin-calls-2026-10-25.md):
   the Stripe example on stripe-mock, install limits, and a call's end dropping its requests in 0.1–0.2 ms
   once timers are gated and the runtime driven; a crash in rquickjs-core 0.11.0, fixed in 0.12.0, carried as a patch.
+- [Memory with plugins](plugin-memory-2026-10-25.md):
+  install limits against the process's peak, what four real SDKs need, a spike inside a call, and the hub
+  with its instances in a 64 MiB container: eight real instances did not fit kept loaded, sixteen did with
+  QuickJS in its own arena, GC after a call, idle runtimes unloaded and four slots.

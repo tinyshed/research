@@ -1,0 +1,132 @@
+== eight instances, unloaded after 2 s idle, bytecode on disk, limit 64m, install limit 8 MiB, -e JS_ARENA=1 -e GC_AFTER_CALL=1 -e IDLE_UNLOAD_MS=2000
+  plugins: /p/stripe.js compiles to 1.23 MiB of bytecode from 0.55 MiB of source
+  plugins: /p/openai.js compiles to 1.71 MiB of bytecode from 0.79 MiB of source
+  plugins: /p/notion.js compiles to 3.52 MiB of bytecode from 0.97 MiB of source
+  plugins: /p/octokit.js compiles to 0.18 MiB of bytecode from 0.15 MiB of source
+  started, idle                  VmRSS 13.9 MiB  RssAnon 3.4  RssFile 10.5  VmHWM 31.2  threads 10
+                                 0 of 8 instances loaded, holding 0.0 MiB of JavaScript, 0.0 MiB of source kept; 0 loads, 0.0 ms each, 0 unloads, 0 waits for a slot
+  one call each                  VmRSS 38.5 MiB  RssAnon 27.3  RssFile 11.2  VmHWM 43.8  threads 11
+                                 6 of 8 instances loaded, holding 20.3 MiB of JavaScript, 0.0 MiB of source kept; 8 loads, 8.6 ms each, 2 unloads, 0 waits for a slot
+  cgroup                         current 33 MiB  peak 46 MiB  high 0 max 0 oom_kill 0 
+  load, all at once:
+    panel 3000:    1012 req/s  p50   7.13 ms  p95  26.96 ms  p99  35.16 ms
+    plugin/notion-1 400:     82 req/s  p50  13.47 ms  p95  76.38 ms  p99  93.41 ms
+    plugin/notion-2 400:     82 req/s  p50  13.49 ms  p95  74.70 ms  p99  87.98 ms
+    plugin/octokit-1 400:     82 req/s  p50  13.35 ms  p95  75.85 ms  p99  91.06 ms
+    plugin/octokit-2 400:     82 req/s  p50  13.60 ms  p95  75.83 ms  p99  92.00 ms
+    plugin/openai-1 400:     81 req/s  p50  13.43 ms  p95  76.73 ms  p99 112.44 ms
+    plugin/openai-2 400:     81 req/s  p50  13.61 ms  p95  74.83 ms  p99  95.96 ms
+    plugin/stripe-1 400:     76 req/s  p50  17.72 ms  p95  88.26 ms  p99 120.23 ms
+    plugin/stripe-2 400:     76 req/s  p50  17.72 ms  p95  92.21 ms  p99 113.21 ms
+    work 10000:    2618 req/s  p50   1.31 ms  p95  12.77 ms  p99  20.22 ms
+  after the load                 VmRSS 49.7 MiB  RssAnon 38.2  RssFile 11.5  VmHWM 60.8  threads 25
+                                 8 of 8 instances loaded, holding 24.8 MiB of JavaScript, 0.0 MiB of source kept; 15 loads, 19.4 ms each, 7 unloads, 0 waits for a slot
+  cgroup                         current 56 MiB  peak 64 MiB  high 0 max 55 oom_kill 0 
+  3 s after the load             VmRSS 23.9 MiB  RssAnon 12.4  RssFile 11.5  VmHWM 60.8  threads 25
+                                 0 of 8 instances loaded, holding 0.0 MiB of JavaScript, 0.0 MiB of source kept; 15 loads, 19.4 ms each, 15 unloads, 0 waits for a slot
+  the memory bomb installed      refused: Error: out of memory  then VmRSS 23.9 MiB  RssAnon 12.4  RssFile 11.5  VmHWM 60.8  threads 24
+  a real plugin installed        declared  then VmRSS 24.4 MiB  RssAnon 12.9  RssFile 11.5  VmHWM 60.8  threads 24
+  cgroup                         current 32 MiB  peak 64 MiB  high 0 max 55 oom_kill 0 
+  30 s later                     VmRSS 23.5 MiB  RssAnon 12.0  RssFile 11.5  VmHWM 60.8  threads 24
+                                 0 of 8 instances loaded, holding 0.0 MiB of JavaScript, 0.0 MiB of source kept; 15 loads, 19.4 ms each, 15 unloads, 0 waits for a slot
+== eight instances, unloaded after every call, bytecode on disk, limit 64m, install limit 8 MiB, -e JS_ARENA=1 -e GC_AFTER_CALL=1 -e IDLE_UNLOAD_MS=0
+  plugins: /p/stripe.js compiles to 1.23 MiB of bytecode from 0.55 MiB of source
+  plugins: /p/openai.js compiles to 1.71 MiB of bytecode from 0.79 MiB of source
+  plugins: /p/notion.js compiles to 3.52 MiB of bytecode from 0.97 MiB of source
+  plugins: /p/octokit.js compiles to 0.18 MiB of bytecode from 0.15 MiB of source
+  started, idle                  VmRSS 13.8 MiB  RssAnon 3.3  RssFile 10.5  VmHWM 31.1  threads 9
+                                 0 of 8 instances loaded, holding 0.0 MiB of JavaScript, 0.0 MiB of source kept; 0 loads, 0.0 ms each, 0 unloads, 0 waits for a slot
+  one call each                  VmRSS 19.4 MiB  RssAnon 8.2  RssFile 11.2  VmHWM 31.1  threads 10
+                                 0 of 8 instances loaded, holding 0.0 MiB of JavaScript, 0.0 MiB of source kept; 8 loads, 7.9 ms each, 8 unloads, 0 waits for a slot
+  cgroup                         current 16 MiB  peak 28 MiB  high 0 max 0 oom_kill 0 
+  load, all at once:
+    panel 3000:     981 req/s  p50   7.27 ms  p95  25.63 ms  p99  35.53 ms
+    plugin/notion-1 400:     13 req/s  p50 139.07 ms  p95 177.82 ms  p99 571.24 ms
+    plugin/notion-2 400:     13 req/s  p50 139.49 ms  p95 167.60 ms  p99 687.15 ms
+    plugin/octokit-1 400:     13 req/s  p50 138.19 ms  p95 170.92 ms  p99 712.97 ms
+    plugin/octokit-2 400:     13 req/s  p50 136.32 ms  p95 177.57 ms  p99 617.78 ms
+    plugin/openai-1 400:     13 req/s  p50 136.24 ms  p95 181.81 ms  p99 588.56 ms
+    plugin/openai-2 400:     13 req/s  p50 137.91 ms  p95 175.75 ms  p99 699.90 ms
+    plugin/stripe-1 400:     13 req/s  p50 172.28 ms  p95 218.29 ms  p99 711.15 ms
+    plugin/stripe-2 400:     13 req/s  p50 172.90 ms  p95 222.21 ms  p99 798.25 ms
+    work 10000:    2504 req/s  p50   1.15 ms  p95  12.09 ms  p99  24.21 ms
+  after the load                 VmRSS 25.1 MiB  RssAnon 13.7  RssFile 11.4  VmHWM 64.1  threads 24
+                                 0 of 8 instances loaded, holding 0.0 MiB of JavaScript, 0.0 MiB of source kept; 3208 loads, 6.4 ms each, 3208 unloads, 0 waits for a slot
+  cgroup                         current 29 MiB  peak 64 MiB  high 0 max 128 oom_kill 0 
+  3 s after the load             VmRSS 23.4 MiB  RssAnon 12.0  RssFile 11.4  VmHWM 64.1  threads 24
+                                 0 of 8 instances loaded, holding 0.0 MiB of JavaScript, 0.0 MiB of source kept; 3208 loads, 6.4 ms each, 3208 unloads, 0 waits for a slot
+  the memory bomb installed      refused: Error: out of memory  then VmRSS 23.4 MiB  RssAnon 12.1  RssFile 11.4  VmHWM 64.1  threads 24
+  a real plugin installed        declared  then VmRSS 24.0 MiB  RssAnon 12.6  RssFile 11.4  VmHWM 64.1  threads 24
+  cgroup                         current 29 MiB  peak 64 MiB  high 0 max 128 oom_kill 0 
+  30 s later                     VmRSS 21.1 MiB  RssAnon 9.5  RssFile 11.7  VmHWM 64.1  threads 8
+                                 0 of 8 instances loaded, holding 0.0 MiB of JavaScript, 0.0 MiB of source kept; 3208 loads, 6.4 ms each, 3208 unloads, 0 waits for a slot
+== eight instances, unloaded after 2 s idle, at most four loaded, limit 64m, install limit 8 MiB, -e JS_ARENA=1 -e GC_AFTER_CALL=1 -e IDLE_UNLOAD_MS=2000 -e MAX_LOADED=4
+  plugins: /p/stripe.js compiles to 1.23 MiB of bytecode from 0.55 MiB of source
+  plugins: /p/openai.js compiles to 1.71 MiB of bytecode from 0.79 MiB of source
+  plugins: /p/notion.js compiles to 3.52 MiB of bytecode from 0.97 MiB of source
+  plugins: /p/octokit.js compiles to 0.18 MiB of bytecode from 0.15 MiB of source
+  started, idle                  VmRSS 13.8 MiB  RssAnon 3.3  RssFile 10.5  VmHWM 31.1  threads 9
+                                 0 of 8 instances loaded, holding 0.0 MiB of JavaScript, 0.0 MiB of source kept; 0 loads, 0.0 ms each, 0 unloads, 0 waits for a slot
+  one call each                  VmRSS 28.8 MiB  RssAnon 17.6  RssFile 11.2  VmHWM 36.5  threads 10
+                                 4 of 8 instances loaded, holding 13.0 MiB of JavaScript, 0.0 MiB of source kept; 8 loads, 7.2 ms each, 4 unloads, 0 waits for a slot
+  cgroup                         current 29 MiB  peak 39 MiB  high 0 max 0 oom_kill 0 
+  load, all at once:
+    panel 3000:     943 req/s  p50   7.60 ms  p95  28.13 ms  p99  40.59 ms
+    plugin/notion-1 400:     75 req/s  p50   4.05 ms  p95  28.85 ms  p99 1889.56 ms
+    plugin/notion-2 400:     79 req/s  p50   5.88 ms  p95  29.92 ms  p99 1641.27 ms
+    plugin/octokit-1 400:     76 req/s  p50   5.04 ms  p95   8.79 ms  p99 1998.39 ms
+    plugin/octokit-2 400:     93 req/s  p50   8.27 ms  p95  38.08 ms  p99 843.79 ms
+    plugin/openai-1 400:     77 req/s  p50   6.13 ms  p95  50.88 ms  p99 713.97 ms
+    plugin/openai-2 400:     85 req/s  p50   8.68 ms  p95  45.65 ms  p99 654.62 ms
+    plugin/stripe-1 400:     92 req/s  p50  10.99 ms  p95  67.17 ms  p99  96.74 ms
+    plugin/stripe-2 400:     92 req/s  p50  11.22 ms  p95  60.23 ms  p99  97.80 ms
+    work 10000:    2461 req/s  p50   1.33 ms  p95  13.57 ms  p99  22.48 ms
+  after the load                 VmRSS 39.7 MiB  RssAnon 28.2  RssFile 11.5  VmHWM 58.2  threads 25
+                                 4 of 8 instances loaded, holding 15.3 MiB of JavaScript, 0.0 MiB of source kept; 25 loads, 13.9 ms each, 21 unloads, 2400 waits for a slot
+  cgroup                         current 56 MiB  peak 64 MiB  high 0 max 42 oom_kill 0 
+  3 s after the load             VmRSS 23.4 MiB  RssAnon 11.9  RssFile 11.5  VmHWM 58.2  threads 25
+                                 0 of 8 instances loaded, holding 0.0 MiB of JavaScript, 0.0 MiB of source kept; 25 loads, 13.9 ms each, 25 unloads, 2400 waits for a slot
+  the memory bomb installed      refused: Error: out of memory  then VmRSS 23.4 MiB  RssAnon 11.9  RssFile 11.5  VmHWM 58.2  threads 25
+  a real plugin installed        declared  then VmRSS 23.9 MiB  RssAnon 12.4  RssFile 11.5  VmHWM 58.2  threads 25
+  cgroup                         current 41 MiB  peak 64 MiB  high 0 max 42 oom_kill 0 
+  30 s later                     VmRSS 23.1 MiB  RssAnon 11.6  RssFile 11.5  VmHWM 58.2  threads 24
+                                 0 of 8 instances loaded, holding 0.0 MiB of JavaScript, 0.0 MiB of source kept; 25 loads, 13.9 ms each, 25 unloads, 2400 waits for a slot
+== sixteen instances, unloaded after 2 s idle, at most four loaded, limit 64m, install limit 8 MiB, -e JS_ARENA=1 -e GC_AFTER_CALL=1 -e IDLE_UNLOAD_MS=2000 -e MAX_LOADED=4
+  plugins: /p/stripe.js compiles to 1.23 MiB of bytecode from 0.55 MiB of source
+  plugins: /p/openai.js compiles to 1.71 MiB of bytecode from 0.79 MiB of source
+  plugins: /p/notion.js compiles to 3.52 MiB of bytecode from 0.97 MiB of source
+  plugins: /p/octokit.js compiles to 0.18 MiB of bytecode from 0.15 MiB of source
+  started, idle                  VmRSS 13.8 MiB  RssAnon 3.3  RssFile 10.5  VmHWM 31.2  threads 9
+                                 0 of 16 instances loaded, holding 0.0 MiB of JavaScript, 0.0 MiB of source kept; 0 loads, 0.0 ms each, 0 unloads, 0 waits for a slot
+  one call each                  VmRSS 29.3 MiB  RssAnon 18.1  RssFile 11.2  VmHWM 36.6  threads 10
+                                 4 of 16 instances loaded, holding 13.0 MiB of JavaScript, 0.0 MiB of source kept; 16 loads, 6.6 ms each, 12 unloads, 0 waits for a slot
+  cgroup                         current 30 MiB  peak 39 MiB  high 0 max 0 oom_kill 0 
+  load, all at once:
+    panel 3000:     923 req/s  p50   7.34 ms  p95  28.48 ms  p99  41.92 ms
+    plugin/notion-1 400:     72 req/s  p50   4.91 ms  p95  37.49 ms  p99 172.94 ms
+    plugin/notion-2 400:     57 req/s  p50   6.47 ms  p95   8.61 ms  p99  19.42 ms
+    plugin/notion-3 400:     72 req/s  p50   5.09 ms  p95  34.58 ms  p99 427.38 ms
+    plugin/notion-4 400:     49 req/s  p50   5.52 ms  p95   7.36 ms  p99   8.27 ms
+    plugin/octokit-1 400:     69 req/s  p50   5.05 ms  p95   7.95 ms  p99  25.79 ms
+    plugin/octokit-2 400:     55 req/s  p50   6.54 ms  p95  11.64 ms  p99  19.11 ms
+    plugin/octokit-3 400:     67 req/s  p50   5.20 ms  p95   8.06 ms  p99  19.59 ms
+    plugin/octokit-4 400:     83 req/s  p50   5.53 ms  p95  10.46 ms  p99  31.52 ms
+    plugin/openai-1 400:     49 req/s  p50   6.47 ms  p95  27.97 ms  p99 178.98 ms
+    plugin/openai-2 400:     64 req/s  p50   9.65 ms  p95  52.28 ms  p99 180.85 ms
+    plugin/openai-3 400:     49 req/s  p50   5.95 ms  p95  10.59 ms  p99  18.93 ms
+    plugin/openai-4 400:     60 req/s  p50   6.29 ms  p95   8.40 ms  p99  19.36 ms
+    plugin/stripe-1 400:     84 req/s  p50  13.03 ms  p95  61.78 ms  p99  94.70 ms
+    plugin/stripe-2 400:     87 req/s  p50  11.38 ms  p95  58.52 ms  p99  73.26 ms
+    plugin/stripe-3 400:     86 req/s  p50  11.17 ms  p95  54.75 ms  p99  71.38 ms
+    plugin/stripe-4 400:     50 req/s  p50   8.32 ms  p95  14.48 ms  p99  21.95 ms
+    work 10000:    2405 req/s  p50   1.32 ms  p95  14.62 ms  p99  29.39 ms
+  after the load                 VmRSS 39.0 MiB  RssAnon 27.5  RssFile 11.5  VmHWM 57.1  threads 25
+                                 4 of 16 instances loaded, holding 14.6 MiB of JavaScript, 0.0 MiB of source kept; 36 loads, 13.2 ms each, 32 unloads, 11455 waits for a slot
+  cgroup                         current 60 MiB  peak 64 MiB  high 0 max 9 oom_kill 0 
+  3 s after the load             VmRSS 23.8 MiB  RssAnon 12.3  RssFile 11.5  VmHWM 57.1  threads 25
+                                 0 of 16 instances loaded, holding 0.0 MiB of JavaScript, 0.0 MiB of source kept; 36 loads, 13.2 ms each, 36 unloads, 11455 waits for a slot
+  the memory bomb installed      refused: Error: out of memory  then VmRSS 23.9 MiB  RssAnon 12.4  RssFile 11.5  VmHWM 57.1  threads 25
+  a real plugin installed        declared  then VmRSS 24.4 MiB  RssAnon 12.9  RssFile 11.5  VmHWM 57.1  threads 25
+  cgroup                         current 45 MiB  peak 64 MiB  high 0 max 9 oom_kill 0 
+  30 s later                     VmRSS 23.5 MiB  RssAnon 12.0  RssFile 11.5  VmHWM 57.1  threads 24
+                                 0 of 16 instances loaded, holding 0.0 MiB of JavaScript, 0.0 MiB of source kept; 36 loads, 13.2 ms each, 36 unloads, 11455 waits for a slot

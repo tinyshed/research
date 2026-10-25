@@ -205,6 +205,10 @@ unloaded after some minutes idle.
 cache, recompiled when Dashbin upgrades; it never accepts bytecode from an
 author. Bytecode saves the cold start (OpenAI 30 → 4 ms), not memory.
 
+**LLRT's crypto is its `crypto-ring` backend.** Its `crypto-rust` pins
+pre-releases of RustCrypto that cannot link beside TinyStore's `kv`, which
+needs the released line; with `crypto-ring` both build into one binary.
+
 **The host carries rquickjs-core 0.11.0 with one fix.** Unloading a runtime
 after an interrupted job aborted the process in QuickJS's garbage collector,
 because 0.11.0 frees a context it only borrowed; 0.12.0 fixed it, and LLRT
@@ -226,18 +230,37 @@ the operating system isolates it; the admin is told so in those words.
 ## Memory, said plainly
 
 QuickJS runs inside the hub's process, so a container's limit counts the hub
-and every loaded JS instance as one number. The promise is therefore stated
-as what it is:
+and every loaded JS instance as one number. Measured in a 64 MiB container
+under load ([memory with plugins](../reports/plugin-memory-2026-10-25.md)):
+the hub alone fits with room; eight instances of real SDKs, kept loaded the
+simple way, did not; kept the way below, sixteen did, and with nothing loaded
+the hub is 14 MiB. So the plugins' memory is kept this way:
 
-- **Dashbin without third-party plugins runs in 64 MiB** under the load
-  profile the load run fixes (chapter 12).
-- **Each loaded JS instance adds to that same process** what its SDK costs,
-  2.8–7 MiB measured, and the interface shows the base, each instance and the
-  process's total.
-- **The admin sets a budget for loaded runtimes**: the sum of their memory
-  limits. Loading one past it unloads idle runtimes first, and otherwise the
-  call fails as `Unavailable`, so the total stays where the container's limit
-  allows.
+- **QuickJS's heaps live in a jemalloc arena of their own that returns freed
+  pages at once.** A growing heap leaves pages behind, and under the hub's
+  one-second decay a runtime cost up to twice its limit for a moment; in its
+  own arena a bomb installed beside eight loaded instances did not move the
+  process at all. The rest of the hub keeps its decay and its speed; plugin
+  calls pay about 11%.
+- **A runtime's garbage is collected after each call.** QuickJS otherwise
+  lets a heap grow by half before collecting, and under load the heaps grew
+  by a third; collected after each call they stay at their loaded size, for
+  about 8% of a call's speed.
+- **An idle runtime is unloaded after a few seconds** and reloaded from
+  bytecode when called, in 7–19 ms. The bytecode is one file a plugin, read
+  at each load: it is 1.2–3.6 × its source, and kept in memory for every
+  instance it was what killed the first attempt.
+- **At most a few runtimes are loaded at once**, a number the admin sets
+  against the container's limit; four held sixteen instances in 64 MiB. A
+  call that finds no slot takes the one idle longest, or waits; the wait is
+  the price, up to 2 s at the 99th percentile with eight busy instances. Each
+  slot costs what its largest plugin holds: Octokit 1.4 MiB, Stripe 2.3,
+  OpenAI 3.6, Notion 5.1.
+- **An install's limit is the plugin's own**, about 1.5 × what it holds:
+  2 MiB for Octokit, 8 for Notion. A runtime that fails at its limit is
+  reported as out of memory by the host, since it cannot always build its own
+  error.
+- The interface shows the base, each loaded instance and the process's total.
 
 A process plugin is a process of its own: its memory is shown beside the
 hub's and is not the hub's.
@@ -344,7 +367,7 @@ through a Rust trait, so the interface treats both alike.
 The example above, built with `dashbin plugin build`, uploaded. The admin
 sees two functions (a read and an action), one secret, `api.stripe.com`, and
 QuickJS; accepts. Two instances, `stripe-eu` and `stripe-us`, each with its
-key: two runtimes, 2.8 MiB each while loaded, inside the budget for loaded
+key: two runtimes, 2.3 MiB of JavaScript each while loaded, inside the budget for loaded
 runtimes. An alert reads `charges` on `all`; Dmitry changes the range while a
 page of charges is loading, and the host aborts that request although the
 SDK was never given a signal. A button calls `refund`; its flow step keeps
@@ -377,9 +400,10 @@ After the review:
 3. **No store per instance** — kept, and said plainly: reads by range only,
    no general cursor sync; a cursor later lives in a collector's or flow's
    state in TinyStore.
-4. **Memory** — changed: one process, one number; 64 MiB is Dashbin without
-   third-party plugins; JS instances add to it, shown, inside a budget for
-   loaded runtimes that the admin sets.
+4. **Memory** — changed: one process, one number; measured, then kept by
+   four rules: QuickJS in an arena that returns pages at once, garbage
+   collected after a call, idle runtimes unloaded with their bytecode on disk,
+   and a few slots for loaded runtimes.
 5. **Process plugins** — changed: they share the agent's call protocol, not
    the agent; the second consent is not a sandbox.
 6. **Install from a file or a URL.** Kept.
@@ -407,9 +431,10 @@ the provider's window.
 
 ## Not measured yet
 
-- The memory limit an install runs under, which keeps its RSS inside the
-  promise.
+- A thread cache of the plugin thread's own in QuickJS's arena, which may
+  take back some of the 11% the arena costs plugin calls.
 - The hub's own cost of the QuickJS host, which shares tokio and hyper with
   it: the 9.19 MiB was a separate binary.
 - A process plugin over stdio end to end, and its cancellation.
-- How long an idle runtime should stay loaded.
+- How long an idle runtime should stay loaded, and how many slots a given
+  container wants, on dashboards rather than on a synthetic load.

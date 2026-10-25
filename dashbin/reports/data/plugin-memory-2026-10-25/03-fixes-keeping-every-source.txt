@@ -94,3 +94,5 @@ error: no such object: plughost-hub
   DIED                           
 fixes.sh: line 74: 8: command not found
 == eight instances, own arena, gc after a call, limit 64m, install limit 8 MiB, -e JS_ARENA=1 -e GC_AFTER_CALL=1
+  started, idle                  VmRSS 39.7 MiB  RssAnon 29.1  RssFile 10.6  VmHWM 42.6  threads 9
+                                 8 of 8 instances loaded, holding 24.7 MiB of JavaScript, 0.0 MiB of code kept; 8 loads, 32.9 ms each, 0 unloads
