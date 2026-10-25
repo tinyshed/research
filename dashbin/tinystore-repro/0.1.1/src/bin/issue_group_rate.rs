@@ -30,6 +30,6 @@ fn main() -> tinystore::Result<()> {
     for (at, message) in sent.lock().unwrap().iter() {
         println!("  {:>5.1} s  {message}", at.as_secs_f64());
     }
-    println!("bot-b's limit is its own at telegram, but its messages waited behind bot-a's in the queue's one rate");
+    println!("each bot may send 2 a second at telegram; the queue's one rate gave them 1 a second each, 4 s for what took 2");
     store.close()
 }

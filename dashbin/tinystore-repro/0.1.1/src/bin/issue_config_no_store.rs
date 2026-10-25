@@ -14,7 +14,9 @@ fn main() -> tinystore::Result<()> {
     let work = std::env::temp_dir().join("config-no-store-repro");
     let _ = std::fs::remove_dir_all(&work);
     std::fs::create_dir_all(&work).unwrap();
-    std::fs::write(work.join("agent.toml"), "hub = \"wss://dashbin.example.com/agent\"\n").unwrap();
+    // the file is the operator's, readable by the agent alone, so the password may sit in it
+    let toml = "hub = \"wss://dashbin.example.com/agent\"\ndatabase = \"postgres://reader:secret@127.0.0.1/shop\"\n";
+    std::fs::write(work.join("agent.toml"), toml).unwrap();
 
     // there is no config without a store: to read a toml file and the environment, a store opens a directory
     let data = work.join("data");
