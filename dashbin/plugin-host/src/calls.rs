@@ -34,12 +34,39 @@ pub(crate) fn first_line(text: &str) -> String {
     text.lines().next().unwrap_or("").chars().take(160).collect()
 }
 
-async fn load(instance: &Instance, bytes: Vec<u8>) -> Result<(), String> {
+pub(crate) enum Code {
+    Source(Vec<u8>),
+    // compiled by this host, never by an author (chapter 6)
+    Bytecode(Vec<u8>),
+}
+
+impl From<Vec<u8>> for Code {
+    fn from(source: Vec<u8>) -> Self {
+        Code::Source(source)
+    }
+}
+
+/// Compiles a bundle once, so that loading it again costs a read rather than a parse.
+pub(crate) async fn compile(source: Vec<u8>) -> Result<Vec<u8>, String> {
+    let instance = Instance::with_net(Some((Some(vec![]), vec![]))).await.map_err(|e| e.to_string())?;
+    let bytes = async_with!(instance.context => |ctx| {
+        let module = Module::declare(ctx.clone(), "plugin", source).catch(&ctx).map_err(|e| e.to_string())?;
+        module.write(rquickjs::module::WriteOptions::default()).map_err(|e| e.to_string())
+    })
+    .await;
+    instance.unload().await;
+    bytes
+}
+
+async fn load(instance: &Instance, code: Code) -> Result<(), String> {
     async_with!(instance.context => |ctx| {
         let host = Module::declare(ctx.clone(), "host", "import 'dashbin'").catch(&ctx).map_err(|e| e.to_string())?;
         let (_, ready) = host.eval().catch(&ctx).map_err(|e| e.to_string())?;
         ready.into_future::<()>().await.catch(&ctx).map_err(|e| e.to_string())?;
-        let module = Module::declare(ctx.clone(), "plugin", bytes).catch(&ctx).map_err(|e| e.to_string())?;
+        let module = match code {
+            Code::Bytecode(bytes) => unsafe { Module::load(ctx.clone(), &bytes) }.catch(&ctx).map_err(|e| e.to_string())?,
+            Code::Source(bytes) => Module::declare(ctx.clone(), "plugin", bytes).catch(&ctx).map_err(|e| e.to_string())?,
+        };
         let (module, promise) = module.eval().catch(&ctx).map_err(|e| e.to_string())?;
         match tokio::time::timeout(INSTALL_TIME, promise.into_future::<()>()).await {
             Err(_) => return Err(format!("its top level did not finish within {INSTALL_TIME:?}")),
@@ -66,7 +93,7 @@ pub(crate) async fn discover_limited(bytes: Vec<u8>, limit: usize) -> (Result<St
     instance.runtime.set_max_stack_size(INSTALL_STACK).await;
     let deadline = guard(&instance).await;
     arm(&deadline, INSTALL_TIME);
-    let mut found = load(&instance, bytes).await.map(|_| String::new());
+    let mut found = load(&instance, bytes.into()).await.map(|_| String::new());
     if found.is_ok() {
         found = async_with!(instance.context => |ctx| {
             let describe: Function = ctx.globals().get("__dashbinDescribe").map_err(|e| e.to_string())?;
@@ -192,13 +219,13 @@ async fn instance_for(bytes: Vec<u8>, allow: Vec<String>, typed: Vec<String>) ->
 }
 
 // a hub drives every runtime, so a request the call's end woke is dropped then, not at the runtime's next use
-pub(crate) async fn instance_limited(bytes: Vec<u8>, allow: Vec<String>, typed: Vec<String>, limit: usize) -> Result<(Instance, Deadline), String> {
+pub(crate) async fn instance_limited(code: impl Into<Code>, allow: Vec<String>, typed: Vec<String>, limit: usize) -> Result<(Instance, Deadline), String> {
     let instance = Instance::with_net(Some((Some(allow), typed))).await.map_err(|e| e.to_string())?;
     instance.runtime.set_memory_limit(limit).await;
     tokio::task::spawn_local(instance.runtime.drive());
     let deadline = guard(&instance).await;
     arm(&deadline, INSTALL_TIME);
-    if let Err(e) = load(&instance, bytes).await {
+    if let Err(e) = load(&instance, code.into()).await {
         instance.unload().await;
         return Err(e);
     }

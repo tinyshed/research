@@ -1,4 +1,6 @@
 // a plugin host as dashbin would have it: one quickjs runtime per plugin instance, web apis from llrt
+#[cfg(feature = "jemalloc")]
+mod arena;
 mod calls;
 #[cfg(feature = "hub")]
 mod hub;
@@ -98,6 +100,9 @@ impl Instance {
     }
 
     async fn with_net(net: Net) -> rquickjs::Result<Self> {
+        #[cfg(feature = "jemalloc")]
+        let runtime = if std::env::var("JS_ARENA").is_ok() { AsyncRuntime::new_with_alloc(arena::JsArena::new())? } else { AsyncRuntime::new()? };
+        #[cfg(not(feature = "jemalloc"))]
         let runtime = AsyncRuntime::new()?;
         runtime.set_memory_limit(32 << 20).await;
         #[cfg(feature = "web-apis")]

@@ -1,9 +1,10 @@
 // one process as dashbin would run it: axum and tinystore::aio on the main runtime,
 // the plugin instances on a thread of their own, since a quickjs runtime never leaves the thread it was made on
+use std::cell::{Cell, RefCell};
 use std::collections::HashMap;
 use std::rc::Rc;
 use std::sync::Arc;
-use std::time::{Duration, SystemTime};
+use std::time::{Duration, Instant, SystemTime};
 
 use axum::extract::{Path, State};
 use axum::http::StatusCode;
@@ -15,7 +16,7 @@ use tokio::sync::{mpsc, oneshot};
 use tracing_subscriber::prelude::*;
 
 use crate::Instance;
-use crate::calls::{Call, Deadline, Outcome, call, discover_limited, first_line, host_of, instance_limited, settle, RANGE};
+use crate::calls::{Call, Code, Deadline, Outcome, RANGE, call, compile, discover_limited, first_line, host_of, instance_limited, settle};
 
 const INSTANCE_MEMORY: usize = 32 << 20;
 
@@ -25,13 +26,33 @@ enum Job {
     Held { reply: oneshot::Sender<String> },
 }
 
-struct Loaded {
-    instance: Instance,
-    deadline: Deadline,
+type Live = Rc<(Instance, Deadline)>;
+
+struct Plugin {
+    // bytecode when runtimes come and go, the source when they are loaded once at the start
+    code: Vec<u8>,
+    compiled: bool,
+    typed: Vec<String>,
     function: &'static str,
     settings: String,
+    live: RefCell<Option<Live>>,
+    last: Cell<Instant>,
     // a runtime runs one call at a time (chapter 5)
     turn: tokio::sync::Mutex<()>,
+}
+
+// what this run tries: GC_AFTER_CALL collects a runtime's garbage once its call has settled,
+// IDLE_UNLOAD_MS unloads a runtime that long after its last call, and 0 right after it
+struct Knobs {
+    gc_after_call: bool,
+    idle: Option<Duration>,
+}
+
+#[derive(Default)]
+struct Counts {
+    loads: Cell<usize>,
+    unloads: Cell<usize>,
+    loading: Cell<Duration>,
 }
 
 // what each kind of plugin is asked, and where its mock answers
@@ -47,37 +68,104 @@ fn kind_of(bundle: &str) -> (&'static str, String) {
     }
 }
 
+fn api_host(settings: &str) -> String {
+    host_of(settings.split(r#""api":""#).nth(1).unwrap_or("").split('"').next().unwrap_or(""))
+}
+
+async fn ensure(one: &Plugin, counts: &Counts) -> Result<Live, String> {
+    if let Some(live) = one.live.borrow().clone() {
+        return Ok(live);
+    }
+    let started = Instant::now();
+    let code = if one.compiled { Code::Bytecode(one.code.clone()) } else { Code::Source(one.code.clone()) };
+    let (instance, deadline) = instance_limited(code, vec![], one.typed.clone(), INSTANCE_MEMORY).await?;
+    counts.loads.set(counts.loads.get() + 1);
+    counts.loading.set(counts.loading.get() + started.elapsed());
+    let live = Rc::new((instance, deadline));
+    *one.live.borrow_mut() = Some(live.clone());
+    Ok(live)
+}
+
+async fn unload(one: &Plugin, counts: &Counts) {
+    let Some(live) = one.live.borrow_mut().take() else { return };
+    match Rc::try_unwrap(live) {
+        Ok((instance, _)) => {
+            instance.unload().await;
+            counts.unloads.set(counts.unloads.get() + 1);
+        }
+        Err(live) => *one.live.borrow_mut() = Some(live),
+    }
+}
+
 fn plugins(specs: Vec<(String, String)>, mut jobs: mpsc::Receiver<Job>) {
+    let knobs = Knobs {
+        gc_after_call: std::env::var("GC_AFTER_CALL").is_ok(),
+        idle: std::env::var("IDLE_UNLOAD_MS").ok().and_then(|v| v.parse().ok()).map(Duration::from_millis),
+    };
     let runtime = tokio::runtime::Builder::new_current_thread().enable_all().build().unwrap();
     tokio::task::LocalSet::new().block_on(&runtime, async move {
-        let mut loaded: HashMap<String, Rc<Loaded>> = HashMap::new();
+        let counts = Rc::new(Counts::default());
+        let mut plugins: HashMap<String, Rc<Plugin>> = HashMap::new();
         for (name, bundle) in specs {
             let (function, settings) = kind_of(&bundle);
-            let typed = vec![host_of(settings.split("\"api\":\"").nth(1).unwrap_or("").split('"').next().unwrap_or(""))];
-            let bytes = std::fs::read(&bundle).unwrap();
-            match instance_limited(bytes, vec![], typed, INSTANCE_MEMORY).await {
-                Ok((instance, deadline)) => {
-                    let one = Loaded { instance, deadline, function, settings, turn: tokio::sync::Mutex::new(()) };
-                    loaded.insert(name, Rc::new(one));
+            let typed = vec![api_host(&settings)];
+            let source = std::fs::read(&bundle).unwrap();
+            let compiled = knobs.idle.is_some();
+            let code = if compiled { compile(source).await.unwrap() } else { source };
+            let one =
+                Plugin { code, compiled, typed, function, settings, live: RefCell::default(), last: Cell::new(Instant::now()), turn: Default::default() };
+            if knobs.idle.is_none() {
+                if let Err(e) = ensure(&one, &counts).await {
+                    eprintln!("{name}: {}", first_line(&e));
                 }
-                Err(e) => eprintln!("{name}: {}", first_line(&e)),
             }
+            plugins.insert(name, Rc::new(one));
         }
-        println!("plugins: {} instances loaded", loaded.len());
+        println!("plugins: {} instances, gc after a call {}, unload when idle {:?}", plugins.len(), knobs.gc_after_call, knobs.idle);
+        if let Some(idle) = knobs.idle.filter(|d| !d.is_zero()) {
+            let (watched, counts) = (plugins.values().cloned().collect::<Vec<_>>(), counts.clone());
+            tokio::task::spawn_local(async move {
+                loop {
+                    tokio::time::sleep(Duration::from_millis(100)).await;
+                    for one in &watched {
+                        if one.live.borrow().is_some() && one.last.get().elapsed() >= idle {
+                            if let Ok(_turn) = one.turn.try_lock() {
+                                unload(one, &counts).await;
+                            }
+                        }
+                    }
+                }
+            });
+        }
         let installing = Rc::new(tokio::sync::Mutex::new(()));
+        let unload_at_once = knobs.idle.is_some_and(|d| d.is_zero());
+        let gc_after_call = knobs.gc_after_call;
         while let Some(job) = jobs.recv().await {
             match job {
                 Job::Call { instance, reply } => {
-                    let Some(one) = loaded.get(&instance).cloned() else {
+                    let Some(one) = plugins.get(&instance).cloned() else {
                         let _ = reply.send(Err(format!("no instance {instance}")));
                         continue;
                     };
+                    let counts = counts.clone();
                     tokio::task::spawn_local(async move {
                         let _turn = one.turn.lock().await;
+                        let live = match ensure(&one, &counts).await {
+                            Ok(live) => live,
+                            Err(e) => return drop(reply.send(Err(e))),
+                        };
                         let params = format!("{{{RANGE}}}");
                         let c = Call { function: one.function, params, settings: one.settings.clone(), id: "hub", rows: 10, stop_after: None };
-                        let (outcome, _) = call(&one.instance, &one.deadline, c).await;
-                        settle(&one.instance).await;
+                        let (outcome, _) = call(&live.0, &live.1, c).await;
+                        settle(&live.0).await;
+                        if gc_after_call {
+                            live.0.runtime.run_gc().await;
+                        }
+                        drop(live);
+                        one.last.set(Instant::now());
+                        if unload_at_once {
+                            unload(&one, &counts).await;
+                        }
                         let _ = reply.send(match outcome {
                             Outcome::Done(result) => result,
                             Outcome::Stopped => Err("stopped".into()),
@@ -97,11 +185,23 @@ fn plugins(specs: Vec<(String, String)>, mut jobs: mpsc::Receiver<Job>) {
                     });
                 }
                 Job::Held { reply } => {
-                    let mut total = 0;
-                    for one in loaded.values() {
-                        total += one.instance.runtime.memory_usage().await.malloc_size;
+                    let (mut total, mut live) = (0, 0);
+                    for one in plugins.values() {
+                        let current = one.live.borrow().clone();
+                        if let Some(current) = current {
+                            total += current.0.runtime.memory_usage().await.malloc_size;
+                            live += 1;
+                        }
                     }
-                    let _ = reply.send(format!("{} instances hold {:.1} MiB of JavaScript", loaded.len(), total as f64 / 1048576.0));
+                    let loads = counts.loads.get();
+                    let mean = if loads > 0 { counts.loading.get() / loads as u32 } else { Duration::ZERO };
+                    let _ = reply.send(format!(
+                        "{live} of {} instances loaded, holding {:.1} MiB of JavaScript; {loads} loads, {:.1} ms each, {} unloads",
+                        plugins.len(),
+                        total as f64 / 1048576.0,
+                        mean.as_secs_f64() * 1e3,
+                        counts.unloads.get()
+                    ));
                 }
             }
         }
