@@ -1,0 +1,5 @@
+rquickjs-core 0.11.0 from crates.io (DelSkayn/rquickjs), MIT, LICENSE from the upstream repository.
+
+Changed by Dashbin:
+  src/runtime/async.rs   execute_pending_job and idle dup the context JS_ExecutePendingJob lends before wrapping it,
+                         as rquickjs-core 0.12.0 does; without it a job that throws frees its context once too often

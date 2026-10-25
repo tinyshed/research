@@ -22,6 +22,8 @@ tikv-jemalloc-sys = { version = "0.7", optional = true }
 
 [patch.crates-io]
 llrt_fetch = { path = "vendor/llrt_fetch" }
+# 0.11.0, which llrt requires, with the fix 0.12.0 made: see vendor/rquickjs-core/UPSTREAM
+rquickjs-core = { path = "vendor/rquickjs-core" }
 
 [profile.release]
 lto = "fat"
