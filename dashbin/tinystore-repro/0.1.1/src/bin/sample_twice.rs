@@ -22,12 +22,16 @@ fn main() -> tinystore::Result<()> {
     let hour = 3600;
     let start_secs = (now.duration_since(UNIX_EPOCH).unwrap().as_secs() / hour) * hour - 3 * hour;
     let start = UNIX_EPOCH + Duration::from_secs(start_secs);
-    let mut series = Series::gauge("revenue").label("site", "kazan");
-    for i in 0..(3 * hour / 15) {
-        series = series.sample(start + Duration::from_secs(15 * i), 1.0);
-    }
-    series = series.sample(now, 1.0);
-    stats.ingest(&[series])?;
+    let batch = || {
+        let mut series = Series::gauge("revenue").label("site", "kazan");
+        for i in 0..(3 * hour / 15) {
+            series = series.sample(start + Duration::from_secs(15 * i), 1.0);
+        }
+        series.sample(now, 1.0)
+    };
+    stats.ingest(&[batch()])?;
+    // what a collector's retry does after a crash between its ingest and keeping that it ingested: the same batch
+    println!("the same batch ingested again, every sample identical: {:?}", stats.ingest(&[batch()]).map_err(|e| e.to_string()));
 
     let packed_at = start + Duration::from_secs(15 * 60); // inside the first, complete hour
     let head_at = start + Duration::from_secs(3 * hour - 60); // the last minutes, still in the head
