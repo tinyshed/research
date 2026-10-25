@@ -27,4 +27,5 @@ gives it, what its memory costs, and the plugin host it will carry.
   with its instances in a 64 MiB container: eight real instances did not fit kept loaded, sixteen did with
   QuickJS in its own arena, GC after a call, idle runtimes unloaded and four slots.
 - [TinyStore 0.1.1 against what flows need](tinystore-0.1.1-flows-2026-10-25.md):
-  an event appended twice is two, an identical metrics batch is refused once packed, missed repeats collapse into one.
+  an event appended twice is two, an identical metrics batch is refused once packed, missed repeats collapse into one;
+  seven asks besides, #25–#31.

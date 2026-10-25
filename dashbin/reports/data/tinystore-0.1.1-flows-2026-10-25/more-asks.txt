@@ -1,0 +1,49 @@
+== issue_zone_buckets
+metrics, orders a day over two moscow days, 24 each:
+  bucket at 2026-10-21T00:00Z: Exact(3.0)
+  bucket at 2026-10-22T00:00Z: Exact(24.0)
+  bucket at 2026-10-23T00:00Z: Exact(21.0)
+records, the same orders as events, counted a day:
+  row at 2026-10-21T00:00Z: 3
+  row at 2026-10-22T00:00Z: 24
+  row at 2026-10-23T00:00Z: 21
+== issue_prometheus_rest
+help and unit after ingesting the family: help "", unit ""
+12000 samples in one scrape: Err("metrics: line 10002, `kube_pod_status_ready{pod=\"pod-10000\",condition=\"true\"} 1`: a text past 10000 samples or 4 MiB: send it in parts: limit")
+a quoted utf-8 name: Err("metrics: line 1, `# TYPE \"http.server.request.duration\" gauge`: a metric's name \"\\\"http.server.request.duration\\\"\": a name holds letters, digits, `_` and a metric's `:`, and begins with no digit: invalid")
+== issue_gauge_correction
+yesterday's revenue corrected from 1000 to 900: Err("<tmp>\\gauge-correction-repro\\metrics.db: metrics revenue{shop=\"msk\"}: sample at 2026-10-24T00:00:00Z, behind what its series has packed: too old")
+yesterday now reads [1000.0]
+== issue_group_rate
+    0.0 s  bot-a message 0
+    0.0 s  bot-b message 0
+    1.0 s  bot-a message 1
+    1.0 s  bot-b message 1
+    2.0 s  bot-b message 2
+    2.0 s  bot-a message 2
+    3.0 s  bot-a message 3
+    3.0 s  bot-b message 3
+bot-b's limit is its own at telegram, but its messages waited behind bot-a's in the queue's one rate
+== issue_config_no_store
+Error: config agent: database is required: database in <tmp>\config-no-store-repro\agent.toml, or set AGENT__DATABASE: invalid
+== node_exporter_text
+81734 bytes: 884 samples, 292 # HELP, 292 # TYPE, 0 # UNIT
+ingest: Ok(())
+  node_memory_MemAvailable_bytes: help "", unit ""
+  node_cpu_seconds_total: help "", unit ""
+  node_network_receive_bytes_total: help "", unit ""
+== issue_group_rate (second run)
+    0.0 s  bot-a message 0
+    0.0 s  bot-b message 0
+    1.0 s  bot-a message 1
+    1.0 s  bot-b message 1
+    2.0 s  bot-a message 2
+    2.0 s  bot-b message 2
+    3.1 s  bot-b message 3
+    3.1 s  bot-a message 3
+each bot may send 2 a second at telegram; the queue's one rate gave them 1 a second each, 4 s for what took 2
+== issue_config_no_store (second run)
+Error: config agent: database is required: database in <tmp>\config-no-store-repro\agent.toml, or set AGENT__DATABASE: invalid
+== issue_config_no_store (third run, the secret given)
+hub from the file: wss://dashbin.example.com/agent
+what reading two settings left on disk in data: ["LOCK", "kv.db", "kv.db-shm", "kv.db-wal"]

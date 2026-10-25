@@ -15,11 +15,12 @@ programs against the published crate rather than read from its docs.
 ## Environment and reproduction
 
 - `tinystore = "=0.1.1"` from crates.io, features `kv`, `metrics`,
-  `records`, `sql`, `async`, `jobs`. Windows 11, Rust 1.97.1, functional
+  `records`, `sql`, `async`, `jobs`, `config`. Windows 11, Rust 1.97.1, functional
   checks, one pass each.
 - The programs were committed before they ran: 3aa66f8, then 7e7cde3 and
-  1da376f for the retries of the metrics batch, and c9f19a1 for the two
-  programs the issues carry. Before writing anything up, TinyStore's open and
+  1da376f for the retries of the metrics batch, c9f19a1 for the two
+  programs the issues carry, and 70b46f3 and 3780c1e for the seven asked
+  besides. Before writing anything up, TinyStore's open and
   closed issues (#1–#22) and its documentation were read: NOT-08 is the stated
   reason for refusing a sample behind the sealed frontier, and the complaint
   argues with it rather than past it.
@@ -29,6 +30,9 @@ cd <research>/dashbin/tinystore-repro/0.1.1
 cargo build --release --bins
 ./target/release/event_twice; ./target/release/sample_twice; ./target/release/missed_runs
 ./target/release/issue_event_id; ./target/release/issue_packed_retry
+./target/release/issue_zone_buckets; ./target/release/issue_prometheus_rest; ./target/release/issue_gauge_correction
+./target/release/issue_group_rate; ./target/release/issue_config_no_store
+./target/release/node_exporter_text <a saved node_exporter /metrics>
 ```
 
 Raw output: [data/tinystore-0.1.1-flows-2026-10-25/](data/tinystore-0.1.1-flows-2026-10-25/),
@@ -51,4 +55,26 @@ a crash between them repeats the append the same way.
 Business data adds a case NOT-08 was not written for: yesterday's revenue
 changes when a refund lands, and a collector that re-reads the last days to
 catch that is refused even for a gauge, which has no increase to protect.
-That is noted in the issue, not asked.
+That is asked apart, in #29 below.
+
+## Asked besides
+
+Nothing in chapter 7 waits on these. They are what Dashbin will meet next on
+TinyStore, filed now so its maintainers can weigh them, including the ones we
+consider optional. Each carries a whole program and its output.
+
+| Ask | What the program shows | Issue |
+|---|---|---|
+| Day, week and month buckets in a zone | A day is a UTC day in metrics and in records: one order an hour over two Moscow days reads 3, 24, 21 | [#25](https://github.com/tinyshed/tinystore/issues/25) |
+| Keep `# HELP` and `# UNIT` from a scrape | Help and unit come back empty; a real node_exporter 1.12.1 carries 292 help lines, all dropped | [#26](https://github.com/tinyshed/tinystore/issues/26) |
+| Cut a long scrape at family boundaries | 12 000 samples, written to stand for kube-state-metrics on a large cluster, refused whole: `send it in parts` | [#27](https://github.com/tinyshed/tinystore/issues/27) |
+| Read Prometheus 3's quoted UTF-8 names | The whole text refused at the first quoted name | [#28](https://github.com/tinyshed/tinystore/issues/28) |
+| Correct a gauge behind the frontier | Yesterday's revenue corrected from 1000 to 900 is refused `too old` and stays 1000 | [#29](https://github.com/tinyshed/tinystore/issues/29) |
+| A rate per job group | Two bots allowed 2 a second each share the queue's 2: four messages each take 4 s rather than 2 | [#30](https://github.com/tinyshed/tinystore/issues/30) |
+| Config without a store | Reading a toml file and the environment opens a store and leaves `LOCK` and `kv.db` with its WAL behind | [#31](https://github.com/tinyshed/tinystore/issues/31) |
+
+Until they land, Dashbin will group by day in the source's own SQL when a
+zone matters, cut a long scrape itself, read a corrected number from the
+source rather than from history, give a provider with limits per account a
+queue per account, and read the agent's file with `toml` and `serde`
+directly. Each workaround will carry the issue's link and go when it closes.
