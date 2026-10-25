@@ -95,6 +95,17 @@ cd js && bun install
 node check.mjs                      # the readers agree, nothing timed
 node --expose-gc node.mjs           # V8
 bun node.mjs                        # JavaScriptCore
-bun bundles.mjs                     # what each reader adds to a bundle
+bun bundles.mjs                     # what each reader adds to a bundle, written to dist/reader-*.js
+node --expose-gc load.mjs arrow     # loading one reader's bundle in a fresh process
+node small.mjs                      # 1, 30 and 1000 rows, after gen wrote out-1, out-30 and out-1000
 bun build browser.mjs --outdir dist --target browser && node serve.mjs   # then open the address it prints
+bun build small-browser.mjs --outdir dist --target browser               # js/small.html; js/load.html needs only the bundles
+```
+
+After round 2, Arrow's carrying cost: `size.sh` builds a writer-only and a
+reader-only binary beside the others, and `cargo bloat --crates` over the
+Arrow one attributes it.
+
+```sh
+for n in 1 30 1000; do /target/release/gen /w/out-$n $n; done   # inside the same container as gen
 ```

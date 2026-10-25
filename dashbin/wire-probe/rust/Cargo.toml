@@ -40,6 +40,16 @@ path = "src/bin/size_arrow.rs"
 required-features = ["arrow"]
 
 [[bin]]
+name = "size-arrow-write"
+path = "src/bin/size_arrow_write.rs"
+required-features = ["arrow"]
+
+[[bin]]
+name = "size-arrow-read"
+path = "src/bin/size_arrow_read.rs"
+required-features = ["arrow"]
+
+[[bin]]
 name = "size-own"
 path = "src/bin/size_own.rs"
 

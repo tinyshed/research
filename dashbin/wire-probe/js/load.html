@@ -1,0 +1,20 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>wire probe: load</title>
+<pre id="out">running</pre>
+<script type="module">
+// each reader's bundle loaded fifteen times as new source text, interleaved, medians in ms
+const out = document.getElementById('out');
+const times = { json: [], own: [], arrow: [] };
+for (let i = 0; i < 15; i++) {
+  for (const r of Object.keys(times)) {
+    const url = `/js/dist/reader-${r}.js?salt=${r}-${i}-${Math.random()}`;
+    const t0 = performance.now();
+    await import(url);
+    times[r].push(performance.now() - t0);
+  }
+}
+const median = (xs) => [...xs].sort((a, b) => a - b)[xs.length >> 1];
+out.textContent = `${navigator.userAgent}\n` + Object.entries(times).map(([r, xs]) => `${r.padEnd(6)} median ${median(xs).toFixed(2)} ms, min ${Math.min(...xs).toFixed(2)}, max ${Math.max(...xs).toFixed(2)}`).join('\n');
+out.dataset.done = '1';
+</script>
