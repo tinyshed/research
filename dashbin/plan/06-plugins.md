@@ -77,9 +77,10 @@ What each part is:
 - **A read returns rows**, plain objects; the kernel builds the frame by
   chapter 3's table. An action returns any JSON value.
 
-This example is a test before it is a promise: it runs against `stripe-mock`
-in Dashbin's host, as the SDK round ran Stripe, before the chapter's word on
-it is final.
+This example ran as written against `stripe-mock` in Dashbin's host
+([plugin calls](../reports/plugin-calls-2026-10-25.md)): its declarations
+read back exactly, both functions answered, and Stripe's worker build used
+`fetch` without being told to.
 
 ## Installing reads declarations, a call gets settings
 
@@ -95,7 +96,11 @@ runs someone else's code, so it runs in a runtime of its own with:
   with an error instead of hanging the hub.
 
 A `fetch` at the top level is refused, and so is a module that declares
-nothing. Real settings reach only a call, in an instance's own runtime.
+nothing. Real settings reach only a call, in an instance's own runtime. All
+six ways of breaking an install were refused with the process alive; a
+memory bomb under a 24 MiB limit still took the process's RSS to 54 MiB for
+two seconds, so **an install runs alone, with a smaller memory limit than an
+instance**, the number from the load run.
 
 ## The four kinds
 
@@ -140,7 +145,18 @@ Dashbin does.
 started**, whether the SDK passes a `signal` along or not; Stripe's
 documented request options have none. A runtime runs one call at a time
 (chapter 5), so a call's requests are simply the runtime's requests in
-flight. `signal` stays for the author's own code.
+flight. `signal` stays for the author's own code. In code, the end of a call
+is four steps, each found necessary by the run:
+
+1. requests start only inside a call, and those in flight are dropped;
+2. timers do the same: the ones left are stopped, and one started after the
+   end never fires — otherwise an SDK's retry backoff keeps the runtime busy;
+3. the host drives the runtime until it is idle, since a dropped request is
+   dropped only when its future is polled;
+4. whatever still runs after a grace of half a second is interrupted.
+
+Measured on seven plugins, Stripe's included: every connection closed
+0.1–0.2 ms after the call's end, and no retry reached the server.
 
 **Secrets are masked, not sealed off.** The kernel keeps a secret wrapped,
 never prints the wrapper, and replaces the instance's secret values with
@@ -165,6 +181,11 @@ metadata never. Every redirect hop is checked. All of this is measured in
 [the plugin host](../reports/plugin-host-2026-10-25.md): two instances of one
 plugin in one process, one allowed and one refused.
 
+**The host keeps the refusals it made during a call** and reports them beside
+the plugin's error. An SDK catches what the host throws: Stripe's turned
+"dashbin: plughost-stripe is not a host this plugin may reach" into "An error
+occurred with our connection to Stripe", after retrying twice.
+
 ## Executors
 
 | Executor | For | Cost, measured |
@@ -183,6 +204,12 @@ unloaded after some minutes idle.
 **The host compiles a bundle to bytecode at install** and keeps it as a
 cache, recompiled when Dashbin upgrades; it never accepts bytecode from an
 author. Bytecode saves the cold start (OpenAI 30 → 4 ms), not memory.
+
+**The host carries rquickjs-core 0.11.0 with one fix.** Unloading a runtime
+after an interrupted job aborted the process in QuickJS's garbage collector,
+because 0.11.0 frees a context it only borrowed; 0.12.0 fixed it, and LLRT
+still requires 0.11. The fix sits in `vendor/` beside `llrt_fetch`, until
+LLRT moves.
 
 **A process plugin shares the agent's call protocol, not the agent.** What
 both carry is the call: a request, its frames or result or error, and
@@ -380,11 +407,8 @@ the provider's window.
 
 ## Not measured yet
 
-- The example above against `stripe-mock` in Dashbin's host.
-- The host aborting a call's requests when it ends or is cancelled, and
-  `signal` aborting a `fetch` (chapter 5).
-- Installing under limits: the interrupt handler ending an endless loop, the
-  memory and stack limits ending the others.
+- The memory limit an install runs under, which keeps its RSS inside the
+  promise.
 - The hub's own cost of the QuickJS host, which shares tokio and hyper with
   it: the 9.19 MiB was a separate binary.
 - A process plugin over stdio end to end, and its cancellation.

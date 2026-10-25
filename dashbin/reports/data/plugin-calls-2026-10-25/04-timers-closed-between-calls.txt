@@ -1,0 +1,91 @@
+== install under limits
+  /p/install/loop.js
+discover: before                               VmRSS   2.3 MiB  peak   2.3
+    after loop.js                              VmRSS   6.6 MiB  peak   6.6
+    refused in 2s: Error: interrupted
+  /p/install/recursion.js
+    refused in 3ms: Error: Maximum call stack size exceeded
+  /p/install/memory.js
+    after recursion.js                         VmRSS   7.1 MiB  peak   7.1
+    after memory.js                            VmRSS  53.9 MiB  peak  53.9
+    refused in 49ms: Error: out of memory
+  /p/install/fetch.js
+    refused in 2ms: Error: dashbin: no call is running in this instance
+  /p/install/hang.js
+    after fetch.js                             VmRSS  53.9 MiB  peak  53.9
+    refused in 2s: its top level did not finish within 2s
+  /p/install/nothing.js
+    after hang.js                              VmRSS   7.3 MiB  peak  53.6
+    refused in 2ms: Error: dashbin: the module declares no function
+  /p/stripe.js
+    after nothing.js                           VmRSS   7.3 MiB  peak  53.6
+    declared in 24ms: {"settings":{"key":{"type":"secret","title":"Secret key"},"api":{"type":"url","optional":true}},"hosts":["api.stripe.com"],"functions":{"charges":{"kind":"read","params":{"status":{"type":"text","optional":true}},"columns":{"amount":{"unit":"money","currency":"currency"}},"precision":"second"},"refund":{"kind":"action","params":{"charge":{"type":"text"}}}}}
+  /p/abort.js
+    after stripe.js                            VmRSS  10.6 MiB  peak  53.6
+    after abort.js                             VmRSS  10.6 MiB  peak  53.6
+    declared in 2ms: {"settings":{"slow":{"type":"url"}},"hosts":[],"functions":{"leaves":{"kind":"read"},"retries":{"kind":"read"},"sdkLike":{"kind":"read"},"sdkLikeNoTimer":{"kind":"read"},"waits":{"kind":"read"},"waitsWithSignal":{"kind":"read"}}}
+discover: after all, purged                    VmRSS   9.1 MiB  peak  53.6
+== the example on stripe-mock
+install
+  declared: {"settings":{"key":{"type":"secret","title":"Secret key"},"api":{"type":"url","optional":true}},"hosts":["api.stripe.com"],"functions":{"charges":{"kind":"read","params":{"status":{"type":"text","optional":true}},"columns":{"amount":{"unit":"money","currency":"currency"}},"precision":"second"},"refund":{"kind":"action","params":{"charge":{"type":"text"}}}}}
+  charges call-1: returned [{"time":"2009-02-13T23:31:30.000Z","amount":100,"currency":"usd","status":"succeeded"}] in 3ms
+  charges call-2: returned [] in 1ms
+  refund op-refund-1: returned {"refund":"re_Ramqhwh8xSvqJDW","status":"succeeded"} in 1ms
+  hosts it asked for: {"plughost-stripe": 3}
+an instance whose admin did not type the mock's address
+  charges call-3: failed: Error: An error occurred with our connection to Stripe. Request was retried 2 times.
+== requests a call leaves, each case in a process of its own
+waits: the host ends the call at 300 ms; the fetch had no signal
+  stopped by the host
+  idle after 44µs
+  server saw the connection closed 0.1 ms after
+  connections the server accepted, one second later: 1
+  unloaded
+  exit 0
+signal: the host aborts only the call's signal at 300 ms
+  stopped by the host
+  idle after 33µs
+  after the signal, the call ended: idle after 180ns
+  server saw the connection closed 0.1 ms after
+  connections the server accepted, one second later: 1
+  unloaded
+  exit 0
+leaves: the call returns at once and leaves a fetch running
+  returned [{"left":1}]
+  idle after 22µs
+  server saw the connection closed 0.1 ms after
+  connections the server accepted, one second later: 1
+  unloaded
+  exit 0
+retries: the host ends the call at 300 ms; the plugin retries in a loop
+  stopped by the host
+error executing job: Error: interrupted
+
+  idle after 501ms
+  server saw the connection closed 0.1 ms after
+  connections the server accepted, one second later: 1
+  unloaded
+  exit 0
+sdk-like-no-timer: its own controller, no timer, signal to fetch; ended at 300 ms
+  stopped by the host
+  idle after 44µs
+  server saw the connection closed 0.1 ms after
+  connections the server accepted, one second later: 1
+  unloaded
+  exit 0
+sdk-like: its own controller, an 80 s timeout timer, signal to fetch; ended at 300 ms
+  stopped by the host
+  idle after 56µs
+  server saw the connection closed 0.1 ms after
+  connections the server accepted, one second later: 1
+  unloaded
+  exit 0
+stripe: the chapter's plugin aimed at the slow server, the SDK given no signal; ended at 300 ms
+  stopped by the host
+  idle after 117µs
+  server saw the connection closed 0.2 ms after
+  connections the server accepted, one second later: 1
+  the next call on the same instance, against stripe-mock: returned [{"time":"2009-02-13T23:31:30.000Z","amount":100,"currency":"usd","status":"succeeded"}]
+  unloaded
+  exit 0
+stripe/stripe-mock@sha256:aeb96b83e87a893d2ac005e363ac01ffa6e59a5ad85b49c155dfc9129de02e78

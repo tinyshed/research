@@ -201,14 +201,13 @@ things, and the table says what joins them:
 | TinyStore, for a dataset | dropping the future: `tinystore::aio` stops the read, measured on 0.1.1 |
 | PostgreSQL | a cancel request on a new connection, which the server may or may not act on in time; the statement timeout behind it |
 | MySQL | `KILL QUERY` naming the connection that runs it, sent on a second one; the killed query's connection goes back to the pool only once that query has ended, or is closed |
-| a JS plugin in QuickJS | the `signal` of its call fires, and every `fetch` it started is aborted |
+| a JS plugin in QuickJS | the `signal` of its call fires, and every `fetch` it started is aborted, given one or not; measured, 0.1–0.2 ms ([plugin calls](../reports/plugin-calls-2026-10-25.md)) |
 | a process plugin or an agent | `$cancel` with the call's id, as Go Dashbin's agent already does |
 
 **The cancel is sent by whatever drops the call**, from a guard that runs
 when the call's task is destroyed, so it cannot be lost with the task. Each
-row of the table is a test before it is a promise; none of them has been run
-in Rust, and an aborted `fetch` in our QuickJS host has not been tried either
-— the host's tests unloaded instances, which is not the same.
+row of the table is a test before it is a promise. The QuickJS row has been
+run; the database rows have not.
 
 ## Calls still running
 
@@ -366,7 +365,6 @@ Added: a viewer picks only the values a dashboard variable allows.
   starting values, how long a stream may stall, and chapter 3's caps: a load
   run of the hub against the 64 MiB promise.
 - Cancellation, row by row of its table: that PostgreSQL's cancel request and
-  MySQL's `KILL QUERY` are sent when a task is destroyed, that the killed
-  connection is not reused too early, and that `signal` aborts a `fetch` in
-  our QuickJS host.
+  MySQL's `KILL QUERY` are sent when a task is destroyed, and that the killed
+  connection is not reused too early.
 - The cost of `prepare_typed` per call against a cached statement.

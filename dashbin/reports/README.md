@@ -19,3 +19,6 @@ gives it, what its memory costs, and the plugin host it will carry.
   JSON, Arrow IPC and a layout of our own on 50 000 rows in V8, Chromium and JavaScriptCore;
   JSON by the rule in round 1; labels as a dictionary in round 2, and our layout taken over Arrow
   as an exception to the margins, on what Arrow weighs in the binary and the page.
+- [Chapter 6's plugins in the host](plugin-calls-2026-10-25.md):
+  the Stripe example on stripe-mock, install limits, and a call's end dropping its requests in 0.1–0.2 ms
+  once timers are gated and the runtime driven; a crash in rquickjs-core 0.11.0, fixed in 0.12.0, carried as a patch.
