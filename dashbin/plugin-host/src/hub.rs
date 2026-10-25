@@ -112,16 +112,25 @@ fn plugins(specs: Vec<(String, String)>, mut jobs: mpsc::Receiver<Job>) {
             let source = std::fs::read(&bundle).unwrap();
             let compiled = knobs.idle.is_some();
             let code = if compiled { compile(source).await.unwrap() } else { source };
-            let one =
+            let mut one =
                 Plugin { code, compiled, typed, function, settings, live: RefCell::default(), last: Cell::new(Instant::now()), turn: Default::default() };
             if knobs.idle.is_none() {
                 if let Err(e) = ensure(&one, &counts).await {
                     eprintln!("{name}: {}", first_line(&e));
                 }
+                // loaded once and never again, so its source need not stay
+                one.code = Vec::new();
             }
             plugins.insert(name, Rc::new(one));
         }
-        println!("plugins: {} instances, gc after a call {}, unload when idle {:?}", plugins.len(), knobs.gc_after_call, knobs.idle);
+        let kept: usize = plugins.values().map(|one| one.code.len()).sum();
+        println!(
+            "plugins: {} instances, gc after a call {}, unload when idle {:?}, {:.1} MiB of code kept to reload them",
+            plugins.len(),
+            knobs.gc_after_call,
+            knobs.idle,
+            kept as f64 / 1048576.0
+        );
         if let Some(idle) = knobs.idle.filter(|d| !d.is_zero()) {
             let (watched, counts) = (plugins.values().cloned().collect::<Vec<_>>(), counts.clone());
             tokio::task::spawn_local(async move {
@@ -193,12 +202,14 @@ fn plugins(specs: Vec<(String, String)>, mut jobs: mpsc::Receiver<Job>) {
                             live += 1;
                         }
                     }
+                    let kept: usize = plugins.values().map(|one| one.code.len()).sum();
                     let loads = counts.loads.get();
                     let mean = if loads > 0 { counts.loading.get() / loads as u32 } else { Duration::ZERO };
                     let _ = reply.send(format!(
-                        "{live} of {} instances loaded, holding {:.1} MiB of JavaScript; {loads} loads, {:.1} ms each, {} unloads",
+                        "{live} of {} instances loaded, holding {:.1} MiB of JavaScript, {:.1} MiB of code kept; {loads} loads, {:.1} ms each, {} unloads",
                         plugins.len(),
                         total as f64 / 1048576.0,
+                        kept as f64 / 1048576.0,
                         mean.as_secs_f64() * 1e3,
                         counts.unloads.get()
                     ));

@@ -1,0 +1,96 @@
+== eight instances, as before, limit 64m, install limit 8 MiB, 
+  started, idle                  VmRSS 45.0 MiB  RssAnon 34.5  RssFile 10.6  VmHWM 45.0  threads 8
+                                 8 of 8 instances loaded, holding 24.7 MiB of JavaScript; 8 loads, 24.1 ms each, 0 unloads
+  one call each                  VmRSS 47.2 MiB  RssAnon 35.9  RssFile 11.3  VmHWM 47.3  threads 9
+                                 8 of 8 instances loaded, holding 25.3 MiB of JavaScript; 8 loads, 24.1 ms each, 0 unloads
+  cgroup                         current 57 MiB  peak 58 MiB  high 0 max 0 oom_kill 0 
+  load, all at once:
+    panel 3000:  
+    plugin/notion-1 400: called `Result::unwrap()` on an `Err` value: JoinError::Panic(Id(5), "called `Result::unwrap()` on an `Err` value: Os { code: 104, kind: ConnectionReset, message: \"Connection reset by peer\" }", ...)
+    plugin/notion-2 400: 
+    plugin/octokit-1 400: 
+    plugin/octokit-2 400: 
+    plugin/openai-1 400: 
+    plugin/openai-2 400: 
+    plugin/stripe-1 400: 
+    plugin/stripe-2 400: 
+    work 10000:  
+  DIED                           OOMKilled=true exit=137
+== eight instances, quickjs in its own arena, limit 64m, install limit 8 MiB, -e JS_ARENA=1
+  started, idle                  VmRSS 44.5 MiB  RssAnon 33.9  RssFile 10.6  VmHWM 46.0  threads 9
+                                 8 of 8 instances loaded, holding 24.7 MiB of JavaScript; 8 loads, 34.4 ms each, 0 unloads
+  one call each                  VmRSS 46.9 MiB  RssAnon 35.7  RssFile 11.3  VmHWM 46.9  threads 10
+                                 8 of 8 instances loaded, holding 25.3 MiB of JavaScript; 8 loads, 34.4 ms each, 0 unloads
+  cgroup                         current 57 MiB  peak 58 MiB  high 0 max 0 oom_kill 0 
+  load, all at once:
+    panel 3000:  called `Result::unwrap()` on an `Err` value: Os { code: 104, kind: ConnectionReset, message: "Connection reset by peer" }
+    plugin/notion-1 400: 
+    plugin/notion-2 400: 
+    plugin/octokit-1 400: 
+    plugin/octokit-2 400: 
+    plugin/openai-1 400: 
+    plugin/openai-2 400: 
+    plugin/stripe-1 400: 
+    plugin/stripe-2 400: 
+    work 10000:  note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+  DIED                           OOMKilled=true exit=137
+== eight instances, own arena, gc after a call, limit 64m, install limit 8 MiB, -e JS_ARENA=1 -e GC_AFTER_CALL=1
+  started, idle                  
+Error response from daemon: No such container: plughost-hub
+                                 
+Error response from daemon: No such container: plughost-hub
+Error response from daemon: No such container: plughost-hub
+Error response from daemon: No such container: plughost-hub
+Error response from daemon: No such container: plughost-hub
+Error response from daemon: No such container: plughost-hub
+Error response from daemon: No such container: plughost-hub
+Error response from daemon: No such container: plughost-hub
+Error response from daemon: No such container: plughost-hub
+Error response from daemon: No such container: plughost-hub
+Error response from daemon: No such container: plughost-hub
+  one call each                  
+Error response from daemon: No such container: plughost-hub
+                                 
+Error response from daemon: No such container: plughost-hub
+  cgroup                         
+  load, all at once:
+    panel 3000:  Run 'docker run --help' for more information
+    plugin/notion-1 400: Run 'docker run --help' for more information
+    plugin/notion-2 400: Run 'docker run --help' for more information
+    plugin/octokit-1 400: Run 'docker run --help' for more information
+    plugin/octokit-2 400: Run 'docker run --help' for more information
+    plugin/openai-1 400: Run 'docker run --help' for more information
+    plugin/openai-2 400: Run 'docker run --help' for more information
+    plugin/stripe-1 400: Run 'docker run --help' for more information
+    plugin/stripe-2 400: Run 'docker run --help' for more information
+    work 10000:  Run 'docker run --help' for more information
+error: no such object: plughost-hub
+  DIED                           
+== eight instances, own arena, gc, unloaded after 2 s idle, limit 64m, install limit 8 MiB, -e JS_ARENA=1 -e GC_AFTER_CALL=1 -e IDLE_UNLOAD_MS=2000
+  started, idle                  VmRSS 27.3 MiB  RssAnon 16.7  RssFile 10.6  VmHWM 38.2  threads 9
+                                 0 of 8 instances loaded, holding 0.0 MiB of JavaScript; 0 loads, 0.0 ms each, 0 unloads
+Error response from daemon: container e57f9f417f459bbb40b267f6803a62ffdd42961541a8288a7180f441716b1cbc is not running
+Error response from daemon: No such container: plughost-hub
+Error response from daemon: No such container: plughost-hub
+Error response from daemon: No such container: plughost-hub
+Error response from daemon: No such container: plughost-hub
+  one call each                  
+Error response from daemon: No such container: plughost-hub
+                                 
+Error response from daemon: No such container: plughost-hub
+  cgroup                         
+  load, all at once:
+    panel 3000:  Run 'docker run --help' for more information
+    plugin/notion-1 400: Run 'docker run --help' for more information
+    plugin/notion-2 400: Run 'docker run --help' for more information
+    plugin/octokit-1 400: Run 'docker run --help' for more information
+    plugin/octokit-2 400: Run 'docker run --help' for more information
+    plugin/openai-1 400: Run 'docker run --help' for more information
+    plugin/openai-2 400: Run 'docker run --help' for more information
+    plugin/stripe-1 400: Run 'docker run --help' for more information
+    plugin/stripe-2 400: Run 'docker run --help' for more information
+    work 10000:  Run 'docker run --help' for more information
+error: no such object: plughost-hub
+  DIED                           
+fixes.sh: line 74: 8: command not found
+== eight instances, own arena, gc after a call, limit 64m, install limit 8 MiB, -e JS_ARENA=1 -e GC_AFTER_CALL=1

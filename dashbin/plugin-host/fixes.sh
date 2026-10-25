@@ -13,6 +13,8 @@ docker rm -f plughost-stripe plughost-mock plughost-hub >/dev/null 2>&1
 docker run -d --name plughost-stripe --network $NET --cpuset-cpus=12-13 stripe/stripe-mock:latest >/dev/null
 docker run -d --name plughost-mock --network $NET --cpuset-cpus=14-15 -v "$SDK:/m:ro" oven/bun:1.4.2-slim bun /m/mock.mjs >/dev/null
 sleep 3
+# the first container to read a freshly built binary is charged its page cache; read it once outside them all
+docker run --rm -v plughost-target:/target:ro -v "$HERE/plugins/dist:/p:ro" $IMG sh -c 'cat /target/out/plughost-hub /p/*.js > /dev/null'
 
 alive() { [ "$(docker inspect -f '{{.State.Running}}' plughost-hub 2>/dev/null)" = "true" ]; }
 died() { printf '  %-30s %s\n' "DIED" "$(docker inspect -f 'OOMKilled={{.State.OOMKilled}} exit={{.State.ExitCode}}' plughost-hub)"; }
