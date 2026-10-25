@@ -39,6 +39,8 @@ fn main() -> tinystore::Result<()> {
     println!("before maintenance: at the packed time {:?}, at the head time {:?}", points(&stats, packed_at)?, points(&stats, head_at)?);
     let done = maintain(&store)?;
     println!("maintenance packed {} series into {} blocks", done.packed, done.blocks);
+    let retry = stats.ingest(&[batch()]).map_err(|e| e.to_string());
+    println!("after maintenance, the same batch again, every sample identical: {retry:?}");
 
     let again = |at| Series::gauge("revenue").label("site", "kazan").sample(at, 2.0);
     let packed_answer = stats.ingest(&[again(packed_at)]);
