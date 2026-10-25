@@ -24,7 +24,10 @@ host discover /p/install/loop.js /p/install/recursion.js /p/install/memory.js /p
   /p/install/hang.js /p/install/nothing.js /p/stripe.js /p/abort.js
 echo "== the example on stripe-mock"
 host stripe /p/stripe.js http://plughost-stripe:12111
-echo "== requests a call leaves"
-host abort /p/abort.js /p/stripe.js http://plughost-stripe:12111
+echo "== requests a call leaves, each case in a process of its own"
+for case in waits signal leaves retries sdk-like-no-timer sdk-like stripe; do
+  host abort $case /p/abort.js /p/stripe.js http://plughost-stripe:12111
+  echo "  exit $?"
+done
 docker image inspect stripe/stripe-mock:latest --format '{{index .RepoDigests 0}}'
 docker rm -f plughost-stripe >/dev/null

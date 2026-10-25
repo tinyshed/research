@@ -1,0 +1,64 @@
+== install under limits
+discover: before                               VmRSS   2.3 MiB  peak   2.3
+  /p/install/loop.js
+    refused in 2s: Error: interrupted
+  /p/install/recursion.js
+    after loop.js                              VmRSS   6.4 MiB  peak   6.4
+    refused in 3ms: Error: Maximum call stack size exceeded
+  /p/install/memory.js
+    after recursion.js                         VmRSS   6.9 MiB  peak   6.9
+    after memory.js                            VmRSS  53.7 MiB  peak  53.7
+    refused in 63ms: Error: out of memory
+  /p/install/fetch.js
+    after fetch.js                             VmRSS  53.8 MiB  peak  53.8
+    refused in 3ms: Error: dashbin: no call is running in this instance
+  /p/install/hang.js
+    refused in 2s: its top level did not finish within 2s
+  /p/install/nothing.js
+    after hang.js                              VmRSS   7.2 MiB  peak  53.5
+    after nothing.js                           VmRSS   7.2 MiB  peak  53.5
+    refused in 2ms: Error converting from js 'undefined' into type 'function'
+  /p/stripe.js
+    after stripe.js                            VmRSS  10.5 MiB  peak  53.5
+    declared in 26ms: {"settings":{"key":{"type":"secret","title":"Secret key"},"api":{"type":"url","optional":true}},"hosts":["api.stripe.com"],"functions":{"charges":{"kind":"read","params":{"status":{"type":"text","optional":true}},"columns":{"amount":{"unit":"money","currency":"currency"}},"precision":"second"},"refund":{"kind":"action","params":{"charge":{"type":"text"}}}}}
+  /p/abort.js
+    after abort.js                             VmRSS  10.5 MiB  peak  53.5
+    declared in 2ms: {"settings":{"slow":{"type":"url"}},"hosts":[],"functions":{"leaves":{"kind":"read"},"retries":{"kind":"read"},"waits":{"kind":"read"},"waitsWithSignal":{"kind":"read"}}}
+discover: after all, purged                    VmRSS   8.9 MiB  peak  53.5
+== the example on stripe-mock
+install
+  declared: {"settings":{"key":{"type":"secret","title":"Secret key"},"api":{"type":"url","optional":true}},"hosts":["api.stripe.com"],"functions":{"charges":{"kind":"read","params":{"status":{"type":"text","optional":true}},"columns":{"amount":{"unit":"money","currency":"currency"}},"precision":"second"},"refund":{"kind":"action","params":{"charge":{"type":"text"}}}}}
+  charges call-1: returned [{"time":"2009-02-13T23:31:30.000Z","amount":100,"currency":"usd","status":"succeeded"}] in 4ms
+  charges call-2: returned [] in 1ms
+  refund op-refund-1: returned {"refund":"re_Ramj6ez0mXnAc8d","status":"succeeded"} in 1ms
+  hosts it asked for: {"plughost-stripe": 3}
+an instance whose admin did not type the mock's address
+  charges call-3: failed: Error: An error occurred with our connection to Stripe. Request was retried 2 times.
+== requests a call leaves
+waits: the host ends the call at 300 ms; the fetch had no signal
+  stopped by the host
+  server still holds the connection after 2 s
+  idle after 61µs
+  connections the server accepted during the case: 1
+waitsWithSignal: the host aborts only the call's signal at 300 ms
+  stopped by the host
+  server saw the connection closed 0.0 ms after
+  idle after 54µs
+  connections the server accepted during the case: 1
+leaves: the call returns at once and leaves a fetch running
+  returned [{"left":1}]
+  server saw the connection closed 0.0 ms after
+  idle after 32µs
+  connections the server accepted during the case: 1
+retries: the host ends the call at 300 ms; the plugin retries in a loop
+  stopped by the host
+  server still holds the connection after 2 s
+error executing job: Error: interrupted
+    at <anonymous> (plugin:19:19)
+
+  idle after 2ms
+  connections the server accepted during the case: 1
+stripe: the chapter's plugin pointed at the slow server, no signal given to the SDK; the host ends the call at 300 ms
+Assertion failed: p->ref_count > 0 (/target/x86_64-unknown-linux-musl/release/build/rquickjs-sys-df6009bd62a93f8a/out/quickjs.c: gc_decref_child: 6183)
+timeout: the monitored command dumped core
+stripe/stripe-mock@sha256:aeb96b83e87a893d2ac005e363ac01ffa6e59a5ad85b49c155dfc9129de02e78

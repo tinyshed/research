@@ -25,3 +25,21 @@ export const retries = read(async (_, { config }) => {
     } catch {}
   }
 })
+
+// what Stripe's fetch client does: its own controller, a timeout that aborts it, the signal given to fetch
+export const sdkLike = read(async (_, { config }) => {
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(new Error('timed out')), 80000)
+  try {
+    const response = await fetch(config.slow, { signal: controller.signal })
+    return [{ status: response.status }]
+  } finally {
+    clearTimeout(timeout)
+  }
+})
+
+export const sdkLikeNoTimer = read(async (_, { config }) => {
+  const controller = new AbortController()
+  const response = await fetch(config.slow, { signal: controller.signal })
+  return [{ status: response.status }]
+})

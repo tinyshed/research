@@ -36,6 +36,9 @@ fn first_line(text: &str) -> String {
 
 async fn load(instance: &Instance, bytes: Vec<u8>) -> Result<(), String> {
     async_with!(instance.context => |ctx| {
+        let host = Module::declare(ctx.clone(), "host", "import 'dashbin'").catch(&ctx).map_err(|e| e.to_string())?;
+        let (_, ready) = host.eval().catch(&ctx).map_err(|e| e.to_string())?;
+        ready.into_future::<()>().await.catch(&ctx).map_err(|e| e.to_string())?;
         let module = Module::declare(ctx.clone(), "plugin", bytes).catch(&ctx).map_err(|e| e.to_string())?;
         let (module, promise) = module.eval().catch(&ctx).map_err(|e| e.to_string())?;
         match tokio::time::timeout(INSTALL_TIME, promise.into_future::<()>()).await {
@@ -275,60 +278,52 @@ impl Slow {
     }
 }
 
-/// Requests a call leaves in flight: ended by the host, aborted by the signal, left behind, and a retry loop.
-pub async fn abort(bundle: &str, stripe_bundle: &str, mock: &str) {
-    tokio::task::LocalSet::new().run_until(abort_here(bundle, stripe_bundle, mock)).await
+/// One case of a request a call leaves in flight, in a process of its own so that one that crashes hides no other.
+pub async fn abort(case: &str, bundle: &str, stripe_bundle: &str, mock: &str) {
+    tokio::task::LocalSet::new().run_until(abort_here(case, bundle, stripe_bundle, mock)).await
 }
 
-async fn abort_here(bundle: &str, stripe_bundle: &str, mock: &str) {
+// the host's order: the call ends, its timers stop, the runtime is driven until idle, and only then is anything judged
+async fn abort_here(case: &str, bundle: &str, stripe_bundle: &str, mock: &str) {
     let slow = slow_server().await;
     let typed = vec!["127.0.0.1".to_string(), host_of(mock)];
-    let settings = format!(r#"{{"slow":"{}"}}"#, slow.url);
-    let (instance, deadline) = instance_for(std::fs::read(bundle).unwrap(), vec![], typed.clone()).await;
-    let cases: [(&str, &str, Option<(Duration, Stop)>); 4] = [
-        ("waits", "the host ends the call at 300 ms; the fetch had no signal", Some((Duration::from_millis(300), Stop::End))),
-        ("waitsWithSignal", "the host aborts only the call's signal at 300 ms", Some((Duration::from_millis(300), Stop::Signal))),
-        ("leaves", "the call returns at once and leaves a fetch running", None),
-        ("retries", "the host ends the call at 300 ms; the plugin retries in a loop", Some((Duration::from_millis(300), Stop::End))),
-    ];
-    for (function, what, stop_after) in cases {
-        println!("{function}: {what}");
-        let (accepted, closed) = slow.connections();
-        let signal_only = matches!(stop_after, Some((_, Stop::Signal)));
-        let (outcome, ended) =
-            call(&instance, &deadline, Call { function, params: "{}".into(), settings: settings.clone(), id: function, rows: 10, stop_after }).await;
-        println!("  {}", describe(&outcome));
-        println!("  {}", slow.closed_after(closed, ended).await);
-        println!("  {}", settle(&instance).await);
-        if signal_only {
-            if let Some(net) = &instance.net {
-                net.end_call();
-            }
+    let at_300 = |stop| Some((Duration::from_millis(300), stop));
+    let (function, what, stop_after, stripe) = match case {
+        "waits" => ("waits", "the host ends the call at 300 ms; the fetch had no signal", at_300(Stop::End), false),
+        "signal" => ("waitsWithSignal", "the host aborts only the call's signal at 300 ms", at_300(Stop::Signal), false),
+        "leaves" => ("leaves", "the call returns at once and leaves a fetch running", None, false),
+        "retries" => ("retries", "the host ends the call at 300 ms; the plugin retries in a loop", at_300(Stop::End), false),
+        "sdk-like" => ("sdkLike", "its own controller, an 80 s timeout timer, signal to fetch; ended at 300 ms", at_300(Stop::End), false),
+        "sdk-like-no-timer" => ("sdkLikeNoTimer", "its own controller, no timer, signal to fetch; ended at 300 ms", at_300(Stop::End), false),
+        "stripe" => ("charges", "the chapter's plugin aimed at the slow server, the SDK given no signal; ended at 300 ms", at_300(Stop::End), true),
+        other => panic!("no case {other}"),
+    };
+    println!("{case}: {what}");
+    let (bytes, allow, settings, params) = if stripe {
+        let settings = format!(r#"{{"key":"sk_test_123","api":"{}"}}"#, slow.url.trim_end_matches("/slow"));
+        (std::fs::read(stripe_bundle).unwrap(), vec!["api.stripe.com".to_string()], settings, format!(r#"{{{RANGE}}}"#))
+    } else {
+        (std::fs::read(bundle).unwrap(), vec![], format!(r#"{{"slow":"{}"}}"#, slow.url), "{}".to_string())
+    };
+    let (instance, deadline) = instance_for(bytes, allow, typed).await;
+    let signal_only = matches!(stop_after, Some((_, Stop::Signal)));
+    let (outcome, ended) = call(&instance, &deadline, Call { function, params: params.clone(), settings, id: case, rows: 10, stop_after }).await;
+    println!("  {}", describe(&outcome));
+    println!("  {}", settle(&instance).await);
+    if signal_only {
+        if let Some(net) = &instance.net {
+            net.end_call();
         }
-        let (now_accepted, _) = slow.connections();
-        println!("  connections the server accepted during the case: {}", now_accepted - accepted);
+        println!("  after the signal, the call ended: {}", settle(&instance).await);
+    }
+    println!("  {}", slow.closed_after(0, ended).await);
+    tokio::time::sleep(Duration::from_secs(1)).await;
+    println!("  connections the server accepted, one second later: {}", slow.connections().0);
+    if stripe {
+        let settings = format!(r#"{{"key":"sk_test_123","api":"{mock}"}}"#);
+        let (outcome, _) = call(&instance, &deadline, Call { function, params, settings, id: "after", rows: 10, stop_after: None }).await;
+        println!("  the next call on the same instance, against stripe-mock: {}", describe(&outcome));
     }
     instance.unload().await;
-
-    println!("stripe: the chapter's plugin pointed at the slow server, no signal given to the SDK; the host ends the call at 300 ms");
-    let stripe = std::fs::read(stripe_bundle).unwrap();
-    let (instance, deadline) = instance_for(stripe, vec!["api.stripe.com".into()], typed).await;
-    let (accepted, closed) = slow.connections();
-    let slow_settings = format!(r#"{{"key":"sk_test_123","api":"{}"}}"#, slow.url.trim_end_matches("/slow"));
-    let params = format!(r#"{{{RANGE}}}"#);
-    let stop_after = Some((Duration::from_millis(300), Stop::End));
-    let (outcome, ended) =
-        call(&instance, &deadline, Call { function: "charges", params: params.clone(), settings: slow_settings, id: "slow-1", rows: 10, stop_after })
-            .await;
-    println!("  {}", describe(&outcome));
-    println!("  {}", slow.closed_after(closed, ended).await);
-    println!("  {}", settle(&instance).await);
-    tokio::time::sleep(Duration::from_secs(1)).await;
-    println!("  connections the server accepted, one second later: {}", slow.connections().0 - accepted);
-
-    println!("stripe: the same instance, next call, against stripe-mock");
-    let settings = format!(r#"{{"key":"sk_test_123","api":"{mock}"}}"#);
-    let (outcome, _) = call(&instance, &deadline, Call { function: "charges", params, settings, id: "after-1", rows: 10, stop_after: None }).await;
-    println!("  {}", describe(&outcome));
-    instance.unload().await;
+    println!("  unloaded");
 }

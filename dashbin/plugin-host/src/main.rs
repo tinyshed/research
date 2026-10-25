@@ -242,7 +242,7 @@ async fn main() {
         "pair" => return pair(&args[2]).await,
         "discover" => return calls::discover_all(&args[2..]).await,
         "stripe" => return calls::stripe(&args[2], &args[3]).await,
-        "abort" => return calls::abort(&args[2], &args[3], &args[4]).await,
+        "abort" => return calls::abort(&args[2], &args[3], &args[4], &args[5]).await,
         _ => {}
     }
     tokio::time::sleep(Duration::from_millis(200)).await;
