@@ -6,6 +6,7 @@ what a round proved lands there as its own commit.
 
 | | |
 |---|---|
+| [plan/](plan/README.md) | the architecture, chapter by chapter, each decided, proposed or open |
 | [reports/](reports/README.md) | the dated rounds, each with its environment and reproduction command, raw output in `reports/data/` |
 | [tinystore-repro/](tinystore-repro/) | one program a TinyStore issue, against 0.1.0 and again against 0.1.1 |
 | [memory-probe/](memory-probe/) | the hub, QuickJS, the agent and a JS plugin process, measured under four allocators |
