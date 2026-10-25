@@ -1,5 +1,5 @@
 // the two datasets: "mixed" holds every type with nulls and bounds at random, "series" is what a chart reads
-use crate::{Column, Data, Frame};
+use crate::{texts, Column, Data, Frame};
 
 fn column(name: &str, unit: Option<&str>, data: Data, nulls: Option<Vec<bool>>) -> Column {
     Column { name: name.into(), unit: unit.map(Into::into), data, nulls }
@@ -39,16 +39,6 @@ impl Rng {
 
 fn nulls(rng: &mut Rng, rows: usize, percent: u64) -> Option<Vec<bool>> {
     Some((0..rows).map(|_| rng.below(100) < percent).collect())
-}
-
-fn texts(values: impl Iterator<Item = String>) -> Data {
-    let mut offsets = vec![0u32];
-    let mut bytes = Vec::new();
-    for v in values {
-        bytes.extend_from_slice(v.as_bytes());
-        offsets.push(bytes.len() as u32);
-    }
-    Data::Text { offsets, bytes }
 }
 
 fn times(rng: &mut Rng, rows: usize) -> Vec<i64> {

@@ -1,5 +1,6 @@
 // columnar JSON: a whole number past 2^53 and every decimal travel as strings, a non-finite float by its name
-use crate::{decimal_text, Column, Data, Frame};
+// labels, under the flag, as "dictionary": [names] with "values": [codes]
+use crate::{decimal_text, dictionary, texts, Column, Data, Frame};
 use serde_json::Value;
 use std::io::Write;
 
@@ -22,7 +23,7 @@ fn string(out: &mut Vec<u8>, s: &str) {
     serde_json::to_writer(&mut *out, s).unwrap();
 }
 
-pub fn encode(frame: &Frame) -> Vec<u8> {
+pub fn encode(frame: &Frame, labels: bool) -> Vec<u8> {
     let mut out = Vec::with_capacity(frame.rows * frame.columns.len() * 12);
     write!(out, "{{\"rows\":{},\"columns\":[", frame.rows).unwrap();
     for (n, c) in frame.columns.iter().enumerate() {
@@ -39,6 +40,11 @@ pub fn encode(frame: &Frame) -> Vec<u8> {
         if let Data::Decimal { scale, .. } = c.data {
             write!(out, ",\"scale\":{scale}").unwrap();
         }
+        let dict = if labels { dictionary(c, frame.rows) } else { None };
+        if let Some(d) = &dict {
+            out.extend_from_slice(b",\"dictionary\":");
+            serde_json::to_writer(&mut out, &d.names).unwrap();
+        }
         let wide = match &c.data {
             Data::Int(v) => v.iter().enumerate().any(|(i, x)| !c.is_null(i) && !(-SAFE..=SAFE).contains(x)),
             _ => false,
@@ -50,6 +56,10 @@ pub fn encode(frame: &Frame) -> Vec<u8> {
             }
             if c.is_null(i) {
                 out.extend_from_slice(b"null");
+                continue;
+            }
+            if let Some(d) = &dict {
+                write!(out, "{}", d.codes[i]).unwrap();
                 continue;
             }
             match &c.data {
@@ -116,15 +126,15 @@ pub fn decode(bytes: &[u8]) -> Result<Frame, String> {
                     .ok_or(bad("a decimal"))?,
                 scale: c["scale"].as_i64().ok_or(bad("a scale"))? as i8,
             },
-            "text" => {
-                let mut offsets = vec![0u32];
-                let mut out = Vec::new();
-                for v in values {
-                    out.extend_from_slice(v.as_str().unwrap_or("").as_bytes());
-                    offsets.push(out.len() as u32);
-                }
-                Data::Text { offsets, bytes: out }
+            "text" if c["dictionary"].is_array() => {
+                let names = c["dictionary"].as_array().unwrap();
+                let label = |v: &Value| match v {
+                    Value::Null => Some(String::new()),
+                    v => names.get(v.as_u64()? as usize)?.as_str().map(Into::into),
+                };
+                texts(values.iter().map(label).collect::<Option<Vec<_>>>().ok_or(bad("a code of a name"))?.into_iter())
             }
+            "text" => texts(values.iter().map(|v| v.as_str().unwrap_or("").to_string())),
             "bool" => Data::Bool(values.iter().map(|v| v.as_bool().unwrap_or(false)).collect()),
             other => return Err(format!("column {name}: unknown type {other}")),
         };

@@ -2,7 +2,7 @@
 import { binaryCell, codes, decimalToFloat, floats, texts, utf8, wholeToFloat } from './common.mjs';
 
 export const name = 'own';
-const TYPES = [null, 'time', 'wall', 'date', 'int', 'float', 'decimal', 'text', 'bool'];
+const TYPES = [null, 'time', 'wall', 'date', 'int', 'float', 'decimal', 'text', 'bool', 'labels'];
 const align = (n) => (n + 7) & ~7;
 
 export function decode(buf) {
@@ -21,6 +21,10 @@ export function decode(buf) {
   for (let c = 0; c < count; c++) {
     const head = { type: TYPES[view.getUint8(at)], flags: view.getUint8(at + 1), scale: view.getInt8(at + 2), textBytes: view.getUint32(at + 4, true) };
     at += 8;
+    if (head.type === 'labels') {
+      head.count = view.getUint32(at, true);
+      at += 4;
+    }
     head.name = string();
     head.unit = string() || null;
     heads.push(head);
@@ -69,6 +73,15 @@ export function decode(buf) {
         col.bits = new Uint8Array(buf, at, bitmap);
         at = align(at + bitmap);
         break;
+      case 'labels': {
+        col.codes = new Int32Array(buf, at, rows);
+        at = align(at + rows * 4);
+        const offsets = new Uint32Array(buf, at, head.count + 1);
+        at = align(at + (head.count + 1) * 4);
+        col.names = texts(new Uint8Array(buf, at, head.textBytes), offsets, head.count);
+        at = align(at + head.textBytes);
+        break;
+      }
     }
     return col;
   });
@@ -85,7 +98,7 @@ function numbers(col, rows) {
 
 export function chart(frame) {
   const site = find(frame, 'site');
-  const out = codes(texts(site.bytes, site.offsets, frame.rows));
+  const out = site.type === 'labels' ? { codes: site.codes, names: site.names } : codes(texts(site.bytes, site.offsets, frame.rows));
   for (const n of ['time', 'count', 'ratio', 'amount']) out[n] = numbers(find(frame, n), frame.rows);
   return out;
 }

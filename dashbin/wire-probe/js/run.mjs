@@ -4,12 +4,12 @@ import { table } from './formats/common.mjs';
 import * as json from './formats/json.mjs';
 import * as own from './formats/own.mjs';
 
-export const formats = [
-  { label: 'json', reader: json },
-  { label: 'arrow', reader: arrow },
-  { label: 'own-i64', reader: own },
-  { label: 'own-f64', reader: own },
-];
+export const formats = ['', '-dict'].flatMap((labels) => [
+  { label: `json${labels}`, reader: json },
+  { label: `arrow${labels}`, reader: arrow },
+  { label: `own-i64${labels}`, reader: own },
+  { label: `own-f64${labels}`, reader: own },
+]);
 export const datasets = ['series', 'mixed'];
 export const files = datasets.flatMap((d) => formats.map((f) => `${d}.${f.label}`));
 const TABLE_ROWS = 1000;
@@ -92,10 +92,10 @@ export function bench(bytes, now, { warmup = 3, rounds = 12 } = {}) {
 export function render(engine, digests, { results }) {
   const f = (x) => x.toFixed(2).padStart(8);
   const lines = [`engine ${engine}`, 'median of 12 rounds after 3 warm-up, ms', ''];
-  lines.push(`${'frame'.padEnd(16)}${'decode'.padStart(8)}${'chart'.padStart(8)}${'both'.padStart(8)}${'min..max both'.padStart(18)}${'table'.padStart(8)}`);
+  lines.push(`${'frame'.padEnd(20)}${'decode'.padStart(8)}${'chart'.padStart(8)}${'both'.padStart(8)}${'min..max both'.padStart(18)}${'table'.padStart(8)}`);
   for (const key of files) {
     const r = results[key];
-    lines.push(`${key.padEnd(16)}${f(r.decode)}${f(r.chart)}${f(r.decodeAndChart)}${`${r.spread[0].toFixed(2)}..${r.spread[1].toFixed(2)}`.padStart(18)}${f(r.table)}`);
+    lines.push(`${key.padEnd(20)}${f(r.decode)}${f(r.chart)}${f(r.decodeAndChart)}${`${r.spread[0].toFixed(2)}..${r.spread[1].toFixed(2)}`.padStart(18)}${f(r.table)}`);
   }
   lines.push('', ...Object.entries(digests).map(([d, s]) => `agreed ${d}: ${s}`));
   return lines.join('\n');

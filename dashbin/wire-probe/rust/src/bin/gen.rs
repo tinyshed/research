@@ -43,15 +43,19 @@ fn main() {
     let out = std::env::args().nth(1).unwrap_or_else(|| "out".into());
     let rows: usize = std::env::args().nth(2).map_or(50_000, |r| r.parse().unwrap());
     std::fs::create_dir_all(&out).unwrap();
-    let encodings: [(&str, Encode, Decode); 4] = [
-        ("json", json::encode, json::decode),
-        ("arrow", arrow::encode, arrow::decode),
-        ("own-i64", |f| own::encode(f, false), own::decode),
-        ("own-f64", |f| own::encode(f, true), own::decode),
+    let encodings: [(&str, Encode, Decode); 8] = [
+        ("json", |f| json::encode(f, false), json::decode),
+        ("arrow", |f| arrow::encode(f, false), arrow::decode),
+        ("own-i64", |f| own::encode(f, false, false), own::decode),
+        ("own-f64", |f| own::encode(f, true, false), own::decode),
+        ("json-dict", |f| json::encode(f, true), json::decode),
+        ("arrow-dict", |f| arrow::encode(f, true), arrow::decode),
+        ("own-i64-dict", |f| own::encode(f, false, true), own::decode),
+        ("own-f64-dict", |f| own::encode(f, true, true), own::decode),
     ];
     println!("rows {rows}, gzip 6, zstd 3, brotli 5, median of {ROUNDS}");
     println!(
-        "{:<7} {:<8} {:>10} {:>10} {:>10} {:>10} {:>10} {:>10}",
+        "{:<7} {:<12} {:>10} {:>10} {:>10} {:>10} {:>10} {:>10}",
         "dataset", "format", "raw", "gzip", "zstd", "brotli", "encode ms", "decode ms"
     );
     for (name, frame) in [("mixed", data::mixed(rows)), ("series", data::series(rows))] {
@@ -64,7 +68,7 @@ fn main() {
             let decode_ms = median_ms(|| drop(std::hint::black_box(decode(&bytes))));
             std::fs::write(format!("{out}/{name}.{format}"), &bytes).unwrap();
             println!(
-                "{name:<7} {format:<8} {:>10} {:>10} {:>10} {:>10} {encode_ms:>10.2} {decode_ms:>10.2}",
+                "{name:<7} {format:<12} {:>10} {:>10} {:>10} {:>10} {encode_ms:>10.2} {decode_ms:>10.2}",
                 bytes.len(),
                 gzip(&bytes),
                 zstd(&bytes),

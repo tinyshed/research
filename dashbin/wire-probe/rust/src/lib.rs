@@ -47,6 +47,46 @@ impl Column {
     }
 }
 
+pub struct Dictionary {
+    pub codes: Vec<u32>,
+    pub names: Vec<String>,
+}
+
+/// A text column with at most one distinct value per two rows, as codes into its distinct values; a null's code is 0.
+pub fn dictionary(c: &Column, rows: usize) -> Option<Dictionary> {
+    if !matches!(c.data, Data::Text { .. }) {
+        return None;
+    }
+    let mut index = std::collections::HashMap::new();
+    let mut names = Vec::new();
+    let mut codes = Vec::with_capacity(rows);
+    for i in 0..rows {
+        if c.is_null(i) {
+            codes.push(0);
+            continue;
+        }
+        let code = *index.entry(c.text(i)).or_insert_with(|| {
+            names.push(c.text(i).to_string());
+            names.len() as u32 - 1
+        });
+        if names.len() > rows / 2 {
+            return None;
+        }
+        codes.push(code);
+    }
+    Some(Dictionary { codes, names })
+}
+
+pub fn texts(values: impl Iterator<Item = String>) -> Data {
+    let mut offsets = vec![0u32];
+    let mut bytes = Vec::new();
+    for v in values {
+        bytes.extend_from_slice(v.as_bytes());
+        offsets.push(bytes.len() as u32);
+    }
+    Data::Text { offsets, bytes }
+}
+
 pub fn decimal_text(mantissa: i128, scale: i8) -> String {
     if scale <= 0 {
         return format!("{mantissa}{}", "0".repeat(-scale as usize));

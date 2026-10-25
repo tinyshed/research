@@ -5,11 +5,13 @@
 // body, per column: validity bitmap if flagged (bit set = present), then
 //   time, wall, int: i64 (or f64 under flag 2) · date: i32 · float: f64 · decimal: u64 low, i64 high
 //   text: u32 offsets (rows + 1), then the UTF-8 bytes · bool: bitmap
-use crate::{Column, Data, Frame};
+//   labels (type 9, a u32 count of names after the text bytes): u32 codes, then the names as a text
+use crate::{dictionary, texts, Column, Data, Dictionary, Frame};
 
 const MAGIC: &[u8; 4] = b"DBF1";
 const VALIDITY: u8 = 1;
 const TIME_AS_F64: u8 = 2;
+const LABELS: u8 = 9;
 
 fn type_of(data: &Data) -> u8 {
     match data {
@@ -51,13 +53,21 @@ fn times(out: &mut Vec<u8>, values: &[i64], as_f64: bool) {
     }
 }
 
-pub fn encode(frame: &Frame, time_as_f64: bool) -> Vec<u8> {
+fn text(out: &mut Vec<u8>, offsets: impl Iterator<Item = u32>, bytes: &[u8]) {
+    offsets.for_each(|x| out.extend_from_slice(&x.to_le_bytes()));
+    pad(out);
+    out.extend_from_slice(bytes);
+}
+
+pub fn encode(frame: &Frame, time_as_f64: bool, labels: bool) -> Vec<u8> {
+    let dictionaries: Vec<Option<Dictionary>> =
+        frame.columns.iter().map(|c| if labels { dictionary(c, frame.rows) } else { None }).collect();
     let mut out = Vec::with_capacity(frame.rows * frame.columns.len() * 9);
     out.extend_from_slice(MAGIC);
     out.extend_from_slice(&(frame.rows as u32).to_le_bytes());
     out.extend_from_slice(&(frame.columns.len() as u32).to_le_bytes());
     out.extend_from_slice(&0u32.to_le_bytes());
-    for c in &frame.columns {
+    for (c, dict) in frame.columns.iter().zip(&dictionaries) {
         let mut flags = if c.has_nulls() { VALIDITY } else { 0 };
         if time_as_f64 && matches!(c.data, Data::Time(_) | Data::Wall(_)) {
             flags |= TIME_AS_F64;
@@ -67,8 +77,18 @@ pub fn encode(frame: &Frame, time_as_f64: bool) -> Vec<u8> {
             Data::Text { bytes, .. } => (0, bytes.len() as u32),
             _ => (0, 0),
         };
-        out.extend_from_slice(&[type_of(&c.data), flags, scale as u8, 0]);
-        out.extend_from_slice(&text_bytes.to_le_bytes());
+        match dict {
+            Some(d) => {
+                let bytes: usize = d.names.iter().map(String::len).sum();
+                out.extend_from_slice(&[LABELS, flags, 0, 0]);
+                out.extend_from_slice(&(bytes as u32).to_le_bytes());
+                out.extend_from_slice(&(d.names.len() as u32).to_le_bytes());
+            }
+            None => {
+                out.extend_from_slice(&[type_of(&c.data), flags, scale as u8, 0]);
+                out.extend_from_slice(&text_bytes.to_le_bytes());
+            }
+        }
         for s in [c.name.as_str(), c.unit.as_deref().unwrap_or("")] {
             out.extend_from_slice(&(s.len() as u16).to_le_bytes());
             out.extend_from_slice(s.as_bytes());
@@ -77,9 +97,20 @@ pub fn encode(frame: &Frame, time_as_f64: bool) -> Vec<u8> {
     pad(&mut out);
     let header = out.len() as u32;
     out[12..16].copy_from_slice(&header.to_le_bytes());
-    for c in &frame.columns {
+    for (c, dict) in frame.columns.iter().zip(&dictionaries) {
         if c.has_nulls() {
             bitmap(&mut out, (0..frame.rows).map(|i| !c.is_null(i)));
+        }
+        if let Some(d) = dict {
+            d.codes.iter().for_each(|x| out.extend_from_slice(&x.to_le_bytes()));
+            pad(&mut out);
+            let offsets = std::iter::once(0).chain(d.names.iter().scan(0, |at, n| {
+                *at += n.len() as u32;
+                Some(*at)
+            }));
+            text(&mut out, offsets, d.names.concat().as_bytes());
+            pad(&mut out);
+            continue;
         }
         match &c.data {
             Data::Time(v) | Data::Wall(v) => times(&mut out, v, time_as_f64),
@@ -87,11 +118,7 @@ pub fn encode(frame: &Frame, time_as_f64: bool) -> Vec<u8> {
             Data::Date(v) => v.iter().for_each(|x| out.extend_from_slice(&x.to_le_bytes())),
             Data::Float(v) => v.iter().for_each(|x| out.extend_from_slice(&x.to_le_bytes())),
             Data::Decimal { mantissa, .. } => mantissa.iter().for_each(|x| out.extend_from_slice(&x.to_le_bytes())),
-            Data::Text { offsets, bytes } => {
-                offsets.iter().for_each(|x| out.extend_from_slice(&x.to_le_bytes()));
-                pad(&mut out);
-                out.extend_from_slice(bytes);
-            }
+            Data::Text { offsets, bytes } => text(&mut out, offsets.iter().copied(), bytes),
             Data::Bool(v) => bitmap(&mut out, v.iter().copied()),
         }
         pad(&mut out);
@@ -129,6 +156,16 @@ impl<'a> Reader<'a> {
         self.align();
         Ok((0..rows).map(|i| raw[i / 8] >> (i % 8) & 1 == 1).collect())
     }
+    fn texts(&mut self, count: usize, text_bytes: usize) -> Result<Data, String> {
+        let offsets: Vec<u32> = self.words(count + 1, u32::from_le_bytes)?;
+        self.align();
+        let bytes = self.take(text_bytes)?.to_vec();
+        if offsets.windows(2).any(|w| w[0] > w[1]) || offsets.last() != Some(&(text_bytes as u32)) {
+            return Err("offsets out of order".into());
+        }
+        std::str::from_utf8(&bytes).map_err(|_| "text is not UTF-8")?;
+        Ok(Data::Text { offsets, bytes })
+    }
     fn words<const N: usize, T>(&mut self, rows: usize, from: fn([u8; N]) -> T) -> Result<Vec<T>, String> {
         let raw = self.take(rows * N)?;
         Ok(raw.chunks_exact(N).map(|c| from(c.try_into().unwrap())).collect())
@@ -147,11 +184,12 @@ pub fn decode(bytes: &[u8]) -> Result<Frame, String> {
     for _ in 0..count {
         let [kind, flags, scale, _] = r.take(4)?.try_into().unwrap();
         let text_bytes = r.u32()? as usize;
-        heads.push((kind, flags, scale as i8, text_bytes, r.text()?, r.text()?));
+        let names = if kind == LABELS { r.u32()? as usize } else { 0 };
+        heads.push((kind, flags, scale as i8, text_bytes, names, r.text()?, r.text()?));
     }
     r.at = header;
     let mut columns = Vec::with_capacity(count);
-    for (kind, flags, scale, text_bytes, name, unit) in heads {
+    for (kind, flags, scale, text_bytes, names, name, unit) in heads {
         let nulls = if flags & VALIDITY != 0 { Some(r.bits(rows)?.into_iter().map(|v| !v).collect()) } else { None };
         let time = |r: &mut Reader| {
             if flags & TIME_AS_F64 != 0 { r.words(rows, |b| f64::from_le_bytes(b) as i64) } else { r.words(rows, i64::from_le_bytes) }
@@ -163,15 +201,27 @@ pub fn decode(bytes: &[u8]) -> Result<Frame, String> {
             4 => Data::Int(r.words(rows, i64::from_le_bytes)?),
             5 => Data::Float(r.words(rows, f64::from_le_bytes)?),
             6 => Data::Decimal { mantissa: r.words(rows, i128::from_le_bytes)?, scale },
-            7 => {
-                let offsets: Vec<u32> = r.words(rows + 1, u32::from_le_bytes)?;
+            7 => r.texts(rows, text_bytes).map_err(|e| format!("column {name}: {e}"))?,
+            LABELS => {
+                let codes: Vec<u32> = r.words(rows, u32::from_le_bytes)?;
                 r.align();
-                let bytes = r.take(text_bytes)?.to_vec();
-                if offsets.windows(2).any(|w| w[0] > w[1]) || offsets.last() != Some(&(text_bytes as u32)) {
-                    return Err(format!("column {name}: offsets out of order"));
-                }
-                std::str::from_utf8(&bytes).map_err(|_| format!("column {name}: text is not UTF-8"))?;
-                Data::Text { offsets, bytes }
+                let Data::Text { offsets, bytes } = r.texts(names, text_bytes).map_err(|e| format!("column {name}: {e}"))? else {
+                    unreachable!()
+                };
+                let label = |c: u32| -> Result<String, String> {
+                    let c = c as usize;
+                    if c >= names {
+                        return Err(format!("column {name}: code {c} past {names} names"));
+                    }
+                    Ok(String::from_utf8(bytes[offsets[c] as usize..offsets[c + 1] as usize].to_vec()).unwrap())
+                };
+                let nulls: &Option<Vec<bool>> = &nulls;
+                let values = codes
+                    .iter()
+                    .enumerate()
+                    .map(|(i, &c)| if nulls.as_ref().is_some_and(|n| n[i]) { Ok(String::new()) } else { label(c) })
+                    .collect::<Result<Vec<_>, _>>()?;
+                texts(values.into_iter())
             }
             8 => Data::Bool(r.bits(rows)?),
             other => return Err(format!("column {name}: unknown type {other}")),

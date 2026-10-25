@@ -41,6 +41,11 @@ export function decode(buf) {
     } else if (t === 'Bool') {
       col.type = 'bool';
       col.bits = v;
+    } else if (t.startsWith('Dictionary')) {
+      const names = d.dictionary.data[0];
+      col.type = 'labels';
+      col.codes = v;
+      col.names = texts(names.values, names.valueOffsets, names.length);
     } else throw new Error(`${field.name}: ${t}`);
     return col;
   });
@@ -57,7 +62,7 @@ function numbers(col, rows) {
 
 export function chart(frame) {
   const site = find(frame, 'site');
-  const out = codes(texts(site.bytes, site.offsets, frame.rows));
+  const out = site.type === 'labels' ? { codes: site.codes, names: site.names } : codes(texts(site.bytes, site.offsets, frame.rows));
   for (const n of ['time', 'count', 'ratio', 'amount']) out[n] = numbers(find(frame, n), frame.rows);
   return out;
 }

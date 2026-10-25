@@ -112,6 +112,8 @@ export function binaryCell(kind, valid) {
     }
     case 'bool':
       return at((i) => (isValid(kind.bits, i) ? 'true' : 'false'));
+    case 'labels':
+      return at((i) => kind.names[kind.codes[i]]);
   }
   throw new Error(`no cell for ${kind.type}`);
 }

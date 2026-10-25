@@ -60,6 +60,24 @@ generator had to run to prove the round trips.
   and does not take part in the comparison between encodings, where `own`
   counts as the faster of the two.
 
+## Round 2: labels as a dictionary
+
+Round 1 kept the margins above and no binary encoding passed them: each was
+at least 2× faster everywhere, and 1.31× larger in gzip on `series`. All of
+that difference was one buffer, the offsets of the `site` column, which gzip
+cannot shrink (200 KB of `u32` to 133 KB, against 1.8 KB for the same
+strings in JSON).
+
+Round 2 sends a text column with at most one distinct value per two rows as
+a dictionary, in all three encodings, so JSON gains from it as much as the
+others: `"dictionary": [names], "values": [codes]` in JSON,
+`Dictionary(Int32, Utf8)` in Arrow, a type of its own (`9`) in our layout. A
+column with more distinct values, like `mixed.message`, stays as it was. The
+files carry a `-dict` suffix; round 1's are still written beside them.
+
+The margins do not move. Round 1's verdict stands as measured, and which
+round decides is Dmitry's call, made with both in front of him.
+
 ## Running it
 
 ```sh

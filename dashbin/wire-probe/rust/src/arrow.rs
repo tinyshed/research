@@ -1,10 +1,11 @@
 // Arrow IPC stream: one schema message and one record batch, the unit in each field's metadata
-use crate::{Column, Data, Frame};
+// labels, under the flag, as Dictionary(Int32, Utf8)
+use crate::{dictionary, texts, Column, Data, Frame};
 use arrow_array::cast::AsArray;
-use arrow_array::types::{Date32Type, Decimal128Type, Float64Type, Int64Type, TimestampMicrosecondType};
+use arrow_array::types::{Date32Type, Decimal128Type, Float64Type, Int32Type, Int64Type, TimestampMicrosecondType};
 use arrow_array::{
-    Array, ArrayRef, BooleanArray, Date32Array, Decimal128Array, Float64Array, Int64Array, RecordBatch, StringArray,
-    TimestampMicrosecondArray,
+    Array, ArrayRef, BooleanArray, Date32Array, Decimal128Array, DictionaryArray, Float64Array, Int32Array, Int64Array,
+    RecordBatch, StringArray, TimestampMicrosecondArray,
 };
 use arrow_buffer::{BooleanBuffer, Buffer, NullBuffer, OffsetBuffer, ScalarBuffer};
 use arrow_ipc::reader::StreamReader;
@@ -13,8 +14,12 @@ use arrow_schema::{DataType, Field, Schema, TimeUnit};
 use std::collections::HashMap;
 use std::sync::Arc;
 
-fn array(c: &Column) -> ArrayRef {
+fn array(c: &Column, rows: usize, labels: bool) -> ArrayRef {
     let nulls = c.has_nulls().then(|| NullBuffer::from(c.nulls.as_ref().unwrap().iter().map(|n| !n).collect::<Vec<_>>()));
+    if let Some(d) = labels.then(|| dictionary(c, rows)).flatten() {
+        let keys = Int32Array::new(d.codes.iter().map(|&k| k as i32).collect::<Vec<_>>().into(), nulls);
+        return Arc::new(DictionaryArray::<Int32Type>::try_new(keys, Arc::new(StringArray::from(d.names))).unwrap());
+    }
     match &c.data {
         Data::Time(v) => Arc::new(TimestampMicrosecondArray::new(v.clone().into(), nulls).with_timezone("UTC")),
         Data::Wall(v) => Arc::new(TimestampMicrosecondArray::new(v.clone().into(), nulls)),
@@ -32,8 +37,8 @@ fn array(c: &Column) -> ArrayRef {
     }
 }
 
-pub fn encode(frame: &Frame) -> Vec<u8> {
-    let arrays: Vec<ArrayRef> = frame.columns.iter().map(array).collect();
+pub fn encode(frame: &Frame, labels: bool) -> Vec<u8> {
+    let arrays: Vec<ArrayRef> = frame.columns.iter().map(|c| array(c, frame.rows, labels)).collect();
     let fields: Vec<Field> = frame
         .columns
         .iter()
@@ -75,6 +80,12 @@ pub fn decode(bytes: &[u8]) -> Result<Frame, String> {
                 Data::Text { offsets, bytes: s.value_data()[base as usize..end as usize].to_vec() }
             }
             DataType::Boolean => Data::Bool(a.as_boolean().values().iter().collect()),
+            DataType::Dictionary(_, _) => {
+                let d = a.as_dictionary::<Int32Type>();
+                let names = d.values().as_string::<i32>();
+                let label = |(i, &k): (usize, &i32)| if d.is_null(i) { String::new() } else { names.value(k as usize).to_string() };
+                texts(d.keys().values().iter().enumerate().map(label))
+            }
             other => return Err(format!("column {}: type {other}", field.name())),
         };
         columns.push(Column { name: field.name().clone(), unit: field.metadata().get("unit").cloned(), data, nulls });
