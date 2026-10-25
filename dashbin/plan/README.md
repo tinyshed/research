@@ -14,7 +14,7 @@ keeps the reasoning, the reports keep the numbers.
 | 4 | Storage on TinyStore: which engine holds what, migrations, backup, the memory budget | proposed | [TinyStore 0.1.1 recheck](../reports/tinystore-0.1.1-recheck-2026-10-24.md) |
 | 5 | [Running a query](05-running-a-query.md): which instances, parameters, `from`/`to`/`step`, limits, cancellation, joining identical calls, failures, reading collected data | decided; numbers and cancellation to be measured | [TinyStore 0.1.1 recheck](../reports/tinystore-0.1.1-recheck-2026-10-24.md), Go Dashbin's parameter rules |
 | 6 | [Plugins](06-plugins.md): functions, settings, ids and translations, packages, installs and upgrades, the host, processes, built-ins | decided; the host measured, the rest listed as unmeasured | [SDKs in QuickJS](../reports/sdks-in-quickjs-2026-10-25.md), [plugin host](../reports/plugin-host-2026-10-25.md) |
-| 7 | Flows: one executor on TinyStore's jobs for collectors, alerts, webhooks and buttons; idempotency | proposed | — |
+| 7 | [Flows](07-flows.md): one executor on TinyStore's jobs for collectors, alerts, webhooks and buttons; windows, alert states, idempotency | draft, second round after review | TinyStore 0.1.1's jobs, read from its source |
 | 8 | Agents: one binary, placement, the protocol, the operator's trust, local configuration, buffered streams | proposed | Go Dashbin's agent |
 | 9 | Dashboards and the browser: the dashboard model, the panel contract, built-in charts, suggestions, themes | open | Go Dashbin's suggestion weights |
 | 10 | Security and access: accounts, roles, sessions, CSRF, TLS, sealed secrets, audit, trust in plugins | decided in Go Dashbin, plugins open | — |

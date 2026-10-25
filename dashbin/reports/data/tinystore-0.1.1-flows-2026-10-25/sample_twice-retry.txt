@@ -1,0 +1,9 @@
+the same batch ingested again, every sample identical: Ok(())
+before maintenance: at the packed time [1.0], at the head time [1.0]
+maintenance packed 0 series into 0 blocks
+after maintenance, the same batch again, every sample identical: Err("<tmp>\\ts-repro-sample-twice-011\\metrics.db: metrics revenue{site=\"kazan\"}: sample at 2026-10-25T16:00:00Z, behind what its series has packed: too old")
+2.0 written again at the packed time: Err(<tmp>\ts-repro-sample-twice-011\metrics.db: metrics revenue{site="kazan"}: sample at 2026-10-25T16:15:00Z, behind what its series has packed: too old); at the head time: Err(<tmp>\ts-repro-sample-twice-011\metrics.db: metrics revenue{site="kazan"}: sample at 2026-10-25T18:59:00Z, behind what its series has packed: too old)
+read back: at the packed time [1.0], at the head time [1.0]
+maintenance again: packed 0 series into 0 blocks
+read back: at the packed time [1.0], at the head time [1.0]
+sum over the packed hour, 240 samples of 1.0 with one of them written again as 2.0: ["Aggregate { name: \"revenue\", labels: {}, buckets: [Bucket { at: SystemTime { intervals: 134374176000000000 }, value: Exact(240.0), samples: 240, resets: 0, gap: false, partial: false }] }"]

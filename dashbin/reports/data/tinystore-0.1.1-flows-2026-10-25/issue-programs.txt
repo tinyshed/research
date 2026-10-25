@@ -1,0 +1,5 @@
+== issue_event_id
+one delivery appended by two attempts: the stream holds 2 events
+== issue_packed_retry
+the same batch again, right away: Ok("ok")
+the same batch again, after maintenance: Err(<tmp>\packed-retry-repro\metrics.db: metrics revenue{site="kazan"}: sample at 2026-10-25T16:00:00Z, behind what its series has packed: too old)

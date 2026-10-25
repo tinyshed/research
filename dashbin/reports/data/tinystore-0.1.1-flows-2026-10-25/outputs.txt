@@ -1,0 +1,20 @@
+== event_twice
+appended the same event twice, the stream holds 2
+  push at SystemTime { intervals: 134374299278611582 }: [("delivery", "\"72d3162e-cc78-11e3-81ab-4c9367dc0958\""), ("repo", "\"tinyshed/dashbin\""), ("sha", "\"26a0865\"")]
+  push at SystemTime { intervals: 134374299278611582 }: [("delivery", "\"72d3162e-cc78-11e3-81ab-4c9367dc0958\""), ("repo", "\"tinyshed/dashbin\""), ("sha", "\"26a0865\"")]
+two more in one append_all, the stream holds 4
+== sample_twice
+before maintenance: at the packed time [1.0], at the head time [1.0]
+maintenance packed 0 series into 0 blocks
+2.0 written again at the packed time: Err(<tmp>\ts-repro-sample-twice-011\metrics.db: metrics revenue{site="kazan"}: sample at 2026-10-25T16:15:00Z, behind what its series has packed: too old); at the head time: Err(<tmp>\ts-repro-sample-twice-011\metrics.db: metrics revenue{site="kazan"}: sample at 2026-10-25T18:59:00Z, behind what its series has packed: too old)
+read back: at the packed time [1.0], at the head time [1.0]
+maintenance again: packed 0 series into 0 blocks
+read back: at the packed time [1.0], at the head time [1.0]
+sum over the packed hour, 240 samples of 1.0 with one of them written again as 2.0: ["Aggregate { name: \"revenue\", labels: {}, buckets: [Bucket { at: SystemTime { intervals: 134374176000000000 }, value: Exact(240.0), samples: 240, resets: 0, gap: false, partial: false }] }"]
+== missed_runs
+added flow-1, every second; closing the store for five seconds
+reopened and worked for 3.5 s: 4 runs
+  at    2ms after reopening, due     5s before it ran, attempt 1
+  at     1s after reopening, due   17ms before it ran, attempt 1
+  at     2s after reopening, due   11ms before it ran, attempt 1
+  at     3s after reopening, due    9ms before it ran, attempt 1
