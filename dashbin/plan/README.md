@@ -10,7 +10,7 @@ keeps the reasoning, the reports keep the numbers.
 |---|---|---|---|
 | 1 | Product and promises: what Dashbin is, for whom, the 64 MiB promise, what it is not | partly decided | [memory and allocators](../reports/memory-and-allocators-2026-10-24.md) |
 | 2 | [Concepts and words](02-concepts.md): one meaning a word | decided | three scenarios in the chapter |
-| 3 | The frame: column types, nulls, time, money, units, dimensions, encodings, one schema for Rust and TypeScript | partly decided | Go Dashbin's gates |
+| 3 | [The frame](03-frame.md): column types, nulls, time, money, units, dimensions, encodings, one schema for Rust and TypeScript | decided; wire and caps after measurement | Go Dashbin's gates and its PostgreSQL and MySQL mappings |
 | 4 | Storage on TinyStore: which engine holds what, migrations, backup, the memory budget | proposed | [TinyStore 0.1.1 recheck](../reports/tinystore-0.1.1-recheck-2026-10-24.md) |
 | 5 | The path of a read: parameters, `from`/`to`/`step`, limits, cancellation, collapsing identical requests, reading collected data | partly decided | [TinyStore 0.1.1 recheck](../reports/tinystore-0.1.1-recheck-2026-10-24.md) |
 | 6 | Plugins: functions, settings, ids and translations, packages, installs and upgrades, the host, processes, built-ins | proposed, host measured | [SDKs in QuickJS](../reports/sdks-in-quickjs-2026-10-25.md), [plugin host](../reports/plugin-host-2026-10-25.md) |
