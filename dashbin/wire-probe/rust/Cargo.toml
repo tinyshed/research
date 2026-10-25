@@ -1,0 +1,49 @@
+[package]
+name = "wire-probe"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[features]
+json = ["dep:serde_json"]
+arrow = ["dep:arrow-array", "dep:arrow-schema", "dep:arrow-buffer", "dep:arrow-ipc"]
+all = ["json", "arrow", "dep:flate2", "dep:zstd", "dep:brotli"]
+
+[dependencies]
+serde_json = { version = "1", features = ["float_roundtrip"], optional = true }
+arrow-array = { version = "60", default-features = false, optional = true }
+arrow-schema = { version = "60", default-features = false, optional = true }
+arrow-buffer = { version = "60", default-features = false, optional = true }
+arrow-ipc = { version = "60", default-features = false, optional = true }
+flate2 = { version = "1", optional = true }
+zstd = { version = "0.13", optional = true }
+brotli = { version = "8", optional = true }
+
+[[bin]]
+name = "gen"
+path = "src/bin/gen.rs"
+required-features = ["all"]
+
+# each of these builds the same frames and encodes them one way, so its size minus size-base is the encoder's cost
+[[bin]]
+name = "size-base"
+path = "src/bin/size_base.rs"
+
+[[bin]]
+name = "size-json"
+path = "src/bin/size_json.rs"
+required-features = ["json"]
+
+[[bin]]
+name = "size-arrow"
+path = "src/bin/size_arrow.rs"
+required-features = ["arrow"]
+
+[[bin]]
+name = "size-own"
+path = "src/bin/size_own.rs"
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+strip = true
