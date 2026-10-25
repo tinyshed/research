@@ -16,7 +16,7 @@ const CALL_TIME: Duration = Duration::from_secs(30);
 // how long a call's leftovers may still run JavaScript once it has ended
 const GRACE: Duration = Duration::from_millis(500);
 
-type Deadline = Arc<Mutex<Option<Instant>>>;
+pub(crate) type Deadline = Arc<Mutex<Option<Instant>>>;
 
 async fn guard(instance: &Instance) -> Deadline {
     let deadline: Deadline = Arc::default();
@@ -30,7 +30,7 @@ fn arm(deadline: &Deadline, after: Duration) {
     *deadline.lock().unwrap() = Some(Instant::now() + after);
 }
 
-fn first_line(text: &str) -> String {
+pub(crate) fn first_line(text: &str) -> String {
     text.lines().next().unwrap_or("").chars().take(160).collect()
 }
 
@@ -51,10 +51,18 @@ async fn load(instance: &Instance, bytes: Vec<u8>) -> Result<(), String> {
     .await
 }
 
-/// Reads what a bundle declares, in a runtime of its own: no host reachable, no call open, no settings, limits on.
 async fn discover(bytes: Vec<u8>) -> Result<String, String> {
-    let instance = Instance::with_net(Some((Some(vec![]), vec![]))).await.map_err(|e| e.to_string())?;
-    instance.runtime.set_memory_limit(INSTALL_MEMORY).await;
+    discover_limited(bytes, INSTALL_MEMORY).await.0
+}
+
+/// Reads what a bundle declares, in a runtime of its own: no host reachable, no call open, no settings, limits on.
+/// Also says how many bytes its JavaScript held at the end.
+pub(crate) async fn discover_limited(bytes: Vec<u8>, limit: usize) -> (Result<String, String>, i64) {
+    let instance = match Instance::with_net(Some((Some(vec![]), vec![]))).await {
+        Ok(instance) => instance,
+        Err(e) => return (Err(e.to_string()), 0),
+    };
+    instance.runtime.set_memory_limit(limit).await;
     instance.runtime.set_max_stack_size(INSTALL_STACK).await;
     let deadline = guard(&instance).await;
     arm(&deadline, INSTALL_TIME);
@@ -66,9 +74,10 @@ async fn discover(bytes: Vec<u8>) -> Result<String, String> {
         })
         .await;
     }
+    let held = instance.runtime.memory_usage().await.malloc_size;
     instance.timers.sweep();
     instance.unload().await;
-    found
+    (found, held)
 }
 
 pub async fn discover_all(paths: &[String]) {
@@ -88,29 +97,29 @@ pub async fn discover_all(paths: &[String]) {
     checkpoint("discover: after all, purged");
 }
 
-enum Stop {
+pub(crate) enum Stop {
     // the host ends the call: its requests are dropped, its signal is not touched
     End,
     // the host only aborts the call's signal, and ends the call later
     Signal,
 }
 
-enum Outcome {
+pub(crate) enum Outcome {
     Done(Result<String, String>),
     Stopped,
 }
 
-struct Call<'a> {
-    function: &'a str,
-    params: String,
-    settings: String,
-    id: &'a str,
-    rows: u32,
-    stop_after: Option<(Duration, Stop)>,
+pub(crate) struct Call<'a> {
+    pub function: &'a str,
+    pub params: String,
+    pub settings: String,
+    pub id: &'a str,
+    pub rows: u32,
+    pub stop_after: Option<(Duration, Stop)>,
 }
 
 /// Runs one call to its end or its stop; returns what it gave and when it ended.
-async fn call(instance: &Instance, deadline: &Deadline, c: Call<'_>) -> (Outcome, Instant) {
+pub(crate) async fn call(instance: &Instance, deadline: &Deadline, c: Call<'_>) -> (Outcome, Instant) {
     if let Some(net) = &instance.net {
         net.open_call();
     }
@@ -162,7 +171,7 @@ async fn call(instance: &Instance, deadline: &Deadline, c: Call<'_>) -> (Outcome
 }
 
 /// Drives what a call left behind until the runtime is idle; says how long that took, or that it did not.
-async fn settle(instance: &Instance) -> String {
+pub(crate) async fn settle(instance: &Instance) -> String {
     let started = Instant::now();
     match tokio::time::timeout(Duration::from_secs(3), instance.runtime.idle()).await {
         Ok(()) => format!("idle after {:.0?}", started.elapsed()),
@@ -170,7 +179,7 @@ async fn settle(instance: &Instance) -> String {
     }
 }
 
-fn describe(outcome: &Outcome) -> String {
+pub(crate) fn describe(outcome: &Outcome) -> String {
     match outcome {
         Outcome::Done(Ok(json)) => format!("returned {}", json.chars().take(200).collect::<String>()),
         Outcome::Done(Err(e)) => format!("failed: {}", first_line(e)),
@@ -178,23 +187,31 @@ fn describe(outcome: &Outcome) -> String {
     }
 }
 
-// a hub drives every runtime, so a request the call's end woke is dropped then, not at the runtime's next use
 async fn instance_for(bytes: Vec<u8>, allow: Vec<String>, typed: Vec<String>) -> (Instance, Deadline) {
-    let instance = Instance::with_net(Some((Some(allow), typed))).await.unwrap();
+    instance_limited(bytes, allow, typed, 32 << 20).await.unwrap()
+}
+
+// a hub drives every runtime, so a request the call's end woke is dropped then, not at the runtime's next use
+pub(crate) async fn instance_limited(bytes: Vec<u8>, allow: Vec<String>, typed: Vec<String>, limit: usize) -> Result<(Instance, Deadline), String> {
+    let instance = Instance::with_net(Some((Some(allow), typed))).await.map_err(|e| e.to_string())?;
+    instance.runtime.set_memory_limit(limit).await;
     tokio::task::spawn_local(instance.runtime.drive());
     let deadline = guard(&instance).await;
     arm(&deadline, INSTALL_TIME);
-    load(&instance, bytes).await.unwrap();
+    if let Err(e) = load(&instance, bytes).await {
+        instance.unload().await;
+        return Err(e);
+    }
     instance.timers.close();
-    (instance, deadline)
+    Ok((instance, deadline))
 }
 
-fn host_of(url: &str) -> String {
+pub(crate) fn host_of(url: &str) -> String {
     url.split("://").nth(1).unwrap_or(url).split(['/', ':']).next().unwrap_or("").to_string()
 }
 
 // the range of the chapter's example: whole seconds, as precision 'second' makes the kernel hand it
-const RANGE: &str = r#""fromUs":1790812800000000,"toUs":1790899200000000"#;
+pub(crate) const RANGE: &str = r#""fromUs":1790812800000000,"toUs":1790899200000000"#;
 
 /// The chapter's Stripe plugin against stripe-mock: declarations, a read, an action, and an instance that may not reach the mock.
 pub async fn stripe(bundle: &str, mock: &str) {

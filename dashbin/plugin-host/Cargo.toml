@@ -9,16 +9,23 @@ default = ["web-apis", "jemalloc"]
 # the web platform from llrt; without it the binary is rquickjs alone, which is the baseline for its size
 web-apis = ["dep:llrt_modules"]
 jemalloc = ["dep:tikv-jemallocator", "dep:tikv-jemalloc-sys"]
+# the hub around the host: axum and tinystore in the same process, for the memory round
+hub = ["web-apis", "dep:axum", "dep:tinystore", "dep:tracing", "dep:tracing-subscriber", "dep:serde_json"]
 
 [dependencies]
 rquickjs = { version = "0.11", features = ["full-async"] }
 tokio = { version = "1", features = ["rt-multi-thread", "macros", "time", "sync", "net", "io-util", "rt"] }
 llrt_modules = { version = "=0.8.1-beta", default-features = false, optional = true, features = [
-    "abort", "buffer", "console", "crypto", "crypto-rust", "events", "exceptions", "fetch", "tls-ring",
+    "abort", "buffer", "console", "crypto", "crypto-ring", "events", "exceptions", "fetch", "tls-ring",
     "timers", "url", "util", "stream-web", "string-decoder", "navigator", "path",
 ] }
 tikv-jemallocator = { version = "0.7", features = ["unprefixed_malloc_on_supported_platforms"], optional = true }
 tikv-jemalloc-sys = { version = "0.7", optional = true }
+axum = { version = "0.8", optional = true }
+tinystore = { version = "=0.1.1", default-features = false, features = ["async", "sql", "kv", "metrics", "records", "jobs"], optional = true }
+tracing = { version = "0.1", optional = true }
+tracing-subscriber = { version = "0.3", features = ["registry"], optional = true }
+serde_json = { version = "1", optional = true }
 
 [patch.crates-io]
 llrt_fetch = { path = "vendor/llrt_fetch" }

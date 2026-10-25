@@ -1,5 +1,8 @@
 // a plugin host as dashbin would have it: one quickjs runtime per plugin instance, web apis from llrt
 mod calls;
+#[cfg(feature = "hub")]
+mod hub;
+mod memory;
 mod timers;
 
 use std::time::{Duration, Instant};
@@ -243,6 +246,11 @@ async fn main() {
         "discover" => return calls::discover_all(&args[2..]).await,
         "stripe" => return calls::stripe(&args[2], &args[3]).await,
         "abort" => return calls::abort(&args[2], &args[3], &args[4], &args[5]).await,
+        "install" => return memory::install(&args[2], args[3].parse().unwrap()).await,
+        "needs" => return memory::needs(&args[2], &args[3], &args[4], args[5].parse().unwrap()).await,
+        "spike" => return memory::spike(&args[2], args[3].parse().unwrap()).await,
+        #[cfg(feature = "hub")]
+        "serve" => return hub::serve().await,
         _ => {}
     }
     tokio::time::sleep(Duration::from_millis(200)).await;

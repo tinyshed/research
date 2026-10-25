@@ -3,6 +3,9 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "stripe": "23.0.1"
+    "stripe": "23.0.1",
+    "openai": "7.43.0",
+    "@notionhq/client": "5.28.0",
+    "@octokit/rest": "22.0.1"
   }
 }

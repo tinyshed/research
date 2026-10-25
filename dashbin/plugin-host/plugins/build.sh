@@ -4,7 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 bun install --frozen-lockfile 2>/dev/null || bun install
 mkdir -p dist/install
-for p in stripe abort; do
+for p in stripe abort openai notion octokit bomb; do
   bun build $p.js --target=browser --format=esm --conditions=worker --external dashbin --outfile dist/$p.js
 done
 for p in install/*.js; do
