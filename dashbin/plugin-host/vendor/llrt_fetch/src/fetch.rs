@@ -63,6 +63,10 @@ pub fn init(global_client: HyperClient, globals: &Object) -> Result<()> {
                 if policy.is_some() && options.agent.is_some() {
                     return Err(Exception::throw_type(&ctx, "dashbin: a plugin may not bring its own agent"));
                 }
+                let mut call_end = match &policy {
+                    Some(policy) => Some(policy.admit(&ctx)?),
+                    None => None,
+                };
                 let client = options
                     .agent
                     .map(|agent| agent.borrow().client())
@@ -108,13 +112,12 @@ pub fn init(global_client: HyperClient, globals: &Object) -> Result<()> {
                         &initial_uri,
                     )?;
 
-                    let res = if let Some(abort_receiver) = &abort_receiver {
-                        select! {
-                            res = send(req) => crate::policy::explain(&ctx, res)?,
-                            reason = abort_receiver.recv() => return Err(ctx.throw(reason))
-                        }
-                    } else {
-                        crate::policy::explain(&ctx, send(req).await)?
+                    let res = select! {
+                        res = send(req) => crate::policy::explain(&ctx, res)?,
+                        reason = crate::policy::signalled(&abort_receiver) => return Err(ctx.throw(reason)),
+                        _ = crate::policy::call_end(&mut call_end) => {
+                            return Err(Exception::throw_message(&ctx, crate::policy::ENDED))
+                        },
                     };
 
                     let status = res.status();

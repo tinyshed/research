@@ -17,7 +17,9 @@ use hyper_util::client::legacy::connect::HttpConnector;
 use hyper_util::client::legacy::connect::dns::Name;
 use hyper_util::client::legacy::{Client, ResponseFuture};
 use hyper_util::rt::{TokioExecutor, TokioTimer};
-use rquickjs::{Ctx, Exception, JsLifetime, Result};
+use llrt_utils::mc_oneshot;
+use rquickjs::{Ctx, Exception, JsLifetime, Result, Value};
+use tokio::sync::watch;
 use tower_service::Service;
 
 type PolicyClient = Client<HttpsConnector<HttpConnector<Resolver>>, BoxBody<Bytes, Infallible>>;
@@ -27,6 +29,8 @@ pub struct Policy {
     private: Arc<Vec<String>>,
     client: PolicyClient,
     contacted: Mutex<BTreeMap<String, u64>>,
+    // true while no call is running: a request may not start, and one in flight is dropped
+    ended: watch::Sender<bool>,
 }
 
 #[derive(Clone)]
@@ -57,7 +61,8 @@ pub fn set(
         .wrap_connector(http);
     let client = Client::builder(TokioExecutor::new()).pool_timer(TokioTimer::new()).build(https);
     let allow = allow.map(|hosts| hosts.into_iter().map(|h| h.to_ascii_lowercase()).collect());
-    let policy = Arc::new(Policy { allow, private, client, contacted: Mutex::default() });
+    let (ended, _) = watch::channel(true);
+    let policy = Arc::new(Policy { allow, private, client, contacted: Mutex::default(), ended });
     let _ = ctx.store_userdata(Handle(policy.clone()));
     Ok(policy)
 }
@@ -87,6 +92,23 @@ impl Policy {
         self.contacted.lock().unwrap().clone()
     }
 
+    /// Lets requests start, until `end_call`.
+    pub fn open_call(&self) {
+        self.ended.send_replace(false);
+    }
+
+    /// Aborts every request the call started, whatever signal it was or was not given, and refuses new ones.
+    pub fn end_call(&self) {
+        self.ended.send_replace(true);
+    }
+
+    pub(crate) fn admit(&self, ctx: &Ctx<'_>) -> Result<CallEnd> {
+        if *self.ended.borrow() {
+            return Err(Exception::throw_message(ctx, "dashbin: no call is running in this instance"));
+        }
+        Ok(CallEnd(self.ended.subscribe()))
+    }
+
     pub(crate) fn request(&self, req: Request<BoxBody<Bytes, Infallible>>) -> ResponseFuture {
         self.client.request(req)
     }
@@ -107,6 +129,28 @@ impl Policy {
             }
         }
         Ok(())
+    }
+}
+
+pub(crate) const ENDED: &str = "dashbin: the call this request belonged to has ended";
+
+pub(crate) struct CallEnd(watch::Receiver<bool>);
+
+/// Resolves when the call a request belongs to ends; never, for a runtime without a policy.
+pub(crate) async fn call_end(end: &mut Option<CallEnd>) {
+    if let Some(CallEnd(rx)) = end {
+        if rx.wait_for(|ended| *ended).await.is_ok() {
+            return;
+        }
+    }
+    std::future::pending().await
+}
+
+/// The reason a request's own signal gave; never, for a request without one.
+pub(crate) async fn signalled<'js>(receiver: &Option<mc_oneshot::Receiver<Value<'js>>>) -> Value<'js> {
+    match receiver {
+        Some(receiver) => receiver.recv().await,
+        None => std::future::pending().await,
     }
 }
 

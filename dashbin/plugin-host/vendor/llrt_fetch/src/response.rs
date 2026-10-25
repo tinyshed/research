@@ -1,5 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
+// Modified by Dashbin, see UPSTREAM.
 use std::{
     collections::{BTreeMap, HashMap},
     io::Read,
@@ -583,13 +584,16 @@ impl<'js> Response<'js> {
         T: Body,
         T::Error: std::fmt::Display,
     {
-        let bytes = if let Some(abort_signal) = self.abort_receiver.as_ref() {
-            select! {
-                err = abort_signal.recv() => return Err(ctx.throw(err)),
-                collected_body = body.collect() => collected_body.or_throw(ctx)?.to_bytes()
-            }
-        } else {
-            body.collect().await.or_throw(ctx)?.to_bytes()
+        let mut call_end = match crate::policy::of(ctx) {
+            Some(policy) => Some(policy.admit(ctx)?),
+            None => None,
+        };
+        let bytes = select! {
+            err = crate::policy::signalled(&self.abort_receiver) => return Err(ctx.throw(err)),
+            _ = crate::policy::call_end(&mut call_end) => {
+                return Err(rquickjs::Exception::throw_message(ctx, crate::policy::ENDED))
+            },
+            collected_body = body.collect() => collected_body.or_throw(ctx)?.to_bytes(),
         };
 
         if let Some(content_encoding) = self.content_encoding.as_deref() {

@@ -1,4 +1,5 @@
 // a plugin host as dashbin would have it: one quickjs runtime per plugin instance, web apis from llrt
+mod calls;
 mod timers;
 
 use std::time::{Duration, Instant};
@@ -98,8 +99,14 @@ impl Instance {
         runtime.set_memory_limit(32 << 20).await;
         #[cfg(feature = "web-apis")]
         let (resolver, loader, globals) = modules().build();
+        let dashbin = (
+            rquickjs::loader::BuiltinResolver::default().with_module("dashbin"),
+            rquickjs::loader::BuiltinLoader::default().with_module("dashbin", include_str!("dashbin.js")),
+        );
         #[cfg(feature = "web-apis")]
-        runtime.set_loader((resolver,), (loader,)).await;
+        runtime.set_loader((resolver, dashbin.0), (loader, dashbin.1)).await;
+        #[cfg(not(feature = "web-apis"))]
+        runtime.set_loader((dashbin.0,), (dashbin.1,)).await;
         let context = AsyncContext::full(&runtime).await?;
         let timers = timers::Timers::default();
         let ours = ours();
@@ -233,6 +240,9 @@ async fn main() {
         "compile" => return compile(&args[2], &args[3]).await,
         "soak" => return soak(args[2].parse().unwrap(), &args[3..]).await,
         "pair" => return pair(&args[2]).await,
+        "discover" => return calls::discover_all(&args[2..]).await,
+        "stripe" => return calls::stripe(&args[2], &args[3]).await,
+        "abort" => return calls::abort(&args[2], &args[3], &args[4]).await,
         _ => {}
     }
     tokio::time::sleep(Duration::from_millis(200)).await;

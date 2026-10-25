@@ -3,6 +3,8 @@ llrt_fetch 0.8.1-beta from crates.io (awslabs/llrt), Apache-2.0.
 Changed by Dashbin:
   src/policy.rs     new: a network policy per runtime, its own client and a resolver that refuses private addresses
   src/lib.rs        exports the policy
-  src/fetch.rs      uses the runtime's policy and client when it has one, refuses `agent` then
+  src/fetch.rs      uses the runtime's policy and client when it has one, refuses `agent` then;
+                    a request starts only inside a call and is dropped when the call ends
+  src/response.rs   reading a body is dropped when the call ends
   src/security.rs   asks the runtime's policy first
   Cargo.toml        hyper-rustls, hyper-util, llrt_tls, tower-service, tokio for the policy's client

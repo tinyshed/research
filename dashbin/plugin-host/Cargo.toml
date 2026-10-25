@@ -12,7 +12,7 @@ jemalloc = ["dep:tikv-jemallocator", "dep:tikv-jemalloc-sys"]
 
 [dependencies]
 rquickjs = { version = "0.11", features = ["full-async"] }
-tokio = { version = "1", features = ["rt-multi-thread", "macros", "time", "sync"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time", "sync", "net", "io-util", "rt"] }
 llrt_modules = { version = "=0.8.1-beta", default-features = false, optional = true, features = [
     "abort", "buffer", "console", "crypto", "crypto-rust", "events", "exceptions", "fetch", "tls-ring",
     "timers", "url", "util", "stream-web", "string-decoder", "navigator", "path",
