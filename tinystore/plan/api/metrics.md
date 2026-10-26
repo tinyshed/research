@@ -1273,8 +1273,12 @@ many series the `where` finds. Proposed the same day, argued through two
 rounds of three newcomers and three of GPT's readings
 ([Rounds](#rounds-26-october)), and accepted by the owner: `read` and
 `aggregate` take `limit` and `after` and answer a page, and a page walks on.
-Nothing in this section is built yet. It goes out in `0.3.0` marked `!`,
-since `read` and `aggregate` answer an object where they answered a list.
+Built the same day, in tinystore's `fcad3d27` (the core's read pages),
+`3d7a67ce` (aggregate pages), `06c3d161` (the wire and every SDK),
+`9b4ba59f` (the command line) and `d3985138` (the guides). It goes out in
+`0.3.0` marked `!`, since `read` and `aggregate` answer an object where they
+answered a list; [Built](#built-26-october) says where the build left the
+book.
 
 ### Calls
 
@@ -1531,6 +1535,44 @@ without `limit`, `after` without `limit` `invalid`, a short page still with
 four SDKs. The owner asked for a walk as well: a page that walks on, which
 keeps `read` one function. No newcomer has read this form; phase 4 does, on
 the calls as built.
+
+### Built, 26 October
+
+Where the build went past the book or left it:
+
+- **An aggregate's page shares what it has left** among the series of the
+  group it reaches, takes each as far as its share goes, and ends the group
+  at the start of the bucket the first of them stopped in. A group that
+  leaves no whole bucket ends the page before it; on a page of its own, its
+  first bucket is taken alone with the whole bounds, or is `limit`.
+- **A page's take is lazy.** A group's directory and clock, a block's
+  payload, a head's bytes and each chunk are copied only once the page
+  reaches them; a clock is paid at its most, so that one never fails a page.
+- **The cursor's place** is a series' id, or `g` and the hex of the group's
+  name and labels as JSON, so that a group gone between pages leaves the
+  next page at the group after it.
+- **A walk**: TypeScript and Python iterate the page itself, Go has
+  `page.All(ctx)`, Rust `page.all()`. `tinystore::aio` has its own
+  `SeriesPage` and `AggregatePage`, whose `all()` is a `Stream`.
+- **Go's `Read` refuses** `Every`, `Calendar`, `TimeZone`, `Op`, `By`,
+  `Without` and `Estimate`, which it ignored before.
+- **The command line** prints a page, 1000 samples or buckets unless
+  `--limit` says, and `--after <next> reads on` on stderr; under `--json`,
+  `{"next": …}` is the last line. A window of `--since` goes to the query as
+  `since`, so that the page after reads the same query. `mcp` has no metrics
+  tool, so nothing changed there.
+- **`limit`'s error** ends "or a page at a time with `limit`".
+- Left for the release: `docs/releases/v0.3.0.md`, written from all of
+  0.3.0's commits when it is dispatched, the command line's writes of issue
+  32 among them.
+
+**A newcomer** read the calls as built, in four languages, at 3 or 4 of 5:
+`read` without `limit` over 15 million samples an error, `more` a part that
+goes on, a cursor with another name refused. One reading was wrong: with
+`after: page.next` beside it, walking a page looked as if it stopped at the
+page's end. The guides say on each walk "this page, then every page after
+it"; whether the walk wants a name of its own is the owner's call. `limit`
+was read as samples, unsure, as in both rounds before.
 
 ## Open
 
