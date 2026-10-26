@@ -3,14 +3,22 @@
 **Status: decided, 25 October 2026**, except its numbers, which a load run
 of the hub measures, and its cancellation, whose every row is a test before
 it is a promise. The first draft's seven forks went through two reviews; what
-they changed is listed under *Forks*.
+they changed is listed under *Forks*. *Calculations* were added on 27 October,
+after chapter 9's reviews showed a panel and an alert computing the same sum
+in two places.
 
 What happens between "a panel wants data" and "the frames are in the
 browser". A collector, an alert, a button's flow and the query editor go the
 same way: Go Dashbin's rule of **one path** stays, because every second path
 grew its own idea of limits, time and errors. The hub connects what exists —
-plugins, agents, TinyStore — and is not a database of its own: no
-cross-instance joins, no scheduler of its own beside TinyStore's jobs.
+plugins, agents, TinyStore — and is not a database of its own: it groups and
+reduces what came, and does no cross-instance joins and keeps no scheduler of
+its own beside TinyStore's jobs.
+
+**The kernel computes, a drawer draws.** Whatever a panel and an alert may
+both want — a total, a sum per site, a last value — is the query's, computed
+here once; the browser and the terminal (chapter 9) lay out what they are
+given and compute nothing that means something.
 
 ## The picture
 
@@ -21,8 +29,10 @@ hub       1 resolve   each panel's query, its reads, the instances their selecto
           3 limit     rows, bytes and time for this receiver; calls at once; the budget for frames in flight
           4 run       every (read, instance) at once: in the binary, in QuickJS, a process, an agent
           5 join      a call identical to one still running waits for that one instead
-          6 answer    each frame as soon as it is complete; a failure is that frame's error
-browser ◄── one stream of messages (chapter 3's wire), a frame per (panel, read, instance)
+          6 calculate a read's group and reduce, batch by batch, when its query has one
+          7 answer    each frame as soon as it is complete; a failure is that frame's error
+browser ◄── one stream of messages (chapter 3's wire): a frame per (panel, read, instance),
+            or one per (panel, read) when the read is calculated
 ```
 
 ## Who asks
@@ -32,8 +42,9 @@ browser ◄── one stream of messages (chapter 3's wire), a frame per (panel,
 | a dashboard | the dashboard, the panels to draw, range, variables, each panel's width | chart, table, single number |
 | one panel again | the same for one panel: a zoom, a changed variable | the same |
 | the query editor | an unsaved query, the instances to try, parameter values | preview: a cut frame is shown as cut |
-| a collector | its query and the window since its last run | dataset: a cut frame is refused |
-| an alert | its query and its window | condition: a cut frame is refused |
+| a collector | its query, its own parameters and the window since its last run | dataset: a cut frame is refused |
+| an alert | its query, its own parameters and its window | condition: a cut frame is refused |
+| the terminal | the same as a dashboard, from `dashbin show` | chart, table, single number |
 
 All of them call one function of the kernel, which takes the scope (who
 asks, in which workspace), the request and the receiver, and returns a stream
@@ -80,7 +91,9 @@ A call gets one typed list of parameters from two places, and nothing else.
 chapter 3's: text, int, float, decimal, time, date, bool, or a list of one of
 them), whether it may be null, and a default. The value comes from the
 dashboard variable of the same name, else from the panel, else the default.
-A value the query did not declare is refused by name.
+A value the query did not declare is refused by name. **A flow never reads a
+dashboard's variables**: its values are saved with the flow, so an alert does
+not depend on which site somebody picked in an open tab.
 
 Why declared, when Go Dashbin read the type off the JSON spelling:
 
@@ -249,11 +262,11 @@ connection does not name the host that refused, as in Go Dashbin.
 **An answer knows whether it is complete.** It ends saying which frames
 failed or were cut, and a receiver decides by what it does with them:
 
-| What the panel does with the frames | When one is missing |
+| What the read's frames become | When one is missing |
 |---|---|
-| draws each instance apart: a line per site, a row per site | draws what came, and names what did not: "msk: unavailable, the agent has been away for 3 minutes" |
-| adds instances together: a total, one number over all sites, a stack, shares of a whole | refuses, naming what is missing, as chapter 3 refuses a cut frame to a chart; a sum of nine is not the revenue of ten |
-| an alert's condition, a dataset | already refused (chapter 3); chapter 7 says what the alert does then |
+| drawn instance by instance: a line per site, a row per site | drawn as they came, and the missing one named: "msk: unavailable, the agent has been away for 3 minutes" |
+| a calculation's group that puts several instances together: a total, one number over all sites | that group is incomplete and refused, naming what is missing, as chapter 3 refuses a cut frame to a chart; a sum of nine is not the revenue of ten (*Calculations*) |
+| an alert's condition, a dataset | a cut frame is refused (chapter 3); a condition's groups follow *Calculations*, and chapter 7 says what the alert does then |
 
 **The kernel does not retry a read.** The next refresh is the retry. An
 agent's reconnect is its own business (chapter 8).
@@ -264,6 +277,102 @@ the first user runs, a browser opens six HTTP connections to a host, and
 twenty panels as twenty requests would queue behind each other; one stream
 also resolves `now` once for all of them. A panel asks alone only when it
 alone changes.
+
+## Calculations
+
+**A read may carry one calculation: group its rows and reduce them.** The
+kernel runs it for every caller alike — a panel, the terminal, an alert, a
+collector, the query editor — so the same query with the same parameters is
+the same number wherever it is read.
+
+```json
+{ "read": "postgres.sql", "on": "site=$site", "sql": "…",
+  "calculate": { "values": { "revenue": { "op": "sum", "empty": "zero" } }, "by": ["site"] } }
+```
+
+- **`values` names each column it computes, with its operation.** A column
+  not named is not in the answer: `orders` beside `revenue` is dropped unless
+  it is given an operation of its own. The answer's column keeps the input's
+  name, or takes `as`: `{ "id": { "op": "count", "as": "failed" } }`.
+- **`by` names what stays a group**: columns of the frame, and the labels of
+  the instance a frame came from, `instance` — its name — always among them.
+  Everything not in `by` is reduced away — no
+  time column in `by` reduces over time, no `site` reduces over sites. A
+  column and a label of the same name are refused, asking for a rename.
+- **The operations of the first version**: `sum`; `count`, the number of
+  rows; `min`; `max`; `avg`, the mean of the input rows, which is the true
+  mean only when each row is one observation — an average that was already
+  averaged is not averaged again correctly, and the editor says so; `first` and
+  `last`, which need an order (`"order": "day"`), taken from the frame's one
+  time column when there is exactly one, and refused otherwise, so the answer
+  does not depend on which agent answered first. A percentile and a ratio of
+  two sums are later.
+- **A column keeps its unit.** Money in several currencies is not summed: the
+  calculation is refused, naming the currencies, unless `currency` is in `by`.
+  One column in two units from two instances is refused the same way.
+- **Sums are exact, rounded once.** An `Int` and a `Decimal` are summed as
+  integers in their minor units, as chapter 3 sums money; a `Float` through an
+  exact accumulator, as TinyStore Metrics sums. Over a dataset the kernel may
+  hand the calculation to TinyStore's own aggregate when it is one of its
+  operations over its labels — an optimisation that must answer the same
+  frame, number for number.
+- **It runs as batches arrive**: one accumulator per group and value — a sum,
+  a count, an extreme, a time and its value — and the input frames are never
+  held. Ten tables become one row without lying in memory first.
+
+**The answer is one frame**: the columns of `by` in their order, then the
+values under their own names, with a note saying what was computed over how
+many instances.
+
+**A group is complete only when every instance it depends on answered.** An
+instance a group depends on is one whose labels match the group's labels in
+`by`; when `by` holds no label, every instance of the read. So two instances
+labelled `site=kazan`, one of which failed, make `kazan` incomplete, while
+`spb` beside it stays right. Each group ends in one of three states, and they
+are never mixed:
+
+| Group | The kernel's answer | A panel | An alert |
+|---|---|---|---|
+| every instance it depends on answered with rows | its value | draws it | compares it |
+| they answered with no rows | with `"empty": "zero"`, 0; without, the group is empty | draws 0, or "no data for this period" | compares 0; without the policy, empty is no data after `for` |
+| one of them failed or was cut | the group is not in the frame; the answer lists it as incomplete, naming the instance | names it and draws no number for it | its read failed: the state holds, then no data after `for` |
+
+**`empty` applies to a successful empty answer only**, never to a failed
+one, and it is never automatic: no payments yesterday is a revenue of zero,
+and no readings from a sensor is not zero degrees. The kernel fills a zero
+only for a group it knows of before any row arrives — one made of instance
+labels; a `status` that never appeared in any row is not invented.
+
+### One query, a chart, a total and an alert
+
+Ten PostgreSQL instances, one per site, run:
+
+```sql
+select date_trunc('day', paid_at) as day, sum(amount) as revenue
+from payments where paid_at >= @from and paid_at < @to
+group by 1 order by 1
+```
+
+What reaches the kernel, three of ten; `msk`'s agent is away:
+
+```
+pg-kazan {site=kazan}         pg-spb {site=spb}             pg-msk {site=msk}
+day         revenue (RUB)     day         revenue (RUB)     error Unavailable:
+2026-10-25   50 000.00        2026-10-25   30 000.00        "the agent has been away for 3 minutes"
+2026-10-26   70 000.00        2026-10-26   40 000.00
+```
+
+| Consumer | Calculation | Answer |
+|---|---|---|
+| a line per site | none | the frames as they came; nine lines, and `msk` named |
+| the total of all sites | `revenue: sum`, `by: []` | the one group depends on every instance, so it is incomplete: `incomplete: msk unavailable`, and the card says so instead of a number |
+| a card per site, repeated | `revenue: sum, empty: zero`, `by: [site]` | `kazan 120 000.00`, `spb 70 000.00`, a site with no payments `0.00`; `msk` listed as incomplete |
+| an alert, "a site's revenue yesterday below 50 000" | the card per site's, with the flow's own `all` and yesterday, 26 October in Moscow, as its window | `kazan 70 000.00` ok; `spb 40 000.00` below: pending, then firing after `for`; `msk` incomplete: its read failed, its state holds, then no data |
+| an alert on the total | the total's | incomplete: the alert's one subject's read failed, then no data |
+
+No consumer has a rule of its own: one function of the kernel answers a frame
+or a refusal per group, a panel draws or names it, and a flow compares it or
+holds its state. They differ only in where the parameters came from.
 
 ## Reading Dashbin's own data
 
@@ -295,10 +404,11 @@ anything runs or joins.
 ### Ten sites, one dashboard
 
 Revenue by day, ten instances behind ten agents, `site=$site` with "all"
-selected, and a number at the top with the total of all ten. One request;
-ten calls, at most four per instance, which is one each. `msk`'s agent is
-away: nine lines draw and the panel names the tenth as `Unavailable`; the
-total refuses to show a sum of nine. Dmitry switches the range from seven
+selected, and a number at the top with the total of all ten, `revenue: sum`
+by nothing. One request; ten calls, at most four per instance, which is one
+each. `msk`'s agent is away: nine lines draw and the panel names the tenth as
+`Unavailable`; the total's one group depends on `msk`, so it refuses to show a
+sum of nine. Dmitry switches the range from seven
 days to thirty: the browser closes the stream, the kernel cancels ten calls,
 each agent gets `$cancel`, each PostgreSQL its cancel request, and a new
 request starts. A colleague who opened the same dashboard a second later
@@ -346,17 +456,28 @@ After two reviews:
 
 Added: a viewer picks only the values a dashboard variable allows.
 
+Added on 27 October, after chapter 9's two reviews:
+
+8. **Calculations are the query's, run by the kernel** for every caller: one
+   group and reduce per read, its values and operations named, `by` over
+   columns and instance labels, counted batch by batch; a group complete only
+   when every instance it depends on answered; zero, empty and failed kept
+   apart, zero only by an explicit `empty`. A drawer computes nothing that
+   means something, and a flow's parameters are its own.
+
 ## What it asks of other chapters
 
 - Chapter 6: a JS function receives its parameters typed as above and
   `{ config, id, signal }`; a read declares its precision; a QuickJS runtime
   runs one call at a time and has a memory limit; a process plugin honours
   `$cancel`.
-- Chapter 7: what an alert's subject does when its read fails or is cut.
+- Chapter 7: what an alert's subject does when its read fails or is cut; a
+  condition is a calculation and a comparison, its subjects the calculation's
+  groups; a flow's parameters saved with it.
 - Chapter 8: `$cancel` and the ceiling cross the agent's protocol unchanged.
 - Chapter 9: a panel that draws as frames arrive, names what failed, and
-  refuses a combined number over an incomplete answer; variables with their
-  allowed values.
+  draws an incomplete group as missing rather than as a number; variables
+  with their allowed values; a drawer that computes nothing.
 - Chapter 11: the run endpoint, one bounded stream per refresh.
 
 ## Not measured yet
@@ -368,3 +489,5 @@ Added: a viewer picks only the values a dashboard variable allows.
   MySQL's `KILL QUERY` are sent when a task is destroyed, and that the killed
   connection is not reused too early.
 - The cost of `prepare_typed` per call against a cached statement.
+- A calculation over ten instances of 50 000 rows each, counted batch by
+  batch: its memory and its time against drawing the same rows raw.

@@ -1,7 +1,8 @@
 # 7. Flows
 
 **Status: draft, second round, 25 October 2026; TinyStore 0.2.0 folded in on
-26 October.** The first draft went through one review; what it changed is
+26 October; conditions and storage aligned with chapters 5 and 9 on 27
+October.** The first draft went through one review; what it changed is
 listed under *Forks*. Nothing is agreed until Dmitry says so.
 
 Everything that runs without a person looking at it: collectors, alerts,
@@ -38,8 +39,11 @@ a plugin's function. An alert, written out:
   "name": "Failed payments",
   "trigger": { "every": "1m" },
   "steps": [
-    { "query": "failed-payments", "params": { "from": "-1h" } },
-    { "check": "sum(count) > 5", "for": "10m" },
+    { "query": { "read": "stripe.charges", "on": "all", "params": { "status": "failed" },
+                 "calculate": { "values": { "id": { "op": "count", "as": "failed", "empty": "zero" } },
+                                "by": ["instance"] } },
+      "window": "1h" },
+    { "check": "failed > 5", "for": "10m" },
     { "action": "telegram-ops.send", "when": "state changed",
       "params": { "text": "{{subject.instance}}: {{value}} failed payments in an hour, {{state}}" } }
   ]
@@ -153,15 +157,19 @@ it would fire for yesterday.
 
 ## Alerts
 
-**A subject is one frame's instance and its dimensions**: for a frame of
-`site, count` from `pg-msk`, each site of `pg-msk` is a subject, as chapter 2
-said and the series rule of chapter 3 decides what is a dimension. Each
-subject has a state of its own.
+**A condition is a calculation and a comparison.** An alert's read always
+carries a calculation (chapter 5), so what it compares is computed by the
+kernel exactly as a panel's number is, and the check compares one value of
+each group with a number: `failed > 5`, `revenue < 50000`. A condition more
+involved than that belongs in the query.
 
-**The condition is small**: a column, an aggregate over the window — `last`,
-`sum`, `avg`, `min`, `max`, `count` — a comparison and a number:
-`sum(count) > 5`, `last(ratio) < 0.95`. A condition more involved than that
-belongs in the query.
+**A subject is one group of that calculation**: `by: ["instance"]` gives a
+subject per Stripe account, `by: ["site"]` one per site, `by: []` one for
+everything. Each subject has a state of its own, and a group's completeness
+(chapter 5) is the subject's read: complete, empty, or failed.
+
+**An alert's parameters and window are its own.** It never reads a
+dashboard's variables, and its window ends when it runs (below).
 
 | State | When |
 |---|---|
@@ -169,18 +177,27 @@ belongs in the query.
 | pending | true, for less than `for` |
 | firing | true for `for` |
 | resolved | was firing, false now; becomes ok after the next run |
-| no data | the subject's read failed or was cut, for `for`; or the subject is gone |
+| no data | the subject's group was incomplete — an instance it depends on failed or was cut — for `for`; or it was empty, with no `empty` policy, for `for`; or the subject is gone |
 
 The evaluate unit computes transitions from the states before the run; the
 commit unit writes the new ones (above), so a transition is reported once
 and a crash between the two re-evaluates it rather than losing it.
 
 **A failed read is `no data`, never a silent ok.** Chapter 5 left this here:
-a subject whose read fails, or whose frame was cut and therefore refused,
-keeps its state until the failure lasts `for`, then goes to `no data`, which
-notifies like `firing` unless the alert says it should not. A subject that
-stops appearing — an instance removed, a site gone from the frame — goes to
-`no data` the same way, and its state is dropped once it is resolved.
+a subject whose group is incomplete — an instance it depends on failed, or
+its frame was cut and therefore refused — keeps its state until that lasts
+`for`, then goes to `no data`, which notifies like `firing` unless the alert
+says it should not. Revenue of zero is not this: with `"empty": "zero"` a site
+with no payments is compared as 0 and fires. A subject that stops appearing —
+an instance removed, a site gone from the frame — goes to `no data` the same
+way, and its state is dropped once it is resolved.
+
+**An alert made from a panel** (chapter 9) copies the panel's query, its
+calculation and its threshold into the flow, takes the dashboard's variable
+values as the flow's own parameters, and asks for the window. Editing the
+panel afterwards does not move the alert. When the panel's query is a shared
+one, the flow names it instead of copying it, and editing that query lists the
+flows it would move and asks to confirm.
 
 **Actions follow transitions**: a step with `when: "state changed"` runs once
 for each subject whose state moved, with the subject, its value and its state
@@ -299,7 +316,7 @@ flow, marked, rather than leaving it to fail every minute or to run as nobody.
 
 | What | Where |
 |---|---|
-| a flow's definition | TinyStore SQL: columns for what it references — queries, instances, datasets — so that deleting one a flow uses is refused, as Go Dashbin refused deleting a query a panel draws; its steps as JSON |
+| a flow's definition | one document in a row of TinyStore SQL, with its version and its history, beside a table of what it references — shared queries, instances by name, datasets — written in the same transaction, so deleting one a flow uses is refused, as Go Dashbin refused deleting a query a panel draws. The same machinery as a dashboard (chapter 9), not the same schema |
 | its schedule and its runs | TinyStore Jobs |
 | subjects' states, a collector's last window | TinyStore KV, under the flow |
 | alert transitions, runs' reports | events in Records, read through `datasets` |
@@ -384,14 +401,21 @@ After the first review:
 7. **Events written twice**: check TinyStore Records with a repro, then ask
    TinyStore for an id on append. Kept: asked as #23, closed in 0.2.0, and a
    kept event now carries an id.
+8. **Conditions** — changed on 27 October: a condition is chapter 5's
+   calculation and a comparison, its subjects the calculation's groups; an
+   alert's parameters are its own; zero, empty and failed are three things; a
+   flow is one document with a version and its references beside it.
 
 ## What it asks of other chapters
 
 - Chapter 4: the tables and buckets above.
+- Chapter 5: an alert's read always carries a calculation, and its groups'
+  completeness is what a subject's state reads.
 - Chapter 6: `idempotency` and `once` on an action, and a webhook function
   that returns the provider's delivery id.
 - Chapter 9: the forms, a run's progress, an alert's subjects and history, a
-  button and its confirmation.
+  button and its confirmation, an alert made from a panel, and a shared query's
+  edit that lists the flows it moves.
 - Chapter 10: `interact`, webhook tokens, who may edit a flow.
 - Chapter 11: the flow, run and hook endpoints.
 

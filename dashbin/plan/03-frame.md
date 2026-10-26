@@ -74,8 +74,8 @@ pub enum Data {
 
 How a consumer reads a table it was not written for — which column is the
 time, which are numbers, which are labels — is a rule on top of the frame:
-the series rule below, the pivot a chart asks the kernel for, the profile the
-suggestions read. None of them needs the frame to be in one shape.
+the series rule below, which lays out a chart in a drawer and shapes a
+dataset in the kernel, and the profile the suggestions read (chapter 9). None of them needs the frame to be in one shape.
 
 ## Time
 
