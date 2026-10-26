@@ -5,4 +5,4 @@ edition = "2024"
 publish = false
 
 [dependencies]
-tinystore = { version = "=0.3.0", default-features = false, features = ["metrics"] }
+tinystore = { version = "=0.3.0", default-features = false, features = ["metrics", "sql", "kv", "blobs", "backup"] }
