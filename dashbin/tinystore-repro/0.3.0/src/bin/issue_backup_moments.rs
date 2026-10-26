@@ -14,8 +14,15 @@ fn main() -> tinystore::Result<()> {
     let base = UNIX_EPOCH + Duration::from_secs(SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_secs() - 3600);
 
     let store = Store::open(work.join("data"), Options::default())?;
+    // a backup copies the engines in the order they were opened; `metrics-first` opens metrics before the database
+    let metrics_first = std::env::args().nth(1).as_deref() == Some("metrics-first");
+    let early = if metrics_first { Some(store.metrics()?) } else { None };
     let db = store.database("app").migrations(MIGRATION).open()?;
-    let stats = store.metrics()?;
+    let stats = match early {
+        Some(stats) => stats,
+        None => store.metrics()?,
+    };
+    println!("opened {}", if metrics_first { "metrics, then the database" } else { "the database, then metrics" });
     let stop = AtomicBool::new(false);
     let (mut ahead, mut behind, mut same) = (0, 0, 0);
 
