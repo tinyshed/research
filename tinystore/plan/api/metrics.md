@@ -414,7 +414,8 @@ let failing = stats.query().name("http_requests_total").since(Duration::from_hou
   as sql's and records' are.
 - A read is whole or an error: past what one read may hold, it is `limit`,
   naming which bound, never fewer series or samples. `explain` says what a
-  read would cost before it runs.
+  read would cost before it runs. Given `limit`, it is a page:
+  [Pages, accepted 26 October](#pages-accepted-26-october).
 
 ## Aggregate
 
@@ -962,6 +963,7 @@ refuses at a write is said once, and the other instruments are written.
 | a query's bytes read                 | 16 MiB                                                                          |
 | a query's samples decoded            | 1,048,576                                                                       |
 | an answer                            | 100,000 samples or buckets                                                      |
+| a page                               | `limit` samples or buckets, 100,000 unless given and at most                    |
 | `names`, `labelNames`, `labelValues` | 1000 a page, 10,000 at most                                                     |
 | `damaged`                            | 1000 an answer                                                                  |
 | a unit, a help                       | 32 bytes, 1024 bytes                                                            |
@@ -1259,6 +1261,276 @@ time. Its asks for a second step of a group, a bucket still filling, a
 heatmap with its own bounds, retries that count as written, declared label
 names, NaN by IEEE's rules and a read past a damaged series are in the open
 list below.
+
+## Pages, accepted 26 October
+
+Issue #33: six ping targets, a sample a second each, kept thirty days, and
+`read` past about four and a half hours failed `limit` (`answer`, 100,000
+samples) with nothing to go on from: `names` has `after` and `next`, `read`
+had neither. Its author cut the range into two-hour windows and joined the
+series back by their labels, the window a guess, since it depends on how
+many series the `where` finds. Proposed the same day, argued through two
+rounds of three newcomers and three of GPT's readings
+([Rounds](#rounds-26-october)), and accepted by the owner: `read` and
+`aggregate` take `limit` and `after` and answer a page, and a page walks on.
+Nothing in this section is built yet. It goes out in `0.3.0` marked `!`,
+since `read` and `aggregate` answer an object where they answered a list.
+
+### Calls
+
+```ts
+// no limit: as before, the whole answer, or `limit` naming its bound
+const { series } = await store.metrics.read({ name: 'cpu', since: '1h' })
+
+// limit: 10,000 samples at most, and next for the rest
+const page = await store.metrics.read({ name: 'ping_rtt_ms', since: '30d', limit: 10_000 })
+const more = await store.metrics.read({ name: 'ping_rtt_ms', since: '30d', limit: 10_000, after: page.next })
+
+// a page walks its own series, then each page after it, holding one at a time
+for await (const part of page) chart.append(part.labels, part.times, part.values)
+
+const { groups, next } = await store.metrics.aggregate({ name: 'requests_total', since: '1y', every: '1m', op: 'rate', limit: 10_000 })
+```
+
+```python
+page = await store.metrics.read(name="ping_rtt_ms", since="30d", limit=10_000)
+more = await store.metrics.read(name="ping_rtt_ms", since="30d", limit=10_000, after=page.next)
+async for part in page:
+    chart.append(part.labels, part.times, part.values)
+async for group in await store.metrics.aggregate(name="requests_total", since="1y", every="1m", op="rate", limit=10_000):
+    ...
+```
+
+```go
+q := metrics.Query{Name: "ping_rtt_ms", Since: 30 * 24 * time.Hour, Limit: 10_000}
+page, err := metrics.Read(ctx, store, q)
+q.After = page.Next
+more, err := metrics.Read(ctx, store, q)
+for part, err := range page.All(ctx) {
+	if err != nil {
+		return err
+	}
+	chart.Append(part.Labels, part.Samples)
+}
+```
+
+```rust
+let month = stats.query().name("ping_rtt_ms").since(Duration::from_hours(30 * 24)).limit(10_000);
+let page = month.read()?; // SeriesPage { series, next }
+if let Some(next) = &page.next {
+    let more = month.clone().after(next).read()?;
+}
+for part in page.all() {
+    chart.append(&part?);
+}
+```
+
+An export that goes on after a crash walks by `next`, since a walk gives no
+cursor, and keeps whether it finished, since the last page has no `next` to
+save:
+
+```ts
+let saved = await load() // { after: undefined, done: false } on the first run
+while (!saved.done) {
+	const page = await store.metrics.read({ name: 'ping_rtt_ms', since: '30d', limit: 10_000, after: saved.after })
+	await write(page.series)
+	saved = { after: page.next, done: page.next === undefined }
+	await save(saved)
+}
+```
+
+### A page
+
+| Language   | `read`                | `aggregate`              |
+|------------|-----------------------|--------------------------|
+| TypeScript | `Promise<SeriesPage>` | `Promise<AggregatePage>` |
+| Python     | `SeriesPage`          | `AggregatePage`          |
+| Go         | `(SeriesPage, error)` | `(AggregatePage, error)` |
+| Rust       | `Result<SeriesPage>`  | `Result<AggregatePage>`  |
+
+- `read` answers `{ series, next }` and `aggregate` `{ groups, next }`, in
+  every language, with `limit` or without: what a program that pages nothing
+  changes is `.series` and `.groups`.
+- Without `limit` it is as before: the whole answer, or `limit` naming its
+  bound, and `next` is never set. The error says the way on: give `limit`
+  to read it a page at a time.
+- With `limit` it is a page: `limit` samples at most for `read`, buckets for
+  `aggregate`, 100,000 unless given and at most; more is `invalid`, never
+  clamped. A page stops before the sample or the bucket that would pass
+  `limit` or any bound of a query, the series it finds, the bytes it reads,
+  the samples it decodes, and stops there before copying them, in the
+  snapshot's take, never by cutting an answer already read. A page may hold
+  fewer than `limit` and still have `next`; only the last has none. Every
+  `next` is past the `after` it went on from, that of a page that passed only
+  series empty in the range too.
+- `after` without `limit` is `invalid`: `after` goes on from a page, and
+  only a page has one. `latest` and `explain` take neither.
+- An answer is series after series in the order the store made them, each
+  series' samples by time. A series made while a program pages comes after
+  every one it has passed, never behind its cursor. A series a page cuts has
+  `more: true` on its part, and the next page starts with its rest; one
+  answered whole, as every one without `limit`, has `more: false`.
+- An aggregate is its groups one after another, each group's buckets by
+  time. A page ends only between two whole buckets. A bucket's value is
+  computed from every series of its group; the step into a page's first
+  bucket comes from the sample before it, as `rate`, `increase` and `delta`
+  take one at a range's start; a bucket is `partial` for the range, the
+  clock or retention, never for a page's edge.
+- A bucket is never split: one that alone passes a bound is `limit`, as one
+  bucket of a year without `every` may be. Pages bound what an answer holds,
+  not what one bucket of it costs.
+- `read`'s pages go past a query's 1000 series, a page at a time.
+  `aggregate`'s do not, since a bucket needs every series of its group at
+  once: it keeps 1000 series a query, paged or not.
+
+### The cursor
+
+- `next` is opaque and written by the core: its own version; a digest of
+  the query it goes on with, its conditions, `every`, `calendar`, `op`, `by`
+  and `without`; the range the first page fixed, `from`, `to` and the `now`
+  it was read at; and where it goes on, a series and a time, or a group and
+  a bucket.
+- `since: '30d'` becomes `from` once, at the first page. Every page after it
+  reads that range and takes a bucket's `partial` and retention's cutoff
+  from that `now`; what retention has removed since is not there.
+- A cursor given with another query is `invalid`; one of another version is
+  `invalid` and names it.
+- No snapshot is held between pages, as none is between records' pages: each
+  page is one read of the file. Pages one after another give exactly the
+  answer one call without `limit` gives, each sample or bucket once and in
+  order, for data that does not change between them. When it does, a sample
+  written behind the cursor is not seen and one ahead of it is, up to the
+  fixed `to`, and a series deleted between pages is not in the pages after.
+
+### Walking a page
+
+- A page is iterable, async in TypeScript and Python: walking it gives its
+  own series, then reads the next page once the last of them is given, and
+  gives its series in turn, one page held at a time. `page.series` is that
+  page alone.
+- Go has `page.All(ctx)`, an `iter.Seq2[Series, error]`, and Rust
+  `page.all()`, an `Iterator<Item = Result<Series>>`, a `Stream` in
+  `tinystore::aio`. A walk stops when its loop does and holds no reader
+  between pages.
+- A page keeps its store and its query for the walk, out of what it
+  serialises: a page a server sends a browser as JSON carries `series` and
+  `next` alone.
+- `read` stays a function that answers a page, never an object both awaited
+  and walked ([Rounds](#rounds-26-october)).
+- Without `limit` a walk gives the one page there is; past a bound it is
+  `limit` at the `await`, as before. A walk gives no cursor: a program that
+  must go on after a crash walks by `next`, as above.
+
+### The wire
+
+- `metrics.Query` gains `after: str?` and `limit: uint?`, which `aggregate`
+  takes inside `metrics.AggregateAsked`; `metrics.Read` and
+  `metrics.Aggregates` gain `next: str?`, on the last part of an answer. No
+  method is added.
+- A part's `more` already says the next part goes on with its series or
+  group; a page's last part says it when the next page's first part does.
+- An older server refuses `limit` as `unimplemented`, naming the field and
+  its version, as wire.md's Versions has it, and `next` is answered only to a
+  request that sent `limit`; a client that finds an older sidecar replaces
+  it already.
+
+### Contract
+
+- **MET-17** A read or an aggregate given `limit` MUST answer a page that
+  stopped before passing `limit` or any bound of a query, with `next` unless
+  it is the last, each `next` past the `after` it went on from. The pages
+  `next` leads to MUST give, for data unchanged between them, exactly the
+  answer one call without `limit` gives, each sample and bucket once and in
+  order. A page MUST NOT split a bucket nor make one `partial`. A cursor MUST
+  be refused with another query. Without `limit`, MET-07 holds as it did.
+
+### Tests it brings
+
+- A series of a million samples read in pages, each page's reservation of
+  the store's memory within a page's, not the answer's.
+- Pages joined equal the whole answer: `read`; `aggregate` by `rate`,
+  `increase`, `delta`, `avg` and `p95`, with `by`, on a calendar across a
+  change of the clock, a page ending inside a group; equal times in two
+  series; series empty in the range on a page's way; more than 1000 series
+  for `read`.
+- Between pages: a sample written behind the cursor and one ahead of it, a
+  series deleted, a series made.
+- `after` without `limit`, `limit` past 100,000, a cursor with another
+  query, a cursor that is no page's.
+- In every SDK: a walk, a `break` out of it, an export started again from a
+  saved `next`, a page serialised to JSON, an older server's `unimplemented`
+  by the field's rule.
+
+### Decided
+
+| Question                                        | Decided                                                            |
+|-------------------------------------------------|--------------------------------------------------------------------|
+| a page's call                                   | `read` and `aggregate` with `limit`; no verb added                 |
+| without `limit`                                 | the whole answer or `limit`, as before                             |
+| what they answer                                | `{ series, next }` and `{ groups, next }`, always: a break, `!`    |
+| walking                                         | a page walks its series and the pages after it, one held           |
+| `readPage`, `readPages`, `readEach`, `scan`     | none                                                               |
+| one `read` both awaited and walked              | no: returned from an `async` function, a walk becomes a whole read |
+| `after` without `limit`                         | `invalid`                                                          |
+| `cursor` and `pageSize` for `after` and `limit` | no: the words of `names` and records                               |
+| records' `all` as `each`                        | no: a break for symmetry alone                                     |
+| an older server                                 | `unimplemented` naming `limit`, by the protocol's rule             |
+| an aggregate's 1000 series                      | kept: a bucket needs its whole group                               |
+
+### Phases
+
+1. The core's pages: matching from a series on, the snapshot's take stopping
+   before a bound, the cursor, `read`'s pages, MET-17's tests.
+2. `aggregate`'s pages, with the step into a page's first bucket.
+3. The wire's fields (`just protocol`); Bun and Node, Python, Go and `aio`,
+   each with its walk.
+4. The command line's `metrics read` and `aggregate`, by the CLI book's
+   `--after` and `{"next": …}`, and `mcp`; the guides, and
+   `docs/releases/v0.3.0.md` with `.series` and `.groups`; a newcomer check
+   of the calls as built.
+
+### Rounds, 26 October
+
+**The first proposal** kept `read` and `aggregate` and added `readPage` and
+`aggregatePage` for a page, and `readEach` and `aggregateEach`, which joined
+a series' parts across pages and gave it whole. **GPT** read it against the
+code: a series joined whole is not bounded, 2,592,000 samples and 40 MiB for
+thirty days at a second, and its first part waits for its last (taken: a
+walk gives parts); pages are separate reads, so they equal one call only for
+data that does not change, and `since` must not be resolved again (taken:
+the cursor fixes the range); a bucket needs its whole group, so pages do not
+lift an aggregate's 1000 series (taken: the proposal had said they did);
+records' `all` should not become `each` for symmetry (taken). Its second
+reading: a page bounded before the snapshot copies, not cut after (taken, as
+planned); the first page's `now` in the cursor, for `partial` (taken); a
+bucket over the whole range cannot be paged (taken, in the contract); a
+cursor saved after the page it follows is written (taken).
+
+**Three newcomers** on `readPage` and `readPages` read every call right, at 3
+or 4 of 5, and `limit` as samples, unsure. The blind comparison ranked them
+first, `list` and `all` as records' second, `readEach` third, and `read`
+answering a page last, since a caller who ignores `next` gets a prefix
+without an error. Two of three wanted a split series' parts marked (taken:
+`more`); one found that saving an absent `next` starts an export over
+(taken: the example keeps `done`).
+
+**The owner** found `readPage` grim for an API and allowed a break before
+`1.0`. **A second proposal**, one `read` awaited whole and walked as pages,
+went to three newcomers: the reader of bare calls could not tell one object
+from two; the blind comparison ranked it below `readPages`; two of three
+found the same trap, an `async` function returning the call turns a walk
+into a whole read, and Python's `create_task` and `asyncio.run` take only
+coroutines. Withdrawn. **GPT's third reading** asked for `readPage` and
+`aggregatePage` alone and the loop by hand, iterators once the loop is
+common, and not `scan`.
+
+**The accepted form**, `limit` and `after` on `read` and `aggregate`,
+answered GPT's last reading, whose conditions are above: `next` never set
+without `limit`, `after` without `limit` `invalid`, a short page still with
+`next`, an older server never taken for a last page, one break across the
+four SDKs. The owner asked for a walk as well: a page that walks on, which
+keeps `read` one function. No newcomer has read this form; phase 4 does, on
+the calls as built.
 
 ## Open
 
