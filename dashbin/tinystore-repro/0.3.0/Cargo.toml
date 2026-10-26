@@ -1,0 +1,8 @@
+[package]
+name = "ts-repro-030"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+tinystore = { version = "=0.3.0", default-features = false, features = ["metrics"] }
