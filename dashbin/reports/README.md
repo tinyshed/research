@@ -32,3 +32,5 @@ gives it, what its memory costs, and the plugin host it will carry.
 - [TinyStore 0.2.0 against Dashbin's issues](tinystore-0.2.0-recheck-2026-10-26.md):
   eight of nine closed and rerun: an event's id, a packed batch sent again, zone days, a scrape's help and quoted names,
   a group rate, config without a store; #29 open; a scrape of 100 000 series holds the metrics writer 2.6 s, then 0.5 s.
+- [TinyStore 0.3.0: aggregating what is never stored](tinystore-0.3.0-aggregate-2026-10-27.md):
+  a sum and an increase by hand are off where Metrics is exact, and Metrics answers only what it stored; asked as #34.

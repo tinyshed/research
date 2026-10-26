@@ -312,7 +312,10 @@ the same number wherever it is read.
   One column in two units from two instances is refused the same way.
 - **Sums are exact, rounded once.** An `Int` and a `Decimal` are summed as
   integers in their minor units, as chapter 3 sums money; a `Float` through an
-  exact accumulator, as TinyStore Metrics sums. Over a dataset the kernel may
+  exact accumulator, as TinyStore Metrics sums — its own, once TinyStore can
+  aggregate samples it does not store
+  ([tinyshed/tinystore#34](https://github.com/tinyshed/tinystore/issues/34)),
+  and a compensated sum of ours until then. Over a dataset the kernel may
   hand the calculation to TinyStore's own aggregate when it is one of its
   operations over its labels — an optimisation that must answer the same
   frame, number for number.

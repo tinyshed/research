@@ -1,0 +1,12 @@
+== issue_aggregate_in_memory, run 1
+by hand: sum 0.9999999999999999, increase -30.0
+metrics: sum Exact(1.0), increase Exact(170.0)
+what it took: a store, 25.3ms to open, ingest and read, and on disk ["LOCK", "metrics.db", "metrics.db-shm", "metrics.db-wal"]
+== issue_aggregate_in_memory, run 2
+by hand: sum 0.9999999999999999, increase -30.0
+metrics: sum Exact(1.0), increase Exact(170.0)
+what it took: a store, 30.6ms to open, ingest and read, and on disk ["LOCK", "metrics.db", "metrics.db-shm", "metrics.db-wal"]
+== issue_aggregate_in_memory, run 3
+by hand: sum 0.9999999999999999, increase -30.0
+metrics: sum Exact(1.0), increase Exact(170.0)
+what it took: a store, 24.5ms to open, ingest and read, and on disk ["LOCK", "metrics.db", "metrics.db-shm", "metrics.db-wal"]
