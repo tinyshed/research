@@ -59,9 +59,11 @@ That is asked apart, in #29 below.
 
 ## Asked besides
 
-Nothing in chapter 7 waits on these. They are what Dashbin will meet next on
+Nothing in chapter 7 waited on these. They are what Dashbin will meet next on
 TinyStore, filed now so its maintainers can weigh them, including the ones we
-consider optional. Each carries a whole program and its output.
+consider optional. Each carries a whole program and its output. TinyStore
+0.2.0 closed all of them but #29, and #23 and #24 above, as
+[the recheck](tinystore-0.2.0-recheck-2026-10-26.md) measured.
 
 | Ask | What the program shows | Issue |
 |---|---|---|

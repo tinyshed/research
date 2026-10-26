@@ -1,0 +1,176 @@
+== issue_event_id
+one delivery appended by two attempts with its id: wrote true, then false; the stream holds 1 events
+a list of that delivery and a new one: wrote 1; the stream holds 2 events
+the same push twice without an id: the stream holds 4 events
+== issue_packed_retry
+the same batch again, right away: Ok("ok")
+the same batch again, after maintenance: Ok("ok")
+== issue_zone_buckets
+metrics, orders a day over two moscow days, 24 each:
+  bucket at 2026-10-22T21:00Z: Exact(24.0)
+  bucket at 2026-10-23T21:00Z: Exact(24.0)
+records, the same orders as events, counted a day:
+  row at 2026-10-22T21:00Z: 24
+  row at 2026-10-23T21:00Z: 24
+metrics, hours a berlin day across the clock change:
+  bucket at 2026-10-23T22:00Z: Exact(24.0)
+  bucket at 2026-10-24T22:00Z: Exact(25.0)
+== issue_prometheus_rest
+help and unit after ingesting the family: help "Memory information field MemAvailable_bytes.", unit "bytes"
+12000 samples in one scrape: Ok(())
+a quoted utf-8 name: Ok(())
+  read back as "http.server.request.duration" {"instance": "otel", "method": "GET"}
+  rpc_seconds_bucket: help "How long a call took.", unit ""
+  rpc_seconds_sum: help "How long a call took.", unit "seconds"
+  rpc_seconds_count: help "Described by the code.", unit "ms"
+== issue_gauge_correction
+yesterday's revenue corrected from 1000 to 900: Err("<tmp>\\gauge-correction-repro\\metrics.db: metrics revenue{shop=\"msk\"}: sample at 2026-10-25T00:00:00Z, behind what its series has packed, which holds another value there: too old"), at Some("2026-10-25T00:00:00Z"), packed Some("2026-10-25T00:00:00.001Z")
+yesterday now reads [1000.0]
+== issue_group_rate
+    0.0 s  bot-a message 0
+    0.0 s  bot-b message 0
+    0.0 s  bot-a message 1
+    0.0 s  bot-b message 1
+    1.0 s  bot-a message 2
+    1.0 s  bot-b message 2
+    1.0 s  bot-a message 3
+    1.0 s  bot-b message 3
+the queue starts 30 a second and each bot's group 2 a second
+== issue_config_no_store
+hub from the file: wss://dashbin.example.com/agent
+what reading two settings left beside the file: ["agent.toml"]
+a live setting without a store: Err("config agent: burst is live, and a config loaded without a store keeps no change: open it with store.config: invalid")
+== event_twice
+appended the same event twice, the stream holds 2
+  push at SystemTime { intervals: 134374861684400128 }: [("delivery", "\"72d3162e-cc78-11e3-81ab-4c9367dc0958\""), ("repo", "\"tinyshed/dashbin\""), ("sha", "\"26a0865\"")]
+  push at SystemTime { intervals: 134374861684400128 }: [("delivery", "\"72d3162e-cc78-11e3-81ab-4c9367dc0958\""), ("repo", "\"tinyshed/dashbin\""), ("sha", "\"26a0865\"")]
+two more in one append_all, the stream holds 4
+== sample_twice
+the same batch ingested again, every sample identical: Ok(())
+before maintenance: at the packed time [1.0], at the head time [1.0]
+maintenance packed 0 series into 0 blocks
+after maintenance, the same batch again, every sample identical: Ok(())
+2.0 written again at the packed time: Err(<tmp>\ts-repro-sample-twice-011\metrics.db: metrics revenue{site="kazan"}: sample at 2026-10-26T08:15:00Z, behind what its series has packed, which holds another value there: too old); at the head time: Err(<tmp>\ts-repro-sample-twice-011\metrics.db: metrics revenue{site="kazan"}: sample at 2026-10-26T10:59:00Z, behind what its series has packed, which holds another value there: too old)
+read back: at the packed time [1.0], at the head time [1.0]
+maintenance again: packed 0 series into 0 blocks
+read back: at the packed time [1.0], at the head time [1.0]
+sum over the packed hour, 240 samples of 1.0 with one of them written again as 2.0: ["Aggregate { name: \"revenue\", labels: {}, buckets: [Bucket { at: SystemTime { intervals: 134374752000000000 }, value: Exact(240.0), samples: 240, resets: 0, gap: false, partial: false }] }"]
+== missed_runs
+added flow-1, every second; closing the store for five seconds
+reopened and worked for 3.5 s: 5 runs
+  at    2ms after reopening, due     5s before it ran, attempt 1
+  at  399ms after reopening, due   19ms before it ran, attempt 1
+  at     1s after reopening, due   12ms before it ran, attempt 1
+  at     2s after reopening, due    9ms before it ran, attempt 1
+  at     3s after reopening, due   12ms before it ran, attempt 1
+== warning
+{"time":"2026-10-26T11:03:02.438Z","level":"WARN","stream":"tinystore","msg":"SQLite was built with SQLITE_ENABLE_MEMORY_MANAGEMENT, so every connection shares one page cache behind one mutex and readers stop one another: point reads from 16 threads ran 7-9x slower (research rust-slice-2026-10-10); build with LIBSQLITE3_FLAGS=\"SQLITE_DQS=0 -USQLITE_ENABLE_MEMORY_MANAGEMENT SQLITE_ENABLE_DBPAGE_VTAB -DHAVE_FDATASYNC=1\""}
+{"time":"2026-10-26T11:03:02.460Z","level":"INFO","stream":"hello","msg":"bucket written"}
+== once
+[2m2026-10-26T11:03:02.590027Z[0m [33m WARN[0m [2mtinystore[0m[2m:[0m SQLite was built with SQLITE_ENABLE_MEMORY_MANAGEMENT, so every connection shares one page cache behind one mutex and readers stop one another: point reads from 16 threads ran 7-9x slower (research rust-slice-2026-10-10); build with LIBSQLITE3_FLAGS="SQLITE_DQS=0 -USQLITE_ENABLE_MEMORY_MANAGEMENT SQLITE_ENABLE_DBPAGE_VTAB -DHAVE_FDATASYNC=1"
+  caller 0 got 102400 bytes at 502.8505ms
+  caller 3 got 102400 bytes at 503.1409ms
+  caller 1 got 102400 bytes at 503.1664ms
+  caller 2 got 102400 bytes at 503.31ms
+small: answer of 102400 bytes, work ran 1 times, took 503.37ms
+[2m2026-10-26T11:03:03.616317Z[0m [33m WARN[0m [2mtinystore[0m[2m:[0m a once answer was not kept; the callers that waited have it, and the next run of its key runs again [3merror[0m[2m=[0mkv once big: key "panel-7": a value of 2097153 bytes, over 1048576: limit
+  caller 0 got 2097152 bytes at 501.3479ms
+  caller 3 got 2097152 bytes at 501.7006ms
+  caller 1 got 2097152 bytes at 501.7085ms
+  caller 2 got 2097152 bytes at 501.9932ms
+big: answer of 2097152 bytes, work ran 1 times, took 502.0845ms
+== series
+series 100001 with max_series 1M: accepted
+== prom
+broken text: metrics: line 1, `node_load1{instance="x"} 1`: label instance, which the call gives every series: invalid
+NamePage {
+    names: [
+        NameInfo {
+            name: "http_request_duration_seconds_bucket",
+            kind: Histogram,
+            series_count: 3,
+            unit: "",
+            help: "",
+            keep: 2592000s,
+            retained_from: SystemTime {
+                intervals: 134374861869160000,
+            },
+            newest: SystemTime {
+                intervals: 134374861869160000,
+            },
+        },
+        NameInfo {
+            name: "http_request_duration_seconds_count",
+            kind: Counter,
+            series_count: 1,
+            unit: "",
+            help: "",
+            keep: 2592000s,
+            retained_from: SystemTime {
+                intervals: 134374861869160000,
+            },
+            newest: SystemTime {
+                intervals: 134374861869160000,
+            },
+        },
+        NameInfo {
+            name: "http_request_duration_seconds_sum",
+            kind: Counter,
+            series_count: 1,
+            unit: "",
+            help: "",
+            keep: 2592000s,
+            retained_from: SystemTime {
+                intervals: 134374861869160000,
+            },
+            newest: SystemTime {
+                intervals: 134374861869160000,
+            },
+        },
+        NameInfo {
+            name: "node_cpu_seconds_total",
+            kind: Counter,
+            series_count: 2,
+            unit: "",
+            help: "Seconds the CPUs spent in each mode.",
+            keep: 2592000s,
+            retained_from: SystemTime {
+                intervals: 134374861869160000,
+            },
+            newest: SystemTime {
+                intervals: 134374861869160000,
+            },
+        },
+        NameInfo {
+            name: "node_load1",
+            kind: Gauge,
+            series_count: 1,
+            unit: "",
+            help: "",
+            keep: 2592000s,
+            retained_from: SystemTime {
+                intervals: 134374861869160000,
+            },
+            newest: SystemTime {
+                intervals: 134374861869160000,
+            },
+        },
+    ],
+    next: None,
+}
+== pileup
+36 reads abandoned at 110.3441ms
+the next visitor's `select 1` answered 1 after 203.3µs
+a read under a 200 ms tokio timeout: true after 200.7486ms
+one second later `select 1` = 1 in 55.6µs
+== node_exporter_text (the text 0.1.1 read, sha256 67a38ce7…)
+81734 bytes: 884 samples, 292 # HELP, 292 # TYPE, 0 # UNIT
+ingest: Ok(())
+  node_memory_MemAvailable_bytes: help "Memory information field MemAvailable_bytes.", unit ""
+  node_cpu_seconds_total: help "Seconds the CPUs spent in each mode.", unit ""
+  node_network_receive_bytes_total: help "Network device statistic receive_bytes.", unit ""
+== big_scrape
+a text of 100000 samples, 5788925 bytes
+first scrape, every series new: Ok(()) in 2.87 s; one sample beside it Ok(()) in 0.00 s
+second scrape, the same series: Ok(()) in 0.79 s; one sample beside it Ok(()) in 0.00 s
+100001 samples: Err("metrics: line 100002, `kube_pod_status_ready{pod=\"pod-100000\",condition=\"true\"} 1`: a text past 100000 samples or 32 MiB: send it in parts: limit")

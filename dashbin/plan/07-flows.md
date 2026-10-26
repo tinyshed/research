@@ -1,8 +1,8 @@
 # 7. Flows
 
-**Status: draft, second round, 25 October 2026.** The first draft went
-through one review; what it changed is listed under *Forks*. Nothing is
-agreed until Dmitry says so.
+**Status: draft, second round, 25 October 2026; TinyStore 0.2.0 folded in on
+26 October.** The first draft went through one review; what it changed is
+listed under *Forks*. Nothing is agreed until Dmitry says so.
 
 Everything that runs without a person looking at it: collectors, alerts,
 webhooks, buttons. Chapter 2 named them flows of one shape, a trigger and
@@ -105,8 +105,8 @@ what follows it is made to bear repeating:
 |---|---|
 | query | it only reads |
 | check | its answer is the transitions, computed from the frames and the states before the run, and kept as the unit's answer |
-| keep, as series | TinyStore Metrics takes the same batch again while its stretch is in the head; **once maintenance has packed it, the identical batch is refused whole as `too old`**, measured, so a retry after packing never succeeds — asked of TinyStore, below |
-| keep, as events | **nothing**: an event appended twice is two events, measured, and Records has no id that makes a repeat nothing and cannot commit with a job (it opens in no database's file) — asked of TinyStore, below |
+| keep, as series | TinyStore Metrics takes the same batch again as nothing, in the head or after packing, measured on 0.2.0. A sample that differs behind what its series has packed — the source changed between the attempts — refuses the whole batch as `too old`, naming the time the series is packed to; the collector drops that series' samples before it and writes the rest |
+| keep, as events | each event carries an id, and an append of an id its stream holds writes nothing, measured on 0.2.0: a webhook's event is named by its delivery; a collector's by its instance, its time, a hash of its fields and its place among identical rows of the same read, so the same window read again names the same events and two identical rows stay two |
 | action | the operation's id (chapter 6): `flow/run/step/subject`, the same on every attempt; inside the provider's window, a repeat is the same operation |
 
 **A state and the notifications it causes are written together.** An alert
@@ -119,10 +119,11 @@ exists only if it commits. The notification jobs then run on their own, at
 least once, each with its operation id. A notification may be sent twice; it
 is never lost.
 
-**Missed runs collapse into one**, measured: a job repeating every second,
-its store closed for five seconds, ran once on reopening — its `at` the first
-time it missed, five seconds before — and then on time. A collector catches
-up through its windows, below, and an alert evaluates now.
+**Missed runs collapse into one**, measured on 0.1.1 and 0.2.0: a job
+repeating every second, its store closed for five seconds, ran once on
+reopening — its `at` the first time it missed, five seconds before — and then
+on its schedule. A collector catches up through its windows, below, and an
+alert evaluates now.
 
 ## The window a scheduled read covers
 
@@ -201,6 +202,18 @@ frame neither fits is refused with the reason, and a cut frame is refused
 came are kept, the one that did not is a gap in its series, and the run's
 report names it. A dataset's retention is the dataset's, kept by TinyStore.
 
+**Collectors share one writer.** A scrape of up to 100 000 samples is written
+whole, in one write that holds the metrics writer: 2.6 s the first time, when
+every series is new, 0.5 s after, measured on 0.2.0. Every other collector's
+write waits behind it meanwhile, and reads do not.
+
+**A number its source corrects later** — a day's revenue after a refund —
+cannot be corrected in a series once packed
+([tinyshed/tinystore#29](https://github.com/tinyshed/tinystore/issues/29),
+open), and a collector never reads a window twice anyway. Such a number is
+read from its source by the panel; where Dashbin keeps its history is not
+decided here.
+
 ## Webhooks
 
 **The address is unguessable**: `/hooks/<token>`, a token the hub mints for
@@ -270,6 +283,11 @@ after sending may or may not have refunded the charge.
   does.
 - **A run has a timeout**, the flow's; when it passes, the run is told to
   stop, and its query is cancelled as chapter 5 cancels one.
+- **An instance's own limit is its group's rate.** The notification queue
+  groups jobs by instance, and an instance whose provider limits it gets a
+  group rate beside the queue's, so two Telegram bots do not share one limit
+  — measured on 0.2.0: each of two bots allowed two a second sent two at once
+  and two a second later. The rate is counted in the process, which is one hub.
 
 ## Who a flow runs as
 
@@ -297,7 +315,8 @@ reads each site from where that site's window ended, 10:00, to 13:00;
 other nine move to 13:00, and at 14:00, its agent back, `msk` reads
 10:00–14:00 and has no gap. The hub dies after writing the series and before
 keeping the unit's answer: the next attempt reads and writes the same samples
-again, and each time keeps its last value.
+again, which change nothing, packed or not. A refund booked tomorrow against
+today is not seen: that is #29's case, above.
 
 ### Failed payments over three Stripe accounts
 
@@ -321,22 +340,25 @@ would stop as `outcome unknown` and wait for a person.
 ## What TinyStore is asked
 
 The rule is that what is inconvenient in TinyStore is reported, not worked
-around. Two things a flow needs are not there, each measured by a program
-against the 0.1.1 crate (`tinystore-repro/0.1.1`):
+around. Two things a flow needed were not there in 0.1.1, each measured by a
+program (`tinystore-repro/0.1.1`); 0.2.0 closed both, rerun by the same
+programs (`tinystore-repro/0.2.0`), so no workaround is built for either:
 
 - **Records: an id on append**
-  ([tinyshed/tinystore#23](https://github.com/tinyshed/tinystore/issues/23)), so that a second append of an id the stream
-  holds is nothing — or a stream opened inside a database's file, so it
-  commits with the job. Until then an event kept by a flow may be kept twice
-  after a crash.
-- **Metrics: an identical sample behind the sealed frontier accepted as
-  nothing** ([tinyshed/tinystore#24](https://github.com/tinyshed/tinystore/issues/24)), or an ingest that skips and reports what is behind it, or a way
-  to read the frontier. NOT-08 is TinyStore's stated reason for refusing a
-  sample behind it — a packed counter's increase would change — and an
-  identical sample changes nothing. Until then a collector's step retried
-  after its stretch was packed fails for good, and Dashbin drops the samples
-  behind the window it knows it kept, with a reference to the issue, which
-  goes when the issue is closed.
+  ([tinyshed/tinystore#23](https://github.com/tinyshed/tinystore/issues/23)).
+  A second append of an id the stream holds writes nothing and says so.
+- **Metrics: an identical sample behind the packed frontier taken as
+  nothing** ([tinyshed/tinystore#24](https://github.com/tinyshed/tinystore/issues/24)).
+  NOT-08 still refuses a different one, and the refusal now names where the
+  series is packed to.
+
+Two more, asked with five others the same day, bear on flows: a group's own
+rate ([#30](https://github.com/tinyshed/tinystore/issues/30), closed in
+0.2.0, above under *Bounds*) and a gauge corrected behind what is
+packed ([#29](https://github.com/tinyshed/tinystore/issues/29), open: a
+rewrite of a packed block is a design change for TinyStore, which suggests a
+SQL table upserted by day meanwhile and asks how far back and how often
+corrections land).
 
 ## Forks
 
@@ -360,7 +382,8 @@ After the first review:
 6. **One run of a flow at a time**; runs share chapter 6's slots. Kept, with
    missed runs collapsing into one.
 7. **Events written twice**: check TinyStore Records with a repro, then ask
-   TinyStore for an id on append. Kept.
+   TinyStore for an id on append. Kept: asked as #23, closed in 0.2.0, and a
+   kept event now carries an id.
 
 ## What it asks of other chapters
 

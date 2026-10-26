@@ -1,0 +1,15 @@
+== big_scrape, writing beside it all along, run 1
+a text of 100000 samples, 5788925 bytes
+first scrape, every series new: Ok(()) in 2.82 s; beside it 19 small writes, the longest 2.63 s, asked 0.19 s in
+second scrape, the same series: Ok(()) in 0.74 s; beside it 22 small writes, the longest 0.52 s, asked 0.22 s in
+100001 samples: Err("metrics: line 100002, `kube_pod_status_ready{pod=\"pod-100000\",condition=\"true\"} 1`: a text past 100000 samples or 32 MiB: send it in parts: limit")
+== big_scrape, writing beside it all along, run 2
+a text of 100000 samples, 5788925 bytes
+first scrape, every series new: Ok(()) in 2.75 s; beside it 18 small writes, the longest 2.57 s, asked 0.18 s in
+second scrape, the same series: Ok(()) in 0.73 s; beside it 23 small writes, the longest 0.50 s, asked 0.22 s in
+100001 samples: Err("metrics: line 100002, `kube_pod_status_ready{pod=\"pod-100000\",condition=\"true\"} 1`: a text past 100000 samples or 32 MiB: send it in parts: limit")
+== big_scrape, writing beside it all along, run 3
+a text of 100000 samples, 5788925 bytes
+first scrape, every series new: Ok(()) in 2.87 s; beside it 18 small writes, the longest 2.70 s, asked 0.18 s in
+second scrape, the same series: Ok(()) in 0.76 s; beside it 22 small writes, the longest 0.53 s, asked 0.22 s in
+100001 samples: Err("metrics: line 100002, `kube_pod_status_ready{pod=\"pod-100000\",condition=\"true\"} 1`: a text past 100000 samples or 32 MiB: send it in parts: limit")

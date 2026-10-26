@@ -29,3 +29,6 @@ gives it, what its memory costs, and the plugin host it will carry.
 - [TinyStore 0.1.1 against what flows need](tinystore-0.1.1-flows-2026-10-25.md):
   an event appended twice is two, an identical metrics batch is refused once packed, missed repeats collapse into one;
   seven asks besides, #25–#31.
+- [TinyStore 0.2.0 against Dashbin's issues](tinystore-0.2.0-recheck-2026-10-26.md):
+  eight of nine closed and rerun: an event's id, a packed batch sent again, zone days, a scrape's help and quoted names,
+  a group rate, config without a store; #29 open; a scrape of 100 000 series holds the metrics writer 2.6 s, then 0.5 s.
