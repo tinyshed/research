@@ -351,3 +351,253 @@ left and a copy caught up, `--stdio`'s banner on stderr, `--version`, a way to
 make a token. Kept against it: `home` and `copy` rather than primary and
 replica, the owner's words; `failover` and `synchronous-with`, named by the
 owner on 18 October; `search list`, built.
+
+## Writing, accepted 26 October
+
+Issue #32: a server with only a shell wanted one ping's round trip a second
+from six targets in metrics, kept a month, and the command line could neither
+write metrics nor read them. Its author installed Python and a 14 MB wheel,
+and wrote a 100-line daemon to ingest and a second script to read back.
+Proposed the same day, read by three newcomers and then by GPT
+([Rounds](#rounds-26-october)), and accepted by the owner with GPT's
+changes. Nothing in this section is built yet; [Phases](#phases) gives the
+order.
+
+**It is not a fifth SDK.** The command line takes what a shell needs from
+each engine, a write, a read, a list, a delete of one item, and streams; no
+workers, transactions, handlers or bulk deletes. It stays a person's tool
+first, coloured and aligned on a terminal, and a script's or an agent's
+under `--json`.
+
+### Principles it adds
+
+- **One grammar**: `tinystore <thing> <dir> <verb> <name> [args] [flags]`,
+  as `kv` reads. The thing is the store's word in the SDKs, `metrics`,
+  `events`, `jobs`, `files`, `channels`, with `kv` keeping its released
+  name; the verb is the SDK's verb, so a guide's call is the command.
+- **A write goes through a server**, the protocol call an SDK makes, with its
+  checks and its errors; the command line keeps no write path of its own.
+- **A write needs a store**: a directory given explicitly that holds `LOCK`,
+  checked before any server starts. The path is resolved once, and that path
+  is what a started server is given.
+- **Nothing waits unasked**: a command that reads stdin refuses a terminal; a
+  command that never ends takes `--for <span>`; no prompt and no pager.
+- **stdout is the data.** Everything else goes to stderr, each line starting
+  `tinystore <command>:`, and as JSON lines under `--json`, so that
+  `--json 2>&1 | jq` holds.
+- **The exit code is the truth**, and a reader that closes the pipe, `| head`,
+  ends the command quietly: that error alone, not every failed write.
+- **Output is bounded, and the data says so**: `--json` is NDJSON whose last
+  line is `{"next": "…"}` when more is there, and `--after` reads on.
+- **A write prints one line of what it did**, and help says which writes are
+  safe to send again.
+- **Times in JSON are whole and UTC.** A person's lines are local, and a read
+  prints the window it read first, with its zone.
+
+### Commands
+
+```sh
+tinystore metrics ./data ingest < scrape.txt                       # whole: every sample or none
+ping … | awk '…' | tinystore metrics ./data ingest -f --keep 30d   # a stream, until stdin ends
+tinystore metrics ./data names
+tinystore metrics ./data read ping_rtt_ms --where target=poland --since 1h
+tinystore metrics ./data read ping_rtt_ms --from 14:30 --to 14:35
+tinystore metrics ./data aggregate ping_rtt_ms --since 1h --every 10m --op max --by target
+tinystore metrics ./data delete ping_rtt_ms target=poland          # one series, by its exact labels
+
+tinystore events ./data append audit role.changed user:=42 role=admin
+my-worker 2>&1 | tinystore events ./data append worker            # each line an event
+tinystore events ./data list audit --since 1h --where user=42
+
+tinystore kv ./data set flags beta on --ttl 1h
+tinystore kv ./data set counters hits 42 --as int
+tinystore kv ./data delete sessions 42
+tinystore jobs ./data add emails '{"to": "ada@example.com"}' --id welcome-42 --delay 1m
+tinystore jobs ./data list emails --state failed
+tinystore jobs ./data cancel emails welcome-42
+tinystore files ./data put avatars users/42/avatar.png ./avatar.png
+tinystore files ./data get avatars users/42/avatar.png ./avatar.png
+tinystore files ./data list avatars users/42
+tinystore files ./data delete avatars users/42/avatar.png
+tinystore channels ./data publish chat-events '{"kind": "reload"}'
+tinystore channels ./data subscribe chat-events --for 1m
+tinystore sql ./data app "delete from users where id = 7" --write  # through a running server too
+
+tinystore lock ./data hold cron nightly-backup -- ./backup.sh       # later
+tinystore config ./data explain chat                                # later
+tinystore config ./data update chat model.max_tokens=2048           # later: live settings alone
+
+tinystore completion bash|zsh|fish|powershell
+tinystore help --all
+tinystore status ./data --json                                      # every name the store holds
+```
+
+A person's terminal reads them as lines and tables:
+
+```text
+$ tinystore metrics ./data read ping_rtt_ms --where target=poland --from 14:32 --to 14:33
+ping_rtt_ms{target="poland"}   26 Oct 14:32–14:33 Europe/Moscow · 46 samples
+  14:32:00   23.1
+  14:32:01   22.9
+  14:32:17   24.0
+
+$ tinystore metrics ./data aggregate ping_rtt_ms --since 1h --every 10m --op max --by target
+ping_rtt_ms max every 10m   26 Oct 13:40–14:40 Europe/Moscow
+          finland   poland   sweden
+  13:40      31.2     24.0     40.1
+  13:50      30.8   1012.5     39.7
+```
+
+`aggregate` draws buckets as rows and series as columns, and falls back to a
+line each when the columns do not fit.
+
+### metrics ingest
+
+Prometheus' text decides its timestamps' unit by its last line, `# EOF` for
+OpenMetrics' seconds and anything else for milliseconds, and a text is read
+alone, so a stream cut into texts would lose both its unit and its `# TYPE`
+lines. Hence two forms:
+
+- `metrics ingest` reads stdin to its end and writes it whole, every sample
+  or none, as the SDKs' `ingestPrometheus`: a scrape or a file, in either
+  format. It is strict by being whole.
+- `metrics ingest -f` follows a stream that does not end, as `logs -f`
+  follows lines; Prometheus' text alone. A streaming form of the library's
+  own reader keeps `# TYPE`, `# HELP` and `# UNIT` across the stream, gives a
+  line without a time the time it was read, and refuses a line alone; the
+  command sends the series it hands back with `metrics.ingest` every second,
+  or at 10,000 lines. A line it cannot read goes to stderr with its number
+  and is skipped, and the command exits 1 at the end if any was. The reader
+  is not copied into the command line.
+- Without `-f`, stdin still open after 5 seconds says `still reading stdin: a
+  stream that does not end needs -f`.
+- `--kind ping_lost_total=counter` gives a name its kind where the input has
+  no `# TYPE`; a name with neither is a gauge, said once on stderr. `--keep`
+  sets the names' keep, 30 days when none is given; `--label k=v` labels
+  every series.
+
+What a repeat changes:
+
+| Repeat                                     | What happens                                    |
+|--------------------------------------------|-------------------------------------------------|
+| a batch sent again after a lost connection | the same times and values: nothing changes      |
+| the same stream after the command restarts | safe only when the stream carries its own times |
+| a write whose answer was lost              | sent again unchanged, never with new times      |
+
+### Values
+
+Event fields are `k=v` for text and `k:=v` for JSON, as httpie writes them:
+nothing is guessed from a value's look, so `zip=02134` stays text. `kv set`
+writes text unless `--as int|json`, float and bytes later. `-` reads a value
+from stdin, since Windows PowerShell 5.1 drops the quotes inside a JSON
+argument. `--id` and `--at` belong to one event given in arguments and are
+refused with stdin.
+
+`jobs add` prints the id it was given, and says a job without one cannot be
+cancelled, since `add` returns no id. `files get` writes to the path it is
+given, never stdout, since PowerShell's `>` re-encodes binary output as text;
+an existing file is refused without `--force`, and the file is written beside
+and renamed.
+
+### Who writes
+
+| Who holds `./data`                    | A write                                                 |
+|---------------------------------------|---------------------------------------------------------|
+| no one                                | starts a sidecar, as the SDKs do, and writes through it |
+| `tinystore serve` or an SDK's sidecar | finds it through `server/SERVE` and writes through it   |
+| a program that opened it embedded     | refuses, exit 1, saying what to do                      |
+
+A sidecar is needed because six `ping | ingest -f` at once would otherwise
+lock five of them out. One the command starts says so on stderr, `started a
+server for ./data; it stops 30 s after the last client`; several commands
+starting one at once leave one, the rest connecting to it; it refuses to start
+as a user who does not own the directory, since `sudo … ingest` would leave
+files the program cannot open. A host that runs `serve` itself gets a way to
+refuse rather than start one, named when built.
+
+A program that holds the directory embedded is refused in words:
+
+```text
+tinystore metrics ingest: a program holds ./data inside its own process, so no other process can write to it
+  open it in that program with a sidecar, or let `tinystore serve ./data` hold it
+```
+
+The core says only `another store holds it` today; telling an embedded
+program from a second writer needs `LOCK` to say who holds it. Reading beside
+it works as `logs` does, and the handbook's `embedded` says first that
+nothing else can write while it runs.
+
+### Completion
+
+`tinystore completion <shell>` prints a few lines that ask a hidden
+`tinystore __complete <words>` on each Tab, so the four shells complete alike
+from the table help and the parser read: commands, verbs, flags, a flag's
+values, and the names a store holds, read beside it, a metric's labels and
+their values among them. It creates no store, writes nothing, waits for no
+server, and offers nothing when anything fails.
+
+### Agents
+
+`help --all` prints every command with its examples at once, and `status
+--json` names everything the store holds, the names completion offers. A flag
+is no security boundary for an agent with a shell, so writing through `mcp`
+waits for permissions by operation, and comes last.
+
+### Decided
+
+| Question                                   | Decided                                                                |
+|--------------------------------------------|------------------------------------------------------------------------|
+| who writes when no one holds the directory | a sidecar the command starts, as above                                 |
+| an event field's type                      | `k=v` text, `k:=v` JSON                                                |
+| a `kv set` value's type                    | text, `--as int\|json`                                                 |
+| reading events                             | `events list`; `logs` stays the application's log tail                 |
+| `sql --write`                              | kept: released, and an exception to writing by a verb, said as one     |
+| names                                      | the SDKs': `names`, `--keep`, `hold`, not `list`, `--retention`, `run` |
+| `--strict`                                 | none: `ingest` whole is strict, `ingest -f` skips and says             |
+| gaps in a person's `read`                  | only when asked, `--gaps 5s`; the command guesses no step              |
+| `TINYSTORE_DIR`                            | none for writes                                                        |
+| embedded listening as a sidecar            | no                                                                     |
+| `jobs retry`, a publish's listener count   | not added to the engines for the command line                          |
+| deleting metrics                           | one series by its exact labels, as the SDK; no `--all`                 |
+
+### Phases
+
+1. A client of the protocol in the command line, built from the library's
+   generated messages, which already write and read both ways: connecting to
+   a server, starting a sidecar against others starting one, timeouts, a
+   connection lost, exit codes, the closed pipe, and a test of a write that
+   committed whose answer was lost.
+2. Metrics and events: `names`, `read`, `aggregate`, `delete`, `append` and
+   `list` first, then `ingest` and `ingest -f`.
+3. kv, jobs, files, channels and `sql --write` through a server; completion,
+   `help --all`, the names in `status --json`; lock and config; writing
+   through `mcp` last, after its permissions.
+
+### Rounds, 26 October
+
+**Three newcomers** (Haiku, no context but the text: a free review, twenty
+bare commands read cold, a blind comparison of seven choices). Taken: a time
+stamped when read and kept across repeats; the window printed with its zone;
+a gauge by default said on stderr; `files get` to a path; `-` for stdin; a
+line for each write; an explicit directory for writes; a sidecar that says
+it started and checks its user; `k=v` and `k:=v`; `files list` and `delete`,
+`metrics delete`, `config explain`, `jobs cancel`; `events list` (two of
+three). The least sure readings were `kv set flags beta true` (bucket, key or
+value, and what `true` becomes) and `config update chat …` (what `chat` is).
+Kept against them: the SDKs' words; a sidecar rather than the command's own
+`LOCK` (the blind comparison chose the lock, citing no daemon).
+
+**GPT**, reading the proposal against the code: a stream cut into texts
+loses its unit and its kinds (taken: the two forms of `ingest`); a repeat is
+safe only within one batch's times (taken: the table); `--kind` by name for a
+plain `awk` (taken); a delete of a whole name (answered: a delete is one
+series, as the SDK's); a flag is no security boundary for `mcp` (taken:
+permissions first); `is_dir` is not a store (taken: `LOCK`, before a server
+starts); `jobs add --id` and its id printed, `files get` refusing to
+overwrite, the truncation in the data, the closed pipe alone silenced (all
+taken); its order of phases (taken). Its advice: do not build a fifth SDK.
+
+While the proposal was written, `tinystore sql … | head -2` on Windows
+panicked with exit 101, `failed printing to stdout` on `os error 232`: no
+command handles a closed pipe. Linux is expected to do the same, since Rust
+ignores SIGPIPE, and is not yet checked.
