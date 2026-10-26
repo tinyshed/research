@@ -2,7 +2,8 @@
 
 **Status: decided, 25 October 2026**, except what *Not measured yet* lists.
 The first draft's seven forks went through one review; what it changed is
-listed under *Forks*.
+listed under *Forks*. The official `telegram` plugin was added on 27
+October.
 
 Dmitry's three demands: a plugin is ordinary code that any programmer would
 write without reading a manual first; anyone may write one, in JavaScript or
@@ -355,10 +356,62 @@ chapter only says where they come from.
 | `datasets` | `series`, `events` (chapter 5) | — |
 | `scrape` | `metrics`: Prometheus text, into TinyStore's reader | — |
 | `probe` | `http`: a synthetic check, status and time | — |
-| `notify` | — | `telegram`, `webhook` |
+| `notify` | — | `webhook` |
 
 A built-in declares settings and functions in the same shape as a JS plugin,
 through a Rust trait, so the interface treats both alike.
+
+## Official plugins
+
+**An official plugin is a JS plugin we write, shipped inside the binary.**
+An instance of it is made like any other, with no install step; it runs in
+QuickJS under the same rules as a third-party plugin. It is also the first
+plugin written on the public API, so what is awkward there is found by us
+before it is found by someone else.
+
+The first is **`telegram`**: a bot of the user's own, made with BotFather and
+given by its token — never a bot of ours, which would carry every
+installation's messages through a server we run.
+
+```js
+import { settings, hosts, secret, text, action, webhook } from 'dashbin'
+
+settings({ token: secret({ title: 'Bot token' }), hook: secret({ title: 'Webhook secret', optional: true }) })
+hosts('api.telegram.org')
+
+export const send = action({ params: { chat: text(), text: text() } }, async ({ chat, text }, { config }) => {
+  const r = await fetch(`https://api.telegram.org/bot${config.token.reveal()}/sendMessage`, {
+    method: 'POST', headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ chat_id: chat, text, parse_mode: 'HTML' }),
+  })
+  return (await r.json()).result
+})
+
+export const updates = webhook(async (request, { config }) => {
+  if (request.headers.get('x-telegram-bot-api-secret-token') !== config.hook.reveal()) return new Response(null, { status: 401 })
+  const update = await request.json()
+  return { id: String(update.update_id), rows: [message(update)] }   // the delivery's id: a repeat is dropped (chapter 7)
+})
+```
+
+- **In the first version it sends**: text, buttons, a long message split, a
+  `429` taken as a `snooze` for Telegram's own `retry_after`. Alerts to
+  Telegram are this action (chapter 7).
+- **Receiving comes after the first version**, two ways the four kinds
+  already have: `updates` as a `webhook` when the hub has a public address,
+  checked by Telegram's secret header; and `updates` as a `read` of
+  `getUpdates` on a short schedule, its offset kept by the kernel, for a hub
+  behind NAT — a read whose one effect, confirming the updates before its
+  offset, is the same however often it runs. Long polling would hold the runtime's one call for half a
+  minute and keep alerts waiting behind it, so it waits for a second runtime
+  per instance (chapter 5).
+- **It turns Telegram into messages and knows nothing else**: who wrote, in
+  which chat, the text or the button pressed, in the kernel's shape for any
+  chat. Which account that person is, what they may see, what a command
+  answers and signing in from a Mini App are the kernel's (chapter 9), so
+  that no plugin's code ever decides who someone is.
+- **On an agent an official bundle runs like a built-in**: its hash is the
+  binary's, so there is nothing to pin.
 
 ## Against three scenarios
 
@@ -416,6 +469,9 @@ a call's requests whatever the SDK does; secrets are masked, not sealed off;
 a kind is the author's word; an action's id belongs to the operation, inside
 the provider's window.
 
+Added on 27 October: official plugins, JS plugins shipped in the binary, the
+first being `telegram`, which took Telegram out of the built-in `notify`.
+
 ## What it asks of other chapters
 
 - Chapter 7: what a webhook's rows become; a flow step keeps an action's id
@@ -423,7 +479,8 @@ the provider's window.
   window.
 - Chapter 8: the agent's configuration: pinned hashes, allowed kinds, local
   secrets.
-- Chapter 9: visualizations as custom elements, and their isolation.
+- Chapter 9: visualizations as custom elements, and their isolation; the
+  kernel's part of a chat, which `telegram`'s messages reach.
 - Chapter 10: who may install and upgrade, and the second consent for native
   code.
 - Chapter 12: the load profile behind 64 MiB, the budget for loaded

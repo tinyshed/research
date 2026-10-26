@@ -7,7 +7,8 @@ agreed until Dmitry says so.
 Everything a person looks at: a dashboard, its panels and their grid, the
 range and the variables above them, how a frame becomes a line or a number,
 which way of drawing is suggested, what a plugin's own visualization may do
-in someone's browser, and the same dashboard in a terminal.
+in someone's browser, the same dashboard in a terminal, and, after the first
+version, in a chat.
 
 **The kernel computes, a drawer draws.** A total, a sum per site, a last
 value are the query's calculation (chapter 5), computed once for a panel and
@@ -390,6 +391,37 @@ Revenue · all sites · 20–27 Oct · Europe/Moscow
 - **What it adds to the binary is measured** before it ships in the one file;
   if it weighs too much, `show` is a build of its own.
 
+## Chats, after the first version
+
+**A chat is a third drawer**, reached through a messenger's plugin — the
+official `telegram` first (chapter 6). In the first version the bot only
+sends what alerts send. After it, it answers, and what it answers is the
+kernel's, the same for any messenger whose plugin turns its updates into
+messages:
+
+- **An account is linked once, on purpose.** The account page gives a link,
+  `t.me/<bot>?start=<code>`, with a code used once; the bot receives it and
+  binds that Telegram user to the account. A person without a link is nobody
+  to the hub, and no account is ever made from a chat.
+- **Commands read what the browser reads.** `/show revenue site=kazan`
+  answers with the panels as a text card — numbers, states, "incomplete: msk"
+  — from the kernel's calculations, laid out as the terminal lays out a
+  number, and a button that opens the dashboard; `/alerts` lists what is
+  firing. A chart in a chat is a picture drawn on the hub, which is later.
+- **A button under an alert's message** — silence for an hour, open the
+  dashboard — is checked against the linked account's rights, as a button on
+  a dashboard is checked for `interact`.
+- **A Mini App is this application in Telegram's own browser**, in its phone
+  layout. It signs in without a password: Telegram hands it `initData` signed
+  with a key made from the bot's token, **the kernel** checks that signature
+  with the token it holds, refuses one older than a few minutes, finds the
+  account linked to that Telegram user and starts an ordinary session. The
+  check is the kernel's and never a plugin's, so that no plugin's code ever
+  decides who someone is.
+- **A Mini App needs the hub at a public HTTPS address**, which a phone can
+  reach; chapter 8's tunnel gives one. A hub reachable only on a LAN keeps the
+  bot, its commands and its buttons, and has no Mini App.
+
 ## Against four scenarios
 
 ### Revenue of ten sites, one switch
@@ -452,7 +484,9 @@ After two reviews:
 Added: a dashboard is one document in one row, with a version checked on
 save, its history and its references beside it, and a channel as a nudge;
 rows of panels instead of coordinates, for a review to look at; the terminal
-as a second drawer, `dashbin show` in the first version and `--watch` later.
+as a second drawer, `dashbin show` in the first version and `--watch` later;
+a chat as a third, after the first version, with commands, buttons under
+alerts and a Mini App whose sign-in the kernel checks.
 
 ## What it asks of other chapters
 
@@ -462,12 +496,13 @@ as a second drawer, `dashbin show` in the first version and `--watch` later.
   references.
 - Chapter 5: calculations; the terminal as a caller of the run endpoint.
 - Chapter 6: a plugin's browser bundle and its visualizations, declared with
-  the settings' builders.
+  the settings' builders; a messenger's plugin turning its updates into the
+  kernel's messages.
 - Chapter 7: an alert made from a panel; a button's click with params from an
   event; flows stored on the same machinery.
 - Chapter 10: `interact`, who may edit a dashboard, a personal token for the
-  terminal, and a sandboxed frame as the boundary for plugin code in the
-  browser.
+  terminal, a sandboxed frame as the boundary for plugin code in the browser,
+  linking a chat's user to an account, and signing in from a Mini App.
 - Chapter 11: a dashboard's document with its version, its history, the
   address's parameters, and the run endpoint `--json` reads.
 - Chapter 12: `dashbin show` as a mode of the binary, and its weight.
