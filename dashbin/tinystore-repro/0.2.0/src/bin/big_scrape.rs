@@ -1,5 +1,6 @@
 // one scrape of 100 000 series written whole, and how long a small ingest beside it waits
 use std::fmt::Write;
+use std::sync::atomic::{AtomicBool, Ordering};
 use std::time::{Duration, Instant, SystemTime};
 
 use tinystore::metrics::Series;
@@ -22,19 +23,34 @@ fn main() -> tinystore::Result<()> {
     println!("a text of 100000 samples, {} bytes", text.len());
 
     for pass in ["first scrape, every series new", "second scrape, the same series"] {
+        let done = AtomicBool::new(false);
+        let started = Instant::now();
         std::thread::scope(|scope| {
-            let started = Instant::now();
-            // a collector of another source writes one sample 100 ms into the big write
+            // a collector of another source writes one sample every 10 ms for as long as the big write runs
             let beside = scope.spawn(|| {
-                std::thread::sleep(Duration::from_millis(100));
-                let asked = Instant::now();
-                let answer = stats.ingest(&[Series::gauge("orders").label("shop", "msk").sample(SystemTime::now(), 1.0)]);
-                (asked.elapsed(), answer.map_err(|e| e.to_string()))
+                let (mut longest, mut at, mut writes) = (Duration::ZERO, Duration::ZERO, 0);
+                while !done.load(Ordering::Relaxed) {
+                    let asked = Instant::now();
+                    stats.ingest(&[Series::gauge("orders").label("shop", "msk").sample(SystemTime::now(), 1.0)]).unwrap();
+                    if asked.elapsed() > longest {
+                        (longest, at) = (asked.elapsed(), asked - started);
+                    }
+                    writes += 1;
+                    std::thread::sleep(Duration::from_millis(10));
+                }
+                (longest, at, writes)
             });
             let answer = stats.prometheus().label("instance", "ksm").ingest(&text);
             let took = started.elapsed();
-            let (waited, small) = beside.join().unwrap();
-            println!("{pass}: {:?} in {:.2} s; one sample beside it {small:?} in {:.2} s", answer.map_err(|e| e.to_string()), took.as_secs_f64(), waited.as_secs_f64());
+            done.store(true, Ordering::Relaxed);
+            let (longest, at, writes) = beside.join().unwrap();
+            println!(
+                "{pass}: {:?} in {:.2} s; beside it {writes} small writes, the longest {:.2} s, asked {:.2} s in",
+                answer.map_err(|e| e.to_string()),
+                took.as_secs_f64(),
+                longest.as_secs_f64(),
+                at.as_secs_f64()
+            );
         });
         std::thread::sleep(Duration::from_millis(1100));
     }
