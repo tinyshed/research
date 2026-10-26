@@ -1,0 +1,35 @@
+== issue_backup_moments
+backup  0: the cursor says    104, the newest sample kept is    114
+backup  1: the cursor says    246, the newest sample kept is    255
+backup  2: the cursor says    384, the newest sample kept is    394
+backup  3: the cursor says    529, the newest sample kept is    538
+backup  4: the cursor says    666, the newest sample kept is    675
+backup  5: the cursor says    807, the newest sample kept is    816
+backup  6: the cursor says    947, the newest sample kept is    957
+backup  7: the cursor says   1080, the newest sample kept is   1090
+backup  8: the cursor says   1222, the newest sample kept is   1232
+backup  9: the cursor says   1361, the newest sample kept is   1370
+backup 10: the cursor says   1503, the newest sample kept is   1513
+backup 11: the cursor says   1643, the newest sample kept is   1652
+backup 12: the cursor says   1784, the newest sample kept is   1794
+backup 13: the cursor says   1929, the newest sample kept is   1939
+backup 14: the cursor says   2070, the newest sample kept is   2079
+backup 15: the cursor says   2209, the newest sample kept is   2219
+backup 16: the cursor says   2348, the newest sample kept is   2357
+backup 17: the cursor says   2493, the newest sample kept is   2503
+backup 18: the cursor says   2636, the newest sample kept is   2644
+backup 19: the cursor says   2775, the newest sample kept is   2784
+of 20 backups: the cursor ahead of the samples 0, behind them 20, the same 0
+== issue_files_with_rows
+file-then-row: the process died between the two writes (exit code: 1)
+row-then-file: the process died between the two writes (exit code: 1)
+  stripe-1.0.0.js: row none, file kept
+  slack-1.0.0.js: row kept, file none
+== issue_one_key
+backup: key left out true
+open the bucket with no key: Err("kv bucket secrets: its values are encrypted with the key 302b404f, and the store makes no other: the encryption key <tmp>\\one-key-repro\\new\\encryption.key: io: Не удается найти указанный файл. (os error 2)")
+with a new key, read the old secret: Err("kv bucket secrets: key \"pg-kazan\": its value was sealed with the key 302b404f, and the store's is 52f4ef67: open the store with the key that sealed it: invalid")
+with a new key, enter it again: Err("kv bucket secrets: key \"pg-kazan\": <tmp>\\one-key-repro\\new\\kv.db: its bucket's values are encrypted with the key 302b404f, and the store's is 52f4ef67: open the store with that key, or clear the bucket to start it again with this one: invalid")
+after clearing the bucket whole, the secrets entered again under the new key
+with the old key back, read pg-kazan: Err("kv bucket secrets: key \"pg-kazan\": its value was sealed with the key 52f4ef67, and the store's is 302b404f: open the store with the key that sealed it: invalid")
+with the old key back, read stripe-eu: Err("kv bucket secrets: key \"stripe-eu\": its value was sealed with the key 52f4ef67, and the store's is 302b404f: open the store with the key that sealed it: invalid")

@@ -34,3 +34,6 @@ gives it, what its memory costs, and the plugin host it will carry.
   a group rate, config without a store; #29 open; a scrape of 100 000 series holds the metrics writer 2.6 s, then 0.5 s.
 - [TinyStore 0.3.0: aggregating what is never stored](tinystore-0.3.0-aggregate-2026-10-27.md):
   a sum and an increase by hand are off where Metrics is exact, and Metrics answers only what it stored; asked as #34.
+- [TinyStore 0.3.0: what a restore holds across files](tinystore-0.3.0-backup-2026-10-27.md):
+  each engine backed up at its own moment in the order it was opened, a file and its row apart after a crash,
+  one key after a restore; asked as #35, #36, #37.
