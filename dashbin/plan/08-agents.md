@@ -48,7 +48,7 @@ first version.
 
 ## The operator's file
 
-The agent is `dashbin agent --config /etc/dashbin/agent.toml`: the same
+The agent is `dashbin agent run --config /etc/dashbin/agent.toml`: the same
 binary as the hub, in another mode. Everything the agent does is in that one
 file, which belongs to whoever runs the server, who may not be the hub's
 admin:
@@ -354,7 +354,7 @@ measured yet.
 
 ### Ten sites, closed from each other
 
-Each server runs `dashbin agent` with one `[instance.orders]` — `postgres` on
+Each server runs `dashbin agent run` with one `[instance.orders]` — `postgres` on
 five, `mysql` on five — and a read-only user that sees the tables dashboards
 need. The admin adds ten agents on the hub, pastes each token into its
 server's file, approves ten announced instances and labels each `site=…`. A

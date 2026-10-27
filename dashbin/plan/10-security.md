@@ -239,6 +239,15 @@ A personal token is shown once, named, listed with its last use and revoked
 like a session; `dashbin show` signs in with one. A chat is linked by a code
 used once and valid for minutes, from the account's own page.
 
+**`dashbin login` never asks for a password in a terminal.** It shows a short
+code and opens the hub's page for it; a person already signed in there sees
+which machine asks, confirms the code, and may narrow what the token will
+allow. The hub then makes a personal token named after that machine, and the
+command line keeps it in the system's keychain, or in a file only its user
+can read where there is none. `dashbin logout` revokes it, not only forgets
+it. Several hubs are several tokens, one in use at a time (`dashbin use`).
+The audit records the machine approved, by whom, and what its token may.
+
 ## Secrets
 
 Sealed at rest by TinyStore (chapter 4), masked rather than hidden from the
@@ -254,7 +263,8 @@ stream**, read by admins through `datasets`:
 - signing in, failed or not, and from where; signing out;
 - a password changed or handed out; a role, a scope, a group, a grant, a
   service account;
-- a token made or revoked; a chat linked or unlinked;
+- a token made or revoked; a machine approved for the command line; a chat
+  linked or unlinked;
 - a plugin installed, upgraded or rolled back, with the grants it confirmed; a
   process plugin consented to;
 - an agent added, rotated, revoked, disabled or deleted; an announced instance
@@ -385,7 +395,8 @@ in; a model test with its own reference, over sequences of changes.
 - Chapter 9: the sharing screen, an object's mode, "within your access", a
   refusal that names who could make a change, answers to the actor in a chat.
 - Chapter 11: every operation public on purpose, `visible` behind every
-  listing, the context built at the edge.
+  listing, the context built at the edge, `dashbin login`'s approval page,
+  and the tokens' prefixes.
 - Chapter 12: `passwd`, `owner`, `backup` and `restore`, and the trusted
   proxies in the configuration.
 - Chapter 14: which steps the first version builds; this chapter proposes

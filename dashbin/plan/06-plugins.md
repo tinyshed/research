@@ -2,8 +2,8 @@
 
 **Status: decided, 25 October 2026**, except what *Not measured yet* lists.
 The first draft's seven forks went through one review; what it changed is
-listed under *Forks*. The official `telegram` plugin was added on 27
-October.
+listed under *Forks*. The official `telegram` plugin, where plugins live and
+the plugin command were added on 27 October.
 
 Dmitry's three demands: a plugin is ordinary code that any programmer would
 write without reading a manual first; anyone may write one, in JavaScript or
@@ -283,8 +283,79 @@ its command. `dashbin plugin build` is a thin wrapper over a bundler with the
 right target: one ES module, no Node built-ins, the `dashbin` module left to
 the host, and a smoke run in Dashbin's own runtime before it says done.
 
-In the first version a plugin is installed from a file or a URL. A registry
-comes when there are plugins to register.
+## Where plugins live, and how they are found
+
+**Official plugins live in Dashbin's repository** and ship in the binary
+(below). **A plugin of anyone else lives in its author's repository**, and a
+version of it is a release there: the package as `stripe-1.2.0.tgz`, laid out
+as `npm pack` lays one out, and its SHA-256 beside it, both made by the CI the
+plugin's template carries. Nobody waits for Dashbin's maintainers to ship a
+version of their plugin, and Dashbin's maintainers do not become the
+maintainers of every SDK's plugin.
+
+**The catalog is one JSON file in a repository of Dashbin's**: an author adds
+their plugin once, by a pull request, with its id, its repository and a line
+of what it does. It is looked at when it is added, against rubbish and
+names made to look like others' — not as a promise of safety, which is the
+hash, the admin's consent, the declared hosts, the sandboxed frame and the
+operator's pin. The hub's "find a plugin" reads that file. Signing releases,
+as Terraform's and Grafana's registries do, comes if the catalog grows.
+
+A plugin can be installed from the catalog, a GitHub release, any URL or a
+file, and a company's own plugin never needs to be in the catalog at all.
+
+## The plugin command
+
+**For whoever writes one**, from an empty directory to a release without
+opening a hub:
+
+```
+dashbin plugin new stripe        # a package: package.json, src/index.ts, types for the editor, a test, a CI that releases on a tag
+dashbin plugin dev               # rebuilt on save, loaded into a hub of its own on a throwaway directory, its log in the terminal
+dashbin plugin run charges --param status=failed --range now-1d   # one function called, its frame drawn as a table
+dashbin plugin test              # its tests in Dashbin's own runtime, HTTP replayed from what --record kept
+dashbin plugin build             # dist/, its SHA-256, and exactly what an admin will be asked to accept
+dashbin plugin submit            # a pull request adding it to the catalog
+```
+
+- **The types come from the binary**: `new` writes the `dashbin.d.ts` of the
+  binary that made it, so an editor completes `read`, `secret` and the rest,
+  and the types never disagree with the host that runs them; `dashbin plugin
+  types` writes them again after an upgrade.
+- **`run` draws with the terminal's drawer** (chapter 9), so an author sees a
+  function's frame in a second, with no dashboard.
+- **`test` runs in the same QuickJS, under the same network policy**, as an
+  instance does, so passing there means working in Dashbin; requests are
+  recorded once against the real service and replayed without a network.
+- **What bundles is measured, not chosen here**: a bundler carried in the
+  binary costs its weight and asks nothing of the author; Bun or Node on the
+  author's machine costs nothing and asks for one of them.
+
+**For whoever installs one**, one command for every source:
+
+```
+dashbin plugin search stripe
+dashbin plugin install stripe                      # from the catalog
+dashbin plugin install acme/dashbin-stripe@1.2.0   # a GitHub release
+dashbin plugin install https://…/stripe-1.2.0.tgz  # any URL
+dashbin plugin install ./stripe-1.2.0.tgz          # a file
+dashbin plugin list | info | upgrade | rollback | rm
+dashbin plugin hash stripe                         # the line an agent's operator pins
+```
+
+- **The consent is the same screen in the terminal and the browser**: its
+  functions, settings, hosts, executor, hash and source, and on an upgrade what
+  changed since the version installed. `--yes` is for scripts, and still
+  prints the screen and leaves the audit its line; a process plugin still asks
+  for the owner (chapter 10).
+- **A release's SHA-256 is checked against the bytes downloaded**, which
+  guards the way there, not the author; what guards against the author is the
+  consent.
+- **Plugins declared as code** — a file of plugins with their pinned hashes and
+  a `sync` that applies it — wait for someone who keeps a hub in a repository.
+
+In the first version a plugin is installed from a file, a URL or a GitHub
+release; the catalog's file comes when there are plugins to list.
 
 ## Trust, install, upgrade
 
@@ -470,7 +541,10 @@ a kind is the author's word; an action's id belongs to the operation, inside
 the provider's window.
 
 Added on 27 October: official plugins, JS plugins shipped in the binary, the
-first being `telegram`, which took Telegram out of the built-in `notify`.
+first being `telegram`, which took Telegram out of the built-in `notify`;
+plugins in their authors' repositories, released with their hash, a catalog
+of one JSON file, and `dashbin plugin` for whoever writes one and whoever
+installs one.
 
 ## What it asks of other chapters
 
@@ -483,6 +557,8 @@ first being `telegram`, which took Telegram out of the built-in `notify`.
   kernel's part of a chat, which `telegram`'s messages reach.
 - Chapter 10: who may install and upgrade, and the second consent for native
   code.
+- Chapter 11: `dashbin plugin` among the command line's nouns, and the
+  consent screen the browser and the terminal share.
 - Chapter 12: the load profile behind 64 MiB, the budget for loaded
   runtimes, unloading idle ones, and the configuration file.
 
