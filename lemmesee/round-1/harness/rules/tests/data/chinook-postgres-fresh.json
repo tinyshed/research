@@ -1,0 +1,5107 @@
+{
+  "version": 1,
+  "engine": "postgresql",
+  "server_version": "18.6 (Debian 18.6-1.pgdg13+2)",
+  "database": "chinook_auto_increment",
+  "role": "lemmesee",
+  "taken_at": "2026-10-27 17:35:53.650302+00",
+  "settings": {
+    "autovacuum": "on",
+    "default_statistics_target": 100,
+    "track_counts": "on"
+  },
+  "workload": {
+    "statements_installed": {
+      "value": "t",
+      "state": "present",
+      "source": "pg.q.workload"
+    },
+    "statements_readable": {
+      "value": null,
+      "state": "denied",
+      "source": "pg.q.workload"
+    }
+  },
+  "tables": [
+    {
+      "schema": "public",
+      "name": "album",
+      "kind": "table",
+      "can_select": true,
+      "row_security_active": false,
+      "features": {
+        "analyze_count": {
+          "value": 1,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "autoanalyze_count": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "last_analyzed": {
+          "value": "2026-10-27 17:28:22.229518+00",
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_dead_tup": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_live_tup": {
+          "value": 347,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_mod_since_analyze": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_del": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_hot_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_ins": {
+          "value": 347,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "pages": {
+          "value": 3,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "rows_estimate": {
+          "value": 347,
+          "state": "present",
+          "source": "pg.n.tables",
+          "as_of": "2026-10-27 17:28:22.229518+00"
+        }
+      },
+      "columns": [
+        {
+          "name": "album_id",
+          "position": 1,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": false,
+          "identity": "always",
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            },
+            "correlation": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            },
+            "hist_bounds": {
+              "value": 101,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            }
+          }
+        },
+        {
+          "name": "title",
+          "position": 2,
+          "type_name": "character varying(160)",
+          "base_type": "character varying",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 23,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            },
+            "correlation": {
+              "value": 0.045513555,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            },
+            "hist_bounds": {
+              "value": 101,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            }
+          }
+        },
+        {
+          "name": "artist_id",
+          "position": 3,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            },
+            "correlation": {
+              "value": 0.9254457,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            },
+            "hist_bounds": {
+              "value": 101,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            },
+            "mcv_count": {
+              "value": 56,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.57348716,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.06051873,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            },
+            "n_distinct": {
+              "value": -0.5878962,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.229518+00"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "album_artist_id_fkey",
+          "kind": "f",
+          "columns": [
+            "artist_id"
+          ],
+          "ref_table": "public.artist",
+          "ref_columns": [
+            "artist_id"
+          ],
+          "definition": "FOREIGN KEY (artist_id) REFERENCES artist(artist_id)"
+        },
+        {
+          "name": "album_pkey",
+          "kind": "p",
+          "columns": [
+            "album_id"
+          ],
+          "definition": "PRIMARY KEY (album_id)"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "album_artist_id_idx",
+          "columns": [
+            "artist_id"
+          ],
+          "unique": false,
+          "primary": false
+        },
+        {
+          "name": "album_pkey",
+          "columns": [
+            "album_id"
+          ],
+          "unique": true,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "schema": "public",
+      "name": "artist",
+      "kind": "table",
+      "can_select": true,
+      "row_security_active": false,
+      "features": {
+        "analyze_count": {
+          "value": 1,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "autoanalyze_count": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "last_analyzed": {
+          "value": "2026-10-27 17:28:22.223575+00",
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_dead_tup": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_live_tup": {
+          "value": 275,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_mod_since_analyze": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_del": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_hot_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_ins": {
+          "value": 275,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "pages": {
+          "value": 2,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "rows_estimate": {
+          "value": 275,
+          "state": "present",
+          "source": "pg.n.tables",
+          "as_of": "2026-10-27 17:28:22.223575+00"
+        }
+      },
+      "columns": [
+        {
+          "name": "artist_id",
+          "position": 1,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": false,
+          "identity": "always",
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.223575+00"
+            },
+            "correlation": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.223575+00"
+            },
+            "hist_bounds": {
+              "value": 101,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.223575+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.223575+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.223575+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.223575+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.223575+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.223575+00"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "position": 2,
+          "type_name": "character varying(120)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 21,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.223575+00"
+            },
+            "correlation": {
+              "value": 0.055401172,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.223575+00"
+            },
+            "hist_bounds": {
+              "value": 101,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.223575+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.223575+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.223575+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.223575+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.223575+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.223575+00"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "artist_pkey",
+          "kind": "p",
+          "columns": [
+            "artist_id"
+          ],
+          "definition": "PRIMARY KEY (artist_id)"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "artist_pkey",
+          "columns": [
+            "artist_id"
+          ],
+          "unique": true,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "schema": "public",
+      "name": "customer",
+      "kind": "table",
+      "can_select": true,
+      "row_security_active": false,
+      "features": {
+        "analyze_count": {
+          "value": 1,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "autoanalyze_count": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "last_analyzed": {
+          "value": "2026-10-27 17:28:22.233142+00",
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_dead_tup": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_live_tup": {
+          "value": 59,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_mod_since_analyze": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_del": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_hot_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_ins": {
+          "value": 59,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "pages": {
+          "value": 2,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "rows_estimate": {
+          "value": 59,
+          "state": "present",
+          "source": "pg.n.tables",
+          "as_of": "2026-10-27 17:28:22.233142+00"
+        }
+      },
+      "columns": [
+        {
+          "name": "customer_id",
+          "position": 1,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": false,
+          "identity": "always",
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "correlation": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "hist_bounds": {
+              "value": 59,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            }
+          }
+        },
+        {
+          "name": "first_name",
+          "position": 2,
+          "type_name": "character varying(40)",
+          "base_type": "character varying",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 6,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "correlation": {
+              "value": 0.26709527,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "hist_bounds": {
+              "value": 55,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_count": {
+              "value": 2,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.06779661,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.033898305,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "n_distinct": {
+              "value": -0.9661017,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            }
+          }
+        },
+        {
+          "name": "last_name",
+          "position": 3,
+          "type_name": "character varying(20)",
+          "base_type": "character varying",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 8,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "correlation": {
+              "value": 0.12781999,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "hist_bounds": {
+              "value": 59,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            }
+          }
+        },
+        {
+          "name": "company",
+          "position": 4,
+          "type_name": "character varying(80)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 17,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "correlation": {
+              "value": -0.12727273,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "hist_bounds": {
+              "value": 10,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "n_distinct": {
+              "value": -0.16949153,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "null_frac": {
+              "value": 0.8305085,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            }
+          }
+        },
+        {
+          "name": "address",
+          "position": 5,
+          "type_name": "character varying(70)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 19,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "correlation": {
+              "value": -0.23769726,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "hist_bounds": {
+              "value": 59,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            }
+          }
+        },
+        {
+          "name": "city",
+          "position": 6,
+          "type_name": "character varying(40)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 8,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "correlation": {
+              "value": -0.24412625,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "hist_bounds": {
+              "value": 47,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_count": {
+              "value": 6,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.20338984,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.033898305,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "n_distinct": {
+              "value": -0.89830506,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            }
+          }
+        },
+        {
+          "name": "state",
+          "position": 7,
+          "type_name": "character varying(40)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 3,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "correlation": {
+              "value": 0.045161292,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "hist_bounds": {
+              "value": 22,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_count": {
+              "value": 3,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.13559322,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.050847456,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "n_distinct": {
+              "value": -0.42372882,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "null_frac": {
+              "value": 0.4915254,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            }
+          }
+        },
+        {
+          "name": "country",
+          "position": 8,
+          "type_name": "character varying(40)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 7,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "correlation": {
+              "value": 0.18585622,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "hist_bounds": {
+              "value": 15,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_count": {
+              "value": 9,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.7457627,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.22033899,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "n_distinct": {
+              "value": -0.40677965,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            }
+          }
+        },
+        {
+          "name": "postal_code",
+          "position": 9,
+          "type_name": "character varying(10)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 7,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "correlation": {
+              "value": 0.03831169,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "hist_bounds": {
+              "value": 55,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "n_distinct": {
+              "value": -0.9322034,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "null_frac": {
+              "value": 0.06779661,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            }
+          }
+        },
+        {
+          "name": "phone",
+          "position": 10,
+          "type_name": "character varying(24)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 17,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "correlation": {
+              "value": 0.24519365,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "hist_bounds": {
+              "value": 58,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "n_distinct": {
+              "value": -0.9830508,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "null_frac": {
+              "value": 0.016949153,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            }
+          }
+        },
+        {
+          "name": "fax",
+          "position": 11,
+          "type_name": "character varying(24)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 18,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "correlation": {
+              "value": -0.7832168,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "hist_bounds": {
+              "value": 12,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "n_distinct": {
+              "value": -0.20338982,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "null_frac": {
+              "value": 0.7966102,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            }
+          }
+        },
+        {
+          "name": "email",
+          "position": 12,
+          "type_name": "character varying(60)",
+          "base_type": "character varying",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 22,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "correlation": {
+              "value": 0.25996494,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "hist_bounds": {
+              "value": 59,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            }
+          }
+        },
+        {
+          "name": "support_rep_id",
+          "position": 13,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "correlation": {
+              "value": 0.24617183,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "hist_bounds": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_count": {
+              "value": 3,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_freq_sum": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.3559322,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "n_distinct": {
+              "value": 3,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.233142+00"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "customer_pkey",
+          "kind": "p",
+          "columns": [
+            "customer_id"
+          ],
+          "definition": "PRIMARY KEY (customer_id)"
+        },
+        {
+          "name": "customer_support_rep_id_fkey",
+          "kind": "f",
+          "columns": [
+            "support_rep_id"
+          ],
+          "ref_table": "public.employee",
+          "ref_columns": [
+            "employee_id"
+          ],
+          "definition": "FOREIGN KEY (support_rep_id) REFERENCES employee(employee_id)"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "customer_pkey",
+          "columns": [
+            "customer_id"
+          ],
+          "unique": true,
+          "primary": true
+        },
+        {
+          "name": "customer_support_rep_id_idx",
+          "columns": [
+            "support_rep_id"
+          ],
+          "unique": false,
+          "primary": false
+        }
+      ]
+    },
+    {
+      "schema": "public",
+      "name": "employee",
+      "kind": "table",
+      "can_select": true,
+      "row_security_active": false,
+      "features": {
+        "analyze_count": {
+          "value": 1,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "autoanalyze_count": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "last_analyzed": {
+          "value": "2026-10-27 17:28:22.231072+00",
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_dead_tup": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_live_tup": {
+          "value": 8,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_mod_since_analyze": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_del": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_hot_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_ins": {
+          "value": 8,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "pages": {
+          "value": 1,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "rows_estimate": {
+          "value": 8,
+          "state": "present",
+          "source": "pg.n.tables",
+          "as_of": "2026-10-27 17:28:22.231072+00"
+        }
+      },
+      "columns": [
+        {
+          "name": "employee_id",
+          "position": 1,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": false,
+          "identity": "always",
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "correlation": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "hist_bounds": {
+              "value": 8,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            }
+          }
+        },
+        {
+          "name": "last_name",
+          "position": 2,
+          "type_name": "character varying(20)",
+          "base_type": "character varying",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 7,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "correlation": {
+              "value": 0.0952381,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "hist_bounds": {
+              "value": 8,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            }
+          }
+        },
+        {
+          "name": "first_name",
+          "position": 3,
+          "type_name": "character varying(20)",
+          "base_type": "character varying",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 6,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "correlation": {
+              "value": 0.3809524,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "hist_bounds": {
+              "value": 8,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            }
+          }
+        },
+        {
+          "name": "title",
+          "position": 4,
+          "type_name": "character varying(30)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 14,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "correlation": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "hist_bounds": {
+              "value": 3,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_count": {
+              "value": 2,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.625,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.375,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "n_distinct": {
+              "value": -0.625,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            }
+          }
+        },
+        {
+          "name": "reports_to",
+          "position": 5,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "correlation": {
+              "value": 0.78571427,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "hist_bounds": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_count": {
+              "value": 3,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.875,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.375,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "n_distinct": {
+              "value": -0.375,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "null_frac": {
+              "value": 0.125,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            }
+          }
+        },
+        {
+          "name": "birth_date",
+          "position": 6,
+          "type_name": "timestamp without time zone",
+          "base_type": "timestamp without time zone",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 8,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "correlation": {
+              "value": 0.4047619,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "hist_bounds": {
+              "value": 8,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            }
+          }
+        },
+        {
+          "name": "hire_date",
+          "position": 7,
+          "type_name": "timestamp without time zone",
+          "base_type": "timestamp without time zone",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 8,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "correlation": {
+              "value": 0.9047619,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "hist_bounds": {
+              "value": 6,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_count": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.25,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.25,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "n_distinct": {
+              "value": -0.875,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            }
+          }
+        },
+        {
+          "name": "address",
+          "position": 8,
+          "type_name": "character varying(70)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 17,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "correlation": {
+              "value": 0.4047619,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "hist_bounds": {
+              "value": 8,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            }
+          }
+        },
+        {
+          "name": "city",
+          "position": 9,
+          "type_name": "character varying(40)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 8,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "correlation": {
+              "value": 0.64285713,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "hist_bounds": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_count": {
+              "value": 2,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.875,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.625,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "n_distinct": {
+              "value": -0.375,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            }
+          }
+        },
+        {
+          "name": "state",
+          "position": 10,
+          "type_name": "character varying(40)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 3,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "correlation": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "hist_bounds": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_count": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_freq_sum": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_top_freq": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "n_distinct": {
+              "value": -0.125,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            }
+          }
+        },
+        {
+          "name": "country",
+          "position": 11,
+          "type_name": "character varying(40)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 7,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "correlation": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "hist_bounds": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_count": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_freq_sum": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_top_freq": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "n_distinct": {
+              "value": -0.125,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            }
+          }
+        },
+        {
+          "name": "postal_code",
+          "position": 12,
+          "type_name": "character varying(10)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 8,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "correlation": {
+              "value": -0.5714286,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "hist_bounds": {
+              "value": 8,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            }
+          }
+        },
+        {
+          "name": "phone",
+          "position": 13,
+          "type_name": "character varying(24)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 17,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "correlation": {
+              "value": 0.071428575,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "hist_bounds": {
+              "value": 6,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_count": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.25,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.25,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "n_distinct": {
+              "value": -0.875,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            }
+          }
+        },
+        {
+          "name": "fax",
+          "position": 14,
+          "type_name": "character varying(24)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 17,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "correlation": {
+              "value": 0.071428575,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "hist_bounds": {
+              "value": 8,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            }
+          }
+        },
+        {
+          "name": "email",
+          "position": 15,
+          "type_name": "character varying(60)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 22,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "correlation": {
+              "value": 0.3809524,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "hist_bounds": {
+              "value": 8,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.231072+00"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "employee_pkey",
+          "kind": "p",
+          "columns": [
+            "employee_id"
+          ],
+          "definition": "PRIMARY KEY (employee_id)"
+        },
+        {
+          "name": "employee_reports_to_fkey",
+          "kind": "f",
+          "columns": [
+            "reports_to"
+          ],
+          "ref_table": "public.employee",
+          "ref_columns": [
+            "employee_id"
+          ],
+          "definition": "FOREIGN KEY (reports_to) REFERENCES employee(employee_id)"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "employee_pkey",
+          "columns": [
+            "employee_id"
+          ],
+          "unique": true,
+          "primary": true
+        },
+        {
+          "name": "employee_reports_to_idx",
+          "columns": [
+            "reports_to"
+          ],
+          "unique": false,
+          "primary": false
+        }
+      ]
+    },
+    {
+      "schema": "public",
+      "name": "genre",
+      "kind": "table",
+      "can_select": true,
+      "row_security_active": false,
+      "features": {
+        "analyze_count": {
+          "value": 1,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "autoanalyze_count": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "last_analyzed": {
+          "value": "2026-10-27 17:28:22.252982+00",
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_dead_tup": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_live_tup": {
+          "value": 25,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_mod_since_analyze": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_del": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_hot_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_ins": {
+          "value": 25,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "pages": {
+          "value": 1,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "rows_estimate": {
+          "value": 25,
+          "state": "present",
+          "source": "pg.n.tables",
+          "as_of": "2026-10-27 17:28:22.252982+00"
+        }
+      },
+      "columns": [
+        {
+          "name": "genre_id",
+          "position": 1,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": false,
+          "identity": "always",
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.252982+00"
+            },
+            "correlation": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.252982+00"
+            },
+            "hist_bounds": {
+              "value": 25,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.252982+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.252982+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.252982+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.252982+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.252982+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.252982+00"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "position": 2,
+          "type_name": "character varying(120)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 9,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.252982+00"
+            },
+            "correlation": {
+              "value": -0.08,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.252982+00"
+            },
+            "hist_bounds": {
+              "value": 25,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.252982+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.252982+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.252982+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.252982+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.252982+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.252982+00"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "genre_pkey",
+          "kind": "p",
+          "columns": [
+            "genre_id"
+          ],
+          "definition": "PRIMARY KEY (genre_id)"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "genre_pkey",
+          "columns": [
+            "genre_id"
+          ],
+          "unique": true,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "schema": "public",
+      "name": "invoice",
+      "kind": "table",
+      "can_select": true,
+      "row_security_active": false,
+      "features": {
+        "analyze_count": {
+          "value": 1,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "autoanalyze_count": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "last_analyzed": {
+          "value": "2026-10-27 17:28:22.235312+00",
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_dead_tup": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_live_tup": {
+          "value": 412,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_mod_since_analyze": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_del": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_hot_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_ins": {
+          "value": 412,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "pages": {
+          "value": 6,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "rows_estimate": {
+          "value": 412,
+          "state": "present",
+          "source": "pg.n.tables",
+          "as_of": "2026-10-27 17:28:22.235312+00"
+        }
+      },
+      "columns": [
+        {
+          "name": "invoice_id",
+          "position": 1,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": false,
+          "identity": "always",
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "correlation": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "hist_bounds": {
+              "value": 101,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            }
+          }
+        },
+        {
+          "name": "customer_id",
+          "position": 2,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "correlation": {
+              "value": 0.018347098,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "hist_bounds": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_count": {
+              "value": 59,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_freq_sum": {
+              "value": 1.0000005,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.016990291,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "n_distinct": {
+              "value": -0.14320388,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            }
+          }
+        },
+        {
+          "name": "invoice_date",
+          "position": 3,
+          "type_name": "timestamp without time zone",
+          "base_type": "timestamp without time zone",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 8,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "correlation": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "hist_bounds": {
+              "value": 101,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_count": {
+              "value": 58,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.2815534,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.004854369,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "n_distinct": {
+              "value": -0.8592233,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            }
+          }
+        },
+        {
+          "name": "billing_address",
+          "position": 4,
+          "type_name": "character varying(70)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 19,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "correlation": {
+              "value": -0.04245533,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "hist_bounds": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_count": {
+              "value": 59,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_freq_sum": {
+              "value": 1.0000005,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.016990291,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "n_distinct": {
+              "value": -0.14320388,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            }
+          }
+        },
+        {
+          "name": "billing_city",
+          "position": 5,
+          "type_name": "character varying(40)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 8,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "correlation": {
+              "value": 0.03517751,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "hist_bounds": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_count": {
+              "value": 53,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_freq_sum": {
+              "value": 1.0000005,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.033980582,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "n_distinct": {
+              "value": -0.12864077,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            }
+          }
+        },
+        {
+          "name": "billing_state",
+          "position": 6,
+          "type_name": "character varying(40)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 3,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "correlation": {
+              "value": 0.054941963,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "hist_bounds": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_count": {
+              "value": 25,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.5097089,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.050970875,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "n_distinct": {
+              "value": 25,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "null_frac": {
+              "value": 0.49029127,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            }
+          }
+        },
+        {
+          "name": "billing_country",
+          "position": 7,
+          "type_name": "character varying(40)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 7,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "correlation": {
+              "value": 0.09220152,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "hist_bounds": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_count": {
+              "value": 24,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_freq_sum": {
+              "value": 1.0000001,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.22087379,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "n_distinct": {
+              "value": 24,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            }
+          }
+        },
+        {
+          "name": "billing_postal_code",
+          "position": 8,
+          "type_name": "character varying(10)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 7,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "correlation": {
+              "value": 0.008976679,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "hist_bounds": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_count": {
+              "value": 55,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.93203926,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.016990291,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "n_distinct": {
+              "value": -0.13349515,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "null_frac": {
+              "value": 0.067961164,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            }
+          }
+        },
+        {
+          "name": "total",
+          "position": 9,
+          "type_name": "numeric(10,2)",
+          "base_type": "numeric",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 6,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "correlation": {
+              "value": 0.16845512,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "hist_bounds": {
+              "value": 9,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_count": {
+              "value": 14,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.97815543,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.26941746,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "n_distinct": {
+              "value": 23,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.235312+00"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "invoice_customer_id_fkey",
+          "kind": "f",
+          "columns": [
+            "customer_id"
+          ],
+          "ref_table": "public.customer",
+          "ref_columns": [
+            "customer_id"
+          ],
+          "definition": "FOREIGN KEY (customer_id) REFERENCES customer(customer_id)"
+        },
+        {
+          "name": "invoice_pkey",
+          "kind": "p",
+          "columns": [
+            "invoice_id"
+          ],
+          "definition": "PRIMARY KEY (invoice_id)"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "invoice_customer_id_idx",
+          "columns": [
+            "customer_id"
+          ],
+          "unique": false,
+          "primary": false
+        },
+        {
+          "name": "invoice_pkey",
+          "columns": [
+            "invoice_id"
+          ],
+          "unique": true,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "schema": "public",
+      "name": "invoice_line",
+      "kind": "table",
+      "can_select": true,
+      "row_security_active": false,
+      "features": {
+        "analyze_count": {
+          "value": 1,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "autoanalyze_count": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "last_analyzed": {
+          "value": "2026-10-27 17:28:22.238122+00",
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_dead_tup": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_live_tup": {
+          "value": 2240,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_mod_since_analyze": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_del": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_hot_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_ins": {
+          "value": 2240,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "pages": {
+          "value": 15,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "rows_estimate": {
+          "value": 2240,
+          "state": "present",
+          "source": "pg.n.tables",
+          "as_of": "2026-10-27 17:28:22.238122+00"
+        }
+      },
+      "columns": [
+        {
+          "name": "invoice_line_id",
+          "position": 1,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": false,
+          "identity": "always",
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "correlation": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "hist_bounds": {
+              "value": 101,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            }
+          }
+        },
+        {
+          "name": "invoice_id",
+          "position": 2,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "correlation": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "hist_bounds": {
+              "value": 101,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "mcv_count": {
+              "value": 100,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.5334818,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.00625,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "n_distinct": {
+              "value": -0.18392856,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            }
+          }
+        },
+        {
+          "name": "track_id",
+          "position": 3,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "correlation": {
+              "value": 0.19976276,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "hist_bounds": {
+              "value": 101,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "mcv_count": {
+              "value": 100,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.08928572,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.00089285715,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "n_distinct": {
+              "value": -0.8857143,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            }
+          }
+        },
+        {
+          "name": "unit_price",
+          "position": 4,
+          "type_name": "numeric(10,2)",
+          "base_type": "numeric",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 5,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "correlation": {
+              "value": 0.925001,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "hist_bounds": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "mcv_count": {
+              "value": 2,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "mcv_freq_sum": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.9504464,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "n_distinct": {
+              "value": 2,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            }
+          }
+        },
+        {
+          "name": "quantity",
+          "position": 5,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "correlation": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "hist_bounds": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "mcv_count": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "mcv_freq_sum": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "mcv_top_freq": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "n_distinct": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.238122+00"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "invoice_line_invoice_id_fkey",
+          "kind": "f",
+          "columns": [
+            "invoice_id"
+          ],
+          "ref_table": "public.invoice",
+          "ref_columns": [
+            "invoice_id"
+          ],
+          "definition": "FOREIGN KEY (invoice_id) REFERENCES invoice(invoice_id)"
+        },
+        {
+          "name": "invoice_line_pkey",
+          "kind": "p",
+          "columns": [
+            "invoice_line_id"
+          ],
+          "definition": "PRIMARY KEY (invoice_line_id)"
+        },
+        {
+          "name": "invoice_line_track_id_fkey",
+          "kind": "f",
+          "columns": [
+            "track_id"
+          ],
+          "ref_table": "public.track",
+          "ref_columns": [
+            "track_id"
+          ],
+          "definition": "FOREIGN KEY (track_id) REFERENCES track(track_id)"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "invoice_line_invoice_id_idx",
+          "columns": [
+            "invoice_id"
+          ],
+          "unique": false,
+          "primary": false
+        },
+        {
+          "name": "invoice_line_pkey",
+          "columns": [
+            "invoice_line_id"
+          ],
+          "unique": true,
+          "primary": true
+        },
+        {
+          "name": "invoice_line_track_id_idx",
+          "columns": [
+            "track_id"
+          ],
+          "unique": false,
+          "primary": false
+        }
+      ]
+    },
+    {
+      "schema": "public",
+      "name": "media_type",
+      "kind": "table",
+      "can_select": true,
+      "row_security_active": false,
+      "features": {
+        "analyze_count": {
+          "value": 1,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "autoanalyze_count": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "last_analyzed": {
+          "value": "2026-10-27 17:28:22.225525+00",
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_dead_tup": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_live_tup": {
+          "value": 5,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_mod_since_analyze": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_del": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_hot_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_ins": {
+          "value": 5,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "pages": {
+          "value": 1,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "rows_estimate": {
+          "value": 5,
+          "state": "present",
+          "source": "pg.n.tables",
+          "as_of": "2026-10-27 17:28:22.225525+00"
+        }
+      },
+      "columns": [
+        {
+          "name": "media_type_id",
+          "position": 1,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": false,
+          "identity": "always",
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.225525+00"
+            },
+            "correlation": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.225525+00"
+            },
+            "hist_bounds": {
+              "value": 5,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.225525+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.225525+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.225525+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.225525+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.225525+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.225525+00"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "position": 2,
+          "type_name": "character varying(120)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 21,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.225525+00"
+            },
+            "correlation": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.225525+00"
+            },
+            "hist_bounds": {
+              "value": 5,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.225525+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.225525+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.225525+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.225525+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.225525+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.225525+00"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "media_type_pkey",
+          "kind": "p",
+          "columns": [
+            "media_type_id"
+          ],
+          "definition": "PRIMARY KEY (media_type_id)"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "media_type_pkey",
+          "columns": [
+            "media_type_id"
+          ],
+          "unique": true,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "schema": "public",
+      "name": "playlist",
+      "kind": "table",
+      "can_select": true,
+      "row_security_active": false,
+      "features": {
+        "analyze_count": {
+          "value": 1,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "autoanalyze_count": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "last_analyzed": {
+          "value": "2026-10-27 17:28:22.248556+00",
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_dead_tup": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_live_tup": {
+          "value": 18,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_mod_since_analyze": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_del": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_hot_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_ins": {
+          "value": 18,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "pages": {
+          "value": 1,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "rows_estimate": {
+          "value": 18,
+          "state": "present",
+          "source": "pg.n.tables",
+          "as_of": "2026-10-27 17:28:22.248556+00"
+        }
+      },
+      "columns": [
+        {
+          "name": "playlist_id",
+          "position": 1,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": false,
+          "identity": "always",
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.248556+00"
+            },
+            "correlation": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.248556+00"
+            },
+            "hist_bounds": {
+              "value": 18,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.248556+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.248556+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.248556+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.248556+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.248556+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.248556+00"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "position": 2,
+          "type_name": "character varying(120)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 13,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.248556+00"
+            },
+            "correlation": {
+              "value": 0.0113519095,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.248556+00"
+            },
+            "hist_bounds": {
+              "value": 10,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.248556+00"
+            },
+            "mcv_count": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.248556+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.44444445,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.248556+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.11111111,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.248556+00"
+            },
+            "n_distinct": {
+              "value": -0.7777778,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.248556+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.248556+00"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "playlist_pkey",
+          "kind": "p",
+          "columns": [
+            "playlist_id"
+          ],
+          "definition": "PRIMARY KEY (playlist_id)"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "playlist_pkey",
+          "columns": [
+            "playlist_id"
+          ],
+          "unique": true,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "schema": "public",
+      "name": "playlist_track",
+      "kind": "table",
+      "can_select": true,
+      "row_security_active": false,
+      "features": {
+        "analyze_count": {
+          "value": 1,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "autoanalyze_count": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "last_analyzed": {
+          "value": "2026-10-27 17:28:22.251125+00",
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_dead_tup": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_live_tup": {
+          "value": 8715,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_mod_since_analyze": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_del": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_hot_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_ins": {
+          "value": 8715,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "pages": {
+          "value": 39,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "rows_estimate": {
+          "value": 8715,
+          "state": "present",
+          "source": "pg.n.tables",
+          "as_of": "2026-10-27 17:28:22.251125+00"
+        }
+      },
+      "columns": [
+        {
+          "name": "playlist_id",
+          "position": 1,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.251125+00"
+            },
+            "correlation": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.251125+00"
+            },
+            "hist_bounds": {
+              "value": 2,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.251125+00"
+            },
+            "mcv_count": {
+              "value": 12,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.251125+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.99977046,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.251125+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.37751004,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.251125+00"
+            },
+            "n_distinct": {
+              "value": 14,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.251125+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.251125+00"
+            }
+          }
+        },
+        {
+          "name": "track_id",
+          "position": 2,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.251125+00"
+            },
+            "correlation": {
+              "value": 0.2046744,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.251125+00"
+            },
+            "hist_bounds": {
+              "value": 101,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.251125+00"
+            },
+            "mcv_count": {
+              "value": 100,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.251125+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.05060236,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.251125+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.00057372346,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.251125+00"
+            },
+            "n_distinct": {
+              "value": -0.40195066,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.251125+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.251125+00"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "playlist_track_pkey",
+          "kind": "p",
+          "columns": [
+            "playlist_id",
+            "track_id"
+          ],
+          "definition": "PRIMARY KEY (playlist_id, track_id)"
+        },
+        {
+          "name": "playlist_track_playlist_id_fkey",
+          "kind": "f",
+          "columns": [
+            "playlist_id"
+          ],
+          "ref_table": "public.playlist",
+          "ref_columns": [
+            "playlist_id"
+          ],
+          "definition": "FOREIGN KEY (playlist_id) REFERENCES playlist(playlist_id)"
+        },
+        {
+          "name": "playlist_track_track_id_fkey",
+          "kind": "f",
+          "columns": [
+            "track_id"
+          ],
+          "ref_table": "public.track",
+          "ref_columns": [
+            "track_id"
+          ],
+          "definition": "FOREIGN KEY (track_id) REFERENCES track(track_id)"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "playlist_track_pkey",
+          "columns": [
+            "playlist_id",
+            "track_id"
+          ],
+          "unique": true,
+          "primary": true
+        },
+        {
+          "name": "playlist_track_playlist_id_idx",
+          "columns": [
+            "playlist_id"
+          ],
+          "unique": false,
+          "primary": false
+        },
+        {
+          "name": "playlist_track_track_id_idx",
+          "columns": [
+            "track_id"
+          ],
+          "unique": false,
+          "primary": false
+        }
+      ]
+    },
+    {
+      "schema": "public",
+      "name": "track",
+      "kind": "table",
+      "can_select": true,
+      "row_security_active": false,
+      "features": {
+        "analyze_count": {
+          "value": 1,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "autoanalyze_count": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "last_analyzed": {
+          "value": "2026-10-27 17:28:22.246367+00",
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_dead_tup": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_live_tup": {
+          "value": 3503,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_mod_since_analyze": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_del": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_hot_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_ins": {
+          "value": 3503,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "n_tup_upd": {
+          "value": 0,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "pages": {
+          "value": 45,
+          "state": "present",
+          "source": "pg.n.tables"
+        },
+        "rows_estimate": {
+          "value": 3503,
+          "state": "present",
+          "source": "pg.n.tables",
+          "as_of": "2026-10-27 17:28:22.246367+00"
+        }
+      },
+      "columns": [
+        {
+          "name": "track_id",
+          "position": 1,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": false,
+          "identity": "always",
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "correlation": {
+              "value": 0.999976,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "hist_bounds": {
+              "value": 101,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_count": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_top_freq": {
+              "value": null,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "n_distinct": {
+              "value": -1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "position": 2,
+          "type_name": "character varying(200)",
+          "base_type": "character varying",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 16,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "correlation": {
+              "value": 0.04852126,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "hist_bounds": {
+              "value": 101,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_count": {
+              "value": 100,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.07051091,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.001427348,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "n_distinct": {
+              "value": -0.92977446,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            }
+          }
+        },
+        {
+          "name": "album_id",
+          "position": 3,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "correlation": {
+              "value": 0.9941522,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "hist_bounds": {
+              "value": 101,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_count": {
+              "value": 100,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.5064233,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.016271766,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "n_distinct": {
+              "value": 347,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            }
+          }
+        },
+        {
+          "name": "media_type_id",
+          "position": 4,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "correlation": {
+              "value": 0.96436644,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "hist_bounds": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_count": {
+              "value": 5,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.99999994,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.86611474,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "n_distinct": {
+              "value": 5,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            }
+          }
+        },
+        {
+          "name": "genre_id",
+          "position": 5,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "correlation": {
+              "value": 0.3292974,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "hist_bounds": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_count": {
+              "value": 24,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.9997146,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.37025407,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "n_distinct": {
+              "value": 25,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            }
+          }
+        },
+        {
+          "name": "composer",
+          "position": 6,
+          "type_name": "character varying(220)",
+          "base_type": "character varying",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 25,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "correlation": {
+              "value": 0.11656298,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "hist_bounds": {
+              "value": 101,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_count": {
+              "value": 100,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.38509822,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.022837568,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "n_distinct": {
+              "value": -0.24350557,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "null_frac": {
+              "value": 0.27890378,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            }
+          }
+        },
+        {
+          "name": "milliseconds",
+          "position": 7,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "correlation": {
+              "value": 0.10616148,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "hist_bounds": {
+              "value": 101,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_count": {
+              "value": 100,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.069083564,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.0011418784,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "n_distinct": {
+              "value": -0.87924635,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            }
+          }
+        },
+        {
+          "name": "bytes",
+          "position": 8,
+          "type_name": "integer",
+          "base_type": "integer",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 4,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "correlation": {
+              "value": 0.023366125,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "hist_bounds": {
+              "value": 101,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_count": {
+              "value": 2,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_freq_sum": {
+              "value": 0.0011418784,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.0005709392,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "n_distinct": {
+              "value": -0.99942905,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            }
+          }
+        },
+        {
+          "name": "unit_price",
+          "position": 9,
+          "type_name": "numeric(10,2)",
+          "base_type": "numeric",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": 5,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "correlation": {
+              "value": 0.99421144,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "hist_bounds": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_count": {
+              "value": 2,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_freq_sum": {
+              "value": 1,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "mcv_top_freq": {
+              "value": 0.939195,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "n_distinct": {
+              "value": 2,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            },
+            "null_frac": {
+              "value": 0,
+              "state": "present",
+              "source": "pg.n.columns",
+              "as_of": "2026-10-27 17:28:22.246367+00"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "track_album_id_fkey",
+          "kind": "f",
+          "columns": [
+            "album_id"
+          ],
+          "ref_table": "public.album",
+          "ref_columns": [
+            "album_id"
+          ],
+          "definition": "FOREIGN KEY (album_id) REFERENCES album(album_id)"
+        },
+        {
+          "name": "track_genre_id_fkey",
+          "kind": "f",
+          "columns": [
+            "genre_id"
+          ],
+          "ref_table": "public.genre",
+          "ref_columns": [
+            "genre_id"
+          ],
+          "definition": "FOREIGN KEY (genre_id) REFERENCES genre(genre_id)"
+        },
+        {
+          "name": "track_media_type_id_fkey",
+          "kind": "f",
+          "columns": [
+            "media_type_id"
+          ],
+          "ref_table": "public.media_type",
+          "ref_columns": [
+            "media_type_id"
+          ],
+          "definition": "FOREIGN KEY (media_type_id) REFERENCES media_type(media_type_id)"
+        },
+        {
+          "name": "track_pkey",
+          "kind": "p",
+          "columns": [
+            "track_id"
+          ],
+          "definition": "PRIMARY KEY (track_id)"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "track_album_id_idx",
+          "columns": [
+            "album_id"
+          ],
+          "unique": false,
+          "primary": false
+        },
+        {
+          "name": "track_genre_id_idx",
+          "columns": [
+            "genre_id"
+          ],
+          "unique": false,
+          "primary": false
+        },
+        {
+          "name": "track_media_type_id_idx",
+          "columns": [
+            "media_type_id"
+          ],
+          "unique": false,
+          "primary": false
+        },
+        {
+          "name": "track_pkey",
+          "columns": [
+            "track_id"
+          ],
+          "unique": true,
+          "primary": true
+        }
+      ]
+    }
+  ],
+  "queries": [
+    {
+      "id": "pg.settings",
+      "rows": 1,
+      "client_ms": 1.0309
+    },
+    {
+      "id": "pg.s.tables",
+      "rows": 11,
+      "client_ms": 6.2156
+    },
+    {
+      "id": "pg.s.columns",
+      "rows": 64,
+      "client_ms": 4.222799999999999
+    },
+    {
+      "id": "pg.s.constraints",
+      "rows": 22,
+      "client_ms": 3.6987
+    },
+    {
+      "id": "pg.s.indexes",
+      "rows": 22,
+      "client_ms": 1.7709
+    },
+    {
+      "id": "pg.n.tables",
+      "rows": 11,
+      "client_ms": 1.7547000000000001
+    },
+    {
+      "id": "pg.n.columns",
+      "rows": 64,
+      "client_ms": 11.168000000000001
+    },
+    {
+      "id": "pg.q.workload",
+      "rows": 1,
+      "client_ms": 1.1402
+    }
+  ],
+  "ledger": [
+    {
+      "id": "discovery:pg.s.indexes",
+      "counters": {
+        "calls": 1,
+        "rows": 22,
+        "shared_blks_hit": 172,
+        "shared_blks_read": 0,
+        "total_exec_time": 0.24049299999999998
+      }
+    },
+    {
+      "id": "discovery:pg.n.tables",
+      "counters": {
+        "calls": 1,
+        "rows": 11,
+        "shared_blks_hit": 68,
+        "shared_blks_read": 0,
+        "total_exec_time": 0.37970099999999996
+      }
+    },
+    {
+      "id": "discovery:pg.n.columns",
+      "counters": {
+        "calls": 1,
+        "rows": 64,
+        "shared_blks_hit": 11166,
+        "shared_blks_read": 0,
+        "total_exec_time": 9.192300000000001
+      }
+    },
+    {
+      "id": "discovery:pg.s.constraints",
+      "counters": {
+        "calls": 1,
+        "rows": 22,
+        "shared_blks_hit": 353,
+        "shared_blks_read": 0,
+        "total_exec_time": 0.850727
+      }
+    },
+    {
+      "id": "discovery:pg.s.tables",
+      "counters": {
+        "calls": 1,
+        "rows": 11,
+        "shared_blks_hit": 198,
+        "shared_blks_read": 0,
+        "total_exec_time": 1.742157
+      }
+    },
+    {
+      "id": "discovery:pg.s.columns",
+      "counters": {
+        "calls": 1,
+        "rows": 64,
+        "shared_blks_hit": 408,
+        "shared_blks_read": 0,
+        "total_exec_time": 1.25932
+      }
+    },
+    {
+      "id": "discovery:pg.q.workload",
+      "counters": {
+        "calls": 1,
+        "rows": 1,
+        "shared_blks_hit": 3,
+        "shared_blks_read": 0,
+        "total_exec_time": 0.020531
+      }
+    },
+    {
+      "id": "discovery:pg.settings",
+      "counters": {
+        "calls": 1,
+        "rows": 1,
+        "shared_blks_hit": 0,
+        "shared_blks_read": 0,
+        "total_exec_time": 0.016211
+      }
+    }
+  ]
+}

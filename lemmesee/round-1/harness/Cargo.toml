@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["snapshot"]
+members = ["model", "snapshot", "rules"]
 
 [workspace.package]
 edition = "2024"

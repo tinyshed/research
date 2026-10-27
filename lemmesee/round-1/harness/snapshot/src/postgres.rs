@@ -1,6 +1,6 @@
 //! PostgreSQL through its catalogs: tiers S, N and Q of contract.md.
 
-use crate::model::*;
+use model::*;
 use crate::record;
 use postgres::{Client, NoTls, SimpleQueryMessage};
 use std::collections::BTreeMap;
@@ -267,7 +267,7 @@ pub fn snapshot(url: &str, admin: Option<&str>) -> Result<Snapshot, String> {
     let s = &settings;
     Ok(Snapshot {
         version: 1,
-        engine: "postgresql",
+        engine: "postgresql".into(),
         server_version: get(s, "server_version").unwrap_or_default().into(),
         database: get(s, "database").unwrap_or_default().into(),
         role: get(s, "role").unwrap_or_default().into(),

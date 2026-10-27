@@ -583,6 +583,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "model"
+version = "0.1.0"
+dependencies = [
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "mysql"
 version = "28.0.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -895,6 +903,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d6f6ff9a378485b298a5286656da665ba74413d36db0979633275d2e708145d4"
 
 [[package]]
+name = "rules"
+version = "0.1.0"
+dependencies = [
+ "model",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "rustversion"
 version = "1.0.23"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1016,6 +1033,7 @@ checksum = "d0d5d4b1981b8bbbb7aed204cae5726d683d5d6ac7e74ec54122ea28f315e7c8"
 name = "snapshot"
 version = "0.1.0"
 dependencies = [
+ "model",
  "mysql",
  "postgres",
  "serde",

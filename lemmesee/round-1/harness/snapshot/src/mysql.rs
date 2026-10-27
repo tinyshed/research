@@ -1,7 +1,7 @@
 //! MySQL through `information_schema` and the Performance Schema: tiers S, N
 //! and Q of contract.md.
 
-use crate::model::*;
+use model::*;
 use crate::record;
 use mysql::prelude::Queryable;
 use mysql::{Conn, Opts, Value as Raw};
@@ -297,7 +297,7 @@ pub fn snapshot(url: &str, admin: Option<&str>) -> Result<Snapshot, String> {
     let s = &settings;
     Ok(Snapshot {
         version: 1,
-        engine: "mysql",
+        engine: "mysql".into(),
         server_version: get(s, "server_version").unwrap_or_default().into(),
         database: schema,
         role: get(s, "role").unwrap_or_default().into(),

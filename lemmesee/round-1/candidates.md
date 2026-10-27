@@ -45,7 +45,7 @@ the report counts how often.
 
 | Role | Evidence that gives it |
 |---|---|
-| `created` | declared: a default of `now()`, `CURRENT_TIMESTAMP` or `clock_timestamp()`; named: `created`, `inserted`, `registered`, `signup`, `joined` on a time type; measured: on PostgreSQL, `correlation` ≥ 0.9 |
+| `created` | declared: a default of `now()`, `CURRENT_TIMESTAMP` or `clock_timestamp()`; named: `created`, `inserted`, `registered`, `signup`, `joined` on a time type. On PostgreSQL a `correlation` of 0.9 or more takes 1 off the penalty of a time already used as an axis, and gives no role by itself: Chinook's identities and its `invoice_date` correlate at 1 because they were loaded in order |
 | `updated` | declared: MySQL's `ON UPDATE CURRENT_TIMESTAMP`; named: `updated`, `modified`, `changed` |
 | `event` | named: `at`, `date`, `time`, `timestamp`, `occurred`, `ordered`, `paid`, `shipped`, `sent`, `started` on a time type, when not `created` nor `updated` |
 | `period` | named pairs: `from`/`to`, `start`/`end`, `valid_from`/`valid_to` in one table |
@@ -62,6 +62,7 @@ the report counts how often.
 | `place`, `code` | named: `lat`, `lng`, `lon`, `latitude`, `longitude`; `zip`, `postal`, `phone` |
 | `text` | typed: text or long `varchar`; measured: `avg_width` above 40, or `n_distinct` near −1; named: `name`, `title`, `description`, `email`, `url`, `comment`, `note`, `body` |
 | `number` | any other number |
+| `category`, typed | a short text or an integer that nothing above names: a category only a statistic can confirm, so that one generator serves A and B alike; a statistic of over 30 values removes it by H3 |
 
 A column can hold several roles; the most declared wins, then the most
 measured, then the first in this table.
@@ -86,7 +87,7 @@ nothing else.
 | | Template | Shape | Drawn as |
 |---|---|---|---|
 | T1 | rows over time | `count(*)` by bucket of a `created` or `event` time | line, or bar under 20 buckets |
-| T2 | rows by category | `count(*)` by a `category`, or by a lookup's label through one many-to-one join; 12 largest and the rest | bar |
+| T2 | rows by category | `count(*)` by a `category`, or by a parent's `category` or a lookup's label through one many-to-one join; 12 largest and the rest | bar |
 | T3 | measure over time | `sum` of `money` or `quantity`, or `avg` of `money`, `quantity`, `score`, `ratio`, by bucket of a `created` or `event` time | line |
 | T4 | measure by category | the same aggregates by a `category` | bar |
 | T5 | distribution | a `money`, `quantity` or `score` column in bins; or child rows per parent through a foreign key | bar |
@@ -130,7 +131,7 @@ the panel.
 
 | Code | Kind | When |
 |---|---|---|
-| `needs-population` | abstain | T3, or a `sum` in T4 by another column, over a table that has a `category` named `status`, `state`, `type` or `kind`: which values count is the business's. T4 by that category is offered instead |
+| `needs-population` | abstain | T3, or a `sum` in T4 by another column, over a table that has a `category` named `status`, `state`, `type` or `kind`: which values count is the business's. T4 by that category is offered instead. A `state` in a table with a `country`, `city`, `address`, `postal`, `zip`, `region` or `province` is a place, as Chinook's `billing_state` is |
 | `currencies` | abstain | `money` whose table, or the one side of its join, has a `currency` column |
 | `level-over-time` | abstain | a `level` in T3 outside a `snapshot` table, where H2 could not tell |
 | `stats-missing`, `stats-denied`, `stats-stale` | flag | a feature the candidate needed was in that state |
@@ -149,7 +150,7 @@ as with Draco's, only their ratios mean anything.
 
 | What | Penalty |
 |---|---|
-| a role it uses held by `named` evidence only | +2 each |
+| a role it uses held by `named` evidence only / by its type only | +2 / +3 each |
 | a role it uses `declared` or `measured` | 0 |
 | a name that contradicts its type, such as `amount` on an integer with no `_cents` | +1 |
 | its time measured in physical order, `correlation` ≥ 0.9 | −1 |
@@ -204,3 +205,31 @@ Round 1 does not confirm meanings, but its documents leave room for one:
 confirmed_by, at}`, where `evidence_hash` covers the column's name, type and
 constraints, so that a renamed, retyped or reconstrained column loses its
 meaning and is asked again.
+
+## Built and run on Chinook
+
+The `rules` crate in `harness/` implements this file; `propose` turns a
+snapshot into the documents above, and its tests hold the known answers on
+Chinook's two snapshots. Building it settled what the text above left open,
+and each change is written into the tables above:
+
+- **A time's physical order** lowers its penalty and gives no role, since on
+  a loaded fixture every identity correlates at 1.
+- **A column nothing names** — a short text or an integer — is a category by
+  its type, the weakest evidence, so that A has the candidates B will
+  confirm or remove; a role held by its type only costs 3, by its name only 2.
+- **A parent's category** may be grouped by through the join, as a lookup's
+  label may.
+- **`state` beside an address** is a place: on Chinook the first run
+  abstained from every sum of `invoice.total` because of `billing_state`.
+- **O** keeps what only an abstention would remove, as the floor should; T8
+  is removed where tier N is not read (H0); views are not proposed from.
+
+The first run, 27 October 2026, on the snapshots of `contract.md`'s check:
+174 candidates on either engine, the same identities on both. On PostgreSQL
+B1's statistics removed 70 by H3 and 12 by T6's six values, and its five
+were rows of tracks by media type, of invoice lines and of invoices by date,
+the largest tables, and employees by city. On MySQL, where no histogram
+exists, B1 removed nothing A did not, and kept first the rows of tracks by
+album title — 347 titles, which only PostgreSQL's statistics said. These are
+a build's output, not judged and not a result.

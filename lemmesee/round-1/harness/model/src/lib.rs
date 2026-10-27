@@ -1,8 +1,8 @@
-//! The snapshot as contract.md describes it: every table and column with
+//! The snapshot as round 1's contract.md describes it: every table and column with
 //! its features, each `{value, state, source, as_of}`, and the ledger of the
 //! queries that read them.
 
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::collections::BTreeMap;
 
@@ -38,7 +38,7 @@ pub fn value(text: Option<&str>) -> Value {
     }
 }
 
-#[derive(Serialize, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Debug)]
+#[derive(Serialize, Deserialize, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Debug)]
 #[serde(rename_all = "lowercase")]
 pub enum State {
     Present,
@@ -48,22 +48,22 @@ pub enum State {
     Unsupported,
 }
 
-#[derive(Serialize, Clone, Debug)]
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Feature {
     pub value: Value,
     pub state: State,
-    pub source: &'static str,
+    pub source: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub as_of: Option<String>,
 }
 
 impl Feature {
-    pub fn present(text: Option<&str>, source: &'static str) -> Self {
-        Feature { value: value(text), state: State::Present, source, as_of: None }
+    pub fn present(text: Option<&str>, source: &str) -> Self {
+        Feature { value: value(text), state: State::Present, source: source.into(), as_of: None }
     }
 
-    pub fn missing(state: State, source: &'static str) -> Self {
-        Feature { value: Value::Null, state, source, as_of: None }
+    pub fn missing(state: State, source: &str) -> Self {
+        Feature { value: Value::Null, state, source: source.into(), as_of: None }
     }
 
     pub fn with_state(mut self, state: State) -> Self {
@@ -79,7 +79,7 @@ impl Feature {
 
 pub type Features = BTreeMap<String, Feature>;
 
-#[derive(Serialize, Debug, Default)]
+#[derive(Serialize, Deserialize, Debug, Default)]
 pub struct Column {
     pub name: String,
     pub position: i64,
@@ -99,13 +99,13 @@ pub struct Column {
     pub on_update: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub comment: Option<String>,
-    #[serde(skip_serializing_if = "Vec::is_empty")]
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub enum_labels: Vec<String>,
     pub can_select: bool,
     pub features: Features,
 }
 
-#[derive(Serialize, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Constraint {
     pub name: String,
     /// `p`, `u`, `f` or `c`, as PostgreSQL's `contype`.
@@ -113,13 +113,13 @@ pub struct Constraint {
     pub columns: Vec<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ref_table: Option<String>,
-    #[serde(skip_serializing_if = "Vec::is_empty")]
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub ref_columns: Vec<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub definition: Option<String>,
 }
 
-#[derive(Serialize, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Index {
     pub name: String,
     pub columns: Vec<String>,
@@ -129,7 +129,7 @@ pub struct Index {
     pub predicate: Option<String>,
 }
 
-#[derive(Serialize, Debug, Default)]
+#[derive(Serialize, Deserialize, Debug, Default)]
 pub struct Table {
     pub schema: String,
     pub name: String,
@@ -150,7 +150,7 @@ pub struct Table {
 }
 
 /// One query as the client saw it.
-#[derive(Serialize, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct QueryRecord {
     pub id: String,
     pub rows: usize,
@@ -160,16 +160,16 @@ pub struct QueryRecord {
 }
 
 /// One query as the server counted it, matched by the comment it carries.
-#[derive(Serialize, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ServerRecord {
     pub id: String,
     pub counters: BTreeMap<String, Value>,
 }
 
-#[derive(Serialize, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Snapshot {
     pub version: u32,
-    pub engine: &'static str,
+    pub engine: String,
     pub server_version: String,
     pub database: String,
     pub role: String,
@@ -180,6 +180,6 @@ pub struct Snapshot {
     pub workload: Features,
     pub tables: Vec<Table>,
     pub queries: Vec<QueryRecord>,
-    #[serde(skip_serializing_if = "Vec::is_empty")]
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub ledger: Vec<ServerRecord>,
 }

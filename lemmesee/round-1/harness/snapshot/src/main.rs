@@ -6,7 +6,6 @@
 //! `--admin` is the fixture's owner, used only to reset and read the
 //! server's own statement counters around discovery.
 
-mod model;
 mod mysql;
 mod postgres;
 

@@ -1,0 +1,3375 @@
+{
+  "version": 1,
+  "engine": "mysql",
+  "server_version": "8.4.13",
+  "database": "Chinook_AutoIncrement",
+  "role": "lemmesee@%",
+  "taken_at": "2026-10-27 17:36:48.745624",
+  "settings": {
+    "information_schema_stats_expiry": 86400,
+    "innodb_stats_auto_recalc": 1,
+    "innodb_stats_persistent": 1,
+    "innodb_stats_persistent_sample_pages": 20
+  },
+  "workload": {
+    "statements_readable": {
+      "value": null,
+      "state": "denied",
+      "source": "my.q.workload"
+    }
+  },
+  "tables": [
+    {
+      "schema": "Chinook_AutoIncrement",
+      "name": "Album",
+      "kind": "table",
+      "can_select": true,
+      "features": {
+        "auto_increment": {
+          "value": 348,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "avg_row_length": {
+          "value": 47,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "data_length": {
+          "value": 16384,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "n_tup_del": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_ins": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_upd": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "rows_estimate": {
+          "value": 347,
+          "state": "present",
+          "source": "my.n.tables",
+          "as_of": "2026-10-27 17:28:25"
+        }
+      },
+      "columns": [
+        {
+          "name": "AlbumId",
+          "position": 1,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": false,
+          "identity": "auto_increment",
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": 347,
+              "state": "present",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Title",
+          "position": 2,
+          "type_name": "varchar(160)",
+          "base_type": "varchar",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "ArtistId",
+          "position": 3,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": 204,
+              "state": "present",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "FK_AlbumArtistId",
+          "kind": "f",
+          "columns": [
+            "ArtistId"
+          ],
+          "ref_table": "Chinook_AutoIncrement.Artist",
+          "ref_columns": [
+            "ArtistId"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "kind": "p",
+          "columns": [
+            "AlbumId"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "IFK_AlbumArtistId",
+          "columns": [
+            "ArtistId"
+          ],
+          "unique": false,
+          "primary": false
+        },
+        {
+          "name": "PRIMARY",
+          "columns": [
+            "AlbumId"
+          ],
+          "unique": true,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "schema": "Chinook_AutoIncrement",
+      "name": "Artist",
+      "kind": "table",
+      "can_select": true,
+      "features": {
+        "auto_increment": {
+          "value": 276,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "avg_row_length": {
+          "value": 59,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "data_length": {
+          "value": 16384,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "n_tup_del": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_ins": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_upd": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "rows_estimate": {
+          "value": 275,
+          "state": "present",
+          "source": "my.n.tables",
+          "as_of": "2026-10-27 17:28:25"
+        }
+      },
+      "columns": [
+        {
+          "name": "ArtistId",
+          "position": 1,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": false,
+          "identity": "auto_increment",
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": 275,
+              "state": "present",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Name",
+          "position": 2,
+          "type_name": "varchar(120)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PRIMARY",
+          "kind": "p",
+          "columns": [
+            "ArtistId"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "columns": [
+            "ArtistId"
+          ],
+          "unique": true,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "schema": "Chinook_AutoIncrement",
+      "name": "Customer",
+      "kind": "table",
+      "can_select": true,
+      "features": {
+        "auto_increment": {
+          "value": 60,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "avg_row_length": {
+          "value": 277,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "data_length": {
+          "value": 16384,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "n_tup_del": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_ins": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_upd": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "rows_estimate": {
+          "value": 59,
+          "state": "present",
+          "source": "my.n.tables",
+          "as_of": "2026-10-27 17:28:25"
+        }
+      },
+      "columns": [
+        {
+          "name": "CustomerId",
+          "position": 1,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": false,
+          "identity": "auto_increment",
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": 59,
+              "state": "present",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "FirstName",
+          "position": 2,
+          "type_name": "varchar(40)",
+          "base_type": "varchar",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "LastName",
+          "position": 3,
+          "type_name": "varchar(20)",
+          "base_type": "varchar",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Company",
+          "position": 4,
+          "type_name": "varchar(80)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Address",
+          "position": 5,
+          "type_name": "varchar(70)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "City",
+          "position": 6,
+          "type_name": "varchar(40)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "State",
+          "position": 7,
+          "type_name": "varchar(40)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Country",
+          "position": 8,
+          "type_name": "varchar(40)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "PostalCode",
+          "position": 9,
+          "type_name": "varchar(10)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Phone",
+          "position": 10,
+          "type_name": "varchar(24)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Fax",
+          "position": 11,
+          "type_name": "varchar(24)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Email",
+          "position": 12,
+          "type_name": "varchar(60)",
+          "base_type": "varchar",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "SupportRepId",
+          "position": 13,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": 3,
+              "state": "present",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "FK_CustomerSupportRepId",
+          "kind": "f",
+          "columns": [
+            "SupportRepId"
+          ],
+          "ref_table": "Chinook_AutoIncrement.Employee",
+          "ref_columns": [
+            "EmployeeId"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "kind": "p",
+          "columns": [
+            "CustomerId"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "IFK_CustomerSupportRepId",
+          "columns": [
+            "SupportRepId"
+          ],
+          "unique": false,
+          "primary": false
+        },
+        {
+          "name": "PRIMARY",
+          "columns": [
+            "CustomerId"
+          ],
+          "unique": true,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "schema": "Chinook_AutoIncrement",
+      "name": "Employee",
+      "kind": "table",
+      "can_select": true,
+      "features": {
+        "auto_increment": {
+          "value": 9,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "avg_row_length": {
+          "value": 2048,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "data_length": {
+          "value": 16384,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "n_tup_del": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_ins": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_upd": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "rows_estimate": {
+          "value": 8,
+          "state": "present",
+          "source": "my.n.tables",
+          "as_of": "2026-10-27 17:28:25"
+        }
+      },
+      "columns": [
+        {
+          "name": "EmployeeId",
+          "position": 1,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": false,
+          "identity": "auto_increment",
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": 8,
+              "state": "present",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "LastName",
+          "position": 2,
+          "type_name": "varchar(20)",
+          "base_type": "varchar",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "FirstName",
+          "position": 3,
+          "type_name": "varchar(20)",
+          "base_type": "varchar",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Title",
+          "position": 4,
+          "type_name": "varchar(30)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "ReportsTo",
+          "position": 5,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": 4,
+              "state": "present",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "BirthDate",
+          "position": 6,
+          "type_name": "datetime",
+          "base_type": "datetime",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "HireDate",
+          "position": 7,
+          "type_name": "datetime",
+          "base_type": "datetime",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Address",
+          "position": 8,
+          "type_name": "varchar(70)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "City",
+          "position": 9,
+          "type_name": "varchar(40)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "State",
+          "position": 10,
+          "type_name": "varchar(40)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Country",
+          "position": 11,
+          "type_name": "varchar(40)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "PostalCode",
+          "position": 12,
+          "type_name": "varchar(10)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Phone",
+          "position": 13,
+          "type_name": "varchar(24)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Fax",
+          "position": 14,
+          "type_name": "varchar(24)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Email",
+          "position": 15,
+          "type_name": "varchar(60)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "FK_EmployeeReportsTo",
+          "kind": "f",
+          "columns": [
+            "ReportsTo"
+          ],
+          "ref_table": "Chinook_AutoIncrement.Employee",
+          "ref_columns": [
+            "EmployeeId"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "kind": "p",
+          "columns": [
+            "EmployeeId"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "IFK_EmployeeReportsTo",
+          "columns": [
+            "ReportsTo"
+          ],
+          "unique": false,
+          "primary": false
+        },
+        {
+          "name": "PRIMARY",
+          "columns": [
+            "EmployeeId"
+          ],
+          "unique": true,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "schema": "Chinook_AutoIncrement",
+      "name": "Genre",
+      "kind": "table",
+      "can_select": true,
+      "features": {
+        "auto_increment": {
+          "value": 26,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "avg_row_length": {
+          "value": 655,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "data_length": {
+          "value": 16384,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "n_tup_del": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_ins": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_upd": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "rows_estimate": {
+          "value": 25,
+          "state": "present",
+          "source": "my.n.tables",
+          "as_of": "2026-10-27 17:28:25"
+        }
+      },
+      "columns": [
+        {
+          "name": "GenreId",
+          "position": 1,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": false,
+          "identity": "auto_increment",
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": 25,
+              "state": "present",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Name",
+          "position": 2,
+          "type_name": "varchar(120)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PRIMARY",
+          "kind": "p",
+          "columns": [
+            "GenreId"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "columns": [
+            "GenreId"
+          ],
+          "unique": true,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "schema": "Chinook_AutoIncrement",
+      "name": "Invoice",
+      "kind": "table",
+      "can_select": true,
+      "features": {
+        "auto_increment": {
+          "value": 413,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "avg_row_length": {
+          "value": 39,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "data_length": {
+          "value": 16384,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "n_tup_del": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_ins": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_upd": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "rows_estimate": {
+          "value": 412,
+          "state": "present",
+          "source": "my.n.tables",
+          "as_of": "2026-10-27 17:28:25"
+        }
+      },
+      "columns": [
+        {
+          "name": "InvoiceId",
+          "position": 1,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": false,
+          "identity": "auto_increment",
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": 412,
+              "state": "present",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "CustomerId",
+          "position": 2,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": 59,
+              "state": "present",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "InvoiceDate",
+          "position": 3,
+          "type_name": "datetime",
+          "base_type": "datetime",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "BillingAddress",
+          "position": 4,
+          "type_name": "varchar(70)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "BillingCity",
+          "position": 5,
+          "type_name": "varchar(40)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "BillingState",
+          "position": 6,
+          "type_name": "varchar(40)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "BillingCountry",
+          "position": 7,
+          "type_name": "varchar(40)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "BillingPostalCode",
+          "position": 8,
+          "type_name": "varchar(10)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Total",
+          "position": 9,
+          "type_name": "decimal(10,2)",
+          "base_type": "decimal",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "FK_InvoiceCustomerId",
+          "kind": "f",
+          "columns": [
+            "CustomerId"
+          ],
+          "ref_table": "Chinook_AutoIncrement.Customer",
+          "ref_columns": [
+            "CustomerId"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "kind": "p",
+          "columns": [
+            "InvoiceId"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "IFK_InvoiceCustomerId",
+          "columns": [
+            "CustomerId"
+          ],
+          "unique": false,
+          "primary": false
+        },
+        {
+          "name": "PRIMARY",
+          "columns": [
+            "InvoiceId"
+          ],
+          "unique": true,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "schema": "Chinook_AutoIncrement",
+      "name": "InvoiceLine",
+      "kind": "table",
+      "can_select": true,
+      "features": {
+        "auto_increment": {
+          "value": 2241,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "avg_row_length": {
+          "value": 7,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "data_length": {
+          "value": 16384,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "n_tup_del": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_ins": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_upd": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "rows_estimate": {
+          "value": 2240,
+          "state": "present",
+          "source": "my.n.tables",
+          "as_of": "2026-10-27 17:28:25"
+        }
+      },
+      "columns": [
+        {
+          "name": "InvoiceLineId",
+          "position": 1,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": false,
+          "identity": "auto_increment",
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": 2240,
+              "state": "present",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "InvoiceId",
+          "position": 2,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": 412,
+              "state": "present",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "TrackId",
+          "position": 3,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": 1984,
+              "state": "present",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "UnitPrice",
+          "position": 4,
+          "type_name": "decimal(10,2)",
+          "base_type": "decimal",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Quantity",
+          "position": 5,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "FK_InvoiceLineInvoiceId",
+          "kind": "f",
+          "columns": [
+            "InvoiceId"
+          ],
+          "ref_table": "Chinook_AutoIncrement.Invoice",
+          "ref_columns": [
+            "InvoiceId"
+          ]
+        },
+        {
+          "name": "FK_InvoiceLineTrackId",
+          "kind": "f",
+          "columns": [
+            "TrackId"
+          ],
+          "ref_table": "Chinook_AutoIncrement.Track",
+          "ref_columns": [
+            "TrackId"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "kind": "p",
+          "columns": [
+            "InvoiceLineId"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "IFK_InvoiceLineInvoiceId",
+          "columns": [
+            "InvoiceId"
+          ],
+          "unique": false,
+          "primary": false
+        },
+        {
+          "name": "IFK_InvoiceLineTrackId",
+          "columns": [
+            "TrackId"
+          ],
+          "unique": false,
+          "primary": false
+        },
+        {
+          "name": "PRIMARY",
+          "columns": [
+            "InvoiceLineId"
+          ],
+          "unique": true,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "schema": "Chinook_AutoIncrement",
+      "name": "MediaType",
+      "kind": "table",
+      "can_select": true,
+      "features": {
+        "auto_increment": {
+          "value": 6,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "avg_row_length": {
+          "value": 3276,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "data_length": {
+          "value": 16384,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "n_tup_del": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_ins": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_upd": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "rows_estimate": {
+          "value": 5,
+          "state": "present",
+          "source": "my.n.tables",
+          "as_of": "2026-10-27 17:28:25"
+        }
+      },
+      "columns": [
+        {
+          "name": "MediaTypeId",
+          "position": 1,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": false,
+          "identity": "auto_increment",
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": 5,
+              "state": "present",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Name",
+          "position": 2,
+          "type_name": "varchar(120)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PRIMARY",
+          "kind": "p",
+          "columns": [
+            "MediaTypeId"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "columns": [
+            "MediaTypeId"
+          ],
+          "unique": true,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "schema": "Chinook_AutoIncrement",
+      "name": "Playlist",
+      "kind": "table",
+      "can_select": true,
+      "features": {
+        "auto_increment": {
+          "value": 19,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "avg_row_length": {
+          "value": 910,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "data_length": {
+          "value": 16384,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "n_tup_del": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_ins": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_upd": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "rows_estimate": {
+          "value": 18,
+          "state": "present",
+          "source": "my.n.tables",
+          "as_of": "2026-10-27 17:28:25"
+        }
+      },
+      "columns": [
+        {
+          "name": "PlaylistId",
+          "position": 1,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": false,
+          "identity": "auto_increment",
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": 18,
+              "state": "present",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Name",
+          "position": 2,
+          "type_name": "varchar(120)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PRIMARY",
+          "kind": "p",
+          "columns": [
+            "PlaylistId"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "columns": [
+            "PlaylistId"
+          ],
+          "unique": true,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "schema": "Chinook_AutoIncrement",
+      "name": "PlaylistTrack",
+      "kind": "table",
+      "can_select": true,
+      "features": {
+        "auto_increment": {
+          "value": null,
+          "state": "absent",
+          "source": "my.n.tables"
+        },
+        "avg_row_length": {
+          "value": 1,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "data_length": {
+          "value": 16384,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "n_tup_del": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_ins": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_upd": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "rows_estimate": {
+          "value": 8715,
+          "state": "present",
+          "source": "my.n.tables",
+          "as_of": "2026-10-27 17:28:26"
+        }
+      },
+      "columns": [
+        {
+          "name": "PlaylistId",
+          "position": 1,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": 14,
+              "state": "present",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "TrackId",
+          "position": 2,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": 3503,
+              "state": "present",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "FK_PlaylistTrackPlaylistId",
+          "kind": "f",
+          "columns": [
+            "PlaylistId"
+          ],
+          "ref_table": "Chinook_AutoIncrement.Playlist",
+          "ref_columns": [
+            "PlaylistId"
+          ]
+        },
+        {
+          "name": "FK_PlaylistTrackTrackId",
+          "kind": "f",
+          "columns": [
+            "TrackId"
+          ],
+          "ref_table": "Chinook_AutoIncrement.Track",
+          "ref_columns": [
+            "TrackId"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "kind": "p",
+          "columns": [
+            "PlaylistId",
+            "TrackId"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "IFK_PlaylistTrackPlaylistId",
+          "columns": [
+            "PlaylistId"
+          ],
+          "unique": false,
+          "primary": false
+        },
+        {
+          "name": "IFK_PlaylistTrackTrackId",
+          "columns": [
+            "TrackId"
+          ],
+          "unique": false,
+          "primary": false
+        },
+        {
+          "name": "PRIMARY",
+          "columns": [
+            "PlaylistId",
+            "TrackId"
+          ],
+          "unique": true,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "schema": "Chinook_AutoIncrement",
+      "name": "Track",
+      "kind": "table",
+      "can_select": true,
+      "features": {
+        "auto_increment": {
+          "value": 3504,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "avg_row_length": {
+          "value": 4,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "data_length": {
+          "value": 16384,
+          "state": "present",
+          "source": "my.n.tables"
+        },
+        "n_tup_del": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_ins": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "n_tup_upd": {
+          "value": null,
+          "state": "denied",
+          "source": "my.n.activity"
+        },
+        "rows_estimate": {
+          "value": 3503,
+          "state": "present",
+          "source": "my.n.tables",
+          "as_of": "2026-10-27 17:28:25"
+        }
+      },
+      "columns": [
+        {
+          "name": "TrackId",
+          "position": 1,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": false,
+          "identity": "auto_increment",
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": 3483,
+              "state": "present",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Name",
+          "position": 2,
+          "type_name": "varchar(200)",
+          "base_type": "varchar",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "AlbumId",
+          "position": 3,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": 347,
+              "state": "present",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "MediaTypeId",
+          "position": 4,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": 5,
+              "state": "present",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "GenreId",
+          "position": 5,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": 25,
+              "state": "present",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Composer",
+          "position": 6,
+          "type_name": "varchar(220)",
+          "base_type": "varchar",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Milliseconds",
+          "position": 7,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "Bytes",
+          "position": 8,
+          "type_name": "int",
+          "base_type": "int",
+          "nullable": true,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        },
+        {
+          "name": "UnitPrice",
+          "position": 9,
+          "type_name": "decimal(10,2)",
+          "base_type": "decimal",
+          "nullable": false,
+          "can_select": true,
+          "features": {
+            "avg_width": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "correlation": {
+              "value": null,
+              "state": "unsupported",
+              "source": "my.n.histograms"
+            },
+            "index_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.indexes"
+            },
+            "n_distinct": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            },
+            "null_frac": {
+              "value": null,
+              "state": "absent",
+              "source": "my.n.histograms"
+            }
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "name": "FK_TrackAlbumId",
+          "kind": "f",
+          "columns": [
+            "AlbumId"
+          ],
+          "ref_table": "Chinook_AutoIncrement.Album",
+          "ref_columns": [
+            "AlbumId"
+          ]
+        },
+        {
+          "name": "FK_TrackGenreId",
+          "kind": "f",
+          "columns": [
+            "GenreId"
+          ],
+          "ref_table": "Chinook_AutoIncrement.Genre",
+          "ref_columns": [
+            "GenreId"
+          ]
+        },
+        {
+          "name": "FK_TrackMediaTypeId",
+          "kind": "f",
+          "columns": [
+            "MediaTypeId"
+          ],
+          "ref_table": "Chinook_AutoIncrement.MediaType",
+          "ref_columns": [
+            "MediaTypeId"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "kind": "p",
+          "columns": [
+            "TrackId"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "IFK_TrackAlbumId",
+          "columns": [
+            "AlbumId"
+          ],
+          "unique": false,
+          "primary": false
+        },
+        {
+          "name": "IFK_TrackGenreId",
+          "columns": [
+            "GenreId"
+          ],
+          "unique": false,
+          "primary": false
+        },
+        {
+          "name": "IFK_TrackMediaTypeId",
+          "columns": [
+            "MediaTypeId"
+          ],
+          "unique": false,
+          "primary": false
+        },
+        {
+          "name": "PRIMARY",
+          "columns": [
+            "TrackId"
+          ],
+          "unique": true,
+          "primary": true
+        }
+      ]
+    }
+  ],
+  "queries": [
+    {
+      "id": "my.settings",
+      "rows": 1,
+      "client_ms": 0.5781000000000001
+    },
+    {
+      "id": "my.s.tables",
+      "rows": 11,
+      "client_ms": 1.1525
+    },
+    {
+      "id": "my.s.columns",
+      "rows": 64,
+      "client_ms": 1.3575
+    },
+    {
+      "id": "my.s.constraints",
+      "rows": 22,
+      "client_ms": 1.9477
+    },
+    {
+      "id": "my.s.indexes",
+      "rows": 22,
+      "client_ms": 1.1669
+    },
+    {
+      "id": "my.n.tables",
+      "rows": 11,
+      "client_ms": 0.8473
+    },
+    {
+      "id": "my.n.indexes",
+      "rows": 22,
+      "client_ms": 1.2106000000000001
+    },
+    {
+      "id": "my.n.histograms",
+      "rows": 0,
+      "client_ms": 0.7413
+    },
+    {
+      "id": "my.n.activity",
+      "rows": 0,
+      "client_ms": 0.5096,
+      "error": "MySqlError { ERROR 1142 (42000): SELECT command denied to user 'lemmesee'@'172.27.0.1' for table 'table_io_waits_summary_by_table' }"
+    },
+    {
+      "id": "my.q.workload",
+      "rows": 0,
+      "client_ms": 0.47409999999999997,
+      "error": "MySqlError { ERROR 1142 (42000): SELECT command denied to user 'lemmesee'@'172.27.0.1' for table 'events_statements_summary_by_digest' }"
+    }
+  ],
+  "ledger": [
+    {
+      "id": "discovery:my.settings",
+      "counters": {
+        "CREATED_TMP_DISK_TABLES": 0,
+        "CREATED_TMP_TABLES": 0,
+        "NO_INDEX_USED": 0,
+        "ROWS_EXAMINED": 1,
+        "ROWS_SENT": 1,
+        "SELECT_SCAN": 0,
+        "server_ms": 0.096786
+      }
+    },
+    {
+      "id": "discovery:my.s.tables",
+      "counters": {
+        "CREATED_TMP_DISK_TABLES": 0,
+        "CREATED_TMP_TABLES": 0,
+        "NO_INDEX_USED": 0,
+        "ROWS_EXAMINED": 46,
+        "ROWS_SENT": 11,
+        "SELECT_SCAN": 1,
+        "server_ms": 0.678989
+      }
+    },
+    {
+      "id": "discovery:my.s.columns",
+      "counters": {
+        "CREATED_TMP_DISK_TABLES": 0,
+        "CREATED_TMP_TABLES": 1,
+        "NO_INDEX_USED": 0,
+        "ROWS_EXAMINED": 291,
+        "ROWS_SENT": 64,
+        "SELECT_SCAN": 1,
+        "server_ms": 0.738262
+      }
+    },
+    {
+      "id": "discovery:my.s.constraints",
+      "counters": {
+        "CREATED_TMP_DISK_TABLES": 0,
+        "CREATED_TMP_TABLES": 5,
+        "NO_INDEX_USED": 1,
+        "ROWS_EXAMINED": 318,
+        "ROWS_SENT": 22,
+        "SELECT_SCAN": 1,
+        "server_ms": 1.410771
+      }
+    },
+    {
+      "id": "discovery:my.s.indexes",
+      "counters": {
+        "CREATED_TMP_DISK_TABLES": 0,
+        "CREATED_TMP_TABLES": 1,
+        "NO_INDEX_USED": 1,
+        "ROWS_EXAMINED": 794,
+        "ROWS_SENT": 22,
+        "SELECT_SCAN": 1,
+        "server_ms": 0.694499
+      }
+    },
+    {
+      "id": "discovery:my.n.tables",
+      "counters": {
+        "CREATED_TMP_DISK_TABLES": 0,
+        "CREATED_TMP_TABLES": 0,
+        "NO_INDEX_USED": 0,
+        "ROWS_EXAMINED": 46,
+        "ROWS_SENT": 11,
+        "SELECT_SCAN": 1,
+        "server_ms": 0.377941
+      }
+    },
+    {
+      "id": "discovery:my.n.indexes",
+      "counters": {
+        "CREATED_TMP_DISK_TABLES": 0,
+        "CREATED_TMP_TABLES": 0,
+        "NO_INDEX_USED": 1,
+        "ROWS_EXAMINED": 706,
+        "ROWS_SENT": 22,
+        "SELECT_SCAN": 1,
+        "server_ms": 0.753003
+      }
+    },
+    {
+      "id": "discovery:my.n.histograms",
+      "counters": {
+        "CREATED_TMP_DISK_TABLES": 0,
+        "CREATED_TMP_TABLES": 1,
+        "NO_INDEX_USED": 1,
+        "ROWS_EXAMINED": 3,
+        "ROWS_SENT": 0,
+        "SELECT_SCAN": 1,
+        "server_ms": 0.246384
+      }
+    },
+    {
+      "id": "discovery:my.n.activity",
+      "counters": {
+        "CREATED_TMP_DISK_TABLES": 0,
+        "CREATED_TMP_TABLES": 0,
+        "NO_INDEX_USED": 0,
+        "ROWS_EXAMINED": 0,
+        "ROWS_SENT": 0,
+        "SELECT_SCAN": 0,
+        "server_ms": 0.064343
+      }
+    },
+    {
+      "id": "discovery:my.q.workload",
+      "counters": {
+        "CREATED_TMP_DISK_TABLES": 0,
+        "CREATED_TMP_TABLES": 0,
+        "NO_INDEX_USED": 0,
+        "ROWS_EXAMINED": 0,
+        "ROWS_SENT": 0,
+        "SELECT_SCAN": 0,
+        "server_ms": 0.054953
+      }
+    }
+  ]
+}
