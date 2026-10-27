@@ -3,7 +3,9 @@
 The first release against what it replaces: [v0.1.0 against PostgreSQL, Redis,
 MinIO, VictoriaMetrics, Prometheus and Loki](release-2026-10-23.md), at rest,
 an application under load, each engine against its service, and TSBS and
-LogHub on disk; the cards in TinyStore's README come from it.
+LogHub on disk; the cards in TinyStore's README come from it. Its idle round
+again on v0.4.0: [at rest, 2026-10-27](at-rest-2026-10-27.md), the server
+two MiB heavier and as fast to start, the services unchanged.
 
 
 Current handoff: [16 October 2026 status, including completed Channels and Locks](followup-status-2026-10-16.md).

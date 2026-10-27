@@ -1,0 +1,147 @@
+{
+ "idle": {
+  "contenders": {
+   "bun": {
+    "passes": 3,
+    "pss_total": 40414208,
+    "pss_services": 0,
+    "groups": {
+     "app": 40414208
+    },
+    "cgroup_anon": 11739136,
+    "cgroup_file": 83591168,
+    "open_ms": 0.38255299999946146,
+    "ready": {},
+    "disk": 0
+   },
+   "tinystore-embedded": {
+    "passes": 3,
+    "pss_total": 60763136,
+    "pss_services": 0,
+    "groups": {
+     "app": 60763136
+    },
+    "cgroup_anon": 17223680,
+    "cgroup_file": 102137856,
+    "open_ms": 128.91073300000062,
+    "ready": {},
+    "disk": 393216
+   },
+   "tinystore-sidecar": {
+    "passes": 3,
+    "pss_total": 67145728,
+    "pss_services": 17289216,
+    "groups": {
+     "app": 49896448,
+     "tinystore": 17289216
+    },
+    "cgroup_anon": 18849792,
+    "cgroup_file": 107012096,
+    "open_ms": 135.5910299999996,
+    "ready": {},
+    "disk": 401408
+   },
+   "tinystore-serve": {
+    "passes": 3,
+    "pss_total": 65031168,
+    "pss_services": 17530880,
+    "groups": {
+     "app": 47795200,
+     "tinystore": 17530880
+    },
+    "cgroup_anon": 18108416,
+    "cgroup_file": 107020288,
+    "open_ms": 114.69047099999989,
+    "ready": {
+     "tinystore": 0.02044564499988155
+    },
+    "disk": 397312
+   },
+   "services": {
+    "passes": 3,
+    "pss_total": 466756608,
+    "pss_services": 421495808,
+    "groups": {
+     "app": 45042688,
+     "loki": 139284480,
+     "minio": 114360320,
+     "postgres": 131899392,
+     "redis": 9194496,
+     "victoria-metrics": 27234304
+    },
+    "cgroup_anon": 217366528,
+    "cgroup_file": 571064320,
+    "open_ms": 27.995310999999674,
+    "ready": {
+     "postgres": 0.06931185000007645,
+     "redis": 0.010361644000113301,
+     "minio": 0.37831469299953824,
+     "victoria-metrics": 0.06202011300001686,
+     "loki": 15.374534869000172
+    },
+    "disk": 49410048
+   },
+   "valkey": {
+    "passes": 3,
+    "pss_total": 51006464,
+    "pss_services": 9811968,
+    "groups": {
+     "app": 41260032,
+     "valkey": 9811968
+    },
+    "cgroup_anon": 14532608,
+    "cgroup_file": 97112064,
+    "open_ms": 1.089455000000271,
+    "ready": {
+     "valkey": 0.061031696000100055
+    },
+    "disk": 8192
+   },
+   "prometheus": {
+    "passes": 3,
+    "pss_total": 143774720,
+    "pss_services": 102559744,
+    "groups": {
+     "app": 41202688,
+     "prometheus": 102559744
+    },
+    "cgroup_anon": 52109312,
+    "cgroup_file": 191246336,
+    "open_ms": 1.480507000000216,
+    "ready": {
+     "prometheus": 0.1864755100000366
+    },
+    "disk": 32768
+   }
+  },
+  "failed": []
+ },
+ "app": {
+  "contenders": {},
+  "failed": []
+ },
+ "kv": {
+  "contenders": {},
+  "failed": []
+ },
+ "sql": {
+  "contenders": {},
+  "failed": []
+ },
+ "files": {
+  "contenders": {},
+  "failed": []
+ },
+ "kv-memory": {
+  "contenders": {},
+  "failed": []
+ },
+ "metrics": {
+  "cases": {},
+  "failed": []
+ },
+ "logs": {
+  "cases": {},
+  "failed": []
+ }
+}

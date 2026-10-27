@@ -1,0 +1,12 @@
+kernel 6.18.33.2-microsoft-standard-WSL2
+cpus 16
+bun 1.4.2
+postgres postgres (PostgreSQL) 18.6 (Debian 18.6-1.pgdg13+2)
+redis Redis server v=8.10.2 sha=00000000:1 malloc=jemalloc-5.3.0 bits=64 build=9afb359f90603816
+valkey Valkey server v=9.1.2 sha=00000000:0 malloc=jemalloc-5.3.0 bits=64 build=16129465b18d72a
+victoria-metrics victoria-metrics-20261019-123814-tags-v1.154.1-0-g64c2e75fe7
+prometheus prometheus, version 3.15.1 (branch: HEAD, revision: bae3eced0a5369e050e83ea73bc381d7c4b1a719)
+loki loki, version 3.7.9 (branch: release-3.7.x, revision: d3b4a2f7)
+minio minio version DEVELOPMENT.GOGET (commit-id=DEVELOPMENT.GOGET)
+tinystore tinystore 0.4.0
+tinystore-npm "@tinyshed/tinystore@0.4.0"

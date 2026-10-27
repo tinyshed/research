@@ -1,0 +1,29 @@
+{
+  "lockfileVersion": 2,
+  "configVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "tinystore-release-bench",
+      "dependencies": {
+        "@tinyshed/tinystore": "0.4.0",
+      },
+    },
+  },
+  "packages": {
+    "@tinyshed/tinystore": ["@tinyshed/tinystore@0.4.0", "", { "optionalDependencies": { "@tinyshed/tinystore-darwin-arm64": "0.4.0", "@tinyshed/tinystore-darwin-x64": "0.4.0", "@tinyshed/tinystore-linux-arm64": "0.4.0", "@tinyshed/tinystore-linux-arm64-musl": "0.4.0", "@tinyshed/tinystore-linux-x64": "0.4.0", "@tinyshed/tinystore-linux-x64-musl": "0.4.0", "@tinyshed/tinystore-win32-x64": "0.4.0" }, "bin": { "tinystore": "bin/tinystore.js" } }, "sha512-50y3Ap+JAnoGJJ957Y7Dw1DbMQmV1F7PsB9rfsQxpb9G9eewKNKi07Yt7yQWXIOdbpjPac0ldNRQBv9gvVRVfg=="],
+
+    "@tinyshed/tinystore-darwin-arm64": ["@tinyshed/tinystore-darwin-arm64@0.4.0", "", { "os": "darwin", "cpu": "arm64" }, "sha512-UZTcILJmmKA+nTzosohcXG330DvKQBe+bxWpeDiCStR2yg739veJtQ41CJm/G7xRA24T/8G2s9Z4czYFueVHDA=="],
+
+    "@tinyshed/tinystore-darwin-x64": ["@tinyshed/tinystore-darwin-x64@0.4.0", "", { "os": "darwin", "cpu": "x64" }, "sha512-kWDNF6dHhMbCBb8hgp5ccLYAqQVFWvxk/3R6OmE2WLNWHEJXGtbX3hgIrbEPDZeQkJobuZEtvtCByCoYdK1EjA=="],
+
+    "@tinyshed/tinystore-linux-arm64": ["@tinyshed/tinystore-linux-arm64@0.4.0", "", { "os": "linux", "cpu": "arm64" }, "sha512-fQpWEgo6KOHDQQqNB0DqOHZ1GkrbO+d2tYxi92GbTTAKCfhapNy8qaKJP9fBsKe/YeAvlipLK+ejIK2LNfI/Kw=="],
+
+    "@tinyshed/tinystore-linux-arm64-musl": ["@tinyshed/tinystore-linux-arm64-musl@0.4.0", "", { "os": "linux", "cpu": "arm64" }, "sha512-yWElmEYjOQ+FEJ4RgF7XxVcY71edw1L24SUAistTCAEtPpVHCES3Qba5tAf5nzLyD18fixv1r7BH0E+lWdQpNg=="],
+
+    "@tinyshed/tinystore-linux-x64": ["@tinyshed/tinystore-linux-x64@0.4.0", "", { "os": "linux", "cpu": "x64" }, "sha512-atJIvRagHLPEv9kZrha+iwprm9F2qhmGZelr53YcXjFGAI28AwPKpWjLU0j3RqmFBCGGwPCEHA+/93ybphN87g=="],
+
+    "@tinyshed/tinystore-linux-x64-musl": ["@tinyshed/tinystore-linux-x64-musl@0.4.0", "", { "os": "linux", "cpu": "x64" }, "sha512-Zg+sMBqnMsgvY/Z67KlAYrXiA7XNIBRWkMAkZnMq0xWjn8jbc4bvL+jZxjYydqgnyPYzkYVFkUV7HINeUvGFlg=="],
+
+    "@tinyshed/tinystore-win32-x64": ["@tinyshed/tinystore-win32-x64@0.4.0", "", { "os": "win32", "cpu": "x64" }, "sha512-NB1Qe+N6912IOCyGjbETwfB5gGUHWGw1d5gT2Ddklq9Gaj6X5LuL6HAfjxW2I7P3Sw8ID05o/YvJTES53faTIQ=="],
+  }
+}
