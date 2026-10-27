@@ -2,11 +2,12 @@
 not generated, removed by a hard rule, abstained, outranked, or among a
 configuration's five — and, where it was run, how it came out.
 
-    python -I diagnose.py <corpus/see>
+    python -I diagnose.py <corpus/see> [<name>]
 
-reads questions.json beside it and each fixture's proposal and runs from
-<corpus/see>/<fixture>-<engine>/, prints what it found about the questions
-nothing generated, and writes diagnosis.md beside it.
+reads <name>.json beside it — questions.json when no name is given — and
+each fixture's proposal and runs from <corpus/see>/<fixture>-<engine>/,
+prints what it found about the questions nothing generated, and writes
+diagnosis.md, or <name>-diagnosis.md, beside it.
 """
 
 import json
@@ -75,14 +76,14 @@ def column_hint(proposal: dict, dotted: str) -> str:
     return f"{dotted}: no such table"
 
 
-def main(see: Path) -> None:
+def main(see: Path, name: str | None) -> None:
     here = Path(__file__).parent
-    gold = load(here / "questions.json")
+    gold = load(here / f"{name or 'questions'}.json")
     lines = [
         "# Diagnosis of the gold questions",
         "",
-        "Written by `diagnose.py` from the last run of `see.sh` on each development",
-        "fixture. **in the five** — the question is among the configuration's five;",
+        "Written by `diagnose.py` from the last run of `see.sh` on each fixture.",
+        "**in the five** — the question is among the configuration's five;",
         "**rank** — generated and allowed, outranked; **abstained**, **removed** — by",
         "the code given; **not generated** — a template could say it and the",
         "generator did not; **inexpressible** — no template can, for the reason given.",
@@ -119,10 +120,10 @@ def main(see: Path) -> None:
         lines.append("")
     lines += ["## Totals", "", "| | Questions |", "|---|---|"]
     lines += [f"| {k} | {v} |" for k, v in sorted(totals.items())]
-    (here / "diagnosis.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    (here / (f"{name}-diagnosis.md" if name else "diagnosis.md")).write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(dict(totals))
 
 
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
-    main(Path(sys.argv[1]))
+    main(Path(sys.argv[1]), sys.argv[2] if len(sys.argv) > 2 else None)

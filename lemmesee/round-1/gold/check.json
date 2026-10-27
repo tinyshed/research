@@ -1,0 +1,574 @@
+{
+  "about": "Gold questions for the check fixtures, written blind by Claude Haiku on 28 October 2026: three agents, one a database, each given only its schema with rough row counts and a line on what it holds, and asked for the ten questions a person just given the database would want answered first, the first five for the first screen. The questions and their fields are Haiku's; what each needs that the generator lacks is read off those fields, and the candidate that would answer it is added by hand. Measured once, before the rules change by looking at these databases.",
+  "fixtures": {
+    "northwind": {
+      "engine": "postgres",
+      "questions": [
+        {
+          "question": "How much net revenue did we bill each month?",
+          "why": "the headline sales trend, after discounts",
+          "base": "order_details",
+          "measure": "sum(order_details.unit_price * order_details.quantity * (1 - order_details.discount))",
+          "time": "orders.order_date",
+          "bucket": "month",
+          "breakdown": null,
+          "top": null,
+          "filter": null,
+          "path": [
+            "order_details.order_id -> orders.order_id"
+          ],
+          "needs": [
+            "a measure that is an expression"
+          ],
+          "match": null
+        },
+        {
+          "question": "How many orders were placed each month?",
+          "why": "volume of new business over time",
+          "base": "orders",
+          "measure": "count(*)",
+          "time": "orders.order_date",
+          "bucket": "month",
+          "breakdown": null,
+          "top": null,
+          "filter": null,
+          "path": [],
+          "needs": [],
+          "match": {
+            "template": "T1",
+            "table": "orders",
+            "time": "orders.order_date"
+          }
+        },
+        {
+          "question": "Which 12 products earn the most net revenue?",
+          "why": "where the money comes from, to protect and keep in stock",
+          "base": "order_details",
+          "measure": "sum(order_details.unit_price * order_details.quantity * (1 - order_details.discount))",
+          "time": null,
+          "bucket": null,
+          "breakdown": "products.product_name",
+          "top": 12,
+          "filter": null,
+          "path": [
+            "order_details.product_id -> products.product_id"
+          ],
+          "needs": [
+            "a measure that is an expression"
+          ],
+          "match": null
+        },
+        {
+          "question": "Which 12 customers spend the most, by net revenue?",
+          "why": "who the key accounts are",
+          "base": "order_details",
+          "measure": "sum(order_details.unit_price * order_details.quantity * (1 - order_details.discount))",
+          "time": null,
+          "bucket": null,
+          "breakdown": "customers.company_name",
+          "top": 12,
+          "filter": null,
+          "path": [
+            "order_details.order_id -> orders.order_id",
+            "orders.customer_id -> customers.customer_id"
+          ],
+          "needs": [
+            "a measure that is an expression",
+            "two joins"
+          ],
+          "match": null
+        },
+        {
+          "question": "How many orders shipped after their required date, per month?",
+          "why": "late deliveries that hurt customers",
+          "base": "orders",
+          "measure": "count(*)",
+          "time": "orders.shipped_date",
+          "bucket": "month",
+          "breakdown": null,
+          "top": null,
+          "filter": "orders.shipped_date > orders.required_date",
+          "path": [],
+          "needs": [
+            "a filter on the rows"
+          ],
+          "match": null
+        },
+        {
+          "question": "How did net revenue by product category move each quarter?",
+          "why": "which product lines are growing or shrinking",
+          "base": "order_details",
+          "measure": "sum(order_details.unit_price * order_details.quantity * (1 - order_details.discount))",
+          "time": "orders.order_date",
+          "bucket": "quarter",
+          "breakdown": "categories.category_name",
+          "top": null,
+          "filter": null,
+          "path": [
+            "order_details.order_id -> orders.order_id",
+            "order_details.product_id -> products.product_id",
+            "products.category_id -> categories.category_id"
+          ],
+          "needs": [
+            "a measure that is an expression",
+            "three joins",
+            "a measure over time split by a category"
+          ],
+          "match": null
+        },
+        {
+          "question": "Which 12 employees book the most net revenue?",
+          "why": "who sells the most and who may need support",
+          "base": "order_details",
+          "measure": "sum(order_details.unit_price * order_details.quantity * (1 - order_details.discount))",
+          "time": null,
+          "bucket": null,
+          "breakdown": "employees.last_name",
+          "top": 12,
+          "filter": null,
+          "path": [
+            "order_details.order_id -> orders.order_id",
+            "orders.employee_id -> employees.employee_id"
+          ],
+          "needs": [
+            "a measure that is an expression",
+            "two joins",
+            "a label for a person, which the rules refuse"
+          ],
+          "match": null
+        },
+        {
+          "question": "What is the average discount given each month?",
+          "why": "whether discounting is eroding margin",
+          "base": "order_details",
+          "measure": "avg(order_details.discount)",
+          "time": "orders.order_date",
+          "bucket": "month",
+          "breakdown": null,
+          "top": null,
+          "filter": null,
+          "path": [
+            "order_details.order_id -> orders.order_id"
+          ],
+          "needs": [],
+          "match": {
+            "template": "T3",
+            "table": "order_details",
+            "aggregate": "avg",
+            "measure": "order_details.discount",
+            "time": "orders.order_date"
+          }
+        },
+        {
+          "question": "How much freight did each shipper charge each quarter?",
+          "why": "shipping cost and which carriers carry the load",
+          "base": "orders",
+          "measure": "sum(orders.freight)",
+          "time": "orders.order_date",
+          "bucket": "quarter",
+          "breakdown": "shippers.company_name",
+          "top": null,
+          "filter": null,
+          "path": [
+            "orders.ship_via -> shippers.shipper_id"
+          ],
+          "needs": [
+            "a measure over time split by a category"
+          ],
+          "match": null
+        },
+        {
+          "question": "How many active products are at or below their reorder level, by category?",
+          "why": "stock that may run out soon",
+          "base": "products",
+          "measure": "count(*)",
+          "time": null,
+          "bucket": null,
+          "breakdown": "categories.category_name",
+          "top": null,
+          "filter": "products.units_in_stock <= products.reorder_level AND products.discontinued = 0",
+          "path": [
+            "products.category_id -> categories.category_id"
+          ],
+          "needs": [
+            "a filter on the rows"
+          ],
+          "match": null
+        }
+      ]
+    },
+    "ccs": {
+      "engine": "mysql",
+      "questions": [
+        {
+          "question": "How much revenue comes in each month, by customer currency?",
+          "why": "the headline money trend, kept apart per currency",
+          "base": "transactions_1k",
+          "measure": "sum(transactions_1k.Price)",
+          "time": "transactions_1k.Date",
+          "bucket": "month",
+          "breakdown": "customers.Currency",
+          "top": null,
+          "filter": null,
+          "path": [
+            "transactions_1k.CustomerID -> customers.CustomerID"
+          ],
+          "needs": [
+            "a measure over time split by a category"
+          ],
+          "match": null
+        },
+        {
+          "question": "How many transactions happen each month?",
+          "why": "the pulse of activity over time",
+          "base": "transactions_1k",
+          "measure": "count(*)",
+          "time": "transactions_1k.Date",
+          "bucket": "month",
+          "breakdown": null,
+          "top": null,
+          "filter": null,
+          "path": [],
+          "needs": [],
+          "match": {
+            "template": "T1",
+            "table": "transactions_1k",
+            "time": "transactions_1k.Date"
+          }
+        },
+        {
+          "question": "How much fuel do customers consume each month?",
+          "why": "total consumption trend; Date is a YYYYMM number",
+          "base": "yearmonth",
+          "measure": "sum(yearmonth.Consumption)",
+          "time": "yearmonth.Date",
+          "bucket": "month",
+          "breakdown": null,
+          "top": null,
+          "filter": null,
+          "path": [],
+          "needs": [
+            "a month held as an integer, YYYYMM"
+          ],
+          "match": null
+        },
+        {
+          "question": "Which products bring in the most revenue?",
+          "why": "what the money is earned from",
+          "base": "transactions_1k",
+          "measure": "sum(transactions_1k.Price)",
+          "time": null,
+          "bucket": null,
+          "breakdown": "products.Description",
+          "top": 12,
+          "filter": null,
+          "path": [
+            "transactions_1k.ProductID -> products.ProductID"
+          ],
+          "needs": [],
+          "match": {
+            "template": "T9",
+            "table": "transactions_1k",
+            "aggregate": "sum",
+            "measure": "transactions_1k.Price",
+            "category": "products.Description"
+          }
+        },
+        {
+          "question": "Which customers spend the most?",
+          "why": "the key accounts to know by name",
+          "base": "transactions_1k",
+          "measure": "sum(transactions_1k.Price)",
+          "time": null,
+          "bucket": null,
+          "breakdown": "transactions_1k.CustomerID",
+          "top": 12,
+          "filter": null,
+          "path": [],
+          "needs": [
+            "an identifier for a label"
+          ],
+          "match": null
+        },
+        {
+          "question": "Which gas stations take the most revenue?",
+          "why": "where the money is earned on the network",
+          "base": "transactions_1k",
+          "measure": "sum(transactions_1k.Price)",
+          "time": null,
+          "bucket": null,
+          "breakdown": "transactions_1k.GasStationID",
+          "top": 12,
+          "filter": null,
+          "path": [],
+          "needs": [
+            "an identifier for a label"
+          ],
+          "match": null
+        },
+        {
+          "question": "How many transactions happen in each country?",
+          "why": "where the network is used",
+          "base": "transactions_1k",
+          "measure": "count(*)",
+          "time": null,
+          "bucket": null,
+          "breakdown": "gasstations.Country",
+          "top": null,
+          "filter": null,
+          "path": [
+            "transactions_1k.GasStationID -> gasstations.GasStationID"
+          ],
+          "needs": [],
+          "match": {
+            "template": "T2",
+            "table": "transactions_1k",
+            "category": "gasstations.Country",
+            "join_to": "gasstations"
+          }
+        },
+        {
+          "question": "How many transactions come from each customer segment?",
+          "why": "which kinds of customer use the cards",
+          "base": "transactions_1k",
+          "measure": "count(*)",
+          "time": null,
+          "bucket": null,
+          "breakdown": "customers.Segment",
+          "top": null,
+          "filter": null,
+          "path": [
+            "transactions_1k.CustomerID -> customers.CustomerID"
+          ],
+          "needs": [],
+          "match": {
+            "template": "T2",
+            "table": "transactions_1k",
+            "category": "customers.Segment",
+            "join_to": "customers"
+          }
+        },
+        {
+          "question": "How much fuel does a customer use in a typical month, by segment?",
+          "why": "fair comparison of segments per customer-month",
+          "base": "yearmonth",
+          "measure": "avg(yearmonth.Consumption)",
+          "time": null,
+          "bucket": null,
+          "breakdown": "customers.Segment",
+          "top": null,
+          "filter": null,
+          "path": [
+            "yearmonth.CustomerID -> customers.CustomerID"
+          ],
+          "needs": [],
+          "match": {
+            "template": "T4",
+            "table": "yearmonth",
+            "aggregate": "avg",
+            "measure": "yearmonth.Consumption",
+            "category": "customers.Segment"
+          }
+        },
+        {
+          "question": "What is the average transaction value each month, by currency?",
+          "why": "whether the typical sale is growing",
+          "base": "transactions_1k",
+          "measure": "avg(transactions_1k.Price)",
+          "time": "transactions_1k.Date",
+          "bucket": "month",
+          "breakdown": "customers.Currency",
+          "top": null,
+          "filter": null,
+          "path": [
+            "transactions_1k.CustomerID -> customers.CustomerID"
+          ],
+          "needs": [
+            "a measure over time split by a category"
+          ],
+          "match": null
+        }
+      ]
+    },
+    "lahman": {
+      "engine": "mysql",
+      "questions": [
+        {
+          "question": "How many runs does an average team score each season?",
+          "why": "shows the scoring climate and the eras when offence rose or fell",
+          "base": "teams",
+          "measure": "avg(teams.R)",
+          "time": "teams.yearID",
+          "bucket": "year",
+          "breakdown": null,
+          "top": null,
+          "filter": null,
+          "path": [],
+          "needs": [
+            "a year held as an integer, which the rules take for no time"
+          ],
+          "match": null
+        },
+        {
+          "question": "How much does an average player earn each season?",
+          "why": "pay per player, which a total cannot show as rosters change",
+          "base": "salaries",
+          "measure": "avg(salaries.salary)",
+          "time": "salaries.yearID",
+          "bucket": "year",
+          "breakdown": null,
+          "top": null,
+          "filter": null,
+          "path": [],
+          "needs": [
+            "a year held as an integer, which the rules take for no time"
+          ],
+          "match": null
+        },
+        {
+          "question": "How many home runs does an average team hit each season?",
+          "why": "power trend across the eras, comparable across seasons with different team counts",
+          "base": "teams",
+          "measure": "avg(teams.HR)",
+          "time": "teams.yearID",
+          "bucket": "year",
+          "breakdown": null,
+          "top": null,
+          "filter": null,
+          "path": [],
+          "needs": [
+            "a year held as an integer, which the rules take for no time"
+          ],
+          "match": null
+        },
+        {
+          "question": "What is the average attendance per team each season?",
+          "why": "how many people watched the games",
+          "base": "teams",
+          "measure": "avg(teams.attendance)",
+          "time": "teams.yearID",
+          "bucket": "year",
+          "breakdown": null,
+          "top": null,
+          "filter": null,
+          "path": [],
+          "needs": [
+            "a year held as an integer, which the rules take for no time"
+          ],
+          "match": null
+        },
+        {
+          "question": "How many teams play in each season?",
+          "why": "league size, including expansion and contraction",
+          "base": "teams",
+          "measure": "count(*)",
+          "time": "teams.yearID",
+          "bucket": "year",
+          "breakdown": null,
+          "top": null,
+          "filter": null,
+          "path": [],
+          "needs": [
+            "a year held as an integer, which the rules take for no time"
+          ],
+          "match": null
+        },
+        {
+          "question": "Which franchises have won the most games in total?",
+          "why": "the biggest winners across all seasons, under their franchise names",
+          "base": "teams",
+          "measure": "sum(teams.W)",
+          "time": null,
+          "bucket": null,
+          "breakdown": "teamsfranchises.franchName",
+          "top": 12,
+          "filter": null,
+          "path": [
+            "teams.franchID -> teamsfranchises.franchID"
+          ],
+          "needs": [],
+          "match": {
+            "template": "T9",
+            "table": "teams",
+            "aggregate": "sum",
+            "measure": "teams.W",
+            "category": "teamsfranchises.franchName"
+          }
+        },
+        {
+          "question": "Which players have hit the most home runs in their careers?",
+          "why": "the all-time power leaders, labelled with the player's name",
+          "base": "batting",
+          "measure": "sum(batting.HR)",
+          "time": null,
+          "bucket": null,
+          "breakdown": "players.playerID",
+          "top": 12,
+          "filter": null,
+          "path": [
+            "batting.playerID -> players.playerID"
+          ],
+          "needs": [
+            "a label for a person, which the rules refuse"
+          ],
+          "match": null
+        },
+        {
+          "question": "Which pitchers have struck out the most batters in their careers?",
+          "why": "the all-time strikeout leaders, labelled with the pitcher's name",
+          "base": "pitching",
+          "measure": "sum(pitching.SO)",
+          "time": null,
+          "bucket": null,
+          "breakdown": "players.playerID",
+          "top": 12,
+          "filter": null,
+          "path": [
+            "pitching.playerID -> players.playerID"
+          ],
+          "needs": [
+            "a label for a person, which the rules refuse"
+          ],
+          "match": null
+        },
+        {
+          "question": "Which awards are given most often to players?",
+          "why": "where the recognition goes and how common each honour is",
+          "base": "awardsplayers",
+          "measure": "count(*)",
+          "time": null,
+          "bucket": null,
+          "breakdown": "awardsplayers.awardID",
+          "top": 12,
+          "filter": null,
+          "path": [],
+          "needs": [],
+          "match": {
+            "template": "T2",
+            "table": "awardsplayers",
+            "category": "awardsplayers.awardID"
+          }
+        },
+        {
+          "question": "Which countries have produced the most players?",
+          "why": "where the players in the database were born",
+          "base": "players",
+          "measure": "count(*)",
+          "time": null,
+          "bucket": null,
+          "breakdown": "players.birthCountry",
+          "top": 12,
+          "filter": "players.birthCountry IS NOT NULL",
+          "path": [],
+          "needs": [],
+          "match": {
+            "template": "T2",
+            "table": "players",
+            "category": "players.birthCountry"
+          },
+          "note": "the filter only drops nulls, which a breakdown shows apart"
+        }
+      ]
+    }
+  }
+}
