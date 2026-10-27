@@ -7,6 +7,17 @@ versions are pinned when the harness first fetches them**, with a SHA-256 of
 each archive in `fixtures/hashes.txt`. Nothing here is committed but the
 fetch scripts, the hashes and the generators.
 
+## Development fixtures
+
+Three databases the rules are tuned by looking at, and so never pilot
+fixtures: **Chinook** (P1 below), **Postgres Professional's airlines demo**
+of 1 September 2025, three months (MIT; PostgreSQL; `fixtures/airlines.sh`;
+bookings 1.3 million, segments 3.9 million, flights 21 758) and **ErgastF1**
+as CTU's relational repository serves it (from ergast.com; MySQL, with a
+histogram on every column; `fixtures/ergastf1.sh`; 14 tables, lap times
+419 thousand). Their gold questions are in [gold/](gold/README.md). Chinook
+leaves the pilot's ten: another public database takes its place there.
+
 ## Public
 
 | | Database | Licence | Engines | What it holds | Why it is here |

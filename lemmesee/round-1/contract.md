@@ -215,6 +215,7 @@ whose server counters show what each query touches, not what it costs.
 | the application's schema holds the application's tables | `pg_stat_statements`' two views sit in `public`, 54 columns that are no table's | objects an extension owns, by `pg_depend.deptype = 'e'`, are left out |
 | `JSON_TABLE` over `COLUMN_STATISTICS.HISTOGRAM` in a scalar subquery | error 1210, also in a `LEFT JOIN`, until the column is cast to `JSON` | `LEFT JOIN JSON_TABLE(CAST(… AS JSON) …)`; on the scratch schema the sums gave 2 000 and 360 distinct values and the singleton 3, each the true count, and `null-values` 0.1 the true share |
 | a read-only transaction | one failed query would abort every query after it | read-only and time limits set for the session |
+| `TABLES.TABLE_ROWS` an estimate to trust | ErgastF1, queried just after loading, said 0 rows for `results` (23 657) and `status`: `information_schema` keeps an estimate for `information_schema_stats_expiry`, a day | `ANALYZE TABLE` in every MySQL fixture's preparation; on MySQL an estimate of 0 is to be read as unknown |
 | the Performance Schema readable where the role can read its database | error 1142 for `table_io_waits_summary_by_table` and for the statement digests | MySQL's activity counters and tier Q are `denied` to a role with `SELECT` on its database only, as found |
 | `null_frac` unsupported on MySQL | it is absent until someone makes a histogram, and then present | states as in the table above |
 

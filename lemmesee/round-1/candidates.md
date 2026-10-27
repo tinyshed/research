@@ -233,3 +233,34 @@ the largest tables, and employees by city. On MySQL, where no histogram
 exists, B1 removed nothing A did not, and kept first the rows of tracks by
 album title — 347 titles, which only PostgreSQL's statistics said. These are
 a build's output, not judged and not a result.
+
+## Revised on the development fixtures
+
+On 28 October the whole chain ran on three development fixtures — Chinook,
+Postgres Professional's airlines demo, ErgastF1 — and their five panels were
+looked at, and [gold questions](gold/README.md) diagnosed against them. What
+the looking found wrong changed the rules below; **a development fixture is
+never a pilot fixture**, so the pilot judges rules no pilot fixture tuned.
+
+| Found | Changed |
+|---|---|
+| `flights.scheduled_departure` was no time | `departure` and `arrival` name an event time |
+| a flight's four times drew one curve four ways | one time a table for T1, T3 and T6: its creation time, or else its first event time |
+| customers counted by their support representative's hire date | a parent's time only for a fact's rows with no time of their own, as an invoice's date for its lines |
+| a parent's category grouped any child | a parent's category only for a fact; a lookup's label for any child |
+| `album` (347 rows, a key to its artist) and `bookings` (a date, an amount) were lookups | a lookup points nowhere and holds no time and no measure |
+| seasons labelled by their URL; customers by their first names | a label is a column named `name`, `title` or `label`, never a person's name |
+| ten airplanes made every column a category; positions, rounds and wins were categories | measured categories on text only, in tables of 100 rows or more |
+| 41 nationalities refused, 59 addresses allowed, by one line at 30 | few values: up to 30, or up to 60 where they are at most a tenth of the rows; H3 the same |
+| PostgreSQL's `text` and `varchar(255)` counted as free text, and statuses removed by H3 | long text by type only for MySQL's medium and long texts and lengths over 1 000 |
+| `pitStops`, two keys and no amount, was no fact | two keys out make a fact, unless the table holds only keys |
+| `points`, `wins`, `laps`, `milliseconds` were no measures | named as quantities, on any number |
+| standings' points summed across races | `standings`, `balance`, `inventory`, `stock` name a table of states; its measures are levels; counting its rows costs 2 |
+| no answer to "who sells the most" | T9: the twelve parents with the most rows or the largest sum, for a fact's or an event's parents that are neither lookups nor events; H3 does not bind it |
+| seats per airplane drawn; tickets per booking not | T5 where the child or the parent is a fact or an event, never a table and itself |
+| a lookup's label merged two artists of one name | a group by a parent's name groups by its key as well |
+| counts beat money; booleans beat everything; eight employees made a panel | named only +1, typed only +2; money −1, quantity 0; sums 0, averages +1, T9 +1; two values +2; under 50 rows +5, under 200 +2; +2 for each panel of the same template already in the five |
+
+What these did not change is in [the gold diagnosis](gold/README.md): 18 of
+the 22 questions the generator can say are still outranked, and 9 of 31 it
+cannot say.
