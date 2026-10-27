@@ -24,3 +24,6 @@ go.work.sum
 /dashbin/wire-probe/out-*/
 /dashbin/plugin-host/plugins/node_modules/
 /dashbin/plugin-host/plugins/dist/
+# lemmesee's fetched and generated databases, and its harness's builds
+/lemmesee/corpus/
+/lemmesee/**/target/

@@ -24,7 +24,7 @@ this one repeats only where a measurement needs them.
 | `tinystore/bench/` | corpus runners and harnesses against other engines, a module each |
 | `dashbin/reports/` | Dashbin's dated rounds and their raw output in `data/`; `README.md` indexes them |
 | `dashbin/tinystore-repro/`, `memory-probe/`, `sdk-probe/`, `plugin-host/` | Dashbin's probes: Rust crates and JS tests, the measured ones built in the Linux container |
-| `lemmesee/` | the research behind `dashbin see`: `plan.md`, and its dated rounds in `reports/` |
+| `lemmesee/` | the research behind `dashbin see`: `plan.md`, each round's specification and harness in `round-<n>/`, and its dated reports in `reports/` |
 | `.agents/skills/` | how the recurring work is done; `.claude/skills/` points to it |
 
 ## How the code builds

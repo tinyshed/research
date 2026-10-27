@@ -59,7 +59,9 @@ than one score.
 | D | and, when it decides to, a bounded sample of rows | the ranker, which also decides whether to look |
 
 A and B are Dashbin's first `see`; C replaces its weights only if it earns it;
-D comes last.
+D comes last. B reads numbers about columns (B1); the values that statistics
+hold, a column's commonest values and its histogram's bounds, are a variant of
+their own (B2), read only on public and generated databases.
 
 ## The stores and corpora
 
@@ -137,9 +139,14 @@ it are in its chapter 14 and are the ones that decide.
    learning from keep and drop, prediction under a test-time budget for D, and
    that the column-type corpora's labels come from names. Full-paper reading
    remains open.
-1. **Rules on the schema and statistics, A and B**, on the databases with data
-   and on TinyStore's own stores, with a first judging pilot: how long judging
-   takes a person, and whether two people agree.
+1. **Rules on the schema and statistics, A and B**, on the databases with data,
+   with a first judging pilot: how long judging takes a person, and whether
+   two people agree. [Specified](round-1/README.md) on 27 October: B split
+   into B1, numbers about columns, and B2, the values inside statistics, on
+   public and generated databases only; Metabase's X-rays and the schema's own
+   order beside them; seven public databases, three generated, two built as
+   traps; TinyStore's stores left to Dashbin's own round, and Dmitry's
+   databases to a step after it.
 2. **The judged set**: assembled, split by project, judged.
 3. **The ranker, C**: linear, trees, a tiny network, against A and B on the
    judged set, with its cost.
@@ -160,8 +167,7 @@ the source database. Its novelty is not established by this search. A judged
 set may be useful if its sources let it be published, without a claim that
 no related set exists.
 
-Before round 1 runs, specify which scalar statistics B can read on each
-engine, distinguish missing statistics from zero, and separate the costs of
-discovery, preview and panel execution. Value-bearing catalog fields are a
-separate input policy. The follow-up and [Opus brief](opus-brief.md) describe
-the proposed pilot; they do not change Dashbin's shipping gates.
+[Round 1's contract](round-1/contract.md) says which numbers B can read on
+each engine, keeps missing apart from zero, and counts discovery and
+execution on separate ledgers; the values inside statistics are a
+configuration of their own, B2. None of it changes Dashbin's shipping gates.

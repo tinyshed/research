@@ -1,0 +1,187 @@
+# What round 1 may read, and what reading costs
+
+Every feature the rules use comes from a query below, carries a state, and is
+counted on the database that answered it. **This is the contract the harness
+is built to**; it was written from the documentation of PostgreSQL 18 and
+MySQL 8.4 and has not been run against a server yet, so the first thing the
+harness does is check each query on both engines and report what differed.
+
+## Rules for every query
+
+- **A read-only session**: PostgreSQL in a `READ ONLY` transaction with
+  `statement_timeout` and `lock_timeout` set for it; MySQL with
+  `SET SESSION TRANSACTION READ ONLY` and `MAX_EXECUTION_TIME` on every
+  `SELECT`. Nothing persistent is set on the server.
+- **Nothing is refreshed**: no `ANALYZE`, no `ANALYZE TABLE`, no histogram
+  made or updated. Creating statistics is the fixture's preparation, never
+  discovery.
+- **Named columns only**, never `SELECT *` from a statistics view, so that a
+  value-bearing column is never fetched by accident.
+- **What carries values stays on the server** unless the tier allows it: a
+  count, a length or a frequency is computed in SQL, and only the number
+  crosses the wire.
+- **One query a feature group a database**, over all tables at once, rather
+  than one a table, so the cost does not grow with the number of round trips.
+
+## A feature's states
+
+Each value is stored as `{value, state, source, as_of}`: `source` names the
+query below, `as_of` is the statistics' own time where the engine has one.
+
+| State | Means | How it is told apart |
+|---|---|---|
+| `present` | the engine has it and this role sees it | — |
+| `absent` | the engine could have it and does not | PostgreSQL: no `pg_stats` row, and `last_analyze` and `last_autoanalyze` both null; MySQL: no `COLUMN_STATISTICS` row |
+| `denied` | the engine has it and this role may not see it | PostgreSQL: `has_column_privilege(…, 'SELECT')` false, or `row_security_active(oid)` true; `pg_stat_statements` without `pg_read_all_stats`; MySQL: the object missing from `information_schema` while a privilege check names it, or the Performance Schema refused |
+| `stale` | present, but the table changed much since | PostgreSQL: `n_mod_since_analyze` above 10 % of `reltuples` — a threshold of this round, not a finding |
+| `unsupported` | the engine has no such thing | MySQL: `correlation`, per-column null fraction without a histogram |
+
+**Missing is not zero.** A rule that needs a feature in any state but
+`present` treats it as unknown, and a candidate that depended on it says so.
+The report counts, for each fixture and engine, how many features were in
+each state.
+
+## Tier S: the schema (configuration A)
+
+What the schema's designer wrote: names, types, keys, constraints, defaults,
+indexes, partitions, comments. Enum labels, `CHECK` expressions, defaults and
+comments are text a designer wrote, not a user, and are in S; they are marked
+`designer_text` so a later policy can drop them.
+
+**PostgreSQL.** One query each from the catalogs, joined on `oid`, schemas
+`pg_catalog`, `information_schema` and `pg_toast` excluded:
+
+- tables, views and partitions: `pg_class` (`relkind`, `relispartition`,
+  `relrowsecurity`, `relforcerowsecurity`), `pg_inherits`;
+- columns: `pg_attribute` with `format_type(atttypid, atttypmod)`,
+  `attnotnull`, `attidentity`, `attgenerated`, the default from
+  `pg_get_expr(adbin, adrelid)`, `col_description`;
+- constraints: `pg_constraint` (`contype` in `p`, `u`, `f`, `c`) with
+  `conkey`, `confrelid`, `confkey` and `pg_get_constraintdef`;
+- enumerated types: `pg_enum` labels in `enumsortorder`;
+- indexes: `pg_index` (`indkey`, `indisunique`, `indisprimary`, and
+  `indpred` through `pg_get_expr` for a partial index);
+- comments: `obj_description` and `col_description`;
+- privileges, for the states: `has_table_privilege`, `has_column_privilege`,
+  `row_security_active`.
+
+**MySQL.** From `information_schema`, which shows only the objects the role
+holds some privilege on — a denied table is missing from the schema itself,
+not only from the statistics:
+
+- `TABLES`: `TABLE_TYPE`, `ENGINE`, `TABLE_COMMENT`, `CREATE_OPTIONS`;
+- `COLUMNS`: `DATA_TYPE`, `COLUMN_TYPE` (which spells out an `ENUM`'s
+  labels), `NUMERIC_PRECISION`, `NUMERIC_SCALE`, `IS_NULLABLE`,
+  `COLUMN_DEFAULT`, `COLUMN_KEY`, `EXTRA` (`auto_increment`,
+  `DEFAULT_GENERATED`, `on update CURRENT_TIMESTAMP`), `COLUMN_COMMENT`;
+- `TABLE_CONSTRAINTS`, `KEY_COLUMN_USAGE` with `REFERENCED_*`,
+  `REFERENTIAL_CONSTRAINTS`, `CHECK_CONSTRAINTS`;
+- `STATISTICS` for index columns and order (`INDEX_NAME`, `SEQ_IN_INDEX`,
+  `NON_UNIQUE`), its `CARDINALITY` belonging to tier N;
+- `PARTITIONS` for partitioned tables.
+
+## Tier N: numbers about columns and tables (configuration B1)
+
+Numbers only. Where a statistics view holds values, the number is computed
+from them on the server.
+
+**PostgreSQL**, per column, from `pg_stats`:
+
+```sql
+SELECT s.schemaname, s.tablename, s.attname, s.inherited,
+       s.null_frac, s.avg_width, s.n_distinct, s.correlation,
+       array_length(s.most_common_freqs, 1)                AS mcv_count,
+       s.most_common_freqs[1]                              AS mcv_top_freq,
+       (SELECT sum(f) FROM unnest(s.most_common_freqs) f)  AS mcv_freq_sum,
+       array_length(s.histogram_bounds::text::text[], 1)   AS hist_bounds
+FROM pg_stats s
+WHERE s.schemaname NOT IN ('pg_catalog', 'information_schema');
+```
+
+`most_common_freqs` holds frequencies, not values, and is read whole: the
+share of the commonest value and how much of the column the common values
+cover say whether a column is a category, skewed or near unique. `n_distinct`
+keeps its sign: positive is a count, negative a fraction of the rows.
+`correlation` is the agreement of the column's order with the rows' physical
+order, never a relation between columns. A partitioned table's own row has
+`inherited = true`.
+
+Per table, from `pg_class` and `pg_stat_user_tables`: `reltuples` (`-1`
+means never vacuumed nor analysed, which is unknown, not empty), `relpages`,
+`n_live_tup`, `n_dead_tup`, `n_tup_ins`, `n_tup_upd`, `n_tup_hot_upd`,
+`n_tup_del`, `n_mod_since_analyze`, `last_analyze`, `last_autoanalyze`,
+`analyze_count`, `autoanalyze_count`. **Activity counters describe a live
+database**: on a fixture they describe its loading, so the generated
+fixtures replay a history of inserts, updates and deletes where a table is
+meant to change, and the public ones are reported as loaded.
+
+**MySQL**, per table: `TABLES.TABLE_ROWS`, `AVG_ROW_LENGTH`, `DATA_LENGTH`,
+`AUTO_INCREMENT`, `UPDATE_TIME`. These are cached for
+`information_schema_stats_expiry` seconds, 86 400 by default, and refetched
+from the storage engine when the cache has expired; the harness records the
+setting, and the cost is counted with it as found. Per index prefix:
+`STATISTICS.CARDINALITY`, an estimate from random dives, which is a column's
+distinct count only for the first column of an index and is never given to
+the other members of a composite key. Per table where the Performance Schema
+is readable: `table_io_waits_summary_by_table`'s `COUNT_INSERT`,
+`COUNT_UPDATE` and `COUNT_DELETE`, since the server started.
+
+Per column, only where someone made a histogram, the scalars of
+`COLUMN_STATISTICS`, the buckets never fetched:
+
+```sql
+SELECT SCHEMA_NAME, TABLE_NAME, COLUMN_NAME,
+       HISTOGRAM->>'$."histogram-type"'    AS kind,
+       HISTOGRAM->>'$."null-values"'       AS null_frac,
+       HISTOGRAM->>'$."sampling-rate"'     AS sampling_rate,
+       HISTOGRAM->>'$."last-updated"'      AS last_updated,
+       JSON_LENGTH(HISTOGRAM->'$.buckets') AS buckets
+FROM information_schema.COLUMN_STATISTICS;
+```
+
+A singleton histogram's bucket count is the column's distinct count in the
+sample; an equi-height histogram's is the sum of its buckets' distinct
+counts, summed on the server with `JSON_TABLE`. Without a histogram, MySQL
+has no null fraction and no distinct count for an unindexed column, and no
+correlation at all: B1 on MySQL is close to A, and the report says how close.
+
+## Tier V: values inside statistics (configuration B2)
+
+PostgreSQL's `most_common_vals`, `histogram_bounds` and `most_common_elems`,
+and MySQL's histogram buckets. They are rows in all but name — the bounds of
+a salary column are salaries — so **V is read on public and generated
+fixtures only**, as a separate configuration, to measure what the values buy:
+a currency column's three codes, a status column's labels, a time column's
+range.
+
+## Tier Q: the application's own queries
+
+PostgreSQL's `pg_stat_statements` (`query`, `calls`, `rows`), the text of
+other roles' queries visible only with `pg_read_all_stats`; MySQL's
+`performance_schema.events_statements_summary_by_digest` (`DIGEST_TEXT`,
+`COUNT_STAR`). Both are normalised, their constants replaced. A freshly
+loaded fixture has no workload, so round 1 records only whether Q is
+available and to whom; what it says about joins and groupings is measured on
+a live database, later.
+
+## Counting the database's work
+
+Three ledgers, kept apart and summed only in a fourth line, first open:
+
+| Ledger | What | Counted by |
+|---|---|---|
+| discovery | every S, N, V and Q query | PostgreSQL: `pg_stat_statements` on the fixture server — `total_exec_time`, `shared_blks_hit`, `shared_blks_read`, `rows` — reset before the step and read after it; MySQL: `events_statements_history_long` — `TIMER_WAIT`, `ROWS_EXAMINED`, `ROWS_SENT`, `SELECT_SCAN`, `NO_INDEX_USED` — and the buffer pool's read counters before and after |
+| execution | each judged candidate's query, as drawn | the same counters, and its plan from `EXPLAIN` before it runs: whether it scans a whole table, which is what chapter 14 forbids for looking |
+| judging | nothing on the database | — |
+| first open | the sum, for the six panels `see` would draw | — |
+
+Each query carries a comment naming its step and candidate, so the counters
+can be matched to it. Wall time is taken on the client as well and reported
+beside the server's. Discovery is expected to cost little and is measured
+anyway: on MySQL an expired `information_schema` cache sends it to the
+storage engine.
+
+**Cancellation is measured, not assumed.** On the largest fixture, a
+candidate whose plan scans a whole table runs under a 2 s limit, and the
+harness checks in `pg_stat_activity` or the process list that the server
+stopped working, not only that the client gave up.
