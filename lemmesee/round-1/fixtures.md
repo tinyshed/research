@@ -18,6 +18,19 @@ histogram on every column; `fixtures/ergastf1.sh`; 14 tables, lap times
 419 thousand). Their gold questions are in [gold/](gold/README.md). Chinook
 leaves the pilot's ten: another public database takes its place there.
 
+## Check fixtures
+
+Three databases the rules are measured on once, before anything is changed
+by looking at them, with gold questions an agent wrote blind
+([gold/](gold/README.md#on-databases-the-rules-never-saw-28-october)); after
+that they are development fixtures, and never pilot fixtures:
+**Northwind** as pthom/northwind_psql ports it to PostgreSQL, at a pinned
+commit (`fixtures/northwind.sh`; 830 orders, 2 155 lines), and two databases
+from CTU's relational repository on MySQL with histograms (`fixtures/ctu.sh`):
+**ccs**, a fuel-card company's customers, stations, a thousand transactions
+and 383 thousand monthly consumptions, and **lahman_2014**, Sean Lahman's
+baseball database to 2014, 25 tables keyed by season.
+
 ## Public
 
 | | Database | Licence | Engines | What it holds | Why it is here |

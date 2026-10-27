@@ -11,6 +11,7 @@ the development fixtures they belong to are never pilot fixtures.
 | `questions.json` | 31 questions: base, grain, measure, time, breakdown, the joins to reach them, what the generator lacks, the candidate that would answer |
 | `diagnose.py` | each question against the last `see.sh` run: inexpressible, not generated, removed, abstained, outranked, or in a configuration's five |
 | `diagnosis.md` | its output, as last run |
+| `check.json`, `check-diagnosis.md` | the same for three databases the rules never saw, the questions written blind by Claude Haiku |
 
 ## Where the questions are lost, 28 October
 
@@ -46,7 +47,54 @@ best-selling tracks are in the five as revenue by track, not as the
 quantity the gold names: Chinook's lines all sell one.
 
 These rules were chosen on the same three databases: the gain says they fit
-what was looked at, not that they generalise.
+what was looked at, not that they generalise. The next section says how far
+they do.
+
+## On databases the rules never saw, 28 October
+
+Three check fixtures — **Northwind** on PostgreSQL, a shop of orders and
+their lines; **ccs** on MySQL, a fuel-card company's transactions and
+monthly consumption; **Lahman's baseball database** on MySQL, players and
+teams season by season — went through the chain with the rules as
+committed, and three Claude Haiku agents, one a database, wrote ten gold
+questions each from its schema alone, never seeing what the rules chose
+([check.json](check.json)). What each question needs was read off its
+fields, the candidate that would answer it added by hand, and nothing in the
+rules changed after.
+
+| | Development fixtures | Check fixtures |
+|---|---|---|
+| gold questions | 31 | 30 |
+| inexpressible | 9 | **20** |
+| not generated | 0 | 4 |
+| in B1's five, of 15 places | 9 | **1** |
+| in A's five | 8 | 0 |
+
+**What the subjects did is not what failed.** On Northwind they found the
+orders and their details as on Chinook, and B1's five holds orders by month.
+What failed is everything before the order:
+
+| What the generator lacks | Questions |
+|---|---|
+| a measure that is an expression: Northwind keeps no order total, so its revenue is `unit_price × quantity × (1 − discount)` in every question about it | 5 |
+| a year held as an integer — Lahman's `yearID`, which the rules read as a calendar, not a time — or ccs's month as `YYYYMM` | 6 |
+| a measure over time split by a category | 4 |
+| more than one join | 3 |
+| a filter on the rows | 2 |
+| a person or an identifier for a label | 5 |
+| a name that is no `name`: ccs's `products.Description`, Lahman's `franchName`; a key or an integer as a measure | 4, not generated |
+
+And the subjects themselves missed two shapes the development fixtures do
+not have: **a flat table of what happened** — ccs's transactions, a time
+and three keys out, nothing hanging on it — and **a database with no time
+but years**, as Lahman's is. With no subject, B1's five on ccs was four
+panels, and on Lahman a team-name list by league and players by the hand
+they bat with.
+
+**So the next investment is the analytical question**: expressions over a
+row, a year or a `YYYYMM` as time, a measure over time by a category, chains
+of joins, filters. The order matters only for what can be said, and on new
+databases most of what matters cannot yet be.
 
 **The generator cannot say 9 of 31**, and the reasons repeat; a question
 may lack more than one:
