@@ -13,10 +13,12 @@ one container.
 | `bench/*.ts`       | the Bun programs: `idle`, `app`, `kv`, `kv-memory`, `sql`, `files`, and what they share                  |
 | `archive/`         | the Rust program of the archive rounds: TSBS into TinyStore, VictoriaMetrics and Prometheus; LogHub into TinyStore and Loki |
 | `fetch-corpus.sh`  | LogHub from Zenodo, checked; two TSBS DevOps corpora from the pinned generator                           |
-| `night.sh`         | every round, one after another, skipping a round already written                                         |
+| `night.sh`         | every round, one after another, skipping a round already written; `ROUNDS` picks some, `TINYSTORE` another release from npm |
+| `compare.py`       | idle rounds side by side, each figure's median and range                                                 |
 | `summarize.py`     | a results directory as `summary.json` and `summary.md`                                                   |
 | `cards.py`         | the README's cards from the summary, in the form TinyStore's landing page reads                         |
 | `charts.py`        | the report's charts from the summary                                                                     |
 | `peek.py`          | a round's lines at a glance while it runs                                                                |
 
-The report's last section has the commands, in order.
+The report's last section has the commands, in order; the
+[2026-10-27 round](../reports/at-rest-2026-10-27.md) ran the idle round alone on v0.4.0.

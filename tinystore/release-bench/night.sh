@@ -7,6 +7,9 @@
 #   docker run --rm --init --privileged -v <release-bench>:/src:ro -v <results>:/results \
 #     -v tinystore-release:/work -v tinystore-corpus:/corpus -v tinystore-archive-target:/archive \
 #     -e OUT=/results/<name> tinystore-release-bench sh /src/night.sh
+#
+# TINYSTORE=0.4.0 measures that release from npm instead of the lock's, and
+# keeps the lock it installed in OUT; ROUNDS=idle,kv runs only those rounds.
 set -eu
 : "${OUT:?OUT names the results directory}"
 rm -rf /work/bench /work/runs
@@ -14,10 +17,19 @@ mkdir -p /work/bench "$OUT"
 cp -r /src/Dockerfile /src/go.sh /src/night.sh /src/package.json /src/bun.lock /src/run.py /src/services.py \
 	/src/versions.sh /src/peek.py /src/bench /work/bench/
 cd /work/bench
-bun install --frozen-lockfile > /dev/null
+if [ -n "${TINYSTORE:-}" ]; then
+	bun add --exact "@tinyshed/tinystore@$TINYSTORE" > /dev/null
+	cp bun.lock "$OUT/bun.lock"
+else
+	bun install --frozen-lockfile > /dev/null
+fi
 round() {
 	name=$1
 	shift
+	case ",${ROUNDS:-$name}," in
+	*",$name,"*) ;;
+	*) return ;;
+	esac
 	if [ -s "$OUT/$name.jsonl" ]; then
 		echo "$(date -u +%H:%M:%S) $name already measured"
 		return
