@@ -27,5 +27,6 @@ claims and proposes the first rules and judging pilot; a
 [wider reading](reports/wider-reading-2026-10-27.md) adds the older and
 neighbouring work both missed. Round 1 is [specified](round-1/README.md),
 its snapshot and rules built; round 1b, [run](reports/declarations-2026-10-27.md),
-found a small model guesses foreign keys better than the rules. Nothing is
-judged yet.
+found a small model guesses foreign keys better than the rules, and its
+[second pass](reports/keys-2026-10-28.md) took them to F1 0.77 against 0.44.
+Nothing is judged yet.

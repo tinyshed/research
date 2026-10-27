@@ -1,5 +1,9 @@
 # Guessing what a schema did not declare, 27 October 2026
 
+**Taken further on 28 October** in [keys from names, taken further](keys-2026-10-28.md),
+whose key model supersedes this report's: F1 0.774 on the same test, against
+0.660 here. This report's data, rules and closed lists stand.
+
 Round 1b of [the plan](../plan.md), as [its specification](../round-1b/README.md)
 sets it: whether a small model, learned from what SchemaPile-Perm's schemas
 declare, guesses which column is a foreign key and to which table, and which

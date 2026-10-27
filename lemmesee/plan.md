@@ -156,7 +156,11 @@ it are in its chapter 14 and are the ones that decide.
    27 October: boosted trees of 967 KiB guess foreign keys at F1 0.65 against
    the rules' 0.45 on unseen kinds of schema and beat them at the rules' own
    precision; they are to be carried in Rust and measured there. Closed lists
-   pass the line on a label too weak to carry them yet.
+   pass the line on a label too weak to carry them yet. A
+   [second pass](reports/keys-2026-10-28.md) on 28 October took keys to F1
+   0.774 against 0.442, and 0.875 on hard cases agents wrote, with a stage
+   over the schema's graph and the trees trained on a graphics card; names
+   and types stop near 0.8, and the statistics of the data come next.
 2. **The judged set**: assembled, split by project, judged.
 3. **The ranker, C**: linear, trees, a tiny network, against A and B on the
    judged set, with its cost.

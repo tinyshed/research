@@ -2,7 +2,8 @@
 
 **Status: specified, run and [reported](../reports/declarations-2026-10-27.md)
 on 27 October 2026**, at commit `a7a2f40`, after a dry run uncommitted and the
-corrections said below. A round of
+corrections said below; its keys taken further and
+[reported again](../reports/keys-2026-10-28.md) on 28 October, at `1524905`. A round of
 [the plan](../plan.md) that needs no judges: whether a small model, learned
 from what public schemas declare, guesses two column roles better than round
 1's rules do when the declarations are hidden. The report goes to

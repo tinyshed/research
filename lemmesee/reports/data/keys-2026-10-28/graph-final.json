@@ -1,0 +1,140 @@
+{
+  "threshold": 0.8319760842520361,
+  "test": {
+    "all": {
+      "pairs": 784893,
+      "keys": 11561,
+      "rules": {
+        "precision": 0.7692967409948542,
+        "recall": 0.3103537756249459,
+        "f1": 0.44228043143297374
+      },
+      "model": {
+        "precision": 0.7280481303784937,
+        "recall": 0.8269180866707032,
+        "f1": 0.7743398671634537
+      },
+      "average_precision": 0.7957176099275143,
+      "recall_at_rules_precision": 0.7881671135714904,
+      "f1_minus_rules_95": [
+        0.2938784139877349,
+        0.3693978321087132
+      ]
+    },
+    "novel": {
+      "pairs": 447487,
+      "keys": 8954,
+      "rules": {
+        "precision": 0.7815899581589958,
+        "recall": 0.312932767478222,
+        "f1": 0.44692559215248423
+      },
+      "model": {
+        "precision": 0.7123450669310858,
+        "recall": 0.802322984141166,
+        "f1": 0.7546614843216557
+      },
+      "average_precision": 0.7764218657797187,
+      "recall_at_rules_precision": 0.7222470404288586,
+      "f1_minus_rules_95": [
+        0.25845726962928633,
+        0.3542620219254204
+      ]
+    },
+    "complete": {
+      "pairs": 552644,
+      "keys": 9409,
+      "rules": {
+        "precision": 1.0,
+        "recall": 0.2613455202465724,
+        "f1": 0.414391641388608
+      },
+      "model": {
+        "precision": 0.7939798664407456,
+        "recall": 0.8466361993835689,
+        "f1": 0.8194630182080034
+      },
+      "average_precision": 0.8496154272500479,
+      "recall_at_rules_precision": 0.0,
+      "f1_minus_rules_95": [
+        0.3619744666608511,
+        0.4451990000948832
+      ]
+    }
+  },
+  "hard": {
+    "all": {
+      "keys": 753,
+      "rules": {
+        "precision": 1.0,
+        "recall": 0.37317397078353254,
+        "f1": 0.5435203094777562
+      },
+      "model": {
+        "precision": 0.9588607594936709,
+        "recall": 0.8047808764940239,
+        "f1": 0.8750902527075812
+      },
+      "decoys": 60,
+      "decoys_taken_by_rules": 0,
+      "decoys_taken_by_model": 3
+    },
+    "languages": {
+      "keys": 170,
+      "rules": {
+        "precision": 1.0,
+        "recall": 0.6411764705882353,
+        "f1": 0.7813620071684588
+      },
+      "model": {
+        "precision": 1.0,
+        "recall": 0.9705882352941176,
+        "f1": 0.9850746268656716
+      },
+      "decoys": 0,
+      "decoys_taken_by_rules": 0,
+      "decoys_taken_by_model": 0
+    },
+    "legacy": {
+      "keys": 229,
+      "rules": {
+        "precision": 1.0,
+        "recall": 0.08296943231441048,
+        "f1": 0.15322580645161288
+      },
+      "model": {
+        "precision": 0.9906542056074766,
+        "recall": 0.925764192139738,
+        "f1": 0.9571106094808127
+      },
+      "decoys": 54,
+      "decoys_taken_by_rules": 0,
+      "decoys_taken_by_model": 2
+    },
+    "roles": {
+      "keys": 354,
+      "rules": {
+        "precision": 1.0,
+        "recall": 0.4322033898305085,
+        "f1": 0.6035502958579883
+      },
+      "model": {
+        "precision": 0.9051383399209486,
+        "recall": 0.6468926553672316,
+        "f1": 0.7545304777594729
+      },
+      "decoys": 6,
+      "decoys_taken_by_rules": 0,
+      "decoys_taken_by_model": 1
+    }
+  },
+  "size": {
+    "first_trees": 829,
+    "first_file_kib": 3979,
+    "first_compact_kib": 756,
+    "second_trees": 400,
+    "second_file_kib": 1375,
+    "second_compact_kib": 177
+  },
+  "seconds": 441
+}

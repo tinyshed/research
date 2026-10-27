@@ -1,0 +1,4 @@
+features: 518125 training rows, 526418 validation pairs, 30 s
+lightgbm, 16 threads {"seconds": 321, "trees": 1174, "kib": 9174, "pairs": {"precision": 0.7138877280958351, "recall": 0.819606588837358, "f1": 0.7631030375223348, "average_precision": 0.7904524834199427, "recall_at_rules_precision": 0.6272189349112426}, "one target": {"precision": 0.7218235542422963, "recall": 0.8204062050215897, "f1": 0.7679640718562875, "average_precision": 0.775243338576472, "recall_at_rules_precision": 0.6292979369902447}}
+xgboost, cuda {"seconds": 54, "trees": 829, "kib": 4459, "pairs": {"precision": 0.7388535031847133, "recall": 0.7791460099152406, "f1": 0.7584650112866816, "average_precision": 0.7843245169899277, "recall_at_rules_precision": 0.6033903726211418}, "one target": {"precision": 0.7450199203187251, "recall": 0.7775467775467776, "f1": 0.7609359104781283, "average_precision": 0.7695745613749532, "recall_at_rules_precision": 0.6033903726211418}}
+exit 0

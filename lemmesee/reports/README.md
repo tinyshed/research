@@ -15,3 +15,6 @@ so, never by editing the number it replaces.
 - [Guessing what a schema did not declare](declarations-2026-10-27.md), round 1b:
   on SchemaPile-Perm with its declarations hidden, boosted trees guess foreign keys at F1 0.65 against the rules' 0.45
   on unseen kinds of schema, and beat them at their own precision; closed lists pass the line on a label too weak to trust.
+- [Keys from names, taken further](keys-2026-10-28.md), round 1b's second pass:
+  letters, a graph stage and the graphics card take keys to F1 0.774 against the rules' 0.442 on the test, 0.875 on
+  hard cases agents wrote; names stop near 0.8, past which the statistics of the data are next.

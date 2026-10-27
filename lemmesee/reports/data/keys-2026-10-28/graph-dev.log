@@ -1,0 +1,98 @@
+features, training: 4625401 pairs: 26 s
+features, validation: 526418 pairs: 30 s
+first model, fold 0: 164 s
+first model, fold 1: 285 s
+first model, fold 2: 395 s
+first model, fold 3: 484 s
+first model, fold 4: 611 s
+first model, all training: 756 s
+graph features: 789 s
+second model: 791 s
+{
+ "pairs": 526418,
+ "positives": 6253,
+ "complete_pairs": 422904,
+ "rules": {
+  "precision": 0.8091286307053942,
+  "recall": 0.2806652806652807,
+  "f1": 0.4167656138684398
+ },
+ "rules_complete": {
+  "precision": 1.0,
+  "recall": 0.22277125797817582,
+  "f1": 0.3643711062468429
+ },
+ "first": {
+  "pairs": {
+   "threshold": 0.791974824945605,
+   "precision": 0.7313366115333035,
+   "recall": 0.784903246441708,
+   "f1": 0.7571737118173403,
+   "average_precision": 0.7832407640077237,
+   "recall_at_rules_precision": 0.6073884535422996,
+   "novel_f1": 0.724774405250205,
+   "complete_f1": 0.79601593625498,
+   "false_named_like_their_target": 0.18302828618968386
+  },
+  "one target": {
+   "threshold": 0.791974824945605,
+   "precision": 0.7398398549629853,
+   "recall": 0.7831440908363986,
+   "f1": 0.7608763206960845,
+   "average_precision": 0.7685624360014046,
+   "recall_at_rules_precision": 0.6081880697265313,
+   "novel_f1": 0.7293217535153018,
+   "complete_f1": 0.8006424412768521,
+   "false_named_like_their_target": 0.1916376306620209
+  }
+ },
+ "graph": {
+  "pairs": {
+   "threshold": 0.8129730451621194,
+   "precision": 0.7294986960301362,
+   "recall": 0.8052134975211899,
+   "f1": 0.765488407449639,
+   "average_precision": 0.8074900867800383,
+   "recall_at_rules_precision": 0.6775947545178315,
+   "novel_f1": 0.7356229227515358,
+   "complete_f1": 0.8061254540100128,
+   "false_named_like_their_target": 0.17193358328869845
+  },
+  "one target": {
+   "threshold": 0.8129730451621194,
+   "precision": 0.7300827165868524,
+   "recall": 0.8045738045738046,
+   "f1": 0.7655203895313452,
+   "average_precision": 0.7887631999654954,
+   "recall_at_rules_precision": 0.6775947545178315,
+   "novel_f1": 0.7355580199616897,
+   "complete_f1": 0.8062106918238995,
+   "false_named_like_their_target": 0.17258064516129032
+  }
+ },
+ "importance": {
+  "score": 1424603,
+  "rank in column": 108436,
+  "lead over the column's next": 894533,
+  "column's best": 57418,
+  "confident targets of the column": 2325,
+  "others into the target, sum": 33102,
+  "others into the target, best": 53633,
+  "others into the target, confident": 10255,
+  "siblings into the target, best": 24567,
+  "confident siblings": 4634,
+  "confident columns of the schema": 49387,
+  "self": 1937,
+  "back from the target": 27227,
+  "same last word, mean best": 67560,
+  "base": 55900,
+  "same type": 1551,
+  "named as the key": 1525,
+  "ends in id": 11542,
+  "bare": 0
+ },
+ "kib_first_text": 4638,
+ "kib_second_text": 1376,
+ "seconds": 792
+}
+exit 0
