@@ -1,0 +1,3 @@
+# TinyStore's own SQLite flags, and dbstat, which `division` reads the file with
+[env]
+LIBSQLITE3_FLAGS = "SQLITE_DQS=0 -USQLITE_ENABLE_MEMORY_MANAGEMENT SQLITE_ENABLE_DBPAGE_VTAB -DHAVE_FDATASYNC=1 SQLITE_ENABLE_DBSTAT_VTAB"

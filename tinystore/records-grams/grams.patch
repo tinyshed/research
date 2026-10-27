@@ -1,0 +1,436 @@
+diff --git a/crates/tinystore/src/records/engine.rs b/crates/tinystore/src/records/engine.rs
+index f35656e9..a3b7fa32 100644
+--- a/crates/tinystore/src/records/engine.rs
++++ b/crates/tinystore/src/records/engine.rs
+@@ -25,6 +25,7 @@ const MIGRATIONS: &[Migration] = &[
+     Migration::of(1, "0001_schema.sql", include_str!("migrations/0001_schema.sql")),
+     Migration::of(2, "0002_arrivals.sql", include_str!("migrations/0002_arrivals.sql")),
+     Migration::of(3, "0003_ids.sql", include_str!("migrations/0003_ids.sql")),
++    Migration::of(4, "0004_grams.sql", include_str!("migrations/0004_grams.sql")),
+ ];
+ 
+ /// records' file in the store's directory.
+diff --git a/crates/tinystore/src/records/grams.rs b/crates/tinystore/src/records/grams.rs
+new file mode 100644
+index 00000000..67082a03
+--- /dev/null
++++ b/crates/tinystore/src/records/grams.rs
+@@ -0,0 +1,71 @@
++//! A block's trigrams, by which a search passes a block that cannot hold its
++//! text: every three bytes of each text a search reads, in the case it reads
++//! them, set in a bitmap of two bits a distinct trigram. Each of a search's
++//! own trigrams must be set, or no event of the block holds it; a text
++//! shorter than three bytes passes every block.
++//!
++//! ```text
++//! filter = 1 | bits, the lowest of each byte first
++//! ```
++//!
++//! Two bits a trigram leave about four in ten set, and a search passes a
++//! block without its text only where every one of its trigrams is: about
++//! once in sixteen for `error`'s three, once in 1,700 for `econnreset`'s
++//! eight, and next to never for the twenty-two of an HDFS block id. LogHub's
++//! blocks hold 1,100 to 5,400 trigrams, a filter of 1 to 10 % of their bytes
++//! under zlib.
++
++use std::collections::HashSet;
++
++use super::event::Kept;
++use super::read::texts;
++
++const VERSION: u8 = 1;
++const BITS_A_GRAM: usize = 2;
++const FEWEST_BITS: usize = 64;
++
++/// The filter of the texts `events` hold.
++pub(super) fn grams_of(events: &[Kept]) -> Vec<u8> {
++    let mut grams: HashSet<u32> = HashSet::new();
++    for event in events {
++        texts(event, &mut |text| {
++            grams.extend(text.as_bytes().windows(3).map(gram));
++            false
++        });
++    }
++    let bits = (grams.len() * BITS_A_GRAM).max(FEWEST_BITS).next_multiple_of(8);
++    let mut filter = vec![0_u8; 1 + bits / 8];
++    filter[0] = VERSION;
++    for gram in grams {
++        let bit = place(gram, bits);
++        filter[1 + bit / 8] |= 1 << (bit % 8);
++    }
++    filter
++}
++
++/// Whether a block of `filter` may hold `text`, which is in lower case. One
++/// of another version passes, as one the store cannot read must.
++pub(super) fn may_hold(filter: &[u8], text: &str) -> bool {
++    let Some((&VERSION, bitmap)) = filter.split_first() else { return true };
++    let bits = bitmap.len() * 8;
++    bits == 0
++        || text.as_bytes().windows(3).all(|window| {
++            let bit = place(gram(window), bits);
++            bitmap[bit / 8] & (1 << (bit % 8)) != 0
++        })
++}
++
++fn gram(window: &[u8]) -> u32 {
++    u32::from(window[0]) << 16 | u32::from(window[1]) << 8 | u32::from(window[2])
++}
++
++/// A trigram's bit among `bits`: its multiplicative hash's high half scaled to
++/// them, which takes no division.
++fn place(gram: u32, bits: usize) -> usize {
++    let hashed = u64::from(gram).wrapping_mul(0x9e37_79b9_7f4a_7c15) >> 32;
++    ((hashed * bits as u64) >> 32) as usize
++}
++
++#[cfg(test)]
++#[path = "grams_tests.rs"]
++mod tests;
+diff --git a/crates/tinystore/src/records/grams_tests.rs b/crates/tinystore/src/records/grams_tests.rs
+new file mode 100644
+index 00000000..bd51946b
+--- /dev/null
++++ b/crates/tinystore/src/records/grams_tests.rs
+@@ -0,0 +1,46 @@
++use serde_json::json;
++
++use super::*;
++use crate::records::event::Fields;
++
++fn event(message: &str, fields: serde_json::Value) -> Kept {
++    Kept {
++        at: 0,
++        id: None,
++        name: "Request".to_owned(),
++        level: None,
++        message: Some(message.to_owned()),
++        fields: Fields::of(&fields).unwrap(),
++        context: Fields::of(&json!({ "host": "web-7" })).unwrap(),
++        trace_id: None,
++        span_id: None,
++    }
++}
++
++// contract: REC-12
++#[test]
++fn every_text_a_search_reads_lets_its_block_pass_and_most_others_do_not() {
++    let events = [
++        event("Connection reset by peer", json!({ "path": "/api/Users/128", "tags": ["Ünïcode", { "deep": "blk_42" }] })),
++        event("cache hit", json!({ "status": 200, "ok": true })),
++    ];
++    let filter = grams_of(&events);
++    // in the case a search reads: messages, names, values at any depth, numbers as written
++    for found in ["connection reset", "reset by", "request", "/api/users/1", "ünïcode", "blk_42", "web-7", "200", "true"] {
++        assert!(may_hold(&filter, found), "{found}");
++        assert!(events.iter().any(|event| super::super::read::texts(event, &mut |text| text.contains(found))));
++    }
++    // a key is not a text, and what is shorter than a trigram passes every block
++    assert!(may_hold(&filter, "ok") && may_hold(&filter, ""));
++    let missing = ["econnrefused", "timeout while", "blk_-1608999687919862906", "path", "deep"];
++    assert!(missing.iter().filter(|text| may_hold(&filter, text)).count() <= 1, "two bits a trigram");
++}
++
++#[test]
++fn a_filter_of_another_version_or_none_passes_every_search() {
++    assert!(may_hold(&[], "anything"));
++    assert!(may_hold(&[2, 0, 0], "anything"));
++    assert!(may_hold(&[VERSION], "anything"));
++    let filter = grams_of(&[event("x", json!({}))]);
++    assert_eq!(filter.len(), 1 + FEWEST_BITS / 8, "a block of few trigrams keeps the fewest bits");
++}
+diff --git a/crates/tinystore/src/records/maintain.rs b/crates/tinystore/src/records/maintain.rs
+index f4a6113d..fe438e13 100644
+--- a/crates/tinystore/src/records/maintain.rs
++++ b/crates/tinystore/src/records/maintain.rs
+@@ -67,6 +67,8 @@ const DROP_TRACES: &str = "delete from block_traces where block in (select id fr
+     (select id from segments where stream = ?1 and holder is null and last_at < ?2))";
+ const DROP_FILTERS: &str = "delete from block_filters where block in (select id from blocks where segment in
+     (select id from segments where stream = ?1 and holder is null and last_at < ?2))";
++const DROP_GRAMS: &str = "delete from block_grams where block in (select id from blocks where segment in
++    (select id from segments where stream = ?1 and holder is null and last_at < ?2))";
+ const DROP_KEYS: &str = "delete from segment_keys where segment in
+     (select id from segments where stream = ?1 and holder is null and last_at < ?2)";
+ const DROP_BLOCKS: &str = "delete from blocks where segment in
+@@ -159,6 +161,7 @@ fn drop_past(tx: &Connection, stream: i64, cutoff: i64, now: i64) -> Result<()>
+         (DROP_HEADS, "head rows"),
+         (DROP_TRACES, "blocks' traces"),
+         (DROP_FILTERS, "blocks' filters"),
++        (DROP_GRAMS, "blocks' trigrams"),
+         (DROP_KEYS, "segments' keys"),
+         (DROP_BLOCKS, "blocks"),
+         (DROP_PLACES, "places"),
+diff --git a/crates/tinystore/src/records/merge.rs b/crates/tinystore/src/records/merge.rs
+index 78cad995..8b2a95f9 100644
+--- a/crates/tinystore/src/records/merge.rs
++++ b/crates/tinystore/src/records/merge.rs
+@@ -66,9 +66,10 @@ const SMALL: &str = "select id, first_at, last_at, held, weight
+ const MEMBER_ROW: &str = "select body from segments where id = ?1 and holder is null";
+ const MEMBER_BLOCKS: &str = "select id, body from blocks where segment = ?1 order by id";
+ /// A member's blocks with their filters, and what it held.
+-const DROP_MEMBER: [&str; 4] = [
++const DROP_MEMBER: [&str; 5] = [
+     "delete from block_traces where block in (select id from blocks where segment = ?1)",
+     "delete from block_filters where block in (select id from blocks where segment = ?1)",
++    "delete from block_grams where block in (select id from blocks where segment = ?1)",
+     "delete from blocks where segment = ?1",
+     "delete from segment_keys where segment = ?1",
+ ];
+diff --git a/crates/tinystore/src/records/migrations/0004_grams.sql b/crates/tinystore/src/records/migrations/0004_grams.sql
+new file mode 100644
+index 00000000..b4457568
+--- /dev/null
++++ b/crates/tinystore/src/records/migrations/0004_grams.sql
+@@ -0,0 +1,7 @@
++-- From here on a block keeps its trigrams: a bitmap of every three bytes of
++-- the texts a search reads, in lower case, so that a search passes a block
++-- that cannot hold its text. A block packed before has none, and is read.
++create table block_grams (
++    block integer primary key,
++    grams blob    not null
++) strict;
+diff --git a/crates/tinystore/src/records/mod.rs b/crates/tinystore/src/records/mod.rs
+index 9bb4d448..ae62028d 100644
+--- a/crates/tinystore/src/records/mod.rs
++++ b/crates/tinystore/src/records/mod.rs
+@@ -20,6 +20,7 @@ mod count;
+ mod engine;
+ mod event;
+ mod events;
++mod grams;
+ #[cfg(test)]
+ pub(crate) mod fixture;
+ #[cfg(any(test, feature = "fuzzing"))]
+diff --git a/crates/tinystore/src/records/pack.rs b/crates/tinystore/src/records/pack.rs
+index 00c1b5c0..08489f01 100644
+--- a/crates/tinystore/src/records/pack.rs
++++ b/crates/tinystore/src/records/pack.rs
+@@ -22,6 +22,7 @@ use rusqlite::{Connection, OptionalExtension, params};
+ 
+ use super::block;
+ use super::bloom::{bloom_of, id_like};
++use super::grams::grams_of;
+ use super::engine::{Records, execute, nanos};
+ use super::event::Kept;
+ use super::head::{self, Codec, ROW_EVENTS, ROW_WEIGHT, Row};
+@@ -90,6 +91,7 @@ pub(super) struct Made {
+ pub(super) struct Blooms {
+     pub(super) traces: Option<Vec<u8>>,
+     pub(super) fields: Vec<(String, Vec<u8>)>,
++    pub(super) grams: Vec<u8>,
+ }
+ 
+ /// A block as its rows are written.
+@@ -115,6 +117,7 @@ const INSERT_BLOCK: &str = "insert into blocks (segment, stream, first_at, last_
+     values (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8) returning id";
+ const INSERT_TRACES: &str = "insert into block_traces (block, bloom) values (?1, ?2)";
+ const INSERT_FILTER: &str = "insert into block_filters (block, key, bloom) values (?1, ?2, ?3)";
++const INSERT_GRAMS: &str = "insert into block_grams (block, grams) values (?1, ?2)";
+ const INSERT_KEY: &str = "insert into segment_keys (segment, kind, key) values (?1, ?2, ?3)";
+ const DROP_HEAD: &str = "delete from heads where id = ?1";
+ const SUBTRACT_FROM_HEAD: &str =
+@@ -295,6 +298,7 @@ pub(super) fn insert_blocks(tx: &Connection, segment: i64, stream: i64, blocks:
+         for (key, bloom) in &block.blooms.fields {
+             execute(tx, INSERT_FILTER, params![id, key, bloom], "write a block's filter")?;
+         }
++        execute(tx, INSERT_GRAMS, params![id, block.blooms.grams], "write a block's trigrams")?;
+     }
+     Ok(())
+ }
+@@ -368,8 +372,8 @@ fn keys_of(schema: &Schema, events: &[Kept]) -> BTreeSet<(u8, String)> {
+     names.chain(contexts).chain(fields).collect()
+ }
+ 
+-/// A block's filters: of its trace ids, and of the values of each field
+-/// whose values in it look like ids.
++/// A block's filters: of its trace ids, of the values of each field whose
++/// values in it look like ids, and of its texts' trigrams.
+ fn blooms_of(events: &[Kept]) -> Blooms {
+     let traces: Vec<&[u8]> =
+         events.iter().filter_map(|event| event.trace_id.as_ref()).map(|trace| &trace.0[..]).collect();
+@@ -383,6 +387,7 @@ fn blooms_of(events: &[Kept]) -> Blooms {
+         fields: fields
+             .map(|(key, values)| (key.to_owned(), bloom_of(values.iter().map(|value| value.as_bytes()))))
+             .collect(),
++        grams: grams_of(events),
+     }
+ }
+ 
+diff --git a/crates/tinystore/src/records/read.rs b/crates/tinystore/src/records/read.rs
+index e8caf83a..2418345f 100644
+--- a/crates/tinystore/src/records/read.rs
++++ b/crates/tinystore/src/records/read.rs
+@@ -30,6 +30,7 @@ use super::block::{self, Wanted};
+ use super::bloom::may_hold;
+ use super::engine::{Records, Stream, nanos};
+ use super::event::{Event, Fields, Kept, Level, TraceId};
++use super::grams;
+ use super::head::{self, Codec};
+ use super::pack::{CONTEXT_KEY, FIELD_KEY, NAME_KEY};
+ use super::repair::Part;
+@@ -105,26 +106,32 @@ fn has(fields: &Fields, key: &str, json: &str) -> bool {
+     fields.iter().any(|(name, value)| name == key && value == json)
+ }
+ 
+-/// Whether an event holds `text`, which is in lower case: in its message, in
+-/// its name, or in a value of its fields or its context.
++/// Whether an event holds `text`, which is in lower case.
+ fn says(event: &Kept, text: &str) -> bool {
+-    let within = |words: &str| words.to_lowercase().contains(text);
+-    let values = |fields: &Fields| fields.iter().any(|(_, json)| value_says(json, text));
+-    event.message.as_deref().is_some_and(within)
+-        || within(&event.name)
+-        || values(&event.fields)
+-        || values(&event.context)
++    texts(event, &mut |words| words.contains(text))
+ }
+ 
+-/// Whether a JSON value holds `text` at any depth: a string as it reads, any
+-/// other value as it is written. A key is not looked at.
+-fn value_says(json: &str, text: &str) -> bool {
++/// Gives `each` every text a search reads, in lower case, until it answers
++/// true: an event's message, its name, and each value of its fields and its
++/// context. A block's trigrams are made of the same texts, so that a search
++/// they pass a block by could not have found anything in it.
++pub(super) fn texts(event: &Kept, each: &mut impl FnMut(&str) -> bool) -> bool {
++    let mut lowered = |words: &str| each(&words.to_lowercase());
++    event.message.as_deref().is_some_and(&mut lowered)
++        || lowered(&event.name)
++        || event.fields.iter().any(|(_, json)| value_texts(json, each))
++        || event.context.iter().any(|(_, json)| value_texts(json, each))
++}
++
++/// The texts of a JSON value at any depth: a string as it reads, any other
++/// value as it is written. A key is not one.
++fn value_texts(json: &str, each: &mut impl FnMut(&str) -> bool) -> bool {
+     match json.as_bytes().first() {
+-        Some(b'"') => serde_json::from_str::<String>(json).is_ok_and(|read| read.to_lowercase().contains(text)),
++        Some(b'"') => serde_json::from_str::<String>(json).is_ok_and(|read| each(&read.to_lowercase())),
+         Some(b'[') => serde_json::from_str::<Vec<&serde_json::value::RawValue>>(json)
+-            .is_ok_and(|items| items.iter().any(|item| value_says(item.get(), text))),
+-        Some(b'{') => Fields::read(json).is_ok_and(|inner| inner.iter().any(|(_, value)| value_says(value, text))),
+-        _ => json.to_lowercase().contains(text),
++            .is_ok_and(|items| items.iter().any(|item| value_texts(item.get(), each))),
++        Some(b'{') => Fields::read(json).is_ok_and(|inner| inner.iter().any(|(_, value)| value_texts(value, each))),
++        _ => each(&json.to_lowercase()),
+     }
+ }
+ 
+@@ -502,6 +509,7 @@ const HEAD_BODIES: &str = "select id, stream, count, body from heads where last_
+     and (?3 is null or stream in (select value from json_each(?3)))";
+ const HAS_KEY: &str = "select exists (select 1 from segment_keys where segment = ?1 and kind = ?2 and key = ?3)";
+ const TRACES_BLOOM: &str = "select bloom from block_traces where block = ?1";
++const GRAMS: &str = "select grams from block_grams where block = ?1";
+ const FIELD_BLOOM: &str = "select bloom from block_filters where block = ?1 and key = ?2";
+ 
+ impl Records {
+@@ -663,12 +671,13 @@ struct Passing<'q> {
+ impl Passing<'_> {
+     /// Whether a block may hold an event the read asks for: its segment
+     /// holds one of the names asked and every key a filter names, in a field
+-    /// or a context; its traces may hold the trace asked; and the values of
+-    /// a field that look like ids may hold the one a filter names, unless a
+-    /// context holds the key.
++    /// or a context; its traces may hold the trace asked; the values of a
++    /// field that look like ids may hold the one a filter names, unless a
++    /// context holds the key; and its trigrams may hold the text searched.
+     fn may_find(&mut self, block: &Picked) -> Result<bool> {
+         let query = self.query;
+-        if query.names.is_empty() && query.trace_id.is_none() && query.filters.is_empty() {
++        let search = query.search.as_deref().filter(|text| text.len() >= 3);
++        if query.names.is_empty() && query.trace_id.is_none() && query.filters.is_empty() && search.is_none() {
+             return Ok(true);
+         }
+         let holds = match self.segments.get(&block.segment) {
+@@ -694,6 +703,11 @@ impl Passing<'_> {
+                 return Ok(false);
+             }
+         }
++        if let Some(text) = search
++            && self.bloom(GRAMS, params![block.id])?.is_some_and(|filter| !grams::may_hold(&filter, text))
++        {
++            return Ok(false);
++        }
+         Ok(true)
+     }
+ 
+diff --git a/crates/tinystore/src/records/read_tests.rs b/crates/tinystore/src/records/read_tests.rs
+index f4133cbb..c558c148 100644
+--- a/crates/tinystore/src/records/read_tests.rs
++++ b/crates/tinystore/src/records/read_tests.rs
+@@ -405,6 +405,7 @@ fn three_reads_of_a_packed_corpus() {
+     }
+ }
+ 
++// contract: REC-12
+ #[test]
+ fn a_read_passes_a_block_whose_segment_or_filters_say_it_holds_nothing_asked() {
+     let fixture = fixture();
+@@ -444,6 +445,13 @@ fn a_read_passes_a_block_whose_segment_or_filters_say_it_holds_nothing_asked() {
+     // nor does a field whose key a context has too
+     assert!(may_find(api.list().filter("user", &"from-context")));
+     assert!(may_find(api.list().names(["missing", "request"]).filter("request", &"r-031")));
++    // a search passes a block none of whose texts holds its trigrams, and one too short to have any is read
++    assert!(may_find(api.list().search("R-017")));
++    assert!(may_find(api.list().search("from-con")));
++    assert!(!may_find(api.list().search("econnreset")));
++    assert!(may_find(api.list().search("zz")));
++    let found = |list: List| list.all().map(Result::unwrap).count();
++    assert_eq!((found(api.list().search("r-017")), found(api.list().search("econnreset"))), (1, 0));
+ }
+ 
+ #[test]
+diff --git a/crates/tinystore/src/records/repair.rs b/crates/tinystore/src/records/repair.rs
+index 1d82f15a..dd63d710 100644
+--- a/crates/tinystore/src/records/repair.rs
++++ b/crates/tinystore/src/records/repair.rs
+@@ -86,9 +86,10 @@ const SEGMENT_BLOCKS: &str = "select id, body from blocks where segment = ?1 ord
+ /// behind it, as expiry notes what it removes.
+ const NOTE_DROPPED: &str = "insert or replace into expired (segment, events, at)
+     select id, count, ?2 from segments where id = ?1 or holder = ?1";
+-const DROP_SEGMENT: [(&str, &str); 6] = [
++const DROP_SEGMENT: [(&str, &str); 7] = [
+     ("delete from block_traces where block in (select id from blocks where segment = ?1)", "blocks' traces"),
+     ("delete from block_filters where block in (select id from blocks where segment = ?1)", "blocks' filters"),
++    ("delete from block_grams where block in (select id from blocks where segment = ?1)", "blocks' trigrams"),
+     ("delete from segment_keys where segment = ?1", "keys"),
+     ("delete from blocks where segment = ?1", "blocks"),
+     ("delete from segments where holder = ?1", "places"),
+diff --git a/docs/guides/records/reading.md b/docs/guides/records/reading.md
+index 58edaeb6..b9949ee9 100644
+--- a/docs/guides/records/reading.md
++++ b/docs/guides/records/reading.md
+@@ -119,8 +119,10 @@ as, a number as a number.
+ 
+ The time, the stream, the level, the trace and a `where` on a value that
+ rarely repeats, a request's id, skip the blocks that cannot match without
+-reading them. `search` reads every event the rest of the query leaves, so give
+-it a range.
++reading them. `search` skips the blocks whose text lacks some three letters in
++a row of its phrase, so a rare word reads few blocks; a common word, or a
++phrase of one or two letters, reads every event the rest of the query leaves,
++so give it a range.
+ 
+ ## Pages
+ 
+diff --git a/docs/handbook/inside/how-logs-and-metrics-pack.md b/docs/handbook/inside/how-logs-and-metrics-pack.md
+index b60bcbe0..0afb194a 100644
+--- a/docs/handbook/inside/how-logs-and-metrics-pack.md
++++ b/docs/handbook/inside/how-logs-and-metrics-pack.md
+@@ -56,12 +56,14 @@ rules the block out:
+ - bloom filters of its trace ids and of values that rarely repeat, such as a
+   request id, so `traceId` and `where: { requestId }` open only blocks that
+   may hold them;
++- a bitmap of every three letters in a row of its messages, names and values,
++  in lower case, so `search` opens only blocks that may hold its phrase;
+ - the names of the keys its events hold, so `fieldNames` answers without
+   opening a block.
+ 
+ A block that passes is opened, and only the columns the query asked about are
+-decoded. `search` reads every event that the other conditions leave, since a
+-phrase can be anywhere.
++decoded. Inside it, `search` reads every event that the other conditions
++leave, since a phrase can be anywhere in one.
+ 
+ ## Metrics: runs of samples
+ 
