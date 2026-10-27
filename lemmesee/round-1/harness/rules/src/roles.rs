@@ -136,6 +136,21 @@ pub struct TableRoles {
     /// The column that names a row for a person, a lookup's or any table's.
     #[serde(skip)]
     pub name_index: Option<usize>,
+    /// Its place among the database's subjects, the first 0.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub subject: Option<usize>,
+    /// The subject this fact hangs on.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub detail_of: Option<String>,
+    #[serde(skip)]
+    pub detail_index: Option<usize>,
+    /// Whether it is its subject's main fact, where a subject that holds no
+    /// money and no quantity keeps them: the fact with the most keys out and then the most
+    /// measures, from which the subject's questions reach furthest —
+    /// ErgastF1's results, to a driver, a team and a status. Chinook's
+    /// invoices hold their total, so their lines are details.
+    #[serde(skip_serializing_if = "std::ops::Not::not")]
+    pub main_fact: bool,
 }
 
 impl TableRoles {
@@ -218,6 +233,10 @@ const QUANTITY: &[&str] = &[
 const LEVEL: &[&str] = &["balance", "stock", "inventory", "remaining", "level"];
 const RATIO: &[&str] = &["percent", "pct", "rate", "ratio", "share"];
 const SCORE: &[&str] = &["rating", "score", "stars", "rank", "priority"];
+/// A place in an order — a finishing position, a grid slot, a race's round
+/// in its season — which averages and never adds, and is no category:
+/// ErgastF1's `positionText` has 39 values, one of each a race.
+const ORDINAL: &[&str] = &["position", "grid", "round", "lap"];
 const PLACE: &[&str] = &["lat", "lng", "lon", "latitude", "longitude"];
 const CODE: &[&str] = &["zip", "postal", "phone"];
 const TEXT: &[&str] = &["name", "title", "description", "email", "url", "comment", "note", "body"];
@@ -400,6 +419,9 @@ fn column_roles(snapshot: &Snapshot, t: usize, c: usize, fks: &[Fk], reads_n: bo
         if any(&tk, SCORE) {
             add(&mut held, Role::Score, Kind::Named, "named as a score");
         }
+        if any(&tk, ORDINAL) {
+            add(&mut held, Role::Score, Kind::Named, "named as a place in an order");
+        }
     }
     if any(&tk, CURRENCY) {
         add(&mut held, Role::Currency, Kind::Named, "named as a currency");
@@ -442,7 +464,9 @@ fn column_roles(snapshot: &Snapshot, t: usize, c: usize, fks: &[Fk], reads_n: bo
     // only in a table large enough for few values to mean something
     // (airlines' ten airplanes have ten values of everything)
     let has_measure = held.iter().any(|h| h.role.is_measure());
-    let excluded = has_measure || is_key || !is_text(column) || rows(table, reads_n).is_some_and(|r| r < 100.0);
+    let ordinal = any(&tk, ORDINAL);
+    let excluded =
+        has_measure || is_key || ordinal || !is_text(column) || rows(table, reads_n).is_some_and(|r| r < 100.0);
     if reads_n && !excluded {
         let n = distinct(table, column, reads_n);
         let mcv_count = stat(&column.features, "mcv_count", reads_n);
@@ -462,7 +486,9 @@ fn column_roles(snapshot: &Snapshot, t: usize, c: usize, fks: &[Fk], reads_n: bo
         if is_numeric(column) {
             add(&mut held, Role::Number, Kind::Typed, format!("typed {}", column.type_name));
         }
-        if is_text(column) && !long_text(column) {
+        // ErgastF1 keeps lap times and durations as text: `1:34:50.616`
+        let a_number_as_text = any(&tk, QUANTITY) || any(&tk, EVENT);
+        if is_text(column) && !long_text(column) && !ordinal && !a_number_as_text {
             add(&mut held, Role::Category, Kind::Typed, "could be a category by its type");
         }
     }
@@ -615,5 +641,79 @@ pub fn infer(snapshot: &Snapshot, reads_n: bool) -> Schema<'_> {
         }
     }
 
+    // Money and quantities in a table with no time that a fact points at
+    // are a thing's price and size, not amounts that happened: Chinook's
+    // track.unit_price and milliseconds, whose sums by genre add up a
+    // catalog
+    let described: Vec<(usize, String)> = fks
+        .iter()
+        .filter(|f| f.child != f.parent && !timed(snapshot, &tables, f.parent) && tables[f.child].has(TableRole::Fact))
+        .map(|f| (f.parent, snapshot.tables[f.child].name.clone()))
+        .collect();
+    for (t, child) in described {
+        for c in &mut tables[t].columns {
+            if matches!(c.primary(), Some(Role::Money | Role::Quantity)) && !c.has(Role::Level) {
+                add(&mut c.held, Role::Level, Kind::Declared, format!("a price or a size: {child}, a fact, points here"));
+            }
+        }
+    }
+
+    subjects(snapshot, reads_n, &mut tables, &fks);
     Schema { snapshot, reads_n, tables, fks }
+}
+
+/// A base table with a creation or an event time of its own.
+fn timed(snapshot: &Snapshot, tables: &[TableRoles], t: usize) -> bool {
+    is_base_table(&snapshot.tables[t]) && tables[t].columns.iter().any(|c| c.axis().is_some())
+}
+
+/// The database's subjects: the tables with a time of their own that facts
+/// with none hang on — Chinook's invoices and their lines, ErgastF1's races
+/// and their results, laps and pit stops. The most activity first: the rows
+/// of the table and of its facts, or with no statistics the number of its
+/// facts. A fact hangs on the first subject among its parents.
+fn subjects(snapshot: &Snapshot, reads_n: bool, tables: &mut [TableRoles], fks: &[Fk]) {
+    let n = tables.len();
+    let timed: Vec<bool> = (0..n).map(|t| timed(snapshot, tables, t)).collect();
+    let mut facts: Vec<Vec<usize>> = vec![Vec::new(); n];
+    for f in fks {
+        let (c, p) = (f.child, f.parent);
+        if c != p && timed[p] && !timed[c] && tables[c].has(TableRole::Fact) && !facts[p].contains(&c) {
+            facts[p].push(c);
+        }
+    }
+    let mut subjects: Vec<usize> = (0..n).filter(|&t| !facts[t].is_empty()).collect();
+    let rows_of = |t: usize| rows(&snapshot.tables[t], reads_n);
+    let by_rows = subjects.iter().all(|&t| rows_of(t).is_some() && facts[t].iter().all(|&c| rows_of(c).is_some()));
+    let activity = |t: usize| -> f64 {
+        let all = std::iter::once(t).chain(facts[t].iter().copied());
+        if by_rows { all.map(|k| rows_of(k).unwrap_or(0.0)).sum() } else { all.count() as f64 }
+    };
+    subjects.sort_by(|&a, &b| activity(b).total_cmp(&activity(a)).then(a.cmp(&b)));
+    for (rank, &t) in subjects.iter().enumerate() {
+        tables[t].subject = Some(rank);
+    }
+    for &t in &subjects {
+        for &c in &facts[t] {
+            if tables[c].detail_index.is_none() {
+                tables[c].detail_index = Some(t);
+                tables[c].detail_of = Some(snapshot.tables[t].name.clone());
+            }
+        }
+        let reach = |c: usize| {
+            let out = fks.iter().filter(|f| f.child == c && f.parent != c).count();
+            let measures = tables[c].columns.iter().filter(|r| r.primary().is_some_and(Role::is_measure)).count();
+            (out, measures)
+        };
+        let measured = tables[t].columns.iter().any(|r| matches!(r.primary(), Some(Role::Money | Role::Quantity)));
+        let main = facts[t]
+            .iter()
+            .filter(|_| !measured)
+            .copied()
+            .filter(|&c| tables[c].detail_index == Some(t) && !tables[c].has(TableRole::Snapshot))
+            .max_by(|&a, &b| reach(a).cmp(&reach(b)).then(b.cmp(&a)));
+        if let Some(c) = main {
+            tables[c].main_fact = true;
+        }
+    }
 }

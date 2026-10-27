@@ -165,6 +165,28 @@ fn a_state_beside_an_address_is_not_a_status() {
 }
 
 #[test]
+fn invoices_are_the_subject_and_a_tracks_price_is_no_amount() {
+    for json in [POSTGRES, MYSQL] {
+        let snapshot = load(json);
+        for schema in [infer(&snapshot, false), infer(&snapshot, true)] {
+            assert_eq!(table(&schema, "invoice").subject, Some(0));
+            assert_eq!(table(&schema, "invoice_line").detail_of.as_deref().map(norm), Some("invoice".into()));
+            // invoices hold their total, so their lines are details
+            assert!(!table(&schema, "invoice_line").main_fact);
+            assert_eq!(table(&schema, "track").subject, None);
+            assert!(column(&schema, "track", "unit_price").has(Role::Level));
+            assert!(!column(&schema, "invoice_line", "unit_price").has(Role::Level));
+        }
+    }
+    let (candidates, scored, _) = scores(POSTGRES, Config::B1);
+    for (c, s) in candidates.iter().zip(&scored) {
+        if c.aggregate == Aggregate::Sum && norm(&c.table) == "track" {
+            assert!(s.removed_by.is_some(), "{}", c.title);
+        }
+    }
+}
+
+#[test]
 fn the_largest_tables_need_statistics() {
     for config in rules::CONFIGS {
         let (candidates, scored, _) = scores(POSTGRES, config);

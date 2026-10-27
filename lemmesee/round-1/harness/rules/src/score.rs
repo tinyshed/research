@@ -202,10 +202,13 @@ fn abstention(c: &Candidate, schema: &Schema) -> Option<&'static str> {
     None
 }
 
-/// Penalty points for how a role a candidate uses is known.
+/// Penalty points for how a role a candidate uses is known. A measure is
+/// known by its name: no statistic says a number adds up, and a sum that
+/// paid for it lost to a count of the same rows.
 fn evidence_points(r: &ColumnRoles, role: Role) -> (i32, &'static str) {
     match r.get(role).map(|h| h.strongest()) {
         Some(Kind::Declared | Kind::Measured) | None => (0, ""),
+        Some(Kind::Named) if role.is_measure() => (0, ""),
         Some(Kind::Named) => (1, "named only"),
         Some(Kind::Typed) => (2, "typed only"),
     }
@@ -225,10 +228,13 @@ fn score_one(c: &Candidate, schema: &Schema) -> (Vec<String>, Vec<Penalty>) {
     // over time before rows by a category
     let template_points = match (c.template, c.aggregate) {
         (Template::T1 | Template::T2, _) => 0,
-        (Template::T9, _) => 1,
+        (Template::T9, _) => 0,
         (Template::T3 | Template::T4, Aggregate::Avg) => 1,
         (Template::T3 | Template::T4, _) => 0,
-        (Template::T8, _) => 1,
+        // The largest tables orient a person, after what the database holds
+        (Template::T8, _) => 3,
+        // A measure's distribution answers no question a person asks first
+        (Template::T5, _) if c.measure.is_some() => 3,
         (Template::T5 | Template::T6 | Template::T7, _) => 2,
     };
     add(format!("template {:?}", c.template), template_points);
@@ -268,6 +274,11 @@ fn score_one(c: &Candidate, schema: &Schema) -> (Vec<String>, Vec<Penalty>) {
             _ => 3,
         };
         add(format!("{} as a measure", m.column), points);
+        // Chinook's unit prices are 0.99 and 1.99
+        let few = distinct(&schema.snapshot.tables[m.t], col, reads_n).is_some_and(|n| n <= 12.0);
+        if c.template == Template::T5 && few {
+            add(format!("{} spread over few values", m.column), 3);
+        }
     }
     if let Some(x) = &c.time {
         if stat(&column_of(schema, x).features, "correlation", reads_n).is_some_and(|k| k >= 0.9) {
@@ -275,20 +286,28 @@ fn score_one(c: &Candidate, schema: &Schema) -> (Vec<String>, Vec<Penalty>) {
         }
     }
 
-    // The table
-    let table_points = if troles.has(TableRole::Fact) {
-        -2
-    } else if troles.has(TableRole::Event) {
-        -1
-    } else if troles.has(TableRole::Entity) && c.template == Template::T1 {
-        0
-    } else {
-        1
+    // The table: the database's subject first, then the facts that hang on
+    // it; a fact with no time, as a catalog's tracks are, is no subject
+    let (table_points, as_what) = match (troles.subject, &troles.detail_of) {
+        (Some(0), _) => (-3, "the first subject".to_string()),
+        (Some(_), _) => (-2, "a subject".to_string()),
+        (None, Some(s)) if troles.main_fact => (-2, format!("the main fact of {s}")),
+        (None, Some(s)) => (-1, format!("a fact of {s}")),
+        _ if troles.has(TableRole::Event) => (-1, "an event".into()),
+        _ if troles.has(TableRole::Fact) => (0, "a fact with no time".into()),
+        _ if troles.has(TableRole::Entity) && c.template == Template::T1 => (0, "an entity".into()),
+        _ => (1, "a table".into()),
     };
-    add(format!("{} as a table", table.name), table_points);
+    add(format!("{} as {as_what}", table.name), table_points);
     let counts = c.aggregate == Aggregate::Count && c.measure.is_none() && c.template != Template::T8;
     if counts && troles.has(TableRole::Snapshot) {
         add(format!("rows of {}, a state at moments, counted", table.name), 2);
+    }
+    // Where a table holds amounts they say more than its number of rows:
+    // ErgastF1's points by team before its results by team
+    let amounts = troles.columns.iter().any(|r| matches!(r.primary(), Some(Role::Money | Role::Quantity)));
+    if counts && amounts && c.template != Template::T5 {
+        add(format!("rows of {} counted beside its amounts", table.name), 1);
     }
     // A table of eight employees is not an overview's subject
     match rows(table, reads_n) {
@@ -315,15 +334,24 @@ fn score_one(c: &Candidate, schema: &Schema) -> (Vec<String>, Vec<Penalty>) {
             add(format!("{} nearly one value", g.column), 3);
         }
     }
+    // Chinook's billing_state is empty for half the invoices
     for (r, _) in &used {
-        if stat(&column_of(schema, r).features, "null_frac", reads_n).is_some_and(|f| f > 0.5) {
-            add(format!("{} mostly null", r.column), 2);
+        match stat(&column_of(schema, r).features, "null_frac", reads_n) {
+            Some(f) if f > 0.5 => add(format!("{} mostly null", r.column), 2),
+            Some(f) if f > 0.2 => add(format!("{} null for {:.0} %", r.column, f * 100.0), 1),
+            _ => {}
         }
     }
 
     // The join
     if let Some(j) = &c.join {
         add(format!("join to {}", j.to.table), if j.guessed { 2 } else { 1 });
+        // Results by their driver's nationality ask about drivers: the
+        // twelve drivers or a lookup's names ask about the results
+        let label = |g: &ColumnRef| schema.tables[g.t].label_index == Some(g.c);
+        if c.template != Template::T9 && c.category.as_ref().is_some_and(|g| g.joined && !label(g)) {
+            add(format!("a category of {}", j.to.table), 1);
+        }
         if j.guessed {
             flags.push("join-guessed".into());
         }
@@ -423,6 +451,12 @@ pub fn score(candidates: &[Candidate], schema: &Schema, config: Config) -> (Vec<
         }
         return (scored, panels);
     }
+    // What a panel adds to those chosen: little where it shows the same
+    // rows along the same time or category, as an invoice's count and its
+    // sum by date do, or its lines by the invoice's date
+    let axes = |c: &Candidate| -> Vec<(usize, usize)> {
+        [c.time.as_ref(), c.category.as_ref()].into_iter().flatten().map(|r| (r.t, r.c)).collect()
+    };
     let mut per_table: BTreeMap<String, usize> = BTreeMap::new();
     let mut chosen: Vec<usize> = Vec::new();
     while panels.len() < 5 {
@@ -439,7 +473,13 @@ pub fn score(candidates: &[Candidate], schema: &Schema, config: Config) -> (Vec<
                         && candidates[k].main_column() == c.main_column()
                 });
                 let same_template = chosen.iter().filter(|&&k| candidates[k].template == c.template).count() as i32;
-                let at = scored[i].total + 3 * same_table + 2 * same_template + if same_column { 5 } else { 0 };
+                let along = axes(c);
+                let same_axis = chosen.iter().any(|&k| axes(&candidates[k]).iter().any(|a| along.contains(a)));
+                let at = scored[i].total
+                    + same_table
+                    + same_template
+                    + if same_axis { 4 } else { 0 }
+                    + if same_column { 5 } else { 0 };
                 (at, c.order, i)
             })
             .min();
