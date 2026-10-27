@@ -14,25 +14,39 @@ the development fixtures they belong to are never pilot fixtures.
 
 ## Where the questions are lost, 28 October
 
-Two passes, the second after fixing what the first showed the rules got
-wrong ([candidates.md](../candidates.md#revised-on-the-development-fixtures)):
+Three passes: the second after fixing what the first showed the rules got
+wrong ([candidates.md](../candidates.md#revised-on-the-development-fixtures)),
+the third after giving the order the database's subjects
+([candidates.md](../candidates.md#the-databases-subjects)):
 
-| | First pass | After the fixes |
-|---|---|---|
-| inexpressible: no template can say it | 9 | 9 |
-| not generated: a template could, the generator did not | 4 | 0 |
-| removed by a hard rule | 3, all wrongly | 1, rightly: 134 finishing statuses |
-| outranked in B1 | 12 | 18 |
-| in B1's five | 3 | 3 |
-| in A's five | 4 | 4 |
+| | First pass | After the fixes | After the subjects |
+|---|---|---|---|
+| inexpressible: no template can say it | 9 | 9 | 9 |
+| not generated: a template could, the generator did not | 4 | 0 | 0 |
+| removed by a hard rule | 3, all wrongly | 1, rightly: 134 finishing statuses | 1 |
+| outranked in B1 | 12 | 18 | 12 |
+| in B1's five, of 15 places | 3 | 3 | **9** |
+| in A's five, of 15 places | 4 | 4 | **8** |
 
-**The order loses the most: 18 of the 22 questions the generator can say
-are outranked.** Revenue by country is 27th on Chinook, tracks by genre 20th,
-points by constructor 49th on ErgastF1. Dozens of candidates score within a
-point of each other: the penalties weigh how a panel is known, not whether
-it matters, and nothing says which table is the database's subject, so the
-lines of an invoice and the tracks of a catalog crowd out the invoice
-itself. More penalties will not fix that.
+**The order lost the most: after the fixes, 18 of the 22 questions the
+generator can say were outranked.** Revenue by country was 27th on Chinook,
+points by constructor 49th on ErgastF1: the penalties weighed how a panel is
+known, not whether it matters, and nothing said which table the database is
+about, so the lines of an invoice and the tracks of a catalog crowded out the
+invoice itself.
+
+**The subjects** — a table with a time of its own that facts hang on — put
+B1's five at revenue by month and by country on Chinook; flights by status
+and by day, segment revenue by fare class and booked revenue on the airlines;
+races by season and by circuit and points by constructor on ErgastF1. What
+is still outranked is the questions about the things rather than what
+happened to them — customers by country, drivers by nationality, tracks by
+genre — and the second fact of a subject, ErgastF1's pit stops. Chinook's
+best-selling tracks are in the five as revenue by track, not as the
+quantity the gold names: Chinook's lines all sell one.
+
+These rules were chosen on the same three databases: the gain says they fit
+what was looked at, not that they generalise.
 
 **The generator cannot say 9 of 31**, and the reasons repeat; a question
 may lack more than one:

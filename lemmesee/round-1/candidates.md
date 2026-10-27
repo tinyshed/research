@@ -262,5 +262,33 @@ never a pilot fixture**, so the pilot judges rules no pilot fixture tuned.
 | counts beat money; booleans beat everything; eight employees made a panel | named only +1, typed only +2; money −1, quantity 0; sums 0, averages +1, T9 +1; two values +2; under 50 rows +5, under 200 +2; +2 for each panel of the same template already in the five |
 
 What these did not change is in [the gold diagnosis](gold/README.md): 18 of
-the 22 questions the generator can say are still outranked, and 9 of 31 it
+the 22 questions the generator can say were still outranked, and 9 of 31 it
 cannot say.
+
+### The database's subjects
+
+The same day the order was given what it lacked: which table the database
+is about. **A subject** is a table with a creation or event time of its own
+that facts with none hang on — Chinook's invoices and their lines, the
+airlines' flights and their segments, ErgastF1's races and their results,
+laps and pit stops — the most activity first: its rows and its facts' rows,
+or with no statistics the number of its facts. Where a subject holds no
+money and no quantity, **its main fact** holds them: the fact with the most
+keys out, then the most measures. Then:
+
+| Found | Changed |
+|---|---|
+| an invoice's lines and a catalog's tracks above the invoices; every fact equal | the table: the first subject −3, another −2, a subject's main fact −2, its other facts −1, an event that is no subject −1, a fact with no time 0; replacing a fact's −2 and an event's −1 |
+| the prices of a catalog summed by genre | money and quantities in a table with no time that a fact points at are a price or a size: levels, so never summed |
+| ErgastF1's `positionText`, 39 values one of each a race, a category; its `time` and `duration`, text, categories by type | a place in an order — `position`, `grid`, `round`, `lap` — is a score and never a category; a text named as a time or a quantity is no category |
+| a sum lost to a count of the same rows by its measure's name | a measure known by its name costs nothing; counting the rows of a table that holds money or a quantity +1 |
+| two prices drawn as a distribution | a measure's distribution +3; over 12 values or fewer +3 more |
+| a state empty for half the invoices beside a country never empty | null for over 20 % +1, over half +2 as before |
+| results by their driver's nationality before points by team | a category of a parent that is not a lookup's label +1; a top twelve 0, as a breakdown |
+| the largest tables in the five | T8 +3 |
+| the subject's second panel lost to any other table's first | the five: +1 for each panel already from the table, +1 for each of the same template, +4 where a chosen panel shows the same time or category |
+
+Gold questions in the five went from 4 to 8 for A and from 3 to 9 for B1, of
+15 places. **The same three databases chose these rules and score them**:
+the numbers say the rules fit what was looked at, not that they generalise,
+which only the pilot's fixtures can say.
