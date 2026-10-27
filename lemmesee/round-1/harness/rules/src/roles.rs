@@ -217,17 +217,20 @@ const EVENT_TABLE: &[&str] = &["log", "event", "events", "history", "audit", "ac
 /// Pairs that make two times of one table a period.
 const PERIOD: &[(&str, &str)] = &[("from", "to"), ("start", "end")];
 
-/// The table a `<table>_id` column is named for, when that table's primary
-/// key is one column of the same kind of type.
+/// The table a `<table>_id` column is named for, in the singular or in an
+/// English plural, when that table's primary key is one column of the same
+/// kind of type.
 fn guessed_parent(snapshot: &Snapshot, column: &Column) -> Option<(usize, usize)> {
     let tk = tokens(&column.name);
     if tk.len() < 2 || tk.last().map(String::as_str) != Some("id") {
         return None;
     }
     let stem: String = tk[..tk.len() - 1].concat();
+    let ies = stem.strip_suffix('y').map(|s| format!("{s}ies"));
     snapshot.tables.iter().enumerate().find_map(|(p, parent)| {
         let name = norm(&parent.name);
-        if name != stem && name != format!("{stem}s") && name != format!("{stem}es") {
+        let plural = name == format!("{stem}s") || name == format!("{stem}es") || ies.as_ref() == Some(&name);
+        if name != stem && !plural {
             return None;
         }
         let pk = parent.constraints.iter().find(|k| k.kind == "p" && k.columns.len() == 1)?;
@@ -445,8 +448,10 @@ fn foreign_keys(snapshot: &Snapshot) -> Vec<Fk> {
             continue;
         }
         for (c, column) in table.columns.iter().enumerate() {
+            // A column of a key over several columns, as a link table's are,
+            // may still point at another table; only a key of its own may not.
             let declared = fks.iter().any(|f| f.child == t && f.child_column == c)
-                || table.constraints.iter().any(|k| k.kind == "p" && k.columns.contains(&column.name));
+                || table.constraints.iter().any(|k| k.kind == "p" && k.columns == [column.name.clone()]);
             if declared {
                 continue;
             }

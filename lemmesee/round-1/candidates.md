@@ -51,7 +51,7 @@ the report counts how often.
 | `period` | named pairs: `from`/`to`, `start`/`end`, `valid_from`/`valid_to` in one table |
 | `calendar` | named: `birth`, `dob`, `birthday`, `year`; a date that describes a thing, not when a row happened |
 | `deleted` | named: `deleted`, `removed`, `archived` on a time or boolean type |
-| `pk`, `fk` | declared keys; `fk` also guessed when `<table>_id` or `<table>id` names a table whose primary key is `id` of a compatible type, kept as `fk-guessed` |
+| `pk`, `fk` | declared keys; `fk` also guessed when `<table>_id` or `<table>id` names a table, in the singular or a plural in `-s`, `-es` or `-ies`, whose primary key is one column of a compatible type, kept as `fk-guessed`; a column of a primary key over several columns may be guessed too, as round 1b's dry run showed a link table's must |
 | `identifier` | named: `id`, `uuid`, `guid`, `key`, `hash`, `token`, `code`, `sku`; typed: `uuid`; measured: `n_distinct` = −1 on a non-time column |
 | `category` | declared: an enum type, a MySQL `ENUM`, a `CHECK … IN (…)`, a boolean; measured: a positive `n_distinct` of 30 or fewer, or common values covering 95 % of rows in 30 or fewer — only on a column with no `money`, `quantity`, `level`, `ratio` or `score` role, and never on a decimal or a float, since Chinook's `invoice.total` has 23 values and `invoice_line.unit_price` 2 and both are money; named, weak: `status`, `state`, `type`, `kind`, `category`, `level`, `role`, `tier`, `plan`, `country`, `source`, `channel` |
 | `currency` | named: `currency`, `currency_code`, `ccy`; typed: `char(3)` beside a `money` column; measured with V: three-letter values |

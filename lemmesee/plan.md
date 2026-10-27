@@ -67,7 +67,7 @@ their own (B2), read only on public and generated databases.
 
 | Kind | What | For |
 |---|---|---|
-| schemas | SchemaPile: 221 171 schemas, 1.7 million tables, 700 thousand foreign keys, data for more than 340 thousand tables; its permissively licensed part, SchemaPile-Perm: 22 989 schemas, 199 thousand tables, data in 7.1 thousand schemas at 29 values a column | variety of names, types and relations; too little data to give statistics |
+| schemas | SchemaPile: 221 171 schemas, 1.7 million tables, 700 thousand foreign keys, data for more than 340 thousand tables; its permissively licensed part, SchemaPile-Perm: 22 989 schemas, 199 thousand tables, data in 7.1 thousand schemas at 29 values a column | variety of names, types and relations, and in round 1b its declared keys and enumerations as labels; too little data to give statistics |
 | generated rows | rows for public schemas — SchemaPile-Perm's and the pilot's — written offline by a small language model such as Claude Haiku as a generator for each table, run with a seed at the sizes a round sets, loaded into PostgreSQL and MySQL | statistics the engines compute themselves at real sizes, traps whose true meaning is known, fixtures for the harness |
 | databases with data | Chinook, Pagila, AdventureWorks, a Stack Overflow dump, BIRD's databases | real runs, real statistics, the database's cost of each step |
 | tables with charts | VizML's corpus, Table2Charts' | pre-training or comparison; a chart someone drew is not proof it was right |
@@ -147,6 +147,13 @@ it are in its chapter 14 and are the ones that decide.
    order beside them; seven public databases, three generated, two built as
    traps; TinyStore's stores left to Dashbin's own round, and Dmitry's
    databases to a step after it.
+1b. **Guessing what a schema did not declare**: a small model of column
+   roles — which column is a foreign key and to which table, which is a
+   closed list of values — learned from what SchemaPile-Perm's schemas
+   declare, with the declarations hidden, against the rules' own guesses on
+   the same schemas. It needs no judges, and it asks the third question early
+   for roles rather than panels. [Specified](round-1b/README.md) on 27
+   October.
 2. **The judged set**: assembled, split by project, judged.
 3. **The ranker, C**: linear, trees, a tiny network, against A and B on the
    judged set, with its cost.
