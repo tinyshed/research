@@ -15,6 +15,7 @@ pub enum Template {
     T6,
     T7,
     T8,
+    T9,
 }
 
 #[derive(Serialize, Clone, Copy, PartialEq, Eq, Hash, Debug)]
@@ -80,6 +81,9 @@ pub struct Candidate {
     pub measure: Option<ColumnRef>,
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub columns: Vec<ColumnRef>,
+    /// Grouped by a parent's name, and so by the parent's key as well.
+    #[serde(skip_serializing_if = "std::ops::Not::not")]
+    pub by_entity: bool,
     pub chart: &'static str,
     pub title: String,
     pub guessed: bool,
@@ -103,6 +107,7 @@ impl Candidate {
             Template::T3 | Template::T4 => self.measure.as_ref(),
             Template::T5 => self.measure.as_ref().or(self.join.as_ref().map(|j| &j.from)),
             Template::T8 => None,
+            Template::T9 => self.measure.as_ref().or(self.category.as_ref()),
         }
     }
 }
@@ -174,6 +179,7 @@ struct Shape {
     category: Option<ColumnRef>,
     measure: Option<ColumnRef>,
     columns: Vec<ColumnRef>,
+    by_entity: bool,
 }
 
 fn sql(ctx: &Ctx, e: Engine, s: &Shape) -> String {
@@ -186,11 +192,15 @@ fn sql(ctx: &Ctx, e: Engine, s: &Shape) -> String {
         Aggregate::Sum => "sum",
         Aggregate::Avg => "avg",
     };
+    let by = match (&s.join, s.by_entity) {
+        (Some(j), true) => format!("p.{}, {g}", ident(e, &j.to.column)),
+        _ => g.clone(),
+    };
     match s.template {
         Template::T1 => format!("SELECT {{bucket({x})}} AS bucket, count(*) AS n FROM {from} GROUP BY 1 ORDER BY 1"),
-        Template::T2 => format!("SELECT {g} AS category, count(*) AS n FROM {from} GROUP BY 1 ORDER BY 2 DESC"),
+        Template::T2 => format!("SELECT {g} AS category, count(*) AS n FROM {from} GROUP BY {by} ORDER BY 2 DESC"),
         Template::T3 => format!("SELECT {{bucket({x})}} AS bucket, {agg}({m}) AS value FROM {from} GROUP BY 1 ORDER BY 1"),
-        Template::T4 => format!("SELECT {g} AS category, {agg}({m}) AS value FROM {from} GROUP BY 1 ORDER BY 2 DESC"),
+        Template::T4 => format!("SELECT {g} AS category, {agg}({m}) AS value FROM {from} GROUP BY {by} ORDER BY 2 DESC"),
         Template::T5 => match (&s.measure, &s.join) {
             (Some(r), _) => {
                 let table = ctx.table(e, s.t);
@@ -213,13 +223,27 @@ fn sql(ctx: &Ctx, e: Engine, s: &Shape) -> String {
             _ => unreachable!("a distribution has a measure or a join"),
         },
         Template::T6 => format!(
-            "SELECT {{bucket({x})}} AS bucket, {g} AS category, count(*) AS n FROM {from} GROUP BY 1, 2 ORDER BY 1, 2"
+            "SELECT {{bucket({x})}} AS bucket, {g} AS category, count(*) AS n FROM {from} GROUP BY 1, {by} ORDER BY 1, 2"
         ),
         Template::T7 => {
             let cols: Vec<String> = s.columns.iter().map(|r| ctx.expr(e, r)).collect();
             format!("SELECT {} FROM {from} ORDER BY {x} DESC LIMIT 10", cols.join(", "))
         }
         Template::T8 => unreachable!("T8 is read from the snapshot"),
+        Template::T9 => {
+            // The parent's key as well as its name, so two rows of one name
+            // stay two
+            let j = s.join.as_ref().expect("a top list has its join");
+            let key = format!("p.{}", ident(e, &j.to.column));
+            let value = if s.aggregate == Aggregate::Count { "count(*)".to_string() } else { format!("{agg}({m})") };
+            format!(
+                "SELECT {g} AS entity, {value} AS value FROM {} t JOIN {} p ON p.{} = t.{}                  GROUP BY {key}, {g} ORDER BY 2 DESC LIMIT 12",
+                ctx.table(e, s.t),
+                ctx.table(e, j.to.t),
+                ident(e, &j.to.column),
+                ident(e, &j.from.column)
+            )
+        }
     }
 }
 
@@ -243,6 +267,10 @@ fn title(ctx: &Ctx, s: &Shape) -> String {
         Template::T6 => format!("rows of {table} by {} and {}", label(&s.time), label(&s.category)),
         Template::T7 => format!("latest rows of {table}"),
         Template::T8 => "largest tables, estimated rows".into(),
+        Template::T9 => match s.aggregate {
+            Aggregate::Count => format!("rows of {table} by {}, the twelve most", label(&s.category)),
+            _ => format!("{agg} of {} by {}, the twelve most", label(&s.measure), label(&s.category)),
+        },
     }
 }
 
@@ -296,6 +324,7 @@ fn build(ctx: &Ctx, s: Shape, sequence: usize) -> Candidate {
         category: s.category,
         measure: s.measure,
         columns: s.columns,
+        by_entity: s.by_entity,
     }
 }
 
@@ -328,21 +357,36 @@ pub fn generate(schema: &Schema) -> Vec<Candidate> {
         // one many-to-one join: (the join, the column).
         let mut times: Vec<(Option<&Fk>, ColumnRef)> = Vec::new();
         let mut groups: Vec<(Option<&Fk>, ColumnRef)> = Vec::new();
+        // One time a table: its creation time, or else its first event time.
+        // The airlines' four times of a flight would draw one curve four ways.
+        let primary_time = roles
+            .columns
+            .iter()
+            .position(|r| r.has(Role::Created))
+            .or_else(|| roles.columns.iter().position(|r| r.axis().is_some()));
         for (c, r) in roles.columns.iter().enumerate() {
-            if r.axis().is_some() {
+            if Some(c) == primary_time {
                 times.push((None, ctx.col(t, c, false)));
             }
             if r.primary() == Some(Role::Category) {
                 groups.push((None, ctx.col(t, c, false)));
             }
         }
+        // Through a join, a header's time for the lines that have none of
+        // their own — an invoice's date for its lines — and a parent's
+        // category for a fact's rows; a lookup's label for any child. Not a
+        // support representative's hire date for the customers he serves.
+        let fact = roles.has(TableRole::Fact);
+        let own_time = !times.is_empty();
         for fk in &out {
             let parent = &schema.tables[fk.parent];
             for (c, r) in parent.columns.iter().enumerate() {
-                if r.axis().is_some() {
+                let parent_time = parent.columns.iter().position(|r| r.has(Role::Created))
+                    .or_else(|| parent.columns.iter().position(|r| r.axis().is_some()));
+                if fact && !own_time && Some(c) == parent_time {
                     times.push((Some(fk), ctx.col(fk.parent, c, true)));
                 }
-                if r.primary() == Some(Role::Category) || parent.label_index == Some(c) {
+                if (fact && r.primary() == Some(Role::Category)) || parent.label_index == Some(c) {
                     groups.push((Some(fk), ctx.col(fk.parent, c, true)));
                 }
             }
@@ -358,10 +402,14 @@ pub fn generate(schema: &Schema) -> Vec<Candidate> {
             .collect();
 
         let join_of = |fk: Option<&Fk>| fk.map(|f| ctx.join(f));
-        let shape = |template, aggregate, join, time, category, measure| Shape {
+        let shape = |template, aggregate, join: Option<Join>, time, category: Option<ColumnRef>, measure| Shape {
             template,
             t,
             aggregate,
+            // A parent's name that is not a category of its own names an entity
+            by_entity: category.as_ref().is_some_and(|g: &ColumnRef| {
+                g.joined && schema.tables[g.t].columns[g.c].primary() != Some(Role::Category)
+            }),
             join,
             time,
             category,
@@ -388,8 +436,34 @@ pub fn generate(schema: &Schema) -> Vec<Candidate> {
                 shapes.push(shape(Template::T5, Aggregate::Count, None, None, None, Some(m.clone())));
             }
         }
-        for fk in &out {
-            shapes.push(shape(Template::T5, Aggregate::Count, join_of(Some(fk)), None, None, None));
+        // Children per parent, and the parents with the most, for the rows
+        // of a fact or an event only: lines per invoice, not seats per airplane
+        for fk in out.iter().filter(|f| f.parent != t) {
+            // Children per parent where either is a fact or an event: lines
+            // per invoice, tickets per booking; not seats per airplane
+            let parent = &schema.tables[fk.parent];
+            let header = parent.has(TableRole::Fact) || parent.has(TableRole::Event);
+            if fact || roles.has(TableRole::Event) || header {
+                shapes.push(shape(Template::T5, Aggregate::Count, join_of(Some(fk)), None, None, None));
+            }
+            if fact || roles.has(TableRole::Event) {
+                // The most only of things that are not events themselves:
+                // customers, constructors, tracks; not races or flights
+                let parent = &schema.tables[fk.parent];
+                let timed = parent.columns.iter().any(|r| r.axis().is_some());
+                if parent.has(TableRole::Lookup) || timed {
+                    continue;
+                }
+                if let Some(name) = parent.name_index {
+                    let named = ctx.col(fk.parent, name, true);
+                    shapes.push(shape(Template::T9, Aggregate::Count, join_of(Some(fk)), None, Some(named.clone()), None));
+                    for (m, role) in &measures {
+                        if matches!(role, Role::Money | Role::Quantity) {
+                            shapes.push(shape(Template::T9, Aggregate::Sum, join_of(Some(fk)), None, Some(named.clone()), Some(m.clone())));
+                        }
+                    }
+                }
+            }
         }
         for (tf, time) in &times {
             for (gf, group) in &groups {
@@ -432,6 +506,7 @@ pub fn generate(schema: &Schema) -> Vec<Candidate> {
         category: None,
         measure: None,
         columns: Vec::new(),
+        by_entity: false,
         chart: "bar",
         title: "largest tables, estimated rows".into(),
         guessed: true,

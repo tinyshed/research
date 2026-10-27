@@ -135,6 +135,7 @@ pub enum Bucket {
     Day,
     Week,
     Month,
+    Year,
 }
 
 impl Bucket {
@@ -143,10 +144,12 @@ impl Bucket {
             Bucket::Day => "day",
             Bucket::Week => "week",
             Bucket::Month => "month",
+            Bucket::Year => "year",
         }
     }
 
-    /// About 60 buckets or fewer over the range a time column spans.
+    /// About 60 buckets or fewer over the range a time column spans: 67
+    /// years of Formula 1 races are years, not 800 months.
     pub fn for_range(min: &str, max: &str) -> Bucket {
         let span = match (days(min), days(max)) {
             (Some(a), Some(b)) => b - a,
@@ -156,8 +159,10 @@ impl Bucket {
             Bucket::Day
         } else if span <= 420 {
             Bucket::Week
-        } else {
+        } else if span <= 6 * 366 {
             Bucket::Month
+        } else {
+            Bucket::Year
         }
     }
 
@@ -169,6 +174,7 @@ impl Bucket {
             Bucket::Day => format!("DATE({inner})"),
             Bucket::Week => format!("DATE({inner} - INTERVAL WEEKDAY({inner}) DAY)"),
             Bucket::Month => format!("DATE_FORMAT({inner}, '%Y-%m-01')"),
+            Bucket::Year => format!("DATE_FORMAT({inner}, '%Y-01-01')"),
         }
     }
 }
@@ -213,6 +219,7 @@ mod tests {
         assert!(matches!(Bucket::for_range("2021-01-01", "2021-02-15"), Bucket::Day));
         assert!(matches!(Bucket::for_range("2021-01-01", "2021-12-31"), Bucket::Week));
         assert!(matches!(Bucket::for_range("2021-01-01 00:00:00", "2025-12-22 00:00:00"), Bucket::Month));
+        assert!(matches!(Bucket::for_range("1950-05-13", "2017-11-26"), Bucket::Year));
         let sql = "SELECT {bucket(t.\"at\")} AS bucket FROM x GROUP BY 1";
         assert_eq!(
             substitute(sql, |e| Bucket::Week.expr(false, e)),

@@ -133,6 +133,9 @@ pub struct TableRoles {
     pub columns: Vec<ColumnRoles>,
     #[serde(skip)]
     pub label_index: Option<usize>,
+    /// The column that names a row for a person, a lookup's or any table's.
+    #[serde(skip)]
+    pub name_index: Option<usize>,
 }
 
 impl TableRoles {
@@ -193,7 +196,9 @@ pub fn is_base_table(t: &Table) -> bool {
 
 const CREATED: &[&str] = &["created", "create", "inserted", "registered", "signup", "joined"];
 const UPDATED: &[&str] = &["updated", "modified", "changed"];
-const EVENT: &[&str] = &["at", "date", "time", "timestamp", "occurred", "ordered", "paid", "shipped", "sent", "started"];
+const EVENT: &[&str] = &[
+    "at", "date", "time", "timestamp", "occurred", "ordered", "paid", "shipped", "sent", "started", "departure", "arrival",
+];
 const CALENDAR: &[&str] = &["birth", "dob", "birthday", "year"];
 const DELETED: &[&str] = &["deleted", "removed", "archived"];
 const IDENTIFIER: &[&str] = &["id", "uuid", "guid", "key", "hash", "token", "code", "sku"];
@@ -205,7 +210,11 @@ const MONEY: &[&str] = &[
     "amount", "price", "total", "subtotal", "cost", "fee", "charge", "tax", "discount", "paid", "salary", "wage", "revenue",
 ];
 const CENTS: &[&str] = &["cents", "kopecks"];
-const QUANTITY: &[&str] = &["qty", "quantity", "count", "units", "items", "seats"];
+/// Numbers that add up: a quantity of things, or of points scored.
+const QUANTITY: &[&str] = &[
+    "qty", "quantity", "count", "units", "items", "seats", "points", "wins", "goals", "laps", "votes", "views", "clicks", "visits",
+    "milliseconds", "millis", "ms", "seconds", "secs", "minutes", "hours", "duration",
+];
 const LEVEL: &[&str] = &["balance", "stock", "inventory", "remaining", "level"];
 const RATIO: &[&str] = &["percent", "pct", "rate", "ratio", "share"];
 const SCORE: &[&str] = &["rating", "score", "stars", "rank", "priority"];
@@ -213,9 +222,42 @@ const PLACE: &[&str] = &["lat", "lng", "lon", "latitude", "longitude"];
 const CODE: &[&str] = &["zip", "postal", "phone"];
 const TEXT: &[&str] = &["name", "title", "description", "email", "url", "comment", "note", "body"];
 const EVENT_TABLE: &[&str] = &["log", "event", "events", "history", "audit", "activity"];
+/// Tables of a state as of a moment, whose rows are not events to count:
+/// ErgastF1's standings after each race.
+const SNAPSHOT_TABLE: &[&str] = &[
+    "standing", "standings", "snapshot", "snapshots", "balance", "balances", "inventory", "inventories", "stock", "stocks",
+];
+
+/// Words that name a row; the first found labels a table. Never a URL, an
+/// e-mail or a code — ErgastF1's seasons have only a year and a URL — and
+/// never a person's name, which is what a user wrote about someone.
+const LABEL: &[&str] = &["name", "title", "label"];
+const PERSON: &[&str] = &[
+    "first", "last", "given", "family", "middle", "full", "passenger", "user", "nick", "maiden", "contact", "fore", "sur",
+];
+
+/// The column that names a table's rows, if one does: `name` itself first,
+/// then a `…_name` or `…_title` that is not a person's.
+pub fn name_label(table: &Table, roles: &[ColumnRoles]) -> Option<usize> {
+    let candidates = |exact: bool| {
+        table.columns.iter().zip(roles).position(|(c, r)| {
+            let tk = tokens(&c.name);
+            let named = tk.last().is_some_and(|l| LABEL.contains(&l.as_str()));
+            !r.has(Role::Pk) && is_text(c) && named && (tk.len() == 1) == exact && !any(&tk, PERSON)
+        })
+    };
+    candidates(true).or_else(|| candidates(false))
+}
 
 /// Pairs that make two times of one table a period.
 const PERIOD: &[(&str, &str)] = &[("from", "to"), ("start", "end")];
+
+/// Few enough values to group by: up to 30, or up to 60 where they are few
+/// beside the rows — drivers' 41 nationalities over 840 drivers, not 59
+/// addresses over 412 invoices.
+pub fn few_values(n: f64, rows: Option<f64>) -> bool {
+    n <= 30.0 || (n <= 60.0 && rows.is_some_and(|r| n <= 0.1 * r))
+}
 
 /// The table a `<table>_id` column is named for, in the singular or in an
 /// English plural, when that table's primary key is one column of the same
@@ -345,7 +387,7 @@ fn column_roles(snapshot: &Snapshot, t: usize, c: usize, fks: &[Fk], reads_n: bo
         if is_integer(column) && any(&tk, CENTS) {
             add(&mut held, Role::Money, Kind::Named, "named in cents");
         }
-        if is_integer(column) && (any(&tk, QUANTITY) || tk.first().map(String::as_str) == Some("num")) {
+        if any(&tk, QUANTITY) || (is_integer(column) && tk.first().map(String::as_str) == Some("num")) {
             add(&mut held, Role::Quantity, Kind::Named, "named as a quantity");
         }
         let on_hand = tk.windows(2).any(|w| w[0] == "on" && w[1] == "hand");
@@ -395,14 +437,17 @@ fn column_roles(snapshot: &Snapshot, t: usize, c: usize, fks: &[Fk], reads_n: bo
         add(&mut held, Role::Category, Kind::Named, "named as a category");
     }
 
-    // Measured categories: never on money, a quantity or a decimal
+    // Measured categories: text only — an integer with few values is as
+    // often a position, a round or a count (ErgastF1's `round`, `wins`) — and
+    // only in a table large enough for few values to mean something
+    // (airlines' ten airplanes have ten values of everything)
     let has_measure = held.iter().any(|h| h.role.is_measure());
-    let excluded = has_measure || is_key || is_decimal(column) || is_float(column) || is_time(column);
-    if reads_n && !excluded && (is_text(column) || is_integer(column)) {
+    let excluded = has_measure || is_key || !is_text(column) || rows(table, reads_n).is_some_and(|r| r < 100.0);
+    if reads_n && !excluded {
         let n = distinct(table, column, reads_n);
         let mcv_count = stat(&column.features, "mcv_count", reads_n);
         let mcv_sum = stat(&column.features, "mcv_freq_sum", reads_n);
-        if let Some(n) = n.filter(|n| *n > 0.0 && *n <= 30.0) {
+        if let Some(n) = n.filter(|n| *n > 0.0 && few_values(*n, rows(table, reads_n))) {
             add(&mut held, Role::Category, Kind::Measured, format!("{n} distinct values"));
         } else if let (Some(k), Some(s)) = (mcv_count, mcv_sum) {
             if k > 0.0 && k <= 30.0 && s >= 0.95 {
@@ -411,13 +456,13 @@ fn column_roles(snapshot: &Snapshot, t: usize, c: usize, fks: &[Fk], reads_n: bo
         }
     }
 
-    // What nothing named: a number, and a short text or an integer that may
-    // be a category, which only a statistic can confirm
+    // What nothing named: a number, and a short text that may be a
+    // category, which only a statistic can confirm
     if held.is_empty() {
         if is_numeric(column) {
             add(&mut held, Role::Number, Kind::Typed, format!("typed {}", column.type_name));
         }
-        if (is_text(column) && !long_text(column)) || is_integer(column) {
+        if is_text(column) && !long_text(column) {
             add(&mut held, Role::Category, Kind::Typed, "could be a category by its type");
         }
     }
@@ -485,11 +530,15 @@ pub fn infer(snapshot: &Snapshot, reads_n: bool) -> Schema<'_> {
         let out = fks.iter().filter(|f| f.child == t).count();
         let referenced = fks.iter().filter(|f| f.parent == t && f.child != t).count();
         let has = |r: Role| roles.iter().any(|c| c.has(r));
-        let primary = |r: Role| roles.iter().any(|c| c.primary() == Some(r));
         let mut held = Vec::new();
 
-        if out >= 2 && (primary(Role::Money) || primary(Role::Quantity) || has(Role::Event)) {
-            add(&mut held, TableRole::Fact, Kind::Declared, format!("{out} foreign keys out and a measure or a time"));
+        // Two keys out make a fact, measure or not: ErgastF1's pit stops
+        // point at a race and a driver and hold only times and laps
+        let keys_only = roles.iter().zip(&table.columns).all(|(r, c)| {
+            r.has(Role::Pk) || r.has(Role::Fk) || r.has(Role::FkGuessed) || is_time(c)
+        });
+        if out >= 2 && !keys_only {
+            add(&mut held, TableRole::Fact, Kind::Declared, format!("{out} foreign keys out"));
         }
         let timed = has(Role::Created) || has(Role::Event);
         if timed && !has(Role::Updated) {
@@ -520,6 +569,9 @@ pub fn infer(snapshot: &Snapshot, reads_n: bool) -> Schema<'_> {
         if snapshot_key {
             add(&mut held, TableRole::Snapshot, Kind::Declared, "unique over a key and a date");
         }
+        if any(&tokens(&table.name), SNAPSHOT_TABLE) {
+            add(&mut held, TableRole::Snapshot, Kind::Named, "named as a state at a moment");
+        }
         let only_keys = roles.iter().zip(&table.columns).all(|(r, c)| {
             r.has(Role::Pk) || r.has(Role::Fk) || r.has(Role::FkGuessed) || is_time(c)
         });
@@ -527,19 +579,40 @@ pub fn infer(snapshot: &Snapshot, reads_n: bool) -> Schema<'_> {
             add(&mut held, TableRole::Link, Kind::Declared, "two foreign keys and nothing else");
         }
         let besides_key = roles.iter().filter(|r| !r.has(Role::Pk)).count();
-        if referenced >= 1 && besides_key <= 3 && !only_keys {
+        // A lookup is a list of names: it points nowhere itself — Chinook's
+        // `album` points at its artist and is a thing of its own — and holds
+        // no time and no measure — the airlines' `bookings` holds both
+        let mut lookup_label = None;
+        let plain = !has(Role::Created) && !has(Role::Event) && !roles.iter().any(|c| c.primary().is_some_and(Role::is_measure));
+        if referenced >= 1 && besides_key <= 3 && !only_keys && out == 0 && plain {
             add(&mut held, TableRole::Lookup, Kind::Declared, format!("referenced, {besides_key} columns besides its key"));
             if rows(table, reads_n).is_some_and(|r| r < 100.0) {
                 add(&mut held, TableRole::Lookup, Kind::Measured, "under 100 estimated rows");
             }
-            let label = roles
-                .iter()
-                .position(|r| r.has(Role::Text) && !r.has(Role::Pk))
-                .or_else(|| table.columns.iter().zip(roles).position(|(c, r)| is_text(c) && !r.has(Role::Pk)));
+            lookup_label = Some(name_label(table, roles));
+        }
+        let name = name_label(table, roles);
+        if let Some(label) = lookup_label {
             tables[t].label = label.map(|l| table.columns[l].name.clone());
             tables[t].label_index = label;
         }
+        tables[t].name_index = name;
         tables[t].held = held;
+    }
+
+    // A measure in a table of states at moments is a level: ErgastF1's
+    // standings hold each constructor's points so far, and their sum over
+    // races counts every point many times
+    for (t, table) in tables.iter_mut().enumerate() {
+        if !table.has(TableRole::Snapshot) {
+            continue;
+        }
+        let name = snapshot.tables[t].name.clone();
+        for c in &mut table.columns {
+            if c.held.iter().any(|h| matches!(h.role, Role::Money | Role::Quantity)) {
+                add(&mut c.held, Role::Level, Kind::Declared, format!("a measure in {name}, a state at moments"));
+            }
+        }
     }
 
     Schema { snapshot, reads_n, tables, fks }

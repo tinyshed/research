@@ -29,6 +29,7 @@ const PAGE: &str = include_str!("page.html");
 struct Panel {
     id: String,
     template: String,
+    aggregate: String,
     chart: String,
     title: String,
     sql: String,
@@ -140,6 +141,7 @@ fn main() {
         let mut panel = Panel {
             id: id.clone(),
             template: c["template"].as_str().unwrap_or_default().into(),
+            aggregate: c["aggregate"].as_str().unwrap_or_default().into(),
             chart: c["chart"].as_str().unwrap_or_default().into(),
             title: c["title"].as_str().unwrap_or_default().into(),
             reasons: strings(&best["reasons"]),

@@ -129,7 +129,7 @@ fn hard_rule(c: &Candidate, schema: &Schema, config: Config) -> Option<&'static 
             return Some("H2: a snapshot summed over time");
         }
     }
-    if let Some(g) = &c.category {
+    if let Some(g) = c.category.as_ref().filter(|_| c.template != Template::T9) {
         let r = roles_of(schema, g);
         let gtable = &schema.snapshot.tables[g.t];
         let is_label = schema.tables[g.t].label_index == Some(g.c) && g.joined;
@@ -137,8 +137,8 @@ fn hard_rule(c: &Candidate, schema: &Schema, config: Config) -> Option<&'static 
             return Some("H3: grouped by what is not a category");
         }
         let n = distinct(gtable, column_of(schema, g), reads_n);
-        if n.is_some_and(|n| n > 30.0) {
-            return Some("H3: grouped by over 30 values");
+        if n.is_some_and(|n| !crate::roles::few_values(n, rows(gtable, reads_n))) {
+            return Some("H3: grouped by too many values");
         }
         if c.template == Template::T6 && n.is_some_and(|n| n > 6.0) {
             return Some("T6: split by over 6 values");
@@ -184,7 +184,8 @@ fn abstention(c: &Candidate, schema: &Schema) -> Option<&'static str> {
                 .any(|t| POPULATION.contains(&t.as_str()) && !(t == "state" && address))
     });
     let by_that = c.category.as_ref().is_some_and(|g| g.t == m.t && Some(g.c) == population);
-    let sum_by_another = c.template == Template::T4 && c.aggregate == Aggregate::Sum && !by_that;
+    let sum_by_another =
+        matches!(c.template, Template::T4 | Template::T9) && c.aggregate == Aggregate::Sum && !by_that;
     if population.is_some() && (c.template == Template::T3 || sum_by_another) {
         return Some("needs-population");
     }
@@ -205,8 +206,8 @@ fn abstention(c: &Candidate, schema: &Schema) -> Option<&'static str> {
 fn evidence_points(r: &ColumnRoles, role: Role) -> (i32, &'static str) {
     match r.get(role).map(|h| h.strongest()) {
         Some(Kind::Declared | Kind::Measured) | None => (0, ""),
-        Some(Kind::Named) => (2, "named only"),
-        Some(Kind::Typed) => (3, "typed only"),
+        Some(Kind::Named) => (1, "named only"),
+        Some(Kind::Typed) => (2, "typed only"),
     }
 }
 
@@ -220,10 +221,15 @@ fn score_one(c: &Candidate, schema: &Schema) -> (Vec<String>, Vec<Penalty>) {
         }
     };
 
-    let template_points = match c.template {
-        Template::T1 | Template::T2 => 0,
-        Template::T3 | Template::T4 | Template::T8 => 1,
-        Template::T5 | Template::T6 | Template::T7 => 2,
+    // Sums first, counts beside them: a person looks for money and volume
+    // over time before rows by a category
+    let template_points = match (c.template, c.aggregate) {
+        (Template::T1 | Template::T2, _) => 0,
+        (Template::T9, _) => 1,
+        (Template::T3 | Template::T4, Aggregate::Avg) => 1,
+        (Template::T3 | Template::T4, _) => 0,
+        (Template::T8, _) => 1,
+        (Template::T5 | Template::T6 | Template::T7, _) => 2,
     };
     add(format!("template {:?}", c.template), template_points);
     let Some(t) = c.t else { return (flags, penalties) };
@@ -256,8 +262,9 @@ fn score_one(c: &Candidate, schema: &Schema) -> (Vec<String>, Vec<Penalty>) {
             add(format!("{} named as money on an integer", m.column), 1);
         }
         let points = match r.primary() {
-            Some(Role::Money) => 0,
-            Some(Role::Quantity | Role::Score | Role::Ratio) => 1,
+            Some(Role::Money) => -1,
+            Some(Role::Quantity) => 0,
+            Some(Role::Score | Role::Ratio) => 1,
             _ => 3,
         };
         add(format!("{} as a measure", m.column), points);
@@ -279,22 +286,28 @@ fn score_one(c: &Candidate, schema: &Schema) -> (Vec<String>, Vec<Penalty>) {
         1
     };
     add(format!("{} as a table", table.name), table_points);
+    let counts = c.aggregate == Aggregate::Count && c.measure.is_none() && c.template != Template::T8;
+    if counts && troles.has(TableRole::Snapshot) {
+        add(format!("rows of {}, a state at moments, counted", table.name), 2);
+    }
+    // A table of eight employees is not an overview's subject
     match rows(table, reads_n) {
-        Some(n) if n < 100.0 => add(format!("{} under 100 rows", table.name), 3),
+        Some(n) if n < 50.0 => add(format!("{} under 50 rows", table.name), 5),
+        Some(n) if n < 200.0 => add(format!("{} under 200 rows", table.name), 2),
         Some(n) if n < 1000.0 => add(format!("{} under 1 000 rows", table.name), 1),
         Some(_) => {}
         None => add(format!("{} rows unknown", table.name), 1),
     }
 
-    // The category
-    if let Some(g) = &c.category {
+    // The category; a top list shows its twelve most whatever their number
+    if let Some(g) = c.category.as_ref().filter(|_| c.template != Template::T9) {
         let col = column_of(schema, g);
         let gtable = &schema.snapshot.tables[g.t];
         let declared = (!col.enum_labels.is_empty()).then(|| col.enum_labels.len() as f64)
             .or_else(|| crate::names::is_bool(col).then_some(2.0));
         match declared.or_else(|| distinct(gtable, col, reads_n)) {
             Some(n) if (3.0..=12.0).contains(&n) => {}
-            Some(n) if n <= 2.0 => add(format!("{} of {n} values", g.column), 1),
+            Some(n) if n <= 2.0 => add(format!("{} of {n} values", g.column), 2),
             Some(n) => add(format!("{} of {n} values", g.column), 1),
             None => add(format!("{} of unknown size", g.column), 1),
         }
@@ -425,7 +438,8 @@ pub fn score(candidates: &[Candidate], schema: &Schema, config: Config) -> (Vec<
                         && candidates[k].main_column().is_some()
                         && candidates[k].main_column() == c.main_column()
                 });
-                let at = scored[i].total + 3 * same_table + if same_column { 5 } else { 0 };
+                let same_template = chosen.iter().filter(|&&k| candidates[k].template == c.template).count() as i32;
+                let at = scored[i].total + 3 * same_table + 2 * same_template + if same_column { 5 } else { 0 };
                 (at, c.order, i)
             })
             .min();

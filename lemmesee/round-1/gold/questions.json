@@ -1,0 +1,238 @@
+{
+  "about": "Gold questions: what a person would want answered first about each development fixture, written by the agent on 28 October 2026 as a draft for Dmitry to edit. Each says what it computes in terms of round 1's analytical question — base, grain, measure, time, breakdown and the joins to reach them — what the generator would need that it lacks, and the candidate that would answer it where one could. They are for diagnosing the pipeline, never for training or for tuning a pilot fixture.",
+  "fixtures": {
+    "chinook": {
+      "engine": "postgres",
+      "questions": [
+        {
+          "question": "Revenue month by month",
+          "why": "the first thing a store's owner looks at",
+          "base": "invoice", "grain": "one invoice", "measure": "sum(invoice.total)", "time": "invoice.invoice_date",
+          "breakdown": null, "path": [], "needs": [],
+          "match": {"template": "T3", "table": "invoice", "aggregate": "sum", "measure": "invoice.total", "time": "invoice.invoice_date"}
+        },
+        {
+          "question": "Invoices month by month",
+          "why": "volume beside revenue",
+          "base": "invoice", "grain": "one invoice", "measure": "count(*)", "time": "invoice.invoice_date",
+          "breakdown": null, "path": [], "needs": [],
+          "match": {"template": "T1", "table": "invoice", "time": "invoice.invoice_date"}
+        },
+        {
+          "question": "Revenue by billing country",
+          "why": "where the money comes from",
+          "base": "invoice", "grain": "one invoice", "measure": "sum(invoice.total)", "time": null,
+          "breakdown": "invoice.billing_country", "path": [], "needs": [],
+          "match": {"template": "T4", "table": "invoice", "aggregate": "sum", "measure": "invoice.total", "category": "invoice.billing_country"}
+        },
+        {
+          "question": "Revenue by genre",
+          "why": "what sells, by the catalog's own division",
+          "base": "invoice_line", "grain": "one line", "measure": "sum(invoice_line.unit_price * invoice_line.quantity)", "time": null,
+          "breakdown": "genre.name", "path": ["invoice_line.track_id → track", "track.genre_id → genre"],
+          "needs": ["a measure that is an expression", "two joins"], "match": null
+        },
+        {
+          "question": "Revenue by genre, month by month",
+          "why": "how the mix moves",
+          "base": "invoice_line", "grain": "one line", "measure": "sum(invoice_line.unit_price * invoice_line.quantity)",
+          "time": "invoice.invoice_date", "breakdown": "genre.name",
+          "path": ["invoice_line.invoice_id → invoice", "invoice_line.track_id → track", "track.genre_id → genre"],
+          "needs": ["a measure that is an expression", "three joins"], "match": null
+        },
+        {
+          "question": "The twelve best-selling tracks",
+          "why": "the hits",
+          "base": "invoice_line", "grain": "one line", "measure": "sum(invoice_line.quantity)", "time": null,
+          "breakdown": "track, named by track.name", "path": ["invoice_line.track_id → track"], "needs": [],
+          "match": {"template": "T9", "table": "invoice_line", "aggregate": "sum", "measure": "invoice_line.quantity", "category": "track.name"}
+        },
+        {
+          "question": "The twelve customers who spend the most",
+          "why": "who matters",
+          "base": "invoice", "grain": "one invoice", "measure": "sum(invoice.total)", "time": null,
+          "breakdown": "customer", "path": ["invoice.customer_id → customer"],
+          "needs": ["a label for a person, which the rules refuse"], "match": null
+        },
+        {
+          "question": "Tracks by genre",
+          "why": "the catalog's shape",
+          "base": "track", "grain": "one track", "measure": "count(*)", "time": null,
+          "breakdown": "genre.name", "path": ["track.genre_id → genre"], "needs": [],
+          "match": {"template": "T2", "table": "track", "category": "genre.name"}
+        },
+        {
+          "question": "Customers by country",
+          "why": "where the customers are",
+          "base": "customer", "grain": "one customer", "measure": "count(*)", "time": null,
+          "breakdown": "customer.country", "path": [], "needs": [],
+          "match": {"template": "T2", "table": "customer", "category": "customer.country"}
+        },
+        {
+          "question": "Average invoice, month by month",
+          "why": "basket size",
+          "base": "invoice", "grain": "one invoice", "measure": "avg(invoice.total)", "time": "invoice.invoice_date",
+          "breakdown": null, "path": [], "needs": [],
+          "match": {"template": "T3", "table": "invoice", "aggregate": "avg", "measure": "invoice.total", "time": "invoice.invoice_date"}
+        },
+        {
+          "question": "Revenue by support representative",
+          "why": "how the staff's accounts compare",
+          "base": "invoice", "grain": "one invoice", "measure": "sum(invoice.total)", "time": null,
+          "breakdown": "employee", "path": ["invoice.customer_id → customer", "customer.support_rep_id → employee"],
+          "needs": ["two joins", "a label for a person, which the rules refuse"], "match": null
+        }
+      ]
+    },
+    "airlines": {
+      "engine": "postgres",
+      "questions": [
+        {
+          "question": "Bookings day by day",
+          "why": "demand",
+          "base": "bookings", "grain": "one booking", "measure": "count(*)", "time": "bookings.book_date",
+          "breakdown": null, "path": [], "needs": [],
+          "match": {"template": "T1", "table": "bookings", "time": "bookings.book_date"}
+        },
+        {
+          "question": "Booked revenue day by day",
+          "why": "money in",
+          "base": "bookings", "grain": "one booking", "measure": "sum(bookings.total_amount)", "time": "bookings.book_date",
+          "breakdown": null, "path": [], "needs": [],
+          "match": {"template": "T3", "table": "bookings", "aggregate": "sum", "measure": "bookings.total_amount", "time": "bookings.book_date"}
+        },
+        {
+          "question": "Flights day by day",
+          "why": "the operation's size",
+          "base": "flights", "grain": "one flight", "measure": "count(*)", "time": "flights.scheduled_departure",
+          "breakdown": null, "path": [], "needs": [],
+          "match": {"template": "T1", "table": "flights", "time": "flights.scheduled_departure"}
+        },
+        {
+          "question": "Flights by status",
+          "why": "how many flew, were cancelled, are delayed",
+          "base": "flights", "grain": "one flight", "measure": "count(*)", "time": null,
+          "breakdown": "flights.status", "path": [], "needs": [],
+          "match": {"template": "T2", "table": "flights", "category": "flights.status"}
+        },
+        {
+          "question": "Segment revenue by fare class",
+          "why": "what each class earns",
+          "base": "segments", "grain": "one passenger on one flight", "measure": "sum(segments.price)", "time": null,
+          "breakdown": "segments.fare_conditions", "path": [], "needs": [],
+          "match": {"template": "T4", "table": "segments", "aggregate": "sum", "measure": "segments.price", "category": "segments.fare_conditions"}
+        },
+        {
+          "question": "Passengers per flight",
+          "why": "how full the flights are",
+          "base": "segments", "grain": "one passenger on one flight", "measure": "count(*) per flight", "time": null,
+          "breakdown": "flight", "path": ["segments.flight_id → flights"], "needs": [],
+          "match": {"template": "T5", "table": "segments", "join_to": "flights"}
+        },
+        {
+          "question": "Flights by departure airport",
+          "why": "the busiest airports",
+          "base": "flights", "grain": "one flight", "measure": "count(*)", "time": null,
+          "breakdown": "airports_data.airport_name", "path": ["flights.route_no → routes", "routes.departure_airport → airports_data"],
+          "needs": ["a key the schema does not declare: routes has no primary key", "two joins", "a label in jsonb"], "match": null
+        },
+        {
+          "question": "Average departure delay, day by day",
+          "why": "punctuality",
+          "base": "flights", "grain": "one flight", "measure": "avg(flights.actual_departure - flights.scheduled_departure)",
+          "time": "flights.scheduled_departure", "breakdown": null, "path": [],
+          "needs": ["a measure that is an expression of two times"], "match": null
+        },
+        {
+          "question": "Tickets per booking",
+          "why": "party size",
+          "base": "tickets", "grain": "one ticket", "measure": "count(*) per booking", "time": null,
+          "breakdown": "booking", "path": ["tickets.book_ref → bookings"], "needs": [],
+          "match": {"template": "T5", "table": "tickets", "join_to": "bookings"}
+        },
+        {
+          "question": "Booked revenue by fare class, day by day",
+          "why": "the mix over time",
+          "base": "segments", "grain": "one passenger on one flight", "measure": "sum(segments.price)",
+          "time": "flights.scheduled_departure", "breakdown": "segments.fare_conditions", "path": ["segments.flight_id → flights"],
+          "needs": ["a measure over time split by a category"], "match": null
+        }
+      ]
+    },
+    "ergastf1": {
+      "engine": "mysql",
+      "questions": [
+        {
+          "question": "Races season by season",
+          "why": "how the calendar grew",
+          "base": "races", "grain": "one race", "measure": "count(*)", "time": "races.date",
+          "breakdown": null, "path": [], "needs": [],
+          "match": {"template": "T1", "table": "races", "time": "races.date"}
+        },
+        {
+          "question": "Points by constructor, the twelve most",
+          "why": "the teams that scored",
+          "base": "results", "grain": "one driver in one race", "measure": "sum(results.points)", "time": null,
+          "breakdown": "constructor, named by constructors.name", "path": ["results.constructorId → constructors"], "needs": [],
+          "match": {"template": "T9", "table": "results", "aggregate": "sum", "measure": "results.points", "category": "constructors.name"}
+        },
+        {
+          "question": "Points by driver, the twelve most",
+          "why": "the drivers who scored",
+          "base": "results", "grain": "one driver in one race", "measure": "sum(results.points)", "time": null,
+          "breakdown": "driver", "path": ["results.driverId → drivers"],
+          "needs": ["a label for a person, which the rules refuse"], "match": null
+        },
+        {
+          "question": "Wins by constructor, the twelve most",
+          "why": "who won",
+          "base": "results", "grain": "one driver in one race", "measure": "count(*) where results.position = 1", "time": null,
+          "breakdown": "constructor, named by constructors.name", "path": ["results.constructorId → constructors"],
+          "needs": ["a filter on the rows"], "match": null
+        },
+        {
+          "question": "Races by circuit, the twelve most",
+          "why": "the classic tracks",
+          "base": "races", "grain": "one race", "measure": "count(*)", "time": null,
+          "breakdown": "circuit, named by circuits.name", "path": ["races.circuitId → circuits"], "needs": [],
+          "match": {"template": "T9", "table": "races", "aggregate": "count", "category": "circuits.name"}
+        },
+        {
+          "question": "Results by finishing status",
+          "why": "how races end: finished, a lap down, an engine, an accident",
+          "base": "results", "grain": "one driver in one race", "measure": "count(*)", "time": null,
+          "breakdown": "status.status", "path": ["results.statusId → status"], "needs": [],
+          "match": {"template": "T2", "table": "results", "category": "status.status"}
+        },
+        {
+          "question": "Pit stops season by season",
+          "why": "how strategy changed",
+          "base": "pitStops", "grain": "one stop", "measure": "count(*)", "time": "races.date",
+          "breakdown": null, "path": ["pitStops.raceId → races"], "needs": [],
+          "match": {"template": "T1", "table": "pitStops", "time": "races.date"}
+        },
+        {
+          "question": "Average pit stop, season by season",
+          "why": "how fast the crews got",
+          "base": "pitStops", "grain": "one stop", "measure": "avg(pitStops.milliseconds)", "time": "races.date",
+          "breakdown": null, "path": ["pitStops.raceId → races"], "needs": [],
+          "match": {"template": "T3", "table": "pitStops", "aggregate": "avg", "measure": "pitStops.milliseconds", "time": "races.date"}
+        },
+        {
+          "question": "Drivers by nationality",
+          "why": "where drivers come from",
+          "base": "drivers", "grain": "one driver", "measure": "count(*)", "time": null,
+          "breakdown": "drivers.nationality", "path": [], "needs": [],
+          "match": {"template": "T2", "table": "drivers", "category": "drivers.nationality"}
+        },
+        {
+          "question": "Results season by season",
+          "why": "the size of the field over time",
+          "base": "results", "grain": "one driver in one race", "measure": "count(*)", "time": "races.date",
+          "breakdown": null, "path": ["results.raceId → races"], "needs": [],
+          "match": {"template": "T1", "table": "results", "time": "races.date"}
+        }
+      ]
+    }
+  }
+}

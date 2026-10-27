@@ -131,9 +131,9 @@ fn statistics_remove_what_the_schema_could_not() {
             .expect("rows of invoice by billing_address");
         scored[i].removed_by.clone()
     };
-    // 59 distinct addresses: only PostgreSQL's statistics say so
+    // 59 distinct addresses over 412 invoices: only PostgreSQL's statistics say so
     assert_eq!(by_address(POSTGRES, Config::A), None);
-    assert_eq!(by_address(POSTGRES, Config::B1).as_deref(), Some("H3: grouped by over 30 values"));
+    assert_eq!(by_address(POSTGRES, Config::B1).as_deref(), Some("H3: grouped by too many values"));
     assert_eq!(by_address(MYSQL, Config::B1), None);
 }
 

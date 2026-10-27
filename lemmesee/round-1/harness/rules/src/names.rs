@@ -106,10 +106,13 @@ pub fn length(c: &Column) -> Option<u32> {
     if is_text(c) { modifiers(c).first().copied() } else { None }
 }
 
-/// Text too long to group by: `text` itself, or a `varchar` over 100.
+/// Text too long to group by, by its type alone: MySQL's medium and long
+/// texts, or a declared length over 1 000. PostgreSQL's `text` and the
+/// `varchar(255)` many frameworks give every string say nothing: the
+/// airlines' `flights.status` is `text`, ErgastF1's `status` `varchar(255)`.
 pub fn long_text(c: &Column) -> bool {
     let b = base(c);
-    matches!(b.as_str(), "text" | "mediumtext" | "longtext" | "citext") || length(c).is_some_and(|n| n > 100)
+    matches!(b.as_str(), "mediumtext" | "longtext") || length(c).is_some_and(|n| n > 1000)
 }
 
 /// A default that stamps the moment a row is written.
