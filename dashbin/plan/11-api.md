@@ -182,6 +182,24 @@ $ dashbin see ./data --save overview.dash.toml
   Dashbin.
 - **It reads other stores the same way**: `postgres://…`, `mysql://…`, a
   Prometheus address — whatever a built-in plugin opens.
+- **It looks at what a source says about itself, not at its rows**: the
+  catalog, keys and the database's own statistics (`information_schema`,
+  `pg_stats`), and at most a bounded sample under a timeout, `TABLESAMPLE`
+  where the engine has it. Six panels never cost a full scan of someone's
+  production database; what looking costs is measured (chapter 14).
+- **It proposes from safe templates and only ranks them.** A generator writes
+  the candidates a column's type allows — rows per day over a time column,
+  rows by a text column with few values, a sum of a number that looks like
+  money — and never one that makes no sense, such as a sum of an identifier;
+  hard rules say what may be drawn, and weights, as Draco's (chapter 9), or a
+  small model that earns its place (chapter 14) only put the allowed ones in
+  order. Nothing writes free SQL.
+- **A meaning confirmed once is known from then on.** On a guessed panel, `m`
+  lets the person say what a column means — `amount` is in kopecks, paid is
+  `status = 'paid'`, refunds are `status = 'refunded'` — and that is kept
+  beside the instance: in the hub's metadata, or in the project's
+  `.dashbin/see.toml` without a hub. Panels built from a confirmed meaning are
+  known, not guessed, and nobody is asked twice.
 - **`--save` writes what it drew as a dashboard's file**, the start of one
   rather than a wizard.
 
