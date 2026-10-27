@@ -1,0 +1,13 @@
+[workspace]
+resolver = "3"
+members = ["snapshot"]
+
+[workspace.package]
+edition = "2024"
+publish = false
+
+[workspace.dependencies]
+postgres = "0.19.14"
+mysql = { version = "28.0.4", default-features = false, features = ["minimal-rust"] }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"

@@ -1,0 +1,5 @@
+SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(SQL_TEXT, ' */', 1), 'lemmesee:', -1) AS id,
+       TIMER_WAIT / 1e9 AS server_ms, ROWS_EXAMINED, ROWS_SENT, SELECT_SCAN,
+       NO_INDEX_USED, CREATED_TMP_TABLES, CREATED_TMP_DISK_TABLES
+FROM performance_schema.events_statements_history_long
+WHERE SQL_TEXT LIKE '%/* lemmesee:%' AND THREAD_ID <> PS_CURRENT_THREAD_ID()

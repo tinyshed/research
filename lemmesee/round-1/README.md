@@ -1,8 +1,12 @@
 # Round 1: rules on the schema and statistics
 
-**Status: specified 27 October 2026; nothing built, nothing run.** This folder
-is round 1 before its code: what it reads, what it proposes, on which
-databases, and how people judge it. The harness is built here against these
+**Status: specified 27 October 2026; the snapshot built and checked on
+Chinook against both servers, nothing measured.** This folder is round 1
+before its code: what it reads, what it proposes, on which databases, and
+how people judge it. Built so far: `compose.yaml`, Chinook's fetch and load
+in `fixtures/`, and the `snapshot` crate in `harness/`, which reads tiers S, N
+and Q as [contract.md](contract.md) says and corrected it where the servers
+disagreed. The harness is built here against these
 files and committed before it runs, as every round is; the report goes to
 `../reports/rules-<date>.md`. A change to a line below after the harness is
 committed is a change to the round, said in its report.

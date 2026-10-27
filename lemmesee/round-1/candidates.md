@@ -53,7 +53,7 @@ the report counts how often.
 | `deleted` | named: `deleted`, `removed`, `archived` on a time or boolean type |
 | `pk`, `fk` | declared keys; `fk` also guessed when `<table>_id` or `<table>id` names a table whose primary key is `id` of a compatible type, kept as `fk-guessed` |
 | `identifier` | named: `id`, `uuid`, `guid`, `key`, `hash`, `token`, `code`, `sku`; typed: `uuid`; measured: `n_distinct` = −1 on a non-time column |
-| `category` | declared: an enum type, a MySQL `ENUM`, a `CHECK … IN (…)`, a boolean; measured: a positive `n_distinct` of 30 or fewer, or common values covering 95 % of rows in 30 or fewer; named, weak: `status`, `state`, `type`, `kind`, `category`, `level`, `role`, `tier`, `plan`, `country`, `source`, `channel` |
+| `category` | declared: an enum type, a MySQL `ENUM`, a `CHECK … IN (…)`, a boolean; measured: a positive `n_distinct` of 30 or fewer, or common values covering 95 % of rows in 30 or fewer — only on a column with no `money`, `quantity`, `level`, `ratio` or `score` role, and never on a decimal or a float, since Chinook's `invoice.total` has 23 values and `invoice_line.unit_price` 2 and both are money; named, weak: `status`, `state`, `type`, `kind`, `category`, `level`, `role`, `tier`, `plan`, `country`, `source`, `channel` |
 | `currency` | named: `currency`, `currency_code`, `ccy`; typed: `char(3)` beside a `money` column; measured with V: three-letter values |
 | `money` | typed: `numeric` or `decimal` with scale 2 or 4, or `money`; named: `amount`, `price`, `total`, `subtotal`, `cost`, `fee`, `charge`, `tax`, `discount`, `paid`, `salary`, `wage`, `revenue`, and integers named `*_cents`, `*_kopecks` |
 | `quantity` | an integer named `qty`, `quantity`, `count`, `num_*`, `*_count`, `units`, `items`, `seats` |
