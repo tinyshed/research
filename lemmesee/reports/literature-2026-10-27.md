@@ -1,5 +1,11 @@
 # What has been done before, 27 October 2026
 
+**Follow-up, 27 October 2026:** the novelty assessment below is superseded by
+[A starting point after the abstract search](research-start-2026-10-27.md).
+It adds Metabase X-rays and CompassQL, checks SeeDB's multi-table setting and
+ScaleViz's zero-cost features, and separates catalog access from value
+access and panel execution. The original abstract review is retained below.
+
 Round 0 of [the plan](../plan.md): what is already known about suggesting
 views of data automatically, about guessing what a column means, and about
 spending a budget to do either — and how much of lemmesee's three questions

@@ -16,7 +16,11 @@ only what passes the lines Dashbin's plan sets
 |---|---|
 | [plan.md](plan.md) | the questions, the configurations compared, the stores and corpora, how it is measured, the rounds in order |
 | [reports/](reports/) | the dated rounds; `README.md` indexes them |
+| [opus-brief.md](opus-brief.md) | Russian handoff for specifying the first rules and judging pilot, with the follow-up's sources |
 
-**Status, 27 October 2026**: the plan is written and round 0, what has been
-done before, read from abstracts; the closest works are to be read whole.
-Nothing is measured yet.
+**Status, 27 October 2026**: round 0's abstract search has a
+[follow-up](reports/research-start-2026-10-27.md) from method sections,
+implementation code and database documentation. It narrows the novelty
+claims and proposes the first rules and judging pilot; a
+[wider reading](reports/wider-reading-2026-10-27.md) adds the older and
+neighbouring work both missed. Nothing is measured yet.

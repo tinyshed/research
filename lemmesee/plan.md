@@ -1,7 +1,9 @@
 # lemmesee: the plan
 
-**Status: written 27 October 2026; round 0 read, nothing run.** A round changes this file
-when it settles something; a number lives in its report.
+**Status: written 27 October 2026; round 0 and its follow-up reviewed, nothing run.**
+A round changes this file when it settles something; a number lives in its report.
+The [follow-up](reports/research-start-2026-10-27.md) narrows the novelty
+assessment and proposes an acquisition contract and a rules/judging pilot.
 
 ## The question
 
@@ -31,9 +33,10 @@ than one score.
   — rows per day over a time, rows by a category with few values, a sum of a
   money-like number — and hard rules say what may be drawn; whatever learns
   only puts them in order.
-- **Not trained on anyone's database.** Public corpora only; the databases of
-  Dmitry's sites are measured on, never learned from, and are reported as
-  counts without a table's or a column's name.
+- **Not trained on anyone's database.** Public corpora and rows generated for
+  public schemas only; the databases of Dmitry's sites are measured on, never
+  learned from, and are reported as counts without a table's or a column's
+  name.
 
 ## Three questions
 
@@ -62,7 +65,8 @@ D comes last.
 
 | Kind | What | For |
 |---|---|---|
-| schemas | SchemaPile: 221 171 schemas, 1.7 million tables, 700 thousand foreign keys, data for more than 340 thousand tables; its permissively licensed part, SchemaPile-Perm | variety of names, types and relations, and some data |
+| schemas | SchemaPile: 221 171 schemas, 1.7 million tables, 700 thousand foreign keys, data for more than 340 thousand tables; its permissively licensed part, SchemaPile-Perm: 22 989 schemas, 199 thousand tables, data in 7.1 thousand schemas at 29 values a column | variety of names, types and relations; too little data to give statistics |
+| generated rows | rows for public schemas — SchemaPile-Perm's and the pilot's — written offline by a small language model such as Claude Haiku as a generator for each table, run with a seed at the sizes a round sets, loaded into PostgreSQL and MySQL | statistics the engines compute themselves at real sizes, traps whose true meaning is known, fixtures for the harness |
 | databases with data | Chinook, Pagila, AdventureWorks, a Stack Overflow dump, BIRD's databases | real runs, real statistics, the database's cost of each step |
 | tables with charts | VizML's corpus, Table2Charts' | pre-training or comparison; a chart someone drew is not proof it was right |
 | columns with types | GitTables, VizNet, SOTAB | what a column means, as a feature |
@@ -71,6 +75,30 @@ D comes last.
 
 Every corpus's licence is read before it is used, and only what it allows is
 trained on or published. A judged set is published only if its sources allow.
+
+**Generated rows are allowed**, decided on 27 October 2026: a language model
+is used offline, as it may be anywhere outside the product, under these rules.
+
+- **The model writes a generator, not the rows**: a short program for each
+  table, whose sizes, nulls, skew, time order and whether rows are ever
+  updated are set by the round and written down. The generators are kept with
+  the round, because the model will not write them the same way twice; the
+  rows are rebuilt from a seed, pinned by a hash, and never committed.
+- **Names stay the schema's own.** A generator fills tables; it adds or
+  renames no table and no column, except in a trap, which is marked as built.
+- **Traps are built on purpose**: orders never paid, refunds in a table of
+  their own, several currencies, `order_items` that multiply an order's
+  amount, a `created_at` that is an import's time. Their true meaning is known
+  by construction, so a panel's harm is checked there without a domain owner.
+- **The statistics are the engine's, the values are the model's.** PostgreSQL
+  and MySQL compute statistics with their own `ANALYZE`, so their shape and
+  their cost are real; what the rows hold is the model's guess. Whatever is
+  learned or tuned on generated rows is tested on real databases with data —
+  the public ones, and Dmitry's as counts — before it is believed, never on
+  rows from the same generators.
+- **Never a judgment.** People judge what is useful; no model judges what is
+  kept. A report names the model, its version and the prompt behind each
+  generator.
 
 ## How it is measured
 
@@ -101,9 +129,14 @@ it are in its chapter 14 and are the ones that decide.
 ## The rounds, in order
 
 0. **What has been done before** — [read on 27 October](reports/literature-2026-10-27.md)
-   from abstracts; ScaleViz (2024) already budgets which statistics to
-   compute, so the second question is argued against it. The closest four are
-   read whole next.
+   from abstracts, then [checked further](reports/research-start-2026-10-27.md)
+   in method sections, code and engine documentation. Metabase's templates,
+   SeeDB's multi-table setting and ScaleViz's cheap features narrow the
+   comparison. A [wider search](reports/wider-reading-2026-10-27.md) adds
+   twenty years of finding measures and dimensions in a schema, VizDeck's
+   learning from keep and drop, prediction under a test-time budget for D, and
+   that the column-type corpora's labels come from names. Full-paper reading
+   remains open.
 1. **Rules on the schema and statistics, A and B**, on the databases with data
    and on TinyStore's own stores, with a first judging pilot: how long judging
    takes a person, and whether two people agree.
@@ -118,10 +151,17 @@ Each round is committed before it runs, in `lemmesee/`, and reported in
 
 ## What could be new
 
-Not "recommending charts without a language model" — that is old. After
-round 0, what may be: recommending from a schema and the database's own
-statistics before reading a row, over several related tables, which was not
-found; counting the cost on the live database and abstaining, beside
-ScaleViz's budget of computed statistics; a ranker whose size and memory are
-bounded, which was not found; and a judged set of multi-table schemas, if its
-sources let it be published.
+Not "recommending charts without a language model", using several tables,
+beginning with cheap features, or learning from what people keep: these have
+predecessors. The working
+hypothesis is the combination of existing planner statistics, a compact
+offline-trained ranker, explicit semantic abstention and measured work on
+the source database. Its novelty is not established by this search. A judged
+set may be useful if its sources let it be published, without a claim that
+no related set exists.
+
+Before round 1 runs, specify which scalar statistics B can read on each
+engine, distinguish missing statistics from zero, and separate the costs of
+discovery, preview and panel execution. Value-bearing catalog fields are a
+separate input policy. The follow-up and [Opus brief](opus-brief.md) describe
+the proposed pilot; they do not change Dashbin's shipping gates.
