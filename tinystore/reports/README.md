@@ -310,3 +310,4 @@ Incremental publication; static measurements are complete, concurrent matrices a
 - [Locks with the actual grouped Core writer](core-locks-followup-2026-10-15.md)
 - [Per-pass measurement tables](index-foundations-measurements-2026-10-15.md)
 - [Additional research decision matrix and handoff](followup-handoff-2026-10-15.md)
+- [Pingmon's metrics.db, and records' search by trigrams](pingmon-storage-2026-10-27.md)
