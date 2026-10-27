@@ -1,0 +1,88 @@
+== issue_aggregate_in_memory
+by hand:   sum 0.9999999999999999, increase -30.0
+in memory: sum Exact(1.0), increase Exact(170.0), ExactSum 1.0, in 84.80µs
+metrics:   sum Exact(1.0), increase Exact(170.0), in 20.6ms with a store
+== issue_backup_moments
+opened the database, then metrics
+backup  0: the cursor says    104, the newest sample kept is    104
+backup  1: the cursor says    251, the newest sample kept is    251
+backup  2: the cursor says    390, the newest sample kept is    390
+backup  3: the cursor says    537, the newest sample kept is    537
+backup  4: the cursor says    683, the newest sample kept is    683
+backup  5: the cursor says    826, the newest sample kept is    826
+backup  6: the cursor says    947, the newest sample kept is    947
+backup  7: the cursor says   1085, the newest sample kept is   1085
+backup  8: the cursor says   1234, the newest sample kept is   1234
+backup  9: the cursor says   1381, the newest sample kept is   1381
+backup 10: the cursor says   1530, the newest sample kept is   1530
+backup 11: the cursor says   1675, the newest sample kept is   1675
+backup 12: the cursor says   1824, the newest sample kept is   1824
+backup 13: the cursor says   1971, the newest sample kept is   1972
+backup 14: the cursor says   2120, the newest sample kept is   2121
+backup 15: the cursor says   2272, the newest sample kept is   2272
+backup 16: the cursor says   2416, the newest sample kept is   2416
+backup 17: the cursor says   2567, the newest sample kept is   2567
+backup 18: the cursor says   2712, the newest sample kept is   2713
+backup 19: the cursor says   2849, the newest sample kept is   2849
+of 20 backups: the cursor ahead of the samples 0, behind them 3, the same 17
+== issue_backup_moments metrics-first
+opened metrics, then the database
+backup  0: the cursor says    105, the newest sample kept is    105
+backup  1: the cursor says    250, the newest sample kept is    250
+backup  2: the cursor says    389, the newest sample kept is    389
+backup  3: the cursor says    535, the newest sample kept is    535
+backup  4: the cursor says    677, the newest sample kept is    677
+backup  5: the cursor says    820, the newest sample kept is    820
+backup  6: the cursor says    967, the newest sample kept is    967
+backup  7: the cursor says   1102, the newest sample kept is   1102
+backup  8: the cursor says   1250, the newest sample kept is   1250
+backup  9: the cursor says   1395, the newest sample kept is   1395
+backup 10: the cursor says   1543, the newest sample kept is   1543
+backup 11: the cursor says   1690, the newest sample kept is   1690
+backup 12: the cursor says   1837, the newest sample kept is   1837
+backup 13: the cursor says   1985, the newest sample kept is   1985
+backup 14: the cursor says   2128, the newest sample kept is   2128
+backup 15: the cursor says   2275, the newest sample kept is   2276
+backup 16: the cursor says   2420, the newest sample kept is   2420
+backup 17: the cursor says   2567, the newest sample kept is   2567
+backup 18: the cursor says   2711, the newest sample kept is   2711
+backup 19: the cursor says   2857, the newest sample kept is   2857
+of 20 backups: the cursor ahead of the samples 0, behind them 1, the same 19
+== issue_backup_moments_records
+backup  0: the state says    105, the newest event kept is    105
+backup  1: the state says    238, the newest event kept is    238
+backup  2: the state says    380, the newest event kept is    380
+backup  3: the state says    520, the newest event kept is    520
+backup  4: the state says    665, the newest event kept is    665
+backup  5: the state says    801, the newest event kept is    801
+backup  6: the state says    942, the newest event kept is    942
+backup  7: the state says   1077, the newest event kept is   1077
+backup  8: the state says   1215, the newest event kept is   1215
+backup  9: the state says   1363, the newest event kept is   1363
+backup 10: the state says   1509, the newest event kept is   1509
+backup 11: the state says   1656, the newest event kept is   1656
+backup 12: the state says   1800, the newest event kept is   1800
+backup 13: the state says   1948, the newest event kept is   1948
+backup 14: the state says   2090, the newest event kept is   2090
+backup 15: the state says   2241, the newest event kept is   2241
+backup 16: the state says   2388, the newest event kept is   2388
+backup 17: the state says   2541, the newest event kept is   2542
+backup 18: the state says   2694, the newest event kept is   2694
+backup 19: the state says   2844, the newest event kept is   2844
+of 20 backups: the state ahead of the events 0, behind them 1, the same 19
+== issue_files_with_rows
+notion: the transaction rolled back (the install was cancelled: invalid)
+slack: the process died inside the transaction (exit code: 1)
+  stripe-1.0.0.js: row kept, file kept
+  notion-1.0.0.js: row none, file none
+  slack-1.0.0.js: row none, file none
+bytes left beside the database after reopening: []
+== issue_one_key
+backup: key left out true
+open the bucket with no key: Err("kv bucket secrets: its values are encrypted with the key 0d0fd130, and the store makes no other: the encryption key <tmp>\\one-key-repro\\new\\encryption.key: io: Не удается найти указанный файл. (os error 2)")
+with a new key, read the old secret: Err("kv bucket secrets: key \"pg-kazan\": its value was sealed with the key 0d0fd130, which the store does not hold, and it seals with 52f4ef67: give the store that key among its older encryption keys: invalid")
+with a new key, write stripe-eu beside it: Ok(())
+with the old key among the older ones, read pg-kazan: Ok(Some("s3cret"))
+and stripe-eu: Ok(Some("rk_live_new"))
+reseal: Ok(1)
+after the reseal, without the old key: pg-kazan Ok(Some("s3cret")), stripe-eu Ok(Some("rk_live_new"))

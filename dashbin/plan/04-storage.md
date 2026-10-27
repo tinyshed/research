@@ -2,8 +2,9 @@
 
 **Status: draft, second round, 27 October 2026.** The first round went
 through one review, which approved the files and what shares them and held
-back the backup; what it changed is listed under *Forks*. Nothing is agreed
-until Dmitry says so.
+back the backup; what it changed is listed under *Forks*. TinyStore 0.4.0,
+rerun the same day, took away the three workarounds it carried. Nothing is
+agreed until Dmitry says so.
 
 Everything Dashbin keeps of its own lives in one TinyStore directory, and
 nothing else holds state: no second database, no cache server, no file beside
@@ -12,13 +13,13 @@ this chapter puts it in files, decides which things share a file because they
 must commit together, and says what a restore promises across the files that
 do not.
 
-What it rests on, read in TinyStore 0.3.0's source and run against it: an
-application database in `sql/<name>.db` with migrations checked at every
-open; a KV bucket, a job queue and a search index opened **inside** that
-database's file, which commit with its rows in one transaction; encrypted
-buckets sealed with XChaCha20-Poly1305 under a key in a file; files by path in
-named sets; a backup of the whole store as one checked zip; a memory budget
-for every engine's work.
+What it rests on, read in TinyStore's source and run against 0.3.0 and
+0.4.0: an application database in `sql/<name>.db` with migrations checked at
+every open; a KV bucket, a job queue, a search index and a set of files opened
+**inside** that database's file, which commit with its rows in one
+transaction; encrypted buckets sealed with XChaCha20-Poly1305 under a key in
+a file, with older keys kept for opening; a backup of the whole store at one
+moment as one checked zip; a memory budget for every engine's work.
 
 ## The directory
 
@@ -27,11 +28,12 @@ data/
 ├── LOCK
 ├── sql/dashbin.db        the application: its tables, and inside the same file
 │                           buckets  flow states, collectors' windows, sealed secrets
-│                           queues   flows' runs, notifications
+│                           queues   flows' runs, notifications, the audit's outbox
 │                           search   names of dashboards, panels, queries and flows
+│                           files    plugin packages, each version kept for a rollback
+├── sql/dashbin.blobs/    those files' bytes past 16 KiB, named by rows of dashbin.db
 ├── metrics.db            series datasets, TinyStore's own measurements and Dashbin's
-├── records.db            events datasets, alert transitions, runs' reports
-├── blobs/                plugin packages, each version kept for a rollback
+├── records.db            events datasets, alert transitions, runs' reports, the audit
 ├── encryption.key        what seals the secrets, unless the operator names another file
 └── cache/bytecode/       QuickJS bytecode per plugin version, rebuilt when missing
 ```
@@ -53,7 +55,7 @@ inside it:
 | instances: plugin, settings, labels, placement | a table | — |
 | an instance's secrets | an encrypted bucket, keyed by the instance | the row and its secret in one write, so a host is never saved with the old password |
 | agents | a table, their tokens among the tokens | delete refused while a flow names one of its instances |
-| plugins installed: version, SHA-256, source, who and when | a table; the package's bytes in `blobs/` (*Plugins*, below) | the previous version kept for a rollback |
+| plugins installed: version, SHA-256, source, who and when | a table, and the package as a file of the same database (*Plugins*, below) | the row and its package in one write; the previous version kept for a rollback |
 | dashboards, flows, shared queries | one document a row, a table of references and a table of history (chapter 9) | a save checks the version, writes its references and its history in one write |
 | what can be searched | a search index following those tables | changed in the commit that changes a row |
 | flows' schedules and runs | a queue | — |
@@ -76,23 +78,21 @@ before it is promised.
 
 ## Plugins
 
-A package's bytes are in `blobs/` and its row in `dashbin.db`, two files, so
-installing keeps an order that a crash cannot break:
+**A plugin's package is a file of `dashbin.db`'s own set**, written in the
+transaction that writes its row: committed, both are there; rolled back or cut
+by a crash, neither is, and bytes a crash left behind are removed when the
+store next opens. Measured on 0.4.0: one install committed kept both, one
+rolled back kept neither, and a process killed inside the transaction left
+neither and no bytes after reopening
+([recheck](../reports/tinystore-0.4.0-recheck-2026-10-27.md)). An old
+version's package stays for a rollback until its row goes, in the same
+transaction.
 
-1. **the package first**, written and checked against its SHA-256;
-2. **its row after**, which is what makes it installed;
-3. **a package is removed only by a sweep**, after its row has been gone for a
-   while, never in the same moment as its row;
-4. **at start, and after a restore, every row is checked against its
-   package**: a row whose package is missing marks its plugin to be installed
-   again, and the hub starts anyway.
-
-Measured on 0.3.0: a process killed between the two writes leaves a package no
-row names in one order, and a row naming no package in the other. The order
-above leaves only the first, which the sweep clears. A set of files opened
-inside the database, committing with its row, is asked of TinyStore
-([tinyshed/tinystore#36](https://github.com/tinyshed/tinystore/issues/36));
-these four steps go when it lands.
+On 0.3.0 the package and its row were two files, and a crash between them left
+one alone either way round; the order of writes, the sweep and the check at
+start that worked around it went when
+[tinyshed/tinystore#36](https://github.com/tinyshed/tinystore/issues/36) was
+closed.
 
 ## Secrets
 
@@ -106,10 +106,12 @@ code is not carried over.
   TinyStore makes the first time, or a file the operator names and TinyStore
   only reads. Moving the key to a vault later rewrites a file, not every
   secret.
-- **A key lost is never replaced quietly.** A bucket keeps the id of the key
-  that sealed it; with that key missing TinyStore refuses to open the bucket
-  rather than make a new key, and with another key it reads nothing and writes
-  nothing until the bucket is cleared — measured on 0.3.0.
+- **A key lost is never replaced quietly.** With the key that sealed a
+  bucket missing, TinyStore refuses to open it rather than make a new key.
+  Given a new key, it seals new values with it beside the old ones, reads an
+  old one only when its key is among `older_encryption_keys`, and `reseal()`
+  moves the old values to the new key, after which the old key can go —
+  measured on 0.4.0. Rotating the key is the same three steps.
 - **Masked, not hidden from the plugin** (chapter 6): sealing is at rest; a
   call reveals what its instance holds.
 
@@ -139,42 +141,37 @@ that claims samples, a state that claims an event, a row that claims a
 package. A scrape and a probe after the backup began are a gap, as after any
 backup.
 
-**TinyStore copies each engine at its own moment**, in the order the program
-opened them, so that promise is Dashbin's to keep until TinyStore gives one
-moment for the whole store
-([tinyshed/tinystore#35](https://github.com/tinyshed/tinystore/issues/35)).
-Measured on 0.3.0, twenty backups taken while a collector wrote a sample and
-then its window, over and over:
+**TinyStore copies the whole store at one moment**, since 0.4.0: for the
+instant it takes to begin a read of every file, every commit waits, and then
+each file is copied from its read. That is what keeps the promise. Measured
+with a collector writing a sample and then its window, over and over, twenty
+backups a run:
 
-| Opened first | The restored window against the restored samples |
-|---|---|
-| the database | behind in 20 of 20, by 9 or 10 samples |
-| metrics | **ahead** in 20 of 20, by 3 to 10: samples the window says are kept and the backup lacks, which the collector would never read again |
-| the database, against events in records | behind in 20 of 20 |
+| Run | 0.3.0, each engine its own moment | 0.4.0, one moment |
+|---|---|---|
+| the database opened first | the window behind its samples in 20 of 20, by 9 or 10 | equal in 17, one behind in 3 |
+| Metrics opened first | **ahead** in 20 of 20, by 3 to 10: samples the window says are kept and the backup lacks | equal in 19, one behind in 1 |
+| a state in the database against its events in Records | behind in 20 of 20 | equal in 19, one behind in 1 |
 
-So until #35:
-
-- **The hub opens `dashbin.db` before every other engine.** What names
-  something is then copied first and is behind what it names; a collector
-  restored reads again from its window, and what it reads again is harmless
-  to write twice (chapter 7). A plugin row is behind its package by the same
-  rule, and the sweep never removes a package a row could still name.
-- **A test restores a backup taken under writes and fails if the direction
-  ever turns**, because the order is TinyStore's behaviour and not its
-  promise.
+One behind is the moment falling between the sample and its window, which a
+collector restored reads again harmlessly (chapter 7); ahead never happens.
+The order Dashbin opens its engines in no longer carries a promise
+([tinyshed/tinystore#35](https://github.com/tinyshed/tinystore/issues/35),
+closed; [recheck](../reports/tinystore-0.4.0-recheck-2026-10-27.md)).
 
 **The key, and a restore without it.**
 
 - **The key is left out unless asked for** (`--with-key`): a backup holding
   its key opens every secret in it. A backup without it says so every time,
   with where the key is and what to keep apart.
-- **A hub restored without its key starts.** The secrets' bucket does not
-  open, every instance that needs a secret says so, and the admin is asked for
-  them again. Entering them clears the bucket first — the only way TinyStore
-  0.3.0 lets a new key seal into it — and the hub says plainly that a key found
-  afterwards will not bring the old values back. Keeping old keys for reading
-  beside the one that seals is asked of TinyStore
-  ([tinyshed/tinystore#37](https://github.com/tinyshed/tinystore/issues/37)).
+- **A hub restored without its key starts and loses nothing.** The operator
+  gives it a new key; every instance whose secret the missing key sealed says
+  so, a secret entered again seals with the new key beside the old values, and
+  the old key, found later, goes among the older keys and opens the rest; a
+  reseal then moves them to the new key and the old one can go. On 0.3.0 the
+  only way forward was to clear every secret
+  ([tinyshed/tinystore#37](https://github.com/tinyshed/tinystore/issues/37),
+  closed).
 - **The bytecode cache is not backed up**; it is rebuilt from the packages.
 
 ## Memory
@@ -215,16 +212,16 @@ drawn by the hub (chapter 12).
 - **Runs' reports and alert transitions are events with a keep**, read through
   `datasets` like any other.
 
-## What TinyStore is asked
+## What TinyStore was asked
 
-| Issue | What it would give | What Dashbin does until then |
+| Issue | What it gave, in 0.4.0 | The workaround it took away |
 |---|---|---|
-| [#35](https://github.com/tinyshed/tinystore/issues/35) one moment for a backup | a restore as the whole store at one instant | opens its database first, and a test watches the direction |
+| [#35](https://github.com/tinyshed/tinystore/issues/35) one moment for a backup | a restore as the whole store at one instant | opening the database first, and a test on the direction |
 | [#36](https://github.com/tinyshed/tinystore/issues/36) files inside a database | a package and its row in one commit | the package first, the row after, a sweep, a check at start |
-| [#37](https://github.com/tinyshed/tinystore/issues/37) old keys kept for reading | a restore without its key that loses nothing, and key rotation | clears the bucket and asks for the secrets again |
+| [#37](https://github.com/tinyshed/tinystore/issues/37) old keys kept for reading | a restore without its key that loses nothing, and key rotation | clearing the bucket and asking for every secret again |
 
-Each workaround carries its issue's link in the code and goes when the issue
-is closed.
+All three were filed with a program, closed in the release after, and rerun
+before the workarounds went.
 
 ## Not in the first version
 
@@ -258,11 +255,11 @@ address, dial the new server once the address points at it.
 
 ### A new server, without the key
 
-The same, with a backup made by default. The hub starts, dashboards and flows
-are there, and each instance with a secret asks for it; a collector reading a
-database waits until its password is entered again. The admin who later finds
-the old key is told it is too late for the values already entered, and that
-it opens nothing in this store until #37.
+The same, with a backup made by default. The operator gives the hub a new
+key; dashboards and flows are there, and each instance with a secret asks for
+it; a collector reading a database waits until its password is entered again.
+The old key, found a day later, goes among the older keys: every secret not
+yet entered opens again, and a reseal moves them all to the new key.
 
 ## Forks
 
@@ -273,18 +270,18 @@ After the review:
    writer, which is measured before it is promised.
 2. **Secrets in TinyStore's encrypted bucket.** Kept.
 3. **Plugin packages in TinyStore's files, bytecode in a cache that is not
-   backed up** — kept, with the order of an install, a sweep, and a check at
-   start and after a restore.
+   backed up** — kept, the package a file of the database since 0.4.0, written
+   with its row.
 4. **A document upgraded as it is read**, its schema numbered. Kept, with a
    test for every old shape still read.
 5. **The key left out of a backup unless asked for** — kept, and a hub
-   restored without it starts, marks what needs a secret, and asks again.
+   restored without it starts on a new key and keeps the old secrets until the
+   old key is found.
 6. **Datasets never in `dashbin.db`.** Kept.
 
-Added: what a restore promises — nothing in it naming what it lacks — and how
-it is kept while TinyStore copies each engine at its own moment: the database
-opened first, measured both ways, and a test on the direction; three issues
-asked of TinyStore, each with the workaround it replaces.
+Added: what a restore promises — nothing in it naming what it lacks — kept by
+TinyStore 0.4.0's one moment; three issues asked of TinyStore and closed, each
+taking away the workaround the first draft of this round carried.
 
 ## What it asks of other chapters
 
@@ -292,11 +289,10 @@ asked of TinyStore, each with the workaround it replaces.
   a delivery at least once, whatever the transaction promised.
 - Chapter 10: accounts, sessions and tokens as tables; who may make and read a
   backup, and who holds the key.
-- Chapter 12: `backup` and `restore` as verbs of the binary, the order the hub
-  opens its engines in, the memory split under the load run,
-  self-measurement turned on, the disk's free space.
+- Chapter 12: `backup` and `restore` as verbs of the binary, the memory split
+  under the load run, self-measurement turned on, the disk's free space.
 - Chapter 13: migrations carried in the binary, a test for every document
-  shape still read, and the test on a backup's direction.
+  shape still read, and a restore of a backup taken under writes.
 
 ## Not checked yet
 

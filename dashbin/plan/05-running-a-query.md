@@ -311,14 +311,16 @@ the same number wherever it is read.
   calculation is refused, naming the currencies, unless `currency` is in `by`.
   One column in two units from two instances is refused the same way.
 - **Sums are exact, rounded once.** An `Int` and a `Decimal` are summed as
-  integers in their minor units, as chapter 3 sums money; a `Float` through an
-  exact accumulator, as TinyStore Metrics sums — its own, once TinyStore can
-  aggregate samples it does not store
-  ([tinyshed/tinystore#34](https://github.com/tinyshed/tinystore/issues/34)),
-  and a compensated sum of ours until then. Over a dataset the kernel may
-  hand the calculation to TinyStore's own aggregate when it is one of its
-  operations over its labels — an optimisation that must answer the same
-  frame, number for number.
+  integers in their minor units, as chapter 3 sums money; a `Float` through
+  TinyStore's own `ExactSum`. The operations over time that come later — an
+  increase, a rate, a day of a zone's calendar — go through TinyStore's
+  aggregation of series held in memory, the same code a query of Metrics
+  runs, measured on 0.4.0 to answer as Metrics does, in 85 µs and without a
+  store ([tinyshed/tinystore#34](https://github.com/tinyshed/tinystore/issues/34),
+  closed). Over a dataset the kernel may hand the calculation to
+  TinyStore's own aggregate when it is one of its operations over its
+  labels — an optimisation that must answer the same frame, number for
+  number.
 - **It runs as batches arrive**: one accumulator per group and value — a sum,
   a count, an extreme, a time and its value — and the input frames are never
   held. Ten tables become one row without lying in memory first.

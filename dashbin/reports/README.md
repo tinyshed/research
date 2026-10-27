@@ -37,3 +37,6 @@ gives it, what its memory costs, and the plugin host it will carry.
 - [TinyStore 0.3.0: what a restore holds across files](tinystore-0.3.0-backup-2026-10-27.md):
   each engine backed up at its own moment in the order it was opened, a file and its row apart after a crash,
   one key after a restore; asked as #35, #36, #37.
+- [TinyStore 0.4.0 against issues 34 to 37](tinystore-0.4.0-recheck-2026-10-27.md):
+  all four closed and rerun: aggregating in memory and ExactSum, a backup at one moment in either order,
+  files committing with their rows, older keys and a reseal; #29 the one still open.
