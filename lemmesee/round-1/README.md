@@ -7,7 +7,13 @@ how people judge it. Built so far: `compose.yaml`, Chinook's fetch and load
 in `fixtures/`, and in `harness/` the `snapshot` crate, which reads tiers S, N
 and Q as [contract.md](contract.md) says and corrected it where the servers
 disagreed, and the `rules` crate, which proposes O's, A's and B1's five as
-[candidates.md](candidates.md) says, with its known answers on Chinook. The harness is built here against these
+[candidates.md](candidates.md) says, with its known answers on Chinook; and
+the `run` crate, which runs the pool — the fives and three more — on the
+database with each time bucket chosen from its range, its plan read first
+and its rows under a 2 s limit, and writes `see.html`, a page to compare the
+configurations side by side and to judge the pool blind with
+[judging.md](judging.md)'s form. `see.sh` runs the whole chain on one
+database: `sh lemmesee/round-1/see.sh postgres chinook "<url>" "<admin url>" "<note>"`. The harness is built here against these
 files and committed before it runs, as every round is; the report goes to
 `../reports/rules-<date>.md`. A change to a line below after the harness is
 committed is a change to the round, said in its report.

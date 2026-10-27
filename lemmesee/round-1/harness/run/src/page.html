@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>lemmesee: see</title>
+<style>
+  :root {
+    --bg: #fbfaf8; --panel: #ffffff; --ink: #1d1d1b; --muted: #6b6a66; --line: #e4e1db;
+    --accent: #2f6fb0; --accent-soft: #dbe7f3; --warn: #a8551b; --good: #2d7a4a; --bad: #b23a3a;
+    --series: #2f6fb0, #d0782f, #3f9a6b, #9a5bb0, #b8a13a, #5a8f9e, #9a9a9a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #161615; --panel: #1f1f1d; --ink: #ecebe7; --muted: #a09e98; --line: #33322f;
+            --accent: #6fa6dc; --accent-soft: #23384d; --warn: #e09a5f; --good: #6cc193; --bad: #e07a7a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 14px/1.45 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  header { padding: 18px 20px 8px; }
+  h1 { font-size: 18px; margin: 0 0 4px; font-weight: 600; }
+  .sub { color: var(--muted); }
+  nav { display: flex; gap: 6px; padding: 0 20px 12px; }
+  nav button { border: 1px solid var(--line); background: var(--panel); color: var(--ink); padding: 6px 14px;
+               border-radius: 6px; cursor: pointer; font: inherit; }
+  nav button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  main { padding: 0 20px 40px; }
+  .cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  @media (max-width: 1000px) { .cols { grid-template-columns: 1fr; } }
+  .col h2 { font-size: 15px; margin: 4px 0 8px; }
+  .col h2 small { color: var(--muted); font-weight: normal; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px; margin-bottom: 12px; }
+  .card h3 { font-size: 14px; margin: 0 0 6px; font-weight: 600; overflow-wrap: anywhere; }
+  .rank { display: inline-block; min-width: 20px; color: var(--muted); }
+  .meta { color: var(--muted); font-size: 12px; margin-top: 6px; }
+  .flag { display: inline-block; font-size: 11px; padding: 1px 6px; border-radius: 10px; margin-right: 4px;
+          background: var(--accent-soft); color: var(--ink); }
+  .flag.warn { background: transparent; border: 1px solid var(--warn); color: var(--warn); }
+  details { margin-top: 6px; font-size: 12px; }
+  summary { cursor: pointer; color: var(--muted); }
+  pre { white-space: pre-wrap; overflow-wrap: anywhere; background: var(--bg); padding: 8px; border-radius: 6px;
+        font: 11px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; margin: 4px 0 0; }
+  ul.reasons { margin: 4px 0 0; padding-left: 18px; }
+  svg { display: block; width: 100%; height: auto; }
+  svg text { fill: var(--muted); font-size: 10px; }
+  .err { color: var(--bad); font-size: 12px; }
+  table.rows { border-collapse: collapse; width: 100%; font-size: 11px; }
+  table.rows td, table.rows th { border-bottom: 1px solid var(--line); padding: 3px 4px; text-align: left;
+                                 max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .judge { max-width: 760px; }
+  .q { margin: 12px 0; }
+  .q > div:first-child { font-weight: 600; margin-bottom: 4px; }
+  .q label { display: inline-block; margin: 2px 12px 2px 0; cursor: pointer; }
+  .actions { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .actions button, .start button { border: 1px solid var(--accent); background: var(--accent); color: #fff;
+             padding: 7px 16px; border-radius: 6px; cursor: pointer; font: inherit; }
+  .actions button.plain { background: transparent; color: var(--accent); }
+  input[type=text], textarea { font: inherit; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px;
+             background: var(--panel); color: var(--ink); width: 100%; }
+  .progress { color: var(--muted); margin-bottom: 8px; }
+  .note { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1 id="title"></h1>
+  <div class="sub" id="subtitle"></div>
+</header>
+<nav>
+  <button id="tab-compare" class="on">Compare</button>
+  <button id="tab-judge">Judge</button>
+</nav>
+<main id="main"></main>
+<script>
+const DATA = /*DATA*/null;
+const panels = Object.fromEntries(DATA.panels.map(p => [p.id, p]));
+const SERIES = getComputedStyle(document.documentElement).getPropertyValue("--series").split(",").map(s => s.trim());
+const el = (tag, attrs = {}, ...kids) => {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "class") e.className = v; else if (k.startsWith("on")) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v);
+  }
+  for (const k of kids.flat()) if (k != null) e.append(k instanceof Node ? k : document.createTextNode(String(k)));
+  return e;
+};
+const svgEl = (tag, attrs = {}) => {
+  const e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  return e;
+};
+const num = v => v == null ? 0 : parseFloat(v);
+const short = (s, n = 18) => s == null ? "∅" : (s.length > n ? s.slice(0, n - 1) + "…" : s);
+const fmt = n => Math.abs(n) >= 1e6 ? (n / 1e6).toFixed(1) + "M" : Math.abs(n) >= 1e4 ? (n / 1e3).toFixed(0) + "k"
+  : Number.isInteger(n) || Math.abs(n) >= 100 ? n.toFixed(0) : Math.abs(n) >= 1 ? n.toFixed(1) : n.toPrecision(2);
+
+document.getElementById("title").textContent = `see · ${DATA.fixture}`;
+document.getElementById("subtitle").textContent =
+  `${DATA.engine} ${DATA.server_version} · ${DATA.database} · snapshot ${DATA.snapshot} · ${DATA.pool.length} panels in the pool`;
+
+// Charts --------------------------------------------------------------------
+
+function line(p) {
+  const pts = p.rows.map(r => [r[0], num(r[1])]);
+  const W = 420, H = 150, L = 34, B = 18;
+  const s = svgEl("svg", { viewBox: `0 0 ${W} ${H}`, role: "img" });
+  if (!pts.length) return s;
+  const max = Math.max(...pts.map(x => x[1]), 0), min = Math.min(...pts.map(x => x[1]), 0);
+  const x = i => L + (pts.length === 1 ? (W - L) / 2 : i * (W - L - 6) / (pts.length - 1));
+  const y = v => 6 + (H - B - 6) * (1 - (v - min) / ((max - min) || 1));
+  s.append(svgEl("line", { x1: L, x2: W, y1: y(min), y2: y(min), stroke: "var(--line)" }));
+  s.append(svgEl("polyline", { points: pts.map((q, i) => `${x(i)},${y(q[1])}`).join(" "), fill: "none",
+                                stroke: "var(--accent)", "stroke-width": 1.8 }));
+  const t = (txt, a) => { const e = svgEl("text", a); e.textContent = txt; s.append(e); };
+  t(fmt(max), { x: L - 4, y: y(max) + 4, "text-anchor": "end" });
+  t(fmt(min), { x: L - 4, y: y(min), "text-anchor": "end" });
+  t(short(pts[0][0], 10), { x: L, y: H - 4 });
+  t(short(pts[pts.length - 1][0], 10), { x: W, y: H - 4, "text-anchor": "end" });
+  return s;
+}
+
+function hbars(items) {
+  const W = 420, row = 16, H = items.length * row + 4, L = 120;
+  const s = svgEl("svg", { viewBox: `0 0 ${W} ${H}`, role: "img" });
+  const max = Math.max(...items.map(i => i[1]), 0) || 1;
+  items.forEach(([label, v], i) => {
+    const y = 2 + i * row;
+    const t = svgEl("text", { x: L - 6, y: y + 11, "text-anchor": "end" }); t.textContent = short(label, 20); s.append(t);
+    s.append(svgEl("rect", { x: L, y: y + 2, height: row - 5, width: Math.max(1, (W - L - 44) * v / max), fill: "var(--accent)", rx: 2 }));
+    const n = svgEl("text", { x: L + (W - L - 44) * v / max + 4, y: y + 11 }); n.textContent = fmt(v); s.append(n);
+  });
+  return s;
+}
+
+function categories(p) {
+  const items = p.rows.map(r => [r[0], num(r[1])]);
+  if (items.length <= 13) return hbars(items);
+  // The twelve largest drawn to their own scale; the rest said, not drawn
+  const rest = items.slice(12).reduce((a, x) => a + x[1], 0);
+  return el("div", {}, hbars(items.slice(0, 12)),
+            el("div", { class: "meta" }, `and ${items.length - 12} more, ${fmt(rest)} together`));
+}
+
+function vbars(p) {
+  const items = p.rows.map(r => [r[0], num(r[r.length - 1])]);
+  const W = 420, H = 150, L = 34, B = 18;
+  const s = svgEl("svg", { viewBox: `0 0 ${W} ${H}`, role: "img" });
+  if (!items.length) return s;
+  const max = Math.max(...items.map(i => i[1])) || 1, w = (W - L) / items.length;
+  items.forEach(([label, v], i) => s.append(svgEl("rect", {
+    x: L + i * w + 1, y: 6 + (H - B - 6) * (1 - v / max), width: Math.max(1, w - 2), height: (H - B - 6) * v / max,
+    fill: "var(--accent)", rx: 1 })));
+  const t = (txt, a) => { const e = svgEl("text", a); e.textContent = txt; s.append(e); };
+  t(fmt(max), { x: L - 4, y: 12, "text-anchor": "end" });
+  t(short(items[0][0], 12), { x: L, y: H - 4 });
+  t(short(items[items.length - 1][0], 12), { x: W, y: H - 4, "text-anchor": "end" });
+  return s;
+}
+
+function stacked(p) {
+  p = { ...p, rows: p.rows.map(r => [r[0], r[1] ?? "∅", r[2]]) };
+  const buckets = [...new Set(p.rows.map(r => r[0]))];
+  const totals = {};
+  p.rows.forEach(r => totals[r[1]] = (totals[r[1]] || 0) + num(r[2]));
+  const cats = Object.keys(totals).sort((a, b) => totals[b] - totals[a]);
+  const keep = cats.slice(0, 6), key = c => keep.includes(c) ? c : "rest";
+  const series = [...keep, ...(cats.length > 6 ? ["rest"] : [])];
+  const grid = Object.fromEntries(buckets.map(b => [b, Object.fromEntries(series.map(c => [c, 0]))]));
+  p.rows.forEach(r => grid[r[0]][key(r[1])] += num(r[2]));
+  const W = 420, H = 150, L = 34, B = 18;
+  const s = svgEl("svg", { viewBox: `0 0 ${W} ${H + 14}`, role: "img" });
+  const max = Math.max(...buckets.map(b => series.reduce((a, c) => a + grid[b][c], 0))) || 1, w = (W - L) / (buckets.length || 1);
+  buckets.forEach((b, i) => {
+    let acc = 0;
+    series.forEach((c, k) => {
+      const h = (H - B - 6) * grid[b][c] / max;
+      s.append(svgEl("rect", { x: L + i * w + 1, y: 6 + (H - B - 6) - acc - h, width: Math.max(1, w - 2), height: h,
+                               fill: SERIES[k % SERIES.length] }));
+      acc += h;
+    });
+  });
+  series.forEach((c, k) => {
+    s.append(svgEl("rect", { x: L + k * 64, y: H + 2, width: 8, height: 8, fill: SERIES[k % SERIES.length] }));
+    const t = svgEl("text", { x: L + k * 64 + 11, y: H + 10 }); t.textContent = short(c, 9); s.append(t);
+  });
+  const t = svgEl("text", { x: L - 4, y: 12, "text-anchor": "end" }); t.textContent = fmt(max); s.append(t);
+  return s;
+}
+
+function rowsTable(p) {
+  return el("table", { class: "rows" },
+    el("tr", {}, p.columns.map(c => el("th", {}, c))),
+    p.rows.slice(0, 10).map(r => el("tr", {}, r.map(v => el("td", { title: v ?? "" }, v ?? "∅")))));
+}
+
+function chart(p) {
+  if (p.error) return el("div", { class: "err" }, p.error);
+  if (!p.rows.length) return el("div", { class: "meta" }, "no rows");
+  switch (p.template) {
+    case "T1": case "T3": return line(p);
+    case "T2": case "T4": case "T8": return categories(p);
+    case "T5": return vbars(p);
+    case "T6": return stacked(p);
+    default: return rowsTable(p);
+  }
+}
+
+function card(p, rank, blind) {
+  const meta = [p.template, p.bucket && `per ${p.bucket}`, `${p.rows.length} rows`,
+                p.client_ms ? `${p.client_ms.toFixed(1)} ms` : null, p.full_scan ? "reads a whole table" : null]
+    .filter(Boolean).join(" · ");
+  return el("div", { class: "card" },
+    el("h3", {}, rank ? el("span", { class: "rank" }, rank + ".") : null, p.title),
+    chart(p),
+    el("div", { class: "meta" }, meta),
+    el("div", {}, ["guessed", ...p.flags].map(f => el("span", { class: "flag" + (f === "guessed" ? "" : " warn") }, f)),
+      p.abstained && !blind ? el("span", { class: "flag warn" }, "abstains: " + p.abstained) : null),
+    p.reasons.length ? el("details", {}, el("summary", {}, "why"), el("ul", { class: "reasons" }, p.reasons.map(r => el("li", {}, r)))) : null,
+    p.sql ? el("details", {}, el("summary", {}, "SQL"), el("pre", {}, p.sql)) : null);
+}
+
+// Compare -------------------------------------------------------------------
+
+const NAMES = { O: "O · the schema's order", A: "A · the schema", B1: "B1 · and its statistics" };
+function compare() {
+  const main = document.getElementById("main");
+  main.replaceChildren(
+    DATA.note ? el("div", { class: "note" }, DATA.note) : null,
+    el("div", { class: "cols" }, ["O", "A", "B1"].filter(k => DATA.configs[k]).map(k => [k, DATA.configs[k]]).map(([k, ids]) =>
+      el("div", { class: "col" }, el("h2", {}, NAMES[k] || k, " ", el("small", {}, `${ids.length} panels`)),
+         ids.map((id, i) => card(panels[id], i + 1, false))))));
+}
+
+// Judge ---------------------------------------------------------------------
+
+const WRONG = ["wrong population: statuses, deleted rows", "counted twice through a join", "units or currencies mixed",
+               "a level summed", "the wrong time", "a code or identifier treated as a number", "other"];
+// Answers live in the page; the browser's storage, where it allows any,
+// only keeps them across a reload
+const memory = {};
+const storeKey = judge => `lemmesee:${DATA.snapshot}:${judge}`;
+const load = judge => {
+  if (memory[judge]) return memory[judge];
+  try { return (memory[judge] = JSON.parse(localStorage.getItem(storeKey(judge)) || "null")); } catch { return null; }
+};
+const save = (judge, state) => {
+  memory[judge] = state;
+  try { localStorage.setItem(storeKey(judge), JSON.stringify(state)); } catch {}
+};
+const forget = judge => {
+  delete memory[judge];
+  try { localStorage.removeItem(storeKey(judge)); } catch {}
+};
+
+function shuffled(ids, judge) {
+  let h = 2166136261;
+  for (const c of judge + DATA.snapshot) h = Math.imul(h ^ c.charCodeAt(0), 16777619) >>> 0;
+  const a = [...ids];
+  for (let i = a.length - 1; i > 0; i--) { h = Math.imul(h ^ (h >>> 15), 2246822507) >>> 0; const j = h % (i + 1); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+
+function radios(name, options) {
+  return el("div", {}, options.map(o => el("label", {}, el("input", { type: "radio", name, value: o }), " ", o)));
+}
+
+function judgeTab() {
+  const main = document.getElementById("main");
+  const nameInput = el("input", { type: "text", placeholder: "your name, as the judge" });
+  main.replaceChildren(el("div", { class: "judge" },
+    el("div", { class: "note" }, "Each panel alone, in an order of your own, without saying which configuration proposed it. ",
+       "Answers stay in this browser until you download them."),
+    DATA.note ? el("div", { class: "note" }, DATA.note) : null,
+    el("div", { class: "start" }, nameInput, el("div", { class: "actions" },
+      el("button", { onclick: () => nameInput.value.trim() && judging(nameInput.value.trim()) }, "Start")))));
+}
+
+function judging(judge) {
+  const state = load(judge) || { judge, order: shuffled(DATA.pool, judge), decisions: {}, unanswered: "" };
+  save(judge, state);
+  const main = document.getElementById("main");
+  const next = state.order.find(id => !(id in state.decisions));
+  if (!next) return finish(judge, state);
+  const p = panels[next], shown = Date.now(), done = Object.keys(state.decisions).length;
+  const form = el("form", {},
+    el("div", { class: "q" }, el("div", {}, "1. Would you keep this panel on a first overview of this database?"), radios("keep", ["keep", "drop"])),
+    el("div", { class: "q" }, el("div", {}, "2. Does the picture mean what it seems to?"), radios("meaning", ["yes", "no", "cannot tell from what I have"])),
+    el("div", { class: "q" }, el("div", {}, "3. If not, what is wrong?"),
+       el("div", {}, WRONG.map(w => el("label", {}, el("input", { type: "checkbox", name: "wrong", value: w }), " ", w))),
+       el("input", { type: "text", name: "wrong_other", placeholder: "other, in words" })),
+    el("div", { class: "q" }, el("div", {}, "4. What would settle it?"), radios("settle", ["nothing more", "more rows would", "someone who knows the business must say"])),
+    el("div", { class: "q" }, el("div", {}, "5. How sure are you?"), radios("sure", ["sure", "unsure"])));
+  const record = skipped => {
+    const f = new FormData(form);
+    state.decisions[next] = {
+      judge, fixture: DATA.fixture, snapshot: DATA.snapshot, candidate: next, skipped,
+      keep: f.get("keep"), meaning: f.get("meaning"), wrong: f.getAll("wrong"), wrong_other: f.get("wrong_other") || null,
+      settle: f.get("settle"), sure: f.get("sure"), seconds: Math.round((Date.now() - shown) / 100) / 10,
+      at: new Date().toISOString(),
+    };
+    save(judge, state);
+    judging(judge);
+  };
+  main.replaceChildren(el("div", { class: "judge" },
+    el("div", { class: "progress" }, `${judge} · panel ${done + 1} of ${state.order.length}`),
+    card(p, null, true), form,
+    el("div", { class: "actions" },
+      el("button", { onclick: () => record(false) }, "Save and next"),
+      el("button", { class: "plain", onclick: () => record(true) }, "Skip"))));
+}
+
+function finish(judge, state) {
+  const main = document.getElementById("main");
+  const area = el("textarea", { rows: 6, placeholder: "one question a line" }, state.unanswered || "");
+  const download = () => {
+    state.unanswered = area.value;
+    save(judge, state);
+    const lines = state.order.filter(id => state.decisions[id]).map(id => JSON.stringify(state.decisions[id]));
+    lines.push(JSON.stringify({ judge, fixture: DATA.fixture, snapshot: DATA.snapshot,
+                                unanswered: area.value.split("\n").map(s => s.trim()).filter(Boolean).slice(0, 5) }));
+    const a = el("a", { href: URL.createObjectURL(new Blob([lines.join("\n") + "\n"], { type: "application/json" })),
+                        download: `decisions-${DATA.fixture}-${judge}.jsonl` });
+    a.click();
+  };
+  main.replaceChildren(el("div", { class: "judge" },
+    el("div", { class: "progress" }, `${judge} · all ${state.order.length} panels judged`),
+    el("div", { class: "q" }, el("div", {}, "Up to five questions you would want answered first about this database that no panel answered"), area),
+    el("div", { class: "actions" },
+      el("button", { onclick: download }, "Download decisions"),
+      el("button", { class: "plain", onclick: () => { if (confirm("Forget this judge's answers here?")) { forget(judge); judgeTab(); } } }, "Start over"))));
+}
+
+const tabs = { compare: [document.getElementById("tab-compare"), compare], judge: [document.getElementById("tab-judge"), judgeTab] };
+for (const [name, [button, show]] of Object.entries(tabs)) {
+  button.addEventListener("click", () => {
+    for (const [b] of Object.values(tabs)) b.classList.toggle("on", b === button);
+    show();
+  });
+}
+compare();
+</script>
+</body>
+</html>

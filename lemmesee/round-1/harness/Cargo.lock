@@ -912,6 +912,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "run"
+version = "0.1.0"
+dependencies = [
+ "model",
+ "mysql",
+ "postgres",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "rustversion"
 version = "1.0.23"
 source = "registry+https://github.com/rust-lang/crates.io-index"
