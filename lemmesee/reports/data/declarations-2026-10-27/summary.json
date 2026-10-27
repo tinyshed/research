@@ -1,0 +1,20 @@
+{
+  "seed": 20261027,
+  "schemas": 22863,
+  "repositories": 14537,
+  "by_split": {
+    "train": 16244,
+    "test": 4320,
+    "validation": 2095,
+    "dropped": 204
+  },
+  "novel_tests": 3209,
+  "foreign_keys": 90804,
+  "closed_lists": 6688,
+  "schemas_declaring_a_foreign_key": 11471,
+  "left_out": {
+    "foreign keys over several columns": 2980,
+    "schemas over 100 tables": 126,
+    "schemas whose signature is also in training": 204
+  }
+}

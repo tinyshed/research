@@ -16,6 +16,7 @@ only what passes the lines Dashbin's plan sets
 |---|---|
 | [plan.md](plan.md) | the questions, the configurations compared, the stores and corpora, how it is measured, the rounds in order |
 | [round-1/](round-1/README.md) | round 1 before its code: what it reads, what it proposes, on which databases, how it is judged |
+| [round-1b/](round-1b/README.md) | round 1b: guessing foreign keys and closed lists from what public schemas declare |
 | [reports/](reports/) | the dated rounds; `README.md` indexes them |
 | [opus-brief.md](opus-brief.md) | Russian handoff for specifying the first rules and judging pilot, with the follow-up's sources |
 
@@ -24,5 +25,7 @@ only what passes the lines Dashbin's plan sets
 implementation code and database documentation. It narrows the novelty
 claims and proposes the first rules and judging pilot; a
 [wider reading](reports/wider-reading-2026-10-27.md) adds the older and
-neighbouring work both missed. Round 1 is [specified](round-1/README.md)
-and not built. Nothing is measured yet.
+neighbouring work both missed. Round 1 is [specified](round-1/README.md),
+its snapshot and rules built; round 1b, [run](reports/declarations-2026-10-27.md),
+found a small model guesses foreign keys better than the rules. Nothing is
+judged yet.

@@ -1,0 +1,337 @@
+commit a7a2f40b4f2b68eb90ae7d573f70ac61ad359908
+start 2026-10-27T18:26:50Z
+schemapile-perm/12682521/schemapile-perm.json.gz: OK
+prepare 18:26:51Z
+{
+  "seed": 20261027,
+  "schemas": 22863,
+  "repositories": 14537,
+  "by_split": {
+    "train": 16244,
+    "test": 4320,
+    "validation": 2095,
+    "dropped": 204
+  },
+  "novel_tests": 3209,
+  "foreign_keys": 90804,
+  "closed_lists": 6688,
+  "schemas_declaring_a_foreign_key": 11471,
+  "left_out": {
+    "foreign keys over several columns": 2980,
+    "schemas over 100 tables": 126,
+    "schemas whose signature is also in training": 204
+  }
+}
+rules 18:27:05Z
+    Finished `release` profile [optimized] target(s) in 0.06s
+22863 schemas, 96067 guesses
+train 18:27:11Z
+{
+ "task": "fk",
+ "index_seen": true,
+ "train_rows": 516847,
+ "train_positives": 61776,
+ "validation_rows": 526418,
+ "test_rows": 784893,
+ "test_positives": 11561,
+ "rules": {
+  "precision": 0.7692967409948542,
+  "recall": 0.3103537756249459,
+  "f1": 0.44228043143297374
+ },
+ "fit_seconds": {
+  "logistic": 9.0,
+  "trees": 65.9
+ },
+ "models": {
+  "logistic": {
+   "threshold": 0.7863016159961675,
+   "precision": 0.5692841417039162,
+   "recall": 0.7380849407490702,
+   "f1": 0.6427871939736347,
+   "average_precision": 0.6335640972865786,
+   "precision_at_rules_recall": 0.7663551401869159,
+   "recall_at_rules_precision": 0.29106478678315023,
+   "f1_minus_rules_95": [
+    0.154959793618498,
+    0.24487538283373547
+   ],
+   "weights_kib": 128.0
+  },
+  "trees": {
+   "threshold": 0.6532098511766108,
+   "precision": 0.57545168134765,
+   "recall": 0.77415448490615,
+   "f1": 0.6601755550638047,
+   "average_precision": 0.6824117225301445,
+   "precision_at_rules_recall": 0.8313364055299539,
+   "recall_at_rules_precision": 0.45688089265634463,
+   "f1_minus_rules_95": [
+    0.17665266174855385,
+    0.2608601096821799
+   ],
+   "weights_kib": 966.7
+  }
+ },
+ "novel": {
+  "test_rows": 447487,
+  "test_positives": 8954,
+  "rules": {
+   "precision": 0.7815899581589958,
+   "recall": 0.312932767478222,
+   "f1": 0.44692559215248423
+  },
+  "models": {
+   "logistic": {
+    "precision": 0.5373019928461932,
+    "recall": 0.7046012955103864,
+    "f1": 0.6096830305373019,
+    "f1_minus_rules_95": [
+     0.10558370971439181,
+     0.2207572126703981
+    ]
+   },
+   "trees": {
+    "precision": 0.5726582278481013,
+    "recall": 0.7578735760553942,
+    "f1": 0.6523745433570467,
+    "f1_minus_rules_95": [
+     0.15757785005995978,
+     0.25602483517999425
+    ]
+   }
+  }
+ }
+}
+{
+ "task": "fk",
+ "index_seen": false,
+ "train_rows": 516847,
+ "train_positives": 61776,
+ "validation_rows": 526418,
+ "test_rows": 784893,
+ "test_positives": 11561,
+ "rules": {
+  "precision": 0.7692967409948542,
+  "recall": 0.3103537756249459,
+  "f1": 0.44228043143297374
+ },
+ "fit_seconds": {
+  "logistic": 7.9,
+  "trees": 70.0
+ },
+ "models": {
+  "logistic": {
+   "threshold": 0.8077825848910168,
+   "precision": 0.5799834801762115,
+   "recall": 0.7288296860133207,
+   "f1": 0.6459427344857986,
+   "average_precision": 0.6294477786272068,
+   "precision_at_rules_recall": 0.7627858627858628,
+   "recall_at_rules_precision": 0.26831588962892483,
+   "f1_minus_rules_95": [
+    0.15859624982048529,
+    0.2483160790429265
+   ],
+   "weights_kib": 128.0
+  },
+  "trees": {
+   "threshold": 0.6550632036111932,
+   "precision": 0.5739930510873762,
+   "recall": 0.7716460513796385,
+   "f1": 0.6583035088366602,
+   "average_precision": 0.6767213416982109,
+   "precision_at_rules_recall": 0.8306023540272328,
+   "recall_at_rules_precision": 0.44347374794567945,
+   "f1_minus_rules_95": [
+    0.17495611885132845,
+    0.2592503868734735
+   ],
+   "weights_kib": 967.1
+  }
+ },
+ "novel": {
+  "test_rows": 447487,
+  "test_positives": 8954,
+  "rules": {
+   "precision": 0.7815899581589958,
+   "recall": 0.312932767478222,
+   "f1": 0.44692559215248423
+  },
+  "models": {
+   "logistic": {
+    "precision": 0.547829899167032,
+    "recall": 0.6977886977886978,
+    "f1": 0.613782602288914,
+    "f1_minus_rules_95": [
+     0.10909560971943516,
+     0.22450109728575576
+    ]
+   },
+   "trees": {
+    "precision": 0.5681608713866778,
+    "recall": 0.7573151664060755,
+    "f1": 0.6492412274402796,
+    "f1_minus_rules_95": [
+     0.1556799005458209,
+     0.2529610274759494
+    ]
+   }
+  }
+ }
+}
+{
+ "task": "closed",
+ "index_seen": true,
+ "train_rows": 476612,
+ "train_positives": 4674,
+ "validation_rows": 64401,
+ "test_rows": 115414,
+ "test_positives": 1163,
+ "rules": {
+  "precision": 0.04389254941713127,
+  "recall": 0.3723129836629407,
+  "f1": 0.07852738483859267
+ },
+ "fit_seconds": {
+  "logistic": 5.9,
+  "trees": 64.3
+ },
+ "models": {
+  "logistic": {
+   "threshold": 0.35911940460270214,
+   "precision": 0.42812006319115326,
+   "recall": 0.23301805674978504,
+   "f1": 0.3017817371937639,
+   "average_precision": 0.2586378566098929,
+   "precision_at_rules_recall": 0.2931618144888287,
+   "recall_at_rules_precision": 0.8521066208082545,
+   "f1_minus_rules_95": [
+    0.14148473579325174,
+    0.30415264302931283
+   ],
+   "weights_kib": 124.5
+  },
+  "trees": {
+   "threshold": 0.2252593300740686,
+   "precision": 0.33509513742071884,
+   "recall": 0.2725709372312984,
+   "f1": 0.30061640587956373,
+   "average_precision": 0.2155898900500874,
+   "precision_at_rules_recall": 0.2991040661612681,
+   "recall_at_rules_precision": 0.9165950128976784,
+   "f1_minus_rules_95": [
+    0.1479973432831285,
+    0.3021852252660073
+   ],
+   "weights_kib": 967.5
+  }
+ },
+ "novel": {
+  "test_rows": 80418,
+  "test_positives": 946,
+  "rules": {
+   "precision": 0.06110767326732673,
+   "recall": 0.4175475687103594,
+   "f1": 0.10661268556005397
+  },
+  "models": {
+   "logistic": {
+    "precision": 0.35218508997429304,
+    "recall": 0.14482029598308668,
+    "f1": 0.20524344569288389,
+    "f1_minus_rules_95": [
+     0.04484473544558592,
+     0.15999890654150323
+    ]
+   },
+   "trees": {
+    "precision": 0.26676829268292684,
+    "recall": 0.1849894291754757,
+    "f1": 0.2184769038701623,
+    "f1_minus_rules_95": [
+     0.052830840007277904,
+     0.1723170427364332
+    ]
+   }
+  }
+ }
+}
+{
+ "task": "closed",
+ "index_seen": false,
+ "train_rows": 476612,
+ "train_positives": 4674,
+ "validation_rows": 64401,
+ "test_rows": 115414,
+ "test_positives": 1163,
+ "rules": {
+  "precision": 0.04389254941713127,
+  "recall": 0.3723129836629407,
+  "f1": 0.07852738483859267
+ },
+ "fit_seconds": {
+  "logistic": 6.1,
+  "trees": 64.3
+ },
+ "models": {
+  "logistic": {
+   "threshold": 0.3837132259078022,
+   "precision": 0.44501718213058417,
+   "recall": 0.2226999140154772,
+   "f1": 0.2968481375358166,
+   "average_precision": 0.2566321184122978,
+   "precision_at_rules_recall": 0.29225589225589227,
+   "recall_at_rules_precision": 0.8572656921754084,
+   "f1_minus_rules_95": [
+    0.13600112776268355,
+    0.3026870838889218
+   ],
+   "weights_kib": 124.5
+  },
+  "trees": {
+   "threshold": 0.17303944461862547,
+   "precision": 0.3258520365752286,
+   "recall": 0.33705932932072225,
+   "f1": 0.3313609467455621,
+   "average_precision": 0.21137630612521444,
+   "precision_at_rules_recall": 0.30392156862745096,
+   "recall_at_rules_precision": 0.939810834049871,
+   "f1_minus_rules_95": [
+    0.18054988665251528,
+    0.3282602336888857
+   ],
+   "weights_kib": 966.8
+  }
+ },
+ "novel": {
+  "test_rows": 80418,
+  "test_positives": 946,
+  "rules": {
+   "precision": 0.06110767326732673,
+   "recall": 0.4175475687103594,
+   "f1": 0.10661268556005397
+  },
+  "models": {
+   "logistic": {
+    "precision": 0.3659942363112392,
+    "recall": 0.13424947145877378,
+    "f1": 0.19644238205723125,
+    "f1_minus_rules_95": [
+     0.03498438536758949,
+     0.15445758202061577
+    ]
+   },
+   "trees": {
+    "precision": 0.2616279069767442,
+    "recall": 0.23784355179704017,
+    "f1": 0.24916943521594684,
+    "f1_minus_rules_95": [
+     0.0828343851473581,
+     0.20306605170134648
+    ]
+   }
+  }
+ }
+}
+end 2026-10-27T18:34:00Z exit 0

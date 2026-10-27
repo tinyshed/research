@@ -152,8 +152,11 @@ it are in its chapter 14 and are the ones that decide.
    closed list of values — learned from what SchemaPile-Perm's schemas
    declare, with the declarations hidden, against the rules' own guesses on
    the same schemas. It needs no judges, and it asks the third question early
-   for roles rather than panels. [Specified](round-1b/README.md) on 27
-   October.
+   for roles rather than panels. [Run](reports/declarations-2026-10-27.md) on
+   27 October: boosted trees of 967 KiB guess foreign keys at F1 0.65 against
+   the rules' 0.45 on unseen kinds of schema and beat them at the rules' own
+   precision; they are to be carried in Rust and measured there. Closed lists
+   pass the line on a label too weak to carry them yet.
 2. **The judged set**: assembled, split by project, judged.
 3. **The ranker, C**: linear, trees, a tiny network, against A and B on the
    judged set, with its cost.

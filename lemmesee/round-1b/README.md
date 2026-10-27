@@ -1,7 +1,8 @@
 # Round 1b: guessing what a schema did not declare
 
-**Status: specified 27 October 2026; run once dry, uncommitted, and corrected
-as said below before the run it reports.** A round of
+**Status: specified, run and [reported](../reports/declarations-2026-10-27.md)
+on 27 October 2026**, at commit `a7a2f40`, after a dry run uncommitted and the
+corrections said below. A round of
 [the plan](../plan.md) that needs no judges: whether a small model, learned
 from what public schemas declare, guesses two column roles better than round
 1's rules do when the declarations are hidden. The report goes to

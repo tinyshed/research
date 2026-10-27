@@ -12,3 +12,6 @@ so, never by editing the number it replaces.
   facts and dimensions from a schema since 2002 and Auto-BI, VizDeck's keep and drop, Metabase's classifiers,
   labels matched from names, prediction under a test-time budget, what `pg_stats` hides, SQaLe 2's
   model-written schemas and rows, and 59 kept guessed panels before one-in-twenty can be shown; nothing run.
+- [Guessing what a schema did not declare](declarations-2026-10-27.md), round 1b:
+  on SchemaPile-Perm with its declarations hidden, boosted trees guess foreign keys at F1 0.65 against the rules' 0.45
+  on unseen kinds of schema, and beat them at their own precision; closed lists pass the line on a label too weak to trust.
