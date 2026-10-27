@@ -115,6 +115,42 @@ tokens, the column named as the target's key, the kinds of type.
   whether reading it stays under chapter 14's millisecond a column are
   measured when one is carried in Rust, not here.
 
+## The second pass on keys
+
+After the first report, on 27 and 28 October, the key model was taken
+further **on the validation split alone**, the test unread until the one run
+below. `keys.py dev` added features that read names letter by letter —
+three-letter pieces, edit distance, shared prefixes — and each column's
+targets scored against each other, tried one target kept a column, and grew
+the trees until the validation curve stopped rising. `graph.py dev` added a
+second stage: a first model scores every pair, five first models fitted
+without the fold of repositories they score, nineteen features read off
+those scores over the schema, and a second model learned from them. `gpu.py`
+compared training the first stage with LightGBM on 16 threads and with
+XGBoost on an RTX 5070.
+
+**Chosen on validation, before the test was read:**
+
+| | |
+|---|---|
+| first stage | XGBoost on CUDA, 829 trees grown leaf by leaf to 63 leaves, a step of 0.05, rows 0.8, columns 0.5 — where its validation curve stopped |
+| second stage | LightGBM, 400 trees of 31 leaves, a step of 0.05, on the nineteen graph features |
+| a column's targets | one kept, the best |
+| threshold | the best F1 on validation |
+
+It was chosen for what `see` needs most — keys found at the rules'
+precision, where the graph stage added 5 to 7 points in both of its runs —
+over the bare first model's F1, which was within 0.01 of it.
+
+**Hard cases.** 120 schemas with their relations written down, by three
+Claude Haiku agents on 28 October, each to a style: keys named by the role
+a row plays (`author_id`, `created_by` to `users`), legacy and abbreviated
+names (`tbl_`, `CUST_ID`, `cust_no`, text keys), and other languages with
+decoys that end in `_id` and are not keys (`zakazy.polzovatel_id`,
+`stripe_customer_id`). They are in `hard/`, checked by `hard/check.py`,
+converted by `hard.py`, and **never trained on nor used to choose**: the
+final run measures the rules and the model on them, apart from the test.
+
 ## Not in this round
 
 Creation and update times, which the data cannot label; anything from
@@ -128,6 +164,8 @@ statistics, which SchemaPile's few rows cannot give; reading a model in Rust.
 | `requirements.txt` | the Python packages, pinned, for an environment of its own in `.venv/`, which git ignores |
 | `prepare.py` | the columns, pairs and labels, the split, and the hidden schemas the rules are run on |
 | `train.py` | the models, the rules' guesses read back, and the measures |
+| `keys.py`, `gpu.py`, `graph.py` | the second pass on keys: its features and tuning, the processor against the graphics card, and the graph stage with its final run |
+| `hard/`, `hard.py` | the hard cases, their checker, and their conversion |
 | `../round-1/harness/rules/src/bin/guess.rs` | the rules on hidden schemas |
 
 Training runs offline on Python, as the plan allows; accuracy is not a

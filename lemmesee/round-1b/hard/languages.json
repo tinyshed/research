@@ -1,0 +1,517 @@
+{
+  "style": "languages",
+  "schemas": [
+    {
+      "id": "languages-001",
+      "domain": "shop",
+      "tables": [
+        {"name": "polzovateli", "pk": ["id"], "columns": [["id", "int"], ["imya", "varchar"], ["email", "varchar"], ["created_at", "timestamp"]]},
+        {"name": "kategorii", "pk": ["id"], "columns": [["id", "int"], ["nazvanie", "varchar"], ["created_at", "timestamp"]]},
+        {"name": "tovary", "pk": ["id"], "columns": [["id", "int"], ["kategoriya_id", "int"], ["nazvanie", "varchar"], ["tsena", "decimal"], ["aktiven", "boolean"], ["external_id", "varchar"]]},
+        {"name": "zakazy", "pk": ["id"], "columns": [["id", "int"], ["polzovatel_id", "int"], ["status", "varchar"], ["summa", "decimal"], ["transaction_id", "varchar"], ["created_at", "timestamp"]]},
+        {"name": "zakaz_pozitsii", "pk": ["zakaz_id", "tovar_id"], "columns": [["zakaz_id", "int"], ["tovar_id", "int"], ["kolichestvo", "int"], ["tsena", "decimal"]]}
+      ],
+      "fk": [["tovary", "kategoriya_id", "kategorii"], ["zakazy", "polzovatel_id", "polzovateli"], ["zakaz_pozitsii", "zakaz_id", "zakazy"], ["zakaz_pozitsii", "tovar_id", "tovary"]],
+      "not_fk": [["tovary", "external_id"], ["zakazy", "transaction_id"]]
+    },
+    {
+      "id": "languages-002",
+      "domain": "clinic",
+      "tables": [
+        {"name": "pacientes", "pk": ["id"], "columns": [["id", "int"], ["nombre", "varchar"], ["fecha_nacimiento", "date"], ["created_at", "timestamp"]]},
+        {"name": "medicos", "pk": ["id"], "columns": [["id", "int"], ["nombre", "varchar"], ["especialidad", "varchar"]]},
+        {"name": "citas", "pk": ["id"], "columns": [["id", "int"], ["paciente_id", "int"], ["medico_id", "int"], ["fecha", "timestamp"], ["estado", "varchar"], ["google_id", "varchar"]]},
+        {"name": "diagnosticos", "pk": ["id"], "columns": [["id", "int"], ["cita_id", "int"], ["codigo", "char"], ["notas", "text"]]},
+        {"name": "sesiones", "pk": ["id"], "columns": [["id", "int"], ["paciente_id", "int"], ["session_id", "varchar"], ["inicio", "timestamp"]]}
+      ],
+      "fk": [["citas", "paciente_id", "pacientes"], ["citas", "medico_id", "medicos"], ["diagnosticos", "cita_id", "citas"], ["sesiones", "paciente_id", "pacientes"]],
+      "not_fk": [["citas", "google_id"], ["sesiones", "session_id"]]
+    },
+    {
+      "id": "languages-003",
+      "domain": "school",
+      "tables": [
+        {"name": "klassen", "pk": ["id"], "columns": [["id", "int"], ["bezeichnung", "varchar"], ["schuljahr", "varchar"]]},
+        {"name": "faecher", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"], ["stunden", "int"]]},
+        {"name": "schueler", "pk": ["id"], "columns": [["id", "int"], ["vorname", "varchar"], ["nachname", "varchar"], ["geburtsdatum", "date"], ["klasse_id", "int"], ["external_id", "varchar"]]},
+        {"name": "noten", "pk": ["id"], "columns": [["id", "int"], ["schueler_id", "int"], ["fach_id", "int"], ["note", "decimal"], ["datum", "date"], ["request_id", "varchar"]]},
+        {"name": "klassen_faecher", "pk": ["klassen_id", "fach_id"], "columns": [["klassen_id", "int"], ["fach_id", "int"], ["wochenstunden", "int"]]}
+      ],
+      "fk": [["schueler", "klasse_id", "klassen"], ["noten", "schueler_id", "schueler"], ["noten", "fach_id", "faecher"], ["klassen_faecher", "klassen_id", "klassen"], ["klassen_faecher", "fach_id", "faecher"]],
+      "not_fk": [["noten", "request_id"], ["schueler", "external_id"]]
+    },
+    {
+      "id": "languages-004",
+      "domain": "delivery",
+      "tables": [
+        {"name": "entregadores", "pk": ["id"], "columns": [["id", "int"], ["nome", "varchar"], ["veiculo", "varchar"], ["device_id", "varchar"]]},
+        {"name": "clientes", "pk": ["id"], "columns": [["id", "int"], ["nome", "varchar"], ["telefone", "varchar"]]},
+        {"name": "pedidos", "pk": ["id"], "columns": [["id", "int"], ["cliente_id", "int"], ["entregador_id", "int"], ["status", "varchar"], ["valor", "decimal"], ["tracking_id", "varchar"], ["created_at", "timestamp"]]},
+        {"name": "enderecos", "pk": ["id"], "columns": [["id", "int"], ["cliente_id", "int"], ["rua", "varchar"], ["cep", "char"]]},
+        {"name": "avaliacoes", "pk": ["id"], "columns": [["id", "int"], ["pedido_id", "int"], ["nota", "int"], ["comentario", "text"]]}
+      ],
+      "fk": [["pedidos", "cliente_id", "clientes"], ["pedidos", "entregador_id", "entregadores"], ["enderecos", "cliente_id", "clientes"], ["avaliacoes", "pedido_id", "pedidos"]],
+      "not_fk": [["entregadores", "device_id"], ["pedidos", "tracking_id"]]
+    },
+    {
+      "id": "languages-005",
+      "domain": "municipal services",
+      "tables": [
+        {"name": "citoyens", "pk": ["id"], "columns": [["id", "int"], ["nom", "varchar"], ["prenom", "varchar"], ["date_naissance", "date"], ["google_id", "varchar"]]},
+        {"name": "services", "pk": ["id"], "columns": [["id", "int"], ["libelle", "varchar"]]},
+        {"name": "agents", "pk": ["id"], "columns": [["id", "int"], ["nom", "varchar"], ["service_id", "int"]]},
+        {"name": "demandes", "pk": ["id"], "columns": [["id", "int"], ["citoyen_id", "int"], ["type", "varchar"], ["statut", "varchar"], ["date_depot", "timestamp"], ["request_id", "varchar"]]},
+        {"name": "demande_traitements", "pk": ["demande_id", "agent_id"], "columns": [["demande_id", "int"], ["agent_id", "int"], ["date_traitement", "timestamp"], ["commentaire", "text"]]}
+      ],
+      "fk": [["agents", "service_id", "services"], ["demandes", "citoyen_id", "citoyens"], ["demande_traitements", "demande_id", "demandes"], ["demande_traitements", "agent_id", "agents"]],
+      "not_fk": [["citoyens", "google_id"], ["demandes", "request_id"]]
+    },
+    {
+      "id": "languages-006",
+      "domain": "project management",
+      "tables": [
+        {"name": "users", "pk": ["id"], "columns": [["id", "bigint"], ["name", "varchar"], ["email", "varchar"], ["google_id", "varchar"], ["created_at", "timestamp"], ["updated_at", "timestamp"]]},
+        {"name": "teams", "pk": ["id"], "columns": [["id", "bigint"], ["name", "varchar"], ["owner_id", "bigint"], ["created_at", "timestamp"], ["updated_at", "timestamp"]]},
+        {"name": "team_user", "pk": ["team_id", "user_id"], "columns": [["team_id", "bigint"], ["user_id", "bigint"], ["role", "varchar"]]},
+        {"name": "projects", "pk": ["id"], "columns": [["id", "bigint"], ["team_id", "bigint"], ["title", "varchar"], ["status", "varchar"], ["created_at", "timestamp"], ["updated_at", "timestamp"]]},
+        {"name": "tasks", "pk": ["id"], "columns": [["id", "bigint"], ["project_id", "bigint"], ["assignee_id", "bigint"], ["title", "varchar"], ["due_date", "date"], ["correlation_id", "varchar"], ["created_at", "timestamp"], ["updated_at", "timestamp"]]}
+      ],
+      "fk": [["teams", "owner_id", "users"], ["team_user", "team_id", "teams"], ["team_user", "user_id", "users"], ["projects", "team_id", "teams"], ["tasks", "project_id", "projects"], ["tasks", "assignee_id", "users"]],
+      "not_fk": [["users", "google_id"], ["tasks", "correlation_id"]]
+    },
+    {
+      "id": "languages-007",
+      "domain": "hotel booking",
+      "tables": [
+        {"name": "hotels", "pk": ["id"], "columns": [["id", "uuid"], ["name", "varchar"], ["city", "varchar"], ["opened_on", "date"]]},
+        {"name": "rooms", "pk": ["id"], "columns": [["id", "uuid"], ["hotel_id", "uuid"], ["number", "varchar"], ["price", "decimal"], ["created_at", "timestamp"], ["updated_at", "timestamp"]]},
+        {"name": "guests", "pk": ["id"], "columns": [["id", "uuid"], ["full_name", "varchar"], ["email", "varchar"], ["external_id", "varchar"], ["created_at", "timestamp"], ["updated_at", "timestamp"]]},
+        {"name": "bookings", "pk": ["id"], "columns": [["id", "uuid"], ["room_id", "uuid"], ["guest_id", "uuid"], ["check_in", "date"], ["check_out", "date"], ["status", "varchar"], ["transaction_id", "varchar"]]}
+      ],
+      "fk": [["rooms", "hotel_id", "hotels"], ["bookings", "room_id", "rooms"], ["bookings", "guest_id", "guests"]],
+      "not_fk": [["guests", "external_id"], ["bookings", "transaction_id"]]
+    },
+    {
+      "id": "languages-008",
+      "domain": "sports club",
+      "tables": [
+        {"name": "socios", "pk": ["id"], "columns": [["id", "uuid"], ["nome", "varchar"], ["nascimento", "date"]]},
+        {"name": "modalidades", "pk": ["id"], "columns": [["id", "uuid"], ["nome", "varchar"]]},
+        {"name": "mensalidades", "pk": ["id"], "columns": [["id", "uuid"], ["socio_id", "uuid"], ["valor", "decimal"], ["vencimento", "date"], ["pago", "boolean"], ["stripe_customer_id", "varchar"]]},
+        {"name": "inscricoes", "pk": ["socio_id", "modalidade_id"], "columns": [["socio_id", "uuid"], ["modalidade_id", "uuid"], ["desde", "date"]]},
+        {"name": "treinos", "pk": ["id"], "columns": [["id", "uuid"], ["modalidade_id", "uuid"], ["horario", "timestamp"], ["professor", "varchar"]]}
+      ],
+      "fk": [["mensalidades", "socio_id", "socios"], ["inscricoes", "socio_id", "socios"], ["inscricoes", "modalidade_id", "modalidades"], ["treinos", "modalidade_id", "modalidades"]],
+      "not_fk": [["mensalidades", "stripe_customer_id"]]
+    },
+    {
+      "id": "languages-009",
+      "domain": "farm",
+      "tables": [
+        {"name": "cultivos", "pk": ["id"], "columns": [["id", "int"], ["nombre", "varchar"], ["ciclo", "varchar"], ["external_id", "varchar"]]},
+        {"name": "parcelas", "pk": ["id"], "columns": [["id", "int"], ["nombre", "varchar"], ["hectareas", "decimal"], ["cultivo_actual_id", "int"]]},
+        {"name": "siembras", "pk": ["id"], "columns": [["id", "int"], ["parcela_id", "int"], ["cultivo_id", "int"], ["fecha", "date"], ["cantidad_kg", "decimal"]]},
+        {"name": "cosechas", "pk": ["id"], "columns": [["id", "int"], ["siembra_id", "int"], ["fecha", "date"], ["rendimiento", "decimal"], ["device_id", "varchar"]]}
+      ],
+      "fk": [["parcelas", "cultivo_actual_id", "cultivos"], ["siembras", "parcela_id", "parcelas"], ["siembras", "cultivo_id", "cultivos"], ["cosechas", "siembra_id", "siembras"]],
+      "not_fk": [["cultivos", "external_id"], ["cosechas", "device_id"]]
+    },
+    {
+      "id": "languages-010",
+      "domain": "cinema",
+      "tables": [
+        {"name": "films", "pk": ["id"], "columns": [["id", "int"], ["titre", "varchar"], ["duree", "int"], ["classification", "varchar"]]},
+        {"name": "salles", "pk": ["id"], "columns": [["id", "int"], ["nom", "varchar"], ["capacite", "int"]]},
+        {"name": "seances", "pk": ["id"], "columns": [["id", "int"], ["film_id", "int"], ["salle_id", "int"], ["debut", "timestamp"], ["prix", "decimal"]]},
+        {"name": "clients", "pk": ["id"], "columns": [["id", "int"], ["nom", "varchar"], ["email", "varchar"], ["google_id", "varchar"]]},
+        {"name": "billets", "pk": ["id"], "columns": [["id", "bigint"], ["seance_id", "int"], ["client_id", "int"], ["siege", "char"], ["prix", "decimal"], ["transaction_id", "varchar"]]}
+      ],
+      "fk": [["seances", "film_id", "films"], ["seances", "salle_id", "salles"], ["billets", "seance_id", "seances"], ["billets", "client_id", "clients"]],
+      "not_fk": [["clients", "google_id"], ["billets", "transaction_id"]]
+    },
+    {
+      "id": "languages-011",
+      "domain": "accounting",
+      "tables": [
+        {"name": "kunden", "pk": ["kunde_nr"], "columns": [["kunde_nr", "int"], ["name", "varchar"], ["ort", "varchar"]]},
+        {"name": "lieferanten", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"], ["steuernummer", "varchar"]]},
+        {"name": "bestellungen", "pk": ["id"], "columns": [["id", "int"], ["kunde_nr", "int"], ["bestelldatum", "date"], ["betrag", "decimal"], ["status", "varchar"]]},
+        {"name": "rechnungen", "pk": ["id"], "columns": [["id", "int"], ["lieferant_id", "int"], ["bestellung_id", "int"], ["betrag", "decimal"], ["faellig", "date"], ["external_id", "varchar"]]},
+        {"name": "buchungen", "pk": ["id"], "columns": [["id", "int"], ["rechnung_id", "int"], ["konto", "varchar"], ["betrag", "decimal"], ["transaction_id", "varchar"]]}
+      ],
+      "fk": [["bestellungen", "kunde_nr", "kunden"], ["rechnungen", "lieferant_id", "lieferanten"], ["rechnungen", "bestellung_id", "bestellungen"], ["buchungen", "rechnung_id", "rechnungen"]],
+      "not_fk": [["rechnungen", "external_id"], ["buchungen", "transaction_id"]]
+    },
+    {
+      "id": "languages-012",
+      "domain": "warehouse",
+      "tables": [
+        {"name": "proveedores", "pk": ["id"], "columns": [["id", "int"], ["razon_social", "varchar"], ["pais", "char"], ["external_id", "varchar"]]},
+        {"name": "productos", "pk": ["id"], "columns": [["id", "int"], ["sku", "varchar"], ["descripcion", "text"], ["proveedor_id", "int"], ["precio", "decimal"]]},
+        {"name": "facturas", "pk": ["id"], "columns": [["id", "int"], ["proveedor_id", "int"], ["numero", "varchar"], ["total", "decimal"], ["emitida", "date"], ["request_id", "varchar"]]},
+        {"name": "lineas_factura", "pk": ["factura_id", "producto_id"], "columns": [["factura_id", "int"], ["producto_id", "int"], ["cantidad", "int"], ["precio", "decimal"]]},
+        {"name": "almacenes", "pk": ["id"], "columns": [["id", "int"], ["nombre", "varchar"], ["ciudad", "varchar"]]},
+        {"name": "existencias", "pk": ["almacen_id", "producto_id"], "columns": [["almacen_id", "int"], ["producto_id", "int"], ["stock", "int"], ["actualizado", "timestamp"]]}
+      ],
+      "fk": [["productos", "proveedor_id", "proveedores"], ["facturas", "proveedor_id", "proveedores"], ["lineas_factura", "factura_id", "facturas"], ["lineas_factura", "producto_id", "productos"], ["existencias", "almacen_id", "almacenes"], ["existencias", "producto_id", "productos"]],
+      "not_fk": [["proveedores", "external_id"], ["facturas", "request_id"]]
+    },
+    {
+      "id": "languages-013",
+      "domain": "school",
+      "tables": [
+        {"name": "turmas", "pk": ["id"], "columns": [["id", "int"], ["codigo", "varchar"], ["ano", "int"]]},
+        {"name": "alunos", "pk": ["id"], "columns": [["id", "int"], ["nome", "varchar"], ["turma_id", "int"], ["nascimento", "date"], ["matricula", "varchar"], ["external_id", "varchar"]]},
+        {"name": "professores", "pk": ["id"], "columns": [["id", "int"], ["nome", "varchar"], ["email", "varchar"]]},
+        {"name": "disciplinas", "pk": ["id"], "columns": [["id", "int"], ["nome", "varchar"], ["professor_id", "int"], ["carga_horaria", "int"]]},
+        {"name": "matriculas", "pk": ["aluno_id", "disciplina_id"], "columns": [["aluno_id", "int"], ["disciplina_id", "int"], ["nota", "decimal"], ["faltas", "int"]]}
+      ],
+      "fk": [["alunos", "turma_id", "turmas"], ["disciplinas", "professor_id", "professores"], ["matriculas", "aluno_id", "alunos"], ["matriculas", "disciplina_id", "disciplinas"]],
+      "not_fk": [["alunos", "external_id"]]
+    },
+    {
+      "id": "languages-014",
+      "domain": "school",
+      "tables": [
+        {"name": "classes", "pk": ["id"], "columns": [["id", "int"], ["libelle", "varchar"], ["niveau", "varchar"]]},
+        {"name": "eleves", "pk": ["id"], "columns": [["id", "int"], ["classe_id", "int"], ["nom", "varchar"], ["naissance", "date"], ["device_id", "varchar"]]},
+        {"name": "enseignants", "pk": ["id"], "columns": [["id", "int"], ["nom", "varchar"], ["matiere", "varchar"]]},
+        {"name": "affectations", "pk": ["enseignant_id", "classe_id"], "columns": [["enseignant_id", "int"], ["classe_id", "int"], ["heures_semaine", "int"]]},
+        {"name": "absences", "pk": ["id"], "columns": [["id", "bigint"], ["eleve_id", "int"], ["date_absence", "date"], ["motif", "varchar"], ["request_id", "varchar"]]}
+      ],
+      "fk": [["eleves", "classe_id", "classes"], ["affectations", "enseignant_id", "enseignants"], ["affectations", "classe_id", "classes"], ["absences", "eleve_id", "eleves"]],
+      "not_fk": [["eleves", "device_id"], ["absences", "request_id"]]
+    },
+    {
+      "id": "languages-015",
+      "domain": "municipal services",
+      "tables": [
+        {"name": "klienty", "pk": ["id"], "columns": [["id", "int"], ["fio", "varchar"], ["telefon", "varchar"], ["external_id", "varchar"]]},
+        {"name": "otdely", "pk": ["id"], "columns": [["id", "int"], ["nazvanie", "varchar"]]},
+        {"name": "sotrudniki", "pk": ["id"], "columns": [["id", "int"], ["otdel_id", "int"], ["imya", "varchar"], ["dolzhnost", "varchar"]]},
+        {"name": "zayavki", "pk": ["id"], "columns": [["id", "int"], ["klient_id", "int"], ["otdel_id", "int"], ["ispolnitel_id", "int"], ["tip", "varchar"], ["status", "varchar"], ["sozdana", "timestamp"], ["session_id", "varchar"]]}
+      ],
+      "fk": [["sotrudniki", "otdel_id", "otdely"], ["zayavki", "klient_id", "klienty"], ["zayavki", "otdel_id", "otdely"], ["zayavki", "ispolnitel_id", "sotrudniki"]],
+      "not_fk": [["klienty", "external_id"], ["zayavki", "session_id"]]
+    },
+    {
+      "id": "languages-016",
+      "domain": "workshop",
+      "tables": [
+        {"name": "vladeltsy", "pk": ["id"], "columns": [["id", "int"], ["fio", "varchar"], ["stripe_customer_id", "varchar"]]},
+        {"name": "mashiny", "pk": ["id"], "columns": [["id", "int"], ["gos_nomer", "varchar"], ["marka", "varchar"], ["vladelec_id", "int"]]},
+        {"name": "mekhaniki", "pk": ["id"], "columns": [["id", "int"], ["fio", "varchar"], ["smena", "char"]]},
+        {"name": "remonty", "pk": ["id"], "columns": [["id", "int"], ["mashina_id", "int"], ["mekhanik_id", "int"], ["opisanie", "text"], ["summa", "decimal"], ["correlation_id", "varchar"]]},
+        {"name": "detali", "pk": ["id"], "columns": [["id", "int"], ["nazvanie", "varchar"], ["tsena", "decimal"]]},
+        {"name": "remont_detali", "pk": ["remont_id", "detal_id"], "columns": [["remont_id", "int"], ["detal_id", "int"], ["kolichestvo", "int"]]}
+      ],
+      "fk": [["mashiny", "vladelec_id", "vladeltsy"], ["remonty", "mashina_id", "mashiny"], ["remonty", "mekhanik_id", "mekhaniki"], ["remont_detali", "remont_id", "remonty"], ["remont_detali", "detal_id", "detali"]],
+      "not_fk": [["vladeltsy", "stripe_customer_id"], ["remonty", "correlation_id"]]
+    },
+    {
+      "id": "languages-017",
+      "domain": "dental",
+      "tables": [
+        {"name": "pacienty", "pk": ["id"], "columns": [["id", "int"], ["fio", "varchar"], ["data_rozhd", "date"]]},
+        {"name": "vrachi", "pk": ["id"], "columns": [["id", "int"], ["fio", "varchar"], ["spetsialnost", "varchar"], ["google_id", "varchar"]]},
+        {"name": "priemy", "pk": ["id"], "columns": [["id", "int"], ["pacient_id", "int"], ["vrach_id", "int"], ["nachalo", "timestamp"], ["status", "varchar"], ["external_id", "varchar"]]},
+        {"name": "uslugi", "pk": ["id"], "columns": [["id", "int"], ["nazvanie", "varchar"], ["tsena", "decimal"]]},
+        {"name": "priem_uslugi", "pk": ["priem_id", "usluga_id"], "columns": [["priem_id", "int"], ["usluga_id", "int"]]}
+      ],
+      "fk": [["priemy", "pacient_id", "pacienty"], ["priemy", "vrach_id", "vrachi"], ["priem_uslugi", "priem_id", "priemy"], ["priem_uslugi", "usluga_id", "uslugi"]],
+      "not_fk": [["priemy", "external_id"], ["vrachi", "google_id"]]
+    },
+    {
+      "id": "languages-018",
+      "domain": "library",
+      "tables": [
+        {"name": "editoriales", "pk": ["id"], "columns": [["id", "int"], ["nombre", "varchar"], ["pais", "char"]]},
+        {"name": "libros", "pk": ["id"], "columns": [["id", "bigint"], ["titulo", "varchar"], ["isbn", "char"], ["editorial_id", "int"], ["anio", "int"]]},
+        {"name": "socios", "pk": ["id"], "columns": [["id", "int"], ["nombre", "varchar"], ["alta", "date"], ["referido_por_id", "int"]]},
+        {"name": "prestamos", "pk": ["id"], "columns": [["id", "bigint"], ["socio_id", "int"], ["libro_id", "bigint"], ["fecha_prestamo", "date"], ["fecha_devolucion", "date"], ["tracking_id", "varchar"]]}
+      ],
+      "fk": [["libros", "editorial_id", "editoriales"], ["socios", "referido_por_id", "socios"], ["prestamos", "socio_id", "socios"], ["prestamos", "libro_id", "libros"]],
+      "not_fk": [["prestamos", "tracking_id"]]
+    },
+    {
+      "id": "languages-019",
+      "domain": "hotel",
+      "tables": [
+        {"name": "hospedes", "pk": ["id"], "columns": [["id", "int"], ["nome", "varchar"], ["email", "varchar"]]},
+        {"name": "quartos", "pk": ["id"], "columns": [["id", "int"], ["numero", "varchar"], ["tipo", "varchar"], ["diaria", "decimal"]]},
+        {"name": "reservas", "pk": ["id"], "columns": [["id", "int"], ["hospede_id", "int"], ["quarto_id", "int"], ["entrada", "date"], ["saida", "date"], ["status", "varchar"], ["session_id", "varchar"]]},
+        {"name": "consumos", "pk": ["id"], "columns": [["id", "int"], ["reserva_id", "int"], ["descricao", "varchar"], ["valor", "decimal"]]},
+        {"name": "pagamentos", "pk": ["id"], "columns": [["id", "int"], ["reserva_id", "int"], ["valor", "decimal"], ["transaction_id", "varchar"], ["pago_em", "timestamp"]]}
+      ],
+      "fk": [["reservas", "hospede_id", "hospedes"], ["reservas", "quarto_id", "quartos"], ["consumos", "reserva_id", "reservas"], ["pagamentos", "reserva_id", "reservas"]],
+      "not_fk": [["reservas", "session_id"], ["pagamentos", "transaction_id"]]
+    },
+    {
+      "id": "languages-020",
+      "domain": "gym",
+      "tables": [
+        {"name": "plans", "pk": ["id"], "columns": [["id", "bigint"], ["name", "varchar"], ["price", "decimal"], ["parent_plan_id", "bigint"], ["created_at", "timestamp"], ["updated_at", "timestamp"]]},
+        {"name": "members", "pk": ["id"], "columns": [["id", "bigint"], ["first_name", "varchar"], ["last_name", "varchar"], ["created_at", "timestamp"], ["updated_at", "timestamp"]]},
+        {"name": "memberships", "pk": ["id"], "columns": [["id", "bigint"], ["member_id", "bigint"], ["plan_id", "bigint"], ["starts_on", "date"], ["ends_on", "date"], ["stripe_customer_id", "varchar"], ["created_at", "timestamp"], ["updated_at", "timestamp"]]},
+        {"name": "check_ins", "pk": ["id"], "columns": [["id", "bigint"], ["member_id", "bigint"], ["device_id", "varchar"], ["checked_at", "timestamp"]]}
+      ],
+      "fk": [["plans", "parent_plan_id", "plans"], ["memberships", "member_id", "members"], ["memberships", "plan_id", "plans"], ["check_ins", "member_id", "members"]],
+      "not_fk": [["memberships", "stripe_customer_id"], ["check_ins", "device_id"]]
+    },
+    {
+      "id": "languages-021",
+      "domain": "car rental",
+      "tables": [
+        {"name": "branches", "pk": ["id"], "columns": [["id", "uuid"], ["city", "varchar"], ["opened_on", "date"]]},
+        {"name": "customers", "pk": ["id"], "columns": [["id", "uuid"], ["name", "varchar"], ["licence_ref", "varchar"], ["created_at", "timestamp"], ["updated_at", "timestamp"]]},
+        {"name": "vehicles", "pk": ["id"], "columns": [["id", "uuid"], ["branch_id", "uuid"], ["plate", "varchar"], ["model", "varchar"], ["daily_rate", "decimal"], ["created_at", "timestamp"], ["updated_at", "timestamp"]]},
+        {"name": "rentals", "pk": ["id"], "columns": [["id", "uuid"], ["vehicle_id", "uuid"], ["customer_id", "uuid"], ["pickup_at", "timestamp"], ["return_at", "timestamp"], ["status", "varchar"], ["correlation_id", "varchar"], ["created_at", "timestamp"], ["updated_at", "timestamp"]]},
+        {"name": "damage_reports", "pk": ["id"], "columns": [["id", "uuid"], ["rental_id", "uuid"], ["description", "text"], ["cost", "decimal"], ["device_id", "varchar"]]}
+      ],
+      "fk": [["vehicles", "branch_id", "branches"], ["rentals", "vehicle_id", "vehicles"], ["rentals", "customer_id", "customers"], ["damage_reports", "rental_id", "rentals"]],
+      "not_fk": [["rentals", "correlation_id"], ["damage_reports", "device_id"]]
+    },
+    {
+      "id": "languages-022",
+      "domain": "bakery",
+      "tables": [
+        {"name": "kategorien", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"]]},
+        {"name": "produkte", "pk": ["id"], "columns": [["id", "int"], ["bezeichnung", "varchar"], ["preis", "decimal"], ["kategorie_id", "int"]]},
+        {"name": "filialen", "pk": ["id"], "columns": [["id", "int"], ["ort", "varchar"], ["plz", "char"]]},
+        {"name": "verkaeufe", "pk": ["id"], "columns": [["id", "int"], ["filiale_id", "int"], ["produkt_id", "int"], ["menge", "int"], ["verkauft_am", "timestamp"], ["transaction_id", "varchar"]]},
+        {"name": "lieferungen", "pk": ["id"], "columns": [["id", "int"], ["filiale_id", "int"], ["geliefert_am", "date"], ["request_id", "varchar"]]}
+      ],
+      "fk": [["produkte", "kategorie_id", "kategorien"], ["verkaeufe", "filiale_id", "filialen"], ["verkaeufe", "produkt_id", "produkte"], ["lieferungen", "filiale_id", "filialen"]],
+      "not_fk": [["verkaeufe", "transaction_id"], ["lieferungen", "request_id"]]
+    },
+    {
+      "id": "languages-023",
+      "domain": "veterinary",
+      "tables": [
+        {"name": "proprietaires", "pk": ["id"], "columns": [["id", "int"], ["nom", "varchar"], ["ville", "varchar"], ["google_id", "varchar"]]},
+        {"name": "animaux", "pk": ["id"], "columns": [["id", "int"], ["proprietaire_id", "int"], ["nom", "varchar"], ["espece", "varchar"], ["naissance", "date"]]},
+        {"name": "veterinaires", "pk": ["id"], "columns": [["id", "int"], ["nom", "varchar"]]},
+        {"name": "consultations", "pk": ["id"], "columns": [["id", "int"], ["animal_id", "int"], ["veterinaire_id", "int"], ["date_consult", "timestamp"], ["motif", "text"], ["correlation_id", "varchar"]]},
+        {"name": "vaccins", "pk": ["id"], "columns": [["id", "int"], ["nom", "varchar"]]},
+        {"name": "vaccinations", "pk": ["animal_id", "vaccin_id"], "columns": [["animal_id", "int"], ["vaccin_id", "int"], ["date_vaccin", "date"]]}
+      ],
+      "fk": [["animaux", "proprietaire_id", "proprietaires"], ["consultations", "animal_id", "animaux"], ["consultations", "veterinaire_id", "veterinaires"], ["vaccinations", "animal_id", "animaux"], ["vaccinations", "vaccin_id", "vaccins"]],
+      "not_fk": [["proprietaires", "google_id"], ["consultations", "correlation_id"]]
+    },
+    {
+      "id": "languages-024",
+      "domain": "parking",
+      "tables": [
+        {"name": "plazas", "pk": ["id"], "columns": [["id", "int"], ["codigo", "varchar"], ["planta", "int"]]},
+        {"name": "vehiculos", "pk": ["id"], "columns": [["id", "int"], ["matricula", "varchar"], ["marca", "varchar"], ["external_id", "varchar"]]},
+        {"name": "entradas", "pk": ["id"], "columns": [["id", "int"], ["vehiculo_id", "int"], ["plaza_id", "int"], ["entrada", "timestamp"], ["salida", "timestamp"], ["importe", "decimal"]]},
+        {"name": "pagos", "pk": ["id"], "columns": [["id", "int"], ["entrada_id", "int"], ["transaction_id", "varchar"], ["importe", "decimal"], ["pagado", "boolean"]]},
+        {"name": "abonos", "pk": ["id"], "columns": [["id", "int"], ["vehiculo_id", "int"], ["inicio", "date"], ["fin", "date"]]}
+      ],
+      "fk": [["entradas", "vehiculo_id", "vehiculos"], ["entradas", "plaza_id", "plazas"], ["pagos", "entrada_id", "entradas"], ["abonos", "vehiculo_id", "vehiculos"]],
+      "not_fk": [["vehiculos", "external_id"], ["pagos", "transaction_id"]]
+    },
+    {
+      "id": "languages-025",
+      "domain": "equipment rental",
+      "tables": [
+        {"name": "vidy", "pk": ["id"], "columns": [["id", "int"], ["nazvanie", "varchar"]]},
+        {"name": "inventar", "pk": ["id"], "columns": [["id", "int"], ["vid_id", "int"], ["serial", "varchar"], ["sostoyanie", "varchar"], ["device_id", "varchar"]]},
+        {"name": "klienty", "pk": ["id"], "columns": [["id", "int"], ["fio", "varchar"], ["telefon", "varchar"]]},
+        {"name": "arendy", "pk": ["id"], "columns": [["id", "int"], ["klient_id", "int"], ["inventar_id", "int"], ["nachalo", "date"], ["konets", "date"], ["summa", "decimal"], ["request_id", "varchar"]]},
+        {"name": "platezhi", "pk": ["id"], "columns": [["id", "int"], ["arenda_id", "int"], ["summa", "decimal"], ["data", "timestamp"]]}
+      ],
+      "fk": [["inventar", "vid_id", "vidy"], ["arendy", "klient_id", "klienty"], ["arendy", "inventar_id", "inventar"], ["platezhi", "arenda_id", "arendy"]],
+      "not_fk": [["inventar", "device_id"], ["arendy", "request_id"]]
+    },
+    {
+      "id": "languages-026",
+      "domain": "accounting",
+      "tables": [
+        {"name": "empresas", "pk": ["id"], "columns": [["id", "int"], ["razao_social", "varchar"], ["nif", "char"]]},
+        {"name": "contadores", "pk": ["id"], "columns": [["id", "int"], ["nome", "varchar"], ["empresa_id", "int"], ["google_id", "varchar"]]},
+        {"name": "contas", "pk": ["id"], "columns": [["id", "int"], ["empresa_id", "int"], ["codigo", "varchar"], ["nome", "varchar"], ["tipo", "varchar"]]},
+        {"name": "lancamentos", "pk": ["id"], "columns": [["id", "bigint"], ["conta_id", "int"], ["empresa_id", "int"], ["data", "date"], ["valor", "decimal"], ["historico", "text"], ["external_id", "varchar"]]}
+      ],
+      "fk": [["contadores", "empresa_id", "empresas"], ["contas", "empresa_id", "empresas"], ["lancamentos", "conta_id", "contas"], ["lancamentos", "empresa_id", "empresas"]],
+      "not_fk": [["contadores", "google_id"], ["lancamentos", "external_id"]]
+    },
+    {
+      "id": "languages-027",
+      "domain": "school",
+      "tables": [
+        {"name": "students", "pk": ["id"], "columns": [["id", "bigint"], ["name", "varchar"], ["email", "varchar"], ["google_id", "varchar"], ["created_at", "timestamp"], ["updated_at", "timestamp"]]},
+        {"name": "instructors", "pk": ["id"], "columns": [["id", "bigint"], ["name", "varchar"], ["office", "varchar"]]},
+        {"name": "courses", "pk": ["id"], "columns": [["id", "bigint"], ["title", "varchar"], ["credits", "int"], ["prerequisite_id", "bigint"], ["created_at", "timestamp"], ["updated_at", "timestamp"]]},
+        {"name": "course_instructors", "pk": ["course_id", "instructor_id"], "columns": [["course_id", "bigint"], ["instructor_id", "bigint"]]},
+        {"name": "enrollments", "pk": ["id"], "columns": [["id", "bigint"], ["student_id", "bigint"], ["course_id", "bigint"], ["grade", "char"], ["enrolled_at", "timestamp"], ["request_id", "varchar"]]}
+      ],
+      "fk": [["courses", "prerequisite_id", "courses"], ["course_instructors", "course_id", "courses"], ["course_instructors", "instructor_id", "instructors"], ["enrollments", "student_id", "students"], ["enrollments", "course_id", "courses"]],
+      "not_fk": [["students", "google_id"], ["enrollments", "request_id"]]
+    },
+    {
+      "id": "languages-028",
+      "domain": "restaurant",
+      "tables": [
+        {"name": "restaurants", "pk": ["id"], "columns": [["id", "int"], ["nom", "varchar"], ["ville", "varchar"]]},
+        {"name": "plats", "pk": ["id"], "columns": [["id", "int"], ["restaurant_id", "int"], ["libelle", "varchar"], ["prix", "decimal"], ["categorie", "varchar"], ["external_id", "varchar"]]},
+        {"name": "commandes", "pk": ["id"], "columns": [["id", "int"], ["restaurant_id", "int"], ["table_no", "varchar"], ["ouverte_le", "timestamp"], ["statut", "varchar"], ["session_id", "varchar"]]},
+        {"name": "commande_plats", "pk": ["commande_id", "plat_id"], "columns": [["commande_id", "int"], ["plat_id", "int"], ["quantite", "int"]]}
+      ],
+      "fk": [["plats", "restaurant_id", "restaurants"], ["commandes", "restaurant_id", "restaurants"], ["commande_plats", "commande_id", "commandes"], ["commande_plats", "plat_id", "plats"]],
+      "not_fk": [["plats", "external_id"], ["commandes", "session_id"]]
+    },
+    {
+      "id": "languages-029",
+      "domain": "courier",
+      "tables": [
+        {"name": "zonas", "pk": ["id"], "columns": [["id", "int"], ["nombre", "varchar"]]},
+        {"name": "clientes", "pk": ["id"], "columns": [["id", "int"], ["nombre", "varchar"], ["correo", "varchar"]]},
+        {"name": "mensajeros", "pk": ["id"], "columns": [["id", "int"], ["nombre", "varchar"], ["vehiculo", "varchar"], ["zona_id", "int"], ["device_id", "varchar"]]},
+        {"name": "envios", "pk": ["id"], "columns": [["id", "int"], ["cliente_id", "int"], ["mensajero_id", "int"], ["estado", "varchar"], ["precio", "decimal"], ["tracking_id", "varchar"]]},
+        {"name": "paradas", "pk": ["id"], "columns": [["id", "int"], ["envio_id", "int"], ["direccion", "varchar"], ["orden", "int"], ["llegada", "timestamp"]]}
+      ],
+      "fk": [["mensajeros", "zona_id", "zonas"], ["envios", "cliente_id", "clientes"], ["envios", "mensajero_id", "mensajeros"], ["paradas", "envio_id", "envios"]],
+      "not_fk": [["mensajeros", "device_id"], ["envios", "tracking_id"]]
+    },
+    {
+      "id": "languages-030",
+      "domain": "sports club",
+      "tables": [
+        {"name": "mitglieder", "pk": ["id"], "columns": [["id", "int"], ["vorname", "varchar"], ["nachname", "varchar"], ["eintritt", "date"], ["external_id", "varchar"]]},
+        {"name": "abteilungen", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"], ["leiter_id", "int"]]},
+        {"name": "beitraege", "pk": ["id"], "columns": [["id", "int"], ["mitglied_id", "int"], ["betrag", "decimal"], ["faellig", "date"], ["bezahlt", "boolean"], ["transaction_id", "varchar"]]},
+        {"name": "mitgliedschaften", "pk": ["mitglied_id", "abteilung_id"], "columns": [["mitglied_id", "int"], ["abteilung_id", "int"], ["seit", "date"]]},
+        {"name": "trainingszeiten", "pk": ["id"], "columns": [["id", "int"], ["abteilung_id", "int"], ["wochentag", "varchar"], ["beginn", "char"]]}
+      ],
+      "fk": [["abteilungen", "leiter_id", "mitglieder"], ["beitraege", "mitglied_id", "mitglieder"], ["mitgliedschaften", "mitglied_id", "mitglieder"], ["mitgliedschaften", "abteilung_id", "abteilungen"], ["trainingszeiten", "abteilung_id", "abteilungen"]],
+      "not_fk": [["mitglieder", "external_id"], ["beitraege", "transaction_id"]]
+    },
+    {
+      "id": "languages-031",
+      "domain": "hotel",
+      "tables": [
+        {"name": "gosti", "pk": ["id"], "columns": [["id", "int"], ["fio", "varchar"], ["telefon", "varchar"], ["google_id", "varchar"], ["referrer_id", "int"]]},
+        {"name": "tipy_nomerov", "pk": ["id"], "columns": [["id", "int"], ["nazvanie", "varchar"], ["tsena", "decimal"]]},
+        {"name": "nomera", "pk": ["id"], "columns": [["id", "int"], ["tip_id", "int"], ["etazh", "int"], ["nomer", "varchar"]]},
+        {"name": "bronirovaniya", "pk": ["id"], "columns": [["id", "int"], ["gost_id", "int"], ["nomer_id", "int"], ["zaezd", "date"], ["vyezd", "date"], ["status", "varchar"], ["session_id", "varchar"]]}
+      ],
+      "fk": [["gosti", "referrer_id", "gosti"], ["nomera", "tip_id", "tipy_nomerov"], ["bronirovaniya", "gost_id", "gosti"], ["bronirovaniya", "nomer_id", "nomera"]],
+      "not_fk": [["gosti", "google_id"], ["bronirovaniya", "session_id"]]
+    },
+    {
+      "id": "languages-032",
+      "domain": "transport",
+      "tables": [
+        {"name": "conductores", "pk": ["id"], "columns": [["id", "int"], ["nombre", "varchar"], ["licencia_tipo", "char"]]},
+        {"name": "rutas", "pk": ["id"], "columns": [["id", "int"], ["nombre", "varchar"], ["distancia_km", "decimal"]]},
+        {"name": "autobuses", "pk": ["id"], "columns": [["id", "int"], ["matricula", "varchar"], ["capacidad", "int"], ["conductor_habitual_id", "int"], ["device_id", "varchar"]]},
+        {"name": "viajes", "pk": ["id"], "columns": [["id", "int"], ["ruta_id", "int"], ["autobus_id", "int"], ["conductor_id", "int"], ["salida", "timestamp"], ["pasajeros", "int"], ["request_id", "varchar"]]}
+      ],
+      "fk": [["autobuses", "conductor_habitual_id", "conductores"], ["viajes", "ruta_id", "rutas"], ["viajes", "autobus_id", "autobuses"], ["viajes", "conductor_id", "conductores"]],
+      "not_fk": [["autobuses", "device_id"], ["viajes", "request_id"]]
+    },
+    {
+      "id": "languages-033",
+      "domain": "housing",
+      "tables": [
+        {"name": "objekte", "pk": ["id"], "columns": [["id", "uuid"], ["strasse", "varchar"], ["ort", "varchar"]]},
+        {"name": "wohnungen", "pk": ["id"], "columns": [["id", "uuid"], ["objekt_id", "uuid"], ["nummer", "varchar"], ["flaeche", "decimal"]]},
+        {"name": "mieter", "pk": ["id"], "columns": [["id", "uuid"], ["name", "varchar"], ["email", "varchar"], ["google_id", "varchar"]]},
+        {"name": "mietvertraege", "pk": ["id"], "columns": [["id", "uuid"], ["wohnung_id", "uuid"], ["mieter_id", "uuid"], ["beginn", "date"], ["kaltmiete", "decimal"]]},
+        {"name": "zaehler", "pk": ["id"], "columns": [["id", "uuid"], ["wohnung_id", "uuid"], ["typ", "varchar"], ["device_id", "varchar"], ["stand", "decimal"]]}
+      ],
+      "fk": [["wohnungen", "objekt_id", "objekte"], ["mietvertraege", "wohnung_id", "wohnungen"], ["mietvertraege", "mieter_id", "mieter"], ["zaehler", "wohnung_id", "wohnungen"]],
+      "not_fk": [["mieter", "google_id"], ["zaehler", "device_id"]]
+    },
+    {
+      "id": "languages-034",
+      "domain": "pharmacy",
+      "tables": [
+        {"name": "fournisseurs", "pk": ["id"], "columns": [["id", "int"], ["nom", "varchar"], ["pays", "char"]]},
+        {"name": "medicaments", "pk": ["id"], "columns": [["id", "int"], ["nom", "varchar"], ["prix", "decimal"], ["fournisseur_id", "int"], ["code", "char"]]},
+        {"name": "ventes", "pk": ["id"], "columns": [["id", "bigint"], ["medicament_id", "int"], ["quantite", "int"], ["vendu_le", "timestamp"], ["transaction_id", "varchar"]]},
+        {"name": "commandes_fournisseur", "pk": ["id"], "columns": [["id", "int"], ["fournisseur_id", "int"], ["medicament_id", "int"], ["quantite", "int"], ["passee", "date"], ["tracking_id", "varchar"]]}
+      ],
+      "fk": [["medicaments", "fournisseur_id", "fournisseurs"], ["ventes", "medicament_id", "medicaments"], ["commandes_fournisseur", "fournisseur_id", "fournisseurs"], ["commandes_fournisseur", "medicament_id", "medicaments"]],
+      "not_fk": [["ventes", "transaction_id"], ["commandes_fournisseur", "tracking_id"]]
+    },
+    {
+      "id": "languages-035",
+      "domain": "events",
+      "tables": [
+        {"name": "locais", "pk": ["id"], "columns": [["id", "int"], ["nome", "varchar"], ["capacidade", "int"]]},
+        {"name": "eventos", "pk": ["id"], "columns": [["id", "int"], ["titulo", "varchar"], ["local_id", "int"], ["inicio", "timestamp"]]},
+        {"name": "compradores", "pk": ["id"], "columns": [["id", "int"], ["nome", "varchar"], ["email", "varchar"], ["stripe_customer_id", "varchar"]]},
+        {"name": "ingressos", "pk": ["id"], "columns": [["id", "int"], ["evento_id", "int"], ["comprador_id", "int"], ["setor", "char"], ["preco", "decimal"], ["transaction_id", "varchar"]]},
+        {"name": "palestrantes", "pk": ["id"], "columns": [["id", "int"], ["nome", "varchar"]]},
+        {"name": "evento_palestrantes", "pk": ["evento_id", "palestrante_id"], "columns": [["evento_id", "int"], ["palestrante_id", "int"]]}
+      ],
+      "fk": [["eventos", "local_id", "locais"], ["ingressos", "evento_id", "eventos"], ["ingressos", "comprador_id", "compradores"], ["evento_palestrantes", "evento_id", "eventos"], ["evento_palestrantes", "palestrante_id", "palestrantes"]],
+      "not_fk": [["compradores", "stripe_customer_id"], ["ingressos", "transaction_id"]]
+    },
+    {
+      "id": "languages-036",
+      "domain": "medical practice",
+      "tables": [
+        {"name": "practices", "pk": ["id"], "columns": [["id", "uuid"], ["name", "varchar"], ["city", "varchar"]]},
+        {"name": "clinicians", "pk": ["id"], "columns": [["id", "uuid"], ["practice_id", "uuid"], ["full_name", "varchar"], ["licence_no", "varchar"]]},
+        {"name": "patients", "pk": ["id"], "columns": [["id", "uuid"], ["practice_id", "uuid"], ["date_of_birth", "date"], ["external_id", "varchar"]]},
+        {"name": "appointments", "pk": ["id"], "columns": [["id", "uuid"], ["clinician_id", "uuid"], ["patient_id", "uuid"], ["starts_at", "timestamp"], ["status", "varchar"], ["correlation_id", "varchar"]]}
+      ],
+      "fk": [["clinicians", "practice_id", "practices"], ["patients", "practice_id", "practices"], ["appointments", "clinician_id", "clinicians"], ["appointments", "patient_id", "patients"]],
+      "not_fk": [["patients", "external_id"], ["appointments", "correlation_id"]]
+    },
+    {
+      "id": "languages-037",
+      "domain": "delivery",
+      "tables": [
+        {"name": "raiony", "pk": ["id"], "columns": [["id", "int"], ["nazvanie", "varchar"]]},
+        {"name": "adresa", "pk": ["id"], "columns": [["id", "int"], ["raion_id", "int"], ["ulitsa", "varchar"], ["dom", "varchar"]]},
+        {"name": "kurery", "pk": ["id"], "columns": [["id", "int"], ["fio", "varchar"], ["transport", "varchar"], ["device_id", "varchar"]]},
+        {"name": "zakazy_dostavki", "pk": ["id"], "columns": [["id", "int"], ["adres_id", "int"], ["kurer_id", "int"], ["summa", "decimal"], ["status", "varchar"], ["tracking_id", "varchar"]]},
+        {"name": "otzyvy", "pk": ["id"], "columns": [["id", "int"], ["zakaz_id", "int"], ["ocenka", "int"], ["tekst", "text"]]}
+      ],
+      "fk": [["adresa", "raion_id", "raiony"], ["zakazy_dostavki", "adres_id", "adresa"], ["zakazy_dostavki", "kurer_id", "kurery"], ["otzyvy", "zakaz_id", "zakazy_dostavki"]],
+      "not_fk": [["kurery", "device_id"], ["zakazy_dostavki", "tracking_id"]]
+    },
+    {
+      "id": "languages-038",
+      "domain": "bike rental",
+      "tables": [
+        {"name": "types_velo", "pk": ["id"], "columns": [["id", "int"], ["libelle", "varchar"]]},
+        {"name": "velos", "pk": ["id"], "columns": [["id", "int"], ["type_id", "int"], ["modele", "varchar"], ["numero_serie", "varchar"]]},
+        {"name": "stations", "pk": ["id"], "columns": [["id", "int"], ["nom", "varchar"], ["adresse", "varchar"]]},
+        {"name": "clients", "pk": ["id"], "columns": [["id", "int"], ["nom", "varchar"], ["mail", "varchar"], ["google_id", "varchar"]]},
+        {"name": "locations", "pk": ["id"], "columns": [["id", "int"], ["velo_id", "int"], ["client_id", "int"], ["station_depart_id", "int"], ["station_arrivee_id", "int"], ["debut", "timestamp"], ["fin", "timestamp"], ["montant", "decimal"], ["transaction_id", "varchar"]]}
+      ],
+      "fk": [["velos", "type_id", "types_velo"], ["locations", "velo_id", "velos"], ["locations", "client_id", "clients"], ["locations", "station_depart_id", "stations"], ["locations", "station_arrivee_id", "stations"]],
+      "not_fk": [["clients", "google_id"], ["locations", "transaction_id"]]
+    },
+    {
+      "id": "languages-039",
+      "domain": "payroll",
+      "tables": [
+        {"name": "departments", "pk": ["id"], "columns": [["id", "bigint"], ["name", "varchar"], ["cost_center", "varchar"], ["manager_id", "bigint"], ["created_at", "timestamp"], ["updated_at", "timestamp"]]},
+        {"name": "employees", "pk": ["id"], "columns": [["id", "bigint"], ["first_name", "varchar"], ["last_name", "varchar"], ["department_id", "bigint"], ["hired_on", "date"], ["google_id", "varchar"], ["created_at", "timestamp"], ["updated_at", "timestamp"]]},
+        {"name": "payslips", "pk": ["id"], "columns": [["id", "bigint"], ["employee_id", "bigint"], ["period", "char"], ["gross", "decimal"], ["net", "decimal"], ["transaction_id", "varchar"]]},
+        {"name": "payslip_lines", "pk": ["payslip_id", "line_no"], "columns": [["payslip_id", "bigint"], ["line_no", "int"], ["code", "varchar"], ["amount", "decimal"]]}
+      ],
+      "fk": [["departments", "manager_id", "employees"], ["employees", "department_id", "departments"], ["payslips", "employee_id", "employees"], ["payslip_lines", "payslip_id", "payslips"]],
+      "not_fk": [["employees", "google_id"], ["payslips", "transaction_id"]]
+    },
+    {
+      "id": "languages-040",
+      "domain": "language school",
+      "tables": [
+        {"name": "idiomas", "pk": ["id"], "columns": [["id", "uuid"], ["nome", "varchar"]]},
+        {"name": "professores", "pk": ["id"], "columns": [["id", "uuid"], ["nome", "varchar"], ["email", "varchar"]]},
+        {"name": "turmas", "pk": ["id"], "columns": [["id", "uuid"], ["idioma_id", "uuid"], ["professor_id", "uuid"], ["nivel", "varchar"], ["inicio", "date"]]},
+        {"name": "estudantes", "pk": ["id"], "columns": [["id", "uuid"], ["nome", "varchar"], ["nascimento", "date"], ["request_id", "varchar"]]},
+        {"name": "matriculas", "pk": ["estudante_id", "turma_id"], "columns": [["estudante_id", "uuid"], ["turma_id", "uuid"], ["pago", "boolean"], ["correlation_id", "varchar"]]}
+      ],
+      "fk": [["turmas", "idioma_id", "idiomas"], ["turmas", "professor_id", "professores"], ["matriculas", "estudante_id", "estudantes"], ["matriculas", "turma_id", "turmas"]],
+      "not_fk": [["estudantes", "request_id"], ["matriculas", "correlation_id"]]
+    }
+  ]
+}

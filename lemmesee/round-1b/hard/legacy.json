@@ -1,0 +1,832 @@
+{
+  "style": "legacy",
+  "schemas": [
+    {
+      "id": "legacy-001",
+      "domain": "inventory",
+      "tables": [
+        {"name": "tbl_products", "pk": ["prod_cd"], "columns": [["prod_cd", "varchar"], ["prod_desc", "varchar"], ["supp_cd", "char"], ["unit_cost", "decimal"], ["reorder_qty", "int"], ["legacy_id", "varchar"]]},
+        {"name": "tbl_suppliers", "pk": ["supp_cd"], "columns": [["supp_cd", "char"], ["supp_name", "varchar"], ["old_system_ref", "varchar"]]},
+        {"name": "tbl_warehouses", "pk": ["whse_no"], "columns": [["whse_no", "int"], ["whse_name", "varchar"], ["active_flg", "boolean"]]},
+        {"name": "tbl_stock", "pk": ["whse_no", "prod_cd"], "columns": [["whse_no", "int"], ["prod_cd", "varchar"], ["on_hand_qty", "int"], ["last_cnt_dt", "date"]]},
+        {"name": "tbl_receipts", "pk": ["rcpt_no"], "columns": [["rcpt_no", "int"], ["whse_no", "int"], ["prod_cd", "varchar"], ["rcpt_qty", "int"], ["rcpt_dt", "date"], ["batch_no", "varchar"]]}
+      ],
+      "fk": [
+        ["tbl_products", "supp_cd", "tbl_suppliers"],
+        ["tbl_stock", "whse_no", "tbl_warehouses"],
+        ["tbl_stock", "prod_cd", "tbl_products"],
+        ["tbl_receipts", "whse_no", "tbl_warehouses"],
+        ["tbl_receipts", "prod_cd", "tbl_products"]
+      ],
+      "not_fk": [["tbl_products", "legacy_id"], ["tbl_suppliers", "old_system_ref"], ["tbl_receipts", "batch_no"]]
+    },
+    {
+      "id": "legacy-002",
+      "domain": "payroll",
+      "tables": [
+        {"name": "departments", "pk": ["dept"], "columns": [["dept", "int"], ["dept_name", "varchar"]]},
+        {"name": "employees", "pk": ["emp_no"], "columns": [["emp_no", "int"], ["emp_nm", "varchar"], ["dept", "int"], ["hire_dt", "date"], ["mgr_emp_no", "int"]]},
+        {"name": "pay_codes", "pk": ["pay_code"], "columns": [["pay_code", "char"], ["pay_desc", "varchar"]]},
+        {"name": "pay_runs", "pk": ["run_no"], "columns": [["run_no", "int"], ["run_dt", "date"], ["batch_no", "int"]]},
+        {"name": "pay_lines", "pk": ["run_no", "emp"], "columns": [["run_no", "int"], ["emp", "int"], ["pay_code", "char"], ["gross_amt", "decimal"], ["net_amt", "decimal"]]}
+      ],
+      "fk": [
+        ["employees", "dept", "departments"],
+        ["employees", "mgr_emp_no", "employees"],
+        ["pay_lines", "run_no", "pay_runs"],
+        ["pay_lines", "emp", "employees"],
+        ["pay_lines", "pay_code", "pay_codes"]
+      ],
+      "not_fk": [["pay_runs", "batch_no"]]
+    },
+    {
+      "id": "legacy-003",
+      "domain": "banking",
+      "tables": [
+        {"name": "customers", "pk": ["cust_no"], "columns": [["cust_no", "int"], ["cust_nm", "varchar"], ["legacy_id", "varchar"]]},
+        {"name": "currencies", "pk": ["iso"], "columns": [["iso", "char"], ["ccy_name", "varchar"]]},
+        {"name": "accounts", "pk": ["acct_nbr"], "columns": [["acct_nbr", "varchar"], ["cust_no", "int"], ["currency", "char"], ["open_dt", "date"], ["bal_amt", "decimal"], ["status_cd", "char"]]},
+        {"name": "txn_types", "pk": ["txn_type"], "columns": [["txn_type", "char"], ["txn_desc", "varchar"]]},
+        {"name": "transactions", "pk": ["txn_id"], "columns": [["txn_id", "bigint"], ["acct_nbr", "varchar"], ["txn_type", "char"], ["currency", "char"], ["txn_dt", "timestamp"], ["amt", "decimal"], ["old_system_ref", "varchar"]]}
+      ],
+      "fk": [
+        ["accounts", "cust_no", "customers"],
+        ["accounts", "currency", "currencies"],
+        ["transactions", "acct_nbr", "accounts"],
+        ["transactions", "txn_type", "txn_types"],
+        ["transactions", "currency", "currencies"]
+      ],
+      "not_fk": [["customers", "legacy_id"], ["transactions", "old_system_ref"]]
+    },
+    {
+      "id": "legacy-004",
+      "domain": "telecom",
+      "tables": [
+        {"name": "switches", "pk": ["sw_id"], "columns": [["sw_id", "int"], ["sw_loc", "varchar"]]},
+        {"name": "tariffs", "pk": ["tariff_cd"], "columns": [["tariff_cd", "varchar"], ["tariff_desc", "varchar"], ["mthly_fee", "decimal"]]},
+        {"name": "subscribers", "pk": ["sub_no"], "columns": [["sub_no", "bigint"], ["msisdn", "varchar"], ["sub_nm", "varchar"], ["activ_dt", "date"]]},
+        {"name": "sub_tariffs", "pk": ["sub_no", "eff_dt"], "columns": [["sub_no", "bigint"], ["eff_dt", "date"], ["tariff_cd", "varchar"]]},
+        {"name": "cdr_records", "pk": ["cdr_id"], "columns": [["cdr_id", "bigint"], ["intSubscriberID", "bigint"], ["tariff_cd", "varchar"], ["sw_id", "int"], ["dial_nbr", "varchar"], ["start_ts", "timestamp"], ["dur_sec", "int"], ["batch_no", "int"]]},
+        {"name": "invoices", "pk": ["inv_id"], "columns": [["inv_id", "int"], ["sub_no", "bigint"], ["issue_dt", "date"], ["total_amt", "decimal"], ["invoice_number", "varchar"]]}
+      ],
+      "fk": [
+        ["sub_tariffs", "sub_no", "subscribers"],
+        ["sub_tariffs", "tariff_cd", "tariffs"],
+        ["cdr_records", "intSubscriberID", "subscribers"],
+        ["cdr_records", "tariff_cd", "tariffs"],
+        ["cdr_records", "sw_id", "switches"],
+        ["invoices", "sub_no", "subscribers"]
+      ],
+      "not_fk": [["invoices", "invoice_number"], ["cdr_records", "batch_no"]]
+    },
+    {
+      "id": "legacy-005",
+      "domain": "insurance",
+      "tables": [
+        {"name": "POLICYHOLDERS", "pk": ["HOLDER_ID"], "columns": [["HOLDER_ID", "int"], ["HOLDER_NM", "varchar"]]},
+        {"name": "PLANS", "pk": ["PLAN_CD"], "columns": [["PLAN_CD", "char"], ["PLAN_NM", "varchar"]]},
+        {"name": "POLICIES", "pk": ["POL_NO"], "columns": [["POL_NO", "varchar"], ["HOLDER_ID", "int"], ["PLAN_CD", "char"], ["EFF_DT", "date"], ["PREM_AMT", "decimal"]]},
+        {"name": "ADJUSTERS", "pk": ["ADJ_ID"], "columns": [["ADJ_ID", "int"], ["ADJ_NM", "varchar"], ["old_system_ref", "varchar"]]},
+        {"name": "CLAIMS", "pk": ["CLM_NO"], "columns": [["CLM_NO", "bigint"], ["POL_NO", "varchar"], ["ADJ_ID", "int"], ["LOSS_DT", "date"], ["CLM_AMT", "decimal"], ["claim_status", "char"], ["legacy_id", "varchar"]]},
+        {"name": "CLAIM_PAYMENTS", "pk": ["CLM_NO", "PAY_SEQ"], "columns": [["CLM_NO", "bigint"], ["PAY_SEQ", "int"], ["PAY_AMT", "decimal"], ["PAY_DT", "date"]]}
+      ],
+      "fk": [
+        ["POLICIES", "HOLDER_ID", "POLICYHOLDERS"],
+        ["POLICIES", "PLAN_CD", "PLANS"],
+        ["CLAIMS", "POL_NO", "POLICIES"],
+        ["CLAIMS", "ADJ_ID", "ADJUSTERS"],
+        ["CLAIM_PAYMENTS", "CLM_NO", "CLAIMS"]
+      ],
+      "not_fk": [["ADJUSTERS", "old_system_ref"], ["CLAIMS", "legacy_id"]]
+    },
+    {
+      "id": "legacy-006",
+      "domain": "government registry",
+      "tables": [
+        {"name": "t_person", "pk": ["person_uuid"], "columns": [["person_uuid", "uuid"], ["family_nm", "varchar"], ["given_nm", "varchar"], ["birth_dt", "date"]]},
+        {"name": "t_municipality", "pk": ["mun_cd"], "columns": [["mun_cd", "char"], ["mun_name", "varchar"]]},
+        {"name": "t_address", "pk": ["addr_id"], "columns": [["addr_id", "bigint"], ["street_ln", "varchar"], ["post_cd", "char"], ["mun_cd", "char"]]},
+        {"name": "t_doc_types", "pk": ["doc_typ_cd"], "columns": [["doc_typ_cd", "char"], ["doc_typ_desc", "varchar"]]},
+        {"name": "t_registration", "pk": ["reg_id"], "columns": [["reg_id", "bigint"], ["person_uuid", "uuid"], ["addr_id", "bigint"], ["mun_cd", "char"], ["reg_dt", "date"], ["batch_no", "int"], ["legacy_id", "varchar"]]},
+        {"name": "t_document", "pk": ["doc_uuid"], "columns": [["doc_uuid", "uuid"], ["person_uuid", "uuid"], ["doc_typ_cd", "char"], ["issue_dt", "date"]]}
+      ],
+      "fk": [
+        ["t_address", "mun_cd", "t_municipality"],
+        ["t_registration", "person_uuid", "t_person"],
+        ["t_registration", "addr_id", "t_address"],
+        ["t_registration", "mun_cd", "t_municipality"],
+        ["t_document", "person_uuid", "t_person"],
+        ["t_document", "doc_typ_cd", "t_doc_types"]
+      ],
+      "not_fk": [["t_registration", "batch_no"], ["t_registration", "legacy_id"]]
+    },
+    {
+      "id": "legacy-007",
+      "domain": "manufacturing",
+      "tables": [
+        {"name": "lines", "pk": ["line_cd"], "columns": [["line_cd", "char"], ["line_desc", "varchar"]]},
+        {"name": "work_centers", "pk": ["ctr_id"], "columns": [["ctr_id", "int"], ["ctr_name", "varchar"], ["line_cd", "char"]]},
+        {"name": "parts", "pk": ["part_no"], "columns": [["part_no", "varchar"], ["part_desc", "varchar"], ["std_cost", "decimal"]]},
+        {"name": "order_headers", "pk": ["order_header_id"], "columns": [["order_header_id", "int"], ["order_ref", "varchar"]]},
+        {"name": "work_orders", "pk": ["wo_no"], "columns": [["wo_no", "int"], ["order_header_id", "int"], ["part_no", "varchar"], ["line_cd", "char"], ["qty_ord", "int"], ["start_dt", "date"], ["batch_no", "varchar"]]},
+        {"name": "work_steps", "pk": ["wo_no", "step_seq"], "columns": [["wo_no", "int"], ["step_seq", "int"], ["ctr_id", "int"], ["setup_min", "float"]]},
+        {"name": "bom", "pk": ["parent_part", "child_part"], "columns": [["parent_part", "varchar"], ["child_part", "varchar"], ["qty_per", "decimal"]]}
+      ],
+      "fk": [
+        ["work_centers", "line_cd", "lines"],
+        ["work_orders", "order_header_id", "order_headers"],
+        ["work_orders", "part_no", "parts"],
+        ["work_orders", "line_cd", "lines"],
+        ["work_steps", "wo_no", "work_orders"],
+        ["work_steps", "ctr_id", "work_centers"],
+        ["bom", "parent_part", "parts"],
+        ["bom", "child_part", "parts"]
+      ],
+      "not_fk": [["work_orders", "batch_no"]]
+    },
+    {
+      "id": "legacy-008",
+      "domain": "library",
+      "tables": [
+        {"name": "publishers", "pk": ["pub_cd"], "columns": [["pub_cd", "char"], ["pub_nm", "varchar"]]},
+        {"name": "books", "pk": ["isbn"], "columns": [["isbn", "varchar"], ["ttl", "varchar"], ["pub_yr", "int"], ["pub_cd", "char"]]},
+        {"name": "authors", "pk": ["author_id"], "columns": [["author_id", "int"], ["author_nm", "varchar"]]},
+        {"name": "book_authors", "pk": ["isbn", "author_id"], "columns": [["isbn", "varchar"], ["author_id", "int"]]},
+        {"name": "members", "pk": ["mbr_no"], "columns": [["mbr_no", "int"], ["mbr_nm", "varchar"], ["join_dt", "date"], ["legacy_id", "varchar"]]},
+        {"name": "branches", "pk": ["br_cd"], "columns": [["br_cd", "char"], ["br_name", "varchar"]]},
+        {"name": "loans", "pk": ["loan_id"], "columns": [["loan_id", "bigint"], ["isbn", "varchar"], ["mbr_no", "int"], ["br_cd", "char"], ["copy_no", "int"], ["out_dt", "date"], ["due_dt", "date"], ["ret_dt", "date"]]}
+      ],
+      "fk": [
+        ["books", "pub_cd", "publishers"],
+        ["book_authors", "isbn", "books"],
+        ["book_authors", "author_id", "authors"],
+        ["loans", "isbn", "books"],
+        ["loans", "mbr_no", "members"],
+        ["loans", "br_cd", "branches"]
+      ],
+      "not_fk": [["members", "legacy_id"], ["loans", "copy_no"]]
+    },
+    {
+      "id": "legacy-009",
+      "domain": "airline",
+      "tables": [
+        {"name": "countries", "pk": ["code"], "columns": [["code", "char"], ["country_name", "varchar"]]},
+        {"name": "airports", "pk": ["APT_CD"], "columns": [["APT_CD", "char"], ["APT_NM", "varchar"], ["country_code", "char"]]},
+        {"name": "aircraft", "pk": ["acft_reg"], "columns": [["acft_reg", "varchar"], ["acft_type", "varchar"]]},
+        {"name": "flights", "pk": ["FLT_ID"], "columns": [["FLT_ID", "bigint"], ["FLT_NO", "varchar"], ["DEP_APT", "char"], ["ARR_APT", "char"], ["ACFT_REG", "varchar"], ["DEP_DT", "timestamp"]]},
+        {"name": "passengers", "pk": ["pax_id"], "columns": [["pax_id", "int"], ["pax_nm", "varchar"], ["dob", "date"]]},
+        {"name": "bookings", "pk": ["pnr"], "columns": [["pnr", "varchar"], ["FLT_ID", "bigint"], ["booked_dt", "date"]]},
+        {"name": "tickets", "pk": ["tkt_no"], "columns": [["tkt_no", "varchar"], ["pnr", "varchar"], ["pax_id", "int"], ["fare_amt", "decimal"], ["invoice_number", "varchar"]]}
+      ],
+      "fk": [
+        ["airports", "country_code", "countries"],
+        ["flights", "DEP_APT", "airports"],
+        ["flights", "ARR_APT", "airports"],
+        ["flights", "ACFT_REG", "aircraft"],
+        ["bookings", "FLT_ID", "flights"],
+        ["tickets", "pnr", "bookings"],
+        ["tickets", "pax_id", "passengers"]
+      ],
+      "not_fk": [["tickets", "invoice_number"]]
+    },
+    {
+      "id": "legacy-010",
+      "domain": "hospital",
+      "tables": [
+        {"name": "t_specialty", "pk": ["spec_cd"], "columns": [["spec_cd", "char"], ["spec_nm", "varchar"]]},
+        {"name": "t_doctor", "pk": ["doc_id"], "columns": [["doc_id", "int"], ["doc_nm", "varchar"], ["spec_cd", "char"]]},
+        {"name": "t_ward", "pk": ["ward_cd"], "columns": [["ward_cd", "char"], ["ward_nm", "varchar"]]},
+        {"name": "t_patient", "pk": ["pat_no"], "columns": [["pat_no", "int"], ["pat_nm", "varchar"], ["dob", "date"], ["legacy_id", "varchar"]]},
+        {"name": "t_admission", "pk": ["adm_id"], "columns": [["adm_id", "bigint"], ["pat_no", "int"], ["ward_cd", "char"], ["attend_doc_id", "int"], ["admit_dt", "timestamp"], ["disch_dt", "timestamp"], ["batch_no", "int"]]},
+        {"name": "t_test", "pk": ["test_cd"], "columns": [["test_cd", "varchar"], ["test_nm", "varchar"]]},
+        {"name": "t_lab_result", "pk": ["adm_id", "seq_no"], "columns": [["adm_id", "bigint"], ["seq_no", "int"], ["test_cd", "varchar"], ["result_val", "float"]]}
+      ],
+      "fk": [
+        ["t_doctor", "spec_cd", "t_specialty"],
+        ["t_admission", "pat_no", "t_patient"],
+        ["t_admission", "ward_cd", "t_ward"],
+        ["t_admission", "attend_doc_id", "t_doctor"],
+        ["t_lab_result", "adm_id", "t_admission"],
+        ["t_lab_result", "test_cd", "t_test"]
+      ],
+      "not_fk": [["t_patient", "legacy_id"], ["t_admission", "batch_no"]]
+    },
+    {
+      "id": "legacy-011",
+      "domain": "retail",
+      "tables": [
+        {"name": "regions", "pk": ["region_cd"], "columns": [["region_cd", "char"], ["region_nm", "varchar"]]},
+        {"name": "stores", "pk": ["store_no"], "columns": [["store_no", "int"], ["store_nm", "varchar"], ["region_cd", "char"]]},
+        {"name": "products", "pk": ["sku"], "columns": [["sku", "varchar"], ["prod_cd", "varchar"], ["prod_desc", "varchar"], ["list_px", "decimal"]]},
+        {"name": "cashiers", "pk": ["cashier_id"], "columns": [["cashier_id", "int"], ["cashier_nm", "varchar"], ["old_system_ref", "varchar"]]},
+        {"name": "OrderHeader", "pk": ["OrderHeaderID"], "columns": [["OrderHeaderID", "int"], ["store_no", "int"], ["cashier_id", "int"], ["sale_dt", "timestamp"], ["batch_no", "int"]]},
+        {"name": "sales_lines", "pk": ["OrderHeaderID", "line_no"], "columns": [["OrderHeaderID", "int"], ["line_no", "int"], ["sku", "varchar"], ["qty", "int"], ["ext_amt", "decimal"]]}
+      ],
+      "fk": [
+        ["stores", "region_cd", "regions"],
+        ["OrderHeader", "store_no", "stores"],
+        ["OrderHeader", "cashier_id", "cashiers"],
+        ["sales_lines", "OrderHeaderID", "OrderHeader"],
+        ["sales_lines", "sku", "products"]
+      ],
+      "not_fk": [["cashiers", "old_system_ref"], ["OrderHeader", "batch_no"]]
+    },
+    {
+      "id": "legacy-012",
+      "domain": "shipping",
+      "tables": [
+        {"name": "CUSTOMERS", "pk": ["CUST_ID"], "columns": [["CUST_ID", "int"], ["CUST_NAME", "varchar"]]},
+        {"name": "CARRIERS", "pk": ["CARR_CD"], "columns": [["CARR_CD", "char"], ["CARR_NAME", "varchar"]]},
+        {"name": "LOCATIONS", "pk": ["LOC_CD"], "columns": [["LOC_CD", "char"], ["LOC_NAME", "varchar"]]},
+        {"name": "SHIPMENTS", "pk": ["SHIP_ID"], "columns": [["SHIP_ID", "bigint"], ["CUST_ID", "int"], ["CARR_CD", "char"], ["ORIG_LOC", "char"], ["DEST_LOC", "char"], ["SHIP_DT", "date"], ["WEIGHT_KG", "float"], ["INVOICE_NUMBER", "varchar"]]},
+        {"name": "SHIP_EVENTS", "pk": ["SHIP_ID", "EVT_SEQ"], "columns": [["SHIP_ID", "bigint"], ["EVT_SEQ", "int"], ["LOC_CD", "char"], ["EVT_TS", "timestamp"], ["EVT_CODE", "varchar"]]}
+      ],
+      "fk": [
+        ["SHIPMENTS", "CUST_ID", "CUSTOMERS"],
+        ["SHIPMENTS", "CARR_CD", "CARRIERS"],
+        ["SHIPMENTS", "ORIG_LOC", "LOCATIONS"],
+        ["SHIPMENTS", "DEST_LOC", "LOCATIONS"],
+        ["SHIP_EVENTS", "SHIP_ID", "SHIPMENTS"],
+        ["SHIP_EVENTS", "LOC_CD", "LOCATIONS"]
+      ],
+      "not_fk": [["SHIPMENTS", "INVOICE_NUMBER"]]
+    },
+    {
+      "id": "legacy-013",
+      "domain": "education",
+      "tables": [
+        {"name": "departments", "pk": ["dept"], "columns": [["dept", "int"], ["dept_nm", "varchar"]]},
+        {"name": "t_student", "pk": ["stu_id"], "columns": [["stu_id", "int"], ["stu_nm", "varchar"], ["enrol_yr", "int"], ["legacy_id", "varchar"]]},
+        {"name": "t_course", "pk": ["crs_cd"], "columns": [["crs_cd", "varchar"], ["crs_title", "varchar"], ["dept", "int"]]},
+        {"name": "t_term", "pk": ["term_cd"], "columns": [["term_cd", "char"], ["term_start", "date"]]},
+        {"name": "grade_scale", "pk": ["grade_cd"], "columns": [["grade_cd", "char"], ["grade_desc", "varchar"]]},
+        {"name": "tbl_enrolments", "pk": ["stu_id", "crs_cd"], "columns": [["stu_id", "int"], ["crs_cd", "varchar"], ["term_cd", "char"], ["grade_cd", "char"], ["grade_pts", "float"]]}
+      ],
+      "fk": [
+        ["t_course", "dept", "departments"],
+        ["tbl_enrolments", "stu_id", "t_student"],
+        ["tbl_enrolments", "crs_cd", "t_course"],
+        ["tbl_enrolments", "term_cd", "t_term"],
+        ["tbl_enrolments", "grade_cd", "grade_scale"]
+      ],
+      "not_fk": [["t_student", "legacy_id"]]
+    },
+    {
+      "id": "legacy-014",
+      "domain": "hotel",
+      "tables": [
+        {"name": "CITIES", "pk": ["CITY_CD"], "columns": [["CITY_CD", "char"], ["CITY_NM", "varchar"]]},
+        {"name": "HOTEL", "pk": ["HOTEL_ID"], "columns": [["HOTEL_ID", "int"], ["HOTEL_NAME", "varchar"], ["CITY_CD", "char"]]},
+        {"name": "ROOM_TYPES", "pk": ["RMTYP_CD"], "columns": [["RMTYP_CD", "char"], ["RMTYP_DESC", "varchar"]]},
+        {"name": "ROOMS", "pk": ["HOTEL_ID", "ROOM_NO"], "columns": [["HOTEL_ID", "int"], ["ROOM_NO", "varchar"], ["RMTYP_CD", "char"]]},
+        {"name": "GUESTS", "pk": ["GUEST_ID"], "columns": [["GUEST_ID", "uuid"], ["GUEST_NM", "varchar"], ["EMAIL", "varchar"]]},
+        {"name": "RESERVATIONS", "pk": ["RSV_ID"], "columns": [["RSV_ID", "bigint"], ["GUEST_ID", "uuid"], ["HOTEL_ID", "int"], ["CHK_IN", "date"], ["CHK_OUT", "date"], ["RATE_AMT", "decimal"], ["old_system_ref", "varchar"]]}
+      ],
+      "fk": [
+        ["HOTEL", "CITY_CD", "CITIES"],
+        ["ROOMS", "HOTEL_ID", "HOTEL"],
+        ["ROOMS", "RMTYP_CD", "ROOM_TYPES"],
+        ["RESERVATIONS", "GUEST_ID", "GUESTS"],
+        ["RESERVATIONS", "HOTEL_ID", "HOTEL"]
+      ],
+      "not_fk": [["RESERVATIONS", "old_system_ref"]]
+    },
+    {
+      "id": "legacy-015",
+      "domain": "utilities",
+      "tables": [
+        {"name": "TARIFF_CODES", "pk": ["TAR_CD"], "columns": [["TAR_CD", "char"], ["TAR_DESC", "varchar"]]},
+        {"name": "SITES", "pk": ["SITE_ID"], "columns": [["SITE_ID", "int"], ["SITE_ADDR", "varchar"], ["POST_CD", "char"], ["TAR_CD", "char"]]},
+        {"name": "METERS", "pk": ["MTR_NO"], "columns": [["MTR_NO", "varchar"], ["SITE_ID", "int"], ["MTR_TYPE", "char"], ["INST_DT", "date"], ["legacy_id", "varchar"]]},
+        {"name": "READERS", "pk": ["reader_uuid"], "columns": [["reader_uuid", "uuid"], ["reader_nm", "varchar"]]},
+        {"name": "READINGS", "pk": ["MTR_NO", "RDG_DT"], "columns": [["MTR_NO", "varchar"], ["RDG_DT", "date"], ["RDG_VAL", "decimal"], ["TAR_CD", "char"], ["reader_uuid", "uuid"]]}
+      ],
+      "fk": [
+        ["SITES", "TAR_CD", "TARIFF_CODES"],
+        ["METERS", "SITE_ID", "SITES"],
+        ["READINGS", "MTR_NO", "METERS"],
+        ["READINGS", "TAR_CD", "TARIFF_CODES"],
+        ["READINGS", "reader_uuid", "READERS"]
+      ],
+      "not_fk": [["METERS", "legacy_id"]]
+    },
+    {
+      "id": "legacy-016",
+      "domain": "vehicle registration",
+      "tables": [
+        {"name": "MAKES", "pk": ["MAKE_CD"], "columns": [["MAKE_CD", "char"], ["MAKE_NM", "varchar"]]},
+        {"name": "OFFICES", "pk": ["OFFICE_CD"], "columns": [["OFFICE_CD", "char"], ["OFFICE_NM", "varchar"]]},
+        {"name": "OWNERS", "pk": ["OWNER_ID"], "columns": [["OWNER_ID", "bigint"], ["OWNER_NM", "varchar"], ["OFFICE_CD", "char"], ["legacy_id", "varchar"]]},
+        {"name": "VEH_MASTER", "pk": ["VIN"], "columns": [["VIN", "varchar"], ["MAKE_CD", "char"], ["OWNER_ID", "bigint"], ["MODEL_YR", "int"]]},
+        {"name": "REGISTRATIONS", "pk": ["VIN", "REG_SEQ"], "columns": [["VIN", "varchar"], ["REG_SEQ", "int"], ["PLATE_NO", "varchar"], ["OFFICE_CD", "char"], ["REG_DT", "date"]]}
+      ],
+      "fk": [
+        ["OWNERS", "OFFICE_CD", "OFFICES"],
+        ["VEH_MASTER", "MAKE_CD", "MAKES"],
+        ["VEH_MASTER", "OWNER_ID", "OWNERS"],
+        ["REGISTRATIONS", "VIN", "VEH_MASTER"],
+        ["REGISTRATIONS", "OFFICE_CD", "OFFICES"]
+      ],
+      "not_fk": [["OWNERS", "legacy_id"], ["REGISTRATIONS", "PLATE_NO"]]
+    },
+    {
+      "id": "legacy-017",
+      "domain": "tax",
+      "tables": [
+        {"name": "taxpayers", "pk": ["taxpayer_uuid"], "columns": [["taxpayer_uuid", "uuid"], ["tp_name", "varchar"], ["reg_dt", "date"]]},
+        {"name": "periods", "pk": ["period_cd"], "columns": [["period_cd", "char"], ["period_start", "date"], ["period_end", "date"]]},
+        {"name": "forms", "pk": ["form_cd"], "columns": [["form_cd", "varchar"], ["form_title", "varchar"]]},
+        {"name": "officers", "pk": ["officer_id"], "columns": [["officer_id", "int"], ["officer_nm", "varchar"], ["old_system_ref", "varchar"]]},
+        {"name": "returns", "pk": ["ret_id"], "columns": [["ret_id", "bigint"], ["taxpayer_uuid", "uuid"], ["period_cd", "char"], ["form_cd", "varchar"], ["filed_dt", "date"], ["tax_due", "decimal"], ["batch_no", "int"]]},
+        {"name": "assessments", "pk": ["ret_id", "assess_seq"], "columns": [["ret_id", "bigint"], ["assess_seq", "int"], ["assessed_by", "int"], ["assess_amt", "decimal"]]}
+      ],
+      "fk": [
+        ["returns", "taxpayer_uuid", "taxpayers"],
+        ["returns", "period_cd", "periods"],
+        ["returns", "form_cd", "forms"],
+        ["assessments", "ret_id", "returns"],
+        ["assessments", "assessed_by", "officers"]
+      ],
+      "not_fk": [["returns", "batch_no"], ["officers", "old_system_ref"]]
+    },
+    {
+      "id": "legacy-018",
+      "domain": "procurement",
+      "tables": [
+        {"name": "PAYMENT_TERMS", "pk": ["pay_terms_cd"], "columns": [["pay_terms_cd", "char"], ["days_net", "int"]]},
+        {"name": "VENDORS", "pk": ["intVendorID"], "columns": [["intVendorID", "int"], ["vendor_nm", "varchar"], ["pay_terms_cd", "char"], ["old_system_ref", "varchar"]]},
+        {"name": "CURRENCIES", "pk": ["iso"], "columns": [["iso", "char"], ["ccy_nm", "varchar"]]},
+        {"name": "UOM", "pk": ["uom_cd"], "columns": [["uom_cd", "char"], ["uom_desc", "varchar"]]},
+        {"name": "PO_HDR", "pk": ["PO_NO"], "columns": [["PO_NO", "bigint"], ["intVendorID", "int"], ["currency", "char"], ["po_dt", "date"], ["po_status", "char"]]},
+        {"name": "PO_LINE", "pk": ["PO_NO", "LINE_NO"], "columns": [["PO_NO", "bigint"], ["LINE_NO", "int"], ["item_desc", "varchar"], ["uom_cd", "char"], ["qty", "decimal"], ["unit_px", "decimal"]]}
+      ],
+      "fk": [
+        ["VENDORS", "pay_terms_cd", "PAYMENT_TERMS"],
+        ["PO_HDR", "intVendorID", "VENDORS"],
+        ["PO_HDR", "currency", "CURRENCIES"],
+        ["PO_LINE", "PO_NO", "PO_HDR"],
+        ["PO_LINE", "uom_cd", "UOM"]
+      ],
+      "not_fk": [["VENDORS", "old_system_ref"]]
+    },
+    {
+      "id": "legacy-019",
+      "domain": "property",
+      "tables": [
+        {"name": "zones", "pk": ["zone_cd"], "columns": [["zone_cd", "char"], ["zone_desc", "varchar"]]},
+        {"name": "prop_tab", "pk": ["prop_id"], "columns": [["prop_id", "bigint"], ["parcel_no", "varchar"], ["addr_ln", "varchar"], ["zone_cd", "char"]]},
+        {"name": "owners", "pk": ["owner_uuid"], "columns": [["owner_uuid", "uuid"], ["owner_nm", "varchar"]]},
+        {"name": "ownership", "pk": ["prop_id", "owner_uuid"], "columns": [["prop_id", "bigint"], ["owner_uuid", "uuid"], ["share_pct", "float"], ["from_dt", "date"]]},
+        {"name": "appraisers", "pk": ["appr_no"], "columns": [["appr_no", "int"], ["appr_nm", "varchar"]]},
+        {"name": "valuations", "pk": ["val_id"], "columns": [["val_id", "int"], ["prop_id", "bigint"], ["val_by", "int"], ["val_dt", "date"], ["assessed_val", "decimal"]]}
+      ],
+      "fk": [
+        ["prop_tab", "zone_cd", "zones"],
+        ["ownership", "prop_id", "prop_tab"],
+        ["ownership", "owner_uuid", "owners"],
+        ["valuations", "prop_id", "prop_tab"],
+        ["valuations", "val_by", "appraisers"]
+      ],
+      "not_fk": [["prop_tab", "parcel_no"]]
+    },
+    {
+      "id": "legacy-020",
+      "domain": "courts",
+      "tables": [
+        {"name": "CASE_TYPES", "pk": ["CASE_TYPE_CD"], "columns": [["CASE_TYPE_CD", "char"], ["CASE_TYPE_DESC", "varchar"]]},
+        {"name": "ROOMS", "pk": ["CRT_ROOM_ID"], "columns": [["CRT_ROOM_ID", "int"], ["ROOM_LOC", "varchar"]]},
+        {"name": "PARTIES", "pk": ["party_no"], "columns": [["party_no", "int"], ["party_nm", "varchar"]]},
+        {"name": "JUDGES", "pk": ["judge_cd"], "columns": [["judge_cd", "char"], ["judge_nm", "varchar"]]},
+        {"name": "CASES", "pk": ["CASE_NO"], "columns": [["CASE_NO", "varchar"], ["CASE_TYPE_CD", "char"], ["CRT_ROOM_ID", "int"], ["FILED_DT", "date"], ["old_system_ref", "varchar"]]},
+        {"name": "CASE_PARTIES", "pk": ["CASE_NO", "party_no"], "columns": [["CASE_NO", "varchar"], ["party_no", "int"], ["party_role", "char"]]},
+        {"name": "HEARINGS", "pk": ["HEAR_ID"], "columns": [["HEAR_ID", "bigint"], ["CASE_NO", "varchar"], ["CRT_ROOM_ID", "int"], ["judge_cd", "char"], ["hear_dt", "timestamp"]]}
+      ],
+      "fk": [
+        ["CASES", "CASE_TYPE_CD", "CASE_TYPES"],
+        ["CASES", "CRT_ROOM_ID", "ROOMS"],
+        ["CASE_PARTIES", "CASE_NO", "CASES"],
+        ["CASE_PARTIES", "party_no", "PARTIES"],
+        ["HEARINGS", "CASE_NO", "CASES"],
+        ["HEARINGS", "CRT_ROOM_ID", "ROOMS"],
+        ["HEARINGS", "judge_cd", "JUDGES"]
+      ],
+      "not_fk": [["CASES", "old_system_ref"]]
+    },
+    {
+      "id": "legacy-021",
+      "domain": "agriculture",
+      "tables": [
+        {"name": "parishes", "pk": ["parish_cd"], "columns": [["parish_cd", "char"], ["parish_nm", "varchar"]]},
+        {"name": "FARMS", "pk": ["farm_no"], "columns": [["farm_no", "int"], ["farm_nm", "varchar"], ["parish_cd", "char"], ["legacy_id", "varchar"]]},
+        {"name": "crops", "pk": ["crop_cd"], "columns": [["crop_cd", "char"], ["crop_nm", "varchar"]]},
+        {"name": "FIELDS", "pk": ["farm_no", "field_cd"], "columns": [["farm_no", "int"], ["field_cd", "varchar"], ["crop_cd", "char"], ["area_ha", "float"]]},
+        {"name": "CLAIMS", "pk": ["claim_id"], "columns": [["claim_id", "bigint"], ["farm_no", "int"], ["crop_cd", "char"], ["claim_yr", "int"], ["paid_amt", "decimal"], ["invoice_number", "varchar"]]}
+      ],
+      "fk": [
+        ["FARMS", "parish_cd", "parishes"],
+        ["FIELDS", "farm_no", "FARMS"],
+        ["FIELDS", "crop_cd", "crops"],
+        ["CLAIMS", "farm_no", "FARMS"],
+        ["CLAIMS", "crop_cd", "crops"]
+      ],
+      "not_fk": [["CLAIMS", "invoice_number"], ["FARMS", "legacy_id"]]
+    },
+    {
+      "id": "legacy-022",
+      "domain": "magazine subscriptions",
+      "tables": [
+        {"name": "PUBS", "pk": ["PUB_CD"], "columns": [["PUB_CD", "char"], ["PUB_TITLE", "varchar"], ["FREQ_CD", "char"]]},
+        {"name": "countries", "pk": ["code"], "columns": [["code", "char"], ["country_name", "varchar"]]},
+        {"name": "ADDRESSES", "pk": ["ADDR_ID"], "columns": [["ADDR_ID", "bigint"], ["STREET", "varchar"], ["POST_CD", "char"], ["ctry_code", "char"]]},
+        {"name": "SUBSCRIBERS", "pk": ["SUBSCR_NO"], "columns": [["SUBSCR_NO", "int"], ["SUBSCR_NM", "varchar"], ["ADDR_ID", "bigint"]]},
+        {"name": "SUBS", "pk": ["SUB_ID"], "columns": [["SUB_ID", "bigint"], ["SUBSCR_NO", "int"], ["PUB_CD", "char"], ["START_DT", "date"], ["END_DT", "date"], ["rate_amt", "decimal"], ["old_system_ref", "varchar"]]},
+        {"name": "ISSUES", "pk": ["PUB_CD", "ISSUE_NO"], "columns": [["PUB_CD", "char"], ["ISSUE_NO", "int"], ["PUB_DT", "date"], ["COPIES", "int"]]}
+      ],
+      "fk": [
+        ["ADDRESSES", "ctry_code", "countries"],
+        ["SUBSCRIBERS", "ADDR_ID", "ADDRESSES"],
+        ["SUBS", "SUBSCR_NO", "SUBSCRIBERS"],
+        ["SUBS", "PUB_CD", "PUBS"],
+        ["ISSUES", "PUB_CD", "PUBS"]
+      ],
+      "not_fk": [["SUBS", "old_system_ref"]]
+    },
+    {
+      "id": "legacy-023",
+      "domain": "helpdesk",
+      "tables": [
+        {"name": "users", "pk": ["usr_ref"], "columns": [["usr_ref", "varchar"], ["usr_nm", "varchar"], ["team_cd", "char"]]},
+        {"name": "teams", "pk": ["team_cd"], "columns": [["team_cd", "char"], ["team_nm", "varchar"]]},
+        {"name": "categories", "pk": ["cat_cd"], "columns": [["cat_cd", "char"], ["cat_desc", "varchar"]]},
+        {"name": "t_customer", "pk": ["CustomerID"], "columns": [["CustomerID", "int"], ["cust_nm", "varchar"], ["legacy_id", "varchar"]]},
+        {"name": "tbl_tickets", "pk": ["tkt_no"], "columns": [["tkt_no", "bigint"], ["FK_CustomerID", "int"], ["cat_cd", "char"], ["assignee_usr", "varchar"], ["opened_dt", "timestamp"], ["batch_no", "int"]]},
+        {"name": "tbl_ticket_notes", "pk": ["tkt_no", "note_seq"], "columns": [["tkt_no", "bigint"], ["note_seq", "int"], ["author_usr", "varchar"], ["note_txt", "text"], ["created_ts", "timestamp"]]}
+      ],
+      "fk": [
+        ["users", "team_cd", "teams"],
+        ["tbl_tickets", "FK_CustomerID", "t_customer"],
+        ["tbl_tickets", "cat_cd", "categories"],
+        ["tbl_tickets", "assignee_usr", "users"],
+        ["tbl_ticket_notes", "tkt_no", "tbl_tickets"],
+        ["tbl_ticket_notes", "author_usr", "users"]
+      ],
+      "not_fk": [["tbl_tickets", "batch_no"], ["t_customer", "legacy_id"]]
+    },
+    {
+      "id": "legacy-024",
+      "domain": "laboratory",
+      "tables": [
+        {"name": "MATRICES", "pk": ["MATRIX_CD"], "columns": [["MATRIX_CD", "char"], ["matrix_desc", "varchar"]]},
+        {"name": "CLIENTS", "pk": ["client_no"], "columns": [["client_no", "int"], ["client_nm", "varchar"]]},
+        {"name": "PROJECTS", "pk": ["PROJ_CD"], "columns": [["PROJ_CD", "char"], ["PROJ_NM", "varchar"], ["client_no", "int"]]},
+        {"name": "ANALYTES", "pk": ["ANALYTE_CD"], "columns": [["ANALYTE_CD", "varchar"], ["ANALYTE_NM", "varchar"], ["unit_cd", "char"]]},
+        {"name": "ANALYSTS", "pk": ["analyst_no"], "columns": [["analyst_no", "int"], ["analyst_nm", "varchar"]]},
+        {"name": "SAMPLES", "pk": ["SMPL_ID"], "columns": [["SMPL_ID", "varchar"], ["PROJ_CD", "char"], ["MATRIX_CD", "char"], ["RECV_DT", "date"], ["batch_no", "varchar"]]},
+        {"name": "RESULTS", "pk": ["SMPL_ID", "ANALYTE_CD"], "columns": [["SMPL_ID", "varchar"], ["ANALYTE_CD", "varchar"], ["analyst_no", "int"], ["RESULT_NUM", "float"], ["RESULT_FLAG", "char"]]}
+      ],
+      "fk": [
+        ["PROJECTS", "client_no", "CLIENTS"],
+        ["SAMPLES", "PROJ_CD", "PROJECTS"],
+        ["SAMPLES", "MATRIX_CD", "MATRICES"],
+        ["RESULTS", "SMPL_ID", "SAMPLES"],
+        ["RESULTS", "ANALYTE_CD", "ANALYTES"],
+        ["RESULTS", "analyst_no", "ANALYSTS"]
+      ],
+      "not_fk": [["SAMPLES", "batch_no"]]
+    },
+    {
+      "id": "legacy-025",
+      "domain": "bus transit",
+      "tables": [
+        {"name": "DEPOTS", "pk": ["depot_cd"], "columns": [["depot_cd", "char"], ["depot_name", "varchar"]]},
+        {"name": "ROUTES", "pk": ["rte_no"], "columns": [["rte_no", "int"], ["rte_name", "varchar"], ["depot_cd", "char"]]},
+        {"name": "VEHICLES", "pk": ["bus_no"], "columns": [["bus_no", "varchar"], ["depot_cd", "char"], ["model_yr", "int"]]},
+        {"name": "DRIVERS", "pk": ["drv_id"], "columns": [["drv_id", "int"], ["drv_nm", "varchar"], ["badge_no", "varchar"]]},
+        {"name": "TRIPS", "pk": ["trip_id"], "columns": [["trip_id", "bigint"], ["rte_no", "int"], ["bus_no", "varchar"], ["drv_id", "int"], ["svc_dt", "date"], ["batch_no", "int"]]},
+        {"name": "FARE_CARDS", "pk": ["card_uuid"], "columns": [["card_uuid", "uuid"], ["holder_nm", "varchar"], ["balance", "decimal"]]},
+        {"name": "TAPS", "pk": ["card_uuid", "tap_seq"], "columns": [["card_uuid", "uuid"], ["tap_seq", "bigint"], ["trip_id", "bigint"], ["tap_ts", "timestamp"]]}
+      ],
+      "fk": [
+        ["ROUTES", "depot_cd", "DEPOTS"],
+        ["VEHICLES", "depot_cd", "DEPOTS"],
+        ["TRIPS", "rte_no", "ROUTES"],
+        ["TRIPS", "bus_no", "VEHICLES"],
+        ["TRIPS", "drv_id", "DRIVERS"],
+        ["TAPS", "card_uuid", "FARE_CARDS"],
+        ["TAPS", "trip_id", "TRIPS"]
+      ],
+      "not_fk": [["DRIVERS", "badge_no"]]
+    },
+    {
+      "id": "legacy-026",
+      "domain": "pension",
+      "tables": [
+        {"name": "SCHEMES", "pk": ["scheme_cd"], "columns": [["scheme_cd", "char"], ["scheme_name", "varchar"]]},
+        {"name": "MEMBERS", "pk": ["MBR_ID"], "columns": [["MBR_ID", "int"], ["MBR_NM", "varchar"], ["DOB", "date"], ["scheme_cd", "char"]]},
+        {"name": "employers", "pk": ["emp_ref"], "columns": [["emp_ref", "varchar"], ["emp_nm", "varchar"], ["scheme_cd", "char"]]},
+        {"name": "CONTRIBS", "pk": ["MBR_ID", "contrib_yr_mo"], "columns": [["MBR_ID", "int"], ["contrib_yr_mo", "char"], ["emp_ref", "varchar"], ["contrib_amt", "decimal"]]},
+        {"name": "BENEFIT_CLAIMS", "pk": ["bc_id"], "columns": [["bc_id", "bigint"], ["MBR_ID", "int"], ["bc_dt", "date"], ["bc_amt", "decimal"], ["claim_no", "varchar"]]}
+      ],
+      "fk": [
+        ["MEMBERS", "scheme_cd", "SCHEMES"],
+        ["employers", "scheme_cd", "SCHEMES"],
+        ["CONTRIBS", "MBR_ID", "MEMBERS"],
+        ["CONTRIBS", "emp_ref", "employers"],
+        ["BENEFIT_CLAIMS", "MBR_ID", "MEMBERS"]
+      ],
+      "not_fk": [["BENEFIT_CLAIMS", "claim_no"]]
+    },
+    {
+      "id": "legacy-027",
+      "domain": "veterinary",
+      "tables": [
+        {"name": "owners_tab", "pk": ["own_no"], "columns": [["own_no", "int"], ["own_nm", "varchar"], ["tel", "varchar"]]},
+        {"name": "species", "pk": ["species_cd"], "columns": [["species_cd", "char"], ["species_nm", "varchar"]]},
+        {"name": "pets", "pk": ["pet_no"], "columns": [["pet_no", "int"], ["pet_nm", "varchar"], ["own_no", "int"], ["species_cd", "char"], ["dob", "date"], ["chip_id", "varchar"]]},
+        {"name": "vets", "pk": ["vet_cd"], "columns": [["vet_cd", "char"], ["vet_nm", "varchar"]]},
+        {"name": "services", "pk": ["svc_cd"], "columns": [["svc_cd", "varchar"], ["svc_desc", "varchar"], ["unit_px", "decimal"]]},
+        {"name": "visits", "pk": ["visit_id"], "columns": [["visit_id", "bigint"], ["pet_no", "int"], ["vet_cd", "char"], ["visit_dt", "timestamp"], ["bill_amt", "decimal"]]},
+        {"name": "visit_items", "pk": ["visit_id", "item_seq"], "columns": [["visit_id", "bigint"], ["item_seq", "int"], ["svc_cd", "varchar"], ["qty", "int"]]}
+      ],
+      "fk": [
+        ["pets", "own_no", "owners_tab"],
+        ["pets", "species_cd", "species"],
+        ["visits", "pet_no", "pets"],
+        ["visits", "vet_cd", "vets"],
+        ["visit_items", "visit_id", "visits"],
+        ["visit_items", "svc_cd", "services"]
+      ],
+      "not_fk": [["pets", "chip_id"]]
+    },
+    {
+      "id": "legacy-028",
+      "domain": "building permits",
+      "tables": [
+        {"name": "APPLICANTS", "pk": ["applicant_id"], "columns": [["applicant_id", "uuid"], ["applicant_nm", "varchar"]]},
+        {"name": "LOTS", "pk": ["lot_no"], "columns": [["lot_no", "varchar"], ["lot_addr", "varchar"]]},
+        {"name": "PERMIT_TYPES", "pk": ["ptype_cd"], "columns": [["ptype_cd", "char"], ["ptype_desc", "varchar"]]},
+        {"name": "PERMITS", "pk": ["PERMIT_NO"], "columns": [["PERMIT_NO", "varchar"], ["applicant_id", "uuid"], ["lot_no", "varchar"], ["ptype_cd", "char"], ["issue_dt", "date"], ["legacy_id", "varchar"]]},
+        {"name": "INSPECTORS", "pk": ["inspector_cd"], "columns": [["inspector_cd", "char"], ["inspector_nm", "varchar"]]},
+        {"name": "RESULT_CODES", "pk": ["result_cd"], "columns": [["result_cd", "char"], ["result_desc", "varchar"]]},
+        {"name": "INSPECTIONS", "pk": ["insp_id"], "columns": [["insp_id", "bigint"], ["PERMIT_NO", "varchar"], ["inspector_cd", "char"], ["result_cd", "char"], ["insp_dt", "date"]]}
+      ],
+      "fk": [
+        ["PERMITS", "applicant_id", "APPLICANTS"],
+        ["PERMITS", "lot_no", "LOTS"],
+        ["PERMITS", "ptype_cd", "PERMIT_TYPES"],
+        ["INSPECTIONS", "PERMIT_NO", "PERMITS"],
+        ["INSPECTIONS", "inspector_cd", "INSPECTORS"],
+        ["INSPECTIONS", "result_cd", "RESULT_CODES"]
+      ],
+      "not_fk": [["PERMITS", "legacy_id"]]
+    },
+    {
+      "id": "legacy-029",
+      "domain": "car rental",
+      "tables": [
+        {"name": "branches", "pk": ["branch_cd"], "columns": [["branch_cd", "char"], ["branch_nm", "varchar"]]},
+        {"name": "models", "pk": ["model_cd"], "columns": [["model_cd", "char"], ["model_nm", "varchar"]]},
+        {"name": "cars", "pk": ["veh_plate"], "columns": [["veh_plate", "varchar"], ["model_cd", "char"], ["odometer", "int"]]},
+        {"name": "CUSTOMERS_T", "pk": ["cust_no"], "columns": [["cust_no", "int"], ["cust_nm", "varchar"]]},
+        {"name": "rentals", "pk": ["rntl_id"], "columns": [["rntl_id", "bigint"], ["veh_plate", "varchar"], ["cust_no", "int"], ["pickup_loc", "char"], ["drop_loc", "char"], ["start_ts", "timestamp"], ["end_ts", "timestamp"], ["invoice_number", "varchar"]]}
+      ],
+      "fk": [
+        ["cars", "model_cd", "models"],
+        ["rentals", "veh_plate", "cars"],
+        ["rentals", "cust_no", "CUSTOMERS_T"],
+        ["rentals", "pickup_loc", "branches"],
+        ["rentals", "drop_loc", "branches"]
+      ],
+      "not_fk": [["rentals", "invoice_number"]]
+    },
+    {
+      "id": "legacy-030",
+      "domain": "port operations",
+      "tables": [
+        {"name": "FLAGS", "pk": ["flag_cd"], "columns": [["flag_cd", "char"], ["flag_name", "varchar"]]},
+        {"name": "VESSELS", "pk": ["vsl_cd"], "columns": [["vsl_cd", "varchar"], ["vsl_nm", "varchar"], ["flag_cd", "char"]]},
+        {"name": "TERMINALS", "pk": ["terminal_cd"], "columns": [["terminal_cd", "char"], ["terminal_nm", "varchar"]]},
+        {"name": "BERTHS", "pk": ["berth_no"], "columns": [["berth_no", "int"], ["berth_nm", "varchar"], ["terminal_cd", "char"]]},
+        {"name": "PILOTS", "pk": ["pilot_id"], "columns": [["pilot_id", "int"], ["pilot_nm", "varchar"]]},
+        {"name": "CALLS", "pk": ["call_id"], "columns": [["call_id", "bigint"], ["vsl_cd", "varchar"], ["berth_no", "int"], ["pilot_id", "int"], ["eta", "timestamp"], ["etd", "timestamp"], ["batch_no", "int"]]},
+        {"name": "CONTAINERS", "pk": ["cntr_no"], "columns": [["cntr_no", "varchar"], ["cntr_size", "char"], ["call_id", "bigint"]]}
+      ],
+      "fk": [
+        ["VESSELS", "flag_cd", "FLAGS"],
+        ["BERTHS", "terminal_cd", "TERMINALS"],
+        ["CALLS", "vsl_cd", "VESSELS"],
+        ["CALLS", "berth_no", "BERTHS"],
+        ["CALLS", "pilot_id", "PILOTS"],
+        ["CONTAINERS", "call_id", "CALLS"]
+      ],
+      "not_fk": [["CALLS", "batch_no"]]
+    },
+    {
+      "id": "legacy-031",
+      "domain": "museum collection",
+      "tables": [
+        {"name": "CATEGORIES", "pk": ["cat_cd"], "columns": [["cat_cd", "char"], ["cat_desc", "varchar"]]},
+        {"name": "DONORS", "pk": ["donor_uuid"], "columns": [["donor_uuid", "uuid"], ["donor_nm", "varchar"]]},
+        {"name": "LOCATIONS", "pk": ["loc_id"], "columns": [["loc_id", "int"], ["loc_name", "varchar"], ["parent_loc_id", "int"]]},
+        {"name": "OBJECTS", "pk": ["OBJ_NO"], "columns": [["OBJ_NO", "varchar"], ["obj_title", "varchar"], ["cat_cd", "char"], ["donor_uuid", "uuid"], ["acq_dt", "date"], ["old_system_ref", "varchar"]]},
+        {"name": "OBJ_LOCS", "pk": ["OBJ_NO", "loc_id"], "columns": [["OBJ_NO", "varchar"], ["loc_id", "int"], ["since_dt", "date"]]}
+      ],
+      "fk": [
+        ["LOCATIONS", "parent_loc_id", "LOCATIONS"],
+        ["OBJECTS", "cat_cd", "CATEGORIES"],
+        ["OBJECTS", "donor_uuid", "DONORS"],
+        ["OBJ_LOCS", "OBJ_NO", "OBJECTS"],
+        ["OBJ_LOCS", "loc_id", "LOCATIONS"]
+      ],
+      "not_fk": [["OBJECTS", "old_system_ref"]]
+    },
+    {
+      "id": "legacy-032",
+      "domain": "card payments",
+      "tables": [
+        {"name": "merchants", "pk": ["intMerchantID"], "columns": [["intMerchantID", "int"], ["merchant_nm", "varchar"], ["old_system_ref", "varchar"]]},
+        {"name": "issuers", "pk": ["issuer_cd"], "columns": [["issuer_cd", "char"], ["issuer_nm", "varchar"]]},
+        {"name": "cards", "pk": ["card_tkn"], "columns": [["card_tkn", "varchar"], ["bin_cd", "char"], ["issuer_cd", "char"]]},
+        {"name": "response_codes", "pk": ["resp_cd"], "columns": [["resp_cd", "char"], ["resp_desc", "varchar"]]},
+        {"name": "currencies", "pk": ["iso"], "columns": [["iso", "char"], ["ccy_name", "varchar"]]},
+        {"name": "txns", "pk": ["auth_id"], "columns": [["auth_id", "bigint"], ["intMerchantID", "int"], ["card_tkn", "varchar"], ["resp_cd", "char"], ["currency", "char"], ["auth_ts", "timestamp"], ["auth_amt", "decimal"], ["batch_no", "int"]]}
+      ],
+      "fk": [
+        ["cards", "issuer_cd", "issuers"],
+        ["txns", "intMerchantID", "merchants"],
+        ["txns", "card_tkn", "cards"],
+        ["txns", "resp_cd", "response_codes"],
+        ["txns", "currency", "currencies"]
+      ],
+      "not_fk": [["txns", "batch_no"], ["merchants", "old_system_ref"]]
+    },
+    {
+      "id": "legacy-033",
+      "domain": "human resources (classic)",
+      "tables": [
+        {"name": "LOCATIONS", "pk": ["LOC_ID"], "columns": [["LOC_ID", "int"], ["CITY", "varchar"]]},
+        {"name": "JOBS", "pk": ["JOB_CD"], "columns": [["JOB_CD", "char"], ["JOB_TITLE", "varchar"]]},
+        {"name": "DEPARTMENTS", "pk": ["DEPT_ID"], "columns": [["DEPT_ID", "int"], ["DEPT_NAME", "varchar"], ["MGR_NO", "int"], ["LOC_ID", "int"]]},
+        {"name": "EMPLOYEES", "pk": ["EMP_NO"], "columns": [["EMP_NO", "int"], ["EMP_NAME", "varchar"], ["DEPT_ID", "int"], ["JOB_CD", "char"], ["MGR_NO", "int"], ["HIRE_DATE", "date"]]},
+        {"name": "JOB_HISTORY", "pk": ["EMP_NO", "START_DATE"], "columns": [["EMP_NO", "int"], ["START_DATE", "date"], ["JOB_CD", "char"], ["DEPT_ID", "int"]]}
+      ],
+      "fk": [
+        ["DEPARTMENTS", "LOC_ID", "LOCATIONS"],
+        ["DEPARTMENTS", "MGR_NO", "EMPLOYEES"],
+        ["EMPLOYEES", "DEPT_ID", "DEPARTMENTS"],
+        ["EMPLOYEES", "JOB_CD", "JOBS"],
+        ["EMPLOYEES", "MGR_NO", "EMPLOYEES"],
+        ["JOB_HISTORY", "EMP_NO", "EMPLOYEES"],
+        ["JOB_HISTORY", "JOB_CD", "JOBS"],
+        ["JOB_HISTORY", "DEPT_ID", "DEPARTMENTS"]
+      ],
+      "not_fk": []
+    },
+    {
+      "id": "legacy-034",
+      "domain": "customs",
+      "tables": [
+        {"name": "IMPORTERS", "pk": ["IMP_CD"], "columns": [["IMP_CD", "varchar"], ["IMP_NAME", "varchar"]]},
+        {"name": "countries", "pk": ["code"], "columns": [["code", "char"], ["country_name", "varchar"]]},
+        {"name": "HS_CODES", "pk": ["HS_CODE"], "columns": [["HS_CODE", "char"], ["hs_desc", "varchar"]]},
+        {"name": "FORM_TYPES", "pk": ["form_type"], "columns": [["form_type", "char"], ["form_desc", "varchar"]]},
+        {"name": "DECLARATIONS", "pk": ["DECL_NO"], "columns": [["DECL_NO", "bigint"], ["IMP_CD", "varchar"], ["HS_CODE", "char"], ["CTRY_ORIG", "char"], ["FORM_TYPE", "char"], ["decl_dt", "date"], ["duty_amt", "decimal"], ["invoice_number", "varchar"]]},
+        {"name": "DECL_ITEMS", "pk": ["DECL_NO", "ITEM_NO"], "columns": [["DECL_NO", "bigint"], ["ITEM_NO", "int"], ["HS_CODE", "char"], ["net_wt", "float"]]}
+      ],
+      "fk": [
+        ["DECLARATIONS", "IMP_CD", "IMPORTERS"],
+        ["DECLARATIONS", "HS_CODE", "HS_CODES"],
+        ["DECLARATIONS", "CTRY_ORIG", "countries"],
+        ["DECLARATIONS", "FORM_TYPE", "FORM_TYPES"],
+        ["DECL_ITEMS", "DECL_NO", "DECLARATIONS"],
+        ["DECL_ITEMS", "HS_CODE", "HS_CODES"]
+      ],
+      "not_fk": [["DECLARATIONS", "invoice_number"]]
+    },
+    {
+      "id": "legacy-035",
+      "domain": "software licensing",
+      "tables": [
+        {"name": "sw_vendors", "pk": ["vendor_cd"], "columns": [["vendor_cd", "char"], ["vendor_nm", "varchar"]]},
+        {"name": "sw_products", "pk": ["prod_cd"], "columns": [["prod_cd", "varchar"], ["prod_name", "varchar"], ["vendor_cd", "char"]]},
+        {"name": "tbl_customers", "pk": ["cust_no"], "columns": [["cust_no", "int"], ["cust_name", "varchar"]]},
+        {"name": "users", "pk": ["usr_ref"], "columns": [["usr_ref", "varchar"], ["usr_name", "varchar"], ["cust_no", "int"]]},
+        {"name": "tbl_licences", "pk": ["lic_id"], "columns": [["lic_id", "bigint"], ["prod_cd", "varchar"], ["cust_no", "int"], ["usr_ref", "varchar"], ["seat_cnt", "int"], ["issue_dt", "date"], ["old_system_ref", "varchar"]]},
+        {"name": "tbl_usage_log", "pk": ["lic_id", "log_dt"], "columns": [["lic_id", "bigint"], ["log_dt", "timestamp"], ["active_seats", "int"]]}
+      ],
+      "fk": [
+        ["sw_products", "vendor_cd", "sw_vendors"],
+        ["users", "cust_no", "tbl_customers"],
+        ["tbl_licences", "prod_cd", "sw_products"],
+        ["tbl_licences", "cust_no", "tbl_customers"],
+        ["tbl_licences", "usr_ref", "users"],
+        ["tbl_usage_log", "lic_id", "tbl_licences"]
+      ],
+      "not_fk": [["tbl_licences", "old_system_ref"]]
+    },
+    {
+      "id": "legacy-036",
+      "domain": "sports league",
+      "tables": [
+        {"name": "CITIES", "pk": ["city_cd"], "columns": [["city_cd", "char"], ["city_nm", "varchar"]]},
+        {"name": "VENUES", "pk": ["venue_cd"], "columns": [["venue_cd", "char"], ["venue_nm", "varchar"], ["city_cd", "char"]]},
+        {"name": "TEAMS", "pk": ["TEAM_ID"], "columns": [["TEAM_ID", "int"], ["team_nm", "varchar"], ["city_cd", "char"]]},
+        {"name": "PLAYERS", "pk": ["player_uuid"], "columns": [["player_uuid", "uuid"], ["player_nm", "varchar"], ["team_id", "int"], ["dob", "date"], ["old_system_ref", "varchar"]]},
+        {"name": "MATCHES", "pk": ["MATCH_ID"], "columns": [["MATCH_ID", "bigint"], ["home_team", "int"], ["away_team", "int"], ["venue_cd", "char"], ["match_dt", "timestamp"]]},
+        {"name": "GOALS", "pk": ["MATCH_ID", "goal_seq"], "columns": [["MATCH_ID", "bigint"], ["goal_seq", "int"], ["player_uuid", "uuid"], ["min_no", "int"]]}
+      ],
+      "fk": [
+        ["VENUES", "city_cd", "CITIES"],
+        ["TEAMS", "city_cd", "CITIES"],
+        ["PLAYERS", "team_id", "TEAMS"],
+        ["MATCHES", "home_team", "TEAMS"],
+        ["MATCHES", "away_team", "TEAMS"],
+        ["MATCHES", "venue_cd", "VENUES"],
+        ["GOALS", "MATCH_ID", "MATCHES"],
+        ["GOALS", "player_uuid", "PLAYERS"]
+      ],
+      "not_fk": [["PLAYERS", "old_system_ref"]]
+    },
+    {
+      "id": "legacy-037",
+      "domain": "clinical trials",
+      "tables": [
+        {"name": "countries", "pk": ["code"], "columns": [["code", "char"], ["country_name", "varchar"]]},
+        {"name": "STUDIES", "pk": ["study_cd"], "columns": [["study_cd", "varchar"], ["study_title", "varchar"], ["phase_cd", "char"], ["start_dt", "date"]]},
+        {"name": "SITES_T", "pk": ["site_no"], "columns": [["site_no", "int"], ["site_nm", "varchar"], ["ctry_code", "char"]]},
+        {"name": "VISIT_TYPES", "pk": ["visit_type"], "columns": [["visit_type", "char"], ["visit_desc", "varchar"]]},
+        {"name": "SUBJECTS", "pk": ["subj_uuid"], "columns": [["subj_uuid", "uuid"], ["study_cd", "varchar"], ["site_no", "int"], ["rand_dt", "date"], ["screening_no", "varchar"]]},
+        {"name": "VISITS", "pk": ["subj_uuid", "visit_no"], "columns": [["subj_uuid", "uuid"], ["visit_no", "int"], ["visit_type", "char"], ["visit_dt", "date"]]}
+      ],
+      "fk": [
+        ["SITES_T", "ctry_code", "countries"],
+        ["SUBJECTS", "study_cd", "STUDIES"],
+        ["SUBJECTS", "site_no", "SITES_T"],
+        ["VISITS", "subj_uuid", "SUBJECTS"],
+        ["VISITS", "visit_type", "VISIT_TYPES"]
+      ],
+      "not_fk": [["SUBJECTS", "screening_no"]]
+    },
+    {
+      "id": "legacy-038",
+      "domain": "event ticketing",
+      "tables": [
+        {"name": "VENUES_T", "pk": ["venue_id"], "columns": [["venue_id", "int"], ["venue_nm", "varchar"], ["cap", "int"]]},
+        {"name": "PROMOTERS", "pk": ["promoter_cd"], "columns": [["promoter_cd", "char"], ["promoter_nm", "varchar"], ["home_venue_id", "int"]]},
+        {"name": "EVENTS", "pk": ["event_id"], "columns": [["event_id", "bigint"], ["venue_id", "int"], ["promoter_cd", "char"], ["event_nm", "varchar"], ["starts_at", "timestamp"]]},
+        {"name": "ORDERS", "pk": ["ord_uuid"], "columns": [["ord_uuid", "uuid"], ["buyer_email", "varchar"], ["ord_dt", "timestamp"], ["total_amt", "decimal"], ["batch_no", "int"]]},
+        {"name": "TICKETS", "pk": ["tkt_id"], "columns": [["tkt_id", "bigint"], ["ord_uuid", "uuid"], ["event_id", "bigint"], ["price", "decimal"]]}
+      ],
+      "fk": [
+        ["PROMOTERS", "home_venue_id", "VENUES_T"],
+        ["EVENTS", "venue_id", "VENUES_T"],
+        ["EVENTS", "promoter_cd", "PROMOTERS"],
+        ["TICKETS", "ord_uuid", "ORDERS"],
+        ["TICKETS", "event_id", "EVENTS"]
+      ],
+      "not_fk": [["ORDERS", "batch_no"]]
+    },
+    {
+      "id": "legacy-039",
+      "domain": "rail freight",
+      "tables": [
+        {"name": "DIVISIONS", "pk": ["division_cd"], "columns": [["division_cd", "char"], ["division_nm", "varchar"]]},
+        {"name": "STATIONS", "pk": ["stn_cd"], "columns": [["stn_cd", "char"], ["stn_nm", "varchar"], ["division_cd", "char"]]},
+        {"name": "CAR_TYPES", "pk": ["car_type_cd"], "columns": [["car_type_cd", "char"], ["car_type_desc", "varchar"]]},
+        {"name": "CARS", "pk": ["car_id"], "columns": [["car_id", "int"], ["car_init", "varchar"], ["car_type_cd", "char"]]},
+        {"name": "COMMODITIES", "pk": ["commodity_cd"], "columns": [["commodity_cd", "char"], ["commodity_desc", "varchar"]]},
+        {"name": "WAYBILLS", "pk": ["wb_no"], "columns": [["wb_no", "bigint"], ["origin_stn", "char"], ["dest_stn", "char"], ["car_id", "int"], ["commodity_cd", "char"], ["ship_dt", "date"], ["batch_no", "int"]]}
+      ],
+      "fk": [
+        ["STATIONS", "division_cd", "DIVISIONS"],
+        ["CARS", "car_type_cd", "CAR_TYPES"],
+        ["WAYBILLS", "origin_stn", "STATIONS"],
+        ["WAYBILLS", "dest_stn", "STATIONS"],
+        ["WAYBILLS", "car_id", "CARS"],
+        ["WAYBILLS", "commodity_cd", "COMMODITIES"]
+      ],
+      "not_fk": [["WAYBILLS", "batch_no"]]
+    },
+    {
+      "id": "legacy-040",
+      "domain": "charity donations",
+      "tables": [
+        {"name": "donors", "pk": ["donor_no"], "columns": [["donor_no", "int"], ["donor_nm", "varchar"], ["legacy_id", "varchar"]]},
+        {"name": "funds", "pk": ["fund_cd"], "columns": [["fund_cd", "char"], ["fund_name", "varchar"]]},
+        {"name": "campaigns", "pk": ["camp_cd"], "columns": [["camp_cd", "varchar"], ["camp_title", "varchar"], ["fund_cd", "char"]]},
+        {"name": "pay_methods", "pk": ["pay_method_cd"], "columns": [["pay_method_cd", "char"], ["pay_method_desc", "varchar"]]},
+        {"name": "gifts", "pk": ["gift_id"], "columns": [["gift_id", "bigint"], ["donor_no", "int"], ["camp_cd", "varchar"], ["pay_method_cd", "char"], ["gift_dt", "date"], ["gift_amt", "decimal"], ["batch_no", "int"]]},
+        {"name": "gift_designations", "pk": ["gift_id", "fund_cd"], "columns": [["gift_id", "bigint"], ["fund_cd", "char"], ["pct", "float"]]}
+      ],
+      "fk": [
+        ["campaigns", "fund_cd", "funds"],
+        ["gifts", "donor_no", "donors"],
+        ["gifts", "camp_cd", "campaigns"],
+        ["gifts", "pay_method_cd", "pay_methods"],
+        ["gift_designations", "gift_id", "gifts"],
+        ["gift_designations", "fund_cd", "funds"]
+      ],
+      "not_fk": [["donors", "legacy_id"], ["gifts", "batch_no"]]
+    }
+  ]
+}

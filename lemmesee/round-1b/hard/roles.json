@@ -1,0 +1,560 @@
+{
+  "style": "roles",
+  "schemas": [
+    {
+      "id": "roles-001",
+      "domain": "issue tracker",
+      "tables": [
+        {"name": "users", "pk": ["id"], "columns": [["id", "int"], ["email", "varchar"], ["name", "varchar"], ["created_at", "timestamp"]]},
+        {"name": "teams", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"], ["lead_id", "int"]]},
+        {"name": "projects", "pk": ["id"], "columns": [["id", "int"], ["team_id", "int"], ["name", "varchar"], ["archived", "boolean"]]},
+        {"name": "issues", "pk": ["id"], "columns": [["id", "int"], ["project_id", "int"], ["author_id", "int"], ["assignee_id", "int"], ["reviewer_id", "int"], ["parent_id", "int"], ["title", "varchar"], ["status", "varchar"], ["created_at", "timestamp"]]},
+        {"name": "comments", "pk": ["id"], "columns": [["id", "int"], ["issue_id", "int"], ["author_id", "int"], ["reply_to_id", "int"], ["body", "text"]]},
+        {"name": "attachments", "pk": ["id"], "columns": [["id", "int"], ["attachable_id", "int"], ["attachable_type", "varchar"], ["filename", "varchar"]]}
+      ],
+      "fk": [["teams", "lead_id", "users"], ["projects", "team_id", "teams"], ["issues", "project_id", "projects"], ["issues", "author_id", "users"], ["issues", "assignee_id", "users"], ["issues", "reviewer_id", "users"], ["issues", "parent_id", "issues"], ["comments", "issue_id", "issues"], ["comments", "author_id", "users"], ["comments", "reply_to_id", "comments"]],
+      "not_fk": [["attachments", "attachable_id"]]
+    },
+    {
+      "id": "roles-002",
+      "domain": "human resources",
+      "tables": [
+        {"name": "employees", "pk": ["id"], "columns": [["id", "int"], ["manager_id", "int"], ["department_id", "int"], ["position_id", "int"], ["name", "varchar"], ["hire_date", "date"]]},
+        {"name": "departments", "pk": ["id"], "columns": [["id", "int"], ["head_id", "int"], ["parent_id", "int"], ["name", "varchar"]]},
+        {"name": "positions", "pk": ["id"], "columns": [["id", "int"], ["title", "varchar"], ["grade", "int"]]},
+        {"name": "leave_requests", "pk": ["id"], "columns": [["id", "int"], ["employee_id", "int"], ["approver_id", "int"], ["starts_on", "date"], ["days", "decimal"], ["status", "varchar"]]},
+        {"name": "payroll_runs", "pk": ["id"], "columns": [["id", "int"], ["created_by", "int"], ["approved_by", "int"], ["period", "date"], ["total", "decimal"]]}
+      ],
+      "fk": [["employees", "manager_id", "employees"], ["employees", "department_id", "departments"], ["employees", "position_id", "positions"], ["departments", "head_id", "employees"], ["departments", "parent_id", "departments"], ["leave_requests", "employee_id", "employees"], ["leave_requests", "approver_id", "employees"], ["payroll_runs", "created_by", "employees"], ["payroll_runs", "approved_by", "employees"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-003",
+      "domain": "marketplace",
+      "tables": [
+        {"name": "accounts", "pk": ["id"], "columns": [["id", "int"], ["handle", "varchar"], ["joined_on", "date"]]},
+        {"name": "categories", "pk": ["id"], "columns": [["id", "int"], ["parent_id", "int"], ["name", "varchar"]]},
+        {"name": "listings", "pk": ["id"], "columns": [["id", "int"], ["seller_id", "int"], ["category_id", "int"], ["title", "varchar"], ["price", "decimal"], ["status", "varchar"], ["external_sku", "varchar"]]},
+        {"name": "deals", "pk": ["id"], "columns": [["id", "int"], ["listing_id", "int"], ["buyer_id", "int"], ["seller_id", "int"], ["amount", "decimal"], ["closed_at", "timestamp"]]},
+        {"name": "reviews", "pk": ["id"], "columns": [["id", "int"], ["deal_id", "int"], ["reviewer_id", "int"], ["reviewee_id", "int"], ["stars", "int"]]}
+      ],
+      "fk": [["categories", "parent_id", "categories"], ["listings", "seller_id", "accounts"], ["listings", "category_id", "categories"], ["deals", "listing_id", "listings"], ["deals", "buyer_id", "accounts"], ["deals", "seller_id", "accounts"], ["reviews", "deal_id", "deals"], ["reviews", "reviewer_id", "accounts"], ["reviews", "reviewee_id", "accounts"]],
+      "not_fk": [["listings", "external_sku"]]
+    },
+    {
+      "id": "roles-004",
+      "domain": "messaging",
+      "tables": [
+        {"name": "users", "pk": ["id"], "columns": [["id", "int"], ["username", "varchar"], ["created_at", "timestamp"]]},
+        {"name": "conversations", "pk": ["id"], "columns": [["id", "int"], ["title", "varchar"], ["created_by", "int"]]},
+        {"name": "messages", "pk": ["id"], "columns": [["id", "int"], ["conversation_id", "int"], ["sender_id", "int"], ["recipient_id", "int"], ["reply_to_id", "int"], ["body", "text"], ["thread_key", "varchar"], ["sent_at", "timestamp"]]},
+        {"name": "message_reads", "pk": ["message_id", "reader_id"], "columns": [["message_id", "int"], ["reader_id", "int"], ["read_at", "timestamp"]]},
+        {"name": "blocks", "pk": ["blocker_id", "blocked_id"], "columns": [["blocker_id", "int"], ["blocked_id", "int"], ["created_at", "timestamp"]]}
+      ],
+      "fk": [["conversations", "created_by", "users"], ["messages", "conversation_id", "conversations"], ["messages", "sender_id", "users"], ["messages", "recipient_id", "users"], ["messages", "reply_to_id", "messages"], ["message_reads", "message_id", "messages"], ["message_reads", "reader_id", "users"], ["blocks", "blocker_id", "users"], ["blocks", "blocked_id", "users"]],
+      "not_fk": [["messages", "thread_key"]]
+    },
+    {
+      "id": "roles-005",
+      "domain": "school",
+      "tables": [
+        {"name": "guardians", "pk": ["id"], "columns": [["id", "int"], ["full_name", "varchar"], ["phone", "varchar"]]},
+        {"name": "teachers", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"], ["mentor_id", "int"]]},
+        {"name": "students", "pk": ["id"], "columns": [["id", "int"], ["guardian_id", "int"], ["tutor_id", "int"], ["name", "varchar"], ["enrolled_on", "date"]]},
+        {"name": "courses", "pk": ["id"], "columns": [["id", "int"], ["lead_teacher_id", "int"], ["assistant_id", "int"], ["title", "varchar"]]},
+        {"name": "enrollments", "pk": ["id"], "columns": [["id", "int"], ["student_id", "int"], ["course_id", "int"], ["graded_by", "int"], ["grade", "varchar"]]}
+      ],
+      "fk": [["teachers", "mentor_id", "teachers"], ["students", "guardian_id", "guardians"], ["students", "tutor_id", "teachers"], ["courses", "lead_teacher_id", "teachers"], ["courses", "assistant_id", "teachers"], ["enrollments", "student_id", "students"], ["enrollments", "course_id", "courses"], ["enrollments", "graded_by", "teachers"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-006",
+      "domain": "hospital",
+      "tables": [
+        {"name": "people", "pk": ["id"], "columns": [["id", "int"], ["legal_name", "varchar"], ["dob", "date"]]},
+        {"name": "patients", "pk": ["id"], "columns": [["id", "int"], ["person_id", "int"], ["blood_type", "varchar"]]},
+        {"name": "staff", "pk": ["id"], "columns": [["id", "int"], ["role", "varchar"], ["full_name", "varchar"]]},
+        {"name": "wards", "pk": ["id"], "columns": [["id", "int"], ["head_nurse_id", "int"], ["name", "varchar"]]},
+        {"name": "appointments", "pk": ["id"], "columns": [["id", "int"], ["patient_id", "int"], ["doctor_id", "int"], ["booked_by", "int"], ["scheduled_for", "timestamp"], ["status", "varchar"]]},
+        {"name": "admissions", "pk": ["id"], "columns": [["id", "int"], ["patient_id", "int"], ["ward_id", "int"], ["attending_id", "int"], ["admitted_at", "timestamp"], ["discharged_at", "timestamp"]]}
+      ],
+      "fk": [["patients", "person_id", "people"], ["wards", "head_nurse_id", "staff"], ["appointments", "patient_id", "patients"], ["appointments", "doctor_id", "staff"], ["appointments", "booked_by", "staff"], ["admissions", "patient_id", "patients"], ["admissions", "ward_id", "wards"], ["admissions", "attending_id", "staff"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-007",
+      "domain": "logistics",
+      "tables": [
+        {"name": "addresses", "pk": ["id"], "columns": [["id", "int"], ["street", "varchar"], ["city", "varchar"], ["postcode", "varchar"]]},
+        {"name": "customers", "pk": ["id"], "columns": [["id", "int"], ["address_id", "int"], ["name", "varchar"]]},
+        {"name": "warehouses", "pk": ["id"], "columns": [["id", "int"], ["address_id", "int"], ["name", "varchar"]]},
+        {"name": "carriers", "pk": ["id"], "columns": [["id", "int"], ["hub_id", "int"], ["name", "varchar"]]},
+        {"name": "shipments", "pk": ["id"], "columns": [["id", "int"], ["origin_id", "int"], ["destination_id", "int"], ["carrier_id", "int"], ["customer_id", "int"], ["status", "varchar"], ["shipped_on", "date"]]},
+        {"name": "parcels", "pk": ["id"], "columns": [["id", "int"], ["shipment_id", "int"], ["weight", "decimal"], ["length_mm", "int"]]}
+      ],
+      "fk": [["customers", "address_id", "addresses"], ["warehouses", "address_id", "addresses"], ["carriers", "hub_id", "warehouses"], ["shipments", "origin_id", "warehouses"], ["shipments", "destination_id", "addresses"], ["shipments", "carrier_id", "carriers"], ["shipments", "customer_id", "customers"], ["parcels", "shipment_id", "shipments"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-008",
+      "domain": "publishing",
+      "tables": [
+        {"name": "authors", "pk": ["id"], "columns": [["id", "int"], ["pen_name", "varchar"]]},
+        {"name": "editors", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"]]},
+        {"name": "categories", "pk": ["id"], "columns": [["id", "int"], ["parent_id", "int"], ["name", "varchar"]]},
+        {"name": "articles", "pk": ["id"], "columns": [["id", "int"], ["author_id", "int"], ["editor_id", "int"], ["reviewer_id", "int"], ["category_id", "int"], ["slug", "varchar"], ["status", "varchar"], ["published_at", "timestamp"]]},
+        {"name": "revisions", "pk": ["id"], "columns": [["id", "int"], ["article_id", "int"], ["created_by", "int"], ["approved_by", "int"], ["version_no", "int"], ["body", "text"]]}
+      ],
+      "fk": [["articles", "author_id", "authors"], ["articles", "editor_id", "editors"], ["articles", "reviewer_id", "editors"], ["articles", "category_id", "categories"], ["categories", "parent_id", "categories"], ["revisions", "article_id", "articles"], ["revisions", "created_by", "authors"], ["revisions", "approved_by", "editors"]],
+      "not_fk": [["revisions", "version_no"]]
+    },
+    {
+      "id": "roles-009",
+      "domain": "finance ledger",
+      "tables": [
+        {"name": "users", "pk": ["id"], "columns": [["id", "int"], ["login", "varchar"]]},
+        {"name": "customers", "pk": ["id"], "columns": [["id", "int"], ["account_manager_id", "int"], ["legal_name", "varchar"]]},
+        {"name": "ledger_accounts", "pk": ["id"], "columns": [["id", "int"], ["parent_id", "int"], ["owner_id", "int"], ["code", "varchar"], ["name", "varchar"]]},
+        {"name": "transactions", "pk": ["id"], "columns": [["id", "int"], ["from_account_id", "int"], ["to_account_id", "int"], ["created_by", "int"], ["source_id", "int"], ["source_type", "varchar"], ["amount", "decimal"], ["posted_on", "date"]]},
+        {"name": "postings", "pk": ["transaction_id", "ledger_account_id"], "columns": [["transaction_id", "int"], ["ledger_account_id", "int"], ["side", "varchar"], ["amount", "decimal"]]}
+      ],
+      "fk": [["customers", "account_manager_id", "users"], ["ledger_accounts", "parent_id", "ledger_accounts"], ["ledger_accounts", "owner_id", "customers"], ["transactions", "from_account_id", "ledger_accounts"], ["transactions", "to_account_id", "ledger_accounts"], ["transactions", "created_by", "users"], ["postings", "transaction_id", "transactions"], ["postings", "ledger_account_id", "ledger_accounts"]],
+      "not_fk": [["transactions", "source_id"]]
+    },
+    {
+      "id": "roles-010",
+      "domain": "events",
+      "tables": [
+        {"name": "people", "pk": ["id"], "columns": [["id", "int"], ["display_name", "varchar"]]},
+        {"name": "venues", "pk": ["id"], "columns": [["id", "int"], ["manager_id", "int"], ["name", "varchar"], ["capacity", "int"]]},
+        {"name": "events", "pk": ["id"], "columns": [["id", "int"], ["venue_id", "int"], ["host_id", "int"], ["title", "varchar"], ["starts_at", "timestamp"]]},
+        {"name": "tickets", "pk": ["id"], "columns": [["id", "int"], ["event_id", "int"], ["holder_id", "int"], ["purchaser_id", "int"], ["seat_id", "int"], ["price", "decimal"]]},
+        {"name": "speakers", "pk": ["id"], "columns": [["id", "int"], ["person_id", "int"], ["topic", "varchar"]]},
+        {"name": "event_speakers", "pk": ["event_id", "speaker_id"], "columns": [["event_id", "int"], ["speaker_id", "int"]]}
+      ],
+      "fk": [["venues", "manager_id", "people"], ["events", "venue_id", "venues"], ["events", "host_id", "people"], ["tickets", "event_id", "events"], ["tickets", "holder_id", "people"], ["tickets", "purchaser_id", "people"], ["speakers", "person_id", "people"], ["event_speakers", "event_id", "events"], ["event_speakers", "speaker_id", "speakers"]],
+      "not_fk": [["tickets", "seat_id"]]
+    },
+    {
+      "id": "roles-011",
+      "domain": "real estate",
+      "tables": [
+        {"name": "people", "pk": ["id"], "columns": [["id", "int"], ["full_name", "varchar"]]},
+        {"name": "districts", "pk": ["id"], "columns": [["id", "int"], ["parent_id", "int"], ["name", "varchar"]]},
+        {"name": "agents", "pk": ["id"], "columns": [["id", "int"], ["person_id", "int"], ["agency", "varchar"]]},
+        {"name": "properties", "pk": ["id"], "columns": [["id", "int"], ["district_id", "int"], ["owner_id", "int"], ["sqm", "int"], ["status", "varchar"], ["listed_on", "date"]]},
+        {"name": "leases", "pk": ["id"], "columns": [["id", "int"], ["property_id", "int"], ["landlord_id", "int"], ["tenant_id", "int"], ["guarantor_id", "int"], ["starts_on", "date"], ["rent", "decimal"]]},
+        {"name": "viewings", "pk": ["id"], "columns": [["id", "int"], ["property_id", "int"], ["agent_id", "int"], ["scheduled_at", "timestamp"]]}
+      ],
+      "fk": [["districts", "parent_id", "districts"], ["agents", "person_id", "people"], ["properties", "district_id", "districts"], ["properties", "owner_id", "people"], ["leases", "property_id", "properties"], ["leases", "landlord_id", "people"], ["leases", "tenant_id", "people"], ["leases", "guarantor_id", "people"], ["viewings", "property_id", "properties"], ["viewings", "agent_id", "agents"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-012",
+      "domain": "library",
+      "tables": [
+        {"name": "members", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"], ["joined_on", "date"]]},
+        {"name": "titles", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"], ["isbn", "varchar"]]},
+        {"name": "branches", "pk": ["id"], "columns": [["id", "int"], ["manager_id", "int"], ["name", "varchar"]]},
+        {"name": "staff", "pk": ["id"], "columns": [["id", "int"], ["branch_id", "int"], ["name", "varchar"]]},
+        {"name": "copies", "pk": ["id"], "columns": [["id", "int"], ["title_id", "int"], ["branch_id", "int"], ["acquired_on", "date"], ["condition", "varchar"]]},
+        {"name": "loans", "pk": ["id"], "columns": [["id", "int"], ["copy_id", "int"], ["member_id", "int"], ["issued_by", "int"], ["returned_by", "int"], ["due_on", "date"], ["returned_on", "date"]]},
+        {"name": "reservations", "pk": ["id"], "columns": [["id", "int"], ["title_id", "int"], ["member_id", "int"], ["reserved_on", "date"]]}
+      ],
+      "fk": [["branches", "manager_id", "staff"], ["staff", "branch_id", "branches"], ["copies", "title_id", "titles"], ["copies", "branch_id", "branches"], ["loans", "copy_id", "copies"], ["loans", "member_id", "members"], ["loans", "issued_by", "staff"], ["loans", "returned_by", "staff"], ["reservations", "title_id", "titles"], ["reservations", "member_id", "members"]],
+      "not_fk": [["titles", "isbn"]]
+    },
+    {
+      "id": "roles-013",
+      "domain": "restaurant",
+      "tables": [
+        {"name": "staff", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"], ["role", "varchar"]]},
+        {"name": "dining_tables", "pk": ["id"], "columns": [["id", "int"], ["seats", "int"], ["section", "varchar"], ["assigned_server_id", "int"]]},
+        {"name": "dish_categories", "pk": ["id"], "columns": [["id", "int"], ["parent_id", "int"], ["name", "varchar"]]},
+        {"name": "dishes", "pk": ["id"], "columns": [["id", "int"], ["category_id", "int"], ["name", "varchar"], ["price", "decimal"]]},
+        {"name": "orders", "pk": ["id"], "columns": [["id", "int"], ["dining_table_id", "int"], ["server_id", "int"], ["cook_id", "int"], ["closed_by", "int"], ["opened_at", "timestamp"]]},
+        {"name": "order_lines", "pk": ["order_id", "dish_id"], "columns": [["order_id", "int"], ["dish_id", "int"], ["qty", "int"]]}
+      ],
+      "fk": [["dining_tables", "assigned_server_id", "staff"], ["dish_categories", "parent_id", "dish_categories"], ["dishes", "category_id", "dish_categories"], ["orders", "dining_table_id", "dining_tables"], ["orders", "server_id", "staff"], ["orders", "cook_id", "staff"], ["orders", "closed_by", "staff"], ["order_lines", "order_id", "orders"], ["order_lines", "dish_id", "dishes"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-014",
+      "domain": "airline",
+      "tables": [
+        {"name": "airports", "pk": ["code"], "columns": [["code", "char"], ["city", "varchar"]]},
+        {"name": "aircraft", "pk": ["id"], "columns": [["id", "int"], ["model", "varchar"], ["seats", "int"]]},
+        {"name": "crew", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"], ["base_code", "char"]]},
+        {"name": "flights", "pk": ["id"], "columns": [["id", "int"], ["aircraft_id", "int"], ["origin_code", "char"], ["destination_code", "char"], ["pilot_id", "int"], ["copilot_id", "int"], ["departs_at", "timestamp"]]},
+        {"name": "passengers", "pk": ["id"], "columns": [["id", "int"], ["full_name", "varchar"]]},
+        {"name": "bookings", "pk": ["id"], "columns": [["id", "int"], ["flight_id", "int"], ["passenger_id", "int"], ["booked_by", "int"], ["seat", "varchar"], ["fare", "decimal"]]}
+      ],
+      "fk": [["crew", "base_code", "airports"], ["flights", "aircraft_id", "aircraft"], ["flights", "origin_code", "airports"], ["flights", "destination_code", "airports"], ["flights", "pilot_id", "crew"], ["flights", "copilot_id", "crew"], ["bookings", "flight_id", "flights"], ["bookings", "passenger_id", "passengers"], ["bookings", "booked_by", "passengers"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-015",
+      "domain": "insurance",
+      "tables": [
+        {"name": "policyholders", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"], ["email", "varchar"]]},
+        {"name": "agents", "pk": ["id"], "columns": [["id", "int"], ["supervisor_id", "int"], ["name", "varchar"]]},
+        {"name": "products", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"], ["base_rate", "decimal"]]},
+        {"name": "policies", "pk": ["id"], "columns": [["id", "int"], ["holder_id", "int"], ["agent_id", "int"], ["product_id", "int"], ["starts_on", "date"], ["premium", "decimal"]]},
+        {"name": "claims", "pk": ["id"], "columns": [["id", "int"], ["policy_id", "int"], ["filed_by", "int"], ["adjuster_id", "int"], ["approved_by", "int"], ["amount", "decimal"], ["status", "varchar"]]}
+      ],
+      "fk": [["agents", "supervisor_id", "agents"], ["policies", "holder_id", "policyholders"], ["policies", "agent_id", "agents"], ["policies", "product_id", "products"], ["claims", "policy_id", "policies"], ["claims", "filed_by", "policyholders"], ["claims", "adjuster_id", "agents"], ["claims", "approved_by", "agents"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-016",
+      "domain": "code review and CI",
+      "tables": [
+        {"name": "developers", "pk": ["id"], "columns": [["id", "int"], ["login", "varchar"]]},
+        {"name": "repos", "pk": ["id"], "columns": [["id", "int"], ["owner_id", "int"], ["name", "varchar"], ["default_branch", "varchar"]]},
+        {"name": "pull_requests", "pk": ["id"], "columns": [["id", "int"], ["repo_id", "int"], ["author_id", "int"], ["reviewer_id", "int"], ["merged_by", "int"], ["title", "varchar"], ["opened_at", "timestamp"]]},
+        {"name": "reviews", "pk": ["id"], "columns": [["id", "int"], ["pull_request_id", "int"], ["reviewer_id", "int"], ["verdict", "varchar"]]},
+        {"name": "check_runs", "pk": ["id"], "columns": [["id", "int"], ["pull_request_id", "int"], ["triggered_by", "int"], ["name", "varchar"], ["conclusion", "varchar"]]}
+      ],
+      "fk": [["repos", "owner_id", "developers"], ["pull_requests", "repo_id", "repos"], ["pull_requests", "author_id", "developers"], ["pull_requests", "reviewer_id", "developers"], ["pull_requests", "merged_by", "developers"], ["reviews", "pull_request_id", "pull_requests"], ["reviews", "reviewer_id", "developers"], ["check_runs", "pull_request_id", "pull_requests"], ["check_runs", "triggered_by", "developers"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-017",
+      "domain": "customer support",
+      "tables": [
+        {"name": "customers", "pk": ["id"], "columns": [["id", "int"], ["email", "varchar"], ["name", "varchar"]]},
+        {"name": "staff", "pk": ["id"], "columns": [["id", "int"], ["team_lead_id", "int"], ["name", "varchar"], ["queue", "varchar"]]},
+        {"name": "tickets", "pk": ["id"], "columns": [["id", "int"], ["customer_id", "int"], ["assignee_id", "int"], ["escalated_to_id", "int"], ["opened_by", "int"], ["parent_ticket_id", "int"], ["subject", "varchar"], ["priority", "int"]]},
+        {"name": "ticket_events", "pk": ["id"], "columns": [["id", "int"], ["ticket_id", "int"], ["actor_id", "int"], ["kind", "varchar"], ["occurred_at", "timestamp"]]}
+      ],
+      "fk": [["staff", "team_lead_id", "staff"], ["tickets", "customer_id", "customers"], ["tickets", "assignee_id", "staff"], ["tickets", "escalated_to_id", "staff"], ["tickets", "opened_by", "staff"], ["tickets", "parent_ticket_id", "tickets"], ["ticket_events", "ticket_id", "tickets"], ["ticket_events", "actor_id", "staff"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-018",
+      "domain": "discussion forum",
+      "tables": [
+        {"name": "members", "pk": ["id"], "columns": [["id", "int"], ["handle", "varchar"], ["joined_at", "timestamp"]]},
+        {"name": "forums", "pk": ["id"], "columns": [["id", "int"], ["moderator_id", "int"], ["name", "varchar"]]},
+        {"name": "threads", "pk": ["id"], "columns": [["id", "int"], ["forum_id", "int"], ["author_id", "int"], ["pinned_by", "int"], ["title", "varchar"]]},
+        {"name": "posts", "pk": ["id"], "columns": [["id", "int"], ["thread_id", "int"], ["author_id", "int"], ["quoted_post_id", "int"], ["edited_by", "int"], ["body", "text"]]},
+        {"name": "reports", "pk": ["id"], "columns": [["id", "int"], ["post_id", "int"], ["reporter_id", "int"], ["reason", "varchar"]]}
+      ],
+      "fk": [["forums", "moderator_id", "members"], ["threads", "forum_id", "forums"], ["threads", "author_id", "members"], ["threads", "pinned_by", "members"], ["posts", "thread_id", "threads"], ["posts", "author_id", "members"], ["posts", "quoted_post_id", "posts"], ["posts", "edited_by", "members"], ["reports", "post_id", "posts"], ["reports", "reporter_id", "members"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-019",
+      "domain": "museum loans",
+      "tables": [
+        {"name": "institutions", "pk": ["id"], "columns": [["id", "uuid"], ["parent_id", "uuid"], ["name", "varchar"]]},
+        {"name": "curators", "pk": ["id"], "columns": [["id", "uuid"], ["institution_id", "uuid"], ["full_name", "varchar"]]},
+        {"name": "objects", "pk": ["id"], "columns": [["id", "uuid"], ["institution_id", "uuid"], ["curator_id", "uuid"], ["title", "varchar"], ["accession_id", "int"], ["acquired_on", "date"]]},
+        {"name": "loans", "pk": ["id"], "columns": [["id", "uuid"], ["object_id", "uuid"], ["lender_id", "uuid"], ["borrower_id", "uuid"], ["approved_by", "uuid"], ["starts_on", "date"], ["ends_on", "date"]]}
+      ],
+      "fk": [["institutions", "parent_id", "institutions"], ["curators", "institution_id", "institutions"], ["objects", "institution_id", "institutions"], ["objects", "curator_id", "curators"], ["loans", "object_id", "objects"], ["loans", "lender_id", "institutions"], ["loans", "borrower_id", "institutions"], ["loans", "approved_by", "curators"]],
+      "not_fk": [["objects", "accession_id"]]
+    },
+    {
+      "id": "roles-020",
+      "domain": "fleet maintenance",
+      "tables": [
+        {"name": "mechanics", "pk": ["id"], "columns": [["id", "int"], ["lead_id", "int"], ["name", "varchar"], ["certified", "boolean"]]},
+        {"name": "depots", "pk": ["id"], "columns": [["id", "int"], ["manager_id", "int"], ["name", "varchar"]]},
+        {"name": "vehicles", "pk": ["id"], "columns": [["id", "int"], ["depot_id", "int"], ["plate", "varchar"], ["model", "varchar"]]},
+        {"name": "work_orders", "pk": ["id"], "columns": [["id", "int"], ["vehicle_id", "int"], ["opened_by", "int"], ["assigned_to", "int"], ["inspected_by", "int"], ["opened_at", "timestamp"], ["status", "varchar"]]},
+        {"name": "parts", "pk": ["id"], "columns": [["id", "int"], ["sku", "varchar"], ["price", "decimal"]]},
+        {"name": "work_order_parts", "pk": ["work_order_id", "part_id"], "columns": [["work_order_id", "int"], ["part_id", "int"], ["qty", "int"]]}
+      ],
+      "fk": [["mechanics", "lead_id", "mechanics"], ["depots", "manager_id", "mechanics"], ["vehicles", "depot_id", "depots"], ["work_orders", "vehicle_id", "vehicles"], ["work_orders", "opened_by", "mechanics"], ["work_orders", "assigned_to", "mechanics"], ["work_orders", "inspected_by", "mechanics"], ["work_order_parts", "work_order_id", "work_orders"], ["work_order_parts", "part_id", "parts"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-021",
+      "domain": "telecom billing",
+      "tables": [
+        {"name": "subscribers", "pk": ["id"], "columns": [["id", "int"], ["msisdn", "varchar"], ["referred_by_id", "int"]]},
+        {"name": "plans", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"], ["monthly_fee", "decimal"]]},
+        {"name": "subscriptions", "pk": ["id"], "columns": [["id", "int"], ["subscriber_id", "int"], ["plan_id", "int"], ["sponsor_id", "int"], ["starts_on", "date"]]},
+        {"name": "billing_accounts", "pk": ["id"], "columns": [["id", "int"], ["subscriber_id", "int"], ["currency", "char"]]},
+        {"name": "invoices", "pk": ["id"], "columns": [["id", "int"], ["subscription_id", "int"], ["billing_account_id", "int"], ["total", "decimal"], ["issued_on", "date"]]},
+        {"name": "payments", "pk": ["id"], "columns": [["id", "int"], ["invoice_id", "int"], ["payer_id", "int"], ["amount", "decimal"], ["paid_on", "date"]]}
+      ],
+      "fk": [["subscribers", "referred_by_id", "subscribers"], ["subscriptions", "subscriber_id", "subscribers"], ["subscriptions", "plan_id", "plans"], ["subscriptions", "sponsor_id", "subscribers"], ["billing_accounts", "subscriber_id", "subscribers"], ["invoices", "subscription_id", "subscriptions"], ["invoices", "billing_account_id", "billing_accounts"], ["payments", "invoice_id", "invoices"], ["payments", "payer_id", "subscribers"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-022",
+      "domain": "car rental",
+      "tables": [
+        {"name": "car_models", "pk": ["id"], "columns": [["id", "int"], ["make", "varchar"], ["class", "varchar"]]},
+        {"name": "branches", "pk": ["id"], "columns": [["id", "int"], ["manager_id", "int"], ["city", "varchar"]]},
+        {"name": "staff", "pk": ["id"], "columns": [["id", "int"], ["branch_id", "int"], ["name", "varchar"]]},
+        {"name": "cars", "pk": ["id"], "columns": [["id", "int"], ["model_id", "int"], ["home_branch_id", "int"], ["plate", "varchar"]]},
+        {"name": "customers", "pk": ["id"], "columns": [["id", "int"], ["licence_no", "varchar"], ["name", "varchar"]]},
+        {"name": "rentals", "pk": ["id"], "columns": [["id", "int"], ["car_id", "int"], ["customer_id", "int"], ["pickup_branch_id", "int"], ["dropoff_branch_id", "int"], ["agent_id", "int"], ["starts_at", "timestamp"]]}
+      ],
+      "fk": [["branches", "manager_id", "staff"], ["staff", "branch_id", "branches"], ["cars", "model_id", "car_models"], ["cars", "home_branch_id", "branches"], ["rentals", "car_id", "cars"], ["rentals", "customer_id", "customers"], ["rentals", "pickup_branch_id", "branches"], ["rentals", "dropoff_branch_id", "branches"], ["rentals", "agent_id", "staff"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-023",
+      "domain": "construction projects",
+      "tables": [
+        {"name": "contacts", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"], ["email", "varchar"]]},
+        {"name": "clients", "pk": ["id"], "columns": [["id", "int"], ["contact_id", "int"], ["name", "varchar"]]},
+        {"name": "crew_members", "pk": ["id"], "columns": [["id", "int"], ["supervisor_id", "int"], ["name", "varchar"], ["trade", "varchar"]]},
+        {"name": "projects", "pk": ["id"], "columns": [["id", "int"], ["client_id", "int"], ["site_manager_id", "int"], ["name", "varchar"], ["budget", "decimal"]]},
+        {"name": "tasks", "pk": ["id"], "columns": [["id", "int"], ["project_id", "int"], ["assigned_to", "int"], ["signed_off_by", "int"], ["parent_task_id", "int"], ["due_on", "date"], ["status", "varchar"]]}
+      ],
+      "fk": [["clients", "contact_id", "contacts"], ["crew_members", "supervisor_id", "crew_members"], ["projects", "client_id", "clients"], ["projects", "site_manager_id", "crew_members"], ["tasks", "project_id", "projects"], ["tasks", "assigned_to", "crew_members"], ["tasks", "signed_off_by", "crew_members"], ["tasks", "parent_task_id", "tasks"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-024",
+      "domain": "agriculture",
+      "tables": [
+        {"name": "people", "pk": ["id"], "columns": [["id", "int"], ["legal_name", "varchar"], ["dob", "date"]]},
+        {"name": "farmers", "pk": ["id"], "columns": [["id", "int"], ["person_id", "int"], ["handle", "varchar"]]},
+        {"name": "farms", "pk": ["id"], "columns": [["id", "int"], ["owner_id", "int"], ["name", "varchar"], ["region", "varchar"]]},
+        {"name": "crops", "pk": ["id"], "columns": [["id", "int"], ["variety_of_id", "int"], ["name", "varchar"]]},
+        {"name": "fields", "pk": ["id"], "columns": [["id", "int"], ["farm_id", "int"], ["crop_id", "int"], ["area_ha", "decimal"]]},
+        {"name": "harvests", "pk": ["id"], "columns": [["id", "int"], ["field_id", "int"], ["recorded_by", "int"], ["verified_by", "int"], ["tonnes", "decimal"], ["harvested_on", "date"]]}
+      ],
+      "fk": [["farmers", "person_id", "people"], ["farms", "owner_id", "farmers"], ["crops", "variety_of_id", "crops"], ["fields", "farm_id", "farms"], ["fields", "crop_id", "crops"], ["harvests", "field_id", "fields"], ["harvests", "recorded_by", "farmers"], ["harvests", "verified_by", "farmers"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-025",
+      "domain": "sports league",
+      "tables": [
+        {"name": "coaches", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"]]},
+        {"name": "teams", "pk": ["id"], "columns": [["id", "int"], ["coach_id", "int"], ["name", "varchar"], ["city", "varchar"]]},
+        {"name": "venues", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"], ["capacity", "int"]]},
+        {"name": "referees", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"]]},
+        {"name": "players", "pk": ["id"], "columns": [["id", "int"], ["team_id", "int"], ["name", "varchar"], ["shirt_no", "int"]]},
+        {"name": "matches", "pk": ["id"], "columns": [["id", "int"], ["home_team_id", "int"], ["away_team_id", "int"], ["venue_id", "int"], ["referee_id", "int"], ["winner_id", "int"], ["played_on", "date"], ["home_goals", "int"], ["away_goals", "int"]]},
+        {"name": "match_events", "pk": ["id"], "columns": [["id", "int"], ["match_id", "int"], ["player_id", "int"], ["minute", "int"], ["kind", "varchar"]]}
+      ],
+      "fk": [["teams", "coach_id", "coaches"], ["players", "team_id", "teams"], ["matches", "home_team_id", "teams"], ["matches", "away_team_id", "teams"], ["matches", "venue_id", "venues"], ["matches", "referee_id", "referees"], ["matches", "winner_id", "teams"], ["match_events", "match_id", "matches"], ["match_events", "player_id", "players"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-026",
+      "domain": "building permits",
+      "tables": [
+        {"name": "applicants", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"], ["email", "varchar"]]},
+        {"name": "offices", "pk": ["id"], "columns": [["id", "int"], ["director_id", "int"], ["name", "varchar"]]},
+        {"name": "inspectors", "pk": ["id"], "columns": [["id", "int"], ["office_id", "int"], ["badge", "varchar"]]},
+        {"name": "sites", "pk": ["id"], "columns": [["id", "int"], ["owner_id", "int"], ["address", "varchar"], ["parcel_code", "varchar"]]},
+        {"name": "permits", "pk": ["id"], "columns": [["id", "int"], ["site_id", "int"], ["applicant_id", "int"], ["inspector_id", "int"], ["approver_id", "int"], ["status", "varchar"], ["filed_on", "date"]]},
+        {"name": "inspections", "pk": ["id"], "columns": [["id", "int"], ["permit_id", "int"], ["inspector_id", "int"], ["passed", "boolean"], ["inspected_on", "date"]]}
+      ],
+      "fk": [["offices", "director_id", "inspectors"], ["inspectors", "office_id", "offices"], ["sites", "owner_id", "applicants"], ["permits", "site_id", "sites"], ["permits", "applicant_id", "applicants"], ["permits", "inspector_id", "inspectors"], ["permits", "approver_id", "inspectors"], ["inspections", "permit_id", "permits"], ["inspections", "inspector_id", "inspectors"]],
+      "not_fk": [["sites", "parcel_code"]]
+    },
+    {
+      "id": "roles-027",
+      "domain": "bike share",
+      "tables": [
+        {"name": "zones", "pk": ["id"], "columns": [["id", "int"], ["parent_zone_id", "int"], ["name", "varchar"]]},
+        {"name": "stations", "pk": ["id"], "columns": [["id", "int"], ["zone_id", "int"], ["name", "varchar"], ["capacity", "int"]]},
+        {"name": "bikes", "pk": ["id"], "columns": [["id", "int"], ["home_station_id", "int"], ["model", "varchar"]]},
+        {"name": "riders", "pk": ["id"], "columns": [["id", "int"], ["card_token", "varchar"]]},
+        {"name": "technicians", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"]]},
+        {"name": "trips", "pk": ["id"], "columns": [["id", "int"], ["bike_id", "int"], ["start_station_id", "int"], ["end_station_id", "int"], ["rider_id", "int"], ["started_at", "timestamp"], ["duration_s", "int"]]},
+        {"name": "repairs", "pk": ["id"], "columns": [["id", "int"], ["bike_id", "int"], ["reported_by", "int"], ["technician_id", "int"], ["note", "text"], ["closed_at", "timestamp"]]}
+      ],
+      "fk": [["zones", "parent_zone_id", "zones"], ["stations", "zone_id", "zones"], ["bikes", "home_station_id", "stations"], ["trips", "bike_id", "bikes"], ["trips", "start_station_id", "stations"], ["trips", "end_station_id", "stations"], ["trips", "rider_id", "riders"], ["repairs", "bike_id", "bikes"], ["repairs", "reported_by", "riders"], ["repairs", "technician_id", "technicians"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-028",
+      "domain": "hotel",
+      "tables": [
+        {"name": "countries", "pk": ["code"], "columns": [["code", "char"], ["name", "varchar"]]},
+        {"name": "guests", "pk": ["id"], "columns": [["id", "int"], ["country_code", "char"], ["full_name", "varchar"]]},
+        {"name": "room_types", "pk": ["id"], "columns": [["id", "int"], ["fallback_type_id", "int"], ["name", "varchar"], ["base_rate", "decimal"]]},
+        {"name": "rooms", "pk": ["id"], "columns": [["id", "int"], ["room_type_id", "int"], ["floor", "int"], ["number", "varchar"]]},
+        {"name": "staff", "pk": ["id"], "columns": [["id", "int"], ["supervisor_id", "int"], ["name", "varchar"], ["shift", "varchar"]]},
+        {"name": "reservations", "pk": ["id"], "columns": [["id", "int"], ["guest_id", "int"], ["room_id", "int"], ["booked_by", "int"], ["checked_in_by", "int"], ["starts_on", "date"], ["ends_on", "date"]]}
+      ],
+      "fk": [["guests", "country_code", "countries"], ["room_types", "fallback_type_id", "room_types"], ["rooms", "room_type_id", "room_types"], ["staff", "supervisor_id", "staff"], ["reservations", "guest_id", "guests"], ["reservations", "room_id", "rooms"], ["reservations", "booked_by", "guests"], ["reservations", "checked_in_by", "staff"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-029",
+      "domain": "recipes",
+      "tables": [
+        {"name": "cuisines", "pk": ["id"], "columns": [["id", "int"], ["parent_id", "int"], ["name", "varchar"]]},
+        {"name": "cooks", "pk": ["id"], "columns": [["id", "int"], ["handle", "varchar"]]},
+        {"name": "ingredients", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"], ["unit", "varchar"]]},
+        {"name": "recipes", "pk": ["id"], "columns": [["id", "int"], ["author_id", "int"], ["cuisine_id", "int"], ["adapted_from_id", "int"], ["title", "varchar"], ["servings", "int"]]},
+        {"name": "recipe_ingredients", "pk": ["recipe_id", "ingredient_id"], "columns": [["recipe_id", "int"], ["ingredient_id", "int"], ["quantity", "decimal"]]},
+        {"name": "ratings", "pk": ["id"], "columns": [["id", "int"], ["recipe_id", "int"], ["rater_id", "int"], ["stars", "int"]]}
+      ],
+      "fk": [["cuisines", "parent_id", "cuisines"], ["recipes", "author_id", "cooks"], ["recipes", "cuisine_id", "cuisines"], ["recipes", "adapted_from_id", "recipes"], ["recipe_ingredients", "recipe_id", "recipes"], ["recipe_ingredients", "ingredient_id", "ingredients"], ["ratings", "recipe_id", "recipes"], ["ratings", "rater_id", "cooks"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-030",
+      "domain": "sensor network",
+      "tables": [
+        {"name": "sites", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"]]},
+        {"name": "technicians", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"]]},
+        {"name": "devices", "pk": ["id"], "columns": [["id", "int"], ["site_id", "int"], ["installed_by", "int"], ["replaced_device_id", "int"], ["model", "varchar"]]},
+        {"name": "sensors", "pk": ["id"], "columns": [["id", "int"], ["device_id", "int"], ["measures", "varchar"]]},
+        {"name": "alert_rules", "pk": ["id"], "columns": [["id", "int"], ["sensor_id", "int"], ["threshold", "decimal"]]},
+        {"name": "readings", "pk": ["id"], "columns": [["id", "bigint"], ["sensor_id", "int"], ["recorded_at", "timestamp"], ["value", "decimal"]]},
+        {"name": "alerts", "pk": ["id"], "columns": [["id", "int"], ["reading_id", "bigint"], ["rule_id", "int"], ["acknowledged_by", "int"], ["raised_at", "timestamp"]]}
+      ],
+      "fk": [["devices", "site_id", "sites"], ["devices", "installed_by", "technicians"], ["devices", "replaced_device_id", "devices"], ["sensors", "device_id", "devices"], ["alert_rules", "sensor_id", "sensors"], ["readings", "sensor_id", "sensors"], ["alerts", "reading_id", "readings"], ["alerts", "rule_id", "alert_rules"], ["alerts", "acknowledged_by", "technicians"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-031",
+      "domain": "film production",
+      "tables": [
+        {"name": "people", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"]]},
+        {"name": "roles", "pk": ["id"], "columns": [["id", "int"], ["parent_role_id", "int"], ["name", "varchar"]]},
+        {"name": "productions", "pk": ["id"], "columns": [["id", "int"], ["producer_id", "int"], ["director_id", "int"], ["title", "varchar"], ["shoot_starts", "date"]]},
+        {"name": "crew_assignments", "pk": ["production_id", "person_id"], "columns": [["production_id", "int"], ["person_id", "int"], ["role_id", "int"], ["day_rate", "decimal"]]},
+        {"name": "locations", "pk": ["id"], "columns": [["id", "int"], ["permit_holder_id", "int"], ["name", "varchar"]]},
+        {"name": "scenes", "pk": ["id"], "columns": [["id", "int"], ["production_id", "int"], ["location_id", "int"], ["shot_by", "int"], ["number", "int"], ["take_no", "int"]]}
+      ],
+      "fk": [["roles", "parent_role_id", "roles"], ["productions", "producer_id", "people"], ["productions", "director_id", "people"], ["crew_assignments", "production_id", "productions"], ["crew_assignments", "person_id", "people"], ["crew_assignments", "role_id", "roles"], ["locations", "permit_holder_id", "people"], ["scenes", "production_id", "productions"], ["scenes", "location_id", "locations"], ["scenes", "shot_by", "people"]],
+      "not_fk": [["scenes", "take_no"]]
+    },
+    {
+      "id": "roles-032",
+      "domain": "water utility",
+      "tables": [
+        {"name": "customers", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"]]},
+        {"name": "properties", "pk": ["id"], "columns": [["id", "int"], ["owner_id", "int"], ["address", "varchar"]]},
+        {"name": "field_crews", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"]]},
+        {"name": "meters", "pk": ["id"], "columns": [["id", "int"], ["property_id", "int"], ["installed_by", "int"], ["replaced_meter_id", "int"], ["serial", "varchar"]]},
+        {"name": "readings", "pk": ["id"], "columns": [["id", "int"], ["meter_id", "int"], ["read_by", "int"], ["read_on", "date"], ["cubic_m", "decimal"]]},
+        {"name": "bills", "pk": ["id"], "columns": [["id", "int"], ["customer_id", "int"], ["property_id", "int"], ["period_start", "date"], ["total", "decimal"]]}
+      ],
+      "fk": [["properties", "owner_id", "customers"], ["meters", "property_id", "properties"], ["meters", "installed_by", "field_crews"], ["meters", "replaced_meter_id", "meters"], ["readings", "meter_id", "meters"], ["readings", "read_by", "field_crews"], ["bills", "customer_id", "customers"], ["bills", "property_id", "properties"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-033",
+      "domain": "legal case management",
+      "tables": [
+        {"name": "clients", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"]]},
+        {"name": "parties", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"], ["kind", "varchar"]]},
+        {"name": "offices", "pk": ["id"], "columns": [["id", "int"], ["managing_partner_id", "int"], ["city", "varchar"]]},
+        {"name": "lawyers", "pk": ["id"], "columns": [["id", "int"], ["firm_office_id", "int"], ["bar_no", "varchar"], ["name", "varchar"]]},
+        {"name": "judges", "pk": ["id"], "columns": [["id", "int"], ["court", "varchar"], ["name", "varchar"]]},
+        {"name": "matters", "pk": ["id"], "columns": [["id", "int"], ["client_id", "int"], ["lead_counsel_id", "int"], ["opposing_party_id", "int"], ["title", "varchar"], ["opened_on", "date"]]},
+        {"name": "documents", "pk": ["id"], "columns": [["id", "int"], ["matter_id", "int"], ["filed_by", "int"], ["reviewed_by", "int"], ["title", "varchar"], ["filed_at", "timestamp"]]},
+        {"name": "hearings", "pk": ["id"], "columns": [["id", "int"], ["matter_id", "int"], ["presiding_judge_id", "int"], ["heard_on", "date"]]}
+      ],
+      "fk": [["offices", "managing_partner_id", "lawyers"], ["lawyers", "firm_office_id", "offices"], ["matters", "client_id", "clients"], ["matters", "lead_counsel_id", "lawyers"], ["matters", "opposing_party_id", "parties"], ["documents", "matter_id", "matters"], ["documents", "filed_by", "lawyers"], ["documents", "reviewed_by", "lawyers"], ["hearings", "matter_id", "matters"], ["hearings", "presiding_judge_id", "judges"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-034",
+      "domain": "esports matches",
+      "tables": [
+        {"name": "players", "pk": ["id"], "columns": [["id", "int"], ["handle", "varchar"]]},
+        {"name": "guilds", "pk": ["id"], "columns": [["id", "int"], ["leader_id", "int"], ["name", "varchar"]]},
+        {"name": "guild_members", "pk": ["guild_id", "player_id"], "columns": [["guild_id", "int"], ["player_id", "int"], ["joined_on", "date"]]},
+        {"name": "maps", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"]]},
+        {"name": "matches", "pk": ["id"], "columns": [["id", "int"], ["map_id", "int"], ["host_id", "int"], ["map_code", "varchar"], ["started_at", "timestamp"]]},
+        {"name": "match_players", "pk": ["match_id", "player_id"], "columns": [["match_id", "int"], ["player_id", "int"], ["team_no", "int"], ["score", "int"]]},
+        {"name": "bans", "pk": ["id"], "columns": [["id", "int"], ["match_id", "int"], ["banned_player_id", "int"], ["banned_by_id", "int"], ["reason", "varchar"]]}
+      ],
+      "fk": [["guilds", "leader_id", "players"], ["guild_members", "guild_id", "guilds"], ["guild_members", "player_id", "players"], ["matches", "map_id", "maps"], ["matches", "host_id", "players"], ["match_players", "match_id", "matches"], ["match_players", "player_id", "players"], ["bans", "match_id", "matches"], ["bans", "banned_player_id", "players"], ["bans", "banned_by_id", "players"]],
+      "not_fk": [["matches", "map_code"]]
+    },
+    {
+      "id": "roles-035",
+      "domain": "music streaming",
+      "tables": [
+        {"name": "artists", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"]]},
+        {"name": "labels", "pk": ["id"], "columns": [["id", "int"], ["parent_label_id", "int"], ["name", "varchar"]]},
+        {"name": "albums", "pk": ["id"], "columns": [["id", "int"], ["primary_artist_id", "int"], ["label_id", "int"], ["title", "varchar"], ["released_on", "date"]]},
+        {"name": "tracks", "pk": ["id"], "columns": [["id", "int"], ["album_id", "int"], ["featured_artist_id", "int"], ["title", "varchar"], ["duration_s", "int"]]},
+        {"name": "listeners", "pk": ["id"], "columns": [["id", "int"], ["username", "varchar"]]},
+        {"name": "playlists", "pk": ["id"], "columns": [["id", "int"], ["owner_id", "int"], ["title", "varchar"]]},
+        {"name": "playlist_tracks", "pk": ["playlist_id", "track_id"], "columns": [["playlist_id", "int"], ["track_id", "int"], ["position", "int"]]},
+        {"name": "plays", "pk": ["id"], "columns": [["id", "bigint"], ["track_id", "int"], ["listener_id", "int"], ["played_at", "timestamp"]]}
+      ],
+      "fk": [["labels", "parent_label_id", "labels"], ["albums", "primary_artist_id", "artists"], ["albums", "label_id", "labels"], ["tracks", "album_id", "albums"], ["tracks", "featured_artist_id", "artists"], ["playlists", "owner_id", "listeners"], ["playlist_tracks", "playlist_id", "playlists"], ["playlist_tracks", "track_id", "tracks"], ["plays", "track_id", "tracks"], ["plays", "listener_id", "listeners"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-036",
+      "domain": "travel bookings",
+      "tables": [
+        {"name": "cities", "pk": ["code"], "columns": [["code", "char"], ["name", "varchar"]]},
+        {"name": "travellers", "pk": ["id"], "columns": [["id", "uuid"], ["referred_by", "uuid"], ["name", "varchar"], ["email", "varchar"]]},
+        {"name": "hotels", "pk": ["id"], "columns": [["id", "uuid"], ["city_code", "char"], ["name", "varchar"], ["stars", "int"]]},
+        {"name": "trips", "pk": ["id"], "columns": [["id", "uuid"], ["traveller_id", "uuid"], ["booked_by", "uuid"], ["origin_city_code", "char"], ["title", "varchar"], ["starts_on", "date"]]},
+        {"name": "hotel_stays", "pk": ["id"], "columns": [["id", "uuid"], ["trip_id", "uuid"], ["hotel_id", "uuid"], ["room_holder_id", "uuid"], ["check_in", "date"], ["nights", "int"]]}
+      ],
+      "fk": [["travellers", "referred_by", "travellers"], ["hotels", "city_code", "cities"], ["trips", "traveller_id", "travellers"], ["trips", "booked_by", "travellers"], ["trips", "origin_city_code", "cities"], ["hotel_stays", "trip_id", "trips"], ["hotel_stays", "hotel_id", "hotels"], ["hotel_stays", "room_holder_id", "travellers"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-037",
+      "domain": "veterinary clinic",
+      "tables": [
+        {"name": "owners", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"]]},
+        {"name": "species", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"]]},
+        {"name": "vets", "pk": ["id"], "columns": [["id", "int"], ["supervisor_id", "int"], ["name", "varchar"]]},
+        {"name": "animals", "pk": ["id"], "columns": [["id", "int"], ["owner_id", "int"], ["species_id", "int"], ["name", "varchar"], ["born_on", "date"]]},
+        {"name": "visits", "pk": ["id"], "columns": [["id", "int"], ["animal_id", "int"], ["vet_id", "int"], ["referred_by_vet_id", "int"], ["appointment_id", "int"], ["visited_on", "date"], ["weight_kg", "decimal"]]},
+        {"name": "prescriptions", "pk": ["id"], "columns": [["id", "int"], ["visit_id", "int"], ["prescribed_by", "int"], ["dispensed_by", "int"], ["drug", "varchar"]]}
+      ],
+      "fk": [["vets", "supervisor_id", "vets"], ["animals", "owner_id", "owners"], ["animals", "species_id", "species"], ["visits", "animal_id", "animals"], ["visits", "vet_id", "vets"], ["visits", "referred_by_vet_id", "vets"], ["prescriptions", "visit_id", "visits"], ["prescriptions", "prescribed_by", "vets"], ["prescriptions", "dispensed_by", "vets"]],
+      "not_fk": [["visits", "appointment_id"]]
+    },
+    {
+      "id": "roles-038",
+      "domain": "daycare",
+      "tables": [
+        {"name": "adults", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"], ["phone", "varchar"]]},
+        {"name": "children", "pk": ["id"], "columns": [["id", "int"], ["first_name", "varchar"], ["birth_year", "int"]]},
+        {"name": "rooms", "pk": ["id"], "columns": [["id", "int"], ["keeper_id", "int"], ["name", "varchar"], ["capacity", "int"]]},
+        {"name": "staff", "pk": ["id"], "columns": [["id", "int"], ["home_room_id", "int"], ["name", "varchar"]]},
+        {"name": "enrolments", "pk": ["id"], "columns": [["id", "int"], ["child_id", "int"], ["room_id", "int"], ["enrolled_by", "int"], ["starts_on", "date"]]},
+        {"name": "pickups", "pk": ["id"], "columns": [["id", "int"], ["child_id", "int"], ["picked_up_by", "int"], ["authorised_by", "int"], ["picked_up_at", "timestamp"]]}
+      ],
+      "fk": [["staff", "home_room_id", "rooms"], ["rooms", "keeper_id", "staff"], ["enrolments", "child_id", "children"], ["enrolments", "room_id", "rooms"], ["enrolments", "enrolled_by", "adults"], ["pickups", "child_id", "children"], ["pickups", "picked_up_by", "adults"], ["pickups", "authorised_by", "adults"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-039",
+      "domain": "conference paper review",
+      "tables": [
+        {"name": "authors", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"], ["email", "varchar"]]},
+        {"name": "reviewers", "pk": ["id"], "columns": [["id", "int"], ["mentor_id", "int"], ["name", "varchar"], ["affiliation", "varchar"]]},
+        {"name": "tracks", "pk": ["id"], "columns": [["id", "int"], ["chair_id", "int"], ["name", "varchar"]]},
+        {"name": "papers", "pk": ["id"], "columns": [["id", "int"], ["corresponding_author_id", "int"], ["track_id", "int"], ["title", "varchar"], ["status", "varchar"]]},
+        {"name": "reviews", "pk": ["id"], "columns": [["id", "int"], ["paper_id", "int"], ["reviewer_id", "int"], ["delegated_to_id", "int"], ["score", "int"]]},
+        {"name": "decisions", "pk": ["id"], "columns": [["id", "int"], ["paper_id", "int"], ["decided_by", "int"], ["decided_on", "date"], ["outcome", "varchar"]]}
+      ],
+      "fk": [["reviewers", "mentor_id", "reviewers"], ["tracks", "chair_id", "reviewers"], ["papers", "corresponding_author_id", "authors"], ["papers", "track_id", "tracks"], ["reviews", "paper_id", "papers"], ["reviews", "reviewer_id", "reviewers"], ["reviews", "delegated_to_id", "reviewers"], ["decisions", "paper_id", "papers"], ["decisions", "decided_by", "reviewers"]],
+      "not_fk": []
+    },
+    {
+      "id": "roles-040",
+      "domain": "auction house",
+      "tables": [
+        {"name": "staff", "pk": ["id"], "columns": [["id", "int"], ["supervisor_id", "int"], ["name", "varchar"]]},
+        {"name": "consignors", "pk": ["id"], "columns": [["id", "int"], ["name", "varchar"]]},
+        {"name": "accounts", "pk": ["id"], "columns": [["id", "int"], ["legal_name", "varchar"]]},
+        {"name": "bidders", "pk": ["id"], "columns": [["id", "int"], ["account_id", "int"], ["paddle_no", "int"]]},
+        {"name": "auctions", "pk": ["id"], "columns": [["id", "int"], ["auctioneer_id", "int"], ["title", "varchar"], ["closes_at", "timestamp"]]},
+        {"name": "lots", "pk": ["id"], "columns": [["id", "int"], ["auction_id", "int"], ["consignor_id", "int"], ["appraised_by", "int"], ["winning_bid_id", "int"], ["title", "varchar"], ["reserve", "decimal"]]},
+        {"name": "bids", "pk": ["id"], "columns": [["id", "int"], ["lot_id", "int"], ["bidder_id", "int"], ["amount", "decimal"], ["placed_at", "timestamp"]]}
+      ],
+      "fk": [["staff", "supervisor_id", "staff"], ["bidders", "account_id", "accounts"], ["auctions", "auctioneer_id", "staff"], ["lots", "auction_id", "auctions"], ["lots", "consignor_id", "consignors"], ["lots", "appraised_by", "staff"], ["lots", "winning_bid_id", "bids"], ["bids", "lot_id", "lots"], ["bids", "bidder_id", "bidders"]],
+      "not_fk": []
+    }
+  ]
+}

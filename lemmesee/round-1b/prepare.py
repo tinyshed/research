@@ -97,6 +97,7 @@ def main(corpus: Path, out: Path) -> None:
                 columns.append({
                     "name": cname,
                     "family": fam,
+                    "type": c["TYPE"].lower(),
                     "nullable": c["NULLABLE"],
                     "unique": bool(c["UNIQUE"]),
                     "primary": cname in pk,
