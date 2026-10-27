@@ -1,7 +1,9 @@
 # 11. The API and the command line
 
-**Status: draft, first round, 27 October 2026.** Nothing is agreed until
-Dmitry says so; the choices a review should look at are under *Forks*.
+**Status: draft, second round, 27 October 2026.** The first round went
+through one review, which kept its shape and sharpened `see`, `push` and the
+file; what it changed is listed under *Forks*. Nothing is agreed until Dmitry
+says so.
 
 Dashbin has one public surface, its api, and every client uses it: the
 browser, the command line, the terminal's `show`, a chat's bot. What the
@@ -100,9 +102,17 @@ repository is revoked by itself, is a step for later.
 ### A dashboard is a file
 
 The document a dashboard is (chapter 9) has a spelling for people: TOML, the
-same fields, read and written exactly, so a dashboard lives in a repository
-beside the code it watches. The terminal draws it, the hub serves it, and the
-same file goes both ways.
+same fields, so a dashboard lives in a repository beside the code it watches.
+The terminal draws it, the hub serves it, and the same file goes both ways.
+
+**Read and written exactly, and tested so.** TOML has no `null`, so the
+document has none either: a value that is absent is a field left out, which
+its schema says, and a visualization's options are nested tables. A test
+generates documents — every visualization's options among them, shared and
+own queries, empty lists — and checks that writing, reading and writing again
+gives the same bytes and the same document; it is a gate, because a file that
+loses a field on the way back is a dashboard that changes when nobody touched
+it.
 
 ```
 dashbin pull revenue > revenue.dash.toml       # the hub's document, as a file
@@ -113,6 +123,24 @@ dashbin push revenue.dash.toml                 # saved against the version it wa
 
 `push` names the version it was pulled at; when the hub's has moved, it is
 refused and says to pull and merge, as a browser's save is.
+
+**`push` checks what a dashboard reads before it saves it.** A dashboard
+names instances by name or by a selector; a file made on a laptop names the
+laptop's. `push` resolves each against the hub:
+
+```
+$ dashbin push app.dash.toml
+app.dash.toml reads:
+  data          not on this hub        map it: --map data=tinystore-prod
+  site=$site    10 instances match
+refused: one source has no instance here
+$ dashbin push app.dash.toml --map data=tinystore-prod
+```
+
+A source that matches nothing is refused by name, with the instances that
+could stand for it; a mapping given once can be kept in the project's file.
+`push` never makes an instance, a credential or an agent to make a file fit:
+reaching a database is an admin's act, not an import's side effect.
 
 ### Seeing a store at once
 
@@ -136,11 +164,17 @@ tinystore at ./data
 $ dashbin see ./data --save overview.dash.toml
 ```
 
-- **It reads what the store says about itself**: a metric's kind and labels,
-  a stream's fields, a table's columns. A counter becomes its rate, a
-  histogram its 95th percentile, a stream its count per hour and its last
-  lines, a table with a time column its rows per day; chapter 9's suggestions
-  choose how each is drawn.
+- **What it knows and what it guesses are two kinds of panel, and it says
+  which.** A store that says what its data means gives panels that are
+  **known**: a TinyStore metric's kind, unit and help — a counter is a rate, a
+  histogram a 95th percentile — a stream's fields, Dashbin's own datasets. A
+  table in someone's database gives panels that are **guessed**: a time column
+  is rows per day, a number column is offered as a sum. A guessed panel is
+  marked in the terminal and in the file it is saved to (`guessed = true`),
+  `push` says so, and its title is the column's name and never a meaning: `see`
+  does not know which statuses are paid or whether refunds come off, and does
+  not write "revenue". Chapter 9's suggestions choose how each is drawn. How
+  good the guesses are is measured before `see` is built (chapter 14).
 - **A TinyStore is read by the built-in `tinystore` plugin**: its directory
   when nothing holds it, or through the server of the program that does, as
   TinyStore's own command line reaches a store another process holds.
@@ -150,6 +184,23 @@ $ dashbin see ./data --save overview.dash.toml
   Prometheus address — whatever a built-in plugin opens.
 - **`--save` writes what it drew as a dashboard's file**, the start of one
   rather than a wizard.
+
+**`see` remembers what you kept.** At a terminal it is not a picture but a
+screen to move around in:
+
+```
+←↑↓→  a panel        enter  that panel alone, full screen     f  keep it      x  drop it
+r     a range        /      look for a name                   s  save as a dashboard    q  quit
+```
+
+What was kept and dropped is remembered for that store: the next `see` of
+`./data` starts with the kept panels first and without the dropped ones, and
+offers only what is new since. It lives in a small file — beside the project,
+`.dashbin/see.toml`, which a team may commit, or in the user's own
+configuration for a store with no project — and never in the store looked at.
+`s` saves the kept panels as a dashboard's file. What people keep and drop is
+also exactly what tells good guesses from bad ones, which is why chapter 14's
+round on `see` measures it; it never leaves the machine on its own.
 
 ### Without a hub
 
@@ -265,11 +316,18 @@ programme the hub revokes it by itself; until then the owner revokes it with
    `Sunset`.
 5. **The browser gets the binary wire, everyone else a JSON line per message.**
 6. **Dashboards and flows as TOML files** with `pull`, `push` and `diff` —
-   against an export format that is not what is stored.
-7. **`see`, `show` and `query` without a hub**, from a project's file.
-8. **`see` and a built-in `tinystore` plugin**: Dashbin as the way to look at
-   any TinyStore.
+   kept, with no `null` in the document and a test that a file survives being
+   written, read and written again.
+7. **`see`, `show` and `query` without a hub**, from a project's file. Kept.
+8. **`see` and a built-in `tinystore` plugin** — kept, with known and guessed
+   panels told apart, and its guesses measured before it is built.
 9. **One grammar, `<noun> <verb>`**, and `agent run` for running an agent.
+   Kept; this chapter is where the commands are listed, and chapter 12 only
+   says how the process behind them lives.
+
+Added: `push` resolves every source a dashboard reads against the hub, refuses
+what has no instance, and maps rather than creates; `see` at a terminal lets
+a person keep and drop panels, and remembers it for that store.
 
 ## What it asks of other chapters
 
@@ -288,9 +346,8 @@ programme the hub revokes it by itself; until then the owner revokes it with
 
 ## Not checked yet
 
-- `see` on real stores: TinyStore's own research stores, a Dashbin's data
-  directory, a PostgreSQL with dozens of tables — whether its six panels are
-  the ones a person would have chosen.
+- `see` on real stores, known and guessed apart — chapter 14's first round.
+- The TOML file's round trip over generated documents.
 - What the command line's drawing and the documentation page would add to the
   binary.
 - The JSON line stream against the binary wire for a refresh of twenty panels.

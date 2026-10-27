@@ -1,14 +1,16 @@
 # 12. The running process
 
-**Status: draft, first round, 27 October 2026.** One file and its allocator
-were decided on 24 and 25 October by measurement; the rest is a draft, and
-nothing in it is agreed until Dmitry says so. The choices a review should
-look at are under *Forks*.
+**Status: draft, second round, 27 October 2026.** One file and its allocator
+were decided on 24 and 25 October by measurement; the rest is a draft that
+went through one review, and nothing in it is agreed until Dmitry says so.
+The choices a review should look at are under *Forks*.
 
-What runs on a server: the one binary, the verbs it takes, how it starts and
-stops, where its settings come from, how it keeps inside its memory and its
-disk, what it says about itself, how it is upgraded, and how it is shipped.
-Chapters 4 to 10 each left something here.
+How the process behind every command lives: the hub on a server, an agent
+beside a database, and a command run without a hub on someone's laptop; how
+each starts and stops, where its settings come from, how it keeps inside its
+memory and its disk, what it says about itself, how it is upgraded, and how it
+is shipped. Which commands exist is chapter 11's; this chapter lists only the
+verbs whose life it describes.
 
 ## One binary, its verbs
 
@@ -54,6 +56,26 @@ stop    the listener refuses new requests → running calls cancelled (chapter 5
 - **The listener comes last**, so the first request finds every part in place.
 - **Stopping never waits for a slow call to finish**: it is cancelled, and a
   flow's run that was cut is run again by its job, as chapter 7 makes safe.
+
+## A command without a hub
+
+`see`, `show` and `query` also run on a laptop with no hub (chapter 11), and
+their process lives differently:
+
+- **It has no data directory of its own.** It reads the `dashbin.toml` of the
+  directory it was started in, or nothing, and what `see` remembers of a store
+  (chapter 11) is a small file beside that project or in the user's own
+  configuration — never a store.
+- **It opens someone else's TinyStore to read it.** When no process holds the
+  store, it opens its directory and writes nothing; when one does — the
+  application whose store it is — it reads through that program's TinyStore
+  server, as TinyStore's own command line does, and never takes the store's
+  `LOCK`.
+- **Its secrets come from the environment or are asked for**, never from its
+  arguments, and nothing it was given is written down.
+- **It is one process with nothing behind it**: no flows, no agents' door, no
+  listener; it draws, or watches and redraws, and exits. Its memory is the
+  process's own; the hub's budgets do not apply to it.
 
 ## Settings
 
@@ -128,9 +150,13 @@ and neither needs a session.
 - **An upgrade is a new binary and a restart.** Migrations run at start;
   documents written by an older version are read and upgraded as they are
   read (chapter 4).
-- **Before a migration the hub writes a backup** into `backups/` in its data
-  directory, without the key, which stays beside it; the last two are kept. A
-  version that has to be undone is the previous binary and that backup.
+- **Before a migration the hub backs up what the migration will change**,
+  into `backups/` in its data directory, without the key, which stays beside
+  it; the last two are kept. Dashbin's own migrations change `dashbin.db`; a
+  TinyStore release says which engine's file its own migration moves, as 0.4.0
+  marked `metrics.db` so that an older release refuses it. Copying a month of
+  metrics to migrate one table is not done. A version that has to be undone is
+  the previous binary and that backup.
 - **Agents are not upgraded with the hub**: the hub speaks the call
   protocol and the frame wire of its own version and the one before (chapter
   8), and an agent with nothing in common says so.
@@ -187,7 +213,7 @@ shows how near the budgets they come.
 ### An upgrade that goes wrong
 
 The operator replaces the binary with a newer one. Before its migration the
-hub writes `backups/pre-0.2.0.zip`, migrates, and a bug shows. The operator
+hub copies `dashbin.db` into `backups/pre-0.2.0.zip`, migrates, and a bug shows. The operator
 stops it, puts the previous binary back, restores the backup into a new
 directory and starts it there; the ten agents, a version behind the new hub
 and the same as the old one, connect to either.
@@ -210,23 +236,27 @@ that would have caught one ran on every commit.
    numbers an operator has to know to change.
 4. **Logs kept in Records and read in the interface, their level live** —
    against standard error only, which leaves an admin without SSH blind.
-5. **A backup before every migration, the last two kept** — against leaving
-   it to the operator, who learns of it after the first bad upgrade.
+5. **A backup before every migration** — changed: of the files the migration
+   will change, not of the whole store, the last two kept.
 6. **Telemetry as Go Dashbin decided**: opt-in counts, a daily snapshot,
    nothing that names the user's world.
 7. **A container from scratch, with Mozilla's roots in the binary as a
    fallback** — against a base image with a system, which adds a second thing
    to patch.
 
+Added after the review: a command without a hub — no data directory, someone
+else's TinyStore read through its own server, no budgets but the process's;
+and chapter 11 as the one list of commands.
+
 ## What it asks of other chapters
 
-- Chapter 4: the backups before a migration.
+- Chapter 4: the backups before a migration, of the files it changes.
 - Chapter 5: the budget for frames sized from the container's limit.
 - Chapter 6: the slots for loaded runtimes as a live setting.
 - Chapter 10: who may change a live setting and read the log; the log's
   redaction among the gates.
-- Chapter 11: `/healthz`, `/readyz`, and the api the verbs that need the hub
-  call.
+- Chapter 11: `/healthz`, `/readyz`, the api the verbs that need the hub
+  call, and the list of commands, which is its.
 - Chapter 13: the logging gate, the telemetry's field test, the build flags
   TinyStore recommends, and the targets.
 
@@ -236,6 +266,9 @@ that would have caught one ran on every commit.
 - The binary's size with everything in it: the web, QuickJS and LLRT's
   modules, rustls and Mozilla's roots, the terminal's drawing.
 - How long a hub takes to start on a store holding a month of ten sites, and
-  how long the backup before a migration takes there.
+  what the backup before a migration costs there in time and space, of
+  `dashbin.db` alone and of a TinyStore file a release migrates.
+- Reading a TinyStore through the server of the program that holds it, from a
+  command without a hub.
 - TinyStore's live settings reaching a running hub: how soon, and what a
   change of the runtimes' slots does to runtimes already loaded.
