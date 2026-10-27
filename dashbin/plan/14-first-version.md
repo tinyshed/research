@@ -1,7 +1,10 @@
 # 14. The first version, its phases, and the rounds before the code
 
 **Status: open, 27 October 2026.** What the first version holds and in what
-order it is built is not written yet. The research rounds that have to run
+order it is built is not written yet. Two tracks run from here: Dashbin's own
+rounds before its code, and lemmesee, the research behind `see`, which
+starts first and blocks nothing — `see` ships on rules, and a ranker comes
+through its seam when it earns it. The research rounds that have to run
 before parts of the code are being collected here as the chapters name them;
 the first is written out below.
 
@@ -63,7 +66,12 @@ needs beyond Go Dashbin's.
 
 ### `see`: a small model against the rules
 
-Runs only if the first round's guessed panels miss their lines.
+Runs only if the first round's guessed panels miss their lines. It is no
+longer a round of Dashbin's own but a research of its own beside Dashbin,
+**[lemmesee](../../lemmesee/plan.md)**, which grew from it on 27 October:
+what follows is what Dashbin asks of it, and lemmesee's plan says how it is
+found. Its configurations A and B are the rules this chapter's first round
+ships; C and D are what lemmesee may bring.
 
 **The question.** Does a small classifier, trained on public tables, guess
 what a column means better than hand-written rules — and is it small enough

@@ -174,7 +174,9 @@ $ dashbin see ./data --save overview.dash.toml
   `push` says so, and its title is the column's name and never a meaning: `see`
   does not know which statuses are paid or whether refunds come off, and does
   not write "revenue". Chapter 9's suggestions choose how each is drawn. How
-  good the guesses are is measured before `see` is built (chapter 14).
+  good the guesses are is measured before `see` is built (chapter 14), and
+  what may order them better than rules is the research of its own,
+  [lemmesee](../../lemmesee/plan.md).
 - **A TinyStore is read by the built-in `tinystore` plugin**: its directory
   when nothing holds it, or through the server of the program that does, as
   TinyStore's own command line reaches a store another process holds.
