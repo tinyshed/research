@@ -40,7 +40,10 @@ def pack(model) -> bytes:
             left, right = walk(n["left_child"]), walk(n["right_child"])
             assert n["decision_type"] == "<=", n["decision_type"]
             flags = MISSING[n["missing_type"]] | (4 if n["default_left"] else 0)
-            nodes[i] = struct.pack("<BBfhh", n["split_feature"], flags, n["threshold"], left, right)
+            # LightGBM writes a threshold of 1e300 for a split every value
+            # passes; float32's largest keeps it so for every finite feature
+            threshold = max(-3.4e38, min(3.4e38, n["threshold"]))
+            nodes[i] = struct.pack("<BBfhh", n["split_feature"], flags, threshold, left, right)
             return i
 
         walk(tree["tree_structure"])

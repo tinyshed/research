@@ -5,7 +5,7 @@ Flash, through `agy` and then a CLIProxyAPI in front of it; DeepSeek V4.1
 Flash and GLM-5.3 Flash, through OpenRouter.
 
     python -I gemini.py cut <look dir>
-    JUDGE_KEY=... python -I gemini.py ask <look dir> <endpoint, …/v1> <model> <judge> [<at once>]
+    JUDGE_KEY=... python -I gemini.py ask <look dir> <endpoint, …/v1> <model> <judge> [<at once>] [--packets=1,2]
     python -I gemini.py gather <look dir> <judge>
 
 cut writes <look dir>/gemini/<packet>-<k>.txt; ask keeps each reply beside
@@ -49,10 +49,11 @@ def raw_of(prompt: Path, judge: str) -> Path:
     return prompt.with_suffix(".raw") if judge == "gemini" else prompt.with_name(f"{prompt.stem}.{judge}.raw")
 
 
-def ask(look: Path, url: str, model: str, judge: str = "gemini", workers: int = 8) -> None:
+def ask(look: Path, url: str, model: str, judge: str = "gemini", workers: int = 8, packets: set[str] | None = None) -> None:
     """Every prompt this judge has not answered, through an OpenAI-style
-    endpoint, several at once. The key comes from the environment,
-    JUDGE_KEY, and is never written."""
+    endpoint, several at once; only these packets' when they are named, as a
+    judge that counts answers only the databases held out. The key comes
+    from the environment, JUDGE_KEY, and is never written."""
     import os
     import urllib.request
     from concurrent.futures import ThreadPoolExecutor
@@ -60,6 +61,8 @@ def ask(look: Path, url: str, model: str, judge: str = "gemini", workers: int = 
     key = os.environ.get("JUDGE_KEY") or os.environ["CLIPROXY_KEY"]
     todo = []
     for p in sorted((look / "gemini").glob("*.txt")):
+        if packets and p.stem.split("-")[1] not in packets:
+            continue
         raw = raw_of(p, judge)
         if not (raw.exists() and '"panels"' in raw.read_text(encoding="utf-8", errors="replace")):
             todo.append(p)
@@ -120,8 +123,10 @@ def gather(look: Path, judge: str = "gemini") -> None:
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
     if sys.argv[1] == "ask":
-        ask(Path(sys.argv[2]), sys.argv[3], sys.argv[4], sys.argv[5] if len(sys.argv) > 5 else "gemini",
-            int(sys.argv[6]) if len(sys.argv) > 6 else 8)
+        packets = next((set(a.split("=")[1].split(",")) for a in sys.argv if a.startswith("--packets=")), None)
+        args = [a for a in sys.argv if not a.startswith("--")]
+        ask(Path(args[2]), args[3], args[4], args[5] if len(args) > 5 else "gemini",
+            int(args[6]) if len(args) > 6 else 8, packets)
     elif sys.argv[1] == "gather":
         gather(Path(sys.argv[2]), sys.argv[3] if len(sys.argv) > 3 else "gemini")
     else:
