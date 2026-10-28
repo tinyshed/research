@@ -167,12 +167,13 @@ it are in its chapter 14 and are the ones that decide.
    that may be an expression and reach through many-to-one joins, and its
    penalties by a ranker learned from what Claude Haiku and Gemini 3.8 Flash
    ask first about 480 SchemaPile-Perm schemas. [Run](reports/questions-2026-10-28.md)
-   overnight on 28 October: the generator says 78 to 85 % of
+   overnight on 28 October: the generator says 78 to 84 % of
    what the teachers ask against round 1's 39 to 44 %, and on 240 schemas
    held out the ranker of 55 KB chooses what a teacher asks 1.8 times as
-   often as round 1's rules, precision 0.536 against 0.298. On eight
-   databases with data its fives hold 17 gold questions against round 1's
-   13. The teachers are models, not people; round 2 measures it against
+   often as round 1's rules, precision 0.537 against 0.298. On eight
+   databases with data its fives hold 16 gold questions against round 1's
+   13, and two blind model judges keep 0.70 and 0.60 of its
+   panels against 0.54 and 0.49. The teachers are models, not people; round 2 measures it against
    people.
 2. **The judged set**: assembled, split by project, judged.
 3. **The ranker, C**: linear, trees, a tiny network, against A and B on the

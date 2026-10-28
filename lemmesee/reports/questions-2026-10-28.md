@@ -11,11 +11,12 @@ teachers' answers in [data/questions-2026-10-28/](data/questions-2026-10-28/).
 
 | Question | Answer | What follows |
 |---|---|---|
-| Can the generator say what people ask? | **Round 1 could say 39 to 44 % of the teachers' questions, round 1c 78 to 85 %**; of round 1's gold questions, 28 of 31 on the development fixtures against 22, and 29 of 30 on the check fixtures against 10 | the analytical question replaces the templates |
-| Does a ranker learned from teachers choose what they would? | On schemas it never saw, **it chooses what a teacher asks 1.8 times as often as round 1's rules: precision 0.536 against 0.298, the difference's 95 % interval [+0.205, +0.273], and recall 0.354 against 0.181**, on 240 schemas held out | the ranker replaces the penalties |
+| Can the generator say what people ask? | **Round 1 could say 39 to 44 % of the teachers' questions, round 1c 78 to 84 %**; of round 1's gold questions, 28 of 31 on the development fixtures against 22, and 29 of 30 on the check fixtures against 10 | the analytical question replaces the templates |
+| Does a ranker learned from teachers choose what they would? | On schemas it never saw, **it chooses what a teacher asks 1.8 times as often as round 1's rules: precision 0.537 against 0.298, the difference's 95 % interval [+0.205, +0.276], and recall 0.353 against 0.181**, on 240 schemas held out | the ranker replaces the penalties |
 | How close is that to the teachers themselves? | Two teachers agree on 0.71 to 0.73 of a five; the ranker reaches about three quarters of that | more teacher data moved it from 0.54 to 0.59 in NDCG between a quarter of the schemas and all; it is still rising |
-| And on databases with data? | 17 gold questions in round 1c's fives over eight fixtures against round 1's 13: 10 against 9 on the development fixtures round 1 was tuned on, 3 against 1 on the check fixtures | a gain, smaller than against the teachers, since one gold list a fixture is ten questions |
+| And on databases with data? | 16 gold questions in round 1c's fives over eight fixtures against round 1's 13: 9 and 9 on the development fixtures round 1 was tuned on, 3 against 1 on the check fixtures, 4 against 3 on the final two | a gain, smaller than against the teachers, since one gold list a fixture is ten questions |
 | On two databases nobody looked at? | 4 against 3, of ten places; round 1c can say 18 of their 20 gold questions | what it loses there is the order between a count and a sum over one time |
+| Would someone keep it? | Judged blind by Claude Sonnet and Opus, neither a teacher: **round 1c's B1 fives kept at 0.70 and 0.60 against round 1's 0.54 and 0.49**, one or two panels false in meaning against seven, none kept and false; the judges agree on 89 %, and found a fault of the generator, fixed | models again, not people; round 2's judges are people |
 | Does it fit? | 600 trees of seven leaves: **55 KB packed**, read back without LightGBM to within 3·10⁻⁸; round 1b's key model beside it is 0.9 MiB | a reader of a hundred lines in Rust |
 
 ## What was built
@@ -39,7 +40,7 @@ breakdown column or the parent it names.
 | round 1's gold, development fixtures (31) | 22 | **28** |
 | round 1's gold, check fixtures, written blind (30) | 10 | **29** |
 | Haiku's on 150 teacher schemas (1 500) | 39 % | **78 %** |
-| Gemini's on the first 240 teacher schemas (2 400) | 44 % | **85 %**; 83 % of all 4 800 |
+| Gemini's on the first 240 teacher schemas (2 400) | 44 % | **84 %**; 83 % of all 4 800 |
 | the final fixtures' gold, written blind (20) | — | **18** |
 
 What it still cannot say: filters other than a flag or a soft deletion (a
@@ -84,14 +85,14 @@ schema's difference bootstrapped, 10 000 times.
 | | Precision | Recall |
 |---|---|---|
 | round 1's rules, configuration A | 0.298 | 0.181 |
-| round 1c's hand prior | 0.319 | 0.201 |
-| **round 1c's ranker** | **0.536** | **0.354** |
-| ranker − round 1 | **+0.238**, 95 % [+0.205, +0.273] | **+0.173**, [+0.147, +0.200] |
+| round 1c's hand prior | 0.308 | 0.194 |
+| **round 1c's ranker** | **0.537** | **0.353** |
+| ranker − round 1 | **+0.240**, 95 % [+0.205, +0.276] | **+0.172**, [+0.144, +0.200] |
 
 The ranker chooses what a teacher asks 1.8 times as often as round 1's
 rules, and finds twice as many of its first five. Fitted on all 480
-schemas, five folds by repository give 0.507 and 0.329 against Haiku and
-0.545 and 0.365 against Gemini; the two teachers agree on 0.71 and 0.73.
+schemas, five folds by repository give 0.513 and 0.333 against Haiku and
+0.541 and 0.363 against Gemini; the two teachers agree on 0.71 and 0.73.
 
 ## On the six fixtures
 
@@ -102,19 +103,19 @@ all six, but never fitted to them.
 
 | Fixture | Round 1, B1 | Round 1c, A | Round 1c, B1 |
 |---|---|---|---|
-| Chinook | 2 | 1 | 2 |
+| Chinook | 2 | 1 | 1 |
 | airlines | 4 | 3 | 4 |
 | ErgastF1 | 3 | 4 | 4 |
-| **development** | **9** | **8** | **10** |
+| **development** | **9** | **8** | **9** |
 | Northwind | 1 | 2 | 2 |
-| ccs | 0 | 1 | 0 |
+| ccs | 0 | 0 | 0 |
 | Lahman | 0 | 1 | 1 |
-| **check** | **1** | **4** | **3** |
+| **check** | **1** | **3** | **3** |
 
 Round 1c matches round 1 where round 1 was tuned, and does better where it
 was not. Every one of round 1c's eighty panels, on all eight fixtures, ran
 on its database within the five seconds it was given; the slowest, over
-the airlines' 3.9 million segments, took 3.8 s through Docker's client.
+the airlines' 3.9 million segments, took 2.5 s through Docker's client.
 What the five still misses there:
 Lahman's averages of team statistics by season, whose columns are `R`, `HR`,
 `SO`, named only for someone who knows baseball; ccs's two money-like
@@ -140,8 +141,51 @@ over two tables, and revenue by product line month by month, a split by a
 parent's name. What it lost was mostly the order between a count and a sum
 over one time: Credit's first question, the money charged each month, is
 eighth, behind the number of charges each month, which takes its time
-column. Over all eight fixtures round 1c's B1 puts 17 gold questions in
+column. Over all eight fixtures round 1c's B1 puts 16 gold questions in
 its fives and round 1's 13.
+
+## Judged blind, by two models that were not teachers
+
+Asked the next morning to judge the result, the agent did not judge it
+itself, having built it: `judge.py` packed each fixture's pool — the
+distinct panels of round 1's B1 five and round 1c's A and B1 fives on all
+eight fixtures — shuffled, each as its title and the first twelve rows its
+database returned, without its SQL, whose style would tell two makers apart.
+Claude Sonnet and Claude Opus, neither a teacher, answered round 1's judging
+form for each, apart; then the answers were unblinded
+([data](data/questions-2026-10-28/judged/)).
+
+They found a fault of the generator: **Northwind's top twelve "ship names"
+were orders labelled by the name to ship to**, a header's name column taken
+for a parent's name. Fixed — a table with a time of its own, or a header's,
+is never named — the ranker refitted and every measure above taken again;
+the twelve panels the fix brought into the fives were judged by the same two
+models, fresh, by the same form. As committed:
+
+| | Kept, Sonnet | Kept, Opus | Meaning judged false, Sonnet and Opus | Kept and false |
+|---|---|---|---|---|
+| round 1, B1 | 21 of 39, 0.54 | 19 of 39, 0.49 | 7 and 7 | 0 |
+| round 1c, A | 21 of 40, 0.53 | 20 of 40, 0.50 | 6 and 4 | 0 |
+| **round 1c, B1** | **28 of 40, 0.70** | **24 of 40, 0.60** | **2 and 1** | 0 |
+
+Before the fix B1 was kept at 0.73 and 0.68; Opus keeps the orders that
+replaced the ship names, top twelve by number, less. The judges agree on
+keep for 89 % of the 91 panels. Round 1c's B1 five had as many kept as
+round 1's or more on all eight fixtures by Sonnet and on six by Opus, who
+kept fewer on Northwind and Credit, 2 against 3.
+
+Five of round 1's seven false panels sum a unit price with no quantity,
+which round 1c replaced by price × quantity. Round 1c's: a top twelve by
+passenger name, where names are shared; ccs's `Amount` summed over products
+whose units differ; Credit's providers by a state that is blank for all 500
+— a value the statistics' veto of one value missed, since it is an empty
+string, not a null. The judges also dropped an employee timeline of nine
+rows and counts by league or by year of Lahman's fielding.
+
+What they missed most, in their own words, round 1c already knows it cannot
+say: wins (`position = 1`), revenue by customer and by genre two joins away,
+how full flights are against their seats, punctuality from two times on two
+tables.
 
 ## What it means, and what does not follow
 

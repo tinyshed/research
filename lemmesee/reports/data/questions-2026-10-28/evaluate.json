@@ -3,12 +3,12 @@
  "test schemas": 240,
  "systems": {
   "round 1c, learned": {
-   "gemini precision": 0.536,
-   "gemini recall": 0.354
+   "gemini precision": 0.537,
+   "gemini recall": 0.353
   },
   "round 1c, hand prior": {
-   "gemini precision": 0.319,
-   "gemini recall": 0.201
+   "gemini precision": 0.308,
+   "gemini recall": 0.194
   },
   "round 1, rules A": {
    "gemini precision": 0.298,
@@ -17,16 +17,16 @@
  },
  "differences": {
   "learned − round 1, gemini precision": {
-   "mean": 0.238,
+   "mean": 0.24,
    "95%": [
     0.205,
-    0.273
+    0.276
    ]
   },
   "learned − round 1, gemini recall": {
-   "mean": 0.173,
+   "mean": 0.172,
    "95%": [
-    0.147,
+    0.144,
     0.2
    ]
   }

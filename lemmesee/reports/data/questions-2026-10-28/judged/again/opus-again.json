@@ -1,0 +1,74 @@
+{
+  "panels": {
+    "ccsn01": {"keep": false, "meaning": "no", "wrong": "other: empty result, no rows came back (the table or its join to products is empty)"},
+    "ccsn02": {"keep": false, "meaning": "cannot tell", "wrong": "units mixed: Amount is a quantity whose unit depends on the product, summed across products; stations shown only by identifier"},
+    "ccsn03": {"keep": false, "meaning": "cannot tell", "wrong": "currencies mixed: customers pay in CZK or EUR, so their consumption totals are ranked across currencies; customers shown only by identifier"},
+    "chin01": {"keep": false, "meaning": "yes", "wrong": null},
+    "chin02": {"keep": true, "meaning": "yes", "wrong": null},
+    "clan01": {"keep": false, "meaning": "yes", "wrong": null},
+    "norn01": {"keep": false, "meaning": "yes", "wrong": null},
+    "ergn01": {"keep": true, "meaning": "yes", "wrong": null},
+    "lahn01": {"keep": false, "meaning": "yes", "wrong": null},
+    "lahn02": {"keep": false, "meaning": "yes", "wrong": null},
+    "airn01": {"keep": false, "meaning": "no", "wrong": "other: a name is not a passenger's identity, and all twelve tie at 4, so which twelve are shown is arbitrary"},
+    "cren01": {"keep": false, "meaning": "no", "wrong": "other: state_prov is blank for all 500 providers, so it is one total, not a split by state"}
+  },
+  "missing": {
+    "ccs": [
+      "How do the transactions' count and total price split by product?",
+      "How does total monthly consumption change from month to month?",
+      "How do customers split by segment (KAM, SME, LAM) and by currency, and how much does each consume?",
+      "How are gas stations spread across countries and chain segments, and how much is sold in each?",
+      "How much is spent per day across the thousand transactions?"
+    ],
+    "chinook": [
+      "How does revenue change by month over the four years?",
+      "Which countries bring the most customers and revenue?",
+      "Which genres and artists sell the most?",
+      "How many artists, albums, tracks, customers and invoices are there?",
+      "Which support employees look after the most customers and revenue?"
+    ],
+    "classicmodels": [
+      "How does ordered revenue change by month?",
+      "Which product lines bring the most revenue?",
+      "Which countries and customers bring the most revenue?",
+      "How do orders split by status (shipped, cancelled, on hold, disputed)?",
+      "Which sales representatives and offices sell the most?"
+    ],
+    "northwind": [
+      "How do sales after discount change by month?",
+      "Which product categories sell the most?",
+      "Which countries and customers buy the most?",
+      "Which employees sell the most?",
+      "Which shippers carry the most orders, and how much freight do they charge?"
+    ],
+    "ergastf1": [
+      "How many races were held each season, and which years does the data cover?",
+      "Which drivers have the most wins and points?",
+      "Which constructors have the most wins?",
+      "Which circuits and countries hosted the most races?",
+      "Who won each season's drivers' championship?"
+    ],
+    "lahman": [
+      "How many players and teams played each season?",
+      "Who are the career leaders in home runs, hits and pitching wins?",
+      "How has the average salary changed from 1985 to 2014?",
+      "Which teams have the most wins and World Series titles?",
+      "Which countries are players born in?"
+    ],
+    "airlines": [
+      "How many flights run each day over the three months, and how many were cancelled or delayed?",
+      "Which routes and airports are busiest by flights and passengers?",
+      "How much do bookings bring in per week, and by fare class?",
+      "How full are flights compared with their aircraft's seats?",
+      "How are departure delays distributed?"
+    ],
+    "credit": [
+      "How does the total charged change by month?",
+      "Which categories take the most charges by amount?",
+      "Which regions have the most members and charges?",
+      "Which providers receive the most charges by amount?",
+      "How do payments compare with statement balances, and how much is outstanding?"
+    ]
+  }
+}

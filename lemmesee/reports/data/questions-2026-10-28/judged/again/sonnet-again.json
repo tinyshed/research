@@ -1,0 +1,74 @@
+{
+  "panels": {
+    "ccsn01": {"keep": false, "meaning": "cannot tell", "wrong": "other: empty result, no rows came back"},
+    "ccsn02": {"keep": false, "meaning": "no", "wrong": "units mixed: Amount is a quantity of different products, shown only as a bare gas station key"},
+    "ccsn03": {"keep": true, "meaning": "yes", "wrong": null},
+    "chin01": {"keep": false, "meaning": "yes", "wrong": null},
+    "chin02": {"keep": true, "meaning": "yes", "wrong": null},
+    "clan01": {"keep": true, "meaning": "yes", "wrong": null},
+    "norn01": {"keep": true, "meaning": "yes", "wrong": null},
+    "ergn01": {"keep": true, "meaning": "yes", "wrong": null},
+    "lahn01": {"keep": false, "meaning": "no", "wrong": "other: null bucket mixes living players with unknown and dominates; only US states"},
+    "lahn02": {"keep": true, "meaning": "yes", "wrong": null},
+    "airn01": {"keep": false, "meaning": "no", "wrong": "other: a name is not an identity, different people merged, all tied at 4"},
+    "cren01": {"keep": false, "meaning": "no", "wrong": "other: column is empty, one blank group of 500"}
+  },
+  "missing": {
+    "ccs": [
+      "How much was spent per month, over time?",
+      "How is spending split between CZK and EUR customers?",
+      "Which products sell most by price, not only by quantity?",
+      "How many customers are there per segment (SME, LAM, KAM)?",
+      "Which countries or gas station chains account for most transactions?"
+    ],
+    "chinook": [
+      "How much revenue per year or month?",
+      "Which countries and customers bring in the most revenue?",
+      "Which genres and artists sell the most tracks?",
+      "How many tracks, albums and artists are there per genre?",
+      "Which employees (support reps) handle the most customers or sales?"
+    ],
+    "classicmodels": [
+      "How much revenue per month or year?",
+      "Which product lines bring in the most revenue?",
+      "Which customers and countries pay the most?",
+      "What share of orders are shipped, cancelled or on hold?",
+      "How do payments compare to ordered amounts per customer?"
+    ],
+    "northwind": [
+      "How much revenue per month or year?",
+      "Which product categories bring in the most revenue?",
+      "Which customers and countries order the most?",
+      "Which employees sold the most?",
+      "How many orders are late against their required date, by shipper?"
+    ],
+    "ergastf1": [
+      "How many races and drivers per season over time?",
+      "Which drivers have the most wins and championships?",
+      "Which constructors have the most wins?",
+      "Which circuits hosted the most races and in which countries?",
+      "How do finishing status counts (finished, retired, accident) distribute?"
+    ],
+    "lahman": [
+      "How many players debuted per decade or year?",
+      "Which players hit the most home runs over a career?",
+      "How do average salaries change by year?",
+      "What are the birth countries of players?",
+      "Which teams won the most championships or games per season?"
+    ],
+    "airlines": [
+      "How many flights per day or week, and how many were cancelled or delayed?",
+      "Which routes and airports are busiest?",
+      "How much revenue per booking class or month?",
+      "How full are flights, seats booked against seats available?",
+      "Which airplane models fly the most flights?"
+    ],
+    "credit": [
+      "How many members per region and category?",
+      "How much was charged per month over time?",
+      "Which merchant categories take the most charges?",
+      "How many payments are late or statements unpaid?",
+      "Which providers or corporations have the most members and charges?"
+    ]
+  }
+}

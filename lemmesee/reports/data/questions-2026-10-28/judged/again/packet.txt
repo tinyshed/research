@@ -1,0 +1,213 @@
+You are judging panels proposed for a first overview dashboard of eight databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given at the end.
+
+For every panel answer, as round 1's judging form asks:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words (wrong population, counted twice through a join, units or
+    currencies mixed, a level summed, the wrong time, a code or identifier treated as a number, other); else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, not whether the title is well worded.
+
+After each database, give up to five questions you would want answered first about it that no panel answered.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...},
+"missing": {"<database>": ["question", ...], ...}} — every panel id below must be answered.
+
+
+=== database: ccs ===
+A Czech fuel-card company's customers, gas stations, products, a thousand transactions and monthly consumption, as CTU serves it.
+
+  panel ccsn01
+    title: sum of transactions.Amount by products.Description the twelve most
+    rows (0):
+      
+
+  panel ccsn02
+    title: sum of transactions_1k.Amount by gasstations (by key) the twelve most
+    rows (12):
+      4347 | 370
+      3250 | 320
+      48 | 295
+      1155 | 292
+      2417 | 273
+      3114 | 216
+      3748 | 211
+      3173 | 203
+      1161 | 203
+      5298 | 199
+      3121 | 198
+      345 | 191
+
+  panel ccsn03
+    title: sum of yearmonth.Consumption by customers (by key) the twelve most
+    rows (12):
+      12459 | 16130041.82
+      1673 | 13867436.18
+      30837 | 12901702.78
+      16358 | 12423655.02
+      6925 | 11828585.11
+      9627 | 10911875.77
+      842 | 10901345.47
+      31543 | 10719700.20
+      8200 | 10408376.50
+      19182 | 10309452.98
+      46707 | 10266652.16
+      31258 | 10145062.28
+
+
+=== database: chinook ===
+Chinook 1.4.5: a digital media store — artists, albums, tracks, playlists, customers, employees, invoices and their lines; its sales randomly generated over four years, as its source says.
+
+  panel chin01
+    title: sum of invoice_line.unit_price × invoice_line.quantity by invoice (by key) the twelve most
+    rows (12):
+      404 | 25.86
+      299 | 23.86
+      96 | 21.86
+      194 | 21.86
+      201 | 18.86
+      89 | 18.86
+      88 | 17.91
+      306 | 16.86
+      313 | 16.86
+      103 | 15.86
+      208 | 15.86
+      193 | 14.91
+
+  panel chin02
+    title: rows of track by media_type.name the twelve most
+    rows (5):
+      MPEG audio file | 3034
+      Protected AAC audio file | 237
+      Protected MPEG-4 video file | 214
+      AAC audio file | 11
+      Purchased AAC audio file | 7
+
+
+=== database: classicmodels ===
+classicmodels, a seller of scale models: orders and their lines, payments, customers, products and their lines, employees and offices, as CTU serves it. A check fixture of round 2.
+
+  panel clan01
+    title: sum of orderdetails.priceEach × orderdetails.quantityOrdered by orders (by key) the twelve most
+    rows (12):
+      10165 | 67392.84999999999
+      10287 | 61402
+      10310 | 61234.669999999984
+      10212 | 59830.549999999996
+      10207 | 59265.14
+      10127 | 58841.35
+      10204 | 58793.53000000001
+      10126 | 57131.92
+      10222 | 56822.649999999994
+      10142 | 56052.56000000001
+      10390 | 55902.49999999999
+      10312 | 55639.66000000001
+
+
+=== database: northwind ===
+Northwind, Microsoft's sample shop, as pthom/northwind_psql ports it: orders and their details, products, customers, employees, shippers.
+
+  panel norn01
+    title: sum of order_details.unit_price × order_details.quantity × (1 − order_details.discount) by orders (by key) the twelve most
+    rows (12):
+      10865 | 16387.49998714775
+      10981 | 15810
+      11030 | 12615.050067901611
+      10889 | 11380
+      10417 | 11188.400139808655
+      10817 | 10952.84492739618
+      10897 | 10835.240051269531
+      10479 | 10495.60012435913
+      10540 | 10191.699981689453
+      10691 | 10164.800018310547
+      10515 | 9921.300194740295
+      10372 | 9210.900135040283
+
+
+=== database: ergastf1 ===
+Ergast's Formula 1 database as CTU serves it: seasons, circuits, races, drivers, constructors, results, qualifying, lap times, pit stops and standings.
+
+  panel ergn01
+    title: rows of results by constructors.name the twelve most
+    rows (12):
+      Ferrari | 2128
+      McLaren | 1613
+      Williams | 1367
+      Tyrrell | 881
+      Team Lotus | 871
+      Sauber | 735
+      Minardi | 672
+      Brabham | 662
+      Renault | 657
+      Ligier | 611
+      Arrows | 590
+      BRM | 562
+
+
+=== database: lahman ===
+Sean Lahman's baseball database to 2014 as CTU serves it: players, teams, batting, pitching, fielding, salaries and awards by season.
+
+  panel lahn01
+    title: rows of players by players.deathState
+    rows (50):
+      ∅ | 8190
+      CA | 947
+      PA | 736
+      NY | 632
+      OH | 536
+      FL | 464
+      IL | 429
+      MA | 426
+      TX | 423
+      MO | 311
+      NJ | 241
+      MI | 234
+      … 38 more rows
+
+  panel lahn02
+    title: rows of players by players.birthState
+    rows (50):
+      CA | 1797
+      ∅ | 1578
+      PA | 1320
+      NY | 1105
+      IL | 976
+      OH | 952
+      TX | 702
+      MA | 635
+      MO | 549
+      MI | 403
+      NJ | 375
+      NC | 367
+      … 38 more rows
+
+
+=== database: airlines ===
+Postgres Professional's airlines demo, 1 September 2025, three months: bookings, tickets, flight segments, flights, routes, airports, airplanes, seats and boarding passes.
+
+  panel airn01
+    title: rows of boarding_passes by tickets.passenger_name the twelve most
+    rows (12):
+      Kirill Popov | 4
+      Yan Deng | 4
+      Victoria Ewing | 4
+      Jon Collins | 4
+      Raili Syrjä | 4
+      Weiping Wang | 4
+      Lisa Baldwin | 4
+      Josef Reiter | 4
+      Norman Harris | 4
+      David Wallis | 4
+      Kevin Davis | 4
+      Emma Williams | 4
+
+
+=== database: credit ===
+A credit-card company's members, charges, payments and statements, with providers, corporations, categories and regions, as CTU serves it.
+
+  panel cren01
+    title: rows of provider by provider.state_prov
+    rows (1):
+       | 500

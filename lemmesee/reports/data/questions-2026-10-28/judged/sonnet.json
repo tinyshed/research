@@ -1,0 +1,148 @@
+{
+  "panels": {
+    "erg01": {"keep": true, "meaning": "yes", "wrong": null},
+    "erg02": {"keep": false, "meaning": "cannot tell", "wrong": "other: histogram of rows per race id, no business meaning"},
+    "erg03": {"keep": true, "meaning": "yes", "wrong": null},
+    "erg04": {"keep": false, "meaning": "yes", "wrong": null},
+    "erg05": {"keep": true, "meaning": "yes", "wrong": null},
+    "erg06": {"keep": true, "meaning": "yes", "wrong": null},
+    "erg07": {"keep": true, "meaning": "yes", "wrong": null},
+    "erg08": {"keep": false, "meaning": "cannot tell", "wrong": "wrong population: qualifying rows cover only recent seasons"},
+    "erg09": {"keep": false, "meaning": "yes", "wrong": null},
+    "erg10": {"keep": false, "meaning": "no", "wrong": "a level summed: total lap time by nationality is just laps driven, and only for seasons with lap data"},
+
+    "nor01": {"keep": true, "meaning": "yes", "wrong": null},
+    "nor02": {"keep": false, "meaning": "no", "wrong": "a level summed: unit price summed with no quantity, not revenue"},
+    "nor03": {"keep": false, "meaning": "no", "wrong": "grouped per order, not per ship name: same names repeat"},
+    "nor04": {"keep": true, "meaning": "yes", "wrong": null},
+    "nor05": {"keep": true, "meaning": "yes", "wrong": null},
+    "nor06": {"keep": false, "meaning": "yes", "wrong": null},
+    "nor07": {"keep": true, "meaning": "yes", "wrong": null},
+    "nor08": {"keep": false, "meaning": "yes", "wrong": null},
+    "nor09": {"keep": false, "meaning": "yes", "wrong": null},
+    "nor10": {"keep": false, "meaning": "no", "wrong": "a level summed: unit price summed with no quantity"},
+
+    "cla01": {"keep": false, "meaning": "no", "wrong": "a level summed: unit price summed with no quantity"},
+    "cla02": {"keep": true, "meaning": "yes", "wrong": null},
+    "cla03": {"keep": true, "meaning": "yes", "wrong": null},
+    "cla04": {"keep": true, "meaning": "yes", "wrong": null},
+    "cla05": {"keep": false, "meaning": "no", "wrong": "a level summed: unit price summed with no quantity"},
+    "cla06": {"keep": true, "meaning": "yes", "wrong": null},
+    "cla07": {"keep": true, "meaning": "yes", "wrong": null},
+
+    "cre01": {"keep": false, "meaning": "yes", "wrong": null},
+    "cre02": {"keep": false, "meaning": "no", "wrong": "a count shown as the category: members per region read as if it were a region code"},
+    "cre03": {"keep": true, "meaning": "yes", "wrong": null},
+    "cre04": {"keep": true, "meaning": "yes", "wrong": null},
+    "cre05": {"keep": true, "meaning": "yes", "wrong": null},
+    "cre06": {"keep": false, "meaning": "yes", "wrong": null},
+    "cre07": {"keep": false, "meaning": "yes", "wrong": null},
+    "cre08": {"keep": true, "meaning": "yes", "wrong": null},
+    "cre09": {"keep": false, "meaning": "yes", "wrong": null},
+    "cre10": {"keep": true, "meaning": "yes", "wrong": null},
+    "cre11": {"keep": true, "meaning": "yes", "wrong": null},
+
+    "air01": {"keep": true, "meaning": "yes", "wrong": null},
+    "air02": {"keep": true, "meaning": "yes", "wrong": null},
+    "air03": {"keep": true, "meaning": "yes", "wrong": null},
+    "air04": {"keep": true, "meaning": "yes", "wrong": null},
+    "air05": {"keep": false, "meaning": "no", "wrong": "wrong population: passenger name is not a person, many people share a name"},
+    "air06": {"keep": true, "meaning": "yes", "wrong": null},
+
+    "lah01": {"keep": false, "meaning": "yes", "wrong": null},
+    "lah02": {"keep": false, "meaning": "yes", "wrong": null},
+    "lah03": {"keep": false, "meaning": "cannot tell", "wrong": "other: auxiliary team-name table, unclear what a row is"},
+    "lah04": {"keep": true, "meaning": "yes", "wrong": null},
+    "lah05": {"keep": true, "meaning": "yes", "wrong": null},
+    "lah06": {"keep": false, "meaning": "cannot tell", "wrong": "other: query timed out, no result"},
+    "lah07": {"keep": false, "meaning": "yes", "wrong": null},
+    "lah08": {"keep": false, "meaning": "yes", "wrong": null},
+    "lah09": {"keep": false, "meaning": "cannot tell", "wrong": "other: votes summed across candidates and years, not voters; nulls for non-ballot types"},
+    "lah10": {"keep": true, "meaning": "yes", "wrong": null},
+    "lah11": {"keep": true, "meaning": "yes", "wrong": null},
+
+    "ccs01": {"keep": true, "meaning": "yes", "wrong": null},
+    "ccs02": {"keep": false, "meaning": "cannot tell", "wrong": "outliers flatten the histogram into one bin; currencies mixed"},
+    "ccs03": {"keep": true, "meaning": "yes", "wrong": null},
+    "ccs04": {"keep": true, "meaning": "yes", "wrong": null},
+    "ccs05": {"keep": true, "meaning": "cannot tell", "wrong": "units or currencies mixed: CZK and EUR customers' prices together"},
+    "ccs06": {"keep": true, "meaning": "yes", "wrong": null},
+    "ccs07": {"keep": false, "meaning": "cannot tell", "wrong": "other: empty result, table has no rows"},
+    "ccs08": {"keep": false, "meaning": "yes", "wrong": null},
+    "ccs09": {"keep": true, "meaning": "yes", "wrong": null},
+    "ccs10": {"keep": true, "meaning": "cannot tell", "wrong": "units or currencies mixed: CZK and EUR customers' consumption summed"},
+    "ccs11": {"keep": false, "meaning": "cannot tell", "wrong": "other: empty result, table has no rows"},
+    "ccs12": {"keep": false, "meaning": "cannot tell", "wrong": "units or currencies mixed; only four days"},
+
+    "chi01": {"keep": true, "meaning": "yes", "wrong": null},
+    "chi02": {"keep": true, "meaning": "yes", "wrong": null},
+    "chi03": {"keep": true, "meaning": "yes", "wrong": null},
+    "chi04": {"keep": false, "meaning": "yes", "wrong": null},
+    "chi05": {"keep": false, "meaning": "no", "wrong": "other: state field is half null and mixes states, provinces and cities across countries"},
+    "chi06": {"keep": false, "meaning": "yes", "wrong": null},
+    "chi07": {"keep": false, "meaning": "no", "wrong": "other: state field is half null and mixes states, provinces and cities across countries"},
+    "chi08": {"keep": true, "meaning": "yes", "wrong": null},
+    "chi09": {"keep": false, "meaning": "cannot tell", "wrong": "other: a count shown as the category, reads like invoice ids"},
+    "chi10": {"keep": false, "meaning": "no", "wrong": "a level summed (unit price, no quantity); ties make the top twelve arbitrary"},
+    "chi11": {"keep": false, "meaning": "yes", "wrong": null},
+    "chi12": {"keep": false, "meaning": "no", "wrong": "other: nearly every track sold once or twice, ties make the top twelve arbitrary"}
+  },
+  "missing": {
+    "ergastf1": [
+      "Which years and how many seasons, races, drivers and constructors does the data cover?",
+      "Who has the most race wins and the most world championships, drivers and constructors?",
+      "Who has the most pole positions and fastest laps?",
+      "Who has the most race starts, and how many drivers start per season?",
+      "How many wins and points does each constructor take per season?"
+    ],
+    "northwind": [
+      "What is total revenue and how does it change by month or year?",
+      "Which customers bring the most revenue?",
+      "What is revenue by product category?",
+      "What is revenue by employee (sales rep)?",
+      "How long between order date and shipped date, and how many orders are late?"
+    ],
+    "classicmodels": [
+      "What is revenue per month or year from orders?",
+      "What is revenue by product line?",
+      "Which customers order the most, and how do their payments compare with credit limit?",
+      "What are sales by sales rep and by office?",
+      "How much stock is on hand versus sold per product?"
+    ],
+    "credit": [
+      "How do charge totals change over time?",
+      "What is each member's balance: charges minus payments, and how many have statements past due?",
+      "How many members belong to each corporation?",
+      "What is the distribution of charges per member?",
+      "What are the total charge, statement and payment amounts side by side?"
+    ],
+    "airlines": [
+      "Which routes and airports are busiest?",
+      "What share of seats is filled on flights (load factor)?",
+      "What are cancellation and delay rates by route or airport?",
+      "What is revenue by route, by origin or by airplane model?",
+      "How many tickets and passengers are in a booking, and how many bookings, tickets, passengers in total?"
+    ],
+    "lahman": [
+      "Who are the career leaders in home runs, hits and wins?",
+      "Who won the World Series or each league's pennant each year?",
+      "How have salaries changed by year?",
+      "How many distinct players are there per season, and how do wins differ by team?",
+      "Which awards were given and to whom?"
+    ],
+    "ccs": [
+      "What is consumption by customer segment and by currency?",
+      "Which gas stations and which countries sell the most?",
+      "What is revenue by product?",
+      "How many customers are active each month, and who stopped?",
+      "What dates and customers does the transaction sample cover?"
+    ],
+    "chinook": [
+      "Which artists and albums sell the most?",
+      "Which customers spend the most?",
+      "What is revenue by year, and by sales support rep?",
+      "How many tracks per album and how long are tracks?",
+      "How many customers per country, and what is revenue per customer?"
+    ]
+  }
+}
