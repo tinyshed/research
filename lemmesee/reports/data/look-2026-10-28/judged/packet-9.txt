@@ -1,0 +1,1081 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: premierleague ===
+An English Premier League season: matches, teams, players and what happened in the matches, as CTU serves it. A look fixture of round 1d.
+
+  panel premb01
+    title: rows of Actions by Players.Name the twelve most
+    rows (12):
+      Friedel Brad | 38
+      Ward Stephen | 38
+      Figueroa Maynor | 38
+      Hart Joe | 38
+      Walters Jonathan | 38
+      Al-Habsi Ali | 38
+      Hangeland Brede | 38
+      van Persie Robin | 38
+      Krul Tim | 38
+      Moses Victor | 38
+      Sinclair Scott | 38
+      Howard Tim | 38
+
+  panel premb02
+    title: rows of Actions by Actions.RightFootBlockedShots
+    rows (5):
+      0 | 9009
+      1 | 1126
+      2 | 204
+      3 | 27
+      4 | 3
+
+  panel premb03
+    title: sum of Actions.TotalUnsuccessfulPassesExclCrossesCorners by Players.Name the twelve most
+    rows (12):
+      Robinson Paul | 586
+      Krul Tim | 539
+      Hennessey Wayne | 502
+      Crouch Peter | 466
+      Figueroa Maynor | 455
+      Barton Joey | 413
+      Assou-Ekotto Benoit | 401
+      Kenny Patrick | 388
+      Ward Stephen | 386
+      Kevin Davies  | 385
+      Williams Ashley | 382
+      Murphy Danny | 365
+
+  panel premb04
+    title: rows of Actions by Actions.BlockedShots
+    rows (6):
+      0 | 8092
+      1 | 1761
+      2 | 422
+      3 | 83
+      4 | 7
+      5 | 4
+
+  panel premb05
+    title: sum of Matches.ResultOfTeamHome by Matches.Date
+    rows (35):
+      2011-08-08 | -2
+      2011-08-15 | 0
+      2011-08-22 | 3
+      2011-09-05 | -1
+      2011-09-12 | 1
+      2011-09-19 | 2
+      2011-09-26 | 2
+      2011-10-10 | 5
+      2011-10-17 | -2
+      2011-10-24 | -1
+      2011-10-31 | 0
+      2011-11-14 | -1
+      … 23 more rows
+
+  panel premb06
+    title: sum of Matches.TeamAwayFormation by Matches.Date
+    rows (35):
+      2011-08-08 | 30
+      2011-08-15 | 50
+      2011-08-22 | 61
+      2011-09-05 | 37
+      2011-09-12 | 44
+      2011-09-19 | 53
+      2011-09-26 | 45
+      2011-10-10 | 56
+      2011-10-17 | 51
+      2011-10-24 | 50
+      2011-10-31 | 47
+      2011-11-14 | 41
+      … 23 more rows
+
+  panel premb07
+    title: rows of Actions by Actions.BlockedShotsOutsideBox
+    rows (5):
+      0 | 9001
+      1 | 1158
+      2 | 182
+      3 | 25
+      4 | 3
+
+  panel premb08
+    title: rows of Matches by Matches.Date split by Matches.ResultOfTeamHome
+    rows (102):
+      2011-08-08 | -1 | 2
+      2011-08-08 | 0 | 6
+      2011-08-15 | -1 | 4
+      2011-08-15 | 0 | 2
+      2011-08-15 | 1 | 4
+      2011-08-22 | -1 | 3
+      2011-08-22 | 0 | 2
+      2011-08-22 | 1 | 6
+      2011-09-05 | -1 | 4
+      2011-09-05 | 0 | 2
+      2011-09-05 | 1 | 3
+      2011-09-12 | -1 | 4
+      … 90 more rows
+
+  panel premb09
+    title: rows of Actions by Actions.GoalsfromThrows
+    rows (2):
+      0 | 10349
+      1 | 20
+
+  panel premb10
+    title: rows of Actions by Matches (by key) the twelve most
+    rows (12):
+      18 | 28
+      2 | 28
+      3 | 28
+      380 | 28
+      5 | 28
+      17 | 28
+      7 | 28
+      8 | 28
+      9 | 28
+      16 | 28
+      22 | 28
+      15 | 28
+
+  panel premb11
+    title: sum of Actions.TotalFoulsConceded by Teams.Name the twelve most
+    rows (12):
+      Wigan Athletic | 482
+      Everton | 480
+      Bolton Wanderers | 461
+      Blackburn Rovers | 458
+      Stoke City | 450
+      Chelsea | 427
+      Manchester City | 427
+      West Bromwich Albion | 419
+      Aston Villa | 412
+      Newcastle United | 409
+      Queens Park Rangers | 409
+      Sunderland | 409
+
+  panel premb12
+    title: rows of Actions by Actions.BlockedShotsfromInsideBox
+    rows (6):
+      0 | 9231
+      1 | 998
+      2 | 130
+      3 | 6
+      4 | 3
+      5 | 1
+
+  panel premb13
+    title: rows of Actions by Actions.BlockedDirectFreekick
+    rows (3):
+      0 | 10161
+      1 | 202
+      2 | 6
+
+
+=== database: ccs ===
+A Czech fuel-card company's customers, gas stations, products, a thousand transactions and monthly consumption, as CTU serves it.
+
+  panel ccsb01
+    title: rows of gasstations by gasstations.Segment
+    rows (5):
+      Other | 2392
+      Premium | 1428
+      Noname | 1005
+      Value for money | 597
+      Discount | 294
+
+  panel ccsb02
+    title: rows of transactions_1k by gasstations.Segment
+    rows (5):
+      Premium | 609
+      Noname | 135
+      Value for money | 126
+      Discount | 105
+      Other | 25
+
+  panel ccsb03
+    title: sum of transactions_1k.Amount by customers.Currency
+    rows (2):
+      CZK | 18102
+      EUR | 1576
+
+  panel ccsb04
+    title: rows of transactions_1k by customers.Segment
+    rows (3):
+      KAM | 499
+      SME | 276
+      LAM | 225
+
+  panel ccsb05
+    title: sum of transactions_1k.Amount by transactions_1k.CardID the twelve most
+    rows (12):
+      478582 | 264
+      684880 | 158
+      493815 | 154
+      662027 | 140
+      539628 | 137
+      600627 | 134
+      581023 | 126
+      733470 | 124
+      702023 | 114
+      655688 | 111
+      752560 | 107
+      690617 | 106
+
+  panel ccsb06
+    title: average of transactions_1k.Amount by products.Description the twelve most
+    rows (12):
+      Natural + | 52.3333
+      Nat.Super | 44.9167
+      Diesel + | 41.4815
+      Diesel aditiv | 34.3333
+      Natural Spec | 30.0000
+      Nafta | 29.1205
+      Nafta Plus | 26.4167
+      LPG | 21.5000
+      Diesel | 19.0000
+      Additivum | 16.0000
+      Natural Plus | 15.1667
+      Natural | 4.3724
+
+  panel ccsb07
+    title: rows of transactions_1k by gasstations.Country
+    rows (2):
+      CZE | 933
+      SVK | 67
+
+  panel ccsb08
+    title: rows of customers by customers.Currency
+    rows (2):
+      CZK | 30459
+      EUR | 2002
+
+  panel ccsb09
+    title: rows of gasstations by gasstations.Country
+    rows (2):
+      CZE | 4836
+      SVK | 880
+
+  panel ccsb10
+    title: sum of transactions_1k.Price by gasstations (by key) the twelve most
+    rows (12):
+      4347 | 8557.94
+      48 | 6868.67
+      3250 | 6744.47
+      1155 | 6701.69
+      2417 | 6065.16
+      3748 | 5194.73
+      3114 | 4968.61
+      3121 | 4873.23
+      3173 | 4617.94
+      1161 | 4538.18
+      345 | 4383.89
+      636 | 4332.14
+
+  panel ccsb11
+    title: rows of yearmonth by customers (by key) the twelve most
+    rows (12):
+      1673 | 20
+      815 | 20
+      2323 | 20
+      5574 | 20
+      519 | 20
+      1595 | 20
+      12504 | 20
+      39 | 20
+      3552 | 20
+      8388 | 20
+      6266 | 20
+      12702 | 20
+
+  panel ccsb12
+    title: rows of transactions_1k by transactions_1k.CardID the twelve most
+    rows (12):
+      732572 | 4
+      568944 | 4
+      585106 | 3
+      199529 | 3
+      680551 | 3
+      526291 | 3
+      606328 | 3
+      691397 | 3
+      519534 | 3
+      648900 | 3
+      732525 | 3
+      531051 | 3
+
+  panel ccsb13
+    title: average of transactions_1k.Price by transactions_1k.Date
+    rows (4):
+      2012-08-23 | 685.379000
+      2012-08-24 | 409.939736
+      2012-08-25 | 426.940071
+      2012-08-26 | 487.431370
+
+  panel ccsb14
+    title: sum of transactions_1k.Amount by transactions_1k.Date split by gasstations.Country
+    rows (6):
+      2012-08-23 | CZE | 296
+      2012-08-24 | CZE | 8504
+      2012-08-24 | SVK | 1305
+      2012-08-25 | CZE | 7863
+      2012-08-25 | SVK | 161
+      2012-08-26 | CZE | 1549
+
+
+=== database: pubs ===
+Microsoft's sample publisher: titles, authors, publishers, stores, sales and royalties, as CTU serves it. A look fixture of round 1d.
+
+  panel pubsb01
+    title: average of sales.qty by sales.ord_date
+    rows (7):
+      1992-06-01 | 26.6667
+      1993-02-01 | 35.0000
+      1993-03-01 | 25.0000
+      1993-05-01 | 27.5000
+      1993-10-01 | 15.0000
+      1993-12-01 | 10.0000
+      1994-09-01 | 20.3750
+
+  panel pubsb02
+    title: sum of sales.qty by publishers.pub_name the twelve most
+    rows (3):
+      New Moon Books | 208
+      Binnet & Hardley | 150
+      Algodata Infosystems | 135
+
+  panel pubsb03
+    title: sum of sales.qty × titles.price by publishers.pub_name the twelve most
+    rows (3):
+      Algodata Infosystems | 2586.9500
+      Binnet & Hardley | 2128.1000
+      New Moon Books | 1961.8500
+
+  panel pubsb04
+    title: sum of sales.qty × titles.price by stores.stor_address
+    rows (6):
+      567 Pasadena Ave. | 1821.2500
+      577 First St. | 1486.3000
+      24-A Avogadro Way | 1400.1500
+      679 Carson St. | 1232.0000
+      89 Madison St. | 604.4000
+      788 Catamaugus Ave. | 132.8000
+
+  panel pubsb05
+    title: sum of sales.qty × titles.price by stores.state
+    rows (3):
+      CA | 3911.9500
+      WA | 1532.9500
+      OR | 1232.0000
+
+  panel pubsb06
+    title: sum of sales.qty by titles (by key) the twelve most
+    rows (12):
+      PS2091 | 108
+      PC8888 | 50
+      MC3021 | 40
+      TC3218 | 40
+      BU2075 | 35
+      PC1035 | 30
+      BU1111 | 25
+      PS2106 | 25
+      PS7777 | 25
+      PS1372 | 20
+      TC4203 | 20
+      TC7777 | 20
+
+  panel pubsb07
+    title: sum of sales.qty × titles.price by stores.stor_name
+    rows (6):
+      Barnum's | 1821.2500
+      News & Brews | 1486.3000
+      Doc-U-Mat: Quality Laundry and Books | 1400.1500
+      Bookbeat | 1232.0000
+      Fricative Bookshop | 604.4000
+      Eric the Read Books | 132.8000
+
+  panel pubsb08
+    title: rows of employee by publishers.state
+    rows (7):
+      MA | 10
+      DC | 10
+      CA | 10
+      ∅ | 8
+      NY | 3
+      IL | 1
+      TX | 1
+
+  panel pubsb09
+    title: sum of sales.qty × titles.price by stores.city
+    rows (6):
+      Tustin | 1821.2500
+      Los Gatos | 1486.3000
+      Remulade | 1400.1500
+      Portland | 1232.0000
+      Fremont | 604.4000
+      Seattle | 132.8000
+
+  panel pubsb10
+    title: rows of sales by sales.payterms
+    rows (3):
+      Net 60 | 9
+      Net 30 | 8
+      ON invoice | 4
+
+  panel pubsb11
+    title: rows of sales by titles (by key) the twelve most
+    rows (12):
+      PS2091 | 4
+      BU1032 | 2
+      MC3021 | 2
+      BU1111 | 1
+      BU2075 | 1
+      BU7832 | 1
+      MC2222 | 1
+      PC1035 | 1
+      PC8888 | 1
+      PS1372 | 1
+      PS2106 | 1
+      PS3333 | 1
+
+  panel pubsb12
+    title: rows of employee by publishers.country
+    rows (3):
+      USA | 35
+      France | 7
+      Germany | 1
+
+  panel pubsb13
+    title: rows of employee by employee.job_lvl the twelve most
+    rows (12):
+      100 | 4
+      75 | 3
+      150 | 3
+      35 | 3
+      170 | 2
+      120 | 2
+      175 | 2
+      87 | 1
+      152 | 1
+      32 | 1
+      211 | 1
+      64 | 1
+
+  panel pubsb14
+    title: sum of sales.qty by stores.stor_name
+    rows (6):
+      Doc-U-Mat: Quality Laundry and Books | 130
+      Barnum's | 125
+      News & Brews | 90
+      Bookbeat | 80
+      Fricative Bookshop | 60
+      Eric the Read Books | 8
+
+  panel pubsb15
+    title: sum of sales.qty × titles.price by sales.ord_date split by sales.payterms
+    rows (10):
+      1992-06-01 | Net 30 | 1376.8000
+      1993-02-01 | ON invoice | 104.6500
+      1993-03-01 | Net 30 | 298.7500
+      1993-05-01 | Net 30 | 1688.5000
+      1993-05-01 | Net 60 | 1106.4000
+      1993-10-01 | Net 60 | 299.8500
+      1993-12-01 | Net 60 | 199.9000
+      1994-09-01 | Net 30 | 293.7500
+      1994-09-01 | Net 60 | 242.3000
+      1994-09-01 | ON invoice | 1066.0000
+
+
+=== database: atherosclerosis ===
+A medical study of atherosclerosis: patients, their entry examinations, controls and death records, as CTU serves it. A look fixture of round 1d.
+
+  panel atheb01
+    title: rows of Entry by Entry.HTTRV the twelve most
+    rows (12):
+      ∅ | 1214
+      1 | 33
+      2 | 24
+      10 | 23
+      5 | 16
+      3 | 13
+      20 | 12
+      4 | 11
+      6 | 11
+      8 | 9
+      15 | 8
+      7 | 5
+
+  panel atheb02
+    title: rows of Entry by Entry.SYST2 the twelve most
+    rows (12):
+      120 | 234
+      130 | 221
+      140 | 169
+      110 | 154
+      125 | 108
+      115 | 96
+      150 | 78
+      135 | 60
+      145 | 56
+      160 | 47
+      100 | 36
+      170 | 31
+
+  panel atheb03
+    title: rows of Death by Entry (by key) the twelve most
+    rows (12):
+      10002 | 1
+      10004 | 1
+      10005 | 1
+      10008 | 1
+      10011 | 1
+      10012 | 1
+      10013 | 1
+      10014 | 1
+      10015 | 1
+      10017 | 1
+      10020 | 1
+      10022 | 1
+
+  panel atheb04
+    title: rows of Letter by Letter.DYMKA
+    rows (3):
+      1 | 322
+      ∅ | 54
+      2 | 27
+
+  panel atheb05
+    title: rows of Letter by Letter.PAVELKA
+    rows (3):
+      1 | 278
+      2 | 76
+      ∅ | 49
+
+  panel atheb06
+    title: rows of Entry by Entry.HTL
+    rows (4):
+      ∅ | 1197
+      6 | 136
+      4 | 50
+      5 | 34
+
+  panel atheb07
+    title: rows of Letter by Letter.KURAK
+    rows (3):
+      1 | 212
+      2 | 145
+      ∅ | 46
+
+  panel atheb08
+    title: rows of Letter by Letter.MESDOT
+    rows (12):
+      6 | 135
+      2 | 82
+      7 | 70
+      3 | 58
+      1 | 26
+      ∅ | 10
+      8 | 9
+      4 | 6
+      10 | 2
+      11 | 2
+      9 | 2
+      12 | 1
+
+  panel atheb09
+    title: sum of Death.ROKUMR by Death.MESUMR
+    rows (13):
+      3 | 3619
+      4 | 3277
+      2 | 3238
+      11 | 3182
+      12 | 2977
+      1 | 2685
+      6 | 2642
+      9 | 2540
+      5 | 2462
+      8 | 2370
+      10 | 2279
+      7 | 2233
+      … 1 more rows
+
+  panel atheb10
+    title: rows of Contr by Entry.DOBAKOUR
+    rows (5):
+      10 | 5185
+      ∅ | 2669
+      9 | 2239
+      8 | 312
+      7 | 167
+
+  panel atheb11
+    title: rows of Entry by Entry.DOBAKOUR
+    rows (5):
+      10 | 647
+      ∅ | 383
+      9 | 310
+      8 | 49
+      7 | 28
+
+  panel atheb12
+    title: rows of Death by Death.MESUMR
+    rows (13):
+      3 | 41
+      4 | 37
+      2 | 36
+      11 | 35
+      12 | 33
+      1 | 32
+      6 | 30
+      9 | 29
+      5 | 27
+      8 | 26
+      10 | 25
+      7 | 25
+      … 1 more rows
+
+  panel atheb13
+    title: rows of Contr by Contr.LEKCHOL
+    rows (6):
+      ∅ | 7080
+      70 | 3318
+      72 | 112
+      73 | 56
+      71 | 3
+      75 | 3
+
+  panel atheb14
+    title: rows of Contr by Entry.HTL
+    rows (4):
+      ∅ | 8650
+      6 | 1196
+      4 | 446
+      5 | 280
+
+  panel atheb15
+    title: rows of Letter by Letter.PAPRED10
+    rows (6):
+      2 | 185
+      3 | 132
+      ∅ | 58
+      1 | 23
+      12 | 4
+      23 | 1
+
+  panel atheb16
+    title: rows of Letter by Letter.MM
+    rows (3):
+      1 | 369
+      2 | 28
+      ∅ | 6
+
+  panel atheb17
+    title: rows of Letter by Entry (by key) the twelve most
+    rows (12):
+      10003 | 1
+      10009 | 1
+      10029 | 1
+      10040 | 1
+      10043 | 1
+      10045 | 1
+      10054 | 1
+      10061 | 1
+      10081 | 1
+      10088 | 1
+      10098 | 1
+      10103 | 1
+
+  panel atheb18
+    title: rows of Entry by Entry.DIAST2 the twelve most
+    rows (12):
+      80 | 376
+      90 | 259
+      70 | 184
+      85 | 171
+      75 | 100
+      100 | 76
+      95 | 66
+      60 | 41
+      105 | 27
+      65 | 26
+      110 | 24
+      120 | 10
+
+  panel atheb19
+    title: rows of Letter by Letter.PAMIRNA
+    rows (3):
+      2 | 279
+      1 | 76
+      ∅ | 48
+
+  panel atheb20
+    title: rows of Letter by Entry.DOBAKOUR
+    rows (5):
+      ∅ | 162
+      10 | 116
+      9 | 95
+      8 | 18
+      7 | 12
+
+  panel atheb21
+    title: rows of Death by Death.DENUMR the twelve most
+    rows (12):
+      15 | 30
+      18 | 20
+      28 | 17
+      2 | 17
+      ∅ | 17
+      26 | 15
+      9 | 15
+      16 | 15
+      3 | 15
+      20 | 15
+      21 | 13
+      1 | 12
+
+  panel atheb22
+    title: rows of Entry by Entry.BYVKURAK
+    rows (3):
+      ∅ | 1186
+      12 | 196
+      11 | 35
+
+  panel atheb23
+    title: rows of Letter by Letter.NEMOC2
+    rows (13):
+      ∅ | 347
+      02 | 16
+      15 | 9
+      03 | 8
+      21 | 6
+      12 | 5
+      11 | 3
+      01 | 3
+      04 | 2
+      13 | 1
+      14 | 1
+      22 | 1
+      … 1 more rows
+
+  panel atheb24
+    title: rows of Letter by Letter.DIETA
+    rows (3):
+      1 | 184
+      2 | 173
+      ∅ | 46
+
+  panel atheb25
+    title: rows of Letter by Letter.DUSNOST
+    rows (3):
+      1 | 229
+      2 | 128
+      ∅ | 46
+
+  panel atheb26
+    title: rows of Letter by Letter.VAHAPRED10 the twelve most
+    rows (12):
+      ∅ | 54
+      75 | 28
+      80 | 27
+      85 | 26
+      78 | 19
+      90 | 16
+      72 | 16
+      70 | 15
+      76 | 14
+      82 | 13
+      84 | 12
+      73 | 11
+
+  panel atheb27
+    title: rows of Letter by Letter.PASED
+    rows (3):
+      1 | 289
+      2 | 67
+      ∅ | 47
+
+  panel atheb28
+    title: rows of Letter by Letter.ROK2 the twelve most
+    rows (12):
+      ∅ | 347
+      97 | 9
+      99 | 7
+      98 | 7
+      96 | 3
+      85 | 3
+      0 | 3
+      91 | 3
+      88 | 3
+      95 | 2
+      82 | 2
+      92 | 2
+
+  panel atheb29
+    title: largest tables, estimated rows
+    rows (4):
+      Contr | 10561
+      Entry | 1391
+      Letter | 403
+      Death | 389
+
+  panel atheb30
+    title: rows of Contr by Entry (by key) the twelve most
+    rows (12):
+      10651 | 21
+      10688 | 21
+      10300 | 21
+      10600 | 21
+      10577 | 21
+      10446 | 21
+      10362 | 20
+      10592 | 20
+      10570 | 20
+      10466 | 20
+      10270 | 20
+      10531 | 20
+
+  panel atheb31
+    title: rows of Entry by Entry.HTD
+    rows (3):
+      ∅ | 1197
+      6 | 201
+      3 | 19
+
+
+=== database: dallas ===
+Dallas police incidents, the officers and the subjects involved, as CTU serves it. A look fixture of round 1d.
+
+  panel dallb01
+    title: rows of subjects by incidents.subject_weapon the twelve most
+    rows (12):
+      Handgun | 98
+      Vehicle | 37
+      Unarmed | 33
+      Shotgun | 10
+      Knife | 10
+      Hands | 10
+      Rifle | 4
+      Assault Rifle | 4
+      BB Rifle | 3
+      Taser | 2
+      Pellet Gun | 2
+      Paint Ball Rifle | 1
+
+  panel dallb02
+    title: rows of officers by incidents.subject_weapon the twelve most
+    rows (12):
+      Handgun | 174
+      Vehicle | 46
+      Unarmed | 33
+      Shotgun | 22
+      Rifle | 21
+      Assault Rifle | 16
+      Knife | 13
+      Hands | 11
+      Pellet Gun | 11
+      Simulated Handgun | 5
+      Taser | 4
+      BB Rifle | 3
+
+  panel dallb03
+    title: average of incidents.officer_count by incidents.subject_statuses
+    rows (7):
+      1 Deceased 1 Injured | 3.0000
+      Deceased | 2.3529
+      2 Injured | 2.0000
+      Injured | 1.6290
+      Other | 1.3333
+      Shoot and Miss | 1.1928
+      Deceased Injured | 1.0000
+
+  panel dallb04
+    title: rows of officers by incidents.date
+    rows (14):
+      2003-01-01 | 29
+      2004-01-01 | 21
+      2005-01-01 | 11
+      2006-01-01 | 24
+      2007-01-01 | 23
+      2008-01-01 | 31
+      2009-01-01 | 32
+      2010-01-01 | 26
+      2011-01-01 | 15
+      2012-01-01 | 32
+      2013-01-01 | 37
+      2014-01-01 | 31
+      … 2 more rows
+
+  panel dallb05
+    title: rows of subjects by incidents (by key) the twelve most
+    rows (12):
+      384832T | 3
+      280895N;  291418N | 2
+      266130-2015 | 2
+      56177Z | 2
+      226455N | 2
+      129379Z | 2
+      072458-2016 | 1
+      997316P | 1
+      100577T | 1
+      1016667P | 1
+      1066R | 1
+      117903Y | 1
+
+  panel dallb06
+    title: sum of incidents.officer_count by incidents.subjects the twelve most
+    rows (12):
+      Boulware, James W/M | 15
+      Dontrell Terrell B/M | 13
+      Johnson, Micah B/M | 12
+      Unknown L/M | 10
+      Davis, Bertrand B/M | 9
+      Scott, Losten B/M | 8
+      Unknown B/M | 6
+      Menchaca, Tony L/M | 5
+      Stoney, Rawlison W/M | 5
+      Glover, Derrick B/M | 5
+      Tamayo, Alejandro L/M | 5
+      Turner, James B/M | 5
+
+  panel dallb07
+    title: sum of incidents.officer_count by incidents.date
+    rows (14):
+      2003-01-01 | 29
+      2004-01-01 | 21
+      2005-01-01 | 11
+      2006-01-01 | 24
+      2007-01-01 | 23
+      2008-01-01 | 31
+      2009-01-01 | 32
+      2010-01-01 | 26
+      2011-01-01 | 15
+      2012-01-01 | 32
+      2013-01-01 | 37
+      2014-01-01 | 31
+      … 2 more rows
+
+  panel dallb08
+    title: sum of incidents.subject_count by incidents.grand_jury_disposition
+    rows (6):
+      No Bill | 117
+      ∅ | 88
+      Pending | 12
+      See Summary | 3
+      True Bill | 2
+      Redden, Craig W/M | 1
+
+  panel dallb09
+    title: rows of subjects by incidents.date
+    rows (14):
+      2003-01-01 | 19
+      2004-01-01 | 17
+      2005-01-01 | 10
+      2006-01-01 | 15
+      2007-01-01 | 18
+      2008-01-01 | 15
+      2009-01-01 | 15
+      2010-01-01 | 16
+      2011-01-01 | 12
+      2012-01-01 | 24
+      2013-01-01 | 22
+      2014-01-01 | 20
+      … 2 more rows
+
+  panel dallb10
+    title: sum of incidents.subject_count by incidents.subject_weapon the twelve most
+    rows (12):
+      Handgun | 98
+      Vehicle | 37
+      Unarmed | 33
+      Shotgun | 10
+      Knife | 10
+      Hands | 10
+      Rifle | 4
+      Assault Rifle | 4
+      BB Rifle | 3
+      Taser | 2
+      Pellet Gun | 2
+      Paint Ball Rifle | 1
+
+  panel dallb11
+    title: rows of officers by incidents (by key) the twelve most
+    rows (12):
+      134472-2015 | 15
+      380792W | 13
+      165193-2016 | 12
+      199250-2015 | 9
+      94073V | 8
+      308344X | 5
+      32587A | 5
+      411133M | 5
+      5567A | 5
+      871096R | 5
+      118251R | 5
+      155466-2015 | 4
+
+  panel dallb12
+    title: rows of officers by incidents.subject_statuses
+    rows (7):
+      Deceased | 160
+      Injured | 101
+      Shoot and Miss | 99
+      Other | 4
+      1 Deceased 1 Injured | 3
+      2 Injured | 2
+      Deceased Injured | 1
+
+  panel dallb13
+    title: sum of incidents.subject_count by incidents.subjects the twelve most
+    rows (12):
+      Unknown L/M | 9
+      Unknown B/M | 5
+      Smith, James B/M; Dews, Antonio B/M; Spe | 3
+      Jones, Carystal B/F; Brooks, Sekeitha B/ | 2
+      Escalante, Luis  L/M; Cipirano, James L/ | 2
+      McDuff, Bobby B/M; Hibbler, Marcus B/M | 2
+      Aranda, Orlando L/M; Mejia, Ivan L/M | 2
+      Unknown L/M; Unknown L/F | 2
+      Mims, Carlton B/M | 1
+      Rittenhouse, Tony B/M | 1
+      Dang, Thuy A/M | 1
+      Spicer, Oscar B/M | 1
+
+  panel dallb14
+    title: average of incidents.officer_count by incidents.date
+    rows (14):
+      2003-01-01 | 1.5263
+      2004-01-01 | 1.4000
+      2005-01-01 | 1.1000
+      2006-01-01 | 1.6000
+      2007-01-01 | 1.4375
+      2008-01-01 | 1.9375
+      2009-01-01 | 2.1333
+      2010-01-01 | 1.5294
+      2011-01-01 | 1.2500
+      2012-01-01 | 1.3913
+      2013-01-01 | 1.6818
+      2014-01-01 | 1.5500
+      … 2 more rows
+
+  panel dallb15
+    title: rows of subjects by incidents.subject_statuses
+    rows (7):
+      Shoot and Miss | 87
+      Deceased | 69
+      Injured | 60
+      Deceased Injured | 2
+      1 Deceased 1 Injured | 2
+      Other | 2
+      2 Injured | 1

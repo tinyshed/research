@@ -1,0 +1,945 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: ftp ===
+Sessions and requests of an FTP server, as CTU serves it. A look fixture of round 1d.
+
+  panel ftpb01
+    title: rows of session by session.start_time split by session.gender
+    rows (102):
+      2014-11-14 | ∅ | 581
+      2014-11-14 | female | 477
+      2014-11-14 | male | 111
+      2014-11-15 | ∅ | 421
+      2014-11-15 | female | 345
+      2014-11-15 | male | 86
+      2014-11-16 | ∅ | 371
+      2014-11-16 | female | 263
+      2014-11-16 | male | 109
+      2014-11-17 | ∅ | 532
+      2014-11-17 | female | 380
+      2014-11-17 | male | 115
+      … 90 more rows
+
+  panel ftpb02
+    title: largest tables, estimated rows
+    rows (2):
+      product | 66563
+      session | 29632
+
+  panel ftpb03
+    title: rows of product by product.category_b the twelve most
+    rows (12):
+      B00002 | 15874
+      B00001 | 8860
+      B00003 | 8660
+      B00012 | 5412
+      B00004 | 4301
+      B00007 | 3788
+      B00022 | 2315
+      B00009 | 2050
+      B00005 | 1973
+      B00015 | 1531
+      B00016 | 1251
+      B00031 | 1122
+
+  panel ftpb04
+    title: rows of product by product.category_a
+    rows (11):
+      A00002 | 42801
+      A00003 | 10877
+      A00001 | 9448
+      A00005 | 1096
+      A00004 | 877
+      A00006 | 574
+      A00011 | 266
+      A00010 | 200
+      A00009 | 138
+      A00007 | 125
+      A00008 | 89
+
+  panel ftpb05
+    title: rows of session by session.start_time
+    rows (34):
+      2014-11-14 | 1169
+      2014-11-15 | 852
+      2014-11-16 | 743
+      2014-11-17 | 1027
+      2014-11-18 | 958
+      2014-11-19 | 516
+      2014-11-21 | 587
+      2014-11-22 | 726
+      2014-11-23 | 619
+      2014-11-25 | 955
+      2014-11-26 | 1036
+      2014-11-27 | 1020
+      … 22 more rows
+
+  panel ftpb06
+    title: rows of session by session.gender
+    rows (3):
+      ∅ | 15000
+      female | 11703
+      male | 3297
+
+  panel ftpb07
+    title: rows of product by session.start_time
+    rows (34):
+      2014-11-14 | 2826
+      2014-11-15 | 1966
+      2014-11-16 | 1778
+      2014-11-17 | 2269
+      2014-11-18 | 1918
+      2014-11-19 | 1097
+      2014-11-21 | 1372
+      2014-11-22 | 1634
+      2014-11-23 | 1349
+      2014-11-25 | 1995
+      2014-11-26 | 2368
+      2014-11-27 | 2382
+      … 22 more rows
+
+
+=== database: classicmodels ===
+classicmodels, a seller of scale models: orders and their lines, payments, customers, products and their lines, employees and offices, as CTU serves it.
+
+  panel clasb01
+    title: sum of orderdetails.priceEach × orderdetails.quantityOrdered by orders.status
+    rows (6):
+      Shipped | 8865094.640000006
+      Cancelled | 238854.18000000002
+      On Hold | 169575.61
+      In Process | 135271.52
+      Resolved | 134235.87999999998
+      Disputed | 61158.779999999984
+
+  panel clasb02
+    title: rows of orders by orders.comments the twelve most
+    rows (12):
+      ∅ | 246
+      They want to reevaluate their terms agre | 7
+      Customer requested that DHL is used for  | 6
+      Customer requested that FedEx Ground is  | 4
+      Check on availability. | 3
+      Customer credit limit exceeded. Will shi | 3
+      Can we renegotiate this one? | 3
+      We must be cautions with this customer.  | 3
+      We need to keep in close contact with th | 3
+      Custom shipping instructions sent to war | 3
+      Cautious optimism. We have happy custome | 3
+      Difficult to negotiate with customer. We | 3
+
+  panel clasb03
+    title: sum of products.buyPrice × products.quantityInStock by productlines.textDescription the twelve most
+    rows (7):
+      Attention car enthusiasts: Make your wil | 14059337.710000003
+      Our Vintage Car models realistically por | 5704259.819999998
+      Our motorcycles are state of the art rep | 3565714.1799999997
+      Unique, diecast airplane and helicopter  | 3099282.76
+      The Truck and Bus models are realistic r | 2139329.56
+      The perfect holiday or anniversary gift  | 1239140.43
+      Model trains are a rewarding hobby for e | 727251.77
+
+  panel clasb04
+    title: rows of orders by customers (named) the twelve most
+    rows (12):
+      Diego  Freyre | 26
+      Susan Nelson | 17
+      Paul  Henriot | 5
+      Peter Ferguson | 5
+      Mike Graham | 5
+      Jytte  Petersen | 5
+      Eric Natividad | 5
+      Kelvin Leong | 4
+      Tony Snowden | 4
+      Jonas  Bergulfsen | 4
+      Roland Keitel | 4
+      Kwai Lee | 4
+
+  panel clasb05
+    title: rows of orderdetails by products.productName the twelve most
+    rows (12):
+      1992 Ferrari 360 Spider red | 53
+      1969 Harley Davidson Ultimate Chopper | 28
+      1952 Alpine Renault 1300 | 28
+      1996 Moto Guzzi 1100i | 28
+      2003 Harley-Davidson Eagle Drag Bike | 28
+      1972 Alfa Romeo GTA | 28
+      1962 LanciaA Delta 16V | 28
+      1937 Lincoln Berline | 28
+      1958 Setra Bus | 28
+      2002 Suzuki XREO | 28
+      1936 Mercedes-Benz 500K Special Roadster | 28
+      1957 Chevy Pickup | 28
+
+  panel clasb06
+    title: sum of payments.amount by employees.jobTitle
+    rows (1):
+      Sales Rep | 8853839.229999999
+
+  panel clasb07
+    title: sum of orderdetails.priceEach × orderdetails.quantityOrdered by employees (named) the twelve most
+    rows (12):
+      Gerard Hernandez | 1258577.8099999994
+      Leslie Jennings | 1081530.5399999996
+      Pamela Castillo | 868220.5500000009
+      Larry Bott | 732096.7899999997
+      Barry Jones | 704853.9100000004
+      George Vanauf | 669377.0499999998
+      Peter Marsh | 584593.7599999999
+      Loui Bondur | 569485.7499999999
+      Andy Fixter | 562582.59
+      Steve Patterson | 505875.42000000016
+      Foon Yue Tseng | 488212.6699999998
+      Mami Nishi | 457110.06999999995
+
+  panel clasb08
+    title: rows of customers by customers.country the twelve most
+    rows (12):
+      USA | 36
+      Germany | 13
+      France | 12
+      Spain | 7
+      Australia | 5
+      UK | 5
+      Italy | 4
+      New Zealand | 4
+      Switzerland | 3
+      Singapore | 3
+      Canada | 3
+      Finland | 3
+
+  panel clasb09
+    title: sum of orderdetails.priceEach × orderdetails.quantityOrdered by products.productVendor the twelve most
+    rows (12):
+      Classic Metal Creations | 934554.4199999998
+      Unimax Art Galleries | 884167.3300000001
+      Gearbox Collectibles | 828013.7600000002
+      Second Gear Diecast | 803892.0600000004
+      Exoto Designs | 793392.3100000003
+      Welly Diecast Productions | 776165.3300000003
+      Autoart Studio Design | 736928.0299999994
+      Motor City Art Classics | 704806.8899999995
+      Min Lin Diecast | 680657.9900000002
+      Carousel DieCast Legends | 667189.9999999999
+      Highway 66 Mini Classics | 664508.3900000001
+      Red Start Diecast | 655487.61
+
+  panel clasb10
+    title: sum of payments.amount by customers.city the twelve most
+    rows (12):
+      Madrid | 874930.2100000002
+      San Rafael | 584188.2400000001
+      NYC | 456496.29
+      Auckland   | 325781.65
+      Singapore | 261671.59999999998
+      Paris | 240649.68000000002
+      San Francisco | 199051.34
+      New Bedford | 190500.00999999998
+      Melbourne | 180585.06999999998
+      Brickhaven | 150665.17
+      Manchester | 148410.09
+      Nantes | 139264.03999999998
+
+  panel clasb11
+    title: sum of orderdetails.priceEach by orders (by key) the twelve most
+    rows (12):
+      10287 | 1801.5199999999998
+      10165 | 1794.9399999999996
+      10181 | 1760.39
+      10159 | 1686.9999999999998
+      10310 | 1656.2600000000002
+      10126 | 1623.71
+      10204 | 1619.73
+      10306 | 1612.26
+      10185 | 1605.19
+      10127 | 1601.3899999999999
+      10122 | 1598.2699999999995
+      10142 | 1570.77
+
+  panel clasb12
+    title: sum of orderdetails.priceEach × orderdetails.quantityOrdered by orders.orderDate
+    rows (29):
+      2003-01-01 | 116692.77
+      2003-02-01 | 128403.63999999998
+      2003-03-01 | 160517.13999999998
+      2003-04-01 | 185848.59
+      2003-05-01 | 179435.55
+      2003-06-01 | 150470.76999999993
+      2003-07-01 | 201940.36
+      2003-08-01 | 178257.10999999996
+      2003-09-01 | 236697.85000000003
+      2003-10-01 | 514336.2100000002
+      2003-11-01 | 988025.1500000004
+      2003-12-01 | 276723.25
+      … 17 more rows
+
+  panel clasb13
+    title: sum of orderdetails.quantityOrdered by products.productName the twelve most
+    rows (12):
+      1992 Ferrari 360 Spider red | 1808
+      1937 Lincoln Berline | 1111
+      American Airlines: MD-11S | 1085
+      1941 Chevrolet Special Deluxe Cabriolet | 1076
+      1930 Buick Marquette Phaeton | 1074
+      1940s Ford truck | 1061
+      1969 Harley Davidson Ultimate Chopper | 1057
+      1957 Chevy Pickup | 1056
+      1964 Mercedes Tour Bus | 1053
+      1956 Porsche 356A Coupe | 1052
+      Corsair F4U ( Bird Cage) | 1051
+      F/A 18 Hornet 1/72 | 1047
+
+  panel clasb14
+    title: rows of orders by orders.orderDate split by orders.status
+    rows (43):
+      2003-01-01 | Shipped | 5
+      2003-02-01 | Shipped | 3
+      2003-03-01 | Shipped | 6
+      2003-04-01 | Shipped | 7
+      2003-05-01 | Shipped | 6
+      2003-06-01 | Shipped | 7
+      2003-07-01 | Shipped | 7
+      2003-08-01 | Shipped | 5
+      2003-09-01 | Shipped | 8
+      2003-10-01 | Cancelled | 1
+      2003-10-01 | Resolved | 1
+      2003-10-01 | Shipped | 16
+      … 31 more rows
+
+  panel clasb15
+    title: rows of customers by employees (named) the twelve most
+    rows (12):
+       | 22
+      Pamela Castillo | 10
+      Barry Jones | 9
+      George Vanauf | 8
+      Larry Bott | 8
+      Foon Yue Tseng | 7
+      Gerard Hernandez | 7
+      Leslie Jennings | 6
+      Leslie Thompson | 6
+      Julie Firrelli | 6
+      Steve Patterson | 6
+      Loui Bondur | 6
+
+
+=== database: northwind ===
+Northwind, Microsoft's sample shop, as pthom/northwind_psql ports it: orders and their details, products, customers, employees, shippers.
+
+  panel nortb01
+    title: rows of orders by employees.city
+    rows (5):
+      Seattle | 227
+      London | 224
+      Redmond | 156
+      Kirkland | 127
+      Tacoma | 96
+
+  panel nortb02
+    title: rows of orders by orders.ship_region the twelve most
+    rows (12):
+      ∅ | 507
+      SP | 49
+      RJ | 34
+      ID | 31
+      OR | 28
+      WA | 19
+      Co. Cork | 19
+      Táchira | 18
+      NM | 18
+      BC | 17
+      Lara | 14
+      Québec | 13
+
+  panel nortb03
+    title: average of orders.freight by orders.order_date
+    rows (23):
+      1996-07-01 | 58.55363634499636
+      1996-08-01 | 55.886799416542054
+      1996-09-01 | 48.846956312332466
+      1996-10-01 | 58.484230975692086
+      1996-11-01 | 86.07439989089966
+      1996-12-01 | 90.27709742707592
+      1997-01-01 | 67.84787877987732
+      1997-02-01 | 55.22241340012386
+      1997-03-01 | 62.96033327182134
+      1997-04-01 | 94.80967826708671
+      1997-05-01 | 108.16875021532178
+      1997-06-01 | 61.755000456174216
+      … 11 more rows
+
+  panel nortb04
+    title: rows of orders by customers.contact_title the twelve most
+    rows (12):
+      Sales Representative | 160
+      Owner | 134
+      Sales Manager | 128
+      Accounting Manager | 116
+      Marketing Manager | 82
+      Sales Associate | 65
+      Marketing Assistant | 44
+      Sales Agent | 36
+      Order Administrator | 24
+      Assistant Sales Representative | 18
+      Assistant Sales Agent | 16
+      Owner/Marketing Assistant | 7
+
+  panel nortb05
+    title: sum of order_details.unit_price × order_details.quantity × (1 − order_details.discount) by shippers.company_name the twelve most
+    rows (3):
+      United Package | 533547.6339599558
+      Federal Shipping | 383405.4678346074
+      Speedy Express | 348839.93685880076
+
+  panel nortb06
+    title: sum of order_details.unit_price × order_details.quantity × (1 − order_details.discount) by suppliers.company_name the twelve most
+    rows (12):
+      Aux joyeux ecclésiastiques | 153691.2755027201
+      Plutzer Lebensmittelgroßmärkte AG | 145372.39966947702
+      Gai pâturage | 117981.18020485654
+      Pavlova, Ltd. | 106459.77607838642
+      G'day, Mate | 65626.77016849845
+      Forêts d'érables | 61587.5698526758
+      Specialty Biscuits, Ltd. | 59032.0801634851
+      Pasta Buttini s.r.l. | 50254.609883744415
+      Formaggi Fortini s.r.l. | 48225.164374038046
+      Norske Meierier | 43141.5101294113
+      Leka Trading | 42017.64502122432
+      Grandma Kelly's Homestead | 41953.299975756556
+
+  panel nortb07
+    title: sum of order_details.unit_price × order_details.quantity × (1 − order_details.discount) by orders.order_date
+    rows (23):
+      1996-07-01 | 27861.89512966156
+      1996-08-01 | 25485.275070743264
+      1996-09-01 | 26381.400132587554
+      1996-10-01 | 37515.72494547888
+      1996-11-01 | 45600.04521113701
+      1996-12-01 | 45239.630493214434
+      1997-01-01 | 61258.0701679784
+      1997-02-01 | 38483.6349503243
+      1997-03-01 | 38547.22010972678
+      1997-04-01 | 53032.95238894149
+      1997-05-01 | 53781.28982514166
+      1997-06-01 | 36362.80233480245
+      … 11 more rows
+
+  panel nortb08
+    title: rows of orders by customers.country the twelve most
+    rows (12):
+      Germany | 122
+      USA | 122
+      Brazil | 83
+      France | 77
+      UK | 56
+      Venezuela | 46
+      Austria | 40
+      Sweden | 37
+      Canada | 30
+      Italy | 28
+      Mexico | 28
+      Spain | 23
+
+  panel nortb09
+    title: rows of orders by employees.address
+    rows (9):
+      4110 Old Redmond Rd. | 156
+      722 Moss Bay Blvd. | 127
+      507 - 20th Ave. E.\nApt. 2A | 123
+      4726 - 11th Ave. N.E. | 104
+      908 W. Capital Way | 96
+      Edgeham Hollow\nWinchester Way | 72
+      Coventry House\nMiner Rd. | 67
+      7 Houndstooth Rd. | 43
+      14 Garrett Hill | 42
+
+  panel nortb10
+    title: sum of order_details.unit_price × order_details.quantity × (1 − order_details.discount) by categories.category_name the twelve most
+    rows (8):
+      Beverages | 267868.17978624784
+      Dairy Products | 234507.2845305777
+      Confections | 167357.22547338586
+      Meat/Poultry | 163022.3602687388
+      Seafood | 131261.7365558489
+      Condiments | 106047.08460955074
+      Produce | 99984.58007357619
+      Grains/Cereals | 95744.58735543818
+
+  panel nortb11
+    title: rows of orders by employees.postal_code
+    rows (9):
+      98052 | 156
+      98033 | 127
+      98122 | 123
+      98105 | 104
+      98401 | 96
+      RG1 9SP | 72
+      EC2 7JR | 67
+      WG2 7LT | 43
+      SW1 8JR | 42
+
+  panel nortb12
+    title: rows of orders by employees.last_name
+    rows (9):
+      Peacock | 156
+      Leverling | 127
+      Davolio | 123
+      Callahan | 104
+      Fuller | 96
+      King | 72
+      Suyama | 67
+      Dodsworth | 43
+      Buchanan | 42
+
+  panel nortb13
+    title: rows of orders by employees.title_of_courtesy
+    rows (4):
+      Ms. | 397
+      Mr. | 181
+      Mrs. | 156
+      Dr. | 96
+
+  panel nortb14
+    title: rows of orders by employees.title
+    rows (4):
+      Sales Representative | 588
+      Inside Sales Coordinator | 104
+      Vice President, Sales | 96
+      Sales Manager | 42
+
+
+=== database: lahman ===
+Sean Lahman's baseball database to 2014 as CTU serves it: players, teams, batting, pitching, fielding, salaries and awards by season.
+
+  panel lahmb01
+    title: rows of players by halloffame.votedBy
+    rows (10):
+      ∅ | 15287
+      BBWAA | 3568
+      Veterans | 141
+      Nominating Vote | 73
+      Old Timers | 11
+      Run Off | 9
+      Negro League | 3
+      Final Ballot | 3
+      Special Election | 2
+      Centennial | 2
+
+  panel lahmb02
+    title: rows of teams by teams.teamID the twelve most
+    rows (12):
+      CHN | 137
+      PHI | 130
+      PIT | 126
+      CIN | 123
+      SLN | 121
+      CLE | 112
+      BOS | 112
+      DET | 112
+      CHA | 112
+      NYA | 110
+      BSN | 77
+      NY1 | 75
+
+  panel lahmb03
+    title: rows of teams by teams.teamIDBR the twelve most
+    rows (12):
+      CHC | 137
+      CIN | 136
+      STL | 134
+      PHI | 133
+      PIT | 131
+      BOS | 120
+      CLE | 117
+      CHW | 112
+      DET | 112
+      NYY | 110
+      BSN | 77
+      NYG | 75
+
+  panel lahmb04
+    title: rows of teams by teams.WSWin
+    rows (3):
+      N | 2245
+      ∅ | 357
+      Y | 113
+
+  panel lahmb05
+    title: rows of fielding by players (by key) the twelve most
+    rows (12):
+      harrile01 | 119
+      phillto02 | 109
+      javiest01 | 98
+      henderi01 | 96
+      surhobj01 | 93
+      thomade01 | 92
+      dwyerji01 | 89
+      pacioto01 | 88
+      stairma01 | 87
+      bannial01 | 86
+      yastrca01 | 86
+      lowenjo01 | 84
+
+  panel lahmb06
+    title: rows of halloffame by halloffame.category
+    rows (4):
+      Player | 3765
+      Manager | 69
+      Pioneer/Executive | 39
+      Umpire | 10
+
+  panel lahmb07
+    title: rows of players by players.deathState the twelve most
+    rows (12):
+      ∅ | 8190
+      CA | 947
+      PA | 736
+      NY | 632
+      OH | 536
+      FL | 464
+      IL | 429
+      MA | 426
+      TX | 423
+      MO | 311
+      NJ | 241
+      MI | 234
+
+  panel lahmb08
+    title: rows of batting by players (by key) the twelve most
+    rows (12):
+      mcguide01 | 31
+      newsobo01 | 29
+      henderi01 | 29
+      kaatji01 | 28
+      johnto01 | 28
+      carltst01 | 27
+      ryanno01 | 27
+      ansonca01 | 27
+      moyerja01 | 27
+      baineha01 | 27
+      mulhote01 | 26
+      niekrph01 | 26
+
+  panel lahmb09
+    title: rows of pitching by teams (by key) the twelve most
+    rows (12):
+      PHI | 1938
+      SLN | 1893
+      CHN | 1857
+      PIT | 1849
+      CIN | 1787
+      CLE | 1768
+      BOS | 1729
+      DET | 1685
+      CHA | 1668
+      NYA | 1658
+      BAL | 943
+      NY1 | 912
+
+  panel lahmb10
+    title: sum of salaries.salary by salaries.yearID
+    rows (28):
+      1985-01-01 | 261964696
+      1986-01-01 | 307854518
+      1987-01-01 | 272575375
+      1988-01-01 | 300452424
+      1989-01-01 | 359995711
+      1990-01-01 | 443881193
+      1991-01-01 | 613048418
+      1992-01-01 | 805543323
+      1993-01-01 | 901740134
+      1994-01-01 | 927836287
+      1995-01-01 | 951469367
+      1996-01-01 | 956983550
+      … 16 more rows
+
+  panel lahmb11
+    title: rows of teams by teams.divID
+    rows (4):
+      ∅ | 1517
+      E | 508
+      W | 485
+      C | 205
+
+  panel lahmb12
+    title: rows of fielding by teams (by key) the twelve most
+    rows (12):
+      SLN | 6267
+      CHN | 6249
+      PHI | 6044
+      CLE | 5877
+      PIT | 5870
+      CIN | 5845
+      CHA | 5808
+      DET | 5789
+      NYA | 5693
+      BOS | 5598
+      BAL | 3743
+      NYN | 3451
+
+  panel lahmb13
+    title: rows of teams by teamsfranchises.active
+    rows (3):
+      Y | 2476
+      N | 189
+      NA | 50
+
+  panel lahmb14
+    title: rows of pitching by players (by key) the twelve most
+    rows (12):
+      newsobo01 | 29
+      kaatji01 | 28
+      johnto01 | 28
+      moyerja01 | 27
+      carltst01 | 27
+      ryanno01 | 27
+      wilheho01 | 26
+      niekrph01 | 26
+      mulhote01 | 26
+      weathda01 | 26
+      oroscje01 | 26
+      houghch01 | 26
+
+  panel lahmb15
+    title: rows of teams by teams.LgWin
+    rows (3):
+      N | 2421
+      Y | 266
+      ∅ | 28
+
+
+=== database: voc ===
+The Dutch East India Company's voyages and the people aboard: seafarers, soldiers, passengers, craftsmen, and invoices, as CTU serves it. A look fixture of round 1d.
+
+  panel vocb01
+    title: average of voyages.trip by voyages.trip_sup
+    rows (3):
+       | 2.4702
+      A | 1.5000
+      B | 1.5000
+
+  panel vocb02
+    title: sum of voyages.trip by voyages.type_of_boat the twelve most
+    rows (12):
+      ∅ | 15159
+      fluit | 2364
+      pinas | 783
+      jacht | 773
+      hoeker | 207
+      fregat | 185
+      pinas? jacht? | 126
+      paketboot | 90
+      galjoot | 57
+      fluit? hekboot? | 53
+      jacht? pinas? | 35
+      pinas? fluit? | 33
+
+  panel vocb03
+    title: average of voyages.trip by voyages.departure_date
+    rows (200):
+      1595-01-01 | 1.0000
+      1598-01-01 | 1.1364
+      1599-01-01 | 1.6364
+      1600-01-01 | 1.0000
+      1601-01-01 | 1.3784
+      1602-01-01 | 1.1852
+      1603-01-01 | 1.0500
+      1604-01-01 | 1.0000
+      1605-01-01 | 1.2353
+      1606-01-01 | 1.2000
+      1607-01-01 | 1.4000
+      1608-01-01 | 1.3333
+      … 188 more rows
+
+  panel vocb04
+    title: average of voyages.trip by voyages.type_of_boat the twelve most
+    rows (12):
+      fluit? | 4.0000
+      fregat/jacht | 3.0000
+      hekboot fluit | 3.0000
+      hneker | 3.0000
+      pinas | 2.7570
+      pinas? fluit? | 2.7500
+      ∅ | 2.6792
+      fluit? hekboot? | 2.5238
+      hekboot | 2.2857
+      fregat | 2.2024
+      fluit | 2.1510
+      jacht? pinas? | 2.0588
+
+  panel vocb05
+    title: rows of total by total.trip_sup
+    rows (2):
+       | 2466
+      B | 1
+
+  panel vocb06
+    title: sum of invoices.trip by invoices.chamber
+    rows (7):
+      A | 3667
+      Z | 2153
+      R | 896
+      H | 893
+      E | 868
+      D | 862
+      ∅ | 3
+
+  panel vocb07
+    title: rows of voyages by voyages.departure_date split by voyages.yard
+    rows (500):
+      1595-01-01 | A | 4
+      1598-01-01 | ∅ | 22
+      1599-01-01 | ∅ | 8
+      1599-01-01 | A | 3
+      1600-01-01 | ∅ | 10
+      1601-01-01 | ∅ | 34
+      1601-01-01 | A | 4
+      1602-01-01 | ∅ | 26
+      1602-01-01 | A | 1
+      1603-01-01 | ∅ | 14
+      1603-01-01 | A | 3
+      1603-01-01 | E | 1
+      … 488 more rows
+
+  panel vocb08
+    title: sum of voyages.tonnage by voyages.departure_date
+    rows (200):
+      1595-01-01 | 1230
+      1598-01-01 | 5890
+      1599-01-01 | 2990
+      1600-01-01 | 4950
+      1601-01-01 | 9130
+      1602-01-01 | 8590
+      1603-01-01 | 8680
+      1604-01-01 | 3200
+      1605-01-01 | 8960
+      1606-01-01 | 8420
+      1607-01-01 | 10650
+      1608-01-01 | 4110
+      … 188 more rows
+
+  panel vocb09
+    title: rows of voyages by voyages.boatname the twelve most
+    rows (12):
+      AMSTERDAM | 46
+      MIDDELBURG | 39
+      WESTFRIESLAND | 36
+      VLISSINGEN | 36
+      ZEELANDIA | 35
+      EENDRACHT | 35
+      DORDRECHT | 34
+      ENKHUIZEN | 33
+      ROTTERDAM | 33
+      HOOP | 31
+      STANDVASTIGHEID | 30
+      HOLLANDIA | 27
+
+  panel vocb10
+    title: rows of voyages by voyages.departure_date split by voyages.trip_sup
+    rows (204):
+      1595-01-01 |  | 4
+      1598-01-01 |  | 22
+      1599-01-01 |  | 11
+      1600-01-01 |  | 10
+      1601-01-01 |  | 38
+      1602-01-01 |  | 27
+      1603-01-01 |  | 20
+      1604-01-01 |  | 9
+      1605-01-01 |  | 17
+      1606-01-01 |  | 15
+      1607-01-01 |  | 20
+      1608-01-01 |  | 9
+      … 192 more rows
+
+  panel vocb11
+    title: sum of voyages.trip by voyages.departure_date
+    rows (200):
+      1595-01-01 | 4
+      1598-01-01 | 25
+      1599-01-01 | 18
+      1600-01-01 | 10
+      1601-01-01 | 51
+      1602-01-01 | 32
+      1603-01-01 | 21
+      1604-01-01 | 9
+      1605-01-01 | 21
+      1606-01-01 | 18
+      1607-01-01 | 28
+      1608-01-01 | 12
+      … 188 more rows
+
+  panel vocb12
+    title: rows of voyages by voyages.departure_date split by voyages.chamber
+    rows (500):
+      1595-01-01 | ∅ | 4
+      1598-01-01 | ∅ | 22
+      1599-01-01 | ∅ | 11
+      1600-01-01 | ∅ | 10
+      1601-01-01 | ∅ | 38
+      1602-01-01 | ∅ | 12
+      1602-01-01 | A | 6
+      1602-01-01 | D | 1
+      1602-01-01 | E | 3
+      1602-01-01 | R | 2
+      1602-01-01 | Z | 3
+      1603-01-01 | ∅ | 4
+      … 488 more rows
+
+  panel vocb13
+    title: average of invoices.trip by invoices.chamber
+    rows (7):
+      ∅ | 3.0000
+      Z | 2.6192
+      R | 2.5311
+      D | 2.4841
+      H | 2.4466
+      E | 2.3978
+      A | 2.3952
+
+  panel vocb14
+    title: rows of voyages by voyages.cape_arrival split by voyages.trip_sup
+    rows (190):
+      1192-01-01 |  | 1
+      1608-01-01 |  | 1
+      1610-01-01 |  | 3
+      1611-01-01 |  | 3
+      1613-01-01 |  | 1
+      1614-01-01 |  | 1
+      1615-01-01 |  | 3
+      1616-01-01 |  | 9
+      1617-01-01 |  | 5
+      1618-01-01 |  | 5
+      1619-01-01 |  | 7
+      1620-01-01 |  | 20
+      … 178 more rows
+
+  panel vocb15
+    title: sum of voyages.next_voyage by voyages.departure_date
+    rows (200):
+      1595-01-01 | 15006
+      1598-01-01 | 65136
+      1599-01-01 | 55236
+      1600-01-01 | 35286
+      1601-01-01 | 76257
+      1602-01-01 | 61325
+      1603-01-01 | 46142
+      1604-01-01 | 5640
+      1605-01-01 | 41108
+      1606-01-01 | 30898
+      1607-01-01 | 46410
+      1608-01-01 | 753
+      … 188 more rows

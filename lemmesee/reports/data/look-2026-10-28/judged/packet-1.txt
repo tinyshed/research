@@ -1,0 +1,1221 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: medical ===
+A hospital's patients, their examinations and laboratory results, as CTU serves it. A look fixture of round 1d.
+
+  panel medi01
+    title: rows of Patient by Patient.First Date
+    rows (27):
+      1972-01-01 | 2
+      1973-01-01 | 4
+      1974-01-01 | 1
+      1975-01-01 | 3
+      1976-01-01 | 5
+      1977-01-01 | 5
+      1978-01-01 | 6
+      1979-01-01 | 6
+      1980-01-01 | 10
+      1981-01-01 | 15
+      1982-01-01 | 8
+      1983-01-01 | 10
+      … 15 more rows
+
+  panel medi02
+    title: rows of Patient by Patient.SEX
+    rows (3):
+      F | 1023
+      M | 202
+       | 13
+
+  panel medi03
+    title: rows of Laboratory by Laboratory.Date
+    rows (19):
+      1981-01-01 | 1009
+      1982-01-01 | 883
+      1983-01-01 | 1017
+      1984-01-01 | 941
+      1985-01-01 | 1271
+      1986-01-01 | 830
+      1987-01-01 | 382
+      1988-01-01 | 357
+      1989-01-01 | 260
+      1990-01-01 | 288
+      1991-01-01 | 500
+      1992-01-01 | 784
+      … 7 more rows
+
+  panel medi04
+    title: rows of Laboratory by Laboratory.RA
+    rows (6):
+      ∅ | 11053
+      - | 1684
+      + | 658
+      2+ | 323
+      +- | 189
+      7- | 1
+
+  panel medi05
+    title: rows of Laboratory by Patient.SEX
+    rows (3):
+      F | 11366
+      M | 2462
+       | 80
+
+  panel medi06
+    title: rows of Laboratory by Laboratory.U-PRO the twelve most
+    rows (12):
+      - | 4579
+      ∅ | 4241
+      0 | 2748
+      TR | 866
+      30 | 398
+      1 | 319
+      2 | 313
+      3 | 148
+      100 | 138
+      300 | 57
+      -15 | 37
+      4 | 21
+
+  panel medi07
+    title: rows of Examination by Examination.KCT
+    rows (3):
+      ∅ | 660
+      - | 105
+      + | 41
+
+  panel medi08
+    title: rows of Examination by Examination.LAC
+    rows (3):
+      ∅ | 584
+      - | 147
+      + | 75
+
+  panel medi09
+    title: rows of Examination by Examination.RVVT
+    rows (3):
+      ∅ | 660
+      - | 99
+      + | 47
+
+  panel medi10
+    title: rows of Examination by Patient (by key) the twelve most
+    rows (12):
+      ∅ | 36
+      5524440 | 2
+      5439690 | 2
+      5399200 | 2
+      5671450 | 2
+      5505150 | 2
+      5346280 | 2
+      5329900 | 2
+      14872 | 1
+      108788 | 1
+      122405 | 1
+      191207 | 1
+
+  panel medi11
+    title: rows of Laboratory by Patient (by key) the twelve most
+    rows (12):
+      2933261 | 226
+      3182521 | 200
+      444499 | 183
+      2315140 | 166
+      4884792 | 165
+      2343945 | 147
+      5122312 | 135
+      4790235 | 130
+      2370675 | 129
+      2395148 | 126
+      3362815 | 116
+      1066089 | 116
+
+  panel medi12
+    title: rows of Patient by Patient.Description
+    rows (7):
+      1991-01-01 | 80
+      1992-01-01 | 20
+      1993-01-01 | 2
+      1994-01-01 | 232
+      1996-01-01 | 140
+      1997-01-01 | 329
+      1998-01-01 | 219
+
+  panel medi13
+    title: rows of Laboratory by Patient.Admission
+    rows (3):
+      + | 7335
+      - | 6298
+       | 275
+
+  panel medi14
+    title: rows of Patient by Patient.Admission
+    rows (4):
+      - | 713
+      + | 488
+       | 34
+      +( | 3
+
+  panel medi15
+    title: largest tables, estimated rows
+    rows (3):
+      Laboratory | 13540
+      Patient | 1238
+      Examination | 806
+
+  panel medi16
+    title: rows of Examination by Examination.Examination Date
+    rows (9):
+      1989-01-01 | 2
+      1991-01-01 | 1
+      1992-01-01 | 9
+      1993-01-01 | 13
+      1994-01-01 | 24
+      1995-01-01 | 207
+      1996-01-01 | 263
+      1997-01-01 | 208
+      1998-01-01 | 69
+
+
+=== database: chinook ===
+Chinook 1.4.5: a digital media store — artists, albums, tracks, playlists, customers, employees, invoices and their lines; its sales randomly generated over four years, as its source says.
+
+  panel chin01
+    title: sum of invoice.total by invoice.invoice_date
+    rows (60):
+      2021-01-01 | 35.64
+      2021-02-01 | 37.62
+      2021-03-01 | 37.62
+      2021-04-01 | 37.62
+      2021-05-01 | 37.62
+      2021-06-01 | 37.62
+      2021-07-01 | 37.62
+      2021-08-01 | 37.62
+      2021-09-01 | 37.62
+      2021-10-01 | 37.62
+      2021-11-01 | 37.62
+      2021-12-01 | 37.62
+      … 48 more rows
+
+  panel chin02
+    title: rows of track by album.title the twelve most
+    rows (12):
+      Greatest Hits | 57
+      Minha Historia | 34
+      Unplugged | 30
+      Lost, Season 3 | 26
+      The Office, Season 3 | 25
+      Lost, Season 1 | 25
+      My Way: The Best Of Frank Sinatra [Disc  | 24
+      Battlestar Galactica (Classic), Season 1 | 24
+      Lost, Season 2 | 24
+      Heroes, Season 1 | 23
+      Instant Karma: The Amnesty International | 23
+      Afrociberdelia | 23
+
+  panel chin03
+    title: sum of invoice_line.unit_price × invoice_line.quantity by invoice.billing_country the twelve most
+    rows (12):
+      USA | 523.06
+      Canada | 303.96
+      France | 195.10
+      Brazil | 190.10
+      Germany | 156.48
+      United Kingdom | 112.86
+      Czech Republic | 90.24
+      Portugal | 77.24
+      India | 75.26
+      Chile | 46.62
+      Ireland | 45.62
+      Hungary | 45.62
+
+  panel chin04
+    title: rows of track by media_type.name
+    rows (5):
+      MPEG audio file | 3034
+      Protected AAC audio file | 237
+      Protected MPEG-4 video file | 214
+      AAC audio file | 11
+      Purchased AAC audio file | 7
+
+  panel chin05
+    title: sum of invoice.total by invoice.billing_country
+    rows (24):
+      USA | 523.06
+      Canada | 303.96
+      France | 195.10
+      Brazil | 190.10
+      Germany | 156.48
+      United Kingdom | 112.86
+      Czech Republic | 90.24
+      Portugal | 77.24
+      India | 75.26
+      Chile | 46.62
+      Ireland | 45.62
+      Hungary | 45.62
+      … 12 more rows
+
+  panel chin06
+    title: rows of track by media_type.name the twelve most
+    rows (5):
+      MPEG audio file | 3034
+      Protected AAC audio file | 237
+      Protected MPEG-4 video file | 214
+      AAC audio file | 11
+      Purchased AAC audio file | 7
+
+  panel chin07
+    title: rows of track by genre.name the twelve most
+    rows (12):
+      Rock | 1297
+      Latin | 579
+      Metal | 374
+      Alternative & Punk | 332
+      Jazz | 130
+      TV Shows | 93
+      Blues | 81
+      Classical | 74
+      Drama | 64
+      R&B/Soul | 61
+      Reggae | 58
+      Pop | 48
+
+  panel chin08
+    title: rows of invoice by invoice.billing_state the twelve most
+    rows (12):
+      ∅ | 202
+      CA | 21
+      SP | 21
+      ON | 14
+      NY | 7
+      TX | 7
+      AB | 7
+      NV | 7
+      Dublin | 7
+      RJ | 7
+      IL | 7
+      VV | 7
+
+  panel chin09
+    title: sum of invoice_line.unit_price × invoice_line.quantity by track.name the twelve most
+    rows (12):
+      The Woman King | 3.98
+      Pilot | 3.98
+      How to Stop an Exploding Man | 3.98
+      Hot Girl | 3.98
+      The Fix | 3.98
+      Gay Witch Hunt | 3.98
+      Phyllis's Wedding | 3.98
+      Walkabout | 3.98
+      Fire + Water | 1.99
+      Exposé | 1.99
+      Back from Vacation | 1.99
+      The Economist | 1.99
+
+  panel chin10
+    title: sum of invoice_line.unit_price × invoice_line.quantity by genre.name the twelve most
+    rows (12):
+      Rock | 826.65
+      Latin | 382.14
+      Metal | 261.36
+      Alternative & Punk | 241.56
+      TV Shows | 93.53
+      Jazz | 79.20
+      Blues | 60.39
+      Drama | 57.71
+      R&B/Soul | 40.59
+      Classical | 40.59
+      Sci Fi & Fantasy | 39.80
+      Reggae | 29.70
+
+  panel chin11
+    title: sum of invoice_line.unit_price by track.name the twelve most
+    rows (12):
+      The Woman King | 3.98
+      Pilot | 3.98
+      How to Stop an Exploding Man | 3.98
+      Hot Girl | 3.98
+      The Fix | 3.98
+      Gay Witch Hunt | 3.98
+      Phyllis's Wedding | 3.98
+      Walkabout | 3.98
+      Fire + Water | 1.99
+      Exposé | 1.99
+      Back from Vacation | 1.99
+      The Economist | 1.99
+
+  panel chin12
+    title: sum of invoice_line.unit_price × invoice_line.quantity by album.title the twelve most
+    rows (12):
+      Battlestar Galactica (Classic), Season 1 | 35.82
+      The Office, Season 3 | 31.84
+      Minha Historia | 26.73
+      Lost, Season 2 | 25.87
+      Heroes, Season 1 | 25.87
+      Greatest Hits | 25.74
+      Unplugged | 24.75
+      Battlestar Galactica, Season 3 | 23.88
+      Lost, Season 3 | 21.89
+      Acústico | 21.78
+      Lost, Season 1 | 19.90
+      Greatest Kiss | 19.80
+
+  panel chin13
+    title: sum of invoice_line.quantity by track.name the twelve most
+    rows (12):
+      Que Luz É Essa | 2
+      Geni E O Zepelim | 2
+      Big Wave | 2
+      Right On Time | 2
+      Norwegian Wood | 2
+      Sun King | 2
+      Run Silent Run Deep | 2
+      Snowblind | 2
+      Motorbreath | 2
+      Selvagem | 2
+      Bron-Y-Aur Stomp | 2
+      Voodoo | 2
+
+  panel chin14
+    title: rows of invoice_line per invoice
+    rows (6):
+      1 | 59
+      2 | 117
+      4 | 59
+      6 | 59
+      9 | 59
+      14 | 59
+
+  panel chin15
+    title: rows of invoice by invoice.invoice_date
+    rows (60):
+      2021-01-01 | 6
+      2021-02-01 | 7
+      2021-03-01 | 7
+      2021-04-01 | 7
+      2021-05-01 | 7
+      2021-06-01 | 7
+      2021-07-01 | 7
+      2021-08-01 | 7
+      2021-09-01 | 7
+      2021-10-01 | 7
+      2021-11-01 | 7
+      2021-12-01 | 7
+      … 48 more rows
+
+  panel chin16
+    title: sum of invoice_line.unit_price × invoice_line.quantity by invoice.invoice_date
+    rows (60):
+      2021-01-01 | 35.64
+      2021-02-01 | 37.62
+      2021-03-01 | 37.62
+      2021-04-01 | 37.62
+      2021-05-01 | 37.62
+      2021-06-01 | 37.62
+      2021-07-01 | 37.62
+      2021-08-01 | 37.62
+      2021-09-01 | 37.62
+      2021-10-01 | 37.62
+      2021-11-01 | 37.62
+      2021-12-01 | 37.62
+      … 48 more rows
+
+  panel chin17
+    title: sum of invoice_line.unit_price × invoice_line.quantity by media_type.name the twelve most
+    rows (5):
+      MPEG audio file | 1956.24
+      Protected MPEG-4 video file | 220.89
+      Protected AAC audio file | 144.54
+      Purchased AAC audio file | 3.96
+      AAC audio file | 2.97
+
+  panel chin18
+    title: sum of invoice_line.unit_price × invoice_line.quantity by invoice (by key) the twelve most
+    rows (12):
+      404 | 25.86
+      299 | 23.86
+      96 | 21.86
+      194 | 21.86
+      201 | 18.86
+      89 | 18.86
+      88 | 17.91
+      306 | 16.86
+      313 | 16.86
+      103 | 15.86
+      208 | 15.86
+      193 | 14.91
+
+
+=== database: northwind ===
+Northwind, Microsoft's sample shop, as pthom/northwind_psql ports it: orders and their details, products, customers, employees, shippers.
+
+  panel nort01
+    title: sum of orders.freight by shippers.company_name the twelve most
+    rows (3):
+      United Package | 28244.852
+      Federal Shipping | 20512.5
+      Speedy Express | 16185.328
+
+  panel nort02
+    title: rows of orders by orders.ship_country the twelve most
+    rows (12):
+      Germany | 122
+      USA | 122
+      Brazil | 83
+      France | 77
+      UK | 56
+      Venezuela | 46
+      Austria | 40
+      Sweden | 37
+      Canada | 30
+      Italy | 28
+      Mexico | 28
+      Spain | 23
+
+  panel nort03
+    title: sum of order_details.unit_price by products.product_name the twelve most
+    rows (12):
+      Côte de Blaye | 5902.4004
+      Thüringer Rostbratwurst | 3713.3809
+      Raclette Courdavault | 2761
+      Tarte au sucre | 2227.801
+      Manjimup Dried Apples | 1971.6
+      Gnocchi di nonna Alice | 1770.7999
+      Camembert Pierrot | 1638.8
+      Carnarvon Tigers | 1612.5
+      Rössle Sauerkraut | 1385.1995
+      Alice Mutton | 1349.4
+      Mozzarella di Giovanni | 1217.4
+      Sir Rodney's Marmalade | 1215
+
+  panel nort04
+    title: rows of employees by employees.hire_date
+    rows (8):
+      1992-04-01 | 1
+      1992-05-01 | 1
+      1992-08-01 | 1
+      1993-05-01 | 1
+      1993-10-01 | 2
+      1994-01-01 | 1
+      1994-03-01 | 1
+      1994-11-01 | 1
+
+  panel nort05
+    title: rows of orders by shippers.company_name the twelve most
+    rows (3):
+      United Package | 326
+      Federal Shipping | 255
+      Speedy Express | 249
+
+  panel nort06
+    title: sum of order_details.unit_price × order_details.quantity × (1 − order_details.discount) by products.product_name the twelve most
+    rows (12):
+      Côte de Blaye | 141396.7356273254
+      Thüringer Rostbratwurst | 80368.6724385033
+      Raclette Courdavault | 71155.69990943
+      Tarte au sucre | 47234.969978504174
+      Camembert Pierrot | 46825.48029542655
+      Gnocchi di nonna Alice | 42593.0598222503
+      Manjimup Dried Apples | 41819.65024582073
+      Alice Mutton | 32698.380216373203
+      Carnarvon Tigers | 29171.874963399023
+      Rössle Sauerkraut | 25696.63978933155
+      Mozzarella di Giovanni | 24900.12939154029
+      Ipoh Coffee | 23526.699842727183
+
+  panel nort07
+    title: rows of orders by orders.required_date
+    rows (24):
+      1996-07-01 | 1
+      1996-08-01 | 25
+      1996-09-01 | 22
+      1996-10-01 | 27
+      1996-11-01 | 23
+      1996-12-01 | 24
+      1997-01-01 | 34
+      1997-02-01 | 27
+      1997-03-01 | 31
+      1997-04-01 | 33
+      1997-05-01 | 32
+      1997-06-01 | 29
+      … 12 more rows
+
+  panel nort08
+    title: rows of orders by employees (by key) the twelve most
+    rows (9):
+      4 | 156
+      3 | 127
+      1 | 123
+      8 | 104
+      2 | 96
+      7 | 72
+      6 | 67
+      9 | 43
+      5 | 42
+
+  panel nort09
+    title: rows of orders by orders.shipped_date
+    rows (23):
+      1996-07-01 | 17
+      1996-08-01 | 23
+      1996-09-01 | 21
+      1996-10-01 | 30
+      1996-11-01 | 20
+      1996-12-01 | 32
+      1997-01-01 | 33
+      1997-02-01 | 27
+      1997-03-01 | 32
+      1997-04-01 | 30
+      1997-05-01 | 32
+      1997-06-01 | 30
+      … 11 more rows
+
+  panel nort10
+    title: largest tables, estimated rows
+    rows (10):
+      order_details | 2155
+      orders | 830
+      customers | 91
+      products | 77
+      territories | 53
+      us_states | 51
+      employee_territories | 49
+      suppliers | 29
+      employees | 9
+      categories | 8
+
+  panel nort11
+    title: rows of orders by customers.company_name the twelve most
+    rows (12):
+      Save-a-lot Markets | 31
+      Ernst Handel | 30
+      QUICK-Stop | 28
+      Folk och fä HB | 19
+      Hungry Owl All-Night Grocers | 19
+      Berglunds snabbköp | 18
+      HILARION-Abastos | 18
+      Rattlesnake Canyon Grocery | 18
+      Bon app' | 17
+      Lehmanns Marktstand | 15
+      Wartian Herkku | 15
+      Frankenversand | 15
+
+  panel nort12
+    title: rows of orders by shippers.company_name
+    rows (3):
+      United Package | 326
+      Federal Shipping | 255
+      Speedy Express | 249
+
+  panel nort13
+    title: rows of orders by orders.ship_city the twelve most
+    rows (12):
+      Rio de Janeiro | 34
+      London | 33
+      Sao Paulo | 31
+      Boise | 31
+      Graz | 30
+      México D.F. | 28
+      Cunewalde | 28
+      Bräcke | 19
+      Cork | 19
+      Luleå | 18
+      San Cristóbal | 18
+      Albuquerque | 18
+
+  panel nort14
+    title: sum of order_details.unit_price by orders.ship_country
+    rows (21):
+      USA | 10462.911
+      Germany | 8544.839
+      Brazil | 5324.6396
+      France | 4839.4595
+      Austria | 3469.9497
+      UK | 3116.8706
+      Sweden | 2486.4902
+      Venezuela | 2434.9097
+      Canada | 1907.5002
+      Mexico | 1818.9799
+      Ireland | 1719.8602
+      Belgium | 1341.98
+      … 9 more rows
+
+  panel nort15
+    title: sum of orders.freight by orders.order_date
+    rows (23):
+      1996-07-01 | 1288.18
+      1996-08-01 | 1397.17
+      1996-09-01 | 1123.48
+      1996-10-01 | 1520.5898
+      1996-11-01 | 2151.86
+      1996-12-01 | 2798.59
+      1997-01-01 | 2238.98
+      1997-02-01 | 1601.4497
+      1997-03-01 | 1888.81
+      1997-04-01 | 2939.1003
+      1997-05-01 | 3461.3992
+      1997-06-01 | 1852.6501
+      … 11 more rows
+
+  panel nort16
+    title: rows of orders by orders.order_date
+    rows (23):
+      1996-07-01 | 22
+      1996-08-01 | 25
+      1996-09-01 | 23
+      1996-10-01 | 26
+      1996-11-01 | 25
+      1996-12-01 | 31
+      1997-01-01 | 33
+      1997-02-01 | 29
+      1997-03-01 | 30
+      1997-04-01 | 31
+      1997-05-01 | 32
+      1997-06-01 | 30
+      … 11 more rows
+
+  panel nort17
+    title: sum of order_details.quantity by products.product_name the twelve most
+    rows (12):
+      Camembert Pierrot | 1577
+      Raclette Courdavault | 1496
+      Gorgonzola Telino | 1397
+      Gnocchi di nonna Alice | 1263
+      Pavlova | 1158
+      Rhönbräu Klosterbier | 1155
+      Guaraná Fantástica | 1125
+      Boston Crab Meat | 1103
+      Tarte au sucre | 1083
+      Chang | 1057
+      Flotemysost | 1057
+      Sir Rodney's Scones | 1016
+
+  panel nort18
+    title: sum of order_details.unit_price × order_details.quantity × (1 − order_details.discount) by orders (by key) the twelve most
+    rows (12):
+      10865 | 16387.49998714775
+      10981 | 15810
+      11030 | 12615.050067901611
+      10889 | 11380
+      10417 | 11188.400139808655
+      10817 | 10952.84492739618
+      10897 | 10835.240051269531
+      10479 | 10495.60012435913
+      10540 | 10191.699981689453
+      10691 | 10164.800018310547
+      10515 | 9921.300194740295
+      10372 | 9210.900135040283
+
+
+=== database: world ===
+Countries, their cities and the languages spoken in each, as CTU serves it. A look fixture of round 1d.
+
+  panel worl01
+    title: rows of Country by Country.HeadOfState the twelve most
+    rows (12):
+      Elisabeth II | 35
+      Jacques Chirac | 11
+      George W. Bush | 7
+      Beatrix | 3
+      Margrethe II | 3
+      Jiang Zemin | 3
+      Harald V | 3
+       | 2
+      Mohammad Omar | 1
+      Robert G. Mugabe | 1
+      Rexhep Mejdani | 1
+      Robert Kotšarjan | 1
+
+  panel worl02
+    title: rows of Country by Country.Continent
+    rows (7):
+      Africa | 58
+      Asia | 51
+      Europe | 46
+      North America | 37
+      Oceania | 28
+      South America | 14
+      Antarctica | 5
+
+  panel worl03
+    title: rows of City by Country.HeadOfState the twelve most
+    rows (12):
+      Jiang Zemin | 366
+      Kocheril Raman Narayanan | 341
+      George W. Bush | 289
+      Fernando Henrique Cardoso | 250
+      Akihito | 248
+      Vladimir Putin | 189
+      Elisabeth II | 187
+      Vicente Fox Quesada | 173
+      Gloria Macapagal-Arroyo | 136
+      Johannes Rau | 93
+      Abdurrahman Wahid | 85
+      Kim Dae-jung | 70
+
+  panel worl04
+    title: rows of Country by Country.LocalName the twelve most
+    rows (12):
+      Aruba | 1
+      Afganistan/Afqanestan | 1
+      Angola | 1
+      Anguilla | 1
+      Shqipëria | 1
+      Andorra | 1
+      Nederlandse Antillen | 1
+      Al-Imarat al-´Arabiya al-Muttahida | 1
+      Argentina | 1
+      Hajastan | 1
+      Amerika Samoa | 1
+      – | 1
+
+  panel worl05
+    title: rows of CountryLanguage by Country.Continent
+    rows (6):
+      Africa | 310
+      Asia | 239
+      Europe | 202
+      North America | 109
+      Oceania | 82
+      South America | 42
+
+  panel worl06
+    title: rows of CountryLanguage by Country (by key) the twelve most
+    rows (12):
+      USA | 12
+      IND | 12
+      CHN | 12
+      CAN | 12
+      RUS | 12
+      TZA | 11
+      ZAF | 11
+      PHL | 10
+      MOZ | 10
+      IRN | 10
+      NGA | 10
+      KEN | 10
+
+  panel worl07
+    title: rows of Country by Country.GovernmentForm the twelve most
+    rows (12):
+      Republic | 122
+      Constitutional Monarchy | 29
+      Federal Republic | 15
+      Dependent Territory of the UK | 12
+      Monarchy | 5
+      Overseas Department of France | 4
+      Territory of Australia | 4
+      Nonmetropolitan Territory of France | 4
+      Constitutional Monarchy, Federation | 4
+      Nonmetropolitan Territory of New Zealand | 3
+      US Territory | 3
+      Socialistic Republic | 3
+
+  panel worl08
+    title: rows of CountryLanguage by CountryLanguage.IsOfficial
+    rows (2):
+      F | 746
+      T | 238
+
+  panel worl09
+    title: rows of Country by Country.Region the twelve most
+    rows (12):
+      Caribbean | 24
+      Eastern Africa | 20
+      Middle East | 18
+      Western Africa | 17
+      Southern Europe | 15
+      Southern and Central Asia | 14
+      South America | 14
+      Southeast Asia | 11
+      Polynesia | 10
+      Eastern Europe | 10
+      Central Africa | 9
+      Western Europe | 9
+
+  panel worl10
+    title: rows of City by Country.Continent
+    rows (6):
+      Asia | 1766
+      Europe | 841
+      North America | 581
+      South America | 470
+      Africa | 366
+      Oceania | 55
+
+  panel worl11
+    title: rows of Country by Country.Region
+    rows (25):
+      Caribbean | 24
+      Eastern Africa | 20
+      Middle East | 18
+      Western Africa | 17
+      Southern Europe | 15
+      Southern and Central Asia | 14
+      South America | 14
+      Southeast Asia | 11
+      Eastern Europe | 10
+      Polynesia | 10
+      Western Europe | 9
+      Central Africa | 9
+      … 13 more rows
+
+  panel worl12
+    title: rows of Country by Country.IndepYear
+    rows (88):
+      -1523 | 1
+      -1000 | 1
+      -660 | 1
+      800 | 1
+      836 | 1
+      843 | 1
+      885 | 1
+      1066-01-01 | 1
+      1143-01-01 | 1
+      1278-01-01 | 1
+      1350-01-01 | 1
+      1492-01-01 | 1
+      … 76 more rows
+
+  panel worl13
+    title: rows of City by Country.GovernmentForm the twelve most
+    rows (12):
+      Federal Republic | 1510
+      Republic | 1350
+      Constitutional Monarchy | 518
+      People'sRepublic | 363
+      Constitutional Monarchy, Federation | 90
+      Islamic Republic | 79
+      Socialistic Republic | 49
+      Monarchy | 28
+      Dependent Territory of the UK | 12
+      Commonwealth of the US | 10
+      Autonomous Area | 6
+      Monarchy (Sultanate) | 6
+
+  panel worl14
+    title: rows of Country by Country.Name the twelve most
+    rows (12):
+      Aruba | 1
+      Afghanistan | 1
+      Angola | 1
+      Anguilla | 1
+      Albania | 1
+      Andorra | 1
+      Netherlands Antilles | 1
+      United Arab Emirates | 1
+      Argentina | 1
+      Armenia | 1
+      American Samoa | 1
+      Antarctica | 1
+
+  panel worl15
+    title: largest tables, estimated rows
+    rows (3):
+      City | 4188
+      CountryLanguage | 984
+      Country | 239
+
+  panel worl16
+    title: rows of City by Country.Region the twelve most
+    rows (12):
+      Eastern Asia | 740
+      Southern and Central Asia | 555
+      South America | 470
+      Eastern Europe | 371
+      North America | 327
+      Southeast Asia | 297
+      Central America | 196
+      Western Europe | 186
+      Middle East | 174
+      Southern Europe | 156
+      Western Africa | 105
+      Northern Africa | 102
+
+  panel worl17
+    title: rows of City by Country (by key) the twelve most
+    rows (12):
+      CHN | 363
+      IND | 341
+      USA | 274
+      BRA | 250
+      JPN | 248
+      RUS | 189
+      MEX | 173
+      PHL | 136
+      DEU | 93
+      IDN | 85
+      GBR | 81
+      KOR | 70
+
+
+=== database: lahman ===
+Sean Lahman's baseball database to 2014 as CTU serves it: players, teams, batting, pitching, fielding, salaries and awards by season.
+
+  panel lahm01
+    title: rows of players by players.birthCountry the twelve most
+    rows (12):
+      USA | 14524
+      D.R. | 411
+      ∅ | 278
+      P.R. | 215
+      CAN | 205
+      Venezuela | 181
+      Cuba | 150
+      Mexico | 98
+      Panama | 45
+      Ireland | 40
+      England | 32
+      Japan | 32
+
+  panel lahm02
+    title: rows of pitching by pitching.lgID
+    rows (7):
+      NL | 19973
+      AL | 18275
+      AA | 656
+      FL | 173
+      NA | 131
+      UA | 96
+      PL | 57
+
+  panel lahm03
+    title: rows of batting by teams.name the twelve most
+    rows (0):
+      
+      error: MySqlError { ERROR 3024 (HY000): Query execution was interrupted, maximum statement execution time exceeded }
+
+  panel lahm04
+    title: rows of batting by batting.lgID
+    rows (7):
+      NL | 46844
+      AL | 41940
+      AA | 1888
+      NA | 735
+      FL | 469
+      UA | 330
+      PL | 147
+
+  panel lahm05
+    title: rows of players by players.throws
+    rows (3):
+      R | 12377
+      L | 3074
+      ∅ | 956
+
+  panel lahm06
+    title: rows of players by players.bats
+    rows (4):
+      R | 10039
+      L | 4177
+      ∅ | 1193
+      B | 998
+
+  panel lahm07
+    title: rows of fielding by fielding.yearID
+    rows (142):
+      1871-01-01 | 211
+      1872-01-01 | 249
+      1873-01-01 | 234
+      1874-01-01 | 226
+      1875-01-01 | 411
+      1876-01-01 | 211
+      1877-01-01 | 160
+      1878-01-01 | 126
+      1879-01-01 | 216
+      1880-01-01 | 227
+      1881-01-01 | 225
+      1882-01-01 | 444
+      … 130 more rows
+
+  panel lahm08
+    title: rows of players by players.deathCountry
+    rows (26):
+      USA | 8143
+      ∅ | 8105
+      CAN | 58
+      Cuba | 21
+      Mexico | 16
+      Venezuela | 15
+      D.R. | 12
+      P.R. | 10
+      France | 4
+      Bahamas | 4
+      Philippines | 3
+      Austria | 2
+      … 14 more rows
+
+  panel lahm09
+    title: rows of schoolsplayers by schools.schoolName the twelve most
+    rows (12):
+      University of Southern California | 98
+      University of Texas at Austin | 92
+      Arizona State University | 83
+      College of the Holy Cross | 75
+      Stanford University | 73
+      University of Michigan | 71
+      University of Illinois at Urbana-Champai | 67
+      University of Notre Dame | 66
+      University of California, Los Angeles | 60
+      Saint Mary's College of California | 60
+      University of Arizona | 56
+      Fordham University | 56
+
+  panel lahm10
+    title: rows of fielding by fielding.lgID
+    rows (7):
+      NL | 67520
+      AL | 64572
+      AA | 3155
+      NA | 1331
+      FL | 598
+      UA | 568
+      PL | 231
+
+  panel lahm11
+    title: rows of teams by teams.lgID
+    rows (7):
+      NL | 1384
+      AL | 1160
+      AA | 85
+      NA | 50
+      FL | 16
+      UA | 12
+      PL | 8
+
+  panel lahm12
+    title: sum of halloffame.votes by halloffame.votedBy
+    rows (9):
+      BBWAA | 179325
+      Nominating Vote | 1691
+      Run Off | 1531
+      Veterans | 286
+      Final Ballot | 277
+      Old Timers | ∅
+      Negro League | ∅
+      Centennial | ∅
+      Special Election | ∅
+
+  panel lahm13
+    title: rows of teams by teams.yearID
+    rows (142):
+      1871-01-01 | 9
+      1872-01-01 | 11
+      1873-01-01 | 9
+      1874-01-01 | 8
+      1875-01-01 | 13
+      1876-01-01 | 8
+      1877-01-01 | 6
+      1878-01-01 | 6
+      1879-01-01 | 8
+      1880-01-01 | 8
+      1881-01-01 | 8
+      1882-01-01 | 14
+      … 130 more rows
+
+  panel lahm14
+    title: rows of batting by batting.yearID
+    rows (142):
+      1871-01-01 | 115
+      1872-01-01 | 156
+      1873-01-01 | 125
+      1874-01-01 | 122
+      1875-01-01 | 217
+      1876-01-01 | 124
+      1877-01-01 | 96
+      1878-01-01 | 80
+      1879-01-01 | 127
+      1880-01-01 | 135
+      1881-01-01 | 132
+      1882-01-01 | 251
+      … 130 more rows
+
+  panel lahm15
+    title: rows of players by halloffame (by key) the twelve most
+    rows (12):
+      ∅ | 15287
+      aaronha01h | 1
+      abbotji01h | 1
+      adamsba01h | 1
+      adamsbo03h | 1
+      adamssp01h | 1
+      ageeto01h | 1
+      aguilri01h | 1
+      akerja01h | 1
+      alexado01h | 1
+      alexape01h | 1
+      allenbe01h | 1
+
+  panel lahm16
+    title: rows of teams by teamsfranchises.franchName the twelve most
+    rows (12):
+      Chicago Cubs | 137
+      Atlanta Braves | 137
+      Pittsburgh Pirates | 131
+      St. Louis Cardinals | 131
+      Cincinnati Reds | 131
+      San Francisco Giants | 130
+      Philadelphia Phillies | 130
+      Los Angeles Dodgers | 129
+      Boston Red Sox | 112
+      Cleveland Indians | 112
+      Chicago White Sox | 112
+      New York Yankees | 112
+
+  panel lahm17
+    title: rows of pitching by pitching.yearID
+    rows (142):
+      1871-01-01 | 19
+      1872-01-01 | 23
+      1873-01-01 | 25
+      1874-01-01 | 17
+      1875-01-01 | 47
+      1876-01-01 | 34
+      1877-01-01 | 19
+      1878-01-01 | 22
+      1879-01-01 | 26
+      1880-01-01 | 33
+      1881-01-01 | 31
+      1882-01-01 | 74
+      … 130 more rows
+
+  panel lahm18
+    title: rows of players by players.birthState the twelve most
+    rows (12):
+      CA | 1797
+      ∅ | 1578
+      PA | 1320
+      NY | 1105
+      IL | 976
+      OH | 952
+      TX | 702
+      MA | 635
+      MO | 549
+      MI | 403
+      NJ | 375
+      NC | 367
+
+  panel lahm19
+    title: rows of els_teamnames by els_teamnames.lgid
+    rows (7):
+      NL | 140
+      AL | 79
+      AA | 37
+      NA | 27
+      UA | 12
+      FL | 11
+      PL | 8

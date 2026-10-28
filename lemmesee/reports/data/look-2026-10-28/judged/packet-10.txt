@@ -1,0 +1,1166 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: sfscores ===
+San Francisco's restaurant inspections: businesses, inspection scores and the violations found, as CTU serves it. A look fixture of round 1d.
+
+  panel sfscb01
+    title: rows of businesses by businesses.postal_code the twelve most
+    rows (12):
+      94110 | 588
+      94103 | 575
+      94102 | 494
+      94133 | 447
+      94109 | 436
+      94107 | 341
+      94111 | 275
+      94122 | 265
+      94108 | 252
+      94118 | 245
+      94115 | 231
+      94105 | 226
+
+  panel sfscb02
+    title: rows of violations by businesses.postal_code the twelve most
+    rows (12):
+      94133 | 3760
+      94110 | 3234
+      94103 | 3196
+      94109 | 3116
+      94102 | 2487
+      94122 | 1927
+      94108 | 1549
+      94112 | 1494
+      94118 | 1456
+      94107 | 1449
+      94123 | 1377
+      94121 | 1303
+
+  panel sfscb03
+    title: rows of inspections by inspections.date
+    rows (38):
+      2013-10-01 | 594
+      2013-11-01 | 620
+      2013-12-01 | 524
+      2014-01-01 | 643
+      2014-02-01 | 809
+      2014-03-01 | 903
+      2014-04-01 | 906
+      2014-05-01 | 903
+      2014-06-01 | 923
+      2014-07-01 | 513
+      2014-08-01 | 637
+      2014-09-01 | 632
+      … 26 more rows
+
+  panel sfscb04
+    title: rows of inspections by businesses.tax_code the twelve most
+    rows (12):
+      H25 | 6366
+      H24 | 6027
+      H26 | 4919
+      H07 | 1592
+      H28 | 1573
+      H79 | 623
+      H29 | 315
+      H88 | 271
+      H36 | 263
+      H87 | 212
+      H30 | 194
+      H91 | 176
+
+  panel sfscb05
+    title: rows of businesses by businesses.tax_code the twelve most
+    rows (12):
+      H24 | 1346
+      H25 | 1299
+      H26 | 1026
+      H03 | 409
+      H07 | 369
+      H28 | 348
+      H86 | 314
+      H79 | 199
+      H74 | 110
+      H34 | 104
+      H01 | 93
+      H29 | 66
+
+  panel sfscb06
+    title: rows of inspections by businesses.owner_state the twelve most
+    rows (12):
+      CA | 22495
+      SC | 193
+      WA | 180
+      TX | 139
+      CO | 111
+      IL | 102
+      NY | 69
+      South Carolina | 62
+      MD | 45
+      California | 30
+      OH | 30
+      DC | 27
+
+  panel sfscb07
+    title: rows of inspections by businesses.postal_code the twelve most
+    rows (12):
+      94110 | 2185
+      94103 | 1910
+      94133 | 1849
+      94109 | 1660
+      94102 | 1637
+      94118 | 1207
+      94107 | 1173
+      94122 | 1151
+      94111 | 1041
+      94108 | 941
+      94121 | 892
+      94112 | 891
+
+  panel sfscb08
+    title: rows of violations by businesses.owner_state the twelve most
+    rows (12):
+      CA | 34766
+      TX | 162
+      WA | 147
+      CO | 144
+      SC | 122
+      IL | 98
+      NY | 72
+      MD | 47
+      OH | 44
+      California | 37
+      FL | 32
+      ID | 31
+
+  panel sfscb09
+    title: rows of violations by businesses.city the twelve most
+    rows (12):
+      San Francisco | 13135
+      SF | 11980
+      ∅ | 5978
+      S.F. | 4611
+      SF. | 224
+      CA | 27
+      SAN FRANCICSO | 23
+      San Francisco, CA | 22
+      San Franciisco | 12
+      SF, CA 94110 | 8
+      San Francsico | 7
+      San Franicisco | 7
+
+  panel sfscb10
+    title: rows of violations by violations.risk_category
+    rows (3):
+      Low Risk | 18576
+      Moderate Risk | 12372
+      High Risk | 5102
+
+  panel sfscb11
+    title: average of inspections.score by businesses.owner_state the twelve most
+    rows (12):
+      NM | 100.0000
+      TN | 99.0000
+      NE | 99.0000
+      South Carolina | 98.1778
+      OR | 98.0000
+      Washington | 98.0000
+      GA | 97.5000
+      SF | 97.4286
+      UT | 97.2500
+      SC | 97.2424
+      Quebec | 96.6250
+      QC | 96.5000
+
+  panel sfscb12
+    title: rows of businesses by businesses.application_date
+    rows (50):
+      1899-01-01 | 3
+      1968-01-01 | 1
+      1969-01-01 | 1
+      1970-01-01 | 1
+      1972-01-01 | 1
+      1973-01-01 | 1
+      1974-01-01 | 2
+      1975-01-01 | 2
+      1976-01-01 | 3
+      1977-01-01 | 2
+      1978-01-01 | 7
+      1979-01-01 | 1
+      … 38 more rows
+
+  panel sfscb13
+    title: rows of violations by violations.date split by violations.risk_category
+    rows (111):
+      2013-10-01 | High Risk | 125
+      2013-10-01 | Low Risk | 458
+      2013-10-01 | Moderate Risk | 312
+      2013-11-01 | High Risk | 134
+      2013-11-01 | Low Risk | 501
+      2013-11-01 | Moderate Risk | 349
+      2013-12-01 | High Risk | 99
+      2013-12-01 | Low Risk | 481
+      2013-12-01 | Moderate Risk | 300
+      2014-01-01 | High Risk | 105
+      2014-01-01 | Low Risk | 549
+      2014-01-01 | Moderate Risk | 323
+      … 99 more rows
+
+  panel sfscb14
+    title: rows of businesses by businesses.name the twelve most
+    rows (12):
+      PEET'S COFFEE & TEA | 24
+      STARBUCKS COFFEE | 21
+      STARBUCKS | 14
+      SAN FRANCISCO SOUP COMPANY | 10
+      MCDONALD'S | 10
+      LEE'S DELI | 9
+      AT&T PARK - Food Cart | 9
+      Specialty's Cafe & Bakery | 9
+      Juice Shop | 7
+      Subway Sandwiches | 7
+      Whole Foods Market | 7
+      Bon Appetit @ Twitter | 7
+
+  panel sfscb15
+    title: average of inspections.score by inspections.type the twelve most
+    rows (12):
+      New Ownership | 100.0000
+      Routine - Unscheduled | 90.6769
+      Reinspection/Followup | 85.0000
+      Complaint Reinspection/Followup | ∅
+      Non-inspection site visit | ∅
+      Complaint | ∅
+      New Construction | ∅
+      Foodborne Illness Investigation | ∅
+      Routine - Scheduled | ∅
+      Structural Inspection | ∅
+      Special Event | ∅
+      Administrative or Document Review | ∅
+
+  panel sfscb16
+    title: rows of inspections per businesses
+    rows (18):
+      1 | 360
+      2 | 705
+      3 | 940
+      4 | 976
+      5 | 745
+      6 | 501
+      7 | 375
+      8 | 256
+      9 | 134
+      10 | 75
+      11 | 48
+      12 | 44
+      … 6 more rows
+
+  panel sfscb17
+    title: rows of inspections by businesses (by key) the twelve most
+    rows (12):
+      80243 | 18
+      65050 | 18
+      489 | 18
+      81264 | 17
+      5925 | 17
+      7643 | 17
+      33093 | 16
+      80479 | 16
+      67154 | 16
+      3115 | 16
+      33911 | 16
+      66808 | 15
+
+  panel sfscb18
+    title: rows of inspections by businesses.city the twelve most
+    rows (12):
+      SF | 8129
+      San Francisco | 7461
+      ∅ | 5473
+      S.F. | 2436
+      SF. | 155
+      CA | 32
+      SAN FRANCICSO | 14
+      San Francisco, CA | 13
+      San Franciisco | 11
+      Sand Francisco | 9
+      San Franicisco | 6
+      SF, CA 94110 | 5
+
+  panel sfscb19
+    title: rows of inspections by inspections.type the twelve most
+    rows (12):
+      Routine - Unscheduled | 13007
+      Reinspection/Followup | 4758
+      New Ownership | 1739
+      New Construction | 1662
+      Complaint | 1474
+      Non-inspection site visit | 728
+      Structural Inspection | 153
+      Complaint Reinspection/Followup | 124
+      Foodborne Illness Investigation | 73
+      Routine - Scheduled | 35
+      Special Event | 7
+      Administrative or Document Review | 3
+
+  panel sfscb20
+    title: rows of businesses by businesses.owner_name the twelve most
+    rows (12):
+      Volume Services, Inc. | 43
+      STARBUCKS COFFEE CO | 15
+      Starbucks Corporation | 13
+      STARBUCKS COFFEE CO. | 13
+      BON APPETIT MANAGEMENT COMPANY | 13
+      RA CENTER LLC | 12
+      STARBUCKS COFFEE COMPANY | 12
+      Au Energy, LLC | 10
+      SMG Food and Beverage LLC | 10
+      Garfield Beach CVS, LLC | 9
+      Bon Appetit Management Co | 9
+      Target Corporation | 8
+
+  panel sfscb21
+    title: average of inspections.score by businesses.city the twelve most
+    rows (12):
+      HAYWARD | 100.0000
+      SAN BRUNO | 100.0000
+      SF, CA | 98.0000
+      san Francisco CA | 98.0000
+      San Francisco, | 95.0000
+      San Franciisco | 94.4000
+      San Franicisco | 94.0000
+      CA | 93.1538
+      SF , CA | 93.0000
+      SF, CA 94115 | 92.0000
+      ∅ | 91.9800
+      San Francisco, CA | 91.6667
+
+  panel sfscb22
+    title: sum of businesses.business_certificate by businesses.application_date
+    rows (50):
+      1899-01-01 | 1375436
+      1968-01-01 | 52911
+      1969-01-01 | 72249
+      1970-01-01 | 59036
+      1972-01-01 | 49670
+      1973-01-01 | 7451600
+      1974-01-01 | 102195
+      1975-01-01 | 190941
+      1976-01-01 | 277550
+      1977-01-01 | 1219262
+      1978-01-01 | 2383293
+      1979-01-01 | 118796
+      … 38 more rows
+
+  panel sfscb23
+    title: rows of businesses by businesses.owner_state the twelve most
+    rows (12):
+      CA | 5995
+      SC | 48
+      WA | 38
+      IL | 34
+      NY | 29
+      CO | 25
+      TX | 23
+      MD | 19
+      South Carolina | 15
+      RI | 14
+      FL | 12
+      MN | 10
+
+  panel sfscb24
+    title: average of inspections.score by businesses (by key) the twelve most
+    rows (12):
+      1699 | 100.0000
+      323 | 100.0000
+      389 | 100.0000
+      1269 | 100.0000
+      1413 | 100.0000
+      1469 | 100.0000
+      1188 | 100.0000
+      2218 | 100.0000
+      1520 | 100.0000
+      1673 | 100.0000
+      1555 | 100.0000
+      216 | 100.0000
+
+  panel sfscb25
+    title: average of inspections.score by inspections.date
+    rows (38):
+      2013-10-01 | 91.6986
+      2013-11-01 | 91.1180
+      2013-12-01 | 90.9838
+      2014-01-01 | 91.3020
+      2014-02-01 | 91.4949
+      2014-03-01 | 91.8203
+      2014-04-01 | 92.0929
+      2014-05-01 | 91.3429
+      2014-06-01 | 91.5228
+      2014-07-01 | 90.0711
+      2014-08-01 | 90.6053
+      2014-09-01 | 91.0531
+      … 26 more rows
+
+  panel sfscb26
+    title: rows of violations by businesses (by key) the twelve most
+    rows (12):
+      75139 | 42
+      489 | 39
+      1833 | 36
+      70996 | 36
+      71385 | 34
+      37882 | 34
+      7643 | 34
+      3115 | 33
+      69799 | 33
+      4614 | 32
+      7216 | 32
+      60115 | 32
+
+  panel sfscb27
+    title: rows of violations by businesses.tax_code the twelve most
+    rows (12):
+      H25 | 10557
+      H24 | 9147
+      H26 | 7703
+      H28 | 2408
+      H07 | 2382
+      H79 | 911
+      H88 | 496
+      H29 | 468
+      H87 | 251
+      H30 | 227
+      H08 | 192
+      H91 | 184
+
+  panel sfscb28
+    title: rows of violations by violations.date
+    rows (37):
+      2013-10-01 | 895
+      2013-11-01 | 984
+      2013-12-01 | 880
+      2014-01-01 | 977
+      2014-02-01 | 1292
+      2014-03-01 | 1343
+      2014-04-01 | 1396
+      2014-05-01 | 1414
+      2014-06-01 | 1523
+      2014-07-01 | 664
+      2014-08-01 | 879
+      2014-09-01 | 875
+      … 25 more rows
+
+  panel sfscb29
+    title: rows of businesses by businesses.owner_state
+    rows (50):
+      CA | 5995
+      SC | 48
+      WA | 38
+      IL | 34
+      NY | 29
+      CO | 25
+      TX | 23
+      MD | 19
+      South Carolina | 15
+      RI | 14
+      FL | 12
+      MN | 10
+      … 38 more rows
+
+  panel sfscb30
+    title: rows of violations by violations.violation_type_id the twelve most
+    rows (12):
+      103154 | 3141
+      103120 | 2428
+      103119 | 2213
+      103144 | 2126
+      103149 | 2050
+      103124 | 2039
+      103139 | 1912
+      103142 | 1777
+      103133 | 1703
+      103103 | 1472
+      103131 | 1309
+      103157 | 1062
+
+  panel sfscb31
+    title: rows of businesses by businesses.city the twelve most
+    rows (12):
+      SF | 2024
+      San Francisco | 1951
+      ∅ | 1647
+      S.F. | 678
+      SF. | 32
+      CA | 5
+      San Francisco, CA | 3
+      SAN FRANCICSO | 1
+      SO. SAN FRANCISCO | 1
+      HAYWARD | 1
+      SAN BRUNO | 1
+      San Francisco, | 1
+
+  panel sfscb32
+    title: rows of violations by violations.description the twelve most
+    rows (12):
+      Unclean or degraded floors walls or ceil | 3141
+      Moderate risk food holding temperature | 2428
+      Inadequate and inaccessible handwashing  | 2213
+      Unapproved or unmaintained equipment or  | 2126
+      Wiping cloths not clean or properly stor | 2050
+      Inadequately cleaned or sanitized food c | 2039
+      Improper food storage | 1912
+      Unclean nonfood contact surfaces | 1777
+      Foods not protected from contamination | 1703
+      High risk food holding temperature | 1472
+      Moderate risk vermin infestation | 1309
+      Food safety certificate or food handler  | 1062
+
+
+=== database: movielens ===
+Movies, actors, directors, users and their ratings, from IMDb and MovieLens, as CTU serves it. A look fixture of round 1d.
+
+  panel movib01
+    title: rows of u2base by movies.country
+    rows (4):
+      USA | 822782
+      UK | 87745
+      other | 65737
+      France | 19895
+
+  panel movib02
+    title: average of movies.runningtime by movies.country
+    rows (4):
+      France | 2.1667
+      UK | 2.0573
+      USA | 1.9802
+      other | 1.9435
+
+  panel movib03
+    title: rows of movies2actors by movies.isEnglish
+    rows (2):
+      T | 126395
+      F | 11954
+
+  panel movib04
+    title: sum of movies.runningtime by movies.country
+    rows (4):
+      USA | 5396
+      other | 1032
+      UK | 790
+      France | 416
+
+  panel movib05
+    title: rows of u2base by users.occupation
+    rows (5):
+      2 | 253928
+      5 | 243497
+      1 | 176863
+      4 | 166025
+      3 | 155846
+
+  panel movib06
+    title: rows of movies2actors by actors.a_gender
+    rows (2):
+      M | 95279
+      F | 43070
+
+  panel movib07
+    title: rows of movies2directors by movies.isEnglish
+    rows (2):
+      T | 3692
+      F | 449
+
+  panel movib08
+    title: sum of actors.a_quality by actors.a_gender
+    rows (2):
+      M | 192758
+      F | 96107
+
+  panel movib09
+    title: rows of u2base by users.u_gender
+    rows (2):
+      M | 750799
+      F | 245360
+
+  panel movib10
+    title: average of movies.runningtime by movies.year
+    rows (4):
+      1 | 0.7400
+      2 | 1.8452
+      3 | 2.1081
+      4 | 2.0000
+
+  panel movib11
+    title: rows of u2base by movies.isEnglish
+    rows (2):
+      T | 964564
+      F | 31595
+
+  panel movib12
+    title: sum of movies.runningtime by movies.isEnglish
+    rows (2):
+      T | 6785
+      F | 849
+
+  panel movib13
+    title: rows of movies by movies.year split by movies.country
+    rows (16):
+      1 | France | 1
+      1 | other | 5
+      1 | UK | 7
+      1 | USA | 37
+      2 | France | 5
+      2 | other | 15
+      2 | UK | 38
+      2 | USA | 252
+      3 | France | 35
+      3 | other | 87
+      3 | UK | 101
+      3 | USA | 526
+      … 4 more rows
+
+  panel movib14
+    title: sum of movies.runningtime by movies.year
+    rows (4):
+      1 | 37
+      2 | 572
+      3 | 1579
+      4 | 5446
+
+  panel movib15
+    title: rows of movies2directors by movies.country
+    rows (4):
+      USA | 2980
+      other | 560
+      UK | 399
+      France | 202
+
+
+=== database: mondial ===
+The world's countries, provinces, cities, rivers, lakes, mountains, organisations and their members, as CTU serves it. A look fixture of round 1d.
+
+  panel mondb01
+    title: rows of organization by sea (by key) the twelve most
+    rows (12):
+      African Development Bank | 1
+      African, Caribbean, and Pacific Countrie | 1
+      Agency for Cultural and Technical Cooper | 1
+      Agency for the Prohibition of Nuclear We | 1
+      Andean Group | 1
+      Arab Bank for Economic Development in Af | 1
+      Arab Cooperation Council | 1
+      Arab Fund for Economic and Social Develo | 1
+      Arab League | 1
+      Arab Maghreb Union | 1
+      Arab Monetary Fund | 1
+      ASEAN-Mekong Basin Development Group | 1
+
+  panel mondb02
+    title: rows of river by river.Mountains the twelve most
+    rows (12):
+      ∅ | 125
+      Alps | 22
+      East African Rift | 10
+      Andes | 5
+      Karpaten | 4
+      Cordillera Iberica | 3
+      Kurdistan | 3
+      Ural | 3
+      Vogesen | 3
+      Sudety Mountains | 3
+      Waldai Hills | 3
+      Black Forest | 3
+
+  panel mondb03
+    title: rows of organization by organization.Established
+    rows (57):
+      1874-01-01 | 1
+      1894-01-01 | 1
+      1899-01-01 | 1
+      1919-01-01 | 3
+      1920-01-01 | 1
+      1928-01-01 | 1
+      1930-01-01 | 1
+      1931-01-01 | 1
+      1932-01-01 | 1
+      1944-01-01 | 3
+      1945-01-01 | 6
+      1946-01-01 | 1
+      … 45 more rows
+
+  panel mondb04
+    title: rows of located by river (by key) the twelve most
+    rows (12):
+      ∅ | 485
+      Rhein | 20
+      Jangtse | 20
+      Nile | 14
+      Volga | 14
+      Donau | 10
+      Missouri | 8
+      Dnepr | 8
+      Hwangho | 7
+      Parana | 7
+      Amazonas | 6
+      Oka | 6
+
+  panel mondb05
+    title: largest tables, estimated rows
+    rows (10):
+      isMember | 8008
+      city | 3111
+      province | 1450
+      located | 857
+      geo_river | 851
+      geo_sea | 735
+      ethnicGroup | 540
+      religion | 454
+      locatedOn | 434
+      geo_island | 418
+
+  panel mondb06
+    title: rows of politics by country.Name the twelve most
+    rows (12):
+      Austria | 1
+      Afghanistan | 1
+      Antigua and Barbuda | 1
+      Albania | 1
+      Andorra | 1
+      Angola | 1
+      Armenia | 1
+      Australia | 1
+      Azerbaijan | 1
+      Belgium | 1
+      Bangladesh | 1
+      Barbados | 1
+
+  panel mondb07
+    title: rows of geo_river by country.Name the twelve most
+    rows (12):
+      Russia | 71
+      United States | 57
+      Germany | 45
+      Zaire | 40
+      France | 30
+      China | 28
+      Poland | 24
+      Brazil | 24
+      Romania | 22
+      Hungary | 22
+      Switzerland | 22
+      Ukraine | 21
+
+  panel mondb08
+    title: rows of mountain by mountain.Type
+    rows (5):
+      ∅ | 136
+      volcano | 65
+      volcanic | 36
+      granite | 3
+      monolith | 1
+
+  panel mondb09
+    title: rows of organization by organization.Province the twelve most
+    rows (12):
+      ∅ | 29
+      GE | 15
+      New York | 14
+      Brabant | 10
+      Ile de France | 8
+      Distr. Columbia | 7
+      Vienna | 6
+      Greater London | 4
+      Distrito Federal | 3
+      Saudi Arabia | 3
+      Jordan | 2
+      Lazio | 2
+
+  panel mondb10
+    title: rows of province by country.Name the twelve most
+    rows (12):
+      United Kingdom | 81
+      Russia | 80
+      Turkey | 73
+      United States | 51
+      Poland | 49
+      Japan | 47
+      Romania | 41
+      Colombia | 33
+      India | 32
+      Mexico | 32
+      China | 30
+      Brazil | 27
+
+  panel mondb11
+    title: rows of encompasses per country
+    rows (2):
+      1 | 234
+      2 | 4
+
+  panel mondb12
+    title: rows of located by country.Name the twelve most
+    rows (12):
+      United States | 64
+      Russia | 50
+      Germany | 41
+      Japan | 34
+      China | 34
+      Spain | 28
+      Brazil | 28
+      Italy | 27
+      France | 24
+      Indonesia | 24
+      United Kingdom | 21
+      Sweden | 17
+
+  panel mondb13
+    title: rows of organization by country.Name the twelve most
+    rows (12):
+      ∅ | 29
+      United States | 21
+      Switzerland | 18
+      Belgium | 10
+      France | 10
+      Austria | 6
+      United Kingdom | 4
+      Saudi Arabia | 3
+      Jordan | 2
+      Cote dIvoire | 2
+      Indonesia | 2
+      Ethiopia | 2
+
+  panel mondb14
+    title: rows of isMember by country.Name the twelve most
+    rows (12):
+      France | 83
+      United Kingdom | 74
+      Canada | 73
+      United States | 72
+      Sweden | 71
+      Italy | 71
+      Finland | 70
+      Netherlands | 70
+      Germany | 70
+      Austria | 69
+      Belgium | 68
+      Denmark | 67
+
+  panel mondb15
+    title: rows of city by sea (by key) the twelve most
+    rows (12):
+      Springfield | 3
+      La Paz | 3
+      Trujillo | 3
+      Kingston | 3
+      Cordoba | 3
+      Leon | 3
+      San Juan | 3
+      Alexandria | 3
+      Victoria | 3
+      Merida | 3
+      Concord | 2
+      Colombo | 2
+
+  panel mondb16
+    title: rows of religion by country.Name the twelve most
+    rows (12):
+      Bahamas | 6
+      India | 6
+      Papua New Guinea | 6
+      Solomon Islands | 6
+      New Zealand | 6
+      Bermuda | 5
+      Trinidad and Tobago | 5
+      Vanuatu | 5
+      Indonesia | 5
+      Cayman Islands | 4
+      Israel | 4
+      Sri Lanka | 4
+
+  panel mondb17
+    title: rows of river by river.Sea the twelve most
+    rows (12):
+      ∅ | 129
+      Atlantic Ocean | 24
+      Baltic Sea | 11
+      Mediterranean Sea | 8
+      Sibirian Sea | 5
+      North Sea | 5
+      Indian Ocean | 4
+      Barents Sea | 3
+      Black Sea | 3
+      Pacific Ocean | 3
+      Gulf of Mexico | 2
+      Andaman Sea | 2
+
+  panel mondb18
+    title: rows of organization by organization.City the twelve most
+    rows (12):
+      ∅ | 29
+      Geneva | 15
+      New York | 14
+      Brussels | 10
+      Paris | 8
+      Washington | 7
+      Vienna | 6
+      London | 4
+      Abidjan | 2
+      Addis Ababa | 2
+      Amman | 2
+      Rome | 2
+
+  panel mondb19
+    title: rows of river by lake (by key) the twelve most
+    rows (12):
+      ∅ | 169
+      Caspian Sea | 3
+      Ozero Ladoga | 2
+      Ozero Aral | 2
+      Lake Sese Seko/Albertsee | 2
+      Lake Keban | 2
+      Ammersee | 1
+      Barrage de Mbakaou | 1
+      Brienzersee | 1
+      Chickamauga Lake | 1
+      Vierwaldstattersee | 1
+      Fort Peck Lake | 1
+
+  panel mondb20
+    title: rows of politics by sea (by key) the twelve most
+    rows (12):
+      Austria | 1
+      Afghanistan | 1
+      Antigua and Barbuda | 1
+      Albania | 1
+      Andorra | 1
+      Angola | 1
+      Armenia | 1
+      Australia | 1
+      Azerbaijan | 1
+      Belgium | 1
+      Bangladesh | 1
+      Barbados | 1
+
+  panel mondb21
+    title: rows of island by island.Type
+    rows (5):
+      ∅ | 185
+      volcanic | 79
+      coral | 6
+      atoll | 5
+      lime | 1
+
+  panel mondb22
+    title: rows of located by sea (by key) the twelve most
+    rows (12):
+      ∅ | 392
+      Atlantic Ocean | 103
+      Pacific Ocean | 67
+      Mediterranean Sea | 66
+      Caribbean Sea | 26
+      Baltic Sea | 25
+      Indian Ocean | 25
+      Sea of Japan | 22
+      Sunda Sea | 13
+      Yellow Sea | 12
+      The Channel | 12
+      Norwegian Sea | 10
+
+  panel mondb23
+    title: rows of isMember by isMember.Type
+    rows (23):
+      member | 6824
+      National Olympic Committee | 196
+      National Society | 163
+      observer | 159
+      Part II | 136
+      Category III | 126
+      regional member | 109
+      nonregional member | 50
+      nonsignatory user | 46
+      associate member | 39
+      applicant | 28
+      guest | 25
+      … 11 more rows
+
+  panel mondb24
+    title: rows of politics by politics.Independence
+    rows (84):
+      0301-01-01 | 1
+      1001-01-01 | 1
+      1140-01-01 | 1
+      1238-01-01 | 1
+      1419-01-01 | 1
+      1492-01-01 | 1
+      1579-01-01 | 1
+      1650-01-01 | 1
+      1719-01-01 | 1
+      1768-01-01 | 1
+      1776-01-01 | 1
+      1801-01-01 | 1
+      … 72 more rows
+
+  panel mondb25
+    title: rows of geo_sea by country.Name the twelve most
+    rows (12):
+      Japan | 38
+      United Kingdom | 31
+      United States | 26
+      Russia | 26
+      Turkey | 23
+      Cuba | 22
+      Norway | 20
+      Sweden | 18
+      Mexico | 18
+      Brazil | 16
+      Malaysia | 15
+      India | 14
+
+  panel mondb26
+    title: rows of locatedOn by country.Name the twelve most
+    rows (12):
+      United Kingdom | 173
+      Japan | 50
+      Indonesia | 42
+      Taiwan | 21
+      Cuba | 15
+      Philippines | 10
+      Madagascar | 7
+      Italy | 6
+      Malaysia | 5
+      Iceland | 4
+      Spain | 4
+      New Zealand | 3
+
+  panel mondb27
+    title: rows of borders per country
+    rows (9):
+      1 | 37
+      2 | 30
+      3 | 22
+      4 | 16
+      5 | 9
+      6 | 4
+      7 | 1
+      8 | 1
+      9 | 1
+
+  panel mondb28
+    title: rows of ethnicGroup by country.Name the twelve most
+    rows (12):
+      Uganda | 12
+      Iran | 8
+      Slovakia | 8
+      Kenya | 8
+      Russia | 7
+      Ethiopia | 7
+      Senegal | 7
+      Cameroon | 7
+      Myanmar | 7
+      Hungary | 6
+      Czech Republic | 6
+      Georgia | 6
+
+  panel mondb29
+    title: rows of province by sea (by key) the twelve most
+    rows (12):
+      Distrito Federal | 4
+      Central | 4
+      Amazonas | 4
+      Centre | 2
+      Limburg | 2
+      Colon | 2
+      Luxembourg | 2
+      Eastern | 2
+      Cordoba | 2
+      Bolivar | 2
+      Huila | 2
+      Georgia | 2
+
+  panel mondb30
+    title: sum of borders.Length by country.Name the twelve most
+    rows (12):
+      Kazakstan | 12012
+      Brazil | 11291
+      India | 9445
+      Canada | 8893
+      Mongolia | 8114
+      Bolivia | 6743
+      Russia | 6534
+      Algeria | 6343
+      Colombia | 5765
+      Argentina | 5729
+      Afghanistan | 5529
+      Angola | 5198
+
+  panel mondb31
+    title: rows of isMember by organization (by key) the twelve most
+    rows (12):
+      UPU | 211
+      IOC | 196
+      WHO | 192
+      UNESCO | 191
+      UN | 188
+      Interpol | 188
+      IMF | 186
+      ICAO | 185
+      WMO | 184
+      ITU | 184
+      IBRD | 181
+      Intelsat | 180
+
+  panel mondb32
+    title: rows of city by country.Name the twelve most
+    rows (12):
+      China | 308
+      United States | 239
+      Brazil | 204
+      Russia | 175
+      United Kingdom | 173
+      India | 98
+      Germany | 84
+      Turkey | 80
+      Mexico | 79
+      Poland | 63
+      Spain | 58
+      Nigeria | 56
+
+  panel mondb33
+    title: rows of lake by lake.Type
+    rows (7):
+      ∅ | 74
+      salt | 30
+      artificial | 14
+      caldera | 7
+      impact | 3
+      acid | 1
+      crater | 1
+
+  panel mondb34
+    title: rows of located by lake (by key) the twelve most
+    rows (12):
+      ∅ | 808
+      Lake Ontario | 5
+      Lake Erie | 4
+      Lake Tanganjika | 3
+      Lake Michigan | 3
+      Vaenern | 3
+      Caspian Sea | 3
+      Lac Leman | 2
+      Lake Oahe | 2
+      Maelaren | 2
+      Mjoesa-See | 2
+      Lake Kivu | 2

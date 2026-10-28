@@ -34,7 +34,12 @@ looking at all six, made them development fixtures, and took two more from
 CTU's repository as its final check, run once with nothing changed after:
 **classicmodels**, a seller of scale models (326 orders, 2 996 lines, 273
 payments), and **Credit**, a credit-card company's members, statements,
-payments and 1.6 million charges.
+payments and 1.6 million charges. Round 1d looked at results on those
+eight and on eleven more from the same repository, loaded by `ctu.sh` and
+judged only by models: pubs, world, Dallas, restbase, voc, medical,
+PremierLeague, Basketball_men, NCAA, Hockey, imdb_MovieLens, Student_loan,
+CraftBeer, NBA, Basketball_women, Mondial, SFScores, Shakespeare,
+Atherosclerosis and ftp.
 
 ## Public
 

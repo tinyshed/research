@@ -175,6 +175,15 @@ it are in its chapter 14 and are the ones that decide.
    13, and two blind model judges keep 0.70 and 0.60 of its
    panels against 0.54 and 0.49. The teachers are models, not people; round 2 measures it against
    people.
+1d. **The five learned, and a look at results**: round 1c's rules of choice
+   replaced by penalties learned from the teachers' own fives, and a small
+   model of what a blind judge keeps, read from each candidate's result and
+   question. [Run](reports/look-2026-10-28.md) on 28 October over 28
+   databases: five judges that taught it nothing keep more of its fives than
+   of round 1's, Opus 2.74 against 2.30, four of them clear of chance; a
+   teacher at a few cents teaches it nearly as well as Sonnet; a choice from
+   the same candidates could keep 4.6. How lemmesee teaches and judges is
+   now [teaching.md](teaching.md).
 2. **The judged set**: assembled, split by project, judged.
 3. **The ranker, C**: linear, trees, a tiny network, against A and B on the
    judged set, with its cost.

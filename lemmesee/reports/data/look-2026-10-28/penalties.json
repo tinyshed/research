@@ -1,0 +1,70 @@
+{
+ "round 1c's rules of choice": {
+  "gemini precision": 0.541,
+  "gemini recall": 0.363,
+  "haiku precision": 0.514,
+  "haiku recall": 0.334
+ },
+ "learned penalties, out of fold": {
+  "gemini precision": 0.563,
+  "gemini recall": 0.388,
+  "haiku precision": 0.532,
+  "haiku recall": 0.355
+ },
+ "penalties per fold": [
+  {
+   "base": 0.25,
+   "measure": 0.0,
+   "time_same": 0.0,
+   "time_other": 0.0,
+   "by_same": 1.0,
+   "by_other": 0.25,
+   "shape": 0.0
+  },
+  {
+   "base": 0.25,
+   "measure": 0.0,
+   "time_same": 0.0,
+   "time_other": 0.0,
+   "by_same": 1.0,
+   "by_other": 9.0,
+   "shape": 0.0
+  },
+  {
+   "base": 0.0,
+   "measure": 0.0,
+   "time_same": 0.0,
+   "time_other": 0.0,
+   "by_same": 0.5,
+   "by_other": 9.0,
+   "shape": 0.0
+  },
+  {
+   "base": 0.25,
+   "measure": 0.0,
+   "time_same": 0.0,
+   "time_other": 0.0,
+   "by_same": 1.5,
+   "by_other": 0.25,
+   "shape": 0.0
+  },
+  {
+   "base": 0.0,
+   "measure": 0.0,
+   "time_same": 0.0,
+   "time_other": 0.0,
+   "by_same": 0.25,
+   "by_other": 9.0,
+   "shape": 0.0
+  }
+ ],
+ "penalties": {
+  "base": 0.0,
+  "measure": 0.0,
+  "time_same": 0.0,
+  "time_other": 0.0,
+  "by_same": 0.25,
+  "by_other": 9.0,
+  "shape": 0.0
+ }
+}

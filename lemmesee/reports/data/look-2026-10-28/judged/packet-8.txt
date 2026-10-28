@@ -1,0 +1,1411 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: shakespeare ===
+Shakespeare's works, their chapters and paragraphs, and the characters who speak them, as CTU serves it. A look fixture of round 1d.
+
+  panel shakb01
+    title: largest tables, estimated rows
+    rows (4):
+      paragraphs | 38920
+      characters | 1266
+      chapters | 945
+      works | 43
+
+  panel shakb02
+    title: average of chapters.Act by works.GenreType
+    rows (5):
+      History | 3.1227
+      Tragedy | 3.0425
+      Comedy | 2.8943
+      Poem | 1.0000
+      Sonnet | 1.0000
+
+  panel shakb03
+    title: rows of paragraphs by chapters.Description the twelve most
+    rows (12):
+      The same. | 427
+      The Rape of Lucrece | 265
+      The Shepherd’s cottage. | 258
+      The Boar’s-Head Tavern, Eastcheap. | 214
+      Elsinore. A room in the Castle. | 201
+      Venus and Adonis. | 197
+      A bedchamber in the castle: DESDEMONA in | 192
+      Before the palace. | 191
+      The city gate. | 178
+      OLIVIA’s garden. | 175
+      The garden of the castle. | 172
+      Woods and cave, near the seashore. | 168
+
+  panel shakb04
+    title: distinct works in chapters by works (by key) the twelve most
+    rows (12):
+      1 | 1
+      2 | 1
+      3 | 1
+      4 | 1
+      5 | 1
+      6 | 1
+      7 | 1
+      8 | 1
+      9 | 1
+      10 | 1
+      11 | 1
+      12 | 1
+
+  panel shakb05
+    title: average of chapters.Act by works.Date
+    rows (23):
+      1589-01-01 | 3.0000
+      1590-01-01 | 3.2308
+      1591-01-01 | 3.0000
+      1592-01-01 | 3.1200
+      1593-01-01 | 2.9333
+      1594-01-01 | 2.7586
+      1595-01-01 | 2.9643
+      1596-01-01 | 3.0833
+      1597-01-01 | 3.1538
+      1598-01-01 | 2.4242
+      1599-01-01 | 2.8448
+      1600-01-01 | 3.0930
+      … 11 more rows
+
+  panel shakb06
+    title: rows of paragraphs by works.GenreType
+    rows (5):
+      Comedy | 12648
+      Tragedy | 11779
+      History | 10305
+      Poem | 579
+      Sonnet | 154
+
+  panel shakb07
+    title: rows of paragraphs per chapters
+    rows (152):
+      1 | 171
+      2 | 6
+      3 | 31
+      4 | 7
+      5 | 15
+      6 | 15
+      7 | 16
+      8 | 10
+      9 | 22
+      10 | 16
+      11 | 15
+      12 | 12
+      … 140 more rows
+
+  panel shakb08
+    title: rows of chapters by works (by key) the twelve most
+    rows (12):
+      35 | 154
+      3 | 42
+      14 | 28
+      6 | 28
+      21 | 28
+      11 | 28
+      7 | 27
+      12 | 27
+      18 | 26
+      34 | 26
+      29 | 26
+      33 | 25
+
+  panel shakb09
+    title: average of chapters.Scene by works.GenreType
+    rows (5):
+      Sonnet | 77.5000
+      Poem | 8.4643
+      Tragedy | 3.5792
+      History | 2.9711
+      Comedy | 2.5595
+
+  panel shakb10
+    title: rows of paragraphs by works.Date
+    rows (23):
+      1589-01-01 | 661
+      1590-01-01 | 1839
+      1591-01-01 | 772
+      1592-01-01 | 1210
+      1593-01-01 | 1820
+      1594-01-01 | 3321
+      1595-01-01 | 1231
+      1596-01-01 | 1333
+      1597-01-01 | 1897
+      1598-01-01 | 1948
+      1599-01-01 | 2791
+      1600-01-01 | 2436
+      … 11 more rows
+
+  panel shakb11
+    title: rows of works by works.Date
+    rows (23):
+      1589-01-01 | 1
+      1590-01-01 | 2
+      1591-01-01 | 1
+      1592-01-01 | 1
+      1593-01-01 | 3
+      1594-01-01 | 4
+      1595-01-01 | 2
+      1596-01-01 | 2
+      1597-01-01 | 2
+      1598-01-01 | 3
+      1599-01-01 | 3
+      1600-01-01 | 2
+      … 11 more rows
+
+  panel shakb12
+    title: rows of paragraphs by characters.CharName the twelve most
+    rows (12):
+      (stage directions) | 3751
+      Poet | 733
+      Falstaff | 471
+      Henry V | 377
+      Hamlet | 358
+      Duke of Gloucester | 285
+      Othello | 274
+      Iago | 272
+      Antony | 253
+      Richard III | 246
+      Timon | 210
+      Cleopatra | 204
+
+  panel shakb13
+    title: rows of works by works.GenreType
+    rows (5):
+      Comedy | 14
+      History | 12
+      Tragedy | 11
+      Poem | 5
+      Sonnet | 1
+
+  panel shakb14
+    title: rows of chapters by works.GenreType
+    rows (5):
+      History | 277
+      Tragedy | 259
+      Comedy | 227
+      Sonnet | 154
+      Poem | 28
+
+  panel shakb15
+    title: rows of paragraphs by works (by key) the twelve most
+    rows (12):
+      3 | 1344
+      27 | 1308
+      40 | 1295
+      8 | 1275
+      6 | 1226
+      33 | 1210
+      18 | 1177
+      24 | 1161
+      20 | 1120
+      26 | 1059
+      1 | 1031
+      2 | 1025
+
+  panel shakb16
+    title: rows of chapters by works.Date
+    rows (23):
+      1589-01-01 | 11
+      1590-01-01 | 52
+      1591-01-01 | 27
+      1592-01-01 | 25
+      1593-01-01 | 30
+      1594-01-01 | 58
+      1595-01-01 | 28
+      1596-01-01 | 36
+      1597-01-01 | 39
+      1598-01-01 | 66
+      1599-01-01 | 58
+      1600-01-01 | 43
+      … 11 more rows
+
+  panel shakb17
+    title: average of chapters.Scene by works.Date
+    rows (23):
+      1589-01-01 | 1.8182
+      1590-01-01 | 3.6154
+      1591-01-01 | 3.2963
+      1592-01-01 | 3.1200
+      1593-01-01 | 1.9667
+      1594-01-01 | 2.5345
+      1595-01-01 | 2.3214
+      1596-01-01 | 3.2222
+      1597-01-01 | 2.4872
+      1598-01-01 | 5.3333
+      1599-01-01 | 2.6724
+      1600-01-01 | 2.9302
+      … 11 more rows
+
+  panel shakb18
+    title: average of chapters.Scene by works (by key) the twelve most
+    rows (12):
+      35 | 77.5000
+      28 | 11.0000
+      3 | 6.1190
+      6 | 4.1071
+      13 | 3.6250
+      21 | 3.6071
+      14 | 3.6071
+      40 | 3.5200
+      23 | 3.5000
+      18 | 3.3462
+      7 | 3.2963
+      12 | 3.2963
+
+  panel shakb19
+    title: rows of paragraphs per characters
+    rows (152):
+      1 | 186
+      2 | 116
+      3 | 77
+      4 | 77
+      5 | 53
+      6 | 55
+      7 | 31
+      8 | 27
+      9 | 26
+      10 | 34
+      11 | 24
+      12 | 18
+      … 140 more rows
+
+  panel shakb20
+    title: sum of chapters.Act by works.GenreType
+    rows (5):
+      History | 865
+      Tragedy | 788
+      Comedy | 657
+      Sonnet | 154
+      Poem | 28
+
+  panel shakb21
+    title: rows of works by works.Title the twelve most
+    rows (12):
+      Twelfth Night | 1
+      All's Well That Ends Well | 1
+      Antony and Cleopatra | 1
+      As You Like It | 1
+      Comedy of Errors | 1
+      Coriolanus | 1
+      Cymbeline | 1
+      Hamlet | 1
+      Henry IV, Part I | 1
+      Henry IV, Part II | 1
+      Henry V | 1
+      Henry VI, Part I | 1
+
+  panel shakb22
+    title: rows of chapters by works.Date split by works.GenreType
+    rows (37):
+      1589-01-01 | Comedy | 11
+      1590-01-01 | History | 52
+      1591-01-01 | History | 27
+      1592-01-01 | History | 25
+      1593-01-01 | Comedy | 14
+      1593-01-01 | Poem | 2
+      1593-01-01 | Tragedy | 14
+      1594-01-01 | Comedy | 29
+      1594-01-01 | Poem | 3
+      1594-01-01 | Tragedy | 26
+      1595-01-01 | Comedy | 9
+      1595-01-01 | History | 19
+      … 25 more rows
+
+  panel shakb23
+    title: sum of chapters.Act by works (by key) the twelve most
+    rows (12):
+      35 | 154
+      3 | 128
+      14 | 92
+      40 | 89
+      11 | 87
+      21 | 85
+      12 | 81
+      6 | 79
+      33 | 78
+      7 | 78
+      29 | 78
+      18 | 77
+
+  panel shakb24
+    title: sum of chapters.Scene by works.GenreType
+    rows (5):
+      Sonnet | 11935
+      Tragedy | 927
+      History | 823
+      Comedy | 581
+      Poem | 237
+
+  panel shakb25
+    title: sum of chapters.Scene by works (by key) the twelve most
+    rows (12):
+      35 | 11935
+      3 | 257
+      28 | 231
+      6 | 115
+      21 | 101
+      14 | 101
+      7 | 89
+      12 | 89
+      40 | 88
+      18 | 87
+      13 | 87
+      11 | 81
+
+  panel shakb26
+    title: rows of works by works.Date split by works.GenreType
+    rows (37):
+      1589-01-01 | Comedy | 1
+      1590-01-01 | History | 2
+      1591-01-01 | History | 1
+      1592-01-01 | History | 1
+      1593-01-01 | Comedy | 1
+      1593-01-01 | Poem | 1
+      1593-01-01 | Tragedy | 1
+      1594-01-01 | Comedy | 2
+      1594-01-01 | Poem | 1
+      1594-01-01 | Tragedy | 1
+      1595-01-01 | Comedy | 1
+      1595-01-01 | History | 1
+      … 25 more rows
+
+  panel shakb27
+    title: sum of chapters.Act by works.Date
+    rows (23):
+      1589-01-01 | 33
+      1590-01-01 | 168
+      1591-01-01 | 81
+      1592-01-01 | 78
+      1593-01-01 | 88
+      1594-01-01 | 160
+      1595-01-01 | 83
+      1596-01-01 | 111
+      1597-01-01 | 123
+      1598-01-01 | 160
+      1599-01-01 | 165
+      1600-01-01 | 133
+      … 11 more rows
+
+  panel shakb28
+    title: rows of paragraphs by works.Date split by works.GenreType
+    rows (37):
+      1589-01-01 | Comedy | 661
+      1590-01-01 | History | 1839
+      1591-01-01 | History | 772
+      1592-01-01 | History | 1210
+      1593-01-01 | Comedy | 965
+      1593-01-01 | Poem | 201
+      1593-01-01 | Tragedy | 654
+      1594-01-01 | Comedy | 2063
+      1594-01-01 | Poem | 269
+      1594-01-01 | Tragedy | 989
+      1595-01-01 | Comedy | 603
+      1595-01-01 | History | 628
+      … 25 more rows
+
+  panel shakb29
+    title: rows of works by works.LongTitle the twelve most
+    rows (12):
+      History of Richard III | 1
+      Merchant of Venice, The | 1
+      Merry Wives of Windsor, The | 1
+      A Midsummer Night's Dream | 1
+      Much Ado about Nothing | 1
+      The Tragedy of Othello, Moor of Venice | 1
+      The Passionate Pilgrim | 1
+      Pericles, Prince of Tyre | 1
+      The Phoenix and the Turtle | 1
+      The Rape of Lucrece | 1
+      History of Richard II | 1
+      Two Gentlemen of Verona | 1
+
+  panel shakb30
+    title: sum of chapters.Scene by works.Date
+    rows (23):
+      1589-01-01 | 20
+      1590-01-01 | 188
+      1591-01-01 | 89
+      1592-01-01 | 78
+      1593-01-01 | 59
+      1594-01-01 | 147
+      1595-01-01 | 65
+      1596-01-01 | 116
+      1597-01-01 | 97
+      1598-01-01 | 352
+      1599-01-01 | 155
+      1600-01-01 | 126
+      … 11 more rows
+
+  panel shakb31
+    title: average of chapters.Act by works (by key) the twelve most
+    rows (12):
+      17 | 3.8750
+      40 | 3.5600
+      38 | 3.2941
+      14 | 3.2857
+      39 | 3.2857
+      20 | 3.2222
+      24 | 3.2174
+      9 | 3.2105
+      43 | 3.2000
+      16 | 3.1667
+      13 | 3.1667
+      33 | 3.1200
+
+
+=== database: studentloan ===
+Students, their enrolments, schools, military service, unemployment and loan payments, as CTU serves it. A look fixture of round 1d.
+
+  panel studb01
+    title: rows of unemployed by person (by key) the twelve most
+    rows (12):
+      student1000 | 1
+      student102 | 1
+      student106 | 1
+      student109 | 1
+      student118 | 1
+      student119 | 1
+      student129 | 1
+      student140 | 1
+      student142 | 1
+      student147 | 1
+      student153 | 1
+      student158 | 1
+
+  panel studb02
+    title: rows of enrolled per person
+    rows (2):
+      1 | 726
+      2 | 234
+
+  panel studb03
+    title: rows of longest_absense_from_school per person
+    rows (1):
+      1 | 1000
+
+  panel studb04
+    title: rows of longest_absense_from_school by person (by key) the twelve most
+    rows (12):
+      student1 | 1
+      student10 | 1
+      student100 | 1
+      student1000 | 1
+      student101 | 1
+      student102 | 1
+      student103 | 1
+      student104 | 1
+      student105 | 1
+      student106 | 1
+      student107 | 1
+      student108 | 1
+
+  panel studb05
+    title: rows of enlist by enlist.organ
+    rows (7):
+      fire_department | 114
+      navy | 37
+      army | 35
+      peace_corps | 32
+      foreign_legion | 31
+      marines | 31
+      air_force | 26
+
+  panel studb06
+    title: rows of disabled per person
+    rows (1):
+      1 | 95
+
+  panel studb07
+    title: rows of no_payment_due by bool (by key) the twelve most
+    rows (2):
+      pos | 643
+      neg | 357
+
+  panel studb08
+    title: rows of enrolled by enrolled.month
+    rows (15):
+      1 | 108
+      2 | 107
+      3 | 131
+      4 | 126
+      5 | 88
+      6 | 89
+      7 | 69
+      8 | 68
+      9 | 94
+      10 | 105
+      11 | 80
+      12 | 87
+      … 3 more rows
+
+  panel studb09
+    title: rows of no_payment_due by person (by key) the twelve most
+    rows (12):
+      student1 | 1
+      student10 | 1
+      student100 | 1
+      student1000 | 1
+      student101 | 1
+      student102 | 1
+      student103 | 1
+      student104 | 1
+      student105 | 1
+      student106 | 1
+      student107 | 1
+      student108 | 1
+
+  panel studb10
+    title: rows of male per person
+    rows (1):
+      1 | 497
+
+  panel studb11
+    title: rows of filed_for_bankrupcy per person
+    rows (1):
+      1 | 96
+
+  panel studb12
+    title: rows of enlist per person
+    rows (2):
+      1 | 260
+      2 | 23
+
+  panel studb13
+    title: rows of enrolled by person (by key) the twelve most
+    rows (12):
+      student142 | 2
+      student10 | 2
+      student1000 | 2
+      student101 | 2
+      student131 | 2
+      student122 | 2
+      student104 | 2
+      student120 | 2
+      student107 | 2
+      student130 | 2
+      student109 | 2
+      student111 | 2
+
+  panel studb14
+    title: rows of unemployed per person
+    rows (1):
+      1 | 98
+
+  panel studb15
+    title: rows of male by person (by key) the twelve most
+    rows (12):
+      student1 | 1
+      student101 | 1
+      student102 | 1
+      student103 | 1
+      student105 | 1
+      student106 | 1
+      student108 | 1
+      student110 | 1
+      student111 | 1
+      student114 | 1
+      student115 | 1
+      student117 | 1
+
+  panel studb16
+    title: rows of longest_absense_from_school by longest_absense_from_school.month
+    rows (10):
+      0 | 100
+      1 | 93
+      2 | 96
+      3 | 104
+      4 | 120
+      5 | 110
+      6 | 95
+      7 | 99
+      8 | 93
+      9 | 90
+
+  panel studb17
+    title: rows of enlist by person (by key) the twelve most
+    rows (12):
+      student168 | 2
+      student349 | 2
+      student280 | 2
+      student224 | 2
+      student458 | 2
+      student161 | 2
+      student304 | 2
+      student233 | 2
+      student160 | 2
+      student340 | 2
+      student313 | 2
+      student139 | 2
+
+  panel studb18
+    title: rows of disabled by person (by key) the twelve most
+    rows (12):
+      student114 | 1
+      student125 | 1
+      student142 | 1
+      student155 | 1
+      student156 | 1
+      student173 | 1
+      student178 | 1
+      student181 | 1
+      student184 | 1
+      student194 | 1
+      student197 | 1
+      student207 | 1
+
+  panel studb19
+    title: largest tables, estimated rows
+    rows (10):
+      enrolled | 1194
+      longest_absense_from_school | 1000
+      no_payment_due | 1000
+      person | 1000
+      male | 497
+      enlist | 306
+      unemployed | 98
+      filed_for_bankrupcy | 96
+      disabled | 95
+      bool | 2
+
+  panel studb20
+    title: rows of filed_for_bankrupcy by person (by key) the twelve most
+    rows (12):
+      student122 | 1
+      student126 | 1
+      student136 | 1
+      student145 | 1
+      student148 | 1
+      student159 | 1
+      student162 | 1
+      student170 | 1
+      student179 | 1
+      student2 | 1
+      student211 | 1
+      student219 | 1
+
+
+=== database: medical ===
+A hospital's patients, their examinations and laboratory results, as CTU serves it. A look fixture of round 1d.
+
+  panel medib01
+    title: sum of Laboratory.LDH by Laboratory.Date
+    rows (19):
+      1981-01-01 | 128318
+      1982-01-01 | 100070
+      1983-01-01 | 144404
+      1984-01-01 | 122489
+      1985-01-01 | 177061
+      1986-01-01 | 108133
+      1987-01-01 | 51721
+      1988-01-01 | 70081
+      1989-01-01 | 82068
+      1990-01-01 | 77211
+      1991-01-01 | 189837
+      1992-01-01 | 281169
+      … 7 more rows
+
+  panel medib02
+    title: sum of Laboratory.GOT by Laboratory.Date
+    rows (19):
+      1981-01-01 | 26585
+      1982-01-01 | 16402
+      1983-01-01 | 21344
+      1984-01-01 | 20435
+      1985-01-01 | 33052
+      1986-01-01 | 20662
+      1987-01-01 | 10343
+      1988-01-01 | 8886
+      1989-01-01 | 5877
+      1990-01-01 | 4218
+      1991-01-01 | 9358
+      1992-01-01 | 14513
+      … 7 more rows
+
+  panel medib03
+    title: sum of Laboratory.C3 by Laboratory.Date
+    rows (19):
+      1981-01-01 | 40
+      1982-01-01 | ∅
+      1983-01-01 | ∅
+      1984-01-01 | ∅
+      1985-01-01 | ∅
+      1986-01-01 | 9456
+      1987-01-01 | 16650
+      1988-01-01 | 17677
+      1989-01-01 | 13633
+      1990-01-01 | 8904
+      1991-01-01 | 17986
+      1992-01-01 | 33484
+      … 7 more rows
+
+  panel medib04
+    title: sum of Laboratory.IGG by Laboratory.Date
+    rows (19):
+      1981-01-01 | 167598
+      1982-01-01 | 157113
+      1983-01-01 | 198577
+      1984-01-01 | 137982
+      1985-01-01 | 237446
+      1986-01-01 | 120218
+      1987-01-01 | 52788
+      1988-01-01 | 65691
+      1989-01-01 | 48348
+      1990-01-01 | 126609
+      1991-01-01 | 186891
+      1992-01-01 | 271948
+      … 7 more rows
+
+  panel medib05
+    title: sum of Examination.aCL IgG by Examination.Examination Date
+    rows (9):
+      1989-01-01 | 10.900000095367432
+      1991-01-01 | 977.5
+      1992-01-01 | 57.57000070810318
+      1993-01-01 | 52.50000023841858
+      1994-01-01 | 2334.100047290325
+      1995-01-01 | 3207.199974909425
+      1996-01-01 | 2685.0600247979164
+      1997-01-01 | 1134.7999915778637
+      1998-01-01 | 1171.9199925661087
+
+  panel medib06
+    title: sum of Laboratory.IGA by Laboratory.Date
+    rows (19):
+      1981-01-01 | 26898
+      1982-01-01 | 35945
+      1983-01-01 | 32300
+      1984-01-01 | 24112
+      1985-01-01 | 40867
+      1986-01-01 | 19987
+      1987-01-01 | 11115
+      1988-01-01 | 14423
+      1989-01-01 | 11280
+      1990-01-01 | 26673
+      1991-01-01 | 39873
+      1992-01-01 | 63686
+      … 7 more rows
+
+  panel medib07
+    title: rows of Examination by Patient.Admission
+    rows (5):
+      ∅ | 736
+      - | 37
+      + | 30
+       | 2
+      +( | 1
+
+  panel medib08
+    title: rows of Examination by Examination.ANA Pattern the twelve most
+    rows (12):
+      ∅ | 261
+      S | 252
+      P | 180
+      P,S | 89
+      S,P | 11
+      D,P,S | 2
+      S,D | 2
+      D,P | 2
+      P.S | 1
+      P,D | 1
+      S,N | 1
+      D,S | 1
+
+  panel medib09
+    title: sum of Laboratory.IGM by Laboratory.Date
+    rows (19):
+      1981-01-01 | 17989
+      1982-01-01 | 16823
+      1983-01-01 | 19545
+      1984-01-01 | 12382
+      1985-01-01 | 27065
+      1986-01-01 | 12720
+      1987-01-01 | 3889
+      1988-01-01 | 5262
+      1989-01-01 | 4325
+      1990-01-01 | 9094
+      1991-01-01 | 20743
+      1992-01-01 | 33287
+      … 7 more rows
+
+  panel medib10
+    title: sum of Laboratory.C4 by Laboratory.Date
+    rows (19):
+      1981-01-01 | ∅
+      1982-01-01 | ∅
+      1983-01-01 | ∅
+      1984-01-01 | ∅
+      1985-01-01 | ∅
+      1986-01-01 | 2248
+      1987-01-01 | 4068
+      1988-01-01 | 4564
+      1989-01-01 | 3473
+      1990-01-01 | 2801
+      1991-01-01 | 6580
+      1992-01-01 | 10366
+      … 7 more rows
+
+  panel medib11
+    title: rows of Examination by Patient.SEX
+    rows (3):
+      ∅ | 736
+      F | 62
+      M | 8
+
+  panel medib12
+    title: sum of Laboratory.GPT by Laboratory.Date
+    rows (19):
+      1981-01-01 | 46789
+      1982-01-01 | 18995
+      1983-01-01 | 20779
+      1984-01-01 | 17204
+      1985-01-01 | 33905
+      1986-01-01 | 22130
+      1987-01-01 | 10428
+      1988-01-01 | 9403
+      1989-01-01 | 6182
+      1990-01-01 | 4795
+      1991-01-01 | 14860
+      1992-01-01 | 15573
+      … 7 more rows
+
+  panel medib13
+    title: average of Laboratory.GPT by Laboratory.Date
+    rows (19):
+      1981-01-01 | 73.6835
+      1982-01-01 | 30.5878
+      1983-01-01 | 29.0209
+      1984-01-01 | 24.7540
+      1985-01-01 | 32.8219
+      1986-01-01 | 33.4796
+      1987-01-01 | 33.0000
+      1988-01-01 | 32.2021
+      1989-01-01 | 27.7220
+      1990-01-01 | 22.9426
+      1991-01-01 | 38.3979
+      1992-01-01 | 24.1817
+      … 7 more rows
+
+  panel medib14
+    title: sum of Laboratory.ALP by Laboratory.Date
+    rows (19):
+      1981-01-01 | 44212
+      1982-01-01 | 44082
+      1983-01-01 | 52170
+      1984-01-01 | 52732
+      1985-01-01 | 85470
+      1986-01-01 | 62327
+      1987-01-01 | 29326
+      1988-01-01 | 31955
+      1989-01-01 | 39174
+      1990-01-01 | 32379
+      1991-01-01 | 63026
+      1992-01-01 | 87704
+      … 7 more rows
+
+  panel medib15
+    title: average of Laboratory.GOT by Laboratory.Date
+    rows (19):
+      1981-01-01 | 41.9322
+      1982-01-01 | 26.4548
+      1983-01-01 | 29.8101
+      1984-01-01 | 29.4029
+      1985-01-01 | 31.9961
+      1986-01-01 | 31.2587
+      1987-01-01 | 32.7310
+      1988-01-01 | 30.4315
+      1989-01-01 | 26.3543
+      1990-01-01 | 20.1818
+      1991-01-01 | 24.1809
+      1992-01-01 | 22.5357
+      … 7 more rows
+
+
+=== database: world ===
+Countries, their cities and the languages spoken in each, as CTU serves it. A look fixture of round 1d.
+
+  panel worlb01
+    title: sum of City.Population by Country.Continent
+    rows (6):
+      Asia | 697604103
+      Europe | 241942813
+      South America | 172037859
+      North America | 168250381
+      Africa | 135838579
+      Oceania | 13886149
+
+  panel worlb02
+    title: average of Country.SurfaceArea by Country.HeadOfState the twelve most
+    rows (12):
+      Vladimir Putin | 17075400.000000
+      Fernando Henrique Cardoso | 8547403.000000
+       | 6560234.000000
+      Kocheril Raman Narayanan | 3287263.000000
+      Jiang Zemin | 3191331.000000
+      Fernando de la Rúa | 2780400.000000
+      Nursultan Nazarbajev | 2724900.000000
+      Omar Hassan Ahmad al-Bashir | 2505813.000000
+      Abdelaziz Bouteflika | 2381741.000000
+      Joseph Kabila | 2344858.000000
+      Fahd ibn Abdul-Aziz al-Sa´ud | 2149690.000000
+      Vicente Fox Quesada | 1958201.000000
+
+  panel worlb03
+    title: average of CountryLanguage.Percentage by CountryLanguage.IsOfficial
+    rows (2):
+      T | 51.61176
+      F | 10.40858
+
+  panel worlb04
+    title: sum of City.Population by Country.IndepYear
+    rows (88):
+      -1523 | 175953614
+      -1000 | 3190334
+      -660 | 77965107
+      800 | 1215945
+      836 | 2891431
+      843 | 9244494
+      885 | 7096
+      1066-01-01 | 22436673
+      1143-01-01 | 1145011
+      1278-01-01 | 21189
+      1350-01-01 | 7953161
+      1492-01-01 | 16669189
+      … 76 more rows
+
+  panel worlb05
+    title: rows of CountryLanguage by Country.Region the twelve most
+    rows (12):
+      Eastern Africa | 102
+      Western Africa | 102
+      Southern and Central Asia | 83
+      Southeast Asia | 65
+      Eastern Europe | 61
+      Central Africa | 55
+      Middle East | 48
+      Caribbean | 46
+      Western Europe | 46
+      Southern Europe | 45
+      Eastern Asia | 43
+      South America | 42
+
+  panel worlb06
+    title: rows of Country by Country.IndepYear split by Country.Continent
+    rows (114):
+      -1523 | Asia | 1
+      -1000 | Africa | 1
+      -660 | Asia | 1
+      800 | Europe | 1
+      836 | Europe | 1
+      843 | Europe | 1
+      885 | Europe | 1
+      1066-01-01 | Europe | 1
+      1143-01-01 | Europe | 1
+      1278-01-01 | Europe | 1
+      1350-01-01 | Asia | 1
+      1492-01-01 | Europe | 1
+      … 102 more rows
+
+  panel worlb07
+    title: sum of City.Population by Country.Region the twelve most
+    rows (12):
+      Eastern Asia | 317476534
+      Southern and Central Asia | 207688970
+      South America | 172037859
+      Eastern Europe | 123384516
+      Southeast Asia | 102067225
+      North America | 91321867
+      Middle East | 70371374
+      Central America | 65860964
+      Western Europe | 45683298
+      Northern Africa | 43449514
+      Southern Europe | 40016658
+      Western Africa | 33222032
+
+  panel worlb08
+    title: average of City.Population by Country (by key) the twelve most
+    rows (12):
+      SGP | 4017733.0000
+      HKG | 1650316.5000
+      URY | 1236000.0000
+      GIN | 1090610.0000
+      UGA | 890800.0000
+      SLE | 850000.0000
+      LBR | 850000.0000
+      MLI | 809552.0000
+      AUS | 808119.0000
+      MNG | 773700.0000
+      COG | 725000.0000
+      LBY | 674251.7500
+
+  panel worlb09
+    title: average of CountryLanguage.Percentage by Country (by key) the twelve most
+    rows (12):
+      GRD | 100.00000
+      SMR | 100.00000
+      BMU | 100.00000
+      CUB | 100.00000
+      ESH | 100.00000
+      BIH | 99.20000
+      PRT | 99.00000
+      URY | 95.70000
+      SAU | 95.00000
+      IRL | 50.00000
+      PRK | 50.00000
+      KOR | 50.00000
+
+  panel worlb10
+    title: sum of City.Population by Country (by key) the twelve most
+    rows (12):
+      CHN | 175953614
+      IND | 123298526
+      BRA | 85876862
+      USA | 78625774
+      JPN | 77965107
+      RUS | 69150700
+      MEX | 59752521
+      KOR | 38999893
+      IDN | 37485695
+      PAK | 31546745
+      PHL | 30934791
+      TUR | 28327028
+
+  panel worlb11
+    title: rows of City by Country.IndepYear
+    rows (88):
+      -1523 | 363
+      -1000 | 7
+      -660 | 248
+      800 | 5
+      836 | 15
+      843 | 40
+      885 | 2
+      1066-01-01 | 81
+      1143-01-01 | 5
+      1278-01-01 | 1
+      1350-01-01 | 12
+      1492-01-01 | 59
+      … 76 more rows
+
+  panel worlb12
+    title: rows of CountryLanguage by Country.GovernmentForm the twelve most
+    rows (12):
+      Republic | 578
+      Constitutional Monarchy | 101
+      Federal Republic | 96
+      Constitutional Monarchy, Federation | 32
+      Islamic Republic | 20
+      People'sRepublic | 12
+      Socialistic Republic | 12
+      Overseas Department of France | 11
+      Dependent Territory of the UK | 11
+      US Territory | 11
+      Monarchy | 10
+      Special Administrative Region of China | 9
+
+  panel worlb13
+    title: sum of City.Population by Country.GovernmentForm the twelve most
+    rows (12):
+      Federal Republic | 501355067
+      Republic | 492772413
+      People'sRepublic | 175953614
+      Constitutional Monarchy | 151120804
+      Islamic Republic | 30785177
+      Constitutional Monarchy, Federation | 30201969
+      Socialistic Republic | 20471489
+      Monarchy | 11097100
+      Special Administrative Region of China | 3738133
+      Socialistic State | 2697007
+      Islamic Emirate | 2332100
+      Emirate Federation | 1728336
+
+  panel worlb14
+    title: rows of CountryLanguage by Country.HeadOfState the twelve most
+    rows (12):
+      Elisabeth II | 74
+      George W. Bush | 32
+      Jacques Chirac | 29
+      Jiang Zemin | 21
+      Vladimir Putin | 12
+      Kocheril Raman Narayanan | 12
+      Beatrix | 11
+      Thabo Mbeki | 11
+      Benjamin William Mkapa | 11
+      Margrethe II | 11
+      Daniel arap Moi | 10
+      Joaquím A. Chissano | 10
+
+  panel worlb15
+    title: sum of Country.SurfaceArea by Country.HeadOfState the twelve most
+    rows (12):
+      Elisabeth II | 18785748.00
+      Vladimir Putin | 17075400.00
+       | 13120468.00
+      Jiang Zemin | 9573993.00
+      George W. Bush | 9373970.00
+      Fernando Henrique Cardoso | 8547403.00
+      Kocheril Raman Narayanan | 3287263.00
+      Fernando de la Rúa | 2780400.00
+      Nursultan Nazarbajev | 2724900.00
+      Omar Hassan Ahmad al-Bashir | 2505813.00
+      Abdelaziz Bouteflika | 2381741.00
+      Joseph Kabila | 2344858.00
+
+
+=== database: ergastf1 ===
+Ergast's Formula 1 database as CTU serves it: seasons, circuits, races, drivers, constructors, results, qualifying, lap times, pit stops and standings.
+
+  panel ergab01
+    title: rows of constructorStandings by constructors.name the twelve most
+    rows (12):
+      Ferrari | 903
+      McLaren | 774
+      Williams | 702
+      Tyrrell | 426
+      Team Lotus | 405
+      Sauber | 361
+      Renault | 341
+      Minardi | 337
+      Ligier | 332
+      Brabham | 315
+      Arrows | 297
+      Benetton | 259
+
+  panel ergab02
+    title: sum of results.milliseconds by constructors.name the twelve most
+    rows (12):
+      Ferrari | 6834683053
+      McLaren | 4668435793
+      Williams | 3759812409
+      Red Bull | 1889400505
+      Mercedes | 1596826676
+      Renault | 1481171502
+      Force India | 1090545990
+      Team Lotus | 1084244681
+      Benetton | 1069403231
+      Sauber | 1036649385
+      Kurtis Kraft | 1028730860
+      Toro Rosso | 919428233
+
+  panel ergab03
+    title: rows of results by races (by key) the twelve most
+    rows (12):
+      800 | 55
+      809 | 47
+      366 | 39
+      362 | 39
+      359 | 39
+      360 | 39
+      367 | 39
+      371 | 39
+      357 | 39
+      363 | 39
+      361 | 39
+      365 | 39
+
+  panel ergab04
+    title: rows of qualifying by drivers.forename the twelve most
+    rows (12):
+      Fernando | 270
+      Jenson | 263
+      Felipe | 251
+      Kimi | 236
+      Rubens | 226
+      Nico | 206
+      Lewis | 202
+      Mark | 202
+      Michael | 192
+      Sebastian | 192
+      Jarno | 186
+      David | 165
+
+  panel ergab05
+    title: average of races.round by circuits.name the twelve most
+    rows (12):
+      Yas Marina Circuit | 18.6667
+      Circuit of the Americas | 17.5000
+      Buddh International Circuit | 16.6667
+      Adelaide Street Circuit | 16.0909
+      Fuji Speedway | 16.0000
+      Korean International Circuit | 15.7500
+      Suzuka Circuit | 15.7241
+      Las Vegas Street Circuit | 15.5000
+      Marina Bay Street Circuit | 14.1000
+      Autódromo do Estoril | 12.6923
+      Circuito de Jerez | 12.5714
+      Mosport International Raceway | 12.0000
+
+  panel ergab06
+    title: rows of results by drivers.nationality the twelve most
+    rows (12):
+      British | 4142
+      Italian | 3357
+      French | 2745
+      German | 2174
+      Brazilian | 1945
+      American | 1278
+      Finnish | 953
+      Australian | 712
+      Austrian | 690
+      Spanish | 642
+      Japanese | 591
+      Belgian | 564
+
+  panel ergab07
+    title: average of results.points by status.status the twelve most
+    rows (12):
+      Finished | 5.702192423769663
+      +30 Laps | 1
+      +1 Lap | 0.7954915773266125
+      Out of fuel | 0.6464646464646465
+      Track rod | 0.5
+      +2 Laps | 0.2940713325227093
+      +17 Laps | 0.2857142857142857
+      +3 Laps | 0.21974965229485396
+      +7 Laps | 0.1919191919191919
+      Battery | 0.13333333333333333
+      +5 Laps | 0.12727272727272726
+      +9 Laps | 0.10526315789473684
+
+  panel ergab08
+    title: rows of results by results.positionText the twelve most
+    rows (12):
+      R | 8495
+      F | 1368
+      3 | 980
+      4 | 980
+      2 | 978
+      5 | 976
+      1 | 973
+      6 | 969
+      7 | 949
+      8 | 921
+      9 | 883
+      10 | 823
+
+  panel ergab09
+    title: rows of results by circuits.name the twelve most
+    rows (12):
+      Autodromo Nazionale di Monza | 1696
+      Circuit de Monaco | 1544
+      Silverstone Circuit | 1276
+      Circuit de Spa-Francorchamps | 1118
+      Nürburgring | 956
+      Circuit Gilles Villeneuve | 952
+      Hockenheimring | 895
+      Autódromo José Carlos Pace | 797
+      Hungaroring | 771
+      Autodromo Enzo e Dino Ferrari | 695
+      Circuit Park Zandvoort | 687
+      Suzuka Circuit | 671
+
+  panel ergab10
+    title: sum of constructorStandings.points by constructors.name the twelve most
+    rows (12):
+      Ferrari | 63855.5
+      McLaren | 47339.5
+      Red Bull | 36203
+      Mercedes | 34781
+      Williams | 31201.5
+      Renault | 13041
+      Force India | 8688
+      Team Lotus | 7742
+      Lotus F1 | 7485
+      Benetton | 7349.5
+      Tyrrell | 5125
+      Sauber | 5104
+
+  panel ergab11
+    title: sum of lapTimes.milliseconds by drivers.forename the twelve most
+    rows (12):
+      Jenson | 1556614792
+      Fernando | 1483026077
+      Felipe | 1396299507
+      Rubens | 1341706810
+      Kimi | 1300556762
+      Michael | 1211760455
+      Jarno | 1166380986
+      Lewis | 1108800455
+      Nico | 1099210312
+      Mark | 1050671843
+      Giancarlo | 1047155911
+      Sebastian | 1035375236
+
+  panel ergab12
+    title: sum of constructorStandings.wins by constructors.name the twelve most
+    rows (12):
+      Ferrari | 1725
+      McLaren | 1595
+      Williams | 934
+      Mercedes | 636
+      Red Bull | 474
+      Team Lotus | 374
+      Renault | 352
+      Benetton | 220
+      Brabham | 179
+      Tyrrell | 166
+      Lotus-Climax | 126
+      BRM | 98
+
+  panel ergab13
+    title: rows of races by circuits.country the twelve most
+    rows (12):
+      Italy | 95
+      Germany | 76
+      UK | 71
+      USA | 68
+      Monaco | 64
+      Belgium | 62
+      France | 59
+      Spain | 54
+      Canada | 48
+      Brazil | 45
+      Japan | 35
+      Australia | 33
+
+  panel ergab14
+    title: rows of results by constructors.nationality the twelve most
+    rows (12):
+      British | 11370
+      Italian | 5401
+      French | 2105
+      German | 781
+      Swiss | 743
+      American | 577
+      Japanese | 521
+      Irish | 500
+      Austrian | 478
+      Indian | 370
+      Malaysian | 188
+      Brazilian | 155
+
+  panel ergab15
+    title: rows of races by circuits.location the twelve most
+    rows (12):
+      Monza | 67
+      Monte-Carlo | 64
+      Silverstone | 51
+      Spa | 50
+      Nürburg | 40
+      Montreal | 38
+      São Paulo | 35
+      Hockenheim | 35
+      Budapest | 32
+      Zandvoort | 30
+      Spielburg | 29
+      Suzuka | 29

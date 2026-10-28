@@ -1,0 +1,1094 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: voc ===
+The Dutch East India Company's voyages and the people aboard: seafarers, soldiers, passengers, craftsmen, and invoices, as CTU serves it. A look fixture of round 1d.
+
+  panel voc01
+    title: rows of craftsmen by craftsmen.trip_sup
+    rows (1):
+       | 2349
+
+  panel voc02
+    title: rows of voyages by voyages.trip_sup
+    rows (3):
+       | 8127
+      A | 2
+      B | 2
+
+  panel voc03
+    title: rows of voyages by voyages.yard
+    rows (10):
+      A | 3583
+      Z | 1717
+      D | 664
+      R | 552
+      H | 546
+      ∅ | 545
+      E | 510
+      C | 7
+      B | 6
+      1 | 1
+
+  panel voc04
+    title: rows of invoices by invoices.chamber
+    rows (7):
+      A | 1531
+      Z | 822
+      H | 365
+      E | 362
+      R | 354
+      D | 347
+      ∅ | 1
+
+  panel voc05
+    title: rows of soldiers by soldiers.trip_sup
+    rows (2):
+       | 4176
+      b | 1
+
+  panel voc06
+    title: rows of voyages by voyages.cape_call
+    rows (2):
+      t | 7936
+      f | 195
+
+  panel voc07
+    title: rows of voyages by voyages.arrival_harbour the twelve most
+    rows (12):
+      Batavia | 3832
+      Texel | 1754
+      ∅ | 596
+      Rammekens | 476
+      Goeree | 393
+      Ceylon | 293
+      Bantam | 136
+      Wielingen | 99
+      Vlie | 87
+      The Cape | 87
+      Zeeland | 50
+      Bengal | 35
+
+  panel voc08
+    title: rows of voyages by voyages.type_of_boat the twelve most
+    rows (12):
+      ∅ | 5663
+      fluit | 1099
+      jacht | 492
+      pinas | 284
+      hoeker | 145
+      fregat | 84
+      pinas? jacht? | 79
+      galjoot | 49
+      paketboot | 48
+      fluit? hekboot? | 21
+      fluit? kat? | 18
+      fluit? jacht? | 18
+
+  panel voc09
+    title: rows of seafarers by seafarers.trip_sup
+    rows (2):
+       | 4467
+      b | 1
+
+  panel voc10
+    title: rows of voyages by voyages.cape_arrival
+    rows (188):
+      1192-01-01 | 1
+      1608-01-01 | 1
+      1610-01-01 | 3
+      1611-01-01 | 3
+      1613-01-01 | 1
+      1614-01-01 | 1
+      1615-01-01 | 3
+      1616-01-01 | 9
+      1617-01-01 | 5
+      1618-01-01 | 5
+      1619-01-01 | 7
+      1620-01-01 | 20
+      … 176 more rows
+
+  panel voc11
+    title: rows of voyages by voyages.departure_harbour the twelve most
+    rows (12):
+      Texel | 2972
+      Batavia | 2247
+      Goeree | 585
+      Rammekens | 562
+      Ceylon | 514
+      Wielingen | 453
+      China | 185
+      Bengal | 164
+      Bantam | 109
+      Vlie | 75
+      Maas | 61
+      The Cape | 54
+
+  panel voc12
+    title: rows of voyages by voyages.departure_date
+    rows (200):
+      1595-01-01 | 4
+      1598-01-01 | 22
+      1599-01-01 | 11
+      1600-01-01 | 10
+      1601-01-01 | 38
+      1602-01-01 | 27
+      1603-01-01 | 20
+      1604-01-01 | 9
+      1605-01-01 | 17
+      1606-01-01 | 15
+      1607-01-01 | 20
+      1608-01-01 | 9
+      … 188 more rows
+
+  panel voc13
+    title: rows of voyages by voyages.artificial_id the twelve most
+    rows (12):
+      1 | 1
+      2 | 1
+      3 | 1
+      4 | 1
+      5 | 1
+      6 | 1
+      7 | 1
+      8 | 1
+      9 | 1
+      10 | 1
+      11 | 1
+      12 | 1
+
+  panel voc14
+    title: rows of voyages by voyages.arrival_date
+    rows (201):
+      1129-01-01 | 1
+      1596-01-01 | 4
+      1598-01-01 | 8
+      1599-01-01 | 4
+      1600-01-01 | 13
+      1601-01-01 | 29
+      1602-01-01 | 17
+      1603-01-01 | 24
+      1604-01-01 | 20
+      1605-01-01 | 6
+      1606-01-01 | 19
+      1607-01-01 | 10
+      … 189 more rows
+
+  panel voc15
+    title: largest tables, estimated rows
+    rows (8):
+      voyages | 8082
+      seafarers | 4468
+      soldiers | 4177
+      invoices | 3782
+      passengers | 2813
+      total | 2467
+      craftsmen | 2349
+      impotenten | 938
+
+  panel voc16
+    title: rows of voyages by voyages.cape_departure
+    rows (182):
+      1170-01-01 | 1
+      1187-01-01 | 1
+      1194-01-01 | 2
+      1554-01-01 | 1
+      1608-01-01 | 1
+      1610-01-01 | 1
+      1613-01-01 | 1
+      1615-01-01 | 2
+      1616-01-01 | 9
+      1617-01-01 | 3
+      1618-01-01 | 5
+      1619-01-01 | 7
+      … 170 more rows
+
+  panel voc17
+    title: rows of voyages by voyages.chamber
+    rows (8):
+      A | 3965
+      Z | 1811
+      E | 570
+      R | 549
+      H | 544
+      D | 542
+      ∅ | 149
+      ? | 1
+
+
+=== database: pubs ===
+Microsoft's sample publisher: titles, authors, publishers, stores, sales and royalties, as CTU serves it. A look fixture of round 1d.
+
+  panel pubs01
+    title: sum of sales.qty by sales.payterms
+    rows (3):
+      Net 30 | 230
+      ON invoice | 135
+      Net 60 | 128
+
+  panel pubs02
+    title: rows of titles by titles.pubdate
+    rows (3):
+      1991-01-01 | 15
+      1994-01-01 | 1
+      2014-01-01 | 2
+
+  panel pubs03
+    title: rows of sales by sales.ord_date
+    rows (7):
+      1992-06-01 | 3
+      1993-02-01 | 1
+      1993-03-01 | 1
+      1993-05-01 | 6
+      1993-10-01 | 1
+      1993-12-01 | 1
+      1994-09-01 | 8
+
+  panel pubs04
+    title: sum of sales.qty by sales.ord_date
+    rows (7):
+      1992-06-01 | 80
+      1993-02-01 | 35
+      1993-03-01 | 25
+      1993-05-01 | 165
+      1993-10-01 | 15
+      1993-12-01 | 10
+      1994-09-01 | 163
+
+  panel pubs05
+    title: sum of sales.qty × titles.price by sales.ord_date
+    rows (7):
+      1992-06-01 | 1376.8000
+      1993-02-01 | 104.6500
+      1993-03-01 | 298.7500
+      1993-05-01 | 2794.9000
+      1993-10-01 | 299.8500
+      1993-12-01 | 199.9000
+      1994-09-01 | 1602.0500
+
+  panel pubs06
+    title: sum of sales.qty × titles.price by stores.stor_name the twelve most
+    rows (6):
+      Barnum's | 1821.2500
+      News & Brews | 1486.3000
+      Doc-U-Mat: Quality Laundry and Books | 1400.1500
+      Bookbeat | 1232.0000
+      Fricative Bookshop | 604.4000
+      Eric the Read Books | 132.8000
+
+  panel pubs07
+    title: sum of sales.qty × titles.price by titles (by key) the twelve most
+    rows (12):
+      PS2091 | 1182.6000
+      PC8888 | 1000.0000
+      TC3218 | 838.0000
+      PC1035 | 688.5000
+      PS1372 | 431.8000
+      BU1032 | 299.8500
+      PS3333 | 299.8500
+      BU7832 | 299.8500
+      TC7777 | 299.8000
+      BU1111 | 298.7500
+      TC4203 | 239.0000
+      MC2222 | 199.9000
+
+  panel pubs08
+    title: largest tables, estimated rows
+    rows (10):
+      roysched | 86
+      employee | 43
+      titleauthor | 25
+      authors | 23
+      sales | 21
+      titles | 18
+      jobs | 14
+      pub_info | 8
+      publishers | 8
+      stores | 6
+
+  panel pubs09
+    title: rows of employee by publishers.pub_name the twelve most
+    rows (8):
+      New Moon Books | 10
+      Binnet & Hardley | 10
+      Algodata Infosystems | 10
+      Lucerne Publishing | 7
+      Scootney Books | 3
+      Five Lakes Publishing | 1
+      Ramona Publishers | 1
+      GGG&G | 1
+
+  panel pubs10
+    title: rows of titles by titles.type
+    rows (6):
+      psychology | 5
+      business | 4
+      popular_comp | 3
+      trad_cook | 3
+      mod_cook | 2
+      UNDECIDED | 1
+
+  panel pubs11
+    title: rows of sales by stores.stor_name the twelve most
+    rows (6):
+      Doc-U-Mat: Quality Laundry and Books | 6
+      Bookbeat | 4
+      News & Brews | 4
+      Fricative Bookshop | 3
+      Eric the Read Books | 2
+      Barnum's | 2
+
+  panel pubs12
+    title: rows of employee by employee.hire_date
+    rows (43):
+      1988-06-01 | 1
+      1988-08-01 | 1
+      1988-09-01 | 1
+      1988-11-01 | 1
+      1989-01-01 | 1
+      1989-03-01 | 1
+      1989-04-01 | 1
+      1989-06-01 | 1
+      1989-08-01 | 1
+      1989-09-01 | 1
+      1989-11-01 | 1
+      1990-01-01 | 1
+      … 31 more rows
+
+  panel pubs13
+    title: rows of titles by publishers.pub_name the twelve most
+    rows (3):
+      Binnet & Hardley | 7
+      Algodata Infosystems | 6
+      New Moon Books | 5
+
+  panel pubs14
+    title: sum of sales.qty × titles.price by sales.payterms
+    rows (3):
+      Net 30 | 3657.8000
+      Net 60 | 1848.4500
+      ON invoice | 1170.6500
+
+  panel pubs15
+    title: rows of authors by authors.state
+    rows (8):
+      CA | 15
+      UT | 2
+      KS | 1
+      TN | 1
+      OR | 1
+      MI | 1
+      IN | 1
+      MD | 1
+
+  panel pubs16
+    title: sum of sales.qty by stores.stor_name the twelve most
+    rows (6):
+      Doc-U-Mat: Quality Laundry and Books | 130
+      Barnum's | 125
+      News & Brews | 90
+      Bookbeat | 80
+      Fricative Bookshop | 60
+      Eric the Read Books | 8
+
+
+=== database: airlines ===
+Postgres Professional's airlines demo, 1 September 2025, three months: bookings, tickets, flight segments, flights, routes, airports, airplanes, seats and boarding passes.
+
+  panel airl01
+    title: average of bookings.total_amount by bookings.book_date
+    rows (91):
+      2025-09-01 | 25817.142107679192
+      2025-09-02 | 24062.943120368516
+      2025-09-03 | 21031.150506512301
+      2025-09-04 | 19077.316474180273
+      2025-09-05 | 18549.175679240306
+      2025-09-06 | 18708.079729196792
+      2025-09-07 | 18636.949079305989
+      2025-09-08 | 18727.621236344258
+      2025-09-09 | 18577.422100026185
+      2025-09-10 | 18884.616263133851
+      2025-09-11 | 18498.095206435742
+      2025-09-12 | 18381.231043122775
+      … 79 more rows
+
+  panel airl02
+    title: rows of tickets by bookings (by key) the twelve most
+    rows (12):
+      5KSC9E | 10
+      9AFBDS | 10
+      25XXZL | 10
+      4UYUF4 | 10
+      6TGO17 | 10
+      7C0DTE | 10
+      033CTO | 10
+      1OP3KI | 10
+      3WXRTI | 10
+      49Z3NQ | 10
+      6IFISJ | 10
+      9SG2BV | 10
+
+  panel airl03
+    title: rows of boarding_passes by boarding_passes.boarding_time
+    rows (62):
+      2025-09-30 | 132
+      2025-10-01 | 40882
+      2025-10-02 | 45503
+      2025-10-03 | 42469
+      2025-10-04 | 41880
+      2025-10-05 | 42076
+      2025-10-06 | 38070
+      2025-10-07 | 40925
+      2025-10-08 | 35940
+      2025-10-09 | 39718
+      2025-10-10 | 38310
+      2025-10-11 | 40182
+      … 50 more rows
+
+  panel airl04
+    title: sum of segments.price by flights (by key) the twelve most
+    rows (12):
+      16679 | 22532100.00
+      17927 | 18808575.00
+      11358 | 15918200.00
+      12608 | 15918200.00
+      11889 | 15918200.00
+      6771 | 15694000.00
+      6230 | 15694000.00
+      16653 | 15601600.00
+      14907 | 14483250.00
+      13686 | 14483250.00
+      11904 | 14483250.00
+      14404 | 14483250.00
+
+  panel airl05
+    title: rows of flights by flights.scheduled_departure
+    rows (18):
+      2025-09-29 | 900
+      2025-10-06 | 1262
+      2025-10-13 | 1262
+      2025-10-20 | 1260
+      2025-10-27 | 1259
+      2025-11-03 | 1276
+      2025-11-10 | 1276
+      2025-11-17 | 1276
+      2025-11-24 | 1276
+      2025-12-01 | 1250
+      2025-12-08 | 1250
+      2025-12-15 | 1250
+      … 6 more rows
+
+  panel airl06
+    title: rows of flights by flights.actual_departure
+    rows (61):
+      2025-10-01 | 166
+      2025-10-02 | 189
+      2025-10-03 | 174
+      2025-10-04 | 184
+      2025-10-05 | 183
+      2025-10-06 | 173
+      2025-10-07 | 187
+      2025-10-08 | 168
+      2025-10-09 | 186
+      2025-10-10 | 172
+      2025-10-11 | 181
+      2025-10-12 | 184
+      … 49 more rows
+
+  panel airl07
+    title: rows of segments by segments.fare_conditions
+    rows (3):
+      Economy | 3221773
+      Business | 417644
+      Comfort | 301832
+
+  panel airl08
+    title: rows of flights by flights.status
+    rows (7):
+      Arrived | 10966
+      Scheduled | 10480
+      On Time | 157
+      Cancelled | 121
+      Departed | 20
+      Delayed | 10
+      Boarding | 4
+
+  panel airl09
+    title: sum of segments.price by segments.fare_conditions
+    rows (3):
+      Economy | 17696017750.00
+      Business | 4939418500.00
+      Comfort | 1938495325.00
+
+  panel airl10
+    title: rows of boarding_passes by flights (by key) the twelve most
+    rows (12):
+      10364 | 404
+      2204 | 404
+      5001 | 404
+      764 | 404
+      1003 | 404
+      5468 | 404
+      7662 | 404
+      1552 | 404
+      2520 | 404
+      9038 | 404
+      5761 | 404
+      10073 | 404
+
+  panel airl11
+    title: sum of bookings.total_amount by bookings.book_date
+    rows (91):
+      2025-09-01 | 393685600.00
+      2025-09-02 | 360438825.00
+      2025-09-03 | 319715550.00
+      2025-09-04 | 287418850.00
+      2025-09-05 | 281279700.00
+      2025-09-06 | 284624725.00
+      2025-09-07 | 280355625.00
+      2025-09-08 | 281139050.00
+      2025-09-09 | 283788700.00
+      2025-09-10 | 289368975.00
+      2025-09-11 | 278229850.00
+      2025-09-12 | 278769750.00
+      … 79 more rows
+
+  panel airl12
+    title: rows of tickets by tickets.outbound
+    rows (2):
+      t | 1805086
+      f | 1168851
+
+  panel airl13
+    title: rows of flights by flights.actual_arrival
+    rows (61):
+      2025-10-01 | 148
+      2025-10-02 | 188
+      2025-10-03 | 178
+      2025-10-04 | 181
+      2025-10-05 | 185
+      2025-10-06 | 173
+      2025-10-07 | 189
+      2025-10-08 | 164
+      2025-10-09 | 185
+      2025-10-10 | 176
+      2025-10-11 | 179
+      2025-10-12 | 186
+      … 49 more rows
+
+  panel airl14
+    title: rows of bookings by bookings.book_date
+    rows (91):
+      2025-09-01 | 15249
+      2025-09-02 | 14979
+      2025-09-03 | 15202
+      2025-09-04 | 15066
+      2025-09-05 | 15164
+      2025-09-06 | 15214
+      2025-09-07 | 15043
+      2025-09-08 | 15012
+      2025-09-09 | 15276
+      2025-09-10 | 15323
+      2025-09-11 | 15041
+      2025-09-12 | 15166
+      … 79 more rows
+
+  panel airl15
+    title: rows of flights by flights.scheduled_arrival
+    rows (18):
+      2025-09-29 | 884
+      2025-10-06 | 1262
+      2025-10-13 | 1262
+      2025-10-20 | 1261
+      2025-10-27 | 1253
+      2025-11-03 | 1276
+      2025-11-10 | 1276
+      2025-11-17 | 1276
+      2025-11-24 | 1276
+      2025-12-01 | 1255
+      2025-12-08 | 1250
+      2025-12-15 | 1250
+      … 6 more rows
+
+
+=== database: classicmodels ===
+classicmodels, a seller of scale models: orders and their lines, payments, customers, products and their lines, employees and offices, as CTU serves it.
+
+  panel clas01
+    title: rows of orders by orders.shippedDate
+    rows (29):
+      2003-01-01 | 3
+      2003-02-01 | 5
+      2003-03-01 | 6
+      2003-04-01 | 5
+      2003-05-01 | 7
+      2003-06-01 | 7
+      2003-07-01 | 8
+      2003-08-01 | 5
+      2003-09-01 | 6
+      2003-10-01 | 17
+      2003-11-01 | 28
+      2003-12-01 | 13
+      … 17 more rows
+
+  panel clas02
+    title: sum of orderdetails.priceEach × orderdetails.quantityOrdered by orders (by key) the twelve most
+    rows (12):
+      10165 | 67392.84999999999
+      10287 | 61402
+      10310 | 61234.669999999984
+      10212 | 59830.549999999996
+      10207 | 59265.14
+      10127 | 58841.35
+      10204 | 58793.53000000001
+      10126 | 57131.92
+      10222 | 56822.649999999994
+      10142 | 56052.56000000001
+      10390 | 55902.49999999999
+      10312 | 55639.66000000001
+
+  panel clas03
+    title: rows of orders by orders.orderDate
+    rows (29):
+      2003-01-01 | 5
+      2003-02-01 | 3
+      2003-03-01 | 6
+      2003-04-01 | 7
+      2003-05-01 | 6
+      2003-06-01 | 7
+      2003-07-01 | 7
+      2003-08-01 | 5
+      2003-09-01 | 8
+      2003-10-01 | 18
+      2003-11-01 | 30
+      2003-12-01 | 9
+      … 17 more rows
+
+  panel clas04
+    title: sum of orderdetails.priceEach × orderdetails.quantityOrdered by products.productScale
+    rows (8):
+      1:18 | 4071043.350000002
+      1:24 | 1810576.2400000016
+      1:12 | 1136048.1800000004
+      1:10 | 811907.8800000002
+      1:700 | 767652.9100000003
+      1:32 | 502827.5700000002
+      1:50 | 268531.24000000005
+      1:72 | 235603.24000000005
+
+  panel clas05
+    title: sum of payments.amount by customers (named) the twelve most
+    rows (12):
+      Diego  Freyre | 715738.9800000001
+      Susan Nelson | 584188.2400000001
+      Peter Ferguson | 180585.06999999998
+      Jeff Young | 177913.95
+      Eric Natividad | 156251.03
+      Mike Graham | 154622.08000000002
+      Rachel Ashworth | 148410.09
+      Anna O'Hara | 137034.22
+      Julie Brown | 132340.78
+      Mary  Saveley | 130305.35
+      Giovanni  Rovelli | 127529.69
+      Paul  Henriot | 126983.19
+
+  panel clas06
+    title: sum of payments.amount by payments.paymentDate
+    rows (30):
+      2003-01-01 | 26267.620000000003
+      2003-02-01 | 144384.36
+      2003-03-01 | 199704.47999999998
+      2003-04-01 | 136313.91999999998
+      2003-05-01 | 159881.97000000003
+      2003-06-01 | 180218.97999999998
+      2003-07-01 | 158247
+      2003-08-01 | 246204.86
+      2003-09-01 | 161206.22999999998
+      2003-10-01 | 316857.96
+      2003-11-01 | 694292.6799999999
+      2003-12-01 | 826637.6400000001
+      … 18 more rows
+
+  panel clas07
+    title: sum of orderdetails.priceEach by products.productName the twelve most
+    rows (12):
+      1992 Ferrari 360 Spider red | 8074.170000000001
+      1952 Alpine Renault 1300 | 5524.66
+      2001 Ferrari Enzo | 5051.61
+      2003 Harley-Davidson Eagle Drag Bike | 4824.07
+      1968 Ford Mustang | 4656.049999999999
+      1969 Ford Falcon | 4271.910000000001
+      1928 Mercedes-Benz SSK | 4196.85
+      1998 Chrysler Plymouth Prowler | 4036
+      1980s Black Hawk Helicopter | 3894.9500000000007
+      1917 Grand Touring Sedan | 3842
+      1969 Corvair Monza | 3719.6199999999994
+      2002 Suzuki XREO | 3700.7300000000005
+
+  panel clas08
+    title: average of payments.amount by payments.paymentDate
+    rows (30):
+      2003-01-01 | 8755.873333333335
+      2003-02-01 | 48128.119999999995
+      2003-03-01 | 39940.89599999999
+      2003-04-01 | 19473.41714285714
+      2003-05-01 | 26646.995000000006
+      2003-06-01 | 36043.795999999995
+      2003-07-01 | 19780.875
+      2003-08-01 | 41034.14333333333
+      2003-09-01 | 32241.245999999996
+      2003-10-01 | 24373.689230769232
+      2003-11-01 | 36541.719999999994
+      2003-12-01 | 41331.882000000005
+      … 18 more rows
+
+  panel clas09
+    title: sum of payments.amount by customers.country the twelve most
+    rows (12):
+      USA | 3040029.5199999996
+      Spain | 994438.5300000003
+      France | 965750.5800000001
+      Australia | 509385.81999999995
+      New Zealand | 392486.59
+      UK | 391503.89999999997
+      Italy | 325254.55000000005
+      Finland | 295149.35
+      Norway | 270846.3
+      Singapore | 261671.59999999998
+      Canada | 205911.86
+      Denmark | 197356.3
+
+  panel clas10
+    title: sum of orderdetails.priceEach × orderdetails.quantityOrdered by products.productName the twelve most
+    rows (12):
+      1992 Ferrari 360 Spider red | 276839.98
+      2001 Ferrari Enzo | 190755.86
+      1952 Alpine Renault 1300 | 190017.95999999996
+      2003 Harley-Davidson Eagle Drag Bike | 170685.99999999997
+      1968 Ford Mustang | 161531.47999999992
+      1969 Ford Falcon | 152543.02
+      1980s Black Hawk Helicopter | 144959.90999999997
+      1998 Chrysler Plymouth Prowler | 142530.62999999998
+      1917 Grand Touring Sedan | 140535.60000000003
+      2002 Suzuki XREO | 135767.03000000003
+      1956 Porsche 356A Coupe | 134240.71
+      1969 Corvair Monza | 132363.78999999998
+
+  panel clas11
+    title: rows of payments by payments.paymentDate
+    rows (30):
+      2003-01-01 | 3
+      2003-02-01 | 3
+      2003-03-01 | 5
+      2003-04-01 | 7
+      2003-05-01 | 6
+      2003-06-01 | 5
+      2003-07-01 | 8
+      2003-08-01 | 6
+      2003-09-01 | 5
+      2003-10-01 | 13
+      2003-11-01 | 19
+      2003-12-01 | 20
+      … 18 more rows
+
+  panel clas12
+    title: sum of orderdetails.priceEach × orderdetails.quantityOrdered by productlines.textDescription the twelve most
+    rows (7):
+      Attention car enthusiasts: Make your wil | 3853922.4899999965
+      Our Vintage Car models realistically por | 1797559.6299999994
+      Our motorcycles are state of the art rep | 1121426.1199999999
+      The Truck and Bus models are realistic r | 1024113.5699999998
+      Unique, diecast airplane and helicopter  | 954637.5400000003
+      The perfect holiday or anniversary gift  | 663998.34
+      Model trains are a rewarding hobby for e | 188532.92
+
+  panel clas13
+    title: sum of payments.amount by employees (named) the twelve most
+    rows (12):
+      Gerard Hernandez | 1112003.8099999998
+      Leslie Jennings | 989906.5500000002
+      Pamela Castillo | 750201.87
+      Larry Bott | 686653.25
+      Barry Jones | 637672.65
+      George Vanauf | 584406.7999999999
+      Loui Bondur | 569485.75
+      Andy Fixter | 509385.81999999995
+      Peter Marsh | 497907.16000000003
+      Foon Yue Tseng | 488212.67
+      Mami Nishi | 457110.06999999995
+      Steve Patterson | 449219.13000000006
+
+  panel clas14
+    title: rows of orders by orders.requiredDate
+    rows (30):
+      2003-01-01 | 3
+      2003-02-01 | 4
+      2003-03-01 | 5
+      2003-04-01 | 7
+      2003-05-01 | 7
+      2003-06-01 | 6
+      2003-07-01 | 8
+      2003-08-01 | 5
+      2003-09-01 | 7
+      2003-10-01 | 19
+      2003-11-01 | 26
+      2003-12-01 | 14
+      … 18 more rows
+
+  panel clas15
+    title: sum of orderdetails.priceEach by products.productScale
+    rows (8):
+      1:18 | 114833.9499999998
+      1:24 | 51384.50000000006
+      1:12 | 31637.07000000001
+      1:10 | 22983.590000000004
+      1:700 | 22230.32999999999
+      1:32 | 14687.080000000004
+      1:50 | 7453.409999999998
+      1:72 | 6735.490000000001
+
+  panel clas16
+    title: rows of orders by orders.status
+    rows (6):
+      Shipped | 303
+      Cancelled | 6
+      In Process | 6
+      Resolved | 4
+      On Hold | 4
+      Disputed | 3
+
+
+=== database: movielens ===
+Movies, actors, directors, users and their ratings, from IMDb and MovieLens, as CTU serves it. A look fixture of round 1d.
+
+  panel movi01
+    title: rows of movies by movies.isEnglish
+    rows (2):
+      T | 3411
+      F | 421
+
+  panel movi02
+    title: rows of movies by movies.country
+    rows (4):
+      USA | 2725
+      other | 531
+      UK | 384
+      France | 192
+
+  panel movi03
+    title: largest tables, estimated rows
+    rows (7):
+      u2base | 1049233
+      movies2actors | 175466
+      actors | 99129
+      users | 6039
+      movies2directors | 4141
+      movies | 3832
+      directors | 2201
+
+  panel movi04
+    title: rows of u2base by users (by key) the twelve most
+    rows (12):
+      4169 | 2305
+      1680 | 1826
+      4277 | 1733
+      1941 | 1579
+      1181 | 1515
+      889 | 1503
+      3618 | 1339
+      2063 | 1314
+      1150 | 1295
+      1015 | 1281
+      5795 | 1270
+      4344 | 1265
+
+  panel movi05
+    title: rows of users by users.age
+    rows (7):
+      25 | 2095
+      35 | 1193
+      18 | 1103
+      45 | 550
+      50 | 496
+      56 | 380
+      1 | 222
+
+  panel movi06
+    title: rows of u2base by u2base.rating
+    rows (5):
+      4 | 348150
+      3 | 260180
+      5 | 225108
+      2 | 107114
+      1 | 55607
+
+  panel movi07
+    title: rows of movies by movies.year
+    rows (4):
+      1 | 50
+      2 | 310
+      3 | 749
+      4 | 2723
+
+  panel movi08
+    title: rows of movies2directors by movies2directors.genre
+    rows (9):
+      Comedy | 1257
+      Drama | 955
+      Action | 593
+      Adventure | 342
+      Crime | 299
+      Documentary | 257
+      Horror | 231
+      Animation | 104
+      Other | 103
+
+  panel movi09
+    title: rows of u2base by movies (by key) the twelve most
+    rows (12):
+      1721568 | 3427
+      2371726 | 2990
+      2371786 | 2989
+      2371787 | 2882
+      2058680 | 2671
+      2324123 | 2652
+      2401750 | 2649
+      2457464 | 2590
+      1749731 | 2583
+      2478414 | 2577
+      2168207 | 2538
+      2288828 | 2513
+
+  panel movi10
+    title: rows of movies2actors by movies (by key) the twelve most
+    rows (12):
+      2153014 | 332
+      2164624 | 268
+      2446644 | 236
+      2044913 | 221
+      2515573 | 192
+      1780022 | 179
+      2073054 | 177
+      2364486 | 169
+      2486285 | 169
+      2531770 | 167
+      2154663 | 166
+      1899769 | 161
+
+  panel movi11
+    title: rows of movies2directors by directors (by key) the twelve most
+    rows (12):
+      118604 | 52
+      5185 | 20
+      156165 | 14
+      260322 | 14
+      70986 | 13
+      158572 | 13
+      263287 | 13
+      148294 | 12
+      41939 | 12
+      75298 | 12
+      121794 | 12
+      5798 | 12
+
+  panel movi12
+    title: rows of movies2actors per movies
+    rows (147):
+      1 | 20
+      2 | 23
+      3 | 14
+      4 | 25
+      5 | 24
+      6 | 29
+      7 | 28
+      8 | 42
+      9 | 52
+      10 | 78
+      11 | 69
+      12 | 72
+      … 135 more rows
+
+  panel movi13
+    title: rows of movies2directors by movies (by key) the twelve most
+    rows (12):
+      1930793 | 11
+      1930810 | 8
+      1895159 | 7
+      2261598 | 7
+      1894619 | 7
+      1753348 | 7
+      2357543 | 6
+      1757423 | 6
+      2216640 | 5
+      2473798 | 5
+      2452768 | 5
+      2151740 | 5
+
+  panel movi14
+    title: rows of actors by actors.a_gender
+    rows (2):
+      M | 65794
+      F | 32896
+
+  panel movi15
+    title: rows of u2base by users.age
+    rows (7):
+      25 | 393943
+      35 | 198210
+      18 | 182820
+      45 | 83263
+      50 | 72202
+      56 | 38658
+      1 | 27063
+
+  panel movi16
+    title: rows of movies2actors by actors.a_gender the twelve most
+    rows (12):
+      M | 51
+      M | 36
+      M | 33
+      F | 31
+      M | 31
+      M | 29
+      M | 29
+      M | 27
+      M | 27
+      M | 27
+      F | 27
+      M | 27
+
+  panel movi17
+    title: rows of movies2actors by movies.country
+    rows (4):
+      USA | 102694
+      other | 16783
+      UK | 12282
+      France | 6590
+
+  panel movi18
+    title: rows of users by users.occupation
+    rows (5):
+      2 | 1614
+      5 | 1453
+      1 | 1132
+      4 | 1051
+      3 | 789
+
+  panel movi19
+    title: rows of users by users.u_gender
+    rows (2):
+      M | 4331
+      F | 1708

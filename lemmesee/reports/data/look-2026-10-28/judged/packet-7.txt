@@ -1,0 +1,1101 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: credit ===
+A credit-card company's members, charges, payments and statements, with providers, corporations, categories and regions, as CTU serves it.
+
+  panel credb01
+    title: sum of charge.charge_amt by member (by key) the twelve most
+    rows (0):
+      
+      error: ERROR 3024 (HY000) at line 1: Query execution was interrupted, maximum statement execution time exceeded
+
+  panel credb02
+    title: rows of member by region.street
+    rows (8):
+      444 Fourth St. | 1295
+      555 Fifth St St | 1280
+      888 Eighth St. | 1260
+      999 Ninth St. | 1248
+      777 Seventh St | 1246
+      333 Third St. | 1235
+      666 Sixth | 1223
+      222 Second St. | 1213
+
+  panel credb03
+    title: rows of charge by member (by key) the twelve most
+    rows (12):
+      10000 | 1760
+      9993 | 1392
+      9994 | 1376
+      9998 | 1360
+      9997 | 1344
+      9991 | 1328
+      9987 | 1328
+      9999 | 1296
+      9995 | 1296
+      9986 | 1216
+      9996 | 1152
+      9989 | 1120
+
+  panel credb04
+    title: average of payment.payment_amt by payment.payment_dt
+    rows (2):
+      1999-09-02 | 14492.24209641
+      1999-10-03 | 8961.91499654
+
+  panel credb05
+    title: sum of member.prev_balance by region.region_name the twelve most
+    rows (8):
+      Mid East / Sout | 0.0000
+      South American | 0.0000
+      Africa | 0.0000
+      Scandanavian | 0.0000
+      Western Europea | 0.0000
+      Eastern Europea | 0.0000
+      Japan | 0.0000
+      China | 0.0000
+
+  panel credb06
+    title: rows of corporation by region.region_name the twelve most
+    rows (8):
+      South American | 71
+      Scandanavian | 69
+      Western Europea | 65
+      North American | 64
+      Mid East / Sout | 61
+      China | 60
+      Japan | 56
+      Eastern Europea | 54
+
+  panel credb07
+    title: rows of member by region.region_name
+    rows (8):
+      Western Europea | 1295
+      Eastern Europea | 1280
+      Mid East / Sout | 1260
+      Africa | 1248
+      China | 1246
+      Scandanavian | 1235
+      Japan | 1223
+      South American | 1213
+
+  panel credb08
+    title: sum of charge.charge_amt by provider (by key) the twelve most
+    rows (0):
+      
+      error: ERROR 3024 (HY000) at line 1: Query execution was interrupted, maximum statement execution time exceeded
+
+  panel credb09
+    title: rows of member by region.country
+    rows (5):
+       | 5081
+      Ke | 1248
+      Sw | 1235
+      Ja | 1223
+      Br | 1213
+
+  panel credb10
+    title: rows of member by member.lastname the twelve most
+    rows (12):
+      ANDERSON | 385
+      BARR | 385
+      CHEN | 385
+      DORR | 385
+      EFLIN | 385
+      FLORINI | 385
+      GOHAN | 385
+      HAHN | 385
+      INFANTE | 385
+      JONES | 385
+      KAHRMANN | 385
+      LING | 385
+
+  panel credb11
+    title: rows of provider by region.region_name the twelve most
+    rows (7):
+      Africa | 233
+      Mid East / Sout | 98
+      China | 73
+      Japan | 41
+      Eastern Europea | 31
+      Western Europea | 15
+      Scandanavian | 9
+
+  panel credb12
+    title: rows of statement by statement.due_dt
+    rows (2):
+      1999-09-02 | 10000
+      1999-10-03 | 10000
+
+  panel credb13
+    title: sum of payment.payment_amt by member (by key) the twelve most
+    rows (12):
+      10000 | 219348.0000
+      9998 | 177532.0000
+      9994 | 169838.0000
+      9997 | 168757.0000
+      9999 | 167809.0000
+      9991 | 161117.0000
+      9987 | 157819.0000
+      9986 | 156052.0000
+      9993 | 155398.0000
+      9995 | 143240.0000
+      9971 | 138133.0000
+      9979 | 133197.0000
+
+  panel credb14
+    title: rows of member by region.city
+    rows (8):
+      Brussels | 1295
+      Budapest | 1280
+      Madras | 1260
+      Mombassa | 1248
+      Beijing | 1246
+      Goteborg | 1235
+      Tokyo | 1223
+      Sao Paulo | 1213
+
+  panel credb15
+    title: sum of charge.charge_amt by statement (by key) the twelve most
+    rows (0):
+      
+      error: ERROR 3024 (HY000) at line 1: Query execution was interrupted, maximum statement execution time exceeded
+
+
+=== database: hockey ===
+Professional ice hockey: players, teams, goalies, scoring, coaches and awards by season, as CTU serves it. A look fixture of round 1d.
+
+  panel hockb01
+    title: rows of Master by Master.birthCountry the twelve most
+    rows (12):
+      Canada | 5328
+      USA | 994
+      ∅ | 365
+      Sweden | 233
+      Czech Republic | 206
+      Russia | 172
+      Finland | 164
+      Slovakia | 64
+      Germany | 28
+      England | 25
+      Scotland | 23
+      Switzerland | 17
+
+  panel hockb02
+    title: rows of Teams by Teams.lgID
+    rows (5):
+      NHL | 1325
+      WHA | 84
+      NHA | 45
+      PCHA | 41
+      WCHL | 24
+
+  panel hockb03
+    title: rows of Master by Master.firstWHA
+    rows (8):
+      ∅ | 6858
+      1972 | 298
+      1974 | 136
+      1975 | 109
+      1978 | 102
+      1973 | 99
+      1977 | 92
+      1976 | 67
+
+  panel hockb04
+    title: rows of Scoring by Scoring.GTG
+    rows (9):
+      0 | 23507
+      ∅ | 17861
+      1 | 3318
+      2 | 915
+      3 | 268
+      4 | 68
+      5 | 23
+      6 | 6
+      7 | 1
+
+  panel hockb05
+    title: rows of Master by Master.pos the twelve most
+    rows (12):
+      D | 2218
+      C | 1605
+      L | 1450
+      R | 1348
+      G | 761
+      ∅ | 314
+      F | 43
+      R/C | 5
+      C/D | 3
+      D/L | 2
+      C/R | 2
+      L/C | 2
+
+  panel hockb06
+    title: rows of Scoring by Scoring.GWG the twelve most
+    rows (12):
+      0 | 21657
+      ∅ | 9400
+      1 | 6283
+      2 | 3315
+      3 | 2072
+      4 | 1309
+      5 | 818
+      6 | 476
+      7 | 302
+      8 | 146
+      9 | 88
+      10 | 47
+
+  panel hockb07
+    title: rows of Master by Master.lastWHA
+    rows (8):
+      ∅ | 6858
+      1978 | 249
+      1975 | 145
+      1977 | 133
+      1976 | 127
+      1974 | 94
+      1973 | 93
+      1972 | 62
+
+  panel hockb08
+    title: rows of TeamsPost by TeamsPost.lgID
+    rows (5):
+      NHL | 841
+      WHA | 53
+      PCHA | 14
+      WCHL | 13
+      NHA | 6
+
+  panel hockb09
+    title: rows of Scoring by Scoring.SHA
+    rows (12):
+      ∅ | 22753
+      0 | 18961
+      1 | 2925
+      2 | 892
+      3 | 294
+      4 | 93
+      5 | 25
+      6 | 15
+      7 | 5
+      8 | 2
+      10 | 1
+      9 | 1
+
+  panel hockb10
+    title: rows of Scoring by Scoring.PPG the twelve most
+    rows (12):
+      0 | 22031
+      ∅ | 8219
+      1 | 4448
+      2 | 2498
+      3 | 1775
+      4 | 1335
+      5 | 1173
+      6 | 919
+      7 | 742
+      8 | 616
+      9 | 439
+      10 | 392
+
+  panel hockb11
+    title: rows of Master by Master.height the twelve most
+    rows (12):
+      72 | 1213
+      71 | 1198
+      73 | 1161
+      74 | 902
+      70 | 881
+      75 | 545
+      69 | 486
+      ∅ | 427
+      68 | 322
+      76 | 236
+      67 | 144
+      77 | 91
+
+  panel hockb12
+    title: rows of Master by Master.birthDay the twelve most
+    rows (12):
+      1 | 291
+      28 | 273
+      29 | 270
+      11 | 268
+      12 | 266
+      2 | 263
+      3 | 261
+      15 | 258
+      ∅ | 257
+      13 | 255
+      18 | 247
+      25 | 247
+
+  panel hockb13
+    title: rows of Master by Coaches.lgID
+    rows (6):
+      ∅ | 7366
+      NHL | 1593
+      WHA | 111
+      NHA | 43
+      PCHA | 41
+      WCHL | 24
+
+  panel hockb14
+    title: rows of Coaches by Coaches.lgID
+    rows (5):
+      NHL | 1593
+      WHA | 111
+      NHA | 43
+      PCHA | 41
+      WCHL | 24
+
+  panel hockb15
+    title: rows of Master by HOF.category
+    rows (4):
+      ∅ | 7396
+      Player | 251
+      Builder | 99
+      Referee/Linesman | 15
+
+
+=== database: restbase ===
+Restaurants of the San Francisco Bay Area: their general information, locations and geography, as CTU serves it. A look fixture of round 1d.
+
+  panel restb01
+    title: sum of generalinfo.review by geographic.region
+    rows (9):
+      bay area | 21316.6
+      napa valley | 416.0
+      monterey | 159.2
+      unknown | 100.1
+      northern california | 99.3
+      sacramento area | 21.9
+      lake tahoe | 16.7
+      yosemite and mono lake area | 9.7
+      los angeles area | 3.8
+
+  panel restb02
+    title: average of generalinfo.review by geographic.county the twelve most
+    rows (12):
+      los angeles county | 3.80000
+      el dorado county | 3.15000
+      yolo county | 2.73750
+      mendocino county | 2.60000
+      placer county | 2.60000
+      tuolumne county | 2.50000
+      san francisco county | 2.49000
+      monterey county | 2.48750
+      san joaquin county | 2.46000
+      marin county | 2.39463
+      san mateo county | 2.34066
+      santa clara county | 2.33592
+
+  panel restb03
+    title: average of generalinfo.review by geographic.region
+    rows (9):
+      los angeles area | 3.80000
+      lake tahoe | 2.78333
+      sacramento area | 2.73750
+      monterey | 2.48750
+      yosemite and mono lake area | 2.42500
+      unknown | 2.32791
+      bay area | 2.31049
+      napa valley | 2.16667
+      northern california | 2.15870
+
+  panel restb04
+    title: sum of generalinfo.review by geographic.county the twelve most
+    rows (12):
+      alameda county | 5377.3
+      santa clara county | 5085.3
+      san francisco county | 3087.6
+      contra costa county | 2474.1
+      san mateo county | 2343.0
+      sonoma county | 980.1
+      solano county | 763.8
+      santa cruz county | 528.1
+      napa county | 416.0
+      unknown | 413.0
+      marin county | 356.8
+      monterey county | 159.2
+
+  panel restb05
+    title: rows of generalinfo per geographic
+    rows (72):
+      1 | 21
+      2 | 13
+      3 | 7
+      4 | 4
+      5 | 4
+      6 | 10
+      7 | 8
+      8 | 4
+      9 | 2
+      10 | 3
+      11 | 3
+      12 | 2
+      … 60 more rows
+
+  panel restb06
+    title: rows of location per geographic
+    rows (79):
+      1 | 21
+      2 | 15
+      3 | 5
+      4 | 5
+      5 | 6
+      6 | 8
+      7 | 6
+      8 | 5
+      9 | 1
+      10 | 2
+      11 | 4
+      12 | 2
+      … 67 more rows
+
+  panel restb07
+    title: average of generalinfo.review by geographic (by key) the twelve most
+    rows (12):
+      cerritos | 3.80000
+      rio del mar | 3.60000
+      grass valley | 3.60000
+      pescadero | 3.50000
+      south lake tahoe | 3.15000
+      woodside | 3.02000
+      vancouver | 3.00000
+      jenner | 3.00000
+      kenwood | 2.98333
+      tahoe vista | 2.85000
+      tres pinos | 2.83333
+      davis | 2.80000
+
+
+=== database: nba ===
+NBA players, teams, drafts and their statistics, as CTU serves it. A look fixture of round 1d.
+
+  panel nbab01
+    title: sum of Actions.Minutes by Player.PlayerName the twelve most
+    rows (12):
+      Darren Collison | 7420
+      Demar DeRozan | 7139
+      Chris Paul | 6770
+      Randy Foye | 6578
+      Matt Barnes | 6541
+      DeAndre Jordan | 6479
+      Al Jefferson | 6443
+      Courtney Lee | 6429
+      Ty Lawson | 6304
+      Zach Randolph | 6162
+      Marc Gasol | 6134
+      Aaron Brooks | 5971
+
+  panel nbab02
+    title: sum of Actions.Minutes by Game.Date
+    rows (5):
+      2014-03-31 | 259201
+      2014-04-01 | 89400
+      2014-04-02 | 374398
+      2014-04-03 | 57599
+      2014-04-04 | 86400
+
+  panel nbab03
+    title: rows of Game by Game.Date
+    rows (5):
+      2014-03-31 | 9
+      2014-04-01 | 3
+      2014-04-02 | 13
+      2014-04-03 | 2
+      2014-04-04 | 3
+
+  panel nbab04
+    title: average of Actions.Turnovers by Team.TeamName the twelve most
+    rows (12):
+      Washington Wizards | 1.3462
+      Atlanta Hawks | 1.3333
+      Philadelphia 76ers | 1.2917
+      Boston Celtics | 1.2500
+      San Antonio Spurs | 1.1923
+      Minnesota Timberwolves | 1.1923
+      Denver Nuggets | 1.1538
+      Orlando Magic | 1.1538
+      Milwaukee Bucks | 1.1538
+      New Orleans Pelicans | 1.1154
+      Brooklyn Nets | 1.1154
+      Houston Rockets | 1.1154
+
+  panel nbab05
+    title: sum of Actions.Minutes by Team.TeamName the twelve most
+    rows (12):
+      Memphis Grizzlies | 43200
+      Denver Nuggets | 43200
+      Charlotte Bobcats | 43200
+      Los Angeles Clippers | 43200
+      Toronto Raptors | 43200
+      Dallas Mavericks | 30300
+      Golden State Warriors | 30300
+      Sacramento Kings | 28802
+      Philadelphia 76ers | 28801
+      Washington Wizards | 28801
+      Boston Celtics | 28800
+      Miami Heat | 28800
+
+  panel nbab06
+    title: sum of Game.ResultOfTeam1 by Team.TeamName the twelve most
+    rows (12):
+      Los Angeles Clippers | 2
+      New York Knicks | 1
+      Memphis Grizzlies | 1
+      Sacramento Kings | 1
+      Cleveland Cavaliers | 1
+      Charlotte Bobcats | 1
+      Chicago Bulls | 1
+      Denver Nuggets | 1
+      Portland Trail Blazers | 1
+      Miami Heat | 1
+      Dallas Mavericks | 1
+      Toronto Raptors | 0
+
+  panel nbab07
+    title: sum of Actions.Turnovers by Team.TeamName the twelve most
+    rows (12):
+      Denver Nuggets | 45
+      Toronto Raptors | 38
+      Los Angeles Clippers | 37
+      Washington Wizards | 35
+      Memphis Grizzlies | 33
+      Charlotte Bobcats | 33
+      Atlanta Hawks | 32
+      Philadelphia 76ers | 31
+      San Antonio Spurs | 31
+      Minnesota Timberwolves | 31
+      Orlando Magic | 30
+      Milwaukee Bucks | 30
+
+  panel nbab08
+    title: rows of Actions by Game (by key) the twelve most
+    rows (12):
+      25 | 27
+      17 | 26
+      2 | 26
+      20 | 26
+      21 | 26
+      23 | 26
+      24 | 26
+      28 | 26
+      30 | 26
+      29 | 26
+      26 | 26
+      27 | 26
+
+  panel nbab09
+    title: sum of Actions.FieldGoalsMade by Player.PlayerName the twelve most
+    rows (12):
+      Al Jefferson | 30
+      Kenneth Faried | 27
+      Demar DeRozan | 26
+      Darren Collison | 25
+      Dirk Nowitzki | 23
+      Marc Gasol | 23
+      Jonas Valanciunas | 21
+      Nick Young | 21
+      Ray McCallum | 21
+      DeMarcus Cousins | 21
+      Josh Smith | 20
+      Rudy Gay | 19
+
+  panel nbab10
+    title: rows of joined_drafted_all_players_original by joined_drafted_all_players_original.born
+    rows (3):
+      1962-08-05 | 1
+      1964-06-09 | 1
+      1964-11-22 | 1
+
+  panel nbab11
+    title: sum of Game.ResultOfTeam1 by Game.Date
+    rows (5):
+      2014-03-31 | -1
+      2014-04-01 | 1
+      2014-04-02 | -3
+      2014-04-03 | 0
+      2014-04-04 | 3
+
+  panel nbab12
+    title: rows of Actions by Player.PlayerName the twelve most
+    rows (12):
+      Courtney Lee | 3
+      James Johnson | 3
+      Ed Davis | 3
+      Mike Conley | 3
+      Jon Leuer | 3
+      Marc Gasol | 3
+      Mike Miller | 3
+      Nick Calathes | 3
+      Zach Randolph | 3
+      Tony Allen | 3
+      Kosta Koufos | 3
+      Tayshaun Prince | 3
+
+  panel nbab13
+    title: sum of Actions.Turnovers by Game (by key) the twelve most
+    rows (12):
+      8 | 36
+      4 | 35
+      18 | 35
+      14 | 31
+      3 | 31
+      26 | 31
+      28 | 31
+      15 | 29
+      6 | 29
+      5 | 29
+      19 | 29
+      17 | 28
+
+  panel nbab14
+    title: largest tables, estimated rows
+    rows (5):
+      Actions | 767
+      Player | 392
+      Game | 30
+      Team | 30
+      joined_drafted_all_players_original | 3
+
+  panel nbab15
+    title: rows of Actions by Actions.BlockedShots
+    rows (6):
+      0 | 602
+      1 | 105
+      2 | 38
+      3 | 15
+      4 | 5
+      5 | 2
+
+  panel nbab16
+    title: rows of Game per Team
+    rows (3):
+      1 | 15
+      2 | 6
+      3 | 1
+
+  panel nbab17
+    title: sum of Actions.TotalRebounds by Player.PlayerName the twelve most
+    rows (12):
+      DeAndre Jordan | 50
+      Omer Asik | 38
+      Al Jefferson | 37
+      Kenneth Faried | 33
+      Zach Randolph | 31
+      Greg Monroe | 30
+      Andre Drummond | 30
+      Zaza Pachulia | 29
+      James Harden | 29
+      Kevin Love | 29
+      Paul Millsap | 28
+      Jonas Valanciunas | 25
+
+  panel nbab18
+    title: rows of joined_drafted_all_players_original by joined_drafted_all_players_original.college
+    rows (3):
+      Georgetown University | 1
+      University of Oklahoma | 1
+      Creighton University | 1
+
+  panel nbab19
+    title: rows of Team by Team.TeamName the twelve most
+    rows (12):
+      Portland Trail Blazers | 1
+      Los Angeles Lakers | 1
+      Golden State Warriors | 1
+      Dallas Mavericks | 1
+      Houston Rockets | 1
+      Brooklyn Nets | 1
+      New York Knicks | 1
+      Utah Jazz | 1
+      Memphis Grizzlies | 1
+      Denver Nuggets | 1
+      Sacramento Kings | 1
+      New Orleans Pelicans | 1
+
+  panel nbab20
+    title: rows of Actions by Actions.FreeThrowsMade the twelve most
+    rows (12):
+      0 | 432
+      2 | 97
+      1 | 74
+      3 | 60
+      4 | 38
+      5 | 17
+      6 | 15
+      8 | 9
+      7 | 9
+      9 | 9
+      10 | 3
+      11 | 2
+
+  panel nbab21
+    title: rows of Actions by Team.TeamName the twelve most
+    rows (12):
+      Toronto Raptors | 39
+      Charlotte Bobcats | 39
+      Memphis Grizzlies | 39
+      Denver Nuggets | 39
+      Los Angeles Clippers | 39
+      Los Angeles Lakers | 26
+      Dallas Mavericks | 26
+      Houston Rockets | 26
+      Brooklyn Nets | 26
+      Miami Heat | 26
+      Sacramento Kings | 26
+      New Orleans Pelicans | 26
+
+  panel nbab22
+    title: sum of Actions.TotalRebounds by Actions.BlockedShots
+    rows (6):
+      0 | 1475
+      1 | 534
+      2 | 292
+      3 | 120
+      4 | 61
+      5 | 13
+
+  panel nbab23
+    title: average of Actions.TotalRebounds by Team.TeamName the twelve most
+    rows (12):
+      Houston Rockets | 4.3462
+      Utah Jazz | 3.8462
+      Portland Trail Blazers | 3.8462
+      Los Angeles Lakers | 3.7308
+      Detroit Pistons | 3.7308
+      Atlanta Hawks | 3.6250
+      Sacramento Kings | 3.6154
+      Charlotte Bobcats | 3.5897
+      Milwaukee Bucks | 3.5385
+      Dallas Mavericks | 3.4231
+      Minnesota Timberwolves | 3.3846
+      San Antonio Spurs | 3.3462
+
+  panel nbab24
+    title: sum of Actions.TotalRebounds by Game (by key) the twelve most
+    rows (12):
+      12 | 108
+      7 | 100
+      25 | 99
+      10 | 95
+      13 | 94
+      4 | 91
+      8 | 89
+      11 | 89
+      1 | 88
+      29 | 88
+      27 | 87
+      2 | 86
+
+  panel nbab25
+    title: sum of Actions.Turnovers by Player.PlayerName the twelve most
+    rows (12):
+      John Wall | 9
+      Darren Collison | 9
+      Lebron James | 8
+      Ramon Sessions | 8
+      Kenneth Faried | 8
+      Jeff Teague | 8
+      Rajon Rondo | 7
+      Thaddeus Young | 7
+      Austin Rivers | 7
+      Ricky Rubio | 7
+      Kyle Korver | 7
+      Aaron Brooks | 7
+
+  panel nbab26
+    title: sum of Actions.TotalRebounds by Actions.FreeThrowsMade the twelve most
+    rows (12):
+      0 | 787
+      2 | 415
+      1 | 345
+      3 | 326
+      4 | 173
+      5 | 118
+      7 | 73
+      6 | 73
+      9 | 70
+      8 | 62
+      16 | 23
+      10 | 12
+
+  panel nbab27
+    title: rows of joined_drafted_all_players_original by joined_drafted_all_players_original.position
+    rows (3):
+      Center and Power Forward | 1
+      Power Forward | 1
+      Center | 1
+
+  panel nbab28
+    title: sum of Actions.Points by Team.TeamName the twelve most
+    rows (12):
+      Los Angeles Clippers | 333
+      Charlotte Bobcats | 325
+      Denver Nuggets | 321
+      Toronto Raptors | 292
+      Memphis Grizzlies | 282
+      Dallas Mavericks | 233
+      Golden State Warriors | 225
+      Los Angeles Lakers | 214
+      Washington Wizards | 212
+      Detroit Pistons | 210
+      Sacramento Kings | 209
+      Minnesota Timberwolves | 206
+
+  panel nbab29
+    title: sum of Actions.TotalRebounds by Team.TeamName the twelve most
+    rows (12):
+      Charlotte Bobcats | 140
+      Denver Nuggets | 129
+      Los Angeles Clippers | 126
+      Memphis Grizzlies | 119
+      Houston Rockets | 113
+      Toronto Raptors | 108
+      Detroit Pistons | 97
+      Los Angeles Lakers | 97
+      Sacramento Kings | 94
+      Milwaukee Bucks | 92
+      Dallas Mavericks | 89
+      Minnesota Timberwolves | 88
+
+  panel nbab30
+    title: sum of Actions.FieldGoalsMade by Team.TeamName the twelve most
+    rows (12):
+      Denver Nuggets | 117
+      Los Angeles Clippers | 114
+      Memphis Grizzlies | 110
+      Toronto Raptors | 109
+      Charlotte Bobcats | 109
+      Dallas Mavericks | 88
+      Golden State Warriors | 88
+      Minnesota Timberwolves | 84
+      Washington Wizards | 83
+      San Antonio Spurs | 82
+      Detroit Pistons | 80
+      Sacramento Kings | 80
+
+  panel nbab31
+    title: sum of Actions.Minutes by Team.TeamName
+    rows (30):
+      Memphis Grizzlies | 43200
+      Denver Nuggets | 43200
+      Los Angeles Clippers | 43200
+      Toronto Raptors | 43200
+      Charlotte Bobcats | 43200
+      Dallas Mavericks | 30300
+      Golden State Warriors | 30300
+      Sacramento Kings | 28802
+      Philadelphia 76ers | 28801
+      Washington Wizards | 28801
+      New York Knicks | 28800
+      Orlando Magic | 28800
+      … 18 more rows
+
+  panel nbab32
+    title: rows of Game by Game.ResultOfTeam1
+    rows (2):
+      1 | 15
+      -1 | 15
+
+  panel nbab33
+    title: rows of Game by Team.TeamName the twelve most
+    rows (12):
+      Memphis Grizzlies | 3
+      Golden State Warriors | 2
+      Houston Rockets | 2
+      Philadelphia 76ers | 2
+      Los Angeles Clippers | 2
+      Boston Celtics | 2
+      Toronto Raptors | 2
+      Portland Trail Blazers | 1
+      San Antonio Spurs | 1
+      Dallas Mavericks | 1
+      Brooklyn Nets | 1
+      New York Knicks | 1
+
+
+=== database: ncaa ===
+NCAA men's college basketball: teams, seasons, regular-season and tournament results, as CTU serves it. A look fixture of round 1d.
+
+  panel ncaab01
+    title: rows of tourney_compact_results by seasons (by key) the twelve most
+    rows (12):
+      2014 | 67
+      2013 | 67
+      2012 | 67
+      2011 | 67
+      2001 | 64
+      2002 | 64
+      2003 | 64
+      2004 | 64
+      2005 | 64
+      2007 | 64
+      2010 | 64
+      2009 | 64
+
+  panel ncaab02
+    title: rows of tourney_detailed_results by seasons.regionY
+    rows (6):
+      Midwest | 390
+      South | 131
+      Southeast | 67
+      EastRutherford | 64
+      Austin | 64
+      Minneapolis | 64
+
+  panel ncaab03
+    title: rows of regular_season_compact_results by seasons.regionZ
+    rows (7):
+      West | 90705
+      Southeast | 15978
+      South | 8634
+      Southwest | 5246
+      WashingtonDC | 4757
+      Syracuse | 4675
+      StLouis | 4571
+
+  panel ncaab04
+    title: rows of regular_season_detailed_results by seasons.dayzero
+    rows (12):
+      2002-01-01 | 4616
+      2003-01-01 | 4571
+      2004-01-01 | 4675
+      2005-01-01 | 4757
+      2006-01-01 | 5043
+      2007-01-01 | 5163
+      2008-01-01 | 5249
+      2009-01-01 | 5263
+      2010-01-01 | 5246
+      2011-01-01 | 5253
+      2012-01-01 | 5320
+      2013-01-01 | 5362
+
+  panel ncaab05
+    title: sum of target.team_id1_wins by seasons (by key) the twelve most
+    rows (4):
+      2011 | 38
+      2014 | 38
+      2012 | 35
+      2013 | 33
+
+  panel ncaab06
+    title: rows of tourney_seeds by teams.team_name the twelve most
+    rows (12):
+      Kansas | 29
+      Duke | 29
+      Arizona | 28
+      North Carolina | 27
+      Syracuse | 25
+      Kentucky | 25
+      Michigan St | 24
+      UCLA | 23
+      Texas | 23
+      Indiana | 23
+      Louisville | 23
+      Xavier | 22
+
+  panel ncaab07
+    title: rows of seasons by seasons.season
+    rows (31):
+      1985-01-01 | 1
+      1986-01-01 | 1
+      1987-01-01 | 1
+      1988-01-01 | 1
+      1989-01-01 | 1
+      1990-01-01 | 1
+      1991-01-01 | 1
+      1992-01-01 | 1
+      1993-01-01 | 1
+      1994-01-01 | 1
+      1995-01-01 | 1
+      1996-01-01 | 1
+      … 19 more rows
+
+  panel ncaab08
+    title: rows of tourney_detailed_results by seasons.regionZ
+    rows (5):
+      West | 521
+      Southwest | 67
+      StLouis | 64
+      Syracuse | 64
+      WashingtonDC | 64
+
+  panel ncaab09
+    title: rows of regular_season_compact_results by seasons.regionX
+    rows (7):
+      Midwest | 39080
+      South | 35372
+      West | 29858
+      Southeast | 16253
+      Oakland | 4757
+      Chicago | 4675
+      Phoenix | 4571
+
+  panel ncaab10
+    title: rows of regular_season_compact_results by seasons.regionY
+    rows (6):
+      Midwest | 76237
+      Southeast | 25133
+      South | 19193
+      Minneapolis | 4757
+      Austin | 4675
+      EastRutherford | 4571
+
+  panel ncaab11
+    title: rows of seasons by seasons.regionW
+    rows (3):
+      East | 28
+      Atlanta | 2
+      Albuquerque | 1
+
+  panel ncaab12
+    title: rows of regular_season_compact_results by seasons.regionW
+    rows (3):
+      East | 120563
+      Atlanta | 9328
+      Albuquerque | 4675
+
+  panel ncaab13
+    title: sum of target.team_id2_wins by teams.team_name the twelve most
+    rows (12):
+      Kansas | 4
+      Kansas St | 4
+      Cincinnati | 4
+      Arizona | 3
+      Memphis | 3
+      BYU | 3
+      Duke | 3
+      Gonzaga | 2
+      Belmont | 2
+      Bucknell | 2
+      Illinois | 2
+      Florida | 2
+
+  panel ncaab14
+    title: rows of tourney_detailed_results by seasons.regionX
+    rows (6):
+      South | 390
+      Midwest | 131
+      West | 67
+      Phoenix | 64
+      Chicago | 64
+      Oakland | 64

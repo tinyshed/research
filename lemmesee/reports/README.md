@@ -18,3 +18,11 @@ so, never by editing the number it replaces.
 - [Keys from names, taken further](keys-2026-10-28.md), round 1b's second pass:
   letters, a graph stage and the graphics card take keys to F1 0.774 against the rules' 0.442 on the test, 0.875 on
   hard cases agents wrote; names stop near 0.8, past which the statistics of the data are next.
+- [Questions a schema can be asked, ordered by what teachers ask](questions-2026-10-28.md), round 1c:
+  the analytical question says 78 to 84 % of what two language-model teachers ask against round 1's 39 to 44 %,
+  and a ranker of 56 KB learned from them picks what a teacher asks 1.8 times as often as round 1's rules on 240
+  held-out schemas; two blind model judges keep 0.70 and 0.60 of its fives against 0.54 and 0.49.
+- [The five learned, and a look at what it would show](look-2026-10-28.md), round 1d:
+  penalties learned from the teachers' fives, and an 8.7 KB model of what a judge keeps read from each result; on
+  28 databases five judges that taught nothing keep more of its fives than of round 1's, four clear of chance, and
+  a teacher at 2.3 cents for 845 panels teaches it nearly as well as Sonnet.

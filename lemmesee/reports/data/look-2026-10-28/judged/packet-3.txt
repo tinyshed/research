@@ -1,0 +1,1219 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: dallas ===
+Dallas police incidents, the officers and the subjects involved, as CTU serves it. A look fixture of round 1d.
+
+  panel dall01
+    title: rows of incidents by incidents.date
+    rows (14):
+      2003-01-01 | 19
+      2004-01-01 | 15
+      2005-01-01 | 10
+      2006-01-01 | 15
+      2007-01-01 | 16
+      2008-01-01 | 16
+      2009-01-01 | 15
+      2010-01-01 | 17
+      2011-01-01 | 12
+      2012-01-01 | 23
+      2013-01-01 | 22
+      2014-01-01 | 20
+      … 2 more rows
+
+  panel dall02
+    title: rows of subjects by subjects.gender
+    rows (2):
+      M | 215
+      F | 8
+
+  panel dall03
+    title: average of incidents.subject_count by incidents.date
+    rows (14):
+      2003-01-01 | 1.0000
+      2004-01-01 | 1.1333
+      2005-01-01 | 1.0000
+      2006-01-01 | 1.0000
+      2007-01-01 | 1.1250
+      2008-01-01 | 0.9375
+      2009-01-01 | 1.0000
+      2010-01-01 | 0.9412
+      2011-01-01 | 1.0000
+      2012-01-01 | 1.0435
+      2013-01-01 | 1.0000
+      2014-01-01 | 1.0000
+      … 2 more rows
+
+  panel dall04
+    title: rows of incidents by incidents.date split by incidents.subject_statuses
+    rows (48):
+      2003-01-01 | Deceased | 6
+      2003-01-01 | Injured | 6
+      2003-01-01 | Other | 1
+      2003-01-01 | Shoot and Miss | 6
+      2004-01-01 | Deceased | 3
+      2004-01-01 | Deceased Injured | 1
+      2004-01-01 | Injured | 4
+      2004-01-01 | Shoot and Miss | 7
+      2005-01-01 | Deceased | 2
+      2005-01-01 | Injured | 2
+      2005-01-01 | Shoot and Miss | 6
+      2006-01-01 | 2 Injured | 1
+      … 36 more rows
+
+  panel dall05
+    title: rows of incidents by incidents.subjects the twelve most
+    rows (12):
+      Unknown L/M | 9
+      Unknown B/M | 5
+      See Summary | 3
+      Luster, Desmond Dwayne B/M | 1
+      Gilstrap, Bryan B/M | 1
+      Evans, Jerry W/M | 1
+      Mims, Carlton B/M | 1
+      Rittenhouse, Tony B/M | 1
+      Dang, Thuy A/M | 1
+      Robles, Juan L/M | 1
+      Howard, Jacques B/M | 1
+      Spicer, Oscar B/M | 1
+
+  panel dall06
+    title: rows of officers by officers.race
+    rows (5):
+      W | 207
+      L | 79
+      B | 68
+      A | 12
+      ∅ | 4
+
+  panel dall07
+    title: sum of incidents.subject_count by incidents.date
+    rows (14):
+      2003-01-01 | 19
+      2004-01-01 | 17
+      2005-01-01 | 10
+      2006-01-01 | 15
+      2007-01-01 | 18
+      2008-01-01 | 15
+      2009-01-01 | 15
+      2010-01-01 | 16
+      2011-01-01 | 12
+      2012-01-01 | 24
+      2013-01-01 | 22
+      2014-01-01 | 20
+      … 2 more rows
+
+  panel dall08
+    title: rows of incidents by incidents.subject_weapon the twelve most
+    rows (12):
+      Handgun | 99
+      Vehicle | 34
+      Unarmed | 32
+      Shotgun | 10
+      Knife | 10
+      Hands | 10
+      Rifle | 4
+      Assault Rifle | 4
+      Taser | 2
+      Pellet Gun | 2
+      BB Rifle | 2
+      Paint Ball Rifle | 1
+
+  panel dall09
+    title: rows of officers by officers.gender
+    rows (2):
+      M | 351
+      F | 19
+
+  panel dall10
+    title: largest tables, estimated rows
+    rows (3):
+      officers | 370
+      subjects | 223
+      incidents | 219
+
+  panel dall11
+    title: rows of incidents by incidents.subject_statuses
+    rows (7):
+      Shoot and Miss | 83
+      Deceased | 68
+      Injured | 62
+      Other | 3
+      Deceased Injured | 1
+      1 Deceased 1 Injured | 1
+      2 Injured | 1
+
+  panel dall12
+    title: rows of subjects by subjects.race
+    rows (4):
+      B | 111
+      L | 72
+      W | 38
+      A | 2
+
+  panel dall13
+    title: average of incidents.subject_count by incidents.subject_statuses
+    rows (7):
+      Deceased Injured | 2.0000
+      1 Deceased 1 Injured | 2.0000
+      Shoot and Miss | 1.0482
+      Deceased | 1.0147
+      2 Injured | 1.0000
+      Injured | 0.9677
+      Other | 0.6667
+
+  panel dall14
+    title: sum of incidents.subject_count by incidents.subject_statuses
+    rows (7):
+      Shoot and Miss | 87
+      Deceased | 69
+      Injured | 60
+      Other | 2
+      Deceased Injured | 2
+      1 Deceased 1 Injured | 2
+      2 Injured | 1
+
+  panel dall15
+    title: rows of incidents by incidents.grand_jury_disposition
+    rows (6):
+      No Bill | 115
+      ∅ | 85
+      Pending | 11
+      See Summary | 5
+      True Bill | 2
+      Redden, Craig W/M | 1
+
+  panel dall16
+    title: sum of incidents.officer_count by incidents.subject_statuses
+    rows (7):
+      Deceased | 160
+      Injured | 101
+      Shoot and Miss | 99
+      Other | 4
+      1 Deceased 1 Injured | 3
+      2 Injured | 2
+      Deceased Injured | 1
+
+
+=== database: basketball ===
+Men's professional basketball: players, teams, coaches, drafts, awards and all-stars by season, as CTU serves it. A look fixture of round 1d.
+
+  panel bask01
+    title: largest tables, estimated rows
+    rows (9):
+      players_teams | 23475
+      draft | 8547
+      players | 4991
+      awards_players | 1719
+      coaches | 1689
+      player_allstar | 1608
+      teams | 1536
+      series_post | 775
+      awards_coaches | 61
+
+  panel bask02
+    title: rows of players by players.deathDate
+    rows (58):
+      0000-01-01 | 4103
+      1946-01-01 | 1
+      1956-01-01 | 1
+      1957-01-01 | 3
+      1958-01-01 | 3
+      1959-01-01 | 1
+      1961-01-01 | 1
+      1962-01-01 | 1
+      1963-01-01 | 2
+      1964-01-01 | 2
+      1965-01-01 | 3
+      1966-01-01 | 2
+      … 46 more rows
+
+  panel bask03
+    title: rows of awards_players by awards_players.lgID
+    rows (4):
+      NBA | 1552
+      ABA | 142
+      NBL | 24
+      ABL1 | 1
+
+  panel bask04
+    title: rows of series_post by series_post.series
+    rows (11):
+      L | 264
+      M | 172
+      N | 89
+      O | 66
+      J | 62
+      K | 45
+      B | 33
+      C | 18
+      A | 11
+      D | 9
+      I | 6
+
+  panel bask05
+    title: rows of players by players.pos the twelve most
+    rows (12):
+      G | 1625
+      F | 1354
+      C | 501
+      F-C | 444
+      G-F | 427
+      F-G | 254
+      C-F | 251
+      ∅ | 182
+      F-C-G | 11
+      F-G-C | 7
+      C-G | 2
+      G-F-C | 1
+
+  panel bask06
+    title: rows of teams by teams.lgID
+    rows (6):
+      NBA | 1304
+      NBL | 99
+      ABA | 94
+      PBLA | 16
+      ABL1 | 14
+      NPBL | 9
+
+  panel bask07
+    title: rows of players by players.hsCountry the twelve most
+    rows (12):
+      USA | 4202
+      ∅ | 765
+      CAN | 12
+      AUS | 9
+      YUG | 8
+      FRA | 4
+      NGR | 4
+      BRA | 3
+      CRO | 3
+      HOL | 3
+      VEN | 2
+      BAH | 2
+
+  panel bask08
+    title: sum of player_allstar.minutes by player_allstar.conference
+    rows (5):
+      East | 18392
+      West | 18247
+      Allstars | 240
+      Denver | 240
+      Weset | 34
+
+  panel bask09
+    title: rows of draft by draft.draftYear
+    rows (65):
+      1947-01-01 | 63
+      1948-01-01 | 104
+      1949-01-01 | 60
+      1950-01-01 | 99
+      1951-01-01 | 77
+      1952-01-01 | 95
+      1953-01-01 | 108
+      1954-01-01 | 100
+      1955-01-01 | 77
+      1956-01-01 | 83
+      1957-01-01 | 85
+      1958-01-01 | 88
+      … 53 more rows
+
+  panel bask10
+    title: rows of teams by teams.year
+    rows (75):
+      1937-01-01 | 13
+      1938-01-01 | 8
+      1939-01-01 | 8
+      1940-01-01 | 7
+      1941-01-01 | 7
+      1942-01-01 | 5
+      1943-01-01 | 4
+      1944-01-01 | 6
+      1945-01-01 | 8
+      1946-01-01 | 23
+      1947-01-01 | 35
+      1948-01-01 | 22
+      … 63 more rows
+
+  panel bask11
+    title: rows of players_teams by players_teams.lgID
+    rows (6):
+      NBA | 20357
+      ABA | 1463
+      NBL | 1423
+      ABL1 | 205
+      PBLA | 165
+      NPBL | 138
+
+  panel bask12
+    title: rows of awards_players by awards_players.year
+    rows (75):
+      1937-01-01 | 2
+      1938-01-01 | 2
+      1939-01-01 | 2
+      1940-01-01 | 2
+      1941-01-01 | 2
+      1942-01-01 | 2
+      1943-01-01 | 2
+      1944-01-01 | 2
+      1945-01-01 | 2
+      1946-01-01 | 12
+      1947-01-01 | 12
+      1948-01-01 | 12
+      … 63 more rows
+
+  panel bask13
+    title: rows of players by players.race
+    rows (6):
+      B | 2460
+      W | 2431
+      ∅ | 159
+      O | 9
+      1 | 2
+      r | 1
+
+  panel bask14
+    title: rows of players_teams by players_teams.year
+    rows (75):
+      1937-01-01 | 142
+      1938-01-01 | 124
+      1939-01-01 | 112
+      1940-01-01 | 92
+      1941-01-01 | 95
+      1942-01-01 | 68
+      1943-01-01 | 46
+      1944-01-01 | 82
+      1945-01-01 | 144
+      1946-01-01 | 380
+      1947-01-01 | 463
+      1948-01-01 | 352
+      … 63 more rows
+
+  panel bask15
+    title: rows of draft by draft.lgID
+    rows (2):
+      NBA | 7314
+      ABA | 1307
+
+  panel bask16
+    title: rows of players by players.birthState the twelve most
+    rows (12):
+      ∅ | 1454
+      CA | 354
+      NY | 348
+      IL | 269
+      PA | 215
+      OH | 195
+      IN | 160
+      MI | 147
+      TX | 144
+      NJ | 117
+      GA | 116
+      KY | 108
+
+  panel bask17
+    title: rows of players by players.hsState the twelve most
+    rows (12):
+      ∅ | 834
+      CA | 428
+      NY | 395
+      IL | 330
+      PA | 264
+      IN | 254
+      OH | 243
+      MI | 181
+      TX | 160
+      NJ | 137
+      KY | 111
+      GA | 110
+
+  panel bask18
+    title: rows of players by players.birthCountry the twelve most
+    rows (12):
+      USA | 3584
+      ∅ | 1160
+      YUG | 23
+      FRA | 18
+      CAN | 17
+      GER | 16
+      ESP | 12
+      AUS | 11
+      ARG | 9
+      CRO | 9
+      BRA | 9
+      ENG | 8
+
+
+=== database: ergastf1 ===
+Ergast's Formula 1 database as CTU serves it: seasons, circuits, races, drivers, constructors, results, qualifying, lap times, pit stops and standings.
+
+  panel erga01
+    title: sum of constructorResults.points by constructors.name the twelve most
+    rows (12):
+      Ferrari | 7081.5
+      McLaren | 5232.5
+      Red Bull | 3750.5
+      Williams | 3541
+      Mercedes | 3525
+      Renault | 1368
+      Force India | 924
+      Team Lotus | 918
+      Benetton | 861.5
+      Lotus F1 | 706
+      Tyrrell | 621
+      Brabham | 595
+
+  panel erga02
+    title: rows of results by constructors.name the twelve most
+    rows (12):
+      Ferrari | 2128
+      McLaren | 1613
+      Williams | 1367
+      Tyrrell | 881
+      Team Lotus | 871
+      Sauber | 735
+      Minardi | 672
+      Brabham | 662
+      Renault | 657
+      Ligier | 611
+      Arrows | 590
+      BRM | 562
+
+  panel erga03
+    title: rows of qualifying by constructors.name the twelve most
+    rows (12):
+      Ferrari | 678
+      Williams | 677
+      McLaren | 675
+      Sauber | 534
+      Red Bull | 476
+      Toro Rosso | 439
+      Renault | 392
+      Force India | 369
+      Mercedes | 299
+      Toyota | 250
+      Minardi | 238
+      Jordan | 237
+
+  panel erga04
+    title: rows of races by races.name the twelve most
+    rows (12):
+      British Grand Prix | 68
+      Italian Grand Prix | 68
+      Monaco Grand Prix | 64
+      German Grand Prix | 62
+      Belgian Grand Prix | 62
+      French Grand Prix | 58
+      Canadian Grand Prix | 48
+      Spanish Grand Prix | 47
+      Brazilian Grand Prix | 45
+      United States Grand Prix | 39
+      Australian Grand Prix | 33
+      Japanese Grand Prix | 33
+
+  panel erga05
+    title: rows of constructorResults per races
+    rows (19):
+      2 | 1
+      3 | 2
+      4 | 1
+      5 | 6
+      6 | 15
+      7 | 19
+      8 | 26
+      9 | 39
+      10 | 151
+      11 | 235
+      12 | 83
+      13 | 45
+      … 7 more rows
+
+  panel erga06
+    title: sum of results.points by constructors.name the twelve most
+    rows (12):
+      Ferrari | 7934.770000338554
+      McLaren | 5301.5
+      Red Bull | 3750.5
+      Mercedes | 3664.140000104904
+      Williams | 3535
+      Renault | 1368
+      Team Lotus | 995
+      Force India | 924
+      Benetton | 861.5
+      Tyrrell | 711
+      Lotus F1 | 706
+      Brabham | 631
+
+  panel erga07
+    title: sum of results.milliseconds by status.status the twelve most
+    rows (12):
+      Finished | 37573052350
+      Disqualified | 16172177
+      +1 Lap | 5961211
+      Power Unit | 5081427
+      Engine | ∅
+      Collision | ∅
+      Accident | ∅
+      Transmission | ∅
+      Clutch | ∅
+      Electrical | ∅
+      Seat | ∅
+      +2 Laps | ∅
+
+  panel erga08
+    title: average of qualifying.position by constructors.name the twelve most
+    rows (12):
+      Simtek | 23.7838
+      HRT | 22.9478
+      Pacific | 22.8750
+      Forti | 22.4634
+      Larrousse | 21.5333
+      Virgin | 21.3158
+      Spyker | 20.9706
+      Team Lotus | 20.4000
+      Marussia | 20.2797
+      Caterham | 19.7589
+      Spyker MF1 | 19.3750
+      Manor Marussia | 19.3333
+
+  panel erga09
+    title: sum of results.points by status.status the twelve most
+    rows (12):
+      Finished | 34019.28000020981
+      +1 Lap | 2597.2799999713898
+      +2 Laps | 436.99000012874603
+      +3 Laps | 158
+      Out of fuel | 64
+      +4 Laps | 42
+      +5 Laps | 28
+      Engine | 24
+      Accident | 23
+      +7 Laps | 19
+      +6 Laps | 8
+      Electrical | 5
+
+  panel erga10
+    title: sum of lapTimes.milliseconds by drivers.nationality
+    rows (30):
+      German | 7548156170
+      British | 5861427658
+      Brazilian | 4405537540
+      Finnish | 3268850733
+      Italian | 2960095170
+      Spanish | 2678068277
+      French | 2521004102
+      Australian | 1747068750
+      Japanese | 1456611224
+      Mexican | 1021025900
+      Dutch | 983466989
+      Canadian | 812670510
+      … 18 more rows
+
+  panel erga11
+    title: average of races.round by races.date
+    rows (68):
+      1950-01-01 | 4.0000
+      1951-01-01 | 4.5000
+      1952-01-01 | 4.5000
+      1953-01-01 | 5.0000
+      1954-01-01 | 5.0000
+      1955-01-01 | 4.0000
+      1956-01-01 | 4.5000
+      1957-01-01 | 4.5000
+      1958-01-01 | 6.0000
+      1959-01-01 | 5.0000
+      1960-01-01 | 5.5000
+      1961-01-01 | 4.5000
+      … 56 more rows
+
+  panel erga12
+    title: rows of results by drivers.forename the twelve most
+    rows (12):
+      Rubens | 326
+      Jenson | 309
+      Michael | 308
+      Fernando | 287
+      Kimi | 267
+      Felipe | 265
+      Riccardo | 257
+      Jarno | 256
+      David | 247
+      Giancarlo | 231
+      Mark | 217
+      Michele | 215
+
+  panel erga13
+    title: rows of races by seasons (by key) the twelve most
+    rows (12):
+      2016 | 21
+      2017 | 20
+      2012 | 20
+      2015 | 19
+      2005 | 19
+      2014 | 19
+      2011 | 19
+      2010 | 19
+      2013 | 19
+      2006 | 18
+      2008 | 18
+      2004 | 18
+
+  panel erga14
+    title: rows of drivers by drivers.nationality the twelve most
+    rows (12):
+      British | 162
+      American | 157
+      Italian | 99
+      French | 72
+      German | 49
+      Brazilian | 31
+      Argentine | 24
+      South African | 23
+      Swiss | 23
+      Belgian | 23
+      Japanese | 19
+      Dutch | 17
+
+  panel erga15
+    title: rows of races by races.date
+    rows (68):
+      1950-01-01 | 7
+      1951-01-01 | 8
+      1952-01-01 | 8
+      1953-01-01 | 9
+      1954-01-01 | 9
+      1955-01-01 | 7
+      1956-01-01 | 8
+      1957-01-01 | 8
+      1958-01-01 | 11
+      1959-01-01 | 9
+      1960-01-01 | 10
+      1961-01-01 | 8
+      … 56 more rows
+
+  panel erga16
+    title: rows of races by circuits.name the twelve most
+    rows (12):
+      Autodromo Nazionale di Monza | 67
+      Circuit de Monaco | 64
+      Silverstone Circuit | 51
+      Circuit de Spa-Francorchamps | 50
+      Nürburgring | 40
+      Circuit Gilles Villeneuve | 38
+      Autódromo José Carlos Pace | 35
+      Hockenheimring | 35
+      Hungaroring | 32
+      Circuit Park Zandvoort | 30
+      Suzuka Circuit | 29
+      Autodromo Enzo e Dino Ferrari | 27
+
+  panel erga17
+    title: rows of results by status.status the twelve most
+    rows (12):
+      Finished | 5966
+      +1 Lap | 3265
+      Engine | 1971
+      +2 Laps | 1486
+      Did not qualify | 1025
+      Accident | 1007
+      Gearbox | 790
+      Spun off | 788
+      Collision | 755
+      +3 Laps | 719
+      Suspension | 421
+      +4 Laps | 405
+
+
+=== database: ccs ===
+A Czech fuel-card company's customers, gas stations, products, a thousand transactions and monthly consumption, as CTU serves it.
+
+  panel ccs01
+    title: distribution of transactions_1k.Price
+    rows (13):
+      0 | 1.76 | 462
+      1 | 290.30 | 232
+      2 | 577.84 | 226
+      3 | 870.93 | 40
+      4 | 1154.22 | 12
+      5 | 1445.97 | 6
+      6 | 1774.63 | 6
+      7 | 2146.30 | 4
+      8 | 2328.72 | 4
+      9 | 2810.59 | 3
+      10 | 3090.39 | 3
+      12 | 3600.84 | 1
+      … 1 more rows
+
+  panel ccs02
+    title: sum of yearmonth.Consumption by yearmonth.Date
+    rows (21):
+      2011-12-01 | 4172.66
+      2012-01-01 | 44080288.84
+      2012-02-01 | 48513403.09
+      2012-03-01 | 51787161.74
+      2012-04-01 | 47084875.02
+      2012-05-01 | 48466054.68
+      2012-06-01 | 50027223.19
+      2012-07-01 | 46390232.88
+      2012-08-01 | 50475554.14
+      2012-09-01 | 20084604.21
+      2013-01-01 | 18059.48
+      2013-02-01 | 14361348.75
+      … 9 more rows
+
+  panel ccs03
+    title: sum of transactions_1k.Amount by gasstations.Country
+    rows (2):
+      CZE | 18212
+      SVK | 1466
+
+  panel ccs04
+    title: rows of yearmonth by yearmonth.Date
+    rows (21):
+      2011-12-01 | 8
+      2012-01-01 | 17848
+      2012-02-01 | 18324
+      2012-03-01 | 18866
+      2012-04-01 | 18253
+      2012-05-01 | 18347
+      2012-06-01 | 18588
+      2012-07-01 | 17640
+      2012-08-01 | 18048
+      2012-09-01 | 12894
+      2013-01-01 | 139
+      2013-02-01 | 2415
+      … 9 more rows
+
+  panel ccs05
+    title: rows of transactions_1k by gasstations (by key) the twelve most
+    rows (12):
+      1155 | 12
+      448 | 12
+      48 | 11
+      636 | 10
+      3621 | 10
+      3748 | 10
+      345 | 9
+      4431 | 9
+      4347 | 8
+      3396 | 8
+      910 | 8
+      3319 | 8
+
+  panel ccs06
+    title: sum of transactions_1k.Price by products.Description the twelve most
+    rows (12):
+      Nafta | 345669.45
+      Diesel + | 27261.03
+      Natural | 24639.46
+      Nafta Plus | 7233.72
+      Natural + | 3999.92
+      Natural Spec | 3296.04
+      Natural Plus | 2293.43
+      Mytí vozidel | 1802.90
+      Provoz.nápl. | 1628.12
+      Diesel | 1489.85
+      Autoprísluš. | 1346.36
+      Nat.Super | 1127.69
+
+  panel ccs07
+    title: sum of transactions_1k.Price by transactions_1k.Date
+    rows (4):
+      2012-08-23 | 6853.79
+      2012-08-24 | 201690.35
+      2012-08-25 | 181449.53
+      2012-08-26 | 35582.49
+
+  panel ccs08
+    title: rows of transactions_1k by transactions_1k.Date
+    rows (4):
+      2012-08-23 | 10
+      2012-08-24 | 492
+      2012-08-25 | 425
+      2012-08-26 | 73
+
+  panel ccs09
+    title: rows of customers by customers.Segment
+    rows (3):
+      SME | 26763
+      LAM | 3658
+      KAM | 2040
+
+  panel ccs10
+    title: largest tables, estimated rows
+    rows (6):
+      yearmonth | 382785
+      customers | 32776
+      gasstations | 5716
+      transactions_1k | 1000
+      products | 591
+      transactions | 0
+
+  panel ccs11
+    title: sum of transactions_1k.Amount by customers.Segment
+    rows (3):
+      KAM | 10229
+      SME | 4967
+      LAM | 4482
+
+  panel ccs12
+    title: rows of transactions_1k by products.Description the twelve most
+    rows (12):
+      Nafta | 523
+      Natural | 239
+      Diesel | 43
+      Mytí vozidel | 41
+      Diesel + | 27
+      Nemrz.kapal. | 18
+      Provoz.nápl. | 14
+      Nat.Super | 12
+      Nafta Plus | 12
+      Oleje,tuky | 7
+      Autokosmet. | 7
+      Autoprísluš. | 6
+
+  panel ccs13
+    title: sum of yearmonth.Consumption by customers (by key) the twelve most
+    rows (12):
+      12459 | 16130041.82
+      1673 | 13867436.18
+      30837 | 12901702.78
+      16358 | 12423655.02
+      6925 | 11828585.11
+      9627 | 10911875.77
+      842 | 10901345.47
+      31543 | 10719700.20
+      8200 | 10408376.50
+      19182 | 10309452.98
+      46707 | 10266652.16
+      31258 | 10145062.28
+
+  panel ccs14
+    title: distribution of yearmonth.Consumption
+    rows (18):
+      0 | -582092.86 | 1
+      3 | -123169.73 | 1
+      4 | -18145.35 | 376316
+      5 | 76493.78 | 5181
+      6 | 208199.51 | 936
+      7 | 339974.29 | 368
+      8 | 472478.45 | 198
+      9 | 603709.35 | 74
+      10 | 738606.34 | 47
+      11 | 867873.37 | 42
+      12 | 999038.00 | 38
+      13 | 1133327.82 | 43
+      … 6 more rows
+
+  panel ccs15
+    title: sum of transactions_1k.Amount by gasstations (by key) the twelve most
+    rows (12):
+      4347 | 370
+      3250 | 320
+      48 | 295
+      1155 | 292
+      2417 | 273
+      3114 | 216
+      3748 | 211
+      3173 | 203
+      1161 | 203
+      5298 | 199
+      3121 | 198
+      345 | 191
+
+  panel ccs16
+    title: sum of transactions_1k.Amount by products.Description the twelve most
+    rows (12):
+      Nafta | 15230
+      Diesel + | 1120
+      Natural | 1045
+      Diesel | 817
+      Nat.Super | 539
+      Nafta Plus | 317
+      Natural + | 157
+      Natural Spec | 120
+      Diesel aditiv | 103
+      Natural Plus | 91
+      LPG | 86
+      Additivum | 16
+
+  panel ccs17
+    title: sum of transactions_1k.Amount by gasstations.Segment
+    rows (5):
+      Premium | 12051
+      Value for money | 2611
+      Noname | 2458
+      Discount | 2101
+      Other | 457
+
+  panel ccs18
+    title: sum of transactions_1k.Amount by transactions_1k.Date
+    rows (4):
+      2012-08-23 | 296
+      2012-08-24 | 9809
+      2012-08-25 | 8024
+      2012-08-26 | 1549
+
+  panel ccs19
+    title: average of transactions_1k.Amount by transactions_1k.Date
+    rows (4):
+      2012-08-23 | 29.6000
+      2012-08-24 | 19.9370
+      2012-08-25 | 18.8800
+      2012-08-26 | 21.2192
+
+
+=== database: ncaa ===
+NCAA men's college basketball: teams, seasons, regular-season and tournament results, as CTU serves it. A look fixture of round 1d.
+
+  panel ncaa01
+    title: rows of regular_season_detailed_results by seasons.regionY
+    rows (6):
+      Midwest | 30853
+      South | 10416
+      Southeast | 5246
+      Minneapolis | 4757
+      Austin | 4675
+      EastRutherford | 4571
+
+  panel ncaa02
+    title: rows of tourney_compact_results by teams.team_name the twelve most
+    rows (12):
+      Duke | 82
+      North Carolina | 75
+      Kansas | 73
+      Kentucky | 70
+      Connecticut | 54
+      Arizona | 49
+      Michigan St | 49
+      Syracuse | 48
+      Louisville | 45
+      UCLA | 42
+      Florida | 42
+      Michigan | 36
+
+  panel ncaa03
+    title: rows of tourney_detailed_results by seasons (by key) the twelve most
+    rows (12):
+      2011 | 67
+      2012 | 67
+      2013 | 67
+      2014 | 67
+      2003 | 64
+      2004 | 64
+      2005 | 64
+      2006 | 64
+      2007 | 64
+      2008 | 64
+      2009 | 64
+      2010 | 64
+
+  panel ncaa04
+    title: rows of regular_season_detailed_results by teams.team_name the twelve most
+    rows (12):
+      Duke | 322
+      Kansas | 319
+      Memphis | 313
+      Gonzaga | 305
+      Syracuse | 299
+      Florida | 295
+      Pittsburgh | 295
+      Kentucky | 294
+      Louisville | 292
+      North Carolina | 288
+      Ohio St | 284
+      Wisconsin | 283
+
+  panel ncaa05
+    title: rows of regular_season_compact_results by regular_season_compact_results.wloc
+    rows (3):
+      H | 80225
+      A | 40883
+      N | 13458
+
+  panel ncaa06
+    title: sum of target.team_id1_wins by teams.team_name the twelve most
+    rows (12):
+      Kentucky | 10
+      Florida | 9
+      Arizona | 8
+      Louisville | 8
+      Connecticut | 8
+      Kansas | 7
+      Michigan | 7
+      Baylor | 5
+      Butler | 5
+      North Carolina | 5
+      Marquette | 4
+      Gonzaga | 4
+
+  panel ncaa07
+    title: rows of regular_season_detailed_results by regular_season_detailed_results.wloc
+    rows (3):
+      H | 36172
+      A | 18382
+      N | 5964
+
+  panel ncaa08
+    title: rows of regular_season_compact_results by teams.team_name the twelve most
+    rows (12):
+      Duke | 767
+      Kansas | 749
+      North Carolina | 709
+      Kentucky | 705
+      Syracuse | 701
+      Arizona | 690
+      Memphis | 655
+      UNLV | 652
+      Connecticut | 635
+      Louisville | 635
+      Xavier | 633
+      Oklahoma | 626
+
+  panel ncaa09
+    title: rows of target by teams.team_name the twelve most
+    rows (12):
+      Kansas | 11
+      Florida | 11
+      Arizona | 11
+      Kentucky | 10
+      Connecticut | 9
+      Louisville | 9
+      Michigan | 8
+      Baylor | 7
+      Cincinnati | 7
+      Butler | 7
+      Gonzaga | 6
+      Indiana | 6
+
+  panel ncaa10
+    title: rows of regular_season_detailed_results by seasons.regionZ
+    rows (5):
+      West | 41269
+      Southwest | 5246
+      WashingtonDC | 4757
+      Syracuse | 4675
+      StLouis | 4571
+
+  panel ncaa11
+    title: rows of tourney_detailed_results by seasons.regionW
+    rows (3):
+      East | 588
+      Atlanta | 128
+      Albuquerque | 64
+
+  panel ncaa12
+    title: rows of regular_season_detailed_results by seasons.regionX
+    rows (6):
+      South | 30853
+      Midwest | 10416
+      West | 5246
+      Oakland | 4757
+      Chicago | 4675
+      Phoenix | 4571
+
+  panel ncaa13
+    title: rows of regular_season_compact_results by seasons (by key) the twelve most
+    rows (12):
+      2014 | 5362
+      2013 | 5320
+      2010 | 5263
+      2012 | 5253
+      2009 | 5249
+      2011 | 5246
+      2008 | 5163
+      2007 | 5043
+      2006 | 4757
+      2005 | 4675
+      2003 | 4616
+      2004 | 4571
+
+  panel ncaa14
+    title: rows of regular_season_detailed_results by seasons.regionW
+    rows (3):
+      East | 46515
+      Atlanta | 9328
+      Albuquerque | 4675
+
+  panel ncaa15
+    title: rows of tourney_detailed_results by teams.team_name the twelve most
+    rows (12):
+      Kansas | 31
+      North Carolina | 29
+      Connecticut | 28
+      Kentucky | 27
+      Florida | 27
+      Michigan St | 26
+      Duke | 24
+      Louisville | 24
+      Syracuse | 21
+      Wisconsin | 19
+      Arizona | 17
+      UCLA | 17
+
+  panel ncaa16
+    title: rows of regular_season_detailed_results by seasons (by key) the twelve most
+    rows (12):
+      2014 | 5362
+      2013 | 5320
+      2010 | 5263
+      2012 | 5253
+      2009 | 5249
+      2011 | 5246
+      2008 | 5163
+      2007 | 5043
+      2006 | 4757
+      2005 | 4675
+      2003 | 4616
+      2004 | 4571
+
+  panel ncaa17
+    title: rows of tourney_compact_results per seasons
+    rows (3):
+      63 | 16
+      64 | 10
+      67 | 4
+
+  panel ncaa18
+    title: largest tables, estimated rows
+    rows (9):
+      regular_season_compact_results | 133170
+      regular_season_detailed_results | 60000
+      tourney_seeds | 1946
+      tourney_compact_results | 1916
+      tourney_slots | 1916
+      tourney_detailed_results | 780
+      teams | 364
+      target | 268
+      seasons | 31
+
+  panel ncaa19
+    title: rows of regular_season_compact_results per seasons
+    rows (30):
+      3737 | 1
+      3783 | 1
+      3915 | 1
+      3955 | 1
+      3982 | 1
+      4037 | 1
+      4045 | 1
+      4060 | 1
+      4077 | 1
+      4122 | 1
+      4123 | 1
+      4127 | 1
+      … 18 more rows

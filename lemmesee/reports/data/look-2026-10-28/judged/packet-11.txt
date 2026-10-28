@@ -1,0 +1,404 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: basketballwomen ===
+Women's professional basketball: players, teams, coaches and awards by season, as CTU serves it. A look fixture of round 1d.
+
+  panel basketballwomen-11-01
+    title: rows of awards_players by awards_players.pos
+    rows (6):
+      ∅ | 112
+      G | 15
+      F | 15
+      C | 11
+      G-F | 5
+      Coach | 1
+
+  panel basketballwomen-11-02
+    title: rows of series_post by series_post.round
+    rows (4):
+      FR | 55
+      CF | 28
+      F | 16
+      SF | 5
+
+  panel basketballwomen-11-03
+    title: rows of series_post by series_post.series
+    rows (7):
+      A | 17
+      C | 17
+      B | 16
+      D | 14
+      E | 14
+      F | 13
+      G | 13
+
+  panel basketballwomen-11-04
+    title: rows of teams_post by teams_post.lgID
+    rows (2):
+      WNBA | 118
+      ABL | 5
+
+  panel basketballwomen-11-05
+    title: rows of players by players.deathDate
+    rows (5):
+      0000-00-00 | 889
+      2011-05-27 | 1
+      1999-08-19 | 1
+      1999-01-18 | 1
+      2001-05-12 | 1
+
+  panel basketballwomen-11-06
+    title: rows of players by players.pos
+    rows (8):
+      G | 309
+      F | 230
+      C | 130
+      ∅ | 78
+      F-C | 70
+      G-F | 55
+      F-G | 12
+      C-F | 9
+
+  panel basketballwomen-11-07
+    title: rows of players by players.hsState the twelve most
+    rows (12):
+      ∅ | 644
+      CA | 25
+      TX | 22
+      OH | 15
+      FL | 12
+      GA | 12
+      IL | 12
+      IN | 11
+      VA | 10
+      NY | 10
+      NJ | 7
+      LA | 7
+
+  panel basketballwomen-11-08
+    title: rows of players_teams by players_teams.lgID
+    rows (2):
+      WNBA | 2709
+      ABL | 307
+
+  panel basketballwomen-11-09
+    title: rows of teams by teams.confID
+    rows (2):
+      WE | 118
+      EA | 116
+
+  panel basketballwomen-11-10
+    title: rows of draft by draft.draftYear
+    rows (16):
+      1997-01-01 | 102
+      1998-01-01 | 71
+      1999-01-01 | 46
+      2000-01-01 | 59
+      2001-01-01 | 60
+      2002-01-01 | 60
+      2003-01-01 | 40
+      2004-01-01 | 34
+      2005-01-01 | 37
+      2006-01-01 | 39
+      2007-01-01 | 37
+      2008-01-01 | 43
+      … 4 more rows
+
+  panel basketballwomen-11-11
+    title: rows of players_teams by players (named) the twelve most
+    rows (12):
+      Taj McWilliams-Franklin | 18
+      Katherine Smith | 18
+      Tina Thompson | 16
+      DeLisha Milton-Jones | 16
+      Tangela Smith | 15
+      Ticha Penicheiro | 15
+      Rebecca Hammon | 14
+      Chasity Melvin | 14
+      Shannon Johnson | 14
+      Dominique Canty | 14
+      Tully Bevilaqua (nee Crook) | 14
+      Elaine Powell | 14
+
+  panel basketballwomen-11-12
+    title: rows of players by players.birthState the twelve most
+    rows (12):
+      ∅ | 688
+      CA | 20
+      TX | 12
+      VIC | 10
+      SPL | 9
+      FL | 9
+      IL | 8
+      OH | 7
+      MS | 7
+      GA | 7
+      NY | 6
+      MI | 6
+
+  panel basketballwomen-11-13
+    title: rows of series_post by series_post.year
+    rows (16):
+      1997-01-01 | 5
+      1998-01-01 | 3
+      1999-01-01 | 5
+      2000-01-01 | 7
+      2001-01-01 | 7
+      2002-01-01 | 7
+      2003-01-01 | 7
+      2004-01-01 | 7
+      2005-01-01 | 7
+      2006-01-01 | 7
+      2007-01-01 | 7
+      2008-01-01 | 7
+      … 4 more rows
+
+  panel basketballwomen-11-14
+    title: distribution of players_teams.minutes
+    rows (21):
+      0 | 0 | 476
+      1 | 84 | 282
+      2 | 168 | 229
+      3 | 252 | 206
+      4 | 335 | 203
+      5 | 419 | 219
+      6 | 503 | 165
+      7 | 587 | 168
+      8 | 670 | 170
+      9 | 754 | 163
+      10 | 837 | 204
+      11 | 921 | 195
+      … 9 more rows
+
+  panel basketballwomen-11-15
+    title: rows of players_teams by players_teams.tmID the twelve most
+    rows (12):
+      PHO | 232
+      LAS | 206
+      NYL | 204
+      WAS | 200
+      MIN | 175
+      DET | 175
+      SEA | 172
+      IND | 167
+      SAC | 161
+      HOU | 156
+      CHA | 128
+      CON | 123
+
+
+=== database: basketball ===
+Men's professional basketball: players, teams, coaches, drafts, awards and all-stars by season, as CTU serves it. A look fixture of round 1d.
+
+  panel basketball-11-01
+    title: rows of awards_players by awards_players.pos
+    rows (6):
+      ∅ | 886
+      G | 333
+      F | 330
+      C | 165
+      F/G | 3
+      F/C | 2
+
+  panel basketball-11-02
+    title: rows of awards_players by players (named) the twelve most
+    rows (12):
+      Kareem Abdul-Jabbar | 35
+      Michael Jordan | 33
+      Timothy Duncan | 32
+      Kobe Bryant | 29
+      Hakeem Olajuwon | 26
+      Kevin Garnett | 23
+      Shaquille O'Neal | 22
+      David Robinson | 21
+      Karl Malone | 20
+      John Havlicek | 20
+      Larry Bird | 19
+      Julius Erving | 19
+
+  panel basketball-11-03
+    title: rows of teams by teams.divID the twelve most
+    rows (12):
+      CD | 263
+      PC | 252
+      AT | 233
+      MW | 201
+      ED | 160
+      WD | 160
+      EA | 47
+      WE | 46
+      NW | 40
+      SE | 40
+      SW | 40
+      ∅ | 38
+
+  panel basketball-11-04
+    title: rows of player_allstar by player_allstar.season_id
+    rows (59):
+      1950-01-01 | 20
+      1951-01-01 | 22
+      1952-01-01 | 21
+      1953-01-01 | 20
+      1954-01-01 | 21
+      1955-01-01 | 21
+      1956-01-01 | 20
+      1957-01-01 | 20
+      1958-01-01 | 20
+      1959-01-01 | 21
+      1960-01-01 | 22
+      1961-01-01 | 25
+      … 47 more rows
+
+  panel basketball-11-05
+    title: rows of series_post by series_post.year
+    rows (66):
+      1946-01-01 | 5
+      1947-01-01 | 7
+      1948-01-01 | 7
+      1949-01-01 | 13
+      1950-01-01 | 7
+      1951-01-01 | 7
+      1952-01-01 | 7
+      1953-01-01 | 9
+      1954-01-01 | 5
+      1955-01-01 | 7
+      1956-01-01 | 7
+      1957-01-01 | 5
+      … 54 more rows
+
+  panel basketball-11-06
+    title: rows of player_allstar by player_allstar.conference
+    rows (5):
+      East | 793
+      West | 791
+      Allstars | 12
+      Denver | 11
+      Weset | 1
+
+  panel basketball-11-07
+    title: rows of series_post by series_post.lgIDWinner
+    rows (2):
+      NBA | 712
+      ABA | 63
+
+  panel basketball-11-08
+    title: rows of series_post by series_post.round
+    rows (11):
+      CFR | 264
+      CSF | 168
+      DSF | 94
+      CF | 84
+      F | 75
+      DF | 61
+      DT | 11
+      SF | 7
+      RR | 6
+      QF | 4
+      FR | 1
+
+  panel basketball-11-09
+    title: rows of series_post by series_post.lgIDLoser
+    rows (2):
+      NBA | 712
+      ABA | 63
+
+  panel basketball-11-10
+    title: rows of draft by players.birthCountry the twelve most
+    rows (12):
+      ∅ | 5267
+      USA | 3119
+      GER | 17
+      YUG | 16
+      CAN | 14
+      FRA | 13
+      ESP | 10
+      CRO | 8
+      LTU | 7
+      AUS | 7
+      BRA | 7
+      HOL | 6
+
+  panel basketball-11-11
+    title: sum of coaches.post_wins by coaches.year
+    rows (66):
+      1946-01-01 | 19
+      1947-01-01 | 21
+      1948-01-01 | 20
+      1949-01-01 | 30
+      1950-01-01 | 26
+      1951-01-01 | 25
+      1952-01-01 | 23
+      1953-01-01 | 23
+      1954-01-01 | 21
+      1955-01-01 | 21
+      1956-01-01 | 17
+      1957-01-01 | 21
+      … 54 more rows
+
+  panel basketball-11-12
+    title: rows of players_teams by players (named) the twelve most
+    rows (12):
+      Kevin Willis | 24
+      Moses Malone | 22
+      James Edwards | 22
+      Joseph Smith | 21
+      Robert Parish | 21
+      Juwan Howard | 21
+      Kareem Abdul-Jabbar | 20
+      Samuel Cassell | 20
+      Jason Kidd | 20
+      Daniel Schayes | 20
+      Theophalus Ratliff | 20
+      Shaquille O'Neal | 20
+
+  panel basketball-11-13
+    title: rows of player_allstar by player_allstar.league_id
+    rows (2):
+      NBA | 1405
+      ABA | 203
+
+  panel basketball-11-14
+    title: rows of draft by players.hsCountry the twelve most
+    rows (12):
+      ∅ | 5138
+      USA | 3413
+      CAN | 11
+      AUS | 5
+      YUG | 5
+      FRA | 3
+      HOL | 3
+      CRO | 3
+      BRA | 3
+      NGR | 2
+      SLV | 2
+      TCH | 2
+
+  panel basketball-11-15
+    title: rows of draft by players (named) the twelve most
+    rows (12):
+       | 4964
+      Craig Raymond | 4
+      Harvey Catchings | 4
+      Herman Gilliam | 4
+      Dwight Jones | 4
+      Michael Grosso | 4
+      Philip Chenier | 4
+      Edgar Lacey | 3
+      Louie Dampier | 3
+      Harry Laurie | 3
+      Albert Tucker | 3
+      Paul Long | 3

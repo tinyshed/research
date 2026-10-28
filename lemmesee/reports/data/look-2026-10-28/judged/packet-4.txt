@@ -1,0 +1,1071 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: restbase ===
+Restaurants of the San Francisco Bay Area: their general information, locations and geography, as CTU serves it. A look fixture of round 1d.
+
+  panel rest01
+    title: sum of generalinfo.review by generalinfo.food_type the twelve most
+    rows (12):
+      chinese | 2484.9
+      cafe | 2356.6
+      pizza | 2078.5
+      mexican | 1846.4
+      italian | 1336.1
+      american | 816.9
+      japanese | 779.4
+      bar | 777.5
+      burgers | 767.9
+      seafood | 730.9
+      deli | 729.4
+      ice cream | 606.6
+
+  panel rest02
+    title: largest tables, estimated rows
+    rows (3):
+      generalinfo | 9534
+      location | 9468
+      geographic | 168
+
+  panel rest03
+    title: rows of generalinfo by geographic.county the twelve most
+    rows (12):
+      alameda county | 2365
+      santa clara county | 2177
+      san francisco county | 1240
+      contra costa county | 1103
+      san mateo county | 1001
+      sonoma county | 457
+      solano county | 364
+      santa cruz county | 230
+      napa county | 192
+      unknown | 180
+      marin county | 149
+      monterey county | 64
+
+  panel rest04
+    title: rows of geographic by geographic.county the twelve most
+    rows (12):
+      unknown | 27
+      san mateo county | 24
+      contra costa county | 21
+      alameda county | 16
+      santa clara county | 15
+      sonoma county | 13
+      marin county | 9
+      monterey county | 9
+      napa county | 7
+      solano county | 7
+      santa cruz county | 6
+      tuolumne county | 2
+
+  panel rest05
+    title: rows of location by generalinfo.label the twelve most
+    rows (12):
+      sparky's diner | 1
+      kabul afghan cuisine | 1
+      helmand restaurant | 1
+      afghani house | 1
+      kabul afghan cusine | 1
+      bamyan afghan restaurant | 1
+      kabul palace | 1
+      kandahar | 1
+      kabobs house | 1
+      new eritrea restaurant & bar | 1
+      ola's african,carbbean, cajun restaurant | 1
+      sum-yun chick | 1
+
+  panel rest06
+    title: rows of location by location.street_name the twelve most
+    rows (12):
+      ∅ | 244
+      el camino real | 206
+      broadway | 107
+      san pablo ave | 107
+      main st | 93
+      e 14th st | 67
+      university ave | 63
+      mission blvd | 62
+      telegraph ave | 55
+      fremont blvd | 51
+      1st st | 50
+      shattuck ave | 48
+
+  panel rest07
+    title: rows of generalinfo by geographic.region
+    rows (9):
+      bay area | 9226
+      napa valley | 192
+      monterey | 64
+      northern california | 46
+      unknown | 43
+      sacramento area | 8
+      lake tahoe | 6
+      yosemite and mono lake area | 4
+      los angeles area | 1
+
+  panel rest08
+    title: rows of geographic by geographic.region
+    rows (9):
+      bay area | 122
+      unknown | 17
+      monterey | 9
+      napa valley | 7
+      northern california | 4
+      yosemite and mono lake area | 3
+      lake tahoe | 3
+      sacramento area | 2
+      los angeles area | 1
+
+  panel rest09
+    title: rows of generalinfo by generalinfo.food_type the twelve most
+    rows (12):
+      cafe | 1098
+      chinese | 1075
+      pizza | 959
+      mexican | 797
+      italian | 510
+      bar | 362
+      burgers | 351
+      american | 345
+      deli | 341
+      japanese | 318
+      seafood | 303
+      ice cream | 288
+
+  panel rest10
+    title: average of generalinfo.review by generalinfo.food_type the twelve most
+    rows (12):
+      nepalese | 3.65000
+      fusion | 3.60000
+      all ethnic | 3.60000
+      fine intercontinental | 3.60000
+      chinese (muslim) | 3.60000
+      southwestern | 3.53333
+      organic | 3.45000
+      egyptian | 3.40000
+      burritos | 3.40000
+      armenian | 3.40000
+      pakistani | 3.40000
+      afghani | 3.36250
+
+  panel rest11
+    title: rows of location by geographic (by key) the twelve most
+    rows (12):
+      san francisco | 1197
+      san jose | 912
+      oakland | 656
+      berkeley | 323
+      fremont | 261
+      ∅ | 225
+      hayward | 223
+      santa rosa | 180
+      santa clara | 175
+      sunnyvale | 168
+      concord | 165
+      palo alto | 160
+
+  panel rest12
+    title: rows of location by geographic.region
+    rows (10):
+      bay area | 8972
+      ∅ | 225
+      napa valley | 190
+      monterey | 59
+      unknown | 40
+      northern california | 34
+      sacramento area | 8
+      lake tahoe | 6
+      yosemite and mono lake area | 4
+      los angeles area | 1
+
+  panel rest13
+    title: rows of location by generalinfo.food_type the twelve most
+    rows (12):
+      cafe | 1096
+      chinese | 1070
+      pizza | 958
+      mexican | 794
+      italian | 508
+      bar | 362
+      burgers | 350
+      american | 343
+      deli | 339
+      japanese | 316
+      seafood | 301
+      ice cream | 288
+
+  panel rest14
+    title: rows of location by geographic.county the twelve most
+    rows (12):
+      alameda county | 2336
+      santa clara county | 2111
+      san francisco county | 1197
+      contra costa county | 1094
+      san mateo county | 959
+      sonoma county | 433
+      solano county | 361
+      ∅ | 225
+      santa cruz county | 215
+      napa county | 190
+      unknown | 169
+      marin county | 135
+
+  panel rest15
+    title: rows of generalinfo by geographic (by key) the twelve most
+    rows (12):
+      san francisco | 1240
+      san jose | 933
+      oakland | 666
+      berkeley | 327
+      fremont | 267
+      hayward | 223
+      santa rosa | 201
+      santa clara | 176
+      sunnyvale | 174
+      palo alto | 174
+      concord | 166
+      san leandro | 159
+
+  panel rest16
+    title: sum of generalinfo.review by geographic (by key) the twelve most
+    rows (12):
+      san francisco | 3087.6
+      san jose | 2046.6
+      oakland | 1461.7
+      berkeley | 806.9
+      fremont | 602.6
+      hayward | 485.7
+      palo alto | 467.8
+      santa rosa | 419.7
+      sunnyvale | 412.5
+      santa clara | 399.8
+      mountain view | 399.5
+      san mateo | 384.9
+
+  panel rest17
+    title: rows of location per generalinfo
+    rows (1):
+      1 | 9539
+
+
+=== database: credit ===
+A credit-card company's members, charges, payments and statements, with providers, corporations, categories and regions, as CTU serves it.
+
+  panel cred01
+    title: rows of statement by statement.statement_dt
+    rows (2):
+      1999-08-13 | 10000
+      1999-09-13 | 10000
+
+  panel cred02
+    title: largest tables, estimated rows
+    rows (8):
+      charge | 1594320
+      statement | 19769
+      payment | 15511
+      member | 10094
+      corporation | 500
+      provider | 500
+      category | 10
+      region | 9
+
+  panel cred03
+    title: rows of member by member.lastname
+    rows (26):
+      BARR | 385
+      PAYNTER | 385
+      OLPHANT | 385
+      NELSON | 385
+      MAKAI | 385
+      LING | 385
+      KAHRMANN | 385
+      JONES | 385
+      HAHN | 385
+      GOHAN | 385
+      FLORINI | 385
+      EFLIN | 385
+      … 14 more rows
+
+  panel cred04
+    title: rows of member by region.region_name the twelve most
+    rows (8):
+      Western Europea | 1295
+      Eastern Europea | 1280
+      Mid East / Sout | 1260
+      Africa | 1248
+      China | 1246
+      Scandanavian | 1235
+      Japan | 1223
+      South American | 1213
+
+  panel cred05
+    title: rows of member by corporation (by key) the twelve most
+    rows (12):
+      ∅ | 8498
+      497 | 13
+      453 | 11
+      451 | 11
+      473 | 11
+      397 | 11
+      435 | 10
+      429 | 10
+      420 | 10
+      460 | 10
+      444 | 10
+      477 | 10
+
+  panel cred06
+    title: sum of charge.charge_amt by category.category_desc
+    rows (10):
+      Meals | 455952704.0000
+      Misc | 448347568.0000
+      Lodging | 448149040.0000
+      Home Supplies | 447158928.0000
+      Electronics | 445450320.0000
+      Clothing | 442716624.0000
+      Groceries | 441836048.0000
+      Communication | 438147376.0000
+      Entertainment | 435305936.0000
+      Travel | 58480.0000
+
+  panel cred07
+    title: rows of payment by payment.payment_dt
+    rows (2):
+      1999-09-02 | 8319
+      1999-10-03 | 7235
+
+  panel cred08
+    title: rows of member per region
+    rows (8):
+      1213 | 1
+      1223 | 1
+      1235 | 1
+      1246 | 1
+      1248 | 1
+      1260 | 1
+      1280 | 1
+      1295 | 1
+
+  panel cred09
+    title: rows of charge by charge.charge_dt
+    rows (18):
+      1999-06-14 | 67568
+      1999-06-21 | 93424
+      1999-06-28 | 94000
+      1999-07-05 | 90768
+      1999-07-12 | 92048
+      1999-07-19 | 94352
+      1999-07-26 | 92448
+      1999-08-02 | 94208
+      1999-08-09 | 91312
+      1999-08-16 | 92560
+      1999-08-23 | 94304
+      1999-08-30 | 94352
+      … 6 more rows
+
+  panel cred10
+    title: rows of member by member.expr_dt
+    rows (1):
+      2000-10-12 | 10000
+
+  panel cred11
+    title: sum of charge.charge_amt by provider.provider_name the twelve most
+    rows (12):
+      Prov. Just Tran | 239661792.0000
+      Prov. Just Sail | 131416784.0000
+      Prov. Just Rest | 104894816.0000
+      Prov. Just Ques | 97912976.0000
+      Prov. Just Petr | 87802224.0000
+      Prov. Just Oper | 79761648.0000
+      Prov. Just Need | 71812480.0000
+      Prov. Just Mach | 69834400.0000
+      Prov. Just Ligh | 67501056.0000
+      Prov. Just Key | 66763936.0000
+      Prov. Imperial | 57867744.0000
+      Prov. Imperial | 54732400.0000
+
+  panel cred12
+    title: sum of charge.charge_amt by category.category_desc the twelve most
+    rows (10):
+      Meals | 455952704.0000
+      Misc | 448347568.0000
+      Lodging | 448149040.0000
+      Home Supplies | 447158928.0000
+      Electronics | 445450320.0000
+      Clothing | 442716624.0000
+      Groceries | 441836048.0000
+      Communication | 438147376.0000
+      Entertainment | 435305936.0000
+      Travel | 58480.0000
+
+  panel cred13
+    title: sum of payment.payment_amt by payment.payment_dt
+    rows (2):
+      1999-09-02 | 120560962.0000
+      1999-10-03 | 64839455.0000
+
+  panel cred14
+    title: rows of charge by category.category_desc the twelve most
+    rows (10):
+      Meals | 180528
+      Misc | 180224
+      Lodging | 178896
+      Home Supplies | 178880
+      Clothing | 177792
+      Electronics | 176688
+      Groceries | 176496
+      Entertainment | 175408
+      Communication | 175056
+      Travel | 32
+
+  panel cred15
+    title: rows of member by member.issue_dt
+    rows (1):
+      1999-10-13 | 10000
+
+  panel cred16
+    title: sum of charge.charge_amt by charge.charge_dt
+    rows (18):
+      1999-06-14 | 168454992.0000
+      1999-06-21 | 230924640.0000
+      1999-06-28 | 240062656.0000
+      1999-07-05 | 225190432.0000
+      1999-07-12 | 231349712.0000
+      1999-07-19 | 235366256.0000
+      1999-07-26 | 230651232.0000
+      1999-08-02 | 235544320.0000
+      1999-08-09 | 227756224.0000
+      1999-08-16 | 229645664.0000
+      1999-08-23 | 234590640.0000
+      1999-08-30 | 238568384.0000
+      … 6 more rows
+
+  panel cred17
+    title: rows of provider by provider.issue_dt
+    rows (1):
+      1999-10-13 | 500
+
+  panel cred18
+    title: rows of charge by provider (by key) the twelve most
+    rows (12):
+      500 | 96096
+      499 | 52720
+      498 | 41936
+      497 | 39120
+      496 | 35024
+      495 | 32336
+      494 | 28560
+      493 | 27312
+      492 | 27136
+      491 | 26160
+      490 | 23072
+      489 | 21872
+
+  panel cred19
+    title: rows of charge by statement (by key) the twelve most
+    rows (12):
+      0 | 14144
+      9994 | 800
+      10000 | 800
+      9997 | 736
+      9999 | 720
+      9987 | 688
+      9986 | 688
+      9998 | 640
+      20000 | 640
+      9991 | 624
+      9993 | 592
+      9982 | 576
+
+  panel cred20
+    title: sum of statement.statement_amt by statement.statement_dt
+    rows (2):
+      1999-08-13 | 120560962.0000
+      1999-09-13 | 64839455.0000
+
+
+=== database: premierleague ===
+An English Premier League season: matches, teams, players and what happened in the matches, as CTU serves it. A look fixture of round 1d.
+
+  panel prem01
+    title: sum of Actions.Goals by Actions.Team1
+    rows (20):
+      Manchester City | 91
+      Manchester United | 87
+      Arsenal | 73
+      Tottenham Hotspur | 65
+      Chelsea | 63
+      Norwich City | 52
+      Newcastle United | 51
+      Everton | 48
+      West Bromwich Albion | 44
+      Blackburn Rovers | 44
+      Fulham | 43
+      Sunderland | 43
+      … 8 more rows
+
+  panel prem02
+    title: rows of Matches by Matches.TeamHomeFormation
+    rows (11):
+      2 | 136
+      6 | 93
+      8 | 57
+      5 | 39
+      4 | 33
+      7 | 7
+      3 | 4
+      10 | 4
+      11 | 3
+      17 | 2
+      13 | 2
+
+  panel prem03
+    title: sum of Actions.TotalSuccessfulPassesExclCrossesCorners by Players.Name the twelve most
+    rows (12):
+      Modric Luka | 2215
+      Williams Ashley | 2212
+      Yaya TourÃ©  | 2189
+      Britton Leon | 2110
+      Arteta Mikel | 2087
+      Allen Joe | 1985
+      Carrick Michael | 1975
+      Rangel Angel | 1914
+      Song Alexandre | 1895
+      Barry Gareth | 1890
+      Murphy Danny | 1794
+      Silva David | 1759
+
+  panel prem04
+    title: rows of Matches by Matches.TeamAwayFormation
+    rows (11):
+      2 | 115
+      6 | 72
+      8 | 68
+      5 | 55
+      4 | 39
+      7 | 19
+      11 | 6
+      3 | 2
+      10 | 2
+      17 | 1
+      13 | 1
+
+  panel prem05
+    title: rows of Matches by Teams.Name
+    rows (20):
+      West Bromwich Albion | 19
+      Wigan Athletic | 19
+      Stoke City | 19
+      Swansea City | 19
+      Sunderland | 19
+      Fulham | 19
+      Queens Park Rangers | 19
+      Norwich City | 19
+      Manchester City | 19
+      Wolverhampton Wanderers | 19
+      Manchester United | 19
+      Bolton Wanderers | 19
+      … 8 more rows
+
+  panel prem06
+    title: sum of Actions.TotalClearances by Teams.Name the twelve most
+    rows (12):
+      Stoke City | 1910
+      Norwich City | 1451
+      Queens Park Rangers | 1412
+      Blackburn Rovers | 1328
+      Aston Villa | 1301
+      Bolton Wanderers | 1255
+      Wolverhampton Wanderers | 1178
+      Manchester United | 1165
+      Sunderland | 1158
+      Everton | 1130
+      Swansea City | 1048
+      Tottenham Hotspur | 1045
+
+  panel prem07
+    title: sum of Actions.PenaltyGoals by Actions.Team2
+    rows (20):
+      West Bromwich Albion | 7
+      Newcastle United | 7
+      Stoke City | 7
+      Aston Villa | 6
+      Wolverhampton Wanderers | 5
+      Norwich City | 5
+      Chelsea | 4
+      Wigan Athletic | 4
+      Liverpool | 4
+      Queens Park Rangers | 3
+      Sunderland | 3
+      Arsenal | 3
+      … 8 more rows
+
+  panel prem08
+    title: sum of Actions.TotalUnsuccessfulPassesExclCrossesCorners by Teams.Name the twelve most
+    rows (12):
+      Bolton Wanderers | 3834
+      Norwich City | 3643
+      Liverpool | 3581
+      Aston Villa | 3559
+      Sunderland | 3521
+      Wolverhampton Wanderers | 3488
+      Queens Park Rangers | 3420
+      Everton | 3413
+      Blackburn Rovers | 3407
+      Newcastle United | 3404
+      West Bromwich Albion | 3385
+      Stoke City | 3299
+
+  panel prem09
+    title: sum of Matches.TeamHomeFormation by Matches.Date
+    rows (35):
+      2011-08-08 | 33
+      2011-08-15 | 50
+      2011-08-22 | 45
+      2011-09-05 | 46
+      2011-09-12 | 44
+      2011-09-19 | 34
+      2011-09-26 | 46
+      2011-10-10 | 43
+      2011-10-17 | 42
+      2011-10-24 | 44
+      2011-10-31 | 43
+      2011-11-14 | 44
+      … 23 more rows
+
+  panel prem10
+    title: sum of Actions.TotalUnsuccessfulPassesAll by Teams.Name the twelve most
+    rows (12):
+      Bolton Wanderers | 4643
+      Liverpool | 4553
+      Norwich City | 4447
+      Wolverhampton Wanderers | 4445
+      Sunderland | 4444
+      Aston Villa | 4384
+      Everton | 4265
+      Queens Park Rangers | 4231
+      Blackburn Rovers | 4186
+      West Bromwich Albion | 4182
+      Newcastle United | 4172
+      Stoke City | 4074
+
+  panel prem11
+    title: sum of Actions.TotalSuccessfulPassesExclCrossesCorners by Teams.Name the twelve most
+    rows (12):
+      Manchester City | 17930
+      Swansea City | 17813
+      Arsenal | 17420
+      Manchester United | 17227
+      Tottenham Hotspur | 16592
+      Chelsea | 15949
+      Liverpool | 15213
+      Fulham | 14485
+      Wigan Athletic | 12633
+      Everton | 11650
+      Norwich City | 11522
+      Wolverhampton Wanderers | 11364
+
+  panel prem12
+    title: largest tables, estimated rows
+    rows (4):
+      Actions | 9777
+      Players | 539
+      Matches | 380
+      Teams | 20
+
+  panel prem13
+    title: sum of Actions.TotalSuccessfulPassesAll by Teams.Name the twelve most
+    rows (12):
+      Manchester City | 18441
+      Swansea City | 18408
+      Arsenal | 18041
+      Manchester United | 17801
+      Tottenham Hotspur | 17217
+      Chelsea | 16567
+      Liverpool | 15852
+      Fulham | 15063
+      Wigan Athletic | 13160
+      Everton | 12249
+      Norwich City | 12124
+      Wolverhampton Wanderers | 11922
+
+  panel prem14
+    title: average of Matches.TeamHomeFormation by Matches.Date
+    rows (35):
+      2011-08-08 | 4.1250
+      2011-08-15 | 5.0000
+      2011-08-22 | 4.0909
+      2011-09-05 | 5.1111
+      2011-09-12 | 4.0000
+      2011-09-19 | 3.7778
+      2011-09-26 | 4.1818
+      2011-10-10 | 4.3000
+      2011-10-17 | 4.2000
+      2011-10-24 | 4.8889
+      2011-10-31 | 3.9091
+      2011-11-14 | 4.8889
+      … 23 more rows
+
+  panel prem15
+    title: sum of Matches.TeamHomeFormation by Teams.Name the twelve most
+    rows (12):
+      Arsenal | 152
+      Swansea City | 152
+      Wigan Athletic | 147
+      Blackburn Rovers | 114
+      Everton | 112
+      Manchester City | 111
+      Sunderland | 102
+      Chelsea | 99
+      Tottenham Hotspur | 89
+      Queens Park Rangers | 87
+      Fulham | 84
+      Aston Villa | 83
+
+  panel prem16
+    title: rows of Matches by Matches.ResultOfTeamHome
+    rows (3):
+      1 | 170
+      -1 | 120
+      0 | 90
+
+  panel prem17
+    title: rows of Actions by Actions.LeftFootBlockedShots
+    rows (5):
+      0 | 9435
+      1 | 813
+      2 | 102
+      3 | 17
+      5 | 2
+
+  panel prem18
+    title: sum of Actions.TotalFoulsWon by Teams.Name the twelve most
+    rows (12):
+      Queens Park Rangers | 446
+      Swansea City | 433
+      Newcastle United | 432
+      Fulham | 423
+      Wigan Athletic | 421
+      Chelsea | 417
+      Arsenal | 409
+      Everton | 401
+      Stoke City | 394
+      Wolverhampton Wanderers | 390
+      Tottenham Hotspur | 389
+      Manchester United | 386
+
+  panel prem19
+    title: rows of Matches by Matches.Date
+    rows (35):
+      2011-08-08 | 8
+      2011-08-15 | 10
+      2011-08-22 | 11
+      2011-09-05 | 9
+      2011-09-12 | 11
+      2011-09-19 | 9
+      2011-09-26 | 11
+      2011-10-10 | 10
+      2011-10-17 | 10
+      2011-10-24 | 9
+      2011-10-31 | 11
+      2011-11-14 | 9
+      … 23 more rows
+
+  panel prem20
+    title: rows of Matches by Teams.Name the twelve most
+    rows (12):
+      Manchester United | 19
+      Arsenal | 19
+      Newcastle United | 19
+      Blackburn Rovers | 19
+      Tottenham Hotspur | 19
+      Aston Villa | 19
+      Chelsea | 19
+      Everton | 19
+      Liverpool | 19
+      Bolton Wanderers | 19
+      West Bromwich Albion | 19
+      Wolverhampton Wanderers | 19
+
+  panel prem21
+    title: rows of Actions by Teams.Name the twelve most
+    rows (12):
+      Newcastle United | 530
+      Norwich City | 529
+      Everton | 529
+      Manchester City | 528
+      Arsenal | 527
+      Wolverhampton Wanderers | 526
+      Stoke City | 525
+      Chelsea | 523
+      Bolton Wanderers | 522
+      Wigan Athletic | 520
+      West Bromwich Albion | 519
+      Manchester United | 518
+
+
+=== database: hockey ===
+Professional ice hockey: players, teams, goalies, scoring, coaches and awards by season, as CTU serves it. A look fixture of round 1d.
+
+  panel hock01
+    title: rows of Master by Master.shootCatch
+    rows (4):
+      L | 4604
+      R | 2443
+      ∅ | 713
+      B | 1
+
+  panel hock02
+    title: rows of Master by Coaches (by key) the twelve most
+    rows (12):
+      ∅ | 7366
+      abelsi01c | 1
+      adamsja01c | 1
+      agnewga01c | 1
+      allenke01c | 1
+      allisda01c | 1
+      anderji01c | 1
+      anderjo01c | 1
+      angotlo01c | 1
+      arboual01c | 1
+      armstge01c | 1
+      arniesc01c | 1
+
+  panel hock03
+    title: rows of Scoring by Scoring.year
+    rows (102):
+      1909-01-01 | 80
+      1910-01-01 | 58
+      1911-01-01 | 70
+      1912-01-01 | 101
+      1913-01-01 | 112
+      1914-01-01 | 112
+      1915-01-01 | 109
+      1916-01-01 | 124
+      1917-01-01 | 84
+      1918-01-01 | 71
+      1919-01-01 | 80
+      1920-01-01 | 85
+      … 90 more rows
+
+  panel hock04
+    title: sum of SeriesPost.GoalsWinner by SeriesPost.lgIDWinner
+    rows (5):
+      NHL | 12962
+      WHA | 1054
+      PCHA | 145
+      WCHL | 57
+      NHA | 45
+
+  panel hock05
+    title: rows of Scoring by Scoring.lgID
+    rows (5):
+      NHL | 42220
+      WHA | 2436
+      NHA | 586
+      PCHA | 404
+      WCHL | 321
+
+  panel hock06
+    title: rows of Teams by Teams.year
+    rows (102):
+      1909-01-01 | 7
+      1910-01-01 | 5
+      1911-01-01 | 7
+      1912-01-01 | 9
+      1913-01-01 | 9
+      1914-01-01 | 9
+      1915-01-01 | 9
+      1916-01-01 | 10
+      1917-01-01 | 7
+      1918-01-01 | 6
+      1919-01-01 | 7
+      1920-01-01 | 7
+      … 90 more rows
+
+  panel hock07
+    title: rows of Scoring by Scoring.pos
+    rows (25):
+      D | 13881
+      C | 9590
+      L | 8752
+      R | 8444
+      G | 4240
+      ∅ | 582
+      F | 139
+      C/L | 62
+      L/C | 58
+      L/D | 54
+      R/D | 28
+      C/R | 27
+      … 13 more rows
+
+  panel hock08
+    title: rows of Master by Master.birthMon
+    rows (13):
+      1 | 775
+      3 | 728
+      4 | 701
+      2 | 692
+      5 | 668
+      6 | 623
+      9 | 593
+      7 | 587
+      10 | 567
+      8 | 559
+      11 | 512
+      12 | 501
+      … 1 more rows
+
+  panel hock09
+    title: rows of Master by HOF (by key) the twelve most
+    rows (12):
+      ∅ | 7395
+      abelsi01h | 1
+      adamsch01h | 1
+      adamsja01h | 1
+      adamswe01h | 1
+      ahearbu01h | 1
+      ahearfr01h | 1
+      allanmo01h | 1
+      allenke01h | 1
+      andergl01h | 1
+      appssy01h | 1
+      arboual01h | 1
+
+  panel hock10
+    title: rows of TeamSplits by TeamSplits.year
+    rows (102):
+      1909-01-01 | 7
+      1910-01-01 | 5
+      1911-01-01 | 7
+      1912-01-01 | 9
+      1913-01-01 | 9
+      1914-01-01 | 9
+      1915-01-01 | 9
+      1916-01-01 | 10
+      1917-01-01 | 7
+      1918-01-01 | 6
+      1919-01-01 | 7
+      1920-01-01 | 7
+      … 90 more rows
+
+  panel hock11
+    title: rows of Scoring by Scoring.SHG
+    rows (15):
+      0 | 32086
+      ∅ | 8223
+      1 | 3484
+      2 | 1224
+      3 | 518
+      4 | 227
+      5 | 104
+      6 | 52
+      7 | 26
+      8 | 13
+      9 | 4
+      10 | 3
+      … 3 more rows
+
+  panel hock12
+    title: largest tables, estimated rows
+    rows (10):
+      Scoring | 46161
+      TeamVsTeam | 25004
+      Master | 7621
+      Goalies | 4278
+      AwardsPlayers | 2091
+      ScoringShootout | 2072
+      Coaches | 1812
+      TeamSplits | 1519
+      Teams | 1519
+      TeamsPost | 927
+
+  panel hock13
+    title: rows of Teams by AwardsMisc (by key) the twelve most
+    rows (12):
+      Montreal Canadiens | 101
+      Boston Bruins | 87
+      New York Rangers | 85
+      Toronto Maple Leafs | 84
+      Detroit Red Wings | 79
+      Chicago Black Hawks | 60
+      Los Angeles Kings | 44
+      St. Louis Blues | 44
+      Philadelphia Flyers | 44
+      Pittsburgh Penguins | 44
+      Ottawa Senators | 43
+      Buffalo Sabres | 41
+
+  panel hock14
+    title: rows of Goalies by Goalies.lgID
+    rows (5):
+      NHL | 3860
+      WHA | 259
+      NHA | 75
+      PCHA | 47
+      WCHL | 37
+
+  panel hock15
+    title: rows of Coaches by Coaches.year
+    rows (102):
+      1909-01-01 | 6
+      1910-01-01 | 4
+      1911-01-01 | 7
+      1912-01-01 | 8
+      1913-01-01 | 10
+      1914-01-01 | 9
+      1915-01-01 | 9
+      1916-01-01 | 10
+      1917-01-01 | 7
+      1918-01-01 | 6
+      1919-01-01 | 8
+      1920-01-01 | 7
+      … 90 more rows
+
+  panel hock16
+    title: rows of Goalies by Goalies.year
+    rows (102):
+      1909-01-01 | 12
+      1910-01-01 | 5
+      1911-01-01 | 10
+      1912-01-01 | 13
+      1913-01-01 | 18
+      1914-01-01 | 11
+      1915-01-01 | 12
+      1916-01-01 | 16
+      1917-01-01 | 10
+      1918-01-01 | 8
+      1919-01-01 | 12
+      1920-01-01 | 8
+      … 90 more rows
+
+  panel hock17
+    title: rows of Scoring by Master (by key) the twelve most
+    rows (12):
+      howego01 | 32
+      recchma01 | 28
+      messima01 | 27
+      chelich01 | 27
+      andreda01 | 26
+      schnema01 | 26
+      sillimi01 | 26
+      murphla01 | 25
+      hortoti01 | 25
+      francro01 | 25
+      coffepa01 | 25
+      howelha01 | 25

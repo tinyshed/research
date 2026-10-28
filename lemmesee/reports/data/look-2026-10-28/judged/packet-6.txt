@@ -1,0 +1,1352 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: craftbeer ===
+American craft beers and the breweries that make them, as CTU serves it. A look fixture of round 1d.
+
+  panel crafb01
+    title: rows of beers by breweries.state the twelve most
+    rows (12):
+      CO | 265
+      CA | 183
+      MI | 162
+      IN | 139
+      TX | 130
+      OR | 125
+      PA | 100
+      IL | 91
+      WI | 87
+      MA | 82
+      NY | 74
+      WA | 68
+
+  panel crafb02
+    title: rows of breweries by breweries.state the twelve most
+    rows (12):
+      CO | 47
+      CA | 39
+      MI | 32
+      OR | 29
+      TX | 28
+      PA | 25
+      MA | 23
+      WA | 23
+      IN | 22
+      WI | 20
+      NC | 19
+      IL | 18
+
+  panel crafb03
+    title: sum of beers.ounces by breweries.state the twelve most
+    rows (12):
+      CO | 3571.2
+      CA | 2576.4
+      MI | 2428.0
+      IN | 2132.0
+      OR | 1736.0
+      TX | 1652.0
+      IL | 1336.0
+      PA | 1252.0
+      WI | 1168.0
+      MA | 1028.0
+      NY | 1008.0
+      WA | 956.0
+
+  panel crafb04
+    title: sum of beers.ibu by breweries.state the twelve most
+    rows (12):
+      CO | 6925.0
+      CA | 6248.0
+      OR | 4171.0
+      IN | 3912.0
+      TX | 3595.0
+      MN | 2298.0
+      NY | 2116.0
+      PA | 1995.0
+      MA | 1938.0
+      WA | 1934.0
+      FL | 1730.0
+      IL | 1617.0
+
+  panel crafb05
+    title: sum of beers.abv by breweries.state the twelve most
+    rows (12):
+      CO | 15.843000002205372
+      CA | 11.11700003768783
+      MI | 9.570000004023314
+      IN | 8.685000032186508
+      TX | 7.419999975711107
+      OR | 7.133000010624528
+      PA | 5.834000028669834
+      IL | 5.644000019878149
+      WI | 4.594999995082617
+      MA | 4.565999984741211
+      NY | 4.1770000141114
+      WA | 3.9299999810755253
+
+  panel crafb06
+    title: average of beers.ibu by breweries.name the twelve most
+    rows (12):
+      Wolf Hills Brewing Company | 135.00000
+      Christian Moerlein Brewing Company | 126.00000
+      The Alchemist | 120.00000
+      Beach Brewing Company | 108.00000
+      Rivertowne Brewing Company | 100.00000
+      Fort George Brewery | 97.00000
+      Four Fathers Brewing  | 90.00000
+      Santa Cruz Mountain Brewing | 88.00000
+      Natian Brewery | 86.00000
+      Lavery Brewing Company | 82.50000
+      3 Daughters Brewing | 82.00000
+      Tampa Bay Brewing Company | 80.00000
+
+  panel crafb07
+    title: average of beers.ounces by breweries.name the twelve most
+    rows (12):
+      Mission Brewery | 32.00000
+      Mikerphone Brewing | 24.00000
+      SlapShot Brewing Company | 24.00000
+      Moat Mountain Smoke House & Brew... | 24.00000
+      Great Northern Brewing Company | 18.00000
+      TailGate Beer | 16.50000
+      COOP Ale Works | 16.00000
+      Surly Brewing Company | 16.00000
+      Fearless Brewing Company | 16.00000
+      NorthGate Brewing  | 16.00000
+      Buckbean Brewing Company | 16.00000
+      Kettle House Brewing Company | 16.00000
+
+  panel crafb08
+    title: sum of beers.ounces by breweries.name the twelve most
+    rows (12):
+      Brewery Vivant | 992.0
+      Sun King Brewing Company | 608.0
+      Oskar Blues Brewery | 476.8
+      Hopworks Urban Brewery | 368.0
+      Sixpoint Craft Ales | 360.0
+      Great Crescent Brewery | 320.0
+      Cigar City Brewing Company | 304.0
+      Tallgrass Brewing Company | 284.9
+      Stevens Point Brewery | 276.0
+      Upslope Brewing Company | 274.4
+      Great River Brewery | 272.0
+      Bonfire Brewing Company | 260.0
+
+  panel crafb09
+    title: average of beers.ounces by breweries.state the twelve most
+    rows (12):
+      IN | 15.33813
+      KY | 15.23810
+      IA | 15.06667
+      NH | 15.00000
+      KS | 14.99565
+      MI | 14.98765
+      IL | 14.68132
+      NV | 14.54545
+      NJ | 14.50000
+      MN | 14.25455
+      VT | 14.22222
+      MS | 14.18182
+
+  panel crafb10
+    title: rows of beers by breweries.name the twelve most
+    rows (12):
+      Brewery Vivant | 62
+      Sun King Brewing Company | 38
+      Oskar Blues Brewery | 33
+      Cigar City Brewing Company | 25
+      Sixpoint Craft Ales | 24
+      Hopworks Urban Brewery | 23
+      Stevens Point Brewery | 22
+      21st Amendment Brewery | 20
+      Great Crescent Brewery | 20
+      Bonfire Brewing Company | 19
+      SanTan Brewing Company | 19
+      Tallgrass Brewing Company | 18
+
+  panel crafb11
+    title: rows of beers per breweries
+    rows (26):
+      1 | 127
+      2 | 112
+      3 | 82
+      4 | 71
+      5 | 42
+      6 | 29
+      7 | 21
+      8 | 16
+      9 | 12
+      10 | 6
+      11 | 4
+      12 | 8
+      … 14 more rows
+
+  panel crafb12
+    title: average of beers.ibu by breweries.state the twelve most
+    rows (12):
+      WV | 57.50000
+      NM | 57.00000
+      DC | 55.25000
+      ID | 55.11765
+      ME | 52.85714
+      DE | 52.00000
+      AL | 51.22222
+      MN | 49.95652
+      NH | 48.50000
+      OR | 47.94253
+      CO | 47.43151
+      FL | 46.75676
+
+  panel crafb13
+    title: average of beers.abv by breweries.name the twelve most
+    rows (12):
+      Portside Brewery | 0.0989999994635582
+      Christian Moerlein Brewing Company | 0.08900000154972076
+      Beach Brewing Company | 0.08799999952316284
+      SlapShot Brewing Company | 0.08350000157952309
+      Mountain Town Brewing Company  | 0.0820000022649765
+      Voodoo Brewery | 0.08100000148018201
+      Hess Brewing Company | 0.08066666622956593
+      Manzanita Brewing Company | 0.07999999895691871
+      Kulshan Brewery | 0.07999999821186066
+      Redstone Meadery | 0.07999999821186066
+      Blue Hills Brewery | 0.07999999821186066
+      Taxman Brewing Company | 0.07999999821186066
+
+  panel crafb14
+    title: largest tables, estimated rows
+    rows (2):
+      beers | 2410
+      breweries | 558
+
+  panel crafb15
+    title: sum of beers.abv by breweries.name the twelve most
+    rows (12):
+      Brewery Vivant | 4.199000000953674
+      Sun King Brewing Company | 2.4960000328719616
+      Oskar Blues Brewery | 2.1429999694228172
+      Cigar City Brewing Company | 1.5710000097751617
+      Sixpoint Craft Ales | 1.5410000085830688
+      21st Amendment Brewery | 1.397000014781952
+      Upslope Brewing Company | 1.3700000084936619
+      SanTan Brewing Company | 1.1999999918043613
+      Great Crescent Brewery | 1.146000001579523
+      Hopworks Urban Brewery | 1.126000003889203
+      Sockeye Brewing Company | 1.1190000101923943
+      Stevens Point Brewery | 1.114999994635582
+
+  panel crafb16
+    title: average of beers.abv by breweries.state the twelve most
+    rows (12):
+      NV | 0.06689999997615814
+      DC | 0.0656249993480742
+      KY | 0.06459999978542327
+      IN | 0.06339416081887962
+      MI | 0.06337748347035307
+      CO | 0.06337200000882148
+      IL | 0.06202197824041922
+      WV | 0.06200000084936619
+      AL | 0.06199999935925007
+      OH | 0.061959183793895097
+      CA | 0.061082417789493575
+      NM | 0.0610769224854616
+
+  panel crafb17
+    title: sum of beers.ibu by breweries.name the twelve most
+    rows (12):
+      Sun King Brewing Company | 1373.0
+      Oskar Blues Brewery | 1328.0
+      Sixpoint Craft Ales | 1230.0
+      Cigar City Brewing Company | 873.0
+      21st Amendment Brewery | 855.0
+      Hopworks Urban Brewery | 798.0
+      Golden Road Brewing | 781.0
+      Caldera Brewing Company | 776.0
+      Oskar Blues Brewery | 771.0
+      Southern Star Brewing Company | 686.0
+      Surly Brewing Company | 677.0
+      Great Crescent Brewery | 654.0
+
+
+=== database: chinook ===
+Chinook 1.4.5: a digital media store — artists, albums, tracks, playlists, customers, employees, invoices and their lines; its sales randomly generated over four years, as its source says.
+
+  panel chinb01
+    title: sum of invoice.total by customer (named) the twelve most
+    rows (12):
+      Helena Holý | 49.62
+      Richard Cunningham | 47.62
+      Luis Rojas | 46.62
+      Hugh O'Reilly | 45.62
+      Ladislav Kovács | 45.62
+      Julia Barnett | 43.62
+      Frank Ralston | 43.62
+      Fynn Zimmermann | 43.62
+      Victor Stevens | 42.62
+      Astrid Gruber | 42.62
+      Terhi Hämäläinen | 41.62
+      Johannes Van der Berg | 40.62
+
+  panel chinb02
+    title: average of invoice.total by invoice.invoice_date
+    rows (60):
+      2021-01-01 | 5.9400000000000000
+      2021-02-01 | 5.3742857142857143
+      2021-03-01 | 5.3742857142857143
+      2021-04-01 | 5.3742857142857143
+      2021-05-01 | 5.3742857142857143
+      2021-06-01 | 5.3742857142857143
+      2021-07-01 | 5.3742857142857143
+      2021-08-01 | 5.3742857142857143
+      2021-09-01 | 5.3742857142857143
+      2021-10-01 | 5.3742857142857143
+      2021-11-01 | 5.3742857142857143
+      2021-12-01 | 5.3742857142857143
+      … 48 more rows
+
+  panel chinb03
+    title: rows of invoice by invoice.billing_country the twelve most
+    rows (12):
+      USA | 91
+      Canada | 56
+      France | 35
+      Brazil | 35
+      Germany | 28
+      United Kingdom | 21
+      Portugal | 14
+      Czech Republic | 14
+      India | 13
+      Norway | 7
+      Sweden | 7
+      Belgium | 7
+
+  panel chinb04
+    title: sum of invoice_line.quantity by invoice (by key) the twelve most
+    rows (12):
+      257 | 14
+      103 | 14
+      173 | 14
+      117 | 14
+      236 | 14
+      390 | 14
+      180 | 14
+      278 | 14
+      271 | 14
+      299 | 14
+      292 | 14
+      40 | 14
+
+  panel chinb05
+    title: sum of invoice_line.unit_price × invoice_line.quantity by artist.name the twelve most
+    rows (12):
+      Iron Maiden | 138.60
+      U2 | 105.93
+      Metallica | 90.09
+      Led Zeppelin | 86.13
+      Lost | 81.59
+      The Office | 49.75
+      Os Paralamas Do Sucesso | 44.55
+      Deep Purple | 43.56
+      Faith No More | 41.58
+      Eric Clapton | 39.60
+      R.E.M. | 38.61
+      Queen | 36.63
+
+  panel chinb06
+    title: sum of invoice_line.unit_price × invoice_line.quantity by invoice.billing_address the twelve most
+    rows (12):
+      Rilská 3174/6 | 49.62
+      2211 W Berry Street | 47.62
+      Calle Lira, 198 | 46.62
+      3 Chatham Street | 45.62
+      Erzsébet krt. 58. | 45.62
+      302 S 700 E | 43.62
+      Berger Straße 10 | 43.62
+      162 E Superior Street | 43.62
+      319 N. Frances Street | 42.62
+      Rotenturmstraße 4, 1010 Innere Stadt | 42.62
+      Porthaninkatu 9 | 41.62
+      68, Rue Jouvence | 40.62
+
+  panel chinb07
+    title: sum of invoice_line.unit_price × invoice_line.quantity by invoice.billing_postal_code the twelve most
+    rows (12):
+      ∅ | 169.48
+      14300 | 49.62
+      76110 | 47.62
+      H-1073 | 45.62
+      60316 | 43.62
+      84102 | 43.62
+      60611 | 43.62
+      1010 | 42.62
+      53703 | 42.62
+      00530 | 41.62
+      1016 | 40.62
+      21000 | 40.62
+
+  panel chinb08
+    title: sum of invoice.total by invoice.billing_country the twelve most
+    rows (12):
+      USA | 523.06
+      Canada | 303.96
+      France | 195.10
+      Brazil | 190.10
+      Germany | 156.48
+      United Kingdom | 112.86
+      Czech Republic | 90.24
+      Portugal | 77.24
+      India | 75.26
+      Chile | 46.62
+      Ireland | 45.62
+      Hungary | 45.62
+
+  panel chinb09
+    title: sum of invoice.total by invoice.billing_city the twelve most
+    rows (12):
+      Prague | 90.24
+      Paris | 77.24
+      Mountain View | 77.24
+      São Paulo | 75.24
+      London | 75.24
+      Berlin | 75.24
+      Fort Worth | 47.62
+      Santiago | 46.62
+      Budapest | 45.62
+      Dublin | 45.62
+      Salt Lake City | 43.62
+      Chicago | 43.62
+
+  panel chinb10
+    title: sum of invoice.total by invoice.billing_postal_code the twelve most
+    rows (12):
+      ∅ | 169.48
+      14300 | 49.62
+      76110 | 47.62
+      H-1073 | 45.62
+      60316 | 43.62
+      84102 | 43.62
+      60611 | 43.62
+      1010 | 42.62
+      53703 | 42.62
+      00530 | 41.62
+      1016 | 40.62
+      21000 | 40.62
+
+  panel chinb11
+    title: sum of invoice.total by invoice.billing_state the twelve most
+    rows (12):
+      ∅ | 1150.00
+      CA | 115.86
+      SP | 114.86
+      ON | 75.24
+      TX | 47.62
+      Dublin | 45.62
+      UT | 43.62
+      IL | 43.62
+      WI | 42.62
+      VV | 40.62
+      WA | 39.62
+      QC | 39.62
+
+  panel chinb12
+    title: sum of invoice_line.unit_price × invoice_line.quantity by invoice.billing_city the twelve most
+    rows (12):
+      Prague | 90.24
+      Paris | 77.24
+      Mountain View | 77.24
+      São Paulo | 75.24
+      London | 75.24
+      Berlin | 75.24
+      Fort Worth | 47.62
+      Santiago | 46.62
+      Budapest | 45.62
+      Dublin | 45.62
+      Salt Lake City | 43.62
+      Chicago | 43.62
+
+  panel chinb13
+    title: sum of invoice.total by invoice.billing_address the twelve most
+    rows (12):
+      Rilská 3174/6 | 49.62
+      2211 W Berry Street | 47.62
+      Calle Lira, 198 | 46.62
+      3 Chatham Street | 45.62
+      Erzsébet krt. 58. | 45.62
+      302 S 700 E | 43.62
+      Berger Straße 10 | 43.62
+      162 E Superior Street | 43.62
+      319 N. Frances Street | 42.62
+      Rotenturmstraße 4, 1010 Innere Stadt | 42.62
+      Porthaninkatu 9 | 41.62
+      68, Rue Jouvence | 40.62
+
+  panel chinb14
+    title: rows of invoice by invoice.billing_address the twelve most
+    rows (12):
+      Rua dos Campeões Europeus de Viena, 4350 | 7
+      202 Hoxton Street | 7
+      1 Microsoft Way | 7
+      1033 N Park Ave | 7
+      Rua Dr. Falcão Filho, 155 | 7
+      8210 111 ST NW | 7
+      Praça Pio X, 119 | 7
+      421 Bourke Street | 7
+      230 Elgin Street | 7
+      319 N. Frances Street | 7
+      Grétrystraat 63 | 7
+      12,Community Centre | 7
+
+  panel chinb15
+    title: sum of invoice_line.unit_price by invoice (by key) the twelve most
+    rows (12):
+      404 | 25.86
+      299 | 23.86
+      96 | 21.86
+      194 | 21.86
+      201 | 18.86
+      89 | 18.86
+      88 | 17.91
+      306 | 16.86
+      313 | 16.86
+      103 | 15.86
+      208 | 15.86
+      193 | 14.91
+
+
+=== database: basketball ===
+Men's professional basketball: players, teams, coaches, drafts, awards and all-stars by season, as CTU serves it. A look fixture of round 1d.
+
+  panel baskb01
+    title: rows of series_post by series_post.lgIDWinner
+    rows (2):
+      NBA | 712
+      ABA | 63
+
+  panel baskb02
+    title: rows of player_allstar by player_allstar.conference
+    rows (5):
+      East | 793
+      West | 791
+      Allstars | 12
+      Denver | 11
+      Weset | 1
+
+  panel baskb03
+    title: rows of draft by players.birthCountry the twelve most
+    rows (12):
+      ∅ | 5267
+      USA | 3119
+      GER | 17
+      YUG | 16
+      CAN | 14
+      FRA | 13
+      ESP | 10
+      CRO | 8
+      LTU | 7
+      AUS | 7
+      BRA | 7
+      HOL | 6
+
+  panel baskb04
+    title: rows of series_post by series_post.year
+    rows (66):
+      1946-01-01 | 5
+      1947-01-01 | 7
+      1948-01-01 | 7
+      1949-01-01 | 13
+      1950-01-01 | 7
+      1951-01-01 | 7
+      1952-01-01 | 7
+      1953-01-01 | 9
+      1954-01-01 | 5
+      1955-01-01 | 7
+      1956-01-01 | 7
+      1957-01-01 | 5
+      … 54 more rows
+
+  panel baskb05
+    title: rows of series_post by series_post.round
+    rows (11):
+      CFR | 264
+      CSF | 168
+      DSF | 94
+      CF | 84
+      F | 75
+      DF | 61
+      DT | 11
+      SF | 7
+      RR | 6
+      QF | 4
+      FR | 1
+
+  panel baskb06
+    title: rows of players_teams by players (named) the twelve most
+    rows (12):
+      Kevin Willis | 24
+      Moses Malone | 22
+      James Edwards | 22
+      Joseph Smith | 21
+      Robert Parish | 21
+      Juwan Howard | 21
+      Kareem Abdul-Jabbar | 20
+      Samuel Cassell | 20
+      Jason Kidd | 20
+      Daniel Schayes | 20
+      Theophalus Ratliff | 20
+      Shaquille O'Neal | 20
+
+  panel baskb07
+    title: rows of player_allstar by player_allstar.league_id
+    rows (2):
+      NBA | 1405
+      ABA | 203
+
+  panel baskb08
+    title: rows of awards_players by players (named) the twelve most
+    rows (12):
+      Kareem Abdul-Jabbar | 35
+      Michael Jordan | 33
+      Timothy Duncan | 32
+      Kobe Bryant | 29
+      Hakeem Olajuwon | 26
+      Kevin Garnett | 23
+      Shaquille O'Neal | 22
+      David Robinson | 21
+      Karl Malone | 20
+      John Havlicek | 20
+      Larry Bird | 19
+      Julius Erving | 19
+
+  panel baskb09
+    title: rows of awards_players by awards_players.pos
+    rows (6):
+      ∅ | 886
+      G | 333
+      F | 330
+      C | 165
+      F/G | 3
+      F/C | 2
+
+  panel baskb10
+    title: rows of player_allstar by player_allstar.season_id
+    rows (59):
+      1950-01-01 | 20
+      1951-01-01 | 22
+      1952-01-01 | 21
+      1953-01-01 | 20
+      1954-01-01 | 21
+      1955-01-01 | 21
+      1956-01-01 | 20
+      1957-01-01 | 20
+      1958-01-01 | 20
+      1959-01-01 | 21
+      1960-01-01 | 22
+      1961-01-01 | 25
+      … 47 more rows
+
+  panel baskb11
+    title: sum of coaches.post_wins by coaches.year
+    rows (66):
+      1946-01-01 | 19
+      1947-01-01 | 21
+      1948-01-01 | 20
+      1949-01-01 | 30
+      1950-01-01 | 26
+      1951-01-01 | 25
+      1952-01-01 | 23
+      1953-01-01 | 23
+      1954-01-01 | 21
+      1955-01-01 | 21
+      1956-01-01 | 17
+      1957-01-01 | 21
+      … 54 more rows
+
+  panel baskb12
+    title: rows of draft by players (named) the twelve most
+    rows (12):
+       | 4964
+      Craig Raymond | 4
+      Harvey Catchings | 4
+      Herman Gilliam | 4
+      Dwight Jones | 4
+      Michael Grosso | 4
+      Philip Chenier | 4
+      Edgar Lacey | 3
+      Louie Dampier | 3
+      Harry Laurie | 3
+      Albert Tucker | 3
+      Paul Long | 3
+
+  panel baskb13
+    title: rows of series_post by series_post.lgIDLoser
+    rows (2):
+      NBA | 712
+      ABA | 63
+
+  panel baskb14
+    title: rows of draft by players.hsCountry the twelve most
+    rows (12):
+      ∅ | 5138
+      USA | 3413
+      CAN | 11
+      AUS | 5
+      YUG | 5
+      FRA | 3
+      HOL | 3
+      CRO | 3
+      BRA | 3
+      NGR | 2
+      SLV | 2
+      TCH | 2
+
+  panel baskb15
+    title: rows of teams by teams.divID the twelve most
+    rows (12):
+      CD | 263
+      PC | 252
+      AT | 233
+      MW | 201
+      ED | 160
+      WD | 160
+      EA | 47
+      WE | 46
+      NW | 40
+      SE | 40
+      SW | 40
+      ∅ | 38
+
+
+=== database: basketballwomen ===
+Women's professional basketball: players, teams, coaches and awards by season, as CTU serves it. A look fixture of round 1d.
+
+  panel baskb01
+    title: rows of players by players.birthState the twelve most
+    rows (12):
+      ∅ | 688
+      CA | 20
+      TX | 12
+      VIC | 10
+      SPL | 9
+      FL | 9
+      IL | 8
+      OH | 7
+      MS | 7
+      GA | 7
+      NY | 6
+      MI | 6
+
+  panel baskb02
+    title: rows of series_post by series_post.series
+    rows (7):
+      A | 17
+      C | 17
+      B | 16
+      D | 14
+      E | 14
+      F | 13
+      G | 13
+
+  panel baskb03
+    title: rows of series_post by series_post.year
+    rows (16):
+      1997-01-01 | 5
+      1998-01-01 | 3
+      1999-01-01 | 5
+      2000-01-01 | 7
+      2001-01-01 | 7
+      2002-01-01 | 7
+      2003-01-01 | 7
+      2004-01-01 | 7
+      2005-01-01 | 7
+      2006-01-01 | 7
+      2007-01-01 | 7
+      2008-01-01 | 7
+      … 4 more rows
+
+  panel baskb04
+    title: distribution of players_teams.minutes
+    rows (21):
+      0 | 0 | 476
+      1 | 84 | 282
+      2 | 168 | 229
+      3 | 252 | 206
+      4 | 335 | 203
+      5 | 419 | 219
+      6 | 503 | 165
+      7 | 587 | 168
+      8 | 670 | 170
+      9 | 754 | 163
+      10 | 837 | 204
+      11 | 921 | 195
+      … 9 more rows
+
+  panel baskb05
+    title: rows of players_teams by players_teams.lgID
+    rows (2):
+      WNBA | 2709
+      ABL | 307
+
+  panel baskb06
+    title: rows of teams_post by teams_post.lgID
+    rows (2):
+      WNBA | 118
+      ABL | 5
+
+  panel baskb07
+    title: rows of players_teams by players_teams.tmID the twelve most
+    rows (12):
+      PHO | 232
+      LAS | 206
+      NYL | 204
+      WAS | 200
+      MIN | 175
+      DET | 175
+      SEA | 172
+      IND | 167
+      SAC | 161
+      HOU | 156
+      CHA | 128
+      CON | 123
+
+  panel baskb08
+    title: rows of series_post by series_post.round
+    rows (4):
+      FR | 55
+      CF | 28
+      F | 16
+      SF | 5
+
+  panel baskb09
+    title: rows of draft by draft.draftYear
+    rows (16):
+      1997-01-01 | 102
+      1998-01-01 | 71
+      1999-01-01 | 46
+      2000-01-01 | 59
+      2001-01-01 | 60
+      2002-01-01 | 60
+      2003-01-01 | 40
+      2004-01-01 | 34
+      2005-01-01 | 37
+      2006-01-01 | 39
+      2007-01-01 | 37
+      2008-01-01 | 43
+      … 4 more rows
+
+  panel baskb10
+    title: rows of awards_players by awards_players.pos
+    rows (6):
+      ∅ | 112
+      G | 15
+      F | 15
+      C | 11
+      G-F | 5
+      Coach | 1
+
+  panel baskb11
+    title: rows of players by players.pos
+    rows (8):
+      G | 309
+      F | 230
+      C | 130
+      ∅ | 78
+      F-C | 70
+      G-F | 55
+      F-G | 12
+      C-F | 9
+
+  panel baskb12
+    title: rows of players_teams by players (named) the twelve most
+    rows (12):
+      Taj McWilliams-Franklin | 18
+      Katherine Smith | 18
+      Tina Thompson | 16
+      DeLisha Milton-Jones | 16
+      Tangela Smith | 15
+      Ticha Penicheiro | 15
+      Rebecca Hammon | 14
+      Chasity Melvin | 14
+      Shannon Johnson | 14
+      Dominique Canty | 14
+      Tully Bevilaqua (nee Crook) | 14
+      Elaine Powell | 14
+
+  panel baskb13
+    title: rows of players by players.deathDate
+    rows (5):
+      0000-00-00 | 889
+      2011-05-27 | 1
+      1999-08-19 | 1
+      1999-01-18 | 1
+      2001-05-12 | 1
+
+  panel baskb14
+    title: rows of players by players.hsState the twelve most
+    rows (12):
+      ∅ | 644
+      CA | 25
+      TX | 22
+      OH | 15
+      FL | 12
+      GA | 12
+      IL | 12
+      IN | 11
+      VA | 10
+      NY | 10
+      NJ | 7
+      LA | 7
+
+  panel baskb15
+    title: rows of teams by teams.confID
+    rows (2):
+      WE | 118
+      EA | 116
+
+  panel baskb16
+    title: rows of teams by teams.lgID
+    rows (2):
+      WNBA | 208
+      ABL | 26
+
+  panel baskb17
+    title: rows of draft by players (named) the twelve most
+    rows (1):
+       | 774
+
+  panel baskb18
+    title: rows of teams by teams.franchID the twelve most
+    rows (12):
+      SAS | 16
+      NYL | 16
+      PHO | 16
+      LAS | 16
+      WAS | 15
+      DET | 15
+      MIN | 14
+      CON | 14
+      SEA | 13
+      SAC | 13
+      IND | 13
+      HOU | 12
+
+  panel baskb19
+    title: rows of coaches by coaches.year
+    rows (16):
+      1997-01-01 | 19
+      1998-01-01 | 23
+      1999-01-01 | 24
+      2000-01-01 | 17
+      2001-01-01 | 18
+      2002-01-01 | 19
+      2003-01-01 | 16
+      2004-01-01 | 17
+      2005-01-01 | 15
+      2006-01-01 | 15
+      2007-01-01 | 14
+      2008-01-01 | 15
+      … 4 more rows
+
+  panel baskb20
+    title: rows of draft by draft.playedPro
+    rows (2):
+      v | 506
+      x | 268
+
+  panel baskb21
+    title: rows of draft by draft.tmID the twelve most
+    rows (12):
+      PHO | 60
+      MIN | 60
+      NYL | 56
+      LAS | 56
+      WAS | 54
+      DET | 47
+      SAC | 46
+      HOU | 46
+      IND | 40
+      SEA | 35
+      CLE | 31
+      CON | 30
+
+  panel baskb22
+    title: rows of awards_players by awards_players.year
+    rows (16):
+      1997-01-01 | 11
+      1998-01-01 | 13
+      1999-01-01 | 8
+      2000-01-01 | 8
+      2001-01-01 | 8
+      2002-01-01 | 8
+      2003-01-01 | 8
+      2004-01-01 | 8
+      2005-01-01 | 7
+      2006-01-01 | 22
+      2007-01-01 | 9
+      2008-01-01 | 8
+      … 4 more rows
+
+  panel baskb23
+    title: rows of players_teams by players_teams.year
+    rows (16):
+      1997-01-01 | 199
+      1998-01-01 | 238
+      1999-01-01 | 254
+      2000-01-01 | 208
+      2001-01-01 | 208
+      2002-01-01 | 217
+      2003-01-01 | 180
+      2004-01-01 | 167
+      2005-01-01 | 178
+      2006-01-01 | 180
+      2007-01-01 | 173
+      2008-01-01 | 200
+      … 4 more rows
+
+  panel baskb24
+    title: rows of players by players.hsCountry
+    rows (10):
+      ∅ | 639
+      USA | 245
+      AUS | 2
+      RUS | 1
+      BRA | 1
+      CAN | 1
+      URS | 1
+      BUL | 1
+      COD | 1
+      JPN | 1
+
+  panel baskb25
+    title: largest tables, estimated rows
+    rows (8):
+      players_teams | 2960
+      players | 893
+      draft | 774
+      coaches | 267
+      teams | 234
+      awards_players | 159
+      teams_post | 123
+      series_post | 104
+
+  panel baskb26
+    title: rows of draft by draft.notes
+    rows (5):
+      ∅ | 629
+      regular | 110
+      initial | 18
+      elite | 14
+      T | 3
+
+  panel baskb27
+    title: rows of teams by teams.playoff
+    rows (3):
+      Y | 128
+      N | 97
+      ∅ | 9
+
+  panel baskb28
+    title: rows of teams by teams.year
+    rows (16):
+      1997-01-01 | 16
+      1998-01-01 | 19
+      1999-01-01 | 21
+      2000-01-01 | 16
+      2001-01-01 | 16
+      2002-01-01 | 16
+      2003-01-01 | 14
+      2004-01-01 | 13
+      2005-01-01 | 13
+      2006-01-01 | 14
+      2007-01-01 | 13
+      2008-01-01 | 14
+      … 4 more rows
+
+  panel baskb29
+    title: rows of draft by draft.lgID
+    rows (2):
+      WNBA | 697
+      ABL | 77
+
+  panel baskb30
+    title: sum of coaches.post_wins by coaches.year
+    rows (16):
+      1997-01-01 | 12
+      1998-01-01 | 22
+      1999-01-01 | 11
+      2000-01-01 | 16
+      2001-01-01 | 18
+      2002-01-01 | 17
+      2003-01-01 | 19
+      2004-01-01 | 20
+      2005-01-01 | 17
+      2006-01-01 | 19
+      2007-01-01 | 21
+      2008-01-01 | 21
+      … 4 more rows
+
+  panel baskb31
+    title: rows of teams by teams.tmID the twelve most
+    rows (12):
+      NYL | 16
+      PHO | 16
+      LAS | 16
+      WAS | 15
+      MIN | 14
+      SAC | 13
+      IND | 13
+      SEA | 13
+      DET | 12
+      HOU | 12
+      CON | 10
+      CHA | 10
+
+  panel baskb32
+    title: rows of awards_players by awards_players.award
+    rows (18):
+      Defensive Player of the Year | 18
+      Most Valuable Player | 18
+      Coach of the Year | 16
+      WNBA Finals Most Valuable Player | 16
+      Rookie of the Year | 15
+      Kim Perrot Sportsmanship Award | 12
+      Most Improved Player | 12
+      All-Star Game Most Valuable Player | 11
+      WNBA All-Decade Team | 10
+      Sixth Woman of the Year | 6
+      Kim Perrot Sportsmanship | 5
+      WNBA All Decade Team Honorable Mention | 5
+      … 6 more rows
+
+  panel baskb33
+    title: rows of teams_post by teams_post.year
+    rows (16):
+      1997-01-01 | 9
+      1998-01-01 | 4
+      1999-01-01 | 6
+      2000-01-01 | 8
+      2001-01-01 | 8
+      2002-01-01 | 8
+      2003-01-01 | 8
+      2004-01-01 | 8
+      2005-01-01 | 8
+      2006-01-01 | 8
+      2007-01-01 | 8
+      2008-01-01 | 8
+      … 4 more rows
+
+
+=== database: airlines ===
+Postgres Professional's airlines demo, 1 September 2025, three months: bookings, tickets, flight segments, flights, routes, airports, airplanes, seats and boarding passes.
+
+  panel airlb01
+    title: sum of segments.price by flights.scheduled_arrival
+    rows (18):
+      2025-09-29 | 1281704650.00
+      2025-10-06 | 1667705550.00
+      2025-10-13 | 1723536850.00
+      2025-10-20 | 1599513650.00
+      2025-10-27 | 1590142725.00
+      2025-11-03 | 1877601000.00
+      2025-11-10 | 1772307850.00
+      2025-11-17 | 1724928450.00
+      2025-11-24 | 1693703900.00
+      2025-12-01 | 1790431950.00
+      2025-12-08 | 1570188500.00
+      2025-12-15 | 1362185700.00
+      … 6 more rows
+
+  panel airlb02
+    title: rows of boarding_passes by tickets.outbound
+    rows (2):
+      t | 1558239
+      f | 905593
+
+  panel airlb03
+    title: rows of boarding_passes by flights.status
+    rows (6):
+      Arrived | 2431266
+      On Time | 20934
+      Scheduled | 5962
+      Departed | 3598
+      Delayed | 1502
+      Boarding | 570
+
+  panel airlb04
+    title: rows of tickets by bookings.book_date
+    rows (91):
+      2025-09-01 | 40312
+      2025-09-02 | 38677
+      2025-09-03 | 36805
+      2025-09-04 | 35609
+      2025-09-05 | 35284
+      2025-09-06 | 35576
+      2025-09-07 | 34962
+      2025-09-08 | 34663
+      2025-09-09 | 35407
+      2025-09-10 | 35502
+      2025-09-11 | 34953
+      2025-09-12 | 35200
+      … 79 more rows
+
+  panel airlb05
+    title: sum of segments.price by flights.scheduled_departure
+    rows (18):
+      2025-09-29 | 1323301575.00
+      2025-10-06 | 1661246375.00
+      2025-10-13 | 1732195175.00
+      2025-10-20 | 1586755250.00
+      2025-10-27 | 1602067250.00
+      2025-11-03 | 1875134175.00
+      2025-11-10 | 1771808000.00
+      2025-11-17 | 1725264575.00
+      2025-11-24 | 1690534150.00
+      2025-12-01 | 1775088925.00
+      2025-12-08 | 1567650000.00
+      2025-12-15 | 1358024850.00
+      … 6 more rows
+
+  panel airlb06
+    title: average of segments.price by segments.fare_conditions
+    rows (3):
+      Business | 11826.863309421421
+      Comfort | 6422.4314353680192955
+      Economy | 5492.6333264323712440
+
+  panel airlb07
+    title: sum of segments.price by bookings (by key) the twelve most
+    rows (12):
+      7UU4BE | 915250.00
+      3OSUL8 | 741100.00
+      613WY4 | 717450.00
+      573JWM | 635800.00
+      U44CN0 | 624150.00
+      2U34KR | 602200.00
+      DZHSB2 | 580900.00
+      YIHL90 | 577900.00
+      8C20XV | 564000.00
+      Q2ST5O | 554750.00
+      T31K8M | 554450.00
+      NSV3A0 | 551600.00
+
+  panel airlb08
+    title: rows of boarding_passes by bookings (by key) the twelve most
+    rows (12):
+      RKOKW7 | 35
+      6UYJJT | 32
+      L6EHLT | 32
+      EAKZ5V | 32
+      OXTRT4 | 30
+      FOY25S | 28
+      DLLY3L | 28
+      OI49NH | 28
+      5YBAGP | 28
+      8L80ND | 28
+      SYTD45 | 28
+      B2GOUJ | 28
+
+  panel airlb09
+    title: rows of segments by flights (by key) the twelve most
+    rows (12):
+      13048 | 404
+      3834 | 404
+      764 | 404
+      17573 | 404
+      2204 | 404
+      10073 | 404
+      1552 | 404
+      11092 | 404
+      9038 | 404
+      2520 | 404
+      5468 | 404
+      17697 | 404
+
+  panel airlb10
+    title: rows of routes by airplanes_data (by key) the twelve most
+    rows (8):
+      77W | 250
+      789 | 230
+      7M7 | 192
+      E70 | 142
+      CR7 | 118
+      351 | 110
+      339 | 80
+      32N | 40
+
+  panel airlb11
+    title: sum of segments.price by flights.status
+    rows (6):
+      Arrived | 14931144625.00
+      Scheduled | 9352775825.00
+      On Time | 235174450.00
+      Departed | 35973900.00
+      Delayed | 15086075.00
+      Boarding | 3776700.00
+
+  panel airlb12
+    title: sum of segments.price by tickets.outbound
+    rows (2):
+      t | 15847013450.00
+      f | 8726918125.00
+
+  panel airlb13
+    title: rows of routes by airports_data (by key) the twelve most
+    rows (12):
+      FRA | 34
+      SVO | 34
+      BOM | 30
+      DEL | 26
+      LHR | 24
+      BLR | 24
+      CAN | 23
+      ATL | 23
+      TFU | 23
+      YYZ | 23
+      FCO | 22
+      PVG | 22
+
+  panel airlb14
+    title: sum of segments.price by flights.actual_departure
+    rows (61):
+      2025-10-01 | 234344025.00
+      2025-10-02 | 286729575.00
+      2025-10-03 | 263334750.00
+      2025-10-04 | 269672400.00
+      2025-10-05 | 269073575.00
+      2025-10-06 | 223999925.00
+      2025-10-07 | 265715000.00
+      2025-10-08 | 198141150.00
+      2025-10-09 | 245415250.00
+      2025-10-10 | 224640050.00
+      2025-10-11 | 236080550.00
+      2025-10-12 | 266017950.00
+      … 49 more rows
+
+  panel airlb15
+    title: rows of flights by flights.scheduled_departure split by flights.status
+    rows (41):
+      2025-09-29 | Arrived | 897
+      2025-09-29 | Cancelled | 3
+      2025-10-06 | Cancelled | 11
+      2025-10-06 | Arrived | 1251
+      2025-10-13 | Cancelled | 7
+      2025-10-13 | Arrived | 1255
+      2025-10-20 | Cancelled | 13
+      2025-10-20 | Arrived | 1247
+      2025-10-27 | Arrived | 1253
+      2025-10-27 | Cancelled | 6
+      2025-11-03 | Arrived | 1269
+      2025-11-03 | Cancelled | 7
+      … 29 more rows

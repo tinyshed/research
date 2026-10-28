@@ -110,6 +110,10 @@ pins it. A private corpus is named, never published.
 **What a round proved is worth building lands in the project's repository**,
 as its own commit there; the round here only reports it.
 
+**lemmesee's models are taught and judged as `lemmesee/teaching.md` says**:
+language models as offline teachers and blind judges only, the judge that
+taught a model never counting it, keys never printed or written.
+
 ## Commits
 
 Research work lands on `main`. Isolate product implementation work on a
