@@ -37,3 +37,6 @@ so, never by editing the number it replaces.
   objective nor the other candidates' context moves the look; the teachers' own five would keep a panel more, lost
   on what words mean; judged as sets, the gap shrinks to a tenth or two, repeats of one axis are the set's loss,
   and a five using each axis once is the round's best by Gemini, 4.28 of five against round 1's 3.62.
+- [A student of names](names-2026-10-28.md), round 1h: a student of titles taught by Jev on 85 098 panels of
+  2 886 SchemaPile schemas predicts its teachers at 0.85 within a schema, but alone meets the judges at only
+  0.69–0.71, and the look reading it, or a lexicon of values, does no better by them.

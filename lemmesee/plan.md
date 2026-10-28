@@ -206,6 +206,12 @@ it are in its chapter 14 and are the ones that decide.
    as sets the gap is a tenth or two, the look's loss is repeating an axis,
    and each axis once makes the round's best five by Gemini, 4.28 against
    round 1's 3.62. From now on a round's fives are judged as sets.
+1h. **A student of names**: what a title is worth, taught on SchemaPile's
+   schemas where names are many, read by the look as one more number.
+   [Run](reports/names-2026-10-28.md) on 28 October: it predicts its
+   teachers by title at 0.85 within a schema, but the judges keep no more
+   of the look's fives for it; the teachers' edge is in the results read
+   with what words mean, not in titles.
 2. **The judged set**: assembled, split by project, judged.
 3. **The ranker, C**: linear, trees, a tiny network, against A and B on the
    judged set, with its cost.
