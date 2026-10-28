@@ -1,6 +1,8 @@
 # Round 1j: meaning and results before the bottleneck
 
-Status: harness prepared; no learning experiment run.
+Status: run on 28 October 2026; [reported](../reports/fusion-2026-10-28.md).
+No new model is kept. The proposed next architecture is in
+[shared-context.md](shared-context.md).
 
 Round 1h trained a student on titles and passed its single keep probability
 to the look. That tests late fusion of two decisions. It does not test

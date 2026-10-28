@@ -1,0 +1,1079 @@
+{
+  "environment": {
+    "utc": "2026-10-28T17:19:42.678598+00:00",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.36",
+    "python": "3.13.18",
+    "packages": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "lightgbm": "4.7.0"
+    },
+    "revision": "57b327fe591685941b8623b1c3329ac9646b081f",
+    "dirty": [
+      "?? tinystore/ffi-window/"
+    ],
+    "threads": {
+      "OMP_NUM_THREADS": "4",
+      "OPENBLAS_NUM_THREADS": "4",
+      "MKL_NUM_THREADS": "4"
+    },
+    "cpu": "AMD Ryzen 7 7700 8-Core Processor",
+    "memory": "MemTotal:       15910556 kB",
+    "cpu_quota": "400000 100000"
+  },
+  "input_sha256": "5802a9a3c21a4ae3993fa182ce7990839b32519fd83c8a7c09f8024d47ccd62f",
+  "configuration": {
+    "folds": 5,
+    "draws": 3,
+    "seed": 20261101,
+    "configs": [
+      "baseline",
+      "capacity",
+      "encoded_scalar",
+      "encoded_64",
+      "encoded_600"
+    ]
+  },
+  "packed_weights": {
+    "baseline": {
+      "largest_bytes": 9758,
+      "largest_probability_difference": 4.097154948645709e-09
+    },
+    "capacity": {
+      "largest_bytes": 109608,
+      "largest_probability_difference": 5.248102230570595e-09
+    },
+    "encoded_scalar": {
+      "largest_bytes": 109608,
+      "largest_probability_difference": 3.4657909875335235e-09
+    },
+    "encoded_64": {
+      "largest_bytes": 109608,
+      "largest_probability_difference": 6.61836008220007e-09
+    },
+    "encoded_600": {
+      "largest_bytes": 109608,
+      "largest_probability_difference": 7.2876268353283535e-09
+    }
+  },
+  "scope": "development-family cross-validation; saved per-panel judges, not a new set judgment",
+  "baseline": {
+    "opus/plain/auc": {
+      "mean": 0.7725070699819235,
+      "databases": 26
+    },
+    "opus/plain/kept": {
+      "mean": 2.9615384615384617,
+      "databases": 26
+    },
+    "opus/plain/harmful_kept": {
+      "mean": 0.0,
+      "databases": 26
+    },
+    "opus/axes/auc": {
+      "mean": 0.7725070699819235,
+      "databases": 26
+    },
+    "opus/axes/kept": {
+      "mean": 2.871794871794872,
+      "databases": 26
+    },
+    "opus/axes/harmful_kept": {
+      "mean": 0.038461538461538464,
+      "databases": 26
+    },
+    "sonnet/plain/auc": {
+      "mean": 0.7878850630200271,
+      "databases": 50
+    },
+    "sonnet/plain/kept": {
+      "mean": 2.94,
+      "databases": 50
+    },
+    "sonnet/plain/harmful_kept": {
+      "mean": 0.0,
+      "databases": 50
+    },
+    "sonnet/axes/auc": {
+      "mean": 0.7878850630200271,
+      "databases": 50
+    },
+    "sonnet/axes/kept": {
+      "mean": 2.766666666666666,
+      "databases": 50
+    },
+    "sonnet/axes/harmful_kept": {
+      "mean": 0.0,
+      "databases": 50
+    },
+    "gemini/plain/auc": {
+      "mean": 0.7769015790055852,
+      "databases": 48
+    },
+    "gemini/plain/kept": {
+      "mean": 3.1,
+      "databases": 50
+    },
+    "gemini/plain/harmful_kept": {
+      "mean": 0.0,
+      "databases": 50
+    },
+    "gemini/axes/auc": {
+      "mean": 0.7769015790055852,
+      "databases": 48
+    },
+    "gemini/axes/kept": {
+      "mean": 2.9666666666666663,
+      "databases": 50
+    },
+    "gemini/axes/harmful_kept": {
+      "mean": 0.0,
+      "databases": 50
+    }
+  },
+  "capacity": {
+    "opus/plain/auc": {
+      "mean": 0.7759247971188701,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": 0.0034177271369464357,
+        "95%": [
+          -0.009968647829412265,
+          0.016082103563438407
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/plain/kept": {
+      "mean": 2.935897435897436,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": -0.025641025641025626,
+        "95%": [
+          -0.23076923076923078,
+          0.19230769230769226
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/plain/harmful_kept": {
+      "mean": 0.01282051282051282,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": 0.01282051282051282,
+        "95%": [
+          0.0,
+          0.038461538461538464
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/auc": {
+      "mean": 0.7759247971188701,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": 0.0034177271369464357,
+        "95%": [
+          -0.009968647829412265,
+          0.016082103563438407
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/kept": {
+      "mean": 2.8205128205128207,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": -0.05128205128205126,
+        "95%": [
+          -0.25641025641025644,
+          0.15384615384615385
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/harmful_kept": {
+      "mean": 0.01282051282051282,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": -0.02564102564102564,
+        "95%": [
+          -0.07692307692307693,
+          0.0
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "sonnet/plain/auc": {
+      "mean": 0.7947635548668766,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.006878491846849465,
+        "95%": [
+          -0.007436648595431756,
+          0.020470497547532388
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "sonnet/plain/kept": {
+      "mean": 3.0600000000000005,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.12000000000000004,
+        "95%": [
+          -0.03410666153253754,
+          0.27891156462585037
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "sonnet/plain/harmful_kept": {
+      "mean": 0.0,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.0,
+        "95%": [
+          0.0,
+          0.0
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "sonnet/axes/auc": {
+      "mean": 0.7947635548668766,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.006878491846849465,
+        "95%": [
+          -0.007436648595431756,
+          0.020470497547532388
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "sonnet/axes/kept": {
+      "mean": 2.833333333333333,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.06666666666666665,
+        "95%": [
+          -0.07482993197278912,
+          0.22
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "sonnet/axes/harmful_kept": {
+      "mean": 0.0,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.0,
+        "95%": [
+          0.0,
+          0.0
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "gemini/plain/auc": {
+      "mean": 0.7859197626906834,
+      "databases": 48,
+      "minus_baseline": {
+        "mean": 0.009018183685098295,
+        "95%": [
+          -0.003734259608545535,
+          0.021259750323274026
+        ],
+        "databases": 48,
+        "families": 47
+      }
+    },
+    "gemini/plain/kept": {
+      "mean": 3.226666666666666,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.12666666666666668,
+        "95%": [
+          -0.0476190476190476,
+          0.30718954248366015
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "gemini/plain/harmful_kept": {
+      "mean": 0.0,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.0,
+        "95%": [
+          0.0,
+          0.0
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "gemini/axes/auc": {
+      "mean": 0.7859197626906834,
+      "databases": 48,
+      "minus_baseline": {
+        "mean": 0.009018183685098295,
+        "95%": [
+          -0.003734259608545535,
+          0.021259750323274026
+        ],
+        "databases": 48,
+        "families": 47
+      }
+    },
+    "gemini/axes/kept": {
+      "mean": 2.9866666666666664,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.019999999999999997,
+        "95%": [
+          -0.1292517006802721,
+          0.16326530612244897
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "gemini/axes/harmful_kept": {
+      "mean": 0.0,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.0,
+        "95%": [
+          0.0,
+          0.0
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    }
+  },
+  "encoded_scalar": {
+    "opus/plain/auc": {
+      "mean": 0.775413558648697,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": 0.0029064886667735036,
+        "95%": [
+          -0.01908292140184006,
+          0.025738513676843263
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/plain/kept": {
+      "mean": 2.884615384615384,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": -0.07692307692307686,
+        "95%": [
+          -0.37179487179487175,
+          0.23076923076923073
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/plain/harmful_kept": {
+      "mean": 0.01282051282051282,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": 0.01282051282051282,
+        "95%": [
+          0.0,
+          0.038461538461538464
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/auc": {
+      "mean": 0.775413558648697,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": 0.0029064886667735036,
+        "95%": [
+          -0.01908292140184006,
+          0.025738513676843263
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/kept": {
+      "mean": 2.8589743589743595,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": -0.01282051282051281,
+        "95%": [
+          -0.3076923076923077,
+          0.282051282051282
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/harmful_kept": {
+      "mean": 0.038461538461538464,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": 0.0,
+        "95%": [
+          -0.038461538461538464,
+          0.038461538461538464
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "sonnet/plain/auc": {
+      "mean": 0.7861878293065324,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": -0.0016972337134946414,
+        "95%": [
+          -0.02203539157785976,
+          0.01619987567159903
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "sonnet/plain/kept": {
+      "mean": 3.06,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.12,
+        "95%": [
+          -0.07999999999999999,
+          0.31333333333333324
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "sonnet/plain/harmful_kept": {
+      "mean": 0.0,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.0,
+        "95%": [
+          0.0,
+          0.0
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "sonnet/axes/auc": {
+      "mean": 0.7861878293065324,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": -0.0016972337134946414,
+        "95%": [
+          -0.02203539157785976,
+          0.01619987567159903
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "sonnet/axes/kept": {
+      "mean": 2.92,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.1533333333333333,
+        "95%": [
+          -0.04081632653061234,
+          0.3537414965986394
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "sonnet/axes/harmful_kept": {
+      "mean": 0.0,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.0,
+        "95%": [
+          0.0,
+          0.0
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "gemini/plain/auc": {
+      "mean": 0.7893591822763856,
+      "databases": 48,
+      "minus_baseline": {
+        "mean": 0.012457603270800366,
+        "95%": [
+          -0.0054245487478728404,
+          0.03003790709033114
+        ],
+        "databases": 48,
+        "families": 47
+      }
+    },
+    "gemini/plain/kept": {
+      "mean": 3.2999999999999994,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.20000000000000007,
+        "95%": [
+          -0.006666666666666599,
+          0.40670408163265265
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "gemini/plain/harmful_kept": {
+      "mean": 0.0,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.0,
+        "95%": [
+          0.0,
+          0.0
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "gemini/axes/auc": {
+      "mean": 0.7893591822763856,
+      "databases": 48,
+      "minus_baseline": {
+        "mean": 0.012457603270800366,
+        "95%": [
+          -0.0054245487478728404,
+          0.03003790709033114
+        ],
+        "databases": 48,
+        "families": 47
+      }
+    },
+    "gemini/axes/kept": {
+      "mean": 3.106666666666667,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.14,
+        "95%": [
+          -0.054421768707483,
+          0.3333333333333333
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "gemini/axes/harmful_kept": {
+      "mean": 0.0,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.0,
+        "95%": [
+          0.0,
+          0.0
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    }
+  },
+  "encoded_64": {
+    "opus/plain/auc": {
+      "mean": 0.7699475013310757,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": -0.002559568650847849,
+        "95%": [
+          -0.023691064719099746,
+          0.020637044790096943
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/plain/kept": {
+      "mean": 2.8461538461538463,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": -0.1153846153846154,
+        "95%": [
+          -0.435897435897436,
+          0.2307692307692308
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/plain/harmful_kept": {
+      "mean": 0.02564102564102564,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": 0.02564102564102564,
+        "95%": [
+          0.0,
+          0.07692307692307693
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/auc": {
+      "mean": 0.7699475013310757,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": -0.002559568650847849,
+        "95%": [
+          -0.023691064719099746,
+          0.020637044790096943
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/kept": {
+      "mean": 2.6410256410256414,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": -0.2307692307692308,
+        "95%": [
+          -0.5512820512820513,
+          0.10256410256410255
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/harmful_kept": {
+      "mean": 0.038461538461538464,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": 0.0,
+        "95%": [
+          -0.038461538461538464,
+          0.038461538461538464
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "sonnet/plain/auc": {
+      "mean": 0.7805603362271318,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": -0.007324726792895317,
+        "95%": [
+          -0.023603725719169775,
+          0.009554872937676418
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "sonnet/plain/kept": {
+      "mean": 2.973333333333333,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.03333333333333335,
+        "95%": [
+          -0.1700680272108843,
+          0.23076923076923078
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "sonnet/plain/harmful_kept": {
+      "mean": 0.0,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.0,
+        "95%": [
+          0.0,
+          0.0
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "sonnet/axes/auc": {
+      "mean": 0.7805603362271318,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": -0.007324726792895317,
+        "95%": [
+          -0.023603725719169775,
+          0.009554872937676418
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "sonnet/axes/kept": {
+      "mean": 2.7400000000000007,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": -0.02666666666666668,
+        "95%": [
+          -0.24489795918367352,
+          0.18666666666666665
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "sonnet/axes/harmful_kept": {
+      "mean": 0.0,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.0,
+        "95%": [
+          0.0,
+          0.0
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "gemini/plain/auc": {
+      "mean": 0.7775811847528775,
+      "databases": 48,
+      "minus_baseline": {
+        "mean": 0.0006796057472923585,
+        "95%": [
+          -0.014591364427350643,
+          0.015276614978349751
+        ],
+        "databases": 48,
+        "families": 47
+      }
+    },
+    "gemini/plain/kept": {
+      "mean": 3.1933333333333334,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.09333333333333338,
+        "95%": [
+          -0.12244897959183665,
+          0.31292517006802717
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "gemini/plain/harmful_kept": {
+      "mean": 0.0,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.0,
+        "95%": [
+          0.0,
+          0.0
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "gemini/axes/auc": {
+      "mean": 0.7775811847528775,
+      "databases": 48,
+      "minus_baseline": {
+        "mean": 0.0006796057472923585,
+        "95%": [
+          -0.014591364427350643,
+          0.015276614978349751
+        ],
+        "databases": 48,
+        "families": 47
+      }
+    },
+    "gemini/axes/kept": {
+      "mean": 2.993333333333333,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.02666666666666666,
+        "95%": [
+          -0.18666666666666668,
+          0.24489795918367344
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "gemini/axes/harmful_kept": {
+      "mean": 0.0,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.0,
+        "95%": [
+          0.0,
+          0.0
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    }
+  },
+  "encoded_600": {
+    "opus/plain/auc": {
+      "mean": 0.7884644515360737,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": 0.01595738155415021,
+        "95%": [
+          -0.011654067940902119,
+          0.04357943258627258
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/plain/kept": {
+      "mean": 3.051282051282051,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": 0.08974358974358972,
+        "95%": [
+          -0.1794871794871795,
+          0.37179487179487164
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/plain/harmful_kept": {
+      "mean": 0.038461538461538464,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": 0.038461538461538464,
+        "95%": [
+          0.0,
+          0.11538461538461539
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/auc": {
+      "mean": 0.7884644515360737,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": 0.01595738155415021,
+        "95%": [
+          -0.011654067940902119,
+          0.04357943258627258
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/kept": {
+      "mean": 2.897435897435897,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": 0.025641025641025637,
+        "95%": [
+          -0.2564102564102564,
+          0.32051282051282054
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/harmful_kept": {
+      "mean": 0.05128205128205128,
+      "databases": 26,
+      "minus_baseline": {
+        "mean": 0.012820512820512822,
+        "95%": [
+          0.0,
+          0.038461538461538464
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "sonnet/plain/auc": {
+      "mean": 0.7968356774751679,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.008950614455140844,
+        "95%": [
+          -0.007611928861743325,
+          0.027874545268589682
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "sonnet/plain/kept": {
+      "mean": 3.0466666666666664,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.10666666666666667,
+        "95%": [
+          -0.08671088435374151,
+          0.3006535947712418
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "sonnet/plain/harmful_kept": {
+      "mean": 0.0,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.0,
+        "95%": [
+          0.0,
+          0.0
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "sonnet/axes/auc": {
+      "mean": 0.7968356774751679,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.008950614455140844,
+        "95%": [
+          -0.007611928861743325,
+          0.027874545268589682
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "sonnet/axes/kept": {
+      "mean": 2.8866666666666667,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.11999999999999998,
+        "95%": [
+          -0.08163265306122448,
+          0.3333333333333333
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "sonnet/axes/harmful_kept": {
+      "mean": 0.0,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.0,
+        "95%": [
+          0.0,
+          0.0
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "gemini/plain/auc": {
+      "mean": 0.7813723577341003,
+      "databases": 48,
+      "minus_baseline": {
+        "mean": 0.004470778728515159,
+        "95%": [
+          -0.014388945289535118,
+          0.026154560108191928
+        ],
+        "databases": 48,
+        "families": 47
+      }
+    },
+    "gemini/plain/kept": {
+      "mean": 3.1533333333333333,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.05333333333333336,
+        "95%": [
+          -0.14965986394557818,
+          0.26
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "gemini/plain/harmful_kept": {
+      "mean": 0.0,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.0,
+        "95%": [
+          0.0,
+          0.0
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "gemini/axes/auc": {
+      "mean": 0.7813723577341003,
+      "databases": 48,
+      "minus_baseline": {
+        "mean": 0.004470778728515159,
+        "95%": [
+          -0.014388945289535118,
+          0.026154560108191928
+        ],
+        "databases": 48,
+        "families": 47
+      }
+    },
+    "gemini/axes/kept": {
+      "mean": 2.986666666666667,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.019999999999999983,
+        "95%": [
+          -0.1904761904761905,
+          0.23129251700680273
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    },
+    "gemini/axes/harmful_kept": {
+      "mean": 0.0,
+      "databases": 50,
+      "minus_baseline": {
+        "mean": 0.0,
+        "95%": [
+          0.0,
+          0.0
+        ],
+        "databases": 50,
+        "families": 49
+      }
+    }
+  }
+}

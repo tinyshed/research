@@ -44,3 +44,7 @@ so, never by editing the number it replaces.
   sample and half a second a statement keep the five by every judge and cut the database's time over 93 databases
   from 536 s to 16 s; the plan's estimate knows a statement's price, and on 44 million rows a sample must be a number
   of rows, not a share.
+- [Meaning and results before the bottleneck](fusion-2026-10-28.md), round 1j: early fusion, residual corrections
+  and the frozen title student's internal tree contributions establish no substantial consistent gain on the
+  same 93 databases; dense features expose a threshold-packing fault, and a shared contextual encoder is
+  specified as a separate next hypothesis.

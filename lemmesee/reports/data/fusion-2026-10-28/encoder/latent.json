@@ -1,0 +1,39 @@
+{
+  "data_sha256": "5802a9a3c21a4ae3993fa182ce7990839b32519fd83c8a7c09f8024d47ccd62f",
+  "latent_sha256": "1bc8df11f4c5a013a214b98db8922c55ed2a2d39dfae59c3564c84269a69790f",
+  "encoder_sum_parity": 0.0,
+  "trees": 600,
+  "resources": {
+    "corpus/round-1h/student.bin": "03f651ed1e7d43a36606550258a3ba1563ccd3a0b7a3aed531438507e3f52044",
+    "corpus/round-1h/panels.jsonl": "efbe58bf77a13bbde0ce6db90680a910189d618ee2d0dca3ce94b4ee1b99a6bb",
+    "corpus/round-1h/vectors/vectors.json": "9f98f8f99ae8bf0575d026b9f59fc18c584cda8c26370a7bb6f6afa06afa6b7a",
+    "corpus/round-1g/lexicon/lexicon.json": "15395ee1bd222e10a148ab66566ea9cf7ee93d8db1a5ec2a84a187fcbd46b313",
+    "corpus/round-1h/labels/deepseek.json": "10cb45d1c704426ddfdd588f06d567baaf82f4c4c70fe288357a9d7d103a8e57",
+    "corpus/round-1h/labels/glm.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "corpus/round-1h/labels/jev.json": "a91e93da69a317b0bb2b3969062ae7f4080c6b79f1d58a6211b4f3400d3c4e98"
+  },
+  "environment": {
+    "utc": "2026-10-28T17:17:25.188626+00:00",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.36",
+    "python": "3.13.18",
+    "packages": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "lightgbm": "4.7.0"
+    },
+    "revision": "1bb486c654a6a573dc5bbd7e81e0b0ec761a000d",
+    "dirty": [
+      "?? tinystore/ffi-window/"
+    ],
+    "threads": {
+      "OMP_NUM_THREADS": "4",
+      "OPENBLAS_NUM_THREADS": "4",
+      "MKL_NUM_THREADS": "4"
+    },
+    "cpu": "AMD Ryzen 7 7700 8-Core Processor",
+    "memory": "MemTotal:       15910556 kB",
+    "cpu_quota": "400000 100000"
+  },
+  "scope": "the same compiled frozen encoder, scalar versus retained tree contributions"
+}
