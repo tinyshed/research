@@ -32,7 +32,8 @@ FOLDS = 5
 DRAWS = 3
 SLOTS = ("base", "measure", "time", "by")
 PROPS = ("id", "money", "count", "sum_ok", "audit_time", "event_time", "good_group", "cryptic", "importance")
-CONFIGS = ("baseline", "capacity", "late", "early", "joint")
+CONFIGS = ("baseline", "capacity", "late", "early", "joint",
+           "residual_numeric", "residual_late", "residual_early")
 PROFILE_NAMES = (
     "value_log_magnitude", "value_integer", "value_negative", "value_exponent",
     "value_digits", "value_equal", "label_blank", "label_numeric",
@@ -182,14 +183,12 @@ def prepare(out: Path) -> None:
         identities[fe] = D["ids"][fe]
         for i, p in enumerate(D["mine"][fe]):
             t = dg.target(p, D["ans"])
-            if t is None:
-                continue
             flat.append({"id": p["id"], "db": fe, "title": p["title"], "identity": D["ids"][fe][i]})
             base.append(dg.vector(p, "numbers"))
             sem.append(semantic(p["slots"], lex, vectors))
             prof.append(profile(p, vocabulary))
             late.append([p.get("name", math.nan)])
-            y.append(t)
+            y.append(t if t is not None else math.nan)
             dbs.append(fe)
             families.append(D["family"][fe])
             counters.append([float(bool(D["ans"][j][p["id"]]["keep"])) if p["id"] in D["ans"][j] else math.nan
@@ -250,7 +249,7 @@ def pack_linear(model: dict) -> bytes:
                        for k in ("coefficients", "mean", "scale")))
 
 
-def predict_linear(blob: bytes, X) -> np.ndarray:
+def predict_linear(blob: bytes, X, offset=None) -> np.ndarray:
     if blob[:4] != b"LMJ1":
         raise ValueError("Unknown linear model format")
     n, intercept = struct.unpack_from("<If", blob, 4)
@@ -260,6 +259,8 @@ def predict_linear(blob: bytes, X) -> np.ndarray:
     X = np.asarray(X, dtype=float)
     normal = np.clip((np.where(np.isfinite(X), X, mean) - mean) / scale, -10, 10)
     logits = normal @ coefficients + intercept
+    if offset is not None:
+        logits = logits + np.asarray(offset)
     return 1 / (1 + np.exp(-np.clip(logits, -700, 700)))
 
 
@@ -334,6 +335,7 @@ class PackedTree:
 
 
 def fit_predict(config, X, y, train, test, seed):
+    train = train & np.isfinite(y)
     if config == "joint":
         from sklearn.linear_model import LogisticRegression
         a, b, mean, scale = normalise(X[train], X[test])
@@ -353,6 +355,43 @@ def fit_predict(config, X, y, train, test, seed):
                   lambda_l2=1.0, verbose=-1, seed=seed, deterministic=True, force_row_wise=True, num_threads=4)
     model = lgb.train(params, lgb.Dataset(X[train], y[train]), num_boost_round=150 if config == "baseline" else 400)
     return model.predict(X[test]), model
+
+
+def inner_splits(families, outer_train, seed):
+    """All inner training and validation rows stay inside the outer fold."""
+    family_array = np.asarray(families)
+    unique = sorted(set(family_array[outer_train]))
+    np.random.default_rng(seed).shuffle(unique)
+    mapping = {f: i % 3 for i, f in enumerate(unique)}
+    for fold in range(3):
+        held = np.asarray([mapping.get(f, -1) == fold for f in families]) & outer_train
+        yield outer_train & ~held, held
+
+
+def fit_residual(X, y, train, test, offsets, baseline_test):
+    """A regularised correction to an out-of-family baseline margin."""
+    from scipy.optimize import minimize
+    from scipy.special import expit
+    train = train & np.isfinite(y)
+    a, b, mean, scale = normalise(X[train], X[test])
+    yy, base = y[train], offsets[train]
+    if not np.isfinite(base).all():
+        raise ValueError("An inner out-of-fold baseline margin is missing")
+    ridge = 100.0
+
+    def objective(theta):
+        w, intercept = theta[:-1], theta[-1]
+        z = base + a @ w + intercept
+        residual = expit(z) - yy
+        loss = np.sum(np.logaddexp(0.0, z) - yy * z) + 0.5 * ridge * (w @ w)
+        return float(loss), np.r_[a.T @ residual + ridge * w, residual.sum()]
+
+    result = minimize(objective, np.zeros(a.shape[1] + 1), jac=True, method="L-BFGS-B",
+                      options={"maxiter": 500, "ftol": 1e-10})
+    if not result.success:
+        raise RuntimeError(f"Residual optimiser failed: {result.message}")
+    weights = {"coefficients": result.x[:-1], "intercept": result.x[-1], "mean": mean, "scale": scale}
+    return expit(baseline_test + b @ result.x[:-1] + result.x[-1]), weights
 
 
 def auc(y, s):
@@ -389,6 +428,7 @@ def run(out: Path, configs: list[str], draws: int) -> None:
     base, sem, prof = arrays["base"], arrays["semantic"], arrays["profile"]
     matrices = {"baseline": base, "capacity": base, "late": np.column_stack((base, arrays["late"])),
                 "early": np.column_stack((base, sem, prof)), "joint": joint_matrix(base, sem, prof)}
+    matrices |= {"residual_numeric": base, "residual_late": matrices["late"], "residual_early": matrices["joint"]}
     dbs = arrays["db"].tolist()
     unique = sorted(set(dbs))
     db_indices = {db: np.flatnonzero(arrays["db"] == db) for db in unique}
@@ -396,11 +436,35 @@ def run(out: Path, configs: list[str], draws: int) -> None:
     scores = {c: np.full((draws, len(base)), np.nan) for c in configs}
     packed = {c: {"largest_bytes": 0, "largest_probability_difference": 0.0} for c in configs}
     for draw, fold, train, test in folds(arrays["family"].tolist(), draws):
+        baseline_model, baseline_prediction, offsets = None, None, None
+        if any(c.startswith("residual_") for c in configs):
+            baseline_prediction, baseline_model = fit_predict("baseline", base, arrays["y"], train, test,
+                                                               SEED + 100 * draw + fold)
+            offsets = np.full(len(base), np.nan)
+            for inner, (inside, held) in enumerate(inner_splits(arrays["family"], train, SEED + draw * 100 + fold)):
+                prediction, _ = fit_predict("baseline", base, arrays["y"], inside, held,
+                                             SEED + draw * 1000 + fold * 100 + inner)
+                offsets[held] = np.log(np.clip(prediction, 1e-6, 1 - 1e-6)
+                                      / (1 - np.clip(prediction, 1e-6, 1 - 1e-6)))
+            baseline_margin = np.log(np.clip(baseline_prediction, 1e-6, 1 - 1e-6)
+                                     / (1 - np.clip(baseline_prediction, 1e-6, 1 - 1e-6)))
         # Sequential fitting avoids measurements competing for processors.
         for config in configs:
-            pred, model = fit_predict(config, matrices[config], arrays["y"], train, test, SEED + 100 * draw + fold)
+            if config.startswith("residual_"):
+                pred, model = fit_residual(matrices[config], arrays["y"], train, test, offsets, baseline_margin)
+            elif config == "baseline" and baseline_model is not None:
+                pred, model = baseline_prediction, baseline_model
+            else:
+                pred, model = fit_predict(config, matrices[config], arrays["y"], train, test, SEED + 100 * draw + fold)
             scores[config][draw, test] = pred
-            if config == "joint":
+            if config.startswith("residual_"):
+                blob = pack_linear(model)
+                tree_blob = pack_tree(baseline_model)
+                reader = PackedTree(tree_blob)
+                margin = [reader.score(row) for row in base[test][:20]]
+                check = predict_linear(blob, matrices[config][test][:20], margin)
+                blob += tree_blob
+            elif config == "joint":
                 blob = pack_linear(model)
                 check = predict_linear(blob, matrices[config][test][:20])
             else:

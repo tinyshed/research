@@ -84,6 +84,27 @@ class HarnessChecks(unittest.TestCase):
         self.assertEqual(reader.score([right]), 2)
         self.assertEqual(reader.score([np.nan]), -2)
 
+    def test_inner_models_never_read_outer_test_families(self):
+        families = np.asarray(["a", "a", "b", "c", "d", "e", "f"])
+        outer_train = np.asarray([True, True, True, True, True, False, False])
+        covered = np.zeros(len(families), dtype=int)
+        for train, held in joint.inner_splits(families, outer_train, joint.SEED):
+            self.assertFalse(np.any(train & ~outer_train))
+            self.assertFalse(np.any(held & ~outer_train))
+            self.assertFalse(set(families[train]) & set(families[held]))
+            covered[held] += 1
+        np.testing.assert_array_equal(covered, outer_train.astype(int))
+
+    def test_residual_preserves_a_correct_baseline(self):
+        X = np.zeros((12, 3))
+        y = np.full(12, 0.2)
+        train = np.arange(12) < 10
+        margin = np.full(12, np.log(0.2 / 0.8))
+        probabilities, model = joint.fit_residual(X, y, train, ~train, margin, margin[~train])
+        np.testing.assert_allclose(probabilities, 0.2, atol=1e-7)
+        np.testing.assert_allclose(joint.predict_linear(joint.pack_linear(model), X[~train], margin[~train]),
+                                   probabilities, atol=1e-7)
+
 
 if __name__ == "__main__":
     unittest.main()

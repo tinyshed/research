@@ -29,6 +29,20 @@ The old databases are development data; this is not a fresh held-out test.
 | early | numeric features, per-slot semantic features and result representation | 400 trees, 15 leaves |
 | joint | early input, and semantic/result products | regularised logistic regression |
 
+After that first comparison failed to improve consistently, a second pass
+adds residual learning. A numeric baseline is retained, and a ridge-100
+logistic correction reads numbers, the late scalar, or the early joint
+features. The correction learns against baseline margins obtained by
+three inner folds strictly within each outer training fold. Its outer-test
+offset is the baseline fitted on the complete outer training fold. This
+tests correction of a useful nonlinear model, rather than replacing it by
+a weaker linear one. All three controls are reported. These are follow-up
+development experiments, not an independent confirmation.
+
+Candidates without a teaching label remain eligible at evaluation; only
+their training rows are excluded. Removing an unlabelled candidate from
+the evaluation pool would change the task.
+
 The lexical properties and 16-dimensional word vectors are the frozen
 public-schema resources already built by rounds 1g and 1h. They never use
 the counting judges' labels. Result representation preserves such things
