@@ -263,6 +263,76 @@ def predict_linear(blob: bytes, X) -> np.ndarray:
     return 1 / (1 + np.exp(-np.clip(logits, -700, 700)))
 
 
+def pack_tree(model) -> bytes:
+    """Retain double thresholds: rounding one across a float32 feature
+    changes its branch. The old format's approximate check happened not
+    to encounter that boundary on its mostly discrete features."""
+    dump = model.dump_model()
+    out = bytearray(b"LMJ2" + struct.pack("<HH", len(dump["feature_names"]), len(dump["tree_info"])))
+    missing = {"None": 0, "Zero": 1, "NaN": 2}
+    for tree in dump["tree_info"]:
+        nodes, leaves = [], []
+
+        def visit(node):
+            if "leaf_value" in node:
+                leaves.append(node["leaf_value"])
+                return -len(leaves)
+            i = len(nodes)
+            nodes.append(None)
+            left, right = visit(node["left_child"]), visit(node["right_child"])
+            if node["decision_type"] != "<=":
+                raise ValueError("Only numeric splits are supported")
+            flags = missing[node["missing_type"]] | (4 if node["default_left"] else 0)
+            nodes[i] = struct.pack("<HBdhh", node["split_feature"], flags, node["threshold"], left, right)
+            return i
+
+        visit(tree["tree_structure"])
+        out += struct.pack("<HH", len(nodes), len(leaves))
+        out += b"".join(nodes)
+        out += struct.pack(f"<{len(leaves)}f", *leaves)
+    return bytes(out)
+
+
+class PackedTree:
+    def __init__(self, blob: bytes):
+        if blob[:4] != b"LMJ2":
+            raise ValueError("Unknown tree format")
+        self.features, count = struct.unpack_from("<HH", blob, 4)
+        at, self.trees = 8, []
+        for _ in range(count):
+            nn, nl = struct.unpack_from("<HH", blob, at)
+            at += 4
+            nodes = [struct.unpack_from("<HBdhh", blob, at + 15 * i) for i in range(nn)]
+            at += 15 * nn
+            leaves = struct.unpack_from(f"<{nl}f", blob, at)
+            at += 4 * nl
+            self.trees.append((nodes, leaves))
+        if at != len(blob):
+            raise ValueError("Trailing bytes in tree format")
+
+    def score(self, row):
+        total = 0.0
+        for nodes, leaves in self.trees:
+            if not nodes:
+                total += leaves[0]
+                continue
+            at = 0
+            while at >= 0:
+                feature, flags, threshold, left, right = nodes[at]
+                value = float(row[feature])
+                if math.isnan(value) and flags & 3 == 2:
+                    at = left if flags & 4 else right
+                else:
+                    if math.isnan(value):
+                        value = 0.0
+                    if flags & 3 == 1 and abs(value) <= 1e-35:
+                        at = left if flags & 4 else right
+                    else:
+                        at = left if value <= threshold else right
+            total += leaves[-1 - at]
+        return total
+
+
 def fit_predict(config, X, y, train, test, seed):
     if config == "joint":
         from sklearn.linear_model import LogisticRegression
@@ -325,7 +395,6 @@ def run(out: Path, configs: list[str], draws: int) -> None:
     family_by_db = {db: str(arrays["family"][indices[0]]) for db, indices in db_indices.items()}
     scores = {c: np.full((draws, len(base)), np.nan) for c in configs}
     packed = {c: {"largest_bytes": 0, "largest_probability_difference": 0.0} for c in configs}
-    pack_mod = module("joint_tree_pack", ROOT / "round-1c" / "pack.py")
     for draw, fold, train, test in folds(arrays["family"].tolist(), draws):
         # Sequential fitting avoids measurements competing for processors.
         for config in configs:
@@ -335,8 +404,8 @@ def run(out: Path, configs: list[str], draws: int) -> None:
                 blob = pack_linear(model)
                 check = predict_linear(blob, matrices[config][test][:20])
             else:
-                blob = pack_mod.pack(model)
-                reader = pack_mod.Packed(blob)
+                blob = pack_tree(model)
+                reader = PackedTree(blob)
                 margins = np.asarray([reader.score(row) for row in matrices[config][test][:20]])
                 check = 1 / (1 + np.exp(-margins))
             difference = float(np.max(np.abs(check - pred[:20])))

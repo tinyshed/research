@@ -65,6 +65,10 @@ revision and dirty paths, dependency versions, Linux environment, and fold
 assignment. The loader reads existing public snapshots and aggregates
 only; it connects to no database and makes no network request.
 
+Packed tree thresholds retain float64. The old float32 threshold format
+can move a threshold across an adjacent float32 vector feature and change
+the chosen leaf. LMJ2 checks all models against the library reader.
+
 Repository AGENTS.md forbids committing without a request, while measure
 requires the harness to be committed before measuring a round. Ask for
 authorization for this round's commit after its source and checks are

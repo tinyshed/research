@@ -68,6 +68,22 @@ class HarnessChecks(unittest.TestCase):
         self.assertEqual(joint.clean_json((1, ("sum", frozenset({(2, 3), (1, 4)})), None, None)),
                          [1, ["sum", [[1, 4], [2, 3]]], None, None])
 
+    def test_dense_features_do_not_cross_a_packed_threshold(self):
+        left = np.float32(0.12345678)
+        right = np.nextafter(left, np.float32(np.inf))
+        threshold = (float(left) + float(right)) / 2
+        class Model:
+            def dump_model(self):
+                return {"feature_names": ["x"], "tree_info": [{"tree_structure": {
+                    "split_feature": 0, "threshold": threshold, "decision_type": "<=",
+                    "missing_type": "NaN", "default_left": True,
+                    "left_child": {"leaf_value": -2}, "right_child": {"leaf_value": 2},
+                }}]}
+        reader = joint.PackedTree(joint.pack_tree(Model()))
+        self.assertEqual(reader.score([left]), -2)
+        self.assertEqual(reader.score([right]), 2)
+        self.assertEqual(reader.score([np.nan]), -2)
+
 
 if __name__ == "__main__":
     unittest.main()
