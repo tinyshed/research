@@ -212,6 +212,13 @@ it are in its chapter 14 and are the ones that decide.
    teachers by title at 0.85 within a schema, but the judges keep no more
    of the look's fives for it; the teachers' edge is in the results read
    with what words mean, not in titles.
+1i. **What the look costs the database**: how many panels it reads, the
+   plan's estimate against the time, samples instead of tables, a limit a
+   statement, and ten times the rows. [Run](reports/cost-2026-10-28.md) on
+   28 October: the best ten, a large table sampled and half a second a
+   statement keep the five and cut 536 s to 16 s over 93 databases; the
+   look's price is bounded, and saying when a guess is a guess is what is
+   left.
 2. **The judged set**: assembled, split by project, judged.
 3. **The ranker, C**: linear, trees, a tiny network, against A and B on the
    judged set, with its cost.

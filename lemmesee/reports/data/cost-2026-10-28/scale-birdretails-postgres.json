@@ -1,0 +1,62 @@
+{
+ "bird_retails": {
+  "largest table's rows": 4423659.0,
+  "seconds: all, the slowest statement": {
+   "100000 rows": [
+    2.25,
+    0.33
+   ],
+   "1%": [
+    0.78,
+    0.14
+   ],
+   "whole": [
+    9.46,
+    0.89
+   ]
+  },
+  "out of time whole": 0,
+  "results": {
+   "100000 rows": {
+    "sampled": 30,
+    "as many points": 0.93,
+    "the same leader": 0.5
+   },
+   "1%": {
+    "sampled": 30,
+    "as many points": 0.93,
+    "the same leader": 0.47
+   }
+  }
+ },
+ "bird_retails_x10": {
+  "largest table's rows": 44237728.0,
+  "seconds: all, the slowest statement": {
+   "100000 rows": [
+    5.87,
+    1.23
+   ],
+   "1%": [
+    12.42,
+    2.67
+   ],
+   "whole": [
+    84.31,
+    13.04
+   ]
+  },
+  "out of time whole": 0,
+  "results": {
+   "100000 rows": {
+    "sampled": 30,
+    "as many points": 0.93,
+    "the same leader": 0.57
+   },
+   "1%": {
+    "sampled": 30,
+    "as many points": 0.93,
+    "the same leader": 0.5
+   }
+  }
+ }
+}

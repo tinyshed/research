@@ -1,0 +1,613 @@
+{
+ "databases": 93,
+ "counted": {
+  "opus": 26,
+  "sonnet": 50,
+  "gemini": 50
+ },
+ "every panel whole": {
+  "database seconds: median, 95th, most, all": [
+   0.22,
+   22.7,
+   176.0,
+   536.5
+  ],
+  "the same five as whole, share of databases": 1.0,
+  "opus, kept of five": 2.88,
+  "sonnet, kept of five": 2.76,
+  "gemini, kept of five": 2.96
+ },
+ "the best 5 by round 1c, whole": {
+  "database seconds: median, 95th, most, all": [
+   0.04,
+   2.1,
+   19.7,
+   59.5
+  ],
+  "the same five as whole, share of databases": 0.06,
+  "opus, kept of five": 2.46,
+  "opus, − whole": [
+   -0.42,
+   -0.85,
+   -0.04
+  ],
+  "sonnet, kept of five": 2.4,
+  "sonnet, − whole": [
+   -0.36,
+   -0.66,
+   -0.04
+  ],
+  "gemini, kept of five": 2.6,
+  "gemini, − whole": [
+   -0.36,
+   -0.66,
+   -0.04
+  ]
+ },
+ "the best 8 by round 1c, whole": {
+  "database seconds: median, 95th, most, all": [
+   0.07,
+   3.7,
+   34.9,
+   97.5
+  ],
+  "the same five as whole, share of databases": 0.34,
+  "opus, kept of five": 2.73,
+  "opus, − whole": [
+   -0.15,
+   -0.5,
+   0.15
+  ],
+  "sonnet, kept of five": 2.72,
+  "sonnet, − whole": [
+   -0.04,
+   -0.28,
+   0.2
+  ],
+  "gemini, kept of five": 2.8,
+  "gemini, − whole": [
+   -0.16,
+   -0.42,
+   0.1
+  ]
+ },
+ "the best 10 by round 1c, whole": {
+  "database seconds: median, 95th, most, all": [
+   0.09,
+   8.1,
+   44.4,
+   140.8
+  ],
+  "the same five as whole, share of databases": 0.43,
+  "opus, kept of five": 2.85,
+  "opus, − whole": [
+   -0.04,
+   -0.31,
+   0.23
+  ],
+  "sonnet, kept of five": 2.9,
+  "sonnet, − whole": [
+   0.14,
+   -0.04,
+   0.34
+  ],
+  "gemini, kept of five": 2.98,
+  "gemini, − whole": [
+   0.02,
+   -0.18,
+   0.22
+  ]
+ },
+ "the best 15 by round 1c, whole": {
+  "database seconds: median, 95th, most, all": [
+   0.13,
+   9.6,
+   61.2,
+   206.8
+  ],
+  "the same five as whole, share of databases": 0.62,
+  "opus, kept of five": 2.85,
+  "opus, − whole": [
+   -0.04,
+   -0.15,
+   0.08
+  ],
+  "sonnet, kept of five": 2.88,
+  "sonnet, − whole": [
+   0.12,
+   -0.02,
+   0.26
+  ],
+  "gemini, kept of five": 2.96,
+  "gemini, − whole": [
+   0.0,
+   -0.14,
+   0.16
+  ]
+ },
+ "the best 20 by round 1c, whole": {
+  "database seconds: median, 95th, most, all": [
+   0.16,
+   14.8,
+   72.0,
+   311.2
+  ],
+  "the same five as whole, share of databases": 0.76,
+  "opus, kept of five": 2.92,
+  "opus, − whole": [
+   0.04,
+   -0.08,
+   0.15
+  ],
+  "sonnet, kept of five": 2.88,
+  "sonnet, − whole": [
+   0.12,
+   0.0,
+   0.24
+  ],
+  "gemini, kept of five": 2.98,
+  "gemini, − whole": [
+   0.02,
+   -0.1,
+   0.16
+  ]
+ },
+ "the best 30 by round 1c, whole": {
+  "database seconds: median, 95th, most, all": [
+   0.22,
+   22.7,
+   176.0,
+   536.5
+  ],
+  "the same five as whole, share of databases": 0.97,
+  "opus, kept of five": 2.88,
+  "opus, − whole": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "sonnet, kept of five": 2.76,
+  "sonnet, − whole": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "gemini, kept of five": 2.96,
+  "gemini, − whole": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "tables over 1e+05 rows on a 10% sample": {
+  "database seconds: median, 95th, most, all": [
+   0.17,
+   8.8,
+   29.7,
+   130.4
+  ],
+  "the same five as whole, share of databases": 0.92,
+  "opus, kept of five": 2.88,
+  "opus, − whole": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "sonnet, kept of five": 2.74,
+  "sonnet, − whole": [
+   -0.02,
+   -0.06,
+   0.0
+  ],
+  "gemini, kept of five": 2.96,
+  "gemini, − whole": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "tables over 1e+06 rows on a 10% sample": {
+  "database seconds: median, 95th, most, all": [
+   0.22,
+   9.2,
+   30.1,
+   146.8
+  ],
+  "the same five as whole, share of databases": 0.96,
+  "opus, kept of five": 2.88,
+  "opus, − whole": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "sonnet, kept of five": 2.76,
+  "sonnet, − whole": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "gemini, kept of five": 2.96,
+  "gemini, − whole": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "tables over 1e+05 rows on a 1% sample": {
+  "database seconds: median, 95th, most, all": [
+   0.11,
+   1.7,
+   29.6,
+   79.9
+  ],
+  "the same five as whole, share of databases": 0.88,
+  "opus, kept of five": 2.88,
+  "opus, − whole": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "sonnet, kept of five": 2.78,
+  "sonnet, − whole": [
+   0.02,
+   0.0,
+   0.06
+  ],
+  "gemini, kept of five": 2.96,
+  "gemini, − whole": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "tables over 1e+06 rows on a 1% sample": {
+  "database seconds: median, 95th, most, all": [
+   0.21,
+   2.1,
+   30.1,
+   102.2
+  ],
+  "the same five as whole, share of databases": 0.95,
+  "opus, kept of five": 2.88,
+  "opus, − whole": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "sonnet, kept of five": 2.76,
+  "sonnet, − whole": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "gemini, kept of five": 2.96,
+  "gemini, − whole": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "the best 10, tables over 1e+05 rows on a 1% sample": {
+  "database seconds: median, 95th, most, all": [
+   0.05,
+   0.5,
+   19.0,
+   31.3
+  ],
+  "the same five as whole, share of databases": 0.4,
+  "opus, kept of five": 2.81,
+  "opus, − whole": [
+   -0.08,
+   -0.31,
+   0.15
+  ],
+  "sonnet, kept of five": 2.9,
+  "sonnet, − whole": [
+   0.14,
+   -0.06,
+   0.34
+  ],
+  "gemini, kept of five": 2.98,
+  "gemini, − whole": [
+   0.02,
+   -0.18,
+   0.22
+  ]
+ },
+ "the best 10, tables over 1e+05 rows on a 1% sample, stopped at 0.5 s": {
+  "database seconds: median, 95th, most, all": [
+   0.05,
+   0.5,
+   3.7,
+   15.9
+  ],
+  "the same five as whole, share of databases": 0.39,
+  "opus, kept of five": 2.81,
+  "opus, − whole": [
+   -0.08,
+   -0.31,
+   0.15
+  ],
+  "sonnet, kept of five": 2.9,
+  "sonnet, − whole": [
+   0.14,
+   -0.06,
+   0.34
+  ],
+  "gemini, kept of five": 3.0,
+  "gemini, − whole": [
+   0.04,
+   -0.16,
+   0.24
+  ]
+ },
+ "the best 10, tables over 1e+05 rows on a 1% sample, stopped at 1 s": {
+  "database seconds: median, 95th, most, all": [
+   0.05,
+   0.5,
+   4.9,
+   17.3
+  ],
+  "the same five as whole, share of databases": 0.4,
+  "opus, kept of five": 2.81,
+  "opus, − whole": [
+   -0.08,
+   -0.35,
+   0.15
+  ],
+  "sonnet, kept of five": 2.9,
+  "sonnet, − whole": [
+   0.14,
+   -0.04,
+   0.34
+  ],
+  "gemini, kept of five": 2.98,
+  "gemini, − whole": [
+   0.02,
+   -0.18,
+   0.22
+  ]
+ },
+ "the best 10, tables over 1e+05 rows on a 1% sample, stopped at 2 s": {
+  "database seconds: median, 95th, most, all": [
+   0.05,
+   0.5,
+   5.9,
+   18.3
+  ],
+  "the same five as whole, share of databases": 0.4,
+  "opus, kept of five": 2.81,
+  "opus, − whole": [
+   -0.08,
+   -0.35,
+   0.15
+  ],
+  "sonnet, kept of five": 2.9,
+  "sonnet, − whole": [
+   0.14,
+   -0.04,
+   0.32
+  ],
+  "gemini, kept of five": 2.98,
+  "gemini, − whole": [
+   0.02,
+   -0.18,
+   0.22
+  ]
+ },
+ "the best 10, tables over 1e+05 rows on a 1% sample, dear plans left out": {
+  "database seconds: median, 95th, most, all": [
+   0.05,
+   0.5,
+   17.5,
+   28.8
+  ],
+  "the same five as whole, share of databases": 0.38,
+  "opus, kept of five": 2.81,
+  "opus, − whole": [
+   -0.08,
+   -0.31,
+   0.15
+  ],
+  "sonnet, kept of five": 2.86,
+  "sonnet, − whole": [
+   0.1,
+   -0.1,
+   0.3
+  ],
+  "gemini, kept of five": 2.96,
+  "gemini, − whole": [
+   0.0,
+   -0.2,
+   0.2
+  ]
+ },
+ "all 30, tables over 1e+05 rows on a 1% sample": {
+  "database seconds: median, 95th, most, all": [
+   0.11,
+   1.7,
+   29.6,
+   79.9
+  ],
+  "the same five as whole, share of databases": 0.88,
+  "opus, kept of five": 2.88,
+  "opus, − whole": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "sonnet, kept of five": 2.78,
+  "sonnet, − whole": [
+   0.02,
+   0.0,
+   0.06
+  ],
+  "gemini, kept of five": 2.96,
+  "gemini, − whole": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "all 30, tables over 1e+05 rows on a 1% sample, stopped at 0.5 s": {
+  "database seconds: median, 95th, most, all": [
+   0.11,
+   1.7,
+   9.7,
+   49.8
+  ],
+  "the same five as whole, share of databases": 0.87,
+  "opus, kept of five": 2.88,
+  "opus, − whole": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "sonnet, kept of five": 2.78,
+  "sonnet, − whole": [
+   0.02,
+   0.0,
+   0.06
+  ],
+  "gemini, kept of five": 3.0,
+  "gemini, − whole": [
+   0.04,
+   0.0,
+   0.12
+  ]
+ },
+ "all 30, tables over 1e+05 rows on a 1% sample, stopped at 1 s": {
+  "database seconds: median, 95th, most, all": [
+   0.11,
+   1.7,
+   14.0,
+   56.9
+  ],
+  "the same five as whole, share of databases": 0.88,
+  "opus, kept of five": 2.88,
+  "opus, − whole": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "sonnet, kept of five": 2.78,
+  "sonnet, − whole": [
+   0.02,
+   0.0,
+   0.06
+  ],
+  "gemini, kept of five": 2.96,
+  "gemini, − whole": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "all 30, tables over 1e+05 rows on a 1% sample, stopped at 2 s": {
+  "database seconds: median, 95th, most, all": [
+   0.11,
+   1.7,
+   16.5,
+   62.5
+  ],
+  "the same five as whole, share of databases": 0.88,
+  "opus, kept of five": 2.88,
+  "opus, − whole": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "sonnet, kept of five": 2.78,
+  "sonnet, − whole": [
+   0.02,
+   0.0,
+   0.06
+  ],
+  "gemini, kept of five": 2.96,
+  "gemini, − whole": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "all 30, tables over 1e+05 rows on a 1% sample, dear plans left out": {
+  "database seconds: median, 95th, most, all": [
+   0.11,
+   1.7,
+   25.4,
+   71.4
+  ],
+  "the same five as whole, share of databases": 0.86,
+  "opus, kept of five": 2.88,
+  "opus, − whole": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "sonnet, kept of five": 2.76,
+  "sonnet, − whole": [
+   0.0,
+   -0.06,
+   0.06
+  ],
+  "gemini, kept of five": 2.96,
+  "gemini, − whole": [
+   0.0,
+   -0.06,
+   0.06
+  ]
+ },
+ "the plan's estimate": {
+  "postgres": {
+   "statements": 1277,
+   "Spearman": 0.971,
+   "ms: median, 95th, most": [
+    2.2,
+    405.2,
+    3791.3
+   ],
+   "over 100 ms": {
+    "statements": 148,
+    "cost threshold": 47119.0,
+    "found": 0.9,
+    "flagged that were slow": 0.99,
+    "flagged": 135
+   },
+   "over 1000 ms": {
+    "statements": 20,
+    "cost threshold": 406236.0,
+    "found": 0.9,
+    "flagged that were slow": 0.67,
+    "flagged": 27
+   }
+  },
+  "mysql": {
+   "statements": 1351,
+   "Spearman": 0.933,
+   "ms: median, 95th, most": [
+    4.6,
+    901.9,
+    52230.9
+   ],
+   "over 100 ms": {
+    "statements": 223,
+    "cost threshold": 52538.6,
+    "found": 0.9,
+    "flagged that were slow": 0.75,
+    "flagged": 268
+   },
+   "over 1000 ms": {
+    "statements": 66,
+    "cost threshold": 705734.0,
+    "found": 0.89,
+    "flagged that were slow": 0.68,
+    "flagged": 87
+   }
+  }
+ },
+ "statements whole: all, failed, out of time": [
+  2632,
+  4,
+  2
+ ]
+}

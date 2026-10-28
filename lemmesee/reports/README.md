@@ -40,3 +40,7 @@ so, never by editing the number it replaces.
 - [A student of names](names-2026-10-28.md), round 1h: a student of titles taught by Jev on 85 098 panels of
   2 886 SchemaPile schemas predicts its teachers at 0.85 within a schema, but alone meets the judges at only
   0.69–0.71, and the look reading it, or a lexicon of values, does no better by them.
+- [What the look costs the database](cost-2026-10-28.md), round 1i: reading round 1c's best ten, a large table on a
+  sample and half a second a statement keep the five by every judge and cut the database's time over 93 databases
+  from 536 s to 16 s; the plan's estimate knows a statement's price, and on 44 million rows a sample must be a number
+  of rows, not a share.
