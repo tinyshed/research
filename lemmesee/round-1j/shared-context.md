@@ -1,8 +1,7 @@
 # A shared context for lemmesee's tasks
 
 Proposal, not a measured result. Written after the early-fusion and
-residual experiments, in response to Dmitry's question about a common
-semantic space.
+residual experiments to describe a common semantic space.
 
 ## The architectural change
 
