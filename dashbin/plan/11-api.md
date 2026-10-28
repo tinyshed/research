@@ -184,6 +184,40 @@ $ dashbin see ./data --save overview.dash.toml
   Dashbin.
 - **It reads other stores the same way**: `postgres://…`, `mysql://…`, a
   Prometheus address — whatever a built-in plugin opens.
+- **One question for every kind of store.** `see` is four parts with narrow
+  seams, so that a new kind of store is a plugin and not a new `see`:
+  1. **A reader for each kind of store** writes what the store says about
+     itself as one snapshot: its objects, their fields and types, what is
+     declared of them and the statistics it keeps, each marked present,
+     missing or estimated, and, where a kind keeps none, a bounded sample.
+  2. **The analytical question** is the one plan every panel is: a base, a
+     measure, a time and a breakdown, reached through the joins the snapshot
+     shows. The generator writes questions, never queries.
+  3. **A compiler for each query language** turns a question into SQL of an
+     engine's dialect, a metrics query or a document pipeline, with the
+     bounds of looking (a sample, a limit, a timeout) the snapshot calls for.
+  4. **The look and the choice read only results** — rows of a label and a
+     value — and what people kept and dropped, so they are the same for
+     every store.
+
+  What each kind gives the reader, and so how much of `see` is known and how
+  much guessed:
+
+  | Kind | What it says about itself | Its panels |
+  |---|---|---|
+  | relational: PostgreSQL, MySQL, SQLite, TinyStore's sql, columnar engines | catalog, keys, the engine's statistics | guessed, as lemmesee measures them |
+  | metrics: TinyStore's, Prometheus' | each metric's kind, unit, help, labels and keep | known: a counter's rate, a histogram's 95th percentile, a breakdown by a label of few values |
+  | streams and logs: TinyStore's records, an event log | a time on every entry; fields seen in a sample | known in time, guessed in breakdown |
+  | documents: MongoDB and its kind | nothing: fields, types and nesting read from a bounded sample, arrays as tables of their own | guessed, and only by sampling |
+  | key-value | key patterns | an inventory: keys and size by prefix, time to live |
+
+  Adding a kind is a reader and a compiler; the generator, the look, the
+  choice and what a store remembers of kept panels and confirmed meanings
+  are shared, and a confirmed meaning is kept against the snapshot's names,
+  whatever store they came from. The first version reads relational
+  databases and TinyStore; another kind waits until its guesses are measured
+  on stores of that kind (chapter 14), since a model taught on tables has not
+  been shown to carry to documents.
 - **It looks at what a source says about itself, not at its rows**: the
   catalog, keys and the database's own statistics (`information_schema`,
   `pg_stats`), and at most a bounded sample under a timeout, `TABLESAMPLE`

@@ -23,10 +23,25 @@ import local  # noqa: E402  (its jev module and compact)
 jev = local.jev
 
 
-def ask(look: Path, at_once: int = 64) -> None:
+PRODUCT = {
+    "type": "noul",
+    "instructions": "Would the analyst responsible for what this database serves — a product, a shop, a service, a "
+                    "league, a register, a study — keep this panel on the screen they open every week to see how it is "
+                    "going?",
+    "criteria": {
+        "true": "It tells how the business or project is doing: who and what is active and how much, what it earns "
+                "and costs, what succeeds and fails, how that changes.",
+        "false": "It is an inventory of a table, technical bookkeeping, something nobody would act on, or its result "
+                 "is a single bar, empty, a column of blanks or meaningless.",
+    },
+}
+
+
+def ask(look: Path, at_once: int = 64, product: bool = False) -> None:
     key = os.environ["JUDGE_KEY"]
     items = list(jev.panels(look))
-    questions = {"keep": jev.QUESTIONS["keep"]}
+    questions = {"keep": PRODUCT if product else jev.QUESTIONS["keep"]}
+    name = "pmjev" if product else "jevfast"
 
     def one(item):
         n, name, state = item
@@ -52,10 +67,11 @@ def ask(look: Path, at_once: int = 64) -> None:
                 continue
             by_packet.setdefault(n, {})[name] = {"keep": keep >= 0.5, "wrong": None, "p_keep": round(keep, 4)}
     for n, ans in by_packet.items():
-        (look / f"jevfast-{n}.json").write_text(json.dumps({"panels": ans}, ensure_ascii=False), encoding="utf-8")
+        (look / f"{name}-{n}.json").write_text(json.dumps({"panels": ans}, ensure_ascii=False), encoding="utf-8")
     print(f"{look}: {sum(len(v) for v in by_packet.values())} panels answered, {missing} not; cost ${cost:.4f}", flush=True)
 
 
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
-    ask(Path(sys.argv[1]), int(sys.argv[2]) if len(sys.argv) > 2 else 64)
+    args = [a for a in sys.argv[1:] if a != "--product"]
+    ask(Path(args[0]), int(args[1]) if len(args) > 1 else 64, "--product" in sys.argv)
