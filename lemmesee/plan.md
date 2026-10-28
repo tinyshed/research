@@ -161,6 +161,19 @@ it are in its chapter 14 and are the ones that decide.
    0.774 against 0.442, and 0.875 on hard cases agents wrote, with a stage
    over the schema's graph and the trees trained on a graphics card; names
    and types stop near 0.8, and the statistics of the data come next.
+1c. **The analytical question, and a ranker taught by language models**,
+   ahead of round 3's order and before round 2's judges: round 1's
+   templates replaced by a question of base, measure, time and breakdown
+   that may be an expression and reach through many-to-one joins, and its
+   penalties by a ranker learned from what Claude Haiku and Gemini 3.8 Flash
+   ask first about 480 SchemaPile-Perm schemas. [Run](reports/questions-2026-10-28.md)
+   overnight on 28 October: the generator says 78 to 85 % of
+   what the teachers ask against round 1's 39 to 44 %, and on 240 schemas
+   held out the ranker of 55 KB chooses what a teacher asks 1.8 times as
+   often as round 1's rules, precision 0.536 against 0.298. On eight
+   databases with data its fives hold 17 gold questions against round 1's
+   13. The teachers are models, not people; round 2 measures it against
+   people.
 2. **The judged set**: assembled, split by project, judged.
 3. **The ranker, C**: linear, trees, a tiny network, against A and B on the
    judged set, with its cost.

@@ -29,7 +29,12 @@ commit (`fixtures/northwind.sh`; 830 orders, 2 155 lines), and two databases
 from CTU's relational repository on MySQL with histograms (`fixtures/ctu.sh`):
 **ccs**, a fuel-card company's customers, stations, a thousand transactions
 and 383 thousand monthly consumptions, and **lahman_2014**, Sean Lahman's
-baseball database to 2014, 25 tables keyed by season.
+baseball database to 2014, 25 tables keyed by season. Round 1c, built
+looking at all six, made them development fixtures, and took two more from
+CTU's repository as its final check, run once with nothing changed after:
+**classicmodels**, a seller of scale models (326 orders, 2 996 lines, 273
+payments), and **Credit**, a credit-card company's members, statements,
+payments and 1.6 million charges.
 
 ## Public
 

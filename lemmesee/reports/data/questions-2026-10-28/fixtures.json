@@ -1,0 +1,468 @@
+{
+ "chinook A": {
+  "in five": 1,
+  "ranks": [
+   1,
+   2,
+   13,
+   12,
+   105,
+   20,
+   21,
+   23,
+   34,
+   17,
+   50
+  ],
+  "five": [
+   "sum of invoice.total by invoice.invoice_date",
+   "rows of employee by employee.hire_date",
+   "rows of invoice by invoice.billing_state",
+   "rows of employee by employee.state",
+   "sum of invoice_line.unit_price × invoice_line.quantity, by track.name, the twelve most"
+  ],
+  "sql": [
+   "SELECT date_trunc('month', b.\"invoice_date\")::date AS t, SUM(b.\"total\") AS v FROM \"invoice\" b WHERE b.\"invoice_date\" IS NOT NULL GROUP BY date_trunc('month', b.\"invoice_date\")::date ORDER BY 1",
+   "SELECT date_trunc('month', b.\"hire_date\")::date AS t, COUNT(*) AS v FROM \"employee\" b WHERE b.\"hire_date\" IS NOT NULL GROUP BY date_trunc('month', b.\"hire_date\")::date ORDER BY 1",
+   "SELECT b.\"billing_state\" AS g, COUNT(*) AS v FROM \"invoice\" b GROUP BY b.\"billing_state\" ORDER BY v DESC LIMIT 50",
+   "SELECT b.\"state\" AS g, COUNT(*) AS v FROM \"employee\" b GROUP BY b.\"state\" ORDER BY v DESC LIMIT 50",
+   "SELECT p1.\"name\" AS g, SUM(b.\"unit_price\" * b.\"quantity\") AS v FROM \"invoice_line\" b LEFT JOIN \"track\" p1 ON p1.\"track_id\" = b.\"track_id\" GROUP BY p1.\"name\", p1.\"track_id\" ORDER BY v DESC LIMIT 12"
+  ]
+ },
+ "chinook B1": {
+  "in five": 2,
+  "ranks": [
+   1,
+   2,
+   11,
+   7,
+   null,
+   10,
+   18,
+   13,
+   101,
+   14,
+   60
+  ],
+  "five": [
+   "sum of invoice.total by invoice.invoice_date",
+   "sum of invoice_line.unit_price × invoice_line.quantity, by track.name, the twelve most",
+   "rows of invoice, by invoice.billing_state, the twelve most",
+   "sum of invoice_line.unit_price × invoice_line.quantity, by media_type.name, the twelve most",
+   "rows of track, by genre.name, the twelve most"
+  ],
+  "sql": [
+   "SELECT date_trunc('month', b.\"invoice_date\")::date AS t, SUM(b.\"total\") AS v FROM \"invoice\" b WHERE b.\"invoice_date\" IS NOT NULL GROUP BY date_trunc('month', b.\"invoice_date\")::date ORDER BY 1",
+   "SELECT p1.\"name\" AS g, SUM(b.\"unit_price\" * b.\"quantity\") AS v FROM \"invoice_line\" b LEFT JOIN \"track\" p1 ON p1.\"track_id\" = b.\"track_id\" GROUP BY p1.\"name\", p1.\"track_id\" ORDER BY v DESC LIMIT 12",
+   "SELECT b.\"billing_state\" AS g, COUNT(*) AS v FROM \"invoice\" b GROUP BY b.\"billing_state\" ORDER BY v DESC LIMIT 12",
+   "SELECT p2.\"name\" AS g, SUM(b.\"unit_price\" * b.\"quantity\") AS v FROM \"invoice_line\" b LEFT JOIN \"track\" p1 ON p1.\"track_id\" = b.\"track_id\" LEFT JOIN \"media_type\" p2 ON p2.\"media_type_id\" = p1.\"media_type_id\" GROUP BY p2.\"name\", p2.\"media_type_id\" ORDER BY v DESC LIMIT 12",
+   "SELECT p1.\"name\" AS g, COUNT(*) AS v FROM \"track\" b LEFT JOIN \"genre\" p1 ON p1.\"genre_id\" = b.\"genre_id\" GROUP BY p1.\"name\", p1.\"genre_id\" ORDER BY v DESC LIMIT 12"
+  ]
+ },
+ "airlines A": {
+  "in five": 3,
+  "ranks": [
+   10,
+   2,
+   3,
+   1,
+   11,
+   140,
+   null,
+   69,
+   129,
+   62
+  ],
+  "five": [
+   "rows of flights by flights.status",
+   "sum of bookings.total_amount by bookings.book_date",
+   "rows of flights by flights.scheduled_departure",
+   "rows of boarding_passes by boarding_passes.boarding_time",
+   "sum of segments.price, by tickets.passenger_name, the twelve most"
+  ],
+  "sql": [
+   "SELECT b.\"status\" AS g, COUNT(*) AS v FROM \"flights\" b GROUP BY b.\"status\" ORDER BY v DESC LIMIT 50",
+   "SELECT date_trunc('month', b.\"book_date\")::date AS t, SUM(b.\"total_amount\") AS v FROM \"bookings\" b WHERE b.\"book_date\" IS NOT NULL GROUP BY date_trunc('month', b.\"book_date\")::date ORDER BY 1",
+   "SELECT date_trunc('month', b.\"scheduled_departure\")::date AS t, COUNT(*) AS v FROM \"flights\" b WHERE b.\"scheduled_departure\" IS NOT NULL GROUP BY date_trunc('month', b.\"scheduled_departure\")::date ORDER BY 1",
+   "SELECT date_trunc('month', b.\"boarding_time\")::date AS t, COUNT(*) AS v FROM \"boarding_passes\" b WHERE b.\"boarding_time\" IS NOT NULL GROUP BY date_trunc('month', b.\"boarding_time\")::date ORDER BY 1",
+   "SELECT p1.\"passenger_name\" AS g, SUM(b.\"price\") AS v FROM \"segments\" b LEFT JOIN \"tickets\" p1 ON p1.\"ticket_no\" = b.\"ticket_no\" GROUP BY p1.\"passenger_name\", p1.\"ticket_no\" ORDER BY v DESC LIMIT 12"
+  ]
+ },
+ "airlines B1": {
+  "in five": 4,
+  "ranks": [
+   6,
+   2,
+   4,
+   1,
+   5,
+   123,
+   null,
+   66,
+   114,
+   48
+  ],
+  "five": [
+   "rows of flights by flights.status",
+   "sum of bookings.total_amount by bookings.book_date",
+   "rows of boarding_passes by boarding_passes.boarding_time",
+   "rows of flights by flights.scheduled_departure",
+   "sum of segments.price by segments.fare_conditions"
+  ],
+  "sql": [
+   "SELECT b.\"status\" AS g, COUNT(*) AS v FROM \"flights\" b GROUP BY b.\"status\" ORDER BY v DESC LIMIT 50",
+   "SELECT date_trunc('month', b.\"book_date\")::date AS t, SUM(b.\"total_amount\") AS v FROM \"bookings\" b WHERE b.\"book_date\" IS NOT NULL GROUP BY date_trunc('month', b.\"book_date\")::date ORDER BY 1",
+   "SELECT date_trunc('month', b.\"boarding_time\")::date AS t, COUNT(*) AS v FROM \"boarding_passes\" b WHERE b.\"boarding_time\" IS NOT NULL GROUP BY date_trunc('month', b.\"boarding_time\")::date ORDER BY 1",
+   "SELECT date_trunc('month', b.\"scheduled_departure\")::date AS t, COUNT(*) AS v FROM \"flights\" b WHERE b.\"scheduled_departure\" IS NOT NULL GROUP BY date_trunc('month', b.\"scheduled_departure\")::date ORDER BY 1",
+   "SELECT b.\"fare_conditions\" AS g, SUM(b.\"price\") AS v FROM \"segments\" b GROUP BY b.\"fare_conditions\" ORDER BY v DESC LIMIT 50"
+  ]
+ },
+ "ergastf1 A": {
+  "in five": 4,
+  "ranks": [
+   1,
+   14,
+   45,
+   null,
+   2,
+   3,
+   187,
+   320,
+   5,
+   66
+  ],
+  "five": [
+   "rows of races by races.date",
+   "rows of races, by circuits.name, the twelve most",
+   "rows of results, by status.status, the twelve most",
+   "rows of qualifying, by constructors.name, the twelve most",
+   "rows of drivers by drivers.nationality"
+  ],
+  "sql": [
+   "SELECT DATE_FORMAT(b.`date`, '%Y-%m-01') AS t, COUNT(*) AS v FROM `races` b WHERE b.`date` IS NOT NULL GROUP BY DATE_FORMAT(b.`date`, '%Y-%m-01') ORDER BY 1",
+   "SELECT p1.`name` AS g, COUNT(*) AS v FROM `races` b LEFT JOIN `circuits` p1 ON p1.`circuitId` = b.`circuitId` GROUP BY p1.`name`, p1.`circuitId` ORDER BY v DESC LIMIT 12",
+   "SELECT p1.`status` AS g, COUNT(*) AS v FROM `results` b LEFT JOIN `status` p1 ON p1.`statusId` = b.`statusId` GROUP BY p1.`status`, p1.`statusId` ORDER BY v DESC LIMIT 12",
+   "SELECT p1.`name` AS g, COUNT(*) AS v FROM `qualifying` b LEFT JOIN `constructors` p1 ON p1.`constructorId` = b.`constructorId` GROUP BY p1.`name`, p1.`constructorId` ORDER BY v DESC LIMIT 12",
+   "SELECT b.`nationality` AS g, COUNT(*) AS v FROM `drivers` b GROUP BY b.`nationality` ORDER BY v DESC LIMIT 50"
+  ]
+ },
+ "ergastf1 B1": {
+  "in five": 4,
+  "ranks": [
+   1,
+   13,
+   40,
+   null,
+   2,
+   3,
+   188,
+   308,
+   8,
+   59
+  ],
+  "five": [
+   "rows of races by races.date",
+   "rows of races, by circuits.name, the twelve most",
+   "rows of results, by status.status, the twelve most",
+   "rows of qualifying, by constructors.name, the twelve most",
+   "rows of drivers, by drivers.nationality, the twelve most"
+  ],
+  "sql": [
+   "SELECT DATE_FORMAT(b.`date`, '%Y-%m-01') AS t, COUNT(*) AS v FROM `races` b WHERE b.`date` IS NOT NULL GROUP BY DATE_FORMAT(b.`date`, '%Y-%m-01') ORDER BY 1",
+   "SELECT p1.`name` AS g, COUNT(*) AS v FROM `races` b LEFT JOIN `circuits` p1 ON p1.`circuitId` = b.`circuitId` GROUP BY p1.`name`, p1.`circuitId` ORDER BY v DESC LIMIT 12",
+   "SELECT p1.`status` AS g, COUNT(*) AS v FROM `results` b LEFT JOIN `status` p1 ON p1.`statusId` = b.`statusId` GROUP BY p1.`status`, p1.`statusId` ORDER BY v DESC LIMIT 12",
+   "SELECT p1.`name` AS g, COUNT(*) AS v FROM `qualifying` b LEFT JOIN `constructors` p1 ON p1.`constructorId` = b.`constructorId` GROUP BY p1.`name`, p1.`constructorId` ORDER BY v DESC LIMIT 12",
+   "SELECT b.`nationality` AS g, COUNT(*) AS v FROM `drivers` b GROUP BY b.`nationality` ORDER BY v DESC LIMIT 12"
+  ]
+ },
+ "northwind A": {
+  "in five": 2,
+  "ranks": [
+   34,
+   2,
+   13,
+   87,
+   346,
+   245,
+   102,
+   349,
+   158,
+   null
+  ],
+  "five": [
+   "rows of employees by employees.hire_date",
+   "rows of orders by orders.order_date",
+   "rows of orders, by shippers.company_name, the twelve most",
+   "rows of employees by employees.country",
+   "sum of order_details.unit_price × order_details.quantity × (1 − order_details.discount), by products.product_name, the twelve most"
+  ],
+  "sql": [
+   "SELECT date_trunc('month', b.\"hire_date\")::date AS t, COUNT(*) AS v FROM \"employees\" b WHERE b.\"hire_date\" IS NOT NULL GROUP BY date_trunc('month', b.\"hire_date\")::date ORDER BY 1",
+   "SELECT date_trunc('month', b.\"order_date\")::date AS t, COUNT(*) AS v FROM \"orders\" b WHERE b.\"order_date\" IS NOT NULL GROUP BY date_trunc('month', b.\"order_date\")::date ORDER BY 1",
+   "SELECT p1.\"company_name\" AS g, COUNT(*) AS v FROM \"orders\" b LEFT JOIN \"shippers\" p1 ON p1.\"shipper_id\" = b.\"ship_via\" GROUP BY p1.\"company_name\", p1.\"shipper_id\" ORDER BY v DESC LIMIT 12",
+   "SELECT b.\"country\" AS g, COUNT(*) AS v FROM \"employees\" b GROUP BY b.\"country\" ORDER BY v DESC LIMIT 50",
+   "SELECT p1.\"product_name\" AS g, SUM(b.\"unit_price\" * b.\"quantity\" * (1 - COALESCE(b.\"discount\", 0))) AS v FROM \"order_details\" b LEFT JOIN \"products\" p1 ON p1.\"product_id\" = b.\"product_id\" GROUP BY p1.\"product_name\", p1.\"product_id\" ORDER BY v DESC LIMIT 12"
+  ]
+ },
+ "northwind B1": {
+  "in five": 2,
+  "ranks": [
+   23,
+   1,
+   6,
+   76,
+   391,
+   254,
+   95,
+   353,
+   171,
+   null
+  ],
+  "five": [
+   "rows of orders by orders.order_date",
+   "rows of orders, by shippers.company_name, the twelve most",
+   "sum of order_details.unit_price × order_details.quantity × (1 − order_details.discount), by products.product_name, the twelve most",
+   "rows of employees by employees.hire_date",
+   "sum of order_details.unit_price × order_details.quantity × (1 − order_details.discount), by orders.ship_name, the twelve most"
+  ],
+  "sql": [
+   "SELECT date_trunc('month', b.\"order_date\")::date AS t, COUNT(*) AS v FROM \"orders\" b WHERE b.\"order_date\" IS NOT NULL GROUP BY date_trunc('month', b.\"order_date\")::date ORDER BY 1",
+   "SELECT p1.\"company_name\" AS g, COUNT(*) AS v FROM \"orders\" b LEFT JOIN \"shippers\" p1 ON p1.\"shipper_id\" = b.\"ship_via\" GROUP BY p1.\"company_name\", p1.\"shipper_id\" ORDER BY v DESC LIMIT 12",
+   "SELECT p1.\"product_name\" AS g, SUM(b.\"unit_price\" * b.\"quantity\" * (1 - COALESCE(b.\"discount\", 0))) AS v FROM \"order_details\" b LEFT JOIN \"products\" p1 ON p1.\"product_id\" = b.\"product_id\" GROUP BY p1.\"product_name\", p1.\"product_id\" ORDER BY v DESC LIMIT 12",
+   "SELECT date_trunc('month', b.\"hire_date\")::date AS t, COUNT(*) AS v FROM \"employees\" b WHERE b.\"hire_date\" IS NOT NULL GROUP BY date_trunc('month', b.\"hire_date\")::date ORDER BY 1",
+   "SELECT p1.\"ship_name\" AS g, SUM(b.\"unit_price\" * b.\"quantity\" * (1 - COALESCE(b.\"discount\", 0))) AS v FROM \"order_details\" b LEFT JOIN \"orders\" p1 ON p1.\"order_id\" = b.\"order_id\" GROUP BY p1.\"ship_name\", p1.\"order_id\" ORDER BY v DESC LIMIT 12"
+  ]
+ },
+ "ccs A": {
+  "in five": 1,
+  "ranks": [
+   129,
+   4,
+   37,
+   20,
+   66,
+   63,
+   27,
+   45,
+   164,
+   162
+  ],
+  "five": [
+   "sum of transactions_1k.Amount by transactions_1k.Date",
+   "sum of transactions.Amount by transactions.Date",
+   "sum of transactions_1k.Amount, by products.Description, the twelve most",
+   "sum of transactions.Amount by gasstations.Country",
+   "sum of yearmonth.Consumption by yearmonth.Date"
+  ],
+  "sql": [
+   "SELECT DATE_FORMAT(b.`Date`, '%Y-%m-01') AS t, SUM(b.`Amount`) AS v FROM `transactions_1k` b WHERE b.`Date` IS NOT NULL GROUP BY DATE_FORMAT(b.`Date`, '%Y-%m-01') ORDER BY 1",
+   "SELECT DATE_FORMAT(b.`Date`, '%Y-%m-01') AS t, SUM(b.`Amount`) AS v FROM `transactions` b WHERE b.`Date` IS NOT NULL GROUP BY DATE_FORMAT(b.`Date`, '%Y-%m-01') ORDER BY 1",
+   "SELECT p1.`Description` AS g, SUM(b.`Amount`) AS v FROM `transactions_1k` b LEFT JOIN `products` p1 ON p1.`ProductID` = b.`ProductID` GROUP BY p1.`Description`, p1.`ProductID` ORDER BY v DESC LIMIT 12",
+   "SELECT p1.`Country` AS g, SUM(b.`Amount`) AS v FROM `transactions` b LEFT JOIN `gasstations` p1 ON p1.`GasStationID` = b.`GasStationID` GROUP BY p1.`Country` ORDER BY v DESC LIMIT 50",
+   "SELECT b.`Date` AS t, SUM(b.`Consumption`) AS v FROM `yearmonth` b WHERE b.`Date` IS NOT NULL GROUP BY b.`Date` ORDER BY 1"
+  ]
+ },
+ "ccs B1": {
+  "in five": 0,
+  "ranks": [
+   66,
+   2,
+   11,
+   13,
+   null,
+   37,
+   17,
+   20,
+   68,
+   81
+  ],
+  "five": [
+   "sum of transactions_1k.Amount by transactions_1k.Date",
+   "sum of transactions_1k.Amount, by products.Description, the twelve most",
+   "rows of yearmonth by yearmonth.Date",
+   "rows of customers by customers.Segment",
+   "rows of customers by customers.Currency"
+  ],
+  "sql": [
+   "SELECT DATE_FORMAT(b.`Date`, '%Y-%m-01') AS t, SUM(b.`Amount`) AS v FROM `transactions_1k` b WHERE b.`Date` IS NOT NULL GROUP BY DATE_FORMAT(b.`Date`, '%Y-%m-01') ORDER BY 1",
+   "SELECT p1.`Description` AS g, SUM(b.`Amount`) AS v FROM `transactions_1k` b LEFT JOIN `products` p1 ON p1.`ProductID` = b.`ProductID` GROUP BY p1.`Description`, p1.`ProductID` ORDER BY v DESC LIMIT 12",
+   "SELECT b.`Date` AS t, COUNT(*) AS v FROM `yearmonth` b WHERE b.`Date` IS NOT NULL GROUP BY b.`Date` ORDER BY 1",
+   "SELECT b.`Segment` AS g, COUNT(*) AS v FROM `customers` b GROUP BY b.`Segment` ORDER BY v DESC LIMIT 50",
+   "SELECT b.`Currency` AS g, COUNT(*) AS v FROM `customers` b GROUP BY b.`Currency` ORDER BY v DESC LIMIT 50"
+  ]
+ },
+ "lahman A": {
+  "in five": 1,
+  "ranks": [
+   1732,
+   268,
+   1603,
+   169,
+   1,
+   626,
+   1854,
+   2864,
+   282,
+   9
+  ],
+  "five": [
+   "rows of teams by teams.yearID",
+   "rows of teams, by teamsfranchises.franchName, the twelve most",
+   "rows of batting by batting.yearID",
+   "rows of managers by managers.yearID",
+   "rows of fielding by fielding.yearID"
+  ],
+  "sql": [
+   "SELECT b.`yearID` AS t, COUNT(*) AS v FROM `teams` b WHERE b.`yearID` IS NOT NULL GROUP BY b.`yearID` ORDER BY 1",
+   "SELECT p1.`franchName` AS g, COUNT(*) AS v FROM `teams` b LEFT JOIN `teamsfranchises` p1 ON p1.`franchID` = b.`franchID` GROUP BY p1.`franchName`, p1.`franchID` ORDER BY v DESC LIMIT 12",
+   "SELECT b.`yearID` AS t, COUNT(*) AS v FROM `batting` b WHERE b.`yearID` IS NOT NULL GROUP BY b.`yearID` ORDER BY 1",
+   "SELECT b.`yearID` AS t, COUNT(*) AS v FROM `managers` b WHERE b.`yearID` IS NOT NULL GROUP BY b.`yearID` ORDER BY 1",
+   "SELECT b.`yearID` AS t, COUNT(*) AS v FROM `fielding` b WHERE b.`yearID` IS NOT NULL GROUP BY b.`yearID` ORDER BY 1"
+  ]
+ },
+ "lahman B1": {
+  "in five": 1,
+  "ranks": [
+   2064,
+   185,
+   1916,
+   197,
+   2,
+   680,
+   1536,
+   2568,
+   326,
+   23
+  ],
+  "five": [
+   "rows of teams, by teamsfranchises.franchName, the twelve most",
+   "rows of teams by teams.yearID",
+   "rows of fielding by fielding.yearID",
+   "rows of batting by batting.yearID",
+   "rows of fielding by fielding.lgID"
+  ],
+  "sql": [
+   "SELECT p1.`franchName` AS g, COUNT(*) AS v FROM `teams` b LEFT JOIN `teamsfranchises` p1 ON p1.`franchID` = b.`franchID` GROUP BY p1.`franchName`, p1.`franchID` ORDER BY v DESC LIMIT 12",
+   "SELECT b.`yearID` AS t, COUNT(*) AS v FROM `teams` b WHERE b.`yearID` IS NOT NULL GROUP BY b.`yearID` ORDER BY 1",
+   "SELECT b.`yearID` AS t, COUNT(*) AS v FROM `fielding` b WHERE b.`yearID` IS NOT NULL GROUP BY b.`yearID` ORDER BY 1",
+   "SELECT b.`yearID` AS t, COUNT(*) AS v FROM `batting` b WHERE b.`yearID` IS NOT NULL GROUP BY b.`yearID` ORDER BY 1",
+   "SELECT b.`lgID` AS g, COUNT(*) AS v FROM `fielding` b GROUP BY b.`lgID` ORDER BY v DESC LIMIT 50"
+  ]
+ },
+ "classicmodels A": {
+  "in five": 2,
+  "ranks": [
+   23,
+   null,
+   1,
+   101,
+   42,
+   36,
+   null,
+   201,
+   5,
+   26
+  ],
+  "five": [
+   "sum of payments.amount by payments.paymentDate",
+   "rows of orders by orders.status",
+   "rows of orders by orders.orderDate",
+   "sum of orderdetails.priceEach × orderdetails.quantityOrdered, by products.productName, the twelve most",
+   "sum of payments.amount, by customers (named), the twelve most"
+  ],
+  "sql": [
+   "SELECT DATE_FORMAT(b.`paymentDate`, '%Y-%m-01') AS t, SUM(b.`amount`) AS v FROM `payments` b WHERE b.`paymentDate` IS NOT NULL GROUP BY DATE_FORMAT(b.`paymentDate`, '%Y-%m-01') ORDER BY 1",
+   "SELECT b.`status` AS g, COUNT(*) AS v FROM `orders` b GROUP BY b.`status` ORDER BY v DESC LIMIT 50",
+   "SELECT DATE_FORMAT(b.`orderDate`, '%Y-%m-01') AS t, COUNT(*) AS v FROM `orders` b WHERE b.`orderDate` IS NOT NULL GROUP BY DATE_FORMAT(b.`orderDate`, '%Y-%m-01') ORDER BY 1",
+   "SELECT p1.`productName` AS g, SUM(b.`priceEach` * b.`quantityOrdered`) AS v FROM `orderdetails` b LEFT JOIN `products` p1 ON p1.`productCode` = b.`productCode` GROUP BY p1.`productName`, p1.`productCode` ORDER BY v DESC LIMIT 12",
+   "SELECT CONCAT_WS(' ', p1.`contactFirstName`, p1.`contactLastName`) AS g, SUM(b.`amount`) AS v FROM `payments` b LEFT JOIN `customers` p1 ON p1.`customerNumber` = b.`customerNumber` GROUP BY CONCAT_WS(' ', p1.`contactFirstName`, p1.`contactLastName`), p1.`customerNumber` ORDER BY v DESC LIMIT 12"
+  ]
+ },
+ "classicmodels B1": {
+  "in five": 2,
+  "ranks": [
+   20,
+   null,
+   1,
+   115,
+   34,
+   33,
+   null,
+   231,
+   4,
+   24
+  ],
+  "five": [
+   "sum of payments.amount by payments.paymentDate",
+   "rows of orders by orders.status",
+   "rows of orders by orders.orderDate",
+   "sum of orderdetails.priceEach × orderdetails.quantityOrdered, by products.productName, the twelve most",
+   "sum of payments.amount, by customers (named), the twelve most"
+  ],
+  "sql": [
+   "SELECT DATE_FORMAT(b.`paymentDate`, '%Y-%m-01') AS t, SUM(b.`amount`) AS v FROM `payments` b WHERE b.`paymentDate` IS NOT NULL GROUP BY DATE_FORMAT(b.`paymentDate`, '%Y-%m-01') ORDER BY 1",
+   "SELECT b.`status` AS g, COUNT(*) AS v FROM `orders` b GROUP BY b.`status` ORDER BY v DESC LIMIT 50",
+   "SELECT DATE_FORMAT(b.`orderDate`, '%Y-%m-01') AS t, COUNT(*) AS v FROM `orders` b WHERE b.`orderDate` IS NOT NULL GROUP BY DATE_FORMAT(b.`orderDate`, '%Y-%m-01') ORDER BY 1",
+   "SELECT p1.`productName` AS g, SUM(b.`priceEach` * b.`quantityOrdered`) AS v FROM `orderdetails` b LEFT JOIN `products` p1 ON p1.`productCode` = b.`productCode` GROUP BY p1.`productName`, p1.`productCode` ORDER BY v DESC LIMIT 12",
+   "SELECT CONCAT_WS(' ', p1.`contactFirstName`, p1.`contactLastName`) AS g, SUM(b.`amount`) AS v FROM `payments` b LEFT JOIN `customers` p1 ON p1.`customerNumber` = b.`customerNumber` GROUP BY CONCAT_WS(' ', p1.`contactFirstName`, p1.`contactLastName`), p1.`customerNumber` ORDER BY v DESC LIMIT 12"
+  ]
+ },
+ "credit A": {
+  "in five": 2,
+  "ranks": [
+   11,
+   7,
+   1,
+   66,
+   22,
+   29,
+   36,
+   54,
+   71,
+   4
+  ],
+  "five": [
+   "rows of member by member.issue_dt",
+   "rows of member by member.state_prov",
+   "sum of payment.payment_amt by payment.payment_dt",
+   "rows of charge by charge.charge_dt",
+   "rows of charge, by category.category_desc, the twelve most"
+  ],
+  "sql": [
+   "SELECT DATE_FORMAT(b.`issue_dt`, '%Y-%m-01') AS t, COUNT(*) AS v FROM `member` b WHERE b.`issue_dt` IS NOT NULL GROUP BY DATE_FORMAT(b.`issue_dt`, '%Y-%m-01') ORDER BY 1",
+   "SELECT b.`state_prov` AS g, COUNT(*) AS v FROM `member` b GROUP BY b.`state_prov` ORDER BY v DESC LIMIT 50",
+   "SELECT DATE_FORMAT(b.`payment_dt`, '%Y-%m-01') AS t, SUM(b.`payment_amt`) AS v FROM `payment` b WHERE b.`payment_dt` IS NOT NULL GROUP BY DATE_FORMAT(b.`payment_dt`, '%Y-%m-01') ORDER BY 1",
+   "SELECT DATE_FORMAT(b.`charge_dt`, '%Y-%m-01') AS t, COUNT(*) AS v FROM `charge` b WHERE b.`charge_dt` IS NOT NULL GROUP BY DATE_FORMAT(b.`charge_dt`, '%Y-%m-01') ORDER BY 1",
+   "SELECT p1.`category_desc` AS g, COUNT(*) AS v FROM `charge` b LEFT JOIN `category` p1 ON p1.`category_no` = b.`category_no` GROUP BY p1.`category_desc`, p1.`category_no` ORDER BY v DESC LIMIT 12"
+  ]
+ },
+ "credit B1": {
+  "in five": 2,
+  "ranks": [
+   8,
+   3,
+   2,
+   58,
+   11,
+   15,
+   19,
+   29,
+   40,
+   6
+  ],
+  "five": [
+   "rows of charge by charge.charge_dt",
+   "rows of member by member.issue_dt",
+   "sum of payment.payment_amt by payment.payment_dt",
+   "rows of member, by region.region_name, the twelve most",
+   "rows of charge, by category.category_desc, the twelve most"
+  ],
+  "sql": [
+   "SELECT DATE_FORMAT(b.`charge_dt`, '%Y-%m-01') AS t, COUNT(*) AS v FROM `charge` b WHERE b.`charge_dt` IS NOT NULL GROUP BY DATE_FORMAT(b.`charge_dt`, '%Y-%m-01') ORDER BY 1",
+   "SELECT DATE_FORMAT(b.`issue_dt`, '%Y-%m-01') AS t, COUNT(*) AS v FROM `member` b WHERE b.`issue_dt` IS NOT NULL GROUP BY DATE_FORMAT(b.`issue_dt`, '%Y-%m-01') ORDER BY 1",
+   "SELECT DATE_FORMAT(b.`payment_dt`, '%Y-%m-01') AS t, SUM(b.`payment_amt`) AS v FROM `payment` b WHERE b.`payment_dt` IS NOT NULL GROUP BY DATE_FORMAT(b.`payment_dt`, '%Y-%m-01') ORDER BY 1",
+   "SELECT p1.`region_name` AS g, COUNT(*) AS v FROM `member` b LEFT JOIN `region` p1 ON p1.`region_no` = b.`region_no` GROUP BY p1.`region_name`, p1.`region_no` ORDER BY v DESC LIMIT 12",
+   "SELECT p1.`category_desc` AS g, COUNT(*) AS v FROM `charge` b LEFT JOIN `category` p1 ON p1.`category_no` = b.`category_no` GROUP BY p1.`category_desc`, p1.`category_no` ORDER BY v DESC LIMIT 12"
+  ]
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "schemas": 480,
+ "prior": {
+  "gemini ndcg@5": 0.29398532709640185,
+  "gemini precision": 0.3229166666666667,
+  "gemini recall": 0.20416666666666666,
+  "gemini recall of what can be said": 0.2494047619047619,
+  "haiku ndcg@5": 0.31228415268277004,
+  "haiku precision": 0.33599999999999997,
+  "haiku recall": 0.22133333333333327,
+  "haiku recall of what can be said": 0.2895555555555555
+ },
+ "learned without words": {
+  "gemini ndcg@5": 0.5928164971068959,
+  "gemini precision": 0.545,
+  "gemini recall": 0.3654166666666667,
+  "gemini recall of what can be said": 0.43848039215686274,
+  "haiku ndcg@5": 0.5784857445238509,
+  "haiku precision": 0.5066666666666667,
+  "haiku recall": 0.3293333333333333,
+  "haiku recall of what can be said": 0.42433333333333334
+ },
+ "learned": {
+  "gemini ndcg@5": 0.5928164971068959,
+  "gemini precision": 0.545,
+  "gemini recall": 0.3654166666666667,
+  "gemini recall of what can be said": 0.43848039215686274,
+  "haiku ndcg@5": 0.5784857445238509,
+  "haiku precision": 0.5066666666666667,
+  "haiku recall": 0.3293333333333333,
+  "haiku recall of what can be said": 0.42433333333333334
+ },
+ "teachers agree": {
+  "gemini's five in haiku's ten": 0.7306666666666666,
+  "haiku's five in gemini's ten": 0.7146666666666667
+ },
+ "schemas with both teachers": 150
+}

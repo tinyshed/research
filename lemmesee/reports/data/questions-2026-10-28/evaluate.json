@@ -1,0 +1,34 @@
+{
+ "train schemas": 240,
+ "test schemas": 240,
+ "systems": {
+  "round 1c, learned": {
+   "gemini precision": 0.536,
+   "gemini recall": 0.354
+  },
+  "round 1c, hand prior": {
+   "gemini precision": 0.319,
+   "gemini recall": 0.201
+  },
+  "round 1, rules A": {
+   "gemini precision": 0.298,
+   "gemini recall": 0.181
+  }
+ },
+ "differences": {
+  "learned − round 1, gemini precision": {
+   "mean": 0.238,
+   "95%": [
+    0.205,
+    0.273
+   ]
+  },
+  "learned − round 1, gemini recall": {
+   "mean": 0.173,
+   "95%": [
+    0.147,
+    0.2
+   ]
+  }
+ }
+}
