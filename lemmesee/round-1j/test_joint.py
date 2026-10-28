@@ -3,6 +3,7 @@ import unittest
 import numpy as np
 
 import joint
+import latent
 
 
 class HarnessChecks(unittest.TestCase):
@@ -104,6 +105,13 @@ class HarnessChecks(unittest.TestCase):
         np.testing.assert_allclose(probabilities, 0.2, atol=1e-7)
         np.testing.assert_allclose(joint.predict_linear(joint.pack_linear(model), X[~train], margin[~train]),
                                    probabilities, atol=1e-7)
+
+    def test_frozen_title_features_sum_to_the_original_encoder(self):
+        class Reader:
+            trees = [([(0, 2 | 4, 0.5, -1, -2)], [-2.0, 2.0]), ([], [0.25])]
+        np.testing.assert_allclose(latent.contributions(Reader(), [0.0]), [-2, 0.25])
+        np.testing.assert_allclose(latent.contributions(Reader(), [1.0]), [2, 0.25])
+        np.testing.assert_allclose(latent.contributions(Reader(), [np.nan]), [-2, 0.25])
 
 
 if __name__ == "__main__":

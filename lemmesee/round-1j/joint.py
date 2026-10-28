@@ -33,7 +33,8 @@ DRAWS = 3
 SLOTS = ("base", "measure", "time", "by")
 PROPS = ("id", "money", "count", "sum_ok", "audit_time", "event_time", "good_group", "cryptic", "importance")
 CONFIGS = ("baseline", "capacity", "late", "early", "joint",
-           "residual_numeric", "residual_late", "residual_early")
+           "residual_numeric", "residual_late", "residual_early",
+           "encoded_scalar", "encoded_64", "encoded_600")
 PROFILE_NAMES = (
     "value_log_magnitude", "value_integer", "value_negative", "value_exponent",
     "value_digits", "value_equal", "label_blank", "label_numeric",
@@ -429,6 +430,16 @@ def run(out: Path, configs: list[str], draws: int) -> None:
     matrices = {"baseline": base, "capacity": base, "late": np.column_stack((base, arrays["late"])),
                 "early": np.column_stack((base, sem, prof)), "joint": joint_matrix(base, sem, prof)}
     matrices |= {"residual_numeric": base, "residual_late": matrices["late"], "residual_early": matrices["joint"]}
+    if any(c.startswith("encoded_") for c in configs):
+        latent_path = out / "latent.npz"
+        latent_meta = json.loads((out / "latent.json").read_text(encoding="utf-8"))
+        if latent_meta["data_sha256"] != meta["data_sha256"] or sha(latent_path) != latent_meta["latent_sha256"]:
+            raise SystemExit("Latent features do not match the frozen inputs.")
+        latent = np.load(latent_path, allow_pickle=False)["leaves"]
+        projection = np.random.default_rng(SEED).normal(0, 1 / math.sqrt(64), (latent.shape[1], 64))
+        matrices |= {"encoded_scalar": np.column_stack((base, latent.sum(axis=1))),
+                     "encoded_64": np.column_stack((base, latent @ projection)),
+                     "encoded_600": np.column_stack((base, latent))}
     dbs = arrays["db"].tolist()
     unique = sorted(set(dbs))
     db_indices = {db: np.flatnonzero(arrays["db"] == db) for db in unique}

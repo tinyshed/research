@@ -39,6 +39,21 @@ tests correction of a useful nonlinear model, rather than replacing it by
 a weaker linear one. All three controls are reported. These are follow-up
 development experiments, not an independent confirmation.
 
+A third development pass tests the literal learned-representation
+bottleneck: round 1h's compiled title student is frozen, and the look
+receives either the sum of its 600 tree contributions, all contributions,
+or their fixed 64-dimensional random projection. The same compiled
+encoder is used for all three controls. This differs from feeding generic
+word vectors directly: the representation was already learned from titles.
+No counting labels fit the encoder or projection.
+
+Prepare this extra input with:
+
+    docker run --rm --cpus=4 -v <repo>:/src -w /src/lemmesee lemmesee-joint python round-1j/latent.py
+
+Run its controls with joint.py run --configs baseline capacity
+encoded_scalar encoded_64 encoded_600.
+
 Candidates without a teaching label remain eligible at evaluation; only
 their training rows are excluded. Removing an unlabelled candidate from
 the evaluation pool would change the task.
