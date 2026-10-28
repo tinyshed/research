@@ -36,7 +36,10 @@ GRANT SELECT ON \`$db\`.* TO 'lemmesee'@'%';
 SQL
 $my -N -e "SELECT CONCAT('ANALYZE TABLE \`', TABLE_NAME, '\`;') FROM information_schema.TABLES
            WHERE TABLE_SCHEMA = '$db'" | $my "$db" >/dev/null
-$my -N -e "SELECT CONCAT('ANALYZE TABLE \`', TABLE_NAME, '\` UPDATE HISTOGRAM ON ',
+# GROUP_CONCAT stops at 1 024 bytes unless told, and PremierLeague's actions
+# have more columns than that
+$my -N -e "SET SESSION group_concat_max_len = 1000000;
+           SELECT CONCAT('ANALYZE TABLE \`', TABLE_NAME, '\` UPDATE HISTOGRAM ON ',
              GROUP_CONCAT(CONCAT('\`', COLUMN_NAME, '\`')), ' WITH 100 BUCKETS;')
            FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = '$db'
            AND DATA_TYPE NOT IN ('json', 'geometry') GROUP BY TABLE_NAME" | $my "$db" >/dev/null
