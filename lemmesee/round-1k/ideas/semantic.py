@@ -146,9 +146,19 @@ def parse(out: Path) -> None:
                 rows.append({"repo": f["repo"], "role": kind, "type": t.group(1) if t else None, "name": name,
                              "columns": REF.findall(s.group(1)) if s else []})
         elif f["kind"] == "dbt":
-            for m in re.finditer(r"-\s*name:\s*(\w+)\s*\n(?:\s+.*\n)*?\s+agg:\s*(\w+)(?:\s*\n\s+expr:\s*(\S+))?", text):
-                rows.append({"repo": f["repo"], "role": "measure", "type": m.group(2), "name": m.group(1),
-                             "columns": [m.group(3) or m.group(1)]})
+            # line by line: a list item's name, then its agg and expr before the next item
+            item: dict | None = None
+            for line in text.splitlines() + ["- name: end"]:
+                m = re.match(r"\s*-\s*name:\s*['\"]?(\w+)", line)
+                if m:
+                    if item and item.get("agg"):
+                        rows.append({"repo": f["repo"], "role": "measure", "type": item["agg"], "name": item["name"],
+                                     "columns": [item.get("expr") or item["name"]]})
+                    item = {"name": m.group(1)}
+                    continue
+                m = re.match(r"\s*(agg|expr):\s*['\"]?([\w.]+)", line)
+                if item is not None and m:
+                    item[m.group(1)] = m.group(2)
     (out / "fields.jsonl").write_text("\n".join(json.dumps(r) for r in rows) + "\n", encoding="utf-8")
     from collections import Counter
     print(len(rows), "fields;", Counter((r["role"], r["type"]) for r in rows).most_common(12))

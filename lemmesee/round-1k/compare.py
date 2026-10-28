@@ -97,6 +97,14 @@ def prepare(out: Path) -> None:
             ans93[j] |= look1d.labels(ROOT / "corpus" / f"round-1{d}" / "look", j)
     y_new = np.asarray([mean_keep(ans93, p["id"]) for p in meta["panels"]])
 
+    # the judges as they now stand: Sonnet and Gemini answered all 93 on 29 October
+    judged = {j: {} for j in dg.COUNTERS}
+    for d in ("d", "e", "f"):
+        for j in dg.COUNTERS:
+            judged[j] |= look1d.labels(ROOT / "corpus" / f"round-1{d}" / "look", j)
+    judges = np.asarray([[float(bool(judged[j][p["id"]]["keep"])) if p["id"] in judged[j] else np.nan
+                          for j in dg.COUNTERS] for p in meta["panels"]])
+
     gt = ROOT / "corpus" / "round-1k" / "gt"
     fes = sorted(q.parent.name for q in (gt / "look").glob("*/pool.json"))
     rows, ids = vectors(gt / "look", gt / "see", fes)
@@ -104,16 +112,17 @@ def prepare(out: Path) -> None:
     y_gt = np.asarray([mean_keep(ans, pid) for pid in ids])
     out.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(out / "data.npz", base_gt=np.asarray(rows, dtype=np.float32), y_gt=y_gt,
-                        db_gt=np.asarray([pid.split(":")[0] for pid in ids]), y_new=y_new)
+                        db_gt=np.asarray([pid.split(":")[0] for pid in ids]), y_new=y_new, judges=judges)
     inputs = [frozen / "data.npz", frozen / "data.json"]
     inputs += sorted((gt / "look").glob("*/pool.json")) + sorted((gt / "see").glob("*/snapshot.json"))
     for d in ("d", "e", "f"):
-        inputs += sorted((ROOT / "corpus" / f"round-1{d}" / "look").glob("jevfast-*.json"))
-        inputs += sorted((ROOT / "corpus" / f"round-1{d}" / "look").glob("lunap-*.json"))
+        for j in ("jevfast", "lunap") + tuple(dg.COUNTERS):
+            inputs += sorted((ROOT / "corpus" / f"round-1{d}" / "look").glob(f"{j}-*.json"))
     inputs += sorted((gt / "look").glob("jevfast-*.json")) + sorted((gt / "look").glob("lunap-*.json"))
     inputs += [FEATURES]
     manifest = {"environment": joint.environment(), "checked_against_round_1j": worst,
                 "panels": {"93": len(y_new), "gittables": len(y_gt), "gittables tables": len(fes)},
+                "judged panels": {j: int(np.isfinite(judges[:, k]).sum()) for k, j in enumerate(dg.COUNTERS)},
                 "labelled": {"93": int(np.isfinite(y_new).sum()), "gittables": int(np.isfinite(y_gt).sum())},
                 "inputs": {str(p.relative_to(ROOT)).replace("\\", "/"): sha(p) for p in inputs},
                 "data_sha256": sha(out / "data.npz"), "script_sha256": sha(Path(__file__))}
@@ -167,7 +176,8 @@ def run(out: Path) -> None:
         for j, judge in enumerate(jmeta["judges"]):
             for policy, penalties in (("plain", dg.NO_PENALTY), ("axes", sets.AXIS_ONCE)):
                 for db, ix in db_indices.items():
-                    y = A["judges"][ix, j]
+                    # the judges' answers as prepare read them, not round 1j's frozen fifty
+                    y = G["judges"][ix, j]
                     if not np.isfinite(y).all():
                         continue
                     chooser = dg.look1e.Chooser([jmeta["panels"][int(i)]["identity"] for i in ix])
@@ -179,6 +189,11 @@ def run(out: Path) -> None:
                         vals = [v for v in vals if math.isfinite(v)]
                         if vals:
                             per.setdefault(f"{judge}/{policy}/{name}", {})[db] = float(np.mean(vals))
+        # Sonnet and Gemini together: the mean of the two, where both answered
+        for key in [k for k in per if k.startswith("sonnet/")]:
+            rest = key.split("/", 1)[1]
+            both = {db: (v + per[f"gemini/{rest}"][db]) / 2 for db, v in per[key].items() if db in per.get(f"gemini/{rest}", {})}
+            per[f"sonnet+gemini/{rest}"] = both
         metrics[c] = per
     result = {"environment": joint.environment(), "input_sha256": meta["data_sha256"],
               "panels": {"93": n93, "gittables": ngt}, "configs": CONFIGS,
@@ -192,7 +207,7 @@ def run(out: Path) -> None:
             result[c][k][f"minus_{against}"] = joint.paired_interval(common, family_by_db)
     joint.write_json(out / "result.json", result)
     for c in CONFIGS:
-        row = [f"{result[c][f'{j}/plain/kept']['mean']:.2f}" for j in jmeta["judges"]]
+        row = [f"{result[c][f'{j}/plain/kept']['mean']:.2f}" for j in list(jmeta["judges"]) + ["sonnet+gemini"]]
         print(c, "kept of five", row)
 
 
