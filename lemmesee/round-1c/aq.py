@@ -508,12 +508,24 @@ def alive(tb: Table) -> list:
     return out
 
 
+def named(tb: Table) -> bool:
+    """Whether a table's rows have names to group them by: a customer's, a
+    genre's, a track's. A table of what happened — with a time of its own,
+    or a header's — has none, though a column may say `name`: Northwind's
+    orders keep the name to ship to, which two orders share, and grouped by
+    it each order stood alone under a customer's name, as two blind judges
+    found."""
+    return (tb.label is not None or tb.first_last is not None) and not tb.timed and tb.detail_of is None
+
+
 def dim_name(schema: Schema, d: Dim) -> str:
     tb = schema.tables[d.t]
     if d.c == -1:
+        if d.kind == "key" or not named(tb):
+            return f"{tb.name} (by key)"
         if tb.first_last:
             return f"{tb.name} (named)"
-        return f"{tb.name}.{tb.columns[tb.label].name}" if tb.label is not None else f"{tb.name} (by key)"
+        return f"{tb.name}.{tb.columns[tb.label].name}"
     return f"{tb.name}.{tb.columns[d.c].name}"
 
 
@@ -579,7 +591,7 @@ def generate(schema: Schema, max_depth: int = 3) -> list[Question]:
                 if len(path) == 1:
                     p = _end(schema, b, path)
                     pt = schema.tables[p]
-                    kind = ("person" if pt.person else "label") if (pt.label is not None or pt.first_last) else "key"
+                    kind = ("person" if pt.person else "label") if named(pt) else "key"
                     add(Question(b, Measure("count"), None, Dim(path, p, -1, kind), "top"))
                     for c in pt.columns:
                         if c.category and c.category != "typed":
@@ -673,7 +685,7 @@ def generate(schema: Schema, max_depth: int = 3) -> list[Question]:
             pt = schema.tables[p]
             if pt.boilerplate:
                 continue
-            if pt.label is not None or pt.first_last:
+            if named(pt):
                 bdims.append(Dim(path, p, -1, "person" if pt.person else "label"))
             elif len(path) <= 2:
                 bdims.append(Dim(path, p, -1, "key"))
@@ -752,10 +764,10 @@ def compile_sql(schema: Schema, q: Question, engine: str, bucket_name: str | Non
         if d.c >= 0:
             return colref(d.path, d.t, d.c)
         pt = schema.tables[d.t]
-        if pt.first_last:
+        if d.kind != "key" and named(pt) and pt.first_last:
             f, l = pt.first_last
             return f"CONCAT_WS(' ', {colref(d.path, d.t, f)}, {colref(d.path, d.t, l)})"
-        if pt.label is not None:
+        if d.kind != "key" and named(pt):
             return colref(d.path, d.t, pt.label)
         # the key the base holds, with no join
         t, c = d.path[-1]
@@ -809,7 +821,7 @@ def compile_sql(schema: Schema, q: Question, engine: str, bucket_name: str | Non
         g = label(q.by)
         select.append(f"{g} AS g")
         group.append(g)
-        if q.by.c == -1 and schema.tables[q.by.t].label is not None:
+        if q.by.c == -1 and q.by.kind != "key" and named(schema.tables[q.by.t]):
             # two parents of one name stay two
             pt = schema.tables[q.by.t]
             if pt.pk and q.by.path:

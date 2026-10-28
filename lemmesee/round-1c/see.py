@@ -35,7 +35,7 @@ def run_sql(engine: str, database: str, sql: str) -> tuple[list[list[str | None]
     started = time.perf_counter()
     if engine == "mysql":
         cmd = ["docker", "exec", "-i", "-e", "MYSQL_PWD=lemmesee", "lemmesee-round-1-mysql-1", "mysql", "-ulemmesee",
-               database, "-B", "-N", "-e", f"SET SESSION max_execution_time={LIMIT_MS}; {sql}"]
+               "--default-character-set=utf8mb4", database, "-B", "-N", "-e", f"SET SESSION max_execution_time={LIMIT_MS}; {sql}"]
     else:
         cmd = ["docker", "exec", "-i", "-e", f"PGOPTIONS=-c statement_timeout={LIMIT_MS}", "lemmesee-round-1-postgres-1",
                "psql", "-U", "lemmesee", "-d", database, "-At", "-F", "\t", "-P", f"null={NULL}", "-v", "ON_ERROR_STOP=1",

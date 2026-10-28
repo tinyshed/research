@@ -28,7 +28,7 @@ An object between the schema and the chart (`aq.py`):
 | **base** | the table whose rows are aggregated; its grain is the question's grain |
 | **measure** | rows counted; a column's sum or average; a row's amount, `price × quantity`, less its discount where the row keeps one, or a line's quantity × its product's price one join away; parents counted once, `count(distinct customer)`; rows with a flag set; the days between two of a row's times, and the rows late by them; how many children each parent has |
 | **time** | a creation or event time of the base, or a year or `YYYYMM` held as an integer; where the base has none, its header's — the times of the parents that record events, one step away, else two, never an entity's |
-| **breakdown** | a category of the base or of a table reached through foreign keys, many to one, up to three steps, so the grain stays and a sum stays a sum; a parent's name, a person's first and last name, or a parent's key where it has no name |
+| **breakdown** | a category of the base or of a table reached through foreign keys, many to one, up to three steps, so the grain stays and a sum stays a sum; a parent's name, a person's first and last name, or a parent's key where it has no name — and a table of what happened, with a time of its own or a header's, has none |
 | **shape** | over time; by a breakdown, or its twelve largest; over time split by a few values; a distribution |
 
 It compiles to one statement for PostgreSQL or MySQL, joins left so no row
@@ -105,6 +105,7 @@ several counts over time.
 | `pack.py` | the ranker packed into bytes and read back without LightGBM |
 | `baseline.py` | round 1's rules measured against the teachers |
 | `see.py` | round 1c's five run on each fixture and drawn on round 1's page beside round 1's |
+| `judge.py` | every fixture's pool packed blind for judges, and their answers unblinded and counted |
 
 The corpus, the teachers' answers, the training data and the model live in
 `lemmesee/corpus/round-1c/`, which git ignores. Training runs offline in

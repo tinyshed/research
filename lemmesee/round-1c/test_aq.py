@@ -70,6 +70,14 @@ class Chinook(unittest.TestCase):
         # all but revenue by genre month by month: 25 genres are too many to split by
         self.assertEqual(sum(said), len(said) - 1, said)
 
+    def test_tracks_are_named_and_invoices_are_not(self):
+        s = chinook()
+        line, track, invoice = table(s, "invoice_line"), table(s, "track"), table(s, "invoice")
+        kinds = {(q.by.t, q.by.kind) for q in generate(s) if q.base == line.t and q.by and q.by.c == -1}
+        self.assertIn((track.t, "label"), kinds)
+        self.assertIn((invoice.t, "key"), kinds)
+        self.assertNotIn((invoice.t, "label"), kinds)
+
     def test_the_five_never_repeats_a_time_or_a_breakdown(self):
         s = chinook()
         qs = [q for q in generate(s) if rank.veto(s, q) is None]
