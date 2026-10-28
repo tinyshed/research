@@ -1,0 +1,1854 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: yelp ===
+Yelp's businesses with their categories, hours and attributes, its users, their reviews, tips and check-ins, as CTU serves it. A fixture of round 1e.
+
+  panel yelp-3-01
+    title: rows of Users by Users.user_review_count
+    rows (4):
+      Low | 45966
+      Medium | 15907
+      High | 6187
+      Uber | 2757
+
+  panel yelp-3-02
+    title: rows of Users_Compliments by Users_Compliments.number_of_compliments
+    rows (4):
+      Low | 81083
+      Medium | 11765
+      High | 3925
+      Uber | 2037
+
+  panel yelp-3-03
+    title: rows of Users by Users.user_yelping_since_year
+    rows (11):
+      2004-01-01 | 18
+      2005-01-01 | 178
+      2006-01-01 | 855
+      2007-01-01 | 2345
+      2008-01-01 | 4561
+      2009-01-01 | 7933
+      2010-01-01 | 12460
+      2011-01-01 | 16564
+      2012-01-01 | 14114
+      2013-01-01 | 11243
+      2014-01-01 | 546
+
+  panel yelp-3-04
+    title: rows of Reviews by Reviews.review_votes_cool
+    rows (5):
+      None | 212244
+      Low | 108765
+      Medium | 1710
+      High | 172
+      Uber | 15
+
+  panel yelp-3-05
+    title: average of Reviews.review_stars by Reviews.review_votes_cool
+    rows (5):
+      Uber | 4.2
+      High | 4.127906976744186
+      Medium | 4.053801169590643
+      Low | 3.8834551556107204
+      None | 3.7255234541376905
+
+  panel yelp-3-06
+    title: rows of Checkins by Checkins.label_time_1
+    rows (4):
+      None | 77696
+      Low | 2304
+      Medium | 36
+      High | 2
+
+  panel yelp-3-07
+    title: rows of Business_Attributes by Attributes.attribute_name the twelve most
+    rows (12):
+      Accepts Credit Cards | 10770
+      Price Range | 9805
+      parking_street | 9254
+      parking_garage | 9254
+      parking_lot | 9254
+      parking_valet | 9254
+      parking_validated | 9254
+      Good for Kids | 5761
+      Wheelchair Accessible | 5590
+      Outdoor Seating | 5327
+      Good For Groups | 4932
+      Attire | 4843
+
+  panel yelp-3-08
+    title: rows of Checkins by Checkins.label_time_7
+    rows (5):
+      None | 69326
+      Low | 10206
+      Medium | 472
+      High | 26
+      Uber | 8
+
+  panel yelp-3-09
+    title: rows of Checkins by Checkins.label_time_6
+    rows (5):
+      None | 73110
+      Low | 6649
+      Medium | 258
+      High | 16
+      Uber | 5
+
+  panel yelp-3-10
+    title: rows of Checkins by Checkins.label_time_2
+    rows (3):
+      None | 78813
+      Low | 1217
+      Medium | 8
+
+  panel yelp-3-11
+    title: average of Reviews.review_stars by Reviews.review_votes_useful
+    rows (5):
+      High | 3.867219917012448
+      None | 3.8637389930006774
+      Medium | 3.8307101727447215
+      Uber | 3.8181818181818183
+      Low | 3.7059993390458654
+
+  panel yelp-3-12
+    title: rows of Reviews by Reviews.review_votes_useful
+    rows (5):
+      Low | 169452
+      None | 150586
+      Medium | 2605
+      High | 241
+      Uber | 22
+
+  panel yelp-3-13
+    title: average of Reviews.review_stars by Reviews.review_votes_funny
+    rows (5):
+      None | 3.8421986639681247
+      Uber | 3.7142857142857144
+      Medium | 3.643949930458971
+      Low | 3.6114153900751167
+      High | 3.5846774193548385
+
+  panel yelp-3-14
+    title: rows of Business_Attributes per Attributes
+    rows (42):
+      1 | 1
+      3 | 5
+      16 | 1
+      26 | 1
+      37 | 7
+      40 | 8
+      71 | 1
+      156 | 1
+      174 | 1
+      264 | 1
+      346 | 2
+      371 | 1
+      … 30 more rows
+
+  panel yelp-3-15
+    title: rows of Reviews by Reviews.review_length
+    rows (3):
+      Medium | 222713
+      Long | 65607
+      Short | 34586
+
+  panel yelp-3-16
+    title: rows of Checkins by Days.day_of_week
+    rows (7):
+      Sunday | 11434
+      Monday | 11434
+      Tuesday | 11434
+      Wednesday | 11434
+      Thursday | 11434
+      Friday | 11434
+      Saturday | 11434
+
+  panel yelp-3-17
+    title: rows of Checkins by Checkins.label_time_5
+    rows (5):
+      None | 76496
+      Low | 3416
+      Medium | 109
+      High | 14
+      Uber | 3
+
+  panel yelp-3-18
+    title: rows of Checkins by Days.day_of_week the twelve most
+    rows (7):
+      Sunday | 11434
+      Monday | 11434
+      Tuesday | 11434
+      Wednesday | 11434
+      Thursday | 11434
+      Friday | 11434
+      Saturday | 11434
+
+  panel yelp-3-19
+    title: rows of Users by Users.user_votes_cool
+    rows (5):
+      Low | 30413
+      None | 27747
+      Medium | 7470
+      High | 3161
+      Uber | 2026
+
+  panel yelp-3-20
+    title: average of Reviews.review_stars by Reviews.review_length
+    rows (3):
+      Short | 4.0471867229514835
+      Medium | 3.8213126310543166
+      Long | 3.5023244470864388
+
+  panel yelp-3-21
+    title: rows of Business by Business.state
+    rows (3):
+      AZ | 15582
+      CA | 2
+      SC | 1
+
+  panel yelp-3-22
+    title: rows of Checkins by Checkins.label_time_0
+    rows (4):
+      None | 76261
+      Low | 3626
+      Medium | 142
+      High | 9
+
+  panel yelp-3-23
+    title: rows of Users_Compliments by Compliments.compliment_type the twelve most
+    rows (11):
+      note | 15187
+      plain | 15080
+      cool | 14341
+      writer | 10684
+      hot | 10431
+      funny | 9107
+      more | 8183
+      photos | 5267
+      cute | 4513
+      profile | 3481
+      list | 2536
+
+  panel yelp-3-24
+    title: rows of Checkins by Checkins.label_time_4
+    rows (4):
+      None | 78412
+      Low | 1577
+      Medium | 42
+      High | 7
+
+  panel yelp-3-25
+    title: rows of Checkins by Checkins.label_time_3
+    rows (3):
+      None | 79225
+      Low | 802
+      Medium | 11
+
+  panel yelp-3-26
+    title: rows of Users by Users.user_votes_useful
+    rows (5):
+      Low | 34194
+      Medium | 14800
+      None | 12107
+      High | 6026
+      Uber | 3690
+
+  panel yelp-3-27
+    title: rows of Reviews by Users (by key) the twelve most
+    rows (12):
+      23524 | 639
+      11021 | 584
+      6133 | 544
+      34916 | 519
+      4732 | 486
+      58546 | 479
+      30855 | 453
+      70465 | 447
+      1284 | 440
+      32690 | 429
+      33306 | 422
+      2389 | 371
+
+  panel yelp-3-28
+    title: sum of Tips.likes by Tips.tip_length
+    rows (3):
+      Medium | 582
+      Long | 127
+      Short | 55
+
+  panel yelp-3-29
+    title: rows of Tips by Tips.tip_length
+    rows (3):
+      Medium | 66302
+      Short | 16019
+      Long | 4836
+
+  panel yelp-3-30
+    title: average of Business.stars by Business.state
+    rows (3):
+      SC | 4.5
+      AZ | 3.675105891413169
+      CA | 3.5
+
+  panel yelp-3-31
+    title: rows of Reviews by Reviews.review_votes_funny
+    rows (5):
+      None | 236671
+      Low | 84535
+      Medium | 1438
+      High | 248
+      Uber | 14
+
+  panel yelp-3-32
+    title: rows of Checkins by Business (by key) the twelve most
+    rows (12):
+      1 | 7
+      2 | 7
+      3 | 7
+      5 | 7
+      6 | 7
+      7 | 7
+      8 | 7
+      9 | 7
+      10 | 7
+      11 | 7
+      13 | 7
+      15 | 7
+
+  panel yelp-3-33
+    title: rows of Users by Users.user_votes_funny
+    rows (5):
+      None | 29808
+      Low | 28935
+      Medium | 7299
+      High | 2962
+      Uber | 1813
+
+  panel yelp-3-34
+    title: rows of Users by Users.user_fans
+    rows (5):
+      None | 54342
+      Low | 14547
+      Medium | 1618
+      High | 256
+      Uber | 54
+
+
+=== database: telstra ===
+A telecom's network faults: locations, event types, resources, severity and logged features, as CTU serves it. A fixture of round 1e.
+
+  panel telstra-3-01
+    title: rows of log_feature by target.location the twelve most
+    rows (12):
+      location 469 | 20
+      location 892 | 20
+      location 471 | 19
+      location 469 | 18
+      location 505 | 18
+      location 495 | 18
+      location 431 | 18
+      location 505 | 18
+      location 469 | 18
+      location 213 | 18
+      location 471 | 18
+      location 505 | 18
+
+  panel telstra-3-02
+    title: average of log_feature.volume by target.location the twelve most
+    rows (12):
+      location 812 | 502.5000
+      location 619 | 412.2500
+      location 812 | 407.3333
+      location 12 | 402.5000
+      location 1048 | 372.6667
+      location 619 | 366.2500
+      location 1048 | 361.6667
+      location 1048 | 361.3333
+      location 1048 | 347.0000
+      location 963 | 345.3333
+      location 91 | 340.0000
+      location 709 | 333.2500
+
+  panel telstra-3-03
+    title: rows of log_feature per target
+    rows (20):
+      1 | 2490
+      2 | 7856
+      3 | 1861
+      4 | 2976
+      5 | 809
+      6 | 1391
+      7 | 319
+      8 | 399
+      9 | 99
+      10 | 144
+      11 | 43
+      12 | 46
+      … 8 more rows
+
+  panel telstra-3-04
+    title: rows of resource_type per target
+    rows (5):
+      1 | 16421
+      2 | 1814
+      3 | 257
+      4 | 44
+      5 | 16
+
+  panel telstra-3-05
+    title: rows of severity_type by severity_type.severity_type
+    rows (5):
+      severity_type 2 | 8737
+      severity_type 1 | 8728
+      severity_type 4 | 1014
+      severity_type 5 | 65
+      severity_type 3 | 8
+
+  panel telstra-3-06
+    title: largest tables, estimated rows
+    rows (5):
+      log_feature | 59088
+      event_type | 30821
+      resource_type | 20741
+      severity_type | 18522
+      target | 17700
+
+  panel telstra-3-07
+    title: rows of severity_type per target
+    rows (1):
+      1 | 18552
+
+  panel telstra-3-08
+    title: rows of event_type per target
+    rows (11):
+      1 | 8015
+      2 | 8873
+      3 | 1375
+      4 | 222
+      5 | 34
+      6 | 23
+      7 | 2
+      8 | 2
+      9 | 3
+      10 | 2
+      11 | 1
+
+  panel telstra-3-09
+    title: sum of log_feature.volume by target.location the twelve most
+    rows (12):
+      location 619 | 1649
+      location 899 | 1586
+      location 619 | 1465
+      location 709 | 1333
+      location 812 | 1222
+      location 619 | 1155
+      location 1048 | 1118
+      location 1048 | 1085
+      location 1048 | 1084
+      location 1031 | 1053
+      location 1048 | 1041
+      location 963 | 1036
+
+  panel telstra-3-10
+    title: rows of event_type by target.location the twelve most
+    rows (12):
+      location 892 | 11
+      location 892 | 10
+      location 899 | 10
+      location 893 | 9
+      location 898 | 9
+      location 897 | 9
+      location 893 | 8
+      location 641 | 8
+      location 895 | 7
+      location 638 | 7
+      location 13 | 6
+      location 1095 | 6
+
+
+=== database: flexibee ===
+An accounting system's issued and received invoices and its stock items, as CTU serves it. A fixture of round 1e.
+
+  panel flexibee-3-01
+    title: rows of issued-invoices by issued-invoices.Zodpovedna_osoba
+    rows (10):
+      user14 | 11631
+      ∅ | 7596
+      user20 | 3474
+      user11 | 689
+      user19 | 53
+      user5 | 48
+      user7 | 32
+      user21 | 9
+      user22 | 4
+      user4 | 2
+
+  panel flexibee-3-02
+    title: rows of received-invoices by received-invoices.Zamek
+    rows (2):
+      Zamknuto | 2152
+      Otevřeno | 259
+
+  panel flexibee-3-03
+    title: rows of issued-invoices by issued-invoices.Stredisko
+    rows (4):
+      C | 23535
+      PLZEŇ | 1
+      JABLONEC | 1
+      LIBEREC | 1
+
+  panel flexibee-3-04
+    title: rows of issued-invoices by issued-invoices.Forma_uhrady
+    rows (7):
+      PREVOD | 13196
+      DOBIRKA | 9055
+      HOTOVE | 986
+      NESPECIFIKOVANO | 185
+      ∅ | 112
+      ZAPOCET | 3
+      SLOZENKA | 1
+
+  panel flexibee-3-05
+    title: rows of received-invoices by received-invoices.radky_DPH
+    rows (5):
+      40-41 | 2113
+      000P | 243
+      03-04, 43-44 | 44
+      10-11, 43-44 | 7
+      05-06, 43-44 | 4
+
+  panel flexibee-3-06
+    title: rows of issued-invoices by issued-invoices.Stat
+    rows (3):
+      CZ | 23320
+      ∅ | 194
+      SK | 24
+
+  panel flexibee-3-07
+    title: rows of received-invoices by received-invoices.Zbyva_uhradit_Kc the twelve most
+    rows (12):
+      0.00 | 2312
+      10890.00 | 6
+      2165.90 | 6
+      8470.00 | 6
+      24503.00 | 2
+      820.00 | 2
+      250.00 | 2
+      4021.00 | 2
+      783.00 | 2
+      6655.00 | 2
+      156.00 | 2
+      303.00 | 2
+
+  panel flexibee-3-08
+    title: rows of received-invoices by received-invoices.cis_rada
+    rows (5):
+      FAKTURA REŽIE | 1692
+      FAKTURA MATERIÁL | 437
+      FAKTURA NP ZBOŽÍ | 192
+      ZÁLOHA-PF | 58
+      ZÁVAZKY 2009 | 32
+
+  panel flexibee-3-09
+    title: rows of issued-invoices by issued-invoices.Typ_faktury
+    rows (19):
+      FAKTURA -MORAVA | 5064
+      FAKTURA - JAKUB | 4269
+      FAKTURA - INTERNET | 3581
+      FAKTURA - VÝROBKY | 3459
+      FAKTURA - PATŘIČNÁ | 2526
+      FAKT.- PATŘIČNÁ GLOB | 1040
+      FAKT.- PRAŽÁK  GLOB | 955
+      POHLEDÁVKY ROKU 2009 | 752
+      DOBROPIS | 553
+      FAKT.- PATŘIČNÁ SPAR | 335
+      FAKTURA - PRAŽ3000 | 318
+      FAKT.-SPAR | 226
+      … 7 more rows
+
+  panel flexibee-3-10
+    title: largest tables, estimated rows
+    rows (3):
+      stock-items | 78515
+      issued-invoices | 21987
+      received-invoices | 2129
+
+  panel flexibee-3-11
+    title: rows of received-invoices by received-invoices.Typ_faktury
+    rows (8):
+      FAKTURA REŽIE | 1592
+      FAKTURA MATERIÁL | 437
+      FAKTURA NÁHRADNÍ PLN | 192
+      ZDD | 67
+      ZÁLOHA | 60
+      ZÁVAZKY ROKU 2009 | 31
+      DOBROPIS | 31
+      ZÁVAZKY ROKU 2008 | 1
+
+  panel flexibee-3-12
+    title: rows of received-invoices by received-invoices.Zodpovedna_osoba
+    rows (4):
+      user11 | 1299
+      ∅ | 771
+      user22 | 323
+      user17 | 18
+
+  panel flexibee-3-13
+    title: rows of received-invoices by received-invoices.DPH_snizena_Kc the twelve most
+    rows (12):
+      0.00 | 2297
+      55.00 | 25
+      22.00 | 12
+      118.66 | 5
+      224.29 | 3
+      24.10 | 3
+      255.20 | 2
+      7.20 | 2
+      25.40 | 2
+      242.45 | 2
+      536.41 | 1
+      11.60 | 1
+
+  panel flexibee-3-14
+    title: rows of received-invoices by received-invoices.Forma_uhrady
+    rows (6):
+      ∅ | 1758
+      HOTOVE | 343
+      PREVOD | 255
+      ZAPOCET | 35
+      DOBIRKA | 19
+      KARTA | 1
+
+  panel flexibee-3-15
+    title: rows of received-invoices by received-invoices.Bankovni_ucet
+    rows (2):
+      $SKPHYUGZIPOOMTC | 2394
+      $XUIKTZBKFWUNILUAK | 17
+
+  panel flexibee-3-16
+    title: rows of received-invoices by received-invoices.Zaklad_DPH_sniz_Kc the twelve most
+    rows (12):
+      0.00 | 2297
+      365.00 | 25
+      220.00 | 12
+      791.34 | 5
+      1495.71 | 3
+      241.00 | 3
+      1701.80 | 2
+      47.80 | 2
+      253.60 | 2
+      2424.50 | 2
+      5379.93 | 1
+      115.40 | 1
+
+  panel flexibee-3-17
+    title: rows of issued-invoices by issued-invoices.Mena
+    rows (2):
+      CZK | 23517
+      EUR | 21
+
+  panel flexibee-3-18
+    title: rows of received-invoices by received-invoices.Datprijeti
+    rows (72):
+      2009-12-01 | 32
+      2010-01-01 | 12
+      2010-02-01 | 14
+      2010-03-01 | 17
+      2010-04-01 | 20
+      2010-05-01 | 14
+      2010-06-01 | 35
+      2010-07-01 | 16
+      2010-08-01 | 20
+      2010-09-01 | 21
+      2010-10-01 | 19
+      2010-11-01 | 36
+      … 60 more rows
+
+  panel flexibee-3-19
+    title: rows of issued-invoices by issued-invoices.radky_DPH
+    rows (4):
+      01-02 | 22612
+      000U | 908
+      20 | 9
+      01-02 EU-N | 9
+
+  panel flexibee-3-20
+    title: rows of received-invoices by received-invoices.Stav_uhrady
+    rows (3):
+      Uhrazeno | 2312
+      ∅ | 88
+      Částečně uhrazeno | 11
+
+  panel flexibee-3-21
+    title: rows of received-invoices by received-invoices.Uzivatel
+    rows (6):
+      user11 | 1935
+      user22 | 323
+      user8 | 103
+      user3 | 42
+      user7 | 6
+      user14 | 2
+
+  panel flexibee-3-22
+    title: rows of received-invoices by received-invoices.Datum_zdanpl
+    rows (72):
+      2009-12-01 | 32
+      2010-01-01 | 12
+      2010-02-01 | 12
+      2010-03-01 | 19
+      2010-04-01 | 20
+      2010-05-01 | 14
+      2010-06-01 | 35
+      2010-07-01 | 16
+      2010-08-01 | 20
+      2010-09-01 | 19
+      2010-10-01 | 21
+      2010-11-01 | 35
+      … 60 more rows
+
+  panel flexibee-3-23
+    title: rows of received-invoices by received-invoices.Mena
+    rows (4):
+      CZK | 2365
+      USD | 32
+      EUR | 11
+      PLN | 3
+
+  panel flexibee-3-24
+    title: rows of received-invoices by received-invoices.Predpis_zauctovani
+    rows (12):
+      ∅ | 682
+      NÁKUP SLUŽBY | 594
+      NÁKUP SPOTŘ. MATER. | 319
+      PROVOZNÍ REŽIE | 223
+      NÁKUP ZBOŽÍ B | 202
+      NÁJEMNÉ | 111
+      NÁKUP MATERIÁLU B | 106
+      ZÁLOHA POSKYTNUTÁ | 97
+      POČÁTEK FP 2010 | 32
+      NÁKUP ZBOŽÍ A | 25
+      NÁKUP MATERIÁLU A | 19
+      CESTOVNÉ | 1
+
+  panel flexibee-3-25
+    title: rows of issued-invoices by issued-invoices.Stav_uhrady
+    rows (4):
+      Uhrazeno | 23261
+      ∅ | 256
+      Uhrazeno (ručně) | 15
+      Částečně uhrazeno | 6
+
+  panel flexibee-3-26
+    title: rows of received-invoices by received-invoices.Stat
+    rows (4):
+      CZ | 2351
+      PL | 46
+      ∅ | 10
+      SK | 4
+
+  panel flexibee-3-27
+    title: rows of received-invoices by received-invoices.Splatnost
+    rows (9):
+      2001-01-01 | 1
+      2009-01-01 | 24
+      2010-01-01 | 250
+      2011-01-01 | 457
+      2012-01-01 | 523
+      2013-01-01 | 452
+      2014-01-01 | 432
+      2015-01-01 | 270
+      2033-01-01 | 1
+
+  panel flexibee-3-28
+    title: rows of received-invoices by received-invoices.Datum_zauct
+    rows (72):
+      2009-12-01 | 32
+      2010-01-01 | 12
+      2010-02-01 | 14
+      2010-03-01 | 17
+      2010-04-01 | 20
+      2010-05-01 | 14
+      2010-06-01 | 35
+      2010-07-01 | 16
+      2010-08-01 | 20
+      2010-09-01 | 21
+      2010-10-01 | 19
+      2010-11-01 | 36
+      … 60 more rows
+
+  panel flexibee-3-29
+    title: sum of received-invoices.Celkem_Kc by received-invoices.Datprijeti
+    rows (72):
+      2009-12-01 | 500651.71
+      2010-01-01 | 312125.66
+      2010-02-01 | 482822.34
+      2010-03-01 | 398228.43
+      2010-04-01 | 349111.00
+      2010-05-01 | 373819.86
+      2010-06-01 | 830408.06
+      2010-07-01 | 260846.97
+      2010-08-01 | 514514.83
+      2010-09-01 | 393584.75
+      2010-10-01 | 307562.80
+      2010-11-01 | 746669.62
+      … 60 more rows
+
+  panel flexibee-3-30
+    title: rows of stock-items by stock-items.Typ_pohybu
+    rows (2):
+      Výdej | 57617
+      Příjem | 23772
+
+  panel flexibee-3-31
+    title: rows of issued-invoices by issued-invoices.Popis the twelve most
+    rows (12):
+      $EyqW6Lq0kkMt5VRM876Nj47Sp0g2ujnRFAxsyB2 | 4719
+      $mkD9NyPWVJabltudWRMWmMbobB7yAN9oQ01 | 3968
+      $jNDN7+t8YAr4rlEm/xiUnAvHpT90RSR | 3812
+      $0NV2UklsC8tJh4Q9TkNFuHRR0nplRzfwtKZ | 3638
+      $hKQr7Pux5JOB8A6h/JSz5VE | 3200
+      $P6rpxImUNsme7Mla80TGLsSuYklPD | 1134
+      $M5dfQGknGUWZnHPKeDk | 748
+      ∅ | 593
+      $m3Vqd9DemMiAtzlLjAEHgYZiJkYxL9SVg2c | 336
+      $iN7TBYEWBxIzUXGliFT2JxchfOZH6DOgrcMWSjj | 308
+      $q/U1hLa7NjOcFIwld6VwHOpRtmaHAAVSrh | 304
+      $9BQdLr3/UreuK/oZdwOsCDoWZsJe | 281
+
+
+=== database: imdbfull ===
+Movies from IMDb with their actors, directors, writers, producers, genres, ratings and business figures, as CTU serves it. A fixture of round 1e.
+
+  panel imdbfull-3-01
+    title: sum of runningtimes.time1 by movies (by key) the twelve most
+    rows (12):
+      1972884 | 1378
+      1763465 | 1313
+      2109093 | 1290
+      1772934 | 1133
+      2170625 | 1037
+      1716452 | 928
+      2365844 | 913
+      1847080 | 877
+      2024833 | 850
+      1786566 | 835
+      1895286 | 818
+      2115628 | 809
+
+  panel imdbfull-3-02
+    title: average of ratings.votes by movies (by key) the twelve most
+    rows (12):
+      2477653 | 998823.0000
+      2280997 | 775943.0000
+      1936800 | 759494.0000
+      2457464 | 719107.0000
+      2437277 | 706695.0000
+      1947355 | 659495.0000
+      2328882 | 581528.0000
+      1968813 | 558053.0000
+      2371726 | 547422.0000
+      1721568 | 520963.0000
+      2325897 | 509937.0000
+      2324123 | 509427.0000
+
+  panel imdbfull-3-03
+    title: rows of business by movies (by key) the twelve most
+    rows (12):
+      1672052 | 1
+      1672111 | 1
+      1672580 | 1
+      1672716 | 1
+      1673848 | 1
+      1674388 | 1
+      1674737 | 1
+      1677011 | 1
+      1677258 | 1
+      1677346 | 1
+      1677472 | 1
+      1677516 | 1
+
+  panel imdbfull-3-04
+    title: rows of ratings per movies
+    rows (1):
+      1 | 3773
+
+  panel imdbfull-3-05
+    title: rows of movies2actors per actors
+    rows (32):
+      1 | 64365
+      2 | 10171
+      3 | 3942
+      4 | 2082
+      5 | 1133
+      6 | 808
+      7 | 531
+      8 | 402
+      9 | 275
+      10 | 206
+      11 | 162
+      12 | 127
+      … 20 more rows
+
+  panel imdbfull-3-06
+    title: rows of movies2editors per movies
+    rows (7):
+      1 | 2872
+      2 | 655
+      3 | 130
+      4 | 34
+      5 | 8
+      6 | 3
+      7 | 1
+
+  panel imdbfull-3-07
+    title: rows of genres by movies (by key) the twelve most
+    rows (12):
+      1980149 | 10
+      1757423 | 8
+      2464994 | 7
+      2285997 | 7
+      2472465 | 7
+      2460410 | 7
+      2321444 | 7
+      2438827 | 7
+      2265771 | 7
+      2398900 | 7
+      1713183 | 7
+      2445287 | 7
+
+  panel imdbfull-3-08
+    title: sum of ratings.votes by movies (by key) the twelve most
+    rows (12):
+      2477653 | 998823
+      2280997 | 775943
+      1936800 | 759494
+      2457464 | 719107
+      2437277 | 706695
+      1947355 | 659495
+      2328882 | 581528
+      1968813 | 558053
+      2371726 | 547422
+      1721568 | 520963
+      2325897 | 509937
+      2324123 | 509427
+
+  panel imdbfull-3-09
+    title: sum of movies2actors.leading by movies (by key) the twelve most
+    rows (12):
+      2153014 | 47021
+      2164624 | 35573
+      2446644 | 27730
+      2515573 | 18876
+      1780022 | 15931
+      2073054 | 15753
+      2486285 | 14250
+      2531770 | 14028
+      2154663 | 13968
+      2364486 | 13521
+      1732658 | 12926
+      1899769 | 10887
+
+  panel imdbfull-3-10
+    title: rows of runningtimes by movies (by key) the twelve most
+    rows (12):
+      1786566 | 9
+      2216642 | 8
+      2170625 | 8
+      2472807 | 7
+      2466743 | 7
+      1716452 | 7
+      1790530 | 7
+      1710622 | 7
+      2134924 | 6
+      2109093 | 6
+      1772934 | 6
+      2145603 | 6
+
+  panel imdbfull-3-11
+    title: sum of movies2actors.leading by actors.sex
+    rows (2):
+      M | 2386946
+      F | 1088601
+
+  panel imdbfull-3-12
+    title: rows of movies2actors by movies (by key) the twelve most
+    rows (12):
+      2153014 | 332
+      2164624 | 268
+      2446644 | 236
+      2044913 | 221
+      2515573 | 192
+      1780022 | 179
+      2073054 | 177
+      2364486 | 169
+      2486285 | 169
+      2531770 | 167
+      2154663 | 166
+      1899769 | 161
+
+  panel imdbfull-3-13
+    title: rows of distributors by movies (by key) the twelve most
+    rows (12):
+      2210196 | 90
+      1805799 | 70
+      1821599 | 70
+      2001271 | 67
+      2401750 | 65
+      1776063 | 63
+      2254327 | 62
+      1890357 | 61
+      1728889 | 61
+      1972324 | 61
+      1919853 | 58
+      1720040 | 58
+
+  panel imdbfull-3-14
+    title: rows of movies2actors by actors.sex
+    rows (2):
+      M | 95279
+      F | 43070
+
+  panel imdbfull-3-15
+    title: rows of movies2directors by movies (by key) the twelve most
+    rows (12):
+      1930793 | 11
+      1930810 | 8
+      1895159 | 7
+      2261598 | 7
+      1894619 | 7
+      1753348 | 7
+      2357543 | 6
+      1757423 | 6
+      2216640 | 5
+      2473798 | 5
+      2452768 | 5
+      2151740 | 5
+
+  panel imdbfull-3-16
+    title: average of movies2actors.leading by movies (by key) the twelve most
+    rows (12):
+      2153014 | 141.6295
+      2164624 | 132.7351
+      2446644 | 117.5000
+      2515573 | 98.3125
+      2073054 | 89.0000
+      1780022 | 89.0000
+      2486285 | 84.3195
+      2154663 | 84.1446
+      2531770 | 84.0000
+      1732658 | 81.2956
+      2364486 | 80.0059
+      1959117 | 74.0000
+
+  panel imdbfull-3-17
+    title: rows of prodcompanies by movies (by key) the twelve most
+    rows (12):
+      1787911 | 29
+      1847048 | 26
+      1809149 | 25
+      2172541 | 19
+      2091255 | 19
+      1931497 | 19
+      2148281 | 15
+      2383350 | 15
+      2321649 | 15
+      2023205 | 15
+      1963756 | 14
+      2266691 | 14
+
+  panel imdbfull-3-18
+    title: rows of movies2producers by movies (by key) the twelve most
+    rows (12):
+      2365142 | 19
+      2217718 | 18
+      1736794 | 17
+      1784129 | 17
+      1740752 | 17
+      1979883 | 16
+      2266691 | 16
+      2303621 | 16
+      1964074 | 15
+      1759448 | 15
+      2325153 | 15
+      1847048 | 15
+
+  panel imdbfull-3-19
+    title: rows of ratings by movies (by key) the twelve most
+    rows (12):
+      1672052 | 1
+      1672111 | 1
+      1672580 | 1
+      1672716 | 1
+      1673647 | 1
+      1673658 | 1
+      1673848 | 1
+      1674388 | 1
+      1674737 | 1
+      1677011 | 1
+      1677258 | 1
+      1677346 | 1
+
+  panel imdbfull-3-20
+    title: rows of actors by actors.sex
+    rows (2):
+      M | 65794
+      F | 32896
+
+  panel imdbfull-3-21
+    title: largest tables, estimated rows
+    rows (10):
+      movies2actors | 136036
+      actors | 98779
+      distributors | 52963
+      movies2producers | 16921
+      genres | 9940
+      movies2writers | 9863
+      prodcompanies | 9843
+      producers | 8312
+      writers | 5559
+      runningtimes | 5086
+
+  panel imdbfull-3-22
+    title: rows of movies2editors by editors.name the twelve most
+    rows (12):
+      Kahn, Michael (I) | 22
+      Schmidt, Arthur (I) | 18
+      Marks, Richard (I) | 17
+      Hanley, Daniel P. | 16
+      Zimmerman, Don (I) | 16
+      Goldblatt, Mark | 15
+      Noble, Thom | 15
+      Hill, Mike (I) | 15
+      Hirsch, Paul (I) | 15
+      Urioste, Frank J. | 15
+      Greenberg, Gerald B. | 14
+      Steinkamp, William (I) | 14
+
+  panel imdbfull-3-23
+    title: rows of countries by movies (by key) the twelve most
+    rows (12):
+      1847048 | 13
+      1987547 | 7
+      1787911 | 7
+      1838411 | 6
+      2023205 | 6
+      2532030 | 6
+      1792523 | 5
+      1774349 | 5
+      1809431 | 5
+      1794215 | 5
+      1688565 | 5
+      1724193 | 5
+
+  panel imdbfull-3-24
+    title: rows of movies2producers by producers.name the twelve most
+    rows (12):
+      Weinstein, Harvey | 69
+      Weinstein, Bob | 68
+      Milchan, Arnon | 47
+      Kennedy, Kathleen (I) | 36
+      Spielberg, Steven | 31
+      Marshall, Frank (I) | 30
+      Disney, Walt | 29
+      Rudin, Scott | 29
+      Robinson, James G. | 28
+      Birnbaum, Roger | 28
+      Grazer, Brian | 26
+      Field, Ted (I) | 26
+
+  panel imdbfull-3-25
+    title: rows of movies2directors by directors.name the twelve most
+    rows (12):
+      Hitchcock, Alfred (I) | 52
+      Allen, Woody | 20
+      Lee, Spike | 14
+      Spielberg, Steven | 14
+      Levinson, Barry (I) | 13
+      Stevenson, Robert (I) | 13
+      Donner, Richard | 13
+      Howard, Ron (I) | 12
+      Eastwood, Clint | 12
+      Altman, Robert (I) | 12
+      Carpenter, John (I) | 12
+      Kubrick, Stanley (I) | 12
+
+  panel imdbfull-3-26
+    title: average of movies2actors.leading by actors.sex
+    rows (2):
+      F | 25.2752
+      M | 25.0522
+
+  panel imdbfull-3-27
+    title: rows of language by movies (by key) the twelve most
+    rows (12):
+      2168361 | 7
+      2288828 | 6
+      2251761 | 6
+      2467141 | 6
+      2504469 | 6
+      1736794 | 6
+      2157118 | 5
+      2116072 | 5
+      2165832 | 5
+      1741487 | 5
+      1890522 | 5
+      1772934 | 5
+
+  panel imdbfull-3-28
+    title: rows of movies2actors per movies
+    rows (147):
+      1 | 20
+      2 | 23
+      3 | 14
+      4 | 25
+      5 | 24
+      6 | 29
+      7 | 28
+      8 | 42
+      9 | 52
+      10 | 78
+      11 | 69
+      12 | 72
+      … 135 more rows
+
+  panel imdbfull-3-29
+    title: rows of movies2directors by movies2directors.genre
+    rows (24):
+      Comedy | 1257
+      Drama | 946
+      Action | 575
+      Adventure | 342
+      Crime | 293
+      Horror | 210
+      Biography | 152
+      Documentary | 105
+      Animation | 104
+      Mystery | 22
+      Thriller | 21
+      Fantasy | 19
+      … 12 more rows
+
+  panel imdbfull-3-30
+    title: rows of movies2writers by movies (by key) the twelve most
+    rows (12):
+      2189721 | 32
+      2451456 | 29
+      2265771 | 28
+      1930793 | 25
+      2396330 | 25
+      2228704 | 23
+      1713183 | 21
+      2493444 | 20
+      2413457 | 19
+      1996275 | 18
+      2151740 | 16
+      1715025 | 15
+
+  panel imdbfull-3-31
+    title: rows of movies2writers by writers.name the twelve most
+    rows (12):
+      King, Stephen (I) | 33
+      Shakespeare, William (I) | 26
+      Hecht, Ben (I) | 21
+      Hughes, John (I) | 21
+      Allen, Woody | 20
+      Proft, Pat | 18
+      Mandel, Babaloo | 17
+      Ganz, Lowell | 17
+      Towne, Robert | 16
+      Mamet, David | 15
+      Fleming, Ian (I) | 15
+      Sayles, John (I) | 13
+
+  panel imdbfull-3-32
+    title: rows of movies2editors by movies (by key) the twelve most
+    rows (12):
+      2049321 | 7
+      1999634 | 6
+      2434795 | 6
+      1854166 | 6
+      2371787 | 5
+      2371726 | 5
+      1842584 | 5
+      2473215 | 5
+      2377877 | 5
+      2290136 | 5
+      1930810 | 5
+      1924959 | 5
+
+  panel imdbfull-3-33
+    title: average of runningtimes.time1 by movies (by key) the twelve most
+    rows (12):
+      2356460 | 298.0000
+      1930730 | 250.0000
+      1785251 | 233.3333
+      1972884 | 229.6667
+      1733566 | 225.3333
+      1847080 | 219.2500
+      2532030 | 219.0000
+      1763465 | 218.8333
+      2109093 | 215.0000
+      2231247 | 209.0000
+      1895286 | 204.5000
+      1885177 | 203.0000
+
+
+=== database: walmart ===
+A retailer's stores, sales of each item by day, and the weather at nearby stations, as CTU serves it. A fixture of round 1e.
+
+  panel walmart-3-01
+    title: average of train.units by station (by key) the twelve most
+    rows (12):
+      20 | 2.6040
+      19 | 1.7915
+      2 | 1.7435
+      3 | 1.7005
+      14 | 1.3405
+      6 | 1.2064
+      13 | 1.1669
+      9 | 1.0391
+      7 | 1.0180
+      18 | 0.9510
+      17 | 0.9202
+      10 | 0.7257
+
+  panel walmart-3-02
+    title: rows of key per station
+    rows (6):
+      1 | 9
+      2 | 4
+      3 | 3
+      4 | 2
+      5 | 1
+      6 | 1
+
+  panel walmart-3-03
+    title: sum of weather.tmin by weather.date
+    rows (34):
+      2012-01-01 | 18750
+      2012-02-01 | 19794
+      2012-03-01 | 27992
+      2012-04-01 | 29310
+      2012-05-01 | 35350
+      2012-06-01 | 37655
+      2012-07-01 | 41798
+      2012-08-01 | 40548
+      2012-09-01 | 35153
+      2012-10-01 | 29903
+      2012-11-01 | 22686
+      2012-12-01 | 20039
+      … 22 more rows
+
+  panel walmart-3-04
+    title: sum of weather.dewpoint by weather.date
+    rows (34):
+      2012-01-01 | 17271
+      2012-02-01 | 18100
+      2012-03-01 | 25805
+      2012-04-01 | 26803
+      2012-05-01 | 31202
+      2012-06-01 | 33493
+      2012-07-01 | 38124
+      2012-08-01 | 36933
+      2012-09-01 | 32520
+      2012-10-01 | 28121
+      2012-11-01 | 21022
+      2012-12-01 | 19163
+      … 22 more rows
+
+  panel walmart-3-05
+    title: rows of train by key (by key) the twelve most
+    rows (12):
+      37 | 112221
+      15 | 112221
+      25 | 112221
+      32 | 112221
+      40 | 112221
+      39 | 109113
+      36 | 107004
+      4 | 106560
+      24 | 106560
+      14 | 105672
+      45 | 105672
+      18 | 105117
+
+  panel walmart-3-06
+    title: sum of weather.tmax by weather.date
+    rows (34):
+      2012-01-01 | 31940
+      2012-02-01 | 30211
+      2012-03-01 | 40466
+      2012-04-01 | 41737
+      2012-05-01 | 47360
+      2012-06-01 | 49552
+      2012-07-01 | 54695
+      2012-08-01 | 53506
+      2012-09-01 | 47356
+      2012-10-01 | 41869
+      2012-11-01 | 35873
+      2012-12-01 | 31451
+      … 22 more rows
+
+  panel walmart-3-07
+    title: average of weather.tmax by weather.date
+    rows (34):
+      2012-01-01 | 54.2275
+      2012-02-01 | 54.8294
+      2012-03-01 | 68.7029
+      2012-04-01 | 73.2228
+      2012-05-01 | 80.5442
+      2012-06-01 | 86.9333
+      2012-07-01 | 93.0187
+      2012-08-01 | 90.8421
+      2012-09-01 | 83.2267
+      2012-10-01 | 71.4488
+      2012-11-01 | 62.9351
+      2012-12-01 | 54.6974
+      … 22 more rows
+
+  panel walmart-3-08
+    title: rows of train by train.date
+    rows (34):
+      2012-01-01 | 151404
+      2012-02-01 | 141636
+      2012-03-01 | 151404
+      2012-04-01 | 146520
+      2012-05-01 | 151404
+      2012-06-01 | 149850
+      2012-07-01 | 154845
+      2012-08-01 | 154845
+      2012-09-01 | 149850
+      2012-10-01 | 154845
+      2012-11-01 | 149850
+      2012-12-01 | 149850
+      … 22 more rows
+
+  panel walmart-3-09
+    title: largest tables, estimated rows
+    rows (4):
+      train | 4607680
+      weather | 21289
+      key | 45
+      station | 20
+
+  panel walmart-3-10
+    title: sum of weather.sealevel by weather.date
+    rows (34):
+      2012-01-01 | 16359.079986572266
+      2012-02-01 | 15580.470006942749
+      2012-03-01 | 16625.36998939514
+      2012-04-01 | 16129.840013504028
+      2012-05-01 | 15806.350008010864
+      2012-06-01 | 15393.45001411438
+      2012-07-01 | 16652.389989852905
+      2012-08-01 | 16409.200008392334
+      2012-09-01 | 16141.780004501343
+      2012-10-01 | 16459.849990844727
+      2012-11-01 | 16184.639999389648
+      2012-12-01 | 16361.000001907349
+      … 22 more rows
+
+  panel walmart-3-11
+    title: sum of weather.tavg by weather.date
+    rows (34):
+      2012-01-01 | 23643
+      2012-02-01 | 23459
+      2012-03-01 | 32023
+      2012-04-01 | 33269
+      2012-05-01 | 39100
+      2012-06-01 | 40856
+      2012-07-01 | 45651
+      2012-08-01 | 44195
+      2012-09-01 | 39105
+      2012-10-01 | 33836
+      2012-11-01 | 27336
+      2012-12-01 | 23948
+      … 22 more rows
+
+  panel walmart-3-12
+    title: average of train.units by train.date
+    rows (34):
+      2012-01-01 | 1.2136
+      2012-02-01 | 1.1810
+      2012-03-01 | 1.1030
+      2012-04-01 | 1.1093
+      2012-05-01 | 1.0630
+      2012-06-01 | 1.1594
+      2012-07-01 | 1.1187
+      2012-08-01 | 1.1442
+      2012-09-01 | 1.1060
+      2012-10-01 | 1.0542
+      2012-11-01 | 1.0597
+      2012-12-01 | 1.1548
+      … 22 more rows
+
+  panel walmart-3-13
+    title: sum of weather.resultspeed by weather.date
+    rows (34):
+      2012-01-01 | 3875.599996998906
+      2012-02-01 | 3534.0999966338277
+      2012-03-01 | 4399.799997419119
+      2012-04-01 | 4166.099986441433
+      2012-05-01 | 3701.1999986618757
+      2012-06-01 | 3533.600000552833
+      2012-07-01 | 3134.09999743104
+      2012-08-01 | 2882.8999974429607
+      2012-09-01 | 2783.700004644692
+      2012-10-01 | 3675.100010149181
+      2012-11-01 | 3303.9999975413084
+      2012-12-01 | 3740.900002270937
+      … 22 more rows
+
+  panel walmart-3-14
+    title: average of weather.depart by weather.date
+    rows (34):
+      2012-01-01 | 5.5216
+      2012-02-01 | 4.3027
+      2012-03-01 | 8.5833
+      2012-04-01 | 4.1487
+      2012-05-01 | 3.6918
+      2012-06-01 | 2.0186
+      2012-07-01 | 3.0360
+      2012-08-01 | 1.9420
+      2012-09-01 | 1.1889
+      2012-10-01 | 0.3548
+      2012-11-01 | 1.5148
+      2012-12-01 | 5.0372
+      … 22 more rows
+
+  panel walmart-3-15
+    title: rows of key by station (by key) the twelve most
+    rows (12):
+      17 | 6
+      13 | 5
+      12 | 4
+      14 | 4
+      3 | 3
+      7 | 3
+      10 | 3
+      6 | 2
+      9 | 2
+      11 | 2
+      16 | 2
+      20 | 1
+
+  panel walmart-3-16
+    title: average of weather.tavg by weather.date
+    rows (34):
+      2012-01-01 | 42.6000
+      2012-02-01 | 44.9406
+      2012-03-01 | 58.0127
+      2012-04-01 | 62.0690
+      2012-05-01 | 70.1975
+      2012-06-01 | 76.3664
+      2012-07-01 | 82.2541
+      2012-08-01 | 79.7744
+      2012-09-01 | 72.4167
+      2012-10-01 | 61.0758
+      2012-11-01 | 50.9050
+      2012-12-01 | 44.2662
+      … 22 more rows
+
+  panel walmart-3-17
+    title: sum of weather.cool by weather.date
+    rows (34):
+      2012-01-01 | 64
+      2012-02-01 | 246
+      2012-03-01 | 1224
+      2012-04-01 | 1963
+      2012-05-01 | 4128
+      2012-06-01 | 6502
+      2012-07-01 | 9581
+      2012-08-01 | 8195
+      2012-09-01 | 4949
+      2012-10-01 | 1878
+      2012-11-01 | 372
+      2012-12-01 | 237
+      … 22 more rows
+
+  panel walmart-3-18
+    title: sum of weather.preciptotal by weather.date
+    rows (34):
+      2012-01-01 | 50.390000116080046
+      2012-02-01 | 36.38000015169382
+      2012-03-01 | 73.61999960802495
+      2012-04-01 | 47.839999897405505
+      2012-05-01 | 86.01999964565039
+      2012-06-01 | 115.71000042930245
+      2012-07-01 | 48.96000015363097
+      2012-08-01 | 90.2299999780953
+      2012-09-01 | 70.69999959506094
+      2012-10-01 | 41.89999979734421
+      2012-11-01 | 12.220000080764294
+      2012-12-01 | 44.400000197812915
+      … 22 more rows
+
+  panel walmart-3-19
+    title: sum of train.units by station (by key) the twelve most
+    rows (12):
+      13 | 654765
+      17 | 580399
+      14 | 520798
+      3 | 517556
+      7 | 303733
+      20 | 271413
+      12 | 262684
+      6 | 247997
+      9 | 221448
+      10 | 217006
+      19 | 172604
+      2 | 165851
+
+  panel walmart-3-20
+    title: sum of weather.avgspeed by weather.date
+    rows (34):
+      2012-01-01 | 4807.699997663498
+      2012-02-01 | 4392.499991476536
+      2012-03-01 | 5180.000008404255
+      2012-04-01 | 5026.8000020980835
+      2012-05-01 | 4736.50000333786
+      2012-06-01 | 4478.200003027916
+      2012-07-01 | 3994.7000037431717
+      2012-08-01 | 3845.5000005960464
+      2012-09-01 | 3623.300007916987
+      2012-10-01 | 4524.099986255169
+      2012-11-01 | 3974.70000295341
+      2012-12-01 | 4547.700012981892
+      … 22 more rows
+
+  panel walmart-3-21
+    title: sum of train.units by key (by key) the twelve most
+    rows (12):
+      33 | 292616
+      17 | 271413
+      25 | 185025
+      2 | 173643
+      30 | 172604
+      16 | 165851
+      15 | 160554
+      38 | 148750
+      13 | 143602
+      34 | 141546
+      31 | 136907
+      4 | 131278
+
+  panel walmart-3-22
+    title: sum of train.units by train.date
+    rows (34):
+      2012-01-01 | 183746
+      2012-02-01 | 167272
+      2012-03-01 | 166997
+      2012-04-01 | 162541
+      2012-05-01 | 160950
+      2012-06-01 | 173730
+      2012-07-01 | 173226
+      2012-08-01 | 177173
+      2012-09-01 | 165728
+      2012-10-01 | 163237
+      2012-11-01 | 158790
+      2012-12-01 | 173054
+      … 22 more rows
+
+  panel walmart-3-23
+    title: rows of train by station (by key) the twelve most
+    rows (12):
+      17 | 630702
+      13 | 561105
+      12 | 394272
+      14 | 388500
+      3 | 304362
+      10 | 299034
+      7 | 298368
+      9 | 213120
+      16 | 211344
+      6 | 205572
+      11 | 202242
+      8 | 109113
+
+  panel walmart-3-24
+    title: sum of weather.stnpressure by weather.date
+    rows (34):
+      2012-01-01 | 17113.670013427734
+      2012-02-01 | 16095.800003051758
+      2012-03-01 | 17176.329988479614
+      2012-04-01 | 16579.010005950928
+      2012-05-01 | 17141.510007858276
+      2012-06-01 | 16568.669998168945
+      2012-07-01 | 17067.869983673096
+      2012-08-01 | 17064.66999053955
+      2012-09-01 | 16595.860006332397
+      2012-10-01 | 17130.530027389526
+      2012-11-01 | 16660.46000099182
+      2012-12-01 | 16764.71999168396
+      … 22 more rows
+
+  panel walmart-3-25
+    title: sum of weather.heat by weather.date
+    rows (34):
+      2012-01-01 | 12496
+      2012-02-01 | 10717
+      2012-03-01 | 5081
+      2012-04-01 | 3534
+      2012-05-01 | 1233
+      2012-06-01 | 421
+      2012-07-01 | 5
+      2012-08-01 | 10
+      2012-09-01 | 944
+      2012-10-01 | 4052
+      2012-11-01 | 7941
+      2012-12-01 | 11454
+      … 22 more rows
+
+  panel walmart-3-26
+    title: sum of weather.wetbulb by weather.date
+    rows (34):
+      2012-01-01 | 21645
+      2012-02-01 | 22057
+      2012-03-01 | 29896
+      2012-04-01 | 30991
+      2012-05-01 | 34299
+      2012-06-01 | 36542
+      2012-07-01 | 41272
+      2012-08-01 | 40033
+      2012-09-01 | 35828
+      2012-10-01 | 31399
+      2012-11-01 | 25167
+      2012-12-01 | 22323
+      … 22 more rows
+
+  panel walmart-3-27
+    title: sum of weather.depart by weather.date
+    rows (34):
+      2012-01-01 | 1535
+      2012-02-01 | 1123
+      2012-03-01 | 2369
+      2012-04-01 | 1116
+      2012-05-01 | 1030
+      2012-06-01 | 543
+      2012-07-01 | 844
+      2012-08-01 | 536
+      2012-09-01 | 321
+      2012-10-01 | 99
+      2012-11-01 | 409
+      2012-12-01 | 1355
+      … 22 more rows
+
+  panel walmart-3-28
+    title: sum of weather.resultdir by weather.date
+    rows (34):
+      2012-01-01 | 13168
+      2012-02-01 | 11131
+      2012-03-01 | 10786
+      2012-04-01 | 10526
+      2012-05-01 | 9196
+      2012-06-01 | 8732
+      2012-07-01 | 10652
+      2012-08-01 | 10566
+      2012-09-01 | 9888
+      2012-10-01 | 10724
+      2012-11-01 | 11040
+      2012-12-01 | 12020
+      … 22 more rows
+
+  panel walmart-3-29
+    title: average of weather.tmin by weather.date
+    rows (34):
+      2012-01-01 | 31.8336
+      2012-02-01 | 35.9238
+      2012-03-01 | 47.5246
+      2012-04-01 | 51.4211
+      2012-05-01 | 60.1190
+      2012-06-01 | 66.0614
+      2012-07-01 | 71.0850
+      2012-08-01 | 68.8421
+      2012-09-01 | 61.7803
+      2012-10-01 | 51.1162
+      2012-11-01 | 39.8000
+      2012-12-01 | 34.7899
+      … 22 more rows
+
+  panel walmart-3-30
+    title: average of train.units by key (by key) the twelve most
+    rows (12):
+      33 | 2.8842
+      17 | 2.6040
+      30 | 1.7915
+      2 | 1.7878
+      16 | 1.7435
+      25 | 1.6488
+      38 | 1.5315
+      15 | 1.4307
+      13 | 1.3971
+      34 | 1.3466
+      31 | 1.3024
+      3 | 1.2565
+
+  panel walmart-3-31
+    title: rows of weather by weather.date
+    rows (34):
+      2012-01-01 | 589
+      2012-02-01 | 551
+      2012-03-01 | 589
+      2012-04-01 | 570
+      2012-05-01 | 589
+      2012-06-01 | 600
+      2012-07-01 | 620
+      2012-08-01 | 620
+      2012-09-01 | 600
+      2012-10-01 | 620
+      2012-11-01 | 600
+      2012-12-01 | 620
+      … 22 more rows
+
+  panel walmart-3-32
+    title: rows of train per key
+    rows (20):
+      94461 | 1
+      95127 | 1
+      96348 | 1
+      97125 | 4
+      97458 | 1
+      98568 | 4
+      99456 | 3
+      99678 | 3
+      101121 | 2
+      101454 | 3
+      102120 | 1
+      102786 | 2
+      … 8 more rows
+
+  panel walmart-3-33
+    title: rows of weather by station (by key) the twelve most
+    rows (12):
+      11 | 1035
+      20 | 1035
+      19 | 1035
+      18 | 1035
+      17 | 1035
+      16 | 1035
+      15 | 1035
+      14 | 1035
+      13 | 1035
+      12 | 1035
+      1 | 1035
+      10 | 1035
+
+  panel walmart-3-34
+    title: rows of weather per station
+    rows (2):
+      852 | 1
+      1035 | 19

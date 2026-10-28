@@ -1,0 +1,2788 @@
+{
+ "taught on": 41,
+ "held out": 10,
+ "round 1d's 28, each left out": {
+  "databases counted": {
+   "opus": 27,
+   "sonnet": 28,
+   "gemini": 28
+  },
+  "round 1, B1": {
+   "opus": 2.3,
+   "sonnet": 2.43,
+   "gemini": 2.36
+  },
+  "round 1c": {
+   "opus": 2.37,
+   "sonnet": 2.46,
+   "gemini": 2.54
+  },
+  "round 1d, learned choice": {
+   "opus": 2.37,
+   "sonnet": 2.54,
+   "gemini": 2.46
+  },
+  "round 1d, the look taught by Sonnet": {
+   "opus": 2.78,
+   "sonnet": 2.86,
+   "gemini": 2.68
+  },
+  "round 1e, round 1d's penalties and weight": {
+   "opus": 2.74,
+   "sonnet": 2.75,
+   "gemini": 2.82
+  },
+  "round 1e": {
+   "opus": 2.78,
+   "sonnet": 2.79,
+   "gemini": 2.89
+  },
+  "round 1e, taught on round 1d's 28 only": {
+   "opus": 2.81,
+   "sonnet": 2.86,
+   "gemini": 2.75
+  },
+  "round 1e, without the new numbers": {
+   "opus": 2.81,
+   "sonnet": 2.79,
+   "gemini": 2.86
+  },
+  "ceiling": {
+   "opus": 4.74,
+   "sonnet": 4.71,
+   "gemini": 4.75
+  },
+  "jev and opus agree on keep": 0.764,
+  "jev and sonnet agree on keep": 0.752,
+  "jev and gemini agree on keep": 0.765,
+  "deepseek and opus agree on keep": 0.72,
+  "deepseek and sonnet agree on keep": 0.699,
+  "deepseek and gemini agree on keep": 0.738,
+  "glm and opus agree on keep": 0.724,
+  "glm and sonnet agree on keep": 0.726,
+  "glm and gemini agree on keep": 0.734,
+  "opus and sonnet agree on keep": 0.915,
+  "gemini and opus agree on keep": 0.904,
+  "gemini and sonnet agree on keep": 0.887,
+  "round 1e − round 1, B1, opus": {
+   "mean": 0.48,
+   "95%": [
+    0.04,
+    0.96
+   ]
+  },
+  "round 1e − round 1, B1, sonnet": {
+   "mean": 0.36,
+   "95%": [
+    -0.11,
+    0.82
+   ]
+  },
+  "round 1e − round 1, B1, gemini": {
+   "mean": 0.54,
+   "95%": [
+    0.0,
+    1.11
+   ]
+  },
+  "round 1e − round 1c, opus": {
+   "mean": 0.41,
+   "95%": [
+    0.04,
+    0.81
+   ]
+  },
+  "round 1e − round 1c, sonnet": {
+   "mean": 0.32,
+   "95%": [
+    -0.04,
+    0.64
+   ]
+  },
+  "round 1e − round 1c, gemini": {
+   "mean": 0.36,
+   "95%": [
+    0.0,
+    0.71
+   ]
+  },
+  "round 1e − round 1d, the look taught by Sonnet, opus": {
+   "mean": 0.0,
+   "95%": [
+    -0.41,
+    0.41
+   ]
+  },
+  "round 1e − round 1d, the look taught by Sonnet, gemini": {
+   "mean": 0.21,
+   "95%": [
+    -0.11,
+    0.54
+   ]
+  }
+ },
+ "the ten held out": {
+  "databases counted": {
+   "opus": 0,
+   "sonnet": 10,
+   "gemini": 10
+  },
+  "round 1, B1": {
+   "sonnet": 2.2,
+   "gemini": 2.7
+  },
+  "round 1c": {
+   "sonnet": 2.4,
+   "gemini": 1.9
+  },
+  "round 1d, learned choice": {
+   "sonnet": 2.4,
+   "gemini": 2.4
+  },
+  "round 1d, the look taught by Sonnet": {
+   "sonnet": 2.5,
+   "gemini": 2.4
+  },
+  "round 1e, round 1d's penalties and weight": {
+   "sonnet": 3.0,
+   "gemini": 2.8
+  },
+  "round 1e": {
+   "sonnet": 3.4,
+   "gemini": 3.3
+  },
+  "round 1e, taught on round 1d's 28 only": {
+   "sonnet": 3.0,
+   "gemini": 2.8
+  },
+  "round 1e, without the new numbers": {
+   "sonnet": 2.8,
+   "gemini": 2.7
+  },
+  "ceiling": {
+   "sonnet": 5.0,
+   "gemini": 5.0
+  },
+  "jev and sonnet agree on keep": 0.738,
+  "jev and gemini agree on keep": 0.709,
+  "deepseek and sonnet agree on keep": 0.652,
+  "deepseek and gemini agree on keep": 0.689,
+  "glm and sonnet agree on keep": 0.666,
+  "glm and gemini agree on keep": 0.695,
+  "gemini and sonnet agree on keep": 0.838,
+  "round 1e − round 1, B1, sonnet": {
+   "mean": 1.2,
+   "95%": [
+    0.5,
+    1.9
+   ]
+  },
+  "round 1e − round 1, B1, gemini": {
+   "mean": 0.6,
+   "95%": [
+    0.0,
+    1.2
+   ]
+  },
+  "round 1e − round 1c, sonnet": {
+   "mean": 1.0,
+   "95%": [
+    0.3,
+    1.7
+   ]
+  },
+  "round 1e − round 1c, gemini": {
+   "mean": 1.4,
+   "95%": [
+    0.8,
+    2.0
+   ]
+  },
+  "round 1e − round 1d, the look taught by Sonnet, gemini": {
+   "mean": 0.9,
+   "95%": [
+    0.4,
+    1.5
+   ]
+  }
+ },
+ "penalties and weight, per database left out": {
+  "airlines": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "atherosclerosis": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "basketball": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "basketballwomen": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "ccs": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "chinook": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "classicmodels": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "craftbeer": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "credit": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.25,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "dallas": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "ergastf1": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "ftp": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "hockey": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "lahman": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "medical": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "mondial": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "movielens": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "nba": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 9.0,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "ncaa": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "northwind": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "premierleague": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "pubs": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "restbase": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "sfscores": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "shakespeare": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "studentloan": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "voc": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "world": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "accidents": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "cdeschools": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "consumerexpenditures": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "fnhk": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "hepatitis": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "legalacts": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "nhldraft": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "sap": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "seznam": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  },
+  "walmart2014": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.25,
+    "time_other": 0.0,
+    "by_same": 0.25,
+    "by_other": 0.25,
+    "shape": 0.0
+   },
+   "weight": Infinity
+  }
+ },
+ "fives": {
+  "round 1, B1": {
+   "airlines-postgres": [
+    "airlines-postgres:r1:35cc12d37870c714",
+    "airlines-postgres:r1:c256ed7a58f5ac93",
+    "airlines-postgres:r1:ff3a8a472ea516e2",
+    "airlines-postgres:r1:53b9452d327ed0d0",
+    "airlines-postgres:r1:bb9e243502883c20"
+   ],
+   "atherosclerosis-mysql": [
+    "atherosclerosis-mysql:r1:5a746152bd4bdafb",
+    "atherosclerosis-mysql:r1:493011bc010ddaff",
+    "atherosclerosis-mysql:r1:9cc7913a3eea0b56",
+    "atherosclerosis-mysql:r1:87ac300fbfbb48ba",
+    "atherosclerosis-mysql:r1:b35b8589536838f6"
+   ],
+   "basketball-mysql": [
+    "basketball-mysql:r1:2ae3ac4e6ee77683",
+    "basketball-mysql:r1:65d029ea9856d8b7",
+    "basketball-mysql:r1:ea229137a28c12c5",
+    "basketball-mysql:r1:e81b8e4d3b557dd3",
+    "basketball-mysql:r1:9cc7913a3eea0b56"
+   ],
+   "basketballwomen-mysql": [
+    "basketballwomen-mysql:r1:2a411d69e010f27c",
+    "basketballwomen-mysql:r1:9cc7913a3eea0b56",
+    "basketballwomen-mysql:r1:8a341d8e422b76ae",
+    "basketballwomen-mysql:r1:e81b8e4d3b557dd3",
+    "basketballwomen-mysql:r1:09757f4d54d91f07"
+   ],
+   "ccs-mysql": [
+    "ccs-mysql:r1:05b644658b5387ce",
+    "ccs-mysql:r1:b618109bddef39bf",
+    "ccs-mysql:r1:9cc7913a3eea0b56",
+    "ccs-mysql:r1:4f377483b43eb4ac"
+   ],
+   "chinook-postgres": [
+    "chinook-postgres:r1:139bfd3a0b7839ff",
+    "chinook-postgres:r1:f49fd0b49c87508c",
+    "chinook-postgres:r1:518efdca9c1779b8",
+    "chinook-postgres:r1:52859b4940c9a9a5",
+    "chinook-postgres:r1:99db1b73aa4316a2"
+   ],
+   "classicmodels-mysql": [
+    "classicmodels-mysql:r1:b900179807575f85",
+    "classicmodels-mysql:r1:a09e4d78bf4a3f4c",
+    "classicmodels-mysql:r1:2a5bf5f8faa6f269",
+    "classicmodels-mysql:r1:bd89f717c334d44a",
+    "classicmodels-mysql:r1:f1ba18047557fdad"
+   ],
+   "craftbeer-mysql": [
+    "craftbeer-mysql:r1:9cc7913a3eea0b56"
+   ],
+   "credit-mysql": [
+    "credit-mysql:r1:aa7acdc1526d1f4d",
+    "credit-mysql:r1:74d0e6a5ad8bfcef",
+    "credit-mysql:r1:07c9b85814a3e98b",
+    "credit-mysql:r1:9cc7913a3eea0b56",
+    "credit-mysql:r1:a269c5d8d187df8f"
+   ],
+   "dallas-mysql": [
+    "dallas-mysql:r1:e7e6828975aca49e",
+    "dallas-mysql:r1:8e1df0e89fced1ad",
+    "dallas-mysql:r1:2c518bbff277d3b3",
+    "dallas-mysql:r1:54f9e975eba5f4a7",
+    "dallas-mysql:r1:9cc7913a3eea0b56"
+   ],
+   "ergastf1-mysql": [
+    "ergastf1-mysql:r1:128733beb983aa28",
+    "ergastf1-mysql:r1:5fbfa5d0cbe4ede1",
+    "ergastf1-mysql:r1:f91c11fc2cefb189",
+    "ergastf1-mysql:r1:fa827bf57424f6eb",
+    "ergastf1-mysql:r1:a6aebde1ff123591"
+   ],
+   "ftp-mysql": [
+    "ftp-mysql:r1:01edb8852fc2a2b9",
+    "ftp-mysql:r1:9cc7913a3eea0b56"
+   ],
+   "hockey-mysql": [
+    "hockey-mysql:r1:ee0f0600bbb89742",
+    "hockey-mysql:r1:bc81bfd77bfd2f2d",
+    "hockey-mysql:r1:befec38cf0329f91",
+    "hockey-mysql:r1:e84526252ce86790",
+    "hockey-mysql:r1:9cc7913a3eea0b56"
+   ],
+   "lahman-mysql": [
+    "lahman-mysql:r1:d1df627b5339fb60",
+    "lahman-mysql:r1:7345b0e303e752fa",
+    "lahman-mysql:r1:249b5867320fbfc3",
+    "lahman-mysql:r1:293887736b2255a6",
+    "lahman-mysql:r1:78fccd3a57558800"
+   ],
+   "medical-mysql": [
+    "medical-mysql:r1:e83ebef0e2b854fa",
+    "medical-mysql:r1:d448cab65e0116e2",
+    "medical-mysql:r1:d70936695ad9447b",
+    "medical-mysql:r1:e8e82df23e305a8b",
+    "medical-mysql:r1:9cc7913a3eea0b56"
+   ],
+   "mondial-mysql": [
+    "mondial-mysql:r1:55897294830b64bf",
+    "mondial-mysql:r1:ae8588b8eea4b26c",
+    "mondial-mysql:r1:9cc7913a3eea0b56",
+    "mondial-mysql:r1:476c9507bc3fcf2f",
+    "mondial-mysql:r1:b9d97cc45ee1221a"
+   ],
+   "movielens-mysql": [
+    "movielens-mysql:r1:bfe55972fe872a7f",
+    "movielens-mysql:r1:aabb8f60246607a1",
+    "movielens-mysql:r1:981b3306d0d01e50",
+    "movielens-mysql:r1:0d7ba05a0c32d280",
+    "movielens-mysql:r1:9cc7913a3eea0b56"
+   ],
+   "nba-mysql": [
+    "nba-mysql:r1:3a6133c3bd1fb6c1",
+    "nba-mysql:r1:3929a5c8e65b8d78",
+    "nba-mysql:r1:9cc7913a3eea0b56",
+    "nba-mysql:r1:a1261f13f598cfe3",
+    "nba-mysql:r1:f030b3ba2a922cb8"
+   ],
+   "ncaa-mysql": [
+    "ncaa-mysql:r1:0c5373e7c1a4320f",
+    "ncaa-mysql:r1:b2f89587c22d5163",
+    "ncaa-mysql:r1:3d6c72faae0cda2b",
+    "ncaa-mysql:r1:9cc7913a3eea0b56",
+    "ncaa-mysql:r1:aab954847b00a6bf"
+   ],
+   "northwind-postgres": [
+    "northwind-postgres:r1:3dba6059ff09c148",
+    "northwind-postgres:r1:f1ba18047557fdad",
+    "northwind-postgres:r1:d4d62619d3b4d456",
+    "northwind-postgres:r1:3e9af96b72bbe7c9",
+    "northwind-postgres:r1:9cc7913a3eea0b56"
+   ],
+   "premierleague-mysql": [
+    "premierleague-mysql:r1:76e56de9b4f3f6ff",
+    "premierleague-mysql:r1:28ed1595ac94aef3",
+    "premierleague-mysql:r1:945b438ef229b3b9",
+    "premierleague-mysql:r1:132d5b2162f3bac4",
+    "premierleague-mysql:r1:9cc7913a3eea0b56"
+   ],
+   "pubs-mysql": [
+    "pubs-mysql:r1:9cc7913a3eea0b56",
+    "pubs-mysql:r1:ead31c8282699603",
+    "pubs-mysql:r1:7522a9d2a1f0909e",
+    "pubs-mysql:r1:1b58ec68ddfdd679",
+    "pubs-mysql:r1:62ac5aaec3f6ccd3"
+   ],
+   "restbase-mysql": [
+    "restbase-mysql:r1:cb9b2d3757ccfd80",
+    "restbase-mysql:r1:9cc7913a3eea0b56",
+    "restbase-mysql:r1:c6dcfb3812b7558f"
+   ],
+   "sfscores-mysql": [
+    "sfscores-mysql:r1:5469a8bdcf2c38eb",
+    "sfscores-mysql:r1:bf771a329e0a8a9f",
+    "sfscores-mysql:r1:3187899c5365c747",
+    "sfscores-mysql:r1:04bd4f1c3b6dfafc",
+    "sfscores-mysql:r1:8bee4ed857500723"
+   ],
+   "shakespeare-mysql": [
+    "shakespeare-mysql:r1:56599c77e8d01c0a",
+    "shakespeare-mysql:r1:9cc7913a3eea0b56",
+    "shakespeare-mysql:r1:536da5f6b0b375c2",
+    "shakespeare-mysql:r1:e590a27c385a6521"
+   ],
+   "studentloan-mysql": [
+    "studentloan-mysql:r1:406c4cc6cc3295cb",
+    "studentloan-mysql:r1:9cc7913a3eea0b56"
+   ],
+   "voc-mysql": [
+    "voc-mysql:r1:41fc860e1f260fdf",
+    "voc-mysql:r1:416e52a5125b25ea",
+    "voc-mysql:r1:4a607e4a1be38a06",
+    "voc-mysql:r1:9cc7913a3eea0b56",
+    "voc-mysql:r1:4ce75cf6bea69407"
+   ],
+   "world-mysql": [
+    "world-mysql:r1:001cf675169fdffa",
+    "world-mysql:r1:9cc7913a3eea0b56",
+    "world-mysql:r1:4d81dc6e653c73d2",
+    "world-mysql:r1:4e73fda223d5c94b"
+   ],
+   "accidents-mysql": [
+    "accidents-mysql:r1:809214abe931b800",
+    "accidents-mysql:r1:18f7462239e46f2a",
+    "accidents-mysql:r1:9cc7913a3eea0b56",
+    "accidents-mysql:r1:4a8e2c53221b8ddd",
+    "accidents-mysql:r1:efd204fe4c721bba"
+   ],
+   "cdeschools-mysql": [
+    "cdeschools-mysql:r1:9fbfb4890e1b5a78",
+    "cdeschools-mysql:r1:700b277a8fcd51f1",
+    "cdeschools-mysql:r1:c0c0af1b81e65250",
+    "cdeschools-mysql:r1:835ca6c2bf9eda58",
+    "cdeschools-mysql:r1:9cc7913a3eea0b56"
+   ],
+   "consumerexpenditures-mysql": [
+    "consumerexpenditures-mysql:r1:87476615f849b7c8",
+    "consumerexpenditures-mysql:r1:502527f41fcfc5bc",
+    "consumerexpenditures-mysql:r1:9cc7913a3eea0b56",
+    "consumerexpenditures-mysql:r1:4e3b19866e90485f",
+    "consumerexpenditures-mysql:r1:c5ee776ecea062d4"
+   ],
+   "fnhk-mysql": [
+    "fnhk-mysql:r1:3ece7ad8e0fb1a86",
+    "fnhk-mysql:r1:9cc7913a3eea0b56",
+    "fnhk-mysql:r1:054ff837c00a46fc"
+   ],
+   "hepatitis-mysql": [
+    "hepatitis-mysql:r1:d92e2a1205e44a84",
+    "hepatitis-mysql:r1:4a730e0bfdf6218b",
+    "hepatitis-mysql:r1:9cc7913a3eea0b56"
+   ],
+   "legalacts-mysql": [
+    "legalacts-mysql:r1:32b44d1a91f9f2b0",
+    "legalacts-mysql:r1:181abf963ae63486",
+    "legalacts-mysql:r1:9cc7913a3eea0b56",
+    "legalacts-mysql:r1:94a70b376e2a4370",
+    "legalacts-mysql:r1:dd1299ac8d0f13e9"
+   ],
+   "nhldraft-mysql": [
+    "nhldraft-mysql:r1:14d2302d5a43c4be",
+    "nhldraft-mysql:r1:2e59eda079c5f8e3",
+    "nhldraft-mysql:r1:9cc7913a3eea0b56",
+    "nhldraft-mysql:r1:70dabeaaf050d312",
+    "nhldraft-mysql:r1:e4e36c5bc22879ec"
+   ],
+   "sap-mysql": [
+    "sap-mysql:r1:87b469bb8e9c7770",
+    "sap-mysql:r1:10811e64093df169",
+    "sap-mysql:r1:45d6b0dcd2a20d45",
+    "sap-mysql:r1:ec1d9d738d730957",
+    "sap-mysql:r1:b0bf95bf6bd25456"
+   ],
+   "seznam-mysql": [
+    "seznam-mysql:r1:e4672109cff2c587",
+    "seznam-mysql:r1:c89be144570d2743",
+    "seznam-mysql:r1:9cc7913a3eea0b56",
+    "seznam-mysql:r1:68a236ef1880f13a",
+    "seznam-mysql:r1:84bd00dd65990e36"
+   ],
+   "walmart2014-mysql": [
+    "walmart2014-mysql:r1:137ced27639db827",
+    "walmart2014-mysql:r1:b2d91ee1fff171ee",
+    "walmart2014-mysql:r1:9cc7913a3eea0b56",
+    "walmart2014-mysql:r1:6be01b243f981b61",
+    "walmart2014-mysql:r1:8908ab4b4c3ff83d"
+   ]
+  },
+  "round 1c": {
+   "airlines-postgres": [
+    "airlines-postgres:0",
+    "airlines-postgres:1",
+    "airlines-postgres:2",
+    "airlines-postgres:3",
+    "airlines-postgres:5"
+   ],
+   "atherosclerosis-mysql": [
+    "atherosclerosis-mysql:0",
+    "atherosclerosis-mysql:1",
+    "atherosclerosis-mysql:4",
+    "atherosclerosis-mysql:5",
+    "atherosclerosis-mysql:6"
+   ],
+   "basketball-mysql": [
+    "basketball-mysql:0",
+    "basketball-mysql:1",
+    "basketball-mysql:2",
+    "basketball-mysql:3",
+    "basketball-mysql:4"
+   ],
+   "basketballwomen-mysql": [
+    "basketballwomen-mysql:0",
+    "basketballwomen-mysql:1",
+    "basketballwomen-mysql:2",
+    "basketballwomen-mysql:3",
+    "basketballwomen-mysql:4"
+   ],
+   "ccs-mysql": [
+    "ccs-mysql:0",
+    "ccs-mysql:1",
+    "ccs-mysql:7",
+    "ccs-mysql:12",
+    "ccs-mysql:15"
+   ],
+   "chinook-postgres": [
+    "chinook-postgres:0",
+    "chinook-postgres:2",
+    "chinook-postgres:3",
+    "chinook-postgres:8",
+    "chinook-postgres:13"
+   ],
+   "classicmodels-mysql": [
+    "classicmodels-mysql:0",
+    "classicmodels-mysql:1",
+    "classicmodels-mysql:2",
+    "classicmodels-mysql:3",
+    "classicmodels-mysql:7"
+   ],
+   "craftbeer-mysql": [
+    "craftbeer-mysql:0",
+    "craftbeer-mysql:1",
+    "craftbeer-mysql:15"
+   ],
+   "credit-mysql": [
+    "credit-mysql:0",
+    "credit-mysql:1",
+    "credit-mysql:2",
+    "credit-mysql:3",
+    "credit-mysql:5"
+   ],
+   "dallas-mysql": [
+    "dallas-mysql:0",
+    "dallas-mysql:1",
+    "dallas-mysql:6",
+    "dallas-mysql:7",
+    "dallas-mysql:8"
+   ],
+   "ergastf1-mysql": [
+    "ergastf1-mysql:0",
+    "ergastf1-mysql:1",
+    "ergastf1-mysql:2",
+    "ergastf1-mysql:3",
+    "ergastf1-mysql:10"
+   ],
+   "ftp-mysql": [
+    "ftp-mysql:0",
+    "ftp-mysql:1",
+    "ftp-mysql:2",
+    "ftp-mysql:3"
+   ],
+   "hockey-mysql": [
+    "hockey-mysql:0",
+    "hockey-mysql:1",
+    "hockey-mysql:2",
+    "hockey-mysql:4",
+    "hockey-mysql:6"
+   ],
+   "lahman-mysql": [
+    "lahman-mysql:0",
+    "lahman-mysql:1",
+    "lahman-mysql:2",
+    "lahman-mysql:3",
+    "lahman-mysql:4"
+   ],
+   "medical-mysql": [
+    "medical-mysql:0",
+    "medical-mysql:1",
+    "medical-mysql:2",
+    "medical-mysql:3",
+    "medical-mysql:4"
+   ],
+   "mondial-mysql": [
+    "mondial-mysql:0",
+    "mondial-mysql:1",
+    "mondial-mysql:2",
+    "mondial-mysql:4",
+    "mondial-mysql:5"
+   ],
+   "movielens-mysql": [
+    "movielens-mysql:0",
+    "movielens-mysql:1",
+    "movielens-mysql:3",
+    "movielens-mysql:4",
+    "movielens-mysql:5"
+   ],
+   "nba-mysql": [
+    "nba-mysql:0",
+    "nba-mysql:1",
+    "nba-mysql:5",
+    "nba-mysql:7",
+    "nba-mysql:19"
+   ],
+   "ncaa-mysql": [
+    "ncaa-mysql:0",
+    "ncaa-mysql:3",
+    "ncaa-mysql:6",
+    "ncaa-mysql:7",
+    "ncaa-mysql:15"
+   ],
+   "northwind-postgres": [
+    "northwind-postgres:0",
+    "northwind-postgres:1",
+    "northwind-postgres:2",
+    "northwind-postgres:12",
+    "northwind-postgres:14"
+   ],
+   "premierleague-mysql": [
+    "premierleague-mysql:0",
+    "premierleague-mysql:1",
+    "premierleague-mysql:15",
+    "premierleague-mysql:16"
+   ],
+   "pubs-mysql": [
+    "pubs-mysql:0",
+    "pubs-mysql:1",
+    "pubs-mysql:3",
+    "pubs-mysql:5",
+    "pubs-mysql:7"
+   ],
+   "restbase-mysql": [
+    "restbase-mysql:0",
+    "restbase-mysql:1",
+    "restbase-mysql:2",
+    "restbase-mysql:5",
+    "restbase-mysql:10"
+   ],
+   "sfscores-mysql": [
+    "sfscores-mysql:0",
+    "sfscores-mysql:1",
+    "sfscores-mysql:2",
+    "sfscores-mysql:3",
+    "sfscores-mysql:4"
+   ],
+   "shakespeare-mysql": [
+    "shakespeare-mysql:0",
+    "shakespeare-mysql:1",
+    "shakespeare-mysql:2",
+    "shakespeare-mysql:3",
+    "shakespeare-mysql:4"
+   ],
+   "studentloan-mysql": [
+    "studentloan-mysql:0",
+    "studentloan-mysql:1",
+    "studentloan-mysql:2",
+    "studentloan-mysql:3",
+    "studentloan-mysql:6"
+   ],
+   "voc-mysql": [
+    "voc-mysql:0",
+    "voc-mysql:1",
+    "voc-mysql:11",
+    "voc-mysql:13",
+    "voc-mysql:14"
+   ],
+   "world-mysql": [
+    "world-mysql:0",
+    "world-mysql:1",
+    "world-mysql:5",
+    "world-mysql:7",
+    "world-mysql:10"
+   ],
+   "accidents-mysql": [
+    "accidents-mysql:0",
+    "accidents-mysql:1",
+    "accidents-mysql:13",
+    "accidents-mysql:14",
+    "accidents-mysql:30"
+   ],
+   "cdeschools-mysql": [
+    "cdeschools-mysql:0",
+    "cdeschools-mysql:1",
+    "cdeschools-mysql:5",
+    "cdeschools-mysql:7",
+    "cdeschools-mysql:30"
+   ],
+   "consumerexpenditures-mysql": [
+    "consumerexpenditures-mysql:0",
+    "consumerexpenditures-mysql:1",
+    "consumerexpenditures-mysql:3",
+    "consumerexpenditures-mysql:5",
+    "consumerexpenditures-mysql:9"
+   ],
+   "fnhk-mysql": [
+    "fnhk-mysql:0",
+    "fnhk-mysql:1",
+    "fnhk-mysql:2",
+    "fnhk-mysql:3",
+    "fnhk-mysql:6"
+   ],
+   "hepatitis-mysql": [
+    "hepatitis-mysql:0",
+    "hepatitis-mysql:1",
+    "hepatitis-mysql:2",
+    "hepatitis-mysql:3",
+    "hepatitis-mysql:11"
+   ],
+   "legalacts-mysql": [
+    "legalacts-mysql:0",
+    "legalacts-mysql:1",
+    "legalacts-mysql:14",
+    "legalacts-mysql:15",
+    "legalacts-mysql:19"
+   ],
+   "nhldraft-mysql": [
+    "nhldraft-mysql:0",
+    "nhldraft-mysql:1",
+    "nhldraft-mysql:12",
+    "nhldraft-mysql:15"
+   ],
+   "sap-mysql": [
+    "sap-mysql:0",
+    "sap-mysql:2",
+    "sap-mysql:4",
+    "sap-mysql:6",
+    "sap-mysql:14"
+   ],
+   "seznam-mysql": [
+    "seznam-mysql:0",
+    "seznam-mysql:1",
+    "seznam-mysql:3",
+    "seznam-mysql:5",
+    "seznam-mysql:7"
+   ],
+   "walmart2014-mysql": [
+    "walmart2014-mysql:0",
+    "walmart2014-mysql:1",
+    "walmart2014-mysql:3",
+    "walmart2014-mysql:11"
+   ]
+  },
+  "round 1d, learned choice": {
+   "airlines-postgres": [
+    "airlines-postgres:0",
+    "airlines-postgres:1",
+    "airlines-postgres:2",
+    "airlines-postgres:3",
+    "airlines-postgres:4"
+   ],
+   "atherosclerosis-mysql": [
+    "atherosclerosis-mysql:0",
+    "atherosclerosis-mysql:1",
+    "atherosclerosis-mysql:2",
+    "atherosclerosis-mysql:3",
+    "atherosclerosis-mysql:4"
+   ],
+   "basketball-mysql": [
+    "basketball-mysql:0",
+    "basketball-mysql:1",
+    "basketball-mysql:2",
+    "basketball-mysql:3",
+    "basketball-mysql:4"
+   ],
+   "basketballwomen-mysql": [
+    "basketballwomen-mysql:0",
+    "basketballwomen-mysql:1",
+    "basketballwomen-mysql:2",
+    "basketballwomen-mysql:3",
+    "basketballwomen-mysql:4"
+   ],
+   "ccs-mysql": [
+    "ccs-mysql:0",
+    "ccs-mysql:1",
+    "ccs-mysql:2",
+    "ccs-mysql:3",
+    "ccs-mysql:5"
+   ],
+   "chinook-postgres": [
+    "chinook-postgres:0",
+    "chinook-postgres:1",
+    "chinook-postgres:2",
+    "chinook-postgres:3",
+    "chinook-postgres:5"
+   ],
+   "classicmodels-mysql": [
+    "classicmodels-mysql:0",
+    "classicmodels-mysql:1",
+    "classicmodels-mysql:2",
+    "classicmodels-mysql:3",
+    "classicmodels-mysql:4"
+   ],
+   "craftbeer-mysql": [
+    "craftbeer-mysql:0",
+    "craftbeer-mysql:1",
+    "craftbeer-mysql:2",
+    "craftbeer-mysql:3",
+    "craftbeer-mysql:15"
+   ],
+   "credit-mysql": [
+    "credit-mysql:0",
+    "credit-mysql:1",
+    "credit-mysql:2",
+    "credit-mysql:3",
+    "credit-mysql:4"
+   ],
+   "dallas-mysql": [
+    "dallas-mysql:0",
+    "dallas-mysql:1",
+    "dallas-mysql:2",
+    "dallas-mysql:3",
+    "dallas-mysql:5"
+   ],
+   "ergastf1-mysql": [
+    "ergastf1-mysql:0",
+    "ergastf1-mysql:1",
+    "ergastf1-mysql:2",
+    "ergastf1-mysql:3",
+    "ergastf1-mysql:4"
+   ],
+   "ftp-mysql": [
+    "ftp-mysql:0",
+    "ftp-mysql:1",
+    "ftp-mysql:2",
+    "ftp-mysql:3",
+    "ftp-mysql:4"
+   ],
+   "hockey-mysql": [
+    "hockey-mysql:0",
+    "hockey-mysql:1",
+    "hockey-mysql:2",
+    "hockey-mysql:3",
+    "hockey-mysql:4"
+   ],
+   "lahman-mysql": [
+    "lahman-mysql:0",
+    "lahman-mysql:1",
+    "lahman-mysql:2",
+    "lahman-mysql:3",
+    "lahman-mysql:4"
+   ],
+   "medical-mysql": [
+    "medical-mysql:0",
+    "medical-mysql:1",
+    "medical-mysql:2",
+    "medical-mysql:3",
+    "medical-mysql:4"
+   ],
+   "mondial-mysql": [
+    "mondial-mysql:0",
+    "mondial-mysql:1",
+    "mondial-mysql:2",
+    "mondial-mysql:4",
+    "mondial-mysql:5"
+   ],
+   "movielens-mysql": [
+    "movielens-mysql:0",
+    "movielens-mysql:1",
+    "movielens-mysql:2",
+    "movielens-mysql:3",
+    "movielens-mysql:4"
+   ],
+   "nba-mysql": [
+    "nba-mysql:0",
+    "nba-mysql:1",
+    "nba-mysql:2",
+    "nba-mysql:3",
+    "nba-mysql:5"
+   ],
+   "ncaa-mysql": [
+    "ncaa-mysql:0",
+    "ncaa-mysql:1",
+    "ncaa-mysql:3",
+    "ncaa-mysql:4",
+    "ncaa-mysql:6"
+   ],
+   "northwind-postgres": [
+    "northwind-postgres:0",
+    "northwind-postgres:1",
+    "northwind-postgres:2",
+    "northwind-postgres:3",
+    "northwind-postgres:4"
+   ],
+   "premierleague-mysql": [
+    "premierleague-mysql:0",
+    "premierleague-mysql:1",
+    "premierleague-mysql:2",
+    "premierleague-mysql:3",
+    "premierleague-mysql:4"
+   ],
+   "pubs-mysql": [
+    "pubs-mysql:0",
+    "pubs-mysql:1",
+    "pubs-mysql:2",
+    "pubs-mysql:3",
+    "pubs-mysql:4"
+   ],
+   "restbase-mysql": [
+    "restbase-mysql:0",
+    "restbase-mysql:1",
+    "restbase-mysql:2",
+    "restbase-mysql:3",
+    "restbase-mysql:5"
+   ],
+   "sfscores-mysql": [
+    "sfscores-mysql:0",
+    "sfscores-mysql:1",
+    "sfscores-mysql:2",
+    "sfscores-mysql:3",
+    "sfscores-mysql:4"
+   ],
+   "shakespeare-mysql": [
+    "shakespeare-mysql:0",
+    "shakespeare-mysql:1",
+    "shakespeare-mysql:2",
+    "shakespeare-mysql:3",
+    "shakespeare-mysql:4"
+   ],
+   "studentloan-mysql": [
+    "studentloan-mysql:0",
+    "studentloan-mysql:1",
+    "studentloan-mysql:2",
+    "studentloan-mysql:3",
+    "studentloan-mysql:4"
+   ],
+   "voc-mysql": [
+    "voc-mysql:0",
+    "voc-mysql:1",
+    "voc-mysql:2",
+    "voc-mysql:3",
+    "voc-mysql:4"
+   ],
+   "world-mysql": [
+    "world-mysql:0",
+    "world-mysql:1",
+    "world-mysql:2",
+    "world-mysql:3",
+    "world-mysql:4"
+   ],
+   "accidents-mysql": [
+    "accidents-mysql:0",
+    "accidents-mysql:1",
+    "accidents-mysql:2",
+    "accidents-mysql:3",
+    "accidents-mysql:4"
+   ],
+   "cdeschools-mysql": [
+    "cdeschools-mysql:0",
+    "cdeschools-mysql:1",
+    "cdeschools-mysql:2",
+    "cdeschools-mysql:3",
+    "cdeschools-mysql:4"
+   ],
+   "consumerexpenditures-mysql": [
+    "consumerexpenditures-mysql:0",
+    "consumerexpenditures-mysql:1",
+    "consumerexpenditures-mysql:2",
+    "consumerexpenditures-mysql:3",
+    "consumerexpenditures-mysql:4"
+   ],
+   "fnhk-mysql": [
+    "fnhk-mysql:0",
+    "fnhk-mysql:1",
+    "fnhk-mysql:2",
+    "fnhk-mysql:3",
+    "fnhk-mysql:4"
+   ],
+   "hepatitis-mysql": [
+    "hepatitis-mysql:0",
+    "hepatitis-mysql:1",
+    "hepatitis-mysql:2",
+    "hepatitis-mysql:3",
+    "hepatitis-mysql:4"
+   ],
+   "legalacts-mysql": [
+    "legalacts-mysql:0",
+    "legalacts-mysql:1",
+    "legalacts-mysql:2",
+    "legalacts-mysql:3",
+    "legalacts-mysql:4"
+   ],
+   "nhldraft-mysql": [
+    "nhldraft-mysql:0",
+    "nhldraft-mysql:1",
+    "nhldraft-mysql:2",
+    "nhldraft-mysql:3",
+    "nhldraft-mysql:4"
+   ],
+   "sap-mysql": [
+    "sap-mysql:0",
+    "sap-mysql:1",
+    "sap-mysql:2",
+    "sap-mysql:3",
+    "sap-mysql:4"
+   ],
+   "seznam-mysql": [
+    "seznam-mysql:0",
+    "seznam-mysql:1",
+    "seznam-mysql:2",
+    "seznam-mysql:3",
+    "seznam-mysql:4"
+   ],
+   "walmart2014-mysql": [
+    "walmart2014-mysql:0",
+    "walmart2014-mysql:1",
+    "walmart2014-mysql:2",
+    "walmart2014-mysql:3",
+    "walmart2014-mysql:4"
+   ]
+  },
+  "round 1d, the look taught by Sonnet": {
+   "airlines-postgres": [
+    "airlines-postgres:0",
+    "airlines-postgres:1",
+    "airlines-postgres:3",
+    "airlines-postgres:2",
+    "airlines-postgres:4"
+   ],
+   "atherosclerosis-mysql": [
+    "atherosclerosis-mysql:0",
+    "atherosclerosis-mysql:4",
+    "atherosclerosis-mysql:9",
+    "atherosclerosis-mysql:7",
+    "atherosclerosis-mysql:8"
+   ],
+   "basketball-mysql": [
+    "basketball-mysql:0",
+    "basketball-mysql:1",
+    "basketball-mysql:9",
+    "basketball-mysql:3",
+    "basketball-mysql:4"
+   ],
+   "basketballwomen-mysql": [
+    "basketballwomen-mysql:0",
+    "basketballwomen-mysql:2",
+    "basketballwomen-mysql:1",
+    "basketballwomen-mysql:3",
+    "basketballwomen-mysql:12"
+   ],
+   "ccs-mysql": [
+    "ccs-mysql:2",
+    "ccs-mysql:0",
+    "ccs-mysql:7",
+    "ccs-mysql:11",
+    "ccs-mysql:x30-7"
+   ],
+   "chinook-postgres": [
+    "chinook-postgres:1",
+    "chinook-postgres:0",
+    "chinook-postgres:11",
+    "chinook-postgres:6",
+    "chinook-postgres:9"
+   ],
+   "classicmodels-mysql": [
+    "classicmodels-mysql:2",
+    "classicmodels-mysql:0",
+    "classicmodels-mysql:1",
+    "classicmodels-mysql:3",
+    "classicmodels-mysql:5"
+   ],
+   "craftbeer-mysql": [
+    "craftbeer-mysql:1",
+    "craftbeer-mysql:0",
+    "craftbeer-mysql:2",
+    "craftbeer-mysql:15",
+    "craftbeer-mysql:5"
+   ],
+   "credit-mysql": [
+    "credit-mysql:0",
+    "credit-mysql:5",
+    "credit-mysql:2",
+    "credit-mysql:6",
+    "credit-mysql:x30-0"
+   ],
+   "dallas-mysql": [
+    "dallas-mysql:0",
+    "dallas-mysql:1",
+    "dallas-mysql:3",
+    "dallas-mysql:2",
+    "dallas-mysql:13"
+   ],
+   "ergastf1-mysql": [
+    "ergastf1-mysql:0",
+    "ergastf1-mysql:1",
+    "ergastf1-mysql:x30-11",
+    "ergastf1-mysql:2",
+    "ergastf1-mysql:3"
+   ],
+   "ftp-mysql": [
+    "ftp-mysql:0",
+    "ftp-mysql:1",
+    "ftp-mysql:2",
+    "ftp-mysql:3",
+    "ftp-mysql:4"
+   ],
+   "hockey-mysql": [
+    "hockey-mysql:0",
+    "hockey-mysql:6",
+    "hockey-mysql:1",
+    "hockey-mysql:10",
+    "hockey-mysql:11"
+   ],
+   "lahman-mysql": [
+    "lahman-mysql:1",
+    "lahman-mysql:3",
+    "lahman-mysql:2",
+    "lahman-mysql:6",
+    "lahman-mysql:0"
+   ],
+   "medical-mysql": [
+    "medical-mysql:0",
+    "medical-mysql:1",
+    "medical-mysql:2",
+    "medical-mysql:3",
+    "medical-mysql:4"
+   ],
+   "mondial-mysql": [
+    "mondial-mysql:0",
+    "mondial-mysql:1",
+    "mondial-mysql:3",
+    "mondial-mysql:4",
+    "mondial-mysql:5"
+   ],
+   "movielens-mysql": [
+    "movielens-mysql:1",
+    "movielens-mysql:0",
+    "movielens-mysql:3",
+    "movielens-mysql:4",
+    "movielens-mysql:5"
+   ],
+   "nba-mysql": [
+    "nba-mysql:0",
+    "nba-mysql:1",
+    "nba-mysql:12",
+    "nba-mysql:2",
+    "nba-mysql:8"
+   ],
+   "ncaa-mysql": [
+    "ncaa-mysql:0",
+    "ncaa-mysql:1",
+    "ncaa-mysql:2",
+    "ncaa-mysql:3",
+    "ncaa-mysql:6"
+   ],
+   "northwind-postgres": [
+    "northwind-postgres:0",
+    "northwind-postgres:3",
+    "northwind-postgres:1",
+    "northwind-postgres:2",
+    "northwind-postgres:4"
+   ],
+   "premierleague-mysql": [
+    "premierleague-mysql:0",
+    "premierleague-mysql:2",
+    "premierleague-mysql:3",
+    "premierleague-mysql:4",
+    "premierleague-mysql:1"
+   ],
+   "pubs-mysql": [
+    "pubs-mysql:0",
+    "pubs-mysql:3",
+    "pubs-mysql:2",
+    "pubs-mysql:9",
+    "pubs-mysql:x30-3"
+   ],
+   "restbase-mysql": [
+    "restbase-mysql:1",
+    "restbase-mysql:2",
+    "restbase-mysql:3",
+    "restbase-mysql:7",
+    "restbase-mysql:5"
+   ],
+   "sfscores-mysql": [
+    "sfscores-mysql:0",
+    "sfscores-mysql:1",
+    "sfscores-mysql:3",
+    "sfscores-mysql:2",
+    "sfscores-mysql:5"
+   ],
+   "shakespeare-mysql": [
+    "shakespeare-mysql:2",
+    "shakespeare-mysql:1",
+    "shakespeare-mysql:0",
+    "shakespeare-mysql:6",
+    "shakespeare-mysql:4"
+   ],
+   "studentloan-mysql": [
+    "studentloan-mysql:0",
+    "studentloan-mysql:1",
+    "studentloan-mysql:6",
+    "studentloan-mysql:2",
+    "studentloan-mysql:3"
+   ],
+   "voc-mysql": [
+    "voc-mysql:0",
+    "voc-mysql:5",
+    "voc-mysql:6",
+    "voc-mysql:7",
+    "voc-mysql:3"
+   ],
+   "world-mysql": [
+    "world-mysql:0",
+    "world-mysql:1",
+    "world-mysql:2",
+    "world-mysql:3",
+    "world-mysql:4"
+   ],
+   "accidents-mysql": [
+    "accidents-mysql:0",
+    "accidents-mysql:1",
+    "accidents-mysql:2",
+    "accidents-mysql:3",
+    "accidents-mysql:5"
+   ],
+   "cdeschools-mysql": [
+    "cdeschools-mysql:0",
+    "cdeschools-mysql:1",
+    "cdeschools-mysql:3",
+    "cdeschools-mysql:2",
+    "cdeschools-mysql:4"
+   ],
+   "consumerexpenditures-mysql": [
+    "consumerexpenditures-mysql:3",
+    "consumerexpenditures-mysql:2",
+    "consumerexpenditures-mysql:0",
+    "consumerexpenditures-mysql:1",
+    "consumerexpenditures-mysql:10"
+   ],
+   "fnhk-mysql": [
+    "fnhk-mysql:0",
+    "fnhk-mysql:1",
+    "fnhk-mysql:3",
+    "fnhk-mysql:2",
+    "fnhk-mysql:5"
+   ],
+   "hepatitis-mysql": [
+    "hepatitis-mysql:0",
+    "hepatitis-mysql:2",
+    "hepatitis-mysql:6",
+    "hepatitis-mysql:5",
+    "hepatitis-mysql:1"
+   ],
+   "legalacts-mysql": [
+    "legalacts-mysql:0",
+    "legalacts-mysql:1",
+    "legalacts-mysql:2",
+    "legalacts-mysql:3",
+    "legalacts-mysql:4"
+   ],
+   "nhldraft-mysql": [
+    "nhldraft-mysql:0",
+    "nhldraft-mysql:1",
+    "nhldraft-mysql:2",
+    "nhldraft-mysql:5",
+    "nhldraft-mysql:6"
+   ],
+   "sap-mysql": [
+    "sap-mysql:0",
+    "sap-mysql:1",
+    "sap-mysql:4",
+    "sap-mysql:10",
+    "sap-mysql:19"
+   ],
+   "seznam-mysql": [
+    "seznam-mysql:0",
+    "seznam-mysql:1",
+    "seznam-mysql:2",
+    "seznam-mysql:3",
+    "seznam-mysql:5"
+   ],
+   "walmart2014-mysql": [
+    "walmart2014-mysql:0",
+    "walmart2014-mysql:2",
+    "walmart2014-mysql:13",
+    "walmart2014-mysql:5",
+    "walmart2014-mysql:11"
+   ]
+  },
+  "round 1e, round 1d's penalties and weight": {
+   "airlines-postgres": [
+    "airlines-postgres:0",
+    "airlines-postgres:3",
+    "airlines-postgres:2",
+    "airlines-postgres:1",
+    "airlines-postgres:5"
+   ],
+   "atherosclerosis-mysql": [
+    "atherosclerosis-mysql:0",
+    "atherosclerosis-mysql:4",
+    "atherosclerosis-mysql:2",
+    "atherosclerosis-mysql:5",
+    "atherosclerosis-mysql:9"
+   ],
+   "basketball-mysql": [
+    "basketball-mysql:0",
+    "basketball-mysql:1",
+    "basketball-mysql:4",
+    "basketball-mysql:2",
+    "basketball-mysql:9"
+   ],
+   "basketballwomen-mysql": [
+    "basketballwomen-mysql:1",
+    "basketballwomen-mysql:0",
+    "basketballwomen-mysql:2",
+    "basketballwomen-mysql:3",
+    "basketballwomen-mysql:6"
+   ],
+   "ccs-mysql": [
+    "ccs-mysql:2",
+    "ccs-mysql:0",
+    "ccs-mysql:7",
+    "ccs-mysql:12",
+    "ccs-mysql:x30-7"
+   ],
+   "chinook-postgres": [
+    "chinook-postgres:0",
+    "chinook-postgres:x30-8",
+    "chinook-postgres:5",
+    "chinook-postgres:6",
+    "chinook-postgres:9"
+   ],
+   "classicmodels-mysql": [
+    "classicmodels-mysql:0",
+    "classicmodels-mysql:2",
+    "classicmodels-mysql:1",
+    "classicmodels-mysql:4",
+    "classicmodels-mysql:5"
+   ],
+   "craftbeer-mysql": [
+    "craftbeer-mysql:0",
+    "craftbeer-mysql:1",
+    "craftbeer-mysql:2",
+    "craftbeer-mysql:15",
+    "craftbeer-mysql:6"
+   ],
+   "credit-mysql": [
+    "credit-mysql:0",
+    "credit-mysql:4",
+    "credit-mysql:5",
+    "credit-mysql:1",
+    "credit-mysql:2"
+   ],
+   "dallas-mysql": [
+    "dallas-mysql:0",
+    "dallas-mysql:1",
+    "dallas-mysql:3",
+    "dallas-mysql:2",
+    "dallas-mysql:6"
+   ],
+   "ergastf1-mysql": [
+    "ergastf1-mysql:0",
+    "ergastf1-mysql:1",
+    "ergastf1-mysql:5",
+    "ergastf1-mysql:2",
+    "ergastf1-mysql:10"
+   ],
+   "ftp-mysql": [
+    "ftp-mysql:1",
+    "ftp-mysql:0",
+    "ftp-mysql:2",
+    "ftp-mysql:3",
+    "ftp-mysql:4"
+   ],
+   "hockey-mysql": [
+    "hockey-mysql:0",
+    "hockey-mysql:6",
+    "hockey-mysql:1",
+    "hockey-mysql:10",
+    "hockey-mysql:14"
+   ],
+   "lahman-mysql": [
+    "lahman-mysql:3",
+    "lahman-mysql:0",
+    "lahman-mysql:2",
+    "lahman-mysql:1",
+    "lahman-mysql:x30-3"
+   ],
+   "medical-mysql": [
+    "medical-mysql:0",
+    "medical-mysql:1",
+    "medical-mysql:4",
+    "medical-mysql:2",
+    "medical-mysql:5"
+   ],
+   "mondial-mysql": [
+    "mondial-mysql:1",
+    "mondial-mysql:4",
+    "mondial-mysql:0",
+    "mondial-mysql:5",
+    "mondial-mysql:3"
+   ],
+   "movielens-mysql": [
+    "movielens-mysql:0",
+    "movielens-mysql:1",
+    "movielens-mysql:7",
+    "movielens-mysql:2",
+    "movielens-mysql:4"
+   ],
+   "nba-mysql": [
+    "nba-mysql:0",
+    "nba-mysql:1",
+    "nba-mysql:2",
+    "nba-mysql:12",
+    "nba-mysql:7"
+   ],
+   "ncaa-mysql": [
+    "ncaa-mysql:1",
+    "ncaa-mysql:6",
+    "ncaa-mysql:0",
+    "ncaa-mysql:2",
+    "ncaa-mysql:3"
+   ],
+   "northwind-postgres": [
+    "northwind-postgres:0",
+    "northwind-postgres:1",
+    "northwind-postgres:3",
+    "northwind-postgres:4",
+    "northwind-postgres:2"
+   ],
+   "premierleague-mysql": [
+    "premierleague-mysql:0",
+    "premierleague-mysql:2",
+    "premierleague-mysql:4",
+    "premierleague-mysql:3",
+    "premierleague-mysql:5"
+   ],
+   "pubs-mysql": [
+    "pubs-mysql:0",
+    "pubs-mysql:3",
+    "pubs-mysql:2",
+    "pubs-mysql:5",
+    "pubs-mysql:4"
+   ],
+   "restbase-mysql": [
+    "restbase-mysql:1",
+    "restbase-mysql:5",
+    "restbase-mysql:2",
+    "restbase-mysql:10",
+    "restbase-mysql:4"
+   ],
+   "sfscores-mysql": [
+    "sfscores-mysql:0",
+    "sfscores-mysql:1",
+    "sfscores-mysql:3",
+    "sfscores-mysql:5",
+    "sfscores-mysql:2"
+   ],
+   "shakespeare-mysql": [
+    "shakespeare-mysql:2",
+    "shakespeare-mysql:0",
+    "shakespeare-mysql:1",
+    "shakespeare-mysql:3",
+    "shakespeare-mysql:6"
+   ],
+   "studentloan-mysql": [
+    "studentloan-mysql:0",
+    "studentloan-mysql:1",
+    "studentloan-mysql:2",
+    "studentloan-mysql:6",
+    "studentloan-mysql:12"
+   ],
+   "voc-mysql": [
+    "voc-mysql:0",
+    "voc-mysql:5",
+    "voc-mysql:6",
+    "voc-mysql:7",
+    "voc-mysql:4"
+   ],
+   "world-mysql": [
+    "world-mysql:2",
+    "world-mysql:1",
+    "world-mysql:0",
+    "world-mysql:4",
+    "world-mysql:7"
+   ],
+   "accidents-mysql": [
+    "accidents-mysql:0",
+    "accidents-mysql:1",
+    "accidents-mysql:2",
+    "accidents-mysql:5",
+    "accidents-mysql:4"
+   ],
+   "cdeschools-mysql": [
+    "cdeschools-mysql:0",
+    "cdeschools-mysql:1",
+    "cdeschools-mysql:2",
+    "cdeschools-mysql:6",
+    "cdeschools-mysql:4"
+   ],
+   "consumerexpenditures-mysql": [
+    "consumerexpenditures-mysql:3",
+    "consumerexpenditures-mysql:1",
+    "consumerexpenditures-mysql:2",
+    "consumerexpenditures-mysql:0",
+    "consumerexpenditures-mysql:4"
+   ],
+   "fnhk-mysql": [
+    "fnhk-mysql:0",
+    "fnhk-mysql:2",
+    "fnhk-mysql:1",
+    "fnhk-mysql:3",
+    "fnhk-mysql:5"
+   ],
+   "hepatitis-mysql": [
+    "hepatitis-mysql:1",
+    "hepatitis-mysql:0",
+    "hepatitis-mysql:2",
+    "hepatitis-mysql:5",
+    "hepatitis-mysql:6"
+   ],
+   "legalacts-mysql": [
+    "legalacts-mysql:1",
+    "legalacts-mysql:0",
+    "legalacts-mysql:2",
+    "legalacts-mysql:3",
+    "legalacts-mysql:4"
+   ],
+   "nhldraft-mysql": [
+    "nhldraft-mysql:0",
+    "nhldraft-mysql:1",
+    "nhldraft-mysql:2",
+    "nhldraft-mysql:7",
+    "nhldraft-mysql:6"
+   ],
+   "sap-mysql": [
+    "sap-mysql:0",
+    "sap-mysql:1",
+    "sap-mysql:4",
+    "sap-mysql:13",
+    "sap-mysql:9"
+   ],
+   "seznam-mysql": [
+    "seznam-mysql:0",
+    "seznam-mysql:1",
+    "seznam-mysql:3",
+    "seznam-mysql:2",
+    "seznam-mysql:4"
+   ],
+   "walmart2014-mysql": [
+    "walmart2014-mysql:0",
+    "walmart2014-mysql:2",
+    "walmart2014-mysql:6",
+    "walmart2014-mysql:1",
+    "walmart2014-mysql:13"
+   ]
+  },
+  "round 1e": {
+   "airlines-postgres": [
+    "airlines-postgres:0",
+    "airlines-postgres:3",
+    "airlines-postgres:6",
+    "airlines-postgres:5",
+    "airlines-postgres:2"
+   ],
+   "atherosclerosis-mysql": [
+    "atherosclerosis-mysql:9",
+    "atherosclerosis-mysql:4",
+    "atherosclerosis-mysql:5",
+    "atherosclerosis-mysql:0",
+    "atherosclerosis-mysql:15"
+   ],
+   "basketball-mysql": [
+    "basketball-mysql:0",
+    "basketball-mysql:4",
+    "basketball-mysql:1",
+    "basketball-mysql:9",
+    "basketball-mysql:12"
+   ],
+   "basketballwomen-mysql": [
+    "basketballwomen-mysql:1",
+    "basketballwomen-mysql:6",
+    "basketballwomen-mysql:0",
+    "basketballwomen-mysql:3",
+    "basketballwomen-mysql:2"
+   ],
+   "ccs-mysql": [
+    "ccs-mysql:7",
+    "ccs-mysql:x30-7",
+    "ccs-mysql:12",
+    "ccs-mysql:x30-9",
+    "ccs-mysql:x30-2"
+   ],
+   "chinook-postgres": [
+    "chinook-postgres:x30-8",
+    "chinook-postgres:0",
+    "chinook-postgres:5",
+    "chinook-postgres:6",
+    "chinook-postgres:x30-11"
+   ],
+   "classicmodels-mysql": [
+    "classicmodels-mysql:2",
+    "classicmodels-mysql:5",
+    "classicmodels-mysql:6",
+    "classicmodels-mysql:4",
+    "classicmodels-mysql:1"
+   ],
+   "craftbeer-mysql": [
+    "craftbeer-mysql:1",
+    "craftbeer-mysql:0",
+    "craftbeer-mysql:2",
+    "craftbeer-mysql:15",
+    "craftbeer-mysql:6"
+   ],
+   "credit-mysql": [
+    "credit-mysql:0",
+    "credit-mysql:4",
+    "credit-mysql:5",
+    "credit-mysql:x30-5",
+    "credit-mysql:x30-0"
+   ],
+   "dallas-mysql": [
+    "dallas-mysql:0",
+    "dallas-mysql:1",
+    "dallas-mysql:3",
+    "dallas-mysql:8",
+    "dallas-mysql:7"
+   ],
+   "ergastf1-mysql": [
+    "ergastf1-mysql:0",
+    "ergastf1-mysql:10",
+    "ergastf1-mysql:1",
+    "ergastf1-mysql:13",
+    "ergastf1-mysql:8"
+   ],
+   "ftp-mysql": [
+    "ftp-mysql:1",
+    "ftp-mysql:0",
+    "ftp-mysql:2",
+    "ftp-mysql:3",
+    "ftp-mysql:4"
+   ],
+   "hockey-mysql": [
+    "hockey-mysql:6",
+    "hockey-mysql:0",
+    "hockey-mysql:14",
+    "hockey-mysql:10",
+    "hockey-mysql:1"
+   ],
+   "lahman-mysql": [
+    "lahman-mysql:3",
+    "lahman-mysql:x30-3",
+    "lahman-mysql:x30-12",
+    "lahman-mysql:2",
+    "lahman-mysql:7"
+   ],
+   "medical-mysql": [
+    "medical-mysql:1",
+    "medical-mysql:7",
+    "medical-mysql:4",
+    "medical-mysql:0",
+    "medical-mysql:5"
+   ],
+   "mondial-mysql": [
+    "mondial-mysql:1",
+    "mondial-mysql:4",
+    "mondial-mysql:16",
+    "mondial-mysql:5",
+    "mondial-mysql:22"
+   ],
+   "movielens-mysql": [
+    "movielens-mysql:0",
+    "movielens-mysql:1",
+    "movielens-mysql:7",
+    "movielens-mysql:11",
+    "movielens-mysql:4"
+   ],
+   "nba-mysql": [
+    "nba-mysql:0",
+    "nba-mysql:1",
+    "nba-mysql:12",
+    "nba-mysql:8",
+    "nba-mysql:7"
+   ],
+   "ncaa-mysql": [
+    "ncaa-mysql:6",
+    "ncaa-mysql:x30-11",
+    "ncaa-mysql:x30-10",
+    "ncaa-mysql:x30-12",
+    "ncaa-mysql:5"
+   ],
+   "northwind-postgres": [
+    "northwind-postgres:1",
+    "northwind-postgres:0",
+    "northwind-postgres:3",
+    "northwind-postgres:4",
+    "northwind-postgres:5"
+   ],
+   "premierleague-mysql": [
+    "premierleague-mysql:0",
+    "premierleague-mysql:4",
+    "premierleague-mysql:3",
+    "premierleague-mysql:2",
+    "premierleague-mysql:x30-12"
+   ],
+   "pubs-mysql": [
+    "pubs-mysql:3",
+    "pubs-mysql:0",
+    "pubs-mysql:5",
+    "pubs-mysql:2",
+    "pubs-mysql:4"
+   ],
+   "restbase-mysql": [
+    "restbase-mysql:10",
+    "restbase-mysql:5",
+    "restbase-mysql:1",
+    "restbase-mysql:2",
+    "restbase-mysql:7"
+   ],
+   "sfscores-mysql": [
+    "sfscores-mysql:0",
+    "sfscores-mysql:5",
+    "sfscores-mysql:1",
+    "sfscores-mysql:3",
+    "sfscores-mysql:15"
+   ],
+   "shakespeare-mysql": [
+    "shakespeare-mysql:6",
+    "shakespeare-mysql:7",
+    "shakespeare-mysql:1",
+    "shakespeare-mysql:0",
+    "shakespeare-mysql:8"
+   ],
+   "studentloan-mysql": [
+    "studentloan-mysql:6",
+    "studentloan-mysql:0",
+    "studentloan-mysql:1",
+    "studentloan-mysql:2",
+    "studentloan-mysql:12"
+   ],
+   "voc-mysql": [
+    "voc-mysql:0",
+    "voc-mysql:5",
+    "voc-mysql:6",
+    "voc-mysql:7",
+    "voc-mysql:11"
+   ],
+   "world-mysql": [
+    "world-mysql:7",
+    "world-mysql:13",
+    "world-mysql:1",
+    "world-mysql:x30-1",
+    "world-mysql:10"
+   ],
+   "accidents-mysql": [
+    "accidents-mysql:0",
+    "accidents-mysql:1",
+    "accidents-mysql:5",
+    "accidents-mysql:8",
+    "accidents-mysql:4"
+   ],
+   "cdeschools-mysql": [
+    "cdeschools-mysql:0",
+    "cdeschools-mysql:6",
+    "cdeschools-mysql:1",
+    "cdeschools-mysql:12",
+    "cdeschools-mysql:16"
+   ],
+   "consumerexpenditures-mysql": [
+    "consumerexpenditures-mysql:3",
+    "consumerexpenditures-mysql:1",
+    "consumerexpenditures-mysql:2",
+    "consumerexpenditures-mysql:4",
+    "consumerexpenditures-mysql:11"
+   ],
+   "fnhk-mysql": [
+    "fnhk-mysql:0",
+    "fnhk-mysql:2",
+    "fnhk-mysql:1",
+    "fnhk-mysql:3",
+    "fnhk-mysql:7"
+   ],
+   "hepatitis-mysql": [
+    "hepatitis-mysql:1",
+    "hepatitis-mysql:11",
+    "hepatitis-mysql:0",
+    "hepatitis-mysql:2",
+    "hepatitis-mysql:22"
+   ],
+   "legalacts-mysql": [
+    "legalacts-mysql:1",
+    "legalacts-mysql:2",
+    "legalacts-mysql:0",
+    "legalacts-mysql:8",
+    "legalacts-mysql:4"
+   ],
+   "nhldraft-mysql": [
+    "nhldraft-mysql:0",
+    "nhldraft-mysql:7",
+    "nhldraft-mysql:6",
+    "nhldraft-mysql:1",
+    "nhldraft-mysql:2"
+   ],
+   "sap-mysql": [
+    "sap-mysql:1",
+    "sap-mysql:4",
+    "sap-mysql:0",
+    "sap-mysql:19",
+    "sap-mysql:13"
+   ],
+   "seznam-mysql": [
+    "seznam-mysql:1",
+    "seznam-mysql:0",
+    "seznam-mysql:3",
+    "seznam-mysql:13",
+    "seznam-mysql:2"
+   ],
+   "walmart2014-mysql": [
+    "walmart2014-mysql:0",
+    "walmart2014-mysql:13",
+    "walmart2014-mysql:2",
+    "walmart2014-mysql:6",
+    "walmart2014-mysql:18"
+   ]
+  },
+  "round 1e, taught on round 1d's 28 only": {
+   "airlines-postgres": [
+    "airlines-postgres:0",
+    "airlines-postgres:2",
+    "airlines-postgres:1",
+    "airlines-postgres:3",
+    "airlines-postgres:5"
+   ],
+   "atherosclerosis-mysql": [
+    "atherosclerosis-mysql:0",
+    "atherosclerosis-mysql:4",
+    "atherosclerosis-mysql:9",
+    "atherosclerosis-mysql:2",
+    "atherosclerosis-mysql:7"
+   ],
+   "basketball-mysql": [
+    "basketball-mysql:4",
+    "basketball-mysql:0",
+    "basketball-mysql:1",
+    "basketball-mysql:7",
+    "basketball-mysql:3"
+   ],
+   "basketballwomen-mysql": [
+    "basketballwomen-mysql:1",
+    "basketballwomen-mysql:0",
+    "basketballwomen-mysql:2",
+    "basketballwomen-mysql:3",
+    "basketballwomen-mysql:6"
+   ],
+   "ccs-mysql": [
+    "ccs-mysql:7",
+    "ccs-mysql:2",
+    "ccs-mysql:12",
+    "ccs-mysql:x30-7",
+    "ccs-mysql:x30-2"
+   ],
+   "chinook-postgres": [
+    "chinook-postgres:0",
+    "chinook-postgres:6",
+    "chinook-postgres:5",
+    "chinook-postgres:7",
+    "chinook-postgres:11"
+   ],
+   "classicmodels-mysql": [
+    "classicmodels-mysql:0",
+    "classicmodels-mysql:2",
+    "classicmodels-mysql:1",
+    "classicmodels-mysql:5",
+    "classicmodels-mysql:6"
+   ],
+   "craftbeer-mysql": [
+    "craftbeer-mysql:0",
+    "craftbeer-mysql:1",
+    "craftbeer-mysql:2",
+    "craftbeer-mysql:6",
+    "craftbeer-mysql:8"
+   ],
+   "credit-mysql": [
+    "credit-mysql:0",
+    "credit-mysql:4",
+    "credit-mysql:5",
+    "credit-mysql:2",
+    "credit-mysql:x30-0"
+   ],
+   "dallas-mysql": [
+    "dallas-mysql:1",
+    "dallas-mysql:0",
+    "dallas-mysql:6",
+    "dallas-mysql:7",
+    "dallas-mysql:8"
+   ],
+   "ergastf1-mysql": [
+    "ergastf1-mysql:0",
+    "ergastf1-mysql:1",
+    "ergastf1-mysql:10",
+    "ergastf1-mysql:5",
+    "ergastf1-mysql:x30-3"
+   ],
+   "ftp-mysql": [
+    "ftp-mysql:1",
+    "ftp-mysql:0",
+    "ftp-mysql:2",
+    "ftp-mysql:3",
+    "ftp-mysql:4"
+   ],
+   "hockey-mysql": [
+    "hockey-mysql:0",
+    "hockey-mysql:6",
+    "hockey-mysql:1",
+    "hockey-mysql:14",
+    "hockey-mysql:10"
+   ],
+   "lahman-mysql": [
+    "lahman-mysql:3",
+    "lahman-mysql:1",
+    "lahman-mysql:x30-12",
+    "lahman-mysql:5",
+    "lahman-mysql:6"
+   ],
+   "medical-mysql": [
+    "medical-mysql:0",
+    "medical-mysql:1",
+    "medical-mysql:4",
+    "medical-mysql:2",
+    "medical-mysql:5"
+   ],
+   "mondial-mysql": [
+    "mondial-mysql:1",
+    "mondial-mysql:4",
+    "mondial-mysql:16",
+    "mondial-mysql:7",
+    "mondial-mysql:10"
+   ],
+   "movielens-mysql": [
+    "movielens-mysql:0",
+    "movielens-mysql:1",
+    "movielens-mysql:7",
+    "movielens-mysql:2",
+    "movielens-mysql:11"
+   ],
+   "nba-mysql": [
+    "nba-mysql:0",
+    "nba-mysql:1",
+    "nba-mysql:2",
+    "nba-mysql:8",
+    "nba-mysql:12"
+   ],
+   "ncaa-mysql": [
+    "ncaa-mysql:1",
+    "ncaa-mysql:6",
+    "ncaa-mysql:3",
+    "ncaa-mysql:0",
+    "ncaa-mysql:5"
+   ],
+   "northwind-postgres": [
+    "northwind-postgres:0",
+    "northwind-postgres:3",
+    "northwind-postgres:4",
+    "northwind-postgres:1",
+    "northwind-postgres:2"
+   ],
+   "premierleague-mysql": [
+    "premierleague-mysql:0",
+    "premierleague-mysql:2",
+    "premierleague-mysql:4",
+    "premierleague-mysql:3",
+    "premierleague-mysql:x30-12"
+   ],
+   "pubs-mysql": [
+    "pubs-mysql:0",
+    "pubs-mysql:3",
+    "pubs-mysql:8",
+    "pubs-mysql:2",
+    "pubs-mysql:9"
+   ],
+   "restbase-mysql": [
+    "restbase-mysql:1",
+    "restbase-mysql:4",
+    "restbase-mysql:7",
+    "restbase-mysql:5",
+    "restbase-mysql:2"
+   ],
+   "sfscores-mysql": [
+    "sfscores-mysql:0",
+    "sfscores-mysql:1",
+    "sfscores-mysql:3",
+    "sfscores-mysql:2",
+    "sfscores-mysql:5"
+   ],
+   "shakespeare-mysql": [
+    "shakespeare-mysql:1",
+    "shakespeare-mysql:0",
+    "shakespeare-mysql:2",
+    "shakespeare-mysql:8",
+    "shakespeare-mysql:6"
+   ],
+   "studentloan-mysql": [
+    "studentloan-mysql:0",
+    "studentloan-mysql:1",
+    "studentloan-mysql:6",
+    "studentloan-mysql:2",
+    "studentloan-mysql:12"
+   ],
+   "voc-mysql": [
+    "voc-mysql:0",
+    "voc-mysql:11",
+    "voc-mysql:5",
+    "voc-mysql:6",
+    "voc-mysql:7"
+   ],
+   "world-mysql": [
+    "world-mysql:2",
+    "world-mysql:1",
+    "world-mysql:7",
+    "world-mysql:4",
+    "world-mysql:13"
+   ],
+   "accidents-mysql": [
+    "accidents-mysql:0",
+    "accidents-mysql:1",
+    "accidents-mysql:4",
+    "accidents-mysql:2",
+    "accidents-mysql:5"
+   ],
+   "cdeschools-mysql": [
+    "cdeschools-mysql:0",
+    "cdeschools-mysql:1",
+    "cdeschools-mysql:6",
+    "cdeschools-mysql:4",
+    "cdeschools-mysql:3"
+   ],
+   "consumerexpenditures-mysql": [
+    "consumerexpenditures-mysql:3",
+    "consumerexpenditures-mysql:1",
+    "consumerexpenditures-mysql:2",
+    "consumerexpenditures-mysql:0",
+    "consumerexpenditures-mysql:4"
+   ],
+   "fnhk-mysql": [
+    "fnhk-mysql:0",
+    "fnhk-mysql:2",
+    "fnhk-mysql:1",
+    "fnhk-mysql:3",
+    "fnhk-mysql:5"
+   ],
+   "hepatitis-mysql": [
+    "hepatitis-mysql:1",
+    "hepatitis-mysql:11",
+    "hepatitis-mysql:0",
+    "hepatitis-mysql:2",
+    "hepatitis-mysql:5"
+   ],
+   "legalacts-mysql": [
+    "legalacts-mysql:1",
+    "legalacts-mysql:2",
+    "legalacts-mysql:0",
+    "legalacts-mysql:4",
+    "legalacts-mysql:8"
+   ],
+   "nhldraft-mysql": [
+    "nhldraft-mysql:0",
+    "nhldraft-mysql:1",
+    "nhldraft-mysql:2",
+    "nhldraft-mysql:7",
+    "nhldraft-mysql:6"
+   ],
+   "sap-mysql": [
+    "sap-mysql:1",
+    "sap-mysql:0",
+    "sap-mysql:4",
+    "sap-mysql:14",
+    "sap-mysql:19"
+   ],
+   "seznam-mysql": [
+    "seznam-mysql:0",
+    "seznam-mysql:1",
+    "seznam-mysql:3",
+    "seznam-mysql:5",
+    "seznam-mysql:13"
+   ],
+   "walmart2014-mysql": [
+    "walmart2014-mysql:0",
+    "walmart2014-mysql:13",
+    "walmart2014-mysql:2",
+    "walmart2014-mysql:6",
+    "walmart2014-mysql:1"
+   ]
+  },
+  "round 1e, without the new numbers": {
+   "airlines-postgres": [
+    "airlines-postgres:0",
+    "airlines-postgres:3",
+    "airlines-postgres:2",
+    "airlines-postgres:6",
+    "airlines-postgres:5"
+   ],
+   "atherosclerosis-mysql": [
+    "atherosclerosis-mysql:0",
+    "atherosclerosis-mysql:4",
+    "atherosclerosis-mysql:9",
+    "atherosclerosis-mysql:2",
+    "atherosclerosis-mysql:8"
+   ],
+   "basketball-mysql": [
+    "basketball-mysql:0",
+    "basketball-mysql:9",
+    "basketball-mysql:4",
+    "basketball-mysql:12",
+    "basketball-mysql:1"
+   ],
+   "basketballwomen-mysql": [
+    "basketballwomen-mysql:1",
+    "basketballwomen-mysql:6",
+    "basketballwomen-mysql:0",
+    "basketballwomen-mysql:3",
+    "basketballwomen-mysql:2"
+   ],
+   "ccs-mysql": [
+    "ccs-mysql:7",
+    "ccs-mysql:x30-7",
+    "ccs-mysql:12",
+    "ccs-mysql:x30-2",
+    "ccs-mysql:x30-9"
+   ],
+   "chinook-postgres": [
+    "chinook-postgres:1",
+    "chinook-postgres:x30-8",
+    "chinook-postgres:0",
+    "chinook-postgres:x30-0",
+    "chinook-postgres:6"
+   ],
+   "classicmodels-mysql": [
+    "classicmodels-mysql:2",
+    "classicmodels-mysql:5",
+    "classicmodels-mysql:6",
+    "classicmodels-mysql:4",
+    "classicmodels-mysql:1"
+   ],
+   "craftbeer-mysql": [
+    "craftbeer-mysql:1",
+    "craftbeer-mysql:0",
+    "craftbeer-mysql:2",
+    "craftbeer-mysql:15",
+    "craftbeer-mysql:6"
+   ],
+   "credit-mysql": [
+    "credit-mysql:0",
+    "credit-mysql:5",
+    "credit-mysql:4",
+    "credit-mysql:1",
+    "credit-mysql:6"
+   ],
+   "dallas-mysql": [
+    "dallas-mysql:0",
+    "dallas-mysql:1",
+    "dallas-mysql:7",
+    "dallas-mysql:6",
+    "dallas-mysql:8"
+   ],
+   "ergastf1-mysql": [
+    "ergastf1-mysql:0",
+    "ergastf1-mysql:1",
+    "ergastf1-mysql:10",
+    "ergastf1-mysql:5",
+    "ergastf1-mysql:8"
+   ],
+   "ftp-mysql": [
+    "ftp-mysql:1",
+    "ftp-mysql:2",
+    "ftp-mysql:0",
+    "ftp-mysql:3",
+    "ftp-mysql:4"
+   ],
+   "hockey-mysql": [
+    "hockey-mysql:0",
+    "hockey-mysql:6",
+    "hockey-mysql:14",
+    "hockey-mysql:4",
+    "hockey-mysql:1"
+   ],
+   "lahman-mysql": [
+    "lahman-mysql:3",
+    "lahman-mysql:2",
+    "lahman-mysql:x30-3",
+    "lahman-mysql:11",
+    "lahman-mysql:x30-4"
+   ],
+   "medical-mysql": [
+    "medical-mysql:1",
+    "medical-mysql:0",
+    "medical-mysql:7",
+    "medical-mysql:5",
+    "medical-mysql:4"
+   ],
+   "mondial-mysql": [
+    "mondial-mysql:1",
+    "mondial-mysql:0",
+    "mondial-mysql:4",
+    "mondial-mysql:7",
+    "mondial-mysql:16"
+   ],
+   "movielens-mysql": [
+    "movielens-mysql:0",
+    "movielens-mysql:1",
+    "movielens-mysql:7",
+    "movielens-mysql:4",
+    "movielens-mysql:5"
+   ],
+   "nba-mysql": [
+    "nba-mysql:0",
+    "nba-mysql:1",
+    "nba-mysql:2",
+    "nba-mysql:12",
+    "nba-mysql:7"
+   ],
+   "ncaa-mysql": [
+    "ncaa-mysql:6",
+    "ncaa-mysql:1",
+    "ncaa-mysql:3",
+    "ncaa-mysql:x30-11",
+    "ncaa-mysql:5"
+   ],
+   "northwind-postgres": [
+    "northwind-postgres:0",
+    "northwind-postgres:3",
+    "northwind-postgres:4",
+    "northwind-postgres:1",
+    "northwind-postgres:5"
+   ],
+   "premierleague-mysql": [
+    "premierleague-mysql:3",
+    "premierleague-mysql:2",
+    "premierleague-mysql:4",
+    "premierleague-mysql:0",
+    "premierleague-mysql:x30-12"
+   ],
+   "pubs-mysql": [
+    "pubs-mysql:3",
+    "pubs-mysql:0",
+    "pubs-mysql:6",
+    "pubs-mysql:2",
+    "pubs-mysql:5"
+   ],
+   "restbase-mysql": [
+    "restbase-mysql:1",
+    "restbase-mysql:10",
+    "restbase-mysql:4",
+    "restbase-mysql:7",
+    "restbase-mysql:5"
+   ],
+   "sfscores-mysql": [
+    "sfscores-mysql:0",
+    "sfscores-mysql:3",
+    "sfscores-mysql:1",
+    "sfscores-mysql:5",
+    "sfscores-mysql:2"
+   ],
+   "shakespeare-mysql": [
+    "shakespeare-mysql:6",
+    "shakespeare-mysql:2",
+    "shakespeare-mysql:8",
+    "shakespeare-mysql:7",
+    "shakespeare-mysql:1"
+   ],
+   "studentloan-mysql": [
+    "studentloan-mysql:0",
+    "studentloan-mysql:1",
+    "studentloan-mysql:6",
+    "studentloan-mysql:2",
+    "studentloan-mysql:12"
+   ],
+   "voc-mysql": [
+    "voc-mysql:11",
+    "voc-mysql:0",
+    "voc-mysql:5",
+    "voc-mysql:6",
+    "voc-mysql:7"
+   ],
+   "world-mysql": [
+    "world-mysql:1",
+    "world-mysql:2",
+    "world-mysql:7",
+    "world-mysql:10",
+    "world-mysql:13"
+   ],
+   "accidents-mysql": [
+    "accidents-mysql:0",
+    "accidents-mysql:2",
+    "accidents-mysql:8",
+    "accidents-mysql:1",
+    "accidents-mysql:4"
+   ],
+   "cdeschools-mysql": [
+    "cdeschools-mysql:0",
+    "cdeschools-mysql:6",
+    "cdeschools-mysql:1",
+    "cdeschools-mysql:4",
+    "cdeschools-mysql:3"
+   ],
+   "consumerexpenditures-mysql": [
+    "consumerexpenditures-mysql:2",
+    "consumerexpenditures-mysql:4",
+    "consumerexpenditures-mysql:3",
+    "consumerexpenditures-mysql:0",
+    "consumerexpenditures-mysql:1"
+   ],
+   "fnhk-mysql": [
+    "fnhk-mysql:0",
+    "fnhk-mysql:2",
+    "fnhk-mysql:1",
+    "fnhk-mysql:3",
+    "fnhk-mysql:7"
+   ],
+   "hepatitis-mysql": [
+    "hepatitis-mysql:1",
+    "hepatitis-mysql:11",
+    "hepatitis-mysql:0",
+    "hepatitis-mysql:2",
+    "hepatitis-mysql:19"
+   ],
+   "legalacts-mysql": [
+    "legalacts-mysql:1",
+    "legalacts-mysql:2",
+    "legalacts-mysql:0",
+    "legalacts-mysql:4",
+    "legalacts-mysql:8"
+   ],
+   "nhldraft-mysql": [
+    "nhldraft-mysql:0",
+    "nhldraft-mysql:5",
+    "nhldraft-mysql:1",
+    "nhldraft-mysql:2",
+    "nhldraft-mysql:7"
+   ],
+   "sap-mysql": [
+    "sap-mysql:1",
+    "sap-mysql:4",
+    "sap-mysql:0",
+    "sap-mysql:19",
+    "sap-mysql:12"
+   ],
+   "seznam-mysql": [
+    "seznam-mysql:1",
+    "seznam-mysql:0",
+    "seznam-mysql:5",
+    "seznam-mysql:3",
+    "seznam-mysql:7"
+   ],
+   "walmart2014-mysql": [
+    "walmart2014-mysql:13",
+    "walmart2014-mysql:0",
+    "walmart2014-mysql:6",
+    "walmart2014-mysql:2",
+    "walmart2014-mysql:18"
+   ]
+  }
+ }
+}

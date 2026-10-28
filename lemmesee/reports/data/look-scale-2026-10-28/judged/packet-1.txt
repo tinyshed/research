@@ -1,0 +1,2081 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: hepatitis ===
+Hepatitis patients, their biopsies, interferon treatments and laboratory tests, as CTU serves it. A fixture of round 1e.
+
+  panel hepatitis-1-01
+    title: rows of indis by indis.dbil
+    rows (2):
+      0 | 3325
+      1 | 2366
+
+  panel hepatitis-1-02
+    title: rows of rel11 by Bio.activity
+    rows (5):
+      2 | 267
+      1 | 219
+      3 | 80
+      4 | 43
+      0 | 12
+
+  panel hepatitis-1-03
+    title: rows of indis by indis.ztt
+    rows (6):
+      5 | 1696
+      1 | 1272
+      3 | 1206
+      4 | 823
+      2 | 543
+      0 | 151
+
+  panel hepatitis-1-04
+    title: rows of indis by indis.got
+    rows (5):
+      1 | 1762
+      3 | 1756
+      2 | 1714
+      0 | 426
+      4 | 33
+
+  panel hepatitis-1-05
+    title: rows of rel12 by indis.got
+    rows (5):
+      1 | 1762
+      3 | 1756
+      2 | 1714
+      0 | 426
+      4 | 33
+
+  panel hepatitis-1-06
+    title: rows of dispat by dispat.age
+    rows (7):
+      5 | 278
+      6 | 71
+      3 | 44
+      4 | 40
+      2 | 32
+      1 | 28
+      0 | 7
+
+  panel hepatitis-1-07
+    title: rows of rel11 by dispat (by key) the twelve most
+    rows (12):
+      461 | 5
+      404 | 5
+      154 | 4
+      296 | 4
+      385 | 4
+      454 | 4
+      486 | 4
+      187 | 3
+      97 | 3
+      231 | 3
+      225 | 3
+      90 | 3
+
+  panel hepatitis-1-08
+    title: rows of inf by inf.dur
+    rows (5):
+      4 | 40
+      0 | 39
+      1 | 39
+      2 | 39
+      3 | 39
+
+  panel hepatitis-1-09
+    title: rows of rel12 by indis.gpt
+    rows (4):
+      2 | 2699
+      1 | 2506
+      0 | 366
+      3 | 120
+
+  panel hepatitis-1-10
+    title: rows of rel13 by dispat (by key) the twelve most
+    rows (12):
+      2 | 1
+      5 | 1
+      6 | 1
+      9 | 1
+      10 | 1
+      13 | 1
+      14 | 1
+      20 | 1
+      27 | 1
+      28 | 1
+      32 | 1
+      37 | 1
+
+  panel hepatitis-1-11
+    title: rows of indis by indis.tcho
+    rows (4):
+      1 | 2799
+      2 | 1469
+      0 | 828
+      3 | 595
+
+  panel hepatitis-1-12
+    title: rows of indis by indis.ttt
+    rows (6):
+      5 | 2431
+      3 | 892
+      4 | 886
+      2 | 822
+      1 | 331
+      0 | 329
+
+  panel hepatitis-1-13
+    title: rows of dispat by dispat.Type
+    rows (2):
+      1 | 294
+      0 | 206
+
+  panel hepatitis-1-14
+    title: rows of rel11 by Bio (by key) the twelve most
+    rows (12):
+      5 | 112
+      1 | 56
+      8 | 54
+      2 | 51
+      10 | 49
+      9 | 36
+      15 | 25
+      24 | 22
+      6 | 22
+      12 | 21
+      17 | 20
+      14 | 19
+
+  panel hepatitis-1-15
+    title: rows of indis by indis.tp
+    rows (4):
+      1 | 2319
+      2 | 1433
+      3 | 1073
+      0 | 866
+
+  panel hepatitis-1-16
+    title: rows of rel13 by inf.dur the twelve most
+    rows (12):
+      1 | 1
+      0 | 1
+      1 | 1
+      1 | 1
+      2 | 1
+      0 | 1
+      1 | 1
+      0 | 1
+      0 | 1
+      1 | 1
+      2 | 1
+      2 | 1
+
+  panel hepatitis-1-17
+    title: rows of dispat by dispat.sex
+    rows (2):
+      0 | 355
+      1 | 145
+
+  panel hepatitis-1-18
+    title: rows of rel13 by inf.dur
+    rows (5):
+      4 | 40
+      1 | 39
+      0 | 39
+      2 | 39
+      3 | 39
+
+  panel hepatitis-1-19
+    title: rows of rel12 by indis.che
+    rows (10):
+      6 | 3998
+      5 | 692
+      7 | 601
+      1 | 141
+      8 | 105
+      4 | 64
+      2 | 51
+      9 | 26
+      0 | 7
+      3 | 6
+
+  panel hepatitis-1-20
+    title: rows of rel12 by dispat (by key) the twelve most
+    rows (12):
+      404 | 105
+      486 | 84
+      461 | 65
+      97 | 60
+      494 | 60
+      154 | 56
+      488 | 54
+      136 | 48
+      151 | 48
+      145 | 42
+      303 | 42
+      231 | 42
+
+  panel hepatitis-1-21
+    title: rows of indis by indis.alb
+    rows (2):
+      0 | 3970
+      1 | 1721
+
+  panel hepatitis-1-22
+    title: rows of rel12 by dispat.age
+    rows (7):
+      5 | 3382
+      6 | 816
+      4 | 435
+      3 | 371
+      2 | 367
+      1 | 269
+      0 | 51
+
+  panel hepatitis-1-23
+    title: rows of indis by indis.che
+    rows (10):
+      6 | 3998
+      5 | 692
+      7 | 601
+      1 | 141
+      8 | 105
+      4 | 64
+      2 | 51
+      9 | 26
+      0 | 7
+      3 | 6
+
+  panel hepatitis-1-24
+    title: rows of rel12 by indis.ztt
+    rows (6):
+      5 | 1696
+      1 | 1272
+      3 | 1206
+      4 | 823
+      2 | 543
+      0 | 151
+
+  panel hepatitis-1-25
+    title: largest tables, estimated rows
+    rows (7):
+      indis | 5691
+      rel12 | 5691
+      rel11 | 621
+      dispat | 500
+      inf | 196
+      rel13 | 196
+      Bio | 32
+
+  panel hepatitis-1-26
+    title: rows of indis by indis.tbil
+    rows (2):
+      1 | 4844
+      0 | 847
+
+  panel hepatitis-1-27
+    title: rows of rel12 by indis.ttt
+    rows (6):
+      5 | 2431
+      3 | 892
+      4 | 886
+      2 | 822
+      1 | 331
+      0 | 329
+
+  panel hepatitis-1-28
+    title: rows of indis by indis.gpt
+    rows (4):
+      2 | 2699
+      1 | 2506
+      0 | 366
+      3 | 120
+
+  panel hepatitis-1-29
+    title: rows of rel12 by indis.tcho
+    rows (4):
+      1 | 2799
+      2 | 1469
+      0 | 828
+      3 | 595
+
+  panel hepatitis-1-30
+    title: rows of rel12 by indis (by key) the twelve most
+    rows (12):
+      1 | 1
+      2 | 1
+      3 | 1
+      4 | 1
+      5 | 1
+      6 | 1
+      7 | 1
+      8 | 1
+      9 | 1
+      10 | 1
+      11 | 1
+      12 | 1
+
+  panel hepatitis-1-31
+    title: rows of rel11 by Bio.fibros
+    rows (5):
+      1 | 273
+      2 | 136
+      3 | 103
+      4 | 88
+      0 | 21
+
+
+=== database: cdeschools ===
+California's schools and districts, their SAT scores, and their free and reduced-price meal counts, as CTU serves it. A fixture of round 1e.
+
+  panel cdeschools-1-01
+    title: rows of frpm by frpm.School Type the twelve most
+    rows (12):
+      Elementary Schools (Public) | 5584
+      High Schools (Public) | 1331
+      Intermediate/Middle Schools (Public) | 1299
+      Continuation High Schools | 459
+      Alternative Schools of Choice | 259
+      K-12 Schools (Public) | 240
+      Elemen Schools In 1 School Dist. (Public | 206
+      District Community Day Schools | 203
+      Special Education Schools (Public) | 132
+      County Community | 75
+      Juvenile Court Schools | 74
+      Junior High Schools (Public) | 46
+
+  panel cdeschools-1-02
+    title: rows of frpm by frpm.Educational Option Type
+    rows (13):
+      Traditional | 8696
+      Continuation School | 459
+      Alternative School of Choice | 259
+      Community Day School | 203
+      Special Education School | 128
+      County Community School | 84
+      Juvenile Court School | 74
+      ∅ | 45
+      Opportunity School | 24
+      Youth Authority School | 4
+      District Special Education Consortia Sch | 4
+      State Special School | 3
+      … 1 more rows
+
+  panel cdeschools-1-03
+    title: rows of frpm by frpm.Charter Funding Type
+    rows (4):
+      ∅ | 8819
+      Directly funded | 838
+      Locally funded | 328
+      Not in CS funding model | 1
+
+  panel cdeschools-1-04
+    title: sum of frpm.FRPM Count (K-12) by frpm.Educational Option Type
+    rows (13):
+      Traditional | 3517664
+      Continuation School | 41821
+      Alternative School of Choice | 34538
+      County Community School | 13504
+      Special Education School | 12221
+      Juvenile Court School | 5206
+      Community Day School | 3396
+      Opportunity School | 1080
+      ∅ | 782
+      State Special School | 579
+      Youth Authority School | 424
+      District Special Education Consortia Sch | 123
+      … 1 more rows
+
+  panel cdeschools-1-05
+    title: rows of schools by schools.DOCType
+    rows (12):
+      Unified School District | 10190
+      Elementary School District | 4378
+      County Office of Education (COE) | 1703
+      High School District | 1079
+      Regional Occupation Center/Program (ROC/ | 156
+      State Board of Education | 69
+      Non-School Locations | 49
+      Community College District | 33
+      Statewide Benefit Charter | 11
+      Administration Only | 10
+      State Special Schools | 6
+      Joint Powers Authority (JPA) | 2
+
+  panel cdeschools-1-06
+    title: rows of schools by schools.OpenDate
+    rows (116):
+      1850-01-01 | 1
+      1853-01-01 | 1
+      1856-01-01 | 1
+      1860-01-01 | 1
+      1861-01-01 | 1
+      1863-01-01 | 1
+      1865-01-01 | 3
+      1867-01-01 | 1
+      1868-01-01 | 1
+      1869-01-01 | 1
+      1878-01-01 | 1
+      1880-01-01 | 2
+      … 104 more rows
+
+  panel cdeschools-1-07
+    title: rows of schools by schools.ClosedDate
+    rows (35):
+      1980-01-01 | 2
+      1983-01-01 | 1
+      1984-01-01 | 83
+      1985-01-01 | 119
+      1986-01-01 | 168
+      1987-01-01 | 373
+      1988-01-01 | 93
+      1989-01-01 | 2045
+      1990-01-01 | 27
+      1991-01-01 | 58
+      1992-01-01 | 85
+      1993-01-01 | 80
+      … 23 more rows
+
+  panel cdeschools-1-08
+    title: rows of satscores by satscores.rtype
+    rows (2):
+      S | 1749
+      D | 520
+
+  panel cdeschools-1-09
+    title: rows of schools by schools.Virtual
+    rows (4):
+      N | 9703
+      ∅ | 6868
+      P | 1046
+      F | 69
+
+  panel cdeschools-1-10
+    title: sum of frpm.Free Meal Count (K-12) by frpm.School Type the twelve most
+    rows (12):
+      Elementary Schools (Public) | 1611192
+      High Schools (Public) | 790911
+      Intermediate/Middle Schools (Public) | 500085
+      K-12 Schools (Public) | 60919
+      Continuation High Schools | 37909
+      Alternative Schools of Choice | 29928
+      Elemen Schools In 1 School Dist. (Public | 21928
+      Junior High Schools (Public) | 12492
+      Special Education Schools (Public) | 10888
+      County Community | 10467
+      Juvenile Court Schools | 5185
+      District Community Day Schools | 3147
+
+  panel cdeschools-1-11
+    title: rows of schools by schools.DOC
+    rows (12):
+      54 | 10190
+      52 | 4378
+      00 | 1703
+      56 | 1079
+      98 | 156
+      02 | 69
+      34 | 49
+      58 | 33
+      03 | 11
+      99 | 10
+      31 | 6
+      42 | 2
+
+  panel cdeschools-1-12
+    title: rows of frpm by frpm.County Code the twelve most
+    rows (12):
+      19 | 2218
+      37 | 755
+      30 | 571
+      36 | 543
+      33 | 483
+      43 | 409
+      34 | 381
+      01 | 379
+      10 | 344
+      07 | 268
+      15 | 262
+      39 | 230
+
+  panel cdeschools-1-13
+    title: rows of frpm by frpm.Charter School (Y/N)
+    rows (3):
+      0 | 8774
+      1 | 1167
+      ∅ | 45
+
+  panel cdeschools-1-14
+    title: rows of schools by schools.EILName
+    rows (8):
+      Elementary | 7298
+      High School | 3367
+      Ungraded | 2525
+      Intermediate/Middle/Junior High | 1845
+      ∅ | 1369
+      Elementary-High Combination | 774
+      Adult | 352
+      Preschool | 156
+
+  panel cdeschools-1-15
+    title: rows of frpm by frpm.District Type
+    rows (8):
+      Unified School District | 6744
+      Elementary School District | 2356
+      High School District | 529
+      County Office of Education (COE) | 334
+      State Board of Education | 10
+      Statewide Benefit Charter | 6
+      Non-School Locations | 4
+      State Special Schools | 3
+
+  panel cdeschools-1-16
+    title: rows of schools by schools.StatusType
+    rows (4):
+      Active | 11708
+      Closed | 4518
+      Merged | 1448
+      Pending | 12
+
+  panel cdeschools-1-17
+    title: rows of schools by schools.EdOpsName
+    rows (14):
+      Traditional | 10103
+      ∅ | 5711
+      Continuation School | 539
+      Community Day School | 486
+      Alternative School of Choice | 320
+      Special Education School | 228
+      County Community School | 133
+      Juvenile Court School | 94
+      Opportunity School | 47
+      Youth Authority School | 6
+      ROP | 6
+      Home and Hospital | 5
+      … 2 more rows
+
+  panel cdeschools-1-18
+    title: rows of schools by schools.County the twelve most
+    rows (12):
+      Los Angeles | 3636
+      San Diego | 1139
+      Orange | 886
+      San Bernardino | 861
+      Santa Clara | 780
+      Alameda | 761
+      Riverside | 743
+      Sacramento | 622
+      Fresno | 620
+      Contra Costa | 465
+      Kern | 443
+      San Joaquin | 427
+
+  panel cdeschools-1-19
+    title: rows of schools by schools.GSoffered the twelve most
+    rows (12):
+      ∅ | 3882
+      K-5 | 2724
+      9-12 | 2368
+      K-6 | 2362
+      K-8 | 1292
+      6-8 | 1123
+      K-12 | 674
+      7-12 | 570
+      7-8 | 432
+      Adult | 380
+      P | 189
+      6-12 | 185
+
+  panel cdeschools-1-20
+    title: rows of schools by schools.EdOpsCode
+    rows (14):
+      TRAD | 10103
+      ∅ | 5711
+      CON | 539
+      COMMDAY | 486
+      ALTSOC | 320
+      SPEC | 228
+      COMM | 133
+      JUV | 94
+      OPP | 47
+      YTH | 6
+      ROP | 6
+      HOMHOS | 5
+      … 2 more rows
+
+  panel cdeschools-1-21
+    title: rows of schools by schools.Charter
+    rows (3):
+      0 | 14588
+      1 | 1729
+      ∅ | 1369
+
+  panel cdeschools-1-22
+    title: largest tables, estimated rows
+    rows (3):
+      schools | 17475
+      frpm | 9807
+      satscores | 2269
+
+  panel cdeschools-1-23
+    title: sum of frpm.Free Meal Count (K-12) by frpm.Charter Funding Type
+    rows (4):
+      ∅ | 2846519
+      Directly funded | 196375
+      Locally funded | 55155
+      Not in CS funding model | 146
+
+  panel cdeschools-1-24
+    title: sum of frpm.Free Meal Count (K-12) by frpm.Educational Option Type
+    rows (13):
+      Traditional | 2995870
+      Continuation School | 37909
+      Alternative School of Choice | 29928
+      County Community School | 12490
+      Special Education School | 10784
+      Juvenile Court School | 5185
+      Community Day School | 3147
+      Opportunity School | 1016
+      ∅ | 693
+      State Special School | 579
+      Youth Authority School | 424
+      District Special Education Consortia Sch | 104
+      … 1 more rows
+
+  panel cdeschools-1-25
+    title: sum of frpm.Free Meal Count (K-12) by frpm.NSLP Provision Status
+    rows (8):
+      ∅ | 2179628
+      Provision 2 | 699505
+      Breakfast Provision 2 | 129807
+      CEP | 76360
+      Multiple Provision Types | 6529
+      Provision 1 | 4672
+      Provision 3 | 946
+      Lunch Provision 2 | 748
+
+  panel cdeschools-1-26
+    title: rows of schools by schools.LastUpdate
+    rows (18):
+      1999-01-01 | 3214
+      2000-01-01 | 134
+      2001-01-01 | 16
+      2002-01-01 | 19
+      2003-01-01 | 21
+      2004-01-01 | 47
+      2005-01-01 | 148
+      2006-01-01 | 32
+      2007-01-01 | 7
+      2008-01-01 | 17
+      2009-01-01 | 907
+      2010-01-01 | 41
+      … 6 more rows
+
+  panel cdeschools-1-27
+    title: rows of schools by schools.SOC the twelve most
+    rows (12):
+      60 | 7591
+      66 | 1776
+      62 | 1652
+      ∅ | 1369
+      68 | 754
+      09 | 750
+      69 | 615
+      70 | 551
+      10 | 500
+      63 | 500
+      65 | 438
+      61 | 273
+
+  panel cdeschools-1-28
+    title: rows of frpm by frpm.NSLP Provision Status
+    rows (8):
+      ∅ | 8139
+      Provision 2 | 1365
+      Breakfast Provision 2 | 285
+      CEP | 172
+      Multiple Provision Types | 11
+      Provision 1 | 7
+      Lunch Provision 2 | 5
+      Provision 3 | 2
+
+  panel cdeschools-1-29
+    title: rows of schools by schools.EILCode
+    rows (8):
+      ELEM | 7298
+      HS | 3367
+      UG | 2525
+      INTMIDJR | 1845
+      ∅ | 1369
+      ELEMHIGH | 774
+      A | 352
+      PS | 156
+
+  panel cdeschools-1-30
+    title: sum of frpm.Free Meal Count (K-12) by frpm.District Type
+    rows (8):
+      Unified School District | 2206289
+      Elementary School District | 596110
+      High School District | 243404
+      County Office of Education (COE) | 48346
+      State Board of Education | 2333
+      Statewide Benefit Charter | 710
+      State Special Schools | 579
+      Non-School Locations | 424
+
+  panel cdeschools-1-31
+    title: sum of satscores.NumTstTakr by satscores.cname
+    rows (57):
+      Los Angeles | 119269
+      Orange | 38152
+      San Diego | 36084
+      Riverside | 26851
+      San Bernardino | 24386
+      Santa Clara | 21380
+      Alameda | 17635
+      Sacramento | 14360
+      Contra Costa | 14054
+      Fresno | 11814
+      Kern | 8600
+      Ventura | 8346
+      … 45 more rows
+
+  panel cdeschools-1-32
+    title: rows of schools by schools.SOCType the twelve most
+    rows (12):
+      Elementary Schools (Public) | 7591
+      High Schools (Public) | 1776
+      Intermediate/Middle Schools (Public) | 1652
+      ∅ | 1369
+      Continuation High Schools | 754
+      Special Education Schools (Public) | 750
+      District Community Day Schools | 615
+      Adult Education Centers | 551
+      County Community | 500
+      Alternative Schools of Choice | 500
+      K-12 Schools (Public) | 438
+      Elemen Schools In 1 School Dist. (Public | 273
+
+  panel cdeschools-1-33
+    title: rows of frpm by frpm.County Name the twelve most
+    rows (12):
+      Los Angeles | 2218
+      San Diego | 755
+      Orange | 571
+      San Bernardino | 543
+      Riverside | 483
+      Santa Clara | 409
+      Sacramento | 381
+      Alameda | 379
+      Fresno | 344
+      Contra Costa | 268
+      Kern | 262
+      San Joaquin | 230
+
+
+=== database: accidents ===
+Road accidents in Slovenia, the people involved in each, and the administrative units where they happened, as CTU serves it. A fixture of round 1e.
+
+  panel accidents-1-01
+    title: sum of oseba.alkotest by upravna_enota.ime_upravna_enota the twelve most
+    rows (12):
+      Neznana | 23829.56
+      Maribor | 4318.36
+      Celje | 1933.71
+      Ptuj | 1556.49
+      Murska Sobota | 1408.12
+      Žalec | 1335.82
+      Novo Mesto | 1313.49
+      Ljubljana Šiška | 1239.30
+      Velenje | 1220.05
+      Ljubljana Vič-Rudnik | 1201.33
+      Kranj | 1166.56
+      Ljubljana Moste-Polje | 1076.36
+
+  panel accidents-1-02
+    title: rows of oseba by oseba.vrsta_udelezenca the twelve most
+    rows (12):
+      OA | 730290
+      TV | 69912
+      PT | 54685
+      OS | 15007
+      KO | 13656
+      KM | 13493
+      PE | 12758
+      MK | 9341
+      AV | 8424
+      KV | 8176
+      ∅ | 5766
+      TR | 4608
+
+  panel accidents-1-03
+    title: rows of nesreca by nesreca.stanje_povrsina_vozisce
+    rows (3):
+      A | 490960
+      M | 12106
+      O | 5927
+
+  panel accidents-1-04
+    title: rows of nesreca by nesreca.tip_nesreca
+    rows (10):
+      BT | 119840
+      NT | 74489
+      OP | 67400
+      TV | 66679
+      ÈT | 60502
+      TO | 44896
+      OS | 31162
+      PR | 24619
+      PZ | 10830
+      PP | 8576
+
+  panel accidents-1-05
+    title: rows of nesreca by upravna_enota.ime_upravna_enota the twelve most
+    rows (12):
+      Ljubljana Bežigrad | 102758
+      Maribor | 58765
+      Celje | 22859
+      Ptuj | 22353
+      Kranj | 15617
+      Murska Sobota | 15245
+      Koper | 14253
+      Domžale | 14178
+      Novo Mesto | 12500
+      Žalec | 11508
+      Nova Gorica | 9808
+      Slovenska Bistrica | 9505
+
+  panel accidents-1-06
+    title: sum of oseba.strokovni_pregled by upravna_enota.ime_upravna_enota the twelve most
+    rows (12):
+      Neznana | 6095.01
+      Maribor | 981.98
+      Ljubljana Vič-Rudnik | 664.93
+      Celje | 568.46
+      Ljubljana Moste-Polje | 501.23
+      Ljubljana Šiška | 485.72
+      Žalec | 472.78
+      Ljubljana Bežigrad | 451.85
+      Ptuj | 447.22
+      Kranj | 441.46
+      Domžale | 415.33
+      Murska Sobota | 408.70
+
+  panel accidents-1-07
+    title: rows of oseba by oseba.vozniski_staz_MM
+    rows (13):
+      0 | 303335
+      ∅ | 247210
+      6 | 40593
+      1 | 40123
+      2 | 39114
+      5 | 38891
+      3 | 38817
+      4 | 37259
+      7 | 35679
+      8 | 35125
+      10 | 33834
+      9 | 32800
+      … 1 more rows
+
+  panel accidents-1-08
+    title: rows of nesreca by nesreca.vzrok_nesreca
+    rows (11):
+      PV | 115655
+      HI | 103501
+      SV | 77152
+      PD | 74511
+      VR | 64573
+      OS | 48626
+      PR | 17896
+      NP | 2867
+      TO | 2304
+      CE | 1083
+      VO | 825
+
+  panel accidents-1-09
+    title: rows of nesreca by nesreca.stanje_promet
+    rows (5):
+      N | 283733
+      R | 139851
+      G | 66389
+      E | 17399
+      Z | 1621
+
+  panel accidents-1-10
+    title: rows of upravna_enota by upravna_enota.povrsina the twelve most
+    rows (12):
+      904 | 5
+      0 | 2
+      353 | 1
+      268 | 1
+      230 | 1
+      483 | 1
+      486 | 1
+      239 | 1
+      105 | 1
+      214 | 1
+      464 | 1
+      425 | 1
+
+  panel accidents-1-11
+    title: rows of nesreca by nesreca.opis_prizorisce
+    rows (8):
+      C | 293726
+      N | 176117
+      R | 26639
+      P | 10523
+      Ž | 945
+      K | 477
+      A | 359
+      M | 207
+
+  panel accidents-1-12
+    title: rows of nesreca by nesreca.vreme_nesreca
+    rows (8):
+      J | 275291
+      O | 142541
+      D | 58331
+      S | 14468
+      N | 11406
+      M | 6512
+      V | 328
+      T | 116
+
+  panel accidents-1-13
+    title: rows of oseba by oseba.drzavljanstvo the twelve most
+    rows (12):
+      005 | 876484
+      003 | 17635
+      001 | 12656
+      999 | 9299
+      211 | 6488
+      202 | 5880
+      215 | 5093
+      010 | 4301
+      004 | 2261
+      104 | 2238
+      130 | 1944
+      131 | 1080
+
+  panel accidents-1-14
+    title: rows of nesreca by nesreca.cas_nesreca
+    rows (12):
+      1995-01-01 | 38923
+      1996-01-01 | 39109
+      1997-01-01 | 40639
+      1998-01-01 | 36704
+      1999-01-01 | 40687
+      2000-01-01 | 39297
+      2001-01-01 | 39722
+      2002-01-01 | 39733
+      2003-01-01 | 41319
+      2004-01-01 | 43156
+      2005-01-01 | 54162
+      2006-01-01 | 55542
+
+  panel accidents-1-15
+    title: sum of nesreca.x by nesreca.cas_nesreca
+    rows (12):
+      1995-01-01 | 17416263610
+      1996-01-01 | 17498434440
+      1997-01-01 | 18695592108
+      1998-01-01 | 14850863669
+      1999-01-01 | 18185946678
+      2000-01-01 | 15496862137
+      2001-01-01 | 17765845034
+      2002-01-01 | 17642153029
+      2003-01-01 | 19059917155
+      2004-01-01 | 19445738380
+      2005-01-01 | 14505321945
+      2006-01-01 | 16025390332
+
+  panel accidents-1-16
+    title: rows of oseba by upravna_enota.ime_upravna_enota the twelve most
+    rows (12):
+      Neznana | 378414
+      Maribor | 62288
+      Ljubljana Bežigrad | 27417
+      Celje | 24806
+      Ptuj | 24380
+      Ljubljana Vič-Rudnik | 23203
+      Ljubljana Šiška | 22677
+      Ljubljana Moste-Polje | 21031
+      Kranj | 19510
+      Murska Sobota | 16454
+      Domžale | 15169
+      Koper | 14742
+
+  panel accidents-1-17
+    title: rows of oseba by nesreca (by key) the twelve most
+    rows (12):
+      436430 | 47
+      208591 | 45
+      115889 | 42
+      414544 | 35
+      451759 | 33
+      421419 | 31
+      132100 | 29
+      229152 | 26
+      311363 | 26
+      451282 | 24
+      413320 | 23
+      097476 | 23
+
+  panel accidents-1-18
+    title: largest tables, estimated rows
+    rows (3):
+      oseba | 948767
+      nesreca | 504850
+      upravna_enota | 64
+
+  panel accidents-1-19
+    title: rows of oseba by nesreca.klas_nesreca
+    rows (6):
+      B | 642451
+      L | 190895
+      U | 49721
+      H | 44556
+      P | 17805
+      S | 8608
+
+  panel accidents-1-20
+    title: rows of oseba by oseba.starost_d
+    rows (11):
+      C | 292610
+      D | 211978
+      E | 172457
+      B | 109085
+      F | 94075
+      G | 43290
+      H | 17775
+      A | 7746
+      I | 2672
+      N | 1334
+      J | 1014
+
+  panel accidents-1-21
+    title: rows of nesreca by upravna_enota.povrsina the twelve most
+    rows (12):
+      904 | 102758
+      356 | 58765
+      230 | 22859
+      645 | 22353
+      453 | 15617
+      692 | 15245
+      311 | 14253
+      239 | 14178
+      760 | 12500
+      334 | 11508
+      590 | 9808
+      367 | 9505
+
+  panel accidents-1-22
+    title: rows of oseba by oseba.poskodba
+    rows (8):
+      B | 735641
+      L | 122830
+      U | 49959
+      H | 22990
+      P | 12905
+      ∅ | 5766
+      S | 3703
+       | 242
+
+  panel accidents-1-23
+    title: rows of oseba by oseba.spol
+    rows (3):
+      1 | 704665
+      2 | 245736
+      0 | 3635
+
+  panel accidents-1-24
+    title: rows of oseba by oseba.varnostni_pas_ali_celada
+    rows (7):
+      1 | 401365
+      D | 347247
+      0 | 111446
+      N | 54557
+      2 | 33414
+      ∅ | 5765
+      * | 242
+
+  panel accidents-1-25
+    title: rows of nesreca by nesreca.naselje_ali_izven
+    rows (2):
+      D | 327288
+      N | 181705
+
+  panel accidents-1-26
+    title: rows of oseba per nesreca
+    rows (27):
+      1 | 141492
+      2 | 310369
+      3 | 40359
+      4 | 10106
+      5 | 3231
+      6 | 1249
+      7 | 425
+      8 | 193
+      9 | 76
+      10 | 40
+      11 | 18
+      12 | 8
+      … 15 more rows
+
+  panel accidents-1-27
+    title: rows of nesreca by nesreca.stanje_vozisce
+    rows (9):
+      SU | 345098
+      MO | 111866
+      SP | 24204
+      OS | 7564
+      SN | 7563
+      PN | 5656
+      SL | 4627
+      PP | 2004
+      BL | 411
+
+  panel accidents-1-28
+    title: rows of nesreca by nesreca.klas_nesreca
+    rows (6):
+      B | 346072
+      L | 84309
+      U | 47061
+      H | 19575
+      P | 8664
+      S | 3312
+
+  panel accidents-1-29
+    title: rows of oseba by oseba.strokovni_pregled_d
+    rows (11):
+      A | 530213
+      N | 407796
+      B | 4207
+      D | 3201
+      E | 3195
+      C | 2484
+      F | 1901
+      G | 766
+      H | 264
+      I | 7
+      J | 2
+
+  panel accidents-1-30
+    title: rows of oseba by oseba.povzrocitelj_ali_udelezenec
+    rows (3):
+      N | 477970
+      D | 472209
+      ∅ | 3857
+
+  panel accidents-1-31
+    title: rows of oseba by oseba.vozniski_staz_d
+    rows (11):
+      A | 256815
+      N | 154508
+      B | 150814
+      E | 132547
+      C | 106495
+      D | 85543
+      F | 56807
+      G | 9847
+      H | 566
+      I | 54
+      J | 40
+
+  panel accidents-1-32
+    title: rows of oseba by oseba.alkotest_d
+    rows (11):
+      A | 487343
+      N | 409980
+      B | 17100
+      C | 11707
+      D | 10136
+      E | 9216
+      F | 5308
+      G | 2261
+      H | 920
+      I | 60
+      J | 5
+
+  panel accidents-1-33
+    title: rows of nesreca by nesreca.kategorija_cesta the twelve most
+    rows (12):
+      N | 220780
+      V | 59062
+      M | 33938
+      L | 32783
+      1 | 31064
+      R | 24184
+      4 | 24152
+      3 | 19530
+      5 | 18027
+      0 | 15571
+      2 | 14834
+      H | 7496
+
+
+=== database: nhldraft ===
+Ice hockey players drafted to the NHL, and each player's seasons, as CTU serves it. A fixture of round 1e.
+
+  panel nhldraft-1-01
+    title: rows of PlayerInfo by PlayerInfo.height_info the twelve most
+    rows (12):
+      185 cm / 6'1" | 287
+      188 cm / 6'2" | 269
+      183 cm / 6'0" | 223
+      191 cm / 6'3" | 161
+      180 cm / 5'11" | 148
+      193 cm / 6'4" | 135
+      190 cm / 6'3" | 113
+      186 cm / 6'1" | 100
+      184 cm / 6'0" | 93
+      182 cm / 6'0" | 86
+      187 cm / 6'2" | 85
+      178 cm / 5'10" | 71
+
+  panel nhldraft-1-02
+    title: sum of PlayerInfo.weight by PlayerInfo.sum_7yr_TOI
+    rows (500):
+      0 | 252743
+      1 | 225
+      3 | 789
+      4 | 399
+      5 | 984
+      6 | 864
+      7 | 998
+      8 | 434
+      9 | 590
+      10 | 209
+      11 | 386
+      12 | 606
+      … 488 more rows
+
+  panel nhldraft-1-03
+    title: rows of PlayerInfo by PlayerInfo.birthyear the twelve most
+    rows (12):
+      1980 | 238
+      1982 | 221
+      1981 | 211
+      1986 | 206
+      1983 | 201
+      1987 | 194
+      1988 | 188
+      1989 | 152
+      1984 | 130
+      1990 | 112
+      1979 | 101
+      1985 | 101
+
+  panel nhldraft-1-04
+    title: rows of PlayerInfo by PlayerInfo.weight_info the twelve most
+    rows (12):
+      88 kg / 194 lbs | 154
+      91 kg / 201 lbs | 151
+      93 kg / 205 lbs | 137
+      86 kg / 190 lbs | 129
+      90 kg / 198 lbs | 118
+      95 kg / 209 lbs | 113
+      92 kg / 203 lbs | 111
+      98 kg / 216 lbs | 103
+      84 kg / 185 lbs | 100
+      94 kg / 207 lbs | 100
+      89 kg / 196 lbs | 92
+      100 kg / 220 lbs | 83
+
+  panel nhldraft-1-05
+    title: sum of PlayerInfo.weight by PlayerInfo.birthyear the twelve most
+    rows (12):
+      1980 | 48789
+      1982 | 45289
+      1981 | 42643
+      1986 | 41686
+      1983 | 40988
+      1987 | 39158
+      1988 | 37272
+      1989 | 30185
+      1984 | 26418
+      1990 | 22407
+      1985 | 20562
+      1979 | 20557
+
+  panel nhldraft-1-06
+    title: rows of PlayerInfo by PlayerInfo.PlayerName the twelve most
+    rows (12):
+      Juraj Mikus | 2
+      Sean Collins | 2
+      Brian Lee | 2
+      Nick Larson | 2
+      Mikko Lehtonen | 2
+      Jarkko Immonen | 2
+      David Printz | 1
+      Sergei Verenikin | 1
+      Per Mars | 1
+      Tony Martensson | 1
+      Niklas Kronwall | 1
+      Kristofer Ottosson | 1
+
+  panel nhldraft-1-07
+    title: sum of PlayerInfo.weight by PlayerInfo.weight_info the twelve most
+    rows (12):
+      91 kg / 201 lbs | 30351
+      88 kg / 194 lbs | 29876
+      93 kg / 205 lbs | 28085
+      86 kg / 190 lbs | 24510
+      95 kg / 209 lbs | 23617
+      90 kg / 198 lbs | 23364
+      92 kg / 203 lbs | 22533
+      98 kg / 216 lbs | 22248
+      94 kg / 207 lbs | 20700
+      84 kg / 185 lbs | 18500
+      100 kg / 220 lbs | 18260
+      89 kg / 196 lbs | 18032
+
+  panel nhldraft-1-08
+    title: largest tables, estimated rows
+    rows (2):
+      SeasonStatus | 5477
+      PlayerInfo | 2117
+
+  panel nhldraft-1-09
+    title: rows of PlayerInfo by PlayerInfo.position_info the twelve most
+    rows (12):
+      D | 774
+      C | 362
+      RW | 275
+      LW | 274
+      LW/RW | 98
+      C/LW | 80
+      RW/LW | 67
+      C/RW | 50
+      C/W | 41
+      F | 37
+      RW/C | 31
+      LW/C | 27
+
+  panel nhldraft-1-10
+    title: rows of PlayerInfo by PlayerInfo.sum_7yr_GP
+    rows (343):
+      0 | 1258
+      1 | 40
+      2 | 21
+      3 | 27
+      4 | 7
+      5 | 14
+      6 | 14
+      7 | 11
+      8 | 14
+      9 | 10
+      10 | 12
+      11 | 8
+      … 331 more rows
+
+  panel nhldraft-1-11
+    title: rows of PlayerInfo by PlayerInfo.draftyear
+    rows (10):
+      1998-01-01 | 214
+      1999-01-01 | 228
+      2000-01-01 | 247
+      2001-01-01 | 238
+      2002-01-01 | 253
+      2004-01-01 | 246
+      2005-01-01 | 204
+      2006-01-01 | 175
+      2007-01-01 | 186
+      2008-01-01 | 180
+
+  panel nhldraft-1-12
+    title: rows of SeasonStatus by SeasonStatus.LEAGUE the twelve most
+    rows (12):
+      OHL | 668
+      WHL | 653
+      QMJHL | 416
+      WJC-18 | 391
+      International-Jr | 258
+      WJC-20 | 232
+      NCAA | 218
+      USHL | 207
+      SuperElit | 184
+      Russia | 154
+      Jr. A SM-liiga | 141
+      Liiga | 133
+
+  panel nhldraft-1-13
+    title: sum of PlayerInfo.weight by PlayerInfo.sum_7yr_GP
+    rows (343):
+      0 | 252743
+      1 | 8038
+      2 | 4279
+      3 | 5481
+      4 | 1401
+      5 | 2946
+      6 | 2735
+      7 | 2233
+      8 | 2887
+      9 | 2001
+      10 | 2474
+      11 | 1639
+      … 331 more rows
+
+  panel nhldraft-1-14
+    title: sum of PlayerInfo.weight by PlayerInfo.GP_greater_than_0
+    rows (2):
+      no | 252743
+      yes | 186616
+
+  panel nhldraft-1-15
+    title: sum of PlayerInfo.weight by PlayerInfo.position_info the twelve most
+    rows (12):
+      D | 160302
+      C | 71232
+      LW | 55558
+      RW | 54880
+      LW/RW | 19902
+      C/LW | 15900
+      RW/LW | 13411
+      C/RW | 9682
+      C/W | 8163
+      F | 7314
+      RW/C | 6215
+      LW/C | 5445
+
+  panel nhldraft-1-16
+    title: rows of PlayerInfo by PlayerInfo.shoots
+    rows (3):
+      L | 1402
+      R | 749
+      - | 20
+
+  panel nhldraft-1-17
+    title: rows of PlayerInfo by PlayerInfo.GP_greater_than_0
+    rows (2):
+      no | 1258
+      yes | 913
+
+  panel nhldraft-1-18
+    title: rows of SeasonStatus by SeasonStatus.SEASON
+    rows (10):
+      2001-2002 | 653
+      2000-2001 | 640
+      2003-2004 | 631
+      1999-2000 | 621
+      1998-1999 | 519
+      2004-2005 | 510
+      2005-2006 | 500
+      2007-2008 | 481
+      2006-2007 | 469
+      1997-1998 | 461
+
+  panel nhldraft-1-19
+    title: rows of SeasonStatus by SeasonStatus.GAMETYPE
+    rows (2):
+      Regular Season | 4062
+      Playoffs | 1423
+
+  panel nhldraft-1-20
+    title: rows of PlayerInfo by PlayerInfo.position
+    rows (6):
+      D | 799
+      C | 535
+      L | 401
+      R | 376
+      F | 39
+      W | 21
+
+  panel nhldraft-1-21
+    title: rows of PlayerInfo by PlayerInfo.overallby the twelve most
+    rows (12):
+      Chicago Blackhawks | 93
+      New Jersey Devils | 84
+      New York Islanders | 83
+      Colorado Avalanche | 81
+      Washington Capitals | 80
+      Los Angeles Kings | 79
+      Ottawa Senators | 79
+      New York Rangers | 78
+      St. Louis Blues | 76
+      Nashville Predators | 76
+      Tampa Bay Lightning | 75
+      Edmonton Oilers | 75
+
+  panel nhldraft-1-22
+    title: rows of PlayerInfo by PlayerInfo.birthyear
+    rows (22):
+      1980 | 238
+      1982 | 221
+      1981 | 211
+      1986 | 206
+      1983 | 201
+      1987 | 194
+      1988 | 188
+      1989 | 152
+      1984 | 130
+      1990 | 112
+      1985 | 101
+      1979 | 101
+      … 10 more rows
+
+  panel nhldraft-1-23
+    title: rows of PlayerInfo by PlayerInfo.nation the twelve most
+    rows (12):
+      Canada | 891
+      USA | 455
+      Russia | 183
+      Sweden | 166
+      Czech Rep. | 156
+      Finland | 126
+      Slovakia | 67
+      Switzerlan | 31
+      Germany | 14
+      Kazakhstan | 12
+      Latvia | 12
+      Austria | 7
+
+  panel nhldraft-1-24
+    title: rows of PlayerInfo by PlayerInfo.sum_7yr_TOI
+    rows (500):
+      0 | 1258
+      1 | 1
+      3 | 4
+      4 | 2
+      5 | 5
+      6 | 4
+      7 | 5
+      8 | 2
+      9 | 3
+      10 | 1
+      11 | 2
+      12 | 3
+      … 488 more rows
+
+  panel nhldraft-1-25
+    title: average of PlayerInfo.weight by PlayerInfo.draftyear
+    rows (10):
+      1998-01-01 | 205.9112
+      1999-01-01 | 203.9781
+      2000-01-01 | 202.3036
+      2001-01-01 | 204.5294
+      2002-01-01 | 202.2806
+      2004-01-01 | 202.8496
+      2005-01-01 | 202.6176
+      2006-01-01 | 200.0171
+      2007-01-01 | 198.5054
+      2008-01-01 | 198.9056
+
+  panel nhldraft-1-26
+    title: sum of PlayerInfo.weight by PlayerInfo.shoots
+    rows (3):
+      L | 284353
+      R | 151104
+      - | 3902
+
+  panel nhldraft-1-27
+    title: sum of PlayerInfo.weight by PlayerInfo.draftyear
+    rows (10):
+      1998-01-01 | 44065
+      1999-01-01 | 46507
+      2000-01-01 | 49969
+      2001-01-01 | 48678
+      2002-01-01 | 51177
+      2004-01-01 | 49901
+      2005-01-01 | 41334
+      2006-01-01 | 35003
+      2007-01-01 | 36922
+      2008-01-01 | 35803
+
+  panel nhldraft-1-28
+    title: sum of PlayerInfo.weight by PlayerInfo.PlayerName the twelve most
+    rows (12):
+      Mikko Lehtonen | 412
+      Brian Lee | 399
+      Nick Larson | 397
+      Jarkko Immonen | 391
+      Juraj Mikus | 386
+      Sean Collins | 368
+      Derek Boogaard | 265
+      Libor Ustrnul | 265
+      Nolan Yonkman | 254
+      Art Femenella | 254
+      Zbynek Novak | 254
+      Dmitri Megalinsky | 251
+
+  panel nhldraft-1-29
+    title: average of PlayerInfo.weight by PlayerInfo.shoots
+    rows (3):
+      L | 202.8195
+      R | 201.7410
+      - | 195.1000
+
+  panel nhldraft-1-30
+    title: average of PlayerInfo.weight by PlayerInfo.position
+    rows (6):
+      D | 207.0751
+      W | 203.7619
+      L | 202.8903
+      R | 199.8431
+      F | 198.5641
+      C | 196.9776
+
+  panel nhldraft-1-31
+    title: sum of PlayerInfo.weight by PlayerInfo.position
+    rows (6):
+      D | 165453
+      C | 105383
+      L | 81359
+      R | 75141
+      F | 7744
+      W | 4279
+
+  panel nhldraft-1-32
+    title: rows of SeasonStatus by PlayerInfo (by key) the twelve most
+    rows (12):
+      4233 | 10
+      12668 | 10
+      3682 | 9
+      2708 | 9
+      9878 | 9
+      10902 | 9
+      9225 | 9
+      9286 | 9
+      2696 | 9
+      1950 | 8
+      2045 | 8
+      210 | 8
+
+
+=== database: walmart2014 ===
+A retailer's stores, their weekly sales by department, and regional features such as temperature and markdowns, as CTU serves it. A fixture of round 1e.
+
+  panel walmart2014-1-01
+    title: largest tables, estimated rows
+    rows (3):
+      train | 420750
+      features | 8190
+      stores | 45
+
+  panel walmart2014-1-02
+    title: rows of stores by stores.Type
+    rows (3):
+      A | 22
+      B | 17
+      C | 6
+
+  panel walmart2014-1-03
+    title: sum of train.Weekly_Sales by train.Date
+    rows (33):
+      2010-02-01 | 190332982.45683277
+      2010-03-01 | 181919799.12554246
+      2010-04-01 | 231412361.88380075
+      2010-05-01 | 186710940.83581692
+      2010-06-01 | 192246170.5510504
+      2010-07-01 | 232580115.60262367
+      2010-08-01 | 187640114.67307663
+      2010-09-01 | 177267898.69342092
+      2010-10-01 | 217161825.30084014
+      2010-11-01 | 202853364.67621076
+      2010-12-01 | 288760522.94463116
+      2011-01-01 | 163703965.5102022
+      … 21 more rows
+
+  panel walmart2014-1-04
+    title: rows of train by stores.Type
+    rows (3):
+      A | 215478
+      B | 163495
+      C | 42597
+
+  panel walmart2014-1-05
+    title: sum of features.Fuel_Price by stores.Type the twelve most
+    rows (12):
+      C | 663.1449987888336
+      A | 663.1449987888336
+      B | 663.1449987888336
+      A | 663.0909996032715
+      A | 663.0909996032715
+      B | 663.0909996032715
+      A | 663.0909996032715
+      A | 658.0479991436005
+      C | 658.0479991436005
+      B | 658.0479991436005
+      A | 636.6129989624023
+      B | 636.6129989624023
+
+  panel walmart2014-1-06
+    title: sum of features.Fuel_Price by stores.Type
+    rows (3):
+      A | 13581.916990756989
+      B | 10606.581990480423
+      C | 3706.57399725914
+
+  panel walmart2014-1-07
+    title: sum of features.MarkDown1 by features.Date
+    rows (42):
+      2010-02-01 | ∅
+      2010-03-01 | ∅
+      2010-04-01 | ∅
+      2010-05-01 | ∅
+      2010-06-01 | ∅
+      2010-07-01 | ∅
+      2010-08-01 | ∅
+      2010-09-01 | ∅
+      2010-10-01 | ∅
+      2010-11-01 | ∅
+      2010-12-01 | ∅
+      2011-01-01 | ∅
+      … 30 more rows
+
+  panel walmart2014-1-08
+    title: sum of train.Weekly_Sales by train.IsHoliday
+    rows (2):
+      FALSE | 6231919411.680773
+      TRUE | 505299551.04199207
+
+  panel walmart2014-1-09
+    title: average of features.Fuel_Price by features.Date
+    rows (42):
+      2010-02-01 | 2.6919666700892977
+      2010-03-01 | 2.7867055800226
+      2010-04-01 | 2.8685377820332847
+      2010-05-01 | 2.9173500100771586
+      2010-06-01 | 2.7880055599742466
+      2010-07-01 | 2.7739955393473306
+      2010-08-01 | 2.7830000029669866
+      2010-09-01 | 2.734516649776035
+      2010-10-01 | 2.807279992633396
+      2010-11-01 | 2.886272195974986
+      2010-12-01 | 2.9880977715386283
+      2011-01-01 | 3.113955577214559
+      … 30 more rows
+
+  panel walmart2014-1-10
+    title: average of train.Weekly_Sales by stores.Type
+    rows (3):
+      A | 20099.568016826513
+      B | 12237.075868136957
+      C | 9519.532514777027
+
+  panel walmart2014-1-11
+    title: average of features.Fuel_Price by stores.Type
+    rows (3):
+      B | 3.4281131190951593
+      C | 3.3942985322885897
+      A | 3.3920871605287184
+
+  panel walmart2014-1-12
+    title: sum of features.CPI by features.Date
+    rows (42):
+      2010-02-01 | 30210.194122314453
+      2010-03-01 | 30227.546073913574
+      2010-04-01 | 37727.65158081055
+      2010-05-01 | 30175.51219177246
+      2010-06-01 | 30240.86019897461
+      2010-07-01 | 37800.36916351318
+      2010-08-01 | 30278.129959106445
+      2010-09-01 | 30285.89998626709
+      2010-10-01 | 37902.08206939697
+      2010-11-01 | 30348.24912261963
+      2010-12-01 | 37903.33600616455
+      2011-01-01 | 30382.52318572998
+      … 30 more rows
+
+  panel walmart2014-1-13
+    title: sum of features.Unemployment by features.Date
+    rows (42):
+      2010-02-01 | 1551.4760150909424
+      2010-03-01 | 1551.4760150909424
+      2010-04-01 | 1911.9850039482117
+      2010-05-01 | 1529.5880031585693
+      2010-06-01 | 1529.5880031585693
+      2010-07-01 | 1896.4300060272217
+      2010-08-01 | 1517.1440048217773
+      2010-09-01 | 1517.1440048217773
+      2010-10-01 | 1906.9400072097778
+      2010-11-01 | 1525.5520057678223
+      2010-12-01 | 1906.9400072097778
+      2011-01-01 | 1492.4159965515137
+      … 30 more rows
+
+  panel walmart2014-1-14
+    title: sum of train.Weekly_Sales by stores.Type the twelve most
+    rows (12):
+      A | 301397802.9127449
+      A | 299543955.8252544
+      A | 288999907.0381722
+      A | 286517700.79991335
+      A | 275382452.18464154
+      B | 271617706.5481901
+      A | 253855913.24515435
+      A | 223756126.25770533
+      A | 222402791.5020103
+      A | 207445545.1164019
+      A | 206634858.05634245
+      A | 199613905.39548796
+
+  panel walmart2014-1-15
+    title: sum of features.Temperature by features.Date
+    rows (42):
+      2010-02-01 | 6531.840012550354
+      2010-03-01 | 8494.989994049072
+      2010-04-01 | 12802.810024261475
+      2010-05-01 | 11765.58996963501
+      2010-06-01 | 13513.779960632324
+      2010-07-01 | 17853.189990997314
+      2010-08-01 | 14205.550010681152
+      2010-09-01 | 13104.239971160889
+      2010-10-01 | 13986.429969787598
+      2010-11-01 | 8960.160018920898
+      2010-12-01 | 8958.050010681152
+      2011-01-01 | 6189.700016498566
+      … 30 more rows
+
+  panel walmart2014-1-16
+    title: rows of features by features.Date
+    rows (42):
+      2010-02-01 | 180
+      2010-03-01 | 180
+      2010-04-01 | 225
+      2010-05-01 | 180
+      2010-06-01 | 180
+      2010-07-01 | 225
+      2010-08-01 | 180
+      2010-09-01 | 180
+      2010-10-01 | 225
+      2010-11-01 | 180
+      2010-12-01 | 225
+      2011-01-01 | 180
+      … 30 more rows
+
+  panel walmart2014-1-17
+    title: rows of features per stores
+    rows (1):
+      182 | 45
+
+  panel walmart2014-1-18
+    title: sum of features.MarkDown2 by features.Date
+    rows (42):
+      2010-02-01 | ∅
+      2010-03-01 | ∅
+      2010-04-01 | ∅
+      2010-05-01 | ∅
+      2010-06-01 | ∅
+      2010-07-01 | ∅
+      2010-08-01 | ∅
+      2010-09-01 | ∅
+      2010-10-01 | ∅
+      2010-11-01 | ∅
+      2010-12-01 | ∅
+      2011-01-01 | ∅
+      … 30 more rows
+
+  panel walmart2014-1-19
+    title: sum of features.Fuel_Price by features.Date
+    rows (42):
+      2010-02-01 | 484.5540006160736
+      2010-03-01 | 501.607004404068
+      2010-04-01 | 645.421000957489
+      2010-05-01 | 525.1230018138885
+      2010-06-01 | 501.8410007953644
+      2010-07-01 | 624.1489963531494
+      2010-08-01 | 500.9400005340576
+      2010-09-01 | 492.2129969596863
+      2010-10-01 | 631.637998342514
+      2010-11-01 | 519.5289952754974
+      2010-12-01 | 672.3219985961914
+      2011-01-01 | 560.5120038986206
+      … 30 more rows
+
+  panel walmart2014-1-20
+    title: average of features.Fuel_Price by stores.Type the twelve most
+    rows (12):
+      C | 3.643653839499086
+      A | 3.643653839499086
+      B | 3.643653839499086
+      A | 3.643357140677316
+      A | 3.643357140677316
+      B | 3.643357140677316
+      A | 3.643357140677316
+      A | 3.6156483469428595
+      C | 3.6156483469428595
+      B | 3.6156483469428595
+      A | 3.4978736206725403
+      B | 3.4978736206725403
+
+  panel walmart2014-1-21
+    title: sum of train.Weekly_Sales by train.Date split by train.IsHoliday
+    rows (43):
+      2010-02-01 | FALSE | 141996305.5142167
+      2010-02-01 | TRUE | 48336676.94261605
+      2010-03-01 | FALSE | 181919799.12554246
+      2010-04-01 | FALSE | 231412361.88380075
+      2010-05-01 | FALSE | 186710940.83581692
+      2010-06-01 | FALSE | 192246170.5510504
+      2010-07-01 | FALSE | 232580115.60262367
+      2010-08-01 | FALSE | 187640114.67307663
+      2010-09-01 | FALSE | 131633499.60253823
+      2010-09-01 | TRUE | 45634399.09088269
+      2010-10-01 | FALSE | 217161825.30084014
+      2010-11-01 | FALSE | 137032360.26546997
+      … 31 more rows
+
+  panel walmart2014-1-22
+    title: rows of train by train.Date
+    rows (33):
+      2010-02-01 | 11839
+      2010-03-01 | 11788
+      2010-04-01 | 14697
+      2010-05-01 | 11672
+      2010-06-01 | 11661
+      2010-07-01 | 14561
+      2010-08-01 | 11603
+      2010-09-01 | 11724
+      2010-10-01 | 14667
+      2010-11-01 | 11712
+      2010-12-01 | 14755
+      2011-01-01 | 11695
+      … 21 more rows
+
+  panel walmart2014-1-23
+    title: rows of features by stores.Type
+    rows (3):
+      A | 4004
+      B | 3094
+      C | 1092
+
+  panel walmart2014-1-24
+    title: average of train.Weekly_Sales by train.IsHoliday
+    rows (2):
+      TRUE | 17035.823169886116
+      FALSE | 15901.445008103343
+
+  panel walmart2014-1-25
+    title: rows of train by stores.Type the twelve most
+    rows (12):
+      A | 10474
+      B | 10315
+      A | 10272
+      A | 10244
+      A | 10238
+      A | 10228
+      A | 10225
+      A | 10224
+      A | 10214
+      A | 10211
+      A | 10202
+      A | 10148
+
+  panel walmart2014-1-26
+    title: rows of train by train.Date split by train.IsHoliday
+    rows (43):
+      2010-02-01 | FALSE | 8883
+      2010-02-01 | TRUE | 2956
+      2010-03-01 | FALSE | 11788
+      2010-04-01 | FALSE | 14697
+      2010-05-01 | FALSE | 11672
+      2010-06-01 | FALSE | 11661
+      2010-07-01 | FALSE | 14561
+      2010-08-01 | FALSE | 11603
+      2010-09-01 | FALSE | 8787
+      2010-09-01 | TRUE | 2937
+      2010-10-01 | FALSE | 14667
+      2010-11-01 | FALSE | 8774
+      … 31 more rows
+
+  panel walmart2014-1-27
+    title: sum of train.Weekly_Sales by stores.Type
+    rows (3):
+      A | 4331014717.129744
+      B | 2000700719.0610518
+      C | 405503526.53195703
+
+  panel walmart2014-1-28
+    title: average of train.Weekly_Sales by train.Date
+    rows (33):
+      2010-02-01 | 16076.778651645644
+      2010-03-01 | 15432.626325546527
+      2010-04-01 | 15745.550920854646
+      2010-05-01 | 15996.482251183766
+      2010-06-01 | 16486.250797620305
+      2010-07-01 | 15972.812004850193
+      2010-08-01 | 16171.689621052885
+      2010-09-01 | 15120.08688957872
+      2010-10-01 | 14806.151585248526
+      2010-11-01 | 17320.130180687393
+      2010-12-01 | 19570.350589266767
+      2011-01-01 | 13997.77387859788
+      … 21 more rows
+
+  panel walmart2014-1-29
+    title: average of train.Weekly_Sales by stores.Type the twelve most
+    rows (12):
+      A | 29508.30261530692
+      A | 29161.210652770093
+      A | 28784.85129862273
+      A | 27355.13660491821
+      A | 26898.071125673134
+      B | 26332.303106950083
+      A | 24826.984180455194
+      A | 21913.24319436934
+      A | 21710.54192717789
+      A | 21000.763830370714
+      A | 20362.126335863464
+      B | 19776.18071091389
+
+  panel walmart2014-1-30
+    title: rows of train per stores
+    rows (45):
+      6222 | 1
+      6487 | 1
+      6751 | 1
+      6953 | 1
+      7156 | 1
+      7169 | 1
+      7206 | 1
+      7362 | 1
+      8867 | 1
+      8999 | 1
+      9036 | 1
+      9443 | 1
+      … 33 more rows
+
+  panel walmart2014-1-31
+    title: rows of train by train.IsHoliday
+    rows (2):
+      FALSE | 391909
+      TRUE | 29661
+
+  panel walmart2014-1-32
+    title: sum of stores.Size by stores.Type
+    rows (3):
+      A | 3899450
+      B | 1720242
+      C | 243250
+
+  panel walmart2014-1-33
+    title: rows of features by stores.Type the twelve most
+    rows (12):
+      A | 182
+      A | 182
+      B | 182
+      A | 182
+      B | 182
+      A | 182
+      B | 182
+      A | 182
+      B | 182
+      B | 182
+      A | 182
+      B | 182

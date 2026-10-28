@@ -1,0 +1,1292 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: salesdb ===
+A seller's customers, employees, products and six million sales, as CTU serves it. A fixture of round 1e.
+
+  panel salesdb-3-01
+    title: sum of Sales.Quantity by Employees (named) the twelve most
+    rows (12):
+      Abraham Bennet | 253157371
+      Sheryl Hunter | 164706674
+      Morningstar Greene | 159361160
+      Sylvia Panteley | 156602520
+      Reginald Blotchet-Halls | 155714556
+      Albert Ringer | 152023161
+      Burt Gringlesby | 151546773
+      Dean Straight | 150578276
+      Michel DeFrance | 149166324
+      Marjorie Green | 142789998
+      Johnson White | 142694255
+      Michael O'Leary | 142102550
+
+  panel salesdb-3-02
+    title: sum of Sales.Quantity × Products.Price by Customers.MiddleInitial the twelve most
+    rows (12):
+      ∅ | 847170038363.4800
+      A | 204697694830.6600
+      M | 166556295991.1850
+      C | 118853478083.3500
+      J | 90407558224.0950
+      S | 89034821433.1800
+      L | 77918640165.5500
+      K | 63665976918.5400
+      E | 62836895440.1250
+      B | 43303773821.9500
+      D | 24797811821.1200
+      T | 22190310664.5400
+
+  panel salesdb-3-03
+    title: sum of Sales.Quantity by Customers.MiddleInitial the twelve most
+    rows (12):
+      ∅ | 1536102628
+      L | 290563452
+      A | 280761740
+      M | 233232571
+      C | 178509019
+      J | 173176574
+      S | 105589765
+      K | 99548738
+      E | 95089064
+      R | 69144136
+      B | 60876322
+      T | 58497620
+
+  panel salesdb-3-04
+    title: distinct Products in Sales by Customers.MiddleInitial the twelve most
+    rows (12):
+      ∅ | 423
+      L | 157
+      A | 136
+      M | 104
+      C | 95
+      J | 94
+      E | 69
+      S | 51
+      D | 50
+      R | 32
+      K | 32
+      B | 29
+
+  panel salesdb-3-05
+    title: sum of Sales.Quantity by Customers (named) the twelve most
+    rows (0):
+      
+      error: ERROR 3024 (HY000) at line 1: Query execution was interrupted, maximum statement execution time exceeded
+
+  panel salesdb-3-06
+    title: distinct Products in Sales by Employees (named) the twelve most
+    rows (0):
+      
+      error: ERROR 3024 (HY000) at line 1: Query execution was interrupted, maximum statement execution time exceeded
+
+  panel salesdb-3-07
+    title: rows of Customers by Customers.MiddleInitial the twelve most
+    rows (12):
+      ∅ | 8333
+      A | 1358
+      L | 1314
+      M | 1219
+      J | 1128
+      C | 939
+      E | 766
+      R | 760
+      D | 576
+      S | 495
+      K | 382
+      B | 335
+
+  panel salesdb-3-08
+    title: rows of Sales by Employees.MiddleInitial
+    rows (12):
+      a | 1093024
+      e | 1061282
+      r | 900065
+      t | 607714
+      u | 590285
+      i | 514526
+      o | 501685
+      l | 312047
+      c | 306439
+      ' | 295041
+      h | 292976
+      m | 240137
+
+  panel salesdb-3-09
+    title: distinct Products in Sales by Employees.MiddleInitial
+    rows (12):
+      a | 300
+      e | 245
+      r | 200
+      u | 173
+      o | 161
+      t | 154
+      i | 152
+      m | 94
+      h | 93
+      l | 93
+      ' | 91
+      c | 84
+
+  panel salesdb-3-10
+    title: distinct Products in Sales by Customers (named) the twelve most
+    rows (0):
+      
+      error: ERROR 3024 (HY000) at line 1: Query execution was interrupted, maximum statement execution time exceeded
+
+  panel salesdb-3-11
+    title: rows of Sales per Employees
+    rows (23):
+      209414 | 1
+      240137 | 1
+      253472 | 1
+      257932 | 1
+      261054 | 1
+      261941 | 1
+      274913 | 1
+      277533 | 1
+      280418 | 1
+      282646 | 1
+      287816 | 1
+      292271 | 1
+      … 11 more rows
+
+  panel salesdb-3-12
+    title: rows of Sales per Products
+    rows (200):
+      2216 | 1
+      2230 | 1
+      2279 | 1
+      2386 | 1
+      2394 | 1
+      2431 | 1
+      2525 | 1
+      2562 | 2
+      2611 | 1
+      2615 | 1
+      2631 | 1
+      2633 | 1
+      … 188 more rows
+
+  panel salesdb-3-13
+    title: rows of Employees by Employees.MiddleInitial
+    rows (12):
+      a | 4
+      e | 3
+      r | 3
+      u | 2
+      o | 2
+      i | 2
+      t | 2
+      l | 1
+      c | 1
+      ' | 1
+      m | 1
+      h | 1
+
+  panel salesdb-3-14
+    title: average of Sales.Quantity by Employees.MiddleInitial
+    rows (12):
+      i | 570.8973
+      u | 511.1405
+      a | 504.3391
+      r | 504.0724
+      l | 499.0099
+      e | 494.5715
+      m | 491.5543
+      h | 487.0510
+      ' | 481.6366
+      t | 480.4100
+      o | 475.6063
+      c | 454.5618
+
+  panel salesdb-3-15
+    title: rows of Sales by Products.Name the twelve most
+    rows (12):
+      ML Road Rim | 36877
+      Thin-Jam Hex Nut 5 | 36228
+      ML Mountain Tire | 35710
+      Road-250 Red, 44 | 34965
+      Headlights - Weatherproof | 34844
+      Touring-3000 Blue, 54 | 34754
+      LL Road Seat/Saddle | 34682
+      Metal Sheet 6 | 34600
+      Lock Washer 7 | 34589
+      LL Spindle/Axle | 34560
+      Mountain-100 Silver, 38 | 34329
+      Hex Nut 15 | 34211
+
+  panel salesdb-3-16
+    title: rows of Sales by Employees (named) the twelve most
+    rows (0):
+      
+      error: ERROR 3024 (HY000) at line 1: Query execution was interrupted, maximum statement execution time exceeded
+
+  panel salesdb-3-17
+    title: average of Sales.Quantity by Customers (named) the twelve most
+    rows (0):
+      
+      error: ERROR 3024 (HY000) at line 1: Query execution was interrupted, maximum statement execution time exceeded
+
+  panel salesdb-3-18
+    title: average of Sales.Quantity by Products.Name the twelve most
+    rows (0):
+      
+      error: ERROR 3024 (HY000) at line 1: Query execution was interrupted, maximum statement execution time exceeded
+
+  panel salesdb-3-19
+    title: average of Sales.Quantity by Employees (named) the twelve most
+    rows (12):
+      Albert Ringer | 599.7631
+      Sylvia Panteley | 554.0589
+      Sheryl Hunter | 544.5407
+      Anne Ringer | 542.8698
+      Burt Gringlesby | 540.4317
+      Cheryl Carson | 509.5585
+      Michel DeFrance | 507.0339
+      Morningstar Greene | 504.4256
+      Abraham Bennet | 501.1558
+      Livia Karsen | 499.5459
+      Reginald Blotchet-Halls | 499.0099
+      Dean Straight | 492.8864
+
+  panel salesdb-3-20
+    title: distinct Products in Sales by Products.Name the twelve most
+    rows (0):
+      
+      error: ERROR 3024 (HY000) at line 1: Query execution was interrupted, maximum statement execution time exceeded
+
+  panel salesdb-3-21
+    title: sum of Sales.Quantity × Products.Price by Employees (named) the twelve most
+    rows (0):
+      
+      error: ERROR 3024 (HY000) at line 1: Query execution was interrupted, maximum statement execution time exceeded
+
+  panel salesdb-3-22
+    title: sum of Sales.Quantity by Employees.MiddleInitial
+    rows (12):
+      a | 551254760
+      e | 524879828
+      r | 453697931
+      u | 301718566
+      i | 293741490
+      t | 291951883
+      o | 238604552
+      l | 155714556
+      h | 142694255
+      ' | 142102550
+      c | 139295470
+      m | 118040382
+
+  panel salesdb-3-23
+    title: sum of Sales.Quantity × Products.Price by Products.Name the twelve most
+    rows (12):
+      Mountain-100 Silver, 38 | 87887946305.2800
+      Mountain-100 Silver, 44 | 70246516791.9900
+      Mountain-100 Silver, 42 | 69767033202.2400
+      Road-250 Red, 44 | 57515339945.7000
+      Road-250 Red, 48 | 50083189679.2500
+      Road-350-W Yellow, 48 | 44631191378.3800
+      Road-350-W Yellow, 42 | 41790822143.7100
+      Road-350-W Yellow, 44 | 38289807103.9300
+      Road-450 Red, 58 | 36086262887.0700
+      Mountain-100 Black, 48 | 30374413876.4700
+      Mountain-100 Black, 42 | 30361467414.8300
+      Road-550-W Yellow, 48 | 29841412948.8300
+
+  panel salesdb-3-24
+    title: sum of Sales.Quantity by Products.Name the twelve most
+    rows (12):
+      Touring-3000 Blue, 54 | 32886900
+      LL Road Seat/Saddle | 30968983
+      Touring Pedal | 30021052
+      Rear Derailleur | 29975003
+      ML Mountain Tire | 29085729
+      Headlights - Weatherproof | 28913399
+      ML Mountain Frame - Black, 44 | 27875123
+      ML Mountain Frame-W - Silver, 38 | 27486126
+      LL Road Front Wheel | 27396348
+      Touring-3000 Blue, 58 | 26872899
+      Road-550-W Yellow, 48 | 26632467
+      Touring-3000 Blue, 62 | 26530448
+
+  panel salesdb-3-25
+    title: sum of Sales.Quantity × Products.Price by Employees.MiddleInitial
+    rows (12):
+      r | 329750595322.5000
+      a | 278283289601.7100
+      e | 235727908884.6750
+      u | 158200129249.0450
+      i | 153051731566.1400
+      t | 148832791867.3300
+      c | 122469584454.9300
+      o | 105404931388.9800
+      ' | 105381351317.4800
+      l | 86808311381.1500
+      m | 85658291649.9200
+      h | 58064491786.2300
+
+  panel salesdb-3-26
+    title: largest tables, estimated rows
+    rows (4):
+      Sales | 6698788
+      Customers | 19816
+      Products | 504
+      Employees | 23
+
+  panel salesdb-3-27
+    title: average of Sales.Quantity by Customers.MiddleInitial the twelve most
+    rows (12):
+      N | 806.5955
+      K | 671.5965
+      M | 598.8168
+      G | 565.2279
+      Y | 560.0000
+      S | 547.4234
+      ∅ | 519.4671
+      R | 509.5067
+      C | 507.3859
+      T | 505.2830
+      J | 476.1274
+      B | 469.8262
+
+  panel salesdb-3-28
+    title: rows of Sales by Customers (named) the twelve most
+    rows (0):
+      
+      error: ERROR 3024 (HY000) at line 1: Query execution was interrupted, maximum statement execution time exceeded
+
+  panel salesdb-3-29
+    title: sum of Sales.Quantity × Products.Price by Customers (named) the twelve most
+    rows (0):
+      
+      error: ERROR 3024 (HY000) at line 1: Query execution was interrupted, maximum statement execution time exceeded
+
+  panel salesdb-3-30
+    title: rows of Sales per Customers
+    rows (200):
+      12 | 2
+      13 | 9
+      14 | 1
+      15 | 1
+      16 | 3
+      17 | 3
+      18 | 1
+      55 | 1
+      56 | 5
+      57 | 5
+      58 | 14
+      59 | 24
+      … 188 more rows
+
+  panel salesdb-3-31
+    title: rows of Sales by Customers.MiddleInitial the twelve most
+    rows (12):
+      ∅ | 2957074
+      L | 674331
+      A | 597710
+      M | 389489
+      J | 363719
+      C | 351821
+      E | 240170
+      S | 192885
+      K | 148227
+      D | 145344
+      R | 135708
+      B | 129572
+
+
+=== database: geneea ===
+The Czech parliament: its members, bodies, sessions and their agenda, votes and how each member voted, as CTU serves it. A fixture of round 1e.
+
+  panel geneea-3-01
+    title: rows of poslanec by poslanec.web the twelve most
+    rows (12):
+      \\ | 1303
+      ∅ | 162
+      http://www.jan-bartosek.cz/ | 1
+      http://www.pavelbelobradek.cz/ | 1
+      http://www.marekbenda.cz/ | 1
+      http://www.petrbendl.cz/ | 1
+      http://www.benesik.cz/ | 1
+      http://www.bezecny.eu | 1
+      http://adolfbeznoska.cz/ | 1
+      http://www.janbirke.cz/ | 1
+      http://www.karelcerny.cz/ | 1
+      http://www.janfarsky.cz | 1
+
+  panel geneea-3-02
+    title: rows of organy by typ_organu.nazev_typ_org_cz the twelve most
+    rows (12):
+      Meziparlamentní skupina v rámci MPU | 260
+      Podvýbor | 251
+      Výbor | 108
+      Komise | 84
+      Klub | 58
+      Výbor | 52
+      Klub | 50
+      Delegace | 38
+      Výbor | 37
+      Instituce | 19
+      Orgány Registru | 17
+      Volební kraj - 2002 | 14
+
+  panel geneea-3-03
+    title: rows of schuze by organy.nazev_organu_cz the twelve most
+    rows (7):
+      Poslanecká sněmovna | 79
+      Poslanecká sněmovna | 59
+      Poslanecká sněmovna | 56
+      Poslanecká sněmovna | 51
+      Poslanecká sněmovna | 43
+      Poslanecká sněmovna | 36
+      Poslanecká sněmovna | 26
+
+  panel geneea-3-04
+    title: largest tables, estimated rows
+    rows (10):
+      hl_poslanec | 703269
+      bod_schuze | 38539
+      zarazeni | 29083
+      omluvy | 14364
+      osoby | 6207
+      hl_vazby | 3433
+      hl_hlasovani | 3417
+      funkce | 2038
+      poslanec | 1513
+      organy | 1182
+
+  panel geneea-3-05
+    title: rows of hl_hlasovani by typ_organu.typ_org_obecny
+    rows (1):
+      ∅ | 3523
+
+  panel geneea-3-06
+    title: rows of poslanec by poslanec.telefon
+    rows (7):
+      \\ | 1303
+      ∅ | 205
+      775 900 057 | 1
+      602721229 | 1
+      +420 776 435 852 | 1
+      601560352 | 1
+      255790811 | 1
+
+  panel geneea-3-07
+    title: rows of poslanec by osoby (by key) the twelve most
+    rows (12):
+      4 | 7
+      305 | 6
+      111 | 6
+      122 | 6
+      303 | 6
+      237 | 6
+      309 | 6
+      252 | 6
+      312 | 6
+      31 | 5
+      239 | 5
+      235 | 5
+
+  panel geneea-3-08
+    title: rows of hl_hlasovani by organy.nazev_organu_cz the twelve most
+    rows (1):
+      Poslanecká sněmovna | 3523
+
+  panel geneea-3-09
+    title: rows of typ_funkce by typ_organu.nazev_typ_org_cz the twelve most
+    rows (12):
+      Vláda | 22
+      Výbor | 11
+      Klub | 10
+      Instituce | 10
+      Orgány Registru | 9
+      Delegace | 6
+      Podvýbor | 4
+      Meziparlamentní skupina v rámci MPU | 4
+      Národní shromáždění československé | 4
+      Národní shromáždění republiky Českoslove | 4
+      Komise | 3
+      Výbor | 3
+
+  panel geneea-3-10
+    title: rows of bod_schuze by bod_stav.popis the twelve most
+    rows (6):
+      neprojednán | 20615
+      projednán | 11734
+      neprojednatelný | 4549
+      odročen | 112
+      přerušen | 65
+      jiz projednan | 9
+
+  panel geneea-3-11
+    title: rows of funkce by organy.nazev_organu_cz the twelve most
+    rows (12):
+      Vláda České republiky | 19
+      Vláda České republiky | 18
+      Vláda České republiky | 18
+      Vláda České republiky | 18
+      Vláda České republiky | 18
+      Vláda České republiky | 18
+      Vláda České republiky | 17
+      Vláda České republiky | 17
+      Vláda České republiky | 17
+      Vláda České republiky | 17
+      Vláda České republiky | 13
+      Organizační výbor | 9
+
+  panel geneea-3-12
+    title: sum of hl_hlasovani.schuze by hl_hlasovani.datum
+    rows (24):
+      2013-11-01 | 23
+      2013-12-01 | 645
+      2014-01-01 | 175
+      2014-02-01 | 1056
+      2014-03-01 | 1078
+      2014-04-01 | 424
+      2014-05-01 | 1244
+      2014-06-01 | 2293
+      2014-07-01 | 1298
+      2014-08-01 | 12
+      2014-09-01 | 6263
+      2014-10-01 | 2789
+      … 12 more rows
+
+  panel geneea-3-13
+    title: rows of bod_schuze by typ_organu.nazev_typ_org_cz the twelve most
+    rows (1):
+      Parlament | 37084
+
+  panel geneea-3-14
+    title: rows of funkce per organy
+    rows (13):
+      1 | 292
+      2 | 351
+      3 | 174
+      4 | 49
+      5 | 8
+      6 | 4
+      7 | 3
+      8 | 3
+      9 | 3
+      13 | 1
+      17 | 4
+      18 | 5
+      … 1 more rows
+
+  panel geneea-3-15
+    title: rows of hl_hlasovani by typ_organu.nazev_typ_org_cz the twelve most
+    rows (1):
+      Parlament | 3523
+
+  panel geneea-3-16
+    title: rows of hl_hlasovani by hl_hlasovani.nazev_dlouhy the twelve most
+    rows (12):
+      Pořad schůze | 586
+      ∅ | 162
+      Novela z. o spotřebních daních - EU | 72
+      Novela z. - služební zákon | 68
+      N.z. o Registru smluv | 49
+      Novela z. - školský zákon | 48
+      Vl.n.z. o státním rozpočtu ČR na rok 201 | 47
+      Novela z. o veřejném zdravotním pojištěn | 46
+      Novela z. - energetický zákon - EU | 44
+      Novela z. o posuzování vlivů na životní  | 42
+      Informace vlády ČR k situaci ohledně mun | 33
+      Vl. n. z. o státním rozpočtu ČR na rok 2 | 33
+
+  panel geneea-3-17
+    title: rows of poslanec by poslanec.psp_telefon
+    rows (3):
+      \\ | 1303
+      ∅ | 209
+      2097 | 1
+
+  panel geneea-3-18
+    title: rows of bod_schuze by organy.nazev_organu_cz the twelve most
+    rows (7):
+      Poslanecká sněmovna | 8023
+      Poslanecká sněmovna | 7504
+      Poslanecká sněmovna | 6192
+      Poslanecká sněmovna | 6051
+      Poslanecká sněmovna | 4628
+      Poslanecká sněmovna | 2502
+      Poslanecká sněmovna | 2184
+
+  panel geneea-3-19
+    title: rows of omluvy by organy.nazev_organu_cz the twelve most
+    rows (5):
+      Poslanecká sněmovna | 5302
+      Poslanecká sněmovna | 3586
+      Poslanecká sněmovna | 2624
+      Poslanecká sněmovna | 2340
+      Poslanecká sněmovna | 208
+
+  panel geneea-3-20
+    title: rows of poslanec by osoby.pohlavi
+    rows (2):
+      M | 1262
+      Ž | 251
+
+  panel geneea-3-21
+    title: rows of bod_schuze by bod_schuze.id_typ
+    rows (15):
+      1 | 16339
+      5 | 5875
+      3 | 5251
+      ∅ | 3271
+      0 | 2977
+      2 | 1860
+      14 | 1060
+      6 | 233
+      13 | 157
+      7 | 22
+      10 | 22
+      43 | 7
+      … 3 more rows
+
+  panel geneea-3-22
+    title: rows of bod_schuze by schuze (by key) the twelve most
+    rows (12):
+      282 | 560
+      197 | 499
+      198 | 487
+      270 | 472
+      261 | 457
+      201 | 450
+      440 | 449
+      435 | 444
+      433 | 444
+      293 | 428
+      396 | 414
+      269 | 413
+
+  panel geneea-3-23
+    title: rows of bod_schuze by bod_stav.popis
+    rows (6):
+      neprojednán | 20615
+      projednán | 11734
+      neprojednatelný | 4549
+      odročen | 112
+      přerušen | 65
+      jiz projednan | 9
+
+  panel geneea-3-24
+    title: rows of bod_schuze by bod_schuze.druh_bodu
+    rows (5):
+      ∅ | 27246
+      0 | 9442
+      2 | 231
+      1 | 85
+      3 | 80
+
+  panel geneea-3-25
+    title: rows of hl_hlasovani by hl_hlasovani.datum
+    rows (24):
+      2013-11-01 | 23
+      2013-12-01 | 186
+      2014-01-01 | 35
+      2014-02-01 | 176
+      2014-03-01 | 154
+      2014-04-01 | 53
+      2014-05-01 | 155
+      2014-06-01 | 229
+      2014-07-01 | 108
+      2014-08-01 | 1
+      2014-09-01 | 381
+      2014-10-01 | 149
+      … 12 more rows
+
+  panel geneea-3-26
+    title: rows of bod_schuze by bod_schuze.pozvanka
+    rows (3):
+      ∅ | 19226
+      1 | 17625
+      0 | 233
+
+  panel geneea-3-27
+    title: rows of hl_poslanec by hl_poslanec.vysledek
+    rows (5):
+      A | 364694
+      @ | 158718
+      K | 91343
+      B | 89834
+      W | 11
+
+  panel geneea-3-28
+    title: rows of funkce by typ_funkce (by key) the twelve most
+    rows (12):
+      11 | 252
+      19 | 245
+      10 | 208
+      6 | 119
+      8 | 109
+      7 | 86
+      1 | 82
+      5 | 81
+      2 | 53
+      3 | 52
+      20 | 47
+      9 | 37
+
+  panel geneea-3-29
+    title: rows of hl_hlasovani by hl_hlasovani.vysledek
+    rows (2):
+      A | 2483
+      R | 1040
+
+  panel geneea-3-30
+    title: rows of poslanec by poslanec.facebook the twelve most
+    rows (12):
+      \\ | 1303
+      ∅ | 171
+      https://www.facebook.com/bartosekKDU | 1
+      https://www.facebook.com/Belobradek | 1
+      https://www.facebook.com/benda2013 | 1
+      https://www.facebook.com/petr.bendl.92 | 1
+      https://www.facebook.com/zdenek.bezecny | 1
+      https://www.facebook.com/beznoska.adolf | 1
+      http://www.facebook.com/anoolomouc | 1
+      https://www.facebook.com/Jana.Cernochova | 1
+      https://www.facebook.com/farsky.jan | 1
+      https://www.facebook.com/pages/Mat%C4%9B | 1
+
+  panel geneea-3-31
+    title: rows of bod_schuze by bod_schuze.rj
+    rows (4):
+      0 | 22354
+      ∅ | 13243
+      1 | 1434
+      2 | 53
+
+  panel geneea-3-32
+    title: average of hl_hlasovani.schuze by hl_hlasovani.datum
+    rows (24):
+      2013-11-01 | 1.0000
+      2013-12-01 | 3.4677
+      2014-01-01 | 5.0000
+      2014-02-01 | 6.0000
+      2014-03-01 | 7.0000
+      2014-04-01 | 8.0000
+      2014-05-01 | 8.0258
+      2014-06-01 | 10.0131
+      2014-07-01 | 12.0185
+      2014-08-01 | 12.0000
+      2014-09-01 | 16.4383
+      2014-10-01 | 18.7181
+      … 12 more rows
+
+  panel geneea-3-33
+    title: rows of osoby by osoby.pohlavi
+    rows (2):
+      M | 5283
+      Ž | 1039
+
+
+=== database: gosales ===
+IBM's Great Outdoors sample: products, retailers, order methods and daily sales, as CTU serves it. A fixture of round 1e.
+
+  panel gosales-3-01
+    title: sum of go_1k.Quantity by go_products (by key) the twelve most
+    rows (12):
+      50110 | 10939
+      55110 | 8392
+      9110 | 7750
+      92110 | 4172
+      1110 | 3745
+      93110 | 3281
+      89110 | 3199
+      127130 | 2814
+      82110 | 2812
+      126140 | 2703
+      40110 | 2678
+      95110 | 2447
+
+  panel gosales-3-02
+    title: rows of go_retailers by go_retailers.Type
+    rows (8):
+      Outdoors Shop | 164
+      Sports Store | 124
+      Golf Shop | 72
+      Department Store | 50
+      Warehouse Store | 46
+      Direct Marketing | 45
+      Eyewear Store | 31
+      Equipment Rental Store | 30
+
+  panel gosales-3-03
+    title: sum of go_daily_sales.Unit sale price × go_daily_sales.Quantity by go_retailers.Retailer name the twelve most
+    rows (12):
+      Grand choix | 67108292.26
+      Chen Yu Enterprise Co., | 56598501.97
+      VIP Department Stores | 43729064.98
+      Leisure Land | 39531589.26
+      Hangzhou Superman Sports Goods Co., LTD. | 30171596.00
+      Naranco de Bulnes | 29721725.28
+      Artículos de Campismo El Aquila, S.A. de | 29070728.40
+      Sport & Freizeit | 28843084.89
+      The Marketplace | 28631290.50
+      Golf Shop Jiro | 27843202.59
+      Extreme Outdoors | 27569802.47
+      Hai Wan Shin Sport Equipment Co. | 24791614.88
+
+  panel gosales-3-04
+    title: sum of go_daily_sales.Unit price by go_daily_sales.Date
+    rows (43):
+      2015-01-01 | 304418.87
+      2015-02-01 | 324362.74
+      2015-03-01 | 301579.12
+      2015-04-01 | 283339.84
+      2015-05-01 | 298785.69
+      2015-06-01 | 328182.00
+      2015-07-01 | 310054.54
+      2015-08-01 | 328901.08
+      2015-09-01 | 342056.20
+      2015-10-01 | 357807.46
+      2015-11-01 | 330483.30
+      2015-12-01 | 343930.33
+      … 31 more rows
+
+  panel gosales-3-05
+    title: rows of go_daily_sales by go_retailers.Retailer name the twelve most
+    rows (12):
+      Grand choix | 8072
+      Chen Yu Enterprise Co., | 5137
+      VIP Department Stores | 4248
+      Sport & Freizeit | 3740
+      La bonne Forme | 3415
+      Edward's Department Store | 3380
+      American Home | 3123
+      Extreme Outdoors | 3026
+      Ocio y Aventura | 2950
+      Taeho Sports | 2942
+      Hartman's | 2932
+      Leisure Land | 2812
+
+  panel gosales-3-06
+    title: sum of go_1k.Quantity × go_products.Unit price by go_1k.Date
+    rows (43):
+      2015-01-01 | 155705.75
+      2015-02-01 | 244809.04
+      2015-03-01 | 77112.08
+      2015-04-01 | 66687.55
+      2015-05-01 | 100066.42
+      2015-06-01 | 101833.50
+      2015-07-01 | 59167.44
+      2015-08-01 | 212513.63
+      2015-09-01 | 150629.79
+      2015-10-01 | 91596.63
+      2015-11-01 | 206905.73
+      2015-12-01 | 87909.36
+      … 31 more rows
+
+  panel gosales-3-07
+    title: rows of go_1k by go_retailers.Retailer name the twelve most
+    rows (12):
+      Grand choix | 47
+      Chen Yu Enterprise Co., | 39
+      Leisure Land | 27
+      Extreme Outdoors | 27
+      The Marketplace | 25
+      American Home | 24
+      La bonne Forme | 23
+      Sport & Freizeit | 23
+      Taeho Sports | 23
+      VIP Department Stores | 22
+      Donovan's Sports | 22
+      Arjan Aitta | 22
+
+  panel gosales-3-08
+    title: sum of go_daily_sales.Unit price by go_methods.Order method type the twelve most
+    rows (7):
+      Web | 16120342.89
+      Telephone | 1892349.09
+      E-mail | 1240130.53
+      Sales visit | 480803.03
+      Mail | 211046.86
+      Special | 61376.71
+      Fax | 41461.16
+
+  panel gosales-3-09
+    title: sum of go_1k.Quantity × go_products.Unit cost by go_1k.Date
+    rows (43):
+      2015-01-01 | 90366.21
+      2015-02-01 | 136307.98
+      2015-03-01 | 42152.86
+      2015-04-01 | 32810.41
+      2015-05-01 | 51124.91
+      2015-06-01 | 55078.44
+      2015-07-01 | 31028.67
+      2015-08-01 | 104874.51
+      2015-09-01 | 85294.95
+      2015-10-01 | 46982.90
+      2015-11-01 | 117941.50
+      2015-12-01 | 54217.43
+      … 31 more rows
+
+  panel gosales-3-10
+    title: largest tables, estimated rows
+    rows (5):
+      go_daily_sales | 149141
+      go_1k | 1000
+      go_retailers | 562
+      go_products | 274
+      go_methods | 12
+
+  panel gosales-3-11
+    title: sum of go_daily_sales.Unit price × go_daily_sales.Quantity by go_daily_sales.Date
+    rows (43):
+      2015-01-01 | 20308433.18
+      2015-02-01 | 23289612.81
+      2015-03-01 | 19865395.16
+      2015-04-01 | 19103145.77
+      2015-05-01 | 21152780.15
+      2015-06-01 | 23454703.69
+      2015-07-01 | 18916097.44
+      2015-08-01 | 23929992.78
+      2015-09-01 | 21406521.24
+      2015-10-01 | 20548994.03
+      2015-11-01 | 23194608.75
+      2015-12-01 | 22167464.51
+      … 31 more rows
+
+  panel gosales-3-12
+    title: rows of go_products by go_products.Product line
+    rows (5):
+      Personal Accessories | 182
+      Camping Equipment | 41
+      Mountaineering Equipment | 21
+      Outdoor Protection | 15
+      Golf Equipment | 15
+
+  panel gosales-3-13
+    title: sum of go_daily_sales.Unit sale price by go_daily_sales.Date
+    rows (43):
+      2015-01-01 | 294287.56
+      2015-02-01 | 312496.55
+      2015-03-01 | 289634.14
+      2015-04-01 | 272732.58
+      2015-05-01 | 288960.19
+      2015-06-01 | 316936.73
+      2015-07-01 | 300054.51
+      2015-08-01 | 318125.90
+      2015-09-01 | 328630.91
+      2015-10-01 | 342590.79
+      2015-11-01 | 318194.99
+      2015-12-01 | 333700.03
+      … 31 more rows
+
+  panel gosales-3-14
+    title: rows of go_daily_sales by go_methods.Order method type the twelve most
+    rows (7):
+      Web | 124225
+      Telephone | 12404
+      E-mail | 7388
+      Sales visit | 3661
+      Mail | 929
+      Special | 370
+      Fax | 280
+
+  panel gosales-3-15
+    title: sum of go_daily_sales.Unit sale price by go_methods.Order method type the twelve most
+    rows (7):
+      Web | 15816455.77
+      Telephone | 1800816.72
+      E-mail | 1181696.54
+      Sales visit | 455180.80
+      Mail | 197174.49
+      Special | 58672.56
+      Fax | 40586.34
+
+  panel gosales-3-16
+    title: rows of go_daily_sales by go_daily_sales.Date
+    rows (43):
+      2015-01-01 | 2084
+      2015-02-01 | 2197
+      2015-03-01 | 1987
+      2015-04-01 | 2082
+      2015-05-01 | 2108
+      2015-06-01 | 2257
+      2015-07-01 | 2071
+      2015-08-01 | 2389
+      2015-09-01 | 2421
+      2015-10-01 | 2437
+      2015-11-01 | 2514
+      2015-12-01 | 2389
+      … 31 more rows
+
+  panel gosales-3-17
+    title: sum of go_1k.Quantity × go_products.Unit cost by go_retailers.Retailer name the twelve most
+    rows (12):
+      Grand choix | 242265.00
+      Hai Wan Shin Sport Equipment Co. | 212992.55
+      Hansung Golf | 200678.51
+      Leisure Land | 194438.63
+      Chen Yu Enterprise Co., | 182628.94
+      Artículos de Campismo El Aquila, S.A. de | 182262.81
+      Hangzhou Superman Sports Goods Co., LTD. | 172238.96
+      The Marketplace | 145947.13
+      Arjan Aitta | 137334.89
+      Naranco de Bulnes | 118755.66
+      VIP Department Stores | 113186.81
+      La bonne Forme | 110781.12
+
+  panel gosales-3-18
+    title: sum of go_1k.Quantity by go_retailers.Retailer name the twelve most
+    rows (12):
+      Artículos de Campismo El Aquila, S.A. de | 12125
+      Leisure Land | 11028
+      Grand choix | 9710
+      Chen Yu Enterprise Co., | 7589
+      Falcon Outfitters | 6458
+      Sport & Freizeit | 5190
+      Extrem! | 4129
+      VIP Department Stores | 4080
+      Naranco de Bulnes | 3835
+      Esportes Grumari | 3442
+      Chuei Hyakkaten | 3286
+      The Marketplace | 3236
+
+  panel gosales-3-19
+    title: sum of go_1k.Quantity by go_1k.Date
+    rows (43):
+      2015-01-01 | 1812
+      2015-02-01 | 1899
+      2015-03-01 | 1953
+      2015-04-01 | 2576
+      2015-05-01 | 2463
+      2015-06-01 | 1086
+      2015-07-01 | 1276
+      2015-08-01 | 5086
+      2015-09-01 | 3198
+      2015-10-01 | 6078
+      2015-11-01 | 5068
+      2015-12-01 | 1694
+      … 31 more rows
+
+  panel gosales-3-20
+    title: rows of go_1k by go_1k.Date
+    rows (43):
+      2015-01-01 | 18
+      2015-02-01 | 15
+      2015-03-01 | 14
+      2015-04-01 | 11
+      2015-05-01 | 9
+      2015-06-01 | 11
+      2015-07-01 | 14
+      2015-08-01 | 16
+      2015-09-01 | 20
+      2015-10-01 | 18
+      2015-11-01 | 20
+      2015-12-01 | 10
+      … 31 more rows
+
+  panel gosales-3-21
+    title: distribution of go_daily_sales.Unit price
+    rows (16):
+      0 | 2.06 | 75193
+      1 | 70.00 | 25349
+      2 | 145.00 | 20198
+      3 | 214.00 | 18087
+      4 | 274.00 | 1288
+      5 | 346.66 | 2792
+      6 | 460.52 | 709
+      7 | 532.75 | 557
+      8 | 574.98 | 500
+      9 | 630.25 | 348
+      10 | 696.00 | 569
+      12 | 831.88 | 703
+      … 4 more rows
+
+  panel gosales-3-22
+    title: sum of go_daily_sales.Unit sale price × go_daily_sales.Quantity by go_daily_sales.Date
+    rows (43):
+      2015-01-01 | 19307240.48
+      2015-02-01 | 22071423.50
+      2015-03-01 | 18840983.21
+      2015-04-01 | 17914272.90
+      2015-05-01 | 20031690.81
+      2015-06-01 | 22272659.33
+      2015-07-01 | 17856958.77
+      2015-08-01 | 22445061.78
+      2015-09-01 | 20051342.91
+      2015-10-01 | 18772860.20
+      2015-11-01 | 21539982.94
+      2015-12-01 | 21180632.88
+      … 31 more rows
+
+  panel gosales-3-23
+    title: sum of go_daily_sales.Unit price × go_daily_sales.Quantity by go_retailers.Retailer name the twelve most
+    rows (12):
+      Grand choix | 71524201.33
+      Chen Yu Enterprise Co., | 60945037.85
+      VIP Department Stores | 46405020.01
+      Leisure Land | 42718169.23
+      Hangzhou Superman Sports Goods Co., LTD. | 32519709.95
+      Naranco de Bulnes | 31295664.74
+      The Marketplace | 30871697.25
+      Sport & Freizeit | 30804213.13
+      Artículos de Campismo El Aquila, S.A. de | 30510950.77
+      Golf Shop Jiro | 29964297.76
+      Extreme Outdoors | 28990239.61
+      Hai Wan Shin Sport Equipment Co. | 26593477.02
+
+  panel gosales-3-24
+    title: sum of go_daily_sales.Quantity by go_retailers.Retailer name the twelve most
+    rows (12):
+      Chen Yu Enterprise Co., | 1246062
+      Grand choix | 1182076
+      Leisure Land | 881684
+      VIP Department Stores | 777701
+      Sport & Freizeit | 686152
+      Artículos de Campismo El Aquila, S.A. de | 650227
+      Arjan Aitta | 561219
+      Naranco de Bulnes | 548465
+      Extrem! | 513779
+      Extreme Outdoors | 510675
+      Falcon Outfitters | 413373
+      Jensen Mountaineering | 401091
+
+  panel gosales-3-25
+    title: sum of go_daily_sales.Unit sale price × go_daily_sales.Quantity by go_methods.Order method type the twelve most
+    rows (7):
+      Web | 909595543.70
+      Telephone | 157893186.67
+      E-mail | 87902843.68
+      Sales visit | 67960663.74
+      Mail | 20761978.79
+      Special | 4514876.04
+      Fax | 2879547.51
+
+  panel gosales-3-26
+    title: average of go_daily_sales.Unit price by go_daily_sales.Date
+    rows (43):
+      2015-01-01 | 146.074314
+      2015-02-01 | 147.638935
+      2015-03-01 | 151.776105
+      2015-04-01 | 136.090221
+      2015-05-01 | 141.738942
+      2015-06-01 | 145.406292
+      2015-07-01 | 149.712477
+      2015-08-01 | 137.673118
+      2015-09-01 | 141.287154
+      2015-10-01 | 146.822922
+      2015-11-01 | 131.457160
+      2015-12-01 | 143.964140
+      … 31 more rows
+
+  panel gosales-3-27
+    title: sum of go_daily_sales.Unit price × go_daily_sales.Quantity by go_methods.Order method type the twelve most
+    rows (7):
+      Web | 952646869.42
+      Telephone | 169446320.06
+      E-mail | 93582921.24
+      Sales visit | 72183330.25
+      Mail | 22308205.61
+      Special | 4840854.78
+      Fax | 2972958.69
+
+  panel gosales-3-28
+    title: sum of go_daily_sales.Unit price × go_daily_sales.Quantity by go_products (by key) the twelve most
+    rows (12):
+      105110 | 60420787.80
+      11110 | 48931556.13
+      102110 | 47827651.77
+      144180 | 44255876.00
+      106110 | 39946418.98
+      25110 | 34406575.61
+      107110 | 33863826.60
+      26110 | 33119652.30
+      109110 | 28122890.95
+      101110 | 28047835.25
+      104110 | 26775504.36
+      19110 | 24252355.80
+
+  panel gosales-3-29
+    title: sum of go_daily_sales.Unit price by go_retailers.Retailer name the twelve most
+    rows (12):
+      Grand choix | 1154570.99
+      VIP Department Stores | 642225.11
+      Chen Yu Enterprise Co., | 591173.74
+      Holstein Golf | 505853.67
+      Ocio y Aventura | 491223.45
+      La bonne Forme | 478393.21
+      Golf Shop Jiro | 466353.50
+      Sport & Freizeit | 446069.14
+      The Marketplace | 396331.65
+      Hurst Ironmongers | 374818.88
+      Leisure Land | 373740.21
+      Golf's'us | 361577.91
+
+  panel gosales-3-30
+    title: sum of go_daily_sales.Unit sale price by go_retailers.Retailer name the twelve most
+    rows (12):
+      Grand choix | 1112532.15
+      VIP Department Stores | 619334.64
+      Chen Yu Enterprise Co., | 570887.55
+      Holstein Golf | 482732.77
+      Ocio y Aventura | 478121.41
+      La bonne Forme | 465556.34
+      Golf Shop Jiro | 446170.73
+      Sport & Freizeit | 431553.72
+      The Marketplace | 381404.57
+      Hurst Ironmongers | 356845.22
+      Leisure Land | 354342.21
+      Golf's'us | 347296.74
+
+  panel gosales-3-31
+    title: sum of go_daily_sales.Quantity by go_methods.Order method type the twelve most
+    rows (7):
+      Web | 13616971
+      Telephone | 2891249
+      E-mail | 1651440
+      Sales visit | 1155195
+      Mail | 331113
+      Special | 104637
+      Fax | 45342
+
+  panel gosales-3-32
+    title: sum of go_1k.Quantity × go_products.Unit price by go_retailers.Retailer name the twelve most
+    rows (12):
+      Hai Wan Shin Sport Equipment Co. | 423648.87
+      Grand choix | 423330.55
+      Hansung Golf | 404577.26
+      Hangzhou Superman Sports Goods Co., LTD. | 351966.66
+      Chen Yu Enterprise Co., | 349746.90
+      Leisure Land | 345123.97
+      Artículos de Campismo El Aquila, S.A. de | 335552.36
+      The Marketplace | 284191.00
+      Arjan Aitta | 228828.83
+      VIP Department Stores | 223816.57
+      Golf's'us | 196967.16
+      Holland Zonzoekers | 195123.54
+
+  panel gosales-3-33
+    title: sum of go_daily_sales.Quantity by go_daily_sales.Date
+    rows (43):
+      2015-01-01 | 365019
+      2015-02-01 | 392301
+      2015-03-01 | 279876
+      2015-04-01 | 352016
+      2015-05-01 | 350010
+      2015-06-01 | 439443
+      2015-07-01 | 253216
+      2015-08-01 | 413980
+      2015-09-01 | 361518
+      2015-10-01 | 300282
+      2015-11-01 | 386265
+      2015-12-01 | 422659
+      … 31 more rows

@@ -1,0 +1,2101 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: consumerexpenditures ===
+A survey of American households: the households, their members and what they spent, as CTU serves it. A fixture of round 1e.
+
+  panel consumerexpenditures-1-01
+    title: average of EXPENDITURES.COST by EXPENDITURES.IS_TRAINING
+    rows (2):
+      1 | 21.863085779016018
+      0 | 21.219519327440402
+
+  panel consumerexpenditures-1-02
+    title: largest tables, estimated rows
+    rows (3):
+      EXPENDITURES | 1920847
+      HOUSEHOLD_MEMBERS | 137148
+      HOUSEHOLDS | 56595
+
+  panel consumerexpenditures-1-03
+    title: sum of EXPENDITURES.GIFT by HOUSEHOLDS (by key) the twelve most
+    rows (12):
+      04066242 | 74
+      03810231 | 68
+      03304701 | 65
+      03557511 | 65
+      03404101 | 62
+      04251881 | 62
+      03815861 | 51
+      03579862 | 50
+      03580522 | 50
+      04258852 | 50
+      04340992 | 50
+      03675381 | 49
+
+  panel consumerexpenditures-1-04
+    title: average of HOUSEHOLD_MEMBERS.AGE by HOUSEHOLD_MEMBERS.YEAR
+    rows (5):
+      2015-01-01 | 38.6746
+      2016-01-01 | 39.4564
+      2017-01-01 | 39.7737
+      2018-01-01 | 39.9707
+      2019-01-01 | 40.1009
+
+  panel consumerexpenditures-1-05
+    title: sum of EXPENDITURES.COST by HOUSEHOLDS (by key) the twelve most
+    rows (12):
+      04308971 | 83902.70999999999
+      03682581 | 75598.7384
+      03770391 | 61872.08
+      03162181 | 49215.14
+      04165561 | 48621.75
+      04165111 | 47288.88002
+      03959832 | 46778.61000000001
+      03937482 | 45580.57
+      04139422 | 44679.7
+      03885052 | 43685.31
+      03491461 | 40420.17590000001
+      04147852 | 39295.91
+
+  panel consumerexpenditures-1-06
+    title: average of EXPENDITURES.COST by EXPENDITURES.YEAR
+    rows (6):
+      2015-01-01 | 22.126751931277745
+      2016-01-01 | 22.53830595751477
+      2017-01-01 | 21.05361893538299
+      2018-01-01 | 21.82024155638438
+      2019-01-01 | 21.15853973532499
+      2020-01-01 | 27.669463495867884
+
+  panel consumerexpenditures-1-07
+    title: rows of EXPENDITURES by EXPENDITURES.IS_TRAINING
+    rows (2):
+      1 | 1633051
+      0 | 387583
+
+  panel consumerexpenditures-1-08
+    title: average of HOUSEHOLDS.INCOME_RANK by HOUSEHOLDS.YEAR
+    rows (5):
+      2015-01-01 | 0.5033332574106928
+      2016-01-01 | 0.5056198458275648
+      2017-01-01 | 0.5092298952650527
+      2018-01-01 | 0.5111528336492464
+      2019-01-01 | 0.5114691259127513
+
+  panel consumerexpenditures-1-09
+    title: average of HOUSEHOLD_MEMBERS.AGE by HOUSEHOLD_MEMBERS.WORK_STATUS
+    rows (4):
+      2 | 49.8028
+      3 | 48.8283
+      1 | 42.5214
+      ∅ | 35.6670
+
+  panel consumerexpenditures-1-10
+    title: distribution of HOUSEHOLDS.INCOME_RANK
+    rows (20):
+      0 | 0.000092 | 2754
+      1 | 0.050101 | 2759
+      2 | 0.100093 | 2742
+      3 | 0.15008 | 2690
+      4 | 0.200077 | 2751
+      5 | 0.250071 | 2809
+      6 | 0.300092 | 2794
+      7 | 0.350066 | 2799
+      8 | 0.40006 | 2851
+      9 | 0.450056 | 2795
+      10 | 0.500057 | 2797
+      11 | 0.550062 | 2865
+      … 8 more rows
+
+  panel consumerexpenditures-1-11
+    title: rows of HOUSEHOLD_MEMBERS by HOUSEHOLD_MEMBERS.WORK_STATUS
+    rows (4):
+      ∅ | 65947
+      1 | 64798
+      2 | 6511
+      3 | 99
+
+  panel consumerexpenditures-1-12
+    title: rows of HOUSEHOLD_MEMBERS by HOUSEHOLDS (by key) the twelve most
+    rows (12):
+      03706641 | 13
+      03706642 | 13
+      03885172 | 13
+      03885171 | 13
+      04257251 | 12
+      04257252 | 12
+      04151311 | 11
+      03514232 | 11
+      04137911 | 11
+      03402092 | 11
+      04137912 | 11
+      03514231 | 11
+
+  panel consumerexpenditures-1-13
+    title: rows of HOUSEHOLDS by HOUSEHOLDS.YEAR
+    rows (5):
+      2015-01-01 | 11841
+      2016-01-01 | 11552
+      2017-01-01 | 11658
+      2018-01-01 | 11079
+      2019-01-01 | 10682
+
+  panel consumerexpenditures-1-14
+    title: rows of HOUSEHOLD_MEMBERS by HOUSEHOLD_MEMBERS.SEX
+    rows (2):
+      2 | 70705
+      1 | 66650
+
+  panel consumerexpenditures-1-15
+    title: average of HOUSEHOLD_MEMBERS.AGE by HOUSEHOLDS (by key) the twelve most
+    rows (12):
+      03612061 | 88.0000
+      03612062 | 88.0000
+      03614011 | 88.0000
+      03609352 | 88.0000
+      03609351 | 88.0000
+      03609061 | 88.0000
+      03612141 | 88.0000
+      03611342 | 88.0000
+      03611341 | 88.0000
+      03612142 | 88.0000
+      03609062 | 88.0000
+      03612761 | 88.0000
+
+  panel consumerexpenditures-1-16
+    title: distribution of EXPENDITURES.COST
+    rows (15):
+      0 | 0.00783 | 2020058
+      1 | 3369 | 384
+      2 | 6741 | 85
+      3 | 10134.12 | 36
+      4 | 13480.48 | 16
+      5 | 16896.6 | 8
+      6 | 20580.49 | 12
+      7 | 24380 | 12
+      8 | 27330.75 | 11
+      9 | 31187.82 | 3
+      10 | 34000 | 1
+      12 | 43300 | 1
+      … 3 more rows
+
+  panel consumerexpenditures-1-17
+    title: average of HOUSEHOLD_MEMBERS.AGE by HOUSEHOLD_MEMBERS.MARITAL
+    rows (5):
+      2 | 73.0919
+      3 | 55.0641
+      1 | 51.6105
+      4 | 49.2037
+      5 | 19.9196
+
+  panel consumerexpenditures-1-18
+    title: rows of HOUSEHOLD_MEMBERS by HOUSEHOLD_MEMBERS.YEAR
+    rows (5):
+      2015-01-01 | 28523
+      2016-01-01 | 27969
+      2017-01-01 | 28561
+      2018-01-01 | 26645
+      2019-01-01 | 25657
+
+  panel consumerexpenditures-1-19
+    title: rows of HOUSEHOLD_MEMBERS by HOUSEHOLD_MEMBERS.MARITAL
+    rows (5):
+      1 | 61063
+      5 | 57442
+      3 | 10718
+      2 | 6301
+      4 | 1831
+
+  panel consumerexpenditures-1-20
+    title: average of EXPENDITURES.COST by EXPENDITURES.MONTH
+    rows (12):
+      1 | 21.72980585936839
+      2 | 19.9813789950551
+      3 | 21.770195668916525
+      4 | 22.206391415349987
+      5 | 22.336927063432235
+      6 | 22.257701606490965
+      7 | 22.051816768171175
+      8 | 21.115576725035698
+      9 | 22.081597701420762
+      10 | 22.42357588687098
+      11 | 20.89400554043811
+      12 | 21.846385240475197
+
+  panel consumerexpenditures-1-21
+    title: rows of EXPENDITURES by HOUSEHOLDS (by key) the twelve most
+    rows (12):
+      03677712 | 357
+      03542741 | 325
+      04331561 | 286
+      03217181 | 246
+      03585291 | 244
+      03382792 | 241
+      03636461 | 239
+      03133652 | 237
+      03959851 | 229
+      04069051 | 227
+      03934342 | 226
+      03477861 | 220
+
+  panel consumerexpenditures-1-22
+    title: average of EXPENDITURES.COST by HOUSEHOLDS (by key) the twelve most
+    rows (12):
+      03705831 | 25272
+      03874022 | 13730.25
+      03383092 | 8133.232233333333
+      03885052 | 4853.923333333333
+      03770391 | 3867.005
+      04139422 | 3436.8999999999996
+      03373251 | 3003
+      03217561 | 2700
+      03678031 | 2238.3255555555556
+      03452481 | 2236.53
+      03815361 | 2186.3142000000003
+      03535931 | 2170.1586333333335
+
+  panel consumerexpenditures-1-23
+    title: sum of EXPENDITURES.GIFT by EXPENDITURES.YEAR
+    rows (6):
+      2015-01-01 | 8354
+      2016-01-01 | 8122
+      2017-01-01 | 9051
+      2018-01-01 | 8507
+      2019-01-01 | 8603
+      2020-01-01 | 44
+
+  panel consumerexpenditures-1-24
+    title: sum of HOUSEHOLDS.INCOME_RANK by HOUSEHOLDS.YEAR
+    rows (5):
+      2015-01-01 | 5959.969101000013
+      2016-01-01 | 5840.920459000029
+      2017-01-01 | 5936.602118999984
+      2018-01-01 | 5663.062244000001
+      2019-01-01 | 5463.5132030000095
+
+  panel consumerexpenditures-1-25
+    title: sum of EXPENDITURES.COST by EXPENDITURES.YEAR
+    rows (6):
+      2015-01-01 | 8535106.909715284
+      2016-01-01 | 9050391.9870758
+      2017-01-01 | 9244223.002147963
+      2018-01-01 | 8873812.195667287
+      2019-01-01 | 8123884.806997236
+      2020-01-01 | 100440.15249000042
+
+  panel consumerexpenditures-1-26
+    title: sum of HOUSEHOLDS.INCOME_RANK_2 by HOUSEHOLDS.YEAR
+    rows (5):
+      2015-01-01 | 5963.390510999997
+      2016-01-01 | 5843.9957870000135
+      2017-01-01 | 5957.162670999994
+      2018-01-01 | 5633.199753000021
+      2019-01-01 | 5445.941477999999
+
+  panel consumerexpenditures-1-27
+    title: rows of EXPENDITURES by EXPENDITURES.YEAR
+    rows (6):
+      2015-01-01 | 385737
+      2016-01-01 | 401556
+      2017-01-01 | 439080
+      2018-01-01 | 406678
+      2019-01-01 | 383953
+      2020-01-01 | 3630
+
+  panel consumerexpenditures-1-28
+    title: sum of HOUSEHOLDS.INCOME_RANK_1 by HOUSEHOLDS.YEAR
+    rows (5):
+      2015-01-01 | 5963.704435000011
+      2016-01-01 | 5845.4489010000025
+      2017-01-01 | 5950.32287599998
+      2018-01-01 | 5643.447782000004
+      2019-01-01 | 5448.63723899999
+
+  panel consumerexpenditures-1-29
+    title: sum of EXPENDITURES.COST by EXPENDITURES.MONTH
+    rows (12):
+      1 | 3540415.5388610326
+      2 | 3136337.1912008333
+      3 | 3817621.512501202
+      4 | 3894667.9583811574
+      5 | 4075461.690431465
+      6 | 3670027.9024910824
+      7 | 3657227.655550885
+      8 | 3695099.233420897
+      9 | 3595656.96171085
+      10 | 3803868.142721133
+      11 | 3366651.1127307923
+      12 | 3674824.1540708137
+
+  panel consumerexpenditures-1-30
+    title: sum of HOUSEHOLDS.INCOME_RANK_3 by HOUSEHOLDS.YEAR
+    rows (5):
+      2015-01-01 | 5967.722577999962
+      2016-01-01 | 5844.77014700001
+      2017-01-01 | 5958.810511000002
+      2018-01-01 | 5643.343580000002
+      2019-01-01 | 5443.221276999983
+
+  panel consumerexpenditures-1-31
+    title: average of HOUSEHOLD_MEMBERS.AGE by HOUSEHOLD_MEMBERS.SEX
+    rows (2):
+      2 | 40.4505
+      1 | 38.6569
+
+  panel consumerexpenditures-1-32
+    title: rows of EXPENDITURES by EXPENDITURES.MONTH
+    rows (12):
+      1 | 162929
+      2 | 156963
+      3 | 175360
+      4 | 175385
+      5 | 182454
+      6 | 164888
+      7 | 165847
+      8 | 174994
+      9 | 162835
+      10 | 169637
+      11 | 161130
+      12 | 168212
+
+  panel consumerexpenditures-1-33
+    title: sum of EXPENDITURES.COST by EXPENDITURES.IS_TRAINING
+    rows (2):
+      1 | 35703534.09450789
+      0 | 8224324.959487333
+
+
+=== database: legalacts ===
+Legal acts, the links between them and the people named in them, as CTU serves it. A fixture of round 1e.
+
+  panel legalacts-1-01
+    title: rows of legalacts by legalacts.ActYear
+    rows (33):
+      1933-01-01 | 1
+      1975-01-01 | 1
+      1979-01-01 | 1
+      1980-01-01 | 2
+      1983-01-01 | 1
+      1984-01-01 | 1
+      1985-01-01 | 2
+      1987-01-01 | 1
+      1988-01-01 | 2
+      1989-01-01 | 3
+      1990-01-01 | 9
+      1991-01-01 | 19
+      … 21 more rows
+
+  panel legalacts-1-02
+    title: rows of legalacts by legalacts.MotiveLink
+    rows (2):
+      0 | 543937
+      1 | 36112
+
+  panel legalacts-1-03
+    title: rows of legalact_people by people.name the twelve most
+    rows (12):
+      I | 6582
+      I | 4515
+      Мария Тодорова | 2371
+      Серафимка Мадолева | 2244
+      I | 2211
+      I | 2007
+      Росен Василев | 1937
+      Милен Г. Василев | 1865
+      I | 1854
+      VII | 1815
+      IV | 1759
+      Розинела Т. Янчева | 1751
+
+  panel legalacts-1-04
+    title: rows of legalacts by legalacts.ActYear split by legalacts.Status
+    rows (110):
+      1933-01-01 | Не е влязъл в сила | 1
+      1975-01-01 | Не е влязъл в сила | 1
+      1979-01-01 | Не е влязъл в сила | 1
+      1980-01-01 | Влязъл в сила | 1
+      1980-01-01 | Не е влязъл в сила | 1
+      1983-01-01 | Влязъл в сила | 1
+      1984-01-01 | Не е влязъл в сила | 1
+      1985-01-01 | Не е влязъл в сила | 2
+      1987-01-01 | Влязъл в сила | 1
+      1988-01-01 | Не е влязъл в сила | 2
+      1989-01-01 | Изменен | 1
+      1989-01-01 | Не е влязъл в сила | 2
+      … 98 more rows
+
+  panel legalacts-1-05
+    title: rows of legalact_people per legalacts
+    rows (4):
+      1 | 172542
+      2 | 300302
+      3 | 48997
+      4 | 58208
+
+  panel legalacts-1-06
+    title: rows of legalacts by legalacts.StartDate
+    rows (14):
+      1999-01-01 | 1
+      2000-01-01 | 1
+      2001-01-01 | 11
+      2002-01-01 | 8
+      2003-01-01 | 3
+      2004-01-01 | 12
+      2005-01-01 | 42
+      2006-01-01 | 43
+      2007-01-01 | 132
+      2008-01-01 | 3586
+      2009-01-01 | 47689
+      2010-01-01 | 166375
+      … 2 more rows
+
+  panel legalacts-1-07
+    title: rows of legalact_link by legalacts.Status
+    rows (5):
+      Не е влязъл в сила | 10891
+      Влязъл в сила | 6317
+      Потвърден | 125
+      Отменен | 90
+      Изменен | 69
+
+  panel legalacts-1-08
+    title: rows of legalacts by legalacts.CaseKind the twelve most
+    rows (12):
+      Гражданско дело | 187992
+      НОХД | 90266
+      АНД | 87020
+      Въззивно гражданско дело | 57266
+      Административно дело | 31254
+      Въззивно частно гражданско дело  | 20595
+      Търговско дело | 18238
+      ВНОХД | 17868
+      ЧНД | 17748
+      КАНД | 11918
+      Частно гражданско дело | 11858
+      ВЧНД | 6119
+
+  panel legalacts-1-09
+    title: rows of legalacts by legalacts.update
+    rows (23):
+      2012-07-13 | 5875
+      2012-07-14 | 27491
+      2012-07-15 | 39888
+      2012-07-16 | 25557
+      2012-07-17 | 28451
+      2012-07-18 | 2978
+      2012-07-19 | 100
+      2012-07-20 | 18325
+      2012-07-21 | 28406
+      2012-07-22 | 24083
+      2012-07-23 | 19205
+      2012-07-24 | 88129
+      … 11 more rows
+
+  panel legalacts-1-10
+    title: rows of legalact_people by legalacts.MotiveLink
+    rows (2):
+      0 | 1090828
+      1 | 62141
+
+  panel legalacts-1-11
+    title: rows of legalact_link per legalacts
+    rows (4):
+      1 | 14928
+      2 | 1084
+      3 | 100
+      4 | 24
+
+  panel legalacts-1-12
+    title: rows of legalact_people by people.jury
+    rows (2):
+      0 | 796935
+      1 | 356034
+
+  panel legalacts-1-13
+    title: rows of legalact_people by legalacts.ActLink
+    rows (2):
+      1 | 1148034
+      0 | 4935
+
+  panel legalacts-1-14
+    title: rows of legalacts by legalacts.HighCourt the twelve most
+    rows (12):
+      ∅ | 465545
+      Върховен касационен съд | 19023
+      Върховен административен съд | 11057
+      Окръжен съд - Варна | 7701
+      Апелативен съд - София | 5789
+      Окръжен съд - Пловдив | 4449
+      Административен съд - Варна | 3984
+      Окръжен съд - Бургас | 3408
+      Административен съд - Бургас | 3039
+      Апелативен съд - Варна | 2803
+      Апелативен съд - Пловдив | 2596
+      Административен съд - Пловдив | 2376
+
+  panel legalacts-1-15
+    title: rows of people by people.jury
+    rows (2):
+      0 | 2802
+      1 | 987
+
+  panel legalacts-1-16
+    title: rows of legalacts by legalacts.update split by legalacts.TypeOfDocument
+    rows (78):
+      2012-07-13 | ∅ | 4254
+      2012-07-13 | Писмо | 1620
+      2012-07-13 | Писмо - предложение за възобновяване | 1
+      2012-07-14 | ∅ | 20263
+      2012-07-14 | Писмо | 7219
+      2012-07-14 | Писмо - молба за опр. срок при бавност | 3
+      2012-07-14 | Писмо - предложение за възобновяване | 6
+      2012-07-15 | ∅ | 29345
+      2012-07-15 | Писмо | 10530
+      2012-07-15 | Писмо - молба за опр. срок при бавност | 3
+      2012-07-15 | Писмо - предложение за възобновяване | 10
+      2012-07-16 | ∅ | 19612
+      … 66 more rows
+
+  panel legalacts-1-17
+    title: rows of legalacts by legalacts.Status
+    rows (5):
+      Влязъл в сила | 275395
+      Не е влязъл в сила | 266867
+      Потвърден | 16389
+      Отменен | 13579
+      Изменен | 7819
+
+  panel legalacts-1-18
+    title: rows of legalacts by legalacts.update split by legalacts.ActKind
+    rows (157):
+      2012-07-13 | Заповед | 16
+      2012-07-13 | Определение | 947
+      2012-07-13 | Присъда | 462
+      2012-07-13 | Протокол | 19
+      2012-07-13 | Разпореждане | 24
+      2012-07-13 | Решение | 4019
+      2012-07-13 | Споразумение | 388
+      2012-07-14 | Заповед | 120
+      2012-07-14 | Определение | 4517
+      2012-07-14 | Присъда | 2000
+      2012-07-14 | Протокол | 208
+      2012-07-14 | Разпореждане | 160
+      … 145 more rows
+
+  panel legalacts-1-19
+    title: rows of legalact_people by legalacts.Status
+    rows (5):
+      Не е влязъл в сила | 556362
+      Влязъл в сила | 517179
+      Потвърден | 38433
+      Отменен | 26339
+      Изменен | 14656
+
+  panel legalacts-1-20
+    title: rows of legalacts by legalacts.LegalDate
+    rows (7):
+      2006-01-01 | 1
+      2007-01-01 | 13
+      2008-01-01 | 776
+      2009-01-01 | 20467
+      2010-01-01 | 86249
+      2011-01-01 | 110102
+      2012-01-01 | 68805
+
+  panel legalacts-1-21
+    title: rows of legalacts by legalacts.ResultOfAppeal the twelve most
+    rows (12):
+      ∅ | 504994
+      Изцяло потвърдено | 27562
+      Потвърден | 21713
+      Изцяло отменено, обезсилено или нищожно  | 5930
+      ОСТАВЕНО В СИЛА | 4909
+      Потвърдено в една част отменено, обезсил | 3807
+      Отменен изцяло | 3416
+      Изменен в наказателната част | 2517
+      Отменен и върнат за ново разглеждане на  | 1428
+      ОТМЕНЕНО изцяло, поради наличие на касац | 1167
+      Отменен и върнат за ново разглеждане на  | 1040
+      Отменен и върнат на прокурора | 428
+
+  panel legalacts-1-22
+    title: rows of legalacts by legalacts.ActKind
+    rows (7):
+      Решение | 365298
+      Определение | 115400
+      Споразумение | 42512
+      Присъда | 39136
+      Заповед | 6271
+      Протокол | 6042
+      Разпореждане | 5390
+
+  panel legalacts-1-23
+    title: rows of legalact_people by legalacts.ActKind
+    rows (7):
+      Решение | 745243
+      Определение | 243664
+      Споразумение | 72791
+      Присъда | 64854
+      Заповед | 11273
+      Разпореждане | 8362
+      Протокол | 6782
+
+  panel legalacts-1-24
+    title: rows of legalact_people by legalacts (by key) the twelve most
+    rows (12):
+      5478 | 4
+      5512 | 4
+      5484 | 4
+      5479 | 4
+      2332734 | 4
+      5514 | 4
+      5459 | 4
+      5487 | 4
+      5481 | 4
+      5457 | 4
+      5508 | 4
+      5489 | 4
+
+  panel legalacts-1-25
+    title: rows of legalacts by legalacts.update split by legalacts.Status
+    rows (115):
+      2012-07-13 | Влязъл в сила | 2108
+      2012-07-13 | Изменен | 104
+      2012-07-13 | Не е влязъл в сила | 3244
+      2012-07-13 | Отменен | 152
+      2012-07-13 | Потвърден | 267
+      2012-07-14 | Влязъл в сила | 10684
+      2012-07-14 | Изменен | 420
+      2012-07-14 | Не е влязъл в сила | 14683
+      2012-07-14 | Отменен | 795
+      2012-07-14 | Потвърден | 909
+      2012-07-15 | Влязъл в сила | 15479
+      2012-07-15 | Изменен | 596
+      … 103 more rows
+
+  panel legalacts-1-26
+    title: rows of legalact_link by legalacts.ActKind
+    rows (4):
+      Решение | 14597
+      Определение | 2494
+      Присъда | 364
+      Разпореждане | 37
+
+  panel legalacts-1-27
+    title: rows of legalacts by legalacts.SendDate
+    rows (8):
+      2005-01-01 | 2
+      2006-01-01 | 3
+      2007-01-01 | 22
+      2008-01-01 | 509
+      2009-01-01 | 8813
+      2010-01-01 | 31188
+      2011-01-01 | 42981
+      2012-01-01 | 30986
+
+  panel legalacts-1-28
+    title: rows of legalact_people by legalacts.CaseKind
+    rows (25):
+      Гражданско дело | 319482
+      Въззивно гражданско дело | 174591
+      АНД | 151112
+      НОХД | 145349
+      Въззивно частно гражданско дело  | 70778
+      Административно дело | 50647
+      КАНД | 41909
+      ВНОХД | 41338
+      ЧНД | 30241
+      Търговско дело | 29309
+      ВЧНД | 20684
+      Частно гражданско дело | 19679
+      … 13 more rows
+
+  panel legalacts-1-29
+    title: rows of legalacts by legalacts.TypeOfDocument
+    rows (4):
+      ∅ | 465545
+      Писмо | 114404
+      Писмо - предложение за възобновяване | 72
+      Писмо - молба за опр. срок при бавност | 28
+
+  panel legalacts-1-30
+    title: largest tables, estimated rows
+    rows (5):
+      legalact_people | 1151730
+      legalacts | 561904
+      legalact_link | 17492
+      people | 3757
+      scrapefix | 98
+
+  panel legalacts-1-31
+    title: rows of legalacts by legalacts.ActLink
+    rows (2):
+      1 | 577594
+      0 | 2455
+
+  panel legalacts-1-32
+    title: rows of legalacts by legalacts.YearHigherCourt
+    rows (8):
+      2005-01-01 | 2
+      2006-01-01 | 3
+      2007-01-01 | 22
+      2008-01-01 | 511
+      2009-01-01 | 8823
+      2010-01-01 | 31211
+      2011-01-01 | 42983
+      2012-01-01 | 30949
+
+  panel legalacts-1-33
+    title: rows of legalacts by legalacts.ActYear split by legalacts.ActKind
+    rows (108):
+      1933-01-01 | Решение | 1
+      1975-01-01 | Решение | 1
+      1979-01-01 | Решение | 1
+      1980-01-01 | Решение | 2
+      1983-01-01 | Решение | 1
+      1984-01-01 | Решение | 1
+      1985-01-01 | Решение | 2
+      1987-01-01 | Решение | 1
+      1988-01-01 | Определение | 1
+      1988-01-01 | Решение | 1
+      1989-01-01 | Решение | 3
+      1990-01-01 | Определение | 2
+      … 96 more rows
+
+
+=== database: fnhk ===
+A Czech hospital's cases, the procedures performed in each and the medicines and materials charged, as CTU serves it. A fixture of round 1e.
+
+  panel fnhk-1-01
+    title: sum of pripady.Identifikator_pacienta by pripady.Datum_prijeti
+    rows (17):
+      2013-08-01 | 1110293
+      2013-09-01 | 2325807
+      2013-10-01 | 10752495
+      2013-11-01 | 42081924
+      2013-12-01 | 280889105
+      2014-01-01 | 2564781067
+      2014-02-01 | 2415078276
+      2014-03-01 | 2525691404
+      2014-04-01 | 2564366129
+      2014-05-01 | 2405064099
+      2014-06-01 | 2543051001
+      2014-07-01 | 1962916029
+      … 5 more rows
+
+  panel fnhk-1-02
+    title: rows of vykony by pripady.Pohlavi_pacienta
+    rows (2):
+      M | 1021279
+      F | 858058
+
+  panel fnhk-1-03
+    title: average of zup.Pocet by zup.Datum_provedeni_vykonu
+    rows (16):
+      2013-09-01 | 1.199251
+      2013-10-01 | 0.918872
+      2013-11-01 | 1.451732
+      2013-12-01 | 1.272524
+      2014-01-01 | 4.949367
+      2014-02-01 | 4.080970
+      2014-03-01 | 6.140293
+      2014-04-01 | 4.967074
+      2014-05-01 | 4.410378
+      2014-06-01 | 4.133058
+      2014-07-01 | 4.155906
+      2014-08-01 | 2.724806
+      … 4 more rows
+
+  panel fnhk-1-04
+    title: rows of zup by pripady (by key) the twelve most
+    rows (12):
+      1865241 | 641
+      1867280 | 592
+      1861619 | 566
+      1858309 | 480
+      1867326 | 436
+      1871881 | 430
+      1855538 | 338
+      1879667 | 325
+      1875438 | 315
+      1856769 | 312
+      1881077 | 304
+      1857049 | 286
+
+  panel fnhk-1-05
+    title: average of vykony.Typ_polozky by vykony.Datum_provedeni_vykonu
+    rows (17):
+      2013-08-01 | 0.0000
+      2013-09-01 | 0.0000
+      2013-10-01 | 0.0000
+      2013-11-01 | 0.0000
+      2013-12-01 | 0.0000
+      2014-01-01 | 0.0000
+      2014-02-01 | 0.0000
+      2014-03-01 | 0.0000
+      2014-04-01 | 0.0000
+      2014-05-01 | 0.0000
+      2014-06-01 | 0.0000
+      2014-07-01 | 0.0000
+      … 5 more rows
+
+  panel fnhk-1-06
+    title: sum of zup.Typ_polozky by zup.Datum_provedeni_vykonu
+    rows (16):
+      2013-09-01 | 255
+      2013-10-01 | 678
+      2013-11-01 | 1486
+      2013-12-01 | 5571
+      2014-01-01 | 25453
+      2014-02-01 | 25265
+      2014-03-01 | 26138
+      2014-04-01 | 26606
+      2014-05-01 | 25328
+      2014-06-01 | 26186
+      2014-07-01 | 21716
+      2014-08-01 | 20697
+      … 4 more rows
+
+  panel fnhk-1-07
+    title: largest tables, estimated rows
+    rows (3):
+      vykony | 1874640
+      zup | 192324
+      pripady | 41522
+
+  panel fnhk-1-08
+    title: sum of zup.Pocet by pripady (by key) the twelve most
+    rows (12):
+      1856762 | 7771.00
+      1868477 | 7401.00
+      1859416 | 7401.00
+      1864733 | 7401.00
+      1870260 | 7401.00
+      1873631 | 7401.00
+      1868554 | 7401.00
+      1852725 | 7401.00
+      1862002 | 7401.00
+      1864874 | 7401.00
+      1867828 | 7401.00
+      1871072 | 7400.00
+
+  panel fnhk-1-09
+    title: rows of zup by pripady.Vekovy_Interval_Pacienta
+    rows (9):
+      60-70 | 54448
+      70-80 | 35821
+      50-60 | 33324
+      80+ | 17146
+      40-50 | 16008
+      30-40 | 12783
+      20-30 | 9402
+      0-10 | 7846
+      10-20 | 5641
+
+  panel fnhk-1-10
+    title: rows of vykony by pripady.Vekovy_Interval_Pacienta
+    rows (9):
+      60-70 | 476214
+      70-80 | 331800
+      50-60 | 291494
+      80+ | 182501
+      0-10 | 157383
+      40-50 | 150971
+      30-40 | 134758
+      20-30 | 98023
+      10-20 | 56193
+
+  panel fnhk-1-11
+    title: sum of vykony.Body by vykony.Datum_provedeni_vykonu
+    rows (17):
+      2013-08-01 | 344
+      2013-09-01 | 1822086
+      2013-10-01 | 5583861
+      2013-11-01 | 14093553
+      2013-12-01 | 47360479
+      2014-01-01 | 143888204
+      2014-02-01 | 145878915
+      2014-03-01 | 151908443
+      2014-04-01 | 151140733
+      2014-05-01 | 152321857
+      2014-06-01 | 151120417
+      2014-07-01 | 127269600
+      … 5 more rows
+
+  panel fnhk-1-12
+    title: sum of vykony.Typ_polozky by vykony.Datum_provedeni_vykonu
+    rows (17):
+      2013-08-01 | 0
+      2013-09-01 | 0
+      2013-10-01 | 0
+      2013-11-01 | 0
+      2013-12-01 | 0
+      2014-01-01 | 0
+      2014-02-01 | 0
+      2014-03-01 | 0
+      2014-04-01 | 0
+      2014-05-01 | 0
+      2014-06-01 | 0
+      2014-07-01 | 0
+      … 5 more rows
+
+  panel fnhk-1-13
+    title: sum of vykony.Typ_polozky by pripady (by key) the twelve most
+    rows (12):
+      1829493 | 0
+      1840525 | 0
+      1840526 | 0
+      1840527 | 0
+      1840528 | 0
+      1840529 | 0
+      1840530 | 0
+      1840531 | 0
+      1840532 | 0
+      1840533 | 0
+      1840534 | 0
+      1840535 | 0
+
+  panel fnhk-1-14
+    title: rows of pripady by pripady.Datum_propusteni
+    rows (53):
+      2013-12-30 | 212
+      2014-01-06 | 677
+      2014-01-13 | 803
+      2014-01-20 | 900
+      2014-01-27 | 840
+      2014-02-03 | 860
+      2014-02-10 | 888
+      2014-02-17 | 921
+      2014-02-24 | 876
+      2014-03-03 | 798
+      2014-03-10 | 865
+      2014-03-17 | 887
+      … 41 more rows
+
+  panel fnhk-1-15
+    title: sum of zup.Pocet by zup.Datum_provedeni_vykonu
+    rows (16):
+      2013-09-01 | 224.26
+      2013-10-01 | 497.11
+      2013-11-01 | 1710.14
+      2013-12-01 | 5546.93
+      2014-01-01 | 81808.09
+      2014-02-01 | 66968.71
+      2014-03-01 | 104919.18
+      2014-04-01 | 86749.95
+      2014-05-01 | 73146.12
+      2014-06-01 | 69439.50
+      2014-07-01 | 59034.64
+      2014-08-01 | 38068.27
+      … 4 more rows
+
+  panel fnhk-1-16
+    title: average of pripady.Identifikator_pacienta by pripady.Datum_prijeti
+    rows (17):
+      2013-08-01 | 1110293.0000
+      2013-09-01 | 387634.5000
+      2013-10-01 | 827115.0000
+      2013-11-01 | 858814.7755
+      2013-12-01 | 645722.0805
+      2014-01-01 | 672288.6152
+      2014-02-01 | 689825.2716
+      2014-03-01 | 680779.3542
+      2014-04-01 | 688975.3168
+      2014-05-01 | 674821.5766
+      2014-06-01 | 689921.5955
+      2014-07-01 | 695329.8013
+      … 5 more rows
+
+  panel fnhk-1-17
+    title: rows of pripady by pripady.Pohlavi_pacienta
+    rows (2):
+      F | 21190
+      M | 20329
+
+  panel fnhk-1-18
+    title: rows of zup by zup.Datum_provedeni_vykonu
+    rows (16):
+      2013-09-01 | 187
+      2013-10-01 | 541
+      2013-11-01 | 1178
+      2013-12-01 | 4359
+      2014-01-01 | 16529
+      2014-02-01 | 16410
+      2014-03-01 | 17087
+      2014-04-01 | 17465
+      2014-05-01 | 16585
+      2014-06-01 | 16801
+      2014-07-01 | 14205
+      2014-08-01 | 13971
+      … 4 more rows
+
+  panel fnhk-1-19
+    title: average of vykony.Pocet by vykony.Datum_provedeni_vykonu
+    rows (17):
+      2013-08-01 | 1.0000
+      2013-09-01 | 1.6082
+      2013-10-01 | 1.9911
+      2013-11-01 | 1.7202
+      2013-12-01 | 1.7324
+      2014-01-01 | 1.6832
+      2014-02-01 | 1.7587
+      2014-03-01 | 1.7422
+      2014-04-01 | 1.6829
+      2014-05-01 | 1.6837
+      2014-06-01 | 1.7111
+      2014-07-01 | 1.7030
+      … 5 more rows
+
+  panel fnhk-1-20
+    title: sum of zup.Cena by pripady.Vekovy_Interval_Pacienta
+    rows (9):
+      60-70 | 184672187.36
+      70-80 | 118705135.98
+      50-60 | 115628355.46
+      40-50 | 47816296.47
+      80+ | 42462442.79
+      30-40 | 32584220.43
+      20-30 | 18125468.49
+      0-10 | 10774019.87
+      10-20 | 10100881.06
+
+  panel fnhk-1-21
+    title: sum of zup.Cena by zup.Datum_provedeni_vykonu
+    rows (16):
+      2013-09-01 | 343444.68
+      2013-10-01 | 828394.41
+      2013-11-01 | 2351327.25
+      2013-12-01 | 6606737.82
+      2014-01-01 | 46238044.04
+      2014-02-01 | 50183616.46
+      2014-03-01 | 47914158.55
+      2014-04-01 | 49296217.39
+      2014-05-01 | 48228047.87
+      2014-06-01 | 51974418.63
+      2014-07-01 | 44598574.98
+      2014-08-01 | 40820408.27
+      … 4 more rows
+
+  panel fnhk-1-22
+    title: rows of pripady by pripady.Datum_prijeti split by pripady.Pohlavi_pacienta
+    rows (33):
+      2013-08-01 | F | 1
+      2013-09-01 | F | 5
+      2013-09-01 | M | 1
+      2013-10-01 | F | 7
+      2013-10-01 | M | 6
+      2013-11-01 | F | 26
+      2013-11-01 | M | 23
+      2013-12-01 | F | 201
+      2013-12-01 | M | 234
+      2014-01-01 | F | 1942
+      2014-01-01 | M | 1873
+      2014-02-01 | F | 1780
+      … 21 more rows
+
+  panel fnhk-1-23
+    title: average of vykony.Body by vykony.Datum_provedeni_vykonu
+    rows (17):
+      2013-08-01 | 344.0000
+      2013-09-01 | 1043.5773
+      2013-10-01 | 1153.4520
+      2013-11-01 | 1245.0135
+      2013-12-01 | 1190.2908
+      2014-01-01 | 893.0499
+      2014-02-01 | 935.4631
+      2014-03-01 | 925.9379
+      2014-04-01 | 916.9659
+      2014-05-01 | 925.8505
+      2014-06-01 | 922.1351
+      2014-07-01 | 901.5790
+      … 5 more rows
+
+  panel fnhk-1-24
+    title: rows of zup by pripady.Pohlavi_pacienta
+    rows (2):
+      M | 112897
+      F | 79522
+
+  panel fnhk-1-25
+    title: rows of pripady by pripady.Datum_prijeti
+    rows (17):
+      2013-08-01 | 1
+      2013-09-01 | 6
+      2013-10-01 | 13
+      2013-11-01 | 49
+      2013-12-01 | 435
+      2014-01-01 | 3815
+      2014-02-01 | 3501
+      2014-03-01 | 3710
+      2014-04-01 | 3722
+      2014-05-01 | 3564
+      2014-06-01 | 3686
+      2014-07-01 | 2823
+      … 5 more rows
+
+  panel fnhk-1-26
+    title: sum of vykony.Pocet by vykony.Datum_provedeni_vykonu
+    rows (17):
+      2013-08-01 | 1
+      2013-09-01 | 2808
+      2013-10-01 | 9639
+      2013-11-01 | 19473
+      2013-12-01 | 68932
+      2014-01-01 | 271195
+      2014-02-01 | 274255
+      2014-03-01 | 285830
+      2014-04-01 | 277393
+      2014-05-01 | 276998
+      2014-06-01 | 280412
+      2014-07-01 | 240402
+      … 5 more rows
+
+  panel fnhk-1-27
+    title: rows of vykony by vykony.Datum_provedeni_vykonu
+    rows (17):
+      2013-08-01 | 1
+      2013-09-01 | 1746
+      2013-10-01 | 4841
+      2013-11-01 | 11320
+      2013-12-01 | 39789
+      2014-01-01 | 161120
+      2014-02-01 | 155943
+      2014-03-01 | 164059
+      2014-04-01 | 164827
+      2014-05-01 | 164521
+      2014-06-01 | 163881
+      2014-07-01 | 141163
+      … 5 more rows
+
+  panel fnhk-1-28
+    title: rows of vykony by pripady (by key) the twelve most
+    rows (12):
+      1865241 | 5127
+      1871881 | 4891
+      1858309 | 4389
+      1867280 | 4196
+      1847488 | 4081
+      1861619 | 3851
+      1872621 | 3198
+      1867326 | 2940
+      1875438 | 2737
+      1879667 | 2610
+      1857813 | 2572
+      1869064 | 2316
+
+  panel fnhk-1-29
+    title: sum of zup.Cena by pripady (by key) the twelve most
+    rows (12):
+      1846824 | 1782318.04
+      1867280 | 1770357.10
+      1870194 | 1280741.19
+      1845773 | 1258322.03
+      1848541 | 1092672.94
+      1877821 | 1071327.89
+      1877240 | 1019098.41
+      1879914 | 996826.15
+      1864240 | 994578.67
+      1878140 | 964978.62
+      1857049 | 917926.48
+      1845297 | 879239.09
+
+  panel fnhk-1-30
+    title: rows of pripady by pripady.Vekovy_Interval_Pacienta
+    rows (9):
+      60-70 | 8357
+      0-10 | 6005
+      70-80 | 5575
+      50-60 | 5434
+      30-40 | 4176
+      40-50 | 3615
+      20-30 | 3289
+      80+ | 3178
+      10-20 | 1890
+
+  panel fnhk-1-31
+    title: average of zup.Cena by zup.Datum_provedeni_vykonu
+    rows (16):
+      2013-09-01 | 1836.602567
+      2013-10-01 | 1531.228115
+      2013-11-01 | 1996.033319
+      2013-12-01 | 1515.654467
+      2014-01-01 | 2797.389076
+      2014-02-01 | 3058.111911
+      2014-03-01 | 2804.129370
+      2014-04-01 | 2822.571852
+      2014-05-01 | 2907.931738
+      2014-06-01 | 3093.531256
+      2014-07-01 | 3139.639210
+      2014-08-01 | 2921.795739
+      … 4 more rows
+
+
+=== database: sap ===
+A retailer's customers, their regions' demographics, the mailings sent to them and their sales, as CTU serves it. A fixture of round 1e.
+
+  panel sap-1-01
+    title: rows of Mailings1_2 by Mailings1_2.REF_DATE
+    rows (2):
+      2007-02-01 | 30000
+      2007-03-01 | 30000
+
+  panel sap-1-02
+    title: rows of Customers by Demog (by key) the twelve most
+    rows (12):
+      51 | 18276
+      52 | 18044
+      53 | 17601
+      50 | 17509
+      49 | 16722
+      54 | 16491
+      48 | 15138
+      55 | 14939
+      56 | 13640
+      47 | 13376
+      57 | 11889
+      46 | 11706
+
+  panel sap-1-03
+    title: sum of Sales.AMOUNT by Customers.MARITAL_STATUS
+    rows (5):
+      Married-civ-spouse | 23758226.255532265
+      Never-married | 16961631.841002464
+      Divorced | 6913127.513810158
+      Other | 2121507.647993088
+      Widowed | 1559632.0718688965
+
+  panel sap-1-04
+    title: rows of Sales by Customers.NOM1 the twelve most
+    rows (0):
+      
+      error: ERROR 3024 (HY000) at line 1: Query execution was interrupted, maximum statement execution time exceeded
+
+  panel sap-1-05
+    title: rows of Sales by Customers.NOM3 the twelve most
+    rows (12):
+      o | 599979
+      p | 489749
+      n | 320047
+      y | 162410
+      q | 161526
+      x | 159803
+      z | 145522
+      w | 143044
+      m | 130229
+      ab | 118858
+      k | 117144
+      l | 113100
+
+  panel sap-1-06
+    title: rows of Customers by Customers.NOM2 the twelve most
+    rows (12):
+      q | 111632
+      p | 88416
+      o | 46693
+      n | 36827
+      r | 32649
+      m | 21709
+      l | 9327
+      s | 5878
+      k | 3182
+      t | 1730
+      j | 998
+      u | 472
+
+  panel sap-1-07
+    title: sum of Sales.AMOUNT by Customers.NOM3 the twelve most
+    rows (12):
+      o | 8998974.242035866
+      p | 7348772.709607124
+      n | 4801383.22105217
+      y | 2436873.5139656067
+      q | 2422469.4181308746
+      x | 2397129.55612278
+      z | 2182847.8880519867
+      w | 2146602.9449882507
+      m | 1953064.0529165268
+      ab | 1783586.7638311386
+      k | 1755889.4800481796
+      l | 1696463.5197181702
+
+  panel sap-1-08
+    title: rows of Sales by Customers.OCCUPATION
+    rows (9):
+      Machine-op-inspct | 1799283
+      Handlers-cleaners | 957654
+      Farming-fishing | 527914
+      Other-service | 93009
+      Exec-managerial | 35669
+      Prof-specialty | 6710
+      Craft-repair | 441
+      Sales | 140
+      Adm-clerical | 9
+
+  panel sap-1-09
+    title: rows of Sales by Sales.EVENT_DATE
+    rows (30):
+      2006-11-06 | 13560
+      2006-11-13 | 23649
+      2006-11-20 | 23999
+      2006-11-27 | 23601
+      2006-12-04 | 37380
+      2006-12-11 | 47752
+      2006-12-18 | 47493
+      2006-12-25 | 47681
+      2007-01-01 | 47731
+      2007-01-08 | 47604
+      2007-01-15 | 47338
+      2007-01-22 | 47161
+      … 18 more rows
+
+  panel sap-1-10
+    title: rows of Customers by Customers.NOM3 the twelve most
+    rows (12):
+      o | 63065
+      p | 51544
+      n | 33622
+      y | 17104
+      q | 17006
+      x | 16886
+      z | 15298
+      w | 15047
+      m | 13714
+      ab | 12543
+      k | 12333
+      l | 11921
+
+  panel sap-1-11
+    title: sum of Sales.AMOUNT by Customers.NOM1 the twelve most
+    rows (0):
+      
+      error: ERROR 3024 (HY000) at line 1: Query execution was interrupted, maximum statement execution time exceeded
+
+  panel sap-1-12
+    title: sum of Sales.AMOUNT by Customers.OCCUPATION
+    rows (9):
+      Machine-op-inspct | 26988902.836325645
+      Handlers-cleaners | 14363861.211711884
+      Farming-fishing | 7921334.534196854
+      Other-service | 1395568.188082695
+      Exec-managerial | 534796.4979171753
+      Prof-specialty | 100792.61197376251
+      Craft-repair | 6607.881998062134
+      Sales | 2139.9469995498657
+      Adm-clerical | 121.62100124359131
+
+  panel sap-1-13
+    title: rows of Customers by Customers.MARITAL_STATUS
+    rows (5):
+      Married-civ-spouse | 166711
+      Never-married | 118868
+      Divorced | 48571
+      Other | 14876
+      Widowed | 10974
+
+  panel sap-1-14
+    title: sum of Mailings1_2.KxIndex by Mailings1_2.REF_DATE
+    rows (2):
+      2007-02-01 | 450015000
+      2007-03-01 | 1350015000
+
+  panel sap-1-15
+    title: distribution of Sales.AMOUNT
+    rows (21):
+      0 | 10 | 170793
+      1 | 10.5 | 171264
+      2 | 11 | 170706
+      3 | 11.5 | 171331
+      4 | 12 | 171069
+      5 | 12.5 | 171101
+      6 | 13 | 170781
+      7 | 13.5 | 170859
+      8 | 14 | 171204
+      9 | 14.5 | 170819
+      10 | 15 | 170754
+      11 | 15.5 | 171240
+      … 9 more rows
+
+  panel sap-1-16
+    title: rows of Sales by Customers.NOM2 the twelve most
+    rows (12):
+      q | 1060033
+      p | 841025
+      o | 443423
+      n | 350005
+      r | 310380
+      m | 205918
+      l | 88618
+      s | 56054
+      k | 30343
+      t | 16405
+      j | 9521
+      u | 4461
+
+  panel sap-1-17
+    title: rows of mailings3 by mailings3.RESPONSE
+    rows (2):
+      false | 285193
+      true | 14807
+
+  panel sap-1-18
+    title: rows of Customers by Customers.SEX
+    rows (2):
+      Male | 238118
+      Female | 121882
+
+  panel sap-1-19
+    title: sum of Sales.AMOUNT by Sales.EVENT_DATE
+    rows (30):
+      2006-11-06 | 203075.01301383972
+      2006-11-13 | 354454.720949173
+      2006-11-20 | 360116.5309820175
+      2006-11-27 | 355487.4550151825
+      2006-12-04 | 560214.8420410156
+      2006-12-11 | 717069.157877922
+      2006-12-18 | 712293.5468978882
+      2006-12-25 | 715119.0599269867
+      2007-01-01 | 717860.3470811844
+      2007-01-08 | 714080.3910112381
+      2007-01-15 | 710439.0008335114
+      2007-01-22 | 707064.9068984985
+      … 18 more rows
+
+  panel sap-1-20
+    title: average of Sales.AMOUNT by Customers.NOM1 the twelve most
+    rows (0):
+      
+      error: ERROR 3024 (HY000) at line 1: Query execution was interrupted, maximum statement execution time exceeded
+
+  panel sap-1-21
+    title: rows of Customers by Customers.OCCUPATION
+    rows (9):
+      Machine-op-inspct | 189214
+      Handlers-cleaners | 100904
+      Farming-fishing | 55508
+      Other-service | 9822
+      Exec-managerial | 3790
+      Prof-specialty | 702
+      Craft-repair | 44
+      Sales | 15
+      Adm-clerical | 1
+
+  panel sap-1-22
+    title: sum of Sales.AMOUNT by Customers.NOM2 the twelve most
+    rows (12):
+      q | 15901845.012040138
+      p | 12617607.627217293
+      o | 6652171.048268318
+      n | 5248506.380759239
+      r | 4652905.144117355
+      m | 3090564.0665779114
+      l | 1329988.0921783447
+      s | 841355.6900262833
+      k | 454659.938000679
+      t | 245808.38399887085
+      j | 142425.83501148224
+      u | 67115.31998443604
+
+  panel sap-1-23
+    title: sum of Sales.AMOUNT by Customers.SEX
+    rows (2):
+      Male | 33929878.75936127
+      Female | 17384246.570845604
+
+  panel sap-1-24
+    title: sum of Sales.AMOUNT by Demog (by key) the twelve most
+    rows (12):
+      51 | 2605132.6598262787
+      52 | 2570947.456802368
+      53 | 2508644.7050304413
+      50 | 2499013.408809662
+      49 | 2383481.6532115936
+      54 | 2354301.7520217896
+      48 | 2154328.701663971
+      55 | 2132102.508225441
+      56 | 1945503.0898723602
+      47 | 1911392.783829689
+      57 | 1692835.516916275
+      46 | 1664976.7219924927
+
+  panel sap-1-25
+    title: rows of Mailings1_2 by Mailings1_2.RESPONSE
+    rows (2):
+      false | 57006
+      true | 2994
+
+  panel sap-1-26
+    title: rows of Sales by Demog (by key) the twelve most
+    rows (12):
+      51 | 173694
+      52 | 171167
+      53 | 167328
+      50 | 166559
+      49 | 158869
+      54 | 156802
+      48 | 143654
+      55 | 142163
+      56 | 129682
+      47 | 127312
+      57 | 112762
+      46 | 111021
+
+  panel sap-1-27
+    title: rows of mailings3 by mailings3.REF_DATE
+    rows (1):
+      2007-07-01 | 300000
+
+  panel sap-1-28
+    title: rows of Customers by Customers.NOM1 the twelve most
+    rows (12):
+      m | 76240
+      n | 47991
+      l | 36897
+      u | 14894
+      ab | 13840
+      t | 13191
+      v | 12755
+      bb | 12674
+      z | 12146
+      k | 10389
+      cb | 9891
+      w | 9609
+
+  panel sap-1-29
+    title: average of Sales.AMOUNT by Sales.EVENT_DATE
+    rows (30):
+      2006-11-06 | 14.976033408100275
+      2006-11-13 | 14.988148376217724
+      2006-11-20 | 15.005480685945978
+      2006-11-27 | 15.06238951803663
+      2006-12-04 | 14.987020921375485
+      2006-12-11 | 15.016526174357557
+      2006-12-18 | 14.99786383041476
+      2006-12-25 | 14.997987876239733
+      2007-01-01 | 15.03970893300338
+      2007-01-08 | 15.000428346593523
+      2007-01-15 | 15.007795023733815
+      2007-01-22 | 14.99257663956444
+      … 18 more rows
+
+  panel sap-1-30
+    title: rows of Sales by Customers.MARITAL_STATUS
+    rows (5):
+      Married-civ-spouse | 1583998
+      Never-married | 1130679
+      Divorced | 460832
+      Other | 141375
+      Widowed | 103945
+
+
+=== database: seznam ===
+A web portal's advertising clients, the money they put into their wallets and what their ads consumed, as CTU serves it. A fixture of round 1e.
+
+  panel seznam-1-01
+    title: sum of probehnuto.kc_proklikano by client (by key) the twelve most
+    rows (12):
+      62466 | 220267593.10
+      ∅ | 208782776.20
+      4722 | 113747203.36
+      9767343 | 58236041.40
+      1732080 | 51017319.56
+      9675655 | 49588955.54
+      8691356 | 39812543.56
+      1122964 | 34907003.20
+      56924 | 33255554.74
+      50671 | 32594820.24
+      6707 | 30378900.26
+      6742 | 28675261.86
+
+  panel seznam-1-02
+    title: distribution of dobito.kc_dobito
+    rows (16):
+      0 | -31626074.00 | 2
+      1 | -26355346.00 | 2
+      4 | -15655572.00 | 1
+      6 | -11422331.00 | 1
+      7 | -7849975.00 | 3
+      8 | -4910335.00 | 56
+      9 | -1824170.50 | 553918
+      10 | 1463327.88 | 321
+      11 | 4811529.00 | 23
+      12 | 8164000.00 | 5
+      13 | 11775000.00 | 5
+      14 | 15700000.00 | 5
+      … 4 more rows
+
+  panel seznam-1-03
+    title: rows of probehnuto by client.obor the twelve most
+    rows (12):
+      Hermina | 103372
+      Pink | 84268
+      Ozzy | 77590
+      Floyd | 77118
+      Gabriel | 61858
+      Anezka | 60362
+      Vilma | 47598
+      Leona | 47467
+      Sonja | 42105
+      Zora | 41052
+      Radek | 40645
+      Josef | 40154
+
+  panel seznam-1-04
+    title: sum of dobito.kc_dobito by client.kraj the twelve most
+    rows (12):
+      Praha | 4538816893.15
+      Jihomoravský kraj | 1372369461.86
+      Moravskoslezský kraj | 952766407.60
+      Středočeský kraj | 905902692.21
+      ∅ | 701947088.65
+      Královéhradecký kraj | 543667579.01
+      Jihočeský kraj | 531136454.40
+      Plzeňský kraj | 449907009.46
+      Zlínský kraj | 434670052.42
+      Olomoucký kraj | 409025575.33
+      Pardubický kraj | 393108799.16
+      Ústecký kraj | 388577920.42
+
+  panel seznam-1-05
+    title: sum of dobito.kc_dobito by client (by key) the twelve most
+    rows (12):
+      62466 | 226446271.33
+      ∅ | 198786831.73
+      4722 | 100594010.63
+      9767343 | 55621046.94
+      1732080 | 52254969.39
+      9675655 | 49563009.95
+      8691356 | 48691760.26
+      1122964 | 33627343.30
+      56924 | 31356567.54
+      50671 | 31137125.38
+      6707 | 30275192.34
+      6742 | 27973415.31
+
+  panel seznam-1-06
+    title: sum of dobito.kc_dobito by dobito.month_year_datum_transakce
+    rows (39):
+      2012-08-01 | 237920293.15
+      2012-09-01 | 208541709.29
+      2012-10-01 | 232208837.64
+      2012-11-01 | 371399623.44
+      2012-12-01 | 293881065.73
+      2013-01-01 | 78136645.87
+      2013-02-01 | 124241100.87
+      2013-03-01 | 186447419.01
+      2013-04-01 | 194907213.59
+      2013-05-01 | 226654152.30
+      2013-06-01 | 183933071.59
+      2013-07-01 | 212016950.99
+      … 27 more rows
+
+  panel seznam-1-07
+    title: rows of probehnuto_mimo_penezenku by client.obor the twelve most
+    rows (12):
+      Ozzy | 44098
+      Hermina | 42176
+      Floyd | 38562
+      Anezka | 31873
+      Tony | 28304
+      Pink | 23882
+      Gabriel | 22986
+      Zora | 22668
+      Vladan | 18552
+      Sonja | 18521
+      Baltazar | 17741
+      Vilma | 16954
+
+  panel seznam-1-08
+    title: rows of probehnuto_mimo_penezenku by probehnuto_mimo_penezenku.probehla_inzerce_mimo_penezenku
+    rows (1):
+      ANO | 599386
+
+  panel seznam-1-09
+    title: rows of client by client.obor the twelve most
+    rows (12):
+      Hermina | 4730
+      ∅ | 4454
+      Ozzy | 4354
+      Pink | 3811
+      Floyd | 3682
+      Gabriel | 2780
+      Anezka | 2687
+      Zora | 2522
+      Vladan | 2303
+      Erika | 2174
+      Richard | 1990
+      Radek | 1979
+
+  panel seznam-1-10
+    title: rows of dobito by client.kraj the twelve most
+    rows (12):
+      Praha | 157185
+      Jihomoravský kraj | 70349
+      Středočeský kraj | 52998
+      Moravskoslezský kraj | 52523
+      Královéhradecký kraj | 27567
+      Olomoucký kraj | 25425
+      Jihočeský kraj | 25065
+      Ústecký kraj | 24544
+      Plzeňský kraj | 24126
+      Zlínský kraj | 23489
+      Pardubický kraj | 21146
+      Liberecký kraj | 19404
+
+  panel seznam-1-11
+    title: sum of dobito.kc_dobito by dobito.sluzba
+    rows (8):
+      d | 7611400321.07
+      e | 1810299201.82
+      a | 1723219358.39
+      h | 1193906635.89
+      c | 41177925.57
+      b | 36047174.92
+      f | 12247149.49
+      g | -122465556.12
+
+  panel seznam-1-12
+    title: average of probehnuto.kc_proklikano by probehnuto.sluzba
+    rows (9):
+      e | 14299.086817
+      d | 13106.887546
+      b | 9355.013061
+      c | 9129.642353
+      a | 4308.962012
+      h | 3130.235480
+      ∅ | 1937.260045
+      g | 1441.608889
+      f | -723.246667
+
+  panel seznam-1-13
+    title: average of dobito.kc_dobito by dobito.sluzba
+    rows (8):
+      d | 28765.685265
+      e | 24616.189633
+      b | 21913.176243
+      a | 20428.182780
+      h | 10409.676663
+      f | 7815.666554
+      c | 5236.923003
+      g | -20132.427440
+
+  panel seznam-1-14
+    title: rows of probehnuto by probehnuto.month_year_datum_transakce
+    rows (39):
+      2012-08-01 | 19318
+      2012-09-01 | 19237
+      2012-10-01 | 19743
+      2012-11-01 | 20103
+      2012-12-01 | 19350
+      2013-01-01 | 19583
+      2013-02-01 | 20345
+      2013-03-01 | 23824
+      2013-04-01 | 24815
+      2013-05-01 | 25874
+      2013-06-01 | 27019
+      2013-07-01 | 28933
+      … 27 more rows
+
+  panel seznam-1-15
+    title: sum of probehnuto.kc_proklikano by probehnuto.month_year_datum_transakce
+    rows (39):
+      2012-08-01 | 252530898.42
+      2012-09-01 | 206973718.58
+      2012-10-01 | 234736766.48
+      2012-11-01 | 247340713.92
+      2012-12-01 | 207787798.12
+      2013-01-01 | 220013083.54
+      2013-02-01 | 215313979.34
+      2013-03-01 | 240675125.06
+      2013-04-01 | 224499452.74
+      2013-05-01 | 243281356.46
+      2013-06-01 | 235560228.34
+      2013-07-01 | 238159404.16
+      … 27 more rows
+
+  panel seznam-1-16
+    title: rows of probehnuto by probehnuto.sluzba
+    rows (9):
+      d | 598875
+      h | 364009
+      a | 345178
+      e | 126089
+      ∅ | 22407
+      b | 5479
+      g | 18
+      c | 17
+      f | 6
+
+  panel seznam-1-17
+    title: rows of probehnuto_mimo_penezenku by client.kraj the twelve most
+    rows (12):
+      Praha | 157058
+      Jihomoravský kraj | 80674
+      Středočeský kraj | 60925
+      Moravskoslezský kraj | 47632
+      Jihočeský kraj | 34701
+      Plzeňský kraj | 34396
+      Olomoucký kraj | 32646
+      Královéhradecký kraj | 27428
+      Ústecký kraj | 25972
+      Zlínský kraj | 25084
+      Pardubický kraj | 22678
+      Liberecký kraj | 21117
+
+  panel seznam-1-18
+    title: sum of probehnuto.kc_proklikano by probehnuto.sluzba
+    rows (9):
+      d | 7849387279.24
+      e | 1802957557.70
+      a | 1487358889.50
+      h | 1139433886.76
+      b | 51256116.56
+      ∅ | 43408185.82
+      c | 155203.92
+      g | 25948.96
+      f | -4339.48
+
+  panel seznam-1-19
+    title: rows of dobito by dobito.sluzba
+    rows (8):
+      d | 264600
+      h | 114692
+      a | 84355
+      e | 73541
+      c | 7863
+      g | 6083
+      b | 1645
+      f | 1567
+
+  panel seznam-1-20
+    title: rows of probehnuto_mimo_penezenku by probehnuto_mimo_penezenku.Month/Year
+    rows (39):
+      2012-08-01 | 27511
+      2012-09-01 | 27864
+      2012-10-01 | 28154
+      2012-11-01 | 28493
+      2012-12-01 | 28548
+      2013-01-01 | 28585
+      2013-02-01 | 28597
+      2013-03-01 | 29473
+      2013-04-01 | 29288
+      2013-05-01 | 29124
+      2013-06-01 | 28687
+      2013-07-01 | 25806
+      … 27 more rows
+
+  panel seznam-1-21
+    title: average of dobito.kc_dobito by dobito.month_year_datum_transakce
+    rows (39):
+      2012-08-01 | 28300.260872
+      2012-09-01 | 27414.448441
+      2012-10-01 | 26988.474854
+      2012-11-01 | 41441.600473
+      2012-12-01 | 41697.086511
+      2013-01-01 | 9848.329452
+      2013-02-01 | 13068.381284
+      2013-03-01 | 16997.667883
+      2013-04-01 | 18606.893899
+      2013-05-01 | 20360.595787
+      2013-06-01 | 15886.428709
+      2013-07-01 | 18926.705141
+      … 27 more rows
+
+  panel seznam-1-22
+    title: largest tables, estimated rows
+    rows (4):
+      probehnuto | 1457664
+      probehnuto_mimo_penezenku | 598596
+      dobito | 553344
+      client | 73476
+
+  panel seznam-1-23
+    title: rows of probehnuto by client.kraj the twelve most
+    rows (12):
+      Praha | 384426
+      Jihomoravský kraj | 194265
+      Středočeský kraj | 144205
+      Moravskoslezský kraj | 125606
+      Královéhradecký kraj | 74135
+      Plzeňský kraj | 73932
+      Jihočeský kraj | 72899
+      Olomoucký kraj | 71930
+      Zlínský kraj | 65411
+      Ústecký kraj | 64002
+      Pardubický kraj | 58632
+      Liberecký kraj | 52880
+
+  panel seznam-1-24
+    title: rows of dobito by dobito.month_year_datum_transakce
+    rows (39):
+      2012-08-01 | 8407
+      2012-09-01 | 7607
+      2012-10-01 | 8604
+      2012-11-01 | 8962
+      2012-12-01 | 7048
+      2013-01-01 | 7934
+      2013-02-01 | 9507
+      2013-03-01 | 10969
+      2013-04-01 | 10475
+      2013-05-01 | 11132
+      2013-06-01 | 11578
+      2013-07-01 | 11202
+      … 27 more rows
+
+  panel seznam-1-25
+    title: rows of probehnuto_mimo_penezenku by client (by key) the twelve most
+    rows (12):
+      4053 | 39
+      5232 | 39
+      5516 | 39
+      5093 | 39
+      4794 | 39
+      4253 | 39
+      4998 | 39
+      3983 | 39
+      4523 | 39
+      4722 | 39
+      4612 | 39
+      5706 | 39
+
+  panel seznam-1-26
+    title: sum of dobito.kc_dobito by client.obor the twelve most
+    rows (12):
+      Hermina | 1504505789.12
+      ∅ | 915520532.45
+      Pink | 555418781.23
+      Anezka | 545058178.19
+      Vladan | 529968186.51
+      Erika | 499103847.50
+      Sonja | 469228801.36
+      Ozzy | 460365049.52
+      Gabriel | 419952027.82
+      Vilma | 415811805.91
+      Floyd | 412218942.62
+      Richard | 392616227.25
+
+  panel seznam-1-27
+    title: rows of probehnuto by client (by key) the twelve most
+    rows (12):
+      ∅ | 329
+      1542238 | 135
+      81345 | 128
+      1034639 | 123
+      112398 | 122
+      35266 | 117
+      8583 | 115
+      16467 | 108
+      77033 | 107
+      9682988 | 106
+      10082 | 103
+      923046 | 102
+
+  panel seznam-1-28
+    title: rows of dobito by client (by key) the twelve most
+    rows (12):
+      ∅ | 250
+      94599 | 98
+      74650 | 93
+      2014852 | 91
+      940774 | 88
+      3920779 | 88
+      9800296 | 86
+      8801118 | 86
+      75011 | 84
+      7657202 | 84
+      41962 | 83
+      9690904 | 82
+
+  panel seznam-1-29
+    title: average of probehnuto.kc_proklikano by probehnuto.month_year_datum_transakce
+    rows (39):
+      2012-08-01 | 13072.310716
+      2012-09-01 | 10759.147402
+      2012-10-01 | 11889.619940
+      2012-11-01 | 12303.671786
+      2012-12-01 | 10738.387500
+      2013-01-01 | 11234.901881
+      2013-02-01 | 10583.139805
+      2013-03-01 | 10102.213107
+      2013-04-01 | 9046.925357
+      2013-05-01 | 9402.541411
+      2013-06-01 | 8718.317789
+      2013-07-01 | 8231.410644
+      … 27 more rows
+
+  panel seznam-1-30
+    title: sum of probehnuto.kc_proklikano by client.kraj the twelve most
+    rows (12):
+      Praha | 4771480075.88
+      Jihomoravský kraj | 1338740466.38
+      Moravskoslezský kraj | 930600713.56
+      Středočeský kraj | 885203337.74
+      ∅ | 702021779.10
+      Královéhradecký kraj | 541899328.56
+      Jihočeský kraj | 517724242.48
+      Plzeňský kraj | 433991878.36
+      Zlínský kraj | 422548248.84
+      Olomoucký kraj | 394377531.60
+      Ústecký kraj | 384359116.68
+      Pardubický kraj | 379594270.30
+
+  panel seznam-1-31
+    title: rows of client by client.kraj the twelve most
+    rows (12):
+      Praha | 19774
+      Jihomoravský kraj | 9493
+      Středočeský kraj | 7582
+      Moravskoslezský kraj | 6405
+      Jihočeský kraj | 3618
+      Plzeňský kraj | 3478
+      Olomoucký kraj | 3361
+      Královéhradecký kraj | 3340
+      Ústecký kraj | 3229
+      Zlínský kraj | 3105
+      Pardubický kraj | 2731
+      Liberecký kraj | 2617
+
+  panel seznam-1-32
+    title: sum of probehnuto.kc_proklikano by client.obor the twelve most
+    rows (12):
+      Hermina | 1475116814.50
+      ∅ | 928018993.00
+      Erika | 644947236.26
+      Pink | 543891715.08
+      Vladan | 535056153.86
+      Anezka | 530865459.62
+      Sonja | 463394907.44
+      Ozzy | 442653938.88
+      Gabriel | 412041736.62
+      Vilma | 408780246.88
+      Floyd | 392919290.48
+      Richard | 390667725.22
+
+  panel seznam-1-33
+    title: rows of dobito by client.obor the twelve most
+    rows (12):
+      Hermina | 58779
+      Pink | 35984
+      Gabriel | 23038
+      Ozzy | 22918
+      Floyd | 20994
+      Anezka | 20561
+      Vilma | 19656
+      Leona | 19529
+      ∅ | 19128
+      Sonja | 16746
+      Vladan | 16415
+      Josef | 16255

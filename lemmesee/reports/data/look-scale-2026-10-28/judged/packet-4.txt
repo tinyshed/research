@@ -1,0 +1,1969 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: tubepricing ===
+A maker's tube assemblies, their components and specifications, and the prices suppliers quoted, as CTU serves it. A fixture of round 1e.
+
+  panel tubepricing-3-01
+    title: rows of comp_boss by comp_boss.base_type
+    rows (4):
+      Saddle | 81
+      Shoulder | 30
+      ∅ | 23
+      Flat Bottom | 13
+
+  panel tubepricing-3-02
+    title: rows of tube by tube.end_x_2x
+    rows (2):
+      N | 18493
+      Y | 2705
+
+  panel tubepricing-3-03
+    title: rows of comp_threaded by type_component.me the twelve most
+    rows (4):
+      Threaded Straight | 121
+      Threaded Elbow | 54
+      Threaded Tee | 18
+      Threaded Lateral Cross | 1
+
+  panel tubepricing-3-04
+    title: rows of tube by tube_end_form.forming the twelve most
+    rows (12):
+      No | 11388
+      Yes | 2514
+      Yes | 2130
+      Yes | 1052
+      ∅ | 998
+      Yes | 878
+      No | 672
+      No | 507
+      No | 426
+      No | 188
+      No | 183
+      Yes | 127
+
+  panel tubepricing-3-05
+    title: sum of comp_boss.weight by type_connection.me the twelve most
+    rows (9):
+      Code 61 Flange | 32.144000000000000000000000000000
+      SAE STOR-SAE J1926 | 10.451000000000000000000000000000
+      Other | 6.327000000000000000000000000000
+      NPTF-SAE J476/J514 | 4.051000000000000000000000000000
+      ORFS-SAE J1453 | 1.573000000000000000000000000000
+      Code 62 Flange | 1.050000000000000000000000000000
+      Metric STOR-ISO 6149 | 0.830000000000000000000000000000
+      Metric Flat Face-ISO 9974 | 0.044000000000000000000000000000
+      Plain | 0.026000000000000000000000000000
+
+  panel tubepricing-3-06
+    title: sum of target.cost by target.quote_date
+    rows (32):
+      1982-01-01 | 13.957590103149414
+      1985-01-01 | ∅
+      1987-01-01 | 20.887699127197266
+      1988-01-01 | 11.156059741973877
+      1989-01-01 | 16.211089849472046
+      1991-01-01 | 14.47786033153534
+      1992-01-01 | 16.24168026447296
+      1993-01-01 | 10.493921995162964
+      1994-01-01 | 50.811500668525696
+      1995-01-01 | 803.311043381691
+      1996-01-01 | 552.8561475276947
+      1997-01-01 | 1987.637554526329
+      … 20 more rows
+
+  panel tubepricing-3-07
+    title: sum of bill_of_materials.quantity by components.me the twelve most
+    rows (12):
+      SLEEVE-ORFS | 3595
+      NUT-SWIVEL | 3581
+      SLEEVE-ORFS | 3174
+      NUT-SWIVEL | 3057
+      NUT-FLARED | 2423
+      SLEEVE-ORFS | 2370
+      NUT-SWIVEL | 2307
+      SLEEVE-ORFS | 2103
+      NUT-SWIVEL | 2058
+      SLEEVE-FLARED | 1623
+      NUT | 1622
+      NUT-SWIVEL | 1439
+
+  panel tubepricing-3-08
+    title: sum of tube.length by tube_end_form.forming the twelve most
+    rows (12):
+      No | 1129723
+      Yes | 209590
+      Yes | 207728
+      No | 107495
+      Yes | 106683
+      ∅ | 102580
+      Yes | 89816
+      No | 59313
+      No | 51269
+      Yes | 21884
+      No | 15515
+      No | 14451
+
+  panel tubepricing-3-09
+    title: sum of target.min_order_quantity by target.quote_date
+    rows (32):
+      1982-01-01 | 0
+      1985-01-01 | 1
+      1987-01-01 | 25
+      1988-01-01 | 7
+      1989-01-01 | 38
+      1991-01-01 | 11
+      1992-01-01 | 6
+      1993-01-01 | 49
+      1994-01-01 | 16
+      1995-01-01 | 163
+      1996-01-01 | 40
+      1997-01-01 | 458
+      … 20 more rows
+
+  panel tubepricing-3-10
+    title: rows of target by target.quote_date
+    rows (32):
+      1982-01-01 | 6
+      1985-01-01 | 1
+      1987-01-01 | 9
+      1988-01-01 | 3
+      1989-01-01 | 3
+      1991-01-01 | 2
+      1992-01-01 | 14
+      1993-01-01 | 10
+      1994-01-01 | 14
+      1995-01-01 | 57
+      1996-01-01 | 65
+      1997-01-01 | 114
+      … 20 more rows
+
+  panel tubepricing-3-11
+    title: rows of comp_threaded by type_connection.me the twelve most
+    rows (8):
+      ORFS-SAE J1453 | 96
+      ∅ | 59
+      37 deg Flare-SAE J514 | 24
+      SAE STOR-SAE J1926 | 7
+      45 deg Flare-SAE J512 | 4
+      NPTF-SAE J476/J514 | 2
+      Hi-Duty | 1
+      A-C | 1
+
+  panel tubepricing-3-12
+    title: rows of tube by tube.end_x_1x
+    rows (2):
+      N | 20377
+      Y | 821
+
+  panel tubepricing-3-13
+    title: sum of comp_threaded.overall_length by type_connection.me the twelve most
+    rows (8):
+      ORFS-SAE J1453 | 2664.100000000000000000000000000000
+      ∅ | 1004.460000000000000000000000000000
+      37 deg Flare-SAE J514 | 737.840000000000000000000000000000
+      SAE STOR-SAE J1926 | 189.300000000000000000000000000000
+      NPTF-SAE J476/J514 | 122.400000000000000000000000000000
+      45 deg Flare-SAE J512 | 100.970000000000000000000000000000
+      A-C | 32.260000000000000000000000000000
+      Hi-Duty | ∅
+
+  panel tubepricing-3-14
+    title: sum of target.cost × target.quantity by target.quote_date
+    rows (32):
+      1982-01-01 | 1104.8946857452393
+      1985-01-01 | ∅
+      1987-01-01 | 522.1924781799316
+      1988-01-01 | 11.156059741973877
+      1989-01-01 | 219.34344744682312
+      1991-01-01 | 135.088662981987
+      1992-01-01 | 16.24168026447296
+      1993-01-01 | 10.493921995162964
+      1994-01-01 | 50.811500668525696
+      1995-01-01 | 3278.1667910814285
+      1996-01-01 | 7499.253395557404
+      1997-01-01 | 4697.6034544706345
+      … 20 more rows
+
+  panel tubepricing-3-15
+    title: rows of comp_boss by comp_boss.type
+    rows (3):
+      Boss | 104
+      ∅ | 23
+      Stud | 20
+
+  panel tubepricing-3-16
+    title: sum of target.min_order_quantity by target.supplier
+    rows (68):
+      S-0041 | 33355
+      S-0013 | 27458
+      S-0066 | 19215
+      S-0072 | 18390
+      S-0058 | 14026
+      S-0026 | 3838
+      S-0042 | 2428
+      S-0104 | 2069
+      S-0062 | 1807
+      S-0030 | 1587
+      S-0027 | 1505
+      S-0014 | 1482
+      … 56 more rows
+
+  panel tubepricing-3-17
+    title: rows of tube by tube.material_id the twelve most
+    rows (12):
+      SP-0029 | 11488
+      SP-0035 | 3676
+      SP-0028 | 1644
+      SP-0039 | 970
+      SP-0019 | 926
+      SP-0046 | 892
+      SP-0037 | 632
+      ∅ | 279
+      SP-0038 | 207
+      SP-0033 | 155
+      SP-0008 | 102
+      SP-0041 | 76
+
+  panel tubepricing-3-18
+    title: rows of tube by tube.end_a_1x
+    rows (2):
+      N | 20118
+      Y | 1080
+
+  panel tubepricing-3-19
+    title: rows of comp_boss by type_connection.me the twelve most
+    rows (9):
+      SAE STOR-SAE J1926 | 60
+      NPTF-SAE J476/J514 | 31
+      ORFS-SAE J1453 | 21
+      Code 61 Flange | 15
+      Other | 9
+      Metric STOR-ISO 6149 | 8
+      Code 62 Flange | 1
+      Plain | 1
+      Metric Flat Face-ISO 9974 | 1
+
+  panel tubepricing-3-20
+    title: rows of comp_threaded by components.me the twelve most
+    rows (12):
+      CONNECTOR-FLARE | 1
+      ELBOW | 1
+      CONNECTOR-ORFS | 1
+      CONNECTOR-ORFS | 1
+      CONNECTOR-ORFS | 1
+      ELBOW | 1
+      ELBOW-WELD | 1
+      ELBOW WELD | 1
+      ELBOW WELD | 1
+      CONNECTOR-STOR | 1
+      CONNECTOR-ORFS | 1
+      COUPLING AS | 1
+
+  panel tubepricing-3-21
+    title: sum of target.quantity by target.quote_date
+    rows (32):
+      1982-01-01 | 930
+      1985-01-01 | 1
+      1987-01-01 | 190
+      1988-01-01 | 7
+      1989-01-01 | 38
+      1991-01-01 | 11
+      1992-01-01 | 106
+      1993-01-01 | 99
+      1994-01-01 | 14
+      1995-01-01 | 402
+      1996-01-01 | 3492
+      1997-01-01 | 1121
+      … 20 more rows
+
+  panel tubepricing-3-22
+    title: rows of target by target.bracket_pricing
+    rows (2):
+      Yes | 52562
+      No | 7886
+
+  panel tubepricing-3-23
+    title: rows of tube by tube.end_a_2x
+    rows (2):
+      N | 18015
+      Y | 3183
+
+  panel tubepricing-3-24
+    title: rows of comp_adaptor by type_end_form.me the twelve most
+    rows (4):
+      Port | 14
+      Male (Stud) | 9
+      Male (Swivel) | 1
+      Swivel Nut | 1
+
+  panel tubepricing-3-25
+    title: rows of target by tube (by key) the twelve most
+    rows (12):
+      TA-04788 | 14
+      TA-06069 | 12
+      TA-04027 | 12
+      TA-04750 | 12
+      TA-14402 | 12
+      TA-04749 | 11
+      TA-20473 | 11
+      TA-04454 | 10
+      TA-07447 | 10
+      TA-02531 | 10
+      TA-00199 | 10
+      TA-02308 | 9
+
+  panel tubepricing-3-26
+    title: rows of target by target.supplier the twelve most
+    rows (12):
+      S-0066 | 41100
+      S-0041 | 6451
+      S-0072 | 4653
+      S-0054 | 1799
+      S-0026 | 1511
+      S-0013 | 1166
+      S-0058 | 1039
+      S-0064 | 890
+      S-0062 | 496
+      S-0014 | 263
+      S-0030 | 224
+      S-0104 | 172
+
+  panel tubepricing-3-27
+    title: sum of target.cost × target.min_order_quantity by target.quote_date
+    rows (32):
+      1982-01-01 | 0
+      1985-01-01 | ∅
+      1987-01-01 | 522.1924781799316
+      1988-01-01 | 11.156059741973877
+      1989-01-01 | 219.34344744682312
+      1991-01-01 | 135.088662981987
+      1992-01-01 | 16.24168026447296
+      1993-01-01 | 10.493921995162964
+      1994-01-01 | 50.811500668525696
+      1995-01-01 | 1046.4637050628662
+      1996-01-01 | 461.3430390357971
+      1997-01-01 | 1959.7156380414963
+      … 20 more rows
+
+  panel tubepricing-3-28
+    title: rows of comp_adaptor by type_component.me the twelve most
+    rows (2):
+      Straight Adapter | 24
+      Elbow Adapter | 1
+
+  panel tubepricing-3-29
+    title: rows of comp_threaded by type_end_form.me the twelve most
+    rows (6):
+      Male (Stud) | 85
+      Braze-Weld Socket | 39
+      Bulkhead Male | 31
+      Braze-Weld Boss | 20
+      Swivel Nut | 17
+      Port | 2
+
+  panel tubepricing-3-30
+    title: sum of comp_threaded.overall_length by type_end_form.me the twelve most
+    rows (6):
+      Male (Stud) | 2060.980000000000000000000000000000
+      Bulkhead Male | 1083.040000000000000000000000000000
+      Swivel Nut | 617.800000000000000000000000000000
+      Braze-Weld Socket | 592.460000000000000000000000000000
+      Braze-Weld Boss | 412.000000000000000000000000000000
+      Port | 85.050000000000000000000000000000
+
+  panel tubepricing-3-31
+    title: rows of bill_of_materials per tube
+    rows (8):
+      1 | 4363
+      2 | 9995
+      3 | 4184
+      4 | 515
+      5 | 66
+      6 | 19
+      7 | 6
+      8 | 1
+
+  panel tubepricing-3-32
+    title: rows of comp_adaptor by type_connection.me the twelve most
+    rows (6):
+      NPTF-SAE J476/J514 | 11
+      45 deg Inv Flare-SAE J512 | 6
+      SAE STOR-SAE J1926 | 4
+      37 deg Flare-SAE J514 | 2
+      ∅ | 1
+      45 deg Flare-SAE J512 | 1
+
+
+=== database: tpcc ===
+The TPC-C benchmark's wholesale supplier: warehouses, districts, customers, orders, order lines, items and stock, as CTU serves it. A fixture of round 1e.
+
+  panel tpcc-3-01
+    title: rows of C_Customer by C_Warehouse.w_name the twelve most
+    rows (1):
+      mwLkm4 | 30000
+
+  panel tpcc-3-02
+    title: rows of C_Stock by C_Warehouse.w_name the twelve most
+    rows (1):
+      mwLkm4 | 100000
+
+  panel tpcc-3-03
+    title: sum of C_Customer.c_payment_cnt by C_District.d_name the twelve most
+    rows (10):
+      PgLwPg | 3000
+      wgRmBLP 6 | 3000
+       NmBg6NP | 3000
+      0gByykiLy | 3000
+      6Nw 4gi | 3000
+      N4RNiNgPLL | 3000
+      BRBgNigP4R | 3000
+      kR4RmggL | 3000
+      PRLii6wwLg | 3000
+      0Rggm0 | 3000
+
+  panel tpcc-3-04
+    title: sum of C_Customer.c_ytd_payment by C_Customer.c_credit
+    rows (2):
+      GC | 269670
+      BC | 30330
+
+  panel tpcc-3-05
+    title: sum of C_Stock.s_quantity × C_Item.i_price by C_Warehouse.w_name the twelve most
+    rows (1):
+      mwLkm4 | 278672519.1266818
+
+  panel tpcc-3-06
+    title: sum of C_Order_Line.ol_amount by C_Order_Line.ol_i_id the twelve most
+    rows (12):
+      22223 | 293294.51171875
+      37038 | 288329.150390625
+      44445 | 272153.64111328125
+      19754 | 256085.9189453125
+      59260 | 234303.92041015625
+      24692 | 221833.6201171875
+      83334 | 221016.98974609375
+      17285 | 220360.95932769775
+      51853 | 216764.560546875
+      75927 | 213951.9814453125
+      61729 | 213018.0810546875
+      74075 | 212512.6591796875
+
+  panel tpcc-3-07
+    title: rows of C_Order_Line by C_Order_Line.ol_d_id the twelve most
+    rows (10):
+      3 | 30153
+      9 | 30129
+      8 | 30100
+      7 | 30086
+      6 | 30084
+      4 | 30077
+      10 | 30061
+      1 | 30035
+      5 | 30009
+      2 | 30007
+
+  panel tpcc-3-08
+    title: sum of C_Order_Line.ol_quantity by C_Order_Line.ol_o_id the twelve most
+    rows (12):
+      633 | 750
+      253 | 750
+      1139 | 750
+      1012 | 750
+      759 | 750
+      1013 | 750
+      506 | 750
+      1392 | 750
+      886 | 750
+      379 | 750
+      1266 | 750
+      126 | 750
+
+  panel tpcc-3-09
+    title: sum of C_Customer.c_ytd_payment by C_District.d_name the twelve most
+    rows (10):
+      PgLwPg | 30000
+      wgRmBLP 6 | 30000
+       NmBg6NP | 30000
+      0gByykiLy | 30000
+      6Nw 4gi | 30000
+      N4RNiNgPLL | 30000
+      BRBgNigP4R | 30000
+      kR4RmggL | 30000
+      PRLii6wwLg | 30000
+      0Rggm0 | 30000
+
+  panel tpcc-3-10
+    title: sum of C_History.h_amount by C_History.h_c_id the twelve most
+    rows (12):
+      699 | 8255.919921875
+      972 | 6382.3397216796875
+      2041 | 6017.4801025390625
+      2052 | 5094.18994140625
+      1947 | 5035.14013671875
+      1573 | 4960.369873046875
+      1580 | 4950.669921875
+      1218 | 4943.47998046875
+      22 | 4932.1298828125
+      446 | 4914.31982421875
+      927 | 4815.330078125
+      1797 | 4667.52001953125
+
+  panel tpcc-3-11
+    title: sum of C_Order_Line.ol_quantity by C_Order_Line.ol_d_id the twelve most
+    rows (10):
+      3 | 150826
+      9 | 150685
+      8 | 150579
+      7 | 150492
+      6 | 150484
+      4 | 150461
+      10 | 150316
+      1 | 150227
+      5 | 150092
+      2 | 150079
+
+  panel tpcc-3-12
+    title: sum of C_Order_Line.ol_quantity by C_Order_Line.ol_i_id the twelve most
+    rows (12):
+      62964 | 200
+      25927 | 195
+      1 | 180
+      51853 | 180
+      33334 | 175
+      88890 | 175
+      96297 | 170
+      44445 | 170
+      22223 | 170
+      37038 | 165
+      14816 | 165
+      53087 | 165
+
+  panel tpcc-3-13
+    title: sum of C_Customer.c_discount by C_Customer.c_middle
+    rows (1):
+      OE | 7484.722301353882
+
+  panel tpcc-3-14
+    title: rows of C_Order_Line by C_Order_Line.ol_i_id the twelve most
+    rows (12):
+      62964 | 40
+      25927 | 39
+      1 | 36
+      51853 | 36
+      33334 | 35
+      88890 | 35
+      96297 | 34
+      44445 | 34
+      22223 | 34
+      37038 | 33
+      14816 | 33
+      53087 | 33
+
+  panel tpcc-3-15
+    title: distribution of C_History.h_amount
+    rows (21):
+      0 | 1 | 30010
+      1 | 315.56 | 3
+      2 | 504.22 | 5
+      3 | 823.2 | 6
+      4 | 1000.32 | 8
+      5 | 1305.18 | 5
+      6 | 1512.12 | 6
+      7 | 1748.63 | 2
+      8 | 2002.72 | 8
+      9 | 2335.49 | 3
+      10 | 2517.74 | 8
+      11 | 2768.93 | 7
+      … 9 more rows
+
+  panel tpcc-3-16
+    title: largest tables, estimated rows
+    rows (9):
+      C_Order_Line | 299595
+      C_Item | 99400
+      C_Stock | 97782
+      C_Order | 30477
+      C_History | 30210
+      C_Customer | 28600
+      C_New_Order | 9092
+      C_District | 10
+      C_Warehouse | 1
+
+  panel tpcc-3-17
+    title: rows of C_Order by C_Order.o_d_id the twelve most
+    rows (10):
+      1 | 3020
+      9 | 3017
+      3 | 3016
+      8 | 3015
+      7 | 3013
+      4 | 3012
+      10 | 3012
+      2 | 3010
+      6 | 3010
+      5 | 3007
+
+  panel tpcc-3-18
+    title: rows of C_Customer by C_District.d_street_2
+    rows (10):
+      0NRiwmRgwNyNL2R4m | 3000
+      y  wmwNgk2 | 3000
+      k2B60R4i44y0 | 3000
+      24 wiN04mmNLwmLPRRy | 3000
+      y ig RRLPim | 3000
+      k0i4mg62w k6wwLwBN6B | 3000
+      yiBwgig 0Li6Ngy0N4 | 3000
+       gg2BygLNR0 | 3000
+      0mNL0yLR wRimB6P2B | 3000
+      0iw64R2mNgyL66PN2 | 3000
+
+  panel tpcc-3-19
+    title: sum of C_Order_Line.ol_amount by C_Order_Line.ol_d_id the twelve most
+    rows (10):
+      9 | 45377853.62290633
+      1 | 45334884.43690503
+      7 | 45069502.577284604
+      2 | 45062600.06367773
+      3 | 44977084.86744478
+      6 | 44900002.60332006
+      8 | 44746842.57063022
+      4 | 44720120.146602035
+      5 | 44583019.24083101
+      10 | 44490793.518033504
+
+  panel tpcc-3-20
+    title: rows of C_Order_Line by C_Order_Line.ol_o_id the twelve most
+    rows (12):
+      633 | 150
+      253 | 150
+      1139 | 150
+      1012 | 150
+      759 | 150
+      1013 | 150
+      506 | 150
+      1392 | 150
+      886 | 150
+      379 | 150
+      1266 | 150
+      126 | 150
+
+  panel tpcc-3-21
+    title: sum of C_Order_Line.ol_amount by C_Order_Line.ol_o_id the twelve most
+    rows (12):
+      2659 | 865926.990486145
+      2530 | 819466.3828105927
+      2658 | 796388.0450801849
+      2406 | 793226.981842041
+      2656 | 788569.402557373
+      2655 | 779885.9519433975
+      2149 | 778204.2224502563
+      2784 | 769568.2703170776
+      2531 | 768443.4485855103
+      2278 | 765685.418762207
+      2213 | 759746.9910666943
+      2277 | 758372.920501709
+
+  panel tpcc-3-22
+    title: rows of C_Customer by C_Customer.c_credit
+    rows (2):
+      GC | 26967
+      BC | 3033
+
+  panel tpcc-3-23
+    title: rows of C_Customer by C_District.d_state
+    rows (10):
+      PB | 3000
+      k0 | 3000
+      44 | 3000
+       w | 3000
+      L2 | 3000
+      gL | 3000
+      ii | 3000
+      Ri | 3000
+      w6 | 3000
+      mP | 3000
+
+  panel tpcc-3-24
+    title: sum of C_History.h_amount by C_History.h_d_id the twelve most
+    rows (10):
+      5 | 66315.05979919434
+      1 | 65355.62991333008
+      2 | 64269.09941101074
+      7 | 63425.409423828125
+      8 | 60821.20983886719
+      4 | 60137.610290527344
+      6 | 58980.70016479492
+      10 | 54802.73974609375
+      3 | 52280.50030517578
+      9 | 38974.47985839844
+
+  panel tpcc-3-25
+    title: rows of C_Customer by C_District.d_street_1
+    rows (10):
+      R6i6Bwi0L6wikNB6wPi | 3000
+      Li42g0L0PR | 3000
+      PkL6RmN yNiPiB0 | 3000
+      6BLmwwNRBLiR0ig0 | 3000
+      mNPyggLPR2gi4 | 3000
+      0LNmw4LBPP | 3000
+      gB2Bm0m0gP0wgL2PN | 3000
+      0ggRi0iB 0 | 3000
+      mNNB2Nw2RLBL6yiN  g | 3000
+      iNkg4R0g6RB0N | 3000
+
+  panel tpcc-3-26
+    title: sum of C_Stock.s_quantity by C_Warehouse.w_name the twelve most
+    rows (1):
+      mwLkm4 | 5505168
+
+  panel tpcc-3-27
+    title: rows of C_Customer by C_Customer.c_id the twelve most
+    rows (12):
+      1 | 10
+      2 | 10
+      3 | 10
+      4 | 10
+      5 | 10
+      6 | 10
+      7 | 10
+      8 | 10
+      9 | 10
+      10 | 10
+      11 | 10
+      12 | 10
+
+  panel tpcc-3-28
+    title: sum of C_Customer.c_credit_lim by C_District.d_name the twelve most
+    rows (10):
+      PgLwPg | 150000000
+      wgRmBLP 6 | 150000000
+       NmBg6NP | 150000000
+      0gByykiLy | 150000000
+      6Nw 4gi | 150000000
+      N4RNiNgPLL | 150000000
+      BRBgNigP4R | 150000000
+      kR4RmggL | 150000000
+      PRLii6wwLg | 150000000
+      0Rggm0 | 150000000
+
+  panel tpcc-3-29
+    title: sum of C_History.h_amount by C_History.h_date
+    rows (1):
+      2015-11-22 | 585362.4387512207
+
+  panel tpcc-3-30
+    title: rows of C_Stock by C_Item.i_name the twelve most
+    rows (12):
+      B44imm6Bi4Rw NN | 1
+      BNN0RwL2N6 iikRg6Py2B | 1
+      N2m2mkRi00ik06gwmggw | 1
+      mgRyy LkB04 g64B6 | 1
+      6Ni4P2wgy40wmy6g   Lm4yw | 1
+      w6BkPi0B iPR6g2m4mi | 1
+      00R4wRkR0LL04R4P060L6B06 | 1
+      yk6Rw6P mm2kLk62 | 1
+      0B4R wgm Rw0 BmNy4 | 1
+      Ngm 4 w0i0P4 P | 1
+      BkL66L20kg iBB0LN | 1
+      w24kmP RNBLmw6Bmki | 1
+
+  panel tpcc-3-31
+    title: rows of C_Customer by C_District.d_name
+    rows (10):
+      PgLwPg | 3000
+      wgRmBLP 6 | 3000
+       NmBg6NP | 3000
+      0gByykiLy | 3000
+      6Nw 4gi | 3000
+      N4RNiNgPLL | 3000
+      BRBgNigP4R | 3000
+      kR4RmggL | 3000
+      PRLii6wwLg | 3000
+      0Rggm0 | 3000
+
+  panel tpcc-3-32
+    title: rows of C_Customer by C_District.d_name the twelve most
+    rows (10):
+      PgLwPg | 3000
+      wgRmBLP 6 | 3000
+       NmBg6NP | 3000
+      0gByykiLy | 3000
+      6Nw 4gi | 3000
+      N4RNiNgPLL | 3000
+      BRBgNigP4R | 3000
+      kR4RmggL | 3000
+      PRLii6wwLg | 3000
+      0Rggm0 | 3000
+
+  panel tpcc-3-33
+    title: sum of C_Customer.c_balance by C_District.d_name the twelve most
+    rows (10):
+       NmBg6NP | 249243.09765625
+      N4RNiNgPLL | 216170.1015625
+      PgLwPg | 210682.40234375
+      kR4RmggL | 201509.10546875
+      6Nw 4gi | 183884.00390625
+      0Rggm0 | 177006.69921875
+      PRLii6wwLg | 168706.796875
+      wgRmBLP 6 | 125746
+      0gByykiLy | 108336.8984375
+      BRBgNigP4R | 102861.5
+
+  panel tpcc-3-34
+    title: rows of C_Customer by C_District.d_city
+    rows (10):
+      PP2w y2NNLy | 3000
+      iig26BL  4gNLg0 | 3000
+      wN4mL BPkN66yw Lig | 3000
+      yNNBgPw RyN2w240BP | 3000
+      4m LR4iP4 BkRw6 P6 | 3000
+      i04ywLw4LPBm  k6PmyR | 3000
+      PP4N42wBPBLwNLPL6yL | 3000
+      N2Pi2i6PPBN4ik | 3000
+      yyRgk00NkB222PNgwgN | 3000
+      B60my 0k66BB02BRgm | 3000
+
+  panel tpcc-3-35
+    title: sum of C_History.h_amount by C_History.h_c_d_id the twelve most
+    rows (10):
+      5 | 66315.05979919434
+      1 | 65355.62991333008
+      2 | 64269.09941101074
+      7 | 63425.409423828125
+      8 | 60821.20983886719
+      4 | 60137.610290527344
+      6 | 58980.70016479492
+      10 | 54802.73974609375
+      3 | 52280.50030517578
+      9 | 38974.47985839844
+
+
+=== database: australianfootball ===
+Australian football matches, the teams, the players and each player's statistics in each match, as CTU serves it. A fixture of round 1e.
+
+  panel australianfootball-3-01
+    title: rows of matches by matches.round the twelve most
+    rows (12):
+      R21 | 132
+      R17 | 132
+      R22 | 132
+      R15 | 132
+      R01 | 132
+      R02 | 132
+      R03 | 132
+      R07 | 132
+      R20 | 132
+      R18 | 132
+      R05 | 131
+      R06 | 131
+
+  panel australianfootball-3-02
+    title: rows of matches by matches.season
+    rows (16):
+      2000-01-01 | 185
+      2001-01-01 | 185
+      2002-01-01 | 185
+      2003-01-01 | 185
+      2004-01-01 | 185
+      2005-01-01 | 185
+      2006-01-01 | 185
+      2007-01-01 | 185
+      2008-01-01 | 185
+      2009-01-01 | 185
+      2010-01-01 | 186
+      2011-01-01 | 196
+      … 4 more rows
+
+  panel australianfootball-3-03
+    title: rows of matches by matches.tid2_loc
+    rows (2):
+      a | 1527
+      h | 1523
+
+  panel australianfootball-3-04
+    title: rows of match_stats by teams.tname the twelve most
+    rows (12):
+      Sydney | 8360
+      Collingwood | 8316
+      Geelong | 8316
+      Hawthorn | 8250
+      Port Adelaide | 8206
+      Adelaide | 8118
+      Brisbane Lions | 8118
+      St Kilda | 8118
+      West Coast | 8118
+      Essendon | 8074
+      Fremantle | 8030
+      North Melbourne | 8030
+
+  panel australianfootball-3-05
+    title: rows of matches by matches.h_tid the twelve most
+    rows (12):
+      107 | 195
+      104 | 192
+      110 | 189
+      116 | 189
+      113 | 187
+      102 | 186
+      101 | 185
+      115 | 185
+      105 | 183
+      117 | 183
+      106 | 181
+      112 | 180
+
+  panel australianfootball-3-06
+    title: rows of matches by matches.venue the twelve most
+    rows (12):
+      M.C.G. | 784
+      Docklands | 751
+      Subiaco | 358
+      Football Park | 325
+      Gabba | 194
+      S.C.G. | 147
+      Kardinia Park | 122
+      Carrara | 63
+      York Park | 56
+      Stadium Australia | 53
+      Adelaide Oval | 45
+      Princes Park | 44
+
+  panel australianfootball-3-07
+    title: rows of matches by teams.tname the twelve most
+    rows (12):
+      Adelaide | 369
+      Brisbane Lions | 345
+      Carlton | 318
+      Collingwood | 297
+      Essendon | 260
+      Fremantle | 253
+      Geelong | 238
+      Hawthorn | 192
+      Melbourne | 171
+      North Melbourne | 140
+      Port Adelaide | 110
+      Richmond | 92
+
+  panel australianfootball-3-08
+    title: sum of match_stats.KI by teams.tname the twelve most
+    rows (12):
+      Collingwood | 78682
+      Hawthorn | 76533
+      Geelong | 76111
+      Essendon | 74779
+      St Kilda | 73719
+      Port Adelaide | 73574
+      Sydney | 73365
+      Adelaide | 73296
+      West Coast | 72653
+      Western Bulldogs | 72650
+      Fremantle | 72071
+      North Melbourne | 71897
+
+  panel australianfootball-3-09
+    title: rows of matches by matches.a_tid the twelve most
+    rows (12):
+      3 | 635
+      2 | 591
+      4 | 493
+      1 | 426
+      5 | 344
+      6 | 165
+      0 | 122
+      7 | 91
+      8 | 31
+      116 | 15
+      9 | 11
+      110 | 10
+
+  panel australianfootball-3-10
+    title: rows of match_stats by matches.lose_loc
+    rows (3):
+      a | 77264
+      h | 55704
+      d | 1232
+
+  panel australianfootball-3-11
+    title: rows of matches by matches.lose_loc
+    rows (3):
+      a | 1756
+      h | 1266
+      d | 28
+
+  panel australianfootball-3-12
+    title: rows of matches by matches.win_tid the twelve most
+    rows (12):
+      107 | 245
+      116 | 224
+      110 | 220
+      104 | 215
+      101 | 202
+      113 | 193
+      117 | 188
+      112 | 185
+      105 | 183
+      106 | 182
+      102 | 180
+      115 | 171
+
+  panel australianfootball-3-13
+    title: rows of matches by matches.start_dt
+    rows (16):
+      2000-01-01 | 185
+      2001-01-01 | 185
+      2002-01-01 | 185
+      2003-01-01 | 185
+      2004-01-01 | 185
+      2005-01-01 | 185
+      2006-01-01 | 185
+      2007-01-01 | 185
+      2008-01-01 | 185
+      2009-01-01 | 185
+      2010-01-01 | 186
+      2011-01-01 | 196
+      … 4 more rows
+
+  panel australianfootball-3-14
+    title: rows of match_stats per matches
+    rows (1):
+      44 | 3050
+
+  panel australianfootball-3-15
+    title: rows of match_stats per players
+    rows (273):
+      1 | 76
+      2 | 64
+      3 | 49
+      4 | 47
+      5 | 30
+      6 | 32
+      7 | 35
+      8 | 30
+      9 | 31
+      10 | 29
+      11 | 20
+      12 | 24
+      … 261 more rows
+
+  panel australianfootball-3-16
+    title: largest tables, estimated rows
+    rows (4):
+      match_stats | 133155
+      matches | 3006
+      players | 1911
+      teams | 18
+
+  panel australianfootball-3-17
+    title: rows of matches by matches.win_loc
+    rows (3):
+      h | 1756
+      a | 1266
+      d | 28
+
+  panel australianfootball-3-18
+    title: rows of match_stats by matches.season
+    rows (16):
+      2000-01-01 | 8140
+      2001-01-01 | 8140
+      2002-01-01 | 8140
+      2003-01-01 | 8140
+      2004-01-01 | 8140
+      2005-01-01 | 8140
+      2006-01-01 | 8140
+      2007-01-01 | 8140
+      2008-01-01 | 8140
+      2009-01-01 | 8140
+      2010-01-01 | 8184
+      2011-01-01 | 8624
+      … 4 more rows
+
+  panel australianfootball-3-19
+    title: rows of match_stats by match_stats.loc
+    rows (2):
+      a | 67100
+      h | 67100
+
+  panel australianfootball-3-20
+    title: rows of match_stats by matches.round the twelve most
+    rows (12):
+      R17 | 5808
+      R21 | 5808
+      R01 | 5808
+      R02 | 5808
+      R03 | 5808
+      R07 | 5808
+      R22 | 5808
+      R20 | 5808
+      R18 | 5808
+      R15 | 5808
+      R06 | 5764
+      R16 | 5764
+
+  panel australianfootball-3-21
+    title: rows of match_stats by matches.start_dt
+    rows (16):
+      2000-01-01 | 8140
+      2001-01-01 | 8140
+      2002-01-01 | 8140
+      2003-01-01 | 8140
+      2004-01-01 | 8140
+      2005-01-01 | 8140
+      2006-01-01 | 8140
+      2007-01-01 | 8140
+      2008-01-01 | 8140
+      2009-01-01 | 8140
+      2010-01-01 | 8184
+      2011-01-01 | 8624
+      … 4 more rows
+
+  panel australianfootball-3-22
+    title: sum of matches.margin by teams.tname the twelve most
+    rows (12):
+      Brisbane Lions | 12923
+      Adelaide | 12627
+      Carlton | 11659
+      Collingwood | 10472
+      Essendon | 8975
+      Fremantle | 8914
+      Geelong | 8479
+      Hawthorn | 6979
+      Melbourne | 5906
+      North Melbourne | 4490
+      Port Adelaide | 4187
+      Richmond | 3300
+
+  panel australianfootball-3-23
+    title: rows of match_stats by matches.tid1_loc
+    rows (2):
+      h | 67188
+      a | 67012
+
+  panel australianfootball-3-24
+    title: rows of match_stats by matches.venue the twelve most
+    rows (12):
+      M.C.G. | 34496
+      Docklands | 33044
+      Subiaco | 15752
+      Football Park | 14300
+      Gabba | 8536
+      S.C.G. | 6468
+      Kardinia Park | 5368
+      Carrara | 2772
+      York Park | 2464
+      Stadium Australia | 2332
+      Adelaide Oval | 1980
+      Princes Park | 1936
+
+  panel australianfootball-3-25
+    title: sum of matches.margin by matches.season
+    rows (16):
+      2000-01-01 | 7105
+      2001-01-01 | 6804
+      2002-01-01 | 5857
+      2003-01-01 | 6145
+      2004-01-01 | 6719
+      2005-01-01 | 6352
+      2006-01-01 | 6392
+      2007-01-01 | 6048
+      2008-01-01 | 6633
+      2009-01-01 | 6101
+      2010-01-01 | 6509
+      2011-01-01 | 7804
+      … 4 more rows
+
+  panel australianfootball-3-26
+    title: rows of match_stats by players (named) the twelve most
+    rows (12):
+      Adam Goodes | 350
+      Brent Harvey | 342
+      Matthew Pavlich | 333
+      Jude Bolton | 316
+      Corey Enright | 309
+      Kane Cornes | 300
+      Nick Riewoldt | 298
+      Nick Dal Santo | 297
+      Simon Black | 291
+      Shaun Burgoyne | 291
+      Robert Murphy | 291
+      Dean Cox | 290
+
+  panel australianfootball-3-27
+    title: rows of matches by matches.tid1_loc
+    rows (2):
+      h | 1527
+      a | 1523
+
+  panel australianfootball-3-28
+    title: average of matches.margin by teams.tname the twelve most
+    rows (12):
+      Greater Western Sydney | 56.0204
+      West Coast | 41.5600
+      Gold Coast | 41.2879
+      Port Adelaide | 38.0636
+      Brisbane Lions | 37.4580
+      Carlton | 36.6635
+      Hawthorn | 36.3490
+      Richmond | 35.8696
+      Geelong | 35.6261
+      Collingwood | 35.2593
+      Fremantle | 35.2332
+      Melbourne | 34.5380
+
+  panel australianfootball-3-29
+    title: rows of match_stats by matches.tid2_loc
+    rows (2):
+      a | 67188
+      h | 67012
+
+  panel australianfootball-3-30
+    title: rows of match_stats by matches (by key) the twelve most
+    rows (12):
+      2000_EF_102_118 | 44
+      2000_EF_107_110 | 44
+      2000_GF_105_111 | 44
+      2000_PF_103_105 | 44
+      2000_PF_111_112 | 44
+      2000_QF_103_111 | 44
+      2000_QF_105_112 | 44
+      2000_R01_101_118 | 44
+      2000_R01_102_103 | 44
+      2000_R01_104_110 | 44
+      2000_R01_105_113 | 44
+      2000_R01_106_107 | 44
+
+  panel australianfootball-3-31
+    title: sum of matches.margin by matches.start_dt
+    rows (16):
+      2000-01-01 | 7105
+      2001-01-01 | 6804
+      2002-01-01 | 5857
+      2003-01-01 | 6145
+      2004-01-01 | 6719
+      2005-01-01 | 6352
+      2006-01-01 | 6392
+      2007-01-01 | 6048
+      2008-01-01 | 6633
+      2009-01-01 | 6101
+      2010-01-01 | 6509
+      2011-01-01 | 7804
+      … 4 more rows
+
+  panel australianfootball-3-32
+    title: rows of match_stats by matches.win_loc
+    rows (3):
+      h | 77264
+      a | 55704
+      d | 1232
+
+  panel australianfootball-3-33
+    title: rows of matches by matches.lose_tid the twelve most
+    rows (12):
+      111 | 229
+      103 | 216
+      114 | 201
+      118 | 197
+      115 | 191
+      102 | 185
+      106 | 182
+      105 | 179
+      112 | 177
+      113 | 177
+      117 | 177
+      101 | 167
+
+
+=== database: toxicology ===
+Molecules, their atoms and the bonds between them, and whether each molecule is carcinogenic, as CTU serves it. A fixture of round 1e.
+
+  panel toxicology-3-01
+    title: rows of atom per molecule
+    rows (78):
+      4 | 4
+      5 | 9
+      6 | 8
+      7 | 5
+      8 | 14
+      9 | 6
+      10 | 7
+      11 | 11
+      12 | 12
+      13 | 13
+      14 | 14
+      15 | 12
+      … 66 more rows
+
+  panel toxicology-3-02
+    title: rows of connected by bond.bond_type the twelve most
+    rows (12):
+      - | 2
+      - | 2
+      - | 2
+      - | 2
+      = | 2
+      - | 2
+      - | 2
+      - | 2
+      - | 2
+      - | 2
+      - | 2
+      - | 2
+
+  panel toxicology-3-03
+    title: rows of atom by atom.element the twelve most
+    rows (12):
+      h | 5518
+      c | 4605
+      o | 1043
+      n | 480
+      cl | 429
+      s | 113
+      br | 47
+      na | 35
+      p | 31
+      f | 11
+      i | 6
+      si | 4
+
+  panel toxicology-3-04
+    title: rows of bond by molecule.label the twelve most
+    rows (12):
+      ∅ | 3223
+      + | 108
+      - | 107
+      - | 107
+      + | 89
+      + | 89
+      + | 87
+      - | 85
+      + | 85
+      + | 78
+      - | 73
+      - | 73
+
+  panel toxicology-3-05
+    title: rows of bond by molecule.label
+    rows (3):
+      - | 5441
+      + | 3715
+      ∅ | 3223
+
+  panel toxicology-3-06
+    title: rows of connected per bond
+    rows (1):
+      2 | 12379
+
+  panel toxicology-3-07
+    title: rows of connected by molecule.label
+    rows (3):
+      - | 10882
+      + | 7430
+      ∅ | 6446
+
+  panel toxicology-3-08
+    title: rows of connected by bond.bond_type
+    rows (4):
+      - | 21056
+      = | 3688
+      # | 12
+      ∅ | 2
+
+  panel toxicology-3-09
+    title: rows of connected per atom
+    rows (4):
+      1 | 6539
+      2 | 707
+      3 | 3347
+      4 | 1691
+
+  panel toxicology-3-10
+    title: rows of atom by atom.element
+    rows (21):
+      h | 5518
+      c | 4605
+      o | 1043
+      n | 480
+      cl | 429
+      s | 113
+      br | 47
+      na | 35
+      p | 31
+      f | 11
+      i | 6
+      si | 4
+      … 9 more rows
+
+  panel toxicology-3-11
+    title: rows of molecule by molecule.label
+    rows (2):
+      - | 191
+      + | 152
+
+  panel toxicology-3-12
+    title: rows of connected by atom.element the twelve most
+    rows (12):
+      c | 4
+      c | 4
+      c | 4
+      c | 4
+      c | 4
+      c | 4
+      c | 4
+      c | 4
+      c | 4
+      c | 4
+      c | 4
+      c | 4
+
+  panel toxicology-3-13
+    title: rows of bond per molecule
+    rows (77):
+      2 | 2
+      3 | 2
+      4 | 9
+      5 | 8
+      6 | 4
+      7 | 16
+      8 | 4
+      9 | 7
+      10 | 6
+      11 | 11
+      12 | 11
+      13 | 13
+      … 65 more rows
+
+  panel toxicology-3-14
+    title: rows of atom by molecule.label the twelve most
+    rows (12):
+      ∅ | 3222
+      + | 109
+      - | 103
+      - | 102
+      + | 88
+      + | 86
+      + | 84
+      + | 84
+      - | 82
+      + | 75
+      - | 73
+      - | 71
+
+  panel toxicology-3-15
+    title: rows of atom by molecule.label
+    rows (3):
+      - | 5419
+      + | 3692
+      ∅ | 3222
+
+  panel toxicology-3-16
+    title: rows of connected by molecule.label the twelve most
+    rows (12):
+      ∅ | 6446
+      + | 216
+      - | 214
+      - | 214
+      + | 178
+      + | 178
+      + | 174
+      - | 170
+      + | 170
+      + | 156
+      - | 146
+      - | 146
+
+  panel toxicology-3-17
+    title: largest tables, estimated rows
+    rows (4):
+      connected | 29907
+      atom | 12253
+      bond | 12224
+      molecule | 343
+
+  panel toxicology-3-18
+    title: rows of bond by bond.bond_type
+    rows (4):
+      - | 10528
+      = | 1844
+      # | 6
+      ∅ | 1
+
+
+=== database: countries ===
+The World Bank's development indicators: countries, indicators and their values by year, as CTU serves it. A fixture of round 1e.
+
+  panel countries-3-01
+    title: rows of Data by Metadata - Countries.Region
+    rows (8):
+      Europe & Central Asia | 5016
+      Sub-Saharan Africa | 4224
+      Latin America & Caribbean | 3608
+      East Asia & Pacific | 3168
+      ∅ | 2904
+      Middle East & North Africa | 1848
+      South Asia | 704
+      North America | 264
+
+  panel countries-3-02
+    title: rows of Data by Metadata - Countries.IncomeGroup
+    rows (6):
+      Upper middle income | 4840
+      Lower middle income | 4400
+      High income: nonOECD | 3872
+      Low income | 2992
+      ∅ | 2904
+      High income: OECD | 2728
+
+  panel countries-3-03
+    title: rows of Data by Data.Country Name the twelve most
+    rows (12):
+      Aruba | 88
+      Afghanistan | 88
+      Angola | 88
+      Albania | 88
+      Andorra | 88
+      Arab World | 88
+      United Arab Emirates | 88
+      Argentina | 88
+      Armenia | 88
+      American Samoa | 88
+      Antigua and Barbuda | 88
+      Australia | 88
+
+  panel countries-3-04
+    title: average of Data.1963 by Metadata - Indicators.INDICATOR_NAME the twelve most
+    rows (12):
+      Electricity production from renewable so | 103317410256.41026
+      Electricity production from renewable so | 809794871.7948718
+      Cereal production (metric tons) | 31093943.31521739
+      CO2 emissions (kt) | 296808.28855248616
+      CO2 emissions from liquid fuel consumpti | 112345.5708611111
+      CO2 emissions from solid fuel consumptio | 112248.69339181286
+      CO2 emissions from gaseous fuel consumpt | 53182.42170552147
+      CO2 emissions from manufacturing industr | 310.8089354838709
+      CO2 emissions from residential buildings | 228.67983870967745
+      CO2 emissions from transport (million me | 209.77562500000002
+      CO2 emissions from liquid fuel consumpti | 73.39206356756756
+      CO2 emissions from electricity and heat  | 72.036
+
+  panel countries-3-05
+    title: rows of target by Metadata - Countries.Country Name the twelve most
+    rows (12):
+      Aruba | 1
+      Afghanistan | 1
+      Angola | 1
+      Albania | 1
+      Andorra | 1
+      Arab World | 1
+      United Arab Emirates | 1
+      Argentina | 1
+      Armenia | 1
+      American Samoa | 1
+      Antigua and Barbuda | 1
+      Australia | 1
+
+  panel countries-3-06
+    title: average of Data.1961 by Metadata - Countries.Country Name the twelve most
+    rows (12):
+      World | 31967059783.534416
+      High income | 24940686008.57548
+      OECD members | 23958807566.235935
+      High income: OECD | 23901280677.754395
+      Europe & Central Asia (all income levels | 18139231665.838062
+      North America | 10786809960.521086
+      European Union | 8115587193.129922
+      Euro area | 6542250168.079353
+      United States | 6162053085.098972
+      East Asia & Pacific (all income levels) | 4734351590.058764
+      Canada | 4193284490.72951
+      Japan | 2720682215.2919283
+
+  panel countries-3-07
+    title: rows of Data by Metadata - Countries.Country Name the twelve most
+    rows (12):
+      Aruba | 88
+      Afghanistan | 88
+      Angola | 88
+      Albania | 88
+      Andorra | 88
+      Arab World | 88
+      United Arab Emirates | 88
+      Argentina | 88
+      Armenia | 88
+      American Samoa | 88
+      Antigua and Barbuda | 88
+      Australia | 88
+
+  panel countries-3-08
+    title: sum of Data.1963 by Metadata - Indicators.INDICATOR_NAME the twelve most
+    rows (12):
+      Electricity production from renewable so | 4029379000000
+      Electricity production from renewable so | 31582000000
+      Cereal production (metric tons) | 5721285570
+      CO2 emissions (kt) | 53722300.22799999
+      CO2 emissions from liquid fuel consumpti | 20222202.755
+      CO2 emissions from solid fuel consumptio | 19194526.57
+      CO2 emissions from gaseous fuel consumpt | 8668734.738
+      CO2 emissions from liquid fuel consumpti | 13577.53176
+      CO2 emissions from manufacturing industr | 9635.077
+      CO2 emissions from residential buildings | 7089.075000000001
+      CO2 emissions from transport (million me | 6712.820000000001
+      CO2 emissions from solid fuel consumptio | 3505.4429800000007
+
+  panel countries-3-09
+    title: sum of Data.1961 by Metadata - Indicators.INDICATOR_NAME the twelve most
+    rows (12):
+      Electricity production from renewable so | 3741542000000
+      Electricity production from renewable so | 25408000000
+      Cereal production (metric tons) | 5057530749
+      CO2 emissions (kt) | 49542708.27500003
+      CO2 emissions from solid fuel consumptio | 18703212.225000005
+      CO2 emissions from liquid fuel consumpti | 17675148.205999997
+      CO2 emissions from gaseous fuel consumpt | 7993449.32
+      CO2 emissions from liquid fuel consumpti | 13270.814979999997
+      CO2 emissions from manufacturing industr | 8895.288
+      CO2 emissions from residential buildings | 6198.265000000001
+      CO2 emissions from transport (million me | 6112.934000000001
+      CO2 emissions from solid fuel consumptio | 3829.7764416999985
+
+  panel countries-3-10
+    title: rows of Metadata - Indicators by Metadata - Indicators.SOURCE_NOTE the twelve most
+    rows (12):
+      Carbon dioxide emissions are those stemm | 5
+      Carbon dioxide emissions from solid fuel | 3
+      CO2 emissions from residential buildings | 2
+      Forest area is land under natural or pla | 2
+      CO2 emissions from electricity and heat  | 2
+      CO2 emissions from manufacturing industr | 2
+      CO2 emissions from other sectors, less r | 2
+      CO2 emissions from transport contains em | 2
+      Education expenditure refers to the curr | 2
+      Carbon dioxide damage is estimated to be | 2
+      Adjusted net savings are equal to net na | 2
+      Net national savings are equal to gross  | 2
+
+  panel countries-3-11
+    title: rows of Metadata - Countries by Metadata - Countries.IncomeGroup
+    rows (6):
+      Upper middle income | 55
+      Lower middle income | 50
+      High income: nonOECD | 44
+      Low income | 34
+      ∅ | 33
+      High income: OECD | 31
+
+  panel countries-3-12
+    title: sum of Data.1960 by Metadata - Countries.Country Name the twelve most
+    rows (12):
+      World | 552262490403.8461
+      OECD members | 552255359949.4541
+      High income | 551172244074.5504
+      High income: OECD | 551171150240.6176
+      North America | 254502106071.957
+      Europe & Central Asia (all income levels | 228265000633.92212
+      European Union | 174913938031.57767
+      United States | 147709725748.97684
+      Euro area | 140051440527.5415
+      Canada | 106792380368.76741
+      East Asia & Pacific (all income levels) | 69485481511.44815
+      Japan | 58500454827.15393
+
+  panel countries-3-13
+    title: sum of Data.1961 by Metadata - Countries.Country Name the twelve most
+    rows (12):
+      World | 575407076103.6195
+      OECD members | 575011381589.6625
+      High income | 573635778197.2361
+      High income: OECD | 573630736266.1055
+      North America | 258883439052.50604
+      Europe & Central Asia (all income levels | 235810011655.8948
+      European Union | 178542918248.85828
+      United States | 154051327127.4743
+      Euro area | 137387253529.66643
+      Canada | 104832112268.23775
+      East Asia & Pacific (all income levels) | 80483977030.999
+      Japan | 68017055382.29821
+
+  panel countries-3-14
+    title: sum of target.2012 by Metadata - Countries.Country Name the twelve most
+    rows (12):
+      Suriname | 94.5564
+      Micronesia, Fed. Sts. | 91.6857
+      Seychelles | 88.4783
+      American Samoa | 88.2
+      Palau | 87.6087
+      Bhutan | 85.8042
+      Gabon | 85.3805
+      Caribbean small states | 80.4494
+      Solomon Islands | 78.6638
+      Guyana | 77.2416
+      St. Lucia | 77.0492
+      Finland | 72.9113
+
+  panel countries-3-15
+    title: average of Data.1962 by Metadata - Indicators.INDICATOR_NAME the twelve most
+    rows (12):
+      Electricity production from renewable so | 98236615384.61539
+      Electricity production from renewable so | 711487179.4871795
+      Cereal production (metric tons) | 29439874.961956523
+      CO2 emissions (kt) | 283438.8062277778
+      CO2 emissions from solid fuel consumptio | 108330.81198823529
+      CO2 emissions from liquid fuel consumpti | 105118.23920555555
+      CO2 emissions from gaseous fuel consumpt | 51447.70706249999
+      CO2 emissions from manufacturing industr | 294.0948064516129
+      CO2 emissions from residential buildings | 216.62774193548387
+      CO2 emissions from transport (million me | 200.30678124999997
+      CO2 emissions from liquid fuel consumpti | 73.31003048648651
+      CO2 emissions from electricity and heat  | 67.8908
+
+  panel countries-3-16
+    title: average of Data.1960 by Metadata - Countries.Country Name the twelve most
+    rows (12):
+      World | 32486028847.285065
+      High income | 25053283821.570473
+      OECD members | 24011102606.498005
+      High income: OECD | 23963963053.93989
+      Europe & Central Asia (all income levels | 19022083386.160175
+      North America | 11065308959.650305
+      European Union | 8329235144.360842
+      Euro area | 7002572026.377075
+      United States | 6154571906.207368
+      Canada | 4449682515.365309
+      East Asia & Pacific (all income levels) | 4342842594.465509
+      Japan | 2437518951.131414
+
+  panel countries-3-17
+    title: sum of Data.1960 by Metadata - Indicators.INDICATOR_NAME the twelve most
+    rows (12):
+      Electricity production from renewable so | 3608589000000
+      Electricity production from renewable so | 22656000000
+      CO2 emissions (kt) | 50100203.23600001
+      CO2 emissions from solid fuel consumptio | 20133927.15899999
+      CO2 emissions from liquid fuel consumpti | 16808400.99
+      CO2 emissions from gaseous fuel consumpt | 8078570.209000001
+      CO2 emissions from liquid fuel consumpti | 12973.844790000001
+      CO2 emissions from manufacturing industr | 8915.791000000001
+      CO2 emissions from residential buildings | 6109.719999999999
+      CO2 emissions from transport (million me | 5918.885000000001
+      CO2 emissions from solid fuel consumptio | 4028.4020090999993
+      Electricity production from oil, gas and | 1594.0450319999998
+
+  panel countries-3-18
+    title: rows of Data by Metadata - Indicators.INDICATOR_NAME the twelve most
+    rows (12):
+      Land area where elevation is below 5 met | 247
+      Forest area (sq. km) | 247
+      Forest area (% of land area) | 247
+      Cereal production (metric tons) | 247
+      Access to electricity (% of population) | 247
+      Electricity production from oil, gas and | 247
+      Electricity production from renewable so | 247
+      Electricity production from renewable so | 247
+      Electricity production from renewable so | 247
+      CO2 intensity (kg per kg of oil equivale | 247
+      CO2 emissions from gaseous fuel consumpt | 247
+      CO2 emissions from gaseous fuel consumpt | 247
+
+  panel countries-3-19
+    title: average of Data.1960 by Metadata - Indicators.INDICATOR_NAME the twelve most
+    rows (12):
+      Electricity production from renewable so | 92527923076.92308
+      Electricity production from renewable so | 580923076.9230769
+      CO2 emissions (kt) | 281461.81593258434
+      CO2 emissions from solid fuel consumptio | 119844.80451785709
+      CO2 emissions from liquid fuel consumpti | 94429.2190449438
+      CO2 emissions from gaseous fuel consumpt | 52119.8078
+      CO2 emissions from manufacturing industr | 287.60616129032263
+      CO2 emissions from residential buildings | 197.08774193548385
+      CO2 emissions from transport (million me | 184.96515625000004
+      CO2 emissions from liquid fuel consumpti | 70.89532672131148
+      CO2 emissions from electricity and heat  | 61.58279999999999
+      Electricity production from oil, gas and | 51.42080748387096
+
+  panel countries-3-20
+    title: rows of Data by Metadata - Indicators.SOURCE_ORGANIZATION the twelve most
+    rows (12):
+      International Energy Agency (IEA Statist | 3705
+      World Bank staff estimates based on sour | 2964
+      Carbon Dioxide Information Analysis Cent | 2964
+      IEA Statistics © OECD/IEA, http://www.ie | 2470
+      Estimates based on sources and methods d | 1482
+      United Nations Environmental Program and | 741
+      Food and Agriculture Organization, elect | 741
+      IEA Statistics © OECD/IEA, http://www.ie | 741
+      United Nations Environmental Program and | 741
+      Center for International Earth Science I | 494
+      Data are provided by the Institute for H | 494
+      Kiran D. Pandey and others' "The Human C | 494
+
+  panel countries-3-21
+    title: sum of Data.1963 by Metadata - Countries.Country Name the twelve most
+    rows (12):
+      World | 618915322883.6157
+      OECD members | 618468869913.9312
+      High income | 616210294813.9264
+      High income: OECD | 616205115934.9131
+      North America | 273230539679.38852
+      Europe & Central Asia (all income levels | 259972196702.39334
+      European Union | 194812976365.8126
+      United States | 168413001849.14212
+      Euro area | 152886240899.58243
+      Canada | 104817537252.89346
+      East Asia & Pacific (all income levels) | 85462528612.08856
+      Japan | 68986176305.01364
+
+  panel countries-3-22
+    title: rows of Data by Metadata - Indicators.SOURCE_NOTE the twelve most
+    rows (12):
+      Carbon dioxide emissions are those stemm | 1235
+      Carbon dioxide emissions from solid fuel | 741
+      CO2 emissions from residential buildings | 494
+      Forest area is land under natural or pla | 494
+      CO2 emissions from electricity and heat  | 494
+      CO2 emissions from manufacturing industr | 494
+      CO2 emissions from other sectors, less r | 494
+      CO2 emissions from transport contains em | 494
+      Education expenditure refers to the curr | 494
+      Carbon dioxide damage is estimated to be | 494
+      Adjusted net savings are equal to net na | 494
+      Net national savings are equal to gross  | 494
+
+  panel countries-3-23
+    title: sum of Data.1962 by Metadata - Countries.Country Name the twelve most
+    rows (12):
+      World | 591558879707.5983
+      OECD members | 591139791981.2878
+      High income | 589900686765.2916
+      High income: OECD | 589895395171.877
+      North America | 276271048780.5998
+      Europe & Central Asia (all income levels | 238452401677.21564
+      European Union | 177459505138.9396
+      United States | 171270380794.76993
+      Euro area | 134027678601.26538
+      Canada | 105000668270.87267
+      East Asia & Pacific (all income levels) | 76596640385.23425
+      Japan | 62417216744.137764
+
+  panel countries-3-24
+    title: sum of Data.1962 by Metadata - Indicators.INDICATOR_NAME the twelve most
+    rows (12):
+      Electricity production from renewable so | 3831228000000
+      Electricity production from renewable so | 27748000000
+      Cereal production (metric tons) | 5416936993
+      CO2 emissions (kt) | 51018985.12100001
+      CO2 emissions from liquid fuel consumpti | 18921283.057
+      CO2 emissions from solid fuel consumptio | 18416238.038
+      CO2 emissions from gaseous fuel consumpt | 8231633.129999999
+      CO2 emissions from liquid fuel consumpti | 13562.355640000005
+      CO2 emissions from manufacturing industr | 9116.939
+      CO2 emissions from residential buildings | 6715.46
+      CO2 emissions from transport (million me | 6409.816999999999
+      CO2 emissions from solid fuel consumptio | 3625.9227124000026
+
+  panel countries-3-25
+    title: largest tables, estimated rows
+    rows (4):
+      Data | 20954
+      Metadata - Countries | 247
+      target | 247
+      Metadata - Indicators | 88
+
+  panel countries-3-26
+    title: rows of target by Metadata - Countries.Region
+    rows (8):
+      Europe & Central Asia | 57
+      Sub-Saharan Africa | 48
+      Latin America & Caribbean | 41
+      East Asia & Pacific | 36
+      ∅ | 33
+      Middle East & North Africa | 21
+      South Asia | 8
+      North America | 3
+
+  panel countries-3-27
+    title: average of target.2012 by Metadata - Countries.Country Name the twelve most
+    rows (12):
+      Suriname | 94.5564
+      Micronesia, Fed. Sts. | 91.6857
+      Seychelles | 88.4783
+      American Samoa | 88.2
+      Palau | 87.6087
+      Bhutan | 85.8042
+      Gabon | 85.3805
+      Caribbean small states | 80.4494
+      Solomon Islands | 78.6638
+      Guyana | 77.2416
+      St. Lucia | 77.0492
+      Finland | 72.9113
+
+  panel countries-3-28
+    title: rows of Metadata - Indicators by Metadata - Indicators.SOURCE_ORGANIZATION the twelve most
+    rows (12):
+      International Energy Agency (IEA Statist | 15
+      World Bank staff estimates based on sour | 12
+      Carbon Dioxide Information Analysis Cent | 12
+      IEA Statistics © OECD/IEA, http://www.ie | 10
+      Estimates based on sources and methods d | 6
+      United Nations Environmental Program and | 3
+      Food and Agriculture Organization, elect | 3
+      IEA Statistics © OECD/IEA, http://www.ie | 3
+      United Nations Environmental Program and | 3
+      Center for International Earth Science I | 2
+      Data are provided by the Institute for H | 2
+      Kiran D. Pandey and others' "The Human C | 2
+
+  panel countries-3-29
+    title: average of Data.1961 by Metadata - Indicators.INDICATOR_NAME the twelve most
+    rows (12):
+      Electricity production from renewable so | 95936974358.97437
+      Electricity production from renewable so | 651487179.4871795
+      Cereal production (metric tons) | 27486580.157608695
+      CO2 emissions (kt) | 276774.906564246
+      CO2 emissions from solid fuel consumptio | 110669.89482248524
+      CO2 emissions from liquid fuel consumpti | 98743.84472625697
+      CO2 emissions from gaseous fuel consumpt | 50273.266163522014
+      CO2 emissions from manufacturing industr | 286.9447741935484
+      CO2 emissions from residential buildings | 199.94403225806457
+      CO2 emissions from transport (million me | 191.02918750000003
+      CO2 emissions from liquid fuel consumpti | 72.12399445652173
+      CO2 emissions from electricity and heat  | 63.89719999999999
+
+  panel countries-3-30
+    title: rows of Data by Data.Indicator Name the twelve most
+    rows (12):
+      Land area where elevation is below 5 met | 247
+      Forest area (sq. km) | 247
+      Forest area (% of land area) | 247
+      Cereal production (metric tons) | 247
+      Access to electricity (% of population) | 247
+      Electricity production from oil, gas and | 247
+      Electricity production from renewable so | 247
+      Electricity production from renewable so | 247
+      Electricity production from renewable so | 247
+      CO2 intensity (kg per kg of oil equivale | 247
+      CO2 emissions from gaseous fuel consumpt | 247
+      CO2 emissions from gaseous fuel consumpt | 247
+
+  panel countries-3-31
+    title: rows of Metadata - Countries by Metadata - Countries.Region
+    rows (8):
+      Europe & Central Asia | 57
+      Sub-Saharan Africa | 48
+      Latin America & Caribbean | 41
+      East Asia & Pacific | 36
+      ∅ | 33
+      Middle East & North Africa | 21
+      South Asia | 8
+      North America | 3

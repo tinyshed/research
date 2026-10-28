@@ -39,7 +39,18 @@ eight and on eleven more from the same repository, loaded by `ctu.sh` and
 judged only by models: pubs, world, Dallas, restbase, voc, medical,
 PremierLeague, Basketball_men, NCAA, Hockey, imdb_MovieLens, Student_loan,
 CraftBeer, NBA, Basketball_women, Mondial, SFScores, Shakespeare,
-Atherosclerosis and ftp.
+Atherosclerosis and ftp. Round 1e added 23 more, judged only by models: ten
+held out until round 1e counted them — Accidents, CDESchools, ConsumerExpenditures,
+FNHK, Hepatitis_std, legalActs, nhl_draft, SAP, Seznam, Walmart_2014 — and
+thirteen taught on — AustralianFootball, Countries, FlexiBee, geneea,
+GOSales, imdb_full, SalesDB, Telstra, Toxicology, tpcc, TubePricing, Walmart,
+YelpDataset3_disc_clean. All are development fixtures from now on. Round
+1f added 42 from BIRD's training and development sets (CC BY-SA 4.0),
+loaded to PostgreSQL by `fixtures/bird.sh` and `fixtures/sqlite.py`, those
+CTU already serves and the pilot fixtures' own left out: twelve held out
+until round 1f counted them — address, card_games, coinmarketcap, cookbook,
+human_resources, legislator, menu, movie, soccer_2016, superstore, synthea,
+video_games — and thirty taught on.
 
 ## Public
 

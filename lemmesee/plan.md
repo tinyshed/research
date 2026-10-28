@@ -184,6 +184,19 @@ it are in its chapter 14 and are the ones that decide.
    teacher at a few cents teaches it nearly as well as Sonnet; a choice from
    the same candidates could keep 4.6. How lemmesee teaches and judges is
    now [teaching.md](teaching.md).
+1e. **The look taught at scale**: round 1d's look taught by the mean keep of
+   Jev, DeepSeek and GLM over 41 databases, 23 more from CTU, with more of
+   each result read and the five's penalties and weight tuned on what is
+   kept. [Run](reports/look-scale-2026-10-28.md) on 28 October: on ten
+   databases held out, Sonnet and Gemini keep 3.4 and 3.3 of its fives
+   against round 1d's 2.5 and 2.4; on round 1d's 28 it matches round 1d's
+   look and does not pass it. The look alone orders the five.
+1f. **Twice the databases**: 42 more from BIRD, loaded to PostgreSQL, so
+   that 81 teach. [Run](reports/scale-2026-10-28.md) on 28 October: on
+   twelve held out Sonnet keeps 3.58 of five against round 1e's 3.17,
+   Gemini 3.83 as before; the learning curve is flat past forty databases,
+   and the tuned penalties swing with two databases' labels, so the order
+   within a database, not the count of databases, is what is left.
 2. **The judged set**: assembled, split by project, judged.
 3. **The ranker, C**: linear, trees, a tiny network, against A and B on the
    judged set, with its cost.

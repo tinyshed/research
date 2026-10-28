@@ -26,3 +26,10 @@ so, never by editing the number it replaces.
   penalties learned from the teachers' fives, and an 8.7 KB model of what a judge keeps read from each result; on
   28 databases five judges that taught nothing keep more of its fives than of round 1's, four clear of chance, and
   a teacher at 2.3 cents for 845 panels teaches it nearly as well as Sonnet.
+- [The look taught at scale](look-scale-2026-10-28.md), round 1e: the look taught by three cheap judges over 41
+  databases, reading more of each result, with the choice tuned on what is kept; on ten databases held out Sonnet
+  and Gemini keep 3.4 and 3.3 of its fives against round 1d's 2.5 and 2.4, while on round 1d's 28 it only matches
+  round 1d's look.
+- [Twice the databases](scale-2026-10-28.md), round 1f: 42 BIRD databases loaded to PostgreSQL, the look taught on 81;
+  on twelve held out Sonnet keeps 3.58 of five against round 1e's 3.17 and Gemini 3.83 as before, the learning
+  curve is flat past forty databases, and the tuned penalties swing with two databases' labels.

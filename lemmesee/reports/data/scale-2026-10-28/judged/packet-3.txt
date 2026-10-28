@@ -1,0 +1,810 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: birdmovie ===
+Movies, their actors and the characters each actor played, as BIRD serves it. A fixture of round 1f.
+
+  panel birdmovie-1-01
+    title: sum of characters.creditOrder by movie.Genre the twelve most
+    rows (12):
+      Comedy | 4019
+      Action | 3195
+      Animation | 2646
+      Drama | 2340
+      Thriller | 1350
+      Science Fiction | 1288
+      Family | 1215
+      Romance | 1170
+      Adventure | 1080
+      Fantasy | 990
+      Crime | 675
+      Mystery | 450
+
+  panel birdmovie-1-02
+    title: rows of actor by actor.Birth Country the twelve most
+    rows (12):
+      USA | 1605
+      ∅ | 412
+      UK | 295
+      Canada | 82
+      Australia | 41
+      Ireland | 22
+      France | 22
+      Italy | 19
+      Germany | 19
+      New Zealand | 12
+      China | 12
+      Sweden | 10
+
+  panel birdmovie-1-03
+    title: sum of movie.Budget by movie.Genre the twelve most
+    rows (12):
+      Action | 16818500000
+      Animation | 10231500000
+      Comedy | 5110150000
+      Science Fiction | 4891000000
+      Fantasy | 4552700000
+      Adventure | 4035000000
+      Drama | 3791100000
+      Thriller | 3550000000
+      Family | 1968000000
+      Romance | 1281205538
+      Mystery | 1145000000
+      Crime | 962000000
+
+  panel birdmovie-1-04
+    title: rows of characters by movie.Title the twelve most
+    rows (12):
+      Philadelphia | 9
+      Identity Thief | 9
+      Star Wars: Episode II - Attack of the Cl | 9
+      The Dark Knight | 9
+      The Addams Family | 9
+      Minority Report | 9
+      Lethal Weapon 3 | 9
+      Doctor Dolittle | 9
+      Cars | 9
+      Elf | 9
+      Little Fockers | 9
+      Stepmom | 9
+
+  panel birdmovie-1-05
+    title: rows of actor by actor.Gender
+    rows (3):
+      ∅ | 1541
+      Male | 802
+      Female | 370
+
+  panel birdmovie-1-06
+    title: rows of characters by actor.Birth Country the twelve most
+    rows (12):
+      USA | 2775
+      UK | 565
+      ∅ | 316
+      Canada | 158
+      Australia | 70
+      Ireland | 38
+      France | 29
+      Italy | 27
+      Germany | 26
+      New Zealand | 23
+      Sweden | 18
+      Puerto Rico | 15
+
+  panel birdmovie-1-07
+    title: rows of movie by movie.Genre the twelve most
+    rows (12):
+      Action | 116
+      Comedy | 101
+      Animation | 88
+      Drama | 67
+      Thriller | 41
+      Science Fiction | 38
+      Adventure | 31
+      Family | 30
+      Romance | 29
+      Fantasy | 28
+      Crime | 17
+      Horror | 15
+
+  panel birdmovie-1-08
+    title: rows of movie by movie.MPAA Rating
+    rows (4):
+      PG-13 | 300
+      PG | 165
+      R | 142
+      G | 27
+
+  panel birdmovie-1-09
+    title: average of movie.Budget by movie.MPAA Rating
+    rows (4):
+      PG-13 | 116457666.66666667
+      G | 103629629.629629629630
+      PG | 92625454.545454545455
+      R | 52380391.112676056338
+
+  panel birdmovie-1-10
+    title: rows of characters by movie.Genre the twelve most
+    rows (12):
+      Comedy | 805
+      Action | 639
+      Animation | 530
+      Drama | 468
+      Thriller | 270
+      Science Fiction | 259
+      Family | 243
+      Romance | 234
+      Adventure | 216
+      Fantasy | 198
+      Crime | 135
+      Mystery | 90
+
+  panel birdmovie-1-11
+    title: sum of characters.creditOrder by characters.Character Name the twelve most
+    rows (12):
+      Mike | 33
+      Gloria | 33
+      M | 31
+      Eric | 31
+      Max | 30
+      Ron Weasley | 30
+      Alfred | 29
+      Helen | 28
+      Ellie | 28
+      Susan | 27
+      Red | 27
+      Jessica | 25
+
+  panel birdmovie-1-12
+    title: sum of characters.creditOrder by actor.Ethnicity the twelve most
+    rows (12):
+      ∅ | 16445
+      White | 4323
+      African American | 576
+      Native American | 29
+      Latino | 29
+      Armenian | 18
+      Lebanese | 17
+      South African | 16
+      American-South African | 15
+      Asian American | 14
+      Mixed | 11
+      Israeli | 10
+
+  panel birdmovie-1-13
+    title: average of movie.Rating by movie.MPAA Rating
+    rows (4):
+      R | 7.166901408450706
+      G | 7.055555555555556
+      PG-13 | 6.916000000000002
+      PG | 6.8128048780487775
+
+  panel birdmovie-1-14
+    title: average of characters.creditOrder by movie.Title the twelve most
+    rows (12):
+      Paul Blart: Mall Cop | 5.5000000000000000
+      Identity Thief | 5.0000000000000000
+      Lethal Weapon 3 | 5.0000000000000000
+      The Dark Knight | 5.0000000000000000
+      The Addams Family | 5.0000000000000000
+      Minority Report | 5.0000000000000000
+      Star Wars: Episode II - Attack of the Cl | 5.0000000000000000
+      Doctor Dolittle | 5.0000000000000000
+      Cars | 5.0000000000000000
+      Elf | 5.0000000000000000
+      Little Fockers | 5.0000000000000000
+      Philadelphia | 5.0000000000000000
+
+  panel birdmovie-1-15
+    title: largest tables, estimated rows
+    rows (3):
+      characters | 4312
+      actor | 2713
+      movie | 634
+
+  panel birdmovie-1-16
+    title: rows of actor by actor.Ethnicity the twelve most
+    rows (12):
+      ∅ | 2146
+      White | 494
+      African American | 49
+      Native American | 5
+      Latino | 3
+      Israeli | 2
+      Asian | 2
+      South African | 2
+      Asian American | 1
+      American-Irish | 1
+      Polish | 1
+      Japanese-American | 1
+
+  panel birdmovie-1-17
+    title: rows of characters by actor.Name the twelve most
+    rows (12):
+      Tom Hanks | 14
+      Julia Roberts | 13
+      Tom Cruise | 13
+      Jim Carrey | 12
+      Mel Gibson | 12
+      Eddie Murphy | 12
+      Will Smith | 12
+      Samuel L. Jackson | 12
+      Robin Williams | 11
+      Ben Stiller | 10
+      Morgan Freeman | 9
+      Adam Sandler | 9
+
+  panel birdmovie-1-18
+    title: rows of characters by movie.MPAA Rating
+    rows (4):
+      PG-13 | 1942
+      R | 1094
+      PG | 1051
+      G | 225
+
+  panel birdmovie-1-19
+    title: average of characters.creditOrder by movie.MPAA Rating
+    rows (4):
+      G | 5.0000000000000000
+      PG | 5.0000000000000000
+      PG-13 | 4.9963954685890834
+      R | 4.9908592321755027
+
+  panel birdmovie-1-20
+    title: average of characters.creditOrder by actor.Name the twelve most
+    rows (12):
+      Charles Kimbrough | 9.0000000000000000
+      Jeff Bennett | 9.0000000000000000
+      Rick Overton | 9.0000000000000000
+      Ron Dean | 9.0000000000000000
+      Derek Deadman | 9.0000000000000000
+      Imelda Staunton | 9.0000000000000000
+      David Steen | 9.0000000000000000
+      Danny Woodburn | 9.0000000000000000
+      Ashley Lilley | 9.0000000000000000
+      Bruce Norris | 9.0000000000000000
+      Harley Jane Kozak | 9.0000000000000000
+      Fred Savage | 9.0000000000000000
+
+  panel birdmovie-1-21
+    title: rows of characters by actor.Gender
+    rows (3):
+      ∅ | 2261
+      Male | 1473
+      Female | 578
+
+  panel birdmovie-1-22
+    title: rows of actor by actor.Ethnicity
+    rows (18):
+      ∅ | 2146
+      White | 494
+      African American | 49
+      Native American | 5
+      Latino | 3
+      Israeli | 2
+      Asian | 2
+      South African | 2
+      Asian American | 1
+      American-Irish | 1
+      Polish | 1
+      Japanese-American | 1
+      … 6 more rows
+
+  panel birdmovie-1-23
+    title: sum of characters.creditOrder by actor.Name the twelve most
+    rows (12):
+      Samuel L. Jackson | 56
+      James Cromwell | 51
+      Jonah Hill | 40
+      Jeffrey Tambor | 39
+      Andy Richter | 39
+      John Ratzenberger | 37
+      Ted Levine | 34
+      Allison Janney | 33
+      Owen Wilson | 32
+      Jane Lynch | 32
+      Alan Tudyk | 32
+      Bruce Greenwood | 32
+
+  panel birdmovie-1-24
+    title: rows of characters by actor.Ethnicity the twelve most
+    rows (12):
+      ∅ | 3166
+      White | 968
+      African American | 138
+      Latino | 6
+      Native American | 6
+      American-Irish | 5
+      Lebanese | 5
+      Armenian | 2
+      American-South African | 2
+      Mixed | 2
+      Israeli | 2
+      South African | 2
+
+  panel birdmovie-1-25
+    title: sum of characters.creditOrder by movie.Title the twelve most
+    rows (12):
+      Philadelphia | 45
+      Identity Thief | 45
+      Star Wars: Episode II - Attack of the Cl | 45
+      The Dark Knight | 45
+      The Addams Family | 45
+      Minority Report | 45
+      Lethal Weapon 3 | 45
+      Doctor Dolittle | 45
+      Cars | 45
+      Elf | 45
+      Little Fockers | 45
+      Stepmom | 45
+
+  panel birdmovie-1-26
+    title: sum of characters.creditOrder by movie.MPAA Rating
+    rows (4):
+      PG-13 | 9703
+      R | 5460
+      PG | 5255
+      G | 1125
+
+  panel birdmovie-1-27
+    title: rows of characters by characters.Character Name the twelve most
+    rows (12):
+      Phil | 8
+      Harry Potter | 8
+      Sam | 6
+      James Bond | 6
+      Alfred | 6
+      Himself (archive footage) | 6
+      Mike | 6
+      M | 6
+      Eric | 6
+      Gloria | 6
+      Maurice | 5
+      Max | 5
+
+  panel birdmovie-1-28
+    title: average of characters.creditOrder by actor.Birth Country the twelve most
+    rows (12):
+      California | 9.0000000000000000
+      Ivory Coast | 9.0000000000000000
+      Switzerland | 9.0000000000000000
+      British Guiana | 8.5000000000000000
+      Russia | 8.0000000000000000
+      Kenya | 8.0000000000000000
+      Ecuador | 8.0000000000000000
+      Slovenia | 8.0000000000000000
+      Ghana | 8.0000000000000000
+      Benin | 8.0000000000000000
+      Czechoslovakia | 7.6666666666666667
+      South Korea | 7.5000000000000000
+
+  panel birdmovie-1-29
+    title: sum of movie.Budget by movie.MPAA Rating
+    rows (4):
+      PG-13 | 34937300000
+      PG | 15283200000
+      R | 7438015538
+      G | 2798000000
+
+  panel birdmovie-1-30
+    title: sum of actor.Height (Inches) by actor.Birth Country the twelve most
+    rows (12):
+      Honduras | ∅
+      Union of South Africa | ∅
+      Dolnoslaskie | ∅
+      USA | 92617
+      UK | 18103
+      Canada | 4586
+      ∅ | 4272
+      Australia | 2489
+      Ireland | 1283
+      Italy | 1149
+      France | 1134
+      Germany | 1008
+
+  panel birdmovie-1-31
+    title: sum of characters.creditOrder by actor.Birth Country the twelve most
+    rows (12):
+      USA | 13480
+      UK | 2759
+      ∅ | 2039
+      Canada | 734
+      Australia | 294
+      Ireland | 178
+      France | 165
+      Germany | 135
+      Italy | 134
+      New Zealand | 130
+      India | 88
+      China | 86
+
+  panel birdmovie-1-32
+    title: average of movie.Budget by movie.Genre the twelve most
+    rows (12):
+      Fantasy | 162596428.57142857
+      Action | 144987068.96551724
+      Adventure | 130161290.32258065
+      Science Fiction | 128710526.31578947
+      Animation | 116267045.45454545
+      Mystery | 95416666.666666666667
+      War | 90755555.555555555556
+      Thriller | 86585365.853658536585
+      Western | 79833333.333333333333
+      Family | 65600000.000000000000
+      Crime | 56588235.294117647059
+      Drama | 56583582.089552238806
+
+
+=== database: birdsoccer2016 ===
+Indian Premier League cricket to 2016: matches, ball-by-ball play, players, teams, venues and seasons, as BIRD serves it. A fixture of round 1f.
+
+  panel birdsoccer2016-1-01
+    title: rows of Match by Match.Match_Date
+    rows (9):
+      2008-01-01 | 58
+      2009-01-01 | 57
+      2010-01-01 | 60
+      2011-01-01 | 73
+      2012-01-01 | 74
+      2013-01-01 | 76
+      2014-01-01 | 60
+      2015-01-01 | 59
+      2016-01-01 | 60
+
+  panel birdsoccer2016-1-02
+    title: rows of Match by Venue.Venue_Name the twelve most
+    rows (12):
+      M Chinnaswamy Stadium | 58
+      Eden Gardens | 54
+      Feroz Shah Kotla | 53
+      Wankhede Stadium | 49
+      MA Chidambaram Stadium | 48
+      Rajiv Gandhi International Stadium | 41
+      Punjab Cricket Association Stadium | 35
+      Sawai Mansingh Stadium | 33
+      Dr DY Patil Sports Academy | 17
+      Subrata Roy Sahara Stadium | 17
+      Kingsmead | 15
+      SuperSport Park | 12
+
+  panel birdsoccer2016-1-03
+    title: rows of Match by Season (by key) the twelve most
+    rows (9):
+      6 | 76
+      5 | 74
+      4 | 73
+      3 | 60
+      9 | 60
+      7 | 60
+      8 | 59
+      1 | 58
+      2 | 57
+
+  panel birdsoccer2016-1-04
+    title: rows of Match by Season.Man_of_the_Series
+    rows (8):
+      32 | 134
+      315 | 74
+      162 | 73
+      8 | 60
+      133 | 60
+      305 | 60
+      334 | 59
+      53 | 57
+
+  panel birdsoccer2016-1-05
+    title: average of Match.Win_Margin by Match.Match_Date
+    rows (9):
+      2008-01-01 | 15.9655172413793103
+      2009-01-01 | 16.8571428571428571
+      2010-01-01 | 19.7627118644067797
+      2011-01-01 | 18.9305555555555556
+      2012-01-01 | 16.2297297297297297
+      2013-01-01 | 19.8378378378378378
+      2014-01-01 | 14.7288135593220339
+      2015-01-01 | 17.8214285714285714
+      2016-01-01 | 15.3333333333333333
+
+  panel birdsoccer2016-1-06
+    title: sum of Match.Win_Margin by Match.Match_Date
+    rows (9):
+      2008-01-01 | 926
+      2009-01-01 | 944
+      2010-01-01 | 1166
+      2011-01-01 | 1363
+      2012-01-01 | 1201
+      2013-01-01 | 1468
+      2014-01-01 | 869
+      2015-01-01 | 998
+      2016-01-01 | 920
+
+  panel birdsoccer2016-1-07
+    title: rows of Match by Team.Team_Name the twelve most
+    rows (12):
+      Royal Challengers Bangalore | 78
+      Chennai Super Kings | 74
+      Delhi Daredevils | 69
+      Kings XI Punjab | 65
+      Mumbai Indians | 62
+      Kolkata Knight Riders | 62
+      Rajasthan Royals | 52
+      Deccan Chargers | 39
+      Sunrisers Hyderabad | 30
+      Pune Warriors | 23
+      Gujarat Lions | 9
+      Kochi Tuskers Kerala | 7
+
+  panel birdsoccer2016-1-08
+    title: rows of Match by Out_Type.Out_Name
+    rows (3):
+      caught | 568
+      run out | 6
+      bowled | 3
+
+  panel birdsoccer2016-1-09
+    title: rows of Player_Match by Rolee.Role_Desc the twelve most
+    rows (4):
+      Player | 10635
+      Captain | 905
+      Keeper | 905
+      CaptainKeeper | 249
+
+  panel birdsoccer2016-1-10
+    title: sum of Extra_Runs.Extra_Runs by Extra_Type.Extra_Name the twelve most
+    rows (5):
+      wides | 5161
+      legbyes | 3056
+      byes | 680
+      noballs | 612
+      penalty | 5
+
+  panel birdsoccer2016-1-11
+    title: rows of Match by Bowling_Style.Bowling_skill the twelve most
+    rows (12):
+      Right-arm offbreak | 167
+      Right-arm medium | 138
+      Right-arm fast-medium | 49
+      Slow left-arm orthodox | 48
+      Legbreak | 43
+      Right-arm medium-fast | 29
+      Right-arm fast | 26
+      ∅ | 23
+      Legbreak googly | 17
+      Left-arm medium-fast | 14
+      Left-arm fast-medium | 13
+      Left-arm medium | 4
+
+  panel birdsoccer2016-1-12
+    title: sum of Match.Win_Margin by Win_By.Win_Type the twelve most
+    rows (4):
+      NO Result | ∅
+      Tie | ∅
+      runs | 7914
+      wickets | 1941
+
+  panel birdsoccer2016-1-13
+    title: rows of Match by Country.Country_Name the twelve most
+    rows (10):
+      India | 293
+      Australia | 110
+      South Africa | 63
+      West Indies | 53
+      Sri Lanka | 24
+      New Zealand | 16
+      Pakistan | 6
+      England | 6
+      ∅ | 3
+      Bangladesh | 3
+
+  panel birdsoccer2016-1-14
+    title: sum of Match.Win_Margin by Venue.Venue_Name the twelve most
+    rows (12):
+      M Chinnaswamy Stadium | 1404
+      Wankhede Stadium | 876
+      Feroz Shah Kotla | 837
+      MA Chidambaram Stadium | 826
+      Eden Gardens | 680
+      Punjab Cricket Association Stadium | 628
+      Sawai Mansingh Stadium | 611
+      Rajiv Gandhi International Stadium | 538
+      Subrata Roy Sahara Stadium | 319
+      Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cric | 304
+      Himachal Pradesh Cricket Association Sta | 302
+      Dr DY Patil Sports Academy | 261
+
+  panel birdsoccer2016-1-15
+    title: sum of Match.Win_Margin by Toss_Decision.Toss_Name the twelve most
+    rows (2):
+      field | 5478
+      bat | 4377
+
+  panel birdsoccer2016-1-16
+    title: rows of Match by Toss_Decision.Toss_Name
+    rows (2):
+      field | 315
+      bat | 262
+
+  panel birdsoccer2016-1-17
+    title: rows of Player by Country.Country_Name the twelve most
+    rows (11):
+      India | 262
+      Australia | 72
+      South Africa | 39
+      New Zealand | 22
+      Sri Lanka | 20
+      West Indies | 19
+      England | 14
+      Pakistan | 13
+      Bangladesh | 5
+      Zimbabwea | 2
+      Netherlands | 1
+
+  panel birdsoccer2016-1-18
+    title: rows of Match by Toss_Decision.Toss_Name the twelve most
+    rows (2):
+      field | 315
+      bat | 262
+
+  panel birdsoccer2016-1-19
+    title: rows of Player by Bowling_Style.Bowling_skill the twelve most
+    rows (12):
+      Right-arm medium | 104
+      Right-arm offbreak | 81
+      Right-arm fast-medium | 53
+      Slow left-arm orthodox | 44
+      ∅ | 43
+      Right-arm medium-fast | 38
+      Legbreak | 24
+      Legbreak googly | 21
+      Right-arm fast | 20
+      Left-arm fast-medium | 13
+      Left-arm medium | 11
+      Left-arm medium-fast | 8
+
+  panel birdsoccer2016-1-20
+    title: rows of Player by Batting_Style.Batting_hand the twelve most
+    rows (2):
+      Right-hand bat | 343
+      Left-hand bat | 126
+
+  panel birdsoccer2016-1-21
+    title: rows of Match by Win_By.Win_Type the twelve most
+    rows (4):
+      wickets | 307
+      runs | 261
+      Tie | 6
+      NO Result | 3
+
+  panel birdsoccer2016-1-22
+    title: sum of Match.Win_Margin by Out_Type.Out_Name the twelve most
+    rows (3):
+      bowled | ∅
+      run out | ∅
+      caught | 9855
+
+  panel birdsoccer2016-1-23
+    title: rows of Extra_Runs per Extra_Type
+    rows (5):
+      1 | 1
+      379 | 1
+      579 | 1
+      2357 | 1
+      4153 | 1
+
+  panel birdsoccer2016-1-24
+    title: rows of Wicket_Taken by Out_Type.Out_Name
+    rows (9):
+      caught | 3954
+      bowled | 1251
+      run out | 697
+      lbw | 399
+      stumped | 222
+      caught and bowled | 187
+      retired hurt | 8
+      hit wicket | 8
+      obstructing the field | 1
+
+  panel birdsoccer2016-1-25
+    title: rows of Match by Batting_Style.Batting_hand the twelve most
+    rows (3):
+      Right-hand bat | 394
+      Left-hand bat | 180
+      ∅ | 3
+
+  panel birdsoccer2016-1-26
+    title: rows of Wicket_Taken by Out_Type.Out_Name the twelve most
+    rows (9):
+      caught | 3954
+      bowled | 1251
+      run out | 697
+      lbw | 399
+      stumped | 222
+      caught and bowled | 187
+      retired hurt | 8
+      hit wicket | 8
+      obstructing the field | 1
+
+  panel birdsoccer2016-1-27
+    title: rows of Match by Out_Type.Out_Name the twelve most
+    rows (3):
+      caught | 568
+      run out | 6
+      bowled | 3
+
+  panel birdsoccer2016-1-28
+    title: rows of Match by City.City_Name the twelve most
+    rows (12):
+      Mumbai | 77
+      Bangalore | 58
+      Kolkata | 54
+      Delhi | 53
+      Chennai | 48
+      Chandigarh | 42
+      Hyderabad | 41
+      Jaipur | 33
+      Pune | 25
+      Abu Dhabi | 20
+      Durban | 15
+      Ahmedabad | 12
+
+  panel birdsoccer2016-1-29
+    title: sum of Match.Win_Margin by Team.Team_Name the twelve most
+    rows (12):
+      Royal Challengers Bangalore | 1820
+      Kings XI Punjab | 1315
+      Chennai Super Kings | 1313
+      Mumbai Indians | 1157
+      Delhi Daredevils | 1096
+      Rajasthan Royals | 883
+      Kolkata Knight Riders | 742
+      Deccan Chargers | 552
+      Pune Warriors | 357
+      Sunrisers Hyderabad | 356
+      Kochi Tuskers Kerala | 137
+      Gujarat Lions | 74
+
+  panel birdsoccer2016-1-30
+    title: rows of Match by Win_By.Win_Type
+    rows (4):
+      wickets | 307
+      runs | 261
+      Tie | 6
+      NO Result | 3
+
+  panel birdsoccer2016-1-31
+    title: rows of Match by Player.Player_Name the twelve most
+    rows (12):
+      CH Gayle | 17
+      YK Pathan | 16
+      AB de Villiers | 15
+      DA Warner | 14
+      SK Raina | 13
+      RG Sharma | 13
+      AM Rahane | 12
+      G Gambhir | 12
+      MEK Hussey | 12
+      MS Dhoni | 12
+      V Sehwag | 11
+      V Kohli | 11
+
+  panel birdsoccer2016-1-32
+    title: rows of Extra_Runs by Extra_Type.Extra_Name
+    rows (5):
+      wides | 4153
+      legbyes | 2357
+      noballs | 579
+      byes | 379
+      penalty | 1

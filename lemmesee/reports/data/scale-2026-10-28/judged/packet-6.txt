@@ -1,0 +1,2154 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: birddisney ===
+Disney's animated films, their characters, directors, voice actors and gross takings, and the company's yearly revenue, as BIRD serves it. A fixture of round 1f.
+
+  panel birddisney-4-01
+    title: rows of characters by voice-actors.voice-actor the twelve most
+    rows (12):
+      ∅ | 16
+      Clarence Nash; Tony Anselmo | 2
+      Sterling Holloway | 2
+      Adriana Caselotti | 1
+      Paige O'Hara | 1
+      Mary Costa | 1
+      Anika Noni Rose | 1
+      Walt Disney | 1
+      Kathryn Beaumont | 1
+      Tony Goldwyn | 1
+      Joaquin Phoenix | 1
+      Bruce Reitherman | 1
+
+  panel birddisney-4-02
+    title: rows of movies_total_gross by movies_total_gross.genre
+    rows (13):
+      Comedy | 182
+      Adventure | 129
+      Drama | 114
+      Action | 40
+      Thriller/Suspense | 24
+      Romantic Comedy | 23
+       | 17
+      Musical | 16
+      Documentary | 16
+      Western | 7
+      Horror | 6
+      Black Comedy | 3
+      … 1 more rows
+
+  panel birddisney-4-03
+    title: average of revenue.Total by revenue.Year
+    rows (26):
+      1991-01-01 | 6111.0000000000000000
+      1992-01-01 | 7502.0000000000000000
+      1993-01-01 | 8529.0000000000000000
+      1994-01-01 | 10414.0000000000000000
+      1995-01-01 | 12525.0000000000000000
+      1996-01-01 | 18739.0000000000000000
+      1997-01-01 | 22473.000000000000
+      1998-01-01 | 22976.000000000000
+      1999-01-01 | 23402.000000000000
+      2000-01-01 | 25402.000000000000
+      2001-01-01 | 25790.000000000000
+      2002-01-01 | 25360.000000000000
+      … 14 more rows
+
+  panel birddisney-4-04
+    title: rows of revenue by revenue.Disney Media Networks
+    rows (24):
+      ∅ | 3
+      9733 | 1
+      11778 | 1
+      414 | 1
+      17162 | 1
+      7512 | 1
+      4,142 | 1
+      13207 | 1
+      9569 | 1
+      23689 | 1
+      6522 | 1
+      9615 | 1
+      … 12 more rows
+
+  panel birddisney-4-05
+    title: rows of movies_total_gross by movies_total_gross.genre the twelve most
+    rows (12):
+      Comedy | 182
+      Adventure | 129
+      Drama | 114
+      Action | 40
+      Thriller/Suspense | 24
+      Romantic Comedy | 23
+       | 17
+      Musical | 16
+      Documentary | 16
+      Western | 7
+      Horror | 6
+      Black Comedy | 3
+
+  panel birddisney-4-06
+    title: average of revenue.Disney Interactive[NI 3][Rev 1] by revenue.Year
+    rows (26):
+      1991-01-01 | ∅
+      1992-01-01 | ∅
+      1993-01-01 | ∅
+      1994-01-01 | ∅
+      1995-01-01 | ∅
+      1996-01-01 | ∅
+      1997-01-01 | 174.0000000000000000
+      1998-01-01 | 260.0000000000000000
+      1999-01-01 | 206.0000000000000000
+      2000-01-01 | 368.0000000000000000
+      2001-01-01 | ∅
+      2002-01-01 | ∅
+      … 14 more rows
+
+  panel birddisney-4-07
+    title: sum of revenue.Total by revenue.Year
+    rows (26):
+      1991-01-01 | 6111
+      1992-01-01 | 7502
+      1993-01-01 | 8529
+      1994-01-01 | 10414
+      1995-01-01 | 12525
+      1996-01-01 | 18739
+      1997-01-01 | 22473
+      1998-01-01 | 22976
+      1999-01-01 | 23402
+      2000-01-01 | 25402
+      2001-01-01 | 25790
+      2002-01-01 | 25360
+      … 14 more rows
+
+  panel birddisney-4-08
+    title: rows of director by characters (by key) the twelve most
+    rows (12):
+      Melody Time | 1
+      Fun and Fancy Free | 1
+      Home on the Range | 1
+      The Rescuers Down Under | 1
+      The Princess and the Frog | 1
+      The Jungle Book | 1
+      Dumbo | 1
+      The Hunchback of Notre Dame | 1
+      Frozen | 1
+      Make Mine Music | 1
+      Lilo & Stitch | 1
+      Peter Pan | 1
+
+  panel birddisney-4-09
+    title: rows of voice-actors per characters
+    rows (23):
+      1 | 42
+      2 | 16
+      3 | 4
+      4 | 11
+      5 | 5
+      6 | 3
+      7 | 5
+      8 | 8
+      9 | 2
+      10 | 5
+      11 | 7
+      12 | 5
+      … 11 more rows
+
+  panel birddisney-4-10
+    title: rows of director by director.director
+    rows (29):
+      Ron Clements | 7
+      Wolfgang Reitherman | 7
+      Jack Kinney | 4
+      Gary Trousdale | 3
+      Clyde Geronimi | 3
+      Mark Dindal | 2
+      David Hand | 2
+      Chris Buck | 2
+      Stephen J. Anderson | 2
+      Hamilton Luske | 2
+      full credits | 2
+      Ben Sharpsteen | 2
+      … 17 more rows
+
+  panel birddisney-4-11
+    title: sum of revenue.Disney Interactive[NI 3][Rev 1] by revenue.Year
+    rows (26):
+      1991-01-01 | ∅
+      1992-01-01 | ∅
+      1993-01-01 | ∅
+      1994-01-01 | ∅
+      1995-01-01 | ∅
+      1996-01-01 | ∅
+      1997-01-01 | 174
+      1998-01-01 | 260
+      1999-01-01 | 206
+      2000-01-01 | 368
+      2001-01-01 | ∅
+      2002-01-01 | ∅
+      … 14 more rows
+
+  panel birddisney-4-12
+    title: sum of revenue.Studio Entertainment[NI 1] by revenue.Year
+    rows (26):
+      1991-01-01 | 2593
+      1992-01-01 | 3115
+      1993-01-01 | 3673.4
+      1994-01-01 | 4793
+      1995-01-01 | 6001.5
+      1996-01-01 | ∅
+      1997-01-01 | 6981
+      1998-01-01 | 6849
+      1999-01-01 | 6548
+      2000-01-01 | 5994
+      2001-01-01 | 7004
+      2002-01-01 | 6465
+      … 14 more rows
+
+  panel birddisney-4-13
+    title: rows of movies_total_gross per characters
+    rows (3):
+      1 | 568
+      2 | 4
+      3 | 1
+
+  panel birddisney-4-14
+    title: rows of director per characters
+    rows (1):
+      1 | 56
+
+  panel birddisney-4-15
+    title: average of revenue.Walt Disney Parks and Resorts by revenue.Year
+    rows (26):
+      1991-01-01 | 2794
+      1992-01-01 | 3306
+      1993-01-01 | 3440.7
+      1994-01-01 | 3463.6
+      1995-01-01 | 3959.8
+      1996-01-01 | 4502
+      1997-01-01 | 5014
+      1998-01-01 | 5532
+      1999-01-01 | 6106
+      2000-01-01 | 6803
+      2001-01-01 | 6009
+      2002-01-01 | 6691
+      … 14 more rows
+
+  panel birddisney-4-16
+    title: average of revenue.Studio Entertainment[NI 1] by revenue.Year
+    rows (26):
+      1991-01-01 | 2593
+      1992-01-01 | 3115
+      1993-01-01 | 3673.4
+      1994-01-01 | 4793
+      1995-01-01 | 6001.5
+      1996-01-01 | ∅
+      1997-01-01 | 6981
+      1998-01-01 | 6849
+      1999-01-01 | 6548
+      2000-01-01 | 5994
+      2001-01-01 | 7004
+      2002-01-01 | 6465
+      … 14 more rows
+
+  panel birddisney-4-17
+    title: rows of revenue by revenue.Year
+    rows (26):
+      1991-01-01 | 1
+      1992-01-01 | 1
+      1993-01-01 | 1
+      1994-01-01 | 1
+      1995-01-01 | 1
+      1996-01-01 | 1
+      1997-01-01 | 1
+      1998-01-01 | 1
+      1999-01-01 | 1
+      2000-01-01 | 1
+      2001-01-01 | 1
+      2002-01-01 | 1
+      … 14 more rows
+
+  panel birddisney-4-18
+    title: rows of characters per voice-actors
+    rows (2):
+      1 | 46
+      2 | 3
+
+  panel birddisney-4-19
+    title: rows of movies_total_gross by movies_total_gross.MPAA_rating
+    rows (6):
+      PG | 187
+      PG-13 | 145
+      R | 102
+      G | 86
+       | 56
+      Not Rated | 3
+
+  panel birddisney-4-20
+    title: rows of movies_total_gross by voice-actors.voice-actor the twelve most
+    rows (12):
+      ∅ | 544
+      Bruce Reitherman | 3
+      Ilene Woods | 2
+      Sterling Holloway | 2
+      Mandy Moore | 1
+      Michael J. Fox | 1
+      David Spade | 1
+      Dickie Jones | 1
+      Paige O'Hara | 1
+      Roseanne Barr | 1
+      Tony Goldwyn | 1
+      Idina Menzel | 1
+
+  panel birddisney-4-21
+    title: largest tables, estimated rows
+    rows (5):
+      voice-actors | 922
+      movies_total_gross | 579
+      characters | 56
+      director | 56
+      revenue | 26
+
+  panel birddisney-4-22
+    title: sum of revenue.Walt Disney Parks and Resorts by revenue.Year
+    rows (26):
+      1991-01-01 | 2794
+      1992-01-01 | 3306
+      1993-01-01 | 3440.7
+      1994-01-01 | 3463.6
+      1995-01-01 | 3959.8
+      1996-01-01 | 4502
+      1997-01-01 | 5014
+      1998-01-01 | 5532
+      1999-01-01 | 6106
+      2000-01-01 | 6803
+      2001-01-01 | 6009
+      2002-01-01 | 6691
+      … 14 more rows
+
+  panel birddisney-4-23
+    title: sum of revenue.Disney Consumer Products[NI 2] by revenue.Year
+    rows (26):
+      1991-01-01 | 724
+      1992-01-01 | 1081
+      1993-01-01 | 1415.1
+      1994-01-01 | 1798.2
+      1995-01-01 | 2150
+      1996-01-01 | ∅
+      1997-01-01 | 3782
+      1998-01-01 | 3193
+      1999-01-01 | 3030
+      2000-01-01 | 2602
+      2001-01-01 | 2590
+      2002-01-01 | 2440
+      … 14 more rows
+
+  panel birddisney-4-24
+    title: rows of movies_total_gross by characters (by key) the twelve most
+    rows (12):
+      The Jungle Book | 3
+      Cinderella | 2
+      Freaky Friday | 2
+      Bad Company | 2
+      101 Dalmatians | 2
+      Amy | 1
+      O Brother, Where Art Thou? | 1
+      The Count of Monte Cristo | 1
+      When a Man Loves a Woman | 1
+      Super Mario Bros. | 1
+      Lady and the Tramp | 1
+      Six Days, Seven Nights | 1
+
+  panel birddisney-4-25
+    title: rows of voice-actors by characters (by key) the twelve most
+    rows (12):
+      DuckTales | 31
+      Hercules | 22
+      Zootopia | 22
+      Wreck-It Ralph | 21
+      The Aristocats | 20
+      The Little Mermaid | 20
+      Darkwing Duck | 19
+      Beauty and the Beast | 19
+      Alice in Wonderland | 18
+      The Princess and the Frog | 18
+      Robin Hood | 18
+      Peter Pan | 17
+
+  panel birddisney-4-26
+    title: average of revenue.Disney Consumer Products[NI 2] by revenue.Year
+    rows (26):
+      1991-01-01 | 724
+      1992-01-01 | 1081
+      1993-01-01 | 1415.1
+      1994-01-01 | 1798.2
+      1995-01-01 | 2150
+      1996-01-01 | ∅
+      1997-01-01 | 3782
+      1998-01-01 | 3193
+      1999-01-01 | 3030
+      2000-01-01 | 2602
+      2001-01-01 | 2590
+      2002-01-01 | 2440
+      … 14 more rows
+
+  panel birddisney-4-27
+    title: rows of director by voice-actors.voice-actor the twelve most
+    rows (12):
+      ∅ | 17
+      Clarence Nash; Tony Anselmo | 2
+      Sterling Holloway | 2
+      Adriana Caselotti | 1
+      Paige O'Hara | 1
+      Mary Costa | 1
+      Anika Noni Rose | 1
+      Walt Disney | 1
+      Kathryn Beaumont | 1
+      Tony Goldwyn | 1
+      Joaquin Phoenix | 1
+      Bruce Reitherman | 1
+
+
+=== database: birdtalkingdata ===
+A mobile data company's devices, their users' gender and age, phone brands, app events and app labels, as BIRD serves it. A fixture of round 1f.
+
+  panel birdtalkingdata-4-01
+    title: distinct sample_submission in events by events.timestamp
+    rows (9):
+      2016-04-30 | 584
+      2016-05-01 | 35601
+      2016-05-02 | 35527
+      2016-05-03 | 35865
+      2016-05-04 | 36110
+      2016-05-05 | 36628
+      2016-05-06 | 36401
+      2016-05-07 | 35574
+      2016-05-08 | 2
+
+  panel birdtalkingdata-4-02
+    title: rows of events by events.timestamp
+    rows (9):
+      2016-04-30 | 959
+      2016-05-01 | 444589
+      2016-05-02 | 451546
+      2016-05-03 | 483293
+      2016-05-04 | 473487
+      2016-05-05 | 478999
+      2016-05-06 | 471730
+      2016-05-07 | 448345
+      2016-05-08 | 2
+
+  panel birdtalkingdata-4-03
+    title: sum of app_events.is_installed by events.timestamp
+    rows (9):
+      2016-04-30 | 9171
+      2016-05-01 | 4455654
+      2016-05-02 | 4494746
+      2016-05-03 | 4735450
+      2016-05-04 | 4626649
+      2016-05-05 | 4779561
+      2016-05-06 | 4828165
+      2016-05-07 | 4543637
+      2016-05-08 | 34
+
+  panel birdtalkingdata-4-04
+    title: rows of gender_age_train by gender_age_train.group
+    rows (12):
+      M23-26 | 9605
+      M32-38 | 9476
+      M39+ | 8581
+      M22- | 7488
+      M29-31 | 7309
+      F33-42 | 5561
+      M27-28 | 5445
+      F23- | 5050
+      F29-32 | 4628
+      F43+ | 4194
+      F24-26 | 4190
+      F27-28 | 3118
+
+  panel birdtalkingdata-4-05
+    title: sum of app_events.is_installed by app_events.is_active
+    rows (2):
+      0 | 19740071
+      1 | 12732996
+
+  panel birdtalkingdata-4-06
+    title: rows of app_events_relevant by gender_age (by key) the twelve most
+    rows (1):
+      ∅ | 3701900
+
+  panel birdtalkingdata-4-07
+    title: rows of app_events by app_events.is_active
+    rows (2):
+      0 | 19740071
+      1 | 12732996
+
+  panel birdtalkingdata-4-08
+    title: rows of events by sample_submission (by key) the twelve most
+    rows (12):
+      1186608308763918427 | 33426
+      3915082290673137129 | 14568
+      -1656894751624916732 | 6731
+      -6242501228649113250 | 4150
+      -8340098378141155823 | 3973
+      -3746248670824158209 | 3907
+      2504414082456157897 | 3804
+      -3037377082444295812 | 3534
+      -17299534936664237 | 3506
+      -7369693784883843916 | 3446
+      8339429008953975436 | 3440
+      5083019926611946481 | 3395
+
+  panel birdtalkingdata-4-09
+    title: rows of app_events_relevant by events_relevant (by key) the twelve most
+    rows (12):
+      219629 | 298
+      79641 | 254
+      108938 | 242
+      342302 | 240
+      258119 | 239
+      255138 | 239
+      173934 | 239
+      48279 | 239
+      240253 | 239
+      67497 | 239
+      108535 | 239
+      252629 | 239
+
+  panel birdtalkingdata-4-10
+    title: rows of app_labels by label_categories.category the twelve most
+    rows (12):
+      Industry tag | 56902
+      Custom label | 53936
+      Tencent | 49320
+      game | 48707
+      Property Industry 2.0 | 45697
+      1 free | 19083
+      Services 1 | 11840
+      Property Industry new | 9955
+      Relatives 1 | 9027
+      Irritation / Fun 1 | 8831
+      Cards RPG | 7375
+      Casual puzzle categories | 7052
+
+  panel birdtalkingdata-4-11
+    title: rows of app_events by events (by key) the twelve most
+    rows (12):
+      3215932 | 320
+      2849072 | 304
+      1827617 | 304
+      3085011 | 303
+      1923040 | 303
+      2325136 | 303
+      2805295 | 302
+      2679507 | 302
+      2412744 | 302
+      1160746 | 300
+      2990638 | 299
+      956087 | 298
+
+  panel birdtalkingdata-4-12
+    title: sum of app_events.is_active by app_all (by key) the twelve most
+    rows (12):
+      8693964245073640147 | 918156
+      5927333115845830913 | 617102
+      4348659952760821294 | 427541
+      3433289601737013244 | 373186
+      628020936226491308 | 349882
+      6284164581582112235 | 260639
+      8948670408023620661 | 254316
+      -3955212733485100109 | 244681
+      -538061441862183033 | 215627
+      -2320783822570582843 | 198384
+      -5472633337921616096 | 144413
+      7348340405200054701 | 141311
+
+  panel birdtalkingdata-4-13
+    title: rows of app_events_relevant by app_all (by key) the twelve most
+    rows (12):
+      8693964245073640147 | 130191
+      5927333115845830913 | 101654
+      4348659952760821294 | 90580
+      628020936226491308 | 70521
+      3433289601737013244 | 43224
+      -2320783822570582843 | 33772
+      5729517255058371973 | 31194
+      3683147815759994238 | 30474
+      6284164581582112235 | 30086
+      8948670408023620661 | 29453
+      -3955212733485100109 | 28011
+      7348340405200054701 | 27632
+
+  panel birdtalkingdata-4-14
+    title: rows of app_events by events.timestamp
+    rows (9):
+      2016-04-30 | 9171
+      2016-05-01 | 4455654
+      2016-05-02 | 4494746
+      2016-05-03 | 4735450
+      2016-05-04 | 4626649
+      2016-05-05 | 4779561
+      2016-05-06 | 4828165
+      2016-05-07 | 4543637
+      2016-05-08 | 34
+
+  panel birdtalkingdata-4-15
+    title: sum of app_events.is_active by events (by key) the twelve most
+    rows (12):
+      1867783 | 64
+      2589371 | 62
+      941743 | 61
+      1237953 | 61
+      2134149 | 60
+      2626028 | 60
+      2497730 | 59
+      1257500 | 59
+      1527444 | 59
+      333338 | 58
+      2728317 | 58
+      597094 | 57
+
+  panel birdtalkingdata-4-16
+    title: sum of app_events_relevant.is_installed by events_relevant (by key) the twelve most
+    rows (12):
+      219629 | 298
+      79641 | 254
+      108938 | 242
+      342302 | 240
+      108535 | 239
+      173934 | 239
+      252629 | 239
+      67497 | 239
+      48279 | 239
+      240253 | 239
+      19698 | 239
+      255138 | 239
+
+  panel birdtalkingdata-4-17
+    title: sum of app_events.is_active by app_events.is_active
+    rows (2):
+      1 | 12732996
+      0 | 0
+
+  panel birdtalkingdata-4-18
+    title: sum of app_events_relevant.is_installed by app_all (by key) the twelve most
+    rows (12):
+      8693964245073640147 | 130191
+      5927333115845830913 | 101654
+      4348659952760821294 | 90580
+      628020936226491308 | 70521
+      3433289601737013244 | 43224
+      -2320783822570582843 | 33772
+      5729517255058371973 | 31194
+      3683147815759994238 | 30474
+      6284164581582112235 | 30086
+      8948670408023620661 | 29453
+      -3955212733485100109 | 28011
+      7348340405200054701 | 27632
+
+  panel birdtalkingdata-4-19
+    title: rows of gender_age_train by gender_age_train.gender
+    rows (2):
+      M | 47904
+      F | 26741
+
+  panel birdtalkingdata-4-20
+    title: rows of gender_age by gender_age.group
+    rows (13):
+      ∅ | 112059
+      M23-26 | 9603
+      M32-38 | 9474
+      M39+ | 8581
+      M22- | 7488
+      M29-31 | 7308
+      F33-42 | 5561
+      M27-28 | 5445
+      F23- | 5050
+      F29-32 | 4628
+      F43+ | 4193
+      F24-26 | 4190
+      … 1 more rows
+
+  panel birdtalkingdata-4-21
+    title: rows of app_events with app_events.is_active by events (by key) the twelve most
+    rows (0):
+      
+      error:                                                 ^
+
+  panel birdtalkingdata-4-22
+    title: rows of app_events by sample_submission (by key) the twelve most
+    rows (12):
+      -3037377082444295812 | 183244
+      1186608308763918427 | 112442
+      -5947991281616205124 | 107600
+      -5087502401012852204 | 65490
+      3080843626434174453 | 60164
+      5083019926611946481 | 59048
+      2152993457127041882 | 57566
+      -6537587455316302996 | 49853
+      -4814793614000680392 | 48132
+      8371894969064070025 | 46090
+      -4088708555119423243 | 44667
+      721214927160156703 | 43853
+
+  panel birdtalkingdata-4-23
+    title: rows of app_events_relevant by app_events_relevant.is_active
+    rows (2):
+      0 | 2268816
+      1 | 1433084
+
+  panel birdtalkingdata-4-24
+    title: rows of app_events with app_events.is_active by app_events.is_active
+    rows (0):
+      
+      error:                                                  ^
+
+  panel birdtalkingdata-4-25
+    title: rows of app_events per events
+    rows (0):
+      
+      error: 57014: canceling statement due to statement timeout
+
+  panel birdtalkingdata-4-26
+    title: average of app_events.is_installed by events (by key) the twelve most
+    rows (12):
+      6 | 1.00000000000000000000
+      7 | 1.00000000000000000000
+      9 | 1.00000000000000000000
+      16 | 1.00000000000000000000
+      18 | 1.00000000000000000000
+      19 | 1.00000000000000000000
+      25 | 1.00000000000000000000
+      29 | 1.00000000000000000000
+      30 | 1.00000000000000000000
+      35 | 1.00000000000000000000
+      36 | 1.00000000000000000000
+      2 | 1.00000000000000000000
+
+  panel birdtalkingdata-4-27
+    title: rows of app_labels by app_all (by key) the twelve most
+    rows (12):
+      6792270137491452041 | 26
+      -4550209074213737101 | 23
+      33792862810792679 | 20
+      1321978891423004894 | 20
+      7334124244583991496 | 20
+      -4577196685860147270 | 19
+      -4581899107652088128 | 19
+      1001398498434380294 | 19
+      2004030030916210247 | 19
+      7488171461387766536 | 18
+      1886578604601590220 | 18
+      9211954271534258460 | 18
+
+  panel birdtalkingdata-4-28
+    title: average of app_events.is_installed by app_events.is_active
+    rows (2):
+      0 | 1.00000000000000000000
+      1 | 1.00000000000000000000
+
+  panel birdtalkingdata-4-29
+    title: rows of app_events by app_all (by key) the twelve most
+    rows (12):
+      8693964245073640147 | 1151391
+      5927333115845830913 | 898788
+      4348659952760821294 | 795995
+      628020936226491308 | 620659
+      3433289601737013244 | 373186
+      -2320783822570582843 | 295619
+      5729517255058371973 | 272353
+      3683147815759994238 | 265823
+      6284164581582112235 | 260639
+      8948670408023620661 | 254316
+      -3955212733485100109 | 246759
+      7348340405200054701 | 241397
+
+  panel birdtalkingdata-4-30
+    title: sum of app_events.is_installed by app_all (by key) the twelve most
+    rows (12):
+      8693964245073640147 | 1151391
+      5927333115845830913 | 898788
+      4348659952760821294 | 795995
+      628020936226491308 | 620659
+      3433289601737013244 | 373186
+      -2320783822570582843 | 295619
+      5729517255058371973 | 272353
+      3683147815759994238 | 265823
+      6284164581582112235 | 260639
+      8948670408023620661 | 254316
+      -3955212733485100109 | 246759
+      7348340405200054701 | 241397
+
+  panel birdtalkingdata-4-31
+    title: sum of app_events.is_installed by events (by key) the twelve most
+    rows (12):
+      3215932 | 320
+      1827617 | 304
+      2849072 | 304
+      1923040 | 303
+      3085011 | 303
+      2325136 | 303
+      2679507 | 302
+      2805295 | 302
+      2412744 | 302
+      1160746 | 300
+      2990638 | 299
+      956087 | 298
+
+  panel birdtalkingdata-4-32
+    title: largest tables, estimated rows
+    rows (10):
+      app_events | 32471376
+      app_events_relevant | 3701900
+      events | 3252950
+      app_labels | 459943
+      gender_age | 186697
+      events_relevant | 167389
+      app_all | 113211
+      gender_age_test | 112071
+      phone_brand_device_model2 | 89200
+      gender_age_train | 74645
+
+  panel birdtalkingdata-4-33
+    title: rows of app_events_relevant per events_relevant
+    rows (224):
+      1 | 9571
+      2 | 14287
+      3 | 2037
+      4 | 3219
+      5 | 4608
+      6 | 5529
+      7 | 6191
+      8 | 6481
+      9 | 6615
+      10 | 6495
+      11 | 5871
+      12 | 5520
+      … 212 more rows
+
+
+=== database: birdimageandlanguage ===
+Images, the objects in them, the objects' attributes and the relations between objects, as BIRD serves it. A fixture of round 1f.
+
+  panel birdimageandlanguage-4-01
+    title: rows of IMG_REL by PRED_CLASSES.PRED_CLASS the twelve most
+    rows (12):
+      on | 227612
+      has | 119548
+      in | 75087
+      of | 56323
+      wearing | 55338
+      with | 24252
+      behind | 18440
+      near | 12386
+      holding | 11475
+      on top of | 10170
+      next to | 10048
+      under | 7458
+
+  panel birdimageandlanguage-4-02
+    title: sum of IMG_OBJ.X by OBJ_CLASSES.OBJ_CLASS the twelve most
+    rows (12):
+      windows | 14727605
+      trees | 9328248
+      man | 9072617
+      person | 7231751
+      shirt | 6801417
+      lights | 5994439
+      sign | 5647884
+      leaves | 5370512
+      pole | 5262547
+      leg | 5127163
+      head | 4961531
+      hand | 4857519
+
+  panel birdimageandlanguage-4-03
+    title: largest tables, estimated rows
+    rows (6):
+      IMG_OBJ | 1750617
+      IMG_OBJ_ATT | 1074674
+      IMG_REL | 763159
+      ATT_CLASSES | 699
+      OBJ_CLASSES | 300
+      PRED_CLASSES | 150
+
+  panel birdimageandlanguage-4-04
+    title: sum of IMG_OBJ.W by IMG_OBJ.IMG_ID the twelve most
+    rows (12):
+      4003 | 17989
+      150361 | 16960
+      285830 | 15129
+      3833 | 13923
+      1146 | 13860
+      498146 | 13677
+      3185 | 13187
+      2335661 | 12928
+      2341047 | 12436
+      2344239 | 12267
+      713331 | 12165
+      107921 | 12140
+
+  panel birdimageandlanguage-4-05
+    title: sum of IMG_OBJ.Y by IMG_OBJ.IMG_ID the twelve most
+    rows (12):
+      497948 | 87766
+      3839 | 36309
+      1159328 | 35479
+      1592337 | 34011
+      1159286 | 32112
+      4272 | 30834
+      1592240 | 28834
+      713774 | 28348
+      713944 | 28327
+      1592539 | 28065
+      1592470 | 27415
+      1159306 | 26297
+
+  panel birdimageandlanguage-4-06
+    title: rows of IMG_REL by IMG_REL.OBJ2_SAMPLE_ID the twelve most
+    rows (12):
+      1 | 65416
+      2 | 56708
+      3 | 49785
+      4 | 45452
+      5 | 42764
+      6 | 40755
+      7 | 39457
+      8 | 38175
+      9 | 36625
+      10 | 34904
+      11 | 33312
+      12 | 31725
+
+  panel birdimageandlanguage-4-07
+    title: average of IMG_OBJ.H by OBJ_CLASSES.OBJ_CLASS the twelve most
+    rows (12):
+      bathroom | 425.4970157352143245
+      kitchen | 391.6689750692520776
+      room | 386.1472618499769903
+      photos | 306.1428571428571429
+      court | 231.1386901485965878
+      bed | 224.8765060240963855
+      giraffe | 220.6579200770341839
+      background | 214.4919705838211016
+      girl | 214.0978260869565217
+      wall | 203.7235801233411901
+      field | 203.0002829254491442
+      boy | 198.7879501385041551
+
+  panel birdimageandlanguage-4-08
+    title: rows of IMG_REL by IMG_REL.OBJ1_SAMPLE_ID the twelve most
+    rows (12):
+      2 | 50672
+      3 | 48536
+      4 | 45504
+      1 | 45466
+      5 | 43636
+      6 | 42839
+      8 | 42415
+      7 | 41721
+      9 | 40591
+      10 | 38635
+      11 | 36407
+      12 | 34205
+
+  panel birdimageandlanguage-4-09
+    title: rows of IMG_OBJ by OBJ_CLASSES.OBJ_CLASS the twelve most
+    rows (12):
+      windows | 58871
+      trees | 49215
+      man | 45378
+      shirt | 33646
+      wall | 30971
+      person | 30847
+      building | 30022
+      ground | 26100
+      sign | 25651
+      lights | 25468
+      sky | 25079
+      head | 23642
+
+  panel birdimageandlanguage-4-10
+    title: sum of IMG_OBJ.H by OBJ_CLASSES.OBJ_CLASS the twelve most
+    rows (12):
+      man | 7974378
+      trees | 6734132
+      wall | 6309523
+      building | 5768725
+      sky | 4142533
+      ground | 3776128
+      windows | 3556249
+      shirt | 3265504
+      person | 3171515
+      pole | 3160355
+      woman | 3113228
+      table | 2709483
+
+  panel birdimageandlanguage-4-11
+    title: sum of IMG_OBJ.H by IMG_OBJ.IMG_ID the twelve most
+    rows (12):
+      4003 | 18252
+      4272 | 17978
+      1592175 | 13641
+      497948 | 12768
+      2335647 | 12676
+      1160118 | 12490
+      1593194 | 10519
+      3369 | 10346
+      1159356 | 10308
+      1160249 | 10153
+      107984 | 9787
+      1592204 | 9761
+
+  panel birdimageandlanguage-4-12
+    title: sum of IMG_OBJ.X by IMG_OBJ.OBJ_SAMPLE_ID the twelve most
+    rows (12):
+      4 | 18784123
+      3 | 18777099
+      5 | 18688569
+      6 | 18481436
+      2 | 18198470
+      7 | 18046528
+      8 | 17600867
+      1 | 17041051
+      9 | 16946011
+      10 | 16264786
+      11 | 15410673
+      12 | 14420500
+
+  panel birdimageandlanguage-4-13
+    title: rows of IMG_OBJ by IMG_OBJ.OBJ_SAMPLE_ID the twelve most
+    rows (12):
+      1 | 105710
+      2 | 105138
+      3 | 104289
+      4 | 103039
+      5 | 101169
+      6 | 99038
+      7 | 96521
+      8 | 93649
+      9 | 90218
+      10 | 86237
+      11 | 81705
+      12 | 76640
+
+  panel birdimageandlanguage-4-14
+    title: sum of IMG_OBJ.W by IMG_OBJ.OBJ_SAMPLE_ID the twelve most
+    rows (12):
+      1 | 18327853
+      2 | 15800491
+      3 | 14444998
+      4 | 13630358
+      5 | 12902419
+      6 | 12323656
+      7 | 11728381
+      8 | 11299427
+      9 | 10714777
+      10 | 10272835
+      11 | 9693824
+      12 | 9015536
+
+  panel birdimageandlanguage-4-15
+    title: average of IMG_OBJ.X by OBJ_CLASSES.OBJ_CLASS the twelve most
+    rows (12):
+      keys | 257.5669447755264203
+      license plate | 255.8648648648648649
+      watch | 255.2329598506069094
+      windows | 250.1673999082740229
+      headlight | 247.5788842231553689
+      street light | 242.6527777777777778
+      traffic light | 242.2058823529411765
+      numbers | 240.6618897255282973
+      cone | 239.0730253353204173
+      tire | 238.8809011335916200
+      candle | 236.8231132075471698
+      button | 235.3855462184873950
+
+  panel birdimageandlanguage-4-16
+    title: rows of IMG_OBJ_ATT by IMG_OBJ_ATT.OBJ_SAMPLE_ID the twelve most
+    rows (12):
+      2 | 76400
+      3 | 73678
+      1 | 71842
+      4 | 69629
+      5 | 66224
+      6 | 63285
+      7 | 60363
+      8 | 58067
+      9 | 55119
+      10 | 53047
+      11 | 49827
+      12 | 46492
+
+  panel birdimageandlanguage-4-17
+    title: rows of IMG_REL by IMG_REL.IMG_ID the twelve most
+    rows (12):
+      497948 | 87
+      2342663 | 86
+      2411841 | 75
+      2400401 | 65
+      2402573 | 61
+      2400915 | 60
+      2344647 | 59
+      2390403 | 58
+      2409165 | 58
+      2408670 | 58
+      2412235 | 58
+      2355116 | 57
+
+  panel birdimageandlanguage-4-18
+    title: average of IMG_OBJ.Y by OBJ_CLASSES.OBJ_CLASS the twelve most
+    rows (12):
+      hoof | 320.1448421052631579
+      shoes | 300.3569661412313565
+      sneakers | 298.5254476908576814
+      sock | 292.3173510562544505
+      foot | 282.1951560818083961
+      license plate | 282.1556756756756757
+      boot | 279.1134196185286104
+      curb | 277.0132827324478178
+      keys | 272.4056416368692888
+      gravel | 266.1339950372208437
+      step | 264.3871706758304696
+      skis | 259.8732471817431949
+
+  panel birdimageandlanguage-4-19
+    title: sum of IMG_OBJ.W by OBJ_CLASSES.OBJ_CLASS the twelve most
+    rows (12):
+      sky | 9652494
+      ground | 8033088
+      wall | 7146164
+      building | 6569890
+      trees | 6131348
+      grass | 5730969
+      man | 4895592
+      table | 4513268
+      water | 3688385
+      road | 3331676
+      clouds | 3275600
+      fence | 3244853
+
+  panel birdimageandlanguage-4-20
+    title: average of IMG_OBJ.W by OBJ_CLASSES.OBJ_CLASS the twelve most
+    rows (12):
+      room | 472.7896916705016107
+      kitchen | 457.9923822714681440
+      field | 432.0823313057009478
+      ocean | 421.3738905325443787
+      beach | 418.1295931758530184
+      court | 414.4034122179416621
+      bathroom | 413.0206185567010309
+      background | 408.2414828155485517
+      street | 390.7947813822284908
+      road | 385.1648554913294798
+      sky | 384.8835280513577096
+      photos | 371.7265822784810127
+
+  panel birdimageandlanguage-4-21
+    title: rows of IMG_OBJ_ATT by ATT_CLASSES.ATT_CLASS the twelve most
+    rows (12):
+      white | 149825
+      black | 97155
+      green | 63041
+      blue | 58394
+      brown | 50706
+      red | 49654
+      yellow | 29216
+      large | 21940
+      small | 21914
+      gray | 17831
+      wooden | 16351
+      grey | 15790
+
+  panel birdimageandlanguage-4-22
+    title: sum of IMG_OBJ.Y by IMG_OBJ.OBJ_SAMPLE_ID the twelve most
+    rows (12):
+      4 | 16703519
+      5 | 16658743
+      6 | 16542529
+      3 | 16512017
+      2 | 16273823
+      7 | 16139935
+      8 | 15693924
+      1 | 15603081
+      9 | 15147020
+      10 | 14441229
+      11 | 13716207
+      12 | 12894191
+
+  panel birdimageandlanguage-4-23
+    title: sum of IMG_OBJ.Y by OBJ_CLASSES.OBJ_CLASS the twelve most
+    rows (12):
+      windows | 8900206
+      man | 5888802
+      shirt | 5465921
+      leg | 5306218
+      person | 5249375
+      ground | 5027820
+      hand | 4483110
+      shoes | 4249150
+      grass | 4146967
+      trees | 4121935
+      sign | 4034998
+      car | 3910749
+
+  panel birdimageandlanguage-4-24
+    title: average of IMG_OBJ.X by IMG_OBJ.IMG_ID the twelve most
+    rows (12):
+      1159315 | 1019.5000000000000000
+      713049 | 920.0000000000000000
+      713029 | 906.0000000000000000
+      1159686 | 904.0000000000000000
+      1160007 | 876.5000000000000000
+      1591878 | 851.5000000000000000
+      713465 | 850.0000000000000000
+      1159891 | 840.6666666666666667
+      1592729 | 832.5000000000000000
+      1159715 | 815.5000000000000000
+      1592409 | 813.5555555555555556
+      1159269 | 807.6666666666666667
+
+  panel birdimageandlanguage-4-25
+    title: sum of IMG_OBJ.X by IMG_OBJ.IMG_ID the twelve most
+    rows (12):
+      1159411 | 45460
+      1159306 | 44829
+      497948 | 41217
+      1592539 | 37243
+      713252 | 37207
+      1592384 | 32322
+      1159741 | 30772
+      498171 | 29215
+      3120 | 29085
+      713474 | 28683
+      498255 | 28470
+      1592851 | 28094
+
+  panel birdimageandlanguage-4-26
+    title: average of IMG_OBJ.X by IMG_OBJ.OBJ_SAMPLE_ID the twelve most
+    rows (12):
+      119 | 307.0000000000000000
+      110 | 290.0000000000000000
+      103 | 273.8333333333333333
+      76 | 270.6500000000000000
+      122 | 268.0000000000000000
+      65 | 267.4259259259259259
+      63 | 266.0153846153846154
+      121 | 265.5000000000000000
+      68 | 264.1739130434782609
+      69 | 259.2558139534883721
+      113 | 259.0000000000000000
+      61 | 258.7790697674418605
+
+  panel birdimageandlanguage-4-27
+    title: rows of PRED_CLASSES by PRED_CLASSES.PRED_CLASS the twelve most
+    rows (12):
+      growing in | 1
+      painted on | 1
+      walking | 1
+      across | 1
+      to right of | 1
+      watching | 1
+      on front of | 1
+      covers | 1
+      on top of | 1
+      looking a | 1
+      on side | 1
+      sitting on | 1
+
+  panel birdimageandlanguage-4-28
+    title: rows of IMG_OBJ by IMG_OBJ.IMG_ID the twelve most
+    rows (12):
+      2337434 | 132
+      497948 | 121
+      2335241 | 117
+      2335647 | 108
+      2342663 | 106
+      2409218 | 103
+      2335661 | 88
+      2364547 | 87
+      2335601 | 84
+      2390709 | 82
+      2409165 | 81
+      2345634 | 80
+
+  panel birdimageandlanguage-4-29
+    title: rows of IMG_OBJ_ATT by IMG_OBJ_ATT.IMG_ID the twelve most
+    rows (12):
+      2337434 | 151
+      2409218 | 113
+      2413690 | 83
+      2341533 | 80
+      2411295 | 76
+      2335647 | 73
+      2400401 | 72
+      2401371 | 71
+      497948 | 70
+      2385493 | 68
+      2409744 | 67
+      2364387 | 66
+
+  panel birdimageandlanguage-4-30
+    title: sum of IMG_OBJ.H by IMG_OBJ.OBJ_SAMPLE_ID the twelve most
+    rows (12):
+      1 | 13147177
+      2 | 11716147
+      3 | 10809355
+      4 | 10111780
+      5 | 9585564
+      6 | 9234441
+      7 | 8907285
+      8 | 8689006
+      9 | 8392731
+      10 | 8092605
+      11 | 7635336
+      12 | 7149783
+
+
+=== database: birdolympics ===
+The Olympic Games: the games and their cities, the athletes and their regions, the events they competed in and the medals won, as BIRD serves it. A fixture of round 1f.
+
+  panel birdolympics-4-01
+    title: rows of games by games.season
+    rows (2):
+      Summer | 29
+      Winter | 22
+
+  panel birdolympics-4-02
+    title: rows of competitor_event by sport.sport_name the twelve most
+    rows (12):
+      Athletics | 37361
+      Gymnastics | 25463
+      Swimming | 22596
+      Shooting | 10620
+      Cycling | 10170
+      Rowing | 10021
+      Fencing | 10005
+      Cross Country Skiing | 9089
+      Alpine Skiing | 8712
+      Wrestling | 6650
+      Football | 6362
+      Sailing | 6272
+
+  panel birdolympics-4-03
+    title: largest tables, estimated rows
+    rows (10):
+      competitor_event | 260971
+      games_competitor | 180252
+      person_region | 130521
+      person | 128854
+      event | 757
+      noc_region | 231
+      sport | 66
+      games_city | 52
+      games | 51
+      city | 42
+
+  panel birdolympics-4-04
+    title: rows of competitor_event by event.event_name the twelve most
+    rows (12):
+      Football Men's Football | 5353
+      Ice Hockey Men's Ice Hockey | 4711
+      Hockey Men's Hockey | 3748
+      Water Polo Men's Water Polo | 3154
+      Basketball Men's Basketball | 3078
+      Cycling Men's Road Race, Individual | 2788
+      Handball Men's Handball | 2243
+      Rowing Men's Coxed Eights | 2239
+      Gymnastics Men's Individual All-Around | 2226
+      Gymnastics Men's Team All-Around | 2174
+      Gymnastics Men's Parallel Bars | 1965
+      Gymnastics Men's Horizontal Bar | 1960
+
+  panel birdolympics-4-05
+    title: rows of games_competitor by games (by key) the twelve most
+    rows (12):
+      21 | 11176
+      20 | 10895
+      12 | 10641
+      22 | 10554
+      2 | 10512
+      13 | 10319
+      1 | 9327
+      29 | 8341
+      28 | 7009
+      26 | 6612
+      36 | 6026
+      27 | 5446
+
+  panel birdolympics-4-06
+    title: rows of games by games.games_year
+    rows (35):
+      1896-01-01 | 1
+      1900-01-01 | 1
+      1904-01-01 | 1
+      1906-01-01 | 1
+      1908-01-01 | 1
+      1912-01-01 | 1
+      1920-01-01 | 1
+      1924-01-01 | 2
+      1928-01-01 | 2
+      1932-01-01 | 2
+      1936-01-01 | 2
+      1948-01-01 | 2
+      … 23 more rows
+
+  panel birdolympics-4-07
+    title: rows of games_competitor by games.season
+    rows (2):
+      Summer | 151967
+      Winter | 28285
+
+  panel birdolympics-4-08
+    title: rows of games by games.games_name the twelve most
+    rows (12):
+      2016 Summer | 1
+      2010 Winter | 1
+      1906 Summer | 1
+      1960 Winter | 1
+      1956 Winter | 1
+      1968 Summer | 1
+      1984 Winter | 1
+      1996 Summer | 1
+      1952 Summer | 1
+      1904 Summer | 1
+      2000 Summer | 1
+      1908 Summer | 1
+
+  panel birdolympics-4-09
+    title: rows of games_competitor per games
+    rows (50):
+      72 | 1
+      228 | 1
+      265 | 1
+      375 | 1
+      391 | 1
+      496 | 1
+      636 | 1
+      655 | 2
+      657 | 1
+      686 | 1
+      803 | 1
+      994 | 1
+      … 38 more rows
+
+  panel birdolympics-4-10
+    title: rows of competitor_event by games.games_year
+    rows (35):
+      1896-01-01 | 217
+      1900-01-01 | 1143
+      1904-01-01 | 1020
+      1906-01-01 | 989
+      1908-01-01 | 2437
+      1912-01-01 | 3875
+      1920-01-01 | 3437
+      1924-01-01 | 4540
+      1928-01-01 | 4590
+      1932-01-01 | 2964
+      1936-01-01 | 7156
+      1948-01-01 | 6257
+      … 23 more rows
+
+  panel birdolympics-4-11
+    title: rows of person by person.gender
+    rows (2):
+      M | 95225
+      F | 33629
+
+  panel birdolympics-4-12
+    title: rows of games_competitor per person
+    rows (10):
+      1 | 92150
+      2 | 25829
+      3 | 8015
+      4 | 2138
+      5 | 543
+      6 | 137
+      7 | 30
+      8 | 9
+      9 | 2
+      10 | 1
+
+  panel birdolympics-4-13
+    title: rows of games_competitor by person.gender
+    rows (2):
+      M | 131801
+      F | 48451
+
+  panel birdolympics-4-14
+    title: distinct games_competitor in competitor_event by medal.medal_name the twelve most
+    rows (4):
+      NA | 154464
+      Bronze | 12513
+      Silver | 12230
+      Gold | 11948
+
+  panel birdolympics-4-15
+    title: average of games_competitor.age by games.season
+    rows (2):
+      Summer | 25.9100791619233123
+      Winter | 25.1024217783277355
+
+  panel birdolympics-4-16
+    title: rows of competitor_event by medal.medal_name the twelve most
+    rows (4):
+      NA | 222153
+      Gold | 13106
+      Bronze | 12947
+      Silver | 12765
+
+  panel birdolympics-4-17
+    title: rows of competitor_event by medal.medal_name
+    rows (4):
+      NA | 222153
+      Gold | 13106
+      Bronze | 12947
+      Silver | 12765
+
+  panel birdolympics-4-18
+    title: rows of games_competitor by games.games_year
+    rows (35):
+      1896-01-01 | 72
+      1900-01-01 | 636
+      1904-01-01 | 496
+      1906-01-01 | 391
+      1908-01-01 | 1529
+      1912-01-01 | 2310
+      1920-01-01 | 2115
+      1924-01-01 | 2812
+      1928-01-01 | 2973
+      1932-01-01 | 1894
+      1936-01-01 | 4961
+      1948-01-01 | 4158
+      … 23 more rows
+
+  panel birdolympics-4-19
+    title: rows of competitor_event by games (by key) the twelve most
+    rows (12):
+      12 | 13815
+      13 | 13750
+      21 | 13685
+      20 | 13597
+      22 | 13440
+      2 | 12914
+      1 | 12904
+      29 | 11902
+      28 | 10176
+      26 | 9221
+      36 | 8580
+      27 | 8454
+
+  panel birdolympics-4-20
+    title: rows of games_city by city.city_name the twelve most
+    rows (12):
+      London | 3
+      Athina | 3
+      Sankt Moritz | 2
+      Lake Placid | 2
+      Paris | 2
+      Stockholm | 2
+      Los Angeles | 2
+      Innsbruck | 2
+      Amsterdam | 1
+      Sapporo | 1
+      St. Louis | 1
+      Tokyo | 1
+
+  panel birdolympics-4-21
+    title: rows of person_region by noc_region.region_name the twelve most
+    rows (12):
+      USA | 9225
+      UK | 5783
+      France | 5198
+      Germany | 4763
+      Canada | 4657
+      Italy | 4654
+      Japan | 3965
+      Sweden | 3781
+      Australia | 3747
+      Poland | 2957
+      Netherlands | 2926
+      Soviet Union | 2856
+
+  panel birdolympics-4-22
+    title: average of games_competitor.age by person.gender
+    rows (2):
+      M | 26.2855668773378047
+      F | 24.4171430930218159
+
+  panel birdolympics-4-23
+    title: rows of games_city by games (by key) the twelve most
+    rows (12):
+      33 | 2
+      4 | 1
+      40 | 1
+      51 | 1
+      41 | 1
+      46 | 1
+      34 | 1
+      43 | 1
+      32 | 1
+      10 | 1
+      9 | 1
+      29 | 1
+
+  panel birdolympics-4-24
+    title: rows of competitor_event by person (by key) the twelve most
+    rows (12):
+      77710 | 58
+      106296 | 39
+      115354 | 38
+      44875 | 32
+      89187 | 32
+      129196 | 32
+      53240 | 32
+      106156 | 31
+      76437 | 31
+      55047 | 31
+      83312 | 31
+      94406 | 30
+
+  panel birdolympics-4-25
+    title: sum of person.weight by person.gender
+    rows (2):
+      M | 5354829
+      F | 1826678
+
+  panel birdolympics-4-26
+    title: average of person.weight by person.gender
+    rows (2):
+      M | 56.2334365975321607
+      F | 54.3185345981147224
+
+  panel birdolympics-4-27
+    title: rows of competitor_event by person.gender
+    rows (2):
+      M | 187037
+      F | 73934
+
+  panel birdolympics-4-28
+    title: rows of competitor_event by games.season
+    rows (2):
+      Summer | 212837
+      Winter | 48134
+
+  panel birdolympics-4-29
+    title: average of games_competitor.age by games (by key) the twelve most
+    rows (12):
+      8 | 31.3727490996398559
+      17 | 29.0231362467866324
+      4 | 28.2515723270440252
+      43 | 28.2452830188679245
+      35 | 28.0769822940723634
+      3 | 27.8988179669030733
+      15 | 27.7506870828425599
+      30 | 27.4670227589410125
+      46 | 26.9626666666666667
+      47 | 26.8672334859385219
+      44 | 26.8528225806451613
+      14 | 26.6177489177489177
+
+  panel birdolympics-4-30
+    title: average of games_competitor.age by games.games_year
+    rows (35):
+      1896-01-01 | 23.1388888888888889
+      1900-01-01 | 28.2515723270440252
+      1904-01-01 | 26.8528225806451613
+      1906-01-01 | 25.6189258312020460
+      1908-01-01 | 26.8672334859385219
+      1912-01-01 | 26.6177489177489177
+      1920-01-01 | 27.8988179669030733
+      1924-01-01 | 27.7972972972972973
+      1928-01-01 | 27.9364278506559031
+      1932-01-01 | 30.7170010559662091
+      1936-01-01 | 27.1364644224954646
+      1948-01-01 | 28.6373256373256373
+      … 23 more rows
+
+  panel birdolympics-4-31
+    title: rows of event by sport.sport_name the twelve most
+    rows (12):
+      Athletics | 83
+      Shooting | 83
+      Swimming | 54
+      Cycling | 44
+      Sailing | 37
+      Wrestling | 30
+      Art Competitions | 29
+      Canoeing | 27
+      Gymnastics | 27
+      Archery | 25
+      Rowing | 23
+      Cross Country Skiing | 23
+
+
+=== database: birdeuropeanfootball1 ===
+European football league matches: divisions, the teams, the dates and the scores, as BIRD serves it. A fixture of round 1f.
+
+  panel birdeuropeanfootball1-4-01
+    title: rows of matchs by matchs.season
+    rows (16):
+      2006-01-01 | 7786
+      2007-01-01 | 7810
+      2008-01-01 | 7810
+      2009-01-01 | 7810
+      2010-01-01 | 7634
+      2011-01-01 | 7744
+      2012-01-01 | 7744
+      2013-01-01 | 7744
+      2014-01-01 | 7810
+      2015-01-01 | 7875
+      2016-01-01 | 7810
+      2017-01-01 | 7810
+      … 4 more rows
+
+  panel birdeuropeanfootball1-4-02
+    title: sum of matchs.FTAG by matchs.FTR
+    rows (3):
+      A | 79520
+      D | 31982
+      H | 29722
+
+  panel birdeuropeanfootball1-4-03
+    title: sum of matchs.FTHG by matchs.Date split by matchs.FTR
+    rows (51):
+      2005-01-01 | A | 608
+      2005-01-01 | H | 4048
+      2005-01-01 | D | 1044
+      2006-01-01 | H | 8160
+      2006-01-01 | A | 1116
+      2006-01-01 | D | 1966
+      2007-01-01 | H | 8065
+      2007-01-01 | D | 1925
+      2007-01-01 | A | 1184
+      2008-01-01 | A | 1241
+      2008-01-01 | H | 8375
+      2008-01-01 | D | 1967
+      … 39 more rows
+
+  panel birdeuropeanfootball1-4-04
+    title: rows of divisions by divisions.country
+    rows (11):
+      England | 5
+      Scotland | 3
+      France | 2
+      Spain | 2
+      Italy | 2
+      Deutschland | 2
+      Turkey | 1
+      Belgium | 1
+      Netherlands | 1
+      Greece | 1
+      Portugal | 1
+
+  panel birdeuropeanfootball1-4-05
+    title: average of matchs.FTHG by matchs.season
+    rows (16):
+      2006-01-01 | 1.4364243513999486
+      2007-01-01 | 1.4421254801536492
+      2008-01-01 | 1.4804097311139565
+      2009-01-01 | 1.4603072983354673
+      2010-01-01 | 1.4753733298401886
+      2011-01-01 | 1.5227272727272727
+      2012-01-01 | 1.5264721074380165
+      2013-01-01 | 1.5114927685950413
+      2014-01-01 | 1.4983354673495519
+      2015-01-01 | 1.4665396825396825
+      2016-01-01 | 1.4641485275288092
+      2017-01-01 | 1.4877080665813060
+      … 4 more rows
+
+  panel birdeuropeanfootball1-4-06
+    title: average of matchs.FTAG by matchs.Date
+    rows (17):
+      2005-01-01 | 1.0800000000000000
+      2006-01-01 | 1.0641615541922290
+      2007-01-01 | 1.1177238318976768
+      2008-01-01 | 1.1026791436995257
+      2009-01-01 | 1.1084477844001037
+      2010-01-01 | 1.1027034190299496
+      2011-01-01 | 1.1752590346221885
+      2012-01-01 | 1.2041127189642041
+      2013-01-01 | 1.1660186625194401
+      2014-01-01 | 1.1367488443759630
+      2015-01-01 | 1.1425148190187918
+      2016-01-01 | 1.1413295542385983
+      … 5 more rows
+
+  panel birdeuropeanfootball1-4-07
+    title: average of matchs.FTAG by divisions.country
+    rows (12):
+      ∅ | 1.3447777376219733
+      Netherlands | 1.3063044379925342
+      Scotland | 1.2597161572052402
+      Deutschland | 1.2309027777777778
+      Belgium | 1.1945788964181994
+      Turkey | 1.1704180064308682
+      England | 1.16103189769219462002
+      Italy | 1.09993933879284197756
+      Portugal | 1.0934065934065934
+      Spain | 1.05865298840321141838
+      France | 1.02274437662011873903
+      Greece | 0.93375314861460957179
+
+  panel birdeuropeanfootball1-4-08
+    title: average of matchs.FTHG by divisions.name the twelve most
+    rows (12):
+      Eredivisie | 1.7764413106594774
+      Bundesliga | 1.6337826797385621
+      Scottish League One | 1.6103286384976526
+      Division 1A | 1.5847047434656341
+      ∅ | 1.5637874954824720
+      LaLiga | 1.5498355263157895
+      2. Bundesliga | 1.5294117647058824
+      Premier League | 1.5259868421052632
+      Seria A | 1.5197368421052632
+      Süper Lig | 1.5104501607717042
+      National League | 1.4806019280507877
+      Scottish Championship | 1.4645415472779370
+
+  panel birdeuropeanfootball1-4-09
+    title: rows of matchs by divisions.country
+    rows (12):
+      England | 40818
+      Spain | 13452
+      Italy | 13188
+      France | 11959
+      Deutschland | 9792
+      Scotland | 9160
+      Turkey | 4976
+      Netherlands | 4822
+      Portugal | 4368
+      Belgium | 4132
+      Greece | 3970
+      ∅ | 2767
+
+  panel birdeuropeanfootball1-4-10
+    title: sum of matchs.FTHG by divisions.country
+    rows (12):
+      England | 59240
+      Spain | 19597
+      Italy | 19055
+      France | 16529
+      Deutschland | 15487
+      Scotland | 13728
+      Netherlands | 8566
+      Turkey | 7516
+      Belgium | 6548
+      Portugal | 6095
+      Greece | 5431
+      ∅ | 4327
+
+  panel birdeuropeanfootball1-4-11
+    title: rows of matchs by matchs.FTR
+    rows (3):
+      H | 54949
+      A | 35661
+      D | 32794
+
+  panel birdeuropeanfootball1-4-12
+    title: average of matchs.FTHG by divisions.country
+    rows (12):
+      Netherlands | 1.7764413106594774
+      Belgium | 1.5847047434656341
+      Deutschland | 1.5815972222222222
+      ∅ | 1.5637874954824720
+      Turkey | 1.5104501607717042
+      Scotland | 1.4986899563318777
+      Spain | 1.45680939637228664883
+      England | 1.4513204958596698
+      Italy | 1.44487412799514710343
+      Portugal | 1.3953754578754579
+      France | 1.38213897483067146082
+      Greece | 1.3680100755667506
+
+  panel birdeuropeanfootball1-4-13
+    title: sum of matchs.FTHG by matchs.FTR
+    rows (3):
+      H | 129573
+      D | 31982
+      A | 20564
+
+  panel birdeuropeanfootball1-4-14
+    title: rows of matchs by matchs.season split by matchs.FTR
+    rows (48):
+      2006-01-01 | D | 2163
+      2006-01-01 | A | 2127
+      2006-01-01 | H | 3496
+      2007-01-01 | D | 2036
+      2007-01-01 | H | 3608
+      2007-01-01 | A | 2166
+      2008-01-01 | H | 3530
+      2008-01-01 | D | 2107
+      2008-01-01 | A | 2173
+      2009-01-01 | A | 2192
+      2009-01-01 | H | 3529
+      2009-01-01 | D | 2089
+      … 36 more rows
+
+  panel birdeuropeanfootball1-4-15
+    title: sum of matchs.FTAG by divisions.country
+    rows (12):
+      England | 47391
+      Italy | 14506
+      Spain | 14241
+      France | 12231
+      Deutschland | 12053
+      Scotland | 11539
+      Netherlands | 6299
+      Turkey | 5824
+      Belgium | 4936
+      Portugal | 4776
+      ∅ | 3721
+      Greece | 3707
+
+  panel birdeuropeanfootball1-4-16
+    title: sum of matchs.FTAG by divisions.name the twelve most
+    rows (12):
+      National League | 10215
+      EFL League One | 10122
+      EFL League Two | 10031
+      EFL Championship | 9972
+      Seria B | 7395
+      LaLiga 2 | 7333
+      Seria A | 7111
+      Premier League | 7051
+      LaLiga | 6908
+      Eredivisie | 6299
+      Bundesliga | 6277
+      Ligue 1 | 6274
+
+  panel birdeuropeanfootball1-4-17
+    title: average of matchs.FTAG by divisions.name the twelve most
+    rows (12):
+      Scottish League One | 1.3860599494402311
+      ∅ | 1.3447777376219733
+      Eredivisie | 1.3063044379925342
+      Bundesliga | 1.2820669934640523
+      Scottish Championship | 1.2263610315186246
+      National League | 1.2009169997648719
+      Division 1A | 1.1945788964181994
+      Scottish Premiership | 1.1883856626840789
+      2. Bundesliga | 1.1797385620915033
+      Süper Lig | 1.1704180064308682
+      Seria A | 1.1695723684210526
+      EFL League One | 1.1661290322580645
+
+  panel birdeuropeanfootball1-4-18
+    title: rows of matchs by divisions.name the twelve most
+    rows (12):
+      EFL Championship | 8832
+      EFL League Two | 8720
+      EFL League One | 8680
+      National League | 8506
+      LaLiga 2 | 7372
+      Seria B | 7108
+      LaLiga | 6080
+      Seria A | 6080
+      Premier League | 6080
+      Ligue 2 | 5980
+      Ligue 1 | 5979
+      Süper Lig | 4976
+
+  panel birdeuropeanfootball1-4-19
+    title: sum of matchs.FTHG by matchs.Date
+    rows (17):
+      2005-01-01 | 5700
+      2006-01-01 | 11242
+      2007-01-01 | 11174
+      2008-01-01 | 11583
+      2009-01-01 | 11217
+      2010-01-01 | 11304
+      2011-01-01 | 11991
+      2012-01-01 | 12156
+      2013-01-01 | 11551
+      2014-01-01 | 11475
+      2015-01-01 | 11563
+      2016-01-01 | 11455
+      … 5 more rows
+
+  panel birdeuropeanfootball1-4-20
+    title: average of matchs.FTHG by matchs.FTR
+    rows (3):
+      H | 2.3580592913428816
+      D | 0.97523937305604683784
+      A | 0.57665236532907097389
+
+  panel birdeuropeanfootball1-4-21
+    title: rows of matchs by matchs.Date
+    rows (17):
+      2005-01-01 | 3925
+      2006-01-01 | 7824
+      2007-01-01 | 7662
+      2008-01-01 | 7801
+      2009-01-01 | 7718
+      2010-01-01 | 7546
+      2011-01-01 | 7914
+      2012-01-01 | 7878
+      2013-01-01 | 7716
+      2014-01-01 | 7788
+      2015-01-01 | 7929
+      2016-01-01 | 7762
+      … 5 more rows
+
+  panel birdeuropeanfootball1-4-22
+    title: sum of matchs.FTHG by divisions.name the twelve most
+    rows (12):
+      EFL Championship | 12699
+      National League | 12594
+      EFL League One | 12487
+      EFL League Two | 12182
+      LaLiga 2 | 10174
+      Seria B | 9815
+      LaLiga | 9423
+      Premier League | 9278
+      Seria A | 9240
+      Eredivisie | 8566
+      Ligue 1 | 8439
+      Ligue 2 | 8090
+
+  panel birdeuropeanfootball1-4-23
+    title: sum of matchs.FTAG by matchs.season
+    rows (16):
+      2006-01-01 | 8319
+      2007-01-01 | 8477
+      2008-01-01 | 8714
+      2009-01-01 | 8587
+      2010-01-01 | 8444
+      2011-01-01 | 8901
+      2012-01-01 | 9059
+      2013-01-01 | 9302
+      2014-01-01 | 8977
+      2015-01-01 | 8974
+      2016-01-01 | 9009
+      2017-01-01 | 8939
+      … 4 more rows
+
+  panel birdeuropeanfootball1-4-24
+    title: sum of matchs.FTAG by matchs.Date
+    rows (17):
+      2005-01-01 | 4239
+      2006-01-01 | 8326
+      2007-01-01 | 8564
+      2008-01-01 | 8602
+      2009-01-01 | 8555
+      2010-01-01 | 8321
+      2011-01-01 | 9301
+      2012-01-01 | 9486
+      2013-01-01 | 8997
+      2014-01-01 | 8853
+      2015-01-01 | 9059
+      2016-01-01 | 8859
+      … 5 more rows
+
+  panel birdeuropeanfootball1-4-25
+    title: average of matchs.FTHG by matchs.Date split by matchs.FTR
+    rows (51):
+      2005-01-01 | A | 0.56296296296296296296
+      2005-01-01 | H | 2.3184421534936999
+      2005-01-01 | D | 0.94995450409463148317
+      2006-01-01 | H | 2.2793296089385475
+      2006-01-01 | A | 0.52369779446269357109
+      2006-01-01 | D | 0.93043066729768102224
+      2007-01-01 | H | 2.3289055732024256
+      2007-01-01 | D | 0.94132029339853300733
+      2007-01-01 | A | 0.54967502321262766945
+      2008-01-01 | A | 0.57936507936507936508
+      2008-01-01 | H | 2.3302726766833612
+      2008-01-01 | D | 0.95254237288135593220
+      … 39 more rows
+
+  panel birdeuropeanfootball1-4-26
+    title: average of matchs.FTAG by matchs.season
+    rows (16):
+      2006-01-01 | 1.0684562034420755
+      2007-01-01 | 1.0854033290653009
+      2008-01-01 | 1.1157490396927017
+      2009-01-01 | 1.0994878361075544
+      2010-01-01 | 1.1061042703694001
+      2011-01-01 | 1.1494059917355372
+      2012-01-01 | 1.1698088842975207
+      2013-01-01 | 1.2011880165289256
+      2014-01-01 | 1.1494238156209987
+      2015-01-01 | 1.1395555555555556
+      2016-01-01 | 1.1535211267605634
+      2017-01-01 | 1.1445582586427657
+      … 4 more rows
+
+  panel birdeuropeanfootball1-4-27
+    title: average of matchs.FTHG by matchs.Date
+    rows (17):
+      2005-01-01 | 1.4522292993630573
+      2006-01-01 | 1.4368609406952965
+      2007-01-01 | 1.4583659618898460
+      2008-01-01 | 1.4848096397897705
+      2009-01-01 | 1.4533557916558694
+      2010-01-01 | 1.4980121918897429
+      2011-01-01 | 1.5151630022744503
+      2012-01-01 | 1.5430312261995430
+      2013-01-01 | 1.4970191809227579
+      2014-01-01 | 1.4734206471494607
+      2015-01-01 | 1.4583175684197251
+      2016-01-01 | 1.4757794382891007
+      … 5 more rows
+
+  panel birdeuropeanfootball1-4-28
+    title: average of matchs.FTAG by matchs.FTR
+    rows (3):
+      A | 2.2298869913911556
+      D | 0.97523937305604683784
+      H | 0.54090156326775737502
+
+  panel birdeuropeanfootball1-4-29
+    title: rows of matchs by matchs.Date split by matchs.FTR
+    rows (51):
+      2005-01-01 | A | 1080
+      2005-01-01 | H | 1746
+      2005-01-01 | D | 1099
+      2006-01-01 | H | 3580
+      2006-01-01 | A | 2131
+      2006-01-01 | D | 2113
+      2007-01-01 | H | 3463
+      2007-01-01 | D | 2045
+      2007-01-01 | A | 2154
+      2008-01-01 | A | 2142
+      2008-01-01 | H | 3594
+      2008-01-01 | D | 2065
+      … 39 more rows
+
+  panel birdeuropeanfootball1-4-30
+    title: sum of matchs.FTHG by matchs.season
+    rows (16):
+      2006-01-01 | 11184
+      2007-01-01 | 11263
+      2008-01-01 | 11562
+      2009-01-01 | 11405
+      2010-01-01 | 11263
+      2011-01-01 | 11792
+      2012-01-01 | 11821
+      2013-01-01 | 11705
+      2014-01-01 | 11702
+      2015-01-01 | 11549
+      2016-01-01 | 11435
+      2017-01-01 | 11619
+      … 4 more rows
+
+  panel birdeuropeanfootball1-4-31
+    title: largest tables, estimated rows
+    rows (2):
+      matchs | 123404
+      divisions | 21

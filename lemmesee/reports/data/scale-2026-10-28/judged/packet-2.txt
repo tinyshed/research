@@ -1,0 +1,2319 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: birdcardgames ===
+Magic: The Gathering's cards, their sets, legalities, rulings and foreign-language data, as BIRD serves it. A fixture of round 1f.
+
+  panel birdcardgames-1-01
+    title: rows of foreign_data by foreign_data.language
+    rows (16):
+      Japanese | 31226
+      French | 29301
+      German | 28891
+      Italian | 28698
+      Spanish | 28639
+      Portuguese (Brazil) | 25641
+      Chinese Simplified | 20106
+      Russian | 15878
+      Chinese Traditional | 11106
+      Korean | 9692
+      Phyrexian | 3
+      Ancient Greek | 1
+      … 4 more rows
+
+  panel birdcardgames-1-02
+    title: rows of set_translations by set_translations.language
+    rows (10):
+      French | 121
+      Portuguese (Brazil) | 121
+      German | 121
+      Italian | 121
+      Chinese Traditional | 121
+      Spanish | 121
+      Korean | 121
+      Japanese | 121
+      Chinese Simplified | 121
+      Russian | 121
+
+  panel birdcardgames-1-03
+    title: average of sets.totalSetSize by sets.type the twelve most
+    rows (12):
+      draft_innovation | 359.5000000000000000
+      core | 326.7083333333333333
+      masters | 294.3478260869565217
+      commander | 275.3571428571428571
+      expansion | 227.4597701149425287
+      treasure_chest | 215.5000000000000000
+      planechase | 107.8333333333333333
+      box | 97.1481481481481481
+      duel_deck | 72.0370370370370370
+      funny | 70.6363636363636364
+      starter | 69.5625000000000000
+      memorabilia | 66.9705882352941176
+
+  panel birdcardgames-1-04
+    title: sum of sets.totalSetSize by sets.isFoilOnly
+    rows (2):
+      0 | 55070
+      1 | 1468
+
+  panel birdcardgames-1-05
+    title: sum of sets.baseSetSize by sets.type the twelve most
+    rows (12):
+      expansion | 18979
+      core | 7444
+      masters | 6698
+      promo | 5257
+      commander | 3855
+      box | 2623
+      memorabilia | 2277
+      duel_deck | 1945
+      draft_innovation | 1795
+      starter | 1106
+      funny | 748
+      planechase | 647
+
+  panel birdcardgames-1-06
+    title: rows of cards by cards.borderColor
+    rows (5):
+      black | 49729
+      white | 5017
+      gold | 1244
+      silver | 591
+      borderless | 241
+
+  panel birdcardgames-1-07
+    title: rows of sets by sets.releaseDate
+    rows (29):
+      1993-01-01 | 6
+      1994-01-01 | 9
+      1995-01-01 | 9
+      1996-01-01 | 9
+      1997-01-01 | 11
+      1998-01-01 | 12
+      1999-01-01 | 18
+      2000-01-01 | 13
+      2001-01-01 | 14
+      2002-01-01 | 12
+      2003-01-01 | 16
+      2004-01-01 | 14
+      … 17 more rows
+
+  panel birdcardgames-1-08
+    title: sum of sets.totalSetSize by sets.block the twelve most
+    rows (12):
+      ∅ | 26473
+      Core Set | 7471
+      Commander | 3808
+      Guilds of Ravnica | 1040
+      Khans of Tarkir | 903
+      Ice Age | 801
+      Time Spiral | 773
+      Ixalan | 725
+      Return to Ravnica | 704
+      Battle for Zendikar | 688
+      Amonkhet | 686
+      Mirage | 685
+
+  panel birdcardgames-1-09
+    title: sum of sets.baseSetSize by sets.releaseDate
+    rows (29):
+      1993-01-01 | 1581
+      1994-01-01 | 1641
+      1995-01-01 | 1635
+      1996-01-01 | 1014
+      1997-01-01 | 1565
+      1998-01-01 | 1118
+      1999-01-01 | 1628
+      2000-01-01 | 907
+      2001-01-01 | 1228
+      2002-01-01 | 2144
+      2003-01-01 | 1245
+      2004-01-01 | 923
+      … 17 more rows
+
+  panel birdcardgames-1-10
+    title: average of sets.totalSetSize by sets.releaseDate
+    rows (29):
+      1993-01-01 | 265.8333333333333333
+      1994-01-01 | 182.7777777777777778
+      1995-01-01 | 181.7777777777777778
+      1996-01-01 | 112.7777777777777778
+      1997-01-01 | 143.3636363636363636
+      1998-01-01 | 93.1666666666666667
+      1999-01-01 | 90.5555555555555556
+      2000-01-01 | 69.7692307692307692
+      2001-01-01 | 88.0714285714285714
+      2002-01-01 | 178.8333333333333333
+      2003-01-01 | 78.2500000000000000
+      2004-01-01 | 67.9285714285714286
+      … 17 more rows
+
+  panel birdcardgames-1-11
+    title: sum of sets.totalSetSize by sets.type the twelve most
+    rows (12):
+      expansion | 19789
+      core | 7841
+      masters | 6770
+      promo | 5262
+      commander | 3855
+      box | 2623
+      memorabilia | 2277
+      draft_innovation | 2157
+      duel_deck | 1945
+      starter | 1113
+      funny | 777
+      planechase | 647
+
+  panel birdcardgames-1-12
+    title: sum of sets.totalSetSize by sets.type
+    rows (20):
+      expansion | 19789
+      core | 7841
+      masters | 6770
+      promo | 5262
+      commander | 3855
+      box | 2623
+      memorabilia | 2277
+      draft_innovation | 2157
+      duel_deck | 1945
+      starter | 1113
+      funny | 777
+      planechase | 647
+      … 8 more rows
+
+  panel birdcardgames-1-13
+    title: rows of sets by sets.isOnlineOnly
+    rows (2):
+      0 | 525
+      1 | 26
+
+  panel birdcardgames-1-14
+    title: average of cards.convertedManaCost by cards.availability
+    rows (10):
+      paper | 95.70677163160094
+      dreamcast | 4
+      mtgo,paper | 3.065909894339919
+      arena,mtgo,paper | 3.019310045563029
+      shandalar | 3
+      ∅ | 3
+      arena,paper | 2.8959183673469386
+      mtgo | 2.8896402488504194
+      arena,mtgo | 2.7857142857142856
+      arena | 2.7727727727727727
+
+  panel birdcardgames-1-15
+    title: rows of rulings by rulings.date
+    rows (18):
+      2004-01-01 | 6858
+      2005-01-01 | 810
+      2006-01-01 | 935
+      2007-01-01 | 1735
+      2008-01-01 | 4376
+      2009-01-01 | 4371
+      2010-01-01 | 2207
+      2011-01-01 | 2614
+      2012-01-01 | 1288
+      2013-01-01 | 7309
+      2014-01-01 | 5232
+      2015-01-01 | 4342
+      … 6 more rows
+
+  panel birdcardgames-1-16
+    title: sum of sets.totalSetSize by sets.releaseDate
+    rows (29):
+      1993-01-01 | 1595
+      1994-01-01 | 1645
+      1995-01-01 | 1636
+      1996-01-01 | 1015
+      1997-01-01 | 1577
+      1998-01-01 | 1118
+      1999-01-01 | 1630
+      2000-01-01 | 907
+      2001-01-01 | 1233
+      2002-01-01 | 2146
+      2003-01-01 | 1252
+      2004-01-01 | 951
+      … 17 more rows
+
+  panel birdcardgames-1-17
+    title: rows of rulings by rulings.uuid the twelve most
+    rows (12):
+      a9290322-839e-5942-a907-bbe6349cb22c | 27
+      8ae00a8c-0670-5a96-9cf4-49f375a903c2 | 27
+      23a64ed6-aeda-5607-8cc9-35ae7ac6a0ce | 27
+      f2ef8f0a-ea29-5750-9f86-f4ee22b1af7e | 27
+      8b7ef568-f1f0-560c-a8a8-03099f8768ff | 25
+      f62e6139-9a0e-52a9-8b7d-25eff991d07a | 25
+      ae460aa6-efa3-598e-8323-aff881dc1632 | 25
+      85e6e583-9e48-5c0c-a593-2d023eafa82c | 25
+      396c85de-22c4-5fd2-81df-6c3b97ea0cc8 | 25
+      d9f7d211-82a0-5088-95f2-ec4fdb8b8462 | 25
+      e8cad79a-2808-52a0-9504-469eab1d2486 | 25
+      ee60e090-2710-5d4a-b444-2e5e8209ef00 | 25
+
+  panel birdcardgames-1-18
+    title: rows of sets by sets.isNonFoilOnly
+    rows (2):
+      0 | 445
+      1 | 106
+
+  panel birdcardgames-1-19
+    title: rows of cards by cards.types the twelve most
+    rows (12):
+      Creature | 24229
+      Instant | 6739
+      Land | 6573
+      Sorcery | 6328
+      Enchantment | 5652
+      Artifact | 3986
+      Artifact,Creature | 1617
+      Planeswalker | 835
+      Enchantment,Creature | 256
+      Plane | 162
+      Vanguard | 118
+      Scheme | 70
+
+  panel birdcardgames-1-20
+    title: rows of cards by cards.colorIdentity the twelve most
+    rows (12):
+      G | 8802
+      B | 8565
+      R | 8485
+      U | 8375
+      W | 8327
+      ∅ | 6224
+      G,W | 784
+      G,R | 752
+      B,R | 733
+      B,U | 724
+      U,W | 722
+      B,G | 649
+
+  panel birdcardgames-1-21
+    title: sum of sets.totalSetSize by sets.name the twelve most
+    rows (12):
+      Mystery Booster | 1694
+      Magic Online Promos | 1323
+      Salvat 2005 | 720
+      Commander Legends | 718
+      Tenth Edition | 508
+      Jumpstart | 496
+      Fifth Edition | 460
+      Kaldheim | 405
+      Core Set 2021 | 397
+      Throne of Eldraine | 397
+      Zendikar Rising | 392
+      Ikoria: Lair of Behemoths | 388
+
+  panel birdcardgames-1-22
+    title: rows of cards by cards.availability
+    rows (10):
+      mtgo,paper | 25459
+      paper | 21531
+      arena,mtgo,paper | 4609
+      mtgo | 3697
+      arena | 999
+      arena,paper | 490
+      arena,mtgo | 14
+      shandalar | 12
+      dreamcast | 10
+      ∅ | 1
+
+  panel birdcardgames-1-23
+    title: rows of sets by sets.type the twelve most
+    rows (12):
+      promo | 234
+      expansion | 87
+      memorabilia | 34
+      duel_deck | 27
+      box | 27
+      core | 24
+      masters | 23
+      starter | 16
+      commander | 14
+      from_the_vault | 11
+      funny | 11
+      token | 10
+
+  panel birdcardgames-1-24
+    title: rows of sets by sets.block the twelve most
+    rows (12):
+      ∅ | 279
+      Core Set | 26
+      Judge Gift Cards | 23
+      Commander | 23
+      Friday Night Magic | 19
+      Theros | 12
+      Magic Player Rewards | 11
+      Arena League | 9
+      Khans of Tarkir | 9
+      Guilds of Ravnica | 7
+      Time Spiral | 7
+      Alara | 6
+
+  panel birdcardgames-1-25
+    title: sum of sets.totalSetSize by sets.isNonFoilOnly
+    rows (2):
+      0 | 43856
+      1 | 12682
+
+  panel birdcardgames-1-26
+    title: rows of sets by sets.isFoilOnly
+    rows (2):
+      0 | 384
+      1 | 167
+
+  panel birdcardgames-1-27
+    title: rows of sets by sets.name the twelve most
+    rows (12):
+      World Championship Decks 2003 | 1
+      Magic 2014 | 1
+      Portal | 1
+      M19 Gift Pack | 1
+      Morningtide Promos | 1
+      Legions | 1
+      Planar Chaos | 1
+      Dragon Con | 1
+      Magic Player Rewards 2007 | 1
+      Friday Night Magic 2010 | 1
+      Legacy Championship | 1
+      Eldritch Moon Promos | 1
+
+  panel birdcardgames-1-28
+    title: sum of sets.totalSetSize by sets.mcmName the twelve most
+    rows (12):
+      ∅ | 17559
+      Mystery Booster | 1694
+      Commander Legends | 718
+      Tenth Edition | 508
+      Jumpstart | 496
+      Fifth Edition | 460
+      Kaldheim | 405
+      Core 2021 | 397
+      Throne of Eldraine | 397
+      Zendikar Rising | 392
+      Ikoria: Lair of Behemoths | 388
+      Double Masters | 384
+
+  panel birdcardgames-1-29
+    title: rows of cards by cards.colors the twelve most
+    rows (12):
+      ∅ | 12540
+      G | 8066
+      B | 7807
+      R | 7793
+      W | 7681
+      U | 7630
+      G,W | 505
+      G,R | 492
+      U,W | 471
+      B,R | 468
+      B,U | 458
+      B,G | 424
+
+  panel birdcardgames-1-30
+    title: rows of legalities by legalities.format the twelve most
+    rows (12):
+      legacy | 55576
+      commander | 55576
+      vintage | 55576
+      duel | 55544
+      modern | 40774
+      penny | 38159
+      pauper | 22784
+      pioneer | 22346
+      premodern | 20721
+      historic | 16568
+      gladiator | 16568
+      brawl | 7698
+
+  panel birdcardgames-1-31
+    title: rows of cards by cards.rarity
+    rows (4):
+      common | 20745
+      rare | 17626
+      uncommon | 15251
+      mythic | 3200
+
+  panel birdcardgames-1-32
+    title: sum of sets.totalSetSize by sets.isOnlineOnly
+    rows (2):
+      0 | 51870
+      1 | 4668
+
+
+=== database: birdcoinmarketcap ===
+Cryptocurrencies and their daily market history: price, volume and market capitalisation, as BIRD serves it. A fixture of round 1f.
+
+  panel birdcoinmarketcap-1-01
+    title: sum of historical.price × historical.volume_24h by historical.date
+    rows (9):
+      2013-01-01 | 105629091613.96703
+      2014-01-01 | 5629269691211.503
+      2015-01-01 | 3734750290085.3613
+      2016-01-01 | 19095863020994.973
+      2017-01-01 | 9.115417012950638e+15
+      2018-01-01 | 1.9630113297511776e+16
+      2019-01-01 | 5.075965457992848e+16
+      2020-01-01 | 2.533418445711959e+19
+      2021-01-01 | 5.6615463288285683e+17
+
+  panel birdcoinmarketcap-1-02
+    title: sum of historical.total_supply by coins.status
+    rows (4):
+      untracked | 1.3768008204030644e+27
+      active | 1.6056337122701654e+26
+      inactive | 5.15797982132909e+17
+      extinct | 24174494915086.348
+
+  panel birdcoinmarketcap-1-03
+    title: average of historical.volume_24h by historical.date
+    rows (9):
+      2013-01-01 | 25988.087827348678
+      2014-01-01 | 111614.14221937704
+      2015-01-01 | 72749.97673869226
+      2016-01-01 | 207444.25733958487
+      2017-01-01 | 6062806.621475944
+      2018-01-01 | 10589551.757798478
+      2019-01-01 | 24619532.36763345
+      2020-01-01 | 2636168090.0784883
+      2021-01-01 | 61733576.71697089
+
+  panel birdcoinmarketcap-1-04
+    title: average of historical.circulating_supply by historical.date
+    rows (9):
+      2013-01-01 | 2137176309.6673484
+      2014-01-01 | 6348570896.117068
+      2015-01-01 | 5740237866.465923
+      2016-01-01 | 5404163378.172298
+      2017-01-01 | 5239962820.478092
+      2018-01-01 | 19262611695.504402
+      2019-01-01 | 25681668246.088192
+      2020-01-01 | 3.447451071973418e+15
+      2021-01-01 | 8504313451923.055
+
+  panel birdcoinmarketcap-1-05
+    title: sum of historical.max_supply by historical.date
+    rows (9):
+      2013-01-01 | 15257065048010
+      2014-01-01 | 148931749864974
+      2015-01-01 | 261464705957937
+      2016-01-01 | 342725568123819
+      2017-01-01 | 2.693958505290645e+15
+      2018-01-01 | 7.7819668992768e+15
+      2019-01-01 | 8.798446401059788e+15
+      2020-01-01 | 2.436244558104277e+17
+      2021-01-01 | 5.7636263556629765e+20
+
+  panel birdcoinmarketcap-1-06
+    title: average of historical.total_supply by coins.name the twelve most
+    rows (12):
+      UseCoin | ∅
+      New Universal Dollar | ∅
+      MantisCoin | ∅
+      RevoCoin | ∅
+      Aegis | ∅
+      BitLion | ∅
+      Latium old | ∅
+      Bitmoney [OLD] | ∅
+      eKita | ∅
+      ElephantCoin | ∅
+      Pennies | ∅
+      Skynet | ∅
+
+  panel birdcoinmarketcap-1-07
+    title: average of historical.price by historical.date
+    rows (9):
+      2013-01-01 | 8.232053687478844
+      2014-01-01 | 119.72442218056715
+      2015-01-01 | 8.796644607541655
+      2016-01-01 | 29.02976898364021
+      2017-01-01 | 326.28464083948137
+      2018-01-01 | 341.2917565444012
+      2019-01-01 | 37.08568544195569
+      2020-01-01 | 921005.9463538313
+      2021-01-01 | 358.2293021822555
+
+  panel birdcoinmarketcap-1-08
+    title: rows of historical by coins.name the twelve most
+    rows (12):
+      Bitcoin | 3020
+      Litecoin | 3020
+      Namecoin | 3020
+      Peercoin | 3019
+      Feathercoin | 3015
+      Terracoin | 3005
+      Digitalcoin | 2977
+      Goldcoin | 2966
+      Primecoin | 2946
+      Anoncoin | 2926
+      XRP | 2922
+      Ixcoin | 2916
+
+  panel birdcoinmarketcap-1-09
+    title: rows of historical by coins.category
+    rows (3):
+      token | 2418483
+      coin | 2008136
+      ∅ | 15353
+
+  panel birdcoinmarketcap-1-10
+    title: sum of historical.low by historical.date
+    rows (9):
+      2013-01-01 | 68189.60764521682
+      2014-01-01 | 12177483.38936828
+      2015-01-01 | 1655590.325181402
+      2016-01-01 | 5929499.354695221
+      2017-01-01 | 87499282.09975117
+      2018-01-01 | 188999517.21933186
+      2019-01-01 | 28436342.69529466
+      2020-01-01 | 931471054196.0962
+      2021-01-01 | 330746531.20828485
+
+  panel birdcoinmarketcap-1-11
+    title: sum of historical.volume_24h by historical.date
+    rows (9):
+      2013-01-01 | 235504051.89143372
+      2014-01-01 | 13385549233.943245
+      2015-01-01 | 14954703468.335777
+      2016-01-01 | 45559737573.94898
+      2017-01-01 | 2082125426787.002
+      2018-01-01 | 6630086586902.357
+      2019-01-01 | 20198356745053.902
+      2020-01-01 | 2.8657361520348955e+15
+      2021-01-01 | 62398385604635.266
+
+  panel birdcoinmarketcap-1-12
+    title: rows of historical by historical.date
+    rows (9):
+      2013-01-01 | 9062
+      2014-01-01 | 119927
+      2015-01-01 | 205563
+      2016-01-01 | 219624
+      2017-01-01 | 343426
+      2018-01-01 | 626097
+      2019-01-01 | 820420
+      2020-01-01 | 1087084
+      2021-01-01 | 1010769
+
+  panel birdcoinmarketcap-1-13
+    title: sum of historical.total_supply by coins.name the twelve most
+    rows (12):
+      New Universal Dollar | ∅
+      UseCoin | ∅
+      MantisCoin | ∅
+      RevoCoin | ∅
+      Latium old | ∅
+      BitLion | ∅
+      Bitmoney [OLD] | ∅
+      ElephantCoin | ∅
+      eKita | ∅
+      Aegis | ∅
+      Pennies | ∅
+      Skynet | ∅
+
+  panel birdcoinmarketcap-1-14
+    title: sum of historical.circulating_supply by historical.date
+    rows (9):
+      2013-01-01 | 19367091718205.51
+      2014-01-01 | 729127018848151.1
+      2015-01-01 | 1.06825826694931e+15
+      2016-01-01 | 999980987333623.2
+      2017-01-01 | 1.421350394980323e+15
+      2018-01-01 | 9.818519170820802e+15
+      2019-01-01 | 1.7682753127488548e+16
+      2020-01-01 | 3.190229852591059e+21
+      2021-01-01 | 8.595896403486789e+18
+
+  panel birdcoinmarketcap-1-15
+    title: sum of historical.price × historical.volume_24h by coins.name the twelve most
+    rows (12):
+      Bitcoin | 2.4322708718102008e+19
+      Travel1Click | 1.61549122966079e+18
+      Ethereum | 1.7395751192690128e+16
+      Uquid Coin | 9.556595085704766e+15
+      yearn.finance | 5.862179731356984e+15
+      Wrapped Bitcoin | 2.1513627501057305e+15
+      Bitcoin Cash | 1.666265029834619e+15
+      Huobi BTC | 1.0010565319746908e+15
+      Bitcoin BEP2 | 727119003126069
+      WETH | 683007278895059
+      Litecoin | 454593610288839.3
+      Binance Coin | 264816006088116.8
+
+  panel birdcoinmarketcap-1-16
+    title: sum of historical.total_supply by historical.date
+    rows (9):
+      2013-01-01 | 33194407942205.51
+      2014-01-01 | 826515720888666.5
+      2015-01-01 | 1.171452198687407e+15
+      2016-01-01 | 1.3310246197611133e+17
+      2017-01-01 | 2.8984059126000134e+17
+      2018-01-01 | 1.2173237278244531e+17
+      2019-01-01 | 1.6055959629736495e+26
+      2020-01-01 | 1.376804217230308e+27
+      2021-01-01 | 3.7807073460873724e+20
+
+  panel birdcoinmarketcap-1-17
+    title: sum of historical.price by coins.name the twelve most
+    rows (12):
+      Travel1Click | 1001118916743.2704
+      Bit20 | 183874217.3017941
+      Project-X | 118068741.9507505
+      42-coin | 72583369.82478684
+      Punk | 27159422.013112523
+      Bitcoin | 20942089.258521944
+      BlipCoin | 19314710.863643028
+      Robonomics Web Services | 17922452.073972333
+      RSK Smart Bitcoin | 16180490.158436377
+      Wrapped Bitcoin | 16025155.308030177
+      Bitcoin BEP2 | 15214434.488676623
+      Maya Preferred | 13854586.79704649
+
+  panel birdcoinmarketcap-1-18
+    title: sum of historical.volume_24h by coins.name the twelve most
+    rows (12):
+      Bitcoin | 1.44345227266484e+15
+      Uquid Coin | 1.4103012160966865e+15
+      Tether | 46366407110370.92
+      Ethereum | 15710539529154.703
+      Litecoin | 3885547654031.7695
+      XRP | 3710271194866.6396
+      Bitcoin Cash | 2977620545138.9795
+      EOS | 2800578175060.3643
+      Ethereum Classic | 1497866152713.2148
+      TRON | 1335887786155.372
+      Cardano | 1263960217488.7761
+      Dogecoin | 1236772114186.4126
+
+  panel birdcoinmarketcap-1-19
+    title: rows of historical by coins.status
+    rows (4):
+      active | 3158174
+      inactive | 662264
+      untracked | 606181
+      extinct | 15353
+
+  panel birdcoinmarketcap-1-20
+    title: rows of coins by coins.status
+    rows (4):
+      active | 6204
+      inactive | 1635
+      untracked | 1030
+      extinct | 58
+
+  panel birdcoinmarketcap-1-21
+    title: average of historical.price by coins.name the twelve most
+    rows (12):
+      Travel1Click | 9184577217.828169
+      Only 1 Token | 6419263.679654462
+      Bit20 | 378342.0109090414
+      BlipCoin | 244490.01093219023
+      Ernus | 235766.66291978623
+      Punk | 165606.23178727154
+      Project-X | 77523.79642202922
+      mStable BTC | 55846.21502963519
+      Robonomics Web Services | 48968.44828954189
+      Unisocks | 40772.89411729279
+      tBTC | 40767.55038601556
+      Matic Aave Interest Bearing YFI | 40385.61840239515
+
+  panel birdcoinmarketcap-1-22
+    title: average of historical.percent_change_7d by historical.date
+    rows (9):
+      2013-01-01 | 62.436122876487445
+      2014-01-01 | 117.9310767395739
+      2015-01-01 | 40.21582882630526
+      2016-01-01 | 13.339865715219702
+      2017-01-01 | 3238.1092399930076
+      2018-01-01 | 1.564305329168926
+      2019-01-01 | 17.017000898907746
+      2020-01-01 | 9712.083859309561
+      2021-01-01 | 29576.811329348187
+
+  panel birdcoinmarketcap-1-23
+    title: average of historical.total_supply by historical.date
+    rows (9):
+      2013-01-01 | 3663033319.598931
+      2014-01-01 | 7196542598.4437065
+      2015-01-01 | 6287988184.044067
+      2016-01-01 | 696959104683.8926
+      2017-01-01 | 951969990737.8243
+      2018-01-01 | 202183688733.94907
+      2019-01-01 | 1.9767238981214817e+20
+      2020-01-01 | 1.285782395659161e+21
+      2021-01-01 | 374042669105146.75
+
+  panel birdcoinmarketcap-1-24
+    title: largest tables, estimated rows
+    rows (2):
+      historical | 4441621
+      coins | 8927
+
+  panel birdcoinmarketcap-1-25
+    title: average of historical.cmc_rank by historical.date
+    rows (9):
+      2013-01-01 | 21.4653498124034429
+      2014-01-01 | 200.9730002418137700
+      2015-01-01 | 282.8181676663601913
+      2016-01-01 | 303.1584571813645139
+      2017-01-01 | 495.7823286530431592
+      2018-01-01 | 873.4542299356170050
+      2019-01-01 | 1127.1833329270373711
+      2020-01-01 | 1527.9942874699655224
+      2021-01-01 | 2437.2234031712488214
+
+  panel birdcoinmarketcap-1-26
+    title: average of historical.cmc_rank by coins.name the twelve most
+    rows (12):
+      Strike SXP | 5880.6666666666666667
+      Bitget Token | 5878.3333333333333333
+      Shibmerican | 5832.3750000000000000
+      Team Vitality Fan Token | 5819.2000000000000000
+      Witch Token | 5811.8181818181818182
+      Cryptocurrencies.ai | 5783.6666666666666667
+      Ubeswap | 5764.2352941176470588
+      Moonship Finance | 5741.3076923076923077
+      CoinW Token | 5731.1818181818181818
+      Alfa Romeo Racing ORLEN Fan Token | 5723.2608695652173913
+      Aston Martin Cognizant Fan Token | 5708.0000000000000000
+      SolAPE Token | 5665.8333333333333333
+
+  panel birdcoinmarketcap-1-27
+    title: rows of coins by coins.category
+    rows (3):
+      token | 6228
+      coin | 2641
+      ∅ | 58
+
+  panel birdcoinmarketcap-1-28
+    title: average of historical.volume_24h by coins.name the twelve most
+    rows (12):
+      Uquid Coin | 1060376854208.0352
+      Bitcoin | 477964328696.9663
+      Tether | 19755605926.872997
+      Ethereum | 7177039529.079353
+      Bitcoin Cash | 2021466765.1995788
+      Polkadot | 1931609517.442438
+      EOS | 1873296438.1674678
+      Binance USD | 1689837003.5665371
+      Litecoin | 1286605183.454228
+      XRP | 1269771113.9173992
+      Uniswap | 1013704532.711307
+      Bitcoin SV | 948229991.3282821
+
+  panel birdcoinmarketcap-1-29
+    title: sum of historical.total_supply by coins.category
+    rows (3):
+      token | 1.5373637744384413e+27
+      coin | 4.1770647993002885e+20
+      ∅ | 24174494915086.348
+
+  panel birdcoinmarketcap-1-30
+    title: sum of historical.price by historical.date
+    rows (9):
+      2013-01-01 | 74598.87051593329
+      2014-01-01 | 14358190.778849073
+      2015-01-01 | 1808264.6554600857
+      2016-01-01 | 6375633.983262957
+      2017-01-01 | 112054629.06493989
+      2018-01-01 | 213681744.8971809
+      2019-01-01 | 30425838.05028922
+      2020-01-01 | 1001210828186.1101
+      2021-01-01 | 362087073.5374563
+
+  panel birdcoinmarketcap-1-31
+    title: average of historical.max_supply by historical.date
+    rows (9):
+      2013-01-01 | 6679975940.45972
+      2014-01-01 | 9811697072.59859
+      2015-01-01 | 9547734378.599123
+      2016-01-01 | 9637951859.499971
+      2017-01-01 | 36535186412.20903
+      2018-01-01 | 55712821443.84881
+      2019-01-01 | 47556599108.47947
+      2020-01-01 | 723427848019.4662
+      2021-01-01 | 1.0949866263263992e+15
+
+
+=== database: birdsynthea ===
+Synthetic patients and their encounters, conditions, medications, procedures, immunizations, observations, care plans and claims, as BIRD serves it. A fixture of round 1f.
+
+  panel birdsynthea-1-01
+    title: sum of claims.TOTAL by patients.ethnicity the twelve most
+    rows (12):
+      irish | 429700
+      italian | 226000
+      english | 224200
+      puerto_rican | 154100
+      french | 112400
+      german | 102200
+      chinese | 100700
+      polish | 91100
+      african | 80200
+      dominican | 74000
+      portuguese | 67500
+      american | 67300
+
+  panel birdsynthea-1-02
+    title: rows of procedures by procedures.DATE
+    rows (11):
+      2007-01-01 | 157
+      2008-01-01 | 954
+      2009-01-01 | 970
+      2010-01-01 | 1007
+      2011-01-01 | 1067
+      2012-01-01 | 1060
+      2013-01-01 | 1056
+      2014-01-01 | 1035
+      2015-01-01 | 943
+      2016-01-01 | 1041
+      2017-01-01 | 894
+
+  panel birdsynthea-1-03
+    title: rows of conditions by conditions.START
+    rows (98):
+      1919-01-01 | 5
+      1920-01-01 | 2
+      1921-01-01 | 1
+      1922-01-01 | 1
+      1923-01-01 | 3
+      1924-01-01 | 5
+      1925-01-01 | 4
+      1926-01-01 | 7
+      1927-01-01 | 2
+      1928-01-01 | 1
+      1929-01-01 | 4
+      1931-01-01 | 5
+      … 86 more rows
+
+  panel birdsynthea-1-04
+    title: rows of patients by patients.marital
+    rows (3):
+      M | 822
+      ∅ | 429
+      S | 211
+
+  panel birdsynthea-1-05
+    title: rows of observations by encounters (by key) the twelve most
+    rows (12):
+      ∅ | 2924
+      244309d0-2d5b-4689-8309-7125a461e8cd | 189
+      abd34f96-bd0a-49fa-b041-85b61f516543 | 113
+      1068e3ac-bf66-4be7-af8d-825c569c8b37 | 79
+      f567fb00-871f-4ce6-8f43-30a364dc8c4d | 79
+      0d68388a-06e8-4c7d-a0fe-e0b37190609d | 66
+      f65a1ae5-5dc1-4fe8-9a9e-9f3eeb4e75f9 | 63
+      7c906abb-b4c4-4db5-86b8-98d2f7dfffb8 | 55
+      1fcbdc00-936c-4a3f-872f-78b3834960ee | 52
+      193e7641-9cd4-46ed-b3c9-b095509846b5 | 52
+      5cf6b6b0-4583-4742-bb37-72cd6e8d730b | 50
+      999fe5b9-84cb-4f91-a57d-c53166243cd4 | 50
+
+  panel birdsynthea-1-06
+    title: rows of careplans by careplans.START
+    rows (101):
+      1917-01-01 | 5
+      1918-01-01 | 5
+      1919-01-01 | 5
+      1920-01-01 | 11
+      1921-01-01 | 13
+      1922-01-01 | 4
+      1923-01-01 | 5
+      1924-01-01 | 18
+      1925-01-01 | 15
+      1926-01-01 | 15
+      1927-01-01 | 4
+      1928-01-01 | 6
+      … 89 more rows
+
+  panel birdsynthea-1-07
+    title: rows of patients by patients.deathdate
+    rows (71):
+      1932-01-01 | 1
+      1935-01-01 | 1
+      1939-01-01 | 3
+      1945-01-01 | 2
+      1947-01-01 | 1
+      1949-01-01 | 3
+      1950-01-01 | 3
+      1951-01-01 | 1
+      1952-01-01 | 1
+      1953-01-01 | 2
+      1955-01-01 | 1
+      1957-01-01 | 1
+      … 59 more rows
+
+  panel birdsynthea-1-08
+    title: sum of claims.TOTAL by patients.race
+    rows (4):
+      white | 1492600
+      hispanic | 216500
+      black | 191100
+      asian | 152100
+
+  panel birdsynthea-1-09
+    title: rows of medications by medications.START
+    rows (100):
+      1918-01-01 | 1
+      1919-01-01 | 1
+      1920-01-01 | 1
+      1921-01-01 | 3
+      1922-01-01 | 7
+      1923-01-01 | 4
+      1924-01-01 | 10
+      1925-01-01 | 6
+      1926-01-01 | 2
+      1927-01-01 | 3
+      1928-01-01 | 8
+      1929-01-01 | 4
+      … 88 more rows
+
+  panel birdsynthea-1-10
+    title: rows of observations by observations.UNITS the twelve most
+    rows (12):
+      mmHg | 16946
+      mg/dL | 16236
+      mmol/L | 8688
+      kg | 8473
+      cm | 8473
+      kg/m2 | 7296
+      % | 4659
+      years | 2924
+      mL/min/{1.73_m2} | 1898
+      kU/L | 1245
+      Cel | 739
+      ∅ | 455
+
+  panel birdsynthea-1-11
+    title: average of claims.TOTAL by claims.BILLABLEPERIOD
+    rows (71):
+      1920-01-01 | 100.0000000000000000
+      1929-01-01 | 100.0000000000000000
+      1932-01-01 | 100.0000000000000000
+      1935-01-01 | 100.0000000000000000
+      1939-01-01 | 100.0000000000000000
+      1945-01-01 | 100.0000000000000000
+      1947-01-01 | 100.0000000000000000
+      1949-01-01 | 100.0000000000000000
+      1950-01-01 | 100.0000000000000000
+      1951-01-01 | 100.0000000000000000
+      1952-01-01 | 100.0000000000000000
+      1953-01-01 | 100.0000000000000000
+      … 59 more rows
+
+  panel birdsynthea-1-12
+    title: rows of careplans by careplans.REASONDESCRIPTION
+    rows (59):
+      Normal pregnancy | 2436
+      Acute bronchitis (disorder) | 2051
+      Prediabetes | 1266
+      ∅ | 1110
+      Coronary Heart Disease | 490
+      Stroke | 375
+      Sprain of ankle | 324
+      Whiplash injury to neck | 270
+      Diabetes | 228
+      Childhood asthma | 200
+      Alzheimer's disease (disorder) | 192
+      Cardiac Arrest | 190
+      … 47 more rows
+
+  panel birdsynthea-1-13
+    title: rows of careplans by patients (by key) the twelve most
+    rows (12):
+      5e8a81d8-e7f2-416b-afdd-c2f8faca1bb5 | 55
+      e2e1f0ea-7d03-41d6-ac83-d1d501bf44b2 | 55
+      07092071-fbf1-4e30-a37d-f379ca7e2068 | 53
+      c0cb1ff4-8fbe-4f93-990d-abf62284cb4d | 52
+      a94327b7-a1ca-468c-8202-4fbf165f629c | 52
+      357c4996-7893-4a4e-b0e8-8ab16588b282 | 51
+      bc2ce9f6-b005-4f7e-b153-67cbabeebce3 | 48
+      5d3d92d6-c7c4-40ff-8575-6be55ad34864 | 48
+      97cf4561-5a28-4350-ad13-7ce78ccefc7d | 47
+      045e2f8e-5bbd-4776-9a84-43ba02cea3ba | 45
+      cbc3614c-8447-4810-8089-e7b57a70aa6c | 45
+      c072ab2e-2c88-4b6a-8843-2ee43839f24e | 42
+
+  panel birdsynthea-1-14
+    title: rows of patients by patients.race
+    rows (4):
+      white | 1085
+      hispanic | 155
+      black | 129
+      asian | 93
+
+  panel birdsynthea-1-15
+    title: sum of claims.TOTAL by encounters.DESCRIPTION the twelve most
+    rows (1):
+      ∅ | 2052300
+
+  panel birdsynthea-1-16
+    title: rows of observations by patients (by key) the twelve most
+    rows (12):
+      0645f237-3878-4175-aab9-b60713d24342 | 255
+      df3b048d-2a51-4219-bb34-a8ee058137d0 | 254
+      32342351-2ce8-4fd3-a721-fbcd033cd3a9 | 254
+      e8db300b-850e-45be-865d-77982737cb9e | 254
+      96b24072-e1fe-49cd-a22a-6dfb92c3994c | 240
+      ad7d3821-8829-4f0e-abb1-6e7322c6ecb6 | 236
+      336ed443-193d-49a6-9eb2-6fe60391b9f5 | 235
+      fc54d845-803d-4ec8-89b0-55bd620f8b0f | 234
+      6590902c-4450-488c-8760-fa57d0b7422f | 234
+      d4841577-f9ac-4cc8-ad03-f80131552fc9 | 228
+      c488cc3e-862f-4046-b9dc-dc432934c92c | 222
+      8b3cf0c5-affd-4cbb-a397-e63484ba4d47 | 218
+
+  panel birdsynthea-1-17
+    title: rows of conditions by conditions.STOP
+    rows (68):
+      1919-01-01 | 2
+      1924-01-01 | 3
+      1926-01-01 | 2
+      1929-01-01 | 1
+      1930-01-01 | 1
+      1935-01-01 | 1
+      1940-01-01 | 2
+      1942-01-01 | 1
+      1944-01-01 | 1
+      1946-01-01 | 2
+      1947-01-01 | 1
+      1951-01-01 | 2
+      … 56 more rows
+
+  panel birdsynthea-1-18
+    title: rows of medications by medications.STOP
+    rows (68):
+      1925-01-01 | 1
+      1930-01-01 | 1
+      1935-01-01 | 2
+      1938-01-01 | 1
+      1939-01-01 | 1
+      1944-01-01 | 1
+      1945-01-01 | 1
+      1946-01-01 | 1
+      1947-01-01 | 1
+      1949-01-01 | 1
+      1950-01-01 | 1
+      1952-01-01 | 1
+      … 56 more rows
+
+  panel birdsynthea-1-19
+    title: rows of patients by patients.ethnicity the twelve most
+    rows (12):
+      irish | 306
+      italian | 164
+      english | 146
+      puerto_rican | 116
+      german | 80
+      french | 79
+      polish | 65
+      chinese | 56
+      portuguese | 55
+      african | 55
+      american | 53
+      dominican | 51
+
+  panel birdsynthea-1-20
+    title: rows of patients by patients.birthdate
+    rows (102):
+      1916-01-01 | 4
+      1917-01-01 | 13
+      1918-01-01 | 17
+      1919-01-01 | 12
+      1920-01-01 | 24
+      1921-01-01 | 18
+      1922-01-01 | 13
+      1923-01-01 | 11
+      1924-01-01 | 14
+      1925-01-01 | 12
+      1926-01-01 | 19
+      1927-01-01 | 13
+      … 90 more rows
+
+  panel birdsynthea-1-21
+    title: sum of observations.VALUE by encounters (by key) the twelve most
+    rows (12):
+      5f9c4965-6dba-476c-89d9-ea908216a3a6 | ∅
+      0d4273af-cb9c-4bed-838f-9f4cfe7bbd93 | ∅
+      5e522d04-e230-4bb4-ba57-2928eed2704d | ∅
+      518295e6-d80f-4cda-aff0-ca631ccb403f | ∅
+      dcf638ed-41ce-4058-a5e6-6dbb4c84e057 | ∅
+      f11b8155-fc33-47b0-bfb0-b28fbca5d937 | ∅
+      445401e5-0aaa-450c-8bf4-026294469d43 | ∅
+      6c171586-52e7-41c8-b3e1-421d5e150620 | ∅
+      3bea1dcc-32c2-4846-9f56-ea8853a56f83 | ∅
+      e6492775-2e77-4ad0-af66-5ffb27376ef1 | ∅
+      e0aced64-1c08-4fc8-8491-197376d9ea83 | ∅
+      700864e0-7c12-4518-897a-caf10de9ae9d | ∅
+
+  panel birdsynthea-1-22
+    title: rows of careplans by careplans.STOP
+    rows (88):
+      1920-01-01 | 3
+      1928-01-01 | 3
+      1929-01-01 | 6
+      1931-01-01 | 6
+      1933-01-01 | 3
+      1935-01-01 | 3
+      1936-01-01 | 10
+      1937-01-01 | 7
+      1938-01-01 | 15
+      1939-01-01 | 3
+      1940-01-01 | 8
+      1941-01-01 | 7
+      … 76 more rows
+
+  panel birdsynthea-1-23
+    title: rows of patients by patients.prefix
+    rows (4):
+      Mr. | 597
+      Mrs. | 403
+      ∅ | 296
+      Ms. | 166
+
+  panel birdsynthea-1-24
+    title: sum of claims.TOTAL by patients.prefix
+    rows (4):
+      Mrs. | 635600
+      Mr. | 567400
+      ∅ | 467900
+      Ms. | 381400
+
+  panel birdsynthea-1-25
+    title: rows of observations by observations.DATE
+    rows (70):
+      1920-01-01 | 1
+      1929-01-01 | 1
+      1932-01-01 | 1
+      1935-01-01 | 1
+      1939-01-01 | 3
+      1945-01-01 | 2
+      1947-01-01 | 1
+      1949-01-01 | 3
+      1950-01-01 | 3
+      1951-01-01 | 1
+      1952-01-01 | 1
+      1953-01-01 | 2
+      … 58 more rows
+
+  panel birdsynthea-1-26
+    title: rows of encounters by encounters.DATE
+    rows (71):
+      1920-01-01 | 1
+      1929-01-01 | 1
+      1932-01-01 | 1
+      1935-01-01 | 1
+      1939-01-01 | 3
+      1945-01-01 | 2
+      1947-01-01 | 1
+      1949-01-01 | 3
+      1950-01-01 | 3
+      1951-01-01 | 1
+      1952-01-01 | 1
+      1953-01-01 | 2
+      … 59 more rows
+
+  panel birdsynthea-1-27
+    title: rows of patients by patients.gender
+    rows (2):
+      M | 741
+      F | 721
+
+  panel birdsynthea-1-28
+    title: rows of conditions per patients
+    rows (19):
+      1 | 100
+      2 | 160
+      3 | 239
+      4 | 206
+      5 | 174
+      6 | 154
+      7 | 131
+      8 | 74
+      9 | 61
+      10 | 38
+      11 | 31
+      12 | 12
+      … 7 more rows
+
+  panel birdsynthea-1-29
+    title: sum of claims.TOTAL by claims.BILLABLEPERIOD
+    rows (71):
+      1920-01-01 | 100
+      1929-01-01 | 100
+      1932-01-01 | 100
+      1935-01-01 | 100
+      1939-01-01 | 300
+      1945-01-01 | 200
+      1947-01-01 | 100
+      1949-01-01 | 300
+      1950-01-01 | 300
+      1951-01-01 | 100
+      1952-01-01 | 100
+      1953-01-01 | 200
+      … 59 more rows
+
+  panel birdsynthea-1-30
+    title: sum of claims.TOTAL by patients (by key) the twelve most
+    rows (12):
+      f4a8bb95-c09a-498b-8915-beb35ac15290 | 12700
+      e05b7410-ca77-4589-966b-7b8b47aedcca | 12100
+      4bb1c058-5218-42e0-b53e-07c1f5899ad1 | 10300
+      98425d79-f1fd-4777-9733-fffb6e412b58 | 10200
+      23373822-718a-428f-aa11-e65d10947576 | 9900
+      c730688c-0add-41c1-85f3-2eb2dec1c8c7 | 9800
+      4c0bdf93-44d8-4811-8d1d-7a7452751d39 | 9300
+      7d930372-7a58-4940-ac33-cd6373720f4a | 8600
+      b6770dab-6757-4874-a5c7-7aef1f5e2e25 | 8100
+      e497677a-79d0-43ee-994e-a365ee8c497a | 7900
+      2ff59946-e6d0-492e-8704-a98296eedd4c | 7900
+      bbbe2391-f249-4114-a510-3088189a1f8e | 7800
+
+  panel birdsynthea-1-31
+    title: rows of claims by claims.BILLABLEPERIOD
+    rows (71):
+      1920-01-01 | 1
+      1929-01-01 | 1
+      1932-01-01 | 1
+      1935-01-01 | 1
+      1939-01-01 | 3
+      1945-01-01 | 2
+      1947-01-01 | 1
+      1949-01-01 | 3
+      1950-01-01 | 3
+      1951-01-01 | 1
+      1952-01-01 | 1
+      1953-01-01 | 2
+      … 59 more rows
+
+  panel birdsynthea-1-32
+    title: sum of observations.VALUE by observations.DATE
+    rows (70):
+      1920-01-01 | ∅
+      1929-01-01 | ∅
+      1932-01-01 | ∅
+      1935-01-01 | ∅
+      1939-01-01 | ∅
+      1945-01-01 | ∅
+      1947-01-01 | ∅
+      1949-01-01 | ∅
+      1950-01-01 | ∅
+      1951-01-01 | ∅
+      1952-01-01 | ∅
+      1953-01-01 | ∅
+      … 58 more rows
+
+
+=== database: birdlegislator ===
+American legislators, current and historical, their terms of office and their social media accounts, as BIRD serves it. A fixture of round 1f.
+
+  panel birdlegislator-1-01
+    title: rows of current by current.religion_bio the twelve most
+    rows (12):
+      ∅ | 380
+      Roman Catholic | 37
+      Baptist | 20
+      Methodist | 16
+      Catholic | 14
+      Jewish | 13
+      Presbyterian | 13
+      Episcopalian | 12
+      Latter Day Saints | 6
+      Christian | 5
+      Lutheran | 5
+      Unknown | 5
+
+  panel birdlegislator-1-02
+    title: average of historical-terms.class by historical-terms.state the twelve most
+    rows (12):
+      PI | ∅
+      AS | ∅
+      DC | ∅
+      DK | ∅
+      VI | ∅
+      GU | ∅
+      ∅ | ∅
+      PR | ∅
+      OL | ∅
+      ID | 2.7222222222222223
+      SD | 2.7142857142857144
+      IL | 2.6206896551724137
+
+  panel birdlegislator-1-03
+    title: rows of current by current.thomas_id the twelve most
+    rows (12):
+      ∅ | 57
+      1969 | 1
+      70 | 1
+      1037 | 1
+      1989 | 1
+      1560 | 1
+      2021 | 1
+      867 | 1
+      1075 | 1
+      2080 | 1
+      1799 | 1
+      1752 | 1
+
+  panel birdlegislator-1-04
+    title: rows of current by current.fec_id the twelve most
+    rows (12):
+      ∅ | 51
+      ['H2OH13033', 'S6OH00163'] | 1
+      ['S8MN00438'] | 1
+      ['H8NV03036'] | 1
+      ['H2FL23021'] | 1
+      ['H2IL01042'] | 1
+      ['H4AZ04024'] | 1
+      ['H0TX23086'] | 1
+      ['H0NY18065'] | 1
+      ['H2NV02395', 'H1NV02017', 'S0NV00237'] | 1
+      ['H8OH15076'] | 1
+      ['H2NC13110'] | 1
+
+  panel birdlegislator-1-05
+    title: rows of current-terms by current-terms.state the twelve most
+    rows (12):
+      CA | 325
+      TX | 267
+      NY | 201
+      FL | 120
+      IL | 118
+      OH | 117
+      NJ | 106
+      MI | 98
+      PA | 92
+      MA | 86
+      GA | 82
+      NC | 78
+
+  panel birdlegislator-1-06
+    title: rows of historical-terms by historical-terms.state the twelve most
+    rows (12):
+      NY | 1457
+      PA | 1046
+      OH | 672
+      IL | 484
+      VA | 434
+      MA | 430
+      KY | 369
+      NC | 357
+      NJ | 355
+      CA | 350
+      IN | 339
+      MO | 331
+
+  panel birdlegislator-1-07
+    title: rows of historical by historical.wikipedia_id the twelve most
+    rows (12):
+      ∅ | 3
+      John Taffe | 1
+      Samuel A. Weiss | 1
+      Norman Mineta | 1
+      Herbert H. Lehman | 1
+      Joseph J. Maraziti | 1
+      James Dixon | 1
+      Bayard Clarke | 1
+      Hugh Quincy Alexander | 1
+      Stephen Pace | 1
+      Aubert C. Dunn | 1
+      Chester O. Carrier | 1
+
+  panel birdlegislator-1-08
+    title: rows of current by current.gender_bio
+    rows (2):
+      M | 432
+      F | 109
+
+  panel birdlegislator-1-09
+    title: rows of current by current.google_entity_id_id the twelve most
+    rows (12):
+      ∅ | 55
+      kg:/m/0ndnv6f | 1
+      kg:/m/06k27l | 1
+      kg:/m/03tq00 | 1
+      kg:/m/0ds0r5g | 1
+      kg:/m/012964p3 | 1
+      kg:/m/06wntz | 1
+      kg:/m/0cmcvkz | 1
+      kg:/m/05b0j1w | 1
+      kg:/m/03flzn | 1
+      kg:/m/024zj_ | 1
+      kg:/m/0jwv0xf | 1
+
+  panel birdlegislator-1-10
+    title: rows of current by current.ballotpedia_id the twelve most
+    rows (12):
+      ∅ | 194
+      Kamala Harris | 1
+      Patrick Leahy | 1
+      Tammy Baldwin | 1
+      Kevin Yoder | 1
+      Patty Murray | 1
+      Maria Cantwell | 1
+      Brad Wenstrup | 1
+      Richard Hudson | 1
+      Brian Higgins | 1
+      G.K. Butterfield | 1
+      Darin LaHood | 1
+
+  panel birdlegislator-1-11
+    title: rows of historical-terms by historical-terms.state
+    rows (59):
+      NY | 1457
+      PA | 1046
+      OH | 672
+      IL | 484
+      VA | 434
+      MA | 430
+      KY | 369
+      NC | 357
+      NJ | 355
+      CA | 350
+      IN | 339
+      MO | 331
+      … 47 more rows
+
+  panel birdlegislator-1-12
+    title: average of historical-terms.class by historical-terms.type
+    rows (3):
+      ∅ | ∅
+      rep | ∅
+      sen | 1.9968152866242037
+
+  panel birdlegislator-1-13
+    title: rows of current by current.wikidata_id the twelve most
+    rows (12):
+      ∅ | 55
+      Q16218474 | 1
+      Q3917203 | 1
+      Q1329618 | 1
+      Q3956858 | 1
+      Q7693450 | 1
+      Q4858820 | 1
+      Q749039 | 1
+      Q18684027 | 1
+      Q368184 | 1
+      Q16240994 | 1
+      Q5415437 | 1
+
+  panel birdlegislator-1-14
+    title: largest tables, estimated rows
+    rows (5):
+      historical | 11864
+      historical-terms | 11864
+      current-terms | 3078
+      current | 541
+      social-media | 479
+
+  panel birdlegislator-1-15
+    title: rows of historical by historical.wikidata_id the twelve most
+    rows (12):
+      ∅ | 3
+      Q809453 | 1
+      Q1276105 | 1
+      Q1708065 | 1
+      Q5343862 | 1
+      Q1622009 | 1
+      Q6118554 | 1
+      Q2043572 | 1
+      Q614613 | 1
+      Q3838979 | 1
+      Q1738831 | 1
+      Q1700480 | 1
+
+  panel birdlegislator-1-16
+    title: rows of historical-terms by historical-terms.type
+    rows (3):
+      rep | 10602
+      sen | 1256
+      ∅ | 6
+
+  panel birdlegislator-1-17
+    title: rows of historical by historical.thomas_id the twelve most
+    rows (12):
+      ∅ | 10167
+      00242 | 1
+      01630 | 1
+      01493 | 1
+      01555 | 1
+      00142 | 1
+      00306 | 1
+      00554 | 1
+      00430 | 1
+      01689 | 1
+      00080 | 1
+      00619 | 1
+
+  panel birdlegislator-1-18
+    title: rows of current-terms by current-terms.end the twelve most
+    rows (12):
+      2019-01-03 | 474
+      2017-01-03 | 418
+      2015-01-03 | 363
+      2013-01-03 | 294
+      2011-01-03 | 227
+      2009-01-03 | 198
+      2007-01-03 | 163
+      2005-01-03 | 147
+      2003-01-03 | 127
+      2001-01-03 | 105
+      1999-01-03 | 98
+      1997-01-03 | 78
+
+  panel birdlegislator-1-19
+    title: rows of current by current.middle_name the twelve most
+    rows (12):
+      ∅ | 325
+      J. | 18
+      M. | 18
+      A. | 16
+      E. | 16
+      B. | 11
+      S. | 11
+      P. | 10
+      L. | 10
+      R. | 9
+      W. | 8
+      G. | 7
+
+  panel birdlegislator-1-20
+    title: rows of current-terms by current-terms.party
+    rows (4):
+      Democrat | 1558
+      Republican | 1444
+      ∅ | 64
+      Independent | 12
+
+  panel birdlegislator-1-21
+    title: rows of current by current.lis_id the twelve most
+    rows (12):
+      ∅ | 441
+      S266 | 1
+      S184 | 1
+      S350 | 1
+      S289 | 1
+      S381 | 1
+      S118 | 1
+      S260 | 1
+      S382 | 1
+      S358 | 1
+      S372 | 1
+      S313 | 1
+
+  panel birdlegislator-1-22
+    title: rows of current by current.govtrack_id the twelve most
+    rows (12):
+      412627 | 1
+      412214 | 1
+      300088 | 1
+      412254 | 1
+      300041 | 1
+      412569 | 1
+      412539 | 1
+      412209 | 1
+      400160 | 1
+      400240 | 1
+      412552 | 1
+      412708 | 1
+
+  panel birdlegislator-1-23
+    title: average of current-terms.class by current-terms.state the twelve most
+    rows (12):
+      DC | ∅
+      MP | ∅
+      VI | ∅
+      GU | ∅
+      AS | ∅
+      PR | ∅
+      ∅ | ∅
+      IA | 2.875
+      AK | 2.8
+      SD | 2.75
+      NC | 2.75
+      GA | 2.75
+
+  panel birdlegislator-1-24
+    title: sum of historical-terms.class by historical-terms.state the twelve most
+    rows (12):
+      OL | ∅
+      AS | ∅
+      PR | ∅
+      DK | ∅
+      DC | ∅
+      GU | ∅
+      ∅ | ∅
+      PI | ∅
+      VI | ∅
+      SC | 98
+      KY | 98
+      NC | 97
+
+  panel birdlegislator-1-25
+    title: rows of current-terms by current-terms.end
+    rows (42):
+      2019-01-03 | 474
+      2017-01-03 | 418
+      2015-01-03 | 363
+      2013-01-03 | 294
+      2011-01-03 | 227
+      2009-01-03 | 198
+      2007-01-03 | 163
+      2005-01-03 | 147
+      2003-01-03 | 127
+      2001-01-03 | 105
+      1999-01-03 | 98
+      1997-01-03 | 78
+      … 30 more rows
+
+  panel birdlegislator-1-26
+    title: rows of historical by historical.google_entity_id_id the twelve most
+    rows (12):
+      ∅ | 15
+      kg:/m/02rjzht | 1
+      kg:/m/04znp2 | 1
+      kg:/m/027br3l | 1
+      kg:/m/0kzh1 | 1
+      kg:/m/0cvz0x | 1
+      kg:/m/05xwtx | 1
+      kg:/m/0dhxn1 | 1
+      kg:/m/02x3llc | 1
+      kg:/m/026tc2m | 1
+      kg:/m/02rkw71 | 1
+      kg:/m/02rm2sk | 1
+
+  panel birdlegislator-1-27
+    title: rows of social-media by social-media.youtube_id the twelve most
+    rows (12):
+      ∅ | 75
+      UCfdEcWPNGoIxpYoTANF4PBA | 1
+      UCEk5viAhxaW_2OK20-yBwzQ | 1
+      UCu1K6uHxjMgj2mvzM7O9-ow | 1
+      UCDSBWdAlrCZq2W8P3wR_LCg | 1
+      UCYRWRvUxtjaHnFMCbdd94tg | 1
+      UCiGPTfpwRxqQp0Bam5S8zwA | 1
+      UCpmXOtvvXC3GE8o9VxYNK7g | 1
+      UChVFKLZkRoHQDhp4zNvEezQ | 1
+      UCeAWQdcSTlwv2vDGz0TQOxQ | 1
+      UCh8t7sV_DBKz4A-RkL9feyg | 1
+      UCFrC4Ouk5R6xQztS9PZin_A | 1
+
+  panel birdlegislator-1-28
+    title: rows of current-terms by current-terms.type
+    rows (3):
+      rep | 2770
+      sen | 244
+      ∅ | 64
+
+  panel birdlegislator-1-29
+    title: rows of current by current.opensecrets_id the twelve most
+    rows (12):
+      ∅ | 55
+      N00000939 | 1
+      N00000179 | 1
+      N00005736 | 1
+      N00013820 | 1
+      N00033982 | 1
+      N00002893 | 1
+      N00027848 | 1
+      N00009975 | 1
+      N00004558 | 1
+      N00021207 | 1
+      N00005195 | 1
+
+  panel birdlegislator-1-30
+    title: sum of historical-terms.class by historical-terms.type
+    rows (3):
+      ∅ | ∅
+      rep | ∅
+      sen | 2508
+
+  panel birdlegislator-1-31
+    title: rows of current by current.wikipedia_id the twelve most
+    rows (12):
+      ∅ | 51
+      Brad Wenstrup | 1
+      Shelley Moore Capito | 1
+      Sam Graves | 1
+      James Langevin | 1
+      Joe Barton | 1
+      James Lankford | 1
+      Bob Brady | 1
+      Barbara Lee | 1
+      Scott DesJarlais | 1
+      Elijah Cummings | 1
+      Patty Murray | 1
+
+  panel birdlegislator-1-32
+    title: rows of current-terms by social-media (by key) the twelve most
+    rows (12):
+      C000714 | 27
+      Y000033 | 23
+      M000133 | 22
+      S000244 | 20
+      H000874 | 20
+      S000522 | 19
+      L000263 | 19
+      R000395 | 19
+      P000197 | 18
+      K000009 | 18
+      V000108 | 17
+      D000533 | 17
+
+  panel birdlegislator-1-33
+    title: rows of historical by historical.govtrack_id the twelve most
+    rows (12):
+      407952 | 1
+      403916 | 1
+      407903 | 1
+      406801 | 1
+      400857 | 1
+      405748 | 1
+      410261 | 1
+      402995 | 1
+      401472 | 1
+      402205 | 1
+      412424 | 1
+      402716 | 1
+
+
+=== database: birdcookbook ===
+Recipes, their ingredients and quantities, and each recipe's nutrition, as BIRD serves it. A fixture of round 1f.
+
+  panel birdcookbook-1-01
+    title: average of Quantity.max_qty by Quantity.unit the twelve most
+    rows (12):
+      ∅ | ∅
+      milliliter(s) | 750
+      gram(s) | 425
+      fl. ounce(s) | 26.5
+      ounce(s) | 10.875
+      piece(s) | 9
+      slice(s) | 7.214285714285714
+      scoop(s) | 4.666666666666667
+      drop(s) | 3.25
+      stick(s) | 3
+      whole | 2.5714285714285716
+      sprig(s) | 2.3333333333333335
+
+  panel birdcookbook-1-02
+    title: rows of Quantity by Ingredient.plural
+    rows (4):
+      ∅ | 4401
+      s | 611
+      es | 74
+      #NAME? | 30
+
+  panel birdcookbook-1-03
+    title: rows of Nutrition by Recipe.source the twelve most
+    rows (12):
+      ∅ | 239
+      The California Tree Fruit Agreement | 59
+      USA Rice Council | 56
+      Produce for Better Health Foundation and | 33
+      The National Turkey Federation | 31
+      California Dry Bean Advisory Board | 22
+      California Beef Council | 20
+      South Carolina Wildlife and Marine Resou | 18
+      The Florida Tomato Committee | 18
+      The American Cancer Society | 15
+      New York State Department of Agriculture | 14
+      Beef Industry Council | 13
+
+  panel birdcookbook-1-04
+    title: sum of Quantity.min_qty by Nutrition (by key) the twelve most
+    rows (12):
+      ∅ | ∅
+      1099 | 788
+      1119 | 768
+      222 | 429.25
+      667 | 124.58
+      1215 | 73.63
+      531 | 72
+      650 | 67
+      436 | 57.5
+      653 | 50.25
+      685 | 49.88
+      886 | 48
+
+  panel birdcookbook-1-05
+    title: rows of Recipe by Recipe.subtitle
+    rows (36):
+      ∅ | 996
+      with Yogurt Herb Sauce | 1
+      with Parsley and Garlic | 1
+      with California Avocado | 1
+      with Pecans | 1
+      (Dinner Party Bake or Barbecue) | 1
+      with Parma Ham and Porcini | 1
+      Kahlua Fantasy Chocolate Cheesecake | 1
+      with Zinfandel Sauce | 1
+      with Root Vegetables and Sherry | 1
+      Vegetarian Chili | 1
+      a La Creme | 1
+      … 24 more rows
+
+  panel birdcookbook-1-06
+    title: rows of Quantity by Quantity.unit the twelve most
+    rows (12):
+      cup(s) | 1943
+      teaspoon(s) | 1227
+      tablespoon(s) | 930
+      pound(s) | 349
+      ounce(s) | 286
+      dash(es) | 48
+      clove(s) | 42
+      fl. ounce(s) | 37
+      10 oz. package(s) | 25
+      ∅ | 24
+      envelope(s) | 18
+      16 oz. can(s) | 16
+
+  panel birdcookbook-1-07
+    title: rows of Nutrition by Recipe.title the twelve most
+    rows (12):
+      -Canned Pears- | 1
+      -Italian Bread- | 1
+      -Wheaties Cereal- | 1
+      Seafood Pear Pasta | 1
+      Gourmet Chicken Bake | 1
+      -Apples- | 1
+      Party-Fare Pistachio Pasta | 1
+      Red Onion Potato Salad | 1
+      Plum-Nectarine Ambrosia | 1
+      Potato Sticks with Glazed Pork and Cabba | 1
+      Apple Whole Grain Bread Pudding | 1
+      -Baby Lima Beans- | 1
+
+  panel birdcookbook-1-08
+    title: rows of Quantity by Nutrition (by key) the twelve most
+    rows (12):
+      ∅ | 24
+      1410 | 17
+      682 | 16
+      1118 | 15
+      532 | 15
+      539 | 15
+      1408 | 14
+      232 | 14
+      634 | 14
+      1165 | 14
+      1020 | 14
+      1199 | 14
+
+  panel birdcookbook-1-09
+    title: rows of Quantity by Ingredient.name the twelve most
+    rows (12):
+      salt | 208
+      water | 136
+      sugar | 135
+      onion | 107
+      vegetable oil | 91
+      lemon juice | 80
+      green onion | 72
+      olive oil | 71
+      fresh ground black pepper | 67
+      celery | 63
+      black pepper | 59
+      fresh parsley | 56
+
+  panel birdcookbook-1-10
+    title: sum of Quantity.max_qty by Ingredient.category the twelve most
+    rows (12):
+      ∅ | ∅
+      alcoholic beverages | 1745.14
+      fresh vegetables | 1004.1800000000004
+      dairy | 797.33
+      spices and seasonings | 716.6199999999995
+      beverages | 615.82
+      frozen fruit | 571.74
+      canned/bottled fruit | 488.92
+      baking products | 488.5899999999999
+      tomato products | 479.75
+      meat/poultry | 377.15999999999997
+      canned/bottled vegetables | 278.75
+
+  panel birdcookbook-1-11
+    title: sum of Quantity.min_qty by Ingredient.name the twelve most
+    rows (12):
+      ∅ | ∅
+      Zinfandel wine | 751.5
+      Sonoma County chardonnay wine | 750
+      frozen raspberries in light syrup | 425
+      canned tomatoes | 347.5
+      water | 271.57000000000005
+      canned tomato sauce | 150
+      2% lowfat milk | 143.07999999999998
+      vegetable oil | 137.99
+      sugar | 137.41
+      salt | 132.18
+      lemon juice | 105.75
+
+  panel birdcookbook-1-12
+    title: rows of Recipe by Recipe.yield_unit
+    rows (58):
+      ∅ | 912
+      2 cups | 12
+      1 cake | 12
+      4 cups | 7
+      1 pie | 7
+      1 | 6
+      1 cup | 5
+      0 | 4
+      6 cups | 3
+      1 1/4 cups | 3
+      1 quart | 3
+      3 dozen | 3
+      … 46 more rows
+
+  panel birdcookbook-1-13
+    title: average of Nutrition.calories by Recipe.title the twelve most
+    rows (12):
+      Ginger-Orange Barbecued Beef Back Ribs | 892.04
+      Baja Beef and Pistachio Plate | 809.1
+      Holiday Stuffed Pork Roast | 799.82
+      Italian-Style Pistachio Pasta | 782.61
+      Onion-Beer Tri-Tip Roast | 763.75
+      Fish Chowder | 714.24
+      Seafood Marinara with Pasta | 697.84
+      Oriental Pork | 688.75
+      Chicken Zucchini Stew | 681.57
+      Western Pork Barbecue Supper | 680.89
+      Tropical Stuffed Cornish Hens | 662.44
+      Hearty Ribs and Bean Bake | 641.91
+
+  panel birdcookbook-1-14
+    title: rows of Recipe by Recipe.source the twelve most
+    rows (12):
+      ∅ | 392
+      The California Tree Fruit Agreement | 59
+      USA Rice Council | 56
+      Produce for Better Health Foundation and | 33
+      The National Turkey Federation | 31
+      California Dry Bean Advisory Board | 22
+      California Beef Council | 20
+      South Carolina Wildlife and Marine Resou | 18
+      The Florida Tomato Committee | 18
+      The American Cancer Society | 15
+      New York State Department of Agriculture | 14
+      Beef Industry Council | 13
+
+  panel birdcookbook-1-15
+    title: sum of Quantity.min_qty by Quantity.unit the twelve most
+    rows (12):
+      ∅ | ∅
+      ounce(s) | 3106.75
+      cup(s) | 2097.1699999999964
+      tablespoon(s) | 1705
+      milliliter(s) | 1500
+      teaspoon(s) | 1065.64
+      fl. ounce(s) | 974.5
+      pound(s) | 436.97999999999996
+      gram(s) | 425
+      slice(s) | 101
+      clove(s) | 53.5
+      dash(es) | 46
+
+  panel birdcookbook-1-16
+    title: sum of Quantity.max_qty by Nutrition (by key) the twelve most
+    rows (12):
+      ∅ | ∅
+      1099 | 788
+      1119 | 768
+      222 | 429.25
+      667 | 124.58
+      1215 | 73.63
+      531 | 72
+      650 | 67
+      436 | 57.5
+      653 | 50.25
+      685 | 49.88
+      886 | 48
+
+  panel birdcookbook-1-17
+    title: sum of Quantity.max_qty by Ingredient.name the twelve most
+    rows (12):
+      ∅ | ∅
+      Zinfandel wine | 751.5
+      Sonoma County chardonnay wine | 750
+      frozen raspberries in light syrup | 425
+      canned tomatoes | 347.5
+      water | 271.57000000000005
+      canned tomato sauce | 150
+      2% lowfat milk | 143.07999999999998
+      sugar | 138.08
+      vegetable oil | 137.99
+      salt | 133.68
+      lemon juice | 105.75
+
+  panel birdcookbook-1-18
+    title: sum of Quantity.min_qty by Ingredient.category the twelve most
+    rows (12):
+      ∅ | ∅
+      alcoholic beverages | 1745.14
+      fresh vegetables | 1001.4300000000004
+      dairy | 797.33
+      spices and seasonings | 709.2499999999995
+      beverages | 609.82
+      frozen fruit | 571.74
+      canned/bottled fruit | 488.92
+      baking products | 486.4199999999999
+      tomato products | 479.75
+      meat/poultry | 369.65999999999997
+      canned/bottled vegetables | 278.75
+
+  panel birdcookbook-1-19
+    title: rows of Quantity by Ingredient.category the twelve most
+    rows (12):
+      spices and seasonings | 973
+      fresh vegetables | 743
+      baking products | 390
+      dairy | 330
+      oils and fats | 195
+      beverages | 171
+      meat/poultry | 169
+      fresh fruit | 160
+      condiments/sauces | 158
+      fresh herbs | 149
+      grains | 125
+      cheese | 105
+
+  panel birdcookbook-1-20
+    title: sum of Nutrition.total_fat by Recipe.title the twelve most
+    rows (12):
+      Italian-Style Pistachio Pasta | 53.23
+      No-Bake Chocolate Cheesecake | 45.24
+      Ginger-Orange Barbecued Beef Back Ribs | 45.18
+      Hazelnut Bleu Cheese Dressing | 45.09
+      Freeze and Bake Pie Crust | 43.1
+      Mexican Cocoa Torte | 35.89
+      Raspberry Walnut Dressing | 32.8
+      Tropical Stuffed Cornish Hens | 32.21
+      Fruited Ham and Blueberry Salad | 31.41
+      Onion-Beer Tri-Tip Roast | 30.98
+      Kahlua Chocolate Cheesecake | 30.03
+      Marinated Flank Steak | 28.58
+
+  panel birdcookbook-1-21
+    title: average of Quantity.max_qty by Ingredient.name the twelve most
+    rows (12):
+      ∅ | ∅
+      Sonoma County chardonnay wine | 750
+      frozen raspberries in light syrup | 425
+      Zinfandel wine | 250.5
+      cola | 48
+      lemon-lime soda | 48
+      club soda | 48
+      diet soda | 48
+      light beer | 48
+      canned cocktail vegetable juice | 46
+      tuna steak | 32
+      lemonade | 32
+
+  panel birdcookbook-1-22
+    title: average of Quantity.min_qty by Ingredient.name the twelve most
+    rows (12):
+      ∅ | ∅
+      Sonoma County chardonnay wine | 750
+      frozen raspberries in light syrup | 425
+      Zinfandel wine | 250.5
+      cola | 48
+      lemon-lime soda | 48
+      club soda | 48
+      light beer | 48
+      diet soda | 48
+      canned cocktail vegetable juice | 46
+      tuna steak | 32
+      canned mixed fruit | 32
+
+  panel birdcookbook-1-23
+    title: sum of Quantity.max_qty by Quantity.unit the twelve most
+    rows (12):
+      ∅ | ∅
+      ounce(s) | 3110.25
+      cup(s) | 2104.0899999999965
+      tablespoon(s) | 1711
+      milliliter(s) | 1500
+      teaspoon(s) | 1071.7600000000002
+      fl. ounce(s) | 980.5
+      pound(s) | 444.97999999999996
+      gram(s) | 425
+      slice(s) | 101
+      clove(s) | 54.5
+      dash(es) | 46
+
+  panel birdcookbook-1-24
+    title: average of Nutrition.total_fat by Recipe.title the twelve most
+    rows (12):
+      Italian-Style Pistachio Pasta | 53.23
+      No-Bake Chocolate Cheesecake | 45.24
+      Ginger-Orange Barbecued Beef Back Ribs | 45.18
+      Hazelnut Bleu Cheese Dressing | 45.09
+      Freeze and Bake Pie Crust | 43.1
+      Mexican Cocoa Torte | 35.89
+      Raspberry Walnut Dressing | 32.8
+      Tropical Stuffed Cornish Hens | 32.21
+      Fruited Ham and Blueberry Salad | 31.41
+      Onion-Beer Tri-Tip Roast | 30.98
+      Kahlua Chocolate Cheesecake | 30.03
+      Marinated Flank Steak | 28.58
+
+  panel birdcookbook-1-25
+    title: sum of Quantity.max_qty by Recipe.title the twelve most
+    rows (12):
+      ∅ | ∅
+      Sonoma Turkey Bouillabaisse | 788
+      Sonoma Turkey and Vegetables | 768
+      Iced Raspberry Mousse | 429.25
+      Bake Mine Vegetarian | 124.58
+      Mussels with Linguine | 73.63
+      Lamb Tortellini Minestrone | 72
+      Lasagne-Spinach Spirals | 67
+      Hot Gazpacho | 57.5
+      Rice Gazpacho | 50.25
+      Tofu Baked Ziti | 49.88
+      -Cola Drink- | 48
+
+  panel birdcookbook-1-26
+    title: sum of Quantity.min_qty by Recipe.title the twelve most
+    rows (12):
+      ∅ | ∅
+      Sonoma Turkey Bouillabaisse | 788
+      Sonoma Turkey and Vegetables | 768
+      Iced Raspberry Mousse | 429.25
+      Bake Mine Vegetarian | 124.58
+      Mussels with Linguine | 73.63
+      Lamb Tortellini Minestrone | 72
+      Lasagne-Spinach Spirals | 67
+      Hot Gazpacho | 57.5
+      Rice Gazpacho | 50.25
+      Tofu Baked Ziti | 49.88
+      -Cola Drink- | 48
+
+  panel birdcookbook-1-27
+    title: rows of Quantity by Recipe.title the twelve most
+    rows (12):
+      ∅ | 24
+      No-Bake Chocolate Cheesecake | 17
+      6 Bean Soup | 16
+      Ginger Turkey Stir-Fry | 15
+      Stir Fry Vegetables | 15
+      California Beef and Black Bean Chili | 15
+      Fudge Brownie Pie | 14
+      Sauce Raito | 14
+      Catfish and Wild Rice Soup | 14
+      Seafood Jambalaya | 14
+      Apple Bean Cake | 14
+      Healthclub Chicken Salad | 14
+
+  panel birdcookbook-1-28
+    title: sum of Nutrition.calories by Recipe.title the twelve most
+    rows (12):
+      Ginger-Orange Barbecued Beef Back Ribs | 892.04
+      Baja Beef and Pistachio Plate | 809.1
+      Holiday Stuffed Pork Roast | 799.82
+      Italian-Style Pistachio Pasta | 782.61
+      Onion-Beer Tri-Tip Roast | 763.75
+      Fish Chowder | 714.24
+      Seafood Marinara with Pasta | 697.84
+      Oriental Pork | 688.75
+      Chicken Zucchini Stew | 681.57
+      Western Pork Barbecue Supper | 680.89
+      Tropical Stuffed Cornish Hens | 662.44
+      Hearty Ribs and Bean Bake | 641.91
+
+  panel birdcookbook-1-29
+    title: largest tables, estimated rows
+    rows (4):
+      Quantity | 5116
+      Ingredient | 3346
+      Recipe | 1031
+      Nutrition | 878
+
+  panel birdcookbook-1-30
+    title: rows of Ingredient by Ingredient.category the twelve most
+    rows (12):
+      fresh vegetables | 402
+      meat/poultry | 287
+      spices and seasonings | 230
+      fresh fruit | 204
+      fresh seafood | 153
+      condiments/sauces | 94
+      pasta/noodles | 87
+      alcoholic beverages | 87
+      baking products | 86
+      dairy | 84
+      cheese | 83
+      cereals | 78
+
+  panel birdcookbook-1-31
+    title: sum of Quantity.max_qty by Ingredient.plural
+    rows (4):
+      ∅ | 10747.239999999983
+      s | 881.9300000000003
+      es | 193.82999999999998
+      #NAME? | 40.58
+
+  panel birdcookbook-1-32
+    title: sum of Quantity.max_qty by Quantity.unit
+    rows (47):
+      ∅ | ∅
+      ounce(s) | 3110.25
+      cup(s) | 2104.0899999999965
+      tablespoon(s) | 1711
+      milliliter(s) | 1500
+      teaspoon(s) | 1071.7600000000002
+      fl. ounce(s) | 980.5
+      pound(s) | 444.97999999999996
+      gram(s) | 425
+      slice(s) | 101
+      clove(s) | 54.5
+      dash(es) | 46
+      … 35 more rows
+
+  panel birdcookbook-1-33
+    title: rows of Nutrition by Recipe.yield_unit the twelve most
+    rows (12):
+      ∅ | 759
+      1 cake | 12
+      2 cups | 12
+      4 cups | 7
+      1 pie | 7
+      1 | 6
+      1 cup | 5
+      0 | 4
+      6 cups | 3
+      3 dozen | 3
+      1 1/4 cups | 3
+      1 quart | 3
+
+  panel birdcookbook-1-34
+    title: rows of Recipe by Recipe.yield_unit the twelve most
+    rows (12):
+      ∅ | 912
+      1 cake | 12
+      2 cups | 12
+      4 cups | 7
+      1 pie | 7
+      1 | 6
+      1 cup | 5
+      0 | 4
+      6 cups | 3
+      3 dozen | 3
+      1 1/4 cups | 3
+      1 quart | 3

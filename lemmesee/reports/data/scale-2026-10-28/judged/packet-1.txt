@@ -1,0 +1,2217 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: birdmenu ===
+Historical restaurant menus, their pages, the dishes on them and their prices, as BIRD serves it. A fixture of round 1f.
+
+  panel birdmenu-1-01
+    title: sum of MenuItem.ypos by Dish.name the twelve most
+    rows (12):
+      Coffee | 6717.983471000005
+      Tea | 3802.8903303000097
+      Milk | 1730.4455515999966
+      Celery | 1677.8110180999993
+      Olives | 1636.7181785999962
+      Mashed potatoes | 1568.1530625000046
+      Fruit | 1487.9631089999996
+      Vanilla ice cream | 1360.3867236000026
+      Cocoa | 1328.8914980000006
+      Boiled potatoes | 1287.6380353999991
+      Cheese | 1256.1425699999984
+      Radishes | 1241.2510625000007
+
+  panel birdmenu-1-02
+    title: sum of MenuItem.price by Menu (by key) the twelve most
+    rows (12):
+      25886 | ∅
+      32117 | ∅
+      20549 | ∅
+      26770 | ∅
+      22344 | ∅
+      12502 | ∅
+      33711 | ∅
+      26264 | ∅
+      24416 | ∅
+      31789 | ∅
+      13093 | ∅
+      23723 | ∅
+
+  panel birdmenu-1-03
+    title: rows of MenuItem by MenuPage (by key) the twelve most
+    rows (12):
+      46514 | 425
+      69103 | 400
+      67104 | 397
+      57170 | 383
+      67190 | 378
+      47669 | 364
+      67983 | 353
+      57935 | 346
+      67988 | 340
+      67909 | 339
+      68849 | 339
+      66713 | 339
+
+  panel birdmenu-1-04
+    title: distribution of Menu.page_count
+    rows (17):
+      0 | 1 | 14934
+      1 | 5 | 1827
+      2 | 9 | 243
+      3 | 12 | 285
+      4 | 16 | 121
+      5 | 20 | 43
+      6 | 23 | 25
+      7 | 27 | 17
+      8 | 31 | 10
+      9 | 34 | 6
+      10 | 38 | 4
+      12 | 46 | 1
+      … 5 more rows
+
+  panel birdmenu-1-05
+    title: rows of Menu by Menu.date
+    rows (146):
+      0001-01-01 | 2
+      0190-01-01 | 1
+      1091-01-01 | 1
+      1851-01-01 | 3
+      1852-01-01 | 2
+      1853-01-01 | 1
+      1854-01-01 | 3
+      1855-01-01 | 1
+      1856-01-01 | 5
+      1857-01-01 | 1
+      1858-01-01 | 3
+      1859-01-01 | 3
+      … 134 more rows
+
+  panel birdmenu-1-06
+    title: sum of Menu.page_count by Menu.currency the twelve most
+    rows (12):
+      ∅ | 40393
+      Dollars | 16748
+      Deutsche Marks | 1524
+      Francs | 635
+      Canadian Dollars | 311
+      Swiss Francs | 208
+      Swedish kronor (SEK/kr) | 127
+      Italian Lire | 111
+      Austrian Schillings | 97
+      Shillings | 87
+      UK Pounds | 83
+      Dutch Guilders | 82
+
+  panel birdmenu-1-07
+    title: sum of MenuItem.price by Menu.date
+    rows (146):
+      0001-01-01 | 141.35000000000002
+      0190-01-01 | ∅
+      1091-01-01 | ∅
+      1851-01-01 | 376.26
+      1852-01-01 | 469.45
+      1853-01-01 | ∅
+      1854-01-01 | 81.49999999999999
+      1855-01-01 | 81.5
+      1856-01-01 | 390.145
+      1857-01-01 | 255.05
+      1858-01-01 | 318.6500000000006
+      1859-01-01 | 249.98999999999998
+      … 134 more rows
+
+  panel birdmenu-1-08
+    title: largest tables, estimated rows
+    rows (4):
+      MenuItem | 1334410
+      Dish | 426713
+      MenuPage | 66937
+      Menu | 17527
+
+  panel birdmenu-1-09
+    title: rows of MenuItem by Dish.name the twelve most
+    rows (12):
+      Coffee | 8495
+      Tea | 4778
+      Celery | 4694
+      Olives | 4559
+      Radishes | 3347
+      Mashed potatoes | 2665
+      Milk | 2292
+      Boiled potatoes | 2118
+      Fruit | 1997
+      Chicken salad | 1877
+      Vanilla ice cream | 1850
+      Cocoa | 1705
+
+  panel birdmenu-1-10
+    title: average of MenuItem.high_price by Dish.name the twelve most
+    rows (12):
+      Martini on The Rocks | ∅
+      American Striped Bass and Chicken Breast | ∅
+      Glace: Raisins | ∅
+      La Sole d'Ostende Frite sauce, Tartare | ∅
+      Sangria (a glass pitcher full of robust  | ∅
+      Cold Chicken and Potato Salad | ∅
+      Aspic de foie-gras | ∅
+      CIGARS | ∅
+      Assorted New York Pastry | ∅
+      Omelette mit Petersilie | ∅
+      Julienne of Chicken, Ham, Tongue, New St | ∅
+      Salisbury Steak of Veal with creamed pot | ∅
+
+  panel birdmenu-1-11
+    title: average of MenuItem.price by MenuPage (by key) the twelve most
+    rows (12):
+      55680 | ∅
+      176 | ∅
+      23393 | ∅
+      23851 | ∅
+      9038 | ∅
+      35634 | ∅
+      40694 | ∅
+      37876 | ∅
+      76791 | ∅
+      41011 | ∅
+      47216 | ∅
+      32429 | ∅
+
+  panel birdmenu-1-12
+    title: average of Menu.page_count by Menu.date
+    rows (146):
+      0001-01-01 | 2.5000000000000000
+      0190-01-01 | 2.0000000000000000
+      1091-01-01 | 2.0000000000000000
+      1851-01-01 | 2.6666666666666667
+      1852-01-01 | 2.0000000000000000
+      1853-01-01 | 2.0000000000000000
+      1854-01-01 | 1.6666666666666667
+      1855-01-01 | 2.0000000000000000
+      1856-01-01 | 2.8000000000000000
+      1857-01-01 | 2.0000000000000000
+      1858-01-01 | 2.6666666666666667
+      1859-01-01 | 2.6666666666666667
+      … 134 more rows
+
+  panel birdmenu-1-13
+    title: sum of MenuItem.xpos by Dish.name the twelve most
+    rows (12):
+      Coffee | 3790.6259688300142
+      Olives | 2083.9305491999976
+      Tea | 2040.5033926999938
+      Celery | 1799.2547730999986
+      Radishes | 1660.3793267699994
+      Milk | 1248.291417000001
+      Mashed potatoes | 1021.6643011599991
+      Cocoa | 933.7825847999984
+      Fruit | 874.1906765999984
+      Boiled potatoes | 846.3782068999984
+      Chocolate | 838.0856034999989
+      Sardines | 744.4696213999986
+
+  panel birdmenu-1-14
+    title: sum of MenuItem.high_price by Menu.date
+    rows (146):
+      0001-01-01 | 5.45
+      0190-01-01 | ∅
+      1091-01-01 | ∅
+      1851-01-01 | 20.25
+      1852-01-01 | 52.2
+      1853-01-01 | ∅
+      1854-01-01 | 8.299999999999999
+      1855-01-01 | 10.5
+      1856-01-01 | 47.62
+      1857-01-01 | 11
+      1858-01-01 | ∅
+      1859-01-01 | 62.7
+      … 134 more rows
+
+  panel birdmenu-1-15
+    title: rows of Menu by Menu.physical_description the twelve most
+    rows (12):
+      ∅ | 1629
+       | 1148
+      BROADSHEET; ILLUS; 6.5 X 7.75; | 127
+      33x18cm | 116
+      28x18cm folded; 28x36cm open | 109
+      21.5x13.5cm | 96
+      21.5x14cm folded; 21.5x28cm open | 85
+      33x21.5cm | 78
+      28x21.5cm folded; 28x43cm open | 70
+      CARD; ILLUS; COL; 5.25X8; | 62
+      CARD; 5X8; | 60
+      23x15cm folded; 23x30cm open | 60
+
+  panel birdmenu-1-16
+    title: rows of Menu by Menu.currency the twelve most
+    rows (12):
+      ∅ | 11073
+      Dollars | 5548
+      Deutsche Marks | 293
+      Francs | 162
+      Canadian Dollars | 98
+      Swiss Francs | 47
+      Shillings | 40
+      Swedish kronor (SEK/kr) | 39
+      Italian Lire | 28
+      Cents | 23
+      UK Pounds | 22
+      Belgian Francs | 20
+
+  panel birdmenu-1-17
+    title: average of Menu.dish_count by Menu.date
+    rows (146):
+      0001-01-01 | 102.5000000000000000
+      0190-01-01 | 32.0000000000000000
+      1091-01-01 | 68.0000000000000000
+      1851-01-01 | 85.0000000000000000
+      1852-01-01 | 141.5000000000000000
+      1853-01-01 | 34.0000000000000000
+      1854-01-01 | 67.3333333333333333
+      1855-01-01 | 72.0000000000000000
+      1856-01-01 | 101.6000000000000000
+      1857-01-01 | 137.0000000000000000
+      1858-01-01 | 145.0000000000000000
+      1859-01-01 | 106.0000000000000000
+      … 134 more rows
+
+  panel birdmenu-1-18
+    title: average of MenuItem.price by Dish.name the twelve most
+    rows (12):
+      Chesler Fromage | ∅
+      Carre de Porc | ∅
+      Glace: Raisins | ∅
+      Berncastler Doktor 1910 Crescens G Thani | ∅
+      Salmone al pomodoro | ∅
+      Baked Trout, Normande | ∅
+      Aspic de foie-gras | ∅
+      CIGARS | ∅
+      Assorted New York Pastry | ∅
+      Omelette mit Petersilie | ∅
+      American Striped Bass and Chicken Breast | ∅
+      Filets de Sole Prunier: Filets of Sole w | ∅
+
+  panel birdmenu-1-19
+    title: sum of MenuItem.price by Dish.name the twelve most
+    rows (12):
+      Imp Beers | ∅
+      Tip Toe Inn Chicken Consomme Egg Barley  | ∅
+      Berncastler Doktor 1910 Crescens G Thani | ∅
+      Widmer's New York State Delaware | ∅
+      Chesler Fromage | ∅
+      Carre de Porc | ∅
+      Sweetbreads, Financier | ∅
+      Assorted New York Pastry | ∅
+      Omelette mit Petersilie | ∅
+      Filets de Sole Prunier: Filets of Sole w | ∅
+      Glace: Raisins | ∅
+      MENU III  DM 50,-- | ∅
+
+  panel birdmenu-1-20
+    title: sum of Menu.dish_count by Menu.physical_description the twelve most
+    rows (12):
+      ∅ | 100876
+       | 97379
+      21.5x13.5cm | 25224
+      33x18cm | 25007
+      28x18cm folded; 28x36cm open | 17049
+      33x21.5cm | 13199
+      28x35.5cm | 11610
+      CARD; 5X8; | 10653
+      35.5x19.5cm folded; 35.5x39cm open | 9810
+      34.5x23cm | 8638
+      34x23cm | 8327
+      33x23cm | 7728
+
+  panel birdmenu-1-21
+    title: sum of Menu.page_count by Menu.date
+    rows (146):
+      0001-01-01 | 5
+      0190-01-01 | 2
+      1091-01-01 | 2
+      1851-01-01 | 8
+      1852-01-01 | 4
+      1853-01-01 | 2
+      1854-01-01 | 5
+      1855-01-01 | 2
+      1856-01-01 | 14
+      1857-01-01 | 2
+      1858-01-01 | 8
+      1859-01-01 | 8
+      … 134 more rows
+
+  panel birdmenu-1-22
+    title: rows of MenuPage by Menu (by key) the twelve most
+    rows (12):
+      35170 | 74
+      35003 | 64
+      31054 | 62
+      29313 | 57
+      34987 | 56
+      31230 | 56
+      26030 | 56
+      30608 | 50
+      24376 | 50
+      26078 | 50
+      21793 | 50
+      23068 | 46
+
+  panel birdmenu-1-23
+    title: rows of MenuItem by Menu.date
+    rows (146):
+      0001-01-01 | 205
+      0190-01-01 | 32
+      1091-01-01 | 68
+      1851-01-01 | 255
+      1852-01-01 | 283
+      1853-01-01 | 34
+      1854-01-01 | 202
+      1855-01-01 | 72
+      1856-01-01 | 508
+      1857-01-01 | 137
+      1858-01-01 | 435
+      1859-01-01 | 318
+      … 134 more rows
+
+  panel birdmenu-1-24
+    title: rows of Menu by Menu.currency_symbol the twelve most
+    rows (12):
+      ∅ | 11073
+      $ | 5578
+      DM | 293
+      FF | 162
+      C$ | 98
+      Fr | 47
+      s | 40
+      SEK | 39
+      L | 28
+      c | 23
+      £ | 22
+      BEF | 20
+
+  panel birdmenu-1-25
+    title: sum of MenuItem.high_price by Dish.name the twelve most
+    rows (12):
+      Strawberry Jelly, Whipped Cream | ∅
+      Glace: Raisins | ∅
+      Sweetbreads, Financier | ∅
+      Gegratin. Visschotel | ∅
+      Sangria (a glass pitcher full of robust  | ∅
+      Saddle Rocks Pan roast | ∅
+      Cold Chicken and Potato Salad | ∅
+      Assorted New York Pastry | ∅
+      Omelette mit Petersilie | ∅
+      Veal Parmigian, with spaghetti | ∅
+      Martini on The Rocks | ∅
+      Potatoes - Saratoga | ∅
+
+  panel birdmenu-1-26
+    title: rows of MenuItem per MenuPage
+    rows (313):
+      1 | 349
+      2 | 195
+      3 | 177
+      4 | 206
+      5 | 276
+      6 | 284
+      7 | 292
+      8 | 392
+      9 | 364
+      10 | 476
+      11 | 496
+      12 | 542
+      … 301 more rows
+
+  panel birdmenu-1-27
+    title: sum of Menu.dish_count by Menu.date
+    rows (146):
+      0001-01-01 | 205
+      0190-01-01 | 32
+      1091-01-01 | 68
+      1851-01-01 | 255
+      1852-01-01 | 283
+      1853-01-01 | 34
+      1854-01-01 | 202
+      1855-01-01 | 72
+      1856-01-01 | 508
+      1857-01-01 | 137
+      1858-01-01 | 435
+      1859-01-01 | 318
+      … 134 more rows
+
+  panel birdmenu-1-28
+    title: sum of Menu.page_count by Menu.physical_description the twelve most
+    rows (12):
+      ∅ | 4900
+       | 4449
+      28x18cm folded; 28x36cm open | 463
+      21.5x14cm folded; 21.5x28cm open | 379
+      28x21.5cm folded; 28x43cm open | 378
+      23x15cm folded; 23x30cm open | 302
+      24x16cm folded; 24x32cm open | 286
+      BROADSHEET; ILLUS; 6.5 X 7.75; | 254
+      33x18cm | 233
+      24x16.5cm folded; 24x33cm open | 222
+      23x15.5cm folded; 23x31cm open | 216
+      28x20.5cm folded; 28x41cm open | 199
+
+  panel birdmenu-1-29
+    title: sum of MenuItem.high_price by Menu (by key) the twelve most
+    rows (12):
+      32117 | ∅
+      22344 | ∅
+      26770 | ∅
+      20549 | ∅
+      26264 | ∅
+      12502 | ∅
+      33711 | ∅
+      30052 | ∅
+      24416 | ∅
+      31789 | ∅
+      13093 | ∅
+      25886 | ∅
+
+  panel birdmenu-1-30
+    title: rows of Menu by Menu.name the twelve most
+    rows (12):
+       | 8070
+      ∅ | 6260
+      Waldorf Astoria | 475
+      Hotel Astor | 143
+      [Restaurant name and/or location not giv | 113
+      The Biltmore | 96
+      Healy's Forty-second Street restaurant | 93
+      Waldorf-Astoria | 84
+      Wm. F. Healy's 42nd St. Grill | 82
+      Hotel McAlpin | 62
+      Childs | 51
+      The Mouquin Restaurant and Wine Co. | 50
+
+  panel birdmenu-1-31
+    title: sum of MenuItem.high_price by MenuPage (by key) the twelve most
+    rows (12):
+      41011 | ∅
+      69906 | ∅
+      37876 | ∅
+      9038 | ∅
+      5468 | ∅
+      35634 | ∅
+      40694 | ∅
+      47114 | ∅
+      76791 | ∅
+      39224 | ∅
+      47216 | ∅
+      76021 | ∅
+
+  panel birdmenu-1-32
+    title: sum of MenuItem.price by MenuPage (by key) the twelve most
+    rows (12):
+      55680 | ∅
+      176 | ∅
+      23393 | ∅
+      23851 | ∅
+      9038 | ∅
+      35634 | ∅
+      40694 | ∅
+      37876 | ∅
+      76791 | ∅
+      41011 | ∅
+      47216 | ∅
+      32429 | ∅
+
+  panel birdmenu-1-33
+    title: rows of MenuItem by Menu (by key) the twelve most
+    rows (12):
+      31054 | 4061
+      34201 | 1360
+      34074 | 1284
+      35041 | 1173
+      34093 | 1120
+      34167 | 926
+      16432 | 872
+      34077 | 868
+      34097 | 810
+      34278 | 805
+      34219 | 798
+      34287 | 780
+
+
+=== database: birdvideogames ===
+Video games, their genres, publishers and platforms, and their sales by region, as BIRD serves it. A fixture of round 1f.
+
+  panel birdvideogames-1-01
+    title: average of region_sales.num_sales by game_publisher (by key) the twelve most
+    rows (12):
+      1 | 20.685000000000002
+      3 | 8.957500000000001
+      4 | 8.25
+      5 | 7.845000000000001
+      7 | 7.5024999999999995
+      8 | 7.2524999999999995
+      9 | 7.1525
+      10 | 7.0775
+      11 | 6.1875
+      12 | 5.8575
+      13 | 5.7725
+      14 | 5.68
+
+  panel birdvideogames-1-02
+    title: sum of region_sales.num_sales by game_platform (by key) the twelve most
+    rows (12):
+      9577 | 82.74000000000001
+      9658 | 40.24
+      9578 | 35.830000000000005
+      9579 | 33
+      9704 | 31.380000000000003
+      9705 | 30.259999999999998
+      9763 | 30.009999999999998
+      9580 | 29.009999999999998
+      9581 | 28.61
+      9660 | 28.31
+      9764 | 24.75
+      9765 | 23.43
+
+  panel birdvideogames-1-03
+    title: rows of game by genre.genre_name
+    rows (12):
+      Action | 1894
+      Sports | 1361
+      Misc | 1308
+      Role-Playing | 1197
+      Adventure | 1032
+      Shooter | 804
+      Racing | 755
+      Simulation | 713
+      Fighting | 605
+      Platform | 580
+      Strategy | 578
+      Puzzle | 490
+
+  panel birdvideogames-1-04
+    title: average of region_sales.num_sales by platform.platform_name the twelve most
+    rows (12):
+      GB | 0.6557474226804119
+      NES | 0.6404336734693877
+      GEN | 0.26249999999999996
+      SNES | 0.20924686192468633
+      PS4 | 0.20696428571428532
+      X360 | 0.1964793856103427
+      2600 | 0.18637931034482816
+      PS3 | 0.18215272448196146
+      Wii | 0.1762015503875928
+      N64 | 0.17247626582278486
+      XOne | 0.16561032863849742
+      PS | 0.15297729184188022
+
+  panel birdvideogames-1-05
+    title: rows of region_sales by region.region_name the twelve most
+    rows (4):
+      North America | 16330
+      Japan | 16330
+      Other | 16330
+      Europe | 16330
+
+  panel birdvideogames-1-06
+    title: rows of game_platform by platform.platform_name
+    rows (31):
+      DS | 2133
+      PS2 | 2127
+      PS3 | 1303
+      Wii | 1290
+      X360 | 1235
+      PSP | 1197
+      PS | 1189
+      PC | 943
+      GBA | 811
+      XB | 803
+      GC | 542
+      3DS | 500
+      … 19 more rows
+
+  panel birdvideogames-1-07
+    title: rows of game_publisher by publisher.publisher_name the twelve most
+    rows (12):
+      Namco Bandai Games | 774
+      Nintendo | 662
+      Konami Digital Entertainment | 634
+      Sony Computer Entertainment | 621
+      Electronic Arts | 605
+      Ubisoft | 571
+      Sega | 477
+      Activision | 414
+      THQ | 406
+      Capcom | 274
+      Atari | 267
+      Tecmo Koei | 253
+
+  panel birdvideogames-1-08
+    title: sum of region_sales.num_sales by publisher.publisher_name the twelve most
+    rows (12):
+      Nintendo | 1784.2299999999764
+      Electronic Arts | 1096.4499999999668
+      Activision | 721.0599999999816
+      Sony Computer Entertainment | 607.2699999999919
+      Ubisoft | 473.3299999999915
+      Take-Two Interactive | 399.44999999999703
+      THQ | 340.319999999994
+      Konami Digital Entertainment | 278.3699999999987
+      Sega | 270.67999999999904
+      Namco Bandai Games | 253.47000000000045
+      Microsoft Game Studios | 245.77999999999994
+      Capcom | 199.80999999999992
+
+  panel birdvideogames-1-09
+    title: sum of region_sales.num_sales by platform.platform_name the twelve most
+    rows (12):
+      PS2 | 1233.5599999999467
+      X360 | 972.1799999999757
+      PS3 | 949.3799999999832
+      Wii | 909.1999999999789
+      DS | 817.939999999971
+      PS | 727.5599999999823
+      GBA | 312.8799999999974
+      PSP | 291.65999999999724
+      PS4 | 278.15999999999946
+      PC | 254.6199999999989
+      GB | 254.4299999999998
+      XB | 251.56999999999996
+
+  panel birdvideogames-1-10
+    title: distinct game_platform in region_sales by region.region_name the twelve most
+    rows (4):
+      North America | 16326
+      Europe | 16326
+      Japan | 16326
+      Other | 16326
+
+  panel birdvideogames-1-11
+    title: rows of region_sales by platform.platform_name the twelve most
+    rows (12):
+      DS | 8532
+      PS2 | 8508
+      PS3 | 5212
+      Wii | 5160
+      X360 | 4948
+      PSP | 4788
+      PS | 4756
+      PC | 3780
+      GBA | 3244
+      XB | 3212
+      GC | 2168
+      3DS | 2000
+
+  panel birdvideogames-1-12
+    title: rows of region_sales by game_platform (by key) the twelve most
+    rows (12):
+      4308 | 8
+      4309 | 8
+      5134 | 8
+      5135 | 8
+      13093 | 4
+      13520 | 4
+      3936 | 4
+      2466 | 4
+      5468 | 4
+      9038 | 4
+      5697 | 4
+      2520 | 4
+
+  panel birdvideogames-1-13
+    title: rows of game_platform per platform
+    rows (29):
+      1 | 2
+      2 | 1
+      3 | 1
+      6 | 2
+      12 | 1
+      27 | 1
+      52 | 1
+      97 | 1
+      98 | 1
+      116 | 1
+      143 | 1
+      173 | 1
+      … 17 more rows
+
+  panel birdvideogames-1-14
+    title: sum of region_sales.num_sales by game.game_name the twelve most
+    rows (12):
+      Wii Sports | 82.74000000000001
+      Grand Theft Auto V | 55.92
+      Super Mario Bros. | 45.309999999999995
+      Tetris | 35.839999999999996
+      Mario Kart Wii | 35.830000000000005
+      Wii Sports Resort | 33
+      Pokemon Red/Pokemon Blue | 31.380000000000003
+      Call of Duty: Modern Warfare 3 | 30.839999999999996
+      New Super Mario Bros. | 30.009999999999998
+      Call of Duty: Black Ops II | 29.730000000000004
+      Call of Duty: Black Ops | 29.409999999999997
+      Wii Play | 29.009999999999998
+
+  panel birdvideogames-1-15
+    title: average of region_sales.num_sales by publisher.publisher_name the twelve most
+    rows (12):
+      Palcom | 1.0425
+      Red Orb | 0.65625
+      Nintendo | 0.6408872126436697
+      Arena Entertainment | 0.59
+      UEP Systems | 0.5650000000000001
+      RedOctane | 0.5431250000000001
+      Valve | 0.4325
+      Hello Games | 0.39999999999999997
+      Sony Computer Entertainment Europe | 0.3979999999999999
+      Westwood Studios | 0.3875
+      Microsoft Game Studios | 0.32510582010582
+      Imagic | 0.3012499999999999
+
+  panel birdvideogames-1-16
+    title: sum of region_sales.num_sales by region.region_name the twelve most
+    rows (4):
+      North America | 4335.07000000019
+      Europe | 2410.3700000000695
+      Japan | 1284.329999999939
+      Other | 789.3299999999313
+
+  panel birdvideogames-1-17
+    title: average of region_sales.num_sales by game_platform (by key) the twelve most
+    rows (12):
+      9577 | 20.685000000000002
+      9658 | 10.06
+      9578 | 8.957500000000001
+      9579 | 8.25
+      9704 | 7.845000000000001
+      9705 | 7.5649999999999995
+      9763 | 7.5024999999999995
+      9580 | 7.2524999999999995
+      9581 | 7.1525
+      9660 | 7.0775
+      9764 | 6.1875
+      9765 | 5.8575
+
+  panel birdvideogames-1-18
+    title: rows of game_platform by platform.platform_name the twelve most
+    rows (12):
+      DS | 2133
+      PS2 | 2127
+      PS3 | 1303
+      Wii | 1290
+      X360 | 1235
+      PSP | 1197
+      PS | 1189
+      PC | 943
+      GBA | 811
+      XB | 803
+      GC | 542
+      3DS | 500
+
+  panel birdvideogames-1-19
+    title: average of region_sales.num_sales by region.region_name
+    rows (4):
+      North America | 0.2654666258420202
+      Europe | 0.14760379669320695
+      Japan | 0.07864849969381132
+      Other | 0.04833619105939567
+
+  panel birdvideogames-1-20
+    title: rows of region_sales by publisher.publisher_name the twelve most
+    rows (12):
+      Electronic Arts | 5368
+      Activision | 3864
+      Namco Bandai Games | 3712
+      Ubisoft | 3672
+      Konami Digital Entertainment | 3292
+      THQ | 2848
+      Nintendo | 2784
+      Sony Computer Entertainment | 2728
+      Sega | 2528
+      Take-Two Interactive | 1648
+      Capcom | 1504
+      Atari | 1388
+
+  panel birdvideogames-1-21
+    title: sum of region_sales.num_sales by game_publisher (by key) the twelve most
+    rows (12):
+      1 | 82.74000000000001
+      17 | 55.92
+      2 | 45.309999999999995
+      6 | 35.839999999999996
+      3 | 35.830000000000005
+      4 | 33
+      5 | 31.380000000000003
+      29 | 30.839999999999996
+      7 | 30.009999999999998
+      34 | 29.730000000000004
+      31 | 29.409999999999997
+      8 | 29.009999999999998
+
+  panel birdvideogames-1-22
+    title: average of region_sales.num_sales by game.game_name the twelve most
+    rows (12):
+      Wii Sports | 20.685000000000002
+      Mario Kart Wii | 8.957500000000001
+      Wii Sports Resort | 8.25
+      Pokemon Red/Pokemon Blue | 7.845000000000001
+      New Super Mario Bros. | 7.5024999999999995
+      Wii Play | 7.2524999999999995
+      New Super Mario Bros. Wii | 7.1525
+      Duck Hunt | 7.0775
+      Nintendogs | 6.1875
+      Mario Kart DS | 5.8575
+      Pokemon Gold/Pokemon Silver | 5.7725
+      Wii Fit | 5.68
+
+  panel birdvideogames-1-23
+    title: sum of region_sales.num_sales by region.region_name
+    rows (4):
+      North America | 4335.07000000019
+      Europe | 2410.3700000000695
+      Japan | 1284.329999999939
+      Other | 789.3299999999313
+
+  panel birdvideogames-1-24
+    title: rows of region_sales by game_publisher (by key) the twelve most
+    rows (12):
+      218 | 64
+      591 | 36
+      1269 | 36
+      102 | 36
+      1693 | 32
+      1704 | 32
+      113 | 32
+      1318 | 32
+      519 | 32
+      3776 | 32
+      207 | 32
+      74 | 32
+
+  panel birdvideogames-1-25
+    title: largest tables, estimated rows
+    rows (8):
+      region_sales | 65320
+      game_platform | 16326
+      game_publisher | 11732
+      game | 11317
+      publisher | 577
+      platform | 31
+      genre | 12
+      region | 4
+
+  panel birdvideogames-1-26
+    title: rows of region_sales by region.region_name
+    rows (4):
+      Other | 16330
+      Japan | 16330
+      Europe | 16330
+      North America | 16330
+
+  panel birdvideogames-1-27
+    title: rows of game_platform per game_publisher
+    rows (10):
+      1 | 9213
+      2 | 1375
+      3 | 641
+      4 | 257
+      5 | 128
+      6 | 75
+      7 | 29
+      8 | 10
+      9 | 3
+      12 | 1
+
+  panel birdvideogames-1-28
+    title: rows of game by genre.genre_name the twelve most
+    rows (12):
+      Action | 1894
+      Sports | 1361
+      Misc | 1308
+      Role-Playing | 1197
+      Adventure | 1032
+      Shooter | 804
+      Racing | 755
+      Simulation | 713
+      Fighting | 605
+      Platform | 580
+      Strategy | 578
+      Puzzle | 490
+
+  panel birdvideogames-1-29
+    title: rows of region_sales by game.game_name the twelve most
+    rows (12):
+      ∅ | 208
+      Need for Speed: Most Wanted | 64
+      FIFA 14 | 36
+      LEGO Marvel Super Heroes | 36
+      Ratatouille | 36
+      Terraria | 32
+      Lego Batman 3: Beyond Gotham | 32
+      FIFA Soccer 13 | 32
+      FIFA 15 | 32
+      LEGO Star Wars II: The Original Trilogy | 32
+      Cars | 32
+      Madden NFL 07 | 32
+
+  panel birdvideogames-1-30
+    title: average of region_sales.num_sales by region.region_name the twelve most
+    rows (4):
+      North America | 0.2654666258420202
+      Europe | 0.14760379669320695
+      Japan | 0.07864849969381132
+      Other | 0.04833619105939567
+
+
+=== database: birdaddress ===
+American ZIP codes: their places, states, area codes, congressional districts, metropolitan areas and other names, as BIRD serves it. A fixture of round 1f.
+
+  panel birdaddress-1-01
+    title: average of zip_data.total_beneficiaries by state.name the twelve most
+    rows (12):
+      Armed Forces Europe | ∅
+      Armed Forces Pacific | ∅
+      Armed Forces Americas | ∅
+      American Samoa | 6215.0000000000000000
+      Florida | 3080.0883752549286200
+      Arizona | 2495.5248091603053435
+      California | 2264.2230382682643989
+      South Carolina | 2088.1273408239700375
+      Delaware | 2069.1666666666666667
+      Nevada | 2051.6535433070866142
+      Hawaii | 1945.0364963503649635
+      North Carolina | 1906.5138888888888889
+
+  panel birdaddress-1-02
+    title: average of zip_data.total_beneficiaries by CBSA.CBSA_name the twelve most
+    rows (12):
+      The Villages, FL | 6822.5000000000000000
+      Myrtle Beach-Conway-North Myrtle Beach,  | 4306.1764705882352941
+      Fitzgerald, GA | 4265.0000000000000000
+      Georgetown, SC | 4223.7500000000000000
+      Punta Gorda, FL | 4017.9411764705882353
+      Port St. Lucie, FL | 4004.8387096774193548
+      Cape Coral-Fort Myers, FL | 3933.8541666666666667
+      North Port-Sarasota-Bradenton, FL | 3841.4516129032258065
+      Miami-Fort Lauderdale-Pompano Beach, FL | 3668.3448275862068966
+      Naples-Marco Island, FL | 3598.4615384615384615
+      Cleveland-Elyria, OH | 3585.6779661016949153
+      Deltona-Daytona Beach-Ormond Beach, FL | 3504.7222222222222222
+
+  panel birdaddress-1-03
+    title: rows of zip_data by zip_data.multi_county
+    rows (2):
+      No | 33097
+      Yes | 8466
+
+  panel birdaddress-1-04
+    title: rows of zip_data by zip_data.division
+    rows (10):
+      South Atlantic | 7090
+      East North Central | 5978
+      West North Central | 5327
+      Middle Atlantic | 5041
+      West South Central | 4785
+      Pacific | 4055
+      Mountain | 3108
+      East South Central | 3071
+      New England | 2270
+      ∅ | 838
+
+  panel birdaddress-1-05
+    title: rows of zip_data by CBSA.CBSA_name the twelve most
+    rows (12):
+      ∅ | 23942
+      New York-Newark-Jersey City, NY-NJ-PA | 1126
+      Washington-Arlington-Alexandria, DC-VA-M | 760
+      Philadelphia-Camden-Wilmington, PA-NJ-DE | 527
+      Pittsburgh, PA | 428
+      Boston-Cambridge-Newton, MA-NH | 388
+      Atlanta-Sandy Springs-Alpharetta, GA | 321
+      Miami-Fort Lauderdale-Pompano Beach, FL | 290
+      Detroit-Warren-Dearborn, MI | 268
+      Tampa-St. Petersburg-Clearwater, FL | 216
+      Cincinnati, OH-KY-IN | 205
+      Baltimore-Columbia-Towson, MD | 202
+
+  panel birdaddress-1-06
+    title: sum of zip_data.total_beneficiaries by zip_data.region
+    rows (5):
+      South | 23426060
+      Midwest | 13397815
+      West | 12511115
+      Northeast | 6376675
+      ∅ | 26890
+
+  panel birdaddress-1-07
+    title: rows of congress by congress.party
+    rows (3):
+      Republican | 279
+      Democrat | 259
+      Independent | 2
+
+  panel birdaddress-1-08
+    title: sum of zip_data.total_beneficiaries by CBSA.CBSA_name the twelve most
+    rows (12):
+      ∅ | 28709680
+      New York-Newark-Jersey City, NY-NJ-PA | 2037695
+      Miami-Fort Lauderdale-Pompano Beach, FL | 1063820
+      Detroit-Warren-Dearborn, MI | 880565
+      Philadelphia-Camden-Wilmington, PA-NJ-DE | 865250
+      Atlanta-Sandy Springs-Alpharetta, GA | 855495
+      Washington-Arlington-Alexandria, DC-VA-M | 765210
+      Tampa-St. Petersburg-Clearwater, FL | 683915
+      Pittsburgh, PA | 559135
+      Baltimore-Columbia-Towson, MD | 479260
+      Orlando-Kissimmee-Sanford, FL | 445625
+      Charlotte-Concord-Gastonia, NC-SC | 430005
+
+  panel birdaddress-1-09
+    title: rows of country by state.name the twelve most
+    rows (12):
+      Texas | 3375
+      California | 2707
+      Pennsylvania | 2539
+      New York | 2395
+      Illinois | 2079
+      Ohio | 1961
+      Missouri | 1655
+      Florida | 1618
+      Virginia | 1575
+      Iowa | 1545
+      Michigan | 1534
+      Georgia | 1528
+
+  panel birdaddress-1-10
+    title: sum of zip_data.total_delivery_receptacles by zip_data.type
+    rows (9):
+      APO/FPO Military | ∅
+      Post Office | 146105127
+      P.O. Box Only | 9729017
+      Branch | 6453394
+      Non Postal Community Name | 3982232
+      Unique Post Office | 713950
+      Community Post Office  | 99460
+      Non Postal Community Name-Unique | 23207
+      Branch-Unique | 11831
+
+  panel birdaddress-1-11
+    title: sum of zip_data.total_beneficiaries by state.name the twelve most
+    rows (12):
+      Armed Forces Pacific | ∅
+      Armed Forces Europe | ∅
+      Armed Forces Americas | ∅
+      California | 5857545
+      Florida | 4530810
+      Texas | 4123630
+      New York | 3581365
+      Pennsylvania | 2795310
+      Ohio | 2336570
+      Illinois | 2219725
+      Michigan | 2186365
+      North Carolina | 2059035
+
+  panel birdaddress-1-12
+    title: rows of zip_data by zip_data.state_fips the twelve most
+    rows (12):
+      48 | 2598
+      6 | 2587
+      42 | 2169
+      36 | 2150
+      17 | 1568
+      12 | 1471
+      39 | 1415
+      51 | 1213
+      26 | 1158
+      29 | 1154
+      37 | 1080
+      19 | 1054
+
+  panel birdaddress-1-13
+    title: sum of zip_data.total_beneficiaries by zip_data.state_fips the twelve most
+    rows (12):
+      ∅ | ∅
+      6 | 5857545
+      12 | 4530810
+      48 | 4123630
+      36 | 3581365
+      42 | 2795310
+      39 | 2336570
+      17 | 2219725
+      26 | 2186365
+      37 | 2059035
+      13 | 1789825
+      51 | 1500495
+
+  panel birdaddress-1-14
+    title: rows of zip_data by state.name the twelve most
+    rows (12):
+      Texas | 2598
+      California | 2587
+      Pennsylvania | 2169
+      New York | 2150
+      Illinois | 1568
+      Florida | 1471
+      Ohio | 1415
+      Virginia | 1213
+      Michigan | 1158
+      Missouri | 1154
+      North Carolina | 1080
+      Iowa | 1054
+
+  panel birdaddress-1-15
+    title: rows of CBSA by CBSA.CBSA_type
+    rows (2):
+      Micro | 256
+      Metro | 209
+
+  panel birdaddress-1-16
+    title: sum of zip_data.total_delivery_receptacles by CBSA.CBSA_name the twelve most
+    rows (12):
+      ∅ | 85389737
+      New York-Newark-Jersey City, NY-NJ-PA | 8425852
+      Washington-Arlington-Alexandria, DC-VA-M | 3120519
+      Miami-Fort Lauderdale-Pompano Beach, FL | 3096863
+      Philadelphia-Camden-Wilmington, PA-NJ-DE | 2997186
+      Atlanta-Sandy Springs-Alpharetta, GA | 2823454
+      Boston-Cambridge-Newton, MA-NH | 2259391
+      Detroit-Warren-Dearborn, MI | 2166840
+      Tampa-St. Petersburg-Clearwater, FL | 1688403
+      Baltimore-Columbia-Towson, MD | 1446571
+      Orlando-Kissimmee-Sanford, FL | 1421077
+      Charlotte-Concord-Gastonia, NC-SC | 1304082
+
+  panel birdaddress-1-17
+    title: sum of zip_data.single_family_delivery_units by CBSA.CBSA_name the twelve most
+    rows (12):
+      ∅ | 38596156
+      New York-Newark-Jersey City, NY-NJ-PA | 3626053
+      Philadelphia-Camden-Wilmington, PA-NJ-DE | 1827774
+      Atlanta-Sandy Springs-Alpharetta, GA | 1618264
+      Detroit-Warren-Dearborn, MI | 1355183
+      Boston-Cambridge-Newton, MA-NH | 1265733
+      Washington-Arlington-Alexandria, DC-VA-M | 1218805
+      Miami-Fort Lauderdale-Pompano Beach, FL | 1141650
+      Tampa-St. Petersburg-Clearwater, FL | 882461
+      Pittsburgh, PA | 847491
+      Charlotte-Concord-Gastonia, NC-SC | 773061
+      Baltimore-Columbia-Towson, MD | 688171
+
+  panel birdaddress-1-18
+    title: largest tables, estimated rows
+    rows (9):
+      area_code | 53796
+      country | 51001
+      zip_congress | 45231
+      alias | 41701
+      zip_data | 41563
+      avoid | 24114
+      congress | 540
+      CBSA | 465
+      state | 62
+
+  panel birdaddress-1-19
+    title: rows of congress by congress.state the twelve most
+    rows (12):
+      California | 55
+      Texas | 38
+      New York | 29
+      Florida | 29
+      Illinois | 20
+      Pennsylvania | 20
+      Ohio | 18
+      Georgia | 16
+      Michigan | 16
+      North Carolina | 15
+      New Jersey | 14
+      Virginia | 13
+
+  panel birdaddress-1-20
+    title: rows of zip_data by CBSA.CBSA_type
+    rows (3):
+      ∅ | 23942
+      Metro | 14210
+      Micro | 3411
+
+  panel birdaddress-1-21
+    title: rows of congress by state.name the twelve most
+    rows (12):
+      California | 55
+      Texas | 38
+      New York | 29
+      Florida | 29
+      Illinois | 20
+      Pennsylvania | 20
+      Ohio | 18
+      Michigan | 16
+      Georgia | 16
+      North Carolina | 15
+      New Jersey | 14
+      Virginia | 13
+
+  panel birdaddress-1-22
+    title: sum of zip_data.single_family_delivery_units by state.name the twelve most
+    rows (12):
+      Armed Forces Americas | ∅
+      Armed Forces Europe | ∅
+      Armed Forces Pacific | ∅
+      California | 7181169
+      Texas | 5901140
+      Florida | 5237707
+      New York | 4202348
+      Pennsylvania | 4200721
+      Ohio | 3887581
+      Illinois | 3494957
+      Michigan | 3275517
+      North Carolina | 3273320
+
+  panel birdaddress-1-23
+    title: sum of zip_data.total_beneficiaries by zip_data.type
+    rows (9):
+      APO/FPO Military | ∅
+      Post Office | 51181470
+      Branch | 1918875
+      P.O. Box Only | 1333825
+      Non Postal Community Name | 1261505
+      Community Post Office  | 29935
+      Unique Post Office | 12945
+      Branch-Unique | 0
+      Non Postal Community Name-Unique | 0
+
+  panel birdaddress-1-24
+    title: sum of zip_data.multi_family_delivery_units by state.name the twelve most
+    rows (12):
+      Armed Forces Europe | ∅
+      Armed Forces Americas | ∅
+      Armed Forces Pacific | ∅
+      California | 3043499
+      New York | 2715788
+      Texas | 2343734
+      Florida | 2114773
+      Illinois | 1148409
+      Arizona | 907762
+      Massachusetts | 612172
+      Washington | 562617
+      Ohio | 547684
+
+  panel birdaddress-1-25
+    title: sum of zip_data.total_delivery_receptacles by state.name the twelve most
+    rows (12):
+      Armed Forces Pacific | ∅
+      Armed Forces Europe | ∅
+      Armed Forces Americas | ∅
+      California | 18813185
+      Texas | 14756089
+      Florida | 11636303
+      New York | 8707038
+      Pennsylvania | 6339215
+      Ohio | 5845028
+      Illinois | 5805309
+      North Carolina | 5414023
+      Georgia | 5089286
+
+  panel birdaddress-1-26
+    title: rows of alias per zip_data
+    rows (1):
+      1 | 41701
+
+  panel birdaddress-1-27
+    title: rows of zip_data by zip_data.time_zone
+    rows (13):
+      Eastern | 18604
+      Central | 14613
+      Pacific | 4114
+      Mountain | 3134
+      ∅ | 608
+      Atlantic | 192
+      Hawaii-Aleutian Islands | 137
+      Alaska | 135
+      Guam | 16
+      Micronesia | 4
+      Marshall Islands | 3
+      Palau | 2
+      … 1 more rows
+
+  panel birdaddress-1-28
+    title: rows of zip_data by zip_data.type
+    rows (9):
+      Post Office | 27230
+      P.O. Box Only | 9080
+      Unique Post Office | 2011
+      Non Postal Community Name | 1728
+      Branch | 654
+      APO/FPO Military | 621
+      Community Post Office  | 162
+      Non Postal Community Name-Unique | 50
+      Branch-Unique | 27
+
+  panel birdaddress-1-29
+    title: sum of zip_data.total_beneficiaries by zip_data.time_zone
+    rows (13):
+      ∅ | ∅
+      Eastern | 25766085
+      Central | 17222905
+      Pacific | 8620815
+      Mountain | 3769625
+      Hawaii-Aleutian Islands | 266470
+      Alaska | 65765
+      Guam | 20675
+      American Samoa | 6215
+      Atlantic | 0
+      Marshall Islands | 0
+      Micronesia | 0
+      … 1 more rows
+
+  panel birdaddress-1-30
+    title: sum of zip_data.multi_family_delivery_units by CBSA.CBSA_name the twelve most
+    rows (12):
+      ∅ | 11242187
+      New York-Newark-Jersey City, NY-NJ-PA | 2889318
+      Miami-Fort Lauderdale-Pompano Beach, FL | 898577
+      Washington-Arlington-Alexandria, DC-VA-M | 706794
+      Boston-Cambridge-Newton, MA-NH | 517061
+      Atlanta-Sandy Springs-Alpharetta, GA | 406989
+      Philadelphia-Camden-Wilmington, PA-NJ-DE | 311040
+      Tampa-St. Petersburg-Clearwater, FL | 284174
+      Orlando-Kissimmee-Sanford, FL | 240315
+      Baltimore-Columbia-Towson, MD | 219568
+      San Juan-Bayamon-Caguas, PR | 215697
+      Detroit-Warren-Dearborn, MI | 200927
+
+  panel birdaddress-1-31
+    title: sum of zip_data.total_beneficiaries by zip_data.division
+    rows (10):
+      South Atlantic | 12732065
+      East North Central | 9283680
+      Pacific | 8351935
+      West South Central | 6489835
+      Middle Atlantic | 6376675
+      East South Central | 4204160
+      Mountain | 4159180
+      West North Central | 4114135
+      ∅ | 26890
+      New England | 0
+
+  panel birdaddress-1-32
+    title: rows of zip_congress by congress (named) the twelve most
+    rows (12):
+      Rahall Nick | 430
+      Smith Adrian | 411
+      King Steven A | 405
+      Cramer Kevin | 405
+      Rogers Hal | 360
+      Gibson Chris | 354
+      Dent Charlie | 351
+      Huelskamp Tim | 342
+      Peterson Collin | 338
+      Michaud Mike | 319
+      Welch Peter | 308
+      Shimkus John | 296
+
+  panel birdaddress-1-33
+    title: rows of zip_data by zip_data.region
+    rows (5):
+      South | 14946
+      Midwest | 11305
+      Northeast | 7311
+      West | 7163
+      ∅ | 838
+
+
+=== database: birdhumanresources ===
+A company's employees, their positions and their locations, as BIRD serves it. A fixture of round 1f.
+
+  panel birdhumanresources-1-01
+    title: rows of employee by location.locationcity
+    rows (7):
+      Chicago | 6
+      Boston | 5
+      New York City | 4
+      Atlanta | 4
+      Miami | 3
+      Denver | 2
+      Salt Lake City | 1
+
+  panel birdhumanresources-1-02
+    title: distinct position in employee by employee.gender
+    rows (3):
+      M | 4
+      F | 3
+      ∅ | 1
+
+  panel birdhumanresources-1-03
+    title: rows of employee by position.positiontitle
+    rows (4):
+      Account Representative | 10
+      Manager | 10
+      Trainee | 3
+      Regional Manager | 2
+
+  panel birdhumanresources-1-04
+    title: rows of employee by position.maxsalary
+    rows (4):
+      US$75,000.00 | 10
+      US$150,000.00 | 10
+      US$25,000.00 | 3
+      US$250,000.00 | 2
+
+  panel birdhumanresources-1-05
+    title: distinct location in employee by employee.gender
+    rows (3):
+      M | 7
+      F | 6
+      ∅ | 1
+
+  panel birdhumanresources-1-06
+    title: rows of location by location.state
+    rows (8):
+      MA | 1
+      CA | 1
+      UT | 1
+      CO | 1
+      FL | 1
+      IL | 1
+      NY | 1
+      GA | 1
+
+  panel birdhumanresources-1-07
+    title: sum of location.zipcode by location.state
+    rows (8):
+      CA | 94235
+      UT | 84125
+      IL | 60620
+      CO | 54657
+      FL | 33103
+      GA | 30316
+      NY | 15648
+      MA | 2190
+
+  panel birdhumanresources-1-08
+    title: largest tables, estimated rows
+    rows (3):
+      employee | 25
+      location | 8
+      position | 4
+
+  panel birdhumanresources-1-09
+    title: rows of employee by position.educationrequired
+    rows (3):
+      4 year degree | 20
+      2 year degree | 3
+      6 year degree | 2
+
+  panel birdhumanresources-1-10
+    title: rows of employee by location (by key) the twelve most
+    rows (7):
+      3 | 6
+      2 | 5
+      1 | 4
+      5 | 4
+      4 | 3
+      6 | 2
+      7 | 1
+
+  panel birdhumanresources-1-11
+    title: rows of employee by employee.gender
+    rows (3):
+      M | 12
+      F | 12
+      ∅ | 1
+
+  panel birdhumanresources-1-12
+    title: rows of position by position.minsalary
+    rows (4):
+      US$18,000.00 | 1
+      US$100,000.00 | 1
+      US$50,000.00 | 1
+      US$25,000.00 | 1
+
+  panel birdhumanresources-1-13
+    title: rows of position by position.maxsalary
+    rows (4):
+      US$150,000.00 | 1
+      US$75,000.00 | 1
+      US$25,000.00 | 1
+      US$250,000.00 | 1
+
+  panel birdhumanresources-1-14
+    title: rows of position by position.educationrequired
+    rows (3):
+      4 year degree | 2
+      2 year degree | 1
+      6 year degree | 1
+
+  panel birdhumanresources-1-15
+    title: distinct position in employee by position (by key) the twelve most
+    rows (4):
+      1 | 1
+      2 | 1
+      3 | 1
+      4 | 1
+
+  panel birdhumanresources-1-16
+    title: rows of employee by position (by key) the twelve most
+    rows (4):
+      1 | 10
+      2 | 10
+      3 | 3
+      4 | 2
+
+  panel birdhumanresources-1-17
+    title: rows of employee by location.address
+    rows (7):
+      500 Loop Highway | 6
+      3 Commons Blvd | 5
+      450 Peachtree Rd | 4
+      1650 Washington Blvd | 4
+      210 Biscayne Blvd | 3
+      312 Mount View Dr | 2
+      316 S. State St | 1
+
+  panel birdhumanresources-1-18
+    title: rows of employee by employee.lastname the twelve most
+    rows (12):
+      Smith | 2
+      Johnson | 1
+      Whitehead | 1
+      Roberts | 1
+      Jones | 1
+      Coulter | 1
+      Marlin | 1
+      Marder | 1
+      Frank | 1
+      Bronson | 1
+      Webster | 1
+      Johanson | 1
+
+  panel birdhumanresources-1-19
+    title: rows of position by position.positiontitle
+    rows (4):
+      Regional Manager | 1
+      Account Representative | 1
+      Manager | 1
+      Trainee | 1
+
+  panel birdhumanresources-1-20
+    title: rows of employee by employee.performance
+    rows (4):
+      Good | 11
+      Average | 8
+      Poor | 4
+      ∅ | 2
+
+  panel birdhumanresources-1-21
+    title: rows of employee by location.officephone
+    rows (7):
+      (312)444-6666 | 6
+      (617)123-4444 | 5
+      (518)256-3100 | 4
+      (404)333-5555 | 4
+      (305)787-9999 | 3
+      (205)607-5289 | 2
+      (801)459-6652 | 1
+
+  panel birdhumanresources-1-22
+    title: rows of employee per position
+    rows (3):
+      2 | 1
+      3 | 1
+      10 | 2
+
+  panel birdhumanresources-1-23
+    title: rows of employee by position.minsalary
+    rows (4):
+      US$25,000.00 | 10
+      US$50,000.00 | 10
+      US$18,000.00 | 3
+      US$100,000.00 | 2
+
+  panel birdhumanresources-1-24
+    title: rows of employee by location.state
+    rows (7):
+      IL | 6
+      MA | 5
+      GA | 4
+      NY | 4
+      FL | 3
+      CO | 2
+      UT | 1
+
+  panel birdhumanresources-1-25
+    title: average of location.zipcode by location.state
+    rows (8):
+      CA | 94235.000000000000
+      UT | 84125.000000000000
+      IL | 60620.000000000000
+      CO | 54657.000000000000
+      FL | 33103.000000000000
+      GA | 30316.000000000000
+      NY | 15648.0000000000000000
+      MA | 2190.0000000000000000
+
+  panel birdhumanresources-1-26
+    title: rows of location by location.officephone
+    rows (8):
+      (705)639-0227 | 1
+      (801)459-6652 | 1
+      (205)607-5289 | 1
+      (518)256-3100 | 1
+      (312)444-6666 | 1
+      (305)787-9999 | 1
+      (617)123-4444 | 1
+      (404)333-5555 | 1
+
+  panel birdhumanresources-1-27
+    title: rows of employee by employee.firstname the twelve most
+    rows (12):
+      David | 3
+      Holly | 2
+      Patricia | 2
+      Emily | 2
+      Sandy | 2
+      Melissa | 1
+      William | 1
+      Frank | 1
+      Kenneth | 1
+      Marietta | 1
+      Kelly | 1
+      Jose | 1
+
+  panel birdhumanresources-1-28
+    title: distinct position in employee by employee.performance
+    rows (4):
+      Good | 4
+      Average | 3
+      Poor | 3
+      ∅ | 2
+
+  panel birdhumanresources-1-29
+    title: distinct position in employee by location (by key) the twelve most
+    rows (7):
+      1 | 3
+      5 | 3
+      2 | 3
+      4 | 2
+      3 | 2
+      6 | 2
+      7 | 1
+
+  panel birdhumanresources-1-30
+    title: distinct location in employee by employee.performance
+    rows (4):
+      Good | 6
+      Average | 5
+      Poor | 4
+      ∅ | 2
+
+  panel birdhumanresources-1-31
+    title: rows of location by location.address
+    rows (8):
+      450 Peachtree Rd | 1
+      3 Commons Blvd | 1
+      1400 Main St | 1
+      500 Loop Highway | 1
+      210 Biscayne Blvd | 1
+      316 S. State St | 1
+      312 Mount View Dr | 1
+      1650 Washington Blvd | 1
+
+  panel birdhumanresources-1-32
+    title: rows of location by location.locationcity
+    rows (8):
+      Atlanta | 1
+      Los Angeles | 1
+      Boston | 1
+      Chicago | 1
+      New York City | 1
+      Salt Lake City | 1
+      Denver | 1
+      Miami | 1
+
+
+=== database: birdsuperstore ===
+A superstore's orders in four regions, its customers and its products, as BIRD serves it. A fixture of round 1f.
+
+  panel birdsuperstore-1-01
+    title: rows of east_superstore by east_superstore.Ship Mode
+    rows (4):
+      Standard Class | 3346
+      Second Class | 1060
+      First Class | 980
+      Same Day | 310
+
+  panel birdsuperstore-1-02
+    title: sum of central_superstore.Quantity by central_superstore.Order Date
+    rows (72):
+      2013-01-01 | 62
+      2013-02-01 | 69
+      2013-03-01 | 123
+      2013-04-01 | 80
+      2013-05-01 | 121
+      2013-06-01 | 158
+      2013-07-01 | 131
+      2013-08-01 | 50
+      2013-09-01 | 264
+      2013-10-01 | 118
+      2013-11-01 | 307
+      2013-12-01 | 243
+      … 60 more rows
+
+  panel birdsuperstore-1-03
+    title: rows of west_superstore by west_superstore.Ship Mode
+    rows (4):
+      Standard Class | 3764
+      Second Class | 1242
+      First Class | 1030
+      Same Day | 370
+
+  panel birdsuperstore-1-04
+    title: sum of east_superstore.Quantity by east_superstore.Order Date
+    rows (72):
+      2013-01-01 | 33
+      2013-02-01 | 15
+      2013-03-01 | 140
+      2013-04-01 | 120
+      2013-05-01 | 135
+      2013-06-01 | 160
+      2013-07-01 | 86
+      2013-08-01 | 161
+      2013-09-01 | 366
+      2013-10-01 | 142
+      2013-11-01 | 339
+      2013-12-01 | 289
+      … 60 more rows
+
+  panel birdsuperstore-1-05
+    title: rows of people by people.Segment
+    rows (3):
+      Consumer | 1306
+      Corporate | 742
+      Home Office | 453
+
+  panel birdsuperstore-1-06
+    title: rows of people by people.State the twelve most
+    rows (12):
+      California | 443
+      New York | 283
+      Texas | 264
+      Illinois | 149
+      Pennsylvania | 145
+      Florida | 131
+      Washington | 103
+      Ohio | 98
+      North Carolina | 87
+      Virginia | 76
+      Michigan | 60
+      Tennessee | 55
+
+  panel birdsuperstore-1-07
+    title: rows of south_superstore by south_superstore.Ship Date
+    rows (73):
+      2013-01-01 | 32
+      2013-02-01 | 8
+      2013-03-01 | 49
+      2013-04-01 | 30
+      2013-05-01 | 25
+      2013-06-01 | 18
+      2013-07-01 | 17
+      2013-08-01 | 36
+      2013-09-01 | 25
+      2013-10-01 | 28
+      2013-11-01 | 38
+      2013-12-01 | 40
+      … 61 more rows
+
+  panel birdsuperstore-1-08
+    title: rows of central_superstore by central_superstore.Ship Mode
+    rows (4):
+      Standard Class | 2878
+      Second Class | 930
+      First Class | 598
+      Same Day | 240
+
+  panel birdsuperstore-1-09
+    title: sum of west_superstore.Profit by west_superstore.Order Date
+    rows (72):
+      2013-01-01 | 24.392899999999944
+      2013-02-01 | 225.4086
+      2013-03-01 | 1534.2272999999996
+      2013-04-01 | 1629.4544999999996
+      2013-05-01 | 873.5640000000002
+      2013-06-01 | 1771.8151999999998
+      2013-07-01 | 1946.6827999999998
+      2013-08-01 | 2560.9043999999994
+      2013-09-01 | 3075.5226999999986
+      2013-10-01 | 1391.2654999999993
+      2013-11-01 | 3151.3106999999995
+      2013-12-01 | 1881.142599999999
+      … 60 more rows
+
+  panel birdsuperstore-1-10
+    title: rows of central_superstore by central_superstore.Ship Date
+    rows (73):
+      2013-01-01 | 19
+      2013-02-01 | 21
+      2013-03-01 | 21
+      2013-04-01 | 30
+      2013-05-01 | 31
+      2013-06-01 | 40
+      2013-07-01 | 36
+      2013-08-01 | 16
+      2013-09-01 | 67
+      2013-10-01 | 30
+      2013-11-01 | 83
+      2013-12-01 | 59
+      … 61 more rows
+
+  panel birdsuperstore-1-11
+    title: sum of central_superstore.Discount by central_superstore.Ship Mode
+    rows (4):
+      Standard Class | 694.8400000000042
+      Second Class | 209.19999999999925
+      First Class | 158.83999999999966
+      Same Day | 53.80000000000007
+
+  panel birdsuperstore-1-12
+    title: sum of south_superstore.Profit by south_superstore.Order Date
+    rows (72):
+      2013-01-01 | 2346.664000000001
+      2013-02-01 | 279.3395
+      2013-03-01 | 47.72480000000018
+      2013-04-01 | 1850.6272000000001
+      2013-05-01 | 1616.6662
+      2013-06-01 | 978.4462000000001
+      2013-07-01 | 420.0319
+      2013-08-01 | 1326.9674000000002
+      2013-09-01 | -345.0338
+      2013-10-01 | 653.7719
+      2013-11-01 | 1343.3429
+      2013-12-01 | 1360.5717999999997
+      … 60 more rows
+
+  panel birdsuperstore-1-13
+    title: sum of south_superstore.Quantity by south_superstore.Ship Mode
+    rows (4):
+      Standard Class | 7522
+      Second Class | 2588
+      First Class | 1660
+      Same Day | 648
+
+  panel birdsuperstore-1-14
+    title: rows of south_superstore by south_superstore.Order Date
+    rows (72):
+      2013-01-01 | 32
+      2013-02-01 | 8
+      2013-03-01 | 50
+      2013-04-01 | 36
+      2013-05-01 | 21
+      2013-06-01 | 18
+      2013-07-01 | 17
+      2013-08-01 | 36
+      2013-09-01 | 27
+      2013-10-01 | 25
+      2013-11-01 | 42
+      2013-12-01 | 37
+      … 60 more rows
+
+  panel birdsuperstore-1-15
+    title: sum of central_superstore.Profit by central_superstore.Order Date
+    rows (72):
+      2013-01-01 | 118.49019999999999
+      2013-02-01 | 294.8066999999999
+      2013-03-01 | -274.0467
+      2013-04-01 | 229.37870000000007
+      2013-05-01 | -506.0171
+      2013-06-01 | 1246.1218
+      2013-07-01 | -4055.3338000000003
+      2013-08-01 | 628.4268000000003
+      2013-09-01 | 1422.7972
+      2013-10-01 | 1341.2414
+      2013-11-01 | -794.1588999999999
+      2013-12-01 | 887.8471000000004
+      … 60 more rows
+
+  panel birdsuperstore-1-16
+    title: rows of east_superstore by east_superstore.Order Date
+    rows (72):
+      2013-01-01 | 10
+      2013-02-01 | 3
+      2013-03-01 | 33
+      2013-04-01 | 30
+      2013-05-01 | 35
+      2013-06-01 | 44
+      2013-07-01 | 31
+      2013-08-01 | 39
+      2013-09-01 | 96
+      2013-10-01 | 38
+      2013-11-01 | 88
+      2013-12-01 | 70
+      … 60 more rows
+
+  panel birdsuperstore-1-17
+    title: sum of south_superstore.Discount by south_superstore.Order Date
+    rows (72):
+      2013-01-01 00:00:00+00 | 0.8999999999999999
+      2013-02-01 00:00:00+00 | 0.8999999999999999
+      2013-03-01 00:00:00+00 | 10.899999999999999
+      2013-04-01 00:00:00+00 | 1.5999999999999999
+      2013-05-01 00:00:00+00 | 1.3
+      2013-06-01 00:00:00+00 | 1.6999999999999997
+      2013-07-01 00:00:00+00 | 2.8000000000000003
+      2013-08-01 00:00:00+00 | 4.550000000000001
+      2013-09-01 00:00:00+00 | 4.900000000000001
+      2013-10-01 00:00:00+00 | 2.1999999999999997
+      2013-11-01 00:00:00+00 | 4.800000000000002
+      2013-12-01 00:00:00+00 | 5.500000000000002
+      … 60 more rows
+
+  panel birdsuperstore-1-18
+    title: sum of central_superstore.Sales by central_superstore.Order Date
+    rows (72):
+      2013-01-01 | 1539.9060000000002
+      2013-02-01 | 1233.174
+      2013-03-01 | 5827.602000000002
+      2013-04-01 | 3712.34
+      2013-05-01 | 4048.505999999999
+      2013-06-01 | 9646.2986
+      2013-07-01 | 6740.574
+      2013-08-01 | 3022.183
+      2013-09-01 | 34408.689800000015
+      2013-10-01 | 8965.756999999996
+      2013-11-01 | 14057.568200000002
+      2013-12-01 | 10635.565999999997
+      … 60 more rows
+
+  panel birdsuperstore-1-19
+    title: rows of west_superstore by west_superstore.Ship Date
+    rows (73):
+      2013-01-01 | 12
+      2013-02-01 | 18
+      2013-03-01 | 40
+      2013-04-01 | 52
+      2013-05-01 | 30
+      2013-06-01 | 35
+      2013-07-01 | 58
+      2013-08-01 | 64
+      2013-09-01 | 68
+      2013-10-01 | 66
+      2013-11-01 | 101
+      2013-12-01 | 101
+      … 61 more rows
+
+  panel birdsuperstore-1-20
+    title: sum of south_superstore.Quantity by south_superstore.Order Date
+    rows (72):
+      2013-01-01 | 125
+      2013-02-01 | 28
+      2013-03-01 | 172
+      2013-04-01 | 157
+      2013-05-01 | 69
+      2013-06-01 | 65
+      2013-07-01 | 73
+      2013-08-01 | 152
+      2013-09-01 | 96
+      2013-10-01 | 80
+      2013-11-01 | 187
+      2013-12-01 | 132
+      … 60 more rows
+
+  panel birdsuperstore-1-21
+    title: sum of east_superstore.Sales by east_superstore.Order Date
+    rows (72):
+      2013-01-01 | 436.17400000000004
+      2013-02-01 | 199.77599999999998
+      2013-03-01 | 5943.387999999999
+      2013-04-01 | 3054.9060000000004
+      2013-05-01 | 7250.102999999999
+      2013-06-01 | 10759.156
+      2013-07-01 | 3568.1460000000006
+      2013-08-01 | 4582.448000000001
+      2013-09-01 | 25292.78899999999
+      2013-10-01 | 8945.124
+      2013-11-01 | 33950.771
+      2013-12-01 | 24697.676
+      … 60 more rows
+
+  panel birdsuperstore-1-22
+    title: rows of west_superstore by west_superstore.Order Date
+    rows (72):
+      2013-01-01 | 16
+      2013-02-01 | 16
+      2013-03-01 | 44
+      2013-04-01 | 48
+      2013-05-01 | 33
+      2013-06-01 | 31
+      2013-07-01 | 63
+      2013-08-01 | 62
+      2013-09-01 | 77
+      2013-10-01 | 64
+      2013-11-01 | 104
+      2013-12-01 | 103
+      … 60 more rows
+
+  panel birdsuperstore-1-23
+    title: sum of west_superstore.Quantity by west_superstore.Order Date
+    rows (72):
+      2013-01-01 | 64
+      2013-02-01 | 47
+      2013-03-01 | 150
+      2013-04-01 | 179
+      2013-05-01 | 141
+      2013-06-01 | 138
+      2013-07-01 | 260
+      2013-08-01 | 246
+      2013-09-01 | 274
+      2013-10-01 | 233
+      2013-11-01 | 386
+      2013-12-01 | 415
+      … 60 more rows
+
+  panel birdsuperstore-1-24
+    title: rows of product by product.Sub-Category the twelve most
+    rows (12):
+      Paper | 769
+      Binders | 683
+      Furnishings | 523
+      Phones | 505
+      Art | 458
+      Accessories | 408
+      Storage | 405
+      Chairs | 277
+      Appliances | 262
+      Labels | 200
+      Tables | 174
+      Envelopes | 152
+
+  panel birdsuperstore-1-25
+    title: rows of product by product.Category
+    rows (3):
+      Office Supplies | 3156
+      Furniture | 1099
+      Technology | 1043
+
+  panel birdsuperstore-1-26
+    title: sum of west_superstore.Quantity by west_superstore.Ship Mode
+    rows (4):
+      Standard Class | 14770
+      Second Class | 4616
+      First Class | 3804
+      Same Day | 1342
+
+  panel birdsuperstore-1-27
+    title: sum of south_superstore.Sales by south_superstore.Order Date
+    rows (72):
+      2013-01-01 | 9322.091999999999
+      2013-02-01 | 2028.986
+      2013-03-01 | 32911.121
+      2013-04-01 | 12184.612000000005
+      2013-05-01 | 5779.24
+      2013-06-01 | 4560.251
+      2013-07-01 | 1829.1199999999997
+      2013-08-01 | 7056.6065
+      2013-09-01 | 7175.334999999999
+      2013-10-01 | 4813.754000000002
+      2013-11-01 | 7428.752999999998
+      2013-12-01 | 8755.973
+      … 60 more rows
+
+  panel birdsuperstore-1-28
+    title: rows of east_superstore by east_superstore.Ship Date
+    rows (73):
+      2013-01-01 | 9
+      2013-02-01 | 3
+      2013-03-01 | 31
+      2013-04-01 | 23
+      2013-05-01 | 40
+      2013-06-01 | 39
+      2013-07-01 | 40
+      2013-08-01 | 33
+      2013-09-01 | 88
+      2013-10-01 | 45
+      2013-11-01 | 91
+      2013-12-01 | 54
+      … 61 more rows
+
+  panel birdsuperstore-1-29
+    title: rows of south_superstore by south_superstore.Ship Mode
+    rows (4):
+      Standard Class | 1948
+      Second Class | 658
+      First Class | 468
+      Same Day | 166
+
+  panel birdsuperstore-1-30
+    title: sum of east_superstore.Discount by east_superstore.Ship Mode
+    rows (4):
+      Standard Class | 483.79999999999006
+      First Class | 153.00000000000009
+      Second Class | 140.00000000000034
+      Same Day | 51.20000000000007
+
+  panel birdsuperstore-1-31
+    title: sum of south_superstore.Discount by south_superstore.Ship Mode
+    rows (4):
+      Standard Class | 313.5999999999938
+      Second Class | 72.30000000000035
+      First Class | 68.60000000000026
+      Same Day | 22.599999999999966
+
+  panel birdsuperstore-1-32
+    title: sum of west_superstore.Sales by west_superstore.Order Date
+    rows (72):
+      2013-01-01 | 2938.7230000000004
+      2013-02-01 | 1057.9560000000004
+      2013-03-01 | 11008.897999999996
+      2013-04-01 | 9343.487000000001
+      2013-05-01 | 6570.438
+      2013-06-01 | 9629.421999999999
+      2013-07-01 | 21808.552999999996
+      2013-08-01 | 13248.230999999996
+      2013-09-01 | 14900.536999999998
+      2013-10-01 | 8728.758
+      2013-11-01 | 23191.6245
+      2013-12-01 | 25456.405499999997
+      … 60 more rows
+
+  panel birdsuperstore-1-33
+    title: sum of east_superstore.Profit by east_superstore.Order Date
+    rows (72):
+      2013-01-01 | -39.35640000000001
+      2013-02-01 | 62.7536
+      2013-03-01 | -809.1755
+      2013-04-01 | -220.6252
+      2013-05-01 | 754.4964999999999
+      2013-06-01 | 980.1412000000001
+      2013-07-01 | 847.1365
+      2013-08-01 | 801.8064000000003
+      2013-09-01 | 4174.8133
+      2013-10-01 | 61.97850000000017
+      2013-11-01 | 5591.632200000002
+      2013-12-01 | 4854.008400000002
+      … 60 more rows
+
+  panel birdsuperstore-1-34
+    title: rows of central_superstore by central_superstore.Order Date
+    rows (72):
+      2013-01-01 | 21
+      2013-02-01 | 19
+      2013-03-01 | 30
+      2013-04-01 | 21
+      2013-05-01 | 33
+      2013-06-01 | 42
+      2013-07-01 | 32
+      2013-08-01 | 16
+      2013-09-01 | 68
+      2013-10-01 | 32
+      2013-11-01 | 84
+      2013-12-01 | 68
+      … 60 more rows

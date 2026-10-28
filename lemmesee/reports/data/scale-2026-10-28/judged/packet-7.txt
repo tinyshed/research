@@ -1,0 +1,2099 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: birdcssemester ===
+A computer science department's courses, professors, students, their registrations and research assistants, as BIRD serves it. A fixture of round 1f.
+
+  panel birdcssemester-4-01
+    title: rows of RA by prof.last_name
+    rows (11):
+      ∅ | 8
+      Zywicki | 4
+      Molen | 4
+      Zhou | 3
+      Skyme | 3
+      Smythin | 3
+      Medmore | 3
+      Ewenson | 2
+      Cunningham | 2
+      Conkay | 2
+      Pigford | 1
+
+  panel birdcssemester-4-02
+    title: rows of RA by prof.first_name
+    rows (11):
+      ∅ | 8
+      Ogdon | 4
+      Bernhard | 4
+      Hattie | 3
+      Zhihua | 3
+      Sauveur | 3
+      Mateo | 3
+      Millie | 2
+      Rosamond | 2
+      Merwyn | 2
+      Nathaniel | 1
+
+  panel birdcssemester-4-03
+    title: rows of registration by course.name the twelve most
+    rows (12):
+      Applied Deep Learning  | 12
+      Advanced Database Systems | 10
+      Advanced Operating System | 10
+      Statistical learning | 9
+      Computer Network | 9
+      Data Structure and Algorithms | 8
+      C for Programmers | 8
+      Computer Vision | 7
+      Machine Learning Theory | 7
+      Natural Language Processing | 7
+      Intro to Database 2 | 6
+      Intro to Database 1 | 5
+
+  panel birdcssemester-4-04
+    title: rows of prof by prof.first_name
+    rows (10):
+      Mateo | 1
+      Millie | 1
+      Rosamond | 1
+      Hattie | 1
+      Nathaniel | 1
+      Ogdon | 1
+      Sauveur | 1
+      Merwyn | 1
+      Zhihua | 1
+      Bernhard | 1
+
+  panel birdcssemester-4-05
+    title: sum of RA.capability by student.f_name the twelve most
+    rows (12):
+      Faina | 13
+      Ingar | 12
+      Oliy | 10
+      Moyna | 10
+      Ahmed | 10
+      Orsola | 10
+      Olia | 8
+      Linc | 7
+      Nial | 5
+      Grover | 5
+      Hadley | 4
+      Flor | 4
+
+  panel birdcssemester-4-06
+    title: rows of RA by RA.salary
+    rows (4):
+      high | 13
+      med | 9
+      low | 7
+      free | 6
+
+  panel birdcssemester-4-07
+    title: rows of RA by prof.graduate_from
+    rows (11):
+      ∅ | 8
+      University of Boston | 4
+      Princeton University | 4
+      Beijing Polytechnic University | 3
+      Mount Aloysius College | 3
+      ETH Zurich | 3
+      University of Pennsylvania | 3
+      Carnegie Mellon University | 2
+      Massachusetts Institute of Technology | 2
+      Miyazaki Municipal University | 2
+      University of Washington | 1
+
+  panel birdcssemester-4-08
+    title: rows of prof by prof.graduate_from
+    rows (10):
+      Princeton University | 1
+      Carnegie Mellon University | 1
+      Mount Aloysius College | 1
+      University of Washington | 1
+      ETH Zurich | 1
+      Miyazaki Municipal University | 1
+      University of Pennsylvania | 1
+      University of Boston | 1
+      Massachusetts Institute of Technology | 1
+      Beijing Polytechnic University | 1
+
+  panel birdcssemester-4-09
+    title: sum of registration.sat by registration.grade
+    rows (5):
+      A | 161
+      B | 103
+      C | 44
+      D | 14
+      ∅ | 11
+
+  panel birdcssemester-4-10
+    title: average of registration.sat by registration.grade
+    rows (5):
+      A | 4.3513513513513514
+      B | 3.6785714285714286
+      ∅ | 2.2000000000000000
+      C | 2.0000000000000000
+      D | 1.5555555555555556
+
+  panel birdcssemester-4-11
+    title: sum of registration.sat by student.type
+    rows (3):
+      TPG | 125
+      RPG | 115
+      UG | 93
+
+  panel birdcssemester-4-12
+    title: sum of student.gpa by student.type
+    rows (3):
+      TPG | 46.7
+      UG | 37.8
+      RPG | 31.700000000000003
+
+  panel birdcssemester-4-13
+    title: rows of registration by student.type
+    rows (3):
+      TPG | 40
+      RPG | 32
+      UG | 29
+
+  panel birdcssemester-4-14
+    title: rows of RA per student
+    rows (4):
+      1 | 12
+      2 | 5
+      3 | 3
+      4 | 1
+
+  panel birdcssemester-4-15
+    title: rows of RA by prof (named) the twelve most
+    rows (11):
+       | 8
+      Bernhard Molen | 4
+      Ogdon Zywicki | 4
+      Hattie Smythin | 3
+      Zhihua Zhou | 3
+      Mateo Medmore | 3
+      Sauveur Skyme | 3
+      Rosamond Ewenson | 2
+      Merwyn Conkay | 2
+      Millie Cunningham | 2
+      Nathaniel Pigford | 1
+
+  panel birdcssemester-4-16
+    title: sum of RA.capability by prof (named) the twelve most
+    rows (11):
+       | 26
+      Ogdon Zywicki | 14
+      Sauveur Skyme | 13
+      Mateo Medmore | 13
+      Zhihua Zhou | 12
+      Bernhard Molen | 11
+      Hattie Smythin | 10
+      Rosamond Ewenson | 10
+      Millie Cunningham | 6
+      Merwyn Conkay | 5
+      Nathaniel Pigford | 3
+
+  panel birdcssemester-4-17
+    title: rows of RA by prof.gender
+    rows (3):
+      Male | 21
+      ∅ | 8
+      Female | 6
+
+  panel birdcssemester-4-18
+    title: sum of registration.sat by course.name the twelve most
+    rows (12):
+      Advanced Operating System | 36
+      Applied Deep Learning  | 36
+      Computer Network | 35
+      Advanced Database Systems | 31
+      Data Structure and Algorithms | 28
+      Statistical learning | 27
+      Machine Learning Theory | 26
+      Natural Language Processing | 26
+      C for Programmers | 24
+      Computer Vision | 21
+      Intro to Database 2 | 20
+      Intro to Database 1 | 15
+
+  panel birdcssemester-4-19
+    title: sum of registration.sat by student.f_name the twelve most
+    rows (12):
+      Laughton | 22
+      Linc | 20
+      Corey | 19
+      Ingar | 16
+      Alvera | 15
+      Darcy | 15
+      Grover | 14
+      Logan | 14
+      Dougie | 13
+      Faina | 12
+      Mireielle | 12
+      Willie | 11
+
+  panel birdcssemester-4-20
+    title: rows of student by student.type
+    rows (3):
+      TPG | 15
+      UG | 12
+      RPG | 11
+
+  panel birdcssemester-4-21
+    title: average of registration.sat by course.name the twelve most
+    rows (12):
+      Computer Network | 3.8888888888888889
+      Natural Language Processing | 3.7142857142857143
+      Machine Learning Theory | 3.7142857142857143
+      Advanced Operating System | 3.6000000000000000
+      Data Structure and Algorithms | 3.5000000000000000
+      Intro to Database 2 | 3.3333333333333333
+      Advanced Database Systems | 3.1000000000000000
+      Computer Vision | 3.0000000000000000
+      Intro to Database 1 | 3.0000000000000000
+      C for Programmers | 3.0000000000000000
+      Statistical learning | 3.0000000000000000
+      Applied Deep Learning  | 3.0000000000000000
+
+  panel birdcssemester-4-22
+    title: rows of registration by registration.grade
+    rows (5):
+      A | 37
+      B | 28
+      C | 22
+      D | 9
+      ∅ | 5
+
+  panel birdcssemester-4-23
+    title: sum of RA.capability by RA.salary
+    rows (4):
+      high | 51
+      med | 30
+      free | 23
+      low | 19
+
+  panel birdcssemester-4-24
+    title: rows of RA by student.f_name the twelve most
+    rows (12):
+      Faina | 4
+      Oliy | 3
+      Ingar | 3
+      Orsola | 3
+      Olia | 2
+      Grover | 2
+      Moyna | 2
+      Ahmed | 2
+      Linc | 2
+      Chrysa | 1
+      Logan | 1
+      Hadley | 1
+
+  panel birdcssemester-4-25
+    title: rows of prof by prof.last_name
+    rows (10):
+      Skyme | 1
+      Conkay | 1
+      Smythin | 1
+      Molen | 1
+      Pigford | 1
+      Medmore | 1
+      Ewenson | 1
+      Zywicki | 1
+      Zhou | 1
+      Cunningham | 1
+
+  panel birdcssemester-4-26
+    title: rows of RA by student.type
+    rows (3):
+      TPG | 18
+      RPG | 11
+      UG | 6
+
+  panel birdcssemester-4-27
+    title: average of registration.sat by student.f_name the twelve most
+    rows (12):
+      Corey | 4.7500000000000000
+      Logan | 4.6666666666666667
+      Crichton | 4.5000000000000000
+      Ahmed | 4.5000000000000000
+      Dougie | 4.3333333333333333
+      Betsy | 4.0000000000000000
+      Pembroke | 4.0000000000000000
+      Linc | 4.0000000000000000
+      Chrysa | 4.0000000000000000
+      Alvera | 3.7500000000000000
+      Darcy | 3.7500000000000000
+      Laughton | 3.6666666666666667
+
+  panel birdcssemester-4-28
+    title: sum of student.intelligence by student.type
+    rows (3):
+      TPG | 47
+      UG | 35
+      RPG | 33
+
+  panel birdcssemester-4-29
+    title: rows of registration by student.f_name the twelve most
+    rows (12):
+      Laughton | 6
+      Ingar | 6
+      Linc | 5
+      Willie | 5
+      Rik | 4
+      Alvera | 4
+      Grover | 4
+      Darcy | 4
+      Faina | 4
+      Corey | 4
+      Mireielle | 4
+      Phil | 4
+
+  panel birdcssemester-4-30
+    title: average of student.intelligence by student.type
+    rows (3):
+      TPG | 3.1333333333333333
+      RPG | 3.0000000000000000
+      UG | 2.9166666666666667
+
+  panel birdcssemester-4-31
+    title: rows of prof by prof.gender
+    rows (2):
+      Male | 7
+      Female | 3
+
+  panel birdcssemester-4-32
+    title: largest tables, estimated rows
+    rows (5):
+      registration | 101
+      student | 38
+      RA | 35
+      course | 13
+      prof | 10
+
+
+=== database: birdcollegecompletion ===
+American colleges, their details and graduation rates by cohort, and the same by state and sector, as BIRD serves it. A fixture of round 1f.
+
+  panel birdcollegecompletion-4-01
+    title: sum of institution_details.student_count by institution_details.control
+    rows (3):
+      Public | 13196805
+      Private not-for-profit | 2672086
+      Private for-profit | 1131471
+
+  panel birdcollegecompletion-4-02
+    title: rows of state_sector_grads by state_sector_grads.level
+    rows (2):
+      4-year | 58770
+      2-year | 26172
+
+  panel birdcollegecompletion-4-03
+    title: rows of state_sector_details by state_sector_details.state_appr_rank the twelve most
+    rows (12):
+      19 | 12
+      ∅ | 12
+      42 | 6
+      49 | 6
+      28 | 6
+      8 | 6
+      10 | 6
+      12 | 6
+      7 | 6
+      13 | 6
+      26 | 6
+      16 | 6
+
+  panel birdcollegecompletion-4-04
+    title: rows of institution_grads by institution_details.basic the twelve most
+    rows (12):
+      Masters Colleges and Universities--large | 165456
+      Baccalaureate Colleges--Diverse Fields | 146556
+      Associates--Private For-profit | 118530
+      Baccalaureate Colleges--Arts & Sciences | 106920
+      Masters Colleges and Universities--mediu | 71712
+      Associates--Public Rural-serving Medium | 62586
+      Baccalaureate/Associates Colleges | 52272
+      Research Universities--very high researc | 45792
+      Schools of art- music- and design | 45360
+      Masters Colleges and Universities--small | 44820
+      ∅ | 42606
+      Research Universities--high research act | 41472
+
+  panel birdcollegecompletion-4-05
+    title: rows of state_sector_details by state_sector_details.state_appr_value the twelve most
+    rows (12):
+      254.79 | 12
+      ∅ | 12
+      176.3 | 6
+      199.17 | 6
+      156.11 | 6
+      230.7 | 6
+      212.2 | 6
+      268.24 | 6
+      197.45 | 6
+      290.68 | 6
+      206.17 | 6
+      253.91 | 6
+
+  panel birdcollegecompletion-4-06
+    title: rows of state_sector_details by state_sector_details.state the twelve most
+    rows (12):
+      Texas | 6
+      Oregon | 6
+      Idaho | 6
+      Alaska | 6
+      Alabama | 6
+      United States | 6
+      Oklahoma | 6
+      North Carolina | 6
+      Colorado | 6
+      Mississippi | 6
+      Florida | 6
+      Kansas | 6
+
+  panel birdcollegecompletion-4-07
+    title: rows of state_sector_grads by state_sector_grads.control
+    rows (3):
+      Public | 31374
+      Private for-profit | 26856
+      Private not-for-profit | 26712
+
+  panel birdcollegecompletion-4-08
+    title: rows of institution_details by institution_details.level
+    rows (2):
+      4-year | 2339
+      2-year | 1459
+
+  panel birdcollegecompletion-4-09
+    title: rows of institution_grads by institution_details.nicknames the twelve most
+    rows (12):
+      ∅ | 42606
+      ∅ | 432
+      ∅ | 432
+      ∅ | 432
+      ∅ | 432
+      ∅ | 432
+      ∅ | 432
+      ∅ | 432
+      ∅ | 432
+      ∅ | 432
+      ∅ | 432
+      ∅ | 432
+
+  panel birdcollegecompletion-4-10
+    title: rows of institution_grads by institution_grads.gender
+    rows (3):
+      B | 434034
+      F | 434034
+      M | 434034
+
+  panel birdcollegecompletion-4-11
+    title: rows of institution_grads by institution_details.level
+    rows (3):
+      4-year | 948078
+      2-year | 311418
+      ∅ | 42606
+
+  panel birdcollegecompletion-4-12
+    title: rows of institution_details by institution_details.state_sector_ct the twelve most
+    rows (12):
+      16 | 208
+      63 | 189
+      15 | 150
+      12 | 132
+      25 | 125
+      20 | 120
+      39 | 117
+      116 | 116
+      113 | 113
+      8 | 112
+      13 | 104
+      17 | 102
+
+  panel birdcollegecompletion-4-13
+    title: rows of institution_grads by institution_details.vsa_year
+    rows (6):
+      ∅ | 1134216
+      2010 | 76896
+      ∅ | 47358
+      2011 | 30240
+      2009 | 9072
+      2008 | 4320
+
+  panel birdcollegecompletion-4-14
+    title: rows of institution_grads by institution_grads.race
+    rows (6):
+      A | 217017
+      Ai | 217017
+      B | 217017
+      H | 217017
+      W | 217017
+      X | 217017
+
+  panel birdcollegecompletion-4-15
+    title: rows of institution_details by institution_details.basic the twelve most
+    rows (12):
+      Associates--Private For-profit | 517
+      Masters Colleges and Universities--large | 386
+      Baccalaureate Colleges--Diverse Fields | 343
+      Associates--Public Rural-serving Medium | 289
+      Baccalaureate Colleges--Arts & Sciences | 252
+      Masters Colleges and Universities--mediu | 169
+      Associates--Public Rural-serving Large | 128
+      Associates--Public Urban-serving Multica | 125
+      Baccalaureate/Associates Colleges | 124
+      Schools of art- music- and design | 114
+      Associates--Public Rural-serving Small | 111
+      Research Universities--very high researc | 106
+
+  panel birdcollegecompletion-4-16
+    title: rows of institution_grads by institution_grads.cohort
+    rows (3):
+      4y bach | 482220
+      4y other | 482220
+      2y all | 337662
+
+  panel birdcollegecompletion-4-17
+    title: rows of institution_details by institution_details.state the twelve most
+    rows (12):
+      California | 350
+      New York | 241
+      Pennsylvania | 217
+      Texas | 207
+      Ohio | 185
+      Florida | 176
+      Illinois | 141
+      North Carolina | 135
+      Georgia | 106
+      Virginia | 104
+      Missouri | 103
+      Minnesota | 101
+
+  panel birdcollegecompletion-4-18
+    title: rows of state_sector_details by state_sector_details.state_post the twelve most
+    rows (12):
+      S.C. | 6
+      Tenn. | 6
+      Wyo. | 6
+      Utah | 6
+      Fla. | 6
+      Ark. | 6
+      Calif. | 6
+      Mo. | 6
+      Ind. | 6
+      Conn. | 6
+      Miss. | 6
+      Ga. | 6
+
+  panel birdcollegecompletion-4-19
+    title: rows of state_sector_grads by state_sector_grads.year
+    rows (12):
+      2002-01-01 | 6912
+      2003-01-01 | 6966
+      2004-01-01 | 7128
+      2005-01-01 | 7128
+      2006-01-01 | 7110
+      2007-01-01 | 7218
+      2008-01-01 | 7272
+      2009-01-01 | 5184
+      2010-01-01 | 7290
+      2011-01-01 | 7578
+      2012-01-01 | 7578
+      2013-01-01 | 7578
+
+  panel birdcollegecompletion-4-20
+    title: rows of institution_grads by institution_details.state_sector_ct the twelve most
+    rows (12):
+      16 | 66042
+      63 | 53946
+      15 | 52164
+      116 | 48006
+      12 | 44550
+      ∅ | 42606
+      39 | 41634
+      8 | 40122
+      20 | 39474
+      13 | 38016
+      82 | 35100
+      9 | 33696
+
+  panel birdcollegecompletion-4-21
+    title: rows of institution_details by institution_details.vsa_year
+    rows (6):
+      ∅ | 3508
+      2010 | 178
+      2011 | 70
+      2009 | 21
+      ∅ | 11
+      2008 | 10
+
+  panel birdcollegecompletion-4-22
+    title: rows of institution_grads by institution_grads.year
+    rows (12):
+      2002-01-01 | 107856
+      2003-01-01 | 107856
+      2004-01-01 | 107856
+      2005-01-01 | 107856
+      2006-01-01 | 107856
+      2007-01-01 | 107856
+      2008-01-01 | 107856
+      2009-01-01 | 107856
+      2010-01-01 | 107856
+      2011-01-01 | 110466
+      2012-01-01 | 110466
+      2013-01-01 | 110466
+
+  panel birdcollegecompletion-4-23
+    title: rows of institution_grads by institution_details.control
+    rows (4):
+      Private not-for-profit | 511164
+      Public | 467208
+      Private for-profit | 281124
+      ∅ | 42606
+
+  panel birdcollegecompletion-4-24
+    title: rows of state_sector_grads by state_sector_grads.cohort
+    rows (3):
+      4y bach | 31140
+      4y other | 27630
+      2y all | 26172
+
+  panel birdcollegecompletion-4-25
+    title: rows of institution_grads by institution_details.state the twelve most
+    rows (12):
+      California | 103896
+      New York | 86292
+      Pennsylvania | 75060
+      Texas | 63288
+      Florida | 60642
+      Ohio | 60102
+      Illinois | 46278
+      ∅ | 42606
+      North Carolina | 41580
+      Massachusetts | 38934
+      Georgia | 35316
+      Missouri | 34614
+
+  panel birdcollegecompletion-4-26
+    title: rows of state_sector_grads by state_sector_grads.state the twelve most
+    rows (12):
+      United States | 1944
+      Texas | 1908
+      Florida | 1908
+      New York | 1908
+      Tennessee | 1908
+      Ohio | 1908
+      Minnesota | 1890
+      Georgia | 1890
+      Missouri | 1890
+      Indiana | 1890
+      Pennsylvania | 1890
+      Illinois | 1890
+
+  panel birdcollegecompletion-4-27
+    title: rows of state_sector_grads by state_sector_grads.race
+    rows (6):
+      W | 14157
+      A | 14157
+      B | 14157
+      Ai | 14157
+      X | 14157
+      H | 14157
+
+  panel birdcollegecompletion-4-28
+    title: largest tables, estimated rows
+    rows (4):
+      institution_grads | 1302102
+      state_sector_grads | 84942
+      institution_details | 3798
+      state_sector_details | 312
+
+  panel birdcollegecompletion-4-29
+    title: rows of state_sector_details by state_sector_details.awards_per_state_value the twelve most
+    rows (12):
+      ∅ | 48
+      22 | 6
+      21.3 | 6
+      20.9 | 5
+      21.7 | 4
+      19.6 | 4
+      22.6 | 4
+      19.5 | 4
+      16.3 | 4
+      18 | 4
+      23.9 | 4
+      16.5 | 4
+
+  panel birdcollegecompletion-4-30
+    title: rows of institution_details by institution_details.control
+    rows (3):
+      Public | 1558
+      Private not-for-profit | 1248
+      Private for-profit | 992
+
+  panel birdcollegecompletion-4-31
+    title: rows of state_sector_grads by state_sector_grads.gender
+    rows (3):
+      B | 28314
+      M | 28314
+      F | 28314
+
+  panel birdcollegecompletion-4-32
+    title: rows of state_sector_grads by state_sector_grads.state_abbr the twelve most
+    rows (12):
+      US | 1944
+      NY | 1908
+      TN | 1908
+      FL | 1908
+      TX | 1908
+      OH | 1908
+      GA | 1890
+      MO | 1890
+      IL | 1890
+      IN | 1890
+      MN | 1890
+      PA | 1890
+
+
+=== database: birdairline ===
+American domestic flights: each flight's carrier, airports, schedule, delays and cancellations, as BIRD serves it. A fixture of round 1f.
+
+  panel birdairline-4-01
+    title: sum of Airlines.CRS_DEP_TIME by Airports.Description the twelve most
+    rows (12):
+      Atlanta, GA: Hartsfield-Jackson Atlanta  | 51803865
+      Chicago, IL: Chicago O'Hare Internationa | 49019728
+      Dallas/Fort Worth, TX: Dallas/Fort Worth | 35842594
+      Denver, CO: Denver International | 33668104
+      Charlotte, NC: Charlotte Douglas Interna | 31728862
+      Los Angeles, CA: Los Angeles Internation | 30863240
+      Seattle, WA: Seattle/Tacoma Internationa | 24358978
+      San Francisco, CA: San Francisco Interna | 22909690
+      Detroit, MI: Detroit Metro Wayne County | 22159018
+      Houston, TX: George Bush Intercontinenta | 21617157
+      Minneapolis, MN: Minneapolis-St Paul Int | 21378575
+      New York, NY: LaGuardia | 20719140
+
+  panel birdairline-4-02
+    title: sum of Airlines.ARR_TIME by Airports.Description the twelve most
+    rows (12):
+      Atlanta, GA: Hartsfield-Jackson Atlanta  | 52872832
+      Chicago, IL: Chicago O'Hare Internationa | 51616081
+      Dallas/Fort Worth, TX: Dallas/Fort Worth | 37367711
+      Denver, CO: Denver International | 36734998
+      Los Angeles, CA: Los Angeles Internation | 32660574
+      Charlotte, NC: Charlotte Douglas Interna | 32027901
+      Seattle, WA: Seattle/Tacoma Internationa | 25801261
+      Detroit, MI: Detroit Metro Wayne County | 23852598
+      Houston, TX: George Bush Intercontinenta | 23800830
+      Minneapolis, MN: Minneapolis-St Paul Int | 23701372
+      San Francisco, CA: San Francisco Interna | 23461973
+      Phoenix, AZ: Phoenix Sky Harbor Internat | 21907223
+
+  panel birdairline-4-03
+    title: rows of Airlines by Airlines.FL_DATE the twelve most
+    rows (12):
+      2018/8/3 | 23897
+      2018/8/2 | 23835
+      2018/8/6 | 23826
+      2018/8/10 | 23683
+      2018/8/9 | 23609
+      2018/8/1 | 23566
+      2018/8/13 | 23531
+      2018/8/17 | 23500
+      2018/8/16 | 23461
+      2018/8/20 | 23385
+      2018/8/8 | 23254
+      2018/8/24 | 23229
+
+  panel birdairline-4-04
+    title: rows of Airlines by Airlines.ORIGIN_AIRPORT_SEQ_ID the twelve most
+    rows (12):
+      1393006 | 35241
+      1039707 | 35225
+      1129806 | 25355
+      1129202 | 24438
+      1289208 | 22589
+      1105703 | 21580
+      1474703 | 17994
+      1477104 | 16712
+      1143302 | 15902
+      1295304 | 15501
+      1348702 | 15432
+      1226603 | 15327
+
+  panel birdairline-4-05
+    title: average of Airlines.DEP_TIME by Airports.Description the twelve most
+    rows (12):
+      Pago Pago, TT: Pago Pago International | 2210.7692307692307692
+      Mammoth Lakes, CA: Mammoth Lakes Airport | 1972.3666666666666667
+      Branson, MO: Branson Airport | 1963.9230769230769231
+      Owensboro, KY: Owensboro Daviess County  | 1890.5555555555555556
+      Adak Island, AK: Adak | 1833.7777777777777778
+      King Salmon, AK: King Salmon Airport | 1798.0000000000000000
+      Gustavus, AK: Gustavus Airport | 1770.5833333333333333
+      Stockton, CA: Stockton Metropolitan | 1722.8985507246376812
+      Santa Maria, CA: Santa Maria Public/Capt | 1681.0000000000000000
+      Ogden, UT: Ogden-Hinckley | 1628.6666666666666667
+      Lewisburg, WV: Greenbrier Valley | 1623.0277777777777778
+      Dillingham, AK: Dillingham Airport | 1595.6818181818181818
+
+  panel birdairline-4-06
+    title: rows of Airlines by Airlines.DEST_CITY_MARKET_ID the twelve most
+    rows (12):
+      31703 | 43809
+      30977 | 43097
+      30397 | 35237
+      32575 | 32456
+      30194 | 31493
+      30852 | 30172
+      32457 | 27537
+      30325 | 24444
+      31057 | 21582
+      31453 | 20264
+      30559 | 17985
+      30721 | 16637
+
+  panel birdairline-4-07
+    title: rows of Airlines by Airlines.DEST_AIRPORT_ID the twelve most
+    rows (12):
+      13930 | 35255
+      10397 | 35237
+      11298 | 25366
+      11292 | 24444
+      12892 | 22594
+      11057 | 21582
+      14747 | 17985
+      14771 | 16734
+      11433 | 15904
+      12953 | 15499
+      13487 | 15435
+      12266 | 15323
+
+  panel birdairline-4-08
+    title: rows of Airlines by Airlines.ORIGIN_CITY_MARKET_ID the twelve most
+    rows (12):
+      31703 | 43813
+      30977 | 43082
+      30397 | 35225
+      32575 | 32449
+      30194 | 31482
+      30852 | 30178
+      32457 | 27525
+      30325 | 24438
+      31057 | 21580
+      31453 | 20269
+      30559 | 17994
+      30721 | 16639
+
+  panel birdairline-4-09
+    title: rows of Airlines by Air Carriers.Description the twelve most
+    rows (12):
+      Southwest Airlines Co.: WN | 115534
+      Delta Air Lines Inc.: DL | 87966
+      American Airlines Inc.: AA | 80406
+      SkyWest Airlines Inc.: OO | 70730
+      United Air Lines Inc.: UA | 57921
+      Republic Airline: YX | 28277
+      JetBlue Airways: B6 | 26623
+      Envoy Air: MQ | 26434
+      PSA Airlines Inc.: OH | 24387
+      Alaska Airlines Inc.: AS | 23706
+      Endeavor Air Inc.: 9E | 22836
+      Mesa Airlines Inc.: YV | 19982
+
+  panel birdairline-4-10
+    title: sum of Airlines.DEP_TIME by Air Carriers.Description the twelve most
+    rows (12):
+      Southwest Airlines Co.: WN | 153118275
+      Delta Air Lines Inc.: DL | 117182670
+      American Airlines Inc.: AA | 104666515
+      SkyWest Airlines Inc.: OO | 92724889
+      United Air Lines Inc.: UA | 75898404
+      Republic Airline: YX | 35238233
+      JetBlue Airways: B6 | 34755142
+      Envoy Air: MQ | 33801447
+      PSA Airlines Inc.: OH | 32350204
+      Alaska Airlines Inc.: AS | 31211813
+      Endeavor Air Inc.: 9E | 28611025
+      Mesa Airlines Inc.: YV | 26187346
+
+  panel birdairline-4-11
+    title: sum of Airlines.ARR_TIME by Air Carriers.Description the twelve most
+    rows (12):
+      Southwest Airlines Co.: WN | 166044848
+      Delta Air Lines Inc.: DL | 129177421
+      American Airlines Inc.: AA | 114367020
+      SkyWest Airlines Inc.: OO | 101924399
+      United Air Lines Inc.: UA | 80802661
+      Republic Airline: YX | 38991872
+      Envoy Air: MQ | 36810336
+      JetBlue Airways: B6 | 35361583
+      PSA Airlines Inc.: OH | 34867362
+      Alaska Airlines Inc.: AS | 33860120
+      Endeavor Air Inc.: 9E | 31544821
+      Mesa Airlines Inc.: YV | 28883352
+
+  panel birdairline-4-12
+    title: rows of Airlines by Airports.Description the twelve most
+    rows (12):
+      Chicago, IL: Chicago O'Hare Internationa | 35241
+      Atlanta, GA: Hartsfield-Jackson Atlanta  | 35225
+      Dallas/Fort Worth, TX: Dallas/Fort Worth | 25355
+      Denver, CO: Denver International | 24438
+      Los Angeles, CA: Los Angeles Internation | 22589
+      Charlotte, NC: Charlotte Douglas Interna | 21580
+      Seattle, WA: Seattle/Tacoma Internationa | 17994
+      San Francisco, CA: San Francisco Interna | 16712
+      Detroit, MI: Detroit Metro Wayne County | 15902
+      New York, NY: LaGuardia | 15501
+      Minneapolis, MN: Minneapolis-St Paul Int | 15432
+      Houston, TX: George Bush Intercontinenta | 15327
+
+  panel birdairline-4-13
+    title: sum of Airlines.DEP_DELAY_NEW by Airports.Description the twelve most
+    rows (12):
+      Chicago, IL: Chicago O'Hare Internationa | 738832
+      Atlanta, GA: Hartsfield-Jackson Atlanta  | 477925
+      Dallas/Fort Worth, TX: Dallas/Fort Worth | 450598
+      Denver, CO: Denver International | 430768
+      Newark, NJ: Newark Liberty International | 402297
+      Charlotte, NC: Charlotte Douglas Interna | 376931
+      San Francisco, CA: San Francisco Interna | 350135
+      New York, NY: LaGuardia | 344409
+      Seattle, WA: Seattle/Tacoma Internationa | 307808
+      Boston, MA: Logan International | 297856
+      Los Angeles, CA: Los Angeles Internation | 293014
+      New York, NY: John F. Kennedy Internatio | 269670
+
+  panel birdairline-4-14
+    title: largest tables, estimated rows
+    rows (3):
+      Airlines | 701352
+      Airports | 6510
+      Air Carriers | 1656
+
+  panel birdairline-4-15
+    title: sum of Airlines.CRS_ELAPSED_TIME by Airports.Description the twelve most
+    rows (12):
+      Chicago, IL: Chicago O'Hare Internationa | 4604194
+      Atlanta, GA: Hartsfield-Jackson Atlanta  | 4344380
+      Los Angeles, CA: Los Angeles Internation | 4238732
+      Denver, CO: Denver International | 3465352
+      Dallas/Fort Worth, TX: Dallas/Fort Worth | 3433793
+      Seattle, WA: Seattle/Tacoma Internationa | 3105822
+      San Francisco, CA: San Francisco Interna | 3068793
+      New York, NY: John F. Kennedy Internatio | 2595796
+      Newark, NJ: Newark Liberty International | 2499119
+      Boston, MA: Logan International | 2464833
+      Charlotte, NC: Charlotte Douglas Interna | 2358060
+      New York, NY: LaGuardia | 2304759
+
+  panel birdairline-4-16
+    title: average of Airlines.CRS_DEP_TIME by Airports.Description the twelve most
+    rows (12):
+      Pago Pago, TT: Pago Pago International | 2320.0000000000000000
+      Mammoth Lakes, CA: Mammoth Lakes Airport | 1932.0967741935483871
+      Branson, MO: Branson Airport | 1923.0769230769230769
+      Owensboro, KY: Owensboro Daviess County  | 1831.3333333333333333
+      Adak Island, AK: Adak | 1771.8888888888888889
+      Gustavus, AK: Gustavus Airport | 1752.0000000000000000
+      King Salmon, AK: King Salmon Airport | 1744.0000000000000000
+      Stockton, CA: Stockton Metropolitan | 1674.5942028985507246
+      Santa Maria, CA: Santa Maria Public/Capt | 1624.4285714285714286
+      Dillingham, AK: Dillingham Airport | 1605.0000000000000000
+      Nome, AK: Nome Airport | 1587.5000000000000000
+      Lewisburg, WV: Greenbrier Valley | 1585.0000000000000000
+
+  panel birdairline-4-17
+    title: sum of Airlines.CANCELLED by Air Carriers.Description the twelve most
+    rows (12):
+      Southwest Airlines Co.: WN | 1928
+      Republic Airline: YX | 1495
+      American Airlines Inc.: AA | 1417
+      Envoy Air: MQ | 1200
+      Endeavor Air Inc.: 9E | 1118
+      SkyWest Airlines Inc.: OO | 1088
+      United Air Lines Inc.: UA | 745
+      JetBlue Airways: B6 | 700
+      ExpressJet Airlines Inc.: EV | 627
+      Piedmont Airlines: PT | 570
+      PSA Airlines Inc.: OH | 555
+      Mesa Airlines Inc.: YV | 465
+
+  panel birdairline-4-18
+    title: rows of Airlines by Airlines.DEST_AIRPORT_SEQ_ID the twelve most
+    rows (12):
+      1393006 | 35255
+      1039707 | 35237
+      1129806 | 25366
+      1129202 | 24444
+      1289208 | 22594
+      1105703 | 21582
+      1474703 | 17985
+      1477104 | 16734
+      1143302 | 15904
+      1295304 | 15499
+      1348702 | 15435
+      1226603 | 15323
+
+  panel birdairline-4-19
+    title: rows of Airlines by Airlines.ORIGIN_AIRPORT_ID the twelve most
+    rows (12):
+      13930 | 35241
+      10397 | 35225
+      11298 | 25355
+      11292 | 24438
+      12892 | 22589
+      11057 | 21580
+      14747 | 17994
+      14771 | 16712
+      11433 | 15902
+      12953 | 15501
+      13487 | 15432
+      12266 | 15327
+
+  panel birdairline-4-20
+    title: sum of Airlines.CRS_ELAPSED_TIME by Air Carriers.Description the twelve most
+    rows (12):
+      Southwest Airlines Co.: WN | 14629125
+      American Airlines Inc.: AA | 13799269
+      Delta Air Lines Inc.: DL | 13585631
+      United Air Lines Inc.: UA | 10660166
+      SkyWest Airlines Inc.: OO | 7336438
+      Alaska Airlines Inc.: AS | 4747795
+      JetBlue Airways: B6 | 4625589
+      Republic Airline: YX | 3478188
+      Spirit Air Lines: NK | 2669119
+      Envoy Air: MQ | 2647823
+      Endeavor Air Inc.: 9E | 2494046
+      PSA Airlines Inc.: OH | 2271332
+
+  panel birdairline-4-21
+    title: sum of Airlines.DEP_DELAY_NEW by Air Carriers.Description the twelve most
+    rows (12):
+      Southwest Airlines Co.: WN | 1549303
+      American Airlines Inc.: AA | 1364336
+      SkyWest Airlines Inc.: OO | 1270667
+      United Air Lines Inc.: UA | 1229876
+      Delta Air Lines Inc.: DL | 1143744
+      JetBlue Airways: B6 | 679467
+      Endeavor Air Inc.: 9E | 425997
+      PSA Airlines Inc.: OH | 422882
+      Republic Airline: YX | 401894
+      Mesa Airlines Inc.: YV | 340788
+      Spirit Air Lines: NK | 337501
+      Envoy Air: MQ | 336422
+
+  panel birdairline-4-22
+    title: average of Airlines.DEP_DELAY_NEW by Airports.Description the twelve most
+    rows (12):
+      North Bend/Coos Bay, OR: Southwest Orego | 63.4000000000000000
+      Pago Pago, TT: Pago Pago International | 49.3846153846153846
+      St. Cloud, MN: St. Cloud Regional | 48.5000000000000000
+      Lewisburg, WV: Greenbrier Valley | 47.4305555555555556
+      Presque Isle/Houlton, ME: Northern Maine | 47.2692307692307692
+      Quincy, IL: Quincy Regional-Baldwin Fiel | 45.3333333333333333
+      Trenton, NJ: Trenton Mercer | 41.8396624472573840
+      Devils Lake, ND: Devils Lake Regional | 41.1132075471698113
+      College Station/Bryan, TX: Easterwood Fi | 38.5588235294117647
+      Unalaska, AK: Unalaska Airport | 37.5211267605633803
+      Cape Girardeau, MO: Cape Girardeau Regio | 37.2692307692307692
+      Santa Maria, CA: Santa Maria Public/Capt | 35.7857142857142857
+
+  panel birdairline-4-23
+    title: average of Airlines.DEP_DELAY by Air Carriers.Description the twelve most
+    rows (12):
+      Commutair Aka Champlain Enterprises, Inc | 32.3970994475138122
+      Frontier Airlines Inc.: F9 | 26.3510200172397280
+      Peninsula Airways Inc.: KS | 25.8802816901408451
+      JetBlue Airways: B6 | 22.7053585196607556
+      Trans States Airlines: AX | 21.8859405390386218
+      GoJet Airlines LLC d/b/a United Express: | 20.0021239380309845
+      United Air Lines Inc.: UA | 18.4927037276524353
+      Spirit Air Lines: NK | 18.1480945792982015
+      Endeavor Air Inc.: 9E | 16.0163169063900024
+      ExpressJet Airlines Inc.: EV | 14.8217762647076390
+      PSA Airlines Inc.: OH | 14.7486807940363515
+      American Airlines Inc.: AA | 14.5449015466720625
+
+  panel birdairline-4-24
+    title: average of Airlines.DEP_TIME by Air Carriers.Description the twelve most
+    rows (12):
+      Peninsula Airways Inc.: KS | 1388.9436619718309859
+      Spirit Air Lines: NK | 1382.1667714752861275
+      Compass Airlines: CP | 1367.6455696202531646
+      Horizon Air: QX | 1363.1081549439347604
+      PSA Airlines Inc.: OH | 1354.7553917668244064
+      Commutair Aka Champlain Enterprises, Inc | 1353.0398250460405157
+      Southwest Airlines Co.: WN | 1347.5399989439222727
+      Mesa Airlines Inc.: YV | 1340.3288975330125908
+      JetBlue Airways: B6 | 1339.8281418658442560
+      Envoy Air: MQ | 1335.1811897614157055
+      ExpressJet Airlines Inc.: EV | 1334.7814609090366123
+      Delta Air Lines Inc.: DL | 1334.3202158912345426
+
+  panel birdairline-4-25
+    title: rows of Airlines per Airports
+    rows (274):
+      4 | 3
+      5 | 1
+      9 | 3
+      13 | 3
+      14 | 1
+      25 | 2
+      30 | 1
+      31 | 2
+      40 | 2
+      48 | 1
+      49 | 1
+      53 | 1
+      … 262 more rows
+
+  panel birdairline-4-26
+    title: rows of Airlines per Air Carriers
+    rows (25):
+      150 | 1
+      753 | 1
+      4679 | 1
+      7570 | 2
+      8111 | 1
+      8152 | 1
+      8170 | 1
+      8488 | 1
+      8723 | 1
+      10021 | 1
+      10710 | 1
+      16095 | 1
+      … 13 more rows
+
+  panel birdairline-4-27
+    title: average of Airlines.DEP_DELAY_NEW by Air Carriers.Description the twelve most
+    rows (12):
+      Commutair Aka Champlain Enterprises, Inc | 36.1019797421731123
+      Frontier Airlines Inc.: F9 | 29.1990230820802605
+      Peninsula Airways Inc.: KS | 27.4154929577464789
+      JetBlue Airways: B6 | 26.1937933693138011
+      Trans States Airlines: AX | 26.0922478466240622
+      GoJet Airlines LLC d/b/a United Express: | 23.9096701649175412
+      United Air Lines Inc.: UA | 21.4934377239125496
+      Spirit Air Lines: NK | 21.2238083259967300
+      Endeavor Air Inc.: 9E | 20.0894600330110823
+      ExpressJet Airlines Inc.: EV | 19.2256465388520576
+      SkyWest Airlines Inc.: OO | 18.2292088085503192
+      Compass Airlines: CP | 17.7133486766398159
+
+  panel birdairline-4-28
+    title: sum of Airlines.DEP_DELAY by Airports.Description the twelve most
+    rows (12):
+      Chicago, IL: Chicago O'Hare Internationa | 651841
+      Atlanta, GA: Hartsfield-Jackson Atlanta  | 404607
+      Dallas/Fort Worth, TX: Dallas/Fort Worth | 387195
+      Denver, CO: Denver International | 369672
+      Newark, NJ: Newark Liberty International | 364942
+      Charlotte, NC: Charlotte Douglas Interna | 332336
+      San Francisco, CA: San Francisco Interna | 308863
+      New York, NY: LaGuardia | 297436
+      Seattle, WA: Seattle/Tacoma Internationa | 266210
+      Boston, MA: Logan International | 258763
+      New York, NY: John F. Kennedy Internatio | 238812
+      Los Angeles, CA: Los Angeles Internation | 227093
+
+  panel birdairline-4-29
+    title: sum of Airlines.CRS_DEP_TIME by Air Carriers.Description the twelve most
+    rows (12):
+      Southwest Airlines Co.: WN | 154510280
+      Delta Air Lines Inc.: DL | 117282089
+      American Airlines Inc.: AA | 105872917
+      SkyWest Airlines Inc.: OO | 93453136
+      United Air Lines Inc.: UA | 76984753
+      Republic Airline: YX | 37281959
+      JetBlue Airways: B6 | 36204368
+      Envoy Air: MQ | 35220535
+      PSA Airlines Inc.: OH | 32853902
+      Alaska Airlines Inc.: AS | 31559833
+      Endeavor Air Inc.: 9E | 30038630
+      Mesa Airlines Inc.: YV | 26689030
+
+  panel birdairline-4-30
+    title: average of Airlines.DEP_DELAY by Airports.Description the twelve most
+    rows (12):
+      North Bend/Coos Bay, OR: Southwest Orego | 60.7500000000000000
+      St. Cloud, MN: St. Cloud Regional | 47.7500000000000000
+      Pago Pago, TT: Pago Pago International | 47.6923076923076923
+      Presque Isle/Houlton, ME: Northern Maine | 43.8653846153846154
+      Lewisburg, WV: Greenbrier Valley | 42.6250000000000000
+      Trenton, NJ: Trenton Mercer | 39.2531645569620253
+      Unalaska, AK: Unalaska Airport | 36.5492957746478873
+      Quincy, IL: Quincy Regional-Baldwin Fiel | 35.5600000000000000
+      College Station/Bryan, TX: Easterwood Fi | 32.4068627450980392
+      Devils Lake, ND: Devils Lake Regional | 32.2075471698113208
+      Ogden, UT: Ogden-Hinckley | 31.8888888888888889
+      Cape Girardeau, MO: Cape Girardeau Regio | 31.5576923076923077
+
+  panel birdairline-4-31
+    title: average of Airlines.CRS_DEP_TIME by Air Carriers.Description the twelve most
+    rows (12):
+      Spirit Air Lines: NK | 1399.3798073936004970
+      JetBlue Airways: B6 | 1359.8906208917101754
+      Compass Airlines: CP | 1354.4078871947724407
+      Horizon Air: QX | 1352.7507234806905498
+      Commutair Aka Champlain Enterprises, Inc | 1351.3744389826886087
+      Peninsula Airways Inc.: KS | 1349.6333333333333333
+      PSA Airlines Inc.: OH | 1347.1891581580350187
+      Southwest Airlines Co.: WN | 1337.3576609482922776
+      Mesa Airlines Inc.: YV | 1335.6535882294064658
+      Delta Air Lines Inc.: DL | 1333.2661369165359343
+      ExpressJet Airlines Inc.: EV | 1332.4849060951722549
+      Envoy Air: MQ | 1332.3952107134750700
+
+  panel birdairline-4-32
+    title: sum of Airlines.DEP_TIME by Airports.Description the twelve most
+    rows (12):
+      Atlanta, GA: Hartsfield-Jackson Atlanta  | 51462289
+      Chicago, IL: Chicago O'Hare Internationa | 48059534
+      Dallas/Fort Worth, TX: Dallas/Fort Worth | 35322091
+      Denver, CO: Denver International | 33401649
+      Charlotte, NC: Charlotte Douglas Interna | 31221429
+      Los Angeles, CA: Los Angeles Internation | 30403698
+      Seattle, WA: Seattle/Tacoma Internationa | 24109978
+      San Francisco, CA: San Francisco Interna | 22187653
+      Detroit, MI: Detroit Metro Wayne County | 22090204
+      Houston, TX: George Bush Intercontinenta | 21578113
+      Minneapolis, MN: Minneapolis-St Paul Int | 21341915
+      Phoenix, AZ: Phoenix Sky Harbor Internat | 19301460
+
+  panel birdairline-4-33
+    title: sum of Airlines.DEP_DELAY by Air Carriers.Description the twelve most
+    rows (12):
+      Southwest Airlines Co.: WN | 1381955
+      American Airlines Inc.: AA | 1150109
+      United Air Lines Inc.: UA | 1058171
+      SkyWest Airlines Inc.: OO | 993069
+      Delta Air Lines Inc.: DL | 921257
+      JetBlue Airways: B6 | 588977
+      PSA Airlines Inc.: OH | 352169
+      Endeavor Air Inc.: 9E | 339626
+      Republic Airline: YX | 294165
+      Spirit Air Lines: NK | 288591
+      Frontier Airlines Inc.: F9 | 275131
+      Mesa Airlines Inc.: YV | 272164
+
+
+=== database: birdeuropeanfootball2 ===
+European football: leagues, countries, teams and their attributes, players and their attributes, and matches, as BIRD serves it. A fixture of round 1f.
+
+  panel birdeuropeanfootball2-4-01
+    title: sum of Match.stage by League.name the twelve most
+    rows (11):
+      England Premier League | 59280
+      France Ligue 1 | 59280
+      Spain LIGA BBVA | 59280
+      Italy Serie A | 58654
+      Netherlands Eredivisie | 42840
+      Germany 1. Bundesliga | 42840
+      Scotland Premier League | 35568
+      Portugal Liga ZON Sagres | 33030
+      Poland Ekstraklasa | 29760
+      Belgium Jupiler League | 27252
+      Switzerland Super League | 26145
+
+  panel birdeuropeanfootball2-4-02
+    title: rows of Team_Attributes by Team_Attributes.buildUpPlayDribblingClass
+    rows (3):
+      Little | 1004
+      Normal | 433
+      Lots | 21
+
+  panel birdeuropeanfootball2-4-03
+    title: rows of Team_Attributes by Team_Attributes.buildUpPlayPassingClass
+    rows (3):
+      Mixed | 1236
+      Short | 128
+      Long | 94
+
+  panel birdeuropeanfootball2-4-04
+    title: rows of Match by League.name
+    rows (11):
+      England Premier League | 3040
+      France Ligue 1 | 3040
+      Spain LIGA BBVA | 3040
+      Italy Serie A | 3017
+      Germany 1. Bundesliga | 2448
+      Netherlands Eredivisie | 2448
+      Portugal Liga ZON Sagres | 2052
+      Poland Ekstraklasa | 1920
+      Scotland Premier League | 1824
+      Belgium Jupiler League | 1728
+      Switzerland Super League | 1422
+
+  panel birdeuropeanfootball2-4-05
+    title: average of Match.stage by Country.name the twelve most
+    rows (11):
+      England | 19.5000000000000000
+      France | 19.5000000000000000
+      Scotland | 19.5000000000000000
+      Spain | 19.5000000000000000
+      Italy | 19.4411667219091813
+      Switzerland | 18.3860759493670886
+      Germany | 17.5000000000000000
+      Netherlands | 17.5000000000000000
+      Portugal | 16.0964912280701754
+      Belgium | 15.7708333333333333
+      Poland | 15.5000000000000000
+
+  panel birdeuropeanfootball2-4-06
+    title: rows of Player_Attributes by Player_Attributes.attacking_work_rate
+    rows (9):
+      medium | 125070
+      high | 42823
+      low | 8569
+      None | 3639
+      ∅ | 3230
+      norm | 348
+      y | 106
+      le | 104
+      stoc | 89
+
+  panel birdeuropeanfootball2-4-07
+    title: rows of Match by Match.away_team_goal
+    rows (10):
+      1 | 8989
+      0 | 8687
+      2 | 5146
+      3 | 2145
+      4 | 718
+      5 | 215
+      6 | 63
+      7 | 10
+      8 | 5
+      9 | 1
+
+  panel birdeuropeanfootball2-4-08
+    title: sum of Match.stage by Country.name the twelve most
+    rows (11):
+      England | 59280
+      France | 59280
+      Spain | 59280
+      Italy | 58654
+      Netherlands | 42840
+      Germany | 42840
+      Scotland | 35568
+      Portugal | 33030
+      Poland | 29760
+      Belgium | 27252
+      Switzerland | 26145
+
+  panel birdeuropeanfootball2-4-09
+    title: rows of Match by Country.name
+    rows (11):
+      France | 3040
+      Spain | 3040
+      England | 3040
+      Italy | 3017
+      Netherlands | 2448
+      Germany | 2448
+      Portugal | 2052
+      Poland | 1920
+      Scotland | 1824
+      Belgium | 1728
+      Switzerland | 1422
+
+  panel birdeuropeanfootball2-4-10
+    title: rows of Team_Attributes by Team_Attributes.date
+    rows (6):
+      2015-09-10 00:00:00 | 245
+      2014-09-19 00:00:00 | 244
+      2011-02-22 00:00:00 | 244
+      2012-02-22 00:00:00 | 242
+      2013-09-20 00:00:00 | 242
+      2010-02-22 00:00:00 | 241
+
+  panel birdeuropeanfootball2-4-11
+    title: rows of Player_Attributes by Player_Attributes.defensive_work_rate the twelve most
+    rows (12):
+      medium | 130846
+      high | 27041
+      low | 18432
+      _0 | 2394
+      o | 1550
+      ∅ | 836
+      1 | 441
+      ormal | 348
+      2 | 342
+      3 | 258
+      5 | 234
+      7 | 217
+
+  panel birdeuropeanfootball2-4-12
+    title: rows of Team_Attributes by Team_Attributes.buildUpPlaySpeedClass
+    rows (3):
+      Balanced | 1184
+      Fast | 172
+      Slow | 102
+
+  panel birdeuropeanfootball2-4-13
+    title: largest tables, estimated rows
+    rows (7):
+      Player_Attributes | 183978
+      Match | 25979
+      Player | 11060
+      Team_Attributes | 1458
+      Team | 299
+      Country | 11
+      League | 11
+
+  panel birdeuropeanfootball2-4-14
+    title: sum of Player.weight by Player.player_fifa_api_id the twelve most
+    rows (12):
+      185306 | 243
+      53012 | 243
+      137692 | 227
+      169725 | 225
+      53785 | 220
+      46590 | 220
+      167958 | 220
+      199833 | 220
+      188920 | 218
+      100329 | 218
+      157589 | 218
+      202849 | 216
+
+  panel birdeuropeanfootball2-4-15
+    title: rows of Player_Attributes by Player_Attributes.preferred_foot
+    rows (3):
+      right | 138409
+      left | 44733
+      ∅ | 836
+
+  panel birdeuropeanfootball2-4-16
+    title: rows of Team_Attributes by Team_Attributes.defenceTeamWidthClass
+    rows (3):
+      Normal | 1286
+      Wide | 111
+      Narrow | 61
+
+  panel birdeuropeanfootball2-4-17
+    title: rows of Team_Attributes by Team_Attributes.chanceCreationShootingClass
+    rows (3):
+      Normal | 1224
+      Lots | 197
+      Little | 37
+
+  panel birdeuropeanfootball2-4-18
+    title: rows of Match by Match.home_team_api_id the twelve most
+    rows (12):
+      8485 | 152
+      10260 | 152
+      9831 | 152
+      9941 | 152
+      9827 | 152
+      8689 | 152
+      8472 | 152
+      8533 | 152
+      9847 | 152
+      8456 | 152
+      8586 | 152
+      8302 | 152
+
+  panel birdeuropeanfootball2-4-19
+    title: rows of Match by Match.match_api_id the twelve most
+    rows (12):
+      838452 | 1
+      1217159 | 1
+      704356 | 1
+      674291 | 1
+      1030385 | 1
+      1028690 | 1
+      1229479 | 1
+      654170 | 1
+      1083262 | 1
+      509257 | 1
+      1988769 | 1
+      490024 | 1
+
+  panel birdeuropeanfootball2-4-20
+    title: rows of Match by League.name the twelve most
+    rows (11):
+      England Premier League | 3040
+      France Ligue 1 | 3040
+      Spain LIGA BBVA | 3040
+      Italy Serie A | 3017
+      Netherlands Eredivisie | 2448
+      Germany 1. Bundesliga | 2448
+      Portugal Liga ZON Sagres | 2052
+      Poland Ekstraklasa | 1920
+      Scotland Premier League | 1824
+      Belgium Jupiler League | 1728
+      Switzerland Super League | 1422
+
+  panel birdeuropeanfootball2-4-21
+    title: rows of Team_Attributes by Team_Attributes.chanceCreationCrossingClass
+    rows (3):
+      Normal | 1195
+      Lots | 211
+      Little | 52
+
+  panel birdeuropeanfootball2-4-22
+    title: rows of Team_Attributes by Team_Attributes.chanceCreationPassingClass
+    rows (3):
+      Normal | 1231
+      Risky | 171
+      Safe | 56
+
+  panel birdeuropeanfootball2-4-23
+    title: rows of Match by Match.stage the twelve most
+    rows (12):
+      6 | 740
+      4 | 740
+      1 | 740
+      2 | 740
+      5 | 740
+      3 | 740
+      10 | 738
+      17 | 738
+      13 | 738
+      15 | 738
+      7 | 738
+      9 | 738
+
+  panel birdeuropeanfootball2-4-24
+    title: rows of Match by Match.home_team_goal
+    rows (11):
+      1 | 8400
+      2 | 6339
+      0 | 5896
+      3 | 3288
+      4 | 1385
+      5 | 457
+      6 | 161
+      7 | 38
+      8 | 9
+      9 | 4
+      10 | 2
+
+  panel birdeuropeanfootball2-4-25
+    title: rows of Team_Attributes by Team_Attributes.buildUpPlayPositioningClass
+    rows (2):
+      Organised | 1386
+      Free Form | 72
+
+  panel birdeuropeanfootball2-4-26
+    title: sum of Player.weight by Player.player_api_id the twelve most
+    rows (12):
+      148325 | 243
+      27313 | 243
+      5044 | 227
+      27267 | 225
+      101584 | 220
+      19020 | 220
+      30669 | 220
+      210822 | 220
+      33060 | 218
+      93450 | 218
+      40005 | 218
+      205893 | 216
+
+  panel birdeuropeanfootball2-4-27
+    title: rows of Match by Country.name the twelve most
+    rows (11):
+      England | 3040
+      France | 3040
+      Spain | 3040
+      Italy | 3017
+      Netherlands | 2448
+      Germany | 2448
+      Portugal | 2052
+      Poland | 1920
+      Scotland | 1824
+      Belgium | 1728
+      Switzerland | 1422
+
+  panel birdeuropeanfootball2-4-28
+    title: rows of Team_Attributes by Team_Attributes.defenceAggressionClass
+    rows (3):
+      Press | 1274
+      Double | 99
+      Contain | 85
+
+  panel birdeuropeanfootball2-4-29
+    title: rows of Match by Match.away_team_api_id the twelve most
+    rows (12):
+      9927 | 153
+      9831 | 152
+      8472 | 152
+      9941 | 152
+      9827 | 152
+      8689 | 152
+      8636 | 152
+      8686 | 152
+      9847 | 152
+      8456 | 152
+      8586 | 152
+      8485 | 152
+
+  panel birdeuropeanfootball2-4-30
+    title: rows of Team_Attributes by Team_Attributes.defencePressureClass
+    rows (3):
+      Medium | 1243
+      Deep | 154
+      High | 61
+
+  panel birdeuropeanfootball2-4-31
+    title: rows of Match by Match.season
+    rows (8):
+      2015/2016 | 3326
+      2008/2009 | 3326
+      2014/2015 | 3325
+      2012/2013 | 3260
+      2010/2011 | 3260
+      2009/2010 | 3230
+      2011/2012 | 3220
+      2013/2014 | 3032
+
+
+=== database: birdfoodinspection2 ===
+Chicago's food inspections: establishments, inspectors, inspections and the violations found, as BIRD serves it. A fixture of round 1f.
+
+  panel birdfoodinspection2-4-01
+    title: sum of violation.fine by inspection_point.Description the twelve most
+    rows (12):
+      Floors: constructed per code, cleaned, g | 6163100
+      Food and non-food contact equipment uten | 5457600
+      Walls, ceilings, attached equipment cons | 5438700
+      Ventilation: rooms and equipment vented  | 4577900
+      Food and non-food contact surfaces prope | 4520000
+      No evidence of rodent or insect outer op | 4250000
+      Potentially hazardous food meets tempera | 3654000
+      Premises maintained free of litter, unne | 2929600
+      Facilities to maintain proper temperatur | 2866000
+      Lighting: required minimum foot-candles  | 2272400
+      * Certified Food Manager on site when po | 2065250
+      Adequate number, convenient, accessible, | 1542000
+
+  panel birdfoodinspection2-4-02
+    title: rows of violation by inspection_point.Description the twelve most
+    rows (12):
+      Floors: constructed per code, cleaned, g | 69150
+      Food and non-food contact equipment uten | 61219
+      Walls, ceilings, attached equipment cons | 60924
+      Ventilation: rooms and equipment vented  | 51825
+      Food and non-food contact surfaces prope | 50577
+      Premises maintained free of litter, unne | 33667
+      No evidence of rodent or insect outer op | 26248
+      Lighting: required minimum foot-candles  | 25807
+      Refrigeration and metal stem thermometer | 15859
+      Food in original container, properly lab | 15396
+      Clean multi-use utensils and single serv | 9939
+      * Certified Food Manager on site when po | 9691
+
+  panel birdfoodinspection2-4-03
+    title: rows of employee by employee.title
+    rows (3):
+      Sanitarian | 67
+      Supervisor | 7
+      Division Manager | 1
+
+  panel birdfoodinspection2-4-04
+    title: sum of violation.fine by inspection (by key) the twelve most
+    rows (12):
+      453243 | 5350
+      1360642 | 4550
+      1490895 | 4500
+      612445 | 4300
+      634381 | 4100
+      1170460 | 4100
+      1473872 | 4000
+      1537851 | 3950
+      1228450 | 3900
+      1532972 | 3900
+      413643 | 3850
+      1493787 | 3850
+
+  panel birdfoodinspection2-4-05
+    title: rows of violation by inspection.inspection_type the twelve most
+    rows (12):
+      Canvass | 246367
+      Canvass Re-Inspection | 77897
+      Complaint | 62068
+      License | 45202
+      License Re-Inspection | 32920
+      Complaint Re-Inspection | 30514
+      Short Form Complaint | 18104
+      Suspected Food Poisoning | 3252
+      Tag Removal | 2471
+      Consultation | 1716
+      License-Task Force | 1634
+      Suspected Food Poisoning Re-inspection | 925
+
+  panel birdfoodinspection2-4-06
+    title: rows of inspection by inspection.results
+    rows (7):
+      Pass | 84792
+      Fail | 27845
+      Pass w/ Conditions | 13567
+      Out of Business | 13243
+      No Entry | 3762
+      Not Ready | 618
+      Business Not Located | 43
+
+  panel birdfoodinspection2-4-07
+    title: sum of violation.fine by inspection.inspection_type the twelve most
+    rows (12):
+      Canvass | 33103700
+      Complaint | 9361050
+      License | 7173950
+      Canvass Re-Inspection | 5012250
+      Short Form Complaint | 2281900
+      Complaint Re-Inspection | 2065250
+      License Re-Inspection | 1714600
+      Suspected Food Poisoning | 522100
+      Tag Removal | 330750
+      License-Task Force | 291100
+      Consultation | 234450
+      Complaint-Fire | 78900
+
+  panel birdfoodinspection2-4-08
+    title: rows of violation per inspection_point
+    rows (45):
+      3 | 2
+      14 | 1
+      103 | 1
+      147 | 1
+      173 | 1
+      223 | 1
+      404 | 1
+      529 | 1
+      589 | 1
+      616 | 1
+      677 | 1
+      728 | 1
+      … 33 more rows
+
+  panel birdfoodinspection2-4-09
+    title: average of violation.fine by inspection (by key) the twelve most
+    rows (12):
+      114777 | 500.0000000000000000
+      114865 | 500.0000000000000000
+      114321 | 500.0000000000000000
+      114610 | 500.0000000000000000
+      74298 | 500.0000000000000000
+      74341 | 500.0000000000000000
+      68173 | 500.0000000000000000
+      70293 | 500.0000000000000000
+      70269 | 500.0000000000000000
+      68412 | 500.0000000000000000
+      70344 | 500.0000000000000000
+      120409 | 500.0000000000000000
+
+  panel birdfoodinspection2-4-10
+    title: rows of inspection by inspection.inspection_type the twelve most
+    rows (12):
+      Canvass | 76710
+      License | 18294
+      Canvass Re-Inspection | 14402
+      Complaint | 12825
+      License Re-Inspection | 6819
+      Short Form Complaint | 5498
+      Complaint Re-Inspection | 5273
+      Suspected Food Poisoning | 682
+      Consultation | 642
+      License-Task Force | 605
+      Tag Removal | 602
+      Out of Business | 284
+
+  panel birdfoodinspection2-4-11
+    title: rows of violation by inspection.results
+    rows (6):
+      Pass | 300148
+      Fail | 153618
+      Pass w/ Conditions | 70438
+      No Entry | 1270
+      Out of Business | 138
+      Not Ready | 97
+
+  panel birdfoodinspection2-4-12
+    title: sum of violation.fine by inspection.results
+    rows (6):
+      Fail | 25470050
+      Pass | 24512150
+      Pass w/ Conditions | 12346750
+      No Entry | 163300
+      Not Ready | 17100
+      Out of Business | 9700
+
+  panel birdfoodinspection2-4-13
+    title: rows of violation per inspection
+    rows (19):
+      1 | 9569
+      2 | 16165
+      3 | 19450
+      4 | 18424
+      5 | 15578
+      6 | 12123
+      7 | 8542
+      8 | 6006
+      9 | 3861
+      10 | 2336
+      11 | 1370
+      12 | 774
+      … 7 more rows
+
+  panel birdfoodinspection2-4-14
+    title: sum of violation.fine by inspection_point.point_level
+    rows (3):
+      Minor    | 37599800
+      Critical | 13419500
+      Serious  | 11499750
+
+  panel birdfoodinspection2-4-15
+    title: sum of violation.fine by inspection_point.category the twelve most
+    rows (12):
+      Food Maintenance | 25320600
+      Food Protection | 21107600
+      Insect and Rodent Control | 5290500
+      Toilet and Hand Washing Facilities for S | 2760500
+      Personnel | 2065250
+      Compliance | 1428750
+      Food Equipment and Utensil Sanitation | 1238500
+      Wash and Waste Water Disposal | 1210500
+      Food Equipment and Utensil | 980000
+      Toilet / Hand Washing Facilities For Cus | 458000
+      Display of Inspection Report Summary | 288750
+      Compliance Insect and Rodent Control | 271500
+
+  panel birdfoodinspection2-4-16
+    title: rows of violation by inspection_point.point_level
+    rows (3):
+      Minor    | 424542
+      Serious  | 67698
+      Critical | 33469
+
+  panel birdfoodinspection2-4-17
+    title: rows of inspection by establishment.dba_name the twelve most
+    rows (12):
+      SPORTSERVICE SOLDIER FIELD | 198
+      ∅ | 178
+      ILLINOIS SPORTSERVICE INC. | 170
+      LEVY RESTAURANTS AT WRIGLEY FIELD | 78
+      THE UNITED CENTER | 58
+      THE GREAT STATE FARE | 44
+      MCDONALD'S | 44
+      Food 4 Less Midwest #552 | 41
+      JEWEL FOOD  STORE # 3345 | 39
+      FOOD 4 LESS | 38
+      McDONALD'S | 38
+      PETE'S PRODUCE | 37
+
+  panel birdfoodinspection2-4-18
+    title: rows of establishment by establishment.risk_level
+    rows (4):
+      1 | 17116
+      3 | 7967
+      2 | 6538
+      ∅ | 21
+
+  panel birdfoodinspection2-4-19
+    title: rows of violation by establishment.dba_name the twelve most
+    rows (12):
+      ∅ | 433
+      ILLINOIS SPORTSERVICE INC. | 321
+      TAQUERIA EL RANCHITO | 278
+      JIMMY G'S | 236
+      FOOD 4 LESS | 217
+      NICKY'S CHINESE FOOD | 211
+      Food 4 Less Midwest #552 | 208
+      NUEVO LEON RESTAURANT | 206
+      PIZZA CAPRI | 205
+      DAATA DARBAR RESTAURENT | 198
+      CHICAGO'S HOME OF CHICKEN & WAFFLES | 193
+      TOZI RESTAURANT | 192
+
+  panel birdfoodinspection2-4-20
+    title: rows of violation by inspection (by key) the twelve most
+    rows (12):
+      1490895 | 19
+      1575732 | 19
+      1937917 | 18
+      1170460 | 18
+      517492 | 18
+      634381 | 18
+      1386508 | 18
+      1206235 | 18
+      1385454 | 17
+      453243 | 17
+      1277236 | 17
+      1386403 | 17
+
+  panel birdfoodinspection2-4-21
+    title: distinct establishment in inspection by inspection.inspection_date
+    rows (8):
+      2010-01-01 | 11155
+      2011-01-01 | 11373
+      2012-01-01 | 12826
+      2013-01-01 | 14323
+      2014-01-01 | 13304
+      2015-01-01 | 13537
+      2016-01-01 | 13368
+      2017-01-01 | 1879
+
+  panel birdfoodinspection2-4-22
+    title: rows of inspection by inspection.inspection_date
+    rows (8):
+      2010-01-01 | 17986
+      2011-01-01 | 18657
+      2012-01-01 | 18791
+      2013-01-01 | 20911
+      2014-01-01 | 21497
+      2015-01-01 | 20867
+      2016-01-01 | 22762
+      2017-01-01 | 2399
+
+  panel birdfoodinspection2-4-23
+    title: rows of inspection by employee.title
+    rows (2):
+      Sanitarian | 143753
+      ∅ | 117
+
+  panel birdfoodinspection2-4-24
+    title: rows of inspection by establishment.risk_level
+    rows (4):
+      1 | 99760
+      2 | 30080
+      3 | 13825
+      ∅ | 205
+
+  panel birdfoodinspection2-4-25
+    title: rows of inspection by employee (named) the twelve most
+    rows (12):
+      David Hodges | 8663
+      Jessica Anthony | 8524
+      Ruth Noble | 8495
+      Sarah Lindsey | 8479
+      Rosemary Kennedy | 8452
+      Robert Morin | 8366
+      Arnold Holder | 8320
+      Randall Curtis | 8224
+      Standard Murray | 8206
+      Vicky Coleman | 8198
+      Mark Atkins | 8195
+      Daryl William | 7312
+
+  panel birdfoodinspection2-4-26
+    title: rows of violation by inspection_point.category the twelve most
+    rows (12):
+      Food Maintenance | 286683
+      Food Protection | 160536
+      Insect and Rodent Control | 32726
+      Compliance | 10507
+      Personnel | 9691
+      Toilet and Hand Washing Facilities for S | 7336
+      Food Equipment and Utensil | 6089
+      Wash and Waste Water Disposal | 3496
+      Food Equipment and Utensil Sanitation | 2916
+      Toilet / Hand Washing Facilities For Cus | 2761
+      Display of Inspection Report Summary | 1255
+      Compliance Insect and Rodent Control | 762
+
+  panel birdfoodinspection2-4-27
+    title: average of violation.fine by inspection_point.Description the twelve most
+    rows (12):
+      Potentially hazardous food meets tempera | 488.3068288119738073
+      Hands washed and cleaned, good hygienic  | 486.6666666666666667
+      Personnel with infections restricted: no | 464.2857142857142857
+      Source sound condition, no spoilage, foo | 461.0389610389610390
+      Source of cross contamination controlled | 441.4261460101867572
+      Sanitizing rinse for equipment and utens | 425.7854821235102925
+      Hand washing facilities: with soap and s | 405.8960692871419054
+      Wash and rinse water: clean and proper t | 404.7619047619047619
+      Facilities to maintain proper temperatur | 404.6308061555837922
+      No evidence of rodent or insect infestat | 356.2992125984251969
+      Adequate number, convenient, accessible, | 355.7914167051222889
+      Sewage and waste water disposal, no back | 351.1904761904761905
+
+  panel birdfoodinspection2-4-28
+    title: rows of violation by inspection.inspection_date
+    rows (8):
+      2010-01-01 | 68221
+      2011-01-01 | 75819
+      2012-01-01 | 68123
+      2013-01-01 | 69900
+      2014-01-01 | 76932
+      2015-01-01 | 75454
+      2016-01-01 | 82245
+      2017-01-01 | 9015
+
+  panel birdfoodinspection2-4-29
+    title: sum of violation.fine by inspection.inspection_date
+    rows (8):
+      2010-01-01 | 7788250
+      2011-01-01 | 8464900
+      2012-01-01 | 8068800
+      2013-01-01 | 8297150
+      2014-01-01 | 9414650
+      2015-01-01 | 9135900
+      2016-01-01 | 10218150
+      2017-01-01 | 1131250
+
+  panel birdfoodinspection2-4-30
+    title: sum of violation.fine by establishment.dba_name the twelve most
+    rows (12):
+      ILLINOIS SPORTSERVICE INC. | 60250
+      ∅ | 52950
+      TAQUERIA EL RANCHITO | 34200
+      LEVY RESTAURANTS AT WRIGLEY FIELD | 30150
+      JIMMY G'S | 29750
+      CHICAGO'S HOME OF CHICKEN & WAFFLES | 28200
+      NICKY'S CHINESE FOOD | 27850
+      TOZI RESTAURANT | 27650
+      DAATA DARBAR RESTAURENT | 27500
+      NUEVO LEON RESTAURANT | 26800
+      R.  MCCARTY ENTERPRISES, INC. | 26550
+      PIZZA CAPRI | 26200
+
+  panel birdfoodinspection2-4-31
+    title: rows of inspection by inspection.inspection_date split by inspection.results
+    rows (49):
+      2010-01-01 | Pass | 11404
+      2010-01-01 | Pass w/ Conditions | 1420
+      2010-01-01 | Business Not Located | 6
+      2010-01-01 | Fail | 4481
+      2010-01-01 | Out of Business | 675
+      2011-01-01 | Pass | 11660
+      2011-01-01 | Fail | 4337
+      2011-01-01 | Business Not Located | 6
+      2011-01-01 | Out of Business | 1144
+      2011-01-01 | Pass w/ Conditions | 1510
+      2012-01-01 | Fail | 3615
+      2012-01-01 | Out of Business | 2589
+      … 37 more rows
+
+  panel birdfoodinspection2-4-32
+    title: rows of violation by employee (named) the twelve most
+    rows (12):
+      David Hodges | 31729
+      Rosemary Kennedy | 31073
+      Sarah Lindsey | 31029
+      Ruth Noble | 30796
+      Jessica Anthony | 30748
+      Vicky Coleman | 30578
+      Arnold Holder | 30400
+      Mark Atkins | 30388
+      Robert Morin | 30374
+      Standard Murray | 29866
+      Randall Curtis | 29759
+      Daryl William | 27166

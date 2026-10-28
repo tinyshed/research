@@ -1,0 +1,1902 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: birdsimpsonepisodes ===
+Episodes of The Simpsons, the people credited on them, their awards, keywords and viewers' votes, as BIRD serves it. A fixture of round 1f.
+
+  panel birdsimpsonepisodes-4-01
+    title: rows of Person by Person.birth_country
+    rows (10):
+      ∅ | 250
+      USA | 106
+      Canada | 5
+      Ireland | 2
+      Iran | 1
+      Czechoslovakia | 1
+      France | 1
+      North Korea | 1
+      UK | 1
+      Philippines | 1
+
+  panel birdsimpsonepisodes-4-02
+    title: rows of Credit by Person.birth_country
+    rows (10):
+      ∅ | 2581
+      USA | 1900
+      Canada | 31
+      France | 24
+      North Korea | 12
+      Philippines | 4
+      Ireland | 2
+      UK | 1
+      Iran | 1
+      Czechoslovakia | 1
+
+  panel birdsimpsonepisodes-4-03
+    title: distinct Episode in Credit by Person.birth_name the twelve most
+    rows (12):
+      Bonita Lynn Pietila | 21
+      ∅ | 21
+      ∅ | 21
+      Robert Mackston | 21
+      ∅ | 21
+      ∅ | 21
+      ∅ | 21
+      ∅ | 21
+      ∅ | 21
+      William Leonard Odenkirk | 21
+      ∅ | 21
+      Brian James Kaufman | 21
+
+  panel birdsimpsonepisodes-4-04
+    title: rows of Award by Award.organization
+    rows (11):
+      Writers Guild of America, USA | 32
+      Primetime Emmy Awards | 24
+      Annie Awards | 5
+      Online Film & Television Association | 4
+      Kids' Choice Awards, USA | 3
+      Image Awards (NAACP) | 2
+      People's Choice Awards, USA | 1
+      Jupiter Award | 1
+      Teen Choice Awards | 1
+      Prism Awards | 1
+      TP de Oro, Spain | 1
+
+  panel birdsimpsonepisodes-4-05
+    title: sum of Vote.votes by Episode (by key) the twelve most
+    rows (12):
+      S20-E1 | 1192
+      S20-E4 | 1190
+      S20-E7 | 1117
+      S20-E9 | 1085
+      S20-E2 | 1055
+      S20-E13 | 1049
+      S20-E21 | 1032
+      S20-E3 | 1015
+      S20-E19 | 992
+      S20-E17 | 976
+      S20-E14 | 957
+      S20-E8 | 956
+
+  panel birdsimpsonepisodes-4-06
+    title: rows of Credit by Person.birth_region the twelve most
+    rows (12):
+      ∅ | 2629
+      California | 740
+      New York | 301
+      Illinois | 227
+      Oregon | 105
+      Ohio | 94
+      Massachusetts | 81
+      Connecticut | 65
+      Michigan | 64
+      Pennsylvania | 48
+      Iowa | 42
+      Minnesota | 29
+
+  panel birdsimpsonepisodes-4-07
+    title: rows of Keyword by Episode (by key) the twelve most
+    rows (12):
+      S20-E1 | 56
+      S20-E4 | 46
+      S20-E8 | 23
+      S20-E13 | 20
+      S20-E11 | 17
+      S20-E18 | 17
+      S20-E20 | 16
+      S20-E21 | 13
+      S20-E12 | 12
+      S20-E10 | 10
+      S20-E14 | 9
+      S20-E3 | 9
+
+  panel birdsimpsonepisodes-4-08
+    title: rows of Award by Person.birth_name the twelve most
+    rows (12):
+      ∅ | 13
+      Ian Howes Maxtone-Graham | 4
+      Marc Edward Wilmore | 4
+      ∅ | 4
+      John Eric Frink | 3
+      Kevin Patrick Curran | 2
+      William Donald Payne | 2
+      ∅ | 2
+      Michael William Price | 2
+      Daniel Louis Castellaneta | 2
+      Matthew David Selman | 2
+      Alfred Ernest Jean III | 2
+
+  panel birdsimpsonepisodes-4-09
+    title: rows of Credit by Person.birth_name the twelve most
+    rows (12):
+      Daniel Louis Castellaneta | 120
+      Henry Albert Azaria | 119
+      Matthew Abram Groening | 105
+      Harry Julius Shearer | 90
+      Teressa Claire Payne | 82
+      Samuel Michael Simon | 63
+      James Lawrence Brooks | 63
+      Nancy Jean Cartwright | 51
+      Bonita Lynn Pietila | 41
+      Julie Deborah Kavner | 37
+      Ardell Bradley Hake | 34
+      ∅ | 31
+
+  panel birdsimpsonepisodes-4-10
+    title: rows of Credit by Episode (by key) the twelve most
+    rows (12):
+      S20-E14 | 252
+      S20-E20 | 233
+      S20-E19 | 231
+      S20-E11 | 228
+      S20-E13 | 226
+      S20-E12 | 224
+      S20-E3 | 222
+      S20-E15 | 221
+      S20-E10 | 221
+      S20-E4 | 220
+      S20-E18 | 220
+      S20-E21 | 217
+
+  panel birdsimpsonepisodes-4-11
+    title: largest tables, estimated rows
+    rows (7):
+      Credit | 4557
+      Person | 369
+      Keyword | 307
+      Vote | 210
+      Award | 75
+      Episode | 21
+      Character_Award | 12
+
+  panel birdsimpsonepisodes-4-12
+    title: distinct Person in Credit by Credit.category the twelve most
+    rows (12):
+      Animation Department | 197
+      Produced by | 51
+      Cast | 36
+      Art Department | 32
+      Other crew | 23
+      Writing Credits | 22
+      Second Unit Director or Assistant Direct | 20
+      General | 19
+      Music Department | 16
+      Sound Department | 14
+      Editorial Department | 10
+      Visual Effects by | 8
+
+  panel birdsimpsonepisodes-4-13
+    title: distinct Episode in Credit by Credit.credited
+    rows (2):
+      false | 21
+      true | 21
+
+  panel birdsimpsonepisodes-4-14
+    title: rows of Award by Person.birth_country
+    rows (3):
+      USA | 41
+      ∅ | 32
+      Canada | 2
+
+  panel birdsimpsonepisodes-4-15
+    title: rows of Credit by Credit.credited
+    rows (2):
+      true | 4353
+      false | 204
+
+  panel birdsimpsonepisodes-4-16
+    title: rows of Credit by Credit.category
+    rows (17):
+      Animation Department | 1340
+      Produced by | 943
+      Cast | 619
+      Other crew | 388
+      Sound Department | 253
+      Music Department | 238
+      Art Department | 216
+      Editorial Department | 152
+      Writing Credits | 116
+      General | 115
+      Second Unit Director or Assistant Direct | 45
+      Production Management | 45
+      … 5 more rows
+
+  panel birdsimpsonepisodes-4-17
+    title: rows of Credit by Credit.category the twelve most
+    rows (12):
+      Animation Department | 1340
+      Produced by | 943
+      Cast | 619
+      Other crew | 388
+      Sound Department | 253
+      Music Department | 238
+      Art Department | 216
+      Editorial Department | 152
+      Writing Credits | 116
+      General | 115
+      Second Unit Director or Assistant Direct | 45
+      Production Management | 45
+
+  panel birdsimpsonepisodes-4-18
+    title: distribution of Vote.votes
+    rows (21):
+      0 | 7 | 31
+      1 | 22 | 25
+      2 | 37 | 23
+      3 | 53 | 21
+      4 | 67 | 15
+      5 | 85 | 6
+      6 | 98 | 10
+      7 | 112 | 10
+      8 | 127 | 13
+      9 | 143 | 11
+      10 | 158 | 4
+      11 | 173 | 8
+      … 9 more rows
+
+  panel birdsimpsonepisodes-4-19
+    title: rows of Award by Episode (by key) the twelve most
+    rows (12):
+      ∅ | 32
+      S20-E13 | 26
+      S20-E7 | 5
+      S20-E16 | 2
+      S20-E8 | 2
+      S20-E17 | 2
+      S20-E6 | 1
+      S20-E10 | 1
+      S20-E18 | 1
+      S20-E15 | 1
+      S20-E20 | 1
+      S20-E4 | 1
+
+  panel birdsimpsonepisodes-4-20
+    title: rows of Episode by Episode.title the twelve most
+    rows (12):
+      Waverly Hills, 9021-D'Oh | 1
+      Lisa the Drama Queen | 1
+      Father Knows Worst | 1
+      MyPods and Boomsticks | 1
+      In the Name of the Grandfather | 1
+      Double, Double, Boy in Trouble | 1
+      No Loan Again, Naturally | 1
+      Wedding for Disaster | 1
+      Homer and Lisa Exchange Cross Words | 1
+      Four Great Women and a Manicure | 1
+      Gone Maggie Gone | 1
+      Sex, Pies and Idiot Scrapes | 1
+
+  panel birdsimpsonepisodes-4-21
+    title: rows of Credit by Episode.title the twelve most
+    rows (12):
+      In the Name of the Grandfather | 252
+      Four Great Women and a Manicure | 233
+      Waverly Hills, 9021-D'Oh | 231
+      How the Test Was Won | 228
+      Gone Maggie Gone | 226
+      No Loan Again, Naturally | 224
+      Double, Double, Boy in Trouble | 222
+      Wedding for Disaster | 221
+      Take My Life, Please | 221
+      Treehouse of Horror XIX | 220
+      Father Knows Worst | 220
+      Coming to Homerica | 217
+
+  panel birdsimpsonepisodes-4-22
+    title: distinct Person in Credit by Credit.credited
+    rows (2):
+      true | 356
+      false | 25
+
+  panel birdsimpsonepisodes-4-23
+    title: distinct Person in Credit by Person.birth_name the twelve most
+    rows (12):
+      ∅ | 1
+      ∅ | 1
+      ∅ | 1
+      ∅ | 1
+      ∅ | 1
+      Alexander Charles Dilts | 1
+      ∅ | 1
+      ∅ | 1
+      ∅ | 1
+      ∅ | 1
+      ∅ | 1
+      ∅ | 1
+
+  panel birdsimpsonepisodes-4-24
+    title: rows of Vote by Episode (by key) the twelve most
+    rows (12):
+      S20-E11 | 10
+      S20-E20 | 10
+      S20-E19 | 10
+      S20-E8 | 10
+      S20-E17 | 10
+      S20-E9 | 10
+      S20-E21 | 10
+      S20-E10 | 10
+      S20-E14 | 10
+      S20-E7 | 10
+      S20-E3 | 10
+      S20-E6 | 10
+
+  panel birdsimpsonepisodes-4-25
+    title: rows of Award by Award.year
+    rows (4):
+      2009-01-01 | 61
+      2010-01-01 | 12
+      2017-01-01 | 1
+      2018-01-01 | 1
+
+  panel birdsimpsonepisodes-4-26
+    title: rows of Award by Award.role
+    rows (12):
+      ∅ | 53
+      co-executive producer | 7
+      executive producer | 4
+      animation producer | 2
+      writer | 2
+      director | 1
+      co-executive producer, writer | 1
+      Mejor Serie Extranjera | 1
+      assistant director | 1
+      composer | 1
+      animation timer | 1
+      supervising director | 1
+
+  panel birdsimpsonepisodes-4-27
+    title: average of Vote.stars by Episode (by key) the twelve most
+    rows (12):
+      S20-E11 | 5.5000000000000000
+      S20-E20 | 5.5000000000000000
+      S20-E19 | 5.5000000000000000
+      S20-E8 | 5.5000000000000000
+      S20-E17 | 5.5000000000000000
+      S20-E9 | 5.5000000000000000
+      S20-E21 | 5.5000000000000000
+      S20-E10 | 5.5000000000000000
+      S20-E14 | 5.5000000000000000
+      S20-E7 | 5.5000000000000000
+      S20-E3 | 5.5000000000000000
+      S20-E6 | 5.5000000000000000
+
+  panel birdsimpsonepisodes-4-28
+    title: average of Vote.votes by Episode (by key) the twelve most
+    rows (12):
+      S20-E1 | 119.2000000000000000
+      S20-E4 | 119.0000000000000000
+      S20-E7 | 111.7000000000000000
+      S20-E9 | 108.5000000000000000
+      S20-E2 | 105.5000000000000000
+      S20-E13 | 104.9000000000000000
+      S20-E21 | 103.2000000000000000
+      S20-E3 | 101.5000000000000000
+      S20-E19 | 99.2000000000000000
+      S20-E17 | 97.6000000000000000
+      S20-E14 | 95.7000000000000000
+      S20-E8 | 95.6000000000000000
+
+  panel birdsimpsonepisodes-4-29
+    title: sum of Episode.votes by Episode.title the twelve most
+    rows (12):
+      Sex, Pies and Idiot Scrapes | 1192
+      Treehouse of Horror XIX | 1190
+      MyPods and Boomsticks | 1117
+      Lisa the Drama Queen | 1085
+      Lost Verizon | 1055
+      Gone Maggie Gone | 1049
+      Coming to Homerica | 1032
+      Double, Double, Boy in Trouble | 1015
+      Waverly Hills, 9021-D'Oh | 992
+      The Good, the Sad and the Drugly | 976
+      In the Name of the Grandfather | 957
+      The Burns and the Bees | 956
+
+  panel birdsimpsonepisodes-4-30
+    title: rows of Award by Award.result
+    rows (2):
+      Nominee | 69
+      Winner | 6
+
+  panel birdsimpsonepisodes-4-31
+    title: rows of Award by Person.birth_region the twelve most
+    rows (12):
+      ∅ | 32
+      New York | 14
+      California | 6
+      Massachusetts | 4
+      Connecticut | 4
+      Illinois | 3
+      Michigan | 2
+      North Carolina | 2
+      New Jersey | 2
+      Manitoba | 2
+      Boston | 1
+      Minnesota | 1
+
+  panel birdsimpsonepisodes-4-32
+    title: rows of Award by Award.award_category
+    rows (11):
+      WGA Award (TV) | 32
+      Primetime Emmy | 24
+      Annie | 5
+      OFTA Television Award | 4
+      Blimp Award | 3
+      Image Award | 2
+      People's Choice Award | 1
+      TP de Oro | 1
+      Jupiter Award | 1
+      Prism Award | 1
+      Teen Choice Award | 1
+
+  panel birdsimpsonepisodes-4-33
+    title: distinct Episode in Credit by Credit.category the twelve most
+    rows (12):
+      Writing Credits | 21
+      Art Department | 21
+      Cast | 21
+      Casting Department | 21
+      Visual Effects by | 21
+      Animation Department | 21
+      Editorial Department | 21
+      General | 21
+      Music Department | 21
+      Other crew | 21
+      Produced by | 21
+      Production Management | 21
+
+  panel birdsimpsonepisodes-4-34
+    title: rows of Person by Person.birth_region the twelve most
+    rows (12):
+      ∅ | 258
+      California | 51
+      New York | 14
+      Massachusetts | 6
+      Pennsylvania | 5
+      Illinois | 5
+      Ohio | 4
+      Michigan | 3
+      Connecticut | 3
+      Ontario | 2
+      New Jersey | 2
+      Iowa | 2
+
+
+=== database: birdsuperhero ===
+Superheroes, their powers, attributes, publishers, races and alignments, as BIRD serves it. A fixture of round 1f.
+
+  panel birdsuperhero-4-01
+    title: rows of hero_power by superhero.superhero_name the twelve most
+    rows (12):
+      Spectre | 49
+      Amazo | 44
+      Living Tribunal | 35
+      Martian Manhunter | 35
+      Man of Miracles | 34
+      Captain Marvel | 33
+      Captain Marvel | 33
+      T-X | 33
+      Galactus | 32
+      T-1000 | 32
+      Thanos | 31
+      Odin | 31
+
+  panel birdsuperhero-4-02
+    title: average of superhero.weight_kg by race.race the twelve most
+    rows (12):
+      ∅ | 22500055.500000000000
+      Animal | 3000008.333333333333
+      Frost Giant | 29000.000000000000
+      Kakarantharaian | 18000.0000000000000000
+      Flora Colossus | 4000.0000000000000000
+      Zombie | 437.0000000000000000
+      Eternal | 364.3333333333333333
+      New God | 347.6666666666666667
+      Bolovaxian | 324.0000000000000000
+      Czarnian | 288.0000000000000000
+      Gorilla | 270.0000000000000000
+      Strontian | 268.0000000000000000
+
+  panel birdsuperhero-4-03
+    title: sum of superhero.weight_kg by publisher.publisher_name the twelve most
+    rows (12):
+      Titan Books | ∅
+       | 99000083
+      Marvel Comics | 119961
+      DC Comics | 15903
+      Dark Horse Comics | 1756
+      George Lucas | 498
+      Image Comics | 405
+      Team Epic TV | 288
+      Shueisha | 258
+      Star Trek | 158
+      Sony Pictures | 117
+      Wildstorm | 108
+
+  panel birdsuperhero-4-04
+    title: rows of hero_power per superhero
+    rows (37):
+      1 | 71
+      2 | 47
+      3 | 48
+      4 | 37
+      5 | 54
+      6 | 47
+      7 | 42
+      8 | 37
+      9 | 29
+      10 | 34
+      11 | 27
+      12 | 18
+      … 25 more rows
+
+  panel birdsuperhero-4-05
+    title: sum of superhero.weight_kg by colour.colour the twelve most
+    rows (12):
+      No Colour | 90002612
+      Yellow | 9006393
+      Blue | 79777
+      Red | 27177
+      Brown | 11172
+      Green | 7186
+      Black | 1420
+      White | 1200
+      Grey | 572
+      Gold | 541
+      Hazel | 338
+      Amber | 313
+
+  panel birdsuperhero-4-06
+    title: sum of superhero.weight_kg by superhero.superhero_name the twelve most
+    rows (12):
+      Minna Murray | ∅
+      Chuck Norris | ∅
+      Redeemer III | ∅
+      Jessica Cruz | ∅
+      Jack Bauer | ∅
+      Colin Wagner | ∅
+      Colossal Boy | ∅
+      Batwoman V | ∅
+      Bird-Man | ∅
+      Simon Baz | ∅
+      Wondra | ∅
+      Giant-Man II | ∅
+
+  panel birdsuperhero-4-07
+    title: sum of superhero.weight_kg by gender.gender the twelve most
+    rows (3):
+      N/A | 90001724
+      Male | 9126506
+      Female | 11305
+
+  panel birdsuperhero-4-08
+    title: rows of superhero by alignment.alignment the twelve most
+    rows (4):
+      Good | 504
+      Bad | 212
+      Neutral | 28
+      ∅ | 6
+
+  panel birdsuperhero-4-09
+    title: sum of hero_attribute.attribute_value by gender.gender the twelve most
+    rows (3):
+      Male | 137090
+      Female | 51675
+      N/A | 7205
+
+  panel birdsuperhero-4-10
+    title: average of superhero.weight_kg by colour.colour the twelve most
+    rows (12):
+      No Colour | 750021.766666666667
+      Yellow | 428875.857142857143
+      Red | 590.8043478260869565
+      Blue | 342.3905579399141631
+      Silver | 225.0000000000000000
+      Gold | 180.3333333333333333
+      Grey | 114.4000000000000000
+      Amber | 104.3333333333333333
+      Green | 97.1081081081081081
+      Brown | 88.6666666666666667
+      White | 80.0000000000000000
+      Blue/White | 79.0000000000000000
+
+  panel birdsuperhero-4-11
+    title: sum of hero_attribute.attribute_value by race.race the twelve most
+    rows (12):
+      - | 68520
+      Human | 52720
+      Mutant | 16470
+      God / Eternal | 8610
+      Kryptonian | 4025
+      Human / Radiation | 3935
+      Alien | 3160
+      Cyborg | 3115
+      Asgardian | 2180
+      Android | 2160
+      Symbiote | 1945
+      Atlantean | 1740
+
+  panel birdsuperhero-4-12
+    title: rows of superhero by publisher.publisher_name the twelve most
+    rows (12):
+      Marvel Comics | 387
+      DC Comics | 224
+      NBC - Heroes | 19
+      Dark Horse Comics | 19
+       | 17
+      George Lucas | 15
+      Image Comics | 14
+      HarperCollins | 6
+      Star Trek | 6
+      SyFy | 5
+      Team Epic TV | 5
+      IDW Publishing | 4
+
+  panel birdsuperhero-4-13
+    title: average of superhero.weight_kg by publisher.publisher_name the twelve most
+    rows (12):
+      Titan Books | ∅
+       | 12375010.375000000000
+      Marvel Comics | 327.7622950819672131
+      Dark Horse Comics | 103.2941176470588235
+      DC Comics | 75.7285714285714286
+      Shueisha | 64.5000000000000000
+      Sony Pictures | 58.5000000000000000
+      Team Epic TV | 57.6000000000000000
+      Wildstorm | 54.0000000000000000
+      Image Comics | 45.0000000000000000
+      George Lucas | 35.5714285714285714
+      Star Trek | 26.3333333333333333
+
+  panel birdsuperhero-4-14
+    title: rows of hero_attribute by attribute.attribute_name
+    rows (6):
+      Combat | 623
+      Intelligence | 623
+      Speed | 623
+      Power | 623
+      Durability | 623
+      Strength | 623
+
+  panel birdsuperhero-4-15
+    title: rows of superhero by colour.colour the twelve most
+    rows (12):
+      Blue | 234
+      No Colour | 169
+      Brown | 131
+      Green | 76
+      Red | 47
+      Black | 24
+      Yellow | 22
+      White | 16
+      Grey | 6
+      Hazel | 6
+      Purple | 4
+      Gold | 3
+
+  panel birdsuperhero-4-16
+    title: average of superhero.weight_kg by alignment.alignment the twelve most
+    rows (4):
+      Bad | 454952.555555555556
+      Good | 19944.486784140969
+      Neutral | 128.7500000000000000
+      ∅ | 87.8333333333333333
+
+  panel birdsuperhero-4-17
+    title: rows of superhero by alignment.alignment
+    rows (4):
+      Good | 504
+      Bad | 212
+      Neutral | 28
+      ∅ | 6
+
+  panel birdsuperhero-4-18
+    title: sum of superhero.weight_kg by race.race the twelve most
+    rows (12):
+      ∅ | 90000222
+      Animal | 9000025
+      Frost Giant | 58000
+      - | 19206
+      Kakarantharaian | 18000
+      Human | 16342
+      Mutant | 4573
+      Flora Colossus | 4000
+      Human / Radiation | 2935
+      Cyborg | 1495
+      Android | 1314
+      Eternal | 1093
+
+  panel birdsuperhero-4-19
+    title: rows of hero_power by superpower.power_name the twelve most
+    rows (12):
+      Super Strength | 358
+      Stamina | 288
+      Durability | 257
+      Super Speed | 249
+      Agility | 239
+      Flight | 208
+      Accelerated Healing | 177
+      Reflexes | 167
+      Intelligence | 156
+      Energy Blasts | 145
+      Stealth | 127
+      Invulnerability | 118
+
+  panel birdsuperhero-4-20
+    title: rows of hero_attribute by attribute.attribute_name the twelve most
+    rows (6):
+      Combat | 623
+      Intelligence | 623
+      Speed | 623
+      Power | 623
+      Durability | 623
+      Strength | 623
+
+  panel birdsuperhero-4-21
+    title: rows of superhero by gender.gender the twelve most
+    rows (3):
+      Male | 519
+      Female | 203
+      N/A | 28
+
+  panel birdsuperhero-4-22
+    title: sum of hero_attribute.attribute_value by alignment.alignment the twelve most
+    rows (4):
+      Good | 126075
+      Bad | 58680
+      Neutral | 9455
+      ∅ | 1760
+
+  panel birdsuperhero-4-23
+    title: average of superhero.weight_kg by gender.gender the twelve most
+    rows (3):
+      N/A | 3600068.960000000000
+      Male | 19213.696842105263
+      Female | 60.7795698924731183
+
+  panel birdsuperhero-4-24
+    title: rows of hero_attribute by superhero.superhero_name the twelve most
+    rows (12):
+      Big Daddy | 6
+      Ymir | 6
+      Mockingbird | 6
+      Flash IV | 6
+      Pyro | 6
+      Katniss Everdeen | 6
+      Atlas | 6
+      Flash III | 6
+      Batgirl IV | 6
+      Impulse | 6
+      Poison Ivy | 6
+      Claire Bennet | 6
+
+  panel birdsuperhero-4-25
+    title: rows of superhero by race.race the twelve most
+    rows (12):
+      - | 295
+      Human | 219
+      Mutant | 63
+      God / Eternal | 19
+      Human / Radiation | 12
+      Cyborg | 12
+      Android | 10
+      Alien | 8
+      Symbiote | 8
+      Kryptonian | 7
+      Demon | 6
+      Atlantean | 5
+
+  panel birdsuperhero-4-26
+    title: largest tables, estimated rows
+    rows (10):
+      hero_power | 5825
+      hero_attribute | 3738
+      superhero | 750
+      superpower | 167
+      race | 61
+      colour | 35
+      publisher | 25
+      attribute | 6
+      alignment | 4
+      gender | 3
+
+  panel birdsuperhero-4-27
+    title: sum of hero_attribute.attribute_value by superhero.superhero_name the twelve most
+    rows (12):
+      Supergirl | 600
+      Living Tribunal | 600
+      Superboy-Prime | 600
+      One-Above-All | 600
+      Beyonder | 600
+      Man of Miracles | 600
+      Superman | 600
+      Power Girl | 600
+      The Presence | 600
+      General Zod | 600
+      Binary | 595
+      Monarch | 595
+
+  panel birdsuperhero-4-28
+    title: sum of hero_attribute.attribute_value by publisher.publisher_name the twelve most
+    rows (12):
+      Marvel Comics | 100275
+      DC Comics | 67075
+      Dark Horse Comics | 4635
+      Image Comics | 3845
+      NBC - Heroes | 3560
+      George Lucas | 3255
+      Shueisha | 2065
+       | 1980
+      IDW Publishing | 1225
+      Star Trek | 1185
+      SyFy | 845
+      ABC Studios | 800
+
+  panel birdsuperhero-4-29
+    title: rows of superhero by gender.gender
+    rows (3):
+      Male | 519
+      Female | 203
+      N/A | 28
+
+  panel birdsuperhero-4-30
+    title: sum of superhero.weight_kg by alignment.alignment the twelve most
+    rows (4):
+      Bad | 90080606
+      Good | 9054797
+      Neutral | 3605
+      ∅ | 527
+
+  panel birdsuperhero-4-31
+    title: sum of hero_attribute.attribute_value by attribute.attribute_name the twelve most
+    rows (6):
+      Intelligence | 52540
+      Strength | 29430
+      Combat | 28500
+      Speed | 28500
+      Power | 28500
+      Durability | 28500
+
+  panel birdsuperhero-4-32
+    title: rows of superhero by publisher.publisher_name
+    rows (26):
+      Marvel Comics | 387
+      DC Comics | 224
+      NBC - Heroes | 19
+      Dark Horse Comics | 19
+       | 17
+      George Lucas | 15
+      Image Comics | 14
+      HarperCollins | 6
+      Star Trek | 6
+      Team Epic TV | 5
+      SyFy | 5
+      IDW Publishing | 4
+      … 14 more rows
+
+  panel birdsuperhero-4-33
+    title: sum of superhero.weight_kg by superhero.full_name the twelve most
+    rows (12):
+      - | 99083330
+      ∅ | 5360
+      Groot | 4000
+      Obadiah Stane | 2000
+      Walter Langkowski | 900
+      Cain Marko | 855
+      Uxas | 817
+      MacDonald Gargan | 644
+      Thaddeus E. Ross | 630
+      Doris Zuel | 630
+      Robert Bruce Banner | 630
+      Jackie Lukus | 495
+
+
+=== database: birdmentalhealthsurvey ===
+A survey on mental health in the technology industry: the surveys by year, the questions and each respondent's answers, as BIRD serves it. A fixture of round 1f.
+
+  panel birdmentalhealthsurvey-4-01
+    title: rows of Survey by Survey.Description
+    rows (5):
+      mental health survey for 2017 | 1
+      mental health survey for 2014 | 1
+      mental health survey for 2019 | 1
+      mental health survey for 2018 | 1
+      mental health survey for 2016 | 1
+
+  panel birdmentalhealthsurvey-4-02
+    title: rows of Answer by Survey.Description
+    rows (5):
+      mental health survey for 2016 | 85980
+      mental health survey for 2017 | 57456
+      mental health survey for 2014 | 32760
+      mental health survey for 2018 | 31692
+      mental health survey for 2019 | 26752
+
+  panel birdmentalhealthsurvey-4-03
+    title: rows of Answer per Question
+    rows (6):
+      1260 | 12
+      1433 | 15
+      1525 | 33
+      2693 | 2
+      2958 | 31
+      4218 | 12
+
+  panel birdmentalhealthsurvey-4-04
+    title: largest tables, estimated rows
+    rows (3):
+      Answer | 234640
+      Question | 105
+      Survey | 5
+
+  panel birdmentalhealthsurvey-4-05
+    title: rows of Answer per Survey
+    rows (5):
+      26752 | 1
+      31692 | 1
+      32760 | 1
+      57456 | 1
+      85980 | 1
+
+  panel birdmentalhealthsurvey-4-06
+    title: rows of Answer by Survey.Description the twelve most
+    rows (5):
+      mental health survey for 2016 | 85980
+      mental health survey for 2017 | 57456
+      mental health survey for 2014 | 32760
+      mental health survey for 2018 | 31692
+      mental health survey for 2019 | 26752
+
+  panel birdmentalhealthsurvey-4-07
+    title: rows of Answer by Question.questiontext the twelve most
+    rows (12):
+      What is your gender? | 4218
+      What country do you live in? | 4218
+      If you live in the United States, which  | 4218
+      Are you self-employed? | 4218
+      Do you have a family history of mental i | 4218
+      Have you ever sought treatment for a men | 4218
+      How many employees does your company or  | 4218
+      Is your employer primarily a tech compan | 4218
+      Does your employer provide mental health | 4218
+      Is your anonymity protected if you choos | 4218
+      Would you bring up a mental health issue | 4218
+      What is your age? | 4218
+
+
+=== database: birdmovies4 ===
+Movies with their genres, languages, keywords, production companies and countries, cast and crew, as BIRD serves it. A fixture of round 1f.
+
+  panel birdmovies4-4-01
+    title: rows of production_country by country.country_name the twelve most
+    rows (12):
+      United States of America | 3956
+      United Kingdom | 636
+      Germany | 324
+      France | 306
+      Canada | 261
+      Australia | 110
+      Italy | 72
+      Spain | 71
+      China | 59
+      Japan | 58
+      India | 54
+      Hong Kong | 48
+
+  panel birdmovies4-4-02
+    title: rows of movie by movie.title the twelve most
+    rows (12):
+      Batman | 2
+      Out of the Blue | 2
+      Skyfall | 1
+      In the Heart of the Sea | 1
+      María, llena eres de gracia | 1
+      Conan the Barbarian | 1
+      Håkon Håkonsen | 1
+      Burn | 1
+      Little Big Top | 1
+      Machete | 1
+      TRON: Legacy | 1
+      A Prairie Home Companion | 1
+
+  panel birdmovies4-4-03
+    title: rows of movie_cast by gender.gender
+    rows (3):
+      Male | 28976
+      Unspecified | 16649
+      Female | 13458
+
+  panel birdmovies4-4-04
+    title: average of movie_cast.cast_order by gender.gender the twelve most
+    rows (3):
+      Unspecified | 30.3976214787674935
+      Female | 16.5079506613166890
+      Male | 14.5734400883489785
+
+  panel birdmovies4-4-05
+    title: rows of movie_crew by movie.release_date
+    rows (89):
+      1916-01-01 | 29
+      1925-01-01 | 10
+      1927-01-01 | 22
+      1929-01-01 | 14
+      1930-01-01 | 6
+      1932-01-01 | 25
+      1933-01-01 | 14
+      1934-01-01 | 11
+      1935-01-01 | 20
+      1936-01-01 | 30
+      1937-01-01 | 119
+      1938-01-01 | 32
+      … 77 more rows
+
+  panel birdmovies4-4-06
+    title: average of movie.revenue by movie.release_date
+    rows (89):
+      1916-01-01 | 8394751.000000000000
+      1925-01-01 | 22000000.000000000000
+      1927-01-01 | 650422.000000000000
+      1929-01-01 | 2179000.000000000000
+      1930-01-01 | 8000000.000000000000
+      1932-01-01 | 25.0000000000000000
+      1933-01-01 | 2240500.000000000000
+      1934-01-01 | 4500000.000000000000
+      1935-01-01 | 3202000.000000000000
+      1936-01-01 | 5618000.000000000000
+      1937-01-01 | 92462743.000000000000
+      1938-01-01 | 5716550.500000000000
+      … 77 more rows
+
+  panel birdmovies4-4-07
+    title: rows of movie_languages by language.language_name the twelve most
+    rows (12):
+      English | 8990
+      Franu00e7ais | 507
+      Espau00f1ol | 383
+      Deutsch | 289
+      Italiano | 202
+      Pu0443u0441u0441u043au0438u0439 | 196
+      u666eu901au8bdd | 134
+      u65e5u672cu8a9e | 113
+      Portuguu00eas | 77
+      u0627u0644u0639u0631u0628u064au0629 | 69
+      u0939u093fu0928u094du0926u0940 | 67
+      u5e7fu5ddeu8bdd / u5ee3u5ddeu8a71 | 60
+
+  panel birdmovies4-4-08
+    title: sum of movie.revenue by movie.release_date
+    rows (89):
+      1916-01-01 | 8394751
+      1925-01-01 | 22000000
+      1927-01-01 | 650422
+      1929-01-01 | 4358000
+      1930-01-01 | 8000000
+      1932-01-01 | 25
+      1933-01-01 | 4481000
+      1934-01-01 | 4500000
+      1935-01-01 | 3202000
+      1936-01-01 | 11236000
+      1937-01-01 | 184925486
+      1938-01-01 | 11433101
+      … 77 more rows
+
+  panel birdmovies4-4-09
+    title: rows of movie_cast by movie_cast.character_name the twelve most
+    rows (12):
+      Himself | 411
+      Dancer | 282
+       | 190
+      Additional Voices (voice) | 131
+      Reporter | 102
+      Herself | 102
+      Doctor | 73
+      (voice) | 70
+      Nurse | 61
+      Ewok | 61
+      Cop | 52
+      Waitress | 52
+
+  panel birdmovies4-4-10
+    title: average of movie.vote_count by movie.release_date
+    rows (89):
+      1916-01-01 | 60.0000000000000000
+      1925-01-01 | 21.0000000000000000
+      1927-01-01 | 657.0000000000000000
+      1929-01-01 | 32.0000000000000000
+      1930-01-01 | 19.0000000000000000
+      1932-01-01 | 28.0000000000000000
+      1933-01-01 | 32.0000000000000000
+      1934-01-01 | 275.0000000000000000
+      1935-01-01 | 59.0000000000000000
+      1936-01-01 | 437.0000000000000000
+      1937-01-01 | 962.5000000000000000
+      1938-01-01 | 42.5000000000000000
+      … 77 more rows
+
+  panel birdmovies4-4-11
+    title: rows of movie_cast by movie.release_date
+    rows (78):
+      1916-01-01 | 104
+      1925-01-01 | 11
+      1927-01-01 | 21
+      1929-01-01 | 6
+      1933-01-01 | 26
+      1934-01-01 | 17
+      1935-01-01 | 8
+      1936-01-01 | 36
+      1937-01-01 | 13
+      1939-01-01 | 358
+      1940-01-01 | 40
+      1942-01-01 | 116
+      … 66 more rows
+
+  panel birdmovies4-4-12
+    title: sum of movie_cast.cast_order by gender.gender the twelve most
+    rows (3):
+      Unspecified | 506090
+      Male | 422280
+      Female | 222164
+
+  panel birdmovies4-4-13
+    title: rows of movie_cast by gender.gender the twelve most
+    rows (3):
+      Male | 28976
+      Unspecified | 16649
+      Female | 13458
+
+  panel birdmovies4-4-14
+    title: rows of movie_genres by movie (by key) the twelve most
+    rows (12):
+      15173 | 7
+      12589 | 7
+      17130 | 7
+      11904 | 7
+      10336 | 6
+      4723 | 6
+      123553 | 6
+      182 | 6
+      14854 | 6
+      9631 | 6
+      20542 | 6
+      4474 | 6
+
+  panel birdmovies4-4-15
+    title: rows of movie_keywords by keyword.keyword_name the twelve most
+    rows (12):
+      woman director | 324
+      independent film | 318
+      duringcreditsstinger | 307
+      based on novel | 197
+      murder | 189
+      aftercreditsstinger | 170
+      violence | 150
+      dystopia | 139
+      sport | 126
+      revenge | 118
+      sex | 111
+      friendship | 106
+
+  panel birdmovies4-4-16
+    title: sum of movie.vote_count by movie.release_date
+    rows (89):
+      1916-01-01 | 60
+      1925-01-01 | 21
+      1927-01-01 | 657
+      1929-01-01 | 64
+      1930-01-01 | 19
+      1932-01-01 | 28
+      1933-01-01 | 64
+      1934-01-01 | 275
+      1935-01-01 | 59
+      1936-01-01 | 874
+      1937-01-01 | 1925
+      1938-01-01 | 85
+      … 77 more rows
+
+  panel birdmovies4-4-17
+    title: sum of movie.revenue by movie.movie_status
+    rows (3):
+      Released | 389669471047
+      Post Production | 841733
+      Rumored | 0
+
+  panel birdmovies4-4-18
+    title: rows of movie_crew by department.department_name
+    rows (12):
+      Production | 27675
+      Sound | 16176
+      Art | 14853
+      Crew | 13826
+      Costume & Make-Up | 11188
+      Writing | 10688
+      Camera | 9204
+      Directing | 8149
+      Editing | 7855
+      Visual Effects | 7553
+      Lighting | 2410
+      Actors | 4
+
+  panel birdmovies4-4-19
+    title: rows of movie_cast per movie
+    rows (116):
+      2 | 3
+      3 | 1
+      4 | 10
+      5 | 24
+      6 | 24
+      7 | 37
+      8 | 51
+      9 | 61
+      10 | 97
+      11 | 96
+      12 | 98
+      13 | 85
+      … 104 more rows
+
+  panel birdmovies4-4-20
+    title: rows of movie_crew by department.department_name the twelve most
+    rows (12):
+      Production | 27675
+      Sound | 16176
+      Art | 14853
+      Crew | 13826
+      Costume & Make-Up | 11188
+      Writing | 10688
+      Camera | 9204
+      Directing | 8149
+      Editing | 7855
+      Visual Effects | 7553
+      Lighting | 2410
+      Actors | 4
+
+  panel birdmovies4-4-21
+    title: rows of movie_cast by movie (by key) the twelve most
+    rows (12):
+      3083 | 213
+      10661 | 183
+      13475 | 168
+      2976 | 152
+      559 | 143
+      769 | 137
+      597 | 136
+      155 | 134
+      770 | 133
+      1892 | 128
+      11615 | 125
+      640 | 123
+
+  panel birdmovies4-4-22
+    title: rows of movie_genres by genre.genre_name the twelve most
+    rows (12):
+      Drama | 2297
+      Comedy | 1722
+      Thriller | 1274
+      Action | 1154
+      Romance | 894
+      Adventure | 790
+      Crime | 696
+      Science Fiction | 535
+      Horror | 519
+      Family | 513
+      Fantasy | 424
+      Mystery | 348
+
+  panel birdmovies4-4-23
+    title: rows of movie_company by movie (by key) the twelve most
+    rows (12):
+      16 | 26
+      8883 | 25
+      1951 | 21
+      62215 | 19
+      22215 | 18
+      9075 | 17
+      283708 | 17
+      13491 | 17
+      186935 | 17
+      423 | 16
+      190955 | 16
+      36970 | 16
+
+  panel birdmovies4-4-24
+    title: rows of movie by movie.release_date
+    rows (89):
+      1916-01-01 | 1
+      1925-01-01 | 1
+      1927-01-01 | 1
+      1929-01-01 | 2
+      1930-01-01 | 1
+      1932-01-01 | 1
+      1933-01-01 | 2
+      1934-01-01 | 1
+      1935-01-01 | 1
+      1936-01-01 | 2
+      1937-01-01 | 2
+      1938-01-01 | 2
+      … 77 more rows
+
+  panel birdmovies4-4-25
+    title: rows of movie_keywords by movie (by key) the twelve most
+    rows (12):
+      26390 | 65
+      9716 | 60
+      4723 | 60
+      277216 | 44
+      2749 | 43
+      2652 | 40
+      241251 | 37
+      97630 | 37
+      1696 | 37
+      956 | 37
+      605 | 36
+      36647 | 34
+
+  panel birdmovies4-4-26
+    title: largest tables, estimated rows
+    rows (10):
+      movie_crew | 129581
+      person | 104838
+      movie_cast | 59083
+      movie_keywords | 36162
+      movie_company | 13677
+      movie_genres | 12160
+      movie_languages | 11740
+      keyword | 9794
+      production_country | 6436
+      production_company | 5047
+
+  panel birdmovies4-4-27
+    title: sum of movie.vote_count by movie.title the twelve most
+    rows (12):
+      Inception | 13752
+      The Dark Knight | 12002
+      Avatar | 11800
+      The Avengers | 11776
+      Deadpool | 10995
+      Interstellar | 10867
+      Django Unchained | 10099
+      Guardians of the Galaxy | 9742
+      The Hunger Games | 9455
+      Mad Max: Fury Road | 9427
+      Fight Club | 9413
+      The Dark Knight Rises | 9106
+
+  panel birdmovies4-4-28
+    title: rows of movie_company by production_company.company_name the twelve most
+    rows (12):
+      Warner Bros. | 319
+      Universal Pictures | 311
+      Paramount Pictures | 285
+      Twentieth Century Fox Film Corporation | 222
+      Columbia Pictures | 201
+      New Line Cinema | 165
+      Metro-Goldwyn-Mayer (MGM) | 122
+      Touchstone Pictures | 118
+      Walt Disney Pictures | 114
+      Relativity Media | 102
+      Columbia Pictures Corporation | 96
+      Miramax Films | 94
+
+  panel birdmovies4-4-29
+    title: rows of movie_languages by language_role.language_role the twelve most
+    rows (2):
+      Spoken | 6937
+      Original | 4803
+
+  panel birdmovies4-4-30
+    title: sum of movie.budget by movie.release_date
+    rows (89):
+      1916-01-01 | 385907
+      1925-01-01 | 245000
+      1927-01-01 | 92620000
+      1929-01-01 | 379000
+      1930-01-01 | 3950000
+      1932-01-01 | 4
+      1933-01-01 | 639000
+      1934-01-01 | 325000
+      1935-01-01 | 609000
+      1936-01-01 | 1200001
+      1937-01-01 | 1488423
+      1938-01-01 | 3644736
+      … 77 more rows
+
+  panel birdmovies4-4-31
+    title: average of movie.budget by movie.release_date
+    rows (89):
+      1916-01-01 | 385907.000000000000
+      1925-01-01 | 245000.000000000000
+      1927-01-01 | 92620000.000000000000
+      1929-01-01 | 189500.000000000000
+      1930-01-01 | 3950000.000000000000
+      1932-01-01 | 4.0000000000000000
+      1933-01-01 | 319500.000000000000
+      1934-01-01 | 325000.000000000000
+      1935-01-01 | 609000.000000000000
+      1936-01-01 | 600000.500000000000
+      1937-01-01 | 744211.500000000000
+      1938-01-01 | 1822368.000000000000
+      … 77 more rows
+
+  panel birdmovies4-4-32
+    title: rows of movie_crew by movie (by key) the twelve most
+    rows (12):
+      135397 | 435
+      2749 | 338
+      106646 | 244
+      585 | 242
+      435 | 228
+      9341 | 222
+      49026 | 217
+      8836 | 200
+      752 | 194
+      2789 | 193
+      686 | 172
+      863 | 172
+
+  panel birdmovies4-4-33
+    title: rows of movie_languages by movie (by key) the twelve most
+    rows (12):
+      14161 | 10
+      612 | 9
+      43434 | 9
+      1830 | 9
+      421 | 8
+      11535 | 8
+      10934 | 8
+      1555 | 8
+      36669 | 8
+      708 | 8
+      50456 | 7
+      622 | 7
+
+
+=== database: birdretails ===
+The TPC-H benchmark's wholesale supplier: customers, orders, line items, parts, suppliers, nations and regions, as BIRD serves it. A fixture of round 1f.
+
+  panel birdretails-4-01
+    title: rows of orders by customer.c_mktsegment
+    rows (5):
+      FURNITURE | 302805
+      MACHINERY | 301493
+      BUILDING | 298986
+      AUTOMOBILE | 298846
+      HOUSEHOLD | 297870
+
+  panel birdretails-4-02
+    title: sum of lineitem.l_discount by lineitem.l_returnflag
+    rows (3):
+      N | 152057.8699995865
+      A | 34622.68000004819
+      R | 34520.470000048415
+
+  panel birdretails-4-03
+    title: rows of lineitem by lineitem.l_commitdate
+    rows (63):
+      1993-08-01 | 34
+      1993-09-01 | 2920
+      1993-10-01 | 14893
+      1993-11-01 | 32805
+      1993-12-01 | 53160
+      1994-01-01 | 70463
+      1994-02-01 | 69653
+      1994-03-01 | 77652
+      1994-04-01 | 74754
+      1994-05-01 | 77577
+      1994-06-01 | 74365
+      1994-07-01 | 76629
+      … 51 more rows
+
+  panel birdretails-4-04
+    title: rows of partsupp by supplier.s_name the twelve most
+    rows (12):
+      Supplier#000004790 | 80
+      Supplier#000000273 | 80
+      Supplier#000003936 | 80
+      Supplier#000005761 | 80
+      Supplier#000005468 | 80
+      Supplier#000007662 | 80
+      Supplier#000004326 | 80
+      Supplier#000002520 | 80
+      Supplier#000009038 | 80
+      Supplier#000002466 | 80
+      Supplier#000005697 | 80
+      Supplier#000006114 | 80
+
+  panel birdretails-4-05
+    title: rows of partsupp by part.p_name the twelve most
+    rows (12):
+      hot spring dodger dim light | 4
+      dark slate grey steel misty | 4
+      cream turquoise dark thistle light | 4
+      drab papaya lemon orange yellow | 4
+      puff pink lavender azure violet | 4
+      cornsilk lawn forest turquoise royal | 4
+      linen dodger papaya lemon tomato | 4
+      papaya smoke ghost turquoise brown | 4
+      slate black medium azure medium | 4
+      mint lime mint chartreuse seashell | 4
+      metallic spring red chocolate brown | 4
+      burlywood plum powder puff mint | 4
+
+  panel birdretails-4-06
+    title: rows of lineitem by lineitem.l_shipdate
+    rows (61):
+      1993-11-01 | 15429
+      1993-12-01 | 78046
+      1994-01-01 | 77747
+      1994-02-01 | 70308
+      1994-03-01 | 77634
+      1994-04-01 | 74752
+      1994-05-01 | 77024
+      1994-06-01 | 75010
+      1994-07-01 | 77144
+      1994-08-01 | 76849
+      1994-09-01 | 74953
+      1994-10-01 | 77338
+      … 49 more rows
+
+  panel birdretails-4-07
+    title: rows of lineitem by lineitem.l_shipmode
+    rows (7):
+      REG AIR | 632946
+      TRUCK | 632750
+      FOB | 632351
+      MAIL | 632269
+      SHIP | 631868
+      RAIL | 630858
+      AIR | 630617
+
+  panel birdretails-4-08
+    title: rows of lineitem by lineitem.l_receiptdate
+    rows (62):
+      1993-11-01 | 1336
+      1993-12-01 | 52791
+      1994-01-01 | 78194
+      1994-02-01 | 70279
+      1994-03-01 | 77713
+      1994-04-01 | 74799
+      1994-05-01 | 77398
+      1994-06-01 | 74672
+      1994-07-01 | 77256
+      1994-08-01 | 77133
+      1994-09-01 | 74467
+      1994-10-01 | 77683
+      … 50 more rows
+
+  panel birdretails-4-09
+    title: sum of lineitem.l_tax by lineitem.l_shipdate
+    rows (61):
+      1993-11-01 | 616.6200000000081
+      1993-12-01 | 3116.6899999994353
+      1994-01-01 | 3101.1699999994516
+      1994-02-01 | 2820.869999999582
+      1994-03-01 | 3104.1699999994544
+      1994-04-01 | 2990.689999999513
+      1994-05-01 | 3088.66999999949
+      1994-06-01 | 3005.25999999952
+      1994-07-01 | 3086.3599999994767
+      1994-08-01 | 3079.889999999461
+      1994-09-01 | 3015.5999999994933
+      1994-10-01 | 3096.7599999994745
+      … 49 more rows
+
+  panel birdretails-4-10
+    title: rows of lineitem by lineitem.l_returnflag
+    rows (3):
+      N | 3039782
+      A | 692941
+      R | 690936
+
+  panel birdretails-4-11
+    title: sum of lineitem.l_quantity by lineitem.l_shipdate
+    rows (61):
+      1993-11-01 | 395761
+      1993-12-01 | 1987915
+      1994-01-01 | 1982035
+      1994-02-01 | 1795168
+      1994-03-01 | 1983801
+      1994-04-01 | 1904761
+      1994-05-01 | 1965350
+      1994-06-01 | 1905005
+      1994-07-01 | 1971337
+      1994-08-01 | 1959010
+      1994-09-01 | 1912935
+      1994-10-01 | 1977906
+      … 49 more rows
+
+  panel birdretails-4-12
+    title: average of lineitem.l_tax by lineitem.l_shipdate
+    rows (61):
+      1993-11-01 | 0.03996500097219573
+      1993-12-01 | 0.03993401327421581
+      1994-01-01 | 0.03988796995381756
+      1994-02-01 | 0.04012160778289211
+      1994-03-01 | 0.0399846716644698
+      1994-04-01 | 0.04000816031677421
+      1994-05-01 | 0.04010009867053746
+      1994-06-01 | 0.04006479136114534
+      1994-07-01 | 0.040007777662546165
+      1994-08-01 | 0.04007716430922264
+      1994-09-01 | 0.04023321281335628
+      1994-10-01 | 0.04004189402362971
+      … 49 more rows
+
+  panel birdretails-4-13
+    title: sum of partsupp.ps_supplycost by part.p_name the twelve most
+    rows (12):
+      cyan cornflower purple lawn cornflower | 3876.97
+      green slate light drab seashell | 3871.92
+      navajo peach frosted burlywood blanched | 3870.5600000000004
+      cream black ghost yellow sandy | 3852.26
+      saddle floral snow bisque metallic | 3848.59
+      orange azure white almond sandy | 3837.1600000000003
+      cyan drab orange firebrick orange | 3828.31
+      dodger ghost cream coral lace | 3826.7299999999996
+      brown light frosted puff sky | 3826.46
+      cyan lavender deep moccasin olive | 3823.6800000000003
+      antique khaki beige azure dodger | 3823.62
+      powder yellow peach royal dim | 3815.4800000000005
+
+  panel birdretails-4-14
+    title: rows of lineitem by orders.o_orderpriority
+    rows (5):
+      2-HIGH | 886499
+      4-NOT SPECIFIED | 886163
+      3-MEDIUM | 884641
+      1-URGENT | 884129
+      5-LOW | 882227
+
+  panel birdretails-4-15
+    title: rows of lineitem by orders (by key) the twelve most
+    rows (12):
+      134 | 7
+      256 | 7
+      97 | 7
+      131 | 7
+      102 | 7
+      225 | 7
+      1 | 7
+      39 | 7
+      129 | 7
+      36 | 7
+      4 | 7
+      322 | 7
+
+  panel birdretails-4-16
+    title: rows of lineitem by lineitem.l_shipinstruct
+    rows (4):
+      DELIVER IN PERSON | 1107316
+      COLLECT COD | 1106909
+      TAKE BACK RETURN | 1105468
+      NONE | 1103966
+
+  panel birdretails-4-17
+    title: rows of orders by nation.n_name the twelve most
+    rows (12):
+      UNITED STATES | 62174
+      IRAN | 61662
+      CHINA | 61276
+      IRAQ | 61257
+      EGYPT | 61021
+      INDONESIA | 60957
+      RUSSIA | 60890
+      CANADA | 60685
+      GERMANY | 60656
+      INDIA | 60635
+      JAPAN | 60250
+      UNITED KINGDOM | 60134
+
+  panel birdretails-4-18
+    title: sum of lineitem.l_tax by lineitem.l_commitdate
+    rows (63):
+      1993-08-01 | 1.4200000000000002
+      1993-09-01 | 116.53999999999985
+      1993-10-01 | 597.8700000000077
+      1993-11-01 | 1307.5999999999492
+      1993-12-01 | 2127.4299999997543
+      1994-01-01 | 2816.469999999569
+      1994-02-01 | 2793.3699999995697
+      1994-03-01 | 3100.749999999448
+      1994-04-01 | 2991.939999999522
+      1994-05-01 | 3099.4499999994537
+      1994-06-01 | 2977.7999999995195
+      1994-07-01 | 3069.2599999994627
+      … 51 more rows
+
+  panel birdretails-4-19
+    title: rows of customer by nation.n_name the twelve most
+    rows (12):
+      IRAN | 6158
+      CHINA | 6138
+      UNITED STATES | 6100
+      INDIA | 6083
+      JAPAN | 6064
+      INDONESIA | 6041
+      EGYPT | 6031
+      GERMANY | 6027
+      RUSSIA | 6025
+      MOZAMBIQUE | 6023
+      KENYA | 6017
+      JORDAN | 6001
+
+  panel birdretails-4-20
+    title: rows of orders by orders.o_orderstatus
+    rows (3):
+      F | 730707
+      O | 730677
+      P | 38616
+
+  panel birdretails-4-21
+    title: rows of lineitem by orders.o_orderstatus
+    rows (3):
+      O | 2906409
+      F | 1327456
+      P | 189794
+
+  panel birdretails-4-22
+    title: rows of lineitem by nation.n_name the twelve most
+    rows (12):
+      UNITED STATES | 185344
+      CHINA | 184013
+      IRAN | 182005
+      CANADA | 181676
+      IRAQ | 179335
+      RUSSIA | 179126
+      GERMANY | 179049
+      EGYPT | 178972
+      JAPAN | 178597
+      INDONESIA | 178469
+      BRAZIL | 178256
+      VIETNAM | 177177
+
+  panel birdretails-4-23
+    title: sum of lineitem.l_tax by orders (by key) the twelve most
+    rows (12):
+      1669857 | 0.53
+      2125155 | 0.53
+      3558789 | 0.53
+      2247938 | 0.52
+      4823686 | 0.52
+      961123 | 0.52
+      3355168 | 0.52
+      5305570 | 0.52
+      2506880 | 0.51
+      2664773 | 0.51
+      1015943 | 0.51
+      2464581 | 0.51
+
+  panel birdretails-4-24
+    title: rows of lineitem by lineitem.l_linestatus
+    rows (2):
+      O | 3001166
+      F | 1422493
+
+  panel birdretails-4-25
+    title: rows of lineitem by customer.c_name the twelve most
+    rows (12):
+      Customer#000068513 | 155
+      Customer#000147472 | 148
+      Customer#000025862 | 139
+      Customer#000117406 | 137
+      Customer#000012581 | 136
+      Customer#000063035 | 135
+      Customer#000048853 | 135
+      Customer#000093200 | 134
+      Customer#000058132 | 134
+      Customer#000114308 | 131
+      Customer#000016952 | 131
+      Customer#000113656 | 130
+
+  panel birdretails-4-26
+    title: rows of orders by customer.c_name the twelve most
+    rows (12):
+      Customer#000070925 | 34
+      Customer#000058387 | 34
+      Customer#000090616 | 33
+      Customer#000136886 | 33
+      Customer#000011716 | 32
+      Customer#000090839 | 32
+      Customer#000025862 | 32
+      Customer#000055996 | 32
+      Customer#000117406 | 32
+      Customer#000058132 | 31
+      Customer#000069296 | 31
+      Customer#000063035 | 31
+
+  panel birdretails-4-27
+    title: rows of orders by region.r_name the twelve most
+    rows (5):
+      AFRICA | 357687
+      ASIA | 302609
+      AMERICA | 301143
+      EUROPE | 298407
+      MIDDLE EAST | 240154
+
+  panel birdretails-4-28
+    title: rows of customer by customer.c_mktsegment
+    rows (5):
+      FURNITURE | 30262
+      MACHINERY | 30144
+      BUILDING | 29957
+      AUTOMOBILE | 29820
+      HOUSEHOLD | 29817
+
+  panel birdretails-4-29
+    title: rows of orders by orders.o_orderdate
+    rows (7):
+      1992-01-01 | 228339
+      1993-01-01 | 227877
+      1994-01-01 | 227664
+      1995-01-01 | 227557
+      1996-01-01 | 228549
+      1997-01-01 | 227273
+      1998-01-01 | 132741
+
+  panel birdretails-4-30
+    title: rows of orders by orders.o_orderpriority
+    rows (5):
+      4-NOT SPECIFIED | 300385
+      2-HIGH | 300375
+      3-MEDIUM | 300170
+      1-URGENT | 299715
+      5-LOW | 299355
+
+  panel birdretails-4-31
+    title: sum of partsupp.ps_supplycost by supplier.s_name the twelve most
+    rows (12):
+      Supplier#000001239 | 49300.119999999995
+      Supplier#000008612 | 49015.98999999999
+      Supplier#000003023 | 48996.57000000001
+      Supplier#000009028 | 48909.119999999995
+      Supplier#000006615 | 48257.520000000004
+      Supplier#000009884 | 48205.8
+      Supplier#000006877 | 48141.729999999996
+      Supplier#000009046 | 48014.6
+      Supplier#000005704 | 48010.03
+      Supplier#000003076 | 47914.26
+      Supplier#000009446 | 47875.39
+      Supplier#000002015 | 47758.66
+
+  panel birdretails-4-32
+    title: sum of lineitem.l_tax by lineitem.l_shipmode
+    rows (7):
+      FOB | 25310.52000002753
+      TRUCK | 25302.53000002796
+      REG AIR | 25288.820000027623
+      MAIL | 25277.930000027554
+      SHIP | 25275.86000002766
+      AIR | 25238.320000027772
+      RAIL | 25202.38000002761

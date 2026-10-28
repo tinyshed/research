@@ -1,0 +1,1999 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: birdmusicplatform2 ===
+Podcasts, their categories, listeners' reviews and the runs that collected them, as BIRD serves it. A fixture of round 1f.
+
+  panel birdmusicplatform2-4-01
+    title: average of runs.reviews_added by runs.run_at
+    rows (12):
+      2021-05-10 02:53:00 | 1215223.000000000000
+      2022-07-03 19:50:22 | 559523.000000000000
+      2022-08-13 20:45:24 | 43525.000000000000
+      2022-04-20 01:03:30 | 36589.000000000000
+      2022-06-22 19:44:32 | 29146.000000000000
+      2021-10-11 05:18:23 | 16845.0000000000000000
+      2022-09-07 15:28:17 | 15736.0000000000000000
+      2021-06-06 21:34:36 | 13139.0000000000000000
+      2021-08-01 17:54:42 | 11855.0000000000000000
+      2021-09-02 18:00:30 | 11714.0000000000000000
+      2021-07-02 18:04:55 | 11561.0000000000000000
+      2022-06-05 16:15:16 | 0.00000000000000000000
+
+  panel birdmusicplatform2-4-02
+    title: rows of reviews per podcasts
+    rows (200):
+      1 | 36401
+      2 | 17167
+      3 | 10047
+      4 | 6954
+      5 | 5047
+      6 | 3683
+      7 | 3001
+      8 | 2470
+      9 | 2000
+      10 | 1692
+      11 | 1545
+      12 | 1257
+      … 188 more rows
+
+  panel birdmusicplatform2-4-03
+    title: rows of reviews by reviews.author_id the twelve most
+    rows (12):
+      D3307ADEFFA285C | 615
+      791F376ACA3C08D | 615
+      96A3F0358E7808D | 473
+      04C3B6DEFE22FB1 | 428
+      8858ED4249110B6 | 391
+      7F9EA8B1A449BFC | 360
+      4B25015E4D7A1DA | 341
+      B20DB44F45DB97A | 321
+      A52EBC918BC19D1 | 320
+      184F09732A68A08 | 310
+      6033FF110F6CD23 | 301
+      C02C514DAA9D885 | 300
+
+  panel birdmusicplatform2-4-04
+    title: rows of reviews by podcasts.title the twelve most
+    rows (12):
+      Crime Junkie | 31751
+      ∅ | 24647
+      My Favorite Murder with Karen Kilgariff  | 10290
+      Wow in the World | 8989
+      The Ben Shapiro Show | 7962
+      True Crime Obsessed | 7047
+      Story Pirates | 6904
+      The Daily | 5136
+      Know Your Aura with Mystic Michaela | 4958
+      Crime in Sports | 4849
+      Wine & Crime | 4422
+      Bachelor Happy Hour | 4394
+
+  panel birdmusicplatform2-4-05
+    title: rows of categories per podcasts
+    rows (8):
+      1 | 43368
+      2 | 39220
+      3 | 16422
+      4 | 8771
+      5 | 634
+      6 | 143
+      7 | 17
+      8 | 3
+
+  panel birdmusicplatform2-4-06
+    title: distribution of reviews.rating
+    rows (5):
+      0 | 1 | 108287
+      5 | 2 | 42649
+      10 | 3 | 48644
+      15 | 4 | 59344
+      20 | 5 | 1705932
+
+  panel birdmusicplatform2-4-07
+    title: average of reviews.rating by reviews.author_id the twelve most
+    rows (12):
+      47FB93DA1D9F447 | 5.0000000000000000
+      E1BFAEB8784F630 | 5.0000000000000000
+      4830BF982B65D19 | 5.0000000000000000
+      7D26BCE3066FB29 | 5.0000000000000000
+      F4A298A17F652ED | 5.0000000000000000
+      89477E586147BE8 | 5.0000000000000000
+      BD60B5FA66A55C4 | 5.0000000000000000
+      0AD696E4632FA9D | 5.0000000000000000
+      02E2A611E484B8E | 5.0000000000000000
+      7612631CBC619B6 | 5.0000000000000000
+      0E9FC8AF69D70C9 | 5.0000000000000000
+      94F41E2964897C1 | 5.0000000000000000
+
+  panel birdmusicplatform2-4-08
+    title: distinct podcasts in categories by podcasts.title the twelve most
+    rows (12):
+      Cornerstone Baptist Church of Orlando | 1
+      Mystery: Dancing in the Dark | 1
+      KTs Money Matters | 1
+      Speedway Soccer | 1
+      Showing Up for You | 1
+      Bethany Baptist Church, Bellflower CA | 1
+      Mindful Communication Podcast | 1
+      MARVELS | 1
+      Marketing Mambo | 1
+      Between Diapers And Deadlines | 1
+      Smells Like Teen Horror | 1
+      Scaling Global | 1
+
+  panel birdmusicplatform2-4-09
+    title: sum of runs.reviews_added by runs.run_at
+    rows (12):
+      2021-05-10 02:53:00 | 1215223
+      2022-07-03 19:50:22 | 559523
+      2022-08-13 20:45:24 | 43525
+      2022-04-20 01:03:30 | 36589
+      2022-06-22 19:44:32 | 29146
+      2021-10-11 05:18:23 | 16845
+      2022-09-07 15:28:17 | 15736
+      2021-06-06 21:34:36 | 13139
+      2021-08-01 17:54:42 | 11855
+      2021-09-02 18:00:30 | 11714
+      2021-07-02 18:04:55 | 11561
+      2022-06-05 16:15:16 | 0
+
+  panel birdmusicplatform2-4-10
+    title: largest tables, estimated rows
+    rows (4):
+      reviews | 1965320
+      categories | 210329
+      podcasts | 108578
+      runs | 12
+
+  panel birdmusicplatform2-4-11
+    title: rows of categories by podcasts.title the twelve most
+    rows (12):
+      Pursue Excellence | 8
+      Beyond Retirement | 8
+      FrazerRice.Com | 8
+      Purpose Driven Mom Show | 7
+      We Do Hard Things | 7
+      Shattered Reality Podcast | 7
+      Neverland: The Fandom Nexus | 7
+      Cultivating the Lovely | 7
+      Her Executive Presence | 7
+      Betches Brides | 7
+      Igor Kheifets List Building Lifestyle | 7
+      Local First | 7
+
+  panel birdmusicplatform2-4-12
+    title: rows of runs by runs.max_rowid the twelve most
+    rows (11):
+      3855531 | 2
+      5277014 | 1
+      4479220 | 1
+      5319820 | 1
+      3329699 | 1
+      3390165 | 1
+      3428923 | 1
+      3360315 | 1
+      3266481 | 1
+      5149673 | 1
+      3300773 | 1
+
+  panel birdmusicplatform2-4-13
+    title: distinct podcasts in reviews by reviews.author_id the twelve most
+    rows (12):
+      D3307ADEFFA285C | 614
+      96A3F0358E7808D | 470
+      04C3B6DEFE22FB1 | 428
+      8858ED4249110B6 | 386
+      7F9EA8B1A449BFC | 360
+      4B25015E4D7A1DA | 341
+      A52EBC918BC19D1 | 316
+      184F09732A68A08 | 307
+      6033FF110F6CD23 | 300
+      C02C514DAA9D885 | 299
+      8EA31F030185A88 | 289
+      B20DB44F45DB97A | 287
+
+  panel birdmusicplatform2-4-14
+    title: sum of runs.reviews_added by runs.max_rowid the twelve most
+    rows (11):
+      3266481 | 1215223
+      5149673 | 559523
+      5277014 | 43525
+      3855531 | 36589
+      4479220 | 29146
+      3428923 | 16845
+      5319820 | 15736
+      3300773 | 13139
+      3360315 | 11855
+      3390165 | 11714
+      3329699 | 11561
+
+  panel birdmusicplatform2-4-15
+    title: rows of runs by runs.run_at
+    rows (12):
+      2022-08-13 20:45:24 | 1
+      2021-09-02 18:00:30 | 1
+      2021-08-01 17:54:42 | 1
+      2022-07-03 19:50:22 | 1
+      2022-06-05 16:15:16 | 1
+      2022-04-20 01:03:30 | 1
+      2021-06-06 21:34:36 | 1
+      2021-07-02 18:04:55 | 1
+      2022-09-07 15:28:17 | 1
+      2021-05-10 02:53:00 | 1
+      2022-06-22 19:44:32 | 1
+      2021-10-11 05:18:23 | 1
+
+  panel birdmusicplatform2-4-16
+    title: average of reviews.rating by podcasts.title the twelve most
+    rows (12):
+      Sermons – Ciudad de Dios | 5.0000000000000000
+      Scaling Global | 5.0000000000000000
+      Cornerstone Baptist Church of Orlando | 5.0000000000000000
+      Speedway Soccer | 5.0000000000000000
+      Showing Up for You | 5.0000000000000000
+      Bethany Baptist Church, Bellflower CA | 5.0000000000000000
+      Mindful Communication Podcast | 5.0000000000000000
+      KTs Money Matters | 5.0000000000000000
+      Marketing Mambo | 5.0000000000000000
+      Between Diapers And Deadlines | 5.0000000000000000
+      Smells Like Teen Horror | 5.0000000000000000
+      Brown Suga Diaries | 5.0000000000000000
+
+  panel birdmusicplatform2-4-17
+    title: distinct podcasts in reviews by podcasts.title the twelve most
+    rows (12):
+      ∅ | 1533
+      Mystery: Dancing in the Dark | 1
+      Mindful Communication Podcast | 1
+      Speedway Soccer | 1
+      Showing Up for You | 1
+      Bethany Baptist Church, Bellflower CA | 1
+      KTs Money Matters | 1
+      MARVELS | 1
+      Marketing Mambo | 1
+      Between Diapers And Deadlines | 1
+      Smells Like Teen Horror | 1
+      Cornerstone Baptist Church of Orlando | 1
+
+  panel birdmusicplatform2-4-18
+    title: rows of podcasts by podcasts.itunes_id the twelve most
+    rows (12):
+      1582617632 | 1
+      1512799034 | 1
+      1505578641 | 1
+      1529930348 | 1
+      1510810634 | 1
+      1585768793 | 1
+      1506673653 | 1
+      1524126401 | 1
+      1428275141 | 1
+      1447295473 | 1
+      1436679306 | 1
+      1078657833 | 1
+
+  panel birdmusicplatform2-4-19
+    title: average of runs.reviews_added by runs.max_rowid the twelve most
+    rows (11):
+      3266481 | 1215223.000000000000
+      5149673 | 559523.000000000000
+      5277014 | 43525.000000000000
+      4479220 | 29146.000000000000
+      3855531 | 18294.500000000000
+      3428923 | 16845.0000000000000000
+      5319820 | 15736.0000000000000000
+      3300773 | 13139.0000000000000000
+      3360315 | 11855.0000000000000000
+      3390165 | 11714.0000000000000000
+      3329699 | 11561.0000000000000000
+
+
+=== database: birdcars ===
+Cars of the 1970s and 80s: their make, engine, fuel economy, price, and the years and countries they were produced in, as BIRD serves it. A fixture of round 1f.
+
+  panel birdcars-4-01
+    title: average of data.cylinders by data.car_name the twelve most
+    rows (12):
+      mercury grand marquis | 8.0000000000000000
+      dodge dart custom | 8.0000000000000000
+      plymouth grand fury | 8.0000000000000000
+      plymouth satellite custom (sw) | 8.0000000000000000
+      chevrolet malibu classic (sw) | 8.0000000000000000
+      ford f108 | 8.0000000000000000
+      ford futura | 8.0000000000000000
+      oldsmobile delta 88 royale | 8.0000000000000000
+      chrysler cordoba | 8.0000000000000000
+      ford country | 8.0000000000000000
+      chevrolet impala | 8.0000000000000000
+      plymouth 'cuda 340 | 8.0000000000000000
+
+  panel birdcars-4-02
+    title: rows of production by country.country the twelve most
+    rows (3):
+      USA | 453
+      Japan | 137
+      Europe | 102
+
+  panel birdcars-4-03
+    title: sum of data.displacement by data.car_name the twelve most
+    rows (12):
+      chevrolet impala | 1554
+      amc matador | 1356
+      pontiac catalina | 1255
+      ford galaxie 500 | 1131
+      ford maverick | 1100
+      plymouth fury iii | 1076
+      chevrolet caprice classic | 1010
+      ford gran torino | 955
+      amc hornet | 895
+      amc gremlin | 895
+      buick estate wagon (sw) | 805
+      ford pinto | 793
+
+  panel birdcars-4-04
+    title: sum of data.acceleration by price (by key) the twelve most
+    rows (12):
+      300 | 24.8
+      395 | 24.6
+      327 | 23.7
+      60 | 23.5
+      196 | 22.2
+      301 | 22.2
+      197 | 22.1
+      210 | 21.9
+      329 | 21.8
+      326 | 21.7
+      245 | 21.5
+      103 | 21
+
+  panel birdcars-4-05
+    title: sum of data.cylinders by data.car_name the twelve most
+    rows (12):
+      amc matador | 34
+      chevrolet impala | 32
+      ford maverick | 30
+      ford pinto | 26
+      ford gran torino | 24
+      amc hornet | 24
+      ford galaxie 500 | 24
+      chevrolet caprice classic | 24
+      plymouth fury iii | 24
+      amc gremlin | 24
+      pontiac catalina | 24
+      toyota corolla | 20
+
+  panel birdcars-4-06
+    title: sum of data.mpg by price (by key) the twelve most
+    rows (12):
+      323 | 46.6
+      330 | 44.6
+      326 | 44.3
+      395 | 44
+      327 | 43.4
+      245 | 43.1
+      310 | 41.5
+      331 | 40.9
+      325 | 40.8
+      248 | 39.4
+      344 | 39.1
+      345 | 39
+
+  panel birdcars-4-07
+    title: rows of data per price
+    rows (1):
+      1 | 398
+
+  panel birdcars-4-08
+    title: sum of data.model by price (by key) the twelve most
+    rows (12):
+      368 | 82
+      383 | 82
+      397 | 82
+      391 | 82
+      369 | 82
+      394 | 82
+      384 | 82
+      390 | 82
+      386 | 82
+      373 | 82
+      372 | 82
+      381 | 82
+
+  panel birdcars-4-09
+    title: average of data.mpg by price (by key) the twelve most
+    rows (12):
+      323 | 46.6
+      330 | 44.6
+      326 | 44.3
+      395 | 44
+      327 | 43.4
+      245 | 43.1
+      310 | 41.5
+      331 | 40.9
+      325 | 40.8
+      248 | 39.4
+      344 | 39.1
+      345 | 39
+
+  panel birdcars-4-10
+    title: distinct price in data by price (by key) the twelve most
+    rows (12):
+      2 | 1
+      3 | 1
+      4 | 1
+      5 | 1
+      6 | 1
+      7 | 1
+      8 | 1
+      9 | 1
+      10 | 1
+      11 | 1
+      12 | 1
+      1 | 1
+
+  panel birdcars-4-11
+    title: average of data.horsepower by price (by key) the twelve most
+    rows (12):
+      117 | 230.0000000000000000
+      9 | 225.0000000000000000
+      96 | 225.0000000000000000
+      14 | 225.0000000000000000
+      7 | 220.0000000000000000
+      8 | 215.0000000000000000
+      26 | 215.0000000000000000
+      95 | 215.0000000000000000
+      28 | 210.0000000000000000
+      68 | 208.0000000000000000
+      27 | 200.0000000000000000
+      6 | 198.0000000000000000
+
+  panel birdcars-4-12
+    title: largest tables, estimated rows
+    rows (4):
+      production | 692
+      data | 398
+      price | 398
+      country | 3
+
+  panel birdcars-4-13
+    title: sum of data.weight by price (by key) the twelve most
+    rows (12):
+      45 | 5140
+      104 | 4997
+      43 | 4955
+      91 | 4952
+      96 | 4951
+      105 | 4906
+      44 | 4746
+      95 | 4735
+      29 | 4732
+      138 | 4699
+      157 | 4668
+      160 | 4657
+
+  panel birdcars-4-14
+    title: sum of data.displacement by price (by key) the twelve most
+    rows (12):
+      14 | 455
+      9 | 455
+      96 | 455
+      7 | 454
+      95 | 440
+      8 | 440
+      91 | 429
+      6 | 429
+      68 | 429
+      105 | 400
+      92 | 400
+      117 | 400
+
+  panel birdcars-4-15
+    title: sum of data.model by data.car_name the twelve most
+    rows (12):
+      ford pinto | 444
+      toyota corolla | 394
+      amc matador | 369
+      ford maverick | 368
+      chevrolet chevette | 311
+      peugeot 504 | 300
+      toyota corona | 298
+      amc hornet | 293
+      amc gremlin | 289
+      chevrolet impala | 286
+      chevrolet citation | 240
+      honda civic | 232
+
+  panel birdcars-4-16
+    title: rows of data by price (by key) the twelve most
+    rows (12):
+      351 | 1
+      184 | 1
+      116 | 1
+      87 | 1
+      273 | 1
+      394 | 1
+      51 | 1
+      272 | 1
+      70 | 1
+      190 | 1
+      350 | 1
+      384 | 1
+
+  panel birdcars-4-17
+    title: rows of country by country.country
+    rows (3):
+      USA | 1
+      Japan | 1
+      Europe | 1
+
+  panel birdcars-4-18
+    title: sum of data.acceleration by data.car_name the twelve most
+    rows (12):
+      ford pinto | 99.1
+      ford maverick | 86.6
+      toyota corolla | 81.29999999999998
+      peugeot 504 | 81.2
+      amc matador | 77.9
+      chevrolet chevette | 71.2
+      amc hornet | 65.1
+      amc gremlin | 59
+      toyota corona | 58.2
+      chevrolet vega | 56
+      plymouth duster | 48
+      chevrolet nova | 47.5
+
+  panel birdcars-4-19
+    title: sum of data.horsepower by data.car_name the twelve most
+    rows (12):
+      chevrolet impala | 700
+      amc matador | 590
+      pontiac catalina | 570
+      ford pinto | 527
+      plymouth fury iii | 515
+      ford galaxie 500 | 504
+      ford gran torino | 429
+      chevrolet caprice classic | 425
+      ford maverick | 401
+      amc gremlin | 390
+      amc hornet | 387
+      buick estate wagon (sw) | 380
+
+  panel birdcars-4-20
+    title: average of data.displacement by price (by key) the twelve most
+    rows (12):
+      14 | 455
+      9 | 455
+      96 | 455
+      7 | 454
+      95 | 440
+      8 | 440
+      91 | 429
+      6 | 429
+      68 | 429
+      105 | 400
+      92 | 400
+      117 | 400
+
+  panel birdcars-4-21
+    title: average of data.model by price (by key) the twelve most
+    rows (12):
+      368 | 82.0000000000000000
+      383 | 82.0000000000000000
+      397 | 82.0000000000000000
+      391 | 82.0000000000000000
+      369 | 82.0000000000000000
+      394 | 82.0000000000000000
+      384 | 82.0000000000000000
+      390 | 82.0000000000000000
+      386 | 82.0000000000000000
+      373 | 82.0000000000000000
+      372 | 82.0000000000000000
+      381 | 82.0000000000000000
+
+  panel birdcars-4-22
+    title: average of data.weight by price (by key) the twelve most
+    rows (12):
+      45 | 5140.0000000000000000
+      104 | 4997.0000000000000000
+      43 | 4955.0000000000000000
+      91 | 4952.0000000000000000
+      96 | 4951.0000000000000000
+      105 | 4906.0000000000000000
+      44 | 4746.0000000000000000
+      95 | 4735.0000000000000000
+      29 | 4732.0000000000000000
+      138 | 4699.0000000000000000
+      157 | 4668.0000000000000000
+      160 | 4657.0000000000000000
+
+  panel birdcars-4-23
+    title: rows of data by data.car_name the twelve most
+    rows (12):
+      ford pinto | 6
+      amc matador | 5
+      ford maverick | 5
+      toyota corolla | 5
+      amc gremlin | 4
+      chevrolet impala | 4
+      peugeot 504 | 4
+      toyota corona | 4
+      amc hornet | 4
+      chevrolet chevette | 4
+      chevrolet vega | 3
+      ford gran torino | 3
+
+  panel birdcars-4-24
+    title: sum of data.horsepower by price (by key) the twelve most
+    rows (12):
+      117 | 230
+      9 | 225
+      96 | 225
+      14 | 225
+      7 | 220
+      8 | 215
+      26 | 215
+      95 | 215
+      28 | 210
+      68 | 208
+      27 | 200
+      6 | 198
+
+  panel birdcars-4-25
+    title: sum of data.cylinders by price (by key) the twelve most
+    rows (12):
+      42 | 8
+      189 | 8
+      73 | 8
+      87 | 8
+      292 | 8
+      263 | 8
+      116 | 8
+      299 | 8
+      70 | 8
+      190 | 8
+      92 | 8
+      117 | 8
+
+  panel birdcars-4-26
+    title: sum of data.weight by data.car_name the twelve most
+    rows (12):
+      amc matador | 18284
+      chevrolet impala | 17834
+      ford pinto | 14995
+      ford maverick | 14653
+      pontiac catalina | 13478
+      ford galaxie 500 | 12624
+      plymouth fury iii | 12543
+      ford gran torino | 12398
+      chevrolet caprice classic | 12184
+      peugeot 504 | 12089
+      amc hornet | 11705
+      toyota corolla | 11186
+
+  panel birdcars-4-27
+    title: average of data.weight by data.car_name the twelve most
+    rows (12):
+      pontiac safari (sw) | 5140.0000000000000000
+      dodge monaco (sw) | 4955.0000000000000000
+      mercury marquis brougham | 4952.0000000000000000
+      buick electra 225 custom | 4951.0000000000000000
+      ford country | 4906.0000000000000000
+      chrysler new yorker brougham | 4735.0000000000000000
+      hi 1200d | 4732.0000000000000000
+      buick century luxus (sw) | 4699.0000000000000000
+      plymouth custom suburb | 4654.0000000000000000
+      mercury marquis | 4633.0000000000000000
+      ford f250 | 4615.0000000000000000
+      ford ltd | 4510.0000000000000000
+
+  panel birdcars-4-28
+    title: sum of data.mpg by data.car_name the twelve most
+    rows (12):
+      toyota corolla | 155.6
+      ford pinto | 137.5
+      chevrolet chevette | 121.6
+      toyota corona | 107.5
+      ford maverick | 99
+      honda civic | 95
+      peugeot 504 | 94.2
+      dodge colt | 81.9
+      volkswagen dasher | 81.5
+      chevrolet citation | 80.3
+      amc matador | 78.5
+      amc gremlin | 78
+
+  panel birdcars-4-29
+    title: rows of production by country.country
+    rows (3):
+      USA | 453
+      Japan | 137
+      Europe | 102
+
+  panel birdcars-4-30
+    title: average of data.mpg by data.car_name the twelve most
+    rows (12):
+      mazda glc | 46.6
+      honda civic 1500 gl | 44.6
+      vw rabbit c (diesel) | 44.3
+      vw pickup | 44
+      vw dasher (diesel) | 43.4
+      volkswagen rabbit custom diesel | 43.1
+      renault lecar deluxe | 40.9
+      datsun b210 gx | 39.4
+      toyota starlet | 39.1
+      plymouth champ | 39
+      toyota corolla tercel | 38.1
+      datsun 310 gx | 38
+
+  panel birdcars-4-31
+    title: rows of production by price (by key) the twelve most
+    rows (12):
+      383 | 5
+      18 | 5
+      175 | 5
+      135 | 5
+      113 | 5
+      38 | 5
+      156 | 5
+      357 | 5
+      87 | 5
+      190 | 5
+      169 | 5
+      322 | 5
+
+  panel birdcars-4-32
+    title: distribution of price.price
+    rows (21):
+      0 | 1598.07337 | 1
+      1 | 5579.395792 | 2
+      2 | 7250.279362 | 7
+      3 | 9944.306349 | 3
+      4 | 12388.96045 | 13
+      5 | 14944.48848 | 16
+      6 | 17268.17018 | 3
+      7 | 20000 | 47
+      8 | 22599.02117 | 31
+      9 | 25211.02753 | 42
+      10 | 30000 | 85
+      11 | 32617.05928 | 5
+      … 9 more rows
+
+  panel birdcars-4-33
+    title: average of data.cylinders by price (by key) the twelve most
+    rows (12):
+      42 | 8.0000000000000000
+      189 | 8.0000000000000000
+      73 | 8.0000000000000000
+      87 | 8.0000000000000000
+      292 | 8.0000000000000000
+      263 | 8.0000000000000000
+      116 | 8.0000000000000000
+      299 | 8.0000000000000000
+      70 | 8.0000000000000000
+      190 | 8.0000000000000000
+      92 | 8.0000000000000000
+      117 | 8.0000000000000000
+
+
+=== database: birduniversity ===
+Universities, their countries and yearly figures, and their scores in world rankings by criterion and year, as BIRD serves it. A fixture of round 1f.
+
+  panel birduniversity-4-01
+    title: rows of university_year by country.country_name the twelve most
+    rows (12):
+      United States of America | 404
+      United Kingdom | 162
+      Germany | 69
+      Netherlands | 63
+      Canada | 42
+      Australia | 41
+      Switzerland | 36
+      France | 34
+      Sweden | 27
+      Japan | 26
+      South Korea | 23
+      Belgium | 20
+
+  panel birduniversity-4-02
+    title: rows of university_ranking_year by country.country_name the twelve most
+    rows (12):
+      United States of America | 10074
+      United Kingdom | 2621
+      Japan | 1701
+      Germany | 1432
+      China | 1432
+      France | 1195
+      Canada | 1136
+      Australia | 850
+      Netherlands | 799
+      Italy | 786
+      South Korea | 714
+      Spain | 690
+
+  panel birduniversity-4-03
+    title: rows of ranking_criteria by ranking_system.system_name
+    rows (3):
+      Center for World University Rankings | 8
+      Shanghai Ranking | 7
+      Times Higher Education World University  | 6
+
+  panel birduniversity-4-04
+    title: average of university_year.pct_international_students by university.university_name the twelve most
+    rows (12):
+      École Polytechnique Fédérale de Lausanne | 54.0000000000000000
+      Imperial College London | 51.0000000000000000
+      Maastricht University | 48.0000000000000000
+      University of St Andrews | 47.0000000000000000
+      University College London | 46.0000000000000000
+      Queen Mary University of London | 40.0000000000000000
+      University of Innsbruck | 39.0000000000000000
+      University of Geneva | 39.0000000000000000
+      Birkbeck, University of London | 38.0000000000000000
+      University of Hong Kong | 38.0000000000000000
+      ETH Zurich – Swiss Federal Institute of  | 37.0000000000000000
+      University of Warwick | 37.0000000000000000
+
+  panel birduniversity-4-05
+    title: average of university_ranking_year.score by university.university_name the twelve most
+    rows (12):
+      Henan Normal University | 603.6250000000000000
+      University of Pau and Pays de l'Adour | 586.6875000000000000
+      Harbin Engineering University | 580.1250000000000000
+      Yuan Ze University | 579.8750000000000000
+      Shahid Beheshti University of Medical Sc | 579.0000000000000000
+      Dokuz Eylül University | 578.3125000000000000
+      Babeș-Bolyai University | 576.0000000000000000
+      Hunan Normal University | 573.8125000000000000
+      University of Almería | 573.6875000000000000
+      Tianjin Medical University | 573.6250000000000000
+      Shanghai Normal University | 572.5000000000000000
+      Federal University of Santa Maria | 572.1875000000000000
+
+  panel birduniversity-4-06
+    title: average of university_year.student_staff_ratio by country.country_name the twelve most
+    rows (12):
+      Belgium | 37.05
+      Germany | 33.27681159420289
+      Australia | 26.54146341463416
+      Italy | 25.400000000000002
+      Egypt | 23.3
+      Turkey | 21.05
+      Ireland | 20.6
+      Austria | 19.985714285714288
+      Canada | 19.809523809523814
+      New Zealand | 18.9
+      Israel | 17.755555555555553
+      Netherlands | 17.203174603174595
+
+  panel birduniversity-4-07
+    title: average of university_year.pct_female_students by university.university_name the twelve most
+    rows (12):
+      Brown University | ∅
+      University of Lausanne | ∅
+      University College Dublin | ∅
+      Lund University | ∅
+      Hong Kong University of Science and Tech | ∅
+      Seoul National University | ∅
+      University of Science and Technology of  | ∅
+      Joseph Fourier University | ∅
+      University of Toronto | ∅
+      Humboldt University of Berlin | ∅
+      University of Oslo | ∅
+      Paris-Sud University | ∅
+
+  panel birduniversity-4-08
+    title: rows of university_year by university_year.year
+    rows (6):
+      2011-01-01 | 185
+      2012-01-01 | 196
+      2013-01-01 | 197
+      2014-01-01 | 198
+      2015-01-01 | 199
+      2016-01-01 | 110
+
+  panel birduniversity-4-09
+    title: average of university_year.pct_international_students by university_year.year
+    rows (6):
+      2011-01-01 | 19.3135135135135135
+      2012-01-01 | 19.6785714285714286
+      2013-01-01 | 19.7360406091370558
+      2014-01-01 | 19.9292929292929293
+      2015-01-01 | 19.4221105527638191
+      2016-01-01 | 20.6909090909090909
+
+  panel birduniversity-4-10
+    title: rows of university_year by university.university_name the twelve most
+    rows (12):
+      University of Pennsylvania | 6
+      University of Freiburg | 6
+      ETH Zurich – Swiss Federal Institute of  | 6
+      University of Arizona | 6
+      Massachusetts Institute of Technology | 6
+      Seoul National University | 6
+      École Normale Supérieure | 6
+      University of California, Berkeley | 6
+      University of California, Los Angeles | 6
+      Humboldt University of Berlin | 6
+      Hong Kong University of Science and Tech | 6
+      Duke University | 6
+
+  panel birduniversity-4-11
+    title: rows of university_ranking_year by university_ranking_year.year
+    rows (12):
+      2005-01-01 | 497
+      2006-01-01 | 497
+      2007-01-01 | 511
+      2008-01-01 | 504
+      2009-01-01 | 497
+      2010-01-01 | 504
+      2011-01-01 | 1607
+      2012-01-01 | 2473
+      2013-01-01 | 2472
+      2014-01-01 | 9678
+      2015-01-01 | 9712
+      2016-01-01 | 660
+
+  panel birduniversity-4-12
+    title: average of university_ranking_year.score by ranking_criteria.criteria_name the twelve most
+    rows (12):
+      Publications Rank | 459.9086363636363636
+      Influence Rank | 459.7977272727272727
+      Patents Rank | 433.3463636363636364
+      Citations Rank | 413.4172727272727273
+      Alumni Employment Rank | 357.1168181818181818
+      Quality of Education Rank | 275.1004545454545455
+      Quality of Faculty Rank | 178.8881818181818182
+      Citations | 76.8276497695852535
+      Total Times | 60.1483870967741935
+      International | 58.8534562211981567
+      Income | 54.1476439790575916
+      Pub | 54.0127226463104326
+
+  panel birduniversity-4-13
+    title: rows of university_ranking_year by university.university_name the twelve most
+    rows (12):
+      Cornell University | 145
+      University College London | 145
+      Utrecht University | 145
+      Stanford University | 145
+      Vanderbilt University | 145
+      California Institute of Technology | 145
+      University of California, Los Angeles | 145
+      University of Southern California | 145
+      University of Pennsylvania | 145
+      Duke University | 145
+      University of Arizona | 145
+      Yale University | 145
+
+  panel birduniversity-4-14
+    title: rows of ranking_criteria by ranking_system.system_name the twelve most
+    rows (3):
+      Center for World University Rankings | 8
+      Shanghai Ranking | 7
+      Times Higher Education World University  | 6
+
+  panel birduniversity-4-15
+    title: rows of university_ranking_year by ranking_system.system_name
+    rows (3):
+      Center for World University Rankings | 17600
+      Times Higher Education World University  | 6510
+      Shanghai Ranking | 5502
+
+  panel birduniversity-4-16
+    title: average of university_ranking_year.score by ranking_system.system_name
+    rows (3):
+      Center for World University Rankings | 328.1683522727272727
+      Times Higher Education World University  | 59.1358934169278997
+      Shanghai Ranking | 35.2857142857142857
+
+  panel birduniversity-4-17
+    title: largest tables, estimated rows
+    rows (6):
+      university_ranking_year | 29612
+      university | 1247
+      university_year | 1085
+      country | 74
+      ranking_criteria | 21
+      ranking_system | 3
+
+  panel birduniversity-4-18
+    title: average of university_year.student_staff_ratio by university.university_name the twelve most
+    rows (12):
+      University of Bonn | 70.4
+      University of Konstanz | 59.1
+      Humboldt University of Berlin | 52.5
+      University of Cologne | 43.4
+      University of Trento | 43.2
+      Université catholique de Louvain | 42
+      KU Leuven | 41.9
+      Monash University | 40.5
+      Free University of Berlin | 39.3
+      University of Tübingen | 38.9
+      University of Würzburg | 38.4
+      TU Dresden | 37.4
+
+  panel birduniversity-4-19
+    title: rows of university by country.country_name the twelve most
+    rows (12):
+      United States of America | 273
+      China | 96
+      United Kingdom | 89
+      Japan | 81
+      France | 68
+      Germany | 68
+      Italy | 54
+      Spain | 43
+      Canada | 37
+      South Korea | 37
+      Australia | 35
+      Taiwan | 29
+
+  panel birduniversity-4-20
+    title: average of university_year.student_staff_ratio by university_year.year
+    rows (6):
+      2011-01-01 | 15.665405405405405
+      2012-01-01 | 15.394897959183677
+      2013-01-01 | 15.544162436548225
+      2014-01-01 | 15.564141414141417
+      2015-01-01 | 15.92663316582915
+      2016-01-01 | 16.49909090909091
+
+  panel birduniversity-4-21
+    title: average of university_year.pct_international_students by country.country_name the twelve most
+    rows (12):
+      Singapore | 33.5000000000000000
+      United Kingdom | 32.9567901234567901
+      Hong Kong | 31.4500000000000000
+      Australia | 31.4390243902439024
+      Switzerland | 31.1666666666666667
+      New Zealand | 28.0000000000000000
+      Austria | 27.0000000000000000
+      Ireland | 24.2000000000000000
+      Russia | 20.0000000000000000
+      Canada | 19.4047619047619048
+      France | 18.9411764705882353
+      South Africa | 18.0000000000000000
+
+  panel birduniversity-4-22
+    title: average of university_ranking_year.score by university_ranking_year.year
+    rows (12):
+      2005-01-01 | 35.8913480885311871
+      2006-01-01 | 35.7786720321931590
+      2007-01-01 | 35.4070450097847358
+      2008-01-01 | 35.6984126984126984
+      2009-01-01 | 35.5291750503018109
+      2010-01-01 | 35.1051587301587302
+      2011-01-01 | 51.1119691119691120
+      2012-01-01 | 53.6243364638628011
+      2013-01-01 | 55.1844145246838025
+      2014-01-01 | 297.3761904761904762
+      2015-01-01 | 307.0877410042272399
+      2016-01-01 | 65.2913505311077390
+
+  panel birduniversity-4-23
+    title: rows of university_ranking_year by ranking_system.system_name the twelve most
+    rows (3):
+      Center for World University Rankings | 17600
+      Times Higher Education World University  | 6510
+      Shanghai Ranking | 5502
+
+  panel birduniversity-4-24
+    title: average of university_ranking_year.score by country.country_name the twelve most
+    rows (12):
+      Puerto Rico | 544.5625000000000000
+      Uruguay | 541.8750000000000000
+      United Arab Emirates | 538.3125000000000000
+      Romania | 535.4583333333333333
+      Iran | 531.2031250000000000
+      Cyprus | 530.9375000000000000
+      Uganda | 519.1250000000000000
+      Bulgaria | 504.6875000000000000
+      Lebanon | 497.1875000000000000
+      Lithuania | 491.3125000000000000
+      Egypt | 489.4714285714285714
+      Slovakia | 480.9375000000000000
+
+  panel birduniversity-4-25
+    title: distribution of university_year.num_students
+    rows (14):
+      0 | 462 | 64
+      1 | 6853 | 193
+      2 | 13216 | 179
+      3 | 19660 | 233
+      4 | 26199 | 180
+      5 | 32474 | 98
+      6 | 39256 | 74
+      7 | 46825 | 33
+      8 | 51351 | 12
+      9 | 62468 | 5
+      10 | 66198 | 5
+      12 | 81402 | 2
+      … 2 more rows
+
+  panel birduniversity-4-26
+    title: average of university_ranking_year.score by ranking_system.system_name the twelve most
+    rows (3):
+      Center for World University Rankings | 328.1683522727272727
+      Times Higher Education World University  | 59.1358934169278997
+      Shanghai Ranking | 35.2857142857142857
+
+  panel birduniversity-4-27
+    title: rows of university_ranking_year by ranking_criteria.criteria_name the twelve most
+    rows (12):
+      Patents Rank | 2200
+      Citations Rank | 2200
+      Alumni Employment Rank | 2200
+      Total CWUR | 2200
+      Quality of Education Rank | 2200
+      Influence Rank | 2200
+      Quality of Faculty Rank | 2200
+      Publications Rank | 2200
+      Teaching | 1085
+      International | 1085
+      Total Times | 1085
+      Research | 1085
+
+  panel birduniversity-4-28
+    title: average of university_year.pct_female_students by university_year.year
+    rows (6):
+      2011-01-01 | 48.9824561403508772
+      2012-01-01 | 49.8491620111731844
+      2013-01-01 | 49.3296089385474860
+      2014-01-01 | 49.2346368715083799
+      2015-01-01 | 49.1428571428571429
+      2016-01-01 | 50.2727272727272727
+
+
+=== database: birdsocialmedia ===
+Tweets with their users, locations, reach, likes and sentiment, as BIRD serves it. A fixture of round 1f.
+
+  panel birdsocialmedia-4-01
+    title: average of twitter.RetweetCount by twitter.IsReshare
+    rows (3):
+      ∅ | ∅
+      TRUE | 21.0639492242595205
+      FALSE | 0.90727695888285492630
+
+  panel birdsocialmedia-4-02
+    title: rows of user by user.Gender
+    rows (4):
+      Male | 46378
+      Unknown | 27955
+      Female | 15187
+      Unisex | 9740
+
+  panel birdsocialmedia-4-03
+    title: sum of twitter.Likes by location.Country the twelve most
+    rows (12):
+      United States | 15277
+      Bangladesh | 0
+      Sweden | 0
+      Cameroon | 0
+      Luxembourg | 0
+      Czech Republic | 0
+      Venezuela | 0
+      Viet Nam | 0
+      Montenegro | 0
+      Uganda | 0
+      Jordan | 0
+      Indonesia | 0
+
+  panel birdsocialmedia-4-04
+    title: rows of twitter by user.Gender
+    rows (5):
+      Male | 51632
+      Unknown | 29414
+      Female | 9865
+      Unisex | 8988
+      ∅ | 2
+
+  panel birdsocialmedia-4-05
+    title: sum of twitter.Likes by twitter.Weekday
+    rows (8):
+      ∅ | ∅
+      Thursday | 3114
+      Wednesday | 2889
+      Tuesday | 2702
+      Monday | 2575
+      Friday | 2307
+      Saturday | 1123
+      Sunday | 567
+
+  panel birdsocialmedia-4-06
+    title: rows of twitter by twitter.Lang
+    rows (37):
+      en | 91788
+      es | 1700
+      fr | 1085
+      tr | 877
+      _u | 860
+      ja | 671
+      de | 563
+      in | 415
+      tl | 370
+      ko | 330
+      pt | 222
+      nl | 172
+      … 25 more rows
+
+  panel birdsocialmedia-4-07
+    title: sum of twitter.Likes by twitter.TweetID the twelve most
+    rows (12):
+      ∅ | ∅
+      tw-690264552273936385 | 133
+      tw-683367429049683968 | 131
+      tw-684504909362806785 | 116
+      tw-698238715718668288 | 113
+      tw-708732826577817600 | 107
+      tw-687076354022481924 | 96
+      tw-690669105825722368 | 95
+      tw-696049540370071552 | 94
+      tw-689587904528560128 | 93
+      tw-707969805387599873 | 92
+      tw-698581730744111104 | 89
+
+  panel birdsocialmedia-4-08
+    title: sum of twitter.Likes by twitter.Lang the twelve most
+    rows (12):
+      ∅ | ∅
+      en | 15225
+      fr | 44
+      es | 7
+      zh | 1
+      fi | 0
+      iw | 0
+      uk | 0
+      lt | 0
+      ja | 0
+      cs | 0
+      ru | 0
+
+  panel birdsocialmedia-4-09
+    title: sum of twitter.RetweetCount by twitter.IsReshare
+    rows (3):
+      ∅ | ∅
+      TRUE | 746717
+      FALSE | 58474
+
+  panel birdsocialmedia-4-10
+    title: rows of twitter by location (by key) the twelve most
+    rows (12):
+      3751 | 7003
+      3019 | 4856
+      3753 | 4095
+      800 | 2678
+      3738 | 2651
+      3766 | 1581
+      1329 | 1426
+      3776 | 1354
+      80 | 1284
+      1338 | 1212
+      3739 | 1179
+      3786 | 1117
+
+  panel birdsocialmedia-4-11
+    title: sum of twitter.RetweetCount by location (by key) the twelve most
+    rows (12):
+      ∅ | ∅
+      3751 | 69374
+      3019 | 30886
+      800 | 27785
+      4295 | 26127
+      3753 | 24338
+      1329 | 17774
+      5248 | 15347
+      611 | 11811
+      3738 | 11533
+      80 | 11321
+      1333 | 10971
+
+  panel birdsocialmedia-4-12
+    title: rows of twitter by location.Country the twelve most
+    rows (12):
+      United States | 50600
+      United Kingdom | 9837
+      India | 6822
+      France | 3645
+      Germany | 3529
+      Australia | 2935
+      Spain | 2091
+      Ireland | 1444
+      Brazil | 1402
+      Japan | 1335
+      Canada | 1173
+      Indonesia | 1033
+
+  panel birdsocialmedia-4-13
+    title: sum of twitter.RetweetCount by user.Gender
+    rows (5):
+      Male | 513566
+      Unknown | 168293
+      Unisex | 63382
+      Female | 59877
+      ∅ | 73
+
+  panel birdsocialmedia-4-14
+    title: average of twitter.Likes by twitter.Weekday
+    rows (8):
+      ∅ | ∅
+      Thursday | 0.16910127613358674993
+      Monday | 0.16703425012973533991
+      Wednesday | 0.15874498598824111215
+      Friday | 0.15376924615076984603
+      Saturday | 0.15140892544155318862
+      Tuesday | 0.14635467446647167154
+      Sunday | 0.08113909559244419004
+
+  panel birdsocialmedia-4-15
+    title: rows of twitter by twitter.TweetID the twelve most
+    rows (12):
+      tw-709648015322034176 | 1
+      tw-689557374437322753 | 1
+      tw-710442506048016384 | 1
+      tw-709507956656582657 | 1
+      tw-707011457829830656 | 1
+      tw-688137095018225665 | 1
+      tw-708507799882481664 | 1
+      tw-713384974402060289 | 1
+      tw-697110267470151681 | 1
+      tw-710922859485356032 | 1
+      tw-706129766890364928 | 1
+      ∅ | 1
+
+  panel birdsocialmedia-4-16
+    title: sum of twitter.RetweetCount by twitter.Lang the twelve most
+    rows (12):
+      ∅ | ∅
+      en | 793404
+      es | 3164
+      fr | 2067
+      ko | 1327
+      ja | 900
+      _u | 749
+      zh | 681
+      in | 623
+      tl | 602
+      de | 483
+      sv | 149
+
+  panel birdsocialmedia-4-17
+    title: average of twitter.RetweetCount by twitter.TweetID the twelve most
+    rows (12):
+      ∅ | ∅
+      tw-700865627364392960 | 26127.000000000000
+      tw-707929034768850944 | 13195.0000000000000000
+      tw-707941144051654656 | 2065.0000000000000000
+      tw-704537807935549441 | 782.0000000000000000
+      tw-695374760021090304 | 637.0000000000000000
+      tw-707040101839167488 | 632.0000000000000000
+      tw-685195764813844481 | 620.0000000000000000
+      tw-716317763963199489 | 616.0000000000000000
+      tw-715854610217439232 | 605.0000000000000000
+      tw-715502429182136320 | 596.0000000000000000
+      tw-711119566634557440 | 591.0000000000000000
+
+  panel birdsocialmedia-4-18
+    title: average of twitter.RetweetCount by location.Country the twelve most
+    rows (12):
+      Slovenia | 91.5172413793103448
+      Palestinian Territory | 77.0000000000000000
+      Macedonia | 70.0000000000000000
+      Moldova | 60.0000000000000000
+      Venezuela | 35.1566265060240964
+      Tanzania | 34.8333333333333333
+      Sudan | 28.7500000000000000
+      Jamaica | 28.4285714285714286
+      Malaysia | 23.5069444444444444
+      Honduras | 22.0000000000000000
+      Bulgaria | 19.4705882352941176
+      Ecuador | 19.0677966101694915
+
+  panel birdsocialmedia-4-19
+    title: rows of twitter by twitter.IsReshare
+    rows (3):
+      FALSE | 64450
+      TRUE | 35450
+      ∅ | 1
+
+  panel birdsocialmedia-4-20
+    title: rows of twitter by twitter.Lang the twelve most
+    rows (12):
+      en | 91788
+      es | 1700
+      fr | 1085
+      tr | 877
+      _u | 860
+      ja | 671
+      de | 563
+      in | 415
+      tl | 370
+      ko | 330
+      pt | 222
+      nl | 172
+
+  panel birdsocialmedia-4-21
+    title: sum of twitter.Likes by user.Gender
+    rows (5):
+      Unknown | 15227
+      Male | 50
+      Female | 0
+      Unisex | 0
+      ∅ | 0
+
+  panel birdsocialmedia-4-22
+    title: sum of twitter.RetweetCount by twitter.Weekday
+    rows (8):
+      ∅ | ∅
+      Wednesday | 166224
+      Tuesday | 141184
+      Thursday | 138284
+      Friday | 119378
+      Monday | 108825
+      Saturday | 66824
+      Sunday | 64472
+
+  panel birdsocialmedia-4-23
+    title: largest tables, estimated rows
+    rows (3):
+      twitter | 99901
+      user | 99260
+      location | 6211
+
+  panel birdsocialmedia-4-24
+    title: sum of twitter.RetweetCount by twitter.TweetID the twelve most
+    rows (12):
+      ∅ | ∅
+      tw-700865627364392960 | 26127
+      tw-707929034768850944 | 13195
+      tw-707941144051654656 | 2065
+      tw-704537807935549441 | 782
+      tw-695374760021090304 | 637
+      tw-707040101839167488 | 632
+      tw-685195764813844481 | 620
+      tw-716317763963199489 | 616
+      tw-715854610217439232 | 605
+      tw-715502429182136320 | 596
+      tw-711119566634557440 | 591
+
+  panel birdsocialmedia-4-25
+    title: average of twitter.RetweetCount by twitter.Lang the twelve most
+    rows (12):
+      ∅ | ∅
+      en | 8.6438750163420055
+      zh | 6.1909090909090909
+      sv | 5.5185185185185185
+      ko | 4.0212121212121212
+      lt | 3.0000000000000000
+      ht | 2.7500000000000000
+      fi | 2.6730769230769231
+      fr | 1.9050691244239631
+      ar | 1.8636363636363636
+      es | 1.8611764705882353
+      tl | 1.6270270270270270
+
+  panel birdsocialmedia-4-26
+    title: rows of location by location.Country the twelve most
+    rows (12):
+      United States | 2491
+      United Kingdom | 720
+      France | 262
+      Germany | 220
+      Spain | 179
+      Brazil | 164
+      India | 154
+      Italy | 134
+      Philippines | 133
+      Mexico | 121
+      Canada | 120
+      Indonesia | 112
+
+  panel birdsocialmedia-4-27
+    title: rows of twitter by twitter.Weekday
+    rows (8):
+      Tuesday | 18462
+      Thursday | 18415
+      Wednesday | 18199
+      Monday | 15416
+      Friday | 15003
+      Saturday | 7417
+      Sunday | 6988
+      ∅ | 1
+
+  panel birdsocialmedia-4-28
+    title: sum of twitter.Likes by location (by key) the twelve most
+    rows (12):
+      ∅ | ∅
+      3751 | 15222
+      3792 | 50
+      3874 | 4
+      3758 | 1
+      4035 | 0
+      55 | 0
+      3221 | 0
+      3984 | 0
+      790 | 0
+      5642 | 0
+      4788 | 0
+
+  panel birdsocialmedia-4-29
+    title: average of twitter.RetweetCount by twitter.Weekday
+    rows (8):
+      ∅ | ∅
+      Sunday | 9.2261018889524900
+      Wednesday | 9.1336886642123194
+      Saturday | 9.0095726034784953
+      Friday | 7.9569419449443445
+      Tuesday | 7.6472754847795472
+      Thursday | 7.5093130600054304
+      Monday | 7.0592241826673586
+
+  panel birdsocialmedia-4-30
+    title: sum of twitter.RetweetCount by location.Country the twelve most
+    rows (12):
+      United States | 359355
+      India | 98492
+      United Kingdom | 60453
+      France | 39708
+      Germany | 31995
+      Australia | 25561
+      Spain | 20932
+      Brazil | 14603
+      China | 12803
+      Venezuela | 8754
+      Netherlands | 7946
+      Canada | 7808
+
+  panel birdsocialmedia-4-31
+    title: average of twitter.RetweetCount by location (by key) the twelve most
+    rows (12):
+      ∅ | ∅
+      4295 | 8709.0000000000000000
+      5248 | 3069.4000000000000000
+      67 | 497.0000000000000000
+      2607 | 459.0000000000000000
+      5941 | 434.0000000000000000
+      4963 | 430.0000000000000000
+      1410 | 423.0000000000000000
+      1420 | 404.0000000000000000
+      1480 | 387.0000000000000000
+      1466 | 380.0000000000000000
+      2136 | 380.0000000000000000
+
+  panel birdsocialmedia-4-32
+    title: sum of twitter.Likes by twitter.IsReshare
+    rows (3):
+      ∅ | ∅
+      FALSE | 15277
+      TRUE | 0
+
+
+=== database: birdstudentclub ===
+A student club's members, events, attendance, budgets, expenses and income, as BIRD serves it. A fixture of round 1f.
+
+  panel birdstudentclub-4-01
+    title: rows of member by zip_code.short_state the twelve most
+    rows (12):
+      NY | 5
+      NJ | 4
+      MD | 3
+      IL | 3
+      IN | 3
+      TX | 2
+      NC | 2
+      TN | 1
+      UT | 1
+      VA | 1
+      AL | 1
+      WA | 1
+
+  panel birdstudentclub-4-02
+    title: rows of member by major.department the twelve most
+    rows (12):
+      School of Applied Sciences, Technology a | 5
+      Civil and Environmental Engineering Depa | 4
+      Political Science Department | 3
+      Human Development and Family Studies Dep | 3
+      Languages, Philosophy and Communication  | 3
+      Wildland Resources Department | 2
+      School of Teacher Education and Leadersh | 2
+      Electrical and Computer Engineering Depa | 2
+      ∅ | 1
+      Art and Design Department | 1
+      Liberal Arts Program | 1
+      Kinesiology and Health Science Departmen | 1
+
+  panel birdstudentclub-4-03
+    title: sum of income.amount by member (named) the twelve most
+    rows (12):
+       | 4200
+      Sacha Harrison | 100
+      Connor Hilton | 100
+      Carlo Jacobs | 50
+      Garrett Gerke | 50
+      Maya Mclean | 50
+      Sherri Ramsey | 50
+      Adele Deleon | 50
+      Matthew Snay | 50
+      Adela O'Gallagher | 50
+      Elijah Allen | 50
+      Kevin Pierce | 50
+
+  panel birdstudentclub-4-04
+    title: rows of expense by budget (by key) the twelve most
+    rows (12):
+      recca5tkvdQgoLKZz | 3
+      rec1bG6HSft7XIvTP | 2
+      reczf4LoOK6z7oOec | 2
+      recr60T1tLsfdICV8 | 2
+      recexNBMuCY9emh6y | 2
+      recwXIiKoBMjXJsGZ | 2
+      rec5V70sIuIgpOzDT | 2
+      recZuCiQzCDAs4zDQ | 1
+      recy8KY5bUdzF81vv | 1
+      recZAjcliIUo4BCKW | 1
+      recKjd7dcURsmP0KY | 1
+      recJOc7f9KgpgJm5q | 1
+
+  panel birdstudentclub-4-05
+    title: rows of zip_code by zip_code.type
+    rows (3):
+      Standard | 29973
+      PO Box | 9438
+      Unique | 2466
+
+  panel birdstudentclub-4-06
+    title: rows of event by event.location the twelve most
+    rows (12):
+      MU 215 | 19
+      ∅ | 6
+      Campus Soccer/Lacrosse stadium | 3
+      Conference Room BA 452 | 2
+      100 W. Main Street | 2
+      900 E. Washington St. | 2
+      Campus Football stadium | 2
+      45 N. Smith St. | 1
+      Campus Common | 1
+      Campus Baseball Stadium | 1
+      258 S. Maple St. | 1
+      Various locations | 1
+
+  panel birdstudentclub-4-07
+    title: rows of income by income.source
+    rows (4):
+      Dues | 33
+      School Appropration | 1
+      Sponsorship | 1
+      Fundraising | 1
+
+  panel birdstudentclub-4-08
+    title: sum of income.amount by income.source
+    rows (4):
+      School Appropration | 3000
+      Dues | 1650
+      Sponsorship | 1000
+      Fundraising | 200
+
+  panel birdstudentclub-4-09
+    title: sum of income.amount by major.major_name the twelve most
+    rows (12):
+      ∅ | 4200
+      Human Development and Family Studies | 150
+      Elementary Education | 100
+      Environmental Engineering | 100
+      Nutrition Science | 100
+      Liberal Arts | 100
+      Civil Engineering | 100
+      Law and Constitutional Studies | 100
+      International Business | 50
+      Forest Ecology and Management | 50
+      Communication Studies | 50
+      Electrical Engineering | 50
+
+  panel birdstudentclub-4-10
+    title: sum of budget.amount by budget.category
+    rows (5):
+      Food | 2595
+      Advertisement | 1060
+      Club T-Shirts | 300
+      Speaker Gifts | 175
+      Parking | 70
+
+  panel birdstudentclub-4-11
+    title: rows of attendance per member
+    rows (9):
+      2 | 1
+      8 | 2
+      9 | 8
+      10 | 2
+      11 | 5
+      12 | 5
+      13 | 1
+      14 | 4
+      16 | 2
+
+  panel birdstudentclub-4-12
+    title: rows of budget by event.event_name the twelve most
+    rows (12):
+      January Speaker | 4
+      March Speaker | 4
+      September Speaker | 4
+      November Speaker | 4
+      February Speaker | 4
+      April Speaker | 4
+      October Speaker | 4
+      March Meeting | 2
+      Yearly Kickoff | 2
+      September Meeting | 2
+      February Meeting | 2
+      January Meeting | 2
+
+  panel birdstudentclub-4-13
+    title: rows of budget by budget.category
+    rows (5):
+      Food | 22
+      Advertisement | 15
+      Parking | 7
+      Speaker Gifts | 7
+      Club T-Shirts | 1
+
+  panel birdstudentclub-4-14
+    title: rows of member by member.t_shirt_size
+    rows (4):
+      Large | 13
+      Medium | 10
+      X-Large | 8
+      Small | 2
+
+  panel birdstudentclub-4-15
+    title: sum of expense.cost by expense.expense_description
+    rows (12):
+      Pizza | 600.11
+      Posters | 372.96
+      Club shirts | 295.12
+      Water, chips, cookies | 290.84000000000003
+      Bakery - Donuts, muffins | 195.3
+      Post Cards, Posters | 122.06
+      Water, Cookies | 60.599999999999994
+      Water, cookies, chips | 59.73
+      Water, Veggie tray, supplies | 28.15
+      Travel Mug | 26.9
+      Parking | 18
+      Alumni Glass | 16.28
+
+  panel birdstudentclub-4-16
+    title: rows of zip_code by zip_code.state the twelve most
+    rows (12):
+      Texas | 2658
+      California | 2654
+      Pennsylvania | 2213
+      New York | 2208
+      Illinois | 1590
+      Florida | 1495
+      Ohio | 1447
+      Virginia | 1241
+      Missouri | 1173
+      Michigan | 1170
+      North Carolina | 1091
+      Iowa | 1063
+
+  panel birdstudentclub-4-17
+    title: rows of attendance by event.event_name the twelve most
+    rows (12):
+      Yearly Kickoff | 30
+      Registration | 30
+      October Speaker | 29
+      November Speaker | 27
+      September Speaker | 27
+      September Meeting | 27
+      November Meeting | 25
+      October Meeting | 23
+      Laugh Out Loud | 20
+      Women's Soccer | 17
+      Community Theater | 17
+      Football game | 14
+
+  panel birdstudentclub-4-18
+    title: sum of expense.cost by budget (by key) the twelve most
+    rows (12):
+      recca5tkvdQgoLKZz | 327.07000000000005
+      recRQdaiKCxFAlPCy | 295.12
+      recexNBMuCY9emh6y | 174.25
+      rec5V70sIuIgpOzDT | 173.06
+      recr60T1tLsfdICV8 | 154.34
+      reczf4LoOK6z7oOec | 122.33
+      recvKTAWAFKkVNnXQ | 122.06
+      rec1bG6HSft7XIvTP | 121.14
+      recwXIiKoBMjXJsGZ | 101.94
+      recN9yY7okNrFps0Y | 74.59
+      recsI0IzpUuxl2bPh | 67.81
+      rec0QmEc3cSQFQ6V2 | 67.81
+
+  panel birdstudentclub-4-19
+    title: rows of member by major.college
+    rows (9):
+      College of Education & Human Services | 8
+      College of Humanities and Social Science | 7
+      College of Agriculture and Applied Scien | 6
+      College of Engineering | 6
+      College of Natural Resources | 2
+      School of Business | 1
+      ∅ | 1
+      College of the Arts | 1
+      College of Science | 1
+
+  panel birdstudentclub-4-20
+    title: rows of zip_code by zip_code.short_state the twelve most
+    rows (12):
+      TX | 2658
+      CA | 2654
+      PA | 2213
+      NY | 2208
+      IL | 1590
+      FL | 1495
+      OH | 1447
+      VA | 1241
+      MO | 1173
+      MI | 1170
+      NC | 1091
+      IA | 1063
+
+  panel birdstudentclub-4-21
+    title: rows of expense by expense.expense_description
+    rows (12):
+      Pizza | 7
+      Posters | 6
+      Water, chips, cookies | 5
+      Parking | 3
+      Water, Cookies | 3
+      Travel Mug | 2
+      Water, Veggie tray, supplies | 1
+      Post Cards, Posters | 1
+      Bakery - Donuts, muffins | 1
+      Alumni Glass | 1
+      Water, cookies, chips | 1
+      Club shirts | 1
+
+  panel birdstudentclub-4-22
+    title: rows of member by zip_code.state the twelve most
+    rows (12):
+      New York | 5
+      New Jersey | 4
+      Indiana | 3
+      Maryland | 3
+      Illinois | 3
+      Texas | 2
+      North Carolina | 2
+      Tennessee | 1
+      Utah | 1
+      Virginia | 1
+      Alabama | 1
+      Washington | 1
+
+  panel birdstudentclub-4-23
+    title: rows of event by event.status
+    rows (3):
+      Closed | 18
+      Open | 13
+      Planning | 11
+
+  panel birdstudentclub-4-24
+    title: largest tables, estimated rows
+    rows (8):
+      zip_code | 41877
+      attendance | 326
+      major | 113
+      budget | 52
+      event | 42
+      income | 36
+      member | 33
+      expense | 32
+
+  panel birdstudentclub-4-25
+    title: rows of expense by member (named) the twelve most
+    rows (3):
+      Sacha Harrison | 12
+      Phillip Cullen | 11
+      Elijah Allen | 9
+
+  panel birdstudentclub-4-26
+    title: rows of member by zip_code.type
+    rows (1):
+      Standard | 33
+
+  panel birdstudentclub-4-27
+    title: rows of event by event.type
+    rows (8):
+      Meeting | 16
+      Guest Speaker | 7
+      Game | 6
+      Community Service | 4
+      Social | 4
+      Budget | 2
+      Election | 2
+      Registration | 1
+
+  panel birdstudentclub-4-28
+    title: sum of budget.amount by budget.event_status
+    rows (3):
+      Closed | 2055
+      Open | 1825
+      Planning | 320
+
+  panel birdstudentclub-4-29
+    title: rows of member by major.major_name the twelve most
+    rows (12):
+      Human Development and Family Studies | 3
+      Law and Constitutional Studies | 2
+      Elementary Education | 2
+      Civil Engineering | 2
+      Environmental Engineering | 2
+      Chinese | 1
+      Communication Studies | 1
+      Electrical Engineering | 1
+      Conservation and Restoration Ecology | 1
+      Business | 1
+      Liberal Arts | 1
+      Family and Consumer Sciences Education | 1
+
+  panel birdstudentclub-4-30
+    title: rows of attendance by member (named) the twelve most
+    rows (12):
+      Phillip Cullen | 16
+      Elijah Allen | 16
+      Maya Mclean | 14
+      Edwardo Ing | 14
+      Sacha Harrison | 14
+      Matthew Snay | 14
+      Katy Balentine | 13
+      Emily Jaquith | 12
+      Carlo Jacobs | 12
+      Luisa Guidi | 12
+      Annabella Warren | 12
+      Amy Firth | 12
+
+  panel birdstudentclub-4-31
+    title: rows of member by member.position
+    rows (6):
+      Member | 26
+      Inactive | 3
+      Vice President | 1
+      Secretary | 1
+      Treasurer | 1
+      President | 1
+
+  panel birdstudentclub-4-32
+    title: rows of zip_code by zip_code.state
+    rows (52):
+      Texas | 2658
+      California | 2654
+      Pennsylvania | 2213
+      New York | 2208
+      Illinois | 1590
+      Florida | 1495
+      Ohio | 1447
+      Virginia | 1241
+      Missouri | 1173
+      Michigan | 1170
+      North Carolina | 1091
+      Iowa | 1063
+      … 40 more rows
+
+  panel birdstudentclub-4-33
+    title: rows of budget by budget.event_status
+    rows (3):
+      Open | 23
+      Closed | 22
+      Planning | 7

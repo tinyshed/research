@@ -1,0 +1,1414 @@
+{
+ "databases": 28,
+ "penalties": {
+  "base": 0.0,
+  "measure": 0.0,
+  "time_same": 0.0,
+  "time_other": 0.0,
+  "by_same": 0.25,
+  "by_other": 9.0,
+  "shape": 0.0
+ },
+ "mean": {
+  "gemini, ceiling": 4.75,
+  "gemini, ceiling under the penalties": 4.71,
+  "gemini, five": 2.68,
+  "gemini, kept: a base and measure again": 0.44,
+  "gemini, kept: the rest": 0.6,
+  "gemini, share of the five: a base and measure again": 0.41,
+  "opus, ceiling": 4.73,
+  "opus, ceiling under the penalties": 4.73,
+  "opus, five": 2.85,
+  "opus, kept: a base and measure again": 0.47,
+  "opus, kept: the rest": 0.64,
+  "opus, share of the five: a base and measure again": 0.42,
+  "sonnet, ceiling": 4.71,
+  "sonnet, ceiling under the penalties": 4.71,
+  "sonnet, five": 2.86,
+  "sonnet, kept: a base and measure again": 0.47,
+  "sonnet, kept: the rest": 0.64,
+  "sonnet, share of the five: a base and measure again": 0.41
+ },
+ "auc, mean over databases": {
+  "gemini, combined": 0.72,
+  "gemini, look": 0.729,
+  "gemini, score": 0.637,
+  "opus, combined": 0.743,
+  "opus, look": 0.748,
+  "opus, score": 0.657,
+  "sonnet, combined": 0.741,
+  "sonnet, look": 0.748,
+  "sonnet, score": 0.647
+ },
+ "keep rate by kind": {
+  "breakdown/count": {
+   "opus": "105/382",
+   "sonnet": "113/427",
+   "gemini": "123/427"
+  },
+  "breakdown/sum": {
+   "opus": "40/145",
+   "sonnet": "41/145",
+   "gemini": "45/145"
+  },
+  "series/count": {
+   "opus": "27/68",
+   "sonnet": "39/81",
+   "gemini": "32/81"
+  },
+  "series/sum": {
+   "opus": "11/43",
+   "sonnet": "11/45",
+   "gemini": "11/45"
+  },
+  "breakdown/avg": {
+   "opus": "2/35",
+   "sonnet": "3/35",
+   "gemini": "6/35"
+  },
+  "series/avg": {
+   "opus": "1/19",
+   "sonnet": "3/19",
+   "gemini": "2/19"
+  },
+  "split/count": {
+   "opus": "7/15",
+   "sonnet": "6/15",
+   "gemini": "5/15"
+  },
+  "single/per": {
+   "opus": "2/12",
+   "sonnet": "1/12",
+   "gemini": "3/12"
+  },
+  "split/sum": {
+   "opus": "2/2",
+   "sonnet": "1/2",
+   "gemini": "1/2"
+  },
+  "breakdown/distinct": {
+   "opus": "0/1",
+   "sonnet": "0/1",
+   "gemini": "0/1"
+  }
+ },
+ "the five's kinds, kept by Opus": {
+  "breakdown/count": "38/68",
+  "series/count": "22/41",
+  "breakdown/sum": "7/10",
+  "series/sum": "6/9",
+  "single/per": "1/1",
+  "split/count": "0/1"
+ },
+ "kept by Opus but not chosen: rank by the combined score": {
+  "n": 123,
+  "median": 14.0,
+  "within 10": 34
+ },
+ "chosen and dropped by Opus": [
+  {
+   "db": "atherosclerosis-mysql",
+   "title": "rows of Entry by Entry.DOBAKOUR",
+   "meaning": "cannot tell",
+   "wrong": "unlabeled codes",
+   "rows": 5.0,
+   "top_share": 0.4565984474241355,
+   "blank_labels": 0.2,
+   "coverage": NaN,
+   "p": 0.69,
+   "rank": 1
+  },
+  {
+   "db": "atherosclerosis-mysql",
+   "title": "rows of Letter by Letter.MESDOT",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 12.0,
+   "top_share": 0.3349875930521092,
+   "blank_labels": 0.08333333333333333,
+   "coverage": NaN,
+   "p": 0.44,
+   "rank": 2
+  },
+  {
+   "db": "atherosclerosis-mysql",
+   "title": "rows of Death by Death.MESUMR",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 13.0,
+   "top_share": 0.10539845758354756,
+   "blank_labels": 0.07692307692307693,
+   "coverage": NaN,
+   "p": 0.49,
+   "rank": 3
+  },
+  {
+   "db": "ccs-mysql",
+   "title": "rows of transactions_1k by transactions_1k.Date",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 4.0,
+   "top_share": 0.492,
+   "blank_labels": 0.0,
+   "coverage": 1.0,
+   "p": 0.61,
+   "rank": 1
+  },
+  {
+   "db": "ccs-mysql",
+   "title": "sum of transactions_1k.Amount by transactions_1k.Date",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 4.0,
+   "top_share": 0.4984754548226446,
+   "blank_labels": 0.0,
+   "coverage": 1.0,
+   "p": 0.51,
+   "rank": 2
+  },
+  {
+   "db": "ccs-mysql",
+   "title": "rows of yearmonth by yearmonth.Date",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 21.0,
+   "top_share": 0.06654630272227759,
+   "blank_labels": 0.0,
+   "coverage": 0.8739219712525945,
+   "p": 0.53,
+   "rank": 3
+  },
+  {
+   "db": "chinook-postgres",
+   "title": "rows of invoice by invoice.invoice_date",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 60.0,
+   "top_share": 0.01699029126213592,
+   "blank_labels": 0.0,
+   "coverage": 0.9990141307919689,
+   "p": 0.6,
+   "rank": 1
+  },
+  {
+   "db": "chinook-postgres",
+   "title": "sum of invoice_line.unit_price × invoice_line.quantity by invoice.invoice_date",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 60.0,
+   "top_share": 0.022597268745168774,
+   "blank_labels": 0.0,
+   "coverage": 0.9990141307919689,
+   "p": 0.6,
+   "rank": 5
+  },
+  {
+   "db": "classicmodels-mysql",
+   "title": "rows of orders by orders.requiredDate",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 30.0,
+   "top_share": 0.07975460122699386,
+   "blank_labels": 0.0,
+   "coverage": 0.9990141307919815,
+   "p": 0.66,
+   "rank": 5
+  },
+  {
+   "db": "craftbeer-mysql",
+   "title": "sum of beers.ibu, by breweries.name, the twelve most",
+   "meaning": "no",
+   "wrong": "summing bitterness is meaningless; Oskar Blues appears twice",
+   "rows": 12.0,
+   "top_share": 0.1271060914645436,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.16,
+   "rank": 4
+  },
+  {
+   "db": "credit-mysql",
+   "title": "rows of charge, by category.category_desc, the twelve most",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 10.0,
+   "top_share": 0.11283,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.68,
+   "rank": 2
+  },
+  {
+   "db": "credit-mysql",
+   "title": "rows of member by region.country",
+   "meaning": "no",
+   "wrong": "country cut to two letters; most members blank",
+   "rows": 5.0,
+   "top_share": 0.5081,
+   "blank_labels": 0.2,
+   "coverage": NaN,
+   "p": 0.54,
+   "rank": 6
+  },
+  {
+   "db": "dallas-mysql",
+   "title": "rows of incidents by incidents.date split by incidents.subject_statuses",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 48.0,
+   "top_share": 0.045662100456621,
+   "blank_labels": 0.0,
+   "coverage": 1.0,
+   "p": 0.43,
+   "rank": 6
+  },
+  {
+   "db": "ergastf1-mysql",
+   "title": "sum of lapTimes.milliseconds, by drivers.forename, the twelve most",
+   "meaning": "no",
+   "wrong": "sums lap times by first name, merging drivers",
+   "rows": 12.0,
+   "top_share": 0.10519402400366658,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.64,
+   "rank": 3
+  },
+  {
+   "db": "ergastf1-mysql",
+   "title": "rows of results, by constructors.name, the twelve most",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 12.0,
+   "top_share": 0.18750550709313596,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.41,
+   "rank": 5
+  },
+  {
+   "db": "ftp-mysql",
+   "title": "rows of product, by product.category_b, the twelve most",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 12.0,
+   "top_share": 0.2778234769063829,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.72,
+   "rank": 3
+  },
+  {
+   "db": "ftp-mysql",
+   "title": "rows of product by session.start_time",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 34.0,
+   "top_share": 0.043494608292851664,
+   "blank_labels": 0.0,
+   "coverage": 0.8629441624360382,
+   "p": 0.35,
+   "rank": 5
+  },
+  {
+   "db": "hockey-mysql",
+   "title": "rows of Goalies by Goalies.year",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 102.0,
+   "top_share": 0.025245441795231416,
+   "blank_labels": 0.0,
+   "coverage": 0.9902912621359223,
+   "p": 0.57,
+   "rank": 2
+  },
+  {
+   "db": "hockey-mysql",
+   "title": "rows of TeamSplits by TeamSplits.year",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 102.0,
+   "top_share": 0.02106649111257406,
+   "blank_labels": 0.0,
+   "coverage": 0.9902912621359223,
+   "p": 0.47,
+   "rank": 5
+  },
+  {
+   "db": "lahman-mysql",
+   "title": "rows of fielding by fielding.yearID",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 142.0,
+   "top_share": 0.016850878782388112,
+   "blank_labels": 0.0,
+   "coverage": 1.0,
+   "p": 0.72,
+   "rank": 1
+  },
+  {
+   "db": "medical-mysql",
+   "title": "rows of Patient by Patient.Description",
+   "meaning": "cannot tell",
+   "wrong": "a date column named Description, shown as years with no explanation; 1995 missing and patients without it left out",
+   "rows": 7.0,
+   "top_share": 0.3219178082191781,
+   "blank_labels": 0.0,
+   "coverage": 0.875,
+   "p": 0.71,
+   "rank": 2
+  },
+  {
+   "db": "medical-mysql",
+   "title": "rows of Laboratory, by Patient (by key), the twelve most",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 12.0,
+   "top_share": 0.12289287656334964,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.4,
+   "rank": 4
+  },
+  {
+   "db": "mondial-mysql",
+   "title": "rows of politics by politics.Independence",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 84.0,
+   "top_share": 0.09836065573770492,
+   "blank_labels": 0.0,
+   "coverage": 0.04918032786885246,
+   "p": 0.36,
+   "rank": 1
+  },
+  {
+   "db": "mondial-mysql",
+   "title": "rows of island by island.Type",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 5.0,
+   "top_share": 0.6702898550724637,
+   "blank_labels": 0.2,
+   "coverage": NaN,
+   "p": 0.35,
+   "rank": 4
+  },
+  {
+   "db": "mondial-mysql",
+   "title": "rows of lake by lake.Type",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 7.0,
+   "top_share": 0.5692307692307692,
+   "blank_labels": 0.14285714285714285,
+   "coverage": NaN,
+   "p": 0.33,
+   "rank": 7
+  },
+  {
+   "db": "movielens-mysql",
+   "title": "rows of movies by movies.year",
+   "meaning": "no",
+   "wrong": "year holds era codes 1 to 4, not years",
+   "rows": 4.0,
+   "top_share": 0.7105949895615866,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.72,
+   "rank": 2
+  },
+  {
+   "db": "movielens-mysql",
+   "title": "rows of movies2actors, by actors.a_gender, the twelve most",
+   "meaning": "no",
+   "wrong": "grouped per actor but labelled by gender, so M and F repeat",
+   "rows": 12.0,
+   "top_share": 0.136,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.64,
+   "rank": 3
+  },
+  {
+   "db": "movielens-mysql",
+   "title": "rows of users by users.occupation",
+   "meaning": "cannot tell",
+   "wrong": "occupation shown as unexplained codes 1 to 5",
+   "rows": 5.0,
+   "top_share": 0.26726279185295576,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.57,
+   "rank": 5
+  },
+  {
+   "db": "nba-mysql",
+   "title": "rows of Game, by Team.TeamName, the twelve most",
+   "meaning": "no",
+   "wrong": "counts each game for one team only; misses teams' other games",
+   "rows": 12.0,
+   "top_share": 0.15,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.48,
+   "rank": 2
+  },
+  {
+   "db": "nba-mysql",
+   "title": "rows of Actions, by Actions.FreeThrowsMade, the twelve most",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 12.0,
+   "top_share": 0.5647058823529412,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.43,
+   "rank": 5
+  },
+  {
+   "db": "nba-mysql",
+   "title": "rows of Actions, by Team.TeamName, the twelve most",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 12.0,
+   "top_share": 0.10344827586206896,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.31,
+   "rank": 4
+  },
+  {
+   "db": "ncaa-mysql",
+   "title": "rows of regular_season_detailed_results, by teams.team_name, the twelve most",
+   "meaning": "cannot tell",
+   "wrong": "does not say whether the team counted is the winner or loser",
+   "rows": 12.0,
+   "top_share": 0.0897185845639454,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.57,
+   "rank": 1
+  },
+  {
+   "db": "ncaa-mysql",
+   "title": "rows of tourney_detailed_results, by teams.team_name, the twelve most",
+   "meaning": "cannot tell",
+   "wrong": "does not say whether the team counted is the winner or loser",
+   "rows": 12.0,
+   "top_share": 0.10689655172413794,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.48,
+   "rank": 2
+  },
+  {
+   "db": "ncaa-mysql",
+   "title": "rows of regular_season_detailed_results by regular_season_detailed_results.wloc",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 3.0,
+   "top_share": 0.5977064674972735,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.4,
+   "rank": 4
+  },
+  {
+   "db": "northwind-postgres",
+   "title": "rows of orders by orders.required_date",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 24.0,
+   "top_share": 0.08674698795180723,
+   "blank_labels": 0.0,
+   "coverage": 0.9987679671458224,
+   "p": 0.65,
+   "rank": 2
+  },
+  {
+   "db": "northwind-postgres",
+   "title": "rows of orders by orders.shipped_date",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 23.0,
+   "top_share": 0.09147095179233622,
+   "blank_labels": 0.0,
+   "coverage": 0.9987144693615863,
+   "p": 0.5,
+   "rank": 5
+  },
+  {
+   "db": "premierleague-mysql",
+   "title": "rows of Matches by Matches.TeamHomeFormation",
+   "meaning": "cannot tell",
+   "wrong": "formation shown as unexplained numeric codes",
+   "rows": 11.0,
+   "top_share": 0.35789473684210527,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.72,
+   "rank": 2
+  },
+  {
+   "db": "premierleague-mysql",
+   "title": "rows of Matches by Matches.TeamAwayFormation",
+   "meaning": "cannot tell",
+   "wrong": "formation shown as unexplained numeric codes",
+   "rows": 11.0,
+   "top_share": 0.3026315789473684,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.56,
+   "rank": 4
+  },
+  {
+   "db": "premierleague-mysql",
+   "title": "rows of Matches, by Teams.Name, the twelve most",
+   "meaning": "no",
+   "wrong": "counts only home matches (19 of 38); arbitrary twelve of ties",
+   "rows": 12.0,
+   "top_share": 0.08333333333333333,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.21,
+   "rank": 5
+  },
+  {
+   "db": "pubs-mysql",
+   "title": "sum of sales.qty by sales.ord_date",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 7.0,
+   "top_share": 0.33468559837728196,
+   "blank_labels": 0.0,
+   "coverage": 0.24973594648516798,
+   "p": 0.39,
+   "rank": 3
+  },
+  {
+   "db": "pubs-mysql",
+   "title": "sum of sales.qty × titles.price by sales.payterms",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 3.0,
+   "top_share": 0.5478290823585796,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.29,
+   "rank": 5
+  },
+  {
+   "db": "restbase-mysql",
+   "title": "rows of location, by geographic (by key), the twelve most",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 12.0,
+   "top_share": 0.2576964477933262,
+   "blank_labels": 0.08333333333333333,
+   "coverage": NaN,
+   "p": 0.46,
+   "rank": 2
+  },
+  {
+   "db": "restbase-mysql",
+   "title": "rows of location, by geographic.county, the twelve most",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 12.0,
+   "top_share": 0.24785145888594165,
+   "blank_labels": 0.08333333333333333,
+   "coverage": NaN,
+   "p": 0.48,
+   "rank": 4
+  },
+  {
+   "db": "restbase-mysql",
+   "title": "rows of geographic by geographic.region",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 9.0,
+   "top_share": 0.7261904761904762,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.41,
+   "rank": 6
+  },
+  {
+   "db": "sfscores-mysql",
+   "title": "rows of violations by violations.date",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 37.0,
+   "top_share": 0.05228848821081831,
+   "blank_labels": 0.0,
+   "coverage": 0.9988012254140212,
+   "p": 0.73,
+   "rank": 2
+  },
+  {
+   "db": "sfscores-mysql",
+   "title": "rows of businesses by businesses.application_date",
+   "meaning": "no",
+   "wrong": "1899-01-01 is a placeholder date, not real applications",
+   "rows": 50.0,
+   "top_share": 0.14915517576228393,
+   "blank_labels": 0.0,
+   "coverage": 0.2403846153846154,
+   "p": 0.57,
+   "rank": 4
+  },
+  {
+   "db": "shakespeare-mysql",
+   "title": "rows of paragraphs, by chapters.Description, the twelve most",
+   "meaning": "no",
+   "wrong": "groups by scene description text; 'The same.' merges unrelated scenes",
+   "rows": 12.0,
+   "top_share": 0.1618650492797574,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.32,
+   "rank": 2
+  },
+  {
+   "db": "shakespeare-mysql",
+   "title": "rows of chapters by works.GenreType",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 5.0,
+   "top_share": 0.2931216931216931,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.54,
+   "rank": 4
+  },
+  {
+   "db": "shakespeare-mysql",
+   "title": "rows of chapters, by works (by key), the twelve most",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 12.0,
+   "top_share": 0.3311827956989247,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.42,
+   "rank": 6
+  },
+  {
+   "db": "studentloan-mysql",
+   "title": "rows of enrolled, by person (by key), the twelve most",
+   "meaning": "no",
+   "wrong": "every value is 2, arbitrary ties",
+   "rows": 12.0,
+   "top_share": 0.08333333333333333,
+   "blank_labels": 0.0,
+   "coverage": NaN,
+   "p": 0.04,
+   "rank": 5
+  },
+  {
+   "db": "voc-mysql",
+   "title": "rows of voyages by voyages.arrival_date",
+   "meaning": "no",
+   "wrong": "typo year 1129 stretches the axis; repeats the departure timeline",
+   "rows": 201.0,
+   "top_share": 0.010832680762203081,
+   "blank_labels": 0.0,
+   "coverage": 0.2484548825710754,
+   "p": 0.56,
+   "rank": 2
+  },
+  {
+   "db": "voc-mysql",
+   "title": "rows of voyages by voyages.cape_arrival",
+   "meaning": "no",
+   "wrong": "typo year 1192 stretches the time axis",
+   "rows": 188.0,
+   "top_share": 0.011018889524899829,
+   "blank_labels": 0.0,
+   "coverage": 0.23209876543209876,
+   "p": 0.56,
+   "rank": 3
+  },
+  {
+   "db": "voc-mysql",
+   "title": "rows of voyages by voyages.cape_departure",
+   "meaning": "no",
+   "wrong": "typo years 1170 to 1554 stretch the time axis",
+   "rows": 182.0,
+   "top_share": 0.01118162586884255,
+   "blank_labels": 0.0,
+   "coverage": 0.21462264150943397,
+   "p": 0.56,
+   "rank": 4
+  },
+  {
+   "db": "voc-mysql",
+   "title": "rows of voyages by voyages.yard",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 10.0,
+   "top_share": 0.4406592055097774,
+   "blank_labels": 0.1,
+   "coverage": NaN,
+   "p": 0.5,
+   "rank": 5
+  },
+  {
+   "db": "world-mysql",
+   "title": "rows of Country, by Country.HeadOfState, the twelve most",
+   "meaning": "yes",
+   "wrong": null,
+   "rows": 12.0,
+   "top_share": 0.49295774647887325,
+   "blank_labels": 0.08333333333333333,
+   "coverage": NaN,
+   "p": 0.48,
+   "rank": 1
+  },
+  {
+   "db": "world-mysql",
+   "title": "rows of Country by Country.IndepYear",
+   "meaning": "no",
+   "wrong": "years before 1000 shown as bare numbers and later ones as dates; mostly ones; countries without a year left out",
+   "rows": 88.0,
+   "top_share": 0.09375,
+   "blank_labels": 0.0,
+   "coverage": 0.08719052744886975,
+   "p": 0.49,
+   "rank": 2
+  }
+ ],
+ "per database": {
+  "airlines-postgres": {
+   "opus": {
+    "pool": 30,
+    "kept in pool": 13,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 5
+   },
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 14,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 5
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 11,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 3
+   }
+  },
+  "atherosclerosis-mysql": {
+   "opus": {
+    "pool": 30,
+    "kept in pool": 2,
+    "ceiling": 2,
+    "ceiling under the penalties": 2,
+    "five": 2
+   },
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 1,
+    "ceiling": 1,
+    "ceiling under the penalties": 1,
+    "five": 1
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 0,
+    "ceiling": 0,
+    "ceiling under the penalties": 0,
+    "five": 0
+   }
+  },
+  "basketball-mysql": {
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 11,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 9,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   }
+  },
+  "basketballwomen-mysql": {
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 7,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 4
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 6,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 4
+   }
+  },
+  "ccs-mysql": {
+   "opus": {
+    "pool": 30,
+    "kept in pool": 13,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   },
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 9,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 18,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 3
+   }
+  },
+  "chinook-postgres": {
+   "opus": {
+    "pool": 30,
+    "kept in pool": 8,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 3
+   },
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 8,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 7,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   }
+  },
+  "classicmodels-mysql": {
+   "opus": {
+    "pool": 30,
+    "kept in pool": 15,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 4
+   },
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 15,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 4
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 20,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 4
+   }
+  },
+  "craftbeer-mysql": {
+   "opus": {
+    "pool": 16,
+    "kept in pool": 4,
+    "ceiling": 4,
+    "ceiling under the penalties": 4,
+    "five": 4
+   },
+   "sonnet": {
+    "pool": 16,
+    "kept in pool": 4,
+    "ceiling": 4,
+    "ceiling under the penalties": 4,
+    "five": 4
+   },
+   "gemini": {
+    "pool": 16,
+    "kept in pool": 4,
+    "ceiling": 4,
+    "ceiling under the penalties": 4,
+    "five": 4
+   }
+  },
+  "credit-mysql": {
+   "opus": {
+    "pool": 30,
+    "kept in pool": 6,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 3
+   },
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 7,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 3
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 7,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 4
+   }
+  },
+  "dallas-mysql": {
+   "opus": {
+    "pool": 30,
+    "kept in pool": 12,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 4
+   },
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 13,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 5
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 11,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 4
+   }
+  },
+  "ergastf1-mysql": {
+   "opus": {
+    "pool": 30,
+    "kept in pool": 10,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 3
+   },
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 10,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 4
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 11,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 4
+   }
+  },
+  "ftp-mysql": {
+   "opus": {
+    "pool": 6,
+    "kept in pool": 4,
+    "ceiling": 4,
+    "ceiling under the penalties": 4,
+    "five": 3
+   },
+   "sonnet": {
+    "pool": 6,
+    "kept in pool": 4,
+    "ceiling": 4,
+    "ceiling under the penalties": 4,
+    "five": 4
+   },
+   "gemini": {
+    "pool": 6,
+    "kept in pool": 6,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 5
+   }
+  },
+  "hockey-mysql": {
+   "opus": {
+    "pool": 30,
+    "kept in pool": 8,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 3
+   },
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 8,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 3
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 11,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 3
+   }
+  },
+  "lahman-mysql": {
+   "opus": {
+    "pool": 30,
+    "kept in pool": 8,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 4
+   },
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 6,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 3
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 7,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 3
+   }
+  },
+  "medical-mysql": {
+   "opus": {
+    "pool": 30,
+    "kept in pool": 5,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 3
+   },
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 7,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 3
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 6,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 3
+   }
+  },
+  "mondial-mysql": {
+   "opus": {
+    "pool": 30,
+    "kept in pool": 5,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   },
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 7,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 7,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 1
+   }
+  },
+  "movielens-mysql": {
+   "opus": {
+    "pool": 30,
+    "kept in pool": 8,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   },
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 7,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 7,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   }
+  },
+  "nba-mysql": {
+   "opus": {
+    "pool": 29,
+    "kept in pool": 3,
+    "ceiling": 3,
+    "ceiling under the penalties": 3,
+    "five": 2
+   },
+   "sonnet": {
+    "pool": 29,
+    "kept in pool": 4,
+    "ceiling": 4,
+    "ceiling under the penalties": 4,
+    "five": 2
+   },
+   "gemini": {
+    "pool": 29,
+    "kept in pool": 5,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   }
+  },
+  "ncaa-mysql": {
+   "opus": {
+    "pool": 30,
+    "kept in pool": 5,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   },
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 6,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 1
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 4,
+    "ceiling": 4,
+    "ceiling under the penalties": 4,
+    "five": 1
+   }
+  },
+  "northwind-postgres": {
+   "opus": {
+    "pool": 29,
+    "kept in pool": 12,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 3
+   },
+   "sonnet": {
+    "pool": 29,
+    "kept in pool": 11,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   },
+   "gemini": {
+    "pool": 29,
+    "kept in pool": 9,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   }
+  },
+  "premierleague-mysql": {
+   "opus": {
+    "pool": 30,
+    "kept in pool": 6,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   },
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 5,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 1
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 7,
+    "ceiling": 5,
+    "ceiling under the penalties": 4,
+    "five": 1
+   }
+  },
+  "pubs-mysql": {
+   "opus": {
+    "pool": 30,
+    "kept in pool": 14,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 3
+   },
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 13,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 4
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 11,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 3
+   }
+  },
+  "restbase-mysql": {
+   "opus": {
+    "pool": 22,
+    "kept in pool": 5,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   },
+   "sonnet": {
+    "pool": 22,
+    "kept in pool": 5,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   },
+   "gemini": {
+    "pool": 22,
+    "kept in pool": 7,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   }
+  },
+  "sfscores-mysql": {
+   "opus": {
+    "pool": 30,
+    "kept in pool": 7,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 3
+   },
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 9,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 4
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 10,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 4
+   }
+  },
+  "shakespeare-mysql": {
+   "opus": {
+    "pool": 30,
+    "kept in pool": 5,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   },
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 5,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 6,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 3
+   }
+  },
+  "studentloan-mysql": {
+   "opus": {
+    "pool": 19,
+    "kept in pool": 5,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 4
+   },
+   "sonnet": {
+    "pool": 19,
+    "kept in pool": 4,
+    "ceiling": 4,
+    "ceiling under the penalties": 4,
+    "five": 4
+   },
+   "gemini": {
+    "pool": 19,
+    "kept in pool": 6,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 4
+   }
+  },
+  "voc-mysql": {
+   "opus": {
+    "pool": 30,
+    "kept in pool": 5,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 1
+   },
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 9,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 2
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 8,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 1
+   }
+  },
+  "world-mysql": {
+   "opus": {
+    "pool": 30,
+    "kept in pool": 9,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 3
+   },
+   "sonnet": {
+    "pool": 30,
+    "kept in pool": 9,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 3
+   },
+   "gemini": {
+    "pool": 30,
+    "kept in pool": 7,
+    "ceiling": 5,
+    "ceiling under the penalties": 5,
+    "five": 1
+   }
+  }
+ }
+}

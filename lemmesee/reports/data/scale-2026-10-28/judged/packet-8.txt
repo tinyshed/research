@@ -1,0 +1,2138 @@
+You are judging panels proposed for a first overview dashboard of several databases. You did not make them,
+and you are not told what made them. Do not read, search or open any file other than this one, and run no
+command; when done, write your answers with the Write tool, once, to the path given to you.
+
+For every panel answer:
+ 1. keep: would you keep this panel on a first overview of this database? true or false
+ 2. meaning: does the picture mean what it seems to? "yes", "no", or "cannot tell"
+ 3. wrong: if not, what is wrong, in a few words; else null
+A panel is shown by its title, which says what it computes, and the first rows of its result as they came back
+from the database. Judge what a person new to the database would want first, and whether the result shown is
+worth a chart: a single bar, an empty result or a column of blanks is not.
+
+Write one JSON object: {"panels": {"<panel id>": {"keep": bool, "meaning": "...", "wrong": str|null}, ...}} —
+every panel id below must be answered.
+
+
+=== database: birdappstore ===
+Google Play's apps: their category, rating, installs and price, and users' reviews with their sentiment, as BIRD serves it. A fixture of round 1f.
+
+  panel birdappstore-4-01
+    title: average of playstore.Reviews by playstore.Installs the twelve most
+    rows (12):
+      1,000,000,000+ | 21336181.689655172414
+      500,000,000+ | 9957383.777777777778
+      100,000,000+ | 4671249.562347188264
+      50,000,000+ | 1232241.795847750865
+      10,000,000+ | 362529.614217252396
+      5,000,000+ | 102801.482712765957
+      1,000,000+ | 33036.766941101963
+      500,000+ | 9798.6697588126159555
+      100,000+ | 3388.3686911890504705
+      50,000+ | 986.3194154488517745
+      10,000+ | 343.9791271347248577
+      5,000+ | 100.9014675052410901
+
+  panel birdappstore-4-02
+    title: rows of user_reviews by user_reviews.Sentiment
+    rows (4):
+      nan | 26861
+      Positive | 23992
+      Negative | 8271
+      Neutral | 5162
+
+  panel birdappstore-4-03
+    title: average of playstore.Rating by playstore.Genres the twelve most
+    rows (12):
+      Art & Design;Action & Adventure | ∅
+      Role Playing;Education | ∅
+      Trivia;Education | ∅
+      Books & Reference;Creativity | ∅
+      Board;Pretend Play | 4.8
+      Comics;Creativity | 4.8
+      Health & Fitness;Education | 4.7
+      Puzzle;Education | 4.6
+      Adventure;Brain Games | 4.6
+      Strategy;Action & Adventure | 4.6
+      Entertainment;Creativity | 4.533333333333333
+      Music;Music & Video | 4.533333333333332
+
+  panel birdappstore-4-04
+    title: average of playstore.Rating by playstore.Content Rating
+    rows (6):
+      Adults only 18+ | 4.3
+      Everyone 10+ | 4.257178841309818
+      Teen | 4.233487084870852
+      Everyone | 4.186374663072782
+      Mature 17+ | 4.123427331887204
+      Unrated | 4.1
+
+  panel birdappstore-4-05
+    title: average of playstore.Reviews by playstore.Genres the twelve most
+    rows (12):
+      Adventure;Action & Adventure | 3087739.307692307692
+      Strategy | 3057929.635514018692
+      Casual | 2135123.642487046632
+      Communication | 2107137.622739018088
+      Social | 2105903.125423728814
+      Casual;Action & Adventure | 2032956.761904761905
+      Arcade | 1531774.695454545455
+      Action | 959736.857534246575
+      Puzzle;Action & Adventure | 950017.400000000000
+      Education;Education | 912100.800000000000
+      Racing | 909151.908163265306
+      Photography | 637363.134328358209
+
+  panel birdappstore-4-06
+    title: average of playstore.Reviews by playstore.Category the twelve most
+    rows (12):
+      COMMUNICATION | 2107137.622739018088
+      SOCIAL | 2105903.125423728814
+      GAME | 1385858.696678321678
+      PHOTOGRAPHY | 637363.134328358209
+      VIDEO_PLAYERS | 630743.931428571429
+      SHOPPING | 442466.238461538462
+      ENTERTAINMENT | 397168.818791946309
+      TOOLS | 324062.922894424674
+      PRODUCTIVITY | 269143.808962264151
+      EDUCATION | 253819.141025641026
+      TRAVEL_AND_LOCAL | 242705.112403100775
+      PERSONALIZATION | 227923.826530612245
+
+  panel birdappstore-4-07
+    title: average of playstore.Rating by playstore.Type
+    rows (3):
+      NaN | ∅
+      Paid | 4.266615146831529
+      Free | 4.186202546163562
+
+  panel birdappstore-4-08
+    title: average of playstore.Rating by playstore.Installs the twelve most
+    rows (12):
+      0 | ∅
+      0+ | ∅
+      1+ | 5
+      10+ | 4.62463768115942
+      5+ | 4.611111111111111
+      50+ | 4.419642857142857
+      100,000,000+ | 4.411491442542786
+      100+ | 4.363430420711976
+      50,000,000+ | 4.3512110726643645
+      500,000,000+ | 4.3500000000000005
+      10,000,000+ | 4.3134185303514405
+      1,000,000,000+ | 4.2586206896551735
+
+  panel birdappstore-4-09
+    title: sum of playstore.Reviews by playstore.Content Rating
+    rows (6):
+      Everyone | 2801847376
+      Teen | 1131523721
+      Everyone 10+ | 683997228
+      Mature 17+ | 197166533
+      Adults only 18+ | 81348
+      Unrated | 1187
+
+  panel birdappstore-4-10
+    title: rows of playstore by playstore.Installs the twelve most
+    rows (12):
+      1,000,000+ | 1579
+      10,000,000+ | 1252
+      100,000+ | 1169
+      10,000+ | 1054
+      1,000+ | 907
+      5,000,000+ | 752
+      100+ | 719
+      500,000+ | 539
+      50,000+ | 479
+      5,000+ | 477
+      100,000,000+ | 409
+      10+ | 386
+
+  panel birdappstore-4-11
+    title: rows of playstore by playstore.Content Rating
+    rows (6):
+      Everyone | 8714
+      Teen | 1208
+      Mature 17+ | 499
+      Everyone 10+ | 414
+      Adults only 18+ | 3
+      Unrated | 2
+
+  panel birdappstore-4-12
+    title: sum of playstore.Reviews by playstore.Type
+    rows (3):
+      Free | 4805278743
+      Paid | 9338650
+      NaN | 0
+
+  panel birdappstore-4-13
+    title: sum of playstore.Reviews by playstore.Category the twelve most
+    rows (12):
+      GAME | 1585422349
+      COMMUNICATION | 815462260
+      SOCIAL | 621241422
+      FAMILY | 410226330
+      TOOLS | 273185044
+      PHOTOGRAPHY | 213516650
+      SHOPPING | 115041222
+      PRODUCTIVITY | 114116975
+      VIDEO_PLAYERS | 110380188
+      PERSONALIZATION | 89346140
+      SPORTS | 70830169
+      TRAVEL_AND_LOCAL | 62617919
+
+  panel birdappstore-4-14
+    title: average of playstore.Reviews by playstore.Content Rating
+    rows (6):
+      Everyone 10+ | 1652167.217391304348
+      Teen | 936691.822019867550
+      Mature 17+ | 395123.312625250501
+      Everyone | 321534.011475786091
+      Adults only 18+ | 27116.000000000000
+      Unrated | 593.5000000000000000
+
+  panel birdappstore-4-15
+    title: rows of playstore by playstore.Type
+    rows (3):
+      Free | 10039
+      Paid | 800
+      NaN | 1
+
+  panel birdappstore-4-16
+    title: rows of playstore by playstore.Genres the twelve most
+    rows (12):
+      Tools | 842
+      Entertainment | 623
+      Education | 549
+      Medical | 463
+      Business | 460
+      Productivity | 424
+      Sports | 398
+      Personalization | 392
+      Communication | 387
+      Lifestyle | 381
+      Finance | 366
+      Action | 365
+
+  panel birdappstore-4-17
+    title: sum of playstore.Reviews by playstore.Installs the twelve most
+    rows (12):
+      100,000,000+ | 1910541071
+      1,000,000,000+ | 1237498538
+      500,000,000+ | 716931632
+      10,000,000+ | 453887077
+      50,000,000+ | 356117879
+      5,000,000+ | 77306715
+      1,000,000+ | 52165055
+      500,000+ | 5281483
+      100,000+ | 3961003
+      50,000+ | 472447
+      10,000+ | 362554
+      5,000+ | 48130
+
+  panel birdappstore-4-18
+    title: average of playstore.Reviews by playstore.Type
+    rows (3):
+      Free | 478661.096025500548
+      Paid | 11673.312500000000
+      NaN | 0.00000000000000000000
+
+  panel birdappstore-4-19
+    title: sum of playstore.Reviews by playstore.Genres the twelve most
+    rows (12):
+      Communication | 815462260
+      Social | 621241422
+      Casual | 412078863
+      Action | 350303953
+      Arcade | 336990433
+      Strategy | 327198471
+      Tools | 272842708
+      Photography | 213516650
+      Sports | 192877617
+      Shopping | 115041222
+      Productivity | 114116975
+      Video Players & Editors | 110101364
+
+  panel birdappstore-4-20
+    title: rows of playstore by playstore.Category the twelve most
+    rows (12):
+      FAMILY | 1972
+      GAME | 1144
+      TOOLS | 843
+      MEDICAL | 463
+      BUSINESS | 460
+      PRODUCTIVITY | 424
+      PERSONALIZATION | 392
+      COMMUNICATION | 387
+      SPORTS | 384
+      LIFESTYLE | 382
+      FINANCE | 366
+      HEALTH_AND_FITNESS | 341
+
+  panel birdappstore-4-21
+    title: largest tables, estimated rows
+    rows (2):
+      user_reviews | 64286
+      playstore | 10840
+
+  panel birdappstore-4-22
+    title: average of playstore.Rating by playstore.Category the twelve most
+    rows (12):
+      EVENTS | 4.435555555555557
+      EDUCATION | 4.389032258064517
+      ART_AND_DESIGN | 4.358064516129031
+      BOOKS_AND_REFERENCE | 4.346067415730338
+      PERSONALIZATION | 4.335987261146501
+      PARENTING | 4.300000000000001
+      GAME | 4.2863263445761195
+      BEAUTY | 4.278571428571428
+      HEALTH_AND_FITNESS | 4.2771043771043775
+      SHOPPING | 4.259663865546221
+      SOCIAL | 4.255598455598457
+      WEATHER | 4.243999999999999
+
+
+=== database: birdregionalsales ===
+A company's sales orders, customers, products, sales teams, store locations and regions, as BIRD serves it. A fixture of round 1f.
+
+  panel birdregionalsales-4-01
+    title: sum of Sales Orders.Order Quantity by Sales Team (by key) the twelve most
+    rows (12):
+      18 | 1476
+      13 | 1474
+      8 | 1409
+      12 | 1393
+      26 | 1391
+      21 | 1388
+      3 | 1371
+      1 | 1366
+      16 | 1337
+      11 | 1318
+      7 | 1306
+      19 | 1294
+
+  panel birdregionalsales-4-02
+    title: sum of Sales Orders.Order Quantity by Products.Product Name the twelve most
+    rows (12):
+      Accessories | 956
+      Platters | 896
+      Cocktail Glasses | 879
+      Serveware | 878
+      Rugs | 855
+      Collectibles | 854
+      Wine Storage | 837
+      Wardrobes | 832
+      Wreaths | 830
+      Dining Furniture | 827
+      Photo Frames | 819
+      Pendants | 818
+
+  panel birdregionalsales-4-03
+    title: rows of Store Locations by Store Locations.State the twelve most
+    rows (12):
+      California | 74
+      Texas | 38
+      Illinois | 30
+      Florida | 25
+      New York | 20
+      Colorado | 13
+      Indiana | 13
+      Arizona | 10
+      Connecticut | 10
+      North Carolina | 9
+      Nevada | 8
+      Washington | 8
+
+  panel birdregionalsales-4-04
+    title: largest tables, estimated rows
+    rows (6):
+      Sales Orders | 7991
+      Store Locations | 367
+      Customers | 50
+      Regions | 48
+      Products | 47
+      Sales Team | 28
+
+  panel birdregionalsales-4-05
+    title: rows of Sales Orders by Sales Orders.Sales Channel
+    rows (4):
+      In-Store | 3298
+      Online | 2425
+      Distributor | 1375
+      Wholesale | 893
+
+  panel birdregionalsales-4-06
+    title: average of Sales Orders.Order Quantity by Store Locations.City Name the twelve most
+    rows (12):
+      El Paso | 6.0454545454545455
+      Lehigh Acres | 5.9166666666666667
+      Naperville | 5.8000000000000000
+      Carrollton | 5.7391304347826087
+      West Jordan | 5.6666666666666667
+      Lubbock | 5.6333333333333333
+      Colorado Springs | 5.6000000000000000
+      Amarillo | 5.5882352941176471
+      York | 5.5625000000000000
+      Fort Wayne | 5.5384615384615385
+      Schaumburg (Township) | 5.5294117647058824
+      Round Rock | 5.5294117647058824
+
+  panel birdregionalsales-4-07
+    title: rows of Sales Orders by Regions.State the twelve most
+    rows (12):
+      California | 1665
+      Texas | 812
+      Illinois | 621
+      Florida | 566
+      New York | 405
+      Colorado | 295
+      Indiana | 282
+      North Carolina | 207
+      Arizona | 202
+      Connecticut | 199
+      Virginia | 192
+      Washington | 173
+
+  panel birdregionalsales-4-08
+    title: average of Sales Orders.Order Quantity by Sales Orders.Sales Channel
+    rows (4):
+      Wholesale | 4.5912653975363942
+      Distributor | 4.5723636363636364
+      In-Store | 4.5112189205579139
+      Online | 4.4936082474226804
+
+  panel birdregionalsales-4-09
+    title: sum of Sales Orders.Order Quantity by Sales Orders.ProcuredDate
+    rows (11):
+      7/19/18 | 3937
+      6/18/20 | 3865
+      12/1/19 | 3842
+      8/23/19 | 3833
+      10/27/18 | 3794
+      4/10/18 | 3789
+      3/10/20 | 3768
+      2/4/19 | 3719
+      5/15/19 | 3703
+      9/26/20 | 1426
+      12/31/17 | 486
+
+  panel birdregionalsales-4-10
+    title: sum of Sales Orders.Order Quantity by Sales Team.Region
+    rows (4):
+      Midwest | 10303
+      West | 9286
+      Northeast | 8653
+      South | 7920
+
+  panel birdregionalsales-4-11
+    title: rows of Sales Orders by Sales Team.Region
+    rows (4):
+      Midwest | 2291
+      West | 2044
+      Northeast | 1920
+      South | 1736
+
+  panel birdregionalsales-4-12
+    title: sum of Sales Orders.Order Quantity by Store Locations.City Name the twelve most
+    rows (12):
+      Broken Arrow | 182
+      Costa Mesa | 178
+      Naperville | 174
+      Lubbock | 169
+      Miramar | 162
+      Antioch | 160
+      Arlington | 160
+      Hayward | 155
+      Carlsbad | 155
+      Escondido | 153
+      Knoxville | 145
+      Evansville | 143
+
+  panel birdregionalsales-4-13
+    title: rows of Sales Orders by Customers.Customer Names the twelve most
+    rows (12):
+      Medline  | 210
+      Eminence Corp | 186
+      Elorac, Corp | 181
+      Apotheca, Ltd | 179
+      Apollo Ltd | 178
+      Victory Ltd | 176
+      OUR Ltd | 176
+      Pure Group | 175
+      OHTA'S Corp | 173
+      Fenwal, Corp | 172
+      Ei  | 171
+      Ole Group | 171
+
+  panel birdregionalsales-4-14
+    title: rows of Sales Orders by Sales Orders.WarehouseCode
+    rows (6):
+      WARE-NMK1003 | 2505
+      WARE-PUJ1005 | 1451
+      WARE-UHY1004 | 1265
+      WARE-XYS1001 | 1222
+      WARE-MKL1006 | 857
+      WARE-NBV1002 | 691
+
+  panel birdregionalsales-4-15
+    title: rows of Sales Orders by Store Locations.Type
+    rows (10):
+      City | 6382
+      Township | 696
+      Town | 364
+      CDP | 316
+      Borough | 105
+      Other | 32
+      Consolidated Government | 25
+      Unified Government | 24
+      Urban County  | 24
+      Metropolitan Government | 23
+
+  panel birdregionalsales-4-16
+    title: sum of Sales Orders.Order Quantity by Sales Orders.WarehouseCode
+    rows (6):
+      WARE-NMK1003 | 11351
+      WARE-PUJ1005 | 6572
+      WARE-UHY1004 | 5765
+      WARE-XYS1001 | 5557
+      WARE-MKL1006 | 3816
+      WARE-NBV1002 | 3101
+
+  panel birdregionalsales-4-17
+    title: average of Sales Orders.Order Quantity by Products.Product Name the twelve most
+    rows (12):
+      Wine Storage | 4.9821428571428571
+      Accessories | 4.9278350515463918
+      Collectibles | 4.7709497206703911
+      Photo Frames | 4.7341040462427746
+      Vanities | 4.7073170731707317
+      Mirrors | 4.6993865030674847
+      Floral | 4.6964285714285714
+      Bar Tools | 4.6941176470588235
+      Bathroom Furniture | 4.6878612716763006
+      Festive | 4.6727272727272727
+      Wall Frames | 4.6564417177914110
+      Pendants | 4.6477272727272727
+
+  panel birdregionalsales-4-18
+    title: sum of Sales Orders.Order Quantity by Customers.Customer Names the twelve most
+    rows (12):
+      Medline  | 970
+      Elorac, Corp | 880
+      Apotheca, Ltd | 828
+      OHTA'S Corp | 819
+      Ei  | 818
+      Victory Ltd | 812
+      Apollo Ltd | 805
+      OUR Ltd | 796
+      Qualitest  | 787
+      Eminence Corp | 785
+      Fenwal, Corp | 783
+      Pure Group | 783
+
+  panel birdregionalsales-4-19
+    title: rows of Sales Orders by Sales Team.Sales Team the twelve most
+    rows (12):
+      Todd Roberts | 340
+      Shawn Wallace | 316
+      George Lewis | 315
+      Carl Nguyen | 314
+      Shawn Cook | 303
+      Adam Hernandez | 302
+      Anthony Berry | 298
+      Donald Reynolds | 296
+      Jerry Green | 296
+      Samuel Fowler | 296
+      Nicholas Cunningham | 293
+      Chris Armstrong | 292
+
+  panel birdregionalsales-4-20
+    title: rows of Sales Orders by Regions (by key) the twelve most
+    rows (12):
+      CA | 1665
+      TX | 812
+      IL | 621
+      FL | 566
+      NY | 405
+      CO | 295
+      IN | 282
+      NC | 207
+      AZ | 202
+      CT | 199
+      VA | 192
+      WA | 173
+
+  panel birdregionalsales-4-21
+    title: rows of Sales Orders by Sales Team (by key) the twelve most
+    rows (12):
+      13 | 340
+      18 | 316
+      8 | 315
+      12 | 314
+      7 | 303
+      1 | 302
+      16 | 298
+      26 | 296
+      21 | 296
+      3 | 296
+      19 | 293
+      4 | 292
+
+  panel birdregionalsales-4-22
+    title: rows of Sales Orders by Store Locations.Time Zone
+    rows (9):
+      America/New York | 2486
+      America/Chicago | 2357
+      America/Los Angeles | 2098
+      America/Denver | 464
+      America/Indiana/Indianapolis | 211
+      America/Phoenix | 202
+      America/Detroit | 131
+      America/Boise | 21
+      Pacific/Honolulu | 21
+
+  panel birdregionalsales-4-23
+    title: rows of Store Locations by Regions (by key) the twelve most
+    rows (12):
+      CA | 74
+      TX | 38
+      IL | 30
+      FL | 25
+      NY | 20
+      CO | 13
+      IN | 13
+      AZ | 10
+      CT | 10
+      NC | 9
+      NV | 8
+      WA | 8
+
+  panel birdregionalsales-4-24
+    title: sum of Sales Orders.Order Quantity by Sales Team.Sales Team the twelve most
+    rows (12):
+      Shawn Wallace | 1476
+      Todd Roberts | 1474
+      George Lewis | 1409
+      Carl Nguyen | 1393
+      Donald Reynolds | 1391
+      Samuel Fowler | 1388
+      Jerry Green | 1371
+      Adam Hernandez | 1366
+      Anthony Berry | 1337
+      Joshua Little | 1318
+      Shawn Cook | 1306
+      Nicholas Cunningham | 1294
+
+  panel birdregionalsales-4-25
+    title: rows of Sales Team by Sales Team.Region
+    rows (4):
+      Midwest | 8
+      West | 7
+      Northeast | 7
+      South | 6
+
+  panel birdregionalsales-4-26
+    title: rows of Sales Orders by Store Locations.State the twelve most
+    rows (12):
+      California | 1665
+      Texas | 812
+      Illinois | 621
+      Florida | 566
+      New York | 405
+      Colorado | 295
+      Indiana | 282
+      North Carolina | 207
+      Arizona | 202
+      Connecticut | 199
+      Virginia | 192
+      Washington | 173
+
+  panel birdregionalsales-4-27
+    title: rows of Sales Orders by Store Locations.City Name the twelve most
+    rows (12):
+      Costa Mesa | 38
+      Broken Arrow | 35
+      Newark | 34
+      Arlington | 34
+      Carlsbad | 34
+      Antioch | 34
+      Gainesville | 34
+      Knoxville | 33
+      Miramar | 33
+      Macon | 32
+      Torrance | 32
+      Phoenix | 32
+
+  panel birdregionalsales-4-28
+    title: rows of Sales Orders by Sales Orders.ProcuredDate
+    rows (11):
+      6/18/20 | 865
+      12/1/19 | 856
+      3/10/20 | 854
+      10/27/18 | 853
+      7/19/18 | 843
+      2/4/19 | 843
+      8/23/19 | 835
+      4/10/18 | 825
+      5/15/19 | 808
+      9/26/20 | 299
+      12/31/17 | 110
+
+  panel birdregionalsales-4-29
+    title: rows of Sales Orders by Products.Product Name the twelve most
+    rows (12):
+      Serveware | 200
+      Platters | 200
+      Cocktail Glasses | 195
+      Accessories | 194
+      Wreaths | 190
+      Rugs | 184
+      Wardrobes | 183
+      Sculptures | 182
+      Ornaments | 182
+      Dining Furniture | 181
+      TV and video | 180
+      Collectibles | 179
+
+  panel birdregionalsales-4-30
+    title: rows of Store Locations by Store Locations.Time Zone
+    rows (9):
+      America/Chicago | 112
+      America/New York | 111
+      America/Los Angeles | 95
+      America/Denver | 21
+      America/Indiana/Indianapolis | 10
+      America/Phoenix | 10
+      America/Detroit | 6
+      America/Boise | 1
+      Pacific/Honolulu | 1
+
+  panel birdregionalsales-4-31
+    title: rows of Store Locations by Store Locations.Type
+    rows (10):
+      City | 292
+      Township | 33
+      Town | 18
+      CDP | 14
+      Borough | 5
+      Unified Government | 1
+      Other | 1
+      Metropolitan Government | 1
+      Urban County  | 1
+      Consolidated Government | 1
+
+  panel birdregionalsales-4-32
+    title: sum of Sales Orders.Order Quantity by Sales Orders.Sales Channel
+    rows (4):
+      In-Store | 14878
+      Online | 10897
+      Distributor | 6287
+      Wholesale | 4100
+
+
+=== database: birdlawepisode ===
+Episodes of a television series, the people credited on them, their awards, keywords and viewers' votes, as BIRD serves it. A fixture of round 1f.
+
+  panel birdlawepisode-4-01
+    title: sum of Episode.votes by Episode.title the twelve most
+    rows (12):
+      Empire | 218
+      Refuge: Part 2 | 204
+      Punk | 203
+      Cherished | 203
+      Refuge: Part 1 | 199
+      Tabula Rasa | 190
+      Agony | 187
+      True North | 186
+      Venom | 183
+      Ramparts | 181
+      DWB | 177
+      Scrambled | 176
+
+  panel birdlawepisode-4-02
+    title: rows of Credit by Person.birth_country the twelve most
+    rows (12):
+      ∅ | 1473
+      USA | 688
+      Canada | 52
+      England | 4
+      Poland | 2
+      Scotland | 1
+      Romania | 1
+      USSR | 1
+      Germany | 1
+      Ireland | 1
+      Sri Lanka | 1
+      South Korea | 1
+
+  panel birdlawepisode-4-03
+    title: rows of Credit by Episode.air_date
+    rows (22):
+      1998-09-21 00:00:00+00 | 108
+      1998-10-05 00:00:00+00 | 117
+      1998-10-12 00:00:00+00 | 115
+      1998-10-19 00:00:00+00 | 106
+      1998-11-02 00:00:00+00 | 73
+      1998-11-09 00:00:00+00 | 79
+      1998-11-16 00:00:00+00 | 72
+      1998-11-23 00:00:00+00 | 101
+      1998-12-07 00:00:00+00 | 67
+      1999-01-04 00:00:00+00 | 72
+      1999-01-11 00:00:00+00 | 114
+      1999-02-08 00:00:00+00 | 223
+      … 10 more rows
+
+  panel birdlawepisode-4-04
+    title: distribution of Episode.votes
+    rows (14):
+      0 | 153 | 2
+      1 | 157 | 3
+      2 | 160 | 3
+      3 | 164 | 2
+      4 | 166 | 1
+      6 | 174 | 1
+      7 | 176 | 2
+      8 | 181 | 1
+      9 | 183 | 1
+      10 | 186 | 2
+      11 | 190 | 1
+      14 | 199 | 1
+      … 2 more rows
+
+  panel birdlawepisode-4-05
+    title: rows of Credit by Person.birthdate
+    rows (70):
+      1930-01-01 | 27
+      1931-01-01 | 3
+      1932-01-01 | 7
+      1933-01-01 | 4
+      1934-01-01 | 3
+      1935-01-01 | 26
+      1936-01-01 | 10
+      1937-01-01 | 5
+      1938-01-01 | 8
+      1939-01-01 | 3
+      1940-01-01 | 28
+      1941-01-01 | 3
+      … 58 more rows
+
+  panel birdlawepisode-4-06
+    title: rows of Credit by Credit.category the twelve most
+    rows (12):
+      Cast | 876
+      Produced by | 220
+      Additional Crew | 201
+      General | 183
+      Art Department | 182
+      Camera and Electrical Department | 169
+      Sound Department | 77
+      Location Management | 50
+      Editorial Department | 40
+      Casting Department | 37
+      Script and Continuity Department | 35
+      Production Management | 34
+
+  panel birdlawepisode-4-07
+    title: sum of Episode.votes by Episode.air_date
+    rows (22):
+      1998-09-21 | 203
+      1998-10-05 | 177
+      1998-10-12 | 159
+      1998-10-19 | 165
+      1998-11-02 | 187
+      1998-11-09 | 176
+      1998-11-16 | 183
+      1998-11-23 | 203
+      1998-12-07 | 186
+      1999-01-04 | 174
+      1999-01-11 | 181
+      1999-02-08 | 318
+      … 10 more rows
+
+  panel birdlawepisode-4-08
+    title: rows of Person by Person.birth_name the twelve most
+    rows (12):
+      ∅ | 627
+      Stephen Morgan Zirnkilton | 1
+      John Wylie Thomas | 1
+      Chris Lee Stafford | 1
+      Sarah Gray Rafferty | 1
+      Brian Timothy Geraghty | 1
+      Anne Marie Bobby | 1
+      Jack Monkarsh | 1
+      Joseph G. Grifasi | 1
+      Jason Edward Alexander | 1
+      Amy Melissa Resnick | 1
+      Wiley Burge Wisdom III | 1
+
+  panel birdlawepisode-4-09
+    title: rows of Person by Person.name the twelve most
+    rows (12):
+      Jeremy Schroeder | 1
+      James Colby | 1
+      Lucinda Clare | 1
+      Selenis Leyva | 1
+      Jerry Orbach | 1
+      Billy Fox | 1
+      Fleet Emerson | 1
+      Jill Choder | 1
+      Mark Mineart | 1
+      Candis Heiland | 1
+      John Driver | 1
+      Michael Michele | 1
+
+  panel birdlawepisode-4-10
+    title: sum of Person.height_meters by Person.birthdate
+    rows (70):
+      1930-01-01 | 7.359999999999999
+      1931-01-01 | ∅
+      1932-01-01 | 1.92
+      1933-01-01 | 3.7
+      1934-01-01 | 1.85
+      1935-01-01 | 1.87
+      1936-01-01 | 1.65
+      1937-01-01 | 1.75
+      1938-01-01 | 9.03
+      1939-01-01 | ∅
+      1940-01-01 | 3.7
+      1941-01-01 | ∅
+      … 58 more rows
+
+  panel birdlawepisode-4-11
+    title: rows of Award by Award.year
+    rows (2):
+      1999-01-01 | 15
+      2000-01-01 | 7
+
+  panel birdlawepisode-4-12
+    title: sum of Vote.votes by Episode.air_date
+    rows (22):
+      1998-09-21 | 203
+      1998-10-05 | 177
+      1998-10-12 | 159
+      1998-10-19 | 165
+      1998-11-02 | 187
+      1998-11-09 | 176
+      1998-11-16 | 183
+      1998-11-23 | 203
+      1998-12-07 | 186
+      1999-01-04 | 174
+      1999-01-11 | 181
+      1999-02-08 | 318
+      … 10 more rows
+
+  panel birdlawepisode-4-13
+    title: rows of Vote by Episode (by key) the twelve most
+    rows (12):
+      tt0629170 | 10
+      tt0629422 | 10
+      tt0629204 | 10
+      tt0629397 | 10
+      tt0629306 | 10
+      tt0629487 | 10
+      tt0629448 | 10
+      tt0629291 | 10
+      tt0629391 | 10
+      tt0629228 | 10
+      tt0629239 | 10
+      tt0629149 | 10
+
+  panel birdlawepisode-4-14
+    title: rows of Award by Award.organization
+    rows (4):
+      Primetime Emmy Awards | 7
+      American Bar Association Silver Gavel Aw | 6
+      International Monitor Awards | 5
+      Edgar Allan Poe Awards | 4
+
+  panel birdlawepisode-4-15
+    title: rows of Award by Person (by key) the twelve most
+    rows (12):
+      nm0049569 | 6
+      nm0538744 | 4
+      nm0792309 | 2
+      nm0937725 | 1
+      nm0578294 | 1
+      nm0371065 | 1
+      nm0902683 | 1
+      nm0288886 | 1
+      nm0686853 | 1
+      nm0629779 | 1
+      nm0000210 | 1
+      nm0657970 | 1
+
+  panel birdlawepisode-4-16
+    title: rows of Award by Award.award_category
+    rows (4):
+      Primetime Emmy | 7
+      Silver Gavel Award | 6
+      Monitor | 5
+      Edgar | 4
+
+  panel birdlawepisode-4-17
+    title: rows of Credit by Person.name the twelve most
+    rows (12):
+      David Shore | 24
+      Thomas Hudson Reeve | 24
+      Jerome Camera Williams | 24
+      Joe Romano | 24
+      Dick Wolf | 24
+      Don Ohlmeyer | 24
+      Paul Manilla | 24
+      Rene Balcer | 24
+      Sam Waterston | 24
+      Anthony Azzara | 24
+      Crista Barrasso | 24
+      Angie Harmon | 24
+
+  panel birdlawepisode-4-18
+    title: rows of Credit by Person.birth_region the twelve most
+    rows (12):
+      ∅ | 1489
+      New York | 194
+      Pennsylvania | 90
+      California | 71
+      New Jersey | 45
+      Michigan | 42
+      Massachusetts | 39
+      Texas | 32
+      Louisiana | 28
+      Ontario | 26
+      Washington | 24
+      Quebec | 24
+
+  panel birdlawepisode-4-19
+    title: rows of Award by Award.result
+    rows (2):
+      Winner | 12
+      Nominee | 10
+
+  panel birdlawepisode-4-20
+    title: rows of Award by Person.birth_region the twelve most
+    rows (5):
+      ∅ | 12
+      Quebec | 6
+      Pennsylvania | 2
+      New York | 1
+      Georgia | 1
+
+  panel birdlawepisode-4-21
+    title: rows of Award by Award.role
+    rows (9):
+      ∅ | 10
+      re-recording mixer | 2
+      director | 2
+      teleplay | 2
+      writer | 2
+      production mixer | 1
+      Katrina Ludlow | 1
+      teleplay, story | 1
+      story | 1
+
+  panel birdlawepisode-4-22
+    title: rows of Credit by Episode (by key) the twelve most
+    rows (12):
+      tt0629228 | 117
+      tt0629422 | 117
+      tt0629306 | 115
+      tt0629170 | 115
+      tt0629394 | 114
+      tt0629420 | 110
+      tt0629204 | 108
+      tt0629292 | 108
+      tt0629266 | 106
+      tt0629391 | 101
+      tt0629289 | 98
+      tt0629146 | 90
+
+  panel birdlawepisode-4-23
+    title: rows of Person by Person.birth_country the twelve most
+    rows (12):
+      ∅ | 447
+      USA | 330
+      Canada | 6
+      England | 4
+      India | 1
+      Scotland | 1
+      Romania | 1
+      USSR | 1
+      Poland | 1
+      Ireland | 1
+      Germany | 1
+      Sri Lanka | 1
+
+  panel birdlawepisode-4-24
+    title: rows of Award by Person.birth_country the twelve most
+    rows (3):
+      ∅ | 12
+      Canada | 6
+      USA | 4
+
+  panel birdlawepisode-4-25
+    title: rows of Person by Person.birth_region the twelve most
+    rows (12):
+      ∅ | 463
+      New York | 115
+      Pennsylvania | 25
+      New Jersey | 22
+      Massachusetts | 16
+      California | 15
+      Michigan | 12
+      Illinois | 11
+      Texas | 9
+      Ohio | 9
+      Connecticut | 8
+      North Carolina | 8
+
+  panel birdlawepisode-4-26
+    title: sum of Vote.votes by Episode (by key) the twelve most
+    rows (12):
+      tt0629248 | 218
+      tt0629398 | 204
+      tt0629391 | 203
+      tt0629204 | 203
+      tt0629397 | 199
+      tt0629448 | 190
+      tt0629149 | 187
+      tt0629477 | 186
+      tt0629487 | 183
+      tt0629394 | 181
+      tt0629228 | 177
+      tt0629409 | 176
+
+  panel birdlawepisode-4-27
+    title: rows of Credit by Credit.credited
+    rows (2):
+      true | 2061
+      false | 170
+
+  panel birdlawepisode-4-28
+    title: rows of Award by Award.award
+    rows (7):
+      Television | 6
+      Film Originated Television Series - Best | 5
+      Best Television Episode | 4
+      Outstanding Sound Mixing for a Drama Ser | 3
+      Outstanding Directing for a Drama Series | 2
+      Outstanding Guest Actress in a Drama Ser | 1
+      Outstanding Costume Design for a Series | 1
+
+  panel birdlawepisode-4-29
+    title: rows of Episode by Episode.title the twelve most
+    rows (12):
+      Agony | 1
+      Tabula Rasa | 1
+      Empire | 1
+      Cherished | 1
+      Venom | 1
+      Refuge: Part 2 | 1
+      Shield | 1
+      Punk | 1
+      Flight | 1
+      True North | 1
+      Scrambled | 1
+      Sideshow | 1
+
+  panel birdlawepisode-4-30
+    title: rows of Award by Episode (by key) the twelve most
+    rows (7):
+      tt0629248 | 7
+      tt0629149 | 5
+      tt0629291 | 4
+      tt0629228 | 3
+      tt0629422 | 1
+      tt0629398 | 1
+      tt0629397 | 1
+
+  panel birdlawepisode-4-31
+    title: rows of Person by Person.birthdate
+    rows (70):
+      1930-01-01 | 4
+      1931-01-01 | 3
+      1932-01-01 | 6
+      1933-01-01 | 4
+      1934-01-01 | 3
+      1935-01-01 | 3
+      1936-01-01 | 10
+      1937-01-01 | 5
+      1938-01-01 | 8
+      1939-01-01 | 3
+      1940-01-01 | 5
+      1941-01-01 | 3
+      … 58 more rows
+
+  panel birdlawepisode-4-32
+    title: rows of Episode by Episode.air_date
+    rows (22):
+      1998-09-21 | 1
+      1998-10-05 | 1
+      1998-10-12 | 1
+      1998-10-19 | 1
+      1998-11-02 | 1
+      1998-11-09 | 1
+      1998-11-16 | 1
+      1998-11-23 | 1
+      1998-12-07 | 1
+      1999-01-04 | 1
+      1999-01-11 | 1
+      1999-02-08 | 2
+      … 10 more rows
+
+  panel birdlawepisode-4-33
+    title: largest tables, estimated rows
+    rows (6):
+      Credit | 2231
+      Person | 800
+      Vote | 240
+      Keyword | 33
+      Episode | 24
+      Award | 22
+
+  panel birdlawepisode-4-34
+    title: rows of Credit by Person (by key) the twelve most
+    rows (12):
+      nm0794914 | 24
+      nm0716134 | 24
+      nm0930893 | 24
+      nm0738903 | 24
+      nm0937725 | 24
+      nm0645048 | 24
+      nm4103116 | 24
+      nm0049569 | 24
+      nm0001832 | 24
+      nm2190130 | 24
+      nm1568876 | 24
+      nm0004990 | 24
+
+
+=== database: birdbooks ===
+An online bookshop: books, authors, publishers, languages, customers and their addresses, orders, order lines and their history, as BIRD serves it. A fixture of round 1f.
+
+  panel birdbooks-4-01
+    title: rows of order_history by order_status.status_value the twelve most
+    rows (6):
+      Order Received | 7548
+      Pending Delivery | 6800
+      Delivery In Progress | 4000
+      Delivered | 3500
+      Cancelled | 300
+      Returned | 200
+
+  panel birdbooks-4-02
+    title: sum of book.num_pages by book.publication_date
+    rows (87):
+      1900-01-01 | 144
+      1913-01-01 | 448
+      1914-01-01 | 384
+      1919-01-01 | 496
+      1921-01-01 | 864
+      1922-01-01 | 364
+      1923-01-01 | 480
+      1925-01-01 | 758
+      1928-01-01 | 576
+      1929-01-01 | 400
+      1931-01-01 | 192
+      1935-01-01 | 312
+      … 75 more rows
+
+  panel birdbooks-4-03
+    title: rows of order_history by cust_order (by key) the twelve most
+    rows (12):
+      7154 | 5
+      6503 | 5
+      9491 | 5
+      8613 | 5
+      2428 | 5
+      5257 | 5
+      10399 | 5
+      6458 | 5
+      743 | 5
+      4993 | 5
+      8624 | 5
+      832 | 5
+
+  panel birdbooks-4-04
+    title: sum of book.num_pages by publisher.publisher_name the twelve most
+    rows (12):
+      Vintage | 111746
+      Penguin Books | 96665
+      Penguin Classics | 75969
+      Mariner Books | 57659
+      Ballantine Books | 57055
+      Library of America | 54711
+      Pocket Books | 47918
+      Modern Library | 42071
+      Bantam | 40975
+      Harper Perennial | 40936
+      Tor Books | 35086
+      W. W. Norton Company | 32776
+
+  panel birdbooks-4-05
+    title: rows of cust_order by address.street_name the twelve most
+    rows (12):
+      Macpherson Point | 68
+      Ramsey Avenue | 63
+      Corben Avenue | 63
+      Boyd Pass | 63
+      Clyde Gallagher Road | 54
+      Nancy Junction | 54
+      Killdeer Avenue | 49
+      Surrey Trail | 48
+      Troy Court | 48
+      Drewry Point | 48
+      Mayer Crossing | 42
+      Independence Junction | 42
+
+  panel birdbooks-4-06
+    title: rows of book by publisher.publisher_name the twelve most
+    rows (12):
+      Vintage | 318
+      Penguin Books | 261
+      Penguin Classics | 184
+      Mariner Books | 150
+      Ballantine Books | 145
+      HarperCollins | 113
+      Harper Perennial | 112
+      Pocket Books | 111
+      Bantam | 110
+      VIZ Media LLC | 88
+      Berkley | 86
+      Dover Publications | 85
+
+  panel birdbooks-4-07
+    title: sum of order_line.price by book_language.language_name the twelve most
+    rows (12):
+      English | 59704.11000000009
+      United States English | 10094.849999999988
+      British English | 1796.8799999999997
+      Spanish | 1404.2199999999996
+      French | 849.3000000000003
+      German | 667.4899999999999
+      Japanese | 293.9000000000001
+      Multiple Languages | 155.75
+      Portuguese | 104.79
+      Greek | 91.82999999999998
+      Chinese | 90.77999999999999
+      Canadian English | 50.980000000000004
+
+  panel birdbooks-4-08
+    title: rows of order_line by cust_order (by key) the twelve most
+    rows (12):
+      273 | 1
+      5468 | 1
+      4326 | 1
+      9038 | 1
+      2466 | 1
+      4321 | 1
+      1750 | 1
+      5230 | 1
+      176 | 1
+      576 | 1
+      4993 | 1
+      4790 | 1
+
+  panel birdbooks-4-09
+    title: rows of order_line by publisher.publisher_name the twelve most
+    rows (12):
+      Vintage | 231
+      Penguin Books | 160
+      Penguin Classics | 124
+      Ballantine Books | 108
+      Mariner Books | 95
+      HarperCollins | 85
+      Harper Perennial | 82
+      Bantam | 71
+      Pocket Books | 67
+      Anchor | 59
+      Modern Library | 57
+      Tor Books | 57
+
+  panel birdbooks-4-10
+    title: rows of address by country.country_name the twelve most
+    rows (12):
+      China | 178
+      Indonesia | 128
+      Russia | 67
+      Brazil | 42
+      Philippines | 40
+      Portugal | 37
+      Poland | 35
+      United States of America | 33
+      France | 31
+      Sweden | 26
+      Peru | 25
+      Czech Republic | 17
+
+  panel birdbooks-4-11
+    title: sum of book.num_pages by book_language.language_name the twelve most
+    rows (12):
+      English | 3000199
+      United States English | 465265
+      Spanish | 79743
+      British English | 67519
+      French | 48816
+      German | 38806
+      Japanese | 8780
+      Multiple Languages | 8308
+      Greek | 4547
+      Chinese | 4506
+      Middle English | 3181
+      Portuguese | 2198
+
+  panel birdbooks-4-12
+    title: rows of order_line by shipping_method.method_name the twelve most
+    rows (4):
+      Priority | 1917
+      Express | 1912
+      Standard | 1871
+      International | 1850
+
+  panel birdbooks-4-13
+    title: rows of order_line by book_language.language_name the twelve most
+    rows (12):
+      English | 5993
+      United States English | 1000
+      British English | 175
+      Spanish | 146
+      French | 88
+      German | 63
+      Japanese | 29
+      Multiple Languages | 14
+      Chinese | 9
+      Portuguese | 9
+      Greek | 8
+      Canadian English | 4
+
+  panel birdbooks-4-14
+    title: sum of order_line.price by address.street_name the twelve most
+    rows (12):
+      Macpherson Point | 789.0200000000002
+      Corben Avenue | 716.5099999999999
+      Ramsey Avenue | 691.8699999999999
+      Boyd Pass | 605.8600000000004
+      Clyde Gallagher Road | 582.9700000000001
+      Killdeer Avenue | 557.6699999999998
+      Nancy Junction | 543.9800000000001
+      Troy Court | 523
+      Surrey Trail | 497.3100000000002
+      Donald Junction | 472.08000000000004
+      Main Plaza | 459.93999999999994
+      Drewry Point | 442.2199999999999
+
+  panel birdbooks-4-15
+    title: rows of cust_order by customer (named) the twelve most
+    rows (12):
+      Ruttger Royce | 23
+      Lucia Fearon | 20
+      Theo Hebron | 20
+      Catina Cromar | 19
+      Kassandra Caslett | 18
+      Belle Kneesha | 17
+      Jennilee Tuma | 16
+      Fanechka McTague | 16
+      Crosby Corden | 16
+      Helene Guy | 16
+      Mort Zienkiewicz | 15
+      Judy Claibourn | 15
+
+  panel birdbooks-4-16
+    title: rows of book by book.publication_date
+    rows (87):
+      1900-01-01 | 1
+      1913-01-01 | 1
+      1914-01-01 | 1
+      1919-01-01 | 1
+      1921-01-01 | 2
+      1922-01-01 | 1
+      1923-01-01 | 1
+      1925-01-01 | 2
+      1928-01-01 | 1
+      1929-01-01 | 1
+      1931-01-01 | 1
+      1935-01-01 | 1
+      … 75 more rows
+
+  panel birdbooks-4-17
+    title: rows of cust_order by shipping_method.method_name the twelve most
+    rows (4):
+      Priority | 1917
+      Express | 1912
+      Standard | 1871
+      International | 1850
+
+  panel birdbooks-4-18
+    title: sum of order_line.price by cust_order (by key) the twelve most
+    rows (12):
+      8701 | 20
+      5204 | 20
+      7003 | 20
+      6285 | 19.99
+      2054 | 19.99
+      2319 | 19.99
+      502 | 19.99
+      6264 | 19.99
+      6717 | 19.99
+      2159 | 19.98
+      8259 | 19.98
+      8525 | 19.97
+
+  panel birdbooks-4-19
+    title: sum of order_line.price by country.country_name the twelve most
+    rows (12):
+      China | 11802.700000000013
+      Indonesia | 9800.159999999989
+      Russia | 4820.890000000003
+      Philippines | 3405.169999999998
+      Brazil | 3381.84
+      Poland | 3300.0199999999995
+      Peru | 2588.149999999998
+      Portugal | 2492.690000000003
+      United States of America | 2184.7400000000016
+      France | 2019.8
+      Sweden | 1598.6600000000003
+      Colombia | 1363.19
+
+  panel birdbooks-4-20
+    title: sum of order_line.price by book.publication_date
+    rows (78):
+      1921-01-01 | 36.16
+      1923-01-01 | 7.6
+      1925-01-01 | 17.53
+      1928-01-01 | 13.85
+      1943-01-01 | 42.5
+      1947-01-01 | 18.09
+      1948-01-01 | 18.220000000000002
+      1949-01-01 | 52.309999999999995
+      1950-01-01 | 9.71
+      1952-01-01 | 5.27
+      1953-01-01 | 18.75
+      1954-01-01 | 21.53
+      … 66 more rows
+
+  panel birdbooks-4-21
+    title: distribution of order_line.price
+    rows (21):
+      0 | 0 | 403
+      1 | 1 | 379
+      2 | 2 | 402
+      3 | 3 | 358
+      4 | 4 | 397
+      5 | 5 | 338
+      6 | 6 | 370
+      7 | 7 | 364
+      8 | 8 | 362
+      9 | 9 | 416
+      10 | 10 | 382
+      11 | 11 | 370
+      … 9 more rows
+
+  panel birdbooks-4-22
+    title: sum of order_line.price by publisher.publisher_name the twelve most
+    rows (12):
+      Vintage | 2206.8300000000004
+      Penguin Books | 1714.7300000000007
+      Penguin Classics | 1208.91
+      Ballantine Books | 1100.5700000000008
+      Mariner Books | 946.6000000000003
+      Harper Perennial | 885.9000000000002
+      HarperCollins | 841.5699999999999
+      Pocket Books | 746.6900000000002
+      Bantam | 723.9099999999999
+      Tor Books | 615.6899999999999
+      Scribner | 574.2900000000002
+      VIZ Media LLC | 556.7100000000002
+
+  panel birdbooks-4-23
+    title: sum of order_line.price by shipping_method.method_name the twelve most
+    rows (4):
+      Priority | 19244.610000000008
+      Express | 19128.360000000022
+      Standard | 18664.299999999996
+      International | 18412.949999999983
+
+  panel birdbooks-4-24
+    title: sum of book.num_pages by book_language.language_name
+    rows (27):
+      English | 3000199
+      United States English | 465265
+      Spanish | 79743
+      British English | 67519
+      French | 48816
+      German | 38806
+      Japanese | 8780
+      Multiple Languages | 8308
+      Greek | 4547
+      Chinese | 4506
+      Middle English | 3181
+      Portuguese | 2198
+      … 15 more rows
+
+  panel birdbooks-4-25
+    title: rows of order_line by country.country_name the twelve most
+    rows (12):
+      China | 1176
+      Indonesia | 995
+      Russia | 510
+      Philippines | 334
+      Brazil | 333
+      Poland | 324
+      Portugal | 259
+      Peru | 252
+      United States of America | 223
+      France | 209
+      Sweden | 148
+      Colombia | 131
+
+  panel birdbooks-4-26
+    title: rows of cust_order by country.country_name the twelve most
+    rows (12):
+      China | 1176
+      Indonesia | 995
+      Russia | 510
+      Philippines | 334
+      Brazil | 333
+      Poland | 324
+      Portugal | 259
+      Peru | 252
+      United States of America | 223
+      France | 209
+      Sweden | 148
+      Colombia | 131
+
+  panel birdbooks-4-27
+    title: sum of order_line.price by cust_order.order_date
+    rows (37):
+      2019-12-01 | 1621.1199999999994
+      2020-01-01 | 2263.3899999999994
+      2020-02-01 | 1850.66
+      2020-03-01 | 2053.9900000000002
+      2020-04-01 | 2114.7100000000014
+      2020-05-01 | 2396.05
+      2020-06-01 | 2196.8400000000006
+      2020-07-01 | 1751.5399999999997
+      2020-08-01 | 2364.370000000001
+      2020-09-01 | 1946.5400000000016
+      2020-10-01 | 2089.09
+      2020-11-01 | 1958.7400000000011
+      … 25 more rows
+
+  panel birdbooks-4-28
+    title: rows of cust_order by shipping_method.method_name
+    rows (4):
+      Priority | 1917
+      Express | 1912
+      Standard | 1871
+      International | 1850
+
+  panel birdbooks-4-29
+    title: rows of cust_order by cust_order.order_date
+    rows (37):
+      2019-12-01 | 163
+      2020-01-01 | 237
+      2020-02-01 | 180
+      2020-03-01 | 205
+      2020-04-01 | 221
+      2020-05-01 | 233
+      2020-06-01 | 215
+      2020-07-01 | 184
+      2020-08-01 | 232
+      2020-09-01 | 208
+      2020-10-01 | 204
+      2020-11-01 | 198
+      … 25 more rows
+
+  panel birdbooks-4-30
+    title: rows of customer_address by address.street_name the twelve most
+    rows (12):
+      Hanson Way | 11
+      Thompson Terrace | 10
+      Boyd Pass | 9
+      Summerview Road | 9
+      Merry Circle | 9
+      Kenwood Alley | 9
+      Corben Avenue | 9
+      Division Place | 9
+      Dapin Court | 9
+      School Road | 9
+      Waubesa Terrace | 8
+      Merchant Drive | 8
+
+  panel birdbooks-4-31
+    title: rows of book by book_language.language_name the twelve most
+    rows (12):
+      English | 8911
+      United States English | 1409
+      Spanish | 218
+      British English | 214
+      French | 144
+      German | 99
+      Japanese | 46
+      Multiple Languages | 19
+      Chinese | 14
+      Greek | 11
+      Portuguese | 10
+      Canadian English | 7
+
+  panel birdbooks-4-32
+    title: rows of customer_address by order_status.status_value the twelve most
+    rows (2):
+      Order Received | 2950
+      Pending Delivery | 400
+
+
+=== database: birdshipping ===
+A trucking company's shipments, customers, drivers, trucks and cities, as BIRD serves it. A fixture of round 1f.
+
+  panel birdshipping-4-01
+    title: rows of shipment by truck.make
+    rows (3):
+      Mack | 400
+      Peterbilt | 320
+      Kenworth | 240
+
+  panel birdshipping-4-02
+    title: rows of shipment by driver.first_name
+    rows (11):
+      Holger | 98
+      Zachery | 96
+      Andrea | 91
+      Adel | 90
+      Roger | 89
+      Maria | 87
+      Alina | 85
+      Kristie | 83
+      Sue | 82
+      Gale | 80
+      Leszek | 79
+
+  panel birdshipping-4-03
+    title: sum of shipment.weight by city.state the twelve most
+    rows (12):
+      California | 1462464
+      Texas | 718128
+      Florida | 412686
+      Illinois | 405873
+      New York | 336609
+      Michigan | 291114
+      Wisconsin | 229806
+      Massachusetts | 207009
+      Washington | 179361
+      Ohio | 141921
+      Connecticut | 138555
+      North Carolina | 126162
+
+  panel birdshipping-4-04
+    title: sum of shipment.weight by city.city_name the twelve most
+    rows (12):
+      New York | 232596
+      Green Bay | 94167
+      Carrollton | 72882
+      Dearborn | 59085
+      Stockton | 54279
+      Aurora IL | 43335
+      Evansville | 43101
+      Temple | 42120
+      Garland | 41292
+      Dubuque | 40446
+      Tuscaloosa | 40428
+      El Paso | 40410
+
+  panel birdshipping-4-05
+    title: sum of customer.annual_revenue by customer.cust_type
+    rows (3):
+      retailer | 1044524716
+      manufacturer | 985594289
+      wholesaler | 567475456
+
+  panel birdshipping-4-06
+    title: rows of shipment by customer.city the twelve most
+    rows (12):
+      Riverside | 36
+      Jacksonville | 34
+      Montgomery | 34
+      Bloomington | 34
+      Pompano Beach | 34
+      Springfield | 33
+      Knoxville | 33
+      Columbia | 31
+      Amarillo | 30
+      Kenner | 30
+      Sarasota | 29
+      Detroit | 28
+
+  panel birdshipping-4-07
+    title: average of customer.annual_revenue by customer.cust_type
+    rows (3):
+      retailer | 27487492.526315789474
+      wholesaler | 25794338.909090909091
+      manufacturer | 24639857.225000000000
+
+  panel birdshipping-4-08
+    title: sum of shipment.weight by customer.state the twelve most
+    rows (12):
+      FL | 1071684
+      TX | 887382
+      CA | 730908
+      TN | 439182
+      OR | 385002
+      LA | 372753
+      IN | 297999
+      MO | 251631
+      AL | 241038
+      CO | 237384
+      MI | 221067
+      SC | 198081
+
+  panel birdshipping-4-09
+    title: sum of shipment.weight by driver (named) the twelve most
+    rows (11):
+      Holger Nohr | 727452
+      Zachery Hicks | 678564
+      Roger McHaney | 674811
+      Maria Craft | 641961
+      Andrea Simons | 621945
+      Alina Chircu | 610047
+      Sue Newell | 605988
+      Adel Al-Alawi | 583767
+      Kristie Sims | 553311
+      Leszek Kieltyka | 552942
+      Gale Oneal | 467181
+
+  panel birdshipping-4-10
+    title: rows of shipment by driver (named) the twelve most
+    rows (11):
+      Holger Nohr | 98
+      Zachery Hicks | 96
+      Andrea Simons | 91
+      Adel Al-Alawi | 90
+      Roger McHaney | 89
+      Maria Craft | 87
+      Alina Chircu | 85
+      Kristie Sims | 83
+      Sue Newell | 82
+      Gale Oneal | 80
+      Leszek Kieltyka | 79
+
+  panel birdshipping-4-11
+    title: rows of shipment by driver.address
+    rows (11):
+      572 Delta Rd | 98
+      3649 Park Lake Dr | 96
+      3574 Oak Limb Cv | 91
+      749 E Mckellar Ave | 90
+      1839 S Orleans St | 89
+      3522 Mimosa Ave | 87
+      842 E Trigg Ave | 85
+      2877 Laredo St | 83
+      268 Richmond Ave | 82
+      1000 Rayner St | 80
+      4089 Persimmon View Cv | 79
+
+  panel birdshipping-4-12
+    title: largest tables, estimated rows
+    rows (5):
+      shipment | 960
+      city | 601
+      customer | 100
+      truck | 12
+      driver | 11
+
+  panel birdshipping-4-13
+    title: sum of customer.annual_revenue by customer.state the twelve most
+    rows (12):
+      CA | 451750818
+      OR | 211847492
+      FL | 176149472
+      LA | 162280781
+      OH | 160169901
+      TX | 130158721
+      TN | 126084566
+      WA | 116955609
+      IA | 91888600
+      IL | 89281289
+      MI | 80371352
+      UT | 76206911
+
+  panel birdshipping-4-14
+    title: rows of shipment by city.city_name the twelve most
+    rows (12):
+      New York | 31
+      Carrollton | 10
+      Temple | 7
+      Orland Park | 6
+      Renton | 6
+      Wheaton | 6
+      Stockton | 6
+      Huntsville | 6
+      Scottsdale | 5
+      San Angelo | 5
+      Saginaw | 5
+      Dearborn | 5
+
+  panel birdshipping-4-15
+    title: rows of city by city.state
+    rows (49):
+      California | 143
+      Texas | 47
+      Florida | 38
+      Illinois | 26
+      Michigan | 23
+      Massachusetts | 19
+      Ohio | 18
+      North Carolina | 15
+      Minnesota | 14
+      Washington | 14
+      Colorado | 13
+      Wisconsin | 13
+      … 37 more rows
+
+  panel birdshipping-4-16
+    title: sum of shipment.weight by truck.make
+    rows (3):
+      Mack | 2889540
+      Peterbilt | 2142009
+      Kenworth | 1686420
+
+  panel birdshipping-4-17
+    title: sum of shipment.weight by truck (by key) the twelve most
+    rows (12):
+      12 | 614151
+      5 | 587232
+      2 | 587115
+      1 | 585000
+      4 | 580374
+      10 | 572049
+      7 | 571266
+      8 | 534780
+      9 | 528993
+      3 | 524997
+      11 | 520938
+      6 | 511074
+
+  panel birdshipping-4-18
+    title: sum of shipment.weight by driver.first_name
+    rows (11):
+      Holger | 727452
+      Zachery | 678564
+      Roger | 674811
+      Maria | 641961
+      Andrea | 621945
+      Alina | 610047
+      Sue | 605988
+      Adel | 583767
+      Kristie | 553311
+      Leszek | 552942
+      Gale | 467181
+
+  panel birdshipping-4-19
+    title: rows of shipment by driver.last_name
+    rows (11):
+      Nohr | 98
+      Hicks | 96
+      Simons | 91
+      Al-Alawi | 90
+      McHaney | 89
+      Craft | 87
+      Chircu | 85
+      Sims | 83
+      Newell | 82
+      Oneal | 80
+      Kieltyka | 79
+
+  panel birdshipping-4-20
+    title: rows of shipment by truck (by key) the twelve most
+    rows (12):
+      12 | 80
+      3 | 80
+      11 | 80
+      8 | 80
+      10 | 80
+      9 | 80
+      7 | 80
+      1 | 80
+      5 | 80
+      4 | 80
+      2 | 80
+      6 | 80
+
+  panel birdshipping-4-21
+    title: rows of city by city.state the twelve most
+    rows (12):
+      California | 143
+      Texas | 47
+      Florida | 38
+      Illinois | 26
+      Michigan | 23
+      Massachusetts | 19
+      Ohio | 18
+      North Carolina | 15
+      Washington | 14
+      Minnesota | 14
+      Wisconsin | 13
+      Colorado | 13
+
+  panel birdshipping-4-22
+    title: rows of shipment by customer.cust_name the twelve most
+    rows (12):
+      Autoware Inc | 34
+      NW RV Supply | 33
+      Marlin Ingram RV Center | 31
+      Shealy Mack Leasing | 31
+      Ziebart | 31
+      Hawkins Trailer & Equipment CO | 30
+      U-Haul CO - Moving Centers, Sarasota | 29
+      All Professional Trailers | 29
+      U-haul Center Of Sw Detroit | 28
+      AAA Rentals Sales & Service | 28
+      Line-X of Metairie | 27
+      Ace Trailer & Equipment Co., Inc. | 26
+
+  panel birdshipping-4-23
+    title: rows of customer by customer.state the twelve most
+    rows (12):
+      CA | 15
+      TX | 10
+      FL | 8
+      OR | 7
+      TN | 5
+      LA | 4
+      CO | 4
+      OH | 4
+      WA | 3
+      UT | 3
+      IN | 3
+      IL | 3
+
+  panel birdshipping-4-24
+    title: sum of shipment.weight by driver.last_name
+    rows (11):
+      Nohr | 727452
+      Hicks | 678564
+      McHaney | 674811
+      Craft | 641961
+      Simons | 621945
+      Chircu | 610047
+      Newell | 605988
+      Al-Alawi | 583767
+      Sims | 553311
+      Kieltyka | 552942
+      Oneal | 467181
+
+  panel birdshipping-4-25
+    title: sum of customer.annual_revenue by customer.city the twelve most
+    rows (12):
+      Cleveland | 111951545
+      Kenner | 80926202
+      Riverside | 79257563
+      Philadelphia | 73288881
+      San Diego | 70623116
+      Knoxville | 70232280
+      Jacksonville | 66829482
+      Chicago | 62730814
+      Portland | 61982157
+      Eugene | 58260764
+      Sacramento | 49136126
+      Baton Rouge | 48352218
+
+  panel birdshipping-4-26
+    title: average of shipment.weight by city.city_name the twelve most
+    rows (12):
+      Green Bay | 31389
+      Brownsville | 17964
+      Jonesboro | 17820
+      Palmdale | 17712
+      Niagara Falls | 17253
+      Muncie | 17199
+      Costa Mesa | 17163
+      Mentor | 17154
+      Lorain | 17145
+      Hartford | 16587
+      Gainesville | 16587
+      Paramount | 16551
+
+  panel birdshipping-4-27
+    title: rows of customer by customer.city the twelve most
+    rows (12):
+      Cleveland | 3
+      Knoxville | 3
+      Portland | 3
+      Jacksonville | 3
+      Montgomery | 2
+      Lincoln | 2
+      Philadelphia | 2
+      Riverside | 2
+      Kenner | 2
+      Chicago | 2
+      Eugene | 2
+      Sacramento | 2
+
+  panel birdshipping-4-28
+    title: sum of shipment.weight by customer.city the twelve most
+    rows (12):
+      Pompano Beach | 266211
+      Bloomington | 265716
+      Riverside | 265248
+      Montgomery | 241038
+      Knoxville | 235980
+      Jacksonville | 227601
+      Amarillo | 222516
+      Springfield | 221661
+      Orlando | 203463
+      Kenner | 203076
+      Sarasota | 202455
+      Columbia | 198081
+
+  panel birdshipping-4-29
+    title: sum of shipment.weight by driver.address
+    rows (11):
+      572 Delta Rd | 727452
+      3649 Park Lake Dr | 678564
+      1839 S Orleans St | 674811
+      3522 Mimosa Ave | 641961
+      3574 Oak Limb Cv | 621945
+      842 E Trigg Ave | 610047
+      268 Richmond Ave | 605988
+      749 E Mckellar Ave | 583767
+      2877 Laredo St | 553311
+      4089 Persimmon View Cv | 552942
+      1000 Rayner St | 467181
+
+  panel birdshipping-4-30
+    title: rows of customer by customer.cust_type
+    rows (3):
+      manufacturer | 40
+      retailer | 38
+      wholesaler | 22
+
+  panel birdshipping-4-31
+    title: sum of shipment.weight by customer.cust_type
+    rows (3):
+      retailer | 2484333
+      manufacturer | 2462454
+      wholesaler | 1771182
+
+  panel birdshipping-4-32
+    title: sum of shipment.weight by truck.model_year
+    rows (6):
+      2005-01-01 | 585000
+      2006-01-01 | 587115
+      2007-01-01 | 1105371
+      2008-01-01 | 1669572
+      2009-01-01 | 1635822
+      2010-01-01 | 1135089
+
+  panel birdshipping-4-33
+    title: sum of shipment.weight by customer.cust_name the twelve most
+    rows (12):
+      Autoware Inc | 266211
+      Ziebart | 248697
+      Marlin Ingram RV Center | 223983
+      Hawkins Trailer & Equipment CO | 222516
+      NW RV Supply | 221661
+      Sunbelt Transport Refrigeration | 203463
+      U-Haul CO - Moving Centers, Sarasota | 202455
+      Shealy Mack Leasing | 198081
+      U-haul Center Of Sw Detroit | 184365
+      Harry's Hot Rod Auto & Truck Accessories | 183447
+      Klett & Sons Repair | 182898
+      R V City | 182295

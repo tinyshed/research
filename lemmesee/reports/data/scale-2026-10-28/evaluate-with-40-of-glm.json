@@ -1,0 +1,2117 @@
+{
+ "taught on": 81,
+ "held out": 12,
+ "round 1d's 28, each left out": {
+  "databases counted": {
+   "opus": 26,
+   "sonnet": 28,
+   "gemini": 28
+  },
+  "round 1, B1": {
+   "opus": 2.31,
+   "sonnet": 2.43,
+   "gemini": 2.36
+  },
+  "round 1c": {
+   "opus": 2.42,
+   "sonnet": 2.46,
+   "gemini": 2.54
+  },
+  "round 1d, the look taught by Sonnet": {
+   "opus": 2.85,
+   "sonnet": 2.86,
+   "gemini": 2.68
+  },
+  "round 1e, taught on its 41": {
+   "opus": 2.81,
+   "sonnet": 2.79,
+   "gemini": 2.89
+  },
+  "round 1f, taught on 81": {
+   "opus": 2.81,
+   "sonnet": 2.68,
+   "gemini": 2.82
+  },
+  "ceiling": {
+   "opus": 4.73,
+   "sonnet": 4.71,
+   "gemini": 4.75
+  },
+  "round 1f − round 1, B1, opus": {
+   "mean": 0.5,
+   "95%": [
+    0.08,
+    0.96
+   ]
+  },
+  "round 1f − round 1, B1, sonnet": {
+   "mean": 0.25,
+   "95%": [
+    -0.21,
+    0.75
+   ]
+  },
+  "round 1f − round 1, B1, gemini": {
+   "mean": 0.46,
+   "95%": [
+    0.0,
+    0.96
+   ]
+  },
+  "round 1f − round 1c, opus": {
+   "mean": 0.38,
+   "95%": [
+    0.04,
+    0.73
+   ]
+  },
+  "round 1f − round 1c, sonnet": {
+   "mean": 0.21,
+   "95%": [
+    -0.14,
+    0.57
+   ]
+  },
+  "round 1f − round 1c, gemini": {
+   "mean": 0.29,
+   "95%": [
+    -0.07,
+    0.61
+   ]
+  },
+  "round 1f − round 1d, the look taught by Sonnet, opus": {
+   "mean": -0.04,
+   "95%": [
+    -0.42,
+    0.35
+   ]
+  },
+  "round 1f − round 1d, the look taught by Sonnet, gemini": {
+   "mean": 0.14,
+   "95%": [
+    -0.18,
+    0.46
+   ]
+  },
+  "round 1f − round 1e, taught on its 41, opus": {
+   "mean": 0.0,
+   "95%": [
+    -0.35,
+    0.31
+   ]
+  },
+  "round 1f − round 1e, taught on its 41, sonnet": {
+   "mean": -0.11,
+   "95%": [
+    -0.5,
+    0.29
+   ]
+  },
+  "round 1f − round 1e, taught on its 41, gemini": {
+   "mean": -0.07,
+   "95%": [
+    -0.39,
+    0.21
+   ]
+  },
+  "jev and opus agree on keep": 0.764,
+  "jev and sonnet agree on keep": 0.752,
+  "jev and gemini agree on keep": 0.765,
+  "deepseek and opus agree on keep": 0.72,
+  "deepseek and sonnet agree on keep": 0.699,
+  "deepseek and gemini agree on keep": 0.738,
+  "glm and opus agree on keep": 0.724,
+  "glm and sonnet agree on keep": 0.726,
+  "glm and gemini agree on keep": 0.734,
+  "opus and sonnet agree on keep": 0.915,
+  "gemini and opus agree on keep": 0.904,
+  "gemini and sonnet agree on keep": 0.887
+ },
+ "the twelve held out": {
+  "databases counted": {
+   "opus": 0,
+   "sonnet": 12,
+   "gemini": 12
+  },
+  "round 1, B1": {
+   "sonnet": 2.42,
+   "gemini": 2.83
+  },
+  "round 1c": {
+   "sonnet": 2.67,
+   "gemini": 3.42
+  },
+  "round 1d, the look taught by Sonnet": {
+   "sonnet": 2.83,
+   "gemini": 3.42
+  },
+  "round 1e, taught on its 41": {
+   "sonnet": 3.17,
+   "gemini": 3.83
+  },
+  "round 1f, taught on 81": {
+   "sonnet": 3.5,
+   "gemini": 3.83
+  },
+  "ceiling": {
+   "sonnet": 4.67,
+   "gemini": 4.92
+  },
+  "round 1f − round 1, B1, sonnet": {
+   "mean": 1.08,
+   "95%": [
+    0.42,
+    1.75
+   ]
+  },
+  "round 1f − round 1, B1, gemini": {
+   "mean": 1.0,
+   "95%": [
+    0.25,
+    1.83
+   ]
+  },
+  "round 1f − round 1c, sonnet": {
+   "mean": 0.83,
+   "95%": [
+    0.25,
+    1.42
+   ]
+  },
+  "round 1f − round 1c, gemini": {
+   "mean": 0.42,
+   "95%": [
+    -0.25,
+    1.08
+   ]
+  },
+  "round 1f − round 1d, the look taught by Sonnet, gemini": {
+   "mean": 0.42,
+   "95%": [
+    -0.08,
+    0.92
+   ]
+  },
+  "round 1f − round 1e, taught on its 41, sonnet": {
+   "mean": 0.33,
+   "95%": [
+    -0.08,
+    0.75
+   ]
+  },
+  "round 1f − round 1e, taught on its 41, gemini": {
+   "mean": 0.0,
+   "95%": [
+    -0.42,
+    0.5
+   ]
+  },
+  "jev and sonnet agree on keep": 0.778,
+  "jev and gemini agree on keep": 0.747,
+  "deepseek and sonnet agree on keep": 0.819,
+  "deepseek and gemini agree on keep": 0.844,
+  "glm and sonnet agree on keep": 0.842,
+  "glm and gemini agree on keep": 0.867,
+  "gemini and sonnet agree on keep": 0.853
+ },
+ "learning curve on the twelve, kept of five": {
+  "10": {
+   "sonnet": 2.92,
+   "gemini": 3.63,
+   "draws": 5
+  },
+  "20": {
+   "sonnet": 3.23,
+   "gemini": 3.78,
+   "draws": 5
+  },
+  "40": {
+   "sonnet": 3.42,
+   "gemini": 4.08,
+   "draws": 5
+  },
+  "60": {
+   "sonnet": 3.48,
+   "gemini": 3.87,
+   "draws": 5
+  },
+  "81": {
+   "sonnet": 3.5,
+   "gemini": 4.0,
+   "draws": 1
+  }
+ },
+ "penalties and weight, per database": {
+  "airlines": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "atherosclerosis": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "basketball": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "basketballwomen": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "ccs": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "chinook": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 1.5,
+    "time_same": 2.0,
+    "time_other": 0.25,
+    "by_same": 0.0,
+    "by_other": 1.0,
+    "shape": 0.5
+   },
+   "weight": 8.0
+  },
+  "classicmodels": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "craftbeer": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "credit": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "dallas": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "ergastf1": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "ftp": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "hockey": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "lahman": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "medical": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "mondial": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "movielens": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "nba": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "ncaa": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 3.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "northwind": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "premierleague": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "pubs": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "restbase": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "sfscores": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "shakespeare": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "studentloan": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "voc": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 1.5,
+    "time_same": 3.0,
+    "time_other": 0.25,
+    "by_same": 0.0,
+    "by_other": 1.5,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "world": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "birdaddress": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "birdcardgames": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "birdcoinmarketcap": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "birdcookbook": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "birdhumanresources": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "birdlegislator": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "birdmenu": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "birdmovie": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "birdsoccer2016": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "birdsuperstore": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "birdsynthea": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  },
+  "birdvideogames": {
+   "penalties": {
+    "base": 0.0,
+    "measure": 0.0,
+    "time_same": 0.0,
+    "time_other": 0.0,
+    "by_same": 0.0,
+    "by_other": 0.0,
+    "shape": 0.0
+   },
+   "weight": 8.0
+  }
+ },
+ "fives": {
+  "round 1, B1": {
+   "airlines-postgres": [
+    "airlines-postgres:r1:35cc12d37870c714",
+    "airlines-postgres:r1:c256ed7a58f5ac93",
+    "airlines-postgres:r1:ff3a8a472ea516e2",
+    "airlines-postgres:r1:53b9452d327ed0d0",
+    "airlines-postgres:r1:bb9e243502883c20"
+   ],
+   "atherosclerosis-mysql": [
+    "atherosclerosis-mysql:r1:5a746152bd4bdafb",
+    "atherosclerosis-mysql:r1:493011bc010ddaff",
+    "atherosclerosis-mysql:r1:9cc7913a3eea0b56",
+    "atherosclerosis-mysql:r1:87ac300fbfbb48ba",
+    "atherosclerosis-mysql:r1:b35b8589536838f6"
+   ],
+   "basketball-mysql": [
+    "basketball-mysql:r1:2ae3ac4e6ee77683",
+    "basketball-mysql:r1:65d029ea9856d8b7",
+    "basketball-mysql:r1:ea229137a28c12c5",
+    "basketball-mysql:r1:e81b8e4d3b557dd3",
+    "basketball-mysql:r1:9cc7913a3eea0b56"
+   ],
+   "basketballwomen-mysql": [
+    "basketballwomen-mysql:r1:2a411d69e010f27c",
+    "basketballwomen-mysql:r1:9cc7913a3eea0b56",
+    "basketballwomen-mysql:r1:8a341d8e422b76ae",
+    "basketballwomen-mysql:r1:e81b8e4d3b557dd3",
+    "basketballwomen-mysql:r1:09757f4d54d91f07"
+   ],
+   "ccs-mysql": [
+    "ccs-mysql:r1:05b644658b5387ce",
+    "ccs-mysql:r1:b618109bddef39bf",
+    "ccs-mysql:r1:9cc7913a3eea0b56",
+    "ccs-mysql:r1:4f377483b43eb4ac"
+   ],
+   "chinook-postgres": [
+    "chinook-postgres:r1:139bfd3a0b7839ff",
+    "chinook-postgres:r1:f49fd0b49c87508c",
+    "chinook-postgres:r1:518efdca9c1779b8",
+    "chinook-postgres:r1:52859b4940c9a9a5",
+    "chinook-postgres:r1:99db1b73aa4316a2"
+   ],
+   "classicmodels-mysql": [
+    "classicmodels-mysql:r1:b900179807575f85",
+    "classicmodels-mysql:r1:a09e4d78bf4a3f4c",
+    "classicmodels-mysql:r1:2a5bf5f8faa6f269",
+    "classicmodels-mysql:r1:bd89f717c334d44a",
+    "classicmodels-mysql:r1:f1ba18047557fdad"
+   ],
+   "craftbeer-mysql": [
+    "craftbeer-mysql:r1:9cc7913a3eea0b56"
+   ],
+   "credit-mysql": [
+    "credit-mysql:r1:aa7acdc1526d1f4d",
+    "credit-mysql:r1:74d0e6a5ad8bfcef",
+    "credit-mysql:r1:07c9b85814a3e98b",
+    "credit-mysql:r1:9cc7913a3eea0b56",
+    "credit-mysql:r1:a269c5d8d187df8f"
+   ],
+   "dallas-mysql": [
+    "dallas-mysql:r1:e7e6828975aca49e",
+    "dallas-mysql:r1:8e1df0e89fced1ad",
+    "dallas-mysql:r1:2c518bbff277d3b3",
+    "dallas-mysql:r1:54f9e975eba5f4a7",
+    "dallas-mysql:r1:9cc7913a3eea0b56"
+   ],
+   "ergastf1-mysql": [
+    "ergastf1-mysql:r1:128733beb983aa28",
+    "ergastf1-mysql:r1:5fbfa5d0cbe4ede1",
+    "ergastf1-mysql:r1:f91c11fc2cefb189",
+    "ergastf1-mysql:r1:fa827bf57424f6eb",
+    "ergastf1-mysql:r1:a6aebde1ff123591"
+   ],
+   "ftp-mysql": [
+    "ftp-mysql:r1:01edb8852fc2a2b9",
+    "ftp-mysql:r1:9cc7913a3eea0b56"
+   ],
+   "hockey-mysql": [
+    "hockey-mysql:r1:ee0f0600bbb89742",
+    "hockey-mysql:r1:bc81bfd77bfd2f2d",
+    "hockey-mysql:r1:befec38cf0329f91",
+    "hockey-mysql:r1:e84526252ce86790",
+    "hockey-mysql:r1:9cc7913a3eea0b56"
+   ],
+   "lahman-mysql": [
+    "lahman-mysql:r1:d1df627b5339fb60",
+    "lahman-mysql:r1:7345b0e303e752fa",
+    "lahman-mysql:r1:249b5867320fbfc3",
+    "lahman-mysql:r1:293887736b2255a6",
+    "lahman-mysql:r1:78fccd3a57558800"
+   ],
+   "medical-mysql": [
+    "medical-mysql:r1:e83ebef0e2b854fa",
+    "medical-mysql:r1:d448cab65e0116e2",
+    "medical-mysql:r1:d70936695ad9447b",
+    "medical-mysql:r1:e8e82df23e305a8b",
+    "medical-mysql:r1:9cc7913a3eea0b56"
+   ],
+   "mondial-mysql": [
+    "mondial-mysql:r1:55897294830b64bf",
+    "mondial-mysql:r1:ae8588b8eea4b26c",
+    "mondial-mysql:r1:9cc7913a3eea0b56",
+    "mondial-mysql:r1:476c9507bc3fcf2f",
+    "mondial-mysql:r1:b9d97cc45ee1221a"
+   ],
+   "movielens-mysql": [
+    "movielens-mysql:r1:bfe55972fe872a7f",
+    "movielens-mysql:r1:aabb8f60246607a1",
+    "movielens-mysql:r1:981b3306d0d01e50",
+    "movielens-mysql:r1:0d7ba05a0c32d280",
+    "movielens-mysql:r1:9cc7913a3eea0b56"
+   ],
+   "nba-mysql": [
+    "nba-mysql:r1:3a6133c3bd1fb6c1",
+    "nba-mysql:r1:3929a5c8e65b8d78",
+    "nba-mysql:r1:9cc7913a3eea0b56",
+    "nba-mysql:r1:a1261f13f598cfe3",
+    "nba-mysql:r1:f030b3ba2a922cb8"
+   ],
+   "ncaa-mysql": [
+    "ncaa-mysql:r1:0c5373e7c1a4320f",
+    "ncaa-mysql:r1:b2f89587c22d5163",
+    "ncaa-mysql:r1:3d6c72faae0cda2b",
+    "ncaa-mysql:r1:9cc7913a3eea0b56",
+    "ncaa-mysql:r1:aab954847b00a6bf"
+   ],
+   "northwind-postgres": [
+    "northwind-postgres:r1:3dba6059ff09c148",
+    "northwind-postgres:r1:f1ba18047557fdad",
+    "northwind-postgres:r1:d4d62619d3b4d456",
+    "northwind-postgres:r1:3e9af96b72bbe7c9",
+    "northwind-postgres:r1:9cc7913a3eea0b56"
+   ],
+   "premierleague-mysql": [
+    "premierleague-mysql:r1:76e56de9b4f3f6ff",
+    "premierleague-mysql:r1:28ed1595ac94aef3",
+    "premierleague-mysql:r1:945b438ef229b3b9",
+    "premierleague-mysql:r1:132d5b2162f3bac4",
+    "premierleague-mysql:r1:9cc7913a3eea0b56"
+   ],
+   "pubs-mysql": [
+    "pubs-mysql:r1:9cc7913a3eea0b56",
+    "pubs-mysql:r1:ead31c8282699603",
+    "pubs-mysql:r1:7522a9d2a1f0909e",
+    "pubs-mysql:r1:1b58ec68ddfdd679",
+    "pubs-mysql:r1:62ac5aaec3f6ccd3"
+   ],
+   "restbase-mysql": [
+    "restbase-mysql:r1:cb9b2d3757ccfd80",
+    "restbase-mysql:r1:9cc7913a3eea0b56",
+    "restbase-mysql:r1:c6dcfb3812b7558f"
+   ],
+   "sfscores-mysql": [
+    "sfscores-mysql:r1:5469a8bdcf2c38eb",
+    "sfscores-mysql:r1:bf771a329e0a8a9f",
+    "sfscores-mysql:r1:3187899c5365c747",
+    "sfscores-mysql:r1:04bd4f1c3b6dfafc",
+    "sfscores-mysql:r1:8bee4ed857500723"
+   ],
+   "shakespeare-mysql": [
+    "shakespeare-mysql:r1:56599c77e8d01c0a",
+    "shakespeare-mysql:r1:9cc7913a3eea0b56",
+    "shakespeare-mysql:r1:536da5f6b0b375c2",
+    "shakespeare-mysql:r1:e590a27c385a6521"
+   ],
+   "studentloan-mysql": [
+    "studentloan-mysql:r1:406c4cc6cc3295cb",
+    "studentloan-mysql:r1:9cc7913a3eea0b56"
+   ],
+   "voc-mysql": [
+    "voc-mysql:r1:41fc860e1f260fdf",
+    "voc-mysql:r1:416e52a5125b25ea",
+    "voc-mysql:r1:4a607e4a1be38a06",
+    "voc-mysql:r1:9cc7913a3eea0b56",
+    "voc-mysql:r1:4ce75cf6bea69407"
+   ],
+   "world-mysql": [
+    "world-mysql:r1:001cf675169fdffa",
+    "world-mysql:r1:9cc7913a3eea0b56",
+    "world-mysql:r1:4d81dc6e653c73d2",
+    "world-mysql:r1:4e73fda223d5c94b"
+   ],
+   "birdaddress-postgres": [
+    "birdaddress-postgres:r1:4b03563ae08a51f2",
+    "birdaddress-postgres:r1:9d61861794328f28",
+    "birdaddress-postgres:r1:bb99d12b59aff836",
+    "birdaddress-postgres:r1:9cc7913a3eea0b56",
+    "birdaddress-postgres:r1:52a1a50c8b2acde2"
+   ],
+   "birdcardgames-postgres": [
+    "birdcardgames-postgres:r1:1787329fd09f8329",
+    "birdcardgames-postgres:r1:c5c2c18b41b139a8",
+    "birdcardgames-postgres:r1:3cee829dc51f8460",
+    "birdcardgames-postgres:r1:bc921dac982bd68a",
+    "birdcardgames-postgres:r1:e7af52e8591156a2"
+   ],
+   "birdcoinmarketcap-postgres": [
+    "birdcoinmarketcap-postgres:r1:98b4ef5644ed9c54",
+    "birdcoinmarketcap-postgres:r1:3bd8f86fdb758248",
+    "birdcoinmarketcap-postgres:r1:b7a1bdaf8c60f836",
+    "birdcoinmarketcap-postgres:r1:9cc7913a3eea0b56",
+    "birdcoinmarketcap-postgres:r1:ad87dbda0ef5181a"
+   ],
+   "birdcookbook-postgres": [
+    "birdcookbook-postgres:r1:33e2c68f04d342e2",
+    "birdcookbook-postgres:r1:6d8f8664d7f903f7",
+    "birdcookbook-postgres:r1:9cc7913a3eea0b56",
+    "birdcookbook-postgres:r1:56e7faca81354258",
+    "birdcookbook-postgres:r1:0261404923633f17"
+   ],
+   "birdhumanresources-postgres": [
+    "birdhumanresources-postgres:r1:9cc7913a3eea0b56",
+    "birdhumanresources-postgres:r1:93801c16f000feea",
+    "birdhumanresources-postgres:r1:0b9b10f58b9c99e4",
+    "birdhumanresources-postgres:r1:e7ca9eb059ec2a85"
+   ],
+   "birdlegislator-postgres": [
+    "birdlegislator-postgres:r1:cf208e3820dc3950",
+    "birdlegislator-postgres:r1:72ef8e260520a857",
+    "birdlegislator-postgres:r1:9cc7913a3eea0b56",
+    "birdlegislator-postgres:r1:80c0977800faa669",
+    "birdlegislator-postgres:r1:065f70ba08e3e28b"
+   ],
+   "birdmenu-postgres": [
+    "birdmenu-postgres:r1:60db052fcbebc067",
+    "birdmenu-postgres:r1:5663e5fa50232597",
+    "birdmenu-postgres:r1:6a398420f720126f",
+    "birdmenu-postgres:r1:9cc7913a3eea0b56",
+    "birdmenu-postgres:r1:074d2497aa5e9eaf"
+   ],
+   "birdmovie-postgres": [
+    "birdmovie-postgres:r1:240882fbc572595b",
+    "birdmovie-postgres:r1:62e5219a8a7c2a8c",
+    "birdmovie-postgres:r1:b2408c08f4f5ec76",
+    "birdmovie-postgres:r1:9cc7913a3eea0b56",
+    "birdmovie-postgres:r1:c033e37365243977"
+   ],
+   "birdsoccer2016-postgres": [
+    "birdsoccer2016-postgres:r1:4670aaeada804f92",
+    "birdsoccer2016-postgres:r1:13d1c275169f20f7",
+    "birdsoccer2016-postgres:r1:873a921ce618071f",
+    "birdsoccer2016-postgres:r1:bf3f12d04e11b101",
+    "birdsoccer2016-postgres:r1:439f9f508d58c21c"
+   ],
+   "birdsuperstore-postgres": [
+    "birdsuperstore-postgres:r1:c718cb3151bf5317",
+    "birdsuperstore-postgres:r1:a4aa916c7ca70225",
+    "birdsuperstore-postgres:r1:e128b92a2be49885",
+    "birdsuperstore-postgres:r1:92f8ce888587cc83",
+    "birdsuperstore-postgres:r1:64d4b3690de9dd87"
+   ],
+   "birdsynthea-postgres": [
+    "birdsynthea-postgres:r1:394ef94f33074137",
+    "birdsynthea-postgres:r1:4e91b64cad07ac70",
+    "birdsynthea-postgres:r1:61b53f82e9abe594",
+    "birdsynthea-postgres:r1:88bc63919a9ea2d7",
+    "birdsynthea-postgres:r1:5b642e8dd2adeac7"
+   ],
+   "birdvideogames-postgres": [
+    "birdvideogames-postgres:r1:17f34a18f744f3d5",
+    "birdvideogames-postgres:r1:64e2b5285209d61d",
+    "birdvideogames-postgres:r1:29d204cb4bcf44d7",
+    "birdvideogames-postgres:r1:9cc7913a3eea0b56",
+    "birdvideogames-postgres:r1:64698d558af6294f"
+   ]
+  },
+  "round 1c": {
+   "airlines-postgres": [
+    "airlines-postgres:0",
+    "airlines-postgres:1",
+    "airlines-postgres:2",
+    "airlines-postgres:3",
+    "airlines-postgres:5"
+   ],
+   "atherosclerosis-mysql": [
+    "atherosclerosis-mysql:0",
+    "atherosclerosis-mysql:1",
+    "atherosclerosis-mysql:4",
+    "atherosclerosis-mysql:5",
+    "atherosclerosis-mysql:6"
+   ],
+   "basketball-mysql": [
+    "basketball-mysql:0",
+    "basketball-mysql:1",
+    "basketball-mysql:2",
+    "basketball-mysql:3",
+    "basketball-mysql:4"
+   ],
+   "basketballwomen-mysql": [
+    "basketballwomen-mysql:0",
+    "basketballwomen-mysql:1",
+    "basketballwomen-mysql:2",
+    "basketballwomen-mysql:3",
+    "basketballwomen-mysql:4"
+   ],
+   "ccs-mysql": [
+    "ccs-mysql:0",
+    "ccs-mysql:1",
+    "ccs-mysql:7",
+    "ccs-mysql:12",
+    "ccs-mysql:15"
+   ],
+   "chinook-postgres": [
+    "chinook-postgres:0",
+    "chinook-postgres:2",
+    "chinook-postgres:3",
+    "chinook-postgres:8",
+    "chinook-postgres:13"
+   ],
+   "classicmodels-mysql": [
+    "classicmodels-mysql:0",
+    "classicmodels-mysql:1",
+    "classicmodels-mysql:2",
+    "classicmodels-mysql:3",
+    "classicmodels-mysql:7"
+   ],
+   "craftbeer-mysql": [
+    "craftbeer-mysql:0",
+    "craftbeer-mysql:1",
+    "craftbeer-mysql:15"
+   ],
+   "credit-mysql": [
+    "credit-mysql:0",
+    "credit-mysql:1",
+    "credit-mysql:2",
+    "credit-mysql:3",
+    "credit-mysql:5"
+   ],
+   "dallas-mysql": [
+    "dallas-mysql:0",
+    "dallas-mysql:1",
+    "dallas-mysql:6",
+    "dallas-mysql:7",
+    "dallas-mysql:8"
+   ],
+   "ergastf1-mysql": [
+    "ergastf1-mysql:0",
+    "ergastf1-mysql:1",
+    "ergastf1-mysql:2",
+    "ergastf1-mysql:3",
+    "ergastf1-mysql:10"
+   ],
+   "ftp-mysql": [
+    "ftp-mysql:0",
+    "ftp-mysql:1",
+    "ftp-mysql:2",
+    "ftp-mysql:3"
+   ],
+   "hockey-mysql": [
+    "hockey-mysql:0",
+    "hockey-mysql:1",
+    "hockey-mysql:2",
+    "hockey-mysql:4",
+    "hockey-mysql:6"
+   ],
+   "lahman-mysql": [
+    "lahman-mysql:0",
+    "lahman-mysql:1",
+    "lahman-mysql:2",
+    "lahman-mysql:3",
+    "lahman-mysql:4"
+   ],
+   "medical-mysql": [
+    "medical-mysql:0",
+    "medical-mysql:1",
+    "medical-mysql:2",
+    "medical-mysql:3",
+    "medical-mysql:4"
+   ],
+   "mondial-mysql": [
+    "mondial-mysql:0",
+    "mondial-mysql:1",
+    "mondial-mysql:2",
+    "mondial-mysql:4",
+    "mondial-mysql:5"
+   ],
+   "movielens-mysql": [
+    "movielens-mysql:0",
+    "movielens-mysql:1",
+    "movielens-mysql:3",
+    "movielens-mysql:4",
+    "movielens-mysql:5"
+   ],
+   "nba-mysql": [
+    "nba-mysql:0",
+    "nba-mysql:1",
+    "nba-mysql:5",
+    "nba-mysql:7",
+    "nba-mysql:19"
+   ],
+   "ncaa-mysql": [
+    "ncaa-mysql:0",
+    "ncaa-mysql:3",
+    "ncaa-mysql:6",
+    "ncaa-mysql:7",
+    "ncaa-mysql:15"
+   ],
+   "northwind-postgres": [
+    "northwind-postgres:0",
+    "northwind-postgres:1",
+    "northwind-postgres:2",
+    "northwind-postgres:12",
+    "northwind-postgres:14"
+   ],
+   "premierleague-mysql": [
+    "premierleague-mysql:0",
+    "premierleague-mysql:1",
+    "premierleague-mysql:15",
+    "premierleague-mysql:16"
+   ],
+   "pubs-mysql": [
+    "pubs-mysql:0",
+    "pubs-mysql:1",
+    "pubs-mysql:3",
+    "pubs-mysql:5",
+    "pubs-mysql:7"
+   ],
+   "restbase-mysql": [
+    "restbase-mysql:0",
+    "restbase-mysql:1",
+    "restbase-mysql:2",
+    "restbase-mysql:5",
+    "restbase-mysql:10"
+   ],
+   "sfscores-mysql": [
+    "sfscores-mysql:0",
+    "sfscores-mysql:1",
+    "sfscores-mysql:2",
+    "sfscores-mysql:3",
+    "sfscores-mysql:4"
+   ],
+   "shakespeare-mysql": [
+    "shakespeare-mysql:0",
+    "shakespeare-mysql:1",
+    "shakespeare-mysql:2",
+    "shakespeare-mysql:3",
+    "shakespeare-mysql:4"
+   ],
+   "studentloan-mysql": [
+    "studentloan-mysql:0",
+    "studentloan-mysql:1",
+    "studentloan-mysql:2",
+    "studentloan-mysql:3",
+    "studentloan-mysql:6"
+   ],
+   "voc-mysql": [
+    "voc-mysql:0",
+    "voc-mysql:1",
+    "voc-mysql:11",
+    "voc-mysql:13",
+    "voc-mysql:14"
+   ],
+   "world-mysql": [
+    "world-mysql:0",
+    "world-mysql:1",
+    "world-mysql:5",
+    "world-mysql:7",
+    "world-mysql:10"
+   ],
+   "birdaddress-postgres": [
+    "birdaddress-postgres:0",
+    "birdaddress-postgres:1",
+    "birdaddress-postgres:23",
+    "birdaddress-postgres:27",
+    "birdaddress-postgres:28"
+   ],
+   "birdcardgames-postgres": [
+    "birdcardgames-postgres:0",
+    "birdcardgames-postgres:1",
+    "birdcardgames-postgres:3",
+    "birdcardgames-postgres:8",
+    "birdcardgames-postgres:10"
+   ],
+   "birdcoinmarketcap-postgres": [
+    "birdcoinmarketcap-postgres:0",
+    "birdcoinmarketcap-postgres:2",
+    "birdcoinmarketcap-postgres:3",
+    "birdcoinmarketcap-postgres:5"
+   ],
+   "birdcookbook-postgres": [
+    "birdcookbook-postgres:0",
+    "birdcookbook-postgres:1",
+    "birdcookbook-postgres:5",
+    "birdcookbook-postgres:14",
+    "birdcookbook-postgres:18"
+   ],
+   "birdhumanresources-postgres": [
+    "birdhumanresources-postgres:0",
+    "birdhumanresources-postgres:1",
+    "birdhumanresources-postgres:14",
+    "birdhumanresources-postgres:15",
+    "birdhumanresources-postgres:18"
+   ],
+   "birdlegislator-postgres": [
+    "birdlegislator-postgres:0",
+    "birdlegislator-postgres:1",
+    "birdlegislator-postgres:2",
+    "birdlegislator-postgres:3",
+    "birdlegislator-postgres:4"
+   ],
+   "birdmenu-postgres": [
+    "birdmenu-postgres:0",
+    "birdmenu-postgres:1",
+    "birdmenu-postgres:5",
+    "birdmenu-postgres:6",
+    "birdmenu-postgres:18"
+   ],
+   "birdmovie-postgres": [
+    "birdmovie-postgres:0",
+    "birdmovie-postgres:1",
+    "birdmovie-postgres:3",
+    "birdmovie-postgres:4",
+    "birdmovie-postgres:5"
+   ],
+   "birdsoccer2016-postgres": [
+    "birdsoccer2016-postgres:0",
+    "birdsoccer2016-postgres:1",
+    "birdsoccer2016-postgres:15",
+    "birdsoccer2016-postgres:16",
+    "birdsoccer2016-postgres:19"
+   ],
+   "birdsuperstore-postgres": [
+    "birdsuperstore-postgres:0",
+    "birdsuperstore-postgres:1",
+    "birdsuperstore-postgres:2",
+    "birdsuperstore-postgres:3",
+    "birdsuperstore-postgres:4"
+   ],
+   "birdsynthea-postgres": [
+    "birdsynthea-postgres:0",
+    "birdsynthea-postgres:1",
+    "birdsynthea-postgres:2",
+    "birdsynthea-postgres:3",
+    "birdsynthea-postgres:8"
+   ],
+   "birdvideogames-postgres": [
+    "birdvideogames-postgres:0",
+    "birdvideogames-postgres:1",
+    "birdvideogames-postgres:2",
+    "birdvideogames-postgres:4",
+    "birdvideogames-postgres:5"
+   ]
+  },
+  "round 1d, the look taught by Sonnet": {
+   "airlines-postgres": [
+    "airlines-postgres:0",
+    "airlines-postgres:1",
+    "airlines-postgres:3",
+    "airlines-postgres:2",
+    "airlines-postgres:4"
+   ],
+   "atherosclerosis-mysql": [
+    "atherosclerosis-mysql:0",
+    "atherosclerosis-mysql:4",
+    "atherosclerosis-mysql:9",
+    "atherosclerosis-mysql:7",
+    "atherosclerosis-mysql:8"
+   ],
+   "basketball-mysql": [
+    "basketball-mysql:0",
+    "basketball-mysql:1",
+    "basketball-mysql:9",
+    "basketball-mysql:3",
+    "basketball-mysql:4"
+   ],
+   "basketballwomen-mysql": [
+    "basketballwomen-mysql:0",
+    "basketballwomen-mysql:2",
+    "basketballwomen-mysql:1",
+    "basketballwomen-mysql:3",
+    "basketballwomen-mysql:12"
+   ],
+   "ccs-mysql": [
+    "ccs-mysql:2",
+    "ccs-mysql:0",
+    "ccs-mysql:7",
+    "ccs-mysql:11",
+    "ccs-mysql:x30-7"
+   ],
+   "chinook-postgres": [
+    "chinook-postgres:1",
+    "chinook-postgres:0",
+    "chinook-postgres:11",
+    "chinook-postgres:6",
+    "chinook-postgres:9"
+   ],
+   "classicmodels-mysql": [
+    "classicmodels-mysql:2",
+    "classicmodels-mysql:0",
+    "classicmodels-mysql:1",
+    "classicmodels-mysql:3",
+    "classicmodels-mysql:5"
+   ],
+   "craftbeer-mysql": [
+    "craftbeer-mysql:1",
+    "craftbeer-mysql:0",
+    "craftbeer-mysql:2",
+    "craftbeer-mysql:15",
+    "craftbeer-mysql:5"
+   ],
+   "credit-mysql": [
+    "credit-mysql:0",
+    "credit-mysql:5",
+    "credit-mysql:2",
+    "credit-mysql:6",
+    "credit-mysql:x30-0"
+   ],
+   "dallas-mysql": [
+    "dallas-mysql:0",
+    "dallas-mysql:1",
+    "dallas-mysql:3",
+    "dallas-mysql:2",
+    "dallas-mysql:13"
+   ],
+   "ergastf1-mysql": [
+    "ergastf1-mysql:0",
+    "ergastf1-mysql:1",
+    "ergastf1-mysql:x30-11",
+    "ergastf1-mysql:2",
+    "ergastf1-mysql:3"
+   ],
+   "ftp-mysql": [
+    "ftp-mysql:0",
+    "ftp-mysql:1",
+    "ftp-mysql:2",
+    "ftp-mysql:3",
+    "ftp-mysql:4"
+   ],
+   "hockey-mysql": [
+    "hockey-mysql:0",
+    "hockey-mysql:6",
+    "hockey-mysql:1",
+    "hockey-mysql:10",
+    "hockey-mysql:11"
+   ],
+   "lahman-mysql": [
+    "lahman-mysql:1",
+    "lahman-mysql:3",
+    "lahman-mysql:2",
+    "lahman-mysql:6",
+    "lahman-mysql:0"
+   ],
+   "medical-mysql": [
+    "medical-mysql:0",
+    "medical-mysql:1",
+    "medical-mysql:2",
+    "medical-mysql:3",
+    "medical-mysql:4"
+   ],
+   "mondial-mysql": [
+    "mondial-mysql:0",
+    "mondial-mysql:1",
+    "mondial-mysql:3",
+    "mondial-mysql:4",
+    "mondial-mysql:5"
+   ],
+   "movielens-mysql": [
+    "movielens-mysql:1",
+    "movielens-mysql:0",
+    "movielens-mysql:3",
+    "movielens-mysql:4",
+    "movielens-mysql:5"
+   ],
+   "nba-mysql": [
+    "nba-mysql:0",
+    "nba-mysql:1",
+    "nba-mysql:12",
+    "nba-mysql:2",
+    "nba-mysql:8"
+   ],
+   "ncaa-mysql": [
+    "ncaa-mysql:0",
+    "ncaa-mysql:1",
+    "ncaa-mysql:2",
+    "ncaa-mysql:3",
+    "ncaa-mysql:6"
+   ],
+   "northwind-postgres": [
+    "northwind-postgres:0",
+    "northwind-postgres:3",
+    "northwind-postgres:1",
+    "northwind-postgres:2",
+    "northwind-postgres:4"
+   ],
+   "premierleague-mysql": [
+    "premierleague-mysql:0",
+    "premierleague-mysql:2",
+    "premierleague-mysql:3",
+    "premierleague-mysql:4",
+    "premierleague-mysql:1"
+   ],
+   "pubs-mysql": [
+    "pubs-mysql:0",
+    "pubs-mysql:3",
+    "pubs-mysql:2",
+    "pubs-mysql:9",
+    "pubs-mysql:x30-3"
+   ],
+   "restbase-mysql": [
+    "restbase-mysql:1",
+    "restbase-mysql:2",
+    "restbase-mysql:3",
+    "restbase-mysql:7",
+    "restbase-mysql:5"
+   ],
+   "sfscores-mysql": [
+    "sfscores-mysql:0",
+    "sfscores-mysql:1",
+    "sfscores-mysql:3",
+    "sfscores-mysql:2",
+    "sfscores-mysql:5"
+   ],
+   "shakespeare-mysql": [
+    "shakespeare-mysql:2",
+    "shakespeare-mysql:1",
+    "shakespeare-mysql:0",
+    "shakespeare-mysql:6",
+    "shakespeare-mysql:4"
+   ],
+   "studentloan-mysql": [
+    "studentloan-mysql:0",
+    "studentloan-mysql:1",
+    "studentloan-mysql:6",
+    "studentloan-mysql:2",
+    "studentloan-mysql:3"
+   ],
+   "voc-mysql": [
+    "voc-mysql:0",
+    "voc-mysql:5",
+    "voc-mysql:6",
+    "voc-mysql:7",
+    "voc-mysql:3"
+   ],
+   "world-mysql": [
+    "world-mysql:0",
+    "world-mysql:1",
+    "world-mysql:2",
+    "world-mysql:3",
+    "world-mysql:4"
+   ],
+   "birdaddress-postgres": [
+    "birdaddress-postgres:0",
+    "birdaddress-postgres:2",
+    "birdaddress-postgres:5",
+    "birdaddress-postgres:23",
+    "birdaddress-postgres:7"
+   ],
+   "birdcardgames-postgres": [
+    "birdcardgames-postgres:0",
+    "birdcardgames-postgres:1",
+    "birdcardgames-postgres:2",
+    "birdcardgames-postgres:3",
+    "birdcardgames-postgres:8"
+   ],
+   "birdcoinmarketcap-postgres": [
+    "birdcoinmarketcap-postgres:0",
+    "birdcoinmarketcap-postgres:3",
+    "birdcoinmarketcap-postgres:1",
+    "birdcoinmarketcap-postgres:5",
+    "birdcoinmarketcap-postgres:9"
+   ],
+   "birdcookbook-postgres": [
+    "birdcookbook-postgres:2",
+    "birdcookbook-postgres:3",
+    "birdcookbook-postgres:5",
+    "birdcookbook-postgres:14",
+    "birdcookbook-postgres:17"
+   ],
+   "birdhumanresources-postgres": [
+    "birdhumanresources-postgres:3",
+    "birdhumanresources-postgres:1",
+    "birdhumanresources-postgres:2",
+    "birdhumanresources-postgres:0",
+    "birdhumanresources-postgres:4"
+   ],
+   "birdlegislator-postgres": [
+    "birdlegislator-postgres:0",
+    "birdlegislator-postgres:1",
+    "birdlegislator-postgres:2",
+    "birdlegislator-postgres:3",
+    "birdlegislator-postgres:7"
+   ],
+   "birdmenu-postgres": [
+    "birdmenu-postgres:0",
+    "birdmenu-postgres:1",
+    "birdmenu-postgres:3",
+    "birdmenu-postgres:5",
+    "birdmenu-postgres:6"
+   ],
+   "birdmovie-postgres": [
+    "birdmovie-postgres:1",
+    "birdmovie-postgres:4",
+    "birdmovie-postgres:3",
+    "birdmovie-postgres:5",
+    "birdmovie-postgres:16"
+   ],
+   "birdsoccer2016-postgres": [
+    "birdsoccer2016-postgres:0",
+    "birdsoccer2016-postgres:1",
+    "birdsoccer2016-postgres:5",
+    "birdsoccer2016-postgres:3",
+    "birdsoccer2016-postgres:6"
+   ],
+   "birdsuperstore-postgres": [
+    "birdsuperstore-postgres:0",
+    "birdsuperstore-postgres:3",
+    "birdsuperstore-postgres:1",
+    "birdsuperstore-postgres:2",
+    "birdsuperstore-postgres:8"
+   ],
+   "birdsynthea-postgres": [
+    "birdsynthea-postgres:0",
+    "birdsynthea-postgres:1",
+    "birdsynthea-postgres:2",
+    "birdsynthea-postgres:3",
+    "birdsynthea-postgres:5"
+   ],
+   "birdvideogames-postgres": [
+    "birdvideogames-postgres:0",
+    "birdvideogames-postgres:4",
+    "birdvideogames-postgres:1",
+    "birdvideogames-postgres:2",
+    "birdvideogames-postgres:11"
+   ]
+  },
+  "round 1e, taught on its 41": {
+   "airlines-postgres": [
+    "airlines-postgres:0",
+    "airlines-postgres:3",
+    "airlines-postgres:6",
+    "airlines-postgres:5",
+    "airlines-postgres:2"
+   ],
+   "atherosclerosis-mysql": [
+    "atherosclerosis-mysql:9",
+    "atherosclerosis-mysql:4",
+    "atherosclerosis-mysql:5",
+    "atherosclerosis-mysql:0",
+    "atherosclerosis-mysql:15"
+   ],
+   "basketball-mysql": [
+    "basketball-mysql:0",
+    "basketball-mysql:4",
+    "basketball-mysql:1",
+    "basketball-mysql:9",
+    "basketball-mysql:12"
+   ],
+   "basketballwomen-mysql": [
+    "basketballwomen-mysql:1",
+    "basketballwomen-mysql:6",
+    "basketballwomen-mysql:0",
+    "basketballwomen-mysql:3",
+    "basketballwomen-mysql:2"
+   ],
+   "ccs-mysql": [
+    "ccs-mysql:7",
+    "ccs-mysql:x30-7",
+    "ccs-mysql:12",
+    "ccs-mysql:x30-9",
+    "ccs-mysql:x30-2"
+   ],
+   "chinook-postgres": [
+    "chinook-postgres:x30-8",
+    "chinook-postgres:0",
+    "chinook-postgres:5",
+    "chinook-postgres:6",
+    "chinook-postgres:x30-11"
+   ],
+   "classicmodels-mysql": [
+    "classicmodels-mysql:2",
+    "classicmodels-mysql:5",
+    "classicmodels-mysql:6",
+    "classicmodels-mysql:4",
+    "classicmodels-mysql:1"
+   ],
+   "craftbeer-mysql": [
+    "craftbeer-mysql:1",
+    "craftbeer-mysql:0",
+    "craftbeer-mysql:2",
+    "craftbeer-mysql:15",
+    "craftbeer-mysql:6"
+   ],
+   "credit-mysql": [
+    "credit-mysql:0",
+    "credit-mysql:4",
+    "credit-mysql:5",
+    "credit-mysql:x30-5",
+    "credit-mysql:x30-0"
+   ],
+   "dallas-mysql": [
+    "dallas-mysql:0",
+    "dallas-mysql:1",
+    "dallas-mysql:3",
+    "dallas-mysql:8",
+    "dallas-mysql:7"
+   ],
+   "ergastf1-mysql": [
+    "ergastf1-mysql:0",
+    "ergastf1-mysql:10",
+    "ergastf1-mysql:1",
+    "ergastf1-mysql:13",
+    "ergastf1-mysql:8"
+   ],
+   "ftp-mysql": [
+    "ftp-mysql:1",
+    "ftp-mysql:0",
+    "ftp-mysql:2",
+    "ftp-mysql:3",
+    "ftp-mysql:4"
+   ],
+   "hockey-mysql": [
+    "hockey-mysql:6",
+    "hockey-mysql:0",
+    "hockey-mysql:14",
+    "hockey-mysql:10",
+    "hockey-mysql:1"
+   ],
+   "lahman-mysql": [
+    "lahman-mysql:3",
+    "lahman-mysql:x30-3",
+    "lahman-mysql:x30-12",
+    "lahman-mysql:2",
+    "lahman-mysql:7"
+   ],
+   "medical-mysql": [
+    "medical-mysql:1",
+    "medical-mysql:7",
+    "medical-mysql:4",
+    "medical-mysql:0",
+    "medical-mysql:5"
+   ],
+   "mondial-mysql": [
+    "mondial-mysql:1",
+    "mondial-mysql:4",
+    "mondial-mysql:16",
+    "mondial-mysql:5",
+    "mondial-mysql:22"
+   ],
+   "movielens-mysql": [
+    "movielens-mysql:0",
+    "movielens-mysql:1",
+    "movielens-mysql:7",
+    "movielens-mysql:11",
+    "movielens-mysql:4"
+   ],
+   "nba-mysql": [
+    "nba-mysql:0",
+    "nba-mysql:1",
+    "nba-mysql:12",
+    "nba-mysql:8",
+    "nba-mysql:7"
+   ],
+   "ncaa-mysql": [
+    "ncaa-mysql:6",
+    "ncaa-mysql:x30-11",
+    "ncaa-mysql:x30-10",
+    "ncaa-mysql:x30-12",
+    "ncaa-mysql:5"
+   ],
+   "northwind-postgres": [
+    "northwind-postgres:1",
+    "northwind-postgres:0",
+    "northwind-postgres:3",
+    "northwind-postgres:4",
+    "northwind-postgres:5"
+   ],
+   "premierleague-mysql": [
+    "premierleague-mysql:0",
+    "premierleague-mysql:4",
+    "premierleague-mysql:3",
+    "premierleague-mysql:2",
+    "premierleague-mysql:x30-12"
+   ],
+   "pubs-mysql": [
+    "pubs-mysql:3",
+    "pubs-mysql:0",
+    "pubs-mysql:5",
+    "pubs-mysql:2",
+    "pubs-mysql:4"
+   ],
+   "restbase-mysql": [
+    "restbase-mysql:10",
+    "restbase-mysql:5",
+    "restbase-mysql:1",
+    "restbase-mysql:2",
+    "restbase-mysql:7"
+   ],
+   "sfscores-mysql": [
+    "sfscores-mysql:0",
+    "sfscores-mysql:5",
+    "sfscores-mysql:1",
+    "sfscores-mysql:3",
+    "sfscores-mysql:15"
+   ],
+   "shakespeare-mysql": [
+    "shakespeare-mysql:6",
+    "shakespeare-mysql:7",
+    "shakespeare-mysql:1",
+    "shakespeare-mysql:0",
+    "shakespeare-mysql:8"
+   ],
+   "studentloan-mysql": [
+    "studentloan-mysql:6",
+    "studentloan-mysql:0",
+    "studentloan-mysql:1",
+    "studentloan-mysql:2",
+    "studentloan-mysql:12"
+   ],
+   "voc-mysql": [
+    "voc-mysql:0",
+    "voc-mysql:5",
+    "voc-mysql:6",
+    "voc-mysql:7",
+    "voc-mysql:11"
+   ],
+   "world-mysql": [
+    "world-mysql:7",
+    "world-mysql:13",
+    "world-mysql:1",
+    "world-mysql:x30-1",
+    "world-mysql:10"
+   ],
+   "birdaddress-postgres": [
+    "birdaddress-postgres:7",
+    "birdaddress-postgres:27",
+    "birdaddress-postgres:2",
+    "birdaddress-postgres:5",
+    "birdaddress-postgres:29"
+   ],
+   "birdcardgames-postgres": [
+    "birdcardgames-postgres:0",
+    "birdcardgames-postgres:1",
+    "birdcardgames-postgres:8",
+    "birdcardgames-postgres:18",
+    "birdcardgames-postgres:2"
+   ],
+   "birdcoinmarketcap-postgres": [
+    "birdcoinmarketcap-postgres:3",
+    "birdcoinmarketcap-postgres:5",
+    "birdcoinmarketcap-postgres:0",
+    "birdcoinmarketcap-postgres:2",
+    "birdcoinmarketcap-postgres:9"
+   ],
+   "birdcookbook-postgres": [
+    "birdcookbook-postgres:14",
+    "birdcookbook-postgres:5",
+    "birdcookbook-postgres:2",
+    "birdcookbook-postgres:17",
+    "birdcookbook-postgres:20"
+   ],
+   "birdhumanresources-postgres": [
+    "birdhumanresources-postgres:0",
+    "birdhumanresources-postgres:5",
+    "birdhumanresources-postgres:6",
+    "birdhumanresources-postgres:7",
+    "birdhumanresources-postgres:8"
+   ],
+   "birdlegislator-postgres": [
+    "birdlegislator-postgres:4",
+    "birdlegislator-postgres:3",
+    "birdlegislator-postgres:0",
+    "birdlegislator-postgres:7",
+    "birdlegislator-postgres:5"
+   ],
+   "birdmenu-postgres": [
+    "birdmenu-postgres:1",
+    "birdmenu-postgres:6",
+    "birdmenu-postgres:0",
+    "birdmenu-postgres:8",
+    "birdmenu-postgres:12"
+   ],
+   "birdmovie-postgres": [
+    "birdmovie-postgres:4",
+    "birdmovie-postgres:5",
+    "birdmovie-postgres:1",
+    "birdmovie-postgres:3",
+    "birdmovie-postgres:16"
+   ],
+   "birdsoccer2016-postgres": [
+    "birdsoccer2016-postgres:23",
+    "birdsoccer2016-postgres:24",
+    "birdsoccer2016-postgres:0",
+    "birdsoccer2016-postgres:1",
+    "birdsoccer2016-postgres:21"
+   ],
+   "birdsuperstore-postgres": [
+    "birdsuperstore-postgres:3",
+    "birdsuperstore-postgres:8",
+    "birdsuperstore-postgres:19",
+    "birdsuperstore-postgres:2",
+    "birdsuperstore-postgres:0"
+   ],
+   "birdsynthea-postgres": [
+    "birdsynthea-postgres:0",
+    "birdsynthea-postgres:5",
+    "birdsynthea-postgres:15",
+    "birdsynthea-postgres:10",
+    "birdsynthea-postgres:8"
+   ],
+   "birdvideogames-postgres": [
+    "birdvideogames-postgres:4",
+    "birdvideogames-postgres:18",
+    "birdvideogames-postgres:0",
+    "birdvideogames-postgres:2",
+    "birdvideogames-postgres:16"
+   ]
+  },
+  "round 1f, taught on 81": {
+   "airlines-postgres": [
+    "airlines-postgres:0",
+    "airlines-postgres:3",
+    "airlines-postgres:5",
+    "airlines-postgres:2",
+    "airlines-postgres:1"
+   ],
+   "atherosclerosis-mysql": [
+    "atherosclerosis-mysql:0",
+    "atherosclerosis-mysql:4",
+    "atherosclerosis-mysql:2",
+    "atherosclerosis-mysql:1",
+    "atherosclerosis-mysql:3"
+   ],
+   "basketball-mysql": [
+    "basketball-mysql:9",
+    "basketball-mysql:0",
+    "basketball-mysql:4",
+    "basketball-mysql:2",
+    "basketball-mysql:x30-0"
+   ],
+   "basketballwomen-mysql": [
+    "basketballwomen-mysql:1",
+    "basketballwomen-mysql:6",
+    "basketballwomen-mysql:0",
+    "basketballwomen-mysql:2",
+    "basketballwomen-mysql:5"
+   ],
+   "ccs-mysql": [
+    "ccs-mysql:2",
+    "ccs-mysql:7",
+    "ccs-mysql:0",
+    "ccs-mysql:12",
+    "ccs-mysql:x30-7"
+   ],
+   "chinook-postgres": [
+    "chinook-postgres:x30-8",
+    "chinook-postgres:6",
+    "chinook-postgres:0",
+    "chinook-postgres:13",
+    "chinook-postgres:11"
+   ],
+   "classicmodels-mysql": [
+    "classicmodels-mysql:2",
+    "classicmodels-mysql:0",
+    "classicmodels-mysql:4",
+    "classicmodels-mysql:5",
+    "classicmodels-mysql:6"
+   ],
+   "craftbeer-mysql": [
+    "craftbeer-mysql:0",
+    "craftbeer-mysql:1",
+    "craftbeer-mysql:2",
+    "craftbeer-mysql:6",
+    "craftbeer-mysql:15"
+   ],
+   "credit-mysql": [
+    "credit-mysql:0",
+    "credit-mysql:4",
+    "credit-mysql:5",
+    "credit-mysql:1",
+    "credit-mysql:2"
+   ],
+   "dallas-mysql": [
+    "dallas-mysql:0",
+    "dallas-mysql:1",
+    "dallas-mysql:2",
+    "dallas-mysql:6",
+    "dallas-mysql:3"
+   ],
+   "ergastf1-mysql": [
+    "ergastf1-mysql:0",
+    "ergastf1-mysql:1",
+    "ergastf1-mysql:10",
+    "ergastf1-mysql:5",
+    "ergastf1-mysql:2"
+   ],
+   "ftp-mysql": [
+    "ftp-mysql:2",
+    "ftp-mysql:1",
+    "ftp-mysql:0",
+    "ftp-mysql:3",
+    "ftp-mysql:4"
+   ],
+   "hockey-mysql": [
+    "hockey-mysql:0",
+    "hockey-mysql:6",
+    "hockey-mysql:1",
+    "hockey-mysql:14",
+    "hockey-mysql:10"
+   ],
+   "lahman-mysql": [
+    "lahman-mysql:2",
+    "lahman-mysql:1",
+    "lahman-mysql:4",
+    "lahman-mysql:x30-3",
+    "lahman-mysql:11"
+   ],
+   "medical-mysql": [
+    "medical-mysql:1",
+    "medical-mysql:4",
+    "medical-mysql:0",
+    "medical-mysql:5",
+    "medical-mysql:2"
+   ],
+   "mondial-mysql": [
+    "mondial-mysql:1",
+    "mondial-mysql:4",
+    "mondial-mysql:5",
+    "mondial-mysql:16",
+    "mondial-mysql:7"
+   ],
+   "movielens-mysql": [
+    "movielens-mysql:0",
+    "movielens-mysql:1",
+    "movielens-mysql:7",
+    "movielens-mysql:11",
+    "movielens-mysql:2"
+   ],
+   "nba-mysql": [
+    "nba-mysql:0",
+    "nba-mysql:1",
+    "nba-mysql:2",
+    "nba-mysql:4",
+    "nba-mysql:12"
+   ],
+   "ncaa-mysql": [
+    "ncaa-mysql:6",
+    "ncaa-mysql:3",
+    "ncaa-mysql:1",
+    "ncaa-mysql:10",
+    "ncaa-mysql:12"
+   ],
+   "northwind-postgres": [
+    "northwind-postgres:0",
+    "northwind-postgres:1",
+    "northwind-postgres:5",
+    "northwind-postgres:2",
+    "northwind-postgres:3"
+   ],
+   "premierleague-mysql": [
+    "premierleague-mysql:0",
+    "premierleague-mysql:2",
+    "premierleague-mysql:3",
+    "premierleague-mysql:4",
+    "premierleague-mysql:x30-12"
+   ],
+   "pubs-mysql": [
+    "pubs-mysql:0",
+    "pubs-mysql:2",
+    "pubs-mysql:3",
+    "pubs-mysql:5",
+    "pubs-mysql:4"
+   ],
+   "restbase-mysql": [
+    "restbase-mysql:1",
+    "restbase-mysql:4",
+    "restbase-mysql:5",
+    "restbase-mysql:7",
+    "restbase-mysql:10"
+   ],
+   "sfscores-mysql": [
+    "sfscores-mysql:0",
+    "sfscores-mysql:1",
+    "sfscores-mysql:5",
+    "sfscores-mysql:3",
+    "sfscores-mysql:2"
+   ],
+   "shakespeare-mysql": [
+    "shakespeare-mysql:2",
+    "shakespeare-mysql:0",
+    "shakespeare-mysql:1",
+    "shakespeare-mysql:6",
+    "shakespeare-mysql:8"
+   ],
+   "studentloan-mysql": [
+    "studentloan-mysql:0",
+    "studentloan-mysql:1",
+    "studentloan-mysql:6",
+    "studentloan-mysql:2",
+    "studentloan-mysql:12"
+   ],
+   "voc-mysql": [
+    "voc-mysql:3",
+    "voc-mysql:4",
+    "voc-mysql:11",
+    "voc-mysql:1",
+    "voc-mysql:0"
+   ],
+   "world-mysql": [
+    "world-mysql:2",
+    "world-mysql:0",
+    "world-mysql:10",
+    "world-mysql:7",
+    "world-mysql:11"
+   ],
+   "birdaddress-postgres": [
+    "birdaddress-postgres:2",
+    "birdaddress-postgres:5",
+    "birdaddress-postgres:0",
+    "birdaddress-postgres:7",
+    "birdaddress-postgres:11"
+   ],
+   "birdcardgames-postgres": [
+    "birdcardgames-postgres:0",
+    "birdcardgames-postgres:3",
+    "birdcardgames-postgres:1",
+    "birdcardgames-postgres:8",
+    "birdcardgames-postgres:2"
+   ],
+   "birdcoinmarketcap-postgres": [
+    "birdcoinmarketcap-postgres:3",
+    "birdcoinmarketcap-postgres:0",
+    "birdcoinmarketcap-postgres:5",
+    "birdcoinmarketcap-postgres:9",
+    "birdcoinmarketcap-postgres:14"
+   ],
+   "birdcookbook-postgres": [
+    "birdcookbook-postgres:5",
+    "birdcookbook-postgres:2",
+    "birdcookbook-postgres:6",
+    "birdcookbook-postgres:14",
+    "birdcookbook-postgres:17"
+   ],
+   "birdhumanresources-postgres": [
+    "birdhumanresources-postgres:0",
+    "birdhumanresources-postgres:1",
+    "birdhumanresources-postgres:6",
+    "birdhumanresources-postgres:5",
+    "birdhumanresources-postgres:9"
+   ],
+   "birdlegislator-postgres": [
+    "birdlegislator-postgres:4",
+    "birdlegislator-postgres:5",
+    "birdlegislator-postgres:0",
+    "birdlegislator-postgres:1",
+    "birdlegislator-postgres:3"
+   ],
+   "birdmenu-postgres": [
+    "birdmenu-postgres:1",
+    "birdmenu-postgres:0",
+    "birdmenu-postgres:6",
+    "birdmenu-postgres:8",
+    "birdmenu-postgres:19"
+   ],
+   "birdmovie-postgres": [
+    "birdmovie-postgres:1",
+    "birdmovie-postgres:4",
+    "birdmovie-postgres:5",
+    "birdmovie-postgres:3",
+    "birdmovie-postgres:16"
+   ],
+   "birdsoccer2016-postgres": [
+    "birdsoccer2016-postgres:0",
+    "birdsoccer2016-postgres:1",
+    "birdsoccer2016-postgres:5",
+    "birdsoccer2016-postgres:3",
+    "birdsoccer2016-postgres:2"
+   ],
+   "birdsuperstore-postgres": [
+    "birdsuperstore-postgres:3",
+    "birdsuperstore-postgres:2",
+    "birdsuperstore-postgres:8",
+    "birdsuperstore-postgres:6",
+    "birdsuperstore-postgres:9"
+   ],
+   "birdsynthea-postgres": [
+    "birdsynthea-postgres:0",
+    "birdsynthea-postgres:3",
+    "birdsynthea-postgres:4",
+    "birdsynthea-postgres:8",
+    "birdsynthea-postgres:21"
+   ],
+   "birdvideogames-postgres": [
+    "birdvideogames-postgres:0",
+    "birdvideogames-postgres:4",
+    "birdvideogames-postgres:2",
+    "birdvideogames-postgres:1",
+    "birdvideogames-postgres:18"
+   ]
+  }
+ }
+}
