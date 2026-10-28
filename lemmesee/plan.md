@@ -197,6 +197,15 @@ it are in its chapter 14 and are the ones that decide.
    Gemini 3.83 as before; the learning curve is flat past forty databases,
    and the tuned penalties swing with two databases' labels, so the order
    within a database, not the count of databases, is what is left.
+1g. **What limits the look**: capacity, objective, the other candidates'
+   context, words and a lexicon a language model wrote, on 93 databases by
+   family folds, nothing tuned, and the fives judged as sets.
+   [Run](reports/limits-2026-10-28.md) on 28 October: the look predicts its
+   teachers on a new database at an AUC of 0.81 however it is built; their
+   own five would keep a panel more of five, lost on what words mean; judged
+   as sets the gap is a tenth or two, the look's loss is repeating an axis,
+   and each axis once makes the round's best five by Gemini, 4.28 against
+   round 1's 3.62. From now on a round's fives are judged as sets.
 2. **The judged set**: assembled, split by project, judged.
 3. **The ranker, C**: linear, trees, a tiny network, against A and B on the
    judged set, with its cost.

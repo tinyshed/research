@@ -1,0 +1,730 @@
+You are judging first-overview dashboards for several databases. For each database you see its
+panels — each a title saying what it computes and the first rows its database returned — and two or three
+candidate fives, each a list of five of those panels. You did not make them and are not told what made them.
+Do not read, search or open any file other than this one, and run no command; when done, write your answers
+with the Write tool, once, to the path given to you.
+
+For every database, and every five of it:
+ 1. worth: how many of its five panels are worth a place on a first screen together — a panel that repeats
+    what another panel of the same five already shows does not count, nor a single bar, an empty result, a
+    column of blanks, or a picture that means less than it seems to.
+ 2. repeats: the panel ids in that five that repeat another panel of the same five.
+Then for the database:
+ 3. best: the letter of the five you would keep as this database's first screen.
+
+Write one JSON object: {"databases": {"<database>": {"fives": {"<letter>": {"worth": int, "repeats": [ids]}, ...},
+"best": "<letter>"}, ...}} — every database and every five below must be answered.
+
+
+=== database: birdhumanresources ===
+A company's employees, their positions and their locations, as BIRD serves it.
+
+  panel birdhumanresources-s01
+    title: rows of employee by position.educationrequired
+    rows (3):
+      4 year degree | 20
+      2 year degree | 3
+      6 year degree | 2
+
+  panel birdhumanresources-s02
+    title: rows of employee by location.state
+    rows (7):
+      IL | 6
+      MA | 5
+      GA | 4
+      NY | 4
+      FL | 3
+      CO | 2
+      UT | 1
+
+  panel birdhumanresources-s03
+    title: rows of employee by employee.performance
+    rows (4):
+      Good | 11
+      Average | 8
+      Poor | 4
+      ∅ | 2
+
+  panel birdhumanresources-s04
+    title: rows of employee by position.positiontitle
+    rows (4):
+      Account Representative | 10
+      Manager | 10
+      Trainee | 3
+      Regional Manager | 2
+
+  panel birdhumanresources-s05
+    title: rows of employee by employee.gender
+    rows (3):
+      M | 12
+      F | 12
+      ∅ | 1
+
+  panel birdhumanresources-s06
+    title: rows of employee per position
+    rows (3):
+      2 | 1
+      3 | 1
+      10 | 2
+
+  panel birdhumanresources-s07
+    title: rows of position by position.educationrequired
+    rows (3):
+      4 year degree | 2
+      2 year degree | 1
+      6 year degree | 1
+
+  panel birdhumanresources-s08
+    title: rows of employee by location.locationcity
+    rows (7):
+      Chicago | 6
+      Boston | 5
+      New York City | 4
+      Atlanta | 4
+      Miami | 3
+      Denver | 2
+      Salt Lake City | 1
+
+  panel birdhumanresources-s09
+    title: largest tables, estimated rows
+    rows (3):
+      employee | 25
+      location | 8
+      position | 4
+
+  five A: birdhumanresources-s03, birdhumanresources-s06, birdhumanresources-s07, birdhumanresources-s09
+
+  five B: birdhumanresources-s02, birdhumanresources-s03, birdhumanresources-s04, birdhumanresources-s05, birdhumanresources-s08
+
+  five C: birdhumanresources-s01, birdhumanresources-s03, birdhumanresources-s04, birdhumanresources-s05, birdhumanresources-s08
+
+
+=== database: nhldraft ===
+Ice hockey players drafted to the NHL, and each player's seasons, as CTU serves it.
+
+  panel nhldraft-s01
+    title: rows of PlayerInfo by PlayerInfo.shoots
+    rows (3):
+      L | 1402
+      R | 749
+      - | 20
+
+  panel nhldraft-s02
+    title: rows of PlayerInfo by PlayerInfo.birthyear
+    rows (22):
+      1980 | 238
+      1982 | 221
+      1981 | 211
+      1986 | 206
+      1983 | 201
+      1987 | 194
+      1988 | 188
+      1989 | 152
+      1984 | 130
+      1990 | 112
+      1985 | 101
+      1979 | 101
+      … 10 more rows
+
+  panel nhldraft-s03
+    title: rows of PlayerInfo by PlayerInfo.position
+    rows (6):
+      D | 799
+      C | 535
+      L | 401
+      R | 376
+      F | 39
+      W | 21
+
+  panel nhldraft-s04
+    title: rows of PlayerInfo by PlayerInfo.draftyear
+    rows (10):
+      1998-01-01 | 214
+      1999-01-01 | 228
+      2000-01-01 | 247
+      2001-01-01 | 238
+      2002-01-01 | 253
+      2004-01-01 | 246
+      2005-01-01 | 204
+      2006-01-01 | 175
+      2007-01-01 | 186
+      2008-01-01 | 180
+
+  panel nhldraft-s05
+    title: rows of PlayerInfo by PlayerInfo.position_info the twelve most
+    rows (12):
+      D | 774
+      C | 362
+      RW | 275
+      LW | 274
+      LW/RW | 98
+      C/LW | 80
+      RW/LW | 67
+      C/RW | 50
+      C/W | 41
+      F | 37
+      RW/C | 31
+      LW/C | 27
+
+  panel nhldraft-s06
+    title: rows of SeasonStatus by SeasonStatus.SEASON
+    rows (10):
+      2001-2002 | 653
+      2000-2001 | 640
+      2003-2004 | 631
+      1999-2000 | 621
+      1998-1999 | 519
+      2004-2005 | 510
+      2005-2006 | 500
+      2007-2008 | 481
+      2006-2007 | 469
+      1997-1998 | 461
+
+  panel nhldraft-s07
+    title: rows of PlayerInfo by PlayerInfo.height_info the twelve most
+    rows (12):
+      185 cm / 6'1" | 287
+      188 cm / 6'2" | 269
+      183 cm / 6'0" | 223
+      191 cm / 6'3" | 161
+      180 cm / 5'11" | 148
+      193 cm / 6'4" | 135
+      190 cm / 6'3" | 113
+      186 cm / 6'1" | 100
+      184 cm / 6'0" | 93
+      182 cm / 6'0" | 86
+      187 cm / 6'2" | 85
+      178 cm / 5'10" | 71
+
+  panel nhldraft-s08
+    title: rows of SeasonStatus by SeasonStatus.LEAGUE the twelve most
+    rows (12):
+      OHL | 668
+      WHL | 653
+      QMJHL | 416
+      WJC-18 | 391
+      International-Jr | 258
+      WJC-20 | 232
+      NCAA | 218
+      USHL | 207
+      SuperElit | 184
+      Russia | 154
+      Jr. A SM-liiga | 141
+      Liiga | 133
+
+  panel nhldraft-s09
+    title: largest tables, estimated rows
+    rows (2):
+      SeasonStatus | 5477
+      PlayerInfo | 2117
+
+  panel nhldraft-s10
+    title: rows of SeasonStatus by SeasonStatus.GAMETYPE
+    rows (2):
+      Regular Season | 4062
+      Playoffs | 1423
+
+  panel nhldraft-s11
+    title: rows of PlayerInfo by PlayerInfo.nation the twelve most
+    rows (12):
+      Canada | 891
+      USA | 455
+      Russia | 183
+      Sweden | 166
+      Czech Rep. | 156
+      Finland | 126
+      Slovakia | 67
+      Switzerlan | 31
+      Germany | 14
+      Kazakhstan | 12
+      Latvia | 12
+      Austria | 7
+
+  five A: nhldraft-s01, nhldraft-s02, nhldraft-s06, nhldraft-s09, nhldraft-s10
+
+  five B: nhldraft-s03, nhldraft-s04, nhldraft-s05, nhldraft-s08, nhldraft-s11
+
+  five C: nhldraft-s01, nhldraft-s03, nhldraft-s04, nhldraft-s07, nhldraft-s11
+
+
+=== database: sfscores ===
+San Francisco's restaurant inspections: businesses, inspection scores and the violations found, as CTU serves it.
+
+  panel sfscores-s01
+    title: rows of violations by violations.risk_category
+    rows (3):
+      Low Risk | 18576
+      Moderate Risk | 12372
+      High Risk | 5102
+
+  panel sfscores-s02
+    title: rows of inspections by inspections.type the twelve most
+    rows (12):
+      Routine - Unscheduled | 13007
+      Reinspection/Followup | 4758
+      New Ownership | 1739
+      New Construction | 1662
+      Complaint | 1474
+      Non-inspection site visit | 728
+      Structural Inspection | 153
+      Complaint Reinspection/Followup | 124
+      Foodborne Illness Investigation | 73
+      Routine - Scheduled | 35
+      Special Event | 7
+      Administrative or Document Review | 3
+
+  panel sfscores-s03
+    title: rows of inspections by inspections.date
+    rows (38):
+      2013-10-01 | 594
+      2013-11-01 | 620
+      2013-12-01 | 524
+      2014-01-01 | 643
+      2014-02-01 | 809
+      2014-03-01 | 903
+      2014-04-01 | 906
+      2014-05-01 | 903
+      2014-06-01 | 923
+      2014-07-01 | 513
+      2014-08-01 | 637
+      2014-09-01 | 632
+      … 26 more rows
+
+  panel sfscores-s04
+    title: rows of violations by violations.date
+    rows (37):
+      2013-10-01 | 895
+      2013-11-01 | 984
+      2013-12-01 | 880
+      2014-01-01 | 977
+      2014-02-01 | 1292
+      2014-03-01 | 1343
+      2014-04-01 | 1396
+      2014-05-01 | 1414
+      2014-06-01 | 1523
+      2014-07-01 | 664
+      2014-08-01 | 879
+      2014-09-01 | 875
+      … 25 more rows
+
+  panel sfscores-s05
+    title: rows of businesses by businesses.owner_state
+    rows (50):
+      CA | 5995
+      SC | 48
+      WA | 38
+      IL | 34
+      NY | 29
+      CO | 25
+      TX | 23
+      MD | 19
+      South Carolina | 15
+      RI | 14
+      FL | 12
+      MN | 10
+      … 38 more rows
+
+  panel sfscores-s06
+    title: rows of businesses by businesses.application_date
+    rows (51):
+      ∅ | 1209
+      1899-01-01 | 3
+      1968-01-01 | 1
+      1969-01-01 | 1
+      1970-01-01 | 1
+      1972-01-01 | 1
+      1973-01-01 | 1
+      1974-01-01 | 2
+      1975-01-01 | 2
+      1976-01-01 | 3
+      1977-01-01 | 2
+      1978-01-01 | 7
+      … 39 more rows
+
+  panel sfscores-s07
+    title: rows of inspections per businesses
+    rows (18):
+      1 | 360
+      2 | 705
+      3 | 940
+      4 | 976
+      5 | 745
+      6 | 501
+      7 | 375
+      8 | 256
+      9 | 134
+      10 | 75
+      11 | 48
+      12 | 44
+      … 6 more rows
+
+  panel sfscores-s08
+    title: average of inspections.score by inspections.date
+    rows (38):
+      2013-10-01 | 91.6986
+      2013-11-01 | 91.1180
+      2013-12-01 | 90.9838
+      2014-01-01 | 91.3020
+      2014-02-01 | 91.4949
+      2014-03-01 | 91.8203
+      2014-04-01 | 92.0929
+      2014-05-01 | 91.3429
+      2014-06-01 | 91.5228
+      2014-07-01 | 90.0711
+      2014-08-01 | 90.6053
+      2014-09-01 | 91.0531
+      … 26 more rows
+
+  panel sfscores-s09
+    title: rows of violations by violations.description the twelve most
+    rows (12):
+      Unclean or degraded floors walls or ceil | 3141
+      Moderate risk food holding temperature | 2428
+      Inadequate and inaccessible handwashing  | 2213
+      Unapproved or unmaintained equipment or  | 2126
+      Wiping cloths not clean or properly stor | 2050
+      Inadequately cleaned or sanitized food c | 2039
+      Improper food storage | 1912
+      Unclean nonfood contact surfaces | 1777
+      Foods not protected from contamination | 1703
+      High risk food holding temperature | 1472
+      Moderate risk vermin infestation | 1309
+      Food safety certificate or food handler  | 1062
+
+  five A: sfscores-s01, sfscores-s03, sfscores-s05, sfscores-s06, sfscores-s07
+
+  five B: sfscores-s01, sfscores-s02, sfscores-s03, sfscores-s04, sfscores-s06
+
+  five C: sfscores-s01, sfscores-s02, sfscores-s03, sfscores-s08, sfscores-s09
+
+
+=== database: birdsoccer2016 ===
+Indian Premier League cricket to 2016: matches, ball-by-ball play, players, teams, venues and seasons, as BIRD serves it.
+
+  panel birdsoccer2016-s01
+    title: rows of Player by Country.Country_Name the twelve most
+    rows (11):
+      India | 262
+      Australia | 72
+      South Africa | 39
+      New Zealand | 22
+      Sri Lanka | 20
+      West Indies | 19
+      England | 14
+      Pakistan | 13
+      Bangladesh | 5
+      Zimbabwea | 2
+      Netherlands | 1
+
+  panel birdsoccer2016-s02
+    title: rows of Match by Venue.Venue_Name the twelve most
+    rows (12):
+      M Chinnaswamy Stadium | 58
+      Eden Gardens | 54
+      Feroz Shah Kotla | 53
+      Wankhede Stadium | 49
+      MA Chidambaram Stadium | 48
+      Rajiv Gandhi International Stadium | 41
+      Punjab Cricket Association Stadium | 35
+      Sawai Mansingh Stadium | 33
+      Dr DY Patil Sports Academy | 17
+      Subrata Roy Sahara Stadium | 17
+      Kingsmead | 15
+      SuperSport Park | 12
+
+  panel birdsoccer2016-s03
+    title: rows of Match by Team.Team_Name the twelve most
+    rows (12):
+      Royal Challengers Bangalore | 78
+      Chennai Super Kings | 74
+      Delhi Daredevils | 69
+      Kings XI Punjab | 65
+      Mumbai Indians | 62
+      Kolkata Knight Riders | 62
+      Rajasthan Royals | 52
+      Deccan Chargers | 39
+      Sunrisers Hyderabad | 30
+      Pune Warriors | 23
+      Gujarat Lions | 9
+      Kochi Tuskers Kerala | 7
+
+  panel birdsoccer2016-s04
+    title: rows of Match by Win_By.Win_Type the twelve most
+    rows (4):
+      wickets | 307
+      runs | 261
+      Tie | 6
+      NO Result | 3
+
+  panel birdsoccer2016-s05
+    title: rows of Match by Match.Match_Date
+    rows (9):
+      2008-01-01 00:00:00+00 | 58
+      2009-01-01 00:00:00+00 | 57
+      2010-01-01 00:00:00+00 | 60
+      2011-01-01 00:00:00+00 | 73
+      2012-01-01 00:00:00+00 | 74
+      2013-01-01 00:00:00+00 | 76
+      2014-01-01 00:00:00+00 | 60
+      2015-01-01 00:00:00+00 | 59
+      2016-01-01 00:00:00+00 | 60
+
+  panel birdsoccer2016-s06
+    title: rows of Match by Venue.Venue_Name the twelve most
+    rows (12):
+      M Chinnaswamy Stadium | 58
+      Eden Gardens | 54
+      Feroz Shah Kotla | 53
+      Wankhede Stadium | 49
+      MA Chidambaram Stadium | 48
+      Rajiv Gandhi International Stadium | 41
+      Punjab Cricket Association Stadium | 35
+      Sawai Mansingh Stadium | 33
+      Dr DY Patil Sports Academy | 17
+      Subrata Roy Sahara Stadium | 17
+      Kingsmead | 15
+      SuperSport Park | 12
+
+  panel birdsoccer2016-s07
+    title: rows of Match by City.City_Name the twelve most
+    rows (12):
+      Mumbai | 77
+      Bangalore | 58
+      Kolkata | 54
+      Delhi | 53
+      Chennai | 48
+      Chandigarh | 42
+      Hyderabad | 41
+      Jaipur | 33
+      Pune | 25
+      Abu Dhabi | 20
+      Durban | 15
+      Ahmedabad | 12
+
+  panel birdsoccer2016-s08
+    title: rows of Match by Toss_Decision.Toss_Name the twelve most
+    rows (2):
+      field | 315
+      bat | 262
+
+  panel birdsoccer2016-s09
+    title: rows of Extra_Runs per Extra_Type
+    rows (5):
+      1 | 1
+      379 | 1
+      579 | 1
+      2357 | 1
+      4153 | 1
+
+  panel birdsoccer2016-s10
+    title: rows of Wicket_Taken by Out_Type.Out_Name
+    rows (9):
+      caught | 3954
+      bowled | 1251
+      run out | 697
+      lbw | 399
+      stumped | 222
+      caught and bowled | 187
+      retired hurt | 8
+      hit wicket | 8
+      obstructing the field | 1
+
+  panel birdsoccer2016-s11
+    title: rows of Extra_Runs by Extra_Type.Extra_Name
+    rows (5):
+      wides | 4153
+      legbyes | 2357
+      noballs | 579
+      byes | 379
+      penalty | 1
+
+  five A: birdsoccer2016-s03, birdsoccer2016-s04, birdsoccer2016-s05, birdsoccer2016-s06, birdsoccer2016-s08
+
+  five B: birdsoccer2016-s02, birdsoccer2016-s05, birdsoccer2016-s09, birdsoccer2016-s10, birdsoccer2016-s11
+
+  five C: birdsoccer2016-s01, birdsoccer2016-s04, birdsoccer2016-s05, birdsoccer2016-s06, birdsoccer2016-s07
+
+
+=== database: birdcardgames ===
+Magic: The Gathering's cards, their sets, legalities, rulings and foreign-language data, as BIRD serves it.
+
+  panel birdcardgames-s01
+    title: rows of cards by cards.types the twelve most
+    rows (12):
+      Creature | 24229
+      Instant | 6739
+      Land | 6573
+      Sorcery | 6328
+      Enchantment | 5652
+      Artifact | 3986
+      Artifact,Creature | 1617
+      Planeswalker | 835
+      Enchantment,Creature | 256
+      Plane | 162
+      Vanguard | 118
+      Scheme | 70
+
+  panel birdcardgames-s02
+    title: rows of cards by cards.availability
+    rows (10):
+      mtgo,paper | 25459
+      paper | 21531
+      arena,mtgo,paper | 4609
+      mtgo | 3697
+      arena | 999
+      arena,paper | 490
+      arena,mtgo | 14
+      shandalar | 12
+      dreamcast | 10
+      ∅ | 1
+
+  panel birdcardgames-s03
+    title: rows of foreign_data by foreign_data.language
+    rows (16):
+      Japanese | 31226
+      French | 29301
+      German | 28891
+      Italian | 28698
+      Spanish | 28639
+      Portuguese (Brazil) | 25641
+      Chinese Simplified | 20106
+      Russian | 15878
+      Chinese Traditional | 11106
+      Korean | 9692
+      Phyrexian | 3
+      Ancient Greek | 1
+      … 4 more rows
+
+  panel birdcardgames-s04
+    title: rows of sets by sets.releaseDate
+    rows (29):
+      1993-01-01 00:00:00+00 | 6
+      1994-01-01 00:00:00+00 | 9
+      1995-01-01 00:00:00+00 | 9
+      1996-01-01 00:00:00+00 | 9
+      1997-01-01 00:00:00+00 | 11
+      1998-01-01 00:00:00+00 | 12
+      1999-01-01 00:00:00+00 | 18
+      2000-01-01 00:00:00+00 | 13
+      2001-01-01 00:00:00+00 | 14
+      2002-01-01 00:00:00+00 | 12
+      2003-01-01 00:00:00+00 | 16
+      2004-01-01 00:00:00+00 | 14
+      … 17 more rows
+
+  panel birdcardgames-s05
+    title: sum of sets.totalSetSize by sets.type the twelve most
+    rows (12):
+      expansion | 19789
+      core | 7841
+      masters | 6770
+      promo | 5262
+      commander | 3855
+      box | 2623
+      memorabilia | 2277
+      draft_innovation | 2157
+      duel_deck | 1945
+      starter | 1113
+      funny | 777
+      planechase | 647
+
+  panel birdcardgames-s06
+    title: sum of sets.totalSetSize by sets.releaseDate
+    rows (29):
+      1993-01-01 | 1595
+      1994-01-01 | 1645
+      1995-01-01 | 1636
+      1996-01-01 | 1015
+      1997-01-01 | 1577
+      1998-01-01 | 1118
+      1999-01-01 | 1630
+      2000-01-01 | 907
+      2001-01-01 | 1233
+      2002-01-01 | 2146
+      2003-01-01 | 1252
+      2004-01-01 | 951
+      … 17 more rows
+
+  panel birdcardgames-s07
+    title: rows of rulings by rulings.date
+    rows (18):
+      2004-01-01 | 6858
+      2005-01-01 | 810
+      2006-01-01 | 935
+      2007-01-01 | 1735
+      2008-01-01 | 4376
+      2009-01-01 | 4371
+      2010-01-01 | 2207
+      2011-01-01 | 2614
+      2012-01-01 | 1288
+      2013-01-01 | 7309
+      2014-01-01 | 5232
+      2015-01-01 | 4342
+      … 6 more rows
+
+  panel birdcardgames-s08
+    title: sum of sets.totalSetSize by sets.type
+    rows (20):
+      expansion | 19789
+      core | 7841
+      masters | 6770
+      promo | 5262
+      commander | 3855
+      box | 2623
+      memorabilia | 2277
+      draft_innovation | 2157
+      duel_deck | 1945
+      starter | 1113
+      funny | 777
+      planechase | 647
+      … 8 more rows
+
+  panel birdcardgames-s09
+    title: rows of sets by sets.type the twelve most
+    rows (12):
+      promo | 234
+      expansion | 87
+      memorabilia | 34
+      duel_deck | 27
+      box | 27
+      core | 24
+      masters | 23
+      starter | 16
+      commander | 14
+      from_the_vault | 11
+      funny | 11
+      token | 10
+
+  panel birdcardgames-s10
+    title: average of cards.convertedManaCost by cards.availability
+    rows (10):
+      paper | 95.70677163160094
+      dreamcast | 4
+      mtgo,paper | 3.065909894339919
+      arena,mtgo,paper | 3.019310045563029
+      shandalar | 3
+      ∅ | 3
+      arena,paper | 2.8959183673469386
+      mtgo | 2.8896402488504194
+      arena,mtgo | 2.7857142857142856
+      arena | 2.7727727727727727
+
+  panel birdcardgames-s11
+    title: rows of set_translations by set_translations.language
+    rows (10):
+      French | 121
+      Portuguese (Brazil) | 121
+      German | 121
+      Italian | 121
+      Chinese Traditional | 121
+      Spanish | 121
+      Korean | 121
+      Japanese | 121
+      Chinese Simplified | 121
+      Russian | 121
+
+  five A: birdcardgames-s03, birdcardgames-s04, birdcardgames-s08, birdcardgames-s10, birdcardgames-s11
+
+  five B: birdcardgames-s03, birdcardgames-s04, birdcardgames-s05, birdcardgames-s07, birdcardgames-s09
+
+  five C: birdcardgames-s01, birdcardgames-s02, birdcardgames-s04, birdcardgames-s06, birdcardgames-s09

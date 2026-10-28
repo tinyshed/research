@@ -1,0 +1,706 @@
+You are judging first-overview dashboards for several databases. For each database you see its
+panels — each a title saying what it computes and the first rows its database returned — and two or three
+candidate fives, each a list of five of those panels. You did not make them and are not told what made them.
+Do not read, search or open any file other than this one, and run no command; when done, write your answers
+with the Write tool, once, to the path given to you.
+
+For every database, and every five of it:
+ 1. worth: how many of its five panels are worth a place on a first screen together — a panel that repeats
+    what another panel of the same five already shows does not count, nor a single bar, an empty result, a
+    column of blanks, or a picture that means less than it seems to.
+ 2. repeats: the panel ids in that five that repeat another panel of the same five.
+Then for the database:
+ 3. best: the letter of the five you would keep as this database's first screen.
+
+Write one JSON object: {"databases": {"<database>": {"fives": {"<letter>": {"worth": int, "repeats": [ids]}, ...},
+"best": "<letter>"}, ...}} — every database and every five below must be answered.
+
+
+=== database: birdmovie ===
+Movies, their actors and the characters each actor played, as BIRD serves it.
+
+  panel birdmovie-s01
+    title: rows of characters by actor.Name the twelve most
+    rows (12):
+      Tom Hanks | 14
+      Julia Roberts | 13
+      Tom Cruise | 13
+      Jim Carrey | 12
+      Mel Gibson | 12
+      Eddie Murphy | 12
+      Will Smith | 12
+      Samuel L. Jackson | 12
+      Robin Williams | 11
+      Ben Stiller | 10
+      Morgan Freeman | 9
+      Adam Sandler | 9
+
+  panel birdmovie-s02
+    title: rows of characters by movie.Genre the twelve most
+    rows (12):
+      Comedy | 805
+      Action | 639
+      Animation | 530
+      Drama | 468
+      Thriller | 270
+      Science Fiction | 259
+      Family | 243
+      Romance | 234
+      Adventure | 216
+      Fantasy | 198
+      Crime | 135
+      Mystery | 90
+
+  panel birdmovie-s03
+    title: rows of movie by movie.MPAA Rating
+    rows (4):
+      PG-13 | 300
+      PG | 165
+      R | 142
+      G | 27
+
+  panel birdmovie-s04
+    title: rows of actor by actor.Birth Country the twelve most
+    rows (12):
+      USA | 1605
+      ∅ | 412
+      UK | 295
+      Canada | 82
+      Australia | 41
+      Ireland | 22
+      France | 22
+      Italy | 19
+      Germany | 19
+      New Zealand | 12
+      China | 12
+      Sweden | 10
+
+  panel birdmovie-s05
+    title: rows of characters by actor.Name the twelve most
+    rows (12):
+      Tom Hanks | 14
+      Julia Roberts | 13
+      Tom Cruise | 13
+      Jim Carrey | 12
+      Mel Gibson | 12
+      Eddie Murphy | 12
+      Will Smith | 12
+      Samuel L. Jackson | 12
+      Robin Williams | 11
+      Ben Stiller | 10
+      Morgan Freeman | 9
+      Adam Sandler | 9
+
+  panel birdmovie-s06
+    title: rows of movie by movie.Genre the twelve most
+    rows (12):
+      Action | 116
+      Comedy | 101
+      Animation | 88
+      Drama | 67
+      Thriller | 41
+      Science Fiction | 38
+      Adventure | 31
+      Family | 30
+      Romance | 29
+      Fantasy | 28
+      Crime | 17
+      Horror | 15
+
+  panel birdmovie-s07
+    title: largest tables, estimated rows
+    rows (3):
+      characters | 4312
+      actor | 2713
+      movie | 634
+
+  panel birdmovie-s08
+    title: rows of actor by actor.Ethnicity
+    rows (18):
+      ∅ | 2146
+      White | 494
+      African American | 49
+      Native American | 5
+      Latino | 3
+      Israeli | 2
+      Asian | 2
+      South African | 2
+      Asian American | 1
+      American-Irish | 1
+      Polish | 1
+      Japanese-American | 1
+      … 6 more rows
+
+  panel birdmovie-s09
+    title: average of movie.Budget by movie.Genre the twelve most
+    rows (12):
+      Fantasy | 162596428.57142857
+      Action | 144987068.96551724
+      Adventure | 130161290.32258065
+      Science Fiction | 128710526.31578947
+      Animation | 116267045.45454545
+      Mystery | 95416666.666666666667
+      War | 90755555.555555555556
+      Thriller | 86585365.853658536585
+      Western | 79833333.333333333333
+      Family | 65600000.000000000000
+      Crime | 56588235.294117647059
+      Drama | 56583582.089552238806
+
+  panel birdmovie-s10
+    title: sum of movie.Budget by movie.Genre the twelve most
+    rows (12):
+      Action | 16818500000
+      Animation | 10231500000
+      Comedy | 5110150000
+      Science Fiction | 4891000000
+      Fantasy | 4552700000
+      Adventure | 4035000000
+      Drama | 3791100000
+      Thriller | 3550000000
+      Family | 1968000000
+      Romance | 1281205538
+      Mystery | 1145000000
+      Crime | 962000000
+
+  panel birdmovie-s11
+    title: rows of characters by movie.Title the twelve most
+    rows (12):
+      Philadelphia | 9
+      Identity Thief | 9
+      Star Wars: Episode II - Attack of the Cl | 9
+      The Dark Knight | 9
+      The Addams Family | 9
+      Minority Report | 9
+      Lethal Weapon 3 | 9
+      Doctor Dolittle | 9
+      Cars | 9
+      Elf | 9
+      Little Fockers | 9
+      Stepmom | 9
+
+  panel birdmovie-s12
+    title: rows of actor by actor.Gender
+    rows (3):
+      ∅ | 1541
+      Male | 802
+      Female | 370
+
+  five A: birdmovie-s02, birdmovie-s05, birdmovie-s06, birdmovie-s09, birdmovie-s10
+
+  five B: birdmovie-s02, birdmovie-s03, birdmovie-s04, birdmovie-s06, birdmovie-s12
+
+  five C: birdmovie-s01, birdmovie-s03, birdmovie-s07, birdmovie-s08, birdmovie-s11
+
+
+=== database: atherosclerosis ===
+A medical study of atherosclerosis: patients, their entry examinations, controls and death records, as CTU serves it.
+
+  panel atherosclerosis-s01
+    title: rows of Letter by Letter.MESDOT
+    rows (12):
+      6 | 135
+      2 | 82
+      7 | 70
+      3 | 58
+      1 | 26
+      ∅ | 10
+      8 | 9
+      4 | 6
+      10 | 2
+      11 | 2
+      9 | 2
+      12 | 1
+
+  panel atherosclerosis-s02
+    title: rows of Contr by Entry.DOBAKOUR
+    rows (5):
+      10 | 5185
+      ∅ | 2669
+      9 | 2239
+      8 | 312
+      7 | 167
+
+  panel atherosclerosis-s03
+    title: rows of Entry by Entry.BYVKURAK
+    rows (3):
+      ∅ | 1186
+      12 | 196
+      11 | 35
+
+  panel atherosclerosis-s04
+    title: rows of Contr by Contr.LEKCHOL
+    rows (6):
+      ∅ | 7080
+      70 | 3318
+      72 | 112
+      73 | 56
+      71 | 3
+      75 | 3
+
+  panel atherosclerosis-s05
+    title: rows of Entry by Entry.SYST2 the twelve most
+    rows (12):
+      120 | 234
+      130 | 221
+      140 | 169
+      110 | 154
+      125 | 108
+      115 | 96
+      150 | 78
+      135 | 60
+      145 | 56
+      160 | 47
+      100 | 36
+      170 | 31
+
+  panel atherosclerosis-s06
+    title: rows of Death by Death.MESUMR
+    rows (13):
+      3 | 41
+      4 | 37
+      2 | 36
+      11 | 35
+      12 | 33
+      1 | 32
+      6 | 30
+      9 | 29
+      5 | 27
+      8 | 26
+      10 | 25
+      7 | 25
+      … 1 more rows
+
+  panel atherosclerosis-s07
+    title: largest tables, estimated rows
+    rows (4):
+      Contr | 10561
+      Entry | 1391
+      Letter | 403
+      Death | 389
+
+  panel atherosclerosis-s08
+    title: rows of Entry by Entry.HTD
+    rows (3):
+      ∅ | 1197
+      6 | 201
+      3 | 19
+
+  panel atherosclerosis-s09
+    title: rows of Entry by Entry.DIAST2 the twelve most
+    rows (12):
+      80 | 376
+      90 | 259
+      70 | 184
+      85 | 171
+      75 | 100
+      100 | 76
+      95 | 66
+      60 | 41
+      105 | 27
+      65 | 26
+      110 | 24
+      120 | 10
+
+  panel atherosclerosis-s10
+    title: rows of Entry by Entry.DOBAKOUR
+    rows (5):
+      10 | 647
+      ∅ | 383
+      9 | 310
+      8 | 49
+      7 | 28
+
+  panel atherosclerosis-s11
+    title: rows of Entry by Entry.HTL
+    rows (4):
+      ∅ | 1197
+      6 | 136
+      4 | 50
+      5 | 34
+
+  five A: atherosclerosis-s02, atherosclerosis-s05, atherosclerosis-s06, atherosclerosis-s09, atherosclerosis-s10
+
+  five B: atherosclerosis-s01, atherosclerosis-s03, atherosclerosis-s08, atherosclerosis-s10, atherosclerosis-s11
+
+  five C: atherosclerosis-s01, atherosclerosis-s04, atherosclerosis-s06, atherosclerosis-s07, atherosclerosis-s10
+
+
+=== database: fnhk ===
+A Czech hospital's cases, the procedures performed in each and the medicines and materials charged, as CTU serves it.
+
+  panel fnhk-s01
+    title: rows of pripady by pripady.Datum_propusteni
+    rows (53):
+      2013-12-30 | 212
+      2014-01-06 | 677
+      2014-01-13 | 803
+      2014-01-20 | 900
+      2014-01-27 | 840
+      2014-02-03 | 860
+      2014-02-10 | 888
+      2014-02-17 | 921
+      2014-02-24 | 876
+      2014-03-03 | 798
+      2014-03-10 | 865
+      2014-03-17 | 887
+      … 41 more rows
+
+  panel fnhk-s02
+    title: sum of vykony.Pocet by vykony.Datum_provedeni_vykonu
+    rows (17):
+      2013-08-01 | 1
+      2013-09-01 | 2808
+      2013-10-01 | 9639
+      2013-11-01 | 19473
+      2013-12-01 | 68932
+      2014-01-01 | 271195
+      2014-02-01 | 274255
+      2014-03-01 | 285830
+      2014-04-01 | 277393
+      2014-05-01 | 276998
+      2014-06-01 | 280412
+      2014-07-01 | 240402
+      … 5 more rows
+
+  panel fnhk-s03
+    title: rows of pripady by pripady.Pohlavi_pacienta
+    rows (2):
+      F | 21190
+      M | 20329
+
+  panel fnhk-s04
+    title: rows of zup by pripady.Vekovy_Interval_Pacienta
+    rows (9):
+      60-70 | 54448
+      70-80 | 35821
+      50-60 | 33324
+      80+ | 17146
+      40-50 | 16008
+      30-40 | 12783
+      20-30 | 9402
+      0-10 | 7846
+      10-20 | 5641
+
+  panel fnhk-s05
+    title: largest tables, estimated rows
+    rows (3):
+      vykony | 1874640
+      zup | 192324
+      pripady | 41522
+
+  panel fnhk-s06
+    title: rows of vykony by vykony.Datum_provedeni_vykonu
+    rows (17):
+      2013-08-01 | 1
+      2013-09-01 | 1746
+      2013-10-01 | 4841
+      2013-11-01 | 11320
+      2013-12-01 | 39789
+      2014-01-01 | 161120
+      2014-02-01 | 155943
+      2014-03-01 | 164059
+      2014-04-01 | 164827
+      2014-05-01 | 164521
+      2014-06-01 | 163881
+      2014-07-01 | 141163
+      … 5 more rows
+
+  panel fnhk-s07
+    title: rows of pripady by pripady.Vekovy_Interval_Pacienta
+    rows (9):
+      60-70 | 8357
+      0-10 | 6005
+      70-80 | 5575
+      50-60 | 5434
+      30-40 | 4176
+      40-50 | 3615
+      20-30 | 3289
+      80+ | 3178
+      10-20 | 1890
+
+  panel fnhk-s08
+    title: rows of pripady by pripady.Datum_prijeti
+    rows (17):
+      2013-08-01 | 1
+      2013-09-01 | 6
+      2013-10-01 | 13
+      2013-11-01 | 49
+      2013-12-01 | 435
+      2014-01-01 | 3815
+      2014-02-01 | 3501
+      2014-03-01 | 3710
+      2014-04-01 | 3722
+      2014-05-01 | 3564
+      2014-06-01 | 3686
+      2014-07-01 | 2823
+      … 5 more rows
+
+  panel fnhk-s09
+    title: rows of zup by zup.Datum_provedeni_vykonu
+    rows (16):
+      2013-09-01 | 187
+      2013-10-01 | 541
+      2013-11-01 | 1178
+      2013-12-01 | 4359
+      2014-01-01 | 16529
+      2014-02-01 | 16410
+      2014-03-01 | 17087
+      2014-04-01 | 17465
+      2014-05-01 | 16585
+      2014-06-01 | 16801
+      2014-07-01 | 14205
+      2014-08-01 | 13971
+      … 4 more rows
+
+  five A: fnhk-s02, fnhk-s04, fnhk-s06, fnhk-s07, fnhk-s08
+
+  five B: fnhk-s01, fnhk-s06, fnhk-s07, fnhk-s08, fnhk-s09
+
+  five C: fnhk-s03, fnhk-s05, fnhk-s07
+
+
+=== database: birdcoinmarketcap ===
+Cryptocurrencies and their daily market history: price, volume and market capitalisation, as BIRD serves it.
+
+  panel birdcoinmarketcap-s01
+    title: sum of historical.price by historical.date
+    rows (9):
+      2013-01-01 00:00:00+00 | 74598.87051593329
+      2014-01-01 00:00:00+00 | 14358190.778849052
+      2015-01-01 00:00:00+00 | 1808264.6554600843
+      2016-01-01 00:00:00+00 | 6375633.983262992
+      2017-01-01 00:00:00+00 | 112054629.06493993
+      2018-01-01 00:00:00+00 | 213681744.89718103
+      2019-01-01 00:00:00+00 | 30425838.050289012
+      2020-01-01 00:00:00+00 | 1001210828186.1047
+      2021-01-01 00:00:00+00 | 362087073.5374563
+
+  panel birdcoinmarketcap-s02
+    title: rows of coins by coins.status
+    rows (4):
+      active | 6204
+      inactive | 1635
+      untracked | 1030
+      extinct | 58
+
+  panel birdcoinmarketcap-s03
+    title: rows of historical by coins.category
+    rows (3):
+      token | 2418483
+      coin | 2008136
+      ∅ | 15353
+
+  panel birdcoinmarketcap-s04
+    title: rows of coins by coins.category
+    rows (3):
+      token | 6228
+      coin | 2641
+      ∅ | 58
+
+  panel birdcoinmarketcap-s05
+    title: rows of historical by historical.date
+    rows (9):
+      2013-01-01 | 9062
+      2014-01-01 | 119927
+      2015-01-01 | 205563
+      2016-01-01 | 219624
+      2017-01-01 | 343426
+      2018-01-01 | 626097
+      2019-01-01 | 820420
+      2020-01-01 | 1087084
+      2021-01-01 | 1010769
+
+  panel birdcoinmarketcap-s06
+    title: largest tables, estimated rows
+    rows (2):
+      historical | 4441621
+      coins | 8927
+
+  panel birdcoinmarketcap-s07
+    title: sum of historical.volume_24h by coins.name the twelve most
+    rows (12):
+      Bitcoin | 1.44345227266484e+15
+      Uquid Coin | 1.4103012160966865e+15
+      Tether | 46366407110370.92
+      Ethereum | 15710539529154.703
+      Litecoin | 3885547654031.7695
+      XRP | 3710271194866.6396
+      Bitcoin Cash | 2977620545138.9795
+      EOS | 2800578175060.3643
+      Ethereum Classic | 1497866152713.2148
+      TRON | 1335887786155.372
+      Cardano | 1263960217488.7761
+      Dogecoin | 1236772114186.4126
+
+  panel birdcoinmarketcap-s08
+    title: sum of historical.price by coins.name the twelve most
+    rows (12):
+      Travel1Click | 1001118916743.2705
+      Bit20 | 183874217.3017941
+      Project-X | 118068741.95075053
+      42-coin | 72583369.82478686
+      Punk | 27159422.01311253
+      Bitcoin | 20942089.258521944
+      BlipCoin | 19314710.863643028
+      Robonomics Web Services | 17922452.073972337
+      RSK Smart Bitcoin | 16180490.158436377
+      Wrapped Bitcoin | 16025155.308030177
+      Bitcoin BEP2 | 15214434.488676623
+      Maya Preferred | 13854586.797046488
+
+  panel birdcoinmarketcap-s09
+    title: sum of historical.volume_24h by historical.date
+    rows (9):
+      2013-01-01 | 235504051.89143372
+      2014-01-01 | 13385549233.943245
+      2015-01-01 | 14954703468.335777
+      2016-01-01 | 45559737573.94898
+      2017-01-01 | 2082125426787.002
+      2018-01-01 | 6630086586902.357
+      2019-01-01 | 20198356745053.902
+      2020-01-01 | 2.8657361520348955e+15
+      2021-01-01 | 62398385604635.266
+
+  panel birdcoinmarketcap-s10
+    title: rows of historical by coins.status
+    rows (4):
+      active | 3158174
+      inactive | 662264
+      untracked | 606181
+      extinct | 15353
+
+  five A: birdcoinmarketcap-s02, birdcoinmarketcap-s03, birdcoinmarketcap-s04, birdcoinmarketcap-s05, birdcoinmarketcap-s10
+
+  five B: birdcoinmarketcap-s02, birdcoinmarketcap-s05, birdcoinmarketcap-s07, birdcoinmarketcap-s09, birdcoinmarketcap-s10
+
+  five C: birdcoinmarketcap-s01, birdcoinmarketcap-s02, birdcoinmarketcap-s04, birdcoinmarketcap-s06, birdcoinmarketcap-s08
+
+
+=== database: birdlegislator ===
+American legislators, current and historical, their terms of office and their social media accounts, as BIRD serves it.
+
+  panel birdlegislator-s01
+    title: rows of current by current.gender_bio
+    rows (2):
+      M | 432
+      F | 109
+
+  panel birdlegislator-s02
+    title: rows of historical-terms by historical-terms.type
+    rows (3):
+      rep | 10602
+      sen | 1256
+      ∅ | 6
+
+  panel birdlegislator-s03
+    title: rows of current-terms by current-terms.end the twelve most
+    rows (12):
+      2019-01-03 | 474
+      2017-01-03 | 418
+      2015-01-03 | 363
+      2013-01-03 | 294
+      2011-01-03 | 227
+      2009-01-03 | 198
+      2007-01-03 | 163
+      2005-01-03 | 147
+      2003-01-03 | 127
+      2001-01-03 | 105
+      1999-01-03 | 98
+      1997-01-03 | 78
+
+  panel birdlegislator-s04
+    title: rows of current-terms by current-terms.type
+    rows (3):
+      rep | 2770
+      sen | 244
+      ∅ | 64
+
+  panel birdlegislator-s05
+    title: rows of historical-terms by historical-terms.state
+    rows (59):
+      NY | 1457
+      PA | 1046
+      OH | 672
+      IL | 484
+      VA | 434
+      MA | 430
+      KY | 369
+      NC | 357
+      NJ | 355
+      CA | 350
+      IN | 339
+      MO | 331
+      … 47 more rows
+
+  panel birdlegislator-s06
+    title: largest tables, estimated rows
+    rows (5):
+      historical | 11864
+      historical-terms | 11864
+      current-terms | 3078
+      current | 541
+      social-media | 479
+
+  panel birdlegislator-s07
+    title: rows of current-terms by current-terms.state the twelve most
+    rows (12):
+      CA | 325
+      TX | 267
+      NY | 201
+      FL | 120
+      IL | 118
+      OH | 117
+      NJ | 106
+      MI | 98
+      PA | 92
+      MA | 86
+      GA | 82
+      NC | 78
+
+  panel birdlegislator-s08
+    title: rows of historical-terms by historical-terms.state the twelve most
+    rows (12):
+      NY | 1457
+      PA | 1046
+      OH | 672
+      IL | 484
+      VA | 434
+      MA | 430
+      KY | 369
+      NC | 357
+      NJ | 355
+      CA | 350
+      IN | 339
+      MO | 331
+
+  panel birdlegislator-s09
+    title: rows of current-terms by current-terms.end
+    rows (42):
+      2019-01-03 | 474
+      2017-01-03 | 418
+      2015-01-03 | 363
+      2013-01-03 | 294
+      2011-01-03 | 227
+      2009-01-03 | 198
+      2007-01-03 | 163
+      2005-01-03 | 147
+      2003-01-03 | 127
+      2001-01-03 | 105
+      1999-01-03 | 98
+      1997-01-03 | 78
+      … 30 more rows
+
+  panel birdlegislator-s10
+    title: rows of current-terms by current-terms.party
+    rows (4):
+      Democrat | 1558
+      Republican | 1444
+      ∅ | 64
+      Independent | 12
+
+  five A: birdlegislator-s01, birdlegislator-s02, birdlegislator-s03, birdlegislator-s08, birdlegislator-s10
+
+  five B: birdlegislator-s01, birdlegislator-s04, birdlegislator-s07, birdlegislator-s08, birdlegislator-s10
+
+  five C: birdlegislator-s01, birdlegislator-s05, birdlegislator-s06, birdlegislator-s09, birdlegislator-s10

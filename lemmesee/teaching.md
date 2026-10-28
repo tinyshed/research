@@ -42,6 +42,13 @@ so and why.
 - **Every count says its spread**: kept of five averaged over databases, each
   difference bootstrapped over databases, 10 000 times, and the judges'
   agreement on keep, pair by pair.
+- **The five is judged as a set**, from round 1g: a database's fives side by
+  side, unnamed, shuffled, panels numbered after shuffling, each five's
+  panels worth a place together and those repeating another. A count of
+  panels kept one by one with the whole pool in view magnifies differences
+  and cannot see a repeat; it may stand beside the set's, never instead.
+- **A rule read from a judge's answers is counted by the others only**, as
+  a model that judge taught would be.
 
 ## Which models, and how they are asked
 

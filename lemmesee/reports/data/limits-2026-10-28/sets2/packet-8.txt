@@ -1,0 +1,919 @@
+You are judging first-overview dashboards for several databases. For each database you see its
+panels — each a title saying what it computes and the first rows its database returned — and two or three
+candidate fives, each a list of five of those panels. You did not make them and are not told what made them.
+Do not read, search or open any file other than this one, and run no command; when done, write your answers
+with the Write tool, once, to the path given to you.
+
+For every database, and every five of it:
+ 1. worth: how many of its five panels are worth a place on a first screen together — a panel that repeats
+    what another panel of the same five already shows does not count, nor a single bar, an empty result, a
+    column of blanks, or a picture that means less than it seems to.
+ 2. repeats: the panel ids in that five that repeat another panel of the same five.
+Then for the database:
+ 3. best: the letter of the five you would keep as this database's first screen.
+
+Write one JSON object: {"databases": {"<database>": {"fives": {"<letter>": {"worth": int, "repeats": [ids]}, ...},
+"best": "<letter>"}, ...}} — every database and every five below must be answered.
+
+
+=== database: birdmenu ===
+Historical restaurant menus, their pages, the dishes on them and their prices, as BIRD serves it.
+
+  panel birdmenu-s01
+    title: average of Menu.dish_count by Menu.date
+    rows (146):
+      0001-01-01 | 102.5000000000000000
+      0190-01-01 | 32.0000000000000000
+      1091-01-01 | 68.0000000000000000
+      1851-01-01 | 85.0000000000000000
+      1852-01-01 | 141.5000000000000000
+      1853-01-01 | 34.0000000000000000
+      1854-01-01 | 67.3333333333333333
+      1855-01-01 | 72.0000000000000000
+      1856-01-01 | 101.6000000000000000
+      1857-01-01 | 137.0000000000000000
+      1858-01-01 | 145.0000000000000000
+      1859-01-01 | 106.0000000000000000
+      … 134 more rows
+
+  panel birdmenu-s02
+    title: rows of MenuItem per MenuPage
+    rows (313):
+      1 | 349
+      2 | 195
+      3 | 177
+      4 | 206
+      5 | 276
+      6 | 284
+      7 | 292
+      8 | 392
+      9 | 364
+      10 | 476
+      11 | 496
+      12 | 542
+      … 301 more rows
+
+  panel birdmenu-s03
+    title: sum of MenuItem.price by Dish.name the twelve most
+    rows (12):
+      Tip Toe Inn Chicken Consomme Egg Barley  | ∅
+      Carre de Porc | ∅
+      Sweetbreads, Financier | ∅
+      Imp Beers | ∅
+      Berncastler Doktor 1910 Crescens G Thani | ∅
+      Chesler Fromage | ∅
+      Assorted New York Pastry | ∅
+      Omelette mit Petersilie | ∅
+      Filets de Sole Prunier: Filets of Sole w | ∅
+      Widmer's New York State Delaware | ∅
+      Glace: Raisins | ∅
+      MENU III  DM 50,-- | ∅
+
+  panel birdmenu-s04
+    title: rows of Menu by Menu.currency the twelve most
+    rows (12):
+      ∅ | 11073
+      Dollars | 5548
+      Deutsche Marks | 293
+      Francs | 162
+      Canadian Dollars | 98
+      Swiss Francs | 47
+      Shillings | 40
+      Swedish kronor (SEK/kr) | 39
+      Italian Lire | 28
+      Cents | 23
+      UK Pounds | 22
+      Belgian Francs | 20
+
+  panel birdmenu-s05
+    title: rows of Menu by Menu.date
+    rows (147):
+      0001-01-01 00:00:00+00 | 2
+      0190-01-01 00:00:00+00 | 1
+      1091-01-01 00:00:00+00 | 1
+      1851-01-01 00:00:00+00 | 3
+      1852-01-01 00:00:00+00 | 2
+      1853-01-01 00:00:00+00 | 1
+      1854-01-01 00:00:00+00 | 3
+      1855-01-01 00:00:00+00 | 1
+      1856-01-01 00:00:00+00 | 5
+      1857-01-01 00:00:00+00 | 1
+      1858-01-01 00:00:00+00 | 3
+      1859-01-01 00:00:00+00 | 3
+      … 135 more rows
+
+  panel birdmenu-s06
+    title: largest tables, estimated rows
+    rows (4):
+      MenuItem | 1334410
+      Dish | 426713
+      MenuPage | 66937
+      Menu | 17527
+
+  panel birdmenu-s07
+    title: sum of Menu.dish_count by Menu.date
+    rows (146):
+      0001-01-01 | 205
+      0190-01-01 | 32
+      1091-01-01 | 68
+      1851-01-01 | 255
+      1852-01-01 | 283
+      1853-01-01 | 34
+      1854-01-01 | 202
+      1855-01-01 | 72
+      1856-01-01 | 508
+      1857-01-01 | 137
+      1858-01-01 | 435
+      1859-01-01 | 318
+      … 134 more rows
+
+  panel birdmenu-s08
+    title: rows of MenuItem by Dish.name the twelve most
+    rows (12):
+      Coffee | 8495
+      Tea | 4778
+      Celery | 4694
+      Olives | 4559
+      Radishes | 3347
+      Mashed potatoes | 2665
+      Milk | 2292
+      Boiled potatoes | 2118
+      Fruit | 1997
+      Chicken salad | 1877
+      Vanilla ice cream | 1850
+      Cocoa | 1705
+
+  panel birdmenu-s09
+    title: sum of Menu.page_count by Menu.date
+    rows (146):
+      0001-01-01 | 5
+      0190-01-01 | 2
+      1091-01-01 | 2
+      1851-01-01 | 8
+      1852-01-01 | 4
+      1853-01-01 | 2
+      1854-01-01 | 5
+      1855-01-01 | 2
+      1856-01-01 | 14
+      1857-01-01 | 2
+      1858-01-01 | 8
+      1859-01-01 | 8
+      … 134 more rows
+
+  panel birdmenu-s10
+    title: rows of Menu by Menu.currency_symbol the twelve most
+    rows (12):
+      ∅ | 11073
+      $ | 5578
+      DM | 293
+      FF | 162
+      C$ | 98
+      Fr | 47
+      s | 40
+      SEK | 39
+      L | 28
+      c | 23
+      £ | 22
+      BEF | 20
+
+  panel birdmenu-s11
+    title: distribution of Menu.page_count
+    rows (17):
+      0 | 1 | 14934
+      1 | 5 | 1827
+      2 | 9 | 243
+      3 | 12 | 285
+      4 | 16 | 121
+      5 | 20 | 43
+      6 | 23 | 25
+      7 | 27 | 17
+      8 | 31 | 10
+      9 | 34 | 6
+      10 | 38 | 4
+      12 | 46 | 1
+      … 5 more rows
+
+  panel birdmenu-s12
+    title: average of Menu.page_count by Menu.date
+    rows (146):
+      0001-01-01 | 2.5000000000000000
+      0190-01-01 | 2.0000000000000000
+      1091-01-01 | 2.0000000000000000
+      1851-01-01 | 2.6666666666666667
+      1852-01-01 | 2.0000000000000000
+      1853-01-01 | 2.0000000000000000
+      1854-01-01 | 1.6666666666666667
+      1855-01-01 | 2.0000000000000000
+      1856-01-01 | 2.8000000000000000
+      1857-01-01 | 2.0000000000000000
+      1858-01-01 | 2.6666666666666667
+      1859-01-01 | 2.6666666666666667
+      … 134 more rows
+
+  five A: birdmenu-s02, birdmenu-s03, birdmenu-s05, birdmenu-s06, birdmenu-s11
+
+  five B: birdmenu-s01, birdmenu-s05, birdmenu-s07, birdmenu-s08, birdmenu-s09
+
+  five C: birdmenu-s04, birdmenu-s05, birdmenu-s08, birdmenu-s09, birdmenu-s10
+
+  five D: birdmenu-s04, birdmenu-s07, birdmenu-s08, birdmenu-s09, birdmenu-s12
+
+
+=== database: studentloan ===
+Students, their enrolments, schools, military service, unemployment and loan payments, as CTU serves it.
+
+  panel studentloan-s01
+    title: rows of longest_absense_from_school by longest_absense_from_school.month
+    rows (10):
+      0 | 100
+      1 | 93
+      2 | 96
+      3 | 104
+      4 | 120
+      5 | 110
+      6 | 95
+      7 | 99
+      8 | 93
+      9 | 90
+
+  panel studentloan-s02
+    title: rows of no_payment_due by bool (by key) the twelve most
+    rows (2):
+      pos | 643
+      neg | 357
+
+  panel studentloan-s03
+    title: rows of enlist by enlist.organ
+    rows (7):
+      fire_department | 114
+      navy | 37
+      army | 35
+      peace_corps | 32
+      foreign_legion | 31
+      marines | 31
+      air_force | 26
+
+  panel studentloan-s04
+    title: largest tables, estimated rows
+    rows (10):
+      enrolled | 1194
+      longest_absense_from_school | 1000
+      no_payment_due | 1000
+      person | 1000
+      male | 497
+      enlist | 306
+      unemployed | 98
+      filed_for_bankrupcy | 96
+      disabled | 95
+      bool | 2
+
+  panel studentloan-s05
+    title: rows of enrolled per person
+    rows (2):
+      1 | 726
+      2 | 234
+
+  panel studentloan-s06
+    title: rows of enrolled by enrolled.month
+    rows (15):
+      1 | 108
+      2 | 107
+      3 | 131
+      4 | 126
+      5 | 88
+      6 | 89
+      7 | 69
+      8 | 68
+      9 | 94
+      10 | 105
+      11 | 80
+      12 | 87
+      … 3 more rows
+
+  five A: studentloan-s01, studentloan-s02, studentloan-s03, studentloan-s05, studentloan-s06
+
+  five B: studentloan-s03, studentloan-s04
+
+
+=== database: hockey ===
+Professional ice hockey: players, teams, goalies, scoring, coaches and awards by season, as CTU serves it.
+
+  panel hockey-s01
+    title: rows of Goalies by Goalies.lgID
+    rows (5):
+      NHL | 3860
+      WHA | 259
+      NHA | 75
+      PCHA | 47
+      WCHL | 37
+
+  panel hockey-s02
+    title: largest tables, estimated rows
+    rows (10):
+      Scoring | 46161
+      TeamVsTeam | 25004
+      Master | 7621
+      Goalies | 4278
+      AwardsPlayers | 2091
+      ScoringShootout | 2072
+      Coaches | 1812
+      TeamSplits | 1519
+      Teams | 1519
+      TeamsPost | 927
+
+  panel hockey-s03
+    title: rows of Master by Master.birthCountry the twelve most
+    rows (12):
+      Canada | 5328
+      USA | 994
+      ∅ | 365
+      Sweden | 233
+      Czech Republic | 206
+      Russia | 172
+      Finland | 164
+      Slovakia | 64
+      Germany | 28
+      England | 25
+      Scotland | 23
+      Switzerland | 17
+
+  panel hockey-s04
+    title: rows of Master by Master.shootCatch
+    rows (4):
+      L | 4604
+      R | 2443
+      ∅ | 713
+      B | 1
+
+  panel hockey-s05
+    title: rows of Teams by Teams.year
+    rows (102):
+      1909-01-01 | 7
+      1910-01-01 | 5
+      1911-01-01 | 7
+      1912-01-01 | 9
+      1913-01-01 | 9
+      1914-01-01 | 9
+      1915-01-01 | 9
+      1916-01-01 | 10
+      1917-01-01 | 7
+      1918-01-01 | 6
+      1919-01-01 | 7
+      1920-01-01 | 7
+      … 90 more rows
+
+  panel hockey-s06
+    title: rows of Coaches by Coaches.year
+    rows (102):
+      1909-01-01 | 6
+      1910-01-01 | 4
+      1911-01-01 | 7
+      1912-01-01 | 8
+      1913-01-01 | 10
+      1914-01-01 | 9
+      1915-01-01 | 9
+      1916-01-01 | 10
+      1917-01-01 | 7
+      1918-01-01 | 6
+      1919-01-01 | 8
+      1920-01-01 | 7
+      … 90 more rows
+
+  panel hockey-s07
+    title: rows of Scoring by Scoring.year
+    rows (102):
+      1909-01-01 | 80
+      1910-01-01 | 58
+      1911-01-01 | 70
+      1912-01-01 | 101
+      1913-01-01 | 112
+      1914-01-01 | 112
+      1915-01-01 | 109
+      1916-01-01 | 124
+      1917-01-01 | 84
+      1918-01-01 | 71
+      1919-01-01 | 80
+      1920-01-01 | 85
+      … 90 more rows
+
+  panel hockey-s08
+    title: rows of Goalies by Goalies.year
+    rows (102):
+      1909-01-01 | 12
+      1910-01-01 | 5
+      1911-01-01 | 10
+      1912-01-01 | 13
+      1913-01-01 | 18
+      1914-01-01 | 11
+      1915-01-01 | 12
+      1916-01-01 | 16
+      1917-01-01 | 10
+      1918-01-01 | 8
+      1919-01-01 | 12
+      1920-01-01 | 8
+      … 90 more rows
+
+  panel hockey-s09
+    title: sum of SeriesPost.GoalsWinner by SeriesPost.lgIDWinner
+    rows (5):
+      NHL | 12962
+      WHA | 1054
+      PCHA | 145
+      WCHL | 57
+      NHA | 45
+
+  panel hockey-s10
+    title: rows of Scoring by Scoring.pos
+    rows (25):
+      D | 13881
+      C | 9590
+      L | 8752
+      R | 8444
+      G | 4240
+      ∅ | 582
+      F | 139
+      C/L | 62
+      L/C | 58
+      L/D | 54
+      R/D | 28
+      C/R | 27
+      … 13 more rows
+
+  panel hockey-s11
+    title: rows of Master by Master.birthMon
+    rows (13):
+      1 | 775
+      3 | 728
+      4 | 701
+      2 | 692
+      5 | 668
+      6 | 623
+      9 | 593
+      7 | 587
+      10 | 567
+      8 | 559
+      11 | 512
+      12 | 501
+      … 1 more rows
+
+  panel hockey-s12
+    title: rows of Coaches by Coaches.lgID
+    rows (5):
+      NHL | 1593
+      WHA | 111
+      NHA | 43
+      PCHA | 41
+      WCHL | 24
+
+  five A: hockey-s04, hockey-s05, hockey-s06, hockey-s07, hockey-s08
+
+  five B: hockey-s04, hockey-s06, hockey-s07, hockey-s08, hockey-s10
+
+  five C: hockey-s01, hockey-s03, hockey-s05, hockey-s07, hockey-s12
+
+  five D: hockey-s02, hockey-s04, hockey-s09, hockey-s10, hockey-s11
+
+
+=== database: mondial ===
+The world's countries, provinces, cities, rivers, lakes, mountains, organisations and their members, as CTU serves it.
+
+  panel mondial-s01
+    title: largest tables, estimated rows
+    rows (10):
+      isMember | 8008
+      city | 3111
+      province | 1450
+      located | 857
+      geo_river | 851
+      geo_sea | 735
+      ethnicGroup | 540
+      religion | 454
+      locatedOn | 434
+      geo_island | 418
+
+  panel mondial-s02
+    title: rows of city by country.Name the twelve most
+    rows (12):
+      China | 308
+      United States | 239
+      Brazil | 204
+      Russia | 175
+      United Kingdom | 173
+      India | 98
+      Germany | 84
+      Turkey | 80
+      Mexico | 79
+      Poland | 63
+      Spain | 58
+      Nigeria | 56
+
+  panel mondial-s03
+    title: rows of isMember by isMember.Type
+    rows (23):
+      member | 6824
+      National Olympic Committee | 196
+      National Society | 163
+      observer | 159
+      Part II | 136
+      Category III | 126
+      regional member | 109
+      nonregional member | 50
+      nonsignatory user | 46
+      associate member | 39
+      applicant | 28
+      guest | 25
+      … 11 more rows
+
+  panel mondial-s04
+    title: rows of located by country.Name the twelve most
+    rows (12):
+      United States | 64
+      Russia | 50
+      Germany | 41
+      Japan | 34
+      China | 34
+      Spain | 28
+      Brazil | 28
+      Italy | 27
+      France | 24
+      Indonesia | 24
+      United Kingdom | 21
+      Sweden | 17
+
+  panel mondial-s05
+    title: rows of borders per country
+    rows (9):
+      1 | 37
+      2 | 30
+      3 | 22
+      4 | 16
+      5 | 9
+      6 | 4
+      7 | 1
+      8 | 1
+      9 | 1
+
+  panel mondial-s06
+    title: rows of isMember by country.Name the twelve most
+    rows (12):
+      France | 83
+      United Kingdom | 74
+      Canada | 73
+      United States | 72
+      Sweden | 71
+      Italy | 71
+      Finland | 70
+      Germany | 70
+      Netherlands | 70
+      Austria | 69
+      Belgium | 68
+      Denmark | 67
+
+  panel mondial-s07
+    title: rows of isMember by country.Name the twelve most
+    rows (12):
+      France | 83
+      United Kingdom | 74
+      Canada | 73
+      United States | 72
+      Sweden | 71
+      Italy | 71
+      Finland | 70
+      Netherlands | 70
+      Germany | 70
+      Austria | 69
+      Belgium | 68
+      Denmark | 67
+
+  panel mondial-s08
+    title: rows of isMember by organization (by key) the twelve most
+    rows (12):
+      UPU | 211
+      IOC | 196
+      WHO | 192
+      UNESCO | 191
+      UN | 188
+      Interpol | 188
+      IMF | 186
+      ICAO | 185
+      WMO | 184
+      ITU | 184
+      IBRD | 181
+      Intelsat | 180
+
+  panel mondial-s09
+    title: rows of province by country.Name the twelve most
+    rows (12):
+      United Kingdom | 81
+      Russia | 80
+      Turkey | 73
+      United States | 51
+      Poland | 49
+      Japan | 47
+      Romania | 41
+      Colombia | 33
+      India | 32
+      Mexico | 32
+      China | 30
+      Brazil | 27
+
+  panel mondial-s10
+    title: rows of locatedOn by country.Name the twelve most
+    rows (12):
+      United Kingdom | 173
+      Japan | 50
+      Indonesia | 42
+      Taiwan | 21
+      Cuba | 15
+      Philippines | 10
+      Madagascar | 7
+      Italy | 6
+      Malaysia | 5
+      Iceland | 4
+      Spain | 4
+      New Zealand | 3
+
+  panel mondial-s11
+    title: rows of geo_river by country.Name the twelve most
+    rows (12):
+      Russia | 71
+      United States | 57
+      Germany | 45
+      Zaire | 40
+      France | 30
+      China | 28
+      Poland | 24
+      Brazil | 24
+      Romania | 22
+      Hungary | 22
+      Switzerland | 22
+      Ukraine | 21
+
+  panel mondial-s12
+    title: rows of organization by organization.Established
+    rows (57):
+      1874-01-01 | 1
+      1894-01-01 | 1
+      1899-01-01 | 1
+      1919-01-01 | 3
+      1920-01-01 | 1
+      1928-01-01 | 1
+      1930-01-01 | 1
+      1931-01-01 | 1
+      1932-01-01 | 1
+      1944-01-01 | 3
+      1945-01-01 | 6
+      1946-01-01 | 1
+      … 45 more rows
+
+  panel mondial-s13
+    title: rows of encompasses per country
+    rows (2):
+      1 | 234
+      2 | 4
+
+  five A: mondial-s02, mondial-s04, mondial-s08, mondial-s09, mondial-s11
+
+  five B: mondial-s02, mondial-s04, mondial-s07, mondial-s10, mondial-s12
+
+  five C: mondial-s01, mondial-s03, mondial-s05, mondial-s06, mondial-s13
+
+
+=== database: ergastf1 ===
+Ergast's Formula 1 database as CTU serves it: seasons, circuits, races, drivers, constructors, results, qualifying, lap times, pit stops and standings.
+
+  panel ergastf1-s01
+    title: sum of results.points by constructors.name the twelve most
+    rows (12):
+      Ferrari | 7934.770000338554
+      McLaren | 5301.5
+      Red Bull | 3750.5
+      Mercedes | 3664.140000104904
+      Williams | 3535
+      Renault | 1368
+      Team Lotus | 995
+      Force India | 924
+      Benetton | 861.5
+      Tyrrell | 711
+      Lotus F1 | 706
+      Brabham | 631
+
+  panel ergastf1-s02
+    title: sum of constructorResults.points by constructors.name the twelve most
+    rows (12):
+      Ferrari | 7081.5
+      McLaren | 5232.5
+      Red Bull | 3750.5
+      Williams | 3541
+      Mercedes | 3525
+      Renault | 1368
+      Force India | 924
+      Team Lotus | 918
+      Benetton | 861.5
+      Lotus F1 | 706
+      Tyrrell | 621
+      Brabham | 595
+
+  panel ergastf1-s03
+    title: rows of races by races.name the twelve most
+    rows (12):
+      British Grand Prix | 68
+      Italian Grand Prix | 68
+      Monaco Grand Prix | 64
+      German Grand Prix | 62
+      Belgian Grand Prix | 62
+      French Grand Prix | 58
+      Canadian Grand Prix | 48
+      Spanish Grand Prix | 47
+      Brazilian Grand Prix | 45
+      United States Grand Prix | 39
+      Australian Grand Prix | 33
+      Japanese Grand Prix | 33
+
+  panel ergastf1-s04
+    title: rows of constructorResults per races
+    rows (19):
+      2 | 1
+      3 | 2
+      4 | 1
+      5 | 6
+      6 | 15
+      7 | 19
+      8 | 26
+      9 | 39
+      10 | 151
+      11 | 235
+      12 | 83
+      13 | 45
+      … 7 more rows
+
+  panel ergastf1-s05
+    title: rows of results by circuits.name the twelve most
+    rows (12):
+      Autodromo Nazionale di Monza | 1696
+      Circuit de Monaco | 1544
+      Silverstone Circuit | 1276
+      Circuit de Spa-Francorchamps | 1118
+      Nürburgring | 956
+      Circuit Gilles Villeneuve | 952
+      Hockenheimring | 895
+      Autódromo José Carlos Pace | 797
+      Hungaroring | 771
+      Autodromo Enzo e Dino Ferrari | 695
+      Circuit Park Zandvoort | 687
+      Suzuka Circuit | 671
+
+  panel ergastf1-s06
+    title: average of races.round by races.date
+    rows (68):
+      1950-01-01 | 4.0000
+      1951-01-01 | 4.5000
+      1952-01-01 | 4.5000
+      1953-01-01 | 5.0000
+      1954-01-01 | 5.0000
+      1955-01-01 | 4.0000
+      1956-01-01 | 4.5000
+      1957-01-01 | 4.5000
+      1958-01-01 | 6.0000
+      1959-01-01 | 5.0000
+      1960-01-01 | 5.5000
+      1961-01-01 | 4.5000
+      … 56 more rows
+
+  panel ergastf1-s07
+    title: rows of races by races.date
+    rows (68):
+      1950-01-01 | 7
+      1951-01-01 | 8
+      1952-01-01 | 8
+      1953-01-01 | 9
+      1954-01-01 | 9
+      1955-01-01 | 7
+      1956-01-01 | 8
+      1957-01-01 | 8
+      1958-01-01 | 11
+      1959-01-01 | 9
+      1960-01-01 | 10
+      1961-01-01 | 8
+      … 56 more rows
+
+  panel ergastf1-s08
+    title: rows of drivers by drivers.nationality the twelve most
+    rows (12):
+      British | 162
+      American | 157
+      Italian | 99
+      French | 72
+      German | 49
+      Brazilian | 31
+      Argentine | 24
+      South African | 23
+      Swiss | 23
+      Belgian | 23
+      Japanese | 19
+      Dutch | 17
+
+  panel ergastf1-s09
+    title: rows of qualifying by constructors.name the twelve most
+    rows (12):
+      Ferrari | 678
+      Williams | 677
+      McLaren | 675
+      Sauber | 534
+      Red Bull | 476
+      Toro Rosso | 439
+      Renault | 392
+      Force India | 369
+      Mercedes | 299
+      Toyota | 250
+      Minardi | 238
+      Jordan | 237
+
+  panel ergastf1-s10
+    title: rows of results by status.status the twelve most
+    rows (12):
+      Finished | 5966
+      +1 Lap | 3265
+      Engine | 1971
+      +2 Laps | 1486
+      Did not qualify | 1025
+      Accident | 1007
+      Gearbox | 790
+      Spun off | 788
+      Collision | 755
+      +3 Laps | 719
+      Suspension | 421
+      +4 Laps | 405
+
+  panel ergastf1-s11
+    title: rows of constructorStandings by constructors.name the twelve most
+    rows (12):
+      Ferrari | 903
+      McLaren | 774
+      Williams | 702
+      Tyrrell | 426
+      Team Lotus | 405
+      Sauber | 361
+      Renault | 341
+      Minardi | 337
+      Ligier | 332
+      Brabham | 315
+      Arrows | 297
+      Benetton | 259
+
+  panel ergastf1-s12
+    title: sum of lapTimes.milliseconds by drivers.nationality
+    rows (30):
+      German | 7548156170
+      British | 5861427658
+      Brazilian | 4405537540
+      Finnish | 3268850733
+      Italian | 2960095170
+      Spanish | 2678068277
+      French | 2521004102
+      Australian | 1747068750
+      Japanese | 1456611224
+      Mexican | 1021025900
+      Dutch | 983466989
+      Canadian | 812670510
+      … 18 more rows
+
+  panel ergastf1-s13
+    title: rows of races by circuits.name the twelve most
+    rows (12):
+      Autodromo Nazionale di Monza | 67
+      Circuit de Monaco | 64
+      Silverstone Circuit | 51
+      Circuit de Spa-Francorchamps | 50
+      Nürburgring | 40
+      Circuit Gilles Villeneuve | 38
+      Autódromo José Carlos Pace | 35
+      Hockenheimring | 35
+      Hungaroring | 32
+      Circuit Park Zandvoort | 30
+      Suzuka Circuit | 29
+      Autodromo Enzo e Dino Ferrari | 27
+
+  panel ergastf1-s14
+    title: rows of races by circuits.name the twelve most
+    rows (12):
+      Autodromo Nazionale di Monza | 67
+      Circuit de Monaco | 64
+      Silverstone Circuit | 51
+      Circuit de Spa-Francorchamps | 50
+      Nürburgring | 40
+      Circuit Gilles Villeneuve | 38
+      Autódromo José Carlos Pace | 35
+      Hockenheimring | 35
+      Hungaroring | 32
+      Circuit Park Zandvoort | 30
+      Suzuka Circuit | 29
+      Autodromo Enzo e Dino Ferrari | 27
+
+  five A: ergastf1-s02, ergastf1-s03, ergastf1-s05, ergastf1-s06, ergastf1-s08
+
+  five B: ergastf1-s07, ergastf1-s08, ergastf1-s09, ergastf1-s10, ergastf1-s11
+
+  five C: ergastf1-s07, ergastf1-s08, ergastf1-s09, ergastf1-s10, ergastf1-s14
+
+  five D: ergastf1-s01, ergastf1-s04, ergastf1-s07, ergastf1-s12, ergastf1-s13

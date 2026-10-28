@@ -33,3 +33,7 @@ so, never by editing the number it replaces.
 - [Twice the databases](scale-2026-10-28.md), round 1f: 42 BIRD databases loaded to PostgreSQL, the look taught on 81;
   on twelve held out Sonnet keeps 3.58 of five against round 1e's 3.17 and Gemini 3.83 as before, the learning
   curve is flat past forty databases, and the tuned penalties swing with two databases' labels.
+- [What limits the look](limits-2026-10-28.md), round 1g: on 93 databases by family folds, neither capacity,
+  objective nor the other candidates' context moves the look; the teachers' own five would keep a panel more, lost
+  on what words mean; judged as sets, the gap shrinks to a tenth or two, repeats of one axis are the set's loss,
+  and a five using each axis once is the round's best by Gemini, 4.28 of five against round 1's 3.62.

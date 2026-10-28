@@ -1,0 +1,855 @@
+You are judging first-overview dashboards for several databases. For each database you see its
+panels — each a title saying what it computes and the first rows its database returned — and two or three
+candidate fives, each a list of five of those panels. You did not make them and are not told what made them.
+Do not read, search or open any file other than this one, and run no command; when done, write your answers
+with the Write tool, once, to the path given to you.
+
+For every database, and every five of it:
+ 1. worth: how many of its five panels are worth a place on a first screen together — a panel that repeats
+    what another panel of the same five already shows does not count, nor a single bar, an empty result, a
+    column of blanks, or a picture that means less than it seems to.
+ 2. repeats: the panel ids in that five that repeat another panel of the same five.
+Then for the database:
+ 3. best: the letter of the five you would keep as this database's first screen.
+
+Write one JSON object: {"databases": {"<database>": {"fives": {"<letter>": {"worth": int, "repeats": [ids]}, ...},
+"best": "<letter>"}, ...}} — every database and every five below must be answered.
+
+
+=== database: lahman ===
+Sean Lahman's baseball database to 2014 as CTU serves it: players, teams, batting, pitching, fielding, salaries and awards by season.
+
+  panel lahman-s01
+    title: rows of batting by teams.name the twelve most
+    rows (0):
+      
+      error: MySqlError { ERROR 3024 (HY000): Query execution was interrupted, maximum statement execution time exceeded }
+
+  panel lahman-s02
+    title: rows of fielding by fielding.yearID
+    rows (142):
+      1871-01-01 | 211
+      1872-01-01 | 249
+      1873-01-01 | 234
+      1874-01-01 | 226
+      1875-01-01 | 411
+      1876-01-01 | 211
+      1877-01-01 | 160
+      1878-01-01 | 126
+      1879-01-01 | 216
+      1880-01-01 | 227
+      1881-01-01 | 225
+      1882-01-01 | 444
+      … 130 more rows
+
+  panel lahman-s03
+    title: rows of fielding by fielding.lgID
+    rows (7):
+      NL | 67520
+      AL | 64572
+      AA | 3155
+      NA | 1331
+      FL | 598
+      UA | 568
+      PL | 231
+
+  panel lahman-s04
+    title: rows of teams by teams.yearID
+    rows (142):
+      1871-01-01 | 9
+      1872-01-01 | 11
+      1873-01-01 | 9
+      1874-01-01 | 8
+      1875-01-01 | 13
+      1876-01-01 | 8
+      1877-01-01 | 6
+      1878-01-01 | 6
+      1879-01-01 | 8
+      1880-01-01 | 8
+      1881-01-01 | 8
+      1882-01-01 | 14
+      … 130 more rows
+
+  panel lahman-s05
+    title: rows of schoolsplayers by schools.schoolName the twelve most
+    rows (12):
+      University of Southern California | 98
+      University of Texas at Austin | 92
+      Arizona State University | 83
+      College of the Holy Cross | 75
+      Stanford University | 73
+      University of Michigan | 71
+      University of Illinois at Urbana-Champai | 67
+      University of Notre Dame | 66
+      University of California, Los Angeles | 60
+      Saint Mary's College of California | 60
+      University of Arizona | 56
+      Fordham University | 56
+
+  panel lahman-s06
+    title: sum of salaries.salary by salaries.yearID
+    rows (28):
+      1985-01-01 | 261964696
+      1986-01-01 | 307854518
+      1987-01-01 | 272575375
+      1988-01-01 | 300452424
+      1989-01-01 | 359995711
+      1990-01-01 | 443881193
+      1991-01-01 | 613048418
+      1992-01-01 | 805543323
+      1993-01-01 | 901740134
+      1994-01-01 | 927836287
+      1995-01-01 | 951469367
+      1996-01-01 | 956983550
+      … 16 more rows
+
+  panel lahman-s07
+    title: rows of batting by batting.lgID
+    rows (7):
+      NL | 46844
+      AL | 41940
+      AA | 1888
+      NA | 735
+      FL | 469
+      UA | 330
+      PL | 147
+
+  panel lahman-s08
+    title: rows of els_teamnames by els_teamnames.lgid
+    rows (7):
+      NL | 140
+      AL | 79
+      AA | 37
+      NA | 27
+      UA | 12
+      FL | 11
+      PL | 8
+
+  panel lahman-s09
+    title: rows of players by players.bats
+    rows (4):
+      R | 10039
+      L | 4177
+      ∅ | 1193
+      B | 998
+
+  panel lahman-s10
+    title: rows of teams by teams.lgID
+    rows (7):
+      NL | 1384
+      AL | 1160
+      AA | 85
+      NA | 50
+      FL | 16
+      UA | 12
+      PL | 8
+
+  panel lahman-s11
+    title: rows of batting by batting.yearID
+    rows (142):
+      1871-01-01 | 115
+      1872-01-01 | 156
+      1873-01-01 | 125
+      1874-01-01 | 122
+      1875-01-01 | 217
+      1876-01-01 | 124
+      1877-01-01 | 96
+      1878-01-01 | 80
+      1879-01-01 | 127
+      1880-01-01 | 135
+      1881-01-01 | 132
+      1882-01-01 | 251
+      … 130 more rows
+
+  panel lahman-s12
+    title: sum of halloffame.votes by halloffame.votedBy
+    rows (9):
+      BBWAA | 179325
+      Nominating Vote | 1691
+      Run Off | 1531
+      Veterans | 286
+      Final Ballot | 277
+      Old Timers | ∅
+      Negro League | ∅
+      Centennial | ∅
+      Special Election | ∅
+
+  five A: lahman-s02, lahman-s03, lahman-s04, lahman-s06, lahman-s09
+
+  five B: lahman-s01, lahman-s05, lahman-s08, lahman-s09, lahman-s12
+
+  five C: lahman-s04, lahman-s06, lahman-s07, lahman-s10, lahman-s11
+
+
+=== database: northwind ===
+Northwind, Microsoft's sample shop, as pthom/northwind_psql ports it: orders and their details, products, customers, employees, shippers.
+
+  panel northwind-s01
+    title: sum of order_details.unit_price by products.product_name the twelve most
+    rows (12):
+      Côte de Blaye | 5902.4004
+      Thüringer Rostbratwurst | 3713.3809
+      Raclette Courdavault | 2761
+      Tarte au sucre | 2227.801
+      Manjimup Dried Apples | 1971.6
+      Gnocchi di nonna Alice | 1770.7999
+      Camembert Pierrot | 1638.8
+      Carnarvon Tigers | 1612.5
+      Rössle Sauerkraut | 1385.1995
+      Alice Mutton | 1349.4
+      Mozzarella di Giovanni | 1217.4
+      Sir Rodney's Marmalade | 1215
+
+  panel northwind-s02
+    title: rows of orders by orders.ship_country the twelve most
+    rows (12):
+      Germany | 122
+      USA | 122
+      Brazil | 83
+      France | 77
+      UK | 56
+      Venezuela | 46
+      Austria | 40
+      Sweden | 37
+      Canada | 30
+      Italy | 28
+      Mexico | 28
+      Spain | 23
+
+  panel northwind-s03
+    title: rows of orders by orders.order_date
+    rows (23):
+      1996-07-01 00:00:00+00 | 22
+      1996-08-01 00:00:00+00 | 25
+      1996-09-01 00:00:00+00 | 23
+      1996-10-01 00:00:00+00 | 26
+      1996-11-01 00:00:00+00 | 25
+      1996-12-01 00:00:00+00 | 31
+      1997-01-01 00:00:00+00 | 33
+      1997-02-01 00:00:00+00 | 29
+      1997-03-01 00:00:00+00 | 30
+      1997-04-01 00:00:00+00 | 31
+      1997-05-01 00:00:00+00 | 32
+      1997-06-01 00:00:00+00 | 30
+      … 11 more rows
+
+  panel northwind-s04
+    title: sum of order_details.unit_price × order_details.quantity × (1 − order_details.discount) by orders.order_date
+    rows (23):
+      1996-07-01 | 27861.89512966156
+      1996-08-01 | 25485.275070743264
+      1996-09-01 | 26381.400132587554
+      1996-10-01 | 37515.72494547888
+      1996-11-01 | 45600.04521113701
+      1996-12-01 | 45239.630493214434
+      1997-01-01 | 61258.0701679784
+      1997-02-01 | 38483.6349503243
+      1997-03-01 | 38547.22010972678
+      1997-04-01 | 53032.95238894149
+      1997-05-01 | 53781.28982514166
+      1997-06-01 | 36362.80233480245
+      … 11 more rows
+
+  panel northwind-s05
+    title: rows of orders by shippers.company_name the twelve most
+    rows (3):
+      United Package | 326
+      Federal Shipping | 255
+      Speedy Express | 249
+
+  panel northwind-s06
+    title: largest tables, estimated rows
+    rows (10):
+      order_details | 2155
+      orders | 830
+      customers | 91
+      products | 77
+      territories | 53
+      us_states | 51
+      employee_territories | 49
+      suppliers | 29
+      employees | 9
+      categories | 8
+
+  panel northwind-s07
+    title: rows of orders by shippers.company_name
+    rows (3):
+      United Package | 326
+      Federal Shipping | 255
+      Speedy Express | 249
+
+  panel northwind-s08
+    title: sum of order_details.unit_price by orders.ship_country
+    rows (21):
+      USA | 10462.911
+      Germany | 8544.839
+      Brazil | 5324.6396
+      France | 4839.4595
+      Austria | 3469.9497
+      UK | 3116.8706
+      Sweden | 2486.4902
+      Venezuela | 2434.9097
+      Canada | 1907.5002
+      Mexico | 1818.9799
+      Ireland | 1719.8602
+      Belgium | 1341.98
+      … 9 more rows
+
+  panel northwind-s09
+    title: rows of orders by customers.country the twelve most
+    rows (12):
+      Germany | 122
+      USA | 122
+      Brazil | 83
+      France | 77
+      UK | 56
+      Venezuela | 46
+      Austria | 40
+      Sweden | 37
+      Canada | 30
+      Italy | 28
+      Mexico | 28
+      Spain | 23
+
+  panel northwind-s10
+    title: sum of order_details.unit_price × order_details.quantity × (1 − order_details.discount) by categories.category_name the twelve most
+    rows (8):
+      Beverages | 267868.17978624784
+      Dairy Products | 234507.2845305777
+      Confections | 167357.22547338586
+      Meat/Poultry | 163022.3602687388
+      Seafood | 131261.7365558489
+      Condiments | 106047.08460955074
+      Produce | 99984.58007357619
+      Grains/Cereals | 95744.58735543818
+
+  panel northwind-s11
+    title: sum of order_details.unit_price × order_details.quantity × (1 − order_details.discount) by products.product_name the twelve most
+    rows (12):
+      Côte de Blaye | 141396.7356273254
+      Thüringer Rostbratwurst | 80368.6724385033
+      Raclette Courdavault | 71155.69990943
+      Tarte au sucre | 47234.969978504174
+      Camembert Pierrot | 46825.48029542655
+      Gnocchi di nonna Alice | 42593.0598222503
+      Manjimup Dried Apples | 41819.65024582073
+      Alice Mutton | 32698.380216373203
+      Carnarvon Tigers | 29171.874963399023
+      Rössle Sauerkraut | 25696.63978933155
+      Mozzarella di Giovanni | 24900.12939154029
+      Ipoh Coffee | 23526.699842727183
+
+  five A: northwind-s01, northwind-s03, northwind-s06, northwind-s07, northwind-s08
+
+  five B: northwind-s02, northwind-s03, northwind-s04, northwind-s09, northwind-s10
+
+  five C: northwind-s02, northwind-s03, northwind-s05, northwind-s09, northwind-s11
+
+
+=== database: premierleague ===
+An English Premier League season: matches, teams, players and what happened in the matches, as CTU serves it.
+
+  panel premierleague-s01
+    title: rows of Matches by Matches.TeamHomeFormation
+    rows (11):
+      2 | 136
+      6 | 93
+      8 | 57
+      5 | 39
+      4 | 33
+      7 | 7
+      3 | 4
+      10 | 4
+      11 | 3
+      17 | 2
+      13 | 2
+
+  panel premierleague-s02
+    title: sum of Actions.PenaltyGoals by Actions.Team2
+    rows (20):
+      West Bromwich Albion | 7
+      Newcastle United | 7
+      Stoke City | 7
+      Aston Villa | 6
+      Wolverhampton Wanderers | 5
+      Norwich City | 5
+      Chelsea | 4
+      Wigan Athletic | 4
+      Liverpool | 4
+      Queens Park Rangers | 3
+      Sunderland | 3
+      Arsenal | 3
+      … 8 more rows
+
+  panel premierleague-s03
+    title: rows of Matches by Matches.TeamAwayFormation
+    rows (11):
+      2 | 115
+      6 | 72
+      8 | 68
+      5 | 55
+      4 | 39
+      7 | 19
+      11 | 6
+      3 | 2
+      10 | 2
+      17 | 1
+      13 | 1
+
+  panel premierleague-s04
+    title: rows of Matches by Matches.Date
+    rows (35):
+      2011-08-08 | 8
+      2011-08-15 | 10
+      2011-08-22 | 11
+      2011-09-05 | 9
+      2011-09-12 | 11
+      2011-09-19 | 9
+      2011-09-26 | 11
+      2011-10-10 | 10
+      2011-10-17 | 10
+      2011-10-24 | 9
+      2011-10-31 | 11
+      2011-11-14 | 9
+      … 23 more rows
+
+  panel premierleague-s05
+    title: sum of Actions.TotalSuccessfulPassesExclCrossesCorners by Teams.Name the twelve most
+    rows (12):
+      Manchester City | 17930
+      Swansea City | 17813
+      Arsenal | 17420
+      Manchester United | 17227
+      Tottenham Hotspur | 16592
+      Chelsea | 15949
+      Liverpool | 15213
+      Fulham | 14485
+      Wigan Athletic | 12633
+      Everton | 11650
+      Norwich City | 11522
+      Wolverhampton Wanderers | 11364
+
+  panel premierleague-s06
+    title: rows of Matches by Matches.Date split by Matches.ResultOfTeamHome
+    rows (102):
+      2011-08-08 | -1 | 2
+      2011-08-08 | 0 | 6
+      2011-08-15 | -1 | 4
+      2011-08-15 | 0 | 2
+      2011-08-15 | 1 | 4
+      2011-08-22 | -1 | 3
+      2011-08-22 | 0 | 2
+      2011-08-22 | 1 | 6
+      2011-09-05 | -1 | 4
+      2011-09-05 | 0 | 2
+      2011-09-05 | 1 | 3
+      2011-09-12 | -1 | 4
+      … 90 more rows
+
+  panel premierleague-s07
+    title: rows of Matches by Matches.ResultOfTeamHome
+    rows (3):
+      1 | 170
+      -1 | 120
+      0 | 90
+
+  panel premierleague-s08
+    title: rows of Actions by Teams.Name the twelve most
+    rows (12):
+      Newcastle United | 530
+      Norwich City | 529
+      Everton | 529
+      Manchester City | 528
+      Arsenal | 527
+      Wolverhampton Wanderers | 526
+      Stoke City | 525
+      Chelsea | 523
+      Bolton Wanderers | 522
+      Wigan Athletic | 520
+      West Bromwich Albion | 519
+      Manchester United | 518
+
+  panel premierleague-s09
+    title: rows of Matches by Teams.Name
+    rows (20):
+      West Bromwich Albion | 19
+      Wigan Athletic | 19
+      Stoke City | 19
+      Swansea City | 19
+      Sunderland | 19
+      Fulham | 19
+      Queens Park Rangers | 19
+      Norwich City | 19
+      Manchester City | 19
+      Wolverhampton Wanderers | 19
+      Manchester United | 19
+      Bolton Wanderers | 19
+      … 8 more rows
+
+  panel premierleague-s10
+    title: largest tables, estimated rows
+    rows (4):
+      Actions | 9777
+      Players | 539
+      Matches | 380
+      Teams | 20
+
+  panel premierleague-s11
+    title: sum of Actions.Goals by Actions.Team1
+    rows (20):
+      Manchester City | 91
+      Manchester United | 87
+      Arsenal | 73
+      Tottenham Hotspur | 65
+      Chelsea | 63
+      Norwich City | 52
+      Newcastle United | 51
+      Everton | 48
+      West Bromwich Albion | 44
+      Blackburn Rovers | 44
+      Fulham | 43
+      Sunderland | 43
+      … 8 more rows
+
+  panel premierleague-s12
+    title: sum of Actions.TotalClearances by Teams.Name the twelve most
+    rows (12):
+      Stoke City | 1910
+      Norwich City | 1451
+      Queens Park Rangers | 1412
+      Blackburn Rovers | 1328
+      Aston Villa | 1301
+      Bolton Wanderers | 1255
+      Wolverhampton Wanderers | 1178
+      Manchester United | 1165
+      Sunderland | 1158
+      Everton | 1130
+      Swansea City | 1048
+      Tottenham Hotspur | 1045
+
+  five A: premierleague-s02, premierleague-s04, premierleague-s09, premierleague-s10, premierleague-s11
+
+  five B: premierleague-s01, premierleague-s03, premierleague-s04, premierleague-s07, premierleague-s08
+
+  five C: premierleague-s04, premierleague-s05, premierleague-s06, premierleague-s07, premierleague-s12
+
+
+=== database: movielens ===
+Movies, actors, directors, users and their ratings, from IMDb and MovieLens, as CTU serves it.
+
+  panel movielens-s01
+    title: largest tables, estimated rows
+    rows (7):
+      u2base | 1049233
+      movies2actors | 175466
+      actors | 99129
+      users | 6039
+      movies2directors | 4141
+      movies | 3832
+      directors | 2201
+
+  panel movielens-s02
+    title: rows of u2base by users.u_gender
+    rows (2):
+      M | 750799
+      F | 245360
+
+  panel movielens-s03
+    title: rows of u2base by u2base.rating
+    rows (5):
+      4 | 348150
+      3 | 260180
+      5 | 225108
+      2 | 107114
+      1 | 55607
+
+  panel movielens-s04
+    title: rows of movies2directors by movies.country
+    rows (4):
+      USA | 2980
+      other | 560
+      UK | 399
+      France | 202
+
+  panel movielens-s05
+    title: rows of movies by movies.isEnglish
+    rows (2):
+      T | 3411
+      F | 421
+
+  panel movielens-s06
+    title: rows of movies2directors by movies2directors.genre
+    rows (9):
+      Comedy | 1257
+      Drama | 955
+      Action | 593
+      Adventure | 342
+      Crime | 299
+      Documentary | 257
+      Horror | 231
+      Animation | 104
+      Other | 103
+
+  panel movielens-s07
+    title: rows of actors by actors.a_gender
+    rows (2):
+      M | 65794
+      F | 32896
+
+  panel movielens-s08
+    title: rows of movies2actors per movies
+    rows (147):
+      1 | 20
+      2 | 23
+      3 | 14
+      4 | 25
+      5 | 24
+      6 | 29
+      7 | 28
+      8 | 42
+      9 | 52
+      10 | 78
+      11 | 69
+      12 | 72
+      … 135 more rows
+
+  panel movielens-s09
+    title: rows of movies by movies.year
+    rows (4):
+      1 | 50
+      2 | 310
+      3 | 749
+      4 | 2723
+
+  panel movielens-s10
+    title: rows of u2base by movies.country
+    rows (4):
+      USA | 822782
+      UK | 87745
+      other | 65737
+      France | 19895
+
+  panel movielens-s11
+    title: rows of users by users.u_gender
+    rows (2):
+      M | 4331
+      F | 1708
+
+  panel movielens-s12
+    title: rows of users by users.age
+    rows (7):
+      25 | 2095
+      35 | 1193
+      18 | 1103
+      45 | 550
+      50 | 496
+      56 | 380
+      1 | 222
+
+  panel movielens-s13
+    title: rows of movies by movies.country
+    rows (4):
+      USA | 2725
+      other | 531
+      UK | 384
+      France | 192
+
+  five A: movielens-s05, movielens-s07, movielens-s09, movielens-s11, movielens-s13
+
+  five B: movielens-s02, movielens-s04, movielens-s10, movielens-s12, movielens-s13
+
+  five C: movielens-s01, movielens-s03, movielens-s06, movielens-s08, movielens-s13
+
+
+=== database: basketball ===
+Men's professional basketball: players, teams, coaches, drafts, awards and all-stars by season, as CTU serves it.
+
+  panel basketball-s01
+    title: rows of awards_players by players (named) the twelve most
+    rows (12):
+      Kareem Abdul-Jabbar | 35
+      Michael Jordan | 33
+      Timothy Duncan | 32
+      Kobe Bryant | 29
+      Hakeem Olajuwon | 26
+      Kevin Garnett | 23
+      Shaquille O'Neal | 22
+      David Robinson | 21
+      Karl Malone | 20
+      John Havlicek | 20
+      Larry Bird | 19
+      Julius Erving | 19
+
+  panel basketball-s02
+    title: rows of awards_players by awards_players.year
+    rows (75):
+      1937-01-01 | 2
+      1938-01-01 | 2
+      1939-01-01 | 2
+      1940-01-01 | 2
+      1941-01-01 | 2
+      1942-01-01 | 2
+      1943-01-01 | 2
+      1944-01-01 | 2
+      1945-01-01 | 2
+      1946-01-01 | 12
+      1947-01-01 | 12
+      1948-01-01 | 12
+      … 63 more rows
+
+  panel basketball-s03
+    title: rows of players_teams by players_teams.lgID
+    rows (6):
+      NBA | 20357
+      ABA | 1463
+      NBL | 1423
+      ABL1 | 205
+      PBLA | 165
+      NPBL | 138
+
+  panel basketball-s04
+    title: rows of awards_players by awards_players.pos
+    rows (6):
+      ∅ | 886
+      G | 333
+      F | 330
+      C | 165
+      F/G | 3
+      F/C | 2
+
+  panel basketball-s05
+    title: rows of teams by teams.year
+    rows (75):
+      1937-01-01 | 13
+      1938-01-01 | 8
+      1939-01-01 | 8
+      1940-01-01 | 7
+      1941-01-01 | 7
+      1942-01-01 | 5
+      1943-01-01 | 4
+      1944-01-01 | 6
+      1945-01-01 | 8
+      1946-01-01 | 23
+      1947-01-01 | 35
+      1948-01-01 | 22
+      … 63 more rows
+
+  panel basketball-s06
+    title: rows of draft by draft.draftYear
+    rows (65):
+      1947-01-01 | 63
+      1948-01-01 | 104
+      1949-01-01 | 60
+      1950-01-01 | 99
+      1951-01-01 | 77
+      1952-01-01 | 95
+      1953-01-01 | 108
+      1954-01-01 | 100
+      1955-01-01 | 77
+      1956-01-01 | 83
+      1957-01-01 | 85
+      1958-01-01 | 88
+      … 53 more rows
+
+  panel basketball-s07
+    title: rows of players by players.race
+    rows (6):
+      B | 2460
+      W | 2431
+      ∅ | 159
+      O | 9
+      1 | 2
+      r | 1
+
+  panel basketball-s08
+    title: rows of players by players.deathDate
+    rows (58):
+      0000-01-01 | 4103
+      1946-01-01 | 1
+      1956-01-01 | 1
+      1957-01-01 | 3
+      1958-01-01 | 3
+      1959-01-01 | 1
+      1961-01-01 | 1
+      1962-01-01 | 1
+      1963-01-01 | 2
+      1964-01-01 | 2
+      1965-01-01 | 3
+      1966-01-01 | 2
+      … 46 more rows
+
+  panel basketball-s09
+    title: sum of player_allstar.minutes by player_allstar.conference
+    rows (5):
+      East | 18392
+      West | 18247
+      Allstars | 240
+      Denver | 240
+      Weset | 34
+
+  panel basketball-s10
+    title: rows of players_teams by players_teams.year
+    rows (75):
+      1937-01-01 | 142
+      1938-01-01 | 124
+      1939-01-01 | 112
+      1940-01-01 | 92
+      1941-01-01 | 95
+      1942-01-01 | 68
+      1943-01-01 | 46
+      1944-01-01 | 82
+      1945-01-01 | 144
+      1946-01-01 | 380
+      1947-01-01 | 463
+      1948-01-01 | 352
+      … 63 more rows
+
+  panel basketball-s11
+    title: rows of teams by teams.lgID
+    rows (6):
+      NBA | 1304
+      NBL | 99
+      ABA | 94
+      PBLA | 16
+      ABL1 | 14
+      NPBL | 9
+
+  panel basketball-s12
+    title: rows of series_post by series_post.series
+    rows (11):
+      L | 264
+      M | 172
+      N | 89
+      O | 66
+      J | 62
+      K | 45
+      B | 33
+      C | 18
+      A | 11
+      D | 9
+      I | 6
+
+  panel basketball-s13
+    title: rows of draft by draft.lgID
+    rows (2):
+      NBA | 7314
+      ABA | 1307
+
+  panel basketball-s14
+    title: largest tables, estimated rows
+    rows (9):
+      players_teams | 23475
+      draft | 8547
+      players | 4991
+      awards_players | 1719
+      coaches | 1689
+      player_allstar | 1608
+      teams | 1536
+      series_post | 775
+      awards_coaches | 61
+
+  five A: basketball-s01, basketball-s03, basketball-s05, basketball-s10, basketball-s11
+
+  five B: basketball-s07, basketball-s08, basketball-s09, basketball-s12, basketball-s14
+
+  five C: basketball-s02, basketball-s04, basketball-s06, basketball-s12, basketball-s13

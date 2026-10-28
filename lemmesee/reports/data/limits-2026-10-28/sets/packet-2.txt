@@ -1,0 +1,709 @@
+You are judging first-overview dashboards for several databases. For each database you see its
+panels — each a title saying what it computes and the first rows its database returned — and two or three
+candidate fives, each a list of five of those panels. You did not make them and are not told what made them.
+Do not read, search or open any file other than this one, and run no command; when done, write your answers
+with the Write tool, once, to the path given to you.
+
+For every database, and every five of it:
+ 1. worth: how many of its five panels are worth a place on a first screen together — a panel that repeats
+    what another panel of the same five already shows does not count, nor a single bar, an empty result, a
+    column of blanks, or a picture that means less than it seems to.
+ 2. repeats: the panel ids in that five that repeat another panel of the same five.
+Then for the database:
+ 3. best: the letter of the five you would keep as this database's first screen.
+
+Write one JSON object: {"databases": {"<database>": {"fives": {"<letter>": {"worth": int, "repeats": [ids]}, ...},
+"best": "<letter>"}, ...}} — every database and every five below must be answered.
+
+
+=== database: walmart2014 ===
+A retailer's stores, their weekly sales by department, and regional features such as temperature and markdowns, as CTU serves it.
+
+  panel walmart2014-s01
+    title: rows of features by stores.Type
+    rows (3):
+      A | 4004
+      B | 3094
+      C | 1092
+
+  panel walmart2014-s02
+    title: sum of train.Weekly_Sales by stores.Type
+    rows (3):
+      A | 4331014717.129744
+      B | 2000700719.0610518
+      C | 405503526.53195703
+
+  panel walmart2014-s03
+    title: rows of features per stores
+    rows (1):
+      182 | 45
+
+  panel walmart2014-s04
+    title: rows of train per stores
+    rows (45):
+      6222 | 1
+      6487 | 1
+      6751 | 1
+      6953 | 1
+      7156 | 1
+      7169 | 1
+      7206 | 1
+      7362 | 1
+      8867 | 1
+      8999 | 1
+      9036 | 1
+      9443 | 1
+      … 33 more rows
+
+  panel walmart2014-s05
+    title: largest tables, estimated rows
+    rows (3):
+      train | 420750
+      features | 8190
+      stores | 45
+
+  panel walmart2014-s06
+    title: average of train.Weekly_Sales by stores.Type
+    rows (3):
+      A | 20099.568016826513
+      B | 12237.075868136957
+      C | 9519.532514777027
+
+  panel walmart2014-s07
+    title: rows of train by train.Date
+    rows (33):
+      2010-02-01 | 11839
+      2010-03-01 | 11788
+      2010-04-01 | 14697
+      2010-05-01 | 11672
+      2010-06-01 | 11661
+      2010-07-01 | 14561
+      2010-08-01 | 11603
+      2010-09-01 | 11724
+      2010-10-01 | 14667
+      2010-11-01 | 11712
+      2010-12-01 | 14755
+      2011-01-01 | 11695
+      … 21 more rows
+
+  panel walmart2014-s08
+    title: rows of train by stores.Type
+    rows (3):
+      A | 215478
+      B | 163495
+      C | 42597
+
+  panel walmart2014-s09
+    title: rows of features by features.Date
+    rows (42):
+      2010-02-01 | 180
+      2010-03-01 | 180
+      2010-04-01 | 225
+      2010-05-01 | 180
+      2010-06-01 | 180
+      2010-07-01 | 225
+      2010-08-01 | 180
+      2010-09-01 | 180
+      2010-10-01 | 225
+      2010-11-01 | 180
+      2010-12-01 | 225
+      2011-01-01 | 180
+      … 30 more rows
+
+  panel walmart2014-s10
+    title: average of train.Weekly_Sales by train.Date
+    rows (33):
+      2010-02-01 | 16076.778651645644
+      2010-03-01 | 15432.626325546527
+      2010-04-01 | 15745.550920854646
+      2010-05-01 | 15996.482251183766
+      2010-06-01 | 16486.250797620305
+      2010-07-01 | 15972.812004850193
+      2010-08-01 | 16171.689621052885
+      2010-09-01 | 15120.08688957872
+      2010-10-01 | 14806.151585248526
+      2010-11-01 | 17320.130180687393
+      2010-12-01 | 19570.350589266767
+      2011-01-01 | 13997.77387859788
+      … 21 more rows
+
+  panel walmart2014-s11
+    title: average of train.Weekly_Sales by train.IsHoliday
+    rows (2):
+      TRUE | 17035.823169886116
+      FALSE | 15901.445008103343
+
+  panel walmart2014-s12
+    title: rows of train by train.IsHoliday
+    rows (2):
+      FALSE | 391909
+      TRUE | 29661
+
+  panel walmart2014-s13
+    title: sum of train.Weekly_Sales by train.Date
+    rows (33):
+      2010-02-01 | 190332982.45683277
+      2010-03-01 | 181919799.12554246
+      2010-04-01 | 231412361.88380075
+      2010-05-01 | 186710940.83581692
+      2010-06-01 | 192246170.5510504
+      2010-07-01 | 232580115.60262367
+      2010-08-01 | 187640114.67307663
+      2010-09-01 | 177267898.69342092
+      2010-10-01 | 217161825.30084014
+      2010-11-01 | 202853364.67621076
+      2010-12-01 | 288760522.94463116
+      2011-01-01 | 163703965.5102022
+      … 21 more rows
+
+  five A: walmart2014-s02, walmart2014-s06, walmart2014-s10, walmart2014-s11, walmart2014-s13
+
+  five B: walmart2014-s03, walmart2014-s04, walmart2014-s05, walmart2014-s09, walmart2014-s12
+
+  five C: walmart2014-s01, walmart2014-s07, walmart2014-s08, walmart2014-s12, walmart2014-s13
+
+
+=== database: birdsynthea ===
+Synthetic patients and their encounters, conditions, medications, procedures, immunizations, observations, care plans and claims, as BIRD serves it.
+
+  panel birdsynthea-s01
+    title: rows of observations by observations.DATE
+    rows (70):
+      1920-01-01 00:00:00+00 | 1
+      1929-01-01 00:00:00+00 | 1
+      1932-01-01 00:00:00+00 | 1
+      1935-01-01 00:00:00+00 | 1
+      1939-01-01 00:00:00+00 | 3
+      1945-01-01 00:00:00+00 | 2
+      1947-01-01 00:00:00+00 | 1
+      1949-01-01 00:00:00+00 | 3
+      1950-01-01 00:00:00+00 | 3
+      1951-01-01 00:00:00+00 | 1
+      1952-01-01 00:00:00+00 | 1
+      1953-01-01 00:00:00+00 | 2
+      … 58 more rows
+
+  panel birdsynthea-s02
+    title: rows of patients by patients.gender
+    rows (2):
+      M | 741
+      F | 721
+
+  panel birdsynthea-s03
+    title: rows of procedures by procedures.DATE
+    rows (11):
+      2007-01-01 | 157
+      2008-01-01 | 954
+      2009-01-01 | 970
+      2010-01-01 | 1007
+      2011-01-01 | 1067
+      2012-01-01 | 1060
+      2013-01-01 | 1056
+      2014-01-01 | 1035
+      2015-01-01 | 943
+      2016-01-01 | 1041
+      2017-01-01 | 894
+
+  panel birdsynthea-s04
+    title: rows of conditions by conditions.START
+    rows (98):
+      1919-01-01 | 5
+      1920-01-01 | 2
+      1921-01-01 | 1
+      1922-01-01 | 1
+      1923-01-01 | 3
+      1924-01-01 | 5
+      1925-01-01 | 4
+      1926-01-01 | 7
+      1927-01-01 | 2
+      1928-01-01 | 1
+      1929-01-01 | 4
+      1931-01-01 | 5
+      … 86 more rows
+
+  panel birdsynthea-s05
+    title: rows of patients by patients.ethnicity the twelve most
+    rows (12):
+      irish | 306
+      italian | 164
+      english | 146
+      puerto_rican | 116
+      german | 80
+      french | 79
+      polish | 65
+      chinese | 56
+      portuguese | 55
+      african | 55
+      american | 53
+      dominican | 51
+
+  panel birdsynthea-s06
+    title: rows of patients by patients.prefix
+    rows (4):
+      Mr. | 597
+      Mrs. | 403
+      ∅ | 296
+      Ms. | 166
+
+  panel birdsynthea-s07
+    title: rows of patients by patients.race
+    rows (4):
+      white | 1085
+      hispanic | 155
+      black | 129
+      asian | 93
+
+  panel birdsynthea-s08
+    title: sum of claims.TOTAL by patients.race
+    rows (4):
+      white | 1492600
+      hispanic | 216500
+      black | 191100
+      asian | 152100
+
+  panel birdsynthea-s09
+    title: rows of careplans by careplans.REASONDESCRIPTION
+    rows (59):
+      Normal pregnancy | 2436
+      Acute bronchitis (disorder) | 2051
+      Prediabetes | 1266
+      ∅ | 1110
+      Coronary Heart Disease | 490
+      Stroke | 375
+      Sprain of ankle | 324
+      Whiplash injury to neck | 270
+      Diabetes | 228
+      Childhood asthma | 200
+      Alzheimer's disease (disorder) | 192
+      Cardiac Arrest | 190
+      … 47 more rows
+
+  panel birdsynthea-s10
+    title: rows of encounters by encounters.DATE
+    rows (71):
+      1920-01-01 00:00:00+00 | 1
+      1929-01-01 00:00:00+00 | 1
+      1932-01-01 00:00:00+00 | 1
+      1935-01-01 00:00:00+00 | 1
+      1939-01-01 00:00:00+00 | 3
+      1945-01-01 00:00:00+00 | 2
+      1947-01-01 00:00:00+00 | 1
+      1949-01-01 00:00:00+00 | 3
+      1950-01-01 00:00:00+00 | 3
+      1951-01-01 00:00:00+00 | 1
+      1952-01-01 00:00:00+00 | 1
+      1953-01-01 00:00:00+00 | 2
+      … 59 more rows
+
+  panel birdsynthea-s11
+    title: rows of conditions per patients
+    rows (19):
+      1 | 100
+      2 | 160
+      3 | 239
+      4 | 206
+      5 | 174
+      6 | 154
+      7 | 131
+      8 | 74
+      9 | 61
+      10 | 38
+      11 | 31
+      12 | 12
+      … 7 more rows
+
+  five A: birdsynthea-s01, birdsynthea-s08, birdsynthea-s09, birdsynthea-s10, birdsynthea-s11
+
+  five B: birdsynthea-s02, birdsynthea-s04, birdsynthea-s05, birdsynthea-s06, birdsynthea-s07
+
+  five C: birdsynthea-s02, birdsynthea-s03, birdsynthea-s05, birdsynthea-s07, birdsynthea-s08
+
+
+=== database: legalacts ===
+Legal acts, the links between them and the people named in them, as CTU serves it.
+
+  panel legalacts-s01
+    title: rows of legalacts by legalacts.ActYear
+    rows (33):
+      1933-01-01 | 1
+      1975-01-01 | 1
+      1979-01-01 | 1
+      1980-01-01 | 2
+      1983-01-01 | 1
+      1984-01-01 | 1
+      1985-01-01 | 2
+      1987-01-01 | 1
+      1988-01-01 | 2
+      1989-01-01 | 3
+      1990-01-01 | 9
+      1991-01-01 | 19
+      … 21 more rows
+
+  panel legalacts-s02
+    title: rows of legalacts by legalacts.update
+    rows (23):
+      2012-07-13 | 5875
+      2012-07-14 | 27491
+      2012-07-15 | 39888
+      2012-07-16 | 25557
+      2012-07-17 | 28451
+      2012-07-18 | 2978
+      2012-07-19 | 100
+      2012-07-20 | 18325
+      2012-07-21 | 28406
+      2012-07-22 | 24083
+      2012-07-23 | 19205
+      2012-07-24 | 88129
+      … 11 more rows
+
+  panel legalacts-s03
+    title: rows of legalacts by legalacts.ActKind
+    rows (7):
+      Решение | 365298
+      Определение | 115400
+      Споразумение | 42512
+      Присъда | 39136
+      Заповед | 6271
+      Протокол | 6042
+      Разпореждане | 5390
+
+  panel legalacts-s04
+    title: rows of legalact_people by legalacts.ActKind
+    rows (7):
+      Решение | 745243
+      Определение | 243664
+      Споразумение | 72791
+      Присъда | 64854
+      Заповед | 11273
+      Разпореждане | 8362
+      Протокол | 6782
+
+  panel legalacts-s05
+    title: largest tables, estimated rows
+    rows (5):
+      legalact_people | 1151730
+      legalacts | 561904
+      legalact_link | 17492
+      people | 3757
+      scrapefix | 98
+
+  panel legalacts-s06
+    title: rows of legalacts by legalacts.HighCourt the twelve most
+    rows (12):
+      ∅ | 465545
+      Върховен касационен съд | 19023
+      Върховен административен съд | 11057
+      Окръжен съд - Варна | 7701
+      Апелативен съд - София | 5789
+      Окръжен съд - Пловдив | 4449
+      Административен съд - Варна | 3984
+      Окръжен съд - Бургас | 3408
+      Административен съд - Бургас | 3039
+      Апелативен съд - Варна | 2803
+      Апелативен съд - Пловдив | 2596
+      Административен съд - Пловдив | 2376
+
+  panel legalacts-s07
+    title: rows of legalacts by legalacts.CaseKind the twelve most
+    rows (12):
+      Гражданско дело | 187992
+      НОХД | 90266
+      АНД | 87020
+      Въззивно гражданско дело | 57266
+      Административно дело | 31254
+      Въззивно частно гражданско дело  | 20595
+      Търговско дело | 18238
+      ВНОХД | 17868
+      ЧНД | 17748
+      КАНД | 11918
+      Частно гражданско дело | 11858
+      ВЧНД | 6119
+
+  panel legalacts-s08
+    title: rows of legalact_link per legalacts
+    rows (4):
+      1 | 14928
+      2 | 1084
+      3 | 100
+      4 | 24
+
+  panel legalacts-s09
+    title: rows of legalacts by legalacts.Status
+    rows (5):
+      Влязъл в сила | 275395
+      Не е влязъл в сила | 266867
+      Потвърден | 16389
+      Отменен | 13579
+      Изменен | 7819
+
+  panel legalacts-s10
+    title: rows of legalact_people per legalacts
+    rows (4):
+      1 | 172542
+      2 | 300302
+      3 | 48997
+      4 | 58208
+
+  five A: legalacts-s01, legalacts-s03, legalacts-s06, legalacts-s07, legalacts-s09
+
+  five B: legalacts-s02, legalacts-s03, legalacts-s04, legalacts-s07, legalacts-s09
+
+  five C: legalacts-s02, legalacts-s03, legalacts-s05, legalacts-s08, legalacts-s10
+
+
+=== database: voc ===
+The Dutch East India Company's voyages and the people aboard: seafarers, soldiers, passengers, craftsmen, and invoices, as CTU serves it.
+
+  panel voc-s01
+    title: rows of voyages by voyages.type_of_boat the twelve most
+    rows (12):
+      ∅ | 5663
+      fluit | 1099
+      jacht | 492
+      pinas | 284
+      hoeker | 145
+      fregat | 84
+      pinas? jacht? | 79
+      galjoot | 49
+      paketboot | 48
+      fluit? hekboot? | 21
+      fluit? kat? | 18
+      fluit? jacht? | 18
+
+  panel voc-s02
+    title: rows of voyages by voyages.yard
+    rows (10):
+      A | 3583
+      Z | 1717
+      D | 664
+      R | 552
+      H | 546
+      ∅ | 545
+      E | 510
+      C | 7
+      B | 6
+      1 | 1
+
+  panel voc-s03
+    title: rows of voyages by voyages.trip_sup
+    rows (3):
+       | 8127
+      A | 2
+      B | 2
+
+  panel voc-s04
+    title: rows of voyages by voyages.departure_date
+    rows (200):
+      1595-01-01 | 4
+      1598-01-01 | 22
+      1599-01-01 | 11
+      1600-01-01 | 10
+      1601-01-01 | 38
+      1602-01-01 | 27
+      1603-01-01 | 20
+      1604-01-01 | 9
+      1605-01-01 | 17
+      1606-01-01 | 15
+      1607-01-01 | 20
+      1608-01-01 | 9
+      … 188 more rows
+
+  panel voc-s05
+    title: rows of voyages by voyages.arrival_harbour the twelve most
+    rows (12):
+      Batavia | 3832
+      Texel | 1754
+      ∅ | 596
+      Rammekens | 476
+      Goeree | 393
+      Ceylon | 293
+      Bantam | 136
+      Wielingen | 99
+      Vlie | 87
+      The Cape | 87
+      Zeeland | 50
+      Bengal | 35
+
+  panel voc-s06
+    title: rows of voyages by voyages.chamber
+    rows (8):
+      A | 3965
+      Z | 1811
+      E | 570
+      R | 549
+      H | 544
+      D | 542
+      ∅ | 149
+      ? | 1
+
+  panel voc-s07
+    title: rows of invoices by invoices.chamber
+    rows (7):
+      A | 1531
+      Z | 822
+      H | 365
+      E | 362
+      R | 354
+      D | 347
+      ∅ | 1
+
+  panel voc-s08
+    title: rows of craftsmen by craftsmen.trip_sup
+    rows (1):
+       | 2349
+
+  panel voc-s09
+    title: rows of voyages by voyages.departure_harbour the twelve most
+    rows (12):
+      Texel | 2972
+      Batavia | 2247
+      Goeree | 585
+      Rammekens | 562
+      Ceylon | 514
+      Wielingen | 453
+      China | 185
+      Bengal | 164
+      Bantam | 109
+      Vlie | 75
+      Maas | 61
+      The Cape | 54
+
+  panel voc-s10
+    title: rows of voyages by voyages.arrival_date
+    rows (201):
+      1129-01-01 | 1
+      1596-01-01 | 4
+      1598-01-01 | 8
+      1599-01-01 | 4
+      1600-01-01 | 13
+      1601-01-01 | 29
+      1602-01-01 | 17
+      1603-01-01 | 24
+      1604-01-01 | 20
+      1605-01-01 | 6
+      1606-01-01 | 19
+      1607-01-01 | 10
+      … 189 more rows
+
+  panel voc-s11
+    title: largest tables, estimated rows
+    rows (8):
+      voyages | 8082
+      seafarers | 4468
+      soldiers | 4177
+      invoices | 3782
+      passengers | 2813
+      total | 2467
+      craftsmen | 2349
+      impotenten | 938
+
+  five A: voc-s01, voc-s04, voc-s05, voc-s09, voc-s10
+
+  five B: voc-s02, voc-s04, voc-s06, voc-s07, voc-s09
+
+  five C: voc-s02, voc-s03, voc-s07, voc-s08, voc-s11
+
+
+=== database: ftp ===
+Sessions and requests of an FTP server, as CTU serves it.
+
+  panel ftp-s01
+    title: rows of product by product.category_b the twelve most
+    rows (12):
+      B00002 | 15874
+      B00001 | 8860
+      B00003 | 8660
+      B00012 | 5412
+      B00004 | 4301
+      B00007 | 3788
+      B00022 | 2315
+      B00009 | 2050
+      B00005 | 1973
+      B00015 | 1531
+      B00016 | 1251
+      B00031 | 1122
+
+  panel ftp-s02
+    title: rows of session by session.start_time
+    rows (34):
+      2014-11-14 | 1169
+      2014-11-15 | 852
+      2014-11-16 | 743
+      2014-11-17 | 1027
+      2014-11-18 | 958
+      2014-11-19 | 516
+      2014-11-21 | 587
+      2014-11-22 | 726
+      2014-11-23 | 619
+      2014-11-25 | 955
+      2014-11-26 | 1036
+      2014-11-27 | 1020
+      … 22 more rows
+
+  panel ftp-s03
+    title: rows of session by session.gender
+    rows (3):
+      ∅ | 15000
+      female | 11703
+      male | 3297
+
+  panel ftp-s04
+    title: rows of product by product.category_a
+    rows (11):
+      A00002 | 42801
+      A00003 | 10877
+      A00001 | 9448
+      A00005 | 1096
+      A00004 | 877
+      A00006 | 574
+      A00011 | 266
+      A00010 | 200
+      A00009 | 138
+      A00007 | 125
+      A00008 | 89
+
+  panel ftp-s05
+    title: largest tables, estimated rows
+    rows (2):
+      product | 66563
+      session | 29632
+
+  panel ftp-s06
+    title: rows of session by session.start_time split by session.gender
+    rows (102):
+      2014-11-14 | ∅ | 581
+      2014-11-14 | female | 477
+      2014-11-14 | male | 111
+      2014-11-15 | ∅ | 421
+      2014-11-15 | female | 345
+      2014-11-15 | male | 86
+      2014-11-16 | ∅ | 371
+      2014-11-16 | female | 263
+      2014-11-16 | male | 109
+      2014-11-17 | ∅ | 532
+      2014-11-17 | female | 380
+      2014-11-17 | male | 115
+      … 90 more rows
+
+  panel ftp-s07
+    title: rows of product by session.start_time
+    rows (34):
+      2014-11-14 | 2826
+      2014-11-15 | 1966
+      2014-11-16 | 1778
+      2014-11-17 | 2269
+      2014-11-18 | 1918
+      2014-11-19 | 1097
+      2014-11-21 | 1372
+      2014-11-22 | 1634
+      2014-11-23 | 1349
+      2014-11-25 | 1995
+      2014-11-26 | 2368
+      2014-11-27 | 2382
+      … 22 more rows
+
+  five A: ftp-s04, ftp-s05
+
+  five B: ftp-s01, ftp-s02, ftp-s03, ftp-s04, ftp-s07
+
+  five C: ftp-s01, ftp-s02, ftp-s03, ftp-s04, ftp-s06

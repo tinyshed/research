@@ -1,0 +1,432 @@
+{
+ "databases": 93,
+ "families": 90,
+ "counted": {
+  "opus": 26,
+  "sonnet": 50,
+  "gemini": 50
+ },
+ "folds": 5,
+ "draws": 3,
+ "small, round 1e numbers, per panel": {
+  "gemini, AUC": 0.778,
+  "gemini, NDCG@5": 0.666,
+  "gemini, kept of five": 3.153,
+  "opus, AUC": 0.773,
+  "opus, NDCG@5": 0.621,
+  "opus, kept of five": 3.013,
+  "sonnet, AUC": 0.788,
+  "sonnet, NDCG@5": 0.629,
+  "sonnet, kept of five": 2.987,
+  "teachers, AUC": 0.812,
+  "teachers, AUC on the folds taught": 0.868,
+  "trees, median": 150
+ },
+ "small, with context, per panel": {
+  "gemini, AUC": 0.779,
+  "gemini, NDCG@5": 0.657,
+  "gemini, kept of five": 3.1,
+  "opus, AUC": 0.765,
+  "opus, NDCG@5": 0.598,
+  "opus, kept of five": 2.872,
+  "sonnet, AUC": 0.787,
+  "sonnet, NDCG@5": 0.617,
+  "sonnet, kept of five": 2.92,
+  "teachers, AUC": 0.813,
+  "teachers, AUC on the folds taught": 0.869,
+  "trees, median": 150,
+  "opus, kept of five − baseline": {
+   "mean": -0.141,
+   "95%": [
+    -0.244,
+    -0.051
+   ]
+  },
+  "sonnet, kept of five − baseline": {
+   "mean": -0.067,
+   "95%": [
+    -0.147,
+    0.007
+   ]
+  },
+  "gemini, kept of five − baseline": {
+   "mean": -0.053,
+   "95%": [
+    -0.127,
+    0.02
+   ]
+  },
+  "sonnet, AUC − baseline": {
+   "mean": -0.001,
+   "95%": [
+    -0.004,
+    0.003
+   ]
+  },
+  "gemini, AUC − baseline": {
+   "mean": 0.001,
+   "95%": [
+    -0.004,
+    0.005
+   ]
+  },
+  "opus, AUC − baseline": {
+   "mean": -0.008,
+   "95%": [
+    -0.013,
+    -0.004
+   ]
+  }
+ },
+ "large, round 1e numbers, per panel": {
+  "gemini, AUC": 0.775,
+  "gemini, NDCG@5": 0.685,
+  "gemini, kept of five": 3.213,
+  "opus, AUC": 0.762,
+  "opus, NDCG@5": 0.629,
+  "opus, kept of five": 2.974,
+  "sonnet, AUC": 0.785,
+  "sonnet, NDCG@5": 0.65,
+  "sonnet, kept of five": 3.04,
+  "teachers, AUC": 0.806,
+  "teachers, AUC on the folds taught": 0.928,
+  "trees, median": 115,
+  "opus, kept of five − baseline": {
+   "mean": -0.038,
+   "95%": [
+    -0.244,
+    0.167
+   ]
+  },
+  "sonnet, kept of five − baseline": {
+   "mean": 0.053,
+   "95%": [
+    -0.073,
+    0.18
+   ]
+  },
+  "gemini, kept of five − baseline": {
+   "mean": 0.06,
+   "95%": [
+    -0.06,
+    0.187
+   ]
+  },
+  "sonnet, AUC − baseline": {
+   "mean": -0.003,
+   "95%": [
+    -0.013,
+    0.008
+   ]
+  },
+  "gemini, AUC − baseline": {
+   "mean": -0.003,
+   "95%": [
+    -0.012,
+    0.007
+   ]
+  },
+  "opus, AUC − baseline": {
+   "mean": -0.011,
+   "95%": [
+    -0.024,
+    0.003
+   ]
+  }
+ },
+ "large, with context, per panel": {
+  "gemini, AUC": 0.774,
+  "gemini, NDCG@5": 0.679,
+  "gemini, kept of five": 3.173,
+  "opus, AUC": 0.76,
+  "opus, NDCG@5": 0.623,
+  "opus, kept of five": 2.923,
+  "sonnet, AUC": 0.783,
+  "sonnet, NDCG@5": 0.645,
+  "sonnet, kept of five": 3.007,
+  "teachers, AUC": 0.803,
+  "teachers, AUC on the folds taught": 0.926,
+  "trees, median": 115,
+  "opus, kept of five − baseline": {
+   "mean": -0.09,
+   "95%": [
+    -0.308,
+    0.129
+   ]
+  },
+  "sonnet, kept of five − baseline": {
+   "mean": 0.02,
+   "95%": [
+    -0.133,
+    0.167
+   ]
+  },
+  "gemini, kept of five − baseline": {
+   "mean": 0.02,
+   "95%": [
+    -0.12,
+    0.16
+   ]
+  },
+  "sonnet, AUC − baseline": {
+   "mean": -0.005,
+   "95%": [
+    -0.017,
+    0.008
+   ]
+  },
+  "gemini, AUC − baseline": {
+   "mean": -0.004,
+   "95%": [
+    -0.017,
+    0.01
+   ]
+  },
+  "opus, AUC − baseline": {
+   "mean": -0.014,
+   "95%": [
+    -0.026,
+    0.001
+   ]
+  }
+ },
+ "small, round 1e numbers, LambdaRank": {
+  "gemini, AUC": 0.768,
+  "gemini, NDCG@5": 0.655,
+  "gemini, kept of five": 3.02,
+  "opus, AUC": 0.764,
+  "opus, NDCG@5": 0.629,
+  "opus, kept of five": 2.897,
+  "sonnet, AUC": 0.784,
+  "sonnet, NDCG@5": 0.633,
+  "sonnet, kept of five": 2.94,
+  "teachers, AUC": 0.804,
+  "teachers, AUC on the folds taught": 0.861,
+  "trees, median": 150,
+  "opus, kept of five − baseline": {
+   "mean": -0.115,
+   "95%": [
+    -0.436,
+    0.218
+   ]
+  },
+  "sonnet, kept of five − baseline": {
+   "mean": -0.047,
+   "95%": [
+    -0.287,
+    0.187
+   ]
+  },
+  "gemini, kept of five − baseline": {
+   "mean": -0.133,
+   "95%": [
+    -0.347,
+    0.087
+   ]
+  },
+  "sonnet, AUC − baseline": {
+   "mean": -0.005,
+   "95%": [
+    -0.021,
+    0.012
+   ]
+  },
+  "gemini, AUC − baseline": {
+   "mean": -0.01,
+   "95%": [
+    -0.03,
+    0.01
+   ]
+  },
+  "opus, AUC − baseline": {
+   "mean": -0.009,
+   "95%": [
+    -0.039,
+    0.022
+   ]
+  }
+ },
+ "small, with context, LambdaRank": {
+  "gemini, AUC": 0.771,
+  "gemini, NDCG@5": 0.664,
+  "gemini, kept of five": 3.1,
+  "opus, AUC": 0.76,
+  "opus, NDCG@5": 0.616,
+  "opus, kept of five": 2.859,
+  "sonnet, AUC": 0.785,
+  "sonnet, NDCG@5": 0.645,
+  "sonnet, kept of five": 3.007,
+  "teachers, AUC": 0.802,
+  "teachers, AUC on the folds taught": 0.86,
+  "trees, median": 150,
+  "opus, kept of five − baseline": {
+   "mean": -0.154,
+   "95%": [
+    -0.449,
+    0.154
+   ]
+  },
+  "sonnet, kept of five − baseline": {
+   "mean": 0.02,
+   "95%": [
+    -0.207,
+    0.247
+   ]
+  },
+  "gemini, kept of five − baseline": {
+   "mean": -0.053,
+   "95%": [
+    -0.26,
+    0.153
+   ]
+  },
+  "sonnet, AUC − baseline": {
+   "mean": -0.003,
+   "95%": [
+    -0.019,
+    0.013
+   ]
+  },
+  "gemini, AUC − baseline": {
+   "mean": -0.007,
+   "95%": [
+    -0.026,
+    0.012
+   ]
+  },
+  "opus, AUC − baseline": {
+   "mean": -0.014,
+   "95%": [
+    -0.041,
+    0.016
+   ]
+  }
+ },
+ "large, round 1e numbers, LambdaRank": {
+  "gemini, AUC": 0.758,
+  "gemini, NDCG@5": 0.662,
+  "gemini, kept of five": 3.073,
+  "opus, AUC": 0.754,
+  "opus, NDCG@5": 0.604,
+  "opus, kept of five": 2.897,
+  "sonnet, AUC": 0.773,
+  "sonnet, NDCG@5": 0.633,
+  "sonnet, kept of five": 2.98,
+  "teachers, AUC": 0.791,
+  "teachers, AUC on the folds taught": 0.901,
+  "trees, median": 93,
+  "opus, kept of five − baseline": {
+   "mean": -0.115,
+   "95%": [
+    -0.372,
+    0.128
+   ]
+  },
+  "sonnet, kept of five − baseline": {
+   "mean": -0.007,
+   "95%": [
+    -0.207,
+    0.193
+   ]
+  },
+  "gemini, kept of five − baseline": {
+   "mean": -0.08,
+   "95%": [
+    -0.287,
+    0.133
+   ]
+  },
+  "sonnet, AUC − baseline": {
+   "mean": -0.015,
+   "95%": [
+    -0.033,
+    0.003
+   ]
+  },
+  "gemini, AUC − baseline": {
+   "mean": -0.02,
+   "95%": [
+    -0.04,
+    -0.001
+   ]
+  },
+  "opus, AUC − baseline": {
+   "mean": -0.019,
+   "95%": [
+    -0.043,
+    0.007
+   ]
+  }
+ },
+ "large, with context, LambdaRank": {
+  "gemini, AUC": 0.753,
+  "gemini, NDCG@5": 0.651,
+  "gemini, kept of five": 3.067,
+  "opus, AUC": 0.751,
+  "opus, NDCG@5": 0.612,
+  "opus, kept of five": 2.833,
+  "sonnet, AUC": 0.769,
+  "sonnet, NDCG@5": 0.629,
+  "sonnet, kept of five": 2.953,
+  "teachers, AUC": 0.783,
+  "teachers, AUC on the folds taught": 0.891,
+  "trees, median": 53,
+  "opus, kept of five − baseline": {
+   "mean": -0.179,
+   "95%": [
+    -0.462,
+    0.128
+   ]
+  },
+  "sonnet, kept of five − baseline": {
+   "mean": -0.033,
+   "95%": [
+    -0.233,
+    0.16
+   ]
+  },
+  "gemini, kept of five − baseline": {
+   "mean": -0.087,
+   "95%": [
+    -0.253,
+    0.087
+   ]
+  },
+  "sonnet, AUC − baseline": {
+   "mean": -0.019,
+   "95%": [
+    -0.037,
+    -0.002
+   ]
+  },
+  "gemini, AUC − baseline": {
+   "mean": -0.025,
+   "95%": [
+    -0.043,
+    -0.007
+   ]
+  },
+  "opus, AUC − baseline": {
+   "mean": -0.022,
+   "95%": [
+    -0.046,
+    0.005
+   ]
+  }
+ },
+ "round 1, B1": {
+  "opus, kept of five": 2.308,
+  "sonnet, kept of five": 2.38,
+  "gemini, kept of five": 2.54
+ },
+ "round 1c": {
+  "opus, kept of five": 2.423,
+  "sonnet, kept of five": 2.5,
+  "gemini, kept of five": 2.62
+ },
+ "the best five the pool holds": {
+  "opus, kept of five": 4.731,
+  "sonnet, kept of five": 4.76,
+  "gemini, kept of five": 4.84
+ }
+}

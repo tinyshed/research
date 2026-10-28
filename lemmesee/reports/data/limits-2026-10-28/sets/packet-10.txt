@@ -1,0 +1,798 @@
+You are judging first-overview dashboards for several databases. For each database you see its
+panels — each a title saying what it computes and the first rows its database returned — and two or three
+candidate fives, each a list of five of those panels. You did not make them and are not told what made them.
+Do not read, search or open any file other than this one, and run no command; when done, write your answers
+with the Write tool, once, to the path given to you.
+
+For every database, and every five of it:
+ 1. worth: how many of its five panels are worth a place on a first screen together — a panel that repeats
+    what another panel of the same five already shows does not count, nor a single bar, an empty result, a
+    column of blanks, or a picture that means less than it seems to.
+ 2. repeats: the panel ids in that five that repeat another panel of the same five.
+Then for the database:
+ 3. best: the letter of the five you would keep as this database's first screen.
+
+Write one JSON object: {"databases": {"<database>": {"fives": {"<letter>": {"worth": int, "repeats": [ids]}, ...},
+"best": "<letter>"}, ...}} — every database and every five below must be answered.
+
+
+=== database: restbase ===
+Restaurants of the San Francisco Bay Area: their general information, locations and geography, as CTU serves it.
+
+  panel restbase-s01
+    title: rows of location by geographic.region
+    rows (10):
+      bay area | 8972
+      ∅ | 225
+      napa valley | 190
+      monterey | 59
+      unknown | 40
+      northern california | 34
+      sacramento area | 8
+      lake tahoe | 6
+      yosemite and mono lake area | 4
+      los angeles area | 1
+
+  panel restbase-s02
+    title: rows of geographic by geographic.region
+    rows (9):
+      bay area | 122
+      unknown | 17
+      monterey | 9
+      napa valley | 7
+      northern california | 4
+      yosemite and mono lake area | 3
+      lake tahoe | 3
+      sacramento area | 2
+      los angeles area | 1
+
+  panel restbase-s03
+    title: largest tables, estimated rows
+    rows (3):
+      generalinfo | 9534
+      location | 9468
+      geographic | 168
+
+  panel restbase-s04
+    title: average of generalinfo.review by geographic.region
+    rows (9):
+      los angeles area | 3.80000
+      lake tahoe | 2.78333
+      sacramento area | 2.73750
+      monterey | 2.48750
+      yosemite and mono lake area | 2.42500
+      unknown | 2.32791
+      bay area | 2.31049
+      napa valley | 2.16667
+      northern california | 2.15870
+
+  panel restbase-s05
+    title: rows of generalinfo by geographic.county the twelve most
+    rows (12):
+      alameda county | 2365
+      santa clara county | 2177
+      san francisco county | 1240
+      contra costa county | 1103
+      san mateo county | 1001
+      sonoma county | 457
+      solano county | 364
+      santa cruz county | 230
+      napa county | 192
+      unknown | 180
+      marin county | 149
+      monterey county | 64
+
+  panel restbase-s06
+    title: rows of generalinfo by geographic.region
+    rows (9):
+      bay area | 9226
+      napa valley | 192
+      monterey | 64
+      northern california | 46
+      unknown | 43
+      sacramento area | 8
+      lake tahoe | 6
+      yosemite and mono lake area | 4
+      los angeles area | 1
+
+  panel restbase-s07
+    title: rows of generalinfo by geographic (by key) the twelve most
+    rows (12):
+      san francisco | 1240
+      san jose | 933
+      oakland | 666
+      berkeley | 327
+      fremont | 267
+      hayward | 223
+      santa rosa | 201
+      santa clara | 176
+      sunnyvale | 174
+      palo alto | 174
+      concord | 166
+      san leandro | 159
+
+  panel restbase-s08
+    title: rows of location by generalinfo.food_type the twelve most
+    rows (12):
+      cafe | 1096
+      chinese | 1070
+      pizza | 958
+      mexican | 794
+      italian | 508
+      bar | 362
+      burgers | 350
+      american | 343
+      deli | 339
+      japanese | 316
+      seafood | 301
+      ice cream | 288
+
+  panel restbase-s09
+    title: rows of location by geographic.county the twelve most
+    rows (12):
+      alameda county | 2336
+      santa clara county | 2111
+      san francisco county | 1197
+      contra costa county | 1094
+      san mateo county | 959
+      sonoma county | 433
+      solano county | 361
+      ∅ | 225
+      santa cruz county | 215
+      napa county | 190
+      unknown | 169
+      marin county | 135
+
+  panel restbase-s10
+    title: rows of geographic by geographic.county the twelve most
+    rows (12):
+      unknown | 27
+      san mateo county | 24
+      contra costa county | 21
+      alameda county | 16
+      santa clara county | 15
+      sonoma county | 13
+      marin county | 9
+      monterey county | 9
+      napa county | 7
+      solano county | 7
+      santa cruz county | 6
+      tuolumne county | 2
+
+  panel restbase-s11
+    title: rows of generalinfo by generalinfo.food_type the twelve most
+    rows (12):
+      cafe | 1098
+      chinese | 1075
+      pizza | 959
+      mexican | 797
+      italian | 510
+      bar | 362
+      burgers | 351
+      american | 345
+      deli | 341
+      japanese | 318
+      seafood | 303
+      ice cream | 288
+
+  panel restbase-s12
+    title: rows of location per generalinfo
+    rows (1):
+      1 | 9539
+
+  five A: restbase-s02, restbase-s08, restbase-s09, restbase-s10, restbase-s11
+
+  five B: restbase-s04, restbase-s05, restbase-s06, restbase-s07, restbase-s11
+
+  five C: restbase-s01, restbase-s03, restbase-s12
+
+
+=== database: pubs ===
+Microsoft's sample publisher: titles, authors, publishers, stores, sales and royalties, as CTU serves it.
+
+  panel pubs-s01
+    title: sum of sales.qty × titles.price by stores.state
+    rows (3):
+      CA | 3911.9500
+      WA | 1532.9500
+      OR | 1232.0000
+
+  panel pubs-s02
+    title: rows of titles by titles.type
+    rows (6):
+      psychology | 5
+      business | 4
+      popular_comp | 3
+      trad_cook | 3
+      mod_cook | 2
+      UNDECIDED | 1
+
+  panel pubs-s03
+    title: sum of sales.qty by sales.ord_date
+    rows (7):
+      1992-06-01 | 80
+      1993-02-01 | 35
+      1993-03-01 | 25
+      1993-05-01 | 165
+      1993-10-01 | 15
+      1993-12-01 | 10
+      1994-09-01 | 163
+
+  panel pubs-s04
+    title: rows of employee by employee.hire_date
+    rows (43):
+      1988-06-01 | 1
+      1988-08-01 | 1
+      1988-09-01 | 1
+      1988-11-01 | 1
+      1989-01-01 | 1
+      1989-03-01 | 1
+      1989-04-01 | 1
+      1989-06-01 | 1
+      1989-08-01 | 1
+      1989-09-01 | 1
+      1989-11-01 | 1
+      1990-01-01 | 1
+      … 31 more rows
+
+  panel pubs-s05
+    title: rows of sales by sales.ord_date
+    rows (7):
+      1992-06-01 | 3
+      1993-02-01 | 1
+      1993-03-01 | 1
+      1993-05-01 | 6
+      1993-10-01 | 1
+      1993-12-01 | 1
+      1994-09-01 | 8
+
+  panel pubs-s06
+    title: rows of authors by authors.state
+    rows (8):
+      CA | 15
+      UT | 2
+      KS | 1
+      TN | 1
+      OR | 1
+      MI | 1
+      IN | 1
+      MD | 1
+
+  panel pubs-s07
+    title: sum of sales.qty × titles.price by sales.ord_date
+    rows (7):
+      1992-06-01 | 1376.8000
+      1993-02-01 | 104.6500
+      1993-03-01 | 298.7500
+      1993-05-01 | 2794.9000
+      1993-10-01 | 299.8500
+      1993-12-01 | 199.9000
+      1994-09-01 | 1602.0500
+
+  panel pubs-s08
+    title: sum of sales.qty × titles.price by stores.stor_name
+    rows (6):
+      Barnum's | 1821.2500
+      News & Brews | 1486.3000
+      Doc-U-Mat: Quality Laundry and Books | 1400.1500
+      Bookbeat | 1232.0000
+      Fricative Bookshop | 604.4000
+      Eric the Read Books | 132.8000
+
+  panel pubs-s09
+    title: largest tables, estimated rows
+    rows (10):
+      roysched | 86
+      employee | 43
+      titleauthor | 25
+      authors | 23
+      sales | 21
+      titles | 18
+      jobs | 14
+      pub_info | 8
+      publishers | 8
+      stores | 6
+
+  panel pubs-s10
+    title: sum of sales.qty × titles.price by stores.stor_name the twelve most
+    rows (6):
+      Barnum's | 1821.2500
+      News & Brews | 1486.3000
+      Doc-U-Mat: Quality Laundry and Books | 1400.1500
+      Bookbeat | 1232.0000
+      Fricative Bookshop | 604.4000
+      Eric the Read Books | 132.8000
+
+  panel pubs-s11
+    title: rows of employee by publishers.pub_name the twelve most
+    rows (8):
+      New Moon Books | 10
+      Binnet & Hardley | 10
+      Algodata Infosystems | 10
+      Lucerne Publishing | 7
+      Scootney Books | 3
+      Five Lakes Publishing | 1
+      Ramona Publishers | 1
+      GGG&G | 1
+
+  five A: pubs-s02, pubs-s03, pubs-s05, pubs-s07, pubs-s10
+
+  five B: pubs-s03, pubs-s04, pubs-s06, pubs-s09, pubs-s11
+
+  five C: pubs-s01, pubs-s02, pubs-s07, pubs-s08, pubs-s10
+
+
+=== database: dallas ===
+Dallas police incidents, the officers and the subjects involved, as CTU serves it.
+
+  panel dallas-s01
+    title: rows of officers by officers.race
+    rows (5):
+      W | 207
+      L | 79
+      B | 68
+      A | 12
+      ∅ | 4
+
+  panel dallas-s02
+    title: rows of officers by incidents.subject_weapon the twelve most
+    rows (12):
+      Handgun | 174
+      Vehicle | 46
+      Unarmed | 33
+      Shotgun | 22
+      Rifle | 21
+      Assault Rifle | 16
+      Knife | 13
+      Hands | 11
+      Pellet Gun | 11
+      Simulated Handgun | 5
+      Taser | 4
+      BB Rifle | 3
+
+  panel dallas-s03
+    title: largest tables, estimated rows
+    rows (3):
+      officers | 370
+      subjects | 223
+      incidents | 219
+
+  panel dallas-s04
+    title: rows of subjects by subjects.race
+    rows (4):
+      B | 111
+      L | 72
+      W | 38
+      A | 2
+
+  panel dallas-s05
+    title: sum of incidents.subject_count by incidents.subject_statuses
+    rows (7):
+      Shoot and Miss | 87
+      Deceased | 69
+      Injured | 60
+      Other | 2
+      Deceased Injured | 2
+      1 Deceased 1 Injured | 2
+      2 Injured | 1
+
+  panel dallas-s06
+    title: rows of incidents by incidents.grand_jury_disposition
+    rows (6):
+      No Bill | 115
+      ∅ | 85
+      Pending | 11
+      See Summary | 5
+      True Bill | 2
+      Redden, Craig W/M | 1
+
+  panel dallas-s07
+    title: sum of incidents.subject_count by incidents.date
+    rows (14):
+      2003-01-01 | 19
+      2004-01-01 | 17
+      2005-01-01 | 10
+      2006-01-01 | 15
+      2007-01-01 | 18
+      2008-01-01 | 15
+      2009-01-01 | 15
+      2010-01-01 | 16
+      2011-01-01 | 12
+      2012-01-01 | 24
+      2013-01-01 | 22
+      2014-01-01 | 20
+      … 2 more rows
+
+  panel dallas-s08
+    title: rows of incidents by incidents.subject_statuses
+    rows (7):
+      Shoot and Miss | 83
+      Deceased | 68
+      Injured | 62
+      Other | 3
+      Deceased Injured | 1
+      1 Deceased 1 Injured | 1
+      2 Injured | 1
+
+  panel dallas-s09
+    title: rows of incidents by incidents.subject_weapon the twelve most
+    rows (12):
+      Handgun | 99
+      Vehicle | 34
+      Unarmed | 32
+      Shotgun | 10
+      Knife | 10
+      Hands | 10
+      Rifle | 4
+      Assault Rifle | 4
+      Taser | 2
+      Pellet Gun | 2
+      BB Rifle | 2
+      Paint Ball Rifle | 1
+
+  panel dallas-s10
+    title: rows of incidents by incidents.date
+    rows (14):
+      2003-01-01 | 19
+      2004-01-01 | 15
+      2005-01-01 | 10
+      2006-01-01 | 15
+      2007-01-01 | 16
+      2008-01-01 | 16
+      2009-01-01 | 15
+      2010-01-01 | 17
+      2011-01-01 | 12
+      2012-01-01 | 23
+      2013-01-01 | 22
+      2014-01-01 | 20
+      … 2 more rows
+
+  panel dallas-s11
+    title: rows of subjects by incidents.subject_weapon the twelve most
+    rows (12):
+      Handgun | 98
+      Vehicle | 37
+      Unarmed | 33
+      Shotgun | 10
+      Knife | 10
+      Hands | 10
+      Rifle | 4
+      Assault Rifle | 4
+      BB Rifle | 3
+      Taser | 2
+      Pellet Gun | 2
+      Paint Ball Rifle | 1
+
+  five A: dallas-s01, dallas-s04, dallas-s06, dallas-s08, dallas-s09
+
+  five B: dallas-s01, dallas-s03, dallas-s04, dallas-s05, dallas-s07
+
+  five C: dallas-s02, dallas-s08, dallas-s09, dallas-s10, dallas-s11
+
+
+=== database: basketballwomen ===
+Women's professional basketball: players, teams, coaches and awards by season, as CTU serves it.
+
+  panel basketballwomen-s01
+    title: largest tables, estimated rows
+    rows (8):
+      players_teams | 2960
+      players | 893
+      draft | 774
+      coaches | 267
+      teams | 234
+      awards_players | 159
+      teams_post | 123
+      series_post | 104
+
+  panel basketballwomen-s02
+    title: rows of players_teams by players_teams.lgID
+    rows (2):
+      WNBA | 2709
+      ABL | 307
+
+  panel basketballwomen-s03
+    title: rows of teams_post by teams_post.year
+    rows (16):
+      1997-01-01 | 9
+      1998-01-01 | 4
+      1999-01-01 | 6
+      2000-01-01 | 8
+      2001-01-01 | 8
+      2002-01-01 | 8
+      2003-01-01 | 8
+      2004-01-01 | 8
+      2005-01-01 | 8
+      2006-01-01 | 8
+      2007-01-01 | 8
+      2008-01-01 | 8
+      … 4 more rows
+
+  panel basketballwomen-s04
+    title: rows of series_post by series_post.series
+    rows (7):
+      A | 17
+      C | 17
+      B | 16
+      D | 14
+      E | 14
+      F | 13
+      G | 13
+
+  panel basketballwomen-s05
+    title: rows of teams by teams.year
+    rows (16):
+      1997-01-01 | 16
+      1998-01-01 | 19
+      1999-01-01 | 21
+      2000-01-01 | 16
+      2001-01-01 | 16
+      2002-01-01 | 16
+      2003-01-01 | 14
+      2004-01-01 | 13
+      2005-01-01 | 13
+      2006-01-01 | 14
+      2007-01-01 | 13
+      2008-01-01 | 14
+      … 4 more rows
+
+  panel basketballwomen-s06
+    title: rows of players_teams by players_teams.year
+    rows (16):
+      1997-01-01 | 199
+      1998-01-01 | 238
+      1999-01-01 | 254
+      2000-01-01 | 208
+      2001-01-01 | 208
+      2002-01-01 | 217
+      2003-01-01 | 180
+      2004-01-01 | 167
+      2005-01-01 | 178
+      2006-01-01 | 180
+      2007-01-01 | 173
+      2008-01-01 | 200
+      … 4 more rows
+
+  panel basketballwomen-s07
+    title: rows of awards_players by awards_players.award
+    rows (18):
+      Defensive Player of the Year | 18
+      Most Valuable Player | 18
+      Coach of the Year | 16
+      WNBA Finals Most Valuable Player | 16
+      Rookie of the Year | 15
+      Kim Perrot Sportsmanship Award | 12
+      Most Improved Player | 12
+      All-Star Game Most Valuable Player | 11
+      WNBA All-Decade Team | 10
+      Sixth Woman of the Year | 6
+      Kim Perrot Sportsmanship | 5
+      WNBA All Decade Team Honorable Mention | 5
+      … 6 more rows
+
+  panel basketballwomen-s08
+    title: rows of draft by draft.draftYear
+    rows (16):
+      1997-01-01 | 102
+      1998-01-01 | 71
+      1999-01-01 | 46
+      2000-01-01 | 59
+      2001-01-01 | 60
+      2002-01-01 | 60
+      2003-01-01 | 40
+      2004-01-01 | 34
+      2005-01-01 | 37
+      2006-01-01 | 39
+      2007-01-01 | 37
+      2008-01-01 | 43
+      … 4 more rows
+
+  panel basketballwomen-s09
+    title: distribution of players_teams.minutes
+    rows (21):
+      0 | 0 | 476
+      1 | 84 | 282
+      2 | 168 | 229
+      3 | 252 | 206
+      4 | 335 | 203
+      5 | 419 | 219
+      6 | 503 | 165
+      7 | 587 | 168
+      8 | 670 | 170
+      9 | 754 | 163
+      10 | 837 | 204
+      11 | 921 | 195
+      … 9 more rows
+
+  panel basketballwomen-s10
+    title: rows of players by players.pos
+    rows (8):
+      G | 309
+      F | 230
+      C | 130
+      ∅ | 78
+      F-C | 70
+      G-F | 55
+      F-G | 12
+      C-F | 9
+
+  panel basketballwomen-s11
+    title: rows of awards_players by awards_players.year
+    rows (16):
+      1997-01-01 | 11
+      1998-01-01 | 13
+      1999-01-01 | 8
+      2000-01-01 | 8
+      2001-01-01 | 8
+      2002-01-01 | 8
+      2003-01-01 | 8
+      2004-01-01 | 8
+      2005-01-01 | 7
+      2006-01-01 | 22
+      2007-01-01 | 9
+      2008-01-01 | 8
+      … 4 more rows
+
+  five A: basketballwomen-s01, basketballwomen-s04, basketballwomen-s07, basketballwomen-s09, basketballwomen-s10
+
+  five B: basketballwomen-s02, basketballwomen-s03, basketballwomen-s05, basketballwomen-s06, basketballwomen-s10
+
+  five C: basketballwomen-s04, basketballwomen-s06, basketballwomen-s08, basketballwomen-s10, basketballwomen-s11
+
+
+=== database: ncaa ===
+NCAA men's college basketball: teams, seasons, regular-season and tournament results, as CTU serves it.
+
+  panel ncaa-s01
+    title: rows of tourney_detailed_results by teams.team_name the twelve most
+    rows (12):
+      Kansas | 31
+      North Carolina | 29
+      Connecticut | 28
+      Kentucky | 27
+      Florida | 27
+      Michigan St | 26
+      Duke | 24
+      Louisville | 24
+      Syracuse | 21
+      Wisconsin | 19
+      Arizona | 17
+      UCLA | 17
+
+  panel ncaa-s02
+    title: largest tables, estimated rows
+    rows (9):
+      regular_season_compact_results | 133170
+      regular_season_detailed_results | 60000
+      tourney_seeds | 1946
+      tourney_compact_results | 1916
+      tourney_slots | 1916
+      tourney_detailed_results | 780
+      teams | 364
+      target | 268
+      seasons | 31
+
+  panel ncaa-s03
+    title: rows of regular_season_compact_results by regular_season_compact_results.wloc
+    rows (3):
+      H | 80225
+      A | 40883
+      N | 13458
+
+  panel ncaa-s04
+    title: rows of tourney_compact_results per seasons
+    rows (3):
+      63 | 16
+      64 | 10
+      67 | 4
+
+  panel ncaa-s05
+    title: rows of regular_season_detailed_results by seasons.regionY
+    rows (6):
+      Midwest | 30853
+      South | 10416
+      Southeast | 5246
+      Minneapolis | 4757
+      Austin | 4675
+      EastRutherford | 4571
+
+  panel ncaa-s06
+    title: rows of regular_season_detailed_results by seasons.dayzero
+    rows (12):
+      2002-01-01 | 4616
+      2003-01-01 | 4571
+      2004-01-01 | 4675
+      2005-01-01 | 4757
+      2006-01-01 | 5043
+      2007-01-01 | 5163
+      2008-01-01 | 5249
+      2009-01-01 | 5263
+      2010-01-01 | 5246
+      2011-01-01 | 5253
+      2012-01-01 | 5320
+      2013-01-01 | 5362
+
+  panel ncaa-s07
+    title: rows of regular_season_detailed_results by regular_season_detailed_results.wloc
+    rows (3):
+      H | 36172
+      A | 18382
+      N | 5964
+
+  panel ncaa-s08
+    title: rows of regular_season_compact_results per seasons
+    rows (30):
+      3737 | 1
+      3783 | 1
+      3915 | 1
+      3955 | 1
+      3982 | 1
+      4037 | 1
+      4045 | 1
+      4060 | 1
+      4077 | 1
+      4122 | 1
+      4123 | 1
+      4127 | 1
+      … 18 more rows
+
+  panel ncaa-s09
+    title: rows of tourney_detailed_results by seasons (by key) the twelve most
+    rows (12):
+      2011 | 67
+      2012 | 67
+      2013 | 67
+      2014 | 67
+      2003 | 64
+      2004 | 64
+      2005 | 64
+      2006 | 64
+      2007 | 64
+      2008 | 64
+      2009 | 64
+      2010 | 64
+
+  panel ncaa-s10
+    title: rows of tourney_seeds by teams.team_name the twelve most
+    rows (12):
+      Kansas | 29
+      Duke | 29
+      Arizona | 28
+      North Carolina | 27
+      Syracuse | 25
+      Kentucky | 25
+      Michigan St | 24
+      UCLA | 23
+      Texas | 23
+      Indiana | 23
+      Louisville | 23
+      Xavier | 22
+
+  panel ncaa-s11
+    title: rows of regular_season_detailed_results by seasons.regionW
+    rows (3):
+      East | 46515
+      Atlanta | 9328
+      Albuquerque | 4675
+
+  panel ncaa-s12
+    title: rows of tourney_compact_results by teams.team_name the twelve most
+    rows (12):
+      Duke | 82
+      North Carolina | 75
+      Kansas | 73
+      Kentucky | 70
+      Connecticut | 54
+      Arizona | 49
+      Michigan St | 49
+      Syracuse | 48
+      Louisville | 45
+      UCLA | 42
+      Florida | 42
+      Michigan | 36
+
+  five A: ncaa-s01, ncaa-s03, ncaa-s05, ncaa-s07, ncaa-s11
+
+  five B: ncaa-s03, ncaa-s06, ncaa-s09, ncaa-s10, ncaa-s12
+
+  five C: ncaa-s02, ncaa-s03, ncaa-s04, ncaa-s07, ncaa-s08

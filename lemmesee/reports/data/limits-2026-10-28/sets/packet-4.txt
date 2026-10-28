@@ -1,0 +1,782 @@
+You are judging first-overview dashboards for several databases. For each database you see its
+panels — each a title saying what it computes and the first rows its database returned — and two or three
+candidate fives, each a list of five of those panels. You did not make them and are not told what made them.
+Do not read, search or open any file other than this one, and run no command; when done, write your answers
+with the Write tool, once, to the path given to you.
+
+For every database, and every five of it:
+ 1. worth: how many of its five panels are worth a place on a first screen together — a panel that repeats
+    what another panel of the same five already shows does not count, nor a single bar, an empty result, a
+    column of blanks, or a picture that means less than it seems to.
+ 2. repeats: the panel ids in that five that repeat another panel of the same five.
+Then for the database:
+ 3. best: the letter of the five you would keep as this database's first screen.
+
+Write one JSON object: {"databases": {"<database>": {"fives": {"<letter>": {"worth": int, "repeats": [ids]}, ...},
+"best": "<letter>"}, ...}} — every database and every five below must be answered.
+
+
+=== database: craftbeer ===
+American craft beers and the breweries that make them, as CTU serves it.
+
+  panel craftbeer-s01
+    title: largest tables, estimated rows
+    rows (2):
+      beers | 2410
+      breweries | 558
+
+  panel craftbeer-s02
+    title: average of beers.ibu by breweries.name the twelve most
+    rows (12):
+      Wolf Hills Brewing Company | 135.00000
+      Christian Moerlein Brewing Company | 126.00000
+      The Alchemist | 120.00000
+      Beach Brewing Company | 108.00000
+      Rivertowne Brewing Company | 100.00000
+      Fort George Brewery | 97.00000
+      Four Fathers Brewing  | 90.00000
+      Santa Cruz Mountain Brewing | 88.00000
+      Natian Brewery | 86.00000
+      Lavery Brewing Company | 82.50000
+      3 Daughters Brewing | 82.00000
+      Tampa Bay Brewing Company | 80.00000
+
+  panel craftbeer-s03
+    title: rows of beers by breweries.state the twelve most
+    rows (12):
+      CO | 265
+      CA | 183
+      MI | 162
+      IN | 139
+      TX | 130
+      OR | 125
+      PA | 100
+      IL | 91
+      WI | 87
+      MA | 82
+      NY | 74
+      WA | 68
+
+  panel craftbeer-s04
+    title: rows of beers by breweries.name the twelve most
+    rows (12):
+      Brewery Vivant | 62
+      Sun King Brewing Company | 38
+      Oskar Blues Brewery | 33
+      Cigar City Brewing Company | 25
+      Sixpoint Craft Ales | 24
+      Hopworks Urban Brewery | 23
+      Stevens Point Brewery | 22
+      21st Amendment Brewery | 20
+      Great Crescent Brewery | 20
+      Bonfire Brewing Company | 19
+      SanTan Brewing Company | 19
+      Tallgrass Brewing Company | 18
+
+  panel craftbeer-s05
+    title: sum of beers.ounces by breweries.state the twelve most
+    rows (12):
+      CO | 3571.2
+      CA | 2576.4
+      MI | 2428.0
+      IN | 2132.0
+      OR | 1736.0
+      TX | 1652.0
+      IL | 1336.0
+      PA | 1252.0
+      WI | 1168.0
+      MA | 1028.0
+      NY | 1008.0
+      WA | 956.0
+
+  panel craftbeer-s06
+    title: rows of breweries by breweries.state the twelve most
+    rows (12):
+      CO | 47
+      CA | 39
+      MI | 32
+      OR | 29
+      TX | 28
+      PA | 25
+      MA | 23
+      WA | 23
+      IN | 22
+      WI | 20
+      NC | 19
+      IL | 18
+
+  panel craftbeer-s07
+    title: rows of beers per breweries
+    rows (26):
+      1 | 127
+      2 | 112
+      3 | 82
+      4 | 71
+      5 | 42
+      6 | 29
+      7 | 21
+      8 | 16
+      9 | 12
+      10 | 6
+      11 | 4
+      12 | 8
+      … 14 more rows
+
+  five A: craftbeer-s03, craftbeer-s04, craftbeer-s05, craftbeer-s06, craftbeer-s07
+
+  five B: craftbeer-s02, craftbeer-s03, craftbeer-s04, craftbeer-s06, craftbeer-s07
+
+  five C: craftbeer-s01
+
+
+=== database: nba ===
+NBA players, teams, drafts and their statistics, as CTU serves it.
+
+  panel nba-s01
+    title: sum of Actions.TotalRebounds by Team.TeamName the twelve most
+    rows (12):
+      Charlotte Bobcats | 140
+      Denver Nuggets | 129
+      Los Angeles Clippers | 126
+      Memphis Grizzlies | 119
+      Houston Rockets | 113
+      Toronto Raptors | 108
+      Detroit Pistons | 97
+      Los Angeles Lakers | 97
+      Sacramento Kings | 94
+      Milwaukee Bucks | 92
+      Dallas Mavericks | 89
+      Minnesota Timberwolves | 88
+
+  panel nba-s02
+    title: rows of Game by Game.Date
+    rows (5):
+      2014-03-31 | 9
+      2014-04-01 | 3
+      2014-04-02 | 13
+      2014-04-03 | 2
+      2014-04-04 | 3
+
+  panel nba-s03
+    title: largest tables, estimated rows
+    rows (5):
+      Actions | 767
+      Player | 392
+      Game | 30
+      Team | 30
+      joined_drafted_all_players_original | 3
+
+  panel nba-s04
+    title: sum of Actions.Points by Team.TeamName the twelve most
+    rows (12):
+      Los Angeles Clippers | 333
+      Charlotte Bobcats | 325
+      Denver Nuggets | 321
+      Toronto Raptors | 292
+      Memphis Grizzlies | 282
+      Dallas Mavericks | 233
+      Golden State Warriors | 225
+      Los Angeles Lakers | 214
+      Washington Wizards | 212
+      Detroit Pistons | 210
+      Sacramento Kings | 209
+      Minnesota Timberwolves | 206
+
+  panel nba-s05
+    title: rows of Actions by Team.TeamName the twelve most
+    rows (12):
+      Toronto Raptors | 39
+      Charlotte Bobcats | 39
+      Memphis Grizzlies | 39
+      Denver Nuggets | 39
+      Los Angeles Clippers | 39
+      Los Angeles Lakers | 26
+      Dallas Mavericks | 26
+      Houston Rockets | 26
+      Brooklyn Nets | 26
+      Miami Heat | 26
+      Sacramento Kings | 26
+      New Orleans Pelicans | 26
+
+  panel nba-s06
+    title: sum of Actions.Turnovers by Team.TeamName the twelve most
+    rows (12):
+      Denver Nuggets | 45
+      Toronto Raptors | 38
+      Los Angeles Clippers | 37
+      Washington Wizards | 35
+      Memphis Grizzlies | 33
+      Charlotte Bobcats | 33
+      Atlanta Hawks | 32
+      Philadelphia 76ers | 31
+      San Antonio Spurs | 31
+      Minnesota Timberwolves | 31
+      Orlando Magic | 30
+      Milwaukee Bucks | 30
+
+  panel nba-s07
+    title: sum of Actions.Minutes by Game.Date
+    rows (5):
+      2014-03-31 | 259201
+      2014-04-01 | 89400
+      2014-04-02 | 374398
+      2014-04-03 | 57599
+      2014-04-04 | 86400
+
+  panel nba-s08
+    title: sum of Actions.FieldGoalsMade by Player.PlayerName the twelve most
+    rows (12):
+      Al Jefferson | 30
+      Kenneth Faried | 27
+      Demar DeRozan | 26
+      Darren Collison | 25
+      Dirk Nowitzki | 23
+      Marc Gasol | 23
+      Jonas Valanciunas | 21
+      Nick Young | 21
+      Ray McCallum | 21
+      DeMarcus Cousins | 21
+      Josh Smith | 20
+      Rudy Gay | 19
+
+  panel nba-s09
+    title: sum of Actions.Minutes by Team.TeamName
+    rows (30):
+      Memphis Grizzlies | 43200
+      Denver Nuggets | 43200
+      Los Angeles Clippers | 43200
+      Toronto Raptors | 43200
+      Charlotte Bobcats | 43200
+      Dallas Mavericks | 30300
+      Golden State Warriors | 30300
+      Sacramento Kings | 28802
+      Philadelphia 76ers | 28801
+      Washington Wizards | 28801
+      New York Knicks | 28800
+      Orlando Magic | 28800
+      … 18 more rows
+
+  panel nba-s10
+    title: rows of Game by Team.TeamName the twelve most
+    rows (12):
+      Memphis Grizzlies | 3
+      Golden State Warriors | 2
+      Houston Rockets | 2
+      Philadelphia 76ers | 2
+      Los Angeles Clippers | 2
+      Boston Celtics | 2
+      Toronto Raptors | 2
+      Portland Trail Blazers | 1
+      San Antonio Spurs | 1
+      Dallas Mavericks | 1
+      Brooklyn Nets | 1
+      New York Knicks | 1
+
+  panel nba-s11
+    title: sum of Actions.TotalRebounds by Player.PlayerName the twelve most
+    rows (12):
+      DeAndre Jordan | 50
+      Omer Asik | 38
+      Al Jefferson | 37
+      Kenneth Faried | 33
+      Zach Randolph | 31
+      Greg Monroe | 30
+      Andre Drummond | 30
+      Zaza Pachulia | 29
+      James Harden | 29
+      Kevin Love | 29
+      Paul Millsap | 28
+      Jonas Valanciunas | 25
+
+  panel nba-s12
+    title: rows of Game per Team
+    rows (3):
+      1 | 15
+      2 | 6
+      3 | 1
+
+  five A: nba-s01, nba-s04, nba-s06, nba-s08, nba-s11
+
+  five B: nba-s03, nba-s07, nba-s09, nba-s12, nba-s12
+
+  five C: nba-s01, nba-s02, nba-s05, nba-s06, nba-s10
+
+
+=== database: birdsuperstore ===
+A superstore's orders in four regions, its customers and its products, as BIRD serves it.
+
+  panel birdsuperstore-s01
+    title: rows of west_superstore by west_superstore.Ship Mode
+    rows (4):
+      Standard Class | 3764
+      Second Class | 1242
+      First Class | 1030
+      Same Day | 370
+
+  panel birdsuperstore-s02
+    title: sum of south_superstore.Discount by south_superstore.Order Date
+    rows (72):
+      2013-01-01 00:00:00+00 | 0.8999999999999999
+      2013-02-01 00:00:00+00 | 0.8999999999999999
+      2013-03-01 00:00:00+00 | 10.899999999999999
+      2013-04-01 00:00:00+00 | 1.5999999999999999
+      2013-05-01 00:00:00+00 | 1.3
+      2013-06-01 00:00:00+00 | 1.6999999999999997
+      2013-07-01 00:00:00+00 | 2.8000000000000003
+      2013-08-01 00:00:00+00 | 4.550000000000001
+      2013-09-01 00:00:00+00 | 4.900000000000001
+      2013-10-01 00:00:00+00 | 2.1999999999999997
+      2013-11-01 00:00:00+00 | 4.800000000000002
+      2013-12-01 00:00:00+00 | 5.500000000000002
+      … 60 more rows
+
+  panel birdsuperstore-s03
+    title: sum of central_superstore.Profit by central_superstore.Order Date
+    rows (72):
+      2013-01-01 | 118.49019999999999
+      2013-02-01 | 294.8066999999999
+      2013-03-01 | -274.0467
+      2013-04-01 | 229.37870000000007
+      2013-05-01 | -506.0171
+      2013-06-01 | 1246.1218
+      2013-07-01 | -4055.3338000000003
+      2013-08-01 | 628.4268000000003
+      2013-09-01 | 1422.7972
+      2013-10-01 | 1341.2414
+      2013-11-01 | -794.1588999999999
+      2013-12-01 | 887.8471000000004
+      … 60 more rows
+
+  panel birdsuperstore-s04
+    title: rows of product by product.Category
+    rows (3):
+      Office Supplies | 3156
+      Furniture | 1099
+      Technology | 1043
+
+  panel birdsuperstore-s05
+    title: rows of south_superstore by south_superstore.Ship Mode
+    rows (4):
+      Standard Class | 1948
+      Second Class | 658
+      First Class | 468
+      Same Day | 166
+
+  panel birdsuperstore-s06
+    title: sum of south_superstore.Discount by south_superstore.Ship Mode
+    rows (4):
+      Standard Class | 313.5999999999938
+      Second Class | 72.30000000000035
+      First Class | 68.60000000000026
+      Same Day | 22.599999999999966
+
+  panel birdsuperstore-s07
+    title: sum of east_superstore.Discount by east_superstore.Ship Mode
+    rows (4):
+      Standard Class | 483.79999999999006
+      First Class | 153.00000000000009
+      Second Class | 140.00000000000034
+      Same Day | 51.20000000000007
+
+  panel birdsuperstore-s08
+    title: sum of east_superstore.Profit by east_superstore.Order Date
+    rows (72):
+      2013-01-01 | -39.35640000000001
+      2013-02-01 | 62.7536
+      2013-03-01 | -809.1755
+      2013-04-01 | -220.6252
+      2013-05-01 | 754.4964999999999
+      2013-06-01 | 980.1412000000001
+      2013-07-01 | 847.1365
+      2013-08-01 | 801.8064000000003
+      2013-09-01 | 4174.8133
+      2013-10-01 | 61.97850000000017
+      2013-11-01 | 5591.632200000002
+      2013-12-01 | 4854.008400000002
+      … 60 more rows
+
+  panel birdsuperstore-s09
+    title: sum of central_superstore.Sales by central_superstore.Order Date
+    rows (72):
+      2013-01-01 | 1539.9060000000002
+      2013-02-01 | 1233.174
+      2013-03-01 | 5827.602000000002
+      2013-04-01 | 3712.34
+      2013-05-01 | 4048.505999999999
+      2013-06-01 | 9646.2986
+      2013-07-01 | 6740.574
+      2013-08-01 | 3022.183
+      2013-09-01 | 34408.689800000015
+      2013-10-01 | 8965.756999999996
+      2013-11-01 | 14057.568200000002
+      2013-12-01 | 10635.565999999997
+      … 60 more rows
+
+  panel birdsuperstore-s10
+    title: rows of east_superstore by east_superstore.Ship Mode
+    rows (4):
+      Standard Class | 3346
+      Second Class | 1060
+      First Class | 980
+      Same Day | 310
+
+  panel birdsuperstore-s11
+    title: sum of east_superstore.Sales by east_superstore.Order Date
+    rows (72):
+      2013-01-01 | 436.17400000000004
+      2013-02-01 | 199.77599999999998
+      2013-03-01 | 5943.387999999999
+      2013-04-01 | 3054.9060000000004
+      2013-05-01 | 7250.102999999999
+      2013-06-01 | 10759.156
+      2013-07-01 | 3568.1460000000006
+      2013-08-01 | 4582.448000000001
+      2013-09-01 | 25292.78899999999
+      2013-10-01 | 8945.124
+      2013-11-01 | 33950.771
+      2013-12-01 | 24697.676
+      … 60 more rows
+
+  panel birdsuperstore-s12
+    title: rows of people by people.Segment
+    rows (3):
+      Consumer | 1306
+      Corporate | 742
+      Home Office | 453
+
+  panel birdsuperstore-s13
+    title: sum of central_superstore.Discount by central_superstore.Ship Mode
+    rows (4):
+      Standard Class | 694.8400000000042
+      Second Class | 209.19999999999925
+      First Class | 158.83999999999966
+      Same Day | 53.80000000000007
+
+  panel birdsuperstore-s14
+    title: sum of south_superstore.Profit by south_superstore.Order Date
+    rows (72):
+      2013-01-01 | 2346.664000000001
+      2013-02-01 | 279.3395
+      2013-03-01 | 47.72480000000018
+      2013-04-01 | 1850.6272000000001
+      2013-05-01 | 1616.6662
+      2013-06-01 | 978.4462000000001
+      2013-07-01 | 420.0319
+      2013-08-01 | 1326.9674000000002
+      2013-09-01 | -345.0338
+      2013-10-01 | 653.7719
+      2013-11-01 | 1343.3429
+      2013-12-01 | 1360.5717999999997
+      … 60 more rows
+
+  five A: birdsuperstore-s03, birdsuperstore-s08, birdsuperstore-s09, birdsuperstore-s11, birdsuperstore-s14
+
+  five B: birdsuperstore-s01, birdsuperstore-s02, birdsuperstore-s06, birdsuperstore-s07, birdsuperstore-s13
+
+  five C: birdsuperstore-s01, birdsuperstore-s04, birdsuperstore-s05, birdsuperstore-s10, birdsuperstore-s12
+
+
+=== database: chinook ===
+Chinook 1.4.5: a digital media store — artists, albums, tracks, playlists, customers, employees, invoices and their lines; its sales randomly generated over four years, as its source says.
+
+  panel chinook-s01
+    title: rows of track by genre.name the twelve most
+    rows (12):
+      Rock | 1297
+      Latin | 579
+      Metal | 374
+      Alternative & Punk | 332
+      Jazz | 130
+      TV Shows | 93
+      Blues | 81
+      Classical | 74
+      Drama | 64
+      R&B/Soul | 61
+      Reggae | 58
+      Pop | 48
+
+  panel chinook-s02
+    title: rows of invoice by invoice.billing_country the twelve most
+    rows (12):
+      USA | 91
+      Canada | 56
+      France | 35
+      Brazil | 35
+      Germany | 28
+      United Kingdom | 21
+      Portugal | 14
+      Czech Republic | 14
+      India | 13
+      Norway | 7
+      Sweden | 7
+      Belgium | 7
+
+  panel chinook-s03
+    title: sum of invoice_line.unit_price × invoice_line.quantity by invoice.billing_country the twelve most
+    rows (12):
+      USA | 523.06
+      Canada | 303.96
+      France | 195.10
+      Brazil | 190.10
+      Germany | 156.48
+      United Kingdom | 112.86
+      Czech Republic | 90.24
+      Portugal | 77.24
+      India | 75.26
+      Chile | 46.62
+      Ireland | 45.62
+      Hungary | 45.62
+
+  panel chinook-s04
+    title: sum of invoice_line.unit_price by track.name the twelve most
+    rows (12):
+      The Woman King | 3.98
+      Pilot | 3.98
+      How to Stop an Exploding Man | 3.98
+      Hot Girl | 3.98
+      The Fix | 3.98
+      Gay Witch Hunt | 3.98
+      Phyllis's Wedding | 3.98
+      Walkabout | 3.98
+      Fire + Water | 1.99
+      Exposé | 1.99
+      Back from Vacation | 1.99
+      The Economist | 1.99
+
+  panel chinook-s05
+    title: sum of invoice.total by invoice.billing_country the twelve most
+    rows (12):
+      USA | 523.06
+      Canada | 303.96
+      France | 195.10
+      Brazil | 190.10
+      Germany | 156.48
+      United Kingdom | 112.86
+      Czech Republic | 90.24
+      Portugal | 77.24
+      India | 75.26
+      Chile | 46.62
+      Ireland | 45.62
+      Hungary | 45.62
+
+  panel chinook-s06
+    title: sum of invoice_line.unit_price × invoice_line.quantity by artist.name the twelve most
+    rows (12):
+      Iron Maiden | 138.60
+      U2 | 105.93
+      Metallica | 90.09
+      Led Zeppelin | 86.13
+      Lost | 81.59
+      The Office | 49.75
+      Os Paralamas Do Sucesso | 44.55
+      Deep Purple | 43.56
+      Faith No More | 41.58
+      Eric Clapton | 39.60
+      R.E.M. | 38.61
+      Queen | 36.63
+
+  panel chinook-s07
+    title: rows of invoice_line per invoice
+    rows (6):
+      1 | 59
+      2 | 117
+      4 | 59
+      6 | 59
+      9 | 59
+      14 | 59
+
+  panel chinook-s08
+    title: sum of invoice.total by invoice.invoice_date
+    rows (60):
+      2021-01-01 00:00:00 | 35.64
+      2021-02-01 00:00:00 | 37.62
+      2021-03-01 00:00:00 | 37.62
+      2021-04-01 00:00:00 | 37.62
+      2021-05-01 00:00:00 | 37.62
+      2021-06-01 00:00:00 | 37.62
+      2021-07-01 00:00:00 | 37.62
+      2021-08-01 00:00:00 | 37.62
+      2021-09-01 00:00:00 | 37.62
+      2021-10-01 00:00:00 | 37.62
+      2021-11-01 00:00:00 | 37.62
+      2021-12-01 00:00:00 | 37.62
+      … 48 more rows
+
+  panel chinook-s09
+    title: sum of invoice_line.unit_price × invoice_line.quantity by media_type.name the twelve most
+    rows (5):
+      MPEG audio file | 1956.24
+      Protected MPEG-4 video file | 220.89
+      Protected AAC audio file | 144.54
+      Purchased AAC audio file | 3.96
+      AAC audio file | 2.97
+
+  panel chinook-s10
+    title: sum of invoice_line.unit_price × invoice_line.quantity by genre.name the twelve most
+    rows (12):
+      Rock | 826.65
+      Latin | 382.14
+      Metal | 261.36
+      Alternative & Punk | 241.56
+      TV Shows | 93.53
+      Jazz | 79.20
+      Blues | 60.39
+      Drama | 57.71
+      R&B/Soul | 40.59
+      Classical | 40.59
+      Sci Fi & Fantasy | 39.80
+      Reggae | 29.70
+
+  panel chinook-s11
+    title: rows of track by media_type.name
+    rows (5):
+      MPEG audio file | 3034
+      Protected AAC audio file | 237
+      Protected MPEG-4 video file | 214
+      AAC audio file | 11
+      Purchased AAC audio file | 7
+
+  panel chinook-s12
+    title: sum of invoice.total by invoice.billing_country
+    rows (24):
+      USA | 523.06
+      Canada | 303.96
+      France | 195.10
+      Brazil | 190.10
+      Germany | 156.48
+      United Kingdom | 112.86
+      Czech Republic | 90.24
+      Portugal | 77.24
+      India | 75.26
+      Chile | 46.62
+      Ireland | 45.62
+      Hungary | 45.62
+      … 12 more rows
+
+  five A: chinook-s02, chinook-s03, chinook-s05, chinook-s09, chinook-s10
+
+  five B: chinook-s04, chinook-s07, chinook-s08, chinook-s11, chinook-s12
+
+  five C: chinook-s01, chinook-s02, chinook-s05, chinook-s06, chinook-s10
+
+
+=== database: accidents ===
+Road accidents in Slovenia, the people involved in each, and the administrative units where they happened, as CTU serves it.
+
+  panel accidents-s01
+    title: rows of oseba by oseba.spol
+    rows (3):
+      1 | 704665
+      2 | 245736
+      0 | 3635
+
+  panel accidents-s02
+    title: rows of nesreca by nesreca.tip_nesreca
+    rows (10):
+      BT | 119840
+      NT | 74489
+      OP | 67400
+      TV | 66679
+      ÈT | 60502
+      TO | 44896
+      OS | 31162
+      PR | 24619
+      PZ | 10830
+      PP | 8576
+
+  panel accidents-s03
+    title: rows of oseba per nesreca
+    rows (27):
+      1 | 141492
+      2 | 310369
+      3 | 40359
+      4 | 10106
+      5 | 3231
+      6 | 1249
+      7 | 425
+      8 | 193
+      9 | 76
+      10 | 40
+      11 | 18
+      12 | 8
+      … 15 more rows
+
+  panel accidents-s04
+    title: rows of nesreca by nesreca.klas_nesreca
+    rows (6):
+      B | 346072
+      L | 84309
+      U | 47061
+      H | 19575
+      P | 8664
+      S | 3312
+
+  panel accidents-s05
+    title: rows of nesreca by nesreca.vzrok_nesreca
+    rows (11):
+      PV | 115655
+      HI | 103501
+      SV | 77152
+      PD | 74511
+      VR | 64573
+      OS | 48626
+      PR | 17896
+      NP | 2867
+      TO | 2304
+      CE | 1083
+      VO | 825
+
+  panel accidents-s06
+    title: rows of nesreca by upravna_enota.ime_upravna_enota the twelve most
+    rows (12):
+      Ljubljana Bežigrad | 102758
+      Maribor | 58765
+      Celje | 22859
+      Ptuj | 22353
+      Kranj | 15617
+      Murska Sobota | 15245
+      Koper | 14253
+      Domžale | 14178
+      Novo Mesto | 12500
+      Žalec | 11508
+      Nova Gorica | 9808
+      Slovenska Bistrica | 9505
+
+  panel accidents-s07
+    title: rows of nesreca by nesreca.cas_nesreca
+    rows (12):
+      1995-01-01 | 38923
+      1996-01-01 | 39109
+      1997-01-01 | 40639
+      1998-01-01 | 36704
+      1999-01-01 | 40687
+      2000-01-01 | 39297
+      2001-01-01 | 39722
+      2002-01-01 | 39733
+      2003-01-01 | 41319
+      2004-01-01 | 43156
+      2005-01-01 | 54162
+      2006-01-01 | 55542
+
+  panel accidents-s08
+    title: rows of nesreca by nesreca.opis_prizorisce
+    rows (8):
+      C | 293726
+      N | 176117
+      R | 26639
+      P | 10523
+      Ž | 945
+      K | 477
+      A | 359
+      M | 207
+
+  panel accidents-s09
+    title: largest tables, estimated rows
+    rows (3):
+      oseba | 948767
+      nesreca | 504850
+      upravna_enota | 64
+
+  five A: accidents-s01, accidents-s03, accidents-s04, accidents-s08, accidents-s09
+
+  five B: accidents-s02, accidents-s04, accidents-s05, accidents-s06, accidents-s07

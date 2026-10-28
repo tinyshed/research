@@ -1,0 +1,724 @@
+You are judging first-overview dashboards for several databases. For each database you see its
+panels — each a title saying what it computes and the first rows its database returned — and two or three
+candidate fives, each a list of five of those panels. You did not make them and are not told what made them.
+Do not read, search or open any file other than this one, and run no command; when done, write your answers
+with the Write tool, once, to the path given to you.
+
+For every database, and every five of it:
+ 1. worth: how many of its five panels are worth a place on a first screen together — a panel that repeats
+    what another panel of the same five already shows does not count, nor a single bar, an empty result, a
+    column of blanks, or a picture that means less than it seems to.
+ 2. repeats: the panel ids in that five that repeat another panel of the same five.
+Then for the database:
+ 3. best: the letter of the five you would keep as this database's first screen.
+
+Write one JSON object: {"databases": {"<database>": {"fives": {"<letter>": {"worth": int, "repeats": [ids]}, ...},
+"best": "<letter>"}, ...}} — every database and every five below must be answered.
+
+
+=== database: ccs ===
+A Czech fuel-card company's customers, gas stations, products, a thousand transactions and monthly consumption, as CTU serves it.
+
+  panel ccs-s01
+    title: rows of yearmonth by yearmonth.Date
+    rows (21):
+      2011-12-01 | 8
+      2012-01-01 | 17848
+      2012-02-01 | 18324
+      2012-03-01 | 18866
+      2012-04-01 | 18253
+      2012-05-01 | 18347
+      2012-06-01 | 18588
+      2012-07-01 | 17640
+      2012-08-01 | 18048
+      2012-09-01 | 12894
+      2013-01-01 | 139
+      2013-02-01 | 2415
+      … 9 more rows
+
+  panel ccs-s02
+    title: sum of transactions_1k.Price by products.Description the twelve most
+    rows (12):
+      Nafta | 345669.45
+      Diesel + | 27261.03
+      Natural | 24639.46
+      Nafta Plus | 7233.72
+      Natural + | 3999.92
+      Natural Spec | 3296.04
+      Natural Plus | 2293.43
+      Mytí vozidel | 1802.90
+      Provoz.nápl. | 1628.12
+      Diesel | 1489.85
+      Autoprísluš. | 1346.36
+      Nat.Super | 1127.69
+
+  panel ccs-s03
+    title: sum of transactions_1k.Price by transactions_1k.Date
+    rows (4):
+      2012-08-23 | 6853.79
+      2012-08-24 | 201690.35
+      2012-08-25 | 181449.53
+      2012-08-26 | 35582.49
+
+  panel ccs-s04
+    title: sum of yearmonth.Consumption by yearmonth.Date
+    rows (21):
+      2011-12-01 | 4172.66
+      2012-01-01 | 44080288.84
+      2012-02-01 | 48513403.09
+      2012-03-01 | 51787161.74
+      2012-04-01 | 47084875.02
+      2012-05-01 | 48466054.68
+      2012-06-01 | 50027223.19
+      2012-07-01 | 46390232.88
+      2012-08-01 | 50475554.14
+      2012-09-01 | 20084604.21
+      2013-01-01 | 18059.48
+      2013-02-01 | 14361348.75
+      … 9 more rows
+
+  panel ccs-s05
+    title: rows of transactions_1k by transactions_1k.Date
+    rows (4):
+      2012-08-23 | 10
+      2012-08-24 | 492
+      2012-08-25 | 425
+      2012-08-26 | 73
+
+  panel ccs-s06
+    title: distribution of transactions_1k.Price
+    rows (13):
+      0 | 1.76 | 462
+      1 | 290.30 | 232
+      2 | 577.84 | 226
+      3 | 870.93 | 40
+      4 | 1154.22 | 12
+      5 | 1445.97 | 6
+      6 | 1774.63 | 6
+      7 | 2146.30 | 4
+      8 | 2328.72 | 4
+      9 | 2810.59 | 3
+      10 | 3090.39 | 3
+      12 | 3600.84 | 1
+      … 1 more rows
+
+  panel ccs-s07
+    title: rows of gasstations by gasstations.Segment
+    rows (5):
+      Other | 2392
+      Premium | 1428
+      Noname | 1005
+      Value for money | 597
+      Discount | 294
+
+  panel ccs-s08
+    title: distribution of yearmonth.Consumption
+    rows (18):
+      0 | -582092.86 | 1
+      3 | -123169.73 | 1
+      4 | -18145.35 | 376316
+      5 | 76493.78 | 5181
+      6 | 208199.51 | 936
+      7 | 339974.29 | 368
+      8 | 472478.45 | 198
+      9 | 603709.35 | 74
+      10 | 738606.34 | 47
+      11 | 867873.37 | 42
+      12 | 999038.00 | 38
+      13 | 1133327.82 | 43
+      … 6 more rows
+
+  panel ccs-s09
+    title: largest tables, estimated rows
+    rows (6):
+      yearmonth | 382785
+      customers | 32776
+      gasstations | 5716
+      transactions_1k | 1000
+      products | 591
+      transactions | 0
+
+  panel ccs-s10
+    title: rows of customers by customers.Segment
+    rows (3):
+      SME | 26763
+      LAM | 3658
+      KAM | 2040
+
+  panel ccs-s11
+    title: sum of transactions_1k.Amount by customers.Segment
+    rows (3):
+      KAM | 10229
+      SME | 4967
+      LAM | 4482
+
+  panel ccs-s12
+    title: rows of transactions_1k by products.Description the twelve most
+    rows (12):
+      Nafta | 523
+      Natural | 239
+      Diesel | 43
+      Mytí vozidel | 41
+      Diesel + | 27
+      Nemrz.kapal. | 18
+      Provoz.nápl. | 14
+      Nat.Super | 12
+      Nafta Plus | 12
+      Oleje,tuky | 7
+      Autokosmet. | 7
+      Autoprísluš. | 6
+
+  five A: ccs-s03, ccs-s06, ccs-s08, ccs-s09
+
+  five B: ccs-s02, ccs-s07, ccs-s10, ccs-s11, ccs-s12
+
+  five C: ccs-s01, ccs-s04, ccs-s05, ccs-s07, ccs-s10
+
+
+=== database: world ===
+Countries, their cities and the languages spoken in each, as CTU serves it.
+
+  panel world-s01
+    title: sum of City.Population by Country (by key) the twelve most
+    rows (12):
+      CHN | 175953614
+      IND | 123298526
+      BRA | 85876862
+      USA | 78625774
+      JPN | 77965107
+      RUS | 69150700
+      MEX | 59752521
+      KOR | 38999893
+      IDN | 37485695
+      PAK | 31546745
+      PHL | 30934791
+      TUR | 28327028
+
+  panel world-s02
+    title: rows of City by Country.Continent
+    rows (6):
+      Asia | 1766
+      Europe | 841
+      North America | 581
+      South America | 470
+      Africa | 366
+      Oceania | 55
+
+  panel world-s03
+    title: rows of Country by Country.HeadOfState the twelve most
+    rows (12):
+      Elisabeth II | 35
+      Jacques Chirac | 11
+      George W. Bush | 7
+      Beatrix | 3
+      Margrethe II | 3
+      Jiang Zemin | 3
+      Harald V | 3
+       | 2
+      Mohammad Omar | 1
+      Robert G. Mugabe | 1
+      Rexhep Mejdani | 1
+      Robert Kotšarjan | 1
+
+  panel world-s04
+    title: rows of Country by Country.Region the twelve most
+    rows (12):
+      Caribbean | 24
+      Eastern Africa | 20
+      Middle East | 18
+      Western Africa | 17
+      Southern Europe | 15
+      Southern and Central Asia | 14
+      South America | 14
+      Southeast Asia | 11
+      Polynesia | 10
+      Eastern Europe | 10
+      Central Africa | 9
+      Western Europe | 9
+
+  panel world-s05
+    title: rows of Country by Country.Region
+    rows (25):
+      Caribbean | 24
+      Eastern Africa | 20
+      Middle East | 18
+      Western Africa | 17
+      Southern Europe | 15
+      Southern and Central Asia | 14
+      South America | 14
+      Southeast Asia | 11
+      Eastern Europe | 10
+      Polynesia | 10
+      Western Europe | 9
+      Central Africa | 9
+      … 13 more rows
+
+  panel world-s06
+    title: rows of Country by Country.GovernmentForm the twelve most
+    rows (12):
+      Republic | 122
+      Constitutional Monarchy | 29
+      Federal Republic | 15
+      Dependent Territory of the UK | 12
+      Monarchy | 5
+      Overseas Department of France | 4
+      Territory of Australia | 4
+      Nonmetropolitan Territory of France | 4
+      Constitutional Monarchy, Federation | 4
+      Nonmetropolitan Territory of New Zealand | 3
+      US Territory | 3
+      Socialistic Republic | 3
+
+  panel world-s07
+    title: sum of City.Population by Country.Region the twelve most
+    rows (12):
+      Eastern Asia | 317476534
+      Southern and Central Asia | 207688970
+      South America | 172037859
+      Eastern Europe | 123384516
+      Southeast Asia | 102067225
+      North America | 91321867
+      Middle East | 70371374
+      Central America | 65860964
+      Western Europe | 45683298
+      Northern Africa | 43449514
+      Southern Europe | 40016658
+      Western Africa | 33222032
+
+  panel world-s08
+    title: rows of Country by Country.Continent
+    rows (7):
+      Africa | 58
+      Asia | 51
+      Europe | 46
+      North America | 37
+      Oceania | 28
+      South America | 14
+      Antarctica | 5
+
+  panel world-s09
+    title: largest tables, estimated rows
+    rows (3):
+      City | 4188
+      CountryLanguage | 984
+      Country | 239
+
+  panel world-s10
+    title: sum of City.Population by Country.Continent
+    rows (6):
+      Asia | 697604103
+      Europe | 241942813
+      South America | 172037859
+      North America | 168250381
+      Africa | 135838579
+      Oceania | 13886149
+
+  panel world-s11
+    title: rows of CountryLanguage by CountryLanguage.IsOfficial
+    rows (2):
+      F | 746
+      T | 238
+
+  five A: world-s05, world-s08, world-s09, world-s11
+
+  five B: world-s03, world-s04, world-s06, world-s08, world-s11
+
+  five C: world-s01, world-s02, world-s07, world-s08, world-s10
+
+
+=== database: classicmodels ===
+classicmodels, a seller of scale models: orders and their lines, payments, customers, products and their lines, employees and offices, as CTU serves it.
+
+  panel classicmodels-s01
+    title: sum of orderdetails.priceEach × orderdetails.quantityOrdered by orders.status
+    rows (6):
+      Shipped | 8865094.640000006
+      Cancelled | 238854.18000000002
+      On Hold | 169575.61
+      In Process | 135271.52
+      Resolved | 134235.87999999998
+      Disputed | 61158.779999999984
+
+  panel classicmodels-s02
+    title: rows of payments by payments.paymentDate
+    rows (30):
+      2003-01-01 | 3
+      2003-02-01 | 3
+      2003-03-01 | 5
+      2003-04-01 | 7
+      2003-05-01 | 6
+      2003-06-01 | 5
+      2003-07-01 | 8
+      2003-08-01 | 6
+      2003-09-01 | 5
+      2003-10-01 | 13
+      2003-11-01 | 19
+      2003-12-01 | 20
+      … 18 more rows
+
+  panel classicmodels-s03
+    title: sum of orderdetails.priceEach by products.productScale
+    rows (8):
+      1:18 | 114833.9499999998
+      1:24 | 51384.50000000006
+      1:12 | 31637.07000000001
+      1:10 | 22983.590000000004
+      1:700 | 22230.32999999999
+      1:32 | 14687.080000000004
+      1:50 | 7453.409999999998
+      1:72 | 6735.490000000001
+
+  panel classicmodels-s04
+    title: sum of payments.amount by payments.paymentDate
+    rows (30):
+      2003-01-01 | 26267.620000000003
+      2003-02-01 | 144384.36
+      2003-03-01 | 199704.47999999998
+      2003-04-01 | 136313.91999999998
+      2003-05-01 | 159881.97000000003
+      2003-06-01 | 180218.97999999998
+      2003-07-01 | 158247
+      2003-08-01 | 246204.86
+      2003-09-01 | 161206.22999999998
+      2003-10-01 | 316857.96
+      2003-11-01 | 694292.6799999999
+      2003-12-01 | 826637.6400000001
+      … 18 more rows
+
+  panel classicmodels-s05
+    title: rows of orders by orders.requiredDate
+    rows (30):
+      2003-01-01 | 3
+      2003-02-01 | 4
+      2003-03-01 | 5
+      2003-04-01 | 7
+      2003-05-01 | 7
+      2003-06-01 | 6
+      2003-07-01 | 8
+      2003-08-01 | 5
+      2003-09-01 | 7
+      2003-10-01 | 19
+      2003-11-01 | 26
+      2003-12-01 | 14
+      … 18 more rows
+
+  panel classicmodels-s06
+    title: sum of payments.amount by customers.country the twelve most
+    rows (12):
+      USA | 3040029.5199999996
+      Spain | 994438.5300000003
+      France | 965750.5800000001
+      Australia | 509385.81999999995
+      New Zealand | 392486.59
+      UK | 391503.89999999997
+      Italy | 325254.55000000005
+      Finland | 295149.35
+      Norway | 270846.3
+      Singapore | 261671.59999999998
+      Canada | 205911.86
+      Denmark | 197356.3
+
+  panel classicmodels-s07
+    title: rows of orders by orders.status
+    rows (6):
+      Shipped | 303
+      Cancelled | 6
+      In Process | 6
+      Resolved | 4
+      On Hold | 4
+      Disputed | 3
+
+  panel classicmodels-s08
+    title: sum of orderdetails.priceEach by products.productName the twelve most
+    rows (12):
+      1992 Ferrari 360 Spider red | 8074.170000000001
+      1952 Alpine Renault 1300 | 5524.66
+      2001 Ferrari Enzo | 5051.61
+      2003 Harley-Davidson Eagle Drag Bike | 4824.07
+      1968 Ford Mustang | 4656.049999999999
+      1969 Ford Falcon | 4271.910000000001
+      1928 Mercedes-Benz SSK | 4196.85
+      1998 Chrysler Plymouth Prowler | 4036
+      1980s Black Hawk Helicopter | 3894.9500000000007
+      1917 Grand Touring Sedan | 3842
+      1969 Corvair Monza | 3719.6199999999994
+      2002 Suzuki XREO | 3700.7300000000005
+
+  panel classicmodels-s09
+    title: sum of orderdetails.priceEach × orderdetails.quantityOrdered by orders.orderDate
+    rows (29):
+      2003-01-01 | 116692.77
+      2003-02-01 | 128403.63999999998
+      2003-03-01 | 160517.13999999998
+      2003-04-01 | 185848.59
+      2003-05-01 | 179435.55
+      2003-06-01 | 150470.76999999993
+      2003-07-01 | 201940.36
+      2003-08-01 | 178257.10999999996
+      2003-09-01 | 236697.85000000003
+      2003-10-01 | 514336.2100000002
+      2003-11-01 | 988025.1500000004
+      2003-12-01 | 276723.25
+      … 17 more rows
+
+  panel classicmodels-s10
+    title: rows of orders by orders.orderDate split by orders.status
+    rows (43):
+      2003-01-01 | Shipped | 5
+      2003-02-01 | Shipped | 3
+      2003-03-01 | Shipped | 6
+      2003-04-01 | Shipped | 7
+      2003-05-01 | Shipped | 6
+      2003-06-01 | Shipped | 7
+      2003-07-01 | Shipped | 7
+      2003-08-01 | Shipped | 5
+      2003-09-01 | Shipped | 8
+      2003-10-01 | Cancelled | 1
+      2003-10-01 | Resolved | 1
+      2003-10-01 | Shipped | 16
+      … 31 more rows
+
+  panel classicmodels-s11
+    title: rows of orders by orders.orderDate
+    rows (29):
+      2003-01-01 | 5
+      2003-02-01 | 3
+      2003-03-01 | 6
+      2003-04-01 | 7
+      2003-05-01 | 6
+      2003-06-01 | 7
+      2003-07-01 | 7
+      2003-08-01 | 5
+      2003-09-01 | 8
+      2003-10-01 | 18
+      2003-11-01 | 30
+      2003-12-01 | 9
+      … 17 more rows
+
+  panel classicmodels-s12
+    title: rows of orders by orders.shippedDate
+    rows (29):
+      2003-01-01 | 3
+      2003-02-01 | 5
+      2003-03-01 | 6
+      2003-04-01 | 5
+      2003-05-01 | 7
+      2003-06-01 | 7
+      2003-07-01 | 8
+      2003-08-01 | 5
+      2003-09-01 | 6
+      2003-10-01 | 17
+      2003-11-01 | 28
+      2003-12-01 | 13
+      … 17 more rows
+
+  five A: classicmodels-s01, classicmodels-s06, classicmodels-s07, classicmodels-s09, classicmodels-s10
+
+  five B: classicmodels-s03, classicmodels-s04, classicmodels-s07, classicmodels-s08, classicmodels-s11
+
+  five C: classicmodels-s02, classicmodels-s04, classicmodels-s05, classicmodels-s11, classicmodels-s12
+
+
+=== database: hepatitis ===
+Hepatitis patients, their biopsies, interferon treatments and laboratory tests, as CTU serves it.
+
+  panel hepatitis-s01
+    title: rows of indis by indis.ztt
+    rows (6):
+      5 | 1696
+      1 | 1272
+      3 | 1206
+      4 | 823
+      2 | 543
+      0 | 151
+
+  panel hepatitis-s02
+    title: largest tables, estimated rows
+    rows (7):
+      indis | 5691
+      rel12 | 5691
+      rel11 | 621
+      dispat | 500
+      inf | 196
+      rel13 | 196
+      Bio | 32
+
+  panel hepatitis-s03
+    title: rows of indis by indis.ttt
+    rows (6):
+      5 | 2431
+      3 | 892
+      4 | 886
+      2 | 822
+      1 | 331
+      0 | 329
+
+  panel hepatitis-s04
+    title: rows of dispat by dispat.sex
+    rows (2):
+      0 | 355
+      1 | 145
+
+  panel hepatitis-s05
+    title: rows of indis by indis.got
+    rows (5):
+      1 | 1762
+      3 | 1756
+      2 | 1714
+      0 | 426
+      4 | 33
+
+  panel hepatitis-s06
+    title: rows of rel11 by Bio.fibros
+    rows (5):
+      1 | 273
+      2 | 136
+      3 | 103
+      4 | 88
+      0 | 21
+
+  panel hepatitis-s07
+    title: rows of rel11 by Bio.activity
+    rows (5):
+      2 | 267
+      1 | 219
+      3 | 80
+      4 | 43
+      0 | 12
+
+  panel hepatitis-s08
+    title: rows of dispat by dispat.Type
+    rows (2):
+      1 | 294
+      0 | 206
+
+  panel hepatitis-s09
+    title: rows of indis by indis.gpt
+    rows (4):
+      2 | 2699
+      1 | 2506
+      0 | 366
+      3 | 120
+
+  panel hepatitis-s10
+    title: rows of dispat by dispat.age
+    rows (7):
+      5 | 278
+      6 | 71
+      3 | 44
+      4 | 40
+      2 | 32
+      1 | 28
+      0 | 7
+
+  five A: hepatitis-s01, hepatitis-s03, hepatitis-s05, hepatitis-s08, hepatitis-s09
+
+  five B: hepatitis-s01, hepatitis-s04, hepatitis-s06, hepatitis-s07, hepatitis-s10
+
+  five C: hepatitis-s02, hepatitis-s05, hepatitis-s09
+
+
+=== database: sap ===
+A retailer's customers, their regions' demographics, the mailings sent to them and their sales, as CTU serves it.
+
+  panel sap-s01
+    title: rows of Customers by Customers.OCCUPATION
+    rows (9):
+      Machine-op-inspct | 189214
+      Handlers-cleaners | 100904
+      Farming-fishing | 55508
+      Other-service | 9822
+      Exec-managerial | 3790
+      Prof-specialty | 702
+      Craft-repair | 44
+      Sales | 15
+      Adm-clerical | 1
+
+  panel sap-s02
+    title: rows of Sales by Sales.EVENT_DATE
+    rows (30):
+      2006-11-06 | 13560
+      2006-11-13 | 23649
+      2006-11-20 | 23999
+      2006-11-27 | 23601
+      2006-12-04 | 37380
+      2006-12-11 | 47752
+      2006-12-18 | 47493
+      2006-12-25 | 47681
+      2007-01-01 | 47731
+      2007-01-08 | 47604
+      2007-01-15 | 47338
+      2007-01-22 | 47161
+      … 18 more rows
+
+  panel sap-s03
+    title: rows of mailings3 by mailings3.REF_DATE
+    rows (1):
+      2007-07-01 | 300000
+
+  panel sap-s04
+    title: sum of Sales.AMOUNT by Customers.SEX
+    rows (2):
+      Male | 33929878.75936127
+      Female | 17384246.570845604
+
+  panel sap-s05
+    title: sum of Sales.AMOUNT by Sales.EVENT_DATE
+    rows (30):
+      2006-11-06 | 203075.01301383972
+      2006-11-13 | 354454.720949173
+      2006-11-20 | 360116.5309820175
+      2006-11-27 | 355487.4550151825
+      2006-12-04 | 560214.8420410156
+      2006-12-11 | 717069.157877922
+      2006-12-18 | 712293.5468978882
+      2006-12-25 | 715119.0599269867
+      2007-01-01 | 717860.3470811844
+      2007-01-08 | 714080.3910112381
+      2007-01-15 | 710439.0008335114
+      2007-01-22 | 707064.9068984985
+      … 18 more rows
+
+  panel sap-s06
+    title: rows of Mailings1_2 by Mailings1_2.RESPONSE
+    rows (2):
+      false | 57006
+      true | 2994
+
+  panel sap-s07
+    title: rows of Customers by Customers.MARITAL_STATUS
+    rows (5):
+      Married-civ-spouse | 166711
+      Never-married | 118868
+      Divorced | 48571
+      Other | 14876
+      Widowed | 10974
+
+  panel sap-s08
+    title: distribution of Sales.AMOUNT
+    rows (21):
+      0 | 10 | 170793
+      1 | 10.5 | 171264
+      2 | 11 | 170706
+      3 | 11.5 | 171331
+      4 | 12 | 171069
+      5 | 12.5 | 171101
+      6 | 13 | 170781
+      7 | 13.5 | 170859
+      8 | 14 | 171204
+      9 | 14.5 | 170819
+      10 | 15 | 170754
+      11 | 15.5 | 171240
+      … 9 more rows
+
+  panel sap-s09
+    title: rows of Customers by Customers.SEX
+    rows (2):
+      Male | 238118
+      Female | 121882
+
+  five A: sap-s01, sap-s02, sap-s05, sap-s07, sap-s09
+
+  five B: sap-s02, sap-s04, sap-s05, sap-s07, sap-s09
+
+  five C: sap-s03, sap-s05, sap-s06, sap-s07, sap-s08

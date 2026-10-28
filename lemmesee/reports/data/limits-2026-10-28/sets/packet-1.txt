@@ -1,0 +1,897 @@
+You are judging first-overview dashboards for several databases. For each database you see its
+panels — each a title saying what it computes and the first rows its database returned — and two or three
+candidate fives, each a list of five of those panels. You did not make them and are not told what made them.
+Do not read, search or open any file other than this one, and run no command; when done, write your answers
+with the Write tool, once, to the path given to you.
+
+For every database, and every five of it:
+ 1. worth: how many of its five panels are worth a place on a first screen together — a panel that repeats
+    what another panel of the same five already shows does not count, nor a single bar, an empty result, a
+    column of blanks, or a picture that means less than it seems to.
+ 2. repeats: the panel ids in that five that repeat another panel of the same five.
+Then for the database:
+ 3. best: the letter of the five you would keep as this database's first screen.
+
+Write one JSON object: {"databases": {"<database>": {"fives": {"<letter>": {"worth": int, "repeats": [ids]}, ...},
+"best": "<letter>"}, ...}} — every database and every five below must be answered.
+
+
+=== database: credit ===
+A credit-card company's members, charges, payments and statements, with providers, corporations, categories and regions, as CTU serves it.
+
+  panel credit-s01
+    title: rows of charge by category.category_desc the twelve most
+    rows (10):
+      Meals | 180528
+      Misc | 180224
+      Lodging | 178896
+      Home Supplies | 178880
+      Clothing | 177792
+      Electronics | 176688
+      Groceries | 176496
+      Entertainment | 175408
+      Communication | 175056
+      Travel | 32
+
+  panel credit-s02
+    title: rows of charge by charge.charge_dt
+    rows (18):
+      1999-06-14 | 67568
+      1999-06-21 | 93424
+      1999-06-28 | 94000
+      1999-07-05 | 90768
+      1999-07-12 | 92048
+      1999-07-19 | 94352
+      1999-07-26 | 92448
+      1999-08-02 | 94208
+      1999-08-09 | 91312
+      1999-08-16 | 92560
+      1999-08-23 | 94304
+      1999-08-30 | 94352
+      … 6 more rows
+
+  panel credit-s03
+    title: largest tables, estimated rows
+    rows (8):
+      charge | 1594320
+      statement | 19769
+      payment | 15511
+      member | 10094
+      corporation | 500
+      provider | 500
+      category | 10
+      region | 9
+
+  panel credit-s04
+    title: rows of member per region
+    rows (8):
+      1213 | 1
+      1223 | 1
+      1235 | 1
+      1246 | 1
+      1248 | 1
+      1260 | 1
+      1280 | 1
+      1295 | 1
+
+  panel credit-s05
+    title: sum of charge.charge_amt by category.category_desc
+    rows (10):
+      Meals | 455952704.0000
+      Misc | 448347568.0000
+      Lodging | 448149040.0000
+      Home Supplies | 447158928.0000
+      Electronics | 445450320.0000
+      Clothing | 442716624.0000
+      Groceries | 441836048.0000
+      Communication | 438147376.0000
+      Entertainment | 435305936.0000
+      Travel | 58480.0000
+
+  panel credit-s06
+    title: sum of charge.charge_amt by charge.charge_dt
+    rows (18):
+      1999-06-14 | 168454992.0000
+      1999-06-21 | 230924640.0000
+      1999-06-28 | 240062656.0000
+      1999-07-05 | 225190432.0000
+      1999-07-12 | 231349712.0000
+      1999-07-19 | 235366256.0000
+      1999-07-26 | 230651232.0000
+      1999-08-02 | 235544320.0000
+      1999-08-09 | 227756224.0000
+      1999-08-16 | 229645664.0000
+      1999-08-23 | 234590640.0000
+      1999-08-30 | 238568384.0000
+      … 6 more rows
+
+  panel credit-s07
+    title: rows of member by region.region_name
+    rows (8):
+      Western Europea | 1295
+      Eastern Europea | 1280
+      Mid East / Sout | 1260
+      Africa | 1248
+      China | 1246
+      Scandanavian | 1235
+      Japan | 1223
+      South American | 1213
+
+  panel credit-s08
+    title: rows of member by region.region_name the twelve most
+    rows (8):
+      Western Europea | 1295
+      Eastern Europea | 1280
+      Mid East / Sout | 1260
+      Africa | 1248
+      China | 1246
+      Scandanavian | 1235
+      Japan | 1223
+      South American | 1213
+
+  panel credit-s09
+    title: sum of charge.charge_amt by provider.provider_name the twelve most
+    rows (12):
+      Prov. Just Tran | 239661792.0000
+      Prov. Just Sail | 131416784.0000
+      Prov. Just Rest | 104894816.0000
+      Prov. Just Ques | 97912976.0000
+      Prov. Just Petr | 87802224.0000
+      Prov. Just Oper | 79761648.0000
+      Prov. Just Need | 71812480.0000
+      Prov. Just Mach | 69834400.0000
+      Prov. Just Ligh | 67501056.0000
+      Prov. Just Key | 66763936.0000
+      Prov. Imperial | 57867744.0000
+      Prov. Imperial | 54732400.0000
+
+  panel credit-s10
+    title: sum of payment.payment_amt by payment.payment_dt
+    rows (2):
+      1999-09-02 | 120560962.0000
+      1999-10-03 | 64839455.0000
+
+  panel credit-s11
+    title: rows of member by member.lastname
+    rows (26):
+      BARR | 385
+      PAYNTER | 385
+      OLPHANT | 385
+      NELSON | 385
+      MAKAI | 385
+      LING | 385
+      KAHRMANN | 385
+      JONES | 385
+      HAHN | 385
+      GOHAN | 385
+      FLORINI | 385
+      EFLIN | 385
+      … 14 more rows
+
+  panel credit-s12
+    title: rows of payment by payment.payment_dt
+    rows (2):
+      1999-09-02 | 8319
+      1999-10-03 | 7235
+
+  five A: credit-s02, credit-s06, credit-s07, credit-s08, credit-s10
+
+  five B: credit-s03, credit-s04, credit-s05, credit-s09, credit-s11
+
+  five C: credit-s01, credit-s02, credit-s08, credit-s10, credit-s12
+
+
+=== database: seznam ===
+A web portal's advertising clients, the money they put into their wallets and what their ads consumed, as CTU serves it.
+
+  panel seznam-s01
+    title: sum of probehnuto.kc_proklikano by client.kraj the twelve most
+    rows (12):
+      Praha | 4771480075.88
+      Jihomoravský kraj | 1338740466.38
+      Moravskoslezský kraj | 930600713.56
+      Středočeský kraj | 885203337.74
+      ∅ | 702021779.10
+      Královéhradecký kraj | 541899328.56
+      Jihočeský kraj | 517724242.48
+      Plzeňský kraj | 433991878.36
+      Zlínský kraj | 422548248.84
+      Olomoucký kraj | 394377531.60
+      Ústecký kraj | 384359116.68
+      Pardubický kraj | 379594270.30
+
+  panel seznam-s02
+    title: rows of probehnuto_mimo_penezenku by probehnuto_mimo_penezenku.Month/Year
+    rows (39):
+      2012-08-01 | 27511
+      2012-09-01 | 27864
+      2012-10-01 | 28154
+      2012-11-01 | 28493
+      2012-12-01 | 28548
+      2013-01-01 | 28585
+      2013-02-01 | 28597
+      2013-03-01 | 29473
+      2013-04-01 | 29288
+      2013-05-01 | 29124
+      2013-06-01 | 28687
+      2013-07-01 | 25806
+      … 27 more rows
+
+  panel seznam-s03
+    title: sum of dobito.kc_dobito by dobito.sluzba
+    rows (8):
+      d | 7611400321.07
+      e | 1810299201.82
+      a | 1723219358.39
+      h | 1193906635.89
+      c | 41177925.57
+      b | 36047174.92
+      f | 12247149.49
+      g | -122465556.12
+
+  panel seznam-s04
+    title: sum of probehnuto.kc_proklikano by probehnuto.month_year_datum_transakce
+    rows (39):
+      2012-08-01 | 252530898.42
+      2012-09-01 | 206973718.58
+      2012-10-01 | 234736766.48
+      2012-11-01 | 247340713.92
+      2012-12-01 | 207787798.12
+      2013-01-01 | 220013083.54
+      2013-02-01 | 215313979.34
+      2013-03-01 | 240675125.06
+      2013-04-01 | 224499452.74
+      2013-05-01 | 243281356.46
+      2013-06-01 | 235560228.34
+      2013-07-01 | 238159404.16
+      … 27 more rows
+
+  panel seznam-s05
+    title: sum of probehnuto.kc_proklikano by probehnuto.sluzba
+    rows (9):
+      d | 7849387279.24
+      e | 1802957557.70
+      a | 1487358889.50
+      h | 1139433886.76
+      b | 51256116.56
+      ∅ | 43408185.82
+      c | 155203.92
+      g | 25948.96
+      f | -4339.48
+
+  panel seznam-s06
+    title: rows of dobito by dobito.month_year_datum_transakce
+    rows (39):
+      2012-08-01 | 8407
+      2012-09-01 | 7607
+      2012-10-01 | 8604
+      2012-11-01 | 8962
+      2012-12-01 | 7048
+      2013-01-01 | 7934
+      2013-02-01 | 9507
+      2013-03-01 | 10969
+      2013-04-01 | 10475
+      2013-05-01 | 11132
+      2013-06-01 | 11578
+      2013-07-01 | 11202
+      … 27 more rows
+
+  panel seznam-s07
+    title: largest tables, estimated rows
+    rows (4):
+      probehnuto | 1457664
+      probehnuto_mimo_penezenku | 598596
+      dobito | 553344
+      client | 73476
+
+  panel seznam-s08
+    title: sum of dobito.kc_dobito by dobito.month_year_datum_transakce
+    rows (39):
+      2012-08-01 | 237920293.15
+      2012-09-01 | 208541709.29
+      2012-10-01 | 232208837.64
+      2012-11-01 | 371399623.44
+      2012-12-01 | 293881065.73
+      2013-01-01 | 78136645.87
+      2013-02-01 | 124241100.87
+      2013-03-01 | 186447419.01
+      2013-04-01 | 194907213.59
+      2013-05-01 | 226654152.30
+      2013-06-01 | 183933071.59
+      2013-07-01 | 212016950.99
+      … 27 more rows
+
+  panel seznam-s09
+    title: rows of dobito by dobito.sluzba
+    rows (8):
+      d | 264600
+      h | 114692
+      a | 84355
+      e | 73541
+      c | 7863
+      g | 6083
+      b | 1645
+      f | 1567
+
+  panel seznam-s10
+    title: rows of client by client.kraj the twelve most
+    rows (12):
+      Praha | 19774
+      Jihomoravský kraj | 9493
+      Středočeský kraj | 7582
+      Moravskoslezský kraj | 6405
+      Jihočeský kraj | 3618
+      Plzeňský kraj | 3478
+      Olomoucký kraj | 3361
+      Královéhradecký kraj | 3340
+      Ústecký kraj | 3229
+      Zlínský kraj | 3105
+      Pardubický kraj | 2731
+      Liberecký kraj | 2617
+
+  panel seznam-s11
+    title: rows of probehnuto_mimo_penezenku by probehnuto_mimo_penezenku.probehla_inzerce_mimo_penezenku
+    rows (1):
+      ANO | 599386
+
+  panel seznam-s12
+    title: rows of probehnuto by probehnuto.month_year_datum_transakce
+    rows (39):
+      2012-08-01 | 19318
+      2012-09-01 | 19237
+      2012-10-01 | 19743
+      2012-11-01 | 20103
+      2012-12-01 | 19350
+      2013-01-01 | 19583
+      2013-02-01 | 20345
+      2013-03-01 | 23824
+      2013-04-01 | 24815
+      2013-05-01 | 25874
+      2013-06-01 | 27019
+      2013-07-01 | 28933
+      … 27 more rows
+
+  panel seznam-s13
+    title: rows of probehnuto by probehnuto.sluzba
+    rows (9):
+      d | 598875
+      h | 364009
+      a | 345178
+      e | 126089
+      ∅ | 22407
+      b | 5479
+      g | 18
+      c | 17
+      f | 6
+
+  panel seznam-s14
+    title: distribution of dobito.kc_dobito
+    rows (16):
+      0 | -31626074.00 | 2
+      1 | -26355346.00 | 2
+      4 | -15655572.00 | 1
+      6 | -11422331.00 | 1
+      7 | -7849975.00 | 3
+      8 | -4910335.00 | 56
+      9 | -1824170.50 | 553918
+      10 | 1463327.88 | 321
+      11 | 4811529.00 | 23
+      12 | 8164000.00 | 5
+      13 | 11775000.00 | 5
+      14 | 15700000.00 | 5
+      … 4 more rows
+
+  five A: seznam-s05, seznam-s07, seznam-s09, seznam-s11, seznam-s14
+
+  five B: seznam-s02, seznam-s06, seznam-s09, seznam-s12, seznam-s13
+
+  five C: seznam-s01, seznam-s03, seznam-s04, seznam-s08, seznam-s10
+
+
+=== database: cdeschools ===
+California's schools and districts, their SAT scores, and their free and reduced-price meal counts, as CTU serves it.
+
+  panel cdeschools-s01
+    title: rows of schools by schools.DOC
+    rows (12):
+      54 | 10190
+      52 | 4378
+      00 | 1703
+      56 | 1079
+      98 | 156
+      02 | 69
+      34 | 49
+      58 | 33
+      03 | 11
+      99 | 10
+      31 | 6
+      42 | 2
+
+  panel cdeschools-s02
+    title: sum of satscores.NumTstTakr by satscores.cname
+    rows (57):
+      Los Angeles | 119269
+      Orange | 38152
+      San Diego | 36084
+      Riverside | 26851
+      San Bernardino | 24386
+      Santa Clara | 21380
+      Alameda | 17635
+      Sacramento | 14360
+      Contra Costa | 14054
+      Fresno | 11814
+      Kern | 8600
+      Ventura | 8346
+      … 45 more rows
+
+  panel cdeschools-s03
+    title: rows of schools by schools.StatusType
+    rows (4):
+      Active | 11708
+      Closed | 4518
+      Merged | 1448
+      Pending | 12
+
+  panel cdeschools-s04
+    title: rows of schools by schools.DOCType
+    rows (12):
+      Unified School District | 10190
+      Elementary School District | 4378
+      County Office of Education (COE) | 1703
+      High School District | 1079
+      Regional Occupation Center/Program (ROC/ | 156
+      State Board of Education | 69
+      Non-School Locations | 49
+      Community College District | 33
+      Statewide Benefit Charter | 11
+      Administration Only | 10
+      State Special Schools | 6
+      Joint Powers Authority (JPA) | 2
+
+  panel cdeschools-s05
+    title: rows of schools by schools.SOCType the twelve most
+    rows (12):
+      Elementary Schools (Public) | 7591
+      High Schools (Public) | 1776
+      Intermediate/Middle Schools (Public) | 1652
+      ∅ | 1369
+      Continuation High Schools | 754
+      Special Education Schools (Public) | 750
+      District Community Day Schools | 615
+      Adult Education Centers | 551
+      County Community | 500
+      Alternative Schools of Choice | 500
+      K-12 Schools (Public) | 438
+      Elemen Schools In 1 School Dist. (Public | 273
+
+  panel cdeschools-s06
+    title: rows of schools by schools.EILName
+    rows (8):
+      Elementary | 7298
+      High School | 3367
+      Ungraded | 2525
+      Intermediate/Middle/Junior High | 1845
+      ∅ | 1369
+      Elementary-High Combination | 774
+      Adult | 352
+      Preschool | 156
+
+  panel cdeschools-s07
+    title: largest tables, estimated rows
+    rows (3):
+      schools | 17475
+      frpm | 9807
+      satscores | 2269
+
+  panel cdeschools-s08
+    title: sum of frpm.Free Meal Count (K-12) by frpm.School Type the twelve most
+    rows (12):
+      Elementary Schools (Public) | 1611192
+      High Schools (Public) | 790911
+      Intermediate/Middle Schools (Public) | 500085
+      K-12 Schools (Public) | 60919
+      Continuation High Schools | 37909
+      Alternative Schools of Choice | 29928
+      Elemen Schools In 1 School Dist. (Public | 21928
+      Junior High Schools (Public) | 12492
+      Special Education Schools (Public) | 10888
+      County Community | 10467
+      Juvenile Court Schools | 5185
+      District Community Day Schools | 3147
+
+  panel cdeschools-s09
+    title: rows of schools by schools.County the twelve most
+    rows (12):
+      Los Angeles | 3636
+      San Diego | 1139
+      Orange | 886
+      San Bernardino | 861
+      Santa Clara | 780
+      Alameda | 761
+      Riverside | 743
+      Sacramento | 622
+      Fresno | 620
+      Contra Costa | 465
+      Kern | 443
+      San Joaquin | 427
+
+  panel cdeschools-s10
+    title: sum of frpm.Free Meal Count (K-12) by frpm.District Type
+    rows (8):
+      Unified School District | 2206289
+      Elementary School District | 596110
+      High School District | 243404
+      County Office of Education (COE) | 48346
+      State Board of Education | 2333
+      Statewide Benefit Charter | 710
+      State Special Schools | 579
+      Non-School Locations | 424
+
+  panel cdeschools-s11
+    title: rows of schools by schools.LastUpdate
+    rows (18):
+      1999-01-01 | 3214
+      2000-01-01 | 134
+      2001-01-01 | 16
+      2002-01-01 | 19
+      2003-01-01 | 21
+      2004-01-01 | 47
+      2005-01-01 | 148
+      2006-01-01 | 32
+      2007-01-01 | 7
+      2008-01-01 | 17
+      2009-01-01 | 907
+      2010-01-01 | 41
+      … 6 more rows
+
+  panel cdeschools-s12
+    title: rows of frpm by frpm.School Type the twelve most
+    rows (12):
+      Elementary Schools (Public) | 5584
+      High Schools (Public) | 1331
+      Intermediate/Middle Schools (Public) | 1299
+      Continuation High Schools | 459
+      Alternative Schools of Choice | 259
+      K-12 Schools (Public) | 240
+      Elemen Schools In 1 School Dist. (Public | 206
+      District Community Day Schools | 203
+      Special Education Schools (Public) | 132
+      County Community | 75
+      Juvenile Court Schools | 74
+      Junior High Schools (Public) | 46
+
+  five A: cdeschools-s03, cdeschools-s04, cdeschools-s05, cdeschools-s11, cdeschools-s12
+
+  five B: cdeschools-s03, cdeschools-s04, cdeschools-s06, cdeschools-s08, cdeschools-s09
+
+  five C: cdeschools-s01, cdeschools-s02, cdeschools-s03, cdeschools-s07, cdeschools-s10
+
+
+=== database: birdcookbook ===
+Recipes, their ingredients and quantities, and each recipe's nutrition, as BIRD serves it.
+
+  panel birdcookbook-s01
+    title: sum of Quantity.max_qty by Quantity.unit the twelve most
+    rows (12):
+      ∅ | ∅
+      ounce(s) | 3110.25
+      cup(s) | 2104.0899999999965
+      tablespoon(s) | 1711
+      milliliter(s) | 1500
+      teaspoon(s) | 1071.7600000000002
+      fl. ounce(s) | 980.5
+      pound(s) | 444.97999999999996
+      gram(s) | 425
+      slice(s) | 101
+      clove(s) | 54.5
+      dash(es) | 46
+
+  panel birdcookbook-s02
+    title: rows of Recipe by Recipe.yield_unit
+    rows (58):
+      ∅ | 912
+      2 cups | 12
+      1 cake | 12
+      4 cups | 7
+      1 pie | 7
+      1 | 6
+      1 cup | 5
+      0 | 4
+      6 cups | 3
+      1 1/4 cups | 3
+      1 quart | 3
+      3 dozen | 3
+      … 46 more rows
+
+  panel birdcookbook-s03
+    title: rows of Recipe by Recipe.subtitle
+    rows (36):
+      ∅ | 996
+      with Yogurt Herb Sauce | 1
+      with Parsley and Garlic | 1
+      with California Avocado | 1
+      with Pecans | 1
+      (Dinner Party Bake or Barbecue) | 1
+      with Parma Ham and Porcini | 1
+      Kahlua Fantasy Chocolate Cheesecake | 1
+      with Zinfandel Sauce | 1
+      with Root Vegetables and Sherry | 1
+      Vegetarian Chili | 1
+      a La Creme | 1
+      … 24 more rows
+
+  panel birdcookbook-s04
+    title: rows of Quantity by Ingredient.category the twelve most
+    rows (12):
+      spices and seasonings | 973
+      fresh vegetables | 743
+      baking products | 390
+      dairy | 330
+      oils and fats | 195
+      beverages | 171
+      meat/poultry | 169
+      fresh fruit | 160
+      condiments/sauces | 158
+      fresh herbs | 149
+      grains | 125
+      cheese | 105
+
+  panel birdcookbook-s05
+    title: sum of Quantity.max_qty by Quantity.unit
+    rows (47):
+      ∅ | ∅
+      ounce(s) | 3110.25
+      cup(s) | 2104.0899999999965
+      tablespoon(s) | 1711
+      milliliter(s) | 1500
+      teaspoon(s) | 1071.7600000000002
+      fl. ounce(s) | 980.5
+      pound(s) | 444.97999999999996
+      gram(s) | 425
+      slice(s) | 101
+      clove(s) | 54.5
+      dash(es) | 46
+      … 35 more rows
+
+  panel birdcookbook-s06
+    title: average of Nutrition.calories by Recipe.title the twelve most
+    rows (12):
+      Ginger-Orange Barbecued Beef Back Ribs | 892.04
+      Baja Beef and Pistachio Plate | 809.1
+      Holiday Stuffed Pork Roast | 799.82
+      Italian-Style Pistachio Pasta | 782.61
+      Onion-Beer Tri-Tip Roast | 763.75
+      Fish Chowder | 714.24
+      Seafood Marinara with Pasta | 697.84
+      Oriental Pork | 688.75
+      Chicken Zucchini Stew | 681.57
+      Western Pork Barbecue Supper | 680.89
+      Tropical Stuffed Cornish Hens | 662.44
+      Hearty Ribs and Bean Bake | 641.91
+
+  panel birdcookbook-s07
+    title: largest tables, estimated rows
+    rows (4):
+      Quantity | 5116
+      Ingredient | 3346
+      Recipe | 1031
+      Nutrition | 878
+
+  panel birdcookbook-s08
+    title: rows of Quantity by Quantity.unit the twelve most
+    rows (12):
+      cup(s) | 1943
+      teaspoon(s) | 1227
+      tablespoon(s) | 930
+      pound(s) | 349
+      ounce(s) | 286
+      dash(es) | 48
+      clove(s) | 42
+      fl. ounce(s) | 37
+      10 oz. package(s) | 25
+      ∅ | 24
+      envelope(s) | 18
+      16 oz. can(s) | 16
+
+  panel birdcookbook-s09
+    title: sum of Quantity.max_qty by Recipe.title the twelve most
+    rows (12):
+      Sonoma Turkey Bouillabaisse | 788
+      Sonoma Turkey and Vegetables | 768
+      Iced Raspberry Mousse | 429.25
+      Bake Mine Vegetarian | 124.58
+      Mussels with Linguine | 73.63
+      Lamb Tortellini Minestrone | 72
+      Lasagne-Spinach Spirals | 67
+      Hot Gazpacho | 57.5
+      Rice Gazpacho | 50.25
+      Tofu Baked Ziti | 49.88
+      -Beer- | 48
+      -Cola Drink- | 48
+
+  panel birdcookbook-s10
+    title: rows of Quantity by Ingredient.name the twelve most
+    rows (12):
+      salt | 208
+      water | 136
+      sugar | 135
+      onion | 107
+      vegetable oil | 91
+      lemon juice | 80
+      green onion | 72
+      olive oil | 71
+      fresh ground black pepper | 67
+      celery | 63
+      black pepper | 59
+      fresh parsley | 56
+
+  panel birdcookbook-s11
+    title: rows of Ingredient by Ingredient.category the twelve most
+    rows (12):
+      fresh vegetables | 402
+      meat/poultry | 287
+      spices and seasonings | 230
+      fresh fruit | 204
+      fresh seafood | 153
+      condiments/sauces | 94
+      pasta/noodles | 87
+      alcoholic beverages | 87
+      baking products | 86
+      dairy | 84
+      cheese | 83
+      cereals | 78
+
+  five A: birdcookbook-s04, birdcookbook-s06, birdcookbook-s08, birdcookbook-s10, birdcookbook-s11
+
+  five B: birdcookbook-s02, birdcookbook-s03, birdcookbook-s05, birdcookbook-s07, birdcookbook-s09
+
+  five C: birdcookbook-s01, birdcookbook-s04, birdcookbook-s08, birdcookbook-s10, birdcookbook-s11
+
+
+=== database: birdaddress ===
+American ZIP codes: their places, states, area codes, congressional districts, metropolitan areas and other names, as BIRD serves it.
+
+  panel birdaddress-s01
+    title: rows of zip_data by zip_data.region
+    rows (5):
+      South | 14946
+      Midwest | 11305
+      Northeast | 7311
+      West | 7163
+      ∅ | 838
+
+  panel birdaddress-s02
+    title: sum of zip_data.total_delivery_receptacles by zip_data.type
+    rows (9):
+      APO/FPO Military | ∅
+      Post Office | 146105127
+      P.O. Box Only | 9729017
+      Branch | 6453394
+      Non Postal Community Name | 3982232
+      Unique Post Office | 713950
+      Community Post Office  | 99460
+      Non Postal Community Name-Unique | 23207
+      Branch-Unique | 11831
+
+  panel birdaddress-s03
+    title: rows of congress by congress.party
+    rows (3):
+      Republican | 279
+      Democrat | 259
+      Independent | 2
+
+  panel birdaddress-s04
+    title: rows of zip_data by state.name the twelve most
+    rows (12):
+      Texas | 2598
+      California | 2587
+      Pennsylvania | 2169
+      New York | 2150
+      Illinois | 1568
+      Florida | 1471
+      Ohio | 1415
+      Virginia | 1213
+      Michigan | 1158
+      Missouri | 1154
+      North Carolina | 1080
+      Iowa | 1054
+
+  panel birdaddress-s05
+    title: largest tables, estimated rows
+    rows (9):
+      area_code | 53796
+      country | 51001
+      zip_congress | 45231
+      alias | 41701
+      zip_data | 41563
+      avoid | 24114
+      congress | 540
+      CBSA | 465
+      state | 62
+
+  panel birdaddress-s06
+    title: rows of alias per zip_data
+    rows (1):
+      1 | 41701
+
+  panel birdaddress-s07
+    title: rows of country by state.name the twelve most
+    rows (12):
+      Texas | 3375
+      California | 2707
+      Pennsylvania | 2539
+      New York | 2395
+      Illinois | 2079
+      Ohio | 1961
+      Missouri | 1655
+      Florida | 1618
+      Virginia | 1575
+      Iowa | 1545
+      Michigan | 1534
+      Georgia | 1528
+
+  panel birdaddress-s08
+    title: sum of zip_data.total_beneficiaries by state.name the twelve most
+    rows (12):
+      Armed Forces Pacific | ∅
+      Armed Forces Europe | ∅
+      Armed Forces Americas | ∅
+      California | 5857545
+      Florida | 4530810
+      Texas | 4123630
+      New York | 3581365
+      Pennsylvania | 2795310
+      Ohio | 2336570
+      Illinois | 2219725
+      Michigan | 2186365
+      North Carolina | 2059035
+
+  panel birdaddress-s09
+    title: rows of zip_data by zip_data.type
+    rows (9):
+      Post Office | 27230
+      P.O. Box Only | 9080
+      Unique Post Office | 2011
+      Non Postal Community Name | 1728
+      Branch | 654
+      APO/FPO Military | 621
+      Community Post Office  | 162
+      Non Postal Community Name-Unique | 50
+      Branch-Unique | 27
+
+  panel birdaddress-s10
+    title: rows of zip_data by zip_data.division
+    rows (10):
+      South Atlantic | 7090
+      East North Central | 5978
+      West North Central | 5327
+      Middle Atlantic | 5041
+      West South Central | 4785
+      Pacific | 4055
+      Mountain | 3108
+      East South Central | 3071
+      New England | 2270
+      ∅ | 838
+
+  panel birdaddress-s11
+    title: rows of zip_data by zip_data.time_zone
+    rows (13):
+      Eastern | 18604
+      Central | 14613
+      Pacific | 4114
+      Mountain | 3134
+      ∅ | 608
+      Atlantic | 192
+      Hawaii-Aleutian Islands | 137
+      Alaska | 135
+      Guam | 16
+      Micronesia | 4
+      Marshall Islands | 3
+      Palau | 2
+      … 1 more rows
+
+  five A: birdaddress-s01, birdaddress-s04, birdaddress-s08, birdaddress-s10, birdaddress-s11
+
+  five B: birdaddress-s04, birdaddress-s07, birdaddress-s09, birdaddress-s10, birdaddress-s11
+
+  five C: birdaddress-s01, birdaddress-s02, birdaddress-s03, birdaddress-s05, birdaddress-s06

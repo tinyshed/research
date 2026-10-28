@@ -1,0 +1,1850 @@
+{
+ "the look keeps, the teachers drop": [
+  {
+   "db": "birdstudentclub",
+   "title": "rows of zip_code by zip_code.type",
+   "teachers": 0.06,
+   "look": 0.77,
+   "rows": 3,
+   "first": [
+    "Standard | 29973",
+    "PO Box | 9438",
+    "Unique | 2466"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "basketball",
+   "title": "rows of series_post by series_post.series",
+   "teachers": 0.08,
+   "look": 0.71,
+   "rows": 11,
+   "first": [
+    "L | 264",
+    "M | 172",
+    "N | 89",
+    "O | 66"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "basketballwomen",
+   "title": "rows of series_post by series_post.series",
+   "teachers": 0.1,
+   "look": 0.73,
+   "rows": 7,
+   "first": [
+    "A | 17",
+    "C | 17",
+    "B | 16",
+    "D | 14"
+   ],
+   "counters": {
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "birdbeerfactory",
+   "title": "sum of transaction.CreditCardNumber by transaction.CreditCardType",
+   "teachers": 0.03,
+   "look": 0.66,
+   "rows": 4,
+   "first": [
+    "MasterCard | 11182550283109333911",
+    "Visa | 9795233172522920067",
+    "Discover | 6644275553969213041",
+    "American Express | 346160624005795269"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "yelp",
+   "title": "rows of Users by Users.user_votes_funny",
+   "teachers": 0.1,
+   "look": 0.7,
+   "rows": 5,
+   "first": [
+    "None | 29808",
+    "Low | 28935",
+    "Medium | 7299",
+    "High | 2962"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdbeerfactory",
+   "title": "average of transaction.CreditCardNumber by transaction.CreditCardType",
+   "teachers": 0.02,
+   "look": 0.61,
+   "rows": 4,
+   "first": [
+    "Discover | 5996638586614813.2139",
+    "MasterCard | 5358193714954160.9540",
+    "Visa | 4551688277194665.4586",
+    "American Express | 358715672544865.5637"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdcollegecompletion",
+   "title": "rows of institution_grads by institution_grads.year",
+   "teachers": 0.11,
+   "look": 0.7,
+   "rows": 12,
+   "first": [
+    "2002-01-01 | 107856",
+    "2003-01-01 | 107856",
+    "2004-01-01 | 107856",
+    "2005-01-01 | 107856"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdsimpsonepisodes",
+   "title": "rows of Credit, by Credit.category, the twelve most",
+   "teachers": 0.2,
+   "look": 0.78,
+   "rows": 12,
+   "first": [
+    "Animation Department | 1340",
+    "Produced by | 943",
+    "Cast | 619",
+    "Other crew | 388"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "sfscores",
+   "title": "rows of businesses by businesses.application_date",
+   "teachers": 0.1,
+   "look": 0.68,
+   "rows": 50,
+   "first": [
+    "1899-01-01 | 3",
+    "1968-01-01 | 1",
+    "1969-01-01 | 1",
+    "1970-01-01 | 1"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": true,
+    "gemini": false
+   }
+  },
+  {
+   "db": "world",
+   "title": "rows of Country, by Country.HeadOfState, the twelve most",
+   "teachers": 0.09,
+   "look": 0.67,
+   "rows": 12,
+   "first": [
+    "Elisabeth II | 35",
+    "Jacques Chirac | 11",
+    "George W. Bush | 7",
+    "Beatrix | 3"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "birdsoccer2016",
+   "title": "rows of Match, by Toss_Decision.Toss_Name, the twelve most",
+   "teachers": 0.08,
+   "look": 0.65,
+   "rows": 2,
+   "first": [
+    "field | 315",
+    "bat | 262"
+   ],
+   "counters": {
+    "sonnet": false,
+    "gemini": true
+   }
+  },
+  {
+   "db": "birdbeerfactory",
+   "title": "sum of transaction.CreditCardNumber by transaction.TransactionDate",
+   "teachers": 0.04,
+   "look": 0.61,
+   "rows": 27,
+   "first": [
+    "2014-07-01 | 69286805599884670",
+    "2014-08-01 | 112771376174904941",
+    "2014-09-01 | 136490475720565308",
+    "2014-10-01 | 291177919963197835"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "legalacts",
+   "title": "rows of legalacts by legalacts.update",
+   "teachers": 0.12,
+   "look": 0.69,
+   "rows": 23,
+   "first": [
+    "2012-07-13 | 5875",
+    "2012-07-14 | 27491",
+    "2012-07-15 | 39888",
+    "2012-07-16 | 25557"
+   ],
+   "counters": {
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "australianfootball",
+   "title": "rows of matches by matches.lose_loc",
+   "teachers": 0.08,
+   "look": 0.64,
+   "rows": 3,
+   "first": [
+    "a | 1756",
+    "h | 1266",
+    "d | 28"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "basketballwomen",
+   "title": "rows of draft by draft.playedPro",
+   "teachers": 0.08,
+   "look": 0.64,
+   "rows": 2,
+   "first": [
+    "v | 506",
+    "x | 268"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "birdeuropeanfootball1",
+   "title": "rows of matchs by matchs.Date",
+   "teachers": 0.16,
+   "look": 0.72,
+   "rows": 17,
+   "first": [
+    "2005-01-01 | 3925",
+    "2006-01-01 | 7824",
+    "2007-01-01 | 7662",
+    "2008-01-01 | 7801"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "cdeschools",
+   "title": "rows of schools by schools.LastUpdate",
+   "teachers": 0.1,
+   "look": 0.65,
+   "rows": 18,
+   "first": [
+    "1999-01-01 | 3214",
+    "2000-01-01 | 134",
+    "2001-01-01 | 16",
+    "2002-01-01 | 19"
+   ],
+   "counters": {
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "birdolympics",
+   "title": "sum of person.weight by person.gender",
+   "teachers": 0.05,
+   "look": 0.6,
+   "rows": 2,
+   "first": [
+    "M | 5354829",
+    "F | 1826678"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "movielens",
+   "title": "rows of movies by movies.year",
+   "teachers": 0.15,
+   "look": 0.7,
+   "rows": 4,
+   "first": [
+    "1 | 50",
+    "2 | 310",
+    "3 | 749",
+    "4 | 2723"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "basketball",
+   "title": "rows of draft by draft.lgID",
+   "teachers": 0.14,
+   "look": 0.68,
+   "rows": 2,
+   "first": [
+    "NBA | 7314",
+    "ABA | 1307"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "sfscores",
+   "title": "rows of businesses, by businesses.city, the twelve most",
+   "teachers": 0.13,
+   "look": 0.67,
+   "rows": 12,
+   "first": [
+    "SF | 2024",
+    "San Francisco | 1951",
+    "∅ | 1647",
+    "S.F. | 678"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "australianfootball",
+   "title": "rows of matches by matches.tid2_loc",
+   "teachers": 0.05,
+   "look": 0.59,
+   "rows": 2,
+   "first": [
+    "a | 1527",
+    "h | 1523"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdlawepisode",
+   "title": "rows of Episode by Episode.air_date",
+   "teachers": 0.13,
+   "look": 0.66,
+   "rows": 22,
+   "first": [
+    "1998-09-21 | 1",
+    "1998-10-05 | 1",
+    "1998-10-12 | 1",
+    "1998-10-19 | 1"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "cdeschools",
+   "title": "rows of schools by schools.ClosedDate",
+   "teachers": 0.11,
+   "look": 0.64,
+   "rows": 35,
+   "first": [
+    "1980-01-01 | 2",
+    "1983-01-01 | 1",
+    "1984-01-01 | 83",
+    "1985-01-01 | 119"
+   ],
+   "counters": {
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "northwind",
+   "title": "rows of orders by employees.title_of_courtesy",
+   "teachers": 0.06,
+   "look": 0.59,
+   "rows": 4,
+   "first": [
+    "Ms. | 397",
+    "Mr. | 181",
+    "Mrs. | 156",
+    "Dr. | 96"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "yelp",
+   "title": "rows of Reviews by Reviews.review_votes_funny",
+   "teachers": 0.09,
+   "look": 0.62,
+   "rows": 5,
+   "first": [
+    "None | 236671",
+    "Low | 84535",
+    "Medium | 1438",
+    "High | 248"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "australianfootball",
+   "title": "rows of matches by matches.tid1_loc",
+   "teachers": 0.06,
+   "look": 0.58,
+   "rows": 2,
+   "first": [
+    "h | 1527",
+    "a | 1523"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdsoccer2016",
+   "title": "rows of Match, by Bowling_Style.Bowling_skill, the twelve most",
+   "teachers": 0.1,
+   "look": 0.62,
+   "rows": 12,
+   "first": [
+    "Right-arm offbreak | 167",
+    "Right-arm medium | 138",
+    "Right-arm fast-medium | 49",
+    "Slow left-arm orthodox | 48"
+   ],
+   "counters": {
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "nba",
+   "title": "rows of Game, by Team.TeamName, the twelve most",
+   "teachers": 0.12,
+   "look": 0.64,
+   "rows": 12,
+   "first": [
+    "Memphis Grizzlies | 3",
+    "Golden State Warriors | 2",
+    "Houston Rockets | 2",
+    "Philadelphia 76ers | 2"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "australianfootball",
+   "title": "rows of matches, by teams.tname, the twelve most",
+   "teachers": 0.15,
+   "look": 0.66,
+   "rows": 12,
+   "first": [
+    "Adelaide | 369",
+    "Brisbane Lions | 345",
+    "Carlton | 318",
+    "Collingwood | 297"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdcookbook",
+   "title": "sum of Quantity.max_qty, by Quantity.unit, the twelve most",
+   "teachers": 0.07,
+   "look": 0.58,
+   "rows": 12,
+   "first": [
+    "∅ | ∅",
+    "ounce(s) | 3110.25",
+    "cup(s) | 2104.0899999999965",
+    "tablespoon(s) | 1711"
+   ],
+   "counters": {
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "birdmentalhealthsurvey",
+   "title": "rows of Answer, by Survey.Description, the twelve most",
+   "teachers": 0.19,
+   "look": 0.7,
+   "rows": 5,
+   "first": [
+    "mental health survey for | 85980",
+    "mental health survey for | 57456",
+    "mental health survey for | 32760",
+    "mental health survey for | 31692"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdmovies4",
+   "title": "rows of movie_cast, by gender.gender, the twelve most",
+   "teachers": 0.16,
+   "look": 0.67,
+   "rows": 3,
+   "first": [
+    "Male | 28976",
+    "Unspecified | 16649",
+    "Female | 13458"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdmovies4",
+   "title": "rows of movie_languages, by language_role.language_role, the twelve most",
+   "teachers": 0.15,
+   "look": 0.66,
+   "rows": 2,
+   "first": [
+    "Spoken | 6937",
+    "Original | 4803"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdsimpsonepisodes",
+   "title": "rows of Credit by Credit.credited",
+   "teachers": 0.09,
+   "look": 0.6,
+   "rows": 2,
+   "first": [
+    "true | 4353",
+    "false | 204"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "cdeschools",
+   "title": "rows of schools by schools.OpenDate",
+   "teachers": 0.08,
+   "look": 0.59,
+   "rows": 116,
+   "first": [
+    "1850-01-01 | 1",
+    "1853-01-01 | 1",
+    "1856-01-01 | 1",
+    "1860-01-01 | 1"
+   ],
+   "counters": {
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "salesdb",
+   "title": "sum of Sales.Quantity × Products.Price by Employees.MiddleInitial",
+   "teachers": 0.07,
+   "look": 0.58,
+   "rows": 12,
+   "first": [
+    "r | 329750595322.5000",
+    "a | 278283289601.7100",
+    "e | 235727908884.6750",
+    "u | 158200129249.0450"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "australianfootball",
+   "title": "rows of matches by matches.start_dt",
+   "teachers": 0.14,
+   "look": 0.64,
+   "rows": 16,
+   "first": [
+    "2000-01-01 | 185",
+    "2001-01-01 | 185",
+    "2002-01-01 | 185",
+    "2003-01-01 | 185"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "basketballwomen",
+   "title": "rows of awards_players by awards_players.pos",
+   "teachers": 0.12,
+   "look": 0.62,
+   "rows": 6,
+   "first": [
+    "∅ | 112",
+    "G | 15",
+    "F | 15",
+    "C | 11"
+   ],
+   "counters": {
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "birdstudentclub",
+   "title": "rows of expense by expense.expense_description",
+   "teachers": 0.16,
+   "look": 0.66,
+   "rows": 12,
+   "first": [
+    "Pizza | 7",
+    "Posters | 6",
+    "Water, chips, cookies | 5",
+    "Parking | 3"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdstudentclub",
+   "title": "rows of budget by budget.event_status",
+   "teachers": 0.16,
+   "look": 0.66,
+   "rows": 3,
+   "first": [
+    "Open | 23",
+    "Closed | 22",
+    "Planning | 7"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "gosales",
+   "title": "rows of go_1k by go_1k.Date",
+   "teachers": 0.18,
+   "look": 0.68,
+   "rows": 43,
+   "first": [
+    "2015-01-01 | 18",
+    "2015-02-01 | 15",
+    "2015-03-01 | 14",
+    "2015-04-01 | 11"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdbooks",
+   "title": "rows of cust_order, by address.street_name, the twelve most",
+   "teachers": 0.08,
+   "look": 0.58,
+   "rows": 12,
+   "first": [
+    "Macpherson Point | 68",
+    "Ramsey Avenue | 63",
+    "Corben Avenue | 63",
+    "Boyd Pass | 63"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdretailcomplains",
+   "title": "rows of client by client.month",
+   "teachers": 0.19,
+   "look": 0.69,
+   "rows": 12,
+   "first": [
+    "1 | 454",
+    "2 | 428",
+    "3 | 427",
+    "4 | 448"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "credit",
+   "title": "rows of member by region.street",
+   "teachers": 0.08,
+   "look": 0.58,
+   "rows": 8,
+   "first": [
+    "444 Fourth St. | 1295",
+    "555 Fifth St St | 1280",
+    "888 Eighth St. | 1260",
+    "999 Ninth St. | 1248"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "chinook",
+   "title": "sum of invoice_line.unit_price × invoice_line.quantity, by invoice.billing_address, the twelve most",
+   "teachers": 0.07,
+   "look": 0.56,
+   "rows": 12,
+   "first": [
+    "Rilská 3174/6 | 49.62",
+    "2211 W Berry Street | 47.62",
+    "Calle Lira, 198 | 46.62",
+    "3 Chatham Street | 45.62"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "geneea",
+   "title": "rows of poslanec by poslanec.psp_telefon",
+   "teachers": 0.04,
+   "look": 0.53,
+   "rows": 3,
+   "first": [
+    "\\\\ | 1303",
+    "∅ | 209",
+    "2097 | 1"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "northwind",
+   "title": "rows of orders by employees.address",
+   "teachers": 0.07,
+   "look": 0.56,
+   "rows": 9,
+   "first": [
+    "4110 Old Redmond Rd. | 156",
+    "722 Moss Bay Blvd. | 127",
+    "507 - 20th Ave. E.\\nApt. | 123",
+    "4726 - 11th Ave. N.E. | 104"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "salesdb",
+   "title": "rows of Employees by Employees.MiddleInitial",
+   "teachers": 0.04,
+   "look": 0.53,
+   "rows": 12,
+   "first": [
+    "a | 4",
+    "e | 3",
+    "r | 3",
+    "u | 2"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "basketball",
+   "title": "rows of players, by players.hsState, the twelve most",
+   "teachers": 0.15,
+   "look": 0.64,
+   "rows": 12,
+   "first": [
+    "∅ | 834",
+    "CA | 428",
+    "NY | 395",
+    "IL | 330"
+   ],
+   "counters": {
+    "opus": true,
+    "sonnet": true,
+    "gemini": false
+   }
+  },
+  {
+   "db": "birdretailcomplains",
+   "title": "rows of client, by client.state, the twelve most",
+   "teachers": 0.24,
+   "look": 0.73,
+   "rows": 12,
+   "first": [
+    "NY | 891",
+    "MA | 725",
+    "CT | 356",
+    "CA | 245"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdsoccer2016",
+   "title": "rows of Match, by Batting_Style.Batting_hand, the twelve most",
+   "teachers": 0.11,
+   "look": 0.6,
+   "rows": 3,
+   "first": [
+    "Right-hand bat | 394",
+    "Left-hand bat | 180",
+    "∅ | 3"
+   ],
+   "counters": {
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "ncaa",
+   "title": "rows of regular_season_detailed_results by seasons.regionW",
+   "teachers": 0.12,
+   "look": 0.61,
+   "rows": 3,
+   "first": [
+    "East | 46515",
+    "Atlanta | 9328",
+    "Albuquerque | 4675"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "sfscores",
+   "title": "rows of violations, by businesses.city, the twelve most",
+   "teachers": 0.09,
+   "look": 0.58,
+   "rows": 12,
+   "first": [
+    "San Francisco | 13135",
+    "SF | 11980",
+    "∅ | 5978",
+    "S.F. | 4611"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "shakespeare",
+   "title": "rows of paragraphs, by chapters.Description, the twelve most",
+   "teachers": 0.14,
+   "look": 0.63,
+   "rows": 12,
+   "first": [
+    "The same. | 427",
+    "The Rape of Lucrece | 265",
+    "The Shepherd’s cottage. | 258",
+    "The Boar’s-Head Tavern,  | 214"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "salesdb",
+   "title": "rows of Customers, by Customers.MiddleInitial, the twelve most",
+   "teachers": 0.08,
+   "look": 0.57,
+   "rows": 12,
+   "first": [
+    "∅ | 8333",
+    "A | 1358",
+    "L | 1314",
+    "M | 1219"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "salesdb",
+   "title": "sum of Sales.Quantity by Employees.MiddleInitial",
+   "teachers": 0.06,
+   "look": 0.54,
+   "rows": 12,
+   "first": [
+    "a | 551254760",
+    "e | 524879828",
+    "r | 453697931",
+    "u | 301718566"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "world",
+   "title": "rows of CountryLanguage, by Country.HeadOfState, the twelve most",
+   "teachers": 0.08,
+   "look": 0.56,
+   "rows": 12,
+   "first": [
+    "Elisabeth II | 74",
+    "George W. Bush | 32",
+    "Jacques Chirac | 29",
+    "Jiang Zemin | 21"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "birdchicagocrime",
+   "title": "rows of IUCR by IUCR.index_code",
+   "teachers": 0.1,
+   "look": 0.58,
+   "rows": 2,
+   "first": [
+    "N | 301",
+    "I | 100"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdeuropeanfootball1",
+   "title": "rows of matchs by matchs.Date split by matchs.FTR",
+   "teachers": 0.15,
+   "look": 0.63,
+   "rows": 51,
+   "first": [
+    "2005-01-01 | A | 1080",
+    "2005-01-01 | H | 1746",
+    "2005-01-01 | D | 1099",
+    "2006-01-01 | H | 3580"
+   ],
+   "counters": {}
+  }
+ ],
+ "the teachers keep, the look drops": [
+  {
+   "db": "birdairline",
+   "title": "average of Airlines.DEP_DELAY, by Air Carriers.Description, the twelve most",
+   "teachers": 0.89,
+   "look": 0.18,
+   "rows": 12,
+   "first": [
+    "Commutair Aka Champlain  | 32.3970994475138122",
+    "Frontier Airlines Inc.:  | 26.3510200172397280",
+    "Peninsula Airways Inc.:  | 25.8802816901408451",
+    "JetBlue Airways: B6 | 22.7053585196607556"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdairline",
+   "title": "sum of Airlines.DEP_DELAY_NEW, by Airports.Description, the twelve most",
+   "teachers": 0.89,
+   "look": 0.19,
+   "rows": 12,
+   "first": [
+    "Chicago, IL: Chicago O'H | 738832",
+    "Atlanta, GA: Hartsfield- | 477925",
+    "Dallas/Fort Worth, TX: D | 450598",
+    "Denver, CO: Denver Inter | 430768"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "voc",
+   "title": "sum of voyages.tonnage by voyages.departure_date",
+   "teachers": 0.88,
+   "look": 0.19,
+   "rows": 200,
+   "first": [
+    "1595-01-01 | 1230",
+    "1598-01-01 | 5890",
+    "1599-01-01 | 2990",
+    "1600-01-01 | 4950"
+   ],
+   "counters": {
+    "opus": true,
+    "sonnet": true,
+    "gemini": true
+   }
+  },
+  {
+   "db": "birdairline",
+   "title": "average of Airlines.DEP_DELAY_NEW, by Air Carriers.Description, the twelve most",
+   "teachers": 0.87,
+   "look": 0.18,
+   "rows": 12,
+   "first": [
+    "Commutair Aka Champlain  | 36.1019797421731123",
+    "Frontier Airlines Inc.:  | 29.1990230820802605",
+    "Peninsula Airways Inc.:  | 27.4154929577464789",
+    "JetBlue Airways: B6 | 26.1937933693138011"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdairline",
+   "title": "sum of Airlines.DEP_DELAY_NEW, by Air Carriers.Description, the twelve most",
+   "teachers": 0.89,
+   "look": 0.2,
+   "rows": 12,
+   "first": [
+    "Southwest Airlines Co.:  | 1549303",
+    "American Airlines Inc.:  | 1364336",
+    "SkyWest Airlines Inc.: O | 1270667",
+    "United Air Lines Inc.: U | 1229876"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "world",
+   "title": "sum of City.Population, by Country (by key), the twelve most",
+   "teachers": 0.91,
+   "look": 0.24,
+   "rows": 12,
+   "first": [
+    "CHN | 175953614",
+    "IND | 123298526",
+    "BRA | 85876862",
+    "USA | 78625774"
+   ],
+   "counters": {
+    "opus": true,
+    "sonnet": true,
+    "gemini": true
+   }
+  },
+  {
+   "db": "birdairline",
+   "title": "sum of Airlines.CANCELLED, by Air Carriers.Description, the twelve most",
+   "teachers": 0.9,
+   "look": 0.24,
+   "rows": 12,
+   "first": [
+    "Southwest Airlines Co.:  | 1928",
+    "Republic Airline: YX | 1495",
+    "American Airlines Inc.:  | 1417",
+    "Envoy Air: MQ | 1200"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birddisney",
+   "title": "sum of revenue.Studio Entertainment[NI 1] by revenue.Year",
+   "teachers": 0.88,
+   "look": 0.25,
+   "rows": 26,
+   "first": [
+    "1991-01-01 | 2593",
+    "1992-01-01 | 3115",
+    "1993-01-01 | 3673.4",
+    "1994-01-01 | 4793"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "ncaa",
+   "title": "rows of tourney_detailed_results, by seasons (by key), the twelve most",
+   "teachers": 0.79,
+   "look": 0.18,
+   "rows": 12,
+   "first": [
+    "2011 | 67",
+    "2012 | 67",
+    "2013 | 67",
+    "2014 | 67"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "ncaa",
+   "title": "rows of tourney_compact_results, by seasons (by key), the twelve most",
+   "teachers": 0.77,
+   "look": 0.16,
+   "rows": 12,
+   "first": [
+    "2014 | 67",
+    "2013 | 67",
+    "2012 | 67",
+    "2011 | 67"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": true,
+    "gemini": false
+   }
+  },
+  {
+   "db": "accidents",
+   "title": "rows of oseba, by oseba.drzavljanstvo, the twelve most",
+   "teachers": 0.84,
+   "look": 0.23,
+   "rows": 12,
+   "first": [
+    "005 | 876484",
+    "003 | 17635",
+    "001 | 12656",
+    "999 | 9299"
+   ],
+   "counters": {
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "birdsocialmedia",
+   "title": "sum of twitter.RetweetCount, by twitter.TweetID, the twelve most",
+   "teachers": 0.81,
+   "look": 0.22,
+   "rows": 12,
+   "first": [
+    "∅ | ∅",
+    "tw-700865627364392960 | 26127",
+    "tw-707929034768850944 | 13195",
+    "tw-707941144051654656 | 2065"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdbeerfactory",
+   "title": "rows of customers by customers.Gender",
+   "teachers": 0.79,
+   "look": 0.2,
+   "rows": 2,
+   "first": [
+    "M | 277",
+    "F | 277"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdairline",
+   "title": "sum of Airlines.CRS_ELAPSED_TIME, by Airports.Description, the twelve most",
+   "teachers": 0.83,
+   "look": 0.24,
+   "rows": 12,
+   "first": [
+    "Chicago, IL: Chicago O'H | 4604194",
+    "Atlanta, GA: Hartsfield- | 4344380",
+    "Los Angeles, CA: Los Ang | 4238732",
+    "Denver, CO: Denver Inter | 3465352"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdairline",
+   "title": "sum of Airlines.CRS_ELAPSED_TIME, by Air Carriers.Description, the twelve most",
+   "teachers": 0.84,
+   "look": 0.25,
+   "rows": 12,
+   "first": [
+    "Southwest Airlines Co.:  | 14629125",
+    "American Airlines Inc.:  | 13799269",
+    "Delta Air Lines Inc.: DL | 13585631",
+    "United Air Lines Inc.: U | 10660166"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "ccs",
+   "title": "sum of transactions_1k.Price, by products.Description, the twelve most",
+   "teachers": 0.9,
+   "look": 0.33,
+   "rows": 12,
+   "first": [
+    "Nafta | 345669.45",
+    "Diesel + | 27261.03",
+    "Natural | 24639.46",
+    "Nafta Plus | 7233.72"
+   ],
+   "counters": {
+    "opus": true,
+    "sonnet": true,
+    "gemini": true
+   }
+  },
+  {
+   "db": "birdmovies4",
+   "title": "sum of movie.vote_count, by movie.title, the twelve most",
+   "teachers": 0.87,
+   "look": 0.3,
+   "rows": 12,
+   "first": [
+    "Inception | 13752",
+    "The Dark Knight | 12002",
+    "Avatar | 11800",
+    "The Avengers | 11776"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birddisney",
+   "title": "sum of revenue.Disney Consumer Products[NI 2] by revenue.Year",
+   "teachers": 0.82,
+   "look": 0.25,
+   "rows": 26,
+   "first": [
+    "1991-01-01 | 724",
+    "1992-01-01 | 1081",
+    "1993-01-01 | 1415.1",
+    "1994-01-01 | 1798.2"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdcoinmarketcap",
+   "title": "sum of historical.volume_24h by historical.date",
+   "teachers": 0.84,
+   "look": 0.27,
+   "rows": 9,
+   "first": [
+    "2013-01-01 | 235504051.89143372",
+    "2014-01-01 | 13385549233.943245",
+    "2015-01-01 | 14954703468.335777",
+    "2016-01-01 | 45559737573.94898"
+   ],
+   "counters": {
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "world",
+   "title": "sum of City.Population by Country.Continent",
+   "teachers": 0.92,
+   "look": 0.36,
+   "rows": 6,
+   "first": [
+    "Asia | 697604103",
+    "Europe | 241942813",
+    "South America | 172037859",
+    "North America | 168250381"
+   ],
+   "counters": {
+    "opus": true,
+    "sonnet": true,
+    "gemini": true
+   }
+  },
+  {
+   "db": "sap",
+   "title": "rows of Mailings1_2 by Mailings1_2.REF_DATE",
+   "teachers": 0.77,
+   "look": 0.21,
+   "rows": 2,
+   "first": [
+    "2007-02-01 | 30000",
+    "2007-03-01 | 30000"
+   ],
+   "counters": {
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "gosales",
+   "title": "sum of go_daily_sales.Unit price × go_daily_sales.Quantity, by go_products (by key), the twelve most",
+   "teachers": 0.89,
+   "look": 0.33,
+   "rows": 12,
+   "first": [
+    "105110 | 60420787.80",
+    "11110 | 48931556.13",
+    "102110 | 47827651.77",
+    "144180 | 44255876.00"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "ccs",
+   "title": "sum of transactions_1k.Amount, by gasstations (by key), the twelve most",
+   "teachers": 0.85,
+   "look": 0.29,
+   "rows": 12,
+   "first": [
+    "4347 | 370",
+    "3250 | 320",
+    "48 | 295",
+    "1155 | 292"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "birdcoinmarketcap",
+   "title": "sum of historical.volume_24h, by coins.name, the twelve most",
+   "teachers": 0.86,
+   "look": 0.3,
+   "rows": 12,
+   "first": [
+    "Bitcoin | 1.44345227266484e+15",
+    "Uquid Coin | 1.4103012160966865e+15",
+    "Tether | 46366407110370.92",
+    "Ethereum | 15710539529154.703"
+   ],
+   "counters": {
+    "sonnet": false,
+    "gemini": true
+   }
+  },
+  {
+   "db": "world",
+   "title": "sum of City.Population, by Country.Region, the twelve most",
+   "teachers": 0.91,
+   "look": 0.36,
+   "rows": 12,
+   "first": [
+    "Eastern Asia | 317476534",
+    "Southern and Central Asi | 207688970",
+    "South America | 172037859",
+    "Eastern Europe | 123384516"
+   ],
+   "counters": {
+    "opus": true,
+    "sonnet": true,
+    "gemini": true
+   }
+  },
+  {
+   "db": "fnhk",
+   "title": "sum of zup.Cena, by pripady (by key), the twelve most",
+   "teachers": 0.8,
+   "look": 0.25,
+   "rows": 12,
+   "first": [
+    "1846824 | 1782318.04",
+    "1867280 | 1770357.10",
+    "1870194 | 1280741.19",
+    "1845773 | 1258322.03"
+   ],
+   "counters": {
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "credit",
+   "title": "rows of statement by statement.due_dt",
+   "teachers": 0.76,
+   "look": 0.21,
+   "rows": 2,
+   "first": [
+    "1999-09-02 | 10000",
+    "1999-10-03 | 10000"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "classicmodels",
+   "title": "rows of orderdetails, by products.productName, the twelve most",
+   "teachers": 0.8,
+   "look": 0.25,
+   "rows": 12,
+   "first": [
+    "1992 Ferrari 360 Spider  | 53",
+    "1969 Harley Davidson Ult | 28",
+    "1952 Alpine Renault 1300 | 28",
+    "1996 Moto Guzzi 1100i | 28"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": true
+   }
+  },
+  {
+   "db": "walmart",
+   "title": "average of weather.tavg by weather.date",
+   "teachers": 0.82,
+   "look": 0.27,
+   "rows": 34,
+   "first": [
+    "2012-01-01 | 42.6000",
+    "2012-02-01 | 44.9406",
+    "2012-03-01 | 58.0127",
+    "2012-04-01 | 62.0690"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "airlines",
+   "title": "rows of routes, by airports_data (by key), the twelve most",
+   "teachers": 0.83,
+   "look": 0.28,
+   "rows": 12,
+   "first": [
+    "FRA | 34",
+    "SVO | 34",
+    "BOM | 30",
+    "DEL | 26"
+   ],
+   "counters": {
+    "opus": true,
+    "sonnet": true,
+    "gemini": true
+   }
+  },
+  {
+   "db": "tubepricing",
+   "title": "sum of comp_threaded.overall_length, by type_connection.me, the twelve most",
+   "teachers": 0.77,
+   "look": 0.23,
+   "rows": 8,
+   "first": [
+    "ORFS-SAE J1453 | 2664.1000000000000000000",
+    "∅ | 1004.4600000000000000000",
+    "37 deg Flare-SAE J514 | 737.84000000000000000000",
+    "SAE STOR-SAE J1926 | 189.30000000000000000000"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "tubepricing",
+   "title": "sum of comp_boss.weight, by type_connection.me, the twelve most",
+   "teachers": 0.8,
+   "look": 0.26,
+   "rows": 9,
+   "first": [
+    "Code 61 Flange | 32.144000000000000000000",
+    "SAE STOR-SAE J1926 | 10.451000000000000000000",
+    "Other | 6.3270000000000000000000",
+    "NPTF-SAE J476/J514 | 4.0510000000000000000000"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "fnhk",
+   "title": "sum of zup.Pocet, by pripady (by key), the twelve most",
+   "teachers": 0.74,
+   "look": 0.2,
+   "rows": 12,
+   "first": [
+    "1856762 | 7771.00",
+    "1868477 | 7401.00",
+    "1859416 | 7401.00",
+    "1864733 | 7401.00"
+   ],
+   "counters": {
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "birduniversity",
+   "title": "average of university_year.pct_female_students by university_year.year",
+   "teachers": 0.84,
+   "look": 0.3,
+   "rows": 6,
+   "first": [
+    "2011-01-01 | 48.9824561403508772",
+    "2012-01-01 | 49.8491620111731844",
+    "2013-01-01 | 49.3296089385474860",
+    "2014-01-01 | 49.2346368715083799"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "flexibee",
+   "title": "rows of issued-invoices by issued-invoices.Stat",
+   "teachers": 0.82,
+   "look": 0.28,
+   "rows": 3,
+   "first": [
+    "CZ | 23320",
+    "∅ | 194",
+    "SK | 24"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "walmart",
+   "title": "sum of weather.preciptotal by weather.date",
+   "teachers": 0.8,
+   "look": 0.27,
+   "rows": 34,
+   "first": [
+    "2012-01-01 | 50.390000116080046",
+    "2012-02-01 | 36.38000015169382",
+    "2012-03-01 | 73.61999960802495",
+    "2012-04-01 | 47.839999897405505"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "imdbfull",
+   "title": "rows of movies2actors per actors",
+   "teachers": 0.82,
+   "look": 0.29,
+   "rows": 32,
+   "first": [
+    "1 | 64365",
+    "2 | 10171",
+    "3 | 3942",
+    "4 | 2082"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "credit",
+   "title": "rows of statement by statement.statement_dt",
+   "teachers": 0.77,
+   "look": 0.24,
+   "rows": 2,
+   "first": [
+    "1999-08-13 | 10000",
+    "1999-09-13 | 10000"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "birdregionalsales",
+   "title": "sum of Sales Orders.Order Quantity by Sales Team.Region",
+   "teachers": 0.92,
+   "look": 0.39,
+   "rows": 4,
+   "first": [
+    "Midwest | 10303",
+    "West | 9286",
+    "Northeast | 8653",
+    "South | 7920"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdfoodinspection2",
+   "title": "sum of violation.fine, by establishment.dba_name, the twelve most",
+   "teachers": 0.82,
+   "look": 0.29,
+   "rows": 12,
+   "first": [
+    "ILLINOIS SPORTSERVICE IN | 60250",
+    "∅ | 52950",
+    "TAQUERIA EL RANCHITO | 34200",
+    "LEVY RESTAURANTS AT WRIG | 30150"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "legalacts",
+   "title": "rows of legalacts, by legalacts.HighCourt, the twelve most",
+   "teachers": 0.88,
+   "look": 0.36,
+   "rows": 12,
+   "first": [
+    "∅ | 465545",
+    "Върховен касационен съд | 19023",
+    "Върховен административен | 11057",
+    "Окръжен съд - Варна | 7701"
+   ],
+   "counters": {
+    "sonnet": false,
+    "gemini": true
+   }
+  },
+  {
+   "db": "fnhk",
+   "title": "sum of vykony.Pocet by vykony.Datum_provedeni_vykonu",
+   "teachers": 0.9,
+   "look": 0.38,
+   "rows": 17,
+   "first": [
+    "2013-08-01 | 1",
+    "2013-09-01 | 2808",
+    "2013-10-01 | 9639",
+    "2013-11-01 | 19473"
+   ],
+   "counters": {
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "flexibee",
+   "title": "rows of issued-invoices by issued-invoices.Mena",
+   "teachers": 0.82,
+   "look": 0.3,
+   "rows": 2,
+   "first": [
+    "CZK | 23517",
+    "EUR | 21"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdsocialmedia",
+   "title": "sum of twitter.RetweetCount, by twitter.Lang, the twelve most",
+   "teachers": 0.81,
+   "look": 0.29,
+   "rows": 12,
+   "first": [
+    "∅ | ∅",
+    "en | 793404",
+    "es | 3164",
+    "fr | 2067"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdfoodinspection2",
+   "title": "sum of violation.fine, by inspection_point.category, the twelve most",
+   "teachers": 0.88,
+   "look": 0.36,
+   "rows": 12,
+   "first": [
+    "Food Maintenance | 25320600",
+    "Food Protection | 21107600",
+    "Insect and Rodent Contro | 5290500",
+    "Toilet and Hand Washing  | 2760500"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdfoodinspection2",
+   "title": "sum of violation.fine by inspection_point.point_level",
+   "teachers": 0.85,
+   "look": 0.33,
+   "rows": 3,
+   "first": [
+    "Minor    | 37599800",
+    "Critical | 13419500",
+    "Serious  | 11499750"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birddisney",
+   "title": "sum of revenue.Walt Disney Parks and Resorts by revenue.Year",
+   "teachers": 0.86,
+   "look": 0.34,
+   "rows": 26,
+   "first": [
+    "1991-01-01 | 2794",
+    "1992-01-01 | 3306",
+    "1993-01-01 | 3440.7",
+    "1994-01-01 | 3463.6"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdauthors",
+   "title": "rows of Paper per Journal",
+   "teachers": 0.85,
+   "look": 0.33,
+   "rows": 200,
+   "first": [
+    "1 | 1867",
+    "2 | 1175",
+    "3 | 930",
+    "4 | 715"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdappstore",
+   "title": "average of playstore.Rating, by playstore.Category, the twelve most",
+   "teachers": 0.88,
+   "look": 0.36,
+   "rows": 12,
+   "first": [
+    "EVENTS | 4.435555555555557",
+    "EDUCATION | 4.389032258064517",
+    "ART_AND_DESIGN | 4.358064516129031",
+    "BOOKS_AND_REFERENCE | 4.346067415730338"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "restbase",
+   "title": "average of generalinfo.review by geographic.region",
+   "teachers": 0.85,
+   "look": 0.34,
+   "rows": 9,
+   "first": [
+    "los angeles area | 3.80000",
+    "lake tahoe | 2.78333",
+    "sacramento area | 2.73750",
+    "monterey | 2.48750"
+   ],
+   "counters": {
+    "opus": true,
+    "sonnet": true,
+    "gemini": true
+   }
+  },
+  {
+   "db": "movielens",
+   "title": "rows of movies2directors, by movies (by key), the twelve most",
+   "teachers": 0.75,
+   "look": 0.24,
+   "rows": 12,
+   "first": [
+    "1930793 | 11",
+    "1930810 | 8",
+    "1895159 | 7",
+    "2261598 | 7"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "flexibee",
+   "title": "rows of issued-invoices by issued-invoices.Stav_uhrady",
+   "teachers": 0.86,
+   "look": 0.35,
+   "rows": 4,
+   "first": [
+    "Uhrazeno | 23261",
+    "∅ | 256",
+    "Uhrazeno (ručně) | 15",
+    "Částečně uhrazeno | 6"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "craftbeer",
+   "title": "rows of beers per breweries",
+   "teachers": 0.88,
+   "look": 0.37,
+   "rows": 26,
+   "first": [
+    "1 | 127",
+    "2 | 112",
+    "3 | 82",
+    "4 | 71"
+   ],
+   "counters": {
+    "opus": true,
+    "sonnet": true,
+    "gemini": true
+   }
+  },
+  {
+   "db": "classicmodels",
+   "title": "sum of orderdetails.priceEach × orderdetails.quantityOrdered, by orders (by key), the twelve most",
+   "teachers": 0.82,
+   "look": 0.31,
+   "rows": 12,
+   "first": [
+    "10165 | 67392.84999999999",
+    "10287 | 61402",
+    "10310 | 61234.669999999984",
+    "10212 | 59830.549999999996"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "birdshipping",
+   "title": "sum of shipment.weight, by customer.city, the twelve most",
+   "teachers": 0.86,
+   "look": 0.35,
+   "rows": 12,
+   "first": [
+    "Pompano Beach | 266211",
+    "Bloomington | 265716",
+    "Riverside | 265248",
+    "Montgomery | 241038"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "birdmovie",
+   "title": "average of movie.Rating by movie.MPAA Rating",
+   "teachers": 0.83,
+   "look": 0.32,
+   "rows": 4,
+   "first": [
+    "R | 7.166901408450706",
+    "G | 7.055555555555556",
+    "PG-13 | 6.916000000000002",
+    "PG | 6.8128048780487775"
+   ],
+   "counters": {
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "birdauthors",
+   "title": "rows of Paper per Conference",
+   "teachers": 0.86,
+   "look": 0.35,
+   "rows": 200,
+   "first": [
+    "1 | 206",
+    "2 | 188",
+    "3 | 199",
+    "4 | 156"
+   ],
+   "counters": {}
+  },
+  {
+   "db": "movielens",
+   "title": "rows of u2base, by movies (by key), the twelve most",
+   "teachers": 0.77,
+   "look": 0.27,
+   "rows": 12,
+   "first": [
+    "1721568 | 3427",
+    "2371726 | 2990",
+    "2371786 | 2989",
+    "2371787 | 2882"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "movielens",
+   "title": "rows of movies2directors, by directors (by key), the twelve most",
+   "teachers": 0.76,
+   "look": 0.26,
+   "rows": 12,
+   "first": [
+    "118604 | 52",
+    "5185 | 20",
+    "156165 | 14",
+    "260322 | 14"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  },
+  {
+   "db": "mondial",
+   "title": "rows of river, by river.Mountains, the twelve most",
+   "teachers": 0.76,
+   "look": 0.26,
+   "rows": 12,
+   "first": [
+    "∅ | 125",
+    "Alps | 22",
+    "East African Rift | 10",
+    "Andes | 5"
+   ],
+   "counters": {
+    "opus": false,
+    "sonnet": false,
+    "gemini": false
+   }
+  }
+ ]
+}

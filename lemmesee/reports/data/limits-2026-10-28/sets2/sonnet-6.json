@@ -1,0 +1,26 @@
+{"databases": {
+"shakespeare": {"fives": {
+"A": {"worth": 3, "repeats": ["shakespeare-s05"]},
+"B": {"worth": 3, "repeats": ["shakespeare-s09", "shakespeare-s10"]},
+"C": {"worth": 4, "repeats": ["shakespeare-s09"]},
+"D": {"worth": 3, "repeats": ["shakespeare-s05", "shakespeare-s09"]}}, "best": "C"},
+"medical": {"fives": {
+"A": {"worth": 4, "repeats": ["medical-s10"]},
+"B": {"worth": 3, "repeats": ["medical-s03", "medical-s06"]},
+"C": {"worth": 5, "repeats": []},
+"D": {"worth": 3, "repeats": ["medical-s09", "medical-s10"]}}, "best": "C"},
+"airlines": {"fives": {
+"A": {"worth": 4, "repeats": ["airlines-s02"]},
+"B": {"worth": 5, "repeats": []},
+"C": {"worth": 4, "repeats": ["airlines-s07"]}}, "best": "B"},
+"birdvideogames": {"fives": {
+"A": {"worth": 3, "repeats": ["birdvideogames-s09"]},
+"B": {"worth": 4, "repeats": []},
+"C": {"worth": 4, "repeats": ["birdvideogames-s04"]},
+"D": {"worth": 4, "repeats": ["birdvideogames-s13"]}}, "best": "B"},
+"consumerexpenditures": {"fives": {
+"A": {"worth": 4, "repeats": ["consumerexpenditures-s09"]},
+"B": {"worth": 3, "repeats": ["consumerexpenditures-s07", "consumerexpenditures-s09"]},
+"C": {"worth": 3, "repeats": ["consumerexpenditures-s07", "consumerexpenditures-s09"]},
+"D": {"worth": 4, "repeats": []}}, "best": "D"}
+}}

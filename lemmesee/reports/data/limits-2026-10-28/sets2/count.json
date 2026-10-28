@@ -1,0 +1,133 @@
+{
+ "databases": 50,
+ "sonnet": {
+  "databases answered": 50,
+  "round 1, B1": {
+   "worth of five": 3.32,
+   "panels repeating another": 0.2,
+   "chosen as best": 0.26
+  },
+  "small, round 1e numbers, per panel": {
+   "worth of five": 3.4,
+   "panels repeating another": 1.26,
+   "chosen as best": 0.34
+  },
+  "small, round 1e numbers, per panel + diverse": {
+   "worth of five": 3.24,
+   "panels repeating another": 1.18,
+   "chosen as best": 0.18
+  },
+  "the teachers' mean + diverse": {
+   "worth of five": 3.4,
+   "panels repeating another": 1.12,
+   "chosen as best": 0.32
+  },
+  "round 1, B1 − small, round 1e numbers, per panel, worth": {
+   "mean": -0.08,
+   "95%": [
+    -0.36,
+    0.2
+   ]
+  },
+  "round 1, B1 − small, round 1e numbers, per panel + diverse, worth": {
+   "mean": 0.08,
+   "95%": [
+    -0.24,
+    0.42
+   ]
+  },
+  "round 1, B1 − the teachers' mean + diverse, worth": {
+   "mean": -0.08,
+   "95%": [
+    -0.42,
+    0.28
+   ]
+  },
+  "small, round 1e numbers, per panel − small, round 1e numbers, per panel + diverse, worth": {
+   "mean": 0.16,
+   "95%": [
+    -0.12,
+    0.44
+   ]
+  },
+  "small, round 1e numbers, per panel − the teachers' mean + diverse, worth": {
+   "mean": 0.0,
+   "95%": [
+    -0.32,
+    0.32
+   ]
+  },
+  "small, round 1e numbers, per panel + diverse − the teachers' mean + diverse, worth": {
+   "mean": -0.16,
+   "95%": [
+    -0.38,
+    0.08
+   ]
+  }
+ },
+ "gemini": {
+  "databases answered": 49,
+  "round 1, B1": {
+   "worth of five": 3.51,
+   "panels repeating another": 0.12,
+   "chosen as best": 0.22
+  },
+  "small, round 1e numbers, per panel": {
+   "worth of five": 4.06,
+   "panels repeating another": 0.67,
+   "chosen as best": 0.29
+  },
+  "small, round 1e numbers, per panel + diverse": {
+   "worth of five": 3.67,
+   "panels repeating another": 0.61,
+   "chosen as best": 0.14
+  },
+  "the teachers' mean + diverse": {
+   "worth of five": 3.92,
+   "panels repeating another": 0.57,
+   "chosen as best": 0.45
+  },
+  "round 1, B1 − small, round 1e numbers, per panel, worth": {
+   "mean": -0.55,
+   "95%": [
+    -0.86,
+    -0.24
+   ]
+  },
+  "round 1, B1 − small, round 1e numbers, per panel + diverse, worth": {
+   "mean": -0.16,
+   "95%": [
+    -0.57,
+    0.24
+   ]
+  },
+  "round 1, B1 − the teachers' mean + diverse, worth": {
+   "mean": -0.41,
+   "95%": [
+    -0.88,
+    0.08
+   ]
+  },
+  "small, round 1e numbers, per panel − small, round 1e numbers, per panel + diverse, worth": {
+   "mean": 0.39,
+   "95%": [
+    0.12,
+    0.65
+   ]
+  },
+  "small, round 1e numbers, per panel − the teachers' mean + diverse, worth": {
+   "mean": 0.14,
+   "95%": [
+    -0.22,
+    0.53
+   ]
+  },
+  "small, round 1e numbers, per panel + diverse − the teachers' mean + diverse, worth": {
+   "mean": -0.24,
+   "95%": [
+    -0.55,
+    0.06
+   ]
+  }
+ }
+}
