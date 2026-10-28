@@ -73,7 +73,9 @@ ASK = ("Reply with only one JSON object and no other text: "
 
 def pack(dirs: list[Path], see_dir: Path, out: Path, configs: list[str]) -> None:
     D = diagnose.load_all(dirs, see_dir)
-    scores = json.loads((out / "scores.json").read_text(encoding="utf-8"))
+    scores = {}
+    for f in sorted(out.glob("scores*.json")):
+        scores |= json.loads(f.read_text(encoding="utf-8"))
     counted = sorted({fe for j in ("sonnet", "gemini") for fe in D["covered"][j]})
     rng = random.Random(SEED)
     order = counted[:]

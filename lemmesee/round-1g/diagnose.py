@@ -108,6 +108,23 @@ def load_all(dirs: list[Path], see_dir: Path) -> dict:
         for fe in fes:
             for p in mine[fe]:
                 p["lex"] = lexicon(p["slots"], lex)
+    # round 1h: the student of names' score of each panel, learned on
+    # SchemaPile's titles only, and the breakdown's labels against the
+    # lexicon of values
+    h = HERE.parent / "corpus" / "round-1h"
+    if (h / "names.json").exists():
+        names = json.loads((h / "names.json").read_text(encoding="utf-8"))
+        vals = json.loads((h / "values" / "values.json").read_text(encoding="utf-8"))["values"] \
+            if (h / "values" / "values.json").exists() else {}
+        sys.path.insert(0, str(HERE.parent / "round-1h"))
+        import values as values_mod
+        for fe in fes:
+            for p in mine[fe]:
+                s = names.get(p["id"])
+                p["name"] = float(look1e.logit(s)) if s is not None else float("nan")
+                rows = p.get("rows") or []
+                labels = [r[0] for r in rows] if p.get("bucket") is None and rows and len(rows[0]) > 1 else []
+                p["vals"] = values_mod.read(labels, vals)
     # a judge counts a database where it answered every candidate
     covered = {j: [fe for fe in fes if all(p["id"] in ans[j] for p in mine[fe])] for j in COUNTERS}
     return {"fes": fes, "pools": pools, "mine": mine, "ids": ids, "ans": ans, "covered": covered,
@@ -256,6 +273,10 @@ def vector(p: dict, feats: str) -> list[float]:
         v = v + [p["asked"].get(k, float("nan")) for k in ASKED] + [p["kept"][k] for k in KEPT]
     if "lexicon" in feats:
         v = v + [p["lex"][k] for k in LEX]
+    if "names" in feats:
+        v = v + [p["name"]]
+    if "values" in feats:
+        v = v + [p["vals"][k] for k in ("v_known", "v_reads", "v_code")]
     return v
 
 
@@ -336,10 +357,16 @@ SETS = {
               ("large", "words", "point"), ("small", "words and context", "point")],
     "lexicon": [("small", "numbers", "point"), ("large", "numbers", "point"), ("small", "lexicon", "point"),
                 ("large", "lexicon", "point"), ("large", "words and lexicon", "point")],
+    # round 1h
+    "names": [("small", "numbers", "point"), ("large", "words and lexicon", "point"), ("small", "names", "point"),
+              ("large", "names", "point"), ("small", "names and values", "point"),
+              ("large", "names and values", "point"), ("large", "words, lexicon, names and values", "point")],
 }
 FEATS = {"numbers": "round 1e numbers", "context": "with context", "words": "with words",
          "words and context": "with words and context", "lexicon": "with the lexicon",
-         "words and lexicon": "with words and the lexicon"}
+         "words and lexicon": "with words and the lexicon", "names": "with the student of names",
+         "names and values": "with the student of names and values",
+         "words, lexicon, names and values": "with words, the lexicon, the student of names and values"}
 
 
 def name(c, x, o) -> str:
