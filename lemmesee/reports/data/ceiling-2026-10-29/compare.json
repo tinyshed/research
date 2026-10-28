@@ -1,0 +1,1366 @@
+{
+  "environment": {
+    "utc": "2026-10-28T22:17:42.258023+00:00",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.36",
+    "python": "3.13.18",
+    "packages": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "lightgbm": "4.7.0"
+    },
+    "revision": "ce0e22b9b98bc45ab9134152e3c09bc66ad421a6",
+    "dirty": [
+      "?? tinystore/ffi-window/"
+    ],
+    "threads": {
+      "OMP_NUM_THREADS": "4",
+      "OPENBLAS_NUM_THREADS": "4",
+      "MKL_NUM_THREADS": "4"
+    },
+    "cpu": "AMD Ryzen 7 7700 8-Core Processor",
+    "memory": "MemTotal:       15910556 kB",
+    "cpu_quota": "400000 100000"
+  },
+  "input_sha256": "5c3c01a244762f299d400747708cad49e1db757f7d7f660f5138d7bb93c94066",
+  "panels": {
+    "93": 2632,
+    "gittables": 2705
+  },
+  "configs": [
+    "old",
+    "new",
+    "new+gt",
+    "old+gt",
+    "old+head",
+    "old+spread",
+    "old+both"
+  ],
+  "scope": "development-family cross-validation on the 93; GitTables only ever trains",
+  "old": {
+    "opus/plain/auc": {
+      "mean": 0.7725070699819235,
+      "databases": 26
+    },
+    "opus/plain/kept": {
+      "mean": 2.9615384615384617,
+      "databases": 26
+    },
+    "opus/axes/auc": {
+      "mean": 0.7725070699819235,
+      "databases": 26
+    },
+    "opus/axes/kept": {
+      "mean": 2.871794871794872,
+      "databases": 26
+    },
+    "sonnet/plain/auc": {
+      "mean": 0.8101792326794182,
+      "databases": 93
+    },
+    "sonnet/plain/kept": {
+      "mean": 2.9713261648745517,
+      "databases": 93
+    },
+    "sonnet/axes/auc": {
+      "mean": 0.8101792326794182,
+      "databases": 93
+    },
+    "sonnet/axes/kept": {
+      "mean": 2.8207885304659497,
+      "databases": 93
+    },
+    "gemini/plain/auc": {
+      "mean": 0.7913277389536931,
+      "databases": 91
+    },
+    "gemini/plain/kept": {
+      "mean": 3.0071684587813614,
+      "databases": 93
+    },
+    "gemini/axes/auc": {
+      "mean": 0.7913277389536931,
+      "databases": 91
+    },
+    "gemini/axes/kept": {
+      "mean": 2.9677419354838706,
+      "databases": 93
+    },
+    "sonnet+gemini/plain/auc": {
+      "mean": 0.8026779007771608,
+      "databases": 91
+    },
+    "sonnet+gemini/plain/kept": {
+      "mean": 2.989247311827957,
+      "databases": 93
+    },
+    "sonnet+gemini/axes/auc": {
+      "mean": 0.8026779007771608,
+      "databases": 91
+    },
+    "sonnet+gemini/axes/kept": {
+      "mean": 2.89426523297491,
+      "databases": 93
+    }
+  },
+  "new": {
+    "opus/plain/auc": {
+      "mean": 0.7479150874721979,
+      "databases": 26,
+      "minus_old": {
+        "mean": -0.02459198250972574,
+        "95%": [
+          -0.06119518201098344,
+          0.009532550629839787
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/plain/kept": {
+      "mean": 2.769230769230769,
+      "databases": 26,
+      "minus_old": {
+        "mean": -0.19230769230769232,
+        "95%": [
+          -0.5256410256410257,
+          0.12820512820512822
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/auc": {
+      "mean": 0.7479150874721979,
+      "databases": 26,
+      "minus_old": {
+        "mean": -0.02459198250972574,
+        "95%": [
+          -0.06119518201098344,
+          0.009532550629839787
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/kept": {
+      "mean": 2.923076923076923,
+      "databases": 26,
+      "minus_old": {
+        "mean": 0.05128205128205132,
+        "95%": [
+          -0.16666666666666666,
+          0.28205128205128205
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "sonnet/plain/auc": {
+      "mean": 0.7999037770848084,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.010275455594609897,
+        "95%": [
+          -0.02806466265036685,
+          0.004956202572598636
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet/plain/kept": {
+      "mean": 2.8996415770609323,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.07168458781362005,
+        "95%": [
+          -0.2437275985663082,
+          0.0982620011567378
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet/axes/auc": {
+      "mean": 0.7999037770848084,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.010275455594609897,
+        "95%": [
+          -0.02806466265036685,
+          0.004956202572598636
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet/axes/kept": {
+      "mean": 2.8996415770609314,
+      "databases": 93,
+      "minus_old": {
+        "mean": 0.07885304659498209,
+        "95%": [
+          -0.04964539007092196,
+          0.2061939713133123
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "gemini/plain/auc": {
+      "mean": 0.7759679228859057,
+      "databases": 91,
+      "minus_old": {
+        "mean": -0.015359816067787553,
+        "95%": [
+          -0.03479578850699721,
+          0.0012814960608287763
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "gemini/plain/kept": {
+      "mean": 2.9928315412186377,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.014336917562723992,
+        "95%": [
+          -0.18888888888888888,
+          0.163045405488745
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "gemini/axes/auc": {
+      "mean": 0.7759679228859057,
+      "databases": 91,
+      "minus_old": {
+        "mean": -0.015359816067787553,
+        "95%": [
+          -0.03479578850699721,
+          0.0012814960608287763
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "gemini/axes/kept": {
+      "mean": 3.0358422939068106,
+      "databases": 93,
+      "minus_old": {
+        "mean": 0.06810035842293909,
+        "95%": [
+          -0.0518853427895981,
+          0.18749999999999997
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet+gemini/plain/auc": {
+      "mean": 0.790623626745036,
+      "databases": 91,
+      "minus_old": {
+        "mean": -0.012054274032124723,
+        "95%": [
+          -0.0302229932219135,
+          0.003383426833357981
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "sonnet+gemini/plain/kept": {
+      "mean": 2.9462365591397854,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.043010752688172,
+        "95%": [
+          -0.20176371780515107,
+          0.11957787907121696
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet+gemini/axes/auc": {
+      "mean": 0.790623626745036,
+      "databases": 91,
+      "minus_old": {
+        "mean": -0.012054274032124723,
+        "95%": [
+          -0.0302229932219135,
+          0.003383426833357981
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "sonnet+gemini/axes/kept": {
+      "mean": 2.9677419354838706,
+      "databases": 93,
+      "minus_old": {
+        "mean": 0.07347670250896057,
+        "95%": [
+          -0.032258064516129045,
+          0.1792114695340502
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    }
+  },
+  "new+gt": {
+    "opus/plain/auc": {
+      "mean": 0.7433307354572054,
+      "databases": 26,
+      "minus_new": {
+        "mean": -0.0045843520149922695,
+        "95%": [
+          -0.026240194278655805,
+          0.017441017291844378
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/plain/kept": {
+      "mean": 2.705128205128205,
+      "databases": 26,
+      "minus_new": {
+        "mean": -0.06410256410256408,
+        "95%": [
+          -0.2948717948717949,
+          0.16666666666666666
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/auc": {
+      "mean": 0.7433307354572054,
+      "databases": 26,
+      "minus_new": {
+        "mean": -0.0045843520149922695,
+        "95%": [
+          -0.026240194278655805,
+          0.017441017291844378
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/kept": {
+      "mean": 2.9102564102564106,
+      "databases": 26,
+      "minus_new": {
+        "mean": -0.01282051282051286,
+        "95%": [
+          -0.17980769230769228,
+          0.16666666666666663
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "sonnet/plain/auc": {
+      "mean": 0.801190344108143,
+      "databases": 93,
+      "minus_new": {
+        "mean": 0.0012865670233346946,
+        "95%": [
+          -0.009348696897452033,
+          0.011989018935523146
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet/plain/kept": {
+      "mean": 2.817204301075268,
+      "databases": 93,
+      "minus_new": {
+        "mean": -0.08243727598566308,
+        "95%": [
+          -0.22222222222222224,
+          0.05208333333333332
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet/axes/auc": {
+      "mean": 0.801190344108143,
+      "databases": 93,
+      "minus_new": {
+        "mean": 0.0012865670233346946,
+        "95%": [
+          -0.009348696897452033,
+          0.011989018935523146
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet/axes/kept": {
+      "mean": 2.827956989247312,
+      "databases": 93,
+      "minus_new": {
+        "mean": -0.07168458781362007,
+        "95%": [
+          -0.17730496453900707,
+          0.0402930402930403
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "gemini/plain/auc": {
+      "mean": 0.7728210390643615,
+      "databases": 91,
+      "minus_new": {
+        "mean": -0.003146883821544089,
+        "95%": [
+          -0.013913069132343152,
+          0.007141895512379627
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "gemini/plain/kept": {
+      "mean": 2.9103942652329744,
+      "databases": 93,
+      "minus_new": {
+        "mean": -0.0824372759856631,
+        "95%": [
+          -0.20430107526881722,
+          0.03820449561403495
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "gemini/axes/auc": {
+      "mean": 0.7728210390643615,
+      "databases": 91,
+      "minus_new": {
+        "mean": -0.003146883821544089,
+        "95%": [
+          -0.013913069132343152,
+          0.007141895512379627
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "gemini/axes/kept": {
+      "mean": 3.0394265232974904,
+      "databases": 93,
+      "minus_new": {
+        "mean": 0.003584229390680998,
+        "95%": [
+          -0.09574468085106384,
+          0.10510132982959029
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet+gemini/plain/auc": {
+      "mean": 0.7883734520936934,
+      "databases": 91,
+      "minus_new": {
+        "mean": -0.002250174651342901,
+        "95%": [
+          -0.01160019734361569,
+          0.006664453053566499
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "sonnet+gemini/plain/kept": {
+      "mean": 2.8637992831541217,
+      "databases": 93,
+      "minus_new": {
+        "mean": -0.08243727598566314,
+        "95%": [
+          -0.2028985507246377,
+          0.03723404255319141
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet+gemini/axes/auc": {
+      "mean": 0.7883734520936934,
+      "databases": 91,
+      "minus_new": {
+        "mean": -0.002250174651342901,
+        "95%": [
+          -0.01160019734361569,
+          0.006664453053566499
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "sonnet+gemini/axes/kept": {
+      "mean": 2.933691756272401,
+      "databases": 93,
+      "minus_new": {
+        "mean": -0.03405017921146953,
+        "95%": [
+          -0.1250112007168459,
+          0.06521739130434782
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    }
+  },
+  "old+gt": {
+    "opus/plain/auc": {
+      "mean": 0.7580667212181246,
+      "databases": 26,
+      "minus_old": {
+        "mean": -0.014440348763798905,
+        "95%": [
+          -0.03177271270966723,
+          0.00222469682246965
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/plain/kept": {
+      "mean": 2.8461538461538467,
+      "databases": 26,
+      "minus_old": {
+        "mean": -0.11538461538461535,
+        "95%": [
+          -0.3461538461538461,
+          0.10256410256410264
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/auc": {
+      "mean": 0.7580667212181246,
+      "databases": 26,
+      "minus_old": {
+        "mean": -0.014440348763798905,
+        "95%": [
+          -0.03177271270966723,
+          0.00222469682246965
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/kept": {
+      "mean": 2.782051282051282,
+      "databases": 26,
+      "minus_old": {
+        "mean": -0.08974358974358973,
+        "95%": [
+          -0.282051282051282,
+          0.07692307692307696
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "sonnet/plain/auc": {
+      "mean": 0.8121817357453205,
+      "databases": 93,
+      "minus_old": {
+        "mean": 0.0020025030659022213,
+        "95%": [
+          -0.007035770112319949,
+          0.010729305414362622
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet/plain/kept": {
+      "mean": 2.971326164874553,
+      "databases": 93,
+      "minus_old": {
+        "mean": 7.162729191130042e-18,
+        "95%": [
+          -0.10869755911517925,
+          0.10989010989010992
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet/axes/auc": {
+      "mean": 0.8121817357453205,
+      "databases": 93,
+      "minus_old": {
+        "mean": 0.0020025030659022213,
+        "95%": [
+          -0.007035770112319949,
+          0.010729305414362622
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet/axes/kept": {
+      "mean": 2.799283154121864,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.021505376344086027,
+        "95%": [
+          -0.11111111111111112,
+          0.06739399832227536
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "gemini/plain/auc": {
+      "mean": 0.7863266872813455,
+      "databases": 91,
+      "minus_old": {
+        "mean": -0.005001051672347753,
+        "95%": [
+          -0.014036171985597784,
+          0.0037282252672174456
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "gemini/plain/kept": {
+      "mean": 2.9820788530465943,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.025089605734767,
+        "95%": [
+          -0.1403606237816764,
+          0.08865839243498809
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "gemini/axes/auc": {
+      "mean": 0.7863266872813455,
+      "databases": 91,
+      "minus_old": {
+        "mean": -0.005001051672347753,
+        "95%": [
+          -0.014036171985597784,
+          0.0037282252672174456
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "gemini/axes/kept": {
+      "mean": 2.964157706093189,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.003584229390680991,
+        "95%": [
+          -0.10507723112128146,
+          0.09318996415770611
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet+gemini/plain/auc": {
+      "mean": 0.8004506635797523,
+      "databases": 91,
+      "minus_old": {
+        "mean": -0.002227237197408254,
+        "95%": [
+          -0.010401541593077209,
+          0.005475653615433566
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "sonnet+gemini/plain/kept": {
+      "mean": 2.976702508960573,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.012544802867383497,
+        "95%": [
+          -0.10256410256410248,
+          0.07885304659498209
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet+gemini/axes/auc": {
+      "mean": 0.8004506635797523,
+      "databases": 91,
+      "minus_old": {
+        "mean": -0.002227237197408254,
+        "95%": [
+          -0.010401541593077209,
+          0.005475653615433566
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "sonnet+gemini/axes/kept": {
+      "mean": 2.881720430107527,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.012544802867383525,
+        "95%": [
+          -0.09649830220713078,
+          0.06915632387706847
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    }
+  },
+  "old+head": {
+    "opus/plain/auc": {
+      "mean": 0.7615242350385913,
+      "databases": 26,
+      "minus_old": {
+        "mean": -0.010982834943332352,
+        "95%": [
+          -0.02735796584790249,
+          0.004254101604037232
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/plain/kept": {
+      "mean": 2.9615384615384617,
+      "databases": 26,
+      "minus_old": {
+        "mean": -3.416070845000482e-17,
+        "95%": [
+          -0.1794871794871795,
+          0.17948717948717946
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/auc": {
+      "mean": 0.7615242350385913,
+      "databases": 26,
+      "minus_old": {
+        "mean": -0.010982834943332352,
+        "95%": [
+          -0.02735796584790249,
+          0.004254101604037232
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/kept": {
+      "mean": 2.8589743589743595,
+      "databases": 26,
+      "minus_old": {
+        "mean": -0.012820512820512818,
+        "95%": [
+          -0.10256410256410264,
+          0.08974358974358977
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "sonnet/plain/auc": {
+      "mean": 0.8067993243650449,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.0033799083143735637,
+        "95%": [
+          -0.010968709762932558,
+          0.004137811994845484
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet/plain/kept": {
+      "mean": 2.9390681003584227,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.03225806451612904,
+        "95%": [
+          -0.12544802867383512,
+          0.062271062271062286
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet/axes/auc": {
+      "mean": 0.8067993243650449,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.0033799083143735637,
+        "95%": [
+          -0.010968709762932558,
+          0.004137811994845484
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet/axes/kept": {
+      "mean": 2.835125448028674,
+      "databases": 93,
+      "minus_old": {
+        "mean": 0.01433691756272403,
+        "95%": [
+          -0.060299893235720284,
+          0.09219858156028368
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "gemini/plain/auc": {
+      "mean": 0.7920518332144678,
+      "databases": 91,
+      "minus_old": {
+        "mean": 0.0007240942607745947,
+        "95%": [
+          -0.008322416462557432,
+          0.009604824050896443
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "gemini/plain/kept": {
+      "mean": 3.0143369175627246,
+      "databases": 93,
+      "minus_old": {
+        "mean": 0.0071684587813620314,
+        "95%": [
+          -0.08771929824561402,
+          0.10035842293906813
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "gemini/axes/auc": {
+      "mean": 0.7920518332144678,
+      "databases": 91,
+      "minus_old": {
+        "mean": 0.0007240942607745947,
+        "95%": [
+          -0.008322416462557432,
+          0.009604824050896443
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "gemini/axes/kept": {
+      "mean": 2.935483870967742,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.032258064516129024,
+        "95%": [
+          -0.10638297872340426,
+          0.045626166480029685
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet+gemini/plain/auc": {
+      "mean": 0.8019601930653352,
+      "databases": 91,
+      "minus_old": {
+        "mean": -0.0007177077118254413,
+        "95%": [
+          -0.008228021492470363,
+          0.006807489818262817
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "sonnet+gemini/plain/kept": {
+      "mean": 2.976702508960573,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.012544802867383516,
+        "95%": [
+          -0.09783657513348591,
+          0.07142857142857142
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet+gemini/axes/auc": {
+      "mean": 0.8019601930653352,
+      "databases": 91,
+      "minus_old": {
+        "mean": -0.0007177077118254413,
+        "95%": [
+          -0.008228021492470363,
+          0.006807489818262817
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "sonnet+gemini/axes/kept": {
+      "mean": 2.8853046594982077,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.008960573476702505,
+        "95%": [
+          -0.07609081097749001,
+          0.059152518392755954
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    }
+  },
+  "old+spread": {
+    "opus/plain/auc": {
+      "mean": 0.770762345647267,
+      "databases": 26,
+      "minus_old": {
+        "mean": -0.0017447243346564402,
+        "95%": [
+          -0.01149951891720367,
+          0.007131779637845827
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/plain/kept": {
+      "mean": 2.8461538461538463,
+      "databases": 26,
+      "minus_old": {
+        "mean": -0.11538461538461536,
+        "95%": [
+          -0.2948717948717948,
+          0.025641025641025647
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/auc": {
+      "mean": 0.770762345647267,
+      "databases": 26,
+      "minus_old": {
+        "mean": -0.0017447243346564402,
+        "95%": [
+          -0.01149951891720367,
+          0.007131779637845827
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/kept": {
+      "mean": 2.8205128205128203,
+      "databases": 26,
+      "minus_old": {
+        "mean": -0.05128205128205128,
+        "95%": [
+          -0.19230769230769226,
+          0.07692307692307691
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "sonnet/plain/auc": {
+      "mean": 0.8144948462843112,
+      "databases": 93,
+      "minus_old": {
+        "mean": 0.004315613604892975,
+        "95%": [
+          -0.0009143584858792868,
+          0.009493806288725993
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet/plain/kept": {
+      "mean": 2.9569892473118276,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.014336917562724018,
+        "95%": [
+          -0.07885304659498206,
+          0.04761904761904762
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet/axes/auc": {
+      "mean": 0.8144948462843112,
+      "databases": 93,
+      "minus_old": {
+        "mean": 0.004315613604892975,
+        "95%": [
+          -0.0009143584858792868,
+          0.009493806288725993
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet/axes/kept": {
+      "mean": 2.827956989247312,
+      "databases": 93,
+      "minus_old": {
+        "mean": 0.0071684587813619915,
+        "95%": [
+          -0.05208333333333335,
+          0.07168458781362004
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "gemini/plain/auc": {
+      "mean": 0.7944415119104387,
+      "databases": 91,
+      "minus_old": {
+        "mean": 0.003113772956745418,
+        "95%": [
+          -0.002745793432513624,
+          0.009302712802429374
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "gemini/plain/kept": {
+      "mean": 2.9820788530465947,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.025089605734767012,
+        "95%": [
+          -0.09890109890109887,
+          0.05019284712482451
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "gemini/axes/auc": {
+      "mean": 0.7944415119104387,
+      "databases": 91,
+      "minus_old": {
+        "mean": 0.003113772956745418,
+        "95%": [
+          -0.002745793432513624,
+          0.009302712802429374
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "gemini/axes/kept": {
+      "mean": 2.9426523297491043,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.025089605734767022,
+        "95%": [
+          -0.08243727598566304,
+          0.03623188405797102
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet+gemini/plain/auc": {
+      "mean": 0.8066294840900153,
+      "databases": 91,
+      "minus_old": {
+        "mean": 0.0039515833128547714,
+        "95%": [
+          -0.0008286322713581097,
+          0.00894640887434452
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "sonnet+gemini/plain/kept": {
+      "mean": 2.969534050179211,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.019713261648745505,
+        "95%": [
+          -0.08064657611771359,
+          0.03900709219858158
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet+gemini/axes/auc": {
+      "mean": 0.8066294840900153,
+      "databases": 91,
+      "minus_old": {
+        "mean": 0.0039515833128547714,
+        "95%": [
+          -0.0008286322713581097,
+          0.00894640887434452
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "sonnet+gemini/axes/kept": {
+      "mean": 2.8853046594982072,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.008960573476702517,
+        "95%": [
+          -0.06111111111111112,
+          0.049122807017543846
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    }
+  },
+  "old+both": {
+    "opus/plain/auc": {
+      "mean": 0.7616738400785633,
+      "databases": 26,
+      "minus_old": {
+        "mean": -0.010833229903360171,
+        "95%": [
+          -0.028325745575805604,
+          0.005294527169934396
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/plain/kept": {
+      "mean": 2.8461538461538463,
+      "databases": 26,
+      "minus_old": {
+        "mean": -0.11538461538461536,
+        "95%": [
+          -0.3076923076923077,
+          0.0769230769230769
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/auc": {
+      "mean": 0.7616738400785633,
+      "databases": 26,
+      "minus_old": {
+        "mean": -0.010833229903360171,
+        "95%": [
+          -0.028325745575805604,
+          0.005294527169934396
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "opus/axes/kept": {
+      "mean": 2.782051282051282,
+      "databases": 26,
+      "minus_old": {
+        "mean": -0.08974358974358974,
+        "95%": [
+          -0.19230769230769235,
+          0.012820512820512824
+        ],
+        "databases": 26,
+        "families": 26
+      }
+    },
+    "sonnet/plain/auc": {
+      "mean": 0.8086255809375128,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.0015536517419057255,
+        "95%": [
+          -0.009259090046307565,
+          0.00607947481142706
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet/plain/kept": {
+      "mean": 2.913978494623655,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.057347670250896064,
+        "95%": [
+          -0.16304347826086954,
+          0.046594982078853014
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet/axes/auc": {
+      "mean": 0.8086255809375128,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.0015536517419057255,
+        "95%": [
+          -0.009259090046307565,
+          0.00607947481142706
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet/axes/kept": {
+      "mean": 2.813620071684588,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.0071684587813620314,
+        "95%": [
+          -0.08058608058608062,
+          0.06739399832227533
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "gemini/plain/auc": {
+      "mean": 0.7929204138651502,
+      "databases": 91,
+      "minus_old": {
+        "mean": 0.0015926749114570518,
+        "95%": [
+          -0.007562327863262656,
+          0.011092203309243513
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "gemini/plain/kept": {
+      "mean": 2.9820788530465947,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.025089605734767026,
+        "95%": [
+          -0.12681159420289853,
+          0.07608695652173911
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "gemini/axes/auc": {
+      "mean": 0.7929204138651502,
+      "databases": 91,
+      "minus_old": {
+        "mean": 0.0015926749114570518,
+        "95%": [
+          -0.007562327863262656,
+          0.011092203309243513
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "gemini/axes/kept": {
+      "mean": 2.92831541218638,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.039426523297491044,
+        "95%": [
+          -0.11355311355311357,
+          0.036630036630036604
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet+gemini/plain/auc": {
+      "mean": 0.8032013699593161,
+      "databases": 91,
+      "minus_old": {
+        "mean": 0.0005234691821552444,
+        "95%": [
+          -0.006945555517959674,
+          0.007841637403226333
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "sonnet+gemini/plain/kept": {
+      "mean": 2.948028673835126,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.041218637992831535,
+        "95%": [
+          -0.13148148148148148,
+          0.04964539007092198
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    },
+    "sonnet+gemini/axes/auc": {
+      "mean": 0.8032013699593161,
+      "databases": 91,
+      "minus_old": {
+        "mean": 0.0005234691821552444,
+        "95%": [
+          -0.006945555517959674,
+          0.007841637403226333
+        ],
+        "databases": 91,
+        "families": 88
+      }
+    },
+    "sonnet+gemini/axes/kept": {
+      "mean": 2.870967741935484,
+      "databases": 93,
+      "minus_old": {
+        "mean": -0.023297491039426556,
+        "95%": [
+          -0.0915906788247214,
+          0.0448028673835125
+        ],
+        "databases": 93,
+        "families": 90
+      }
+    }
+  }
+}

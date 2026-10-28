@@ -1,0 +1,110 @@
+{
+ "columns read": 285,
+ "columns failed": 1,
+ "sum": {
+  "panels": 586,
+  "spearman with teachers": 0.258,
+  "spearman with look": 0.084,
+  "spearman with opus": 0.284,
+  "spearman with opus less the look": 0.055,
+  "spearman with sonnet": 0.184,
+  "spearman with sonnet less the look": 0.158,
+  "spearman with gemini": 0.218,
+  "spearman with gemini less the look": 0.214,
+  "bands": {
+   "under half a decade": {
+    "panels": 116,
+    "teachers": 0.228,
+    "look": 0.335,
+    "opus": 0.086,
+    "sonnet": 0.048,
+    "gemini": 0.095
+   },
+   "half to one and a half": {
+    "panels": 284,
+    "teachers": 0.347,
+    "look": 0.401,
+    "opus": 0.241,
+    "sonnet": 0.165,
+    "gemini": 0.216
+   },
+   "over one and a half": {
+    "panels": 186,
+    "teachers": 0.456,
+    "look": 0.372,
+    "opus": 0.259,
+    "sonnet": 0.237,
+    "gemini": 0.339
+   }
+  },
+  "magnitude of 10^12 or more": {
+   "panels": 3,
+   "teachers": 0.031,
+   "look": 0.582,
+   "opus": NaN,
+   "sonnet": NaN,
+   "gemini": NaN
+  },
+  "half or more zero or below": {
+   "panels": 52,
+   "teachers": 0.433,
+   "look": 0.336,
+   "opus": 0.182,
+   "sonnet": 0.111,
+   "gemini": 0.167
+  }
+ },
+ "avg": {
+  "panels": 267,
+  "spearman with teachers": -0.059,
+  "spearman with look": 0.072,
+  "spearman with opus": -0.177,
+  "spearman with opus less the look": -0.295,
+  "spearman with sonnet": -0.119,
+  "spearman with sonnet less the look": -0.151,
+  "spearman with gemini": -0.01,
+  "spearman with gemini less the look": -0.057,
+  "bands": {
+   "under half a decade": {
+    "panels": 53,
+    "teachers": 0.351,
+    "look": 0.299,
+    "opus": 0.118,
+    "sonnet": 0.179,
+    "gemini": 0.214
+   },
+   "half to one and a half": {
+    "panels": 114,
+    "teachers": 0.353,
+    "look": 0.354,
+    "opus": 0.038,
+    "sonnet": 0.104,
+    "gemini": 0.083
+   },
+   "over one and a half": {
+    "panels": 100,
+    "teachers": 0.283,
+    "look": 0.338,
+    "opus": 0.0,
+    "sonnet": 0.062,
+    "gemini": 0.146
+   }
+  },
+  "magnitude of 10^12 or more": {
+   "panels": 1,
+   "teachers": 0.02,
+   "look": 0.608,
+   "opus": NaN,
+   "sonnet": NaN,
+   "gemini": NaN
+  },
+  "half or more zero or below": {
+   "panels": 16,
+   "teachers": 0.425,
+   "look": 0.298,
+   "opus": 0.0,
+   "sonnet": 0.0,
+   "gemini": 0.0
+  }
+ }
+}

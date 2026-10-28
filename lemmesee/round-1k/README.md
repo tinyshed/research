@@ -1,8 +1,9 @@
 # Round 1k: cheaper teachers, and GitTables as a school for the look
 
-Status: teachers calibrated, the pilot labelled and the ideas probed on 28
-October 2026; the comparison is prepared and not yet run. Nothing here is
-reported yet.
+Status: run on 28 and 29 October 2026; [reported](../reports/ceiling-2026-10-29.md).
+No new model is kept: Jev (fast) and Luna replace DeepSeek and GLM as
+teachers, Sonnet and Gemini now count all 93 databases, and the next gain is
+a person's click.
 
 Round 1g found the look limited by what words mean together with what a
 result shows, and 93 databases too few to teach it. Round 1h taught names

@@ -48,3 +48,7 @@ so, never by editing the number it replaces.
   and the frozen title student's internal tree contributions establish no substantial consistent gain on the
   same 93 databases; dense features expose a threshold-packing fault, and a shared contextual encoder is
   specified as a separate next hypothesis.
+- [Where the look stops](ceiling-2026-10-29.md), round 1k: the count sees 0.19 of a panel on 50 databases, so the
+  43 never judged were judged and it sees 0.12–0.22 on 93; a pairwise count is two to three times less sensitive;
+  Luna asked for a chance teaches as Jev does and DeepSeek and GLM can go; GitTables' panels, a name's head word and
+  a summed column's spread each move the look by less than a tenth; a person's first click buys +0.17, z 4.0.

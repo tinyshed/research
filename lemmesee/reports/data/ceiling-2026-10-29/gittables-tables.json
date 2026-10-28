@@ -1,0 +1,1821 @@
+{
+"record": "zenodo 6517052, GitTables 1M 0.0.6",
+"topics": [
+"rate_of_return",
+"growth_rate",
+"crime_rate",
+"inflation_rate",
+"time_interval"
+],
+"left_out": {
+"licence": 4541,
+"size": 7323,
+"columns": 5048,
+"repeat": 14917,
+"repository": 1028,
+"judged": 68
+},
+"eligible": 746,
+"built": [
+{
+"fixture": "gt00001-duckdb",
+"csv_url": "https://github.com/alixaxel/dump.HN/blob/11fd7291c89c68daf4196a47e8cfa47e4df30c8d/data/items/2015/01/15/08-09.csv",
+"license": "MIT License",
+"rows": 122
+},
+{
+"fixture": "gt00004-duckdb",
+"csv_url": "https://github.com/DreaJulca/reVis/blob/911b2182a911e1d438666c5ff2f1779f8e040e6e/csv/NIPA/2009/q1/preliminary_may-29-2009/section5all_xls_50306%20Ann$.csv",
+"license": "Creative Commons Zero v1.0 Universal",
+"rows": 56
+},
+{
+"fixture": "gt00005-duckdb",
+"csv_url": "https://github.com/rdv1123/bitcointalkTopicScraper/blob/d82b851bd62a24451804b465dc46dfce3a5066d9/data/raw_data/LPX_20190925-131747.csv",
+"license": "MIT License",
+"rows": 89
+},
+{
+"fixture": "gt00006-duckdb",
+"csv_url": "https://github.com/DreaJulca/reVis/blob/911b2182a911e1d438666c5ff2f1779f8e040e6e/csv/NIPA/2014/q2/third_september-26-2014/section5all_xls_50306%20Ann$.csv",
+"license": "Creative Commons Zero v1.0 Universal",
+"rows": 63
+},
+{
+"fixture": "gt00010-duckdb",
+"csv_url": "https://github.com/DreaJulca/reVis/blob/911b2182a911e1d438666c5ff2f1779f8e040e6e/csv/NIPA/2014/q3/second_november-25-2014/section4all_xls_40206%20Ann$.csv",
+"license": "Creative Commons Zero v1.0 Universal",
+"rows": 87
+},
+{
+"fixture": "gt00013-duckdb",
+"csv_url": "https://github.com/BPEsenegal/BPE/blob/23b48b08e8bafe5049a1f77c121b20947a5337f3/data/by_country/Isle%20of%20Man.csv",
+"license": "MIT License",
+"rows": 162
+},
+{
+"fixture": "gt00014-duckdb",
+"csv_url": "https://github.com/CitrineInformatics/MPEA_dataset/blob/aa82d5133299152523503bd61e2fcbdcdaf29500/references/references.csv",
+"license": "Apache License 2.0",
+"rows": 265
+},
+{
+"fixture": "gt00018-duckdb",
+"csv_url": "https://github.com/neerajvashistha/msc_ai_sem2/blob/f9541c56d5646f3822b16146b104fe5f87577128/NN_NLP/Lab11-12_dialogue_act_tagging/swda/sw06utt/sw_0669_3381.utt.csv",
+"license": "MIT License",
+"rows": 109
+},
+{
+"fixture": "gt00020-duckdb",
+"csv_url": "https://github.com/DreaJulca/reVis/blob/911b2182a911e1d438666c5ff2f1779f8e040e6e/csv/NIPA/2008/q3/final_december-23-2008/section4all_xls_40206%20Ann$.csv",
+"license": "Creative Commons Zero v1.0 Universal",
+"rows": 84
+},
+{
+"fixture": "gt00021-duckdb",
+"csv_url": "https://github.com/kevinalig/CS3250/blob/578d984f1b978be3a5b75e2abcb96fded5ace082/Data_Sources/betfair_data_sets/dwbfpricesusawin09092014.csv",
+"license": "Apache License 2.0",
+"rows": 234
+},
+{
+"fixture": "gt00023-duckdb",
+"csv_url": "https://github.com/DreaJulca/reVis/blob/911b2182a911e1d438666c5ff2f1779f8e040e6e/csv/NIPA/2014/q4/third_march-27-2015/section1all_xls_10506%20Ann$.csv",
+"license": "Creative Commons Zero v1.0 Universal",
+"rows": 87
+},
+{
+"fixture": "gt00027-duckdb",
+"csv_url": "https://github.com/tushartushar/miningSmellData/blob/fb143af48109a76075011245a7093c90081c58c2/Results/MediaPortal_MediaPortal-1/Designite_Gentle.Framework.Tests_MethodMetrics.csv",
+"license": "MIT License",
+"rows": 295
+},
+{
+"fixture": "gt00028-duckdb",
+"csv_url": "https://github.com/mlldaniel/ForecastAutmation/blob/112bf349193150c6766f001204d231361a3b8dd7/output/English/keywordHistory/Keyword_History.csv",
+"license": "MIT License",
+"rows": 136
+},
+{
+"fixture": "gt00033-duckdb",
+"csv_url": "https://github.com/digital-land/brownfield-land-pipeline/blob/04613fc57efe205239056739629a969b387526ef/var/harmonised/f246d75236bbc81fe089b39d6ebf247c9191b9b28561282c47d773e7db6bab4c.csv",
+"license": "MIT License",
+"rows": 58
+},
+{
+"fixture": "gt00034-duckdb",
+"csv_url": "https://github.com/norberte/Statistical-Consulting/blob/58cf9c0b06d07221afaf5005c8ca3fddf91f4a5e/Output/FullConference/conference_sorted_type%206%20.csv",
+"license": "MIT License",
+"rows": 286
+},
+{
+"fixture": "gt00036-duckdb",
+"csv_url": "https://github.com/mateuszdyminski/auto/blob/2fbb50d68974074604805fff5fbb2d078d1d9ad9/ingress/data/1966_original.csv",
+"license": "MIT License",
+"rows": 76
+},
+{
+"fixture": "gt00037-duckdb",
+"csv_url": "https://github.com/virajrathod/2019-dataviscourse-homework/blob/a696978f2ecea2f9660499e8d068a8ab29e4a78f/hw6/data/words-without-force-positions.csv",
+"license": "MIT License",
+"rows": 402
+},
+{
+"fixture": "gt00041-duckdb",
+"csv_url": "https://github.com/andreasa13/Flask_WebApp_TripAdvisor/blob/df8e144242da74de963ac66965a7511c68b6268d/user_profiles/Ollerbarrow.csv",
+"license": "MIT License",
+"rows": 80
+},
+{
+"fixture": "gt00047-duckdb",
+"csv_url": "https://github.com/youyanggu/covid19-forecast-hub-evaluation/blob/1a429930c99a4680778b9732e040c1e40eb29f5f/evaluations/2020-09-12/projections_2020-07-27_2020-09-12.csv",
+"license": "MIT License",
+"rows": 52
+},
+{
+"fixture": "gt00051-duckdb",
+"csv_url": "https://github.com/norberte/Statistical-Consulting/blob/58cf9c0b06d07221afaf5005c8ca3fddf91f4a5e/Output/Google/calendar_type%206%20.csv",
+"license": "MIT License",
+"rows": 286
+},
+{
+"fixture": "gt00052-duckdb",
+"csv_url": "https://github.com/bgoonz/UsefulResourceRepo2.0/blob/4b9f167636fa3fcda3d5be52e81990f2b8cc03fd/_OVERFLOW/data/20170520_bundesliga_trendingPlayers_seasons_201617.csv",
+"license": "MIT License",
+"rows": 294
+},
+{
+"fixture": "gt00053-duckdb",
+"csv_url": "https://github.com/helxplatform/dug/blob/43b14559e7ced9e065c3abe6a1e996c12e9e54e2/tests/integration/data/test_variables_v2.0.csv",
+"license": "MIT License",
+"rows": 61
+},
+{
+"fixture": "gt00055-duckdb",
+"csv_url": "https://github.com/epri-dev/StorageVET/blob/7b57e8058b911950d2ab871ba0ed8e228449486b/test/model_params/053-tariff-repeated-billing-period-index.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 90
+},
+{
+"fixture": "gt00056-duckdb",
+"csv_url": "https://github.com/WamdamProject/WaMDaM_UseCases/blob/df3da5bb88a33c984f3a579b96c0a6a58ba58abd/5_Results_CSV/1.01Identify_WEAPmodel_requirements.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 127
+},
+{
+"fixture": "gt00061-duckdb",
+"csv_url": "https://github.com/Data-Science-Project-G13/monitoring-athletes-performance/blob/7681fdb1ae551a61ad74e24c8efe27c180ab1bd3/data/Rach%20Madden.csv",
+"license": "Apache License 2.0",
+"rows": 163
+},
+{
+"fixture": "gt00063-duckdb",
+"csv_url": "https://github.com/SkillsFundingAgency/sfs-sitedesign/blob/654947dce7c62deeabf14aa066a6b7b9927bd0a2/app/assets/documents/beta/v120-0-0/signed-in/external/allocation-statements/16-to-19/funding-breakdown-fe/16-to-19_2021-to-2022_published-12-09-2021_casterbridge-college.csv",
+"license": "MIT License",
+"rows": 131
+},
+{
+"fixture": "gt00064-duckdb",
+"csv_url": "https://github.com/paleopresto/recommender/blob/73d7ef21c22cfe967e07c2652fc4d6ba4b0e006f/paleorec/gru_code/data/csv/lipdverse_test_20210612_192536.csv",
+"license": "Apache License 2.0",
+"rows": 1034
+},
+{
+"fixture": "gt00068-duckdb",
+"csv_url": "https://github.com/brendawyang/graphs-mislead-repo/blob/657bcd5c97597acf29e347576b5acb044434b140/Materials%20and%20Graph%20Stimuli/Stimuli%20creation%20scripts/all_graph_data.csv",
+"license": "MIT License",
+"rows": 246
+},
+{
+"fixture": "gt00069-duckdb",
+"csv_url": "https://github.com/med-material/HandStrengthener/blob/7ba0abae94b4d476e2e19159e410d41fd70b2c4f/Analysis/jan2020-experiment/jan2020-bcidata/participant103keysequencedata_2020-01-14-14_27_58-nikolai.csv",
+"license": "MIT License",
+"rows": 205
+},
+{
+"fixture": "gt00074-duckdb",
+"csv_url": "https://github.com/youyanggu/covid19-forecast-hub-evaluation/blob/1a429930c99a4680778b9732e040c1e40eb29f5f/evaluations/2020-07-18/projections_2020-06-08_2020-07-18.csv",
+"license": "MIT License",
+"rows": 52
+},
+{
+"fixture": "gt00077-duckdb",
+"csv_url": "https://github.com/aic-sri-international/aic-expresso/blob/01b0bbc33c2ad37fea12a645cbc6105abc7e5352/IsingModel4X4.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 72
+},
+{
+"fixture": "gt00078-duckdb",
+"csv_url": "https://github.com/mckaz/money-infer/blob/4e8525f7ab6f56cc5eb15f70aff6368e81747d1f/twin__0.5_7_infer_data.csv",
+"license": "MIT License",
+"rows": 161
+},
+{
+"fixture": "gt00080-duckdb",
+"csv_url": "https://github.com/jturner65/LSTM_Lipreader/blob/56d5e536205ee8e958a7a20e8b03a5faf2ee158b/MatlabCode/output_2/capLocs/1058_xvid.csv",
+"license": "Apache License 2.0",
+"rows": 684
+},
+{
+"fixture": "gt00081-duckdb",
+"csv_url": "https://github.com/ledwindra/ideas-repec/blob/24fcc38a173a9d1cbdd2d90c4929b94ba7912d00/data/working-paper.csv",
+"license": "Do What The F*ck You Want To Public License",
+"rows": 140
+},
+{
+"fixture": "gt00082-duckdb",
+"csv_url": "https://github.com/epri-dev/StorageVET/blob/f277d6a52081315e6a173b4d510ee0b2a13dc5da/test/model_params/004-fixed_size_battery_retailets_dcm.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 90
+},
+{
+"fixture": "gt00085-duckdb",
+"csv_url": "https://github.com/jknowles/DEWSatDoGoodData2016/blob/369dee00007461947ec15af0d8e94e70a2780ddc/data/BowersEWSReviewData.csv",
+"license": "MIT License",
+"rows": 110
+},
+{
+"fixture": "gt00086-duckdb",
+"csv_url": "https://github.com/SapientsUOM/JATT/blob/cf932938b1ca67fdda78bdd651e458c3193c21ad/TomcatTuner/src/jvm_param_flags.csv",
+"license": "MIT License",
+"rows": 343
+},
+{
+"fixture": "gt00097-duckdb",
+"csv_url": "https://github.com/pds-data-dictionaries/ldd-speclib/blob/7dd7e142efbf0d5e42f19b805406dfc26afb6d20/build/release/1.15.0.0/PDS4_SPECLIB_1F00_1100.csv",
+"license": "Apache License 2.0",
+"rows": 155
+},
+{
+"fixture": "gt00098-duckdb",
+"csv_url": "https://github.com/epri-dev/StorageVET/blob/f277d6a52081315e6a173b4d510ee0b2a13dc5da/test/model_params/023-DA_month_results_dir_label.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 92
+},
+{
+"fixture": "gt00100-duckdb",
+"csv_url": "https://github.com/marcrng/WA-Analytics/blob/84e48d79496d510f136e98062dca6bf4eaa4e243/data/data.gov/extra/City_of_Seattle_Wages___Comparison_by_Gender__Wage_Progression_Job_Titles.csv",
+"license": "MIT License",
+"rows": 759
+},
+{
+"fixture": "gt00101-duckdb",
+"csv_url": "https://github.com/minimaxir/ml-data-generator/blob/b026a89593fcfceea578bc48219affe8375bb876/gen_df_binary.csv",
+"license": "MIT License",
+"rows": 100
+},
+{
+"fixture": "gt00104-duckdb",
+"csv_url": "https://github.com/Yndal/ArduPilot-SensorPlatform/blob/d0fdeee78f3ff8c733bcc19ac1a0342568a0befa/PX4NuttX/nuttx/syscall/syscall.csv",
+"license": "MIT License",
+"rows": 121
+},
+{
+"fixture": "gt00112-duckdb",
+"csv_url": "https://github.com/axiom-data-science/bufrtools/blob/472238b51366f4ac4da29dc14b7d22b1dec5e58a/bufrtools/tables/data/BUFRCREX_TableB_en_11.csv",
+"license": "MIT License",
+"rows": 78
+},
+{
+"fixture": "gt00113-duckdb",
+"csv_url": "https://github.com/ONSdigital/sdg-sandbox-data/blob/8647bb1f16b5eb1ed659d9c0656c43243714ea1f/data/indicator_15-2-1.csv",
+"license": "MIT License",
+"rows": 342
+},
+{
+"fixture": "gt00114-duckdb",
+"csv_url": "https://github.com/gormshackelford/metadataset/blob/a18cc76d0895ce861a29f4ce151f10f7d68df536/publications/data/agriculture/outcomes_1.0.csv",
+"license": "MIT License",
+"rows": 128
+},
+{
+"fixture": "gt00115-duckdb",
+"csv_url": "https://github.com/LDSSA/batch5-students/blob/0c160bcb3fbdc2952b3c9d9f742ee0e4cb99e2d0/S01%20-%20Bootcamp%20and%20Binary%20Classification/SLU04%20-%20Basic%20Stats%20with%20Pandas/data/etfs_sample.csv",
+"license": "MIT License",
+"rows": 155
+},
+{
+"fixture": "gt00116-duckdb",
+"csv_url": "https://github.com/kirenz/datasets/blob/968053b8d2b5410b49d7b88e95880e37e81e70d1/worldbank_indicator_2016_subset.csv",
+"license": "MIT License",
+"rows": 184
+},
+{
+"fixture": "gt00117-duckdb",
+"csv_url": "https://github.com/SymbioticLab/Tiresias/blob/959f9b08f44fa1b4f2b3aed79b01e4d439264a94/simulator/60_job.csv",
+"license": "Apache License 2.0",
+"rows": 60
+},
+{
+"fixture": "gt00122-duckdb",
+"csv_url": "https://github.com/kartikeyporwal/365datascience/blob/41445bd5a0fb3acf7b53d9198cc3c759e220cc34/14%20-%20Introduction%20to%20R%20Programming/10_Exploratory%20data%20analysis/5_Covariance%20and%20correlation%20(6:41)/practical-customer.csv",
+"license": "Apache License 2.0",
+"rows": 196
+},
+{
+"fixture": "gt00124-duckdb",
+"csv_url": "https://github.com/LewisAJones/LBG_sim/blob/0afa2b71d299db2eee745ff5ee041161926f77ea/data/raw_data/binned_collections/masked/coniacian.csv",
+"license": "MIT License",
+"rows": 104
+},
+{
+"fixture": "gt00125-duckdb",
+"csv_url": "https://github.com/louisowen6/NLP_Stacking_Ensemble/blob/3fd37bb5cb4c34677753022cdc7fc59eb924f01c/rf_1_gram_df.csv",
+"license": "MIT License",
+"rows": 3631
+},
+{
+"fixture": "gt00126-duckdb",
+"csv_url": "https://github.com/NREL/RODeO/blob/6c0abf717c561b33d81388812a21a6a42872d4ff/Projects/VTA_bus_project/Output/Test%20multiple%20devies/Storage_dispatch_summary_Test2_A-6_oneDEV.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 77
+},
+{
+"fixture": "gt00135-duckdb",
+"csv_url": "https://github.com/mayacakmak/se2/blob/19bcc449cd9e2c5419ad51d3a27027606ad8e53f/se3/data-processing/data/se3-10-31-filtered-questionnaires.csv",
+"license": "BSD 2-Clause \"Simplified\" License",
+"rows": 60
+},
+{
+"fixture": "gt00140-duckdb",
+"csv_url": "https://github.com/tushartushar/miningSmellData/blob/fb143af48109a76075011245a7093c90081c58c2/Results/letianzj_QuantTrading/Designite_TradingBase_ClassMetrics.csv",
+"license": "MIT License",
+"rows": 73
+},
+{
+"fixture": "gt00146-duckdb",
+"csv_url": "https://github.com/uwgraphics/EMDrama-Standardization/blob/4ee5044bb948626b29fb24b0f941087dc3ac77d3/csv/A07512.headed_tokens.csv",
+"license": "Creative Commons Zero v1.0 Universal",
+"rows": 2033
+},
+{
+"fixture": "gt00156-duckdb",
+"csv_url": "https://github.com/Arya66/zero/blob/f71087f35ff27178b99646790a3d8850452e0f02/tests/mock_responses/mf_instruments.csv",
+"license": "MIT License",
+"rows": 99
+},
+{
+"fixture": "gt00158-duckdb",
+"csv_url": "https://github.com/leftbrainstuff/R-stuff/blob/341b185dca654ff55145a74e775a240ceba5fa66/oceania/factbook.csv",
+"license": "The Unlicense",
+"rows": 261
+},
+{
+"fixture": "gt00159-duckdb",
+"csv_url": "https://github.com/ZZR0/ISSTA21-JIT-DP/blob/8e7874ec9b983fcb45b8a4ebe5222721ffe75da5/Data_Extraction/git_base/issue_datasets/jdt/SWTBot_2008-01-01_2012-01-01.csv",
+"license": "MIT License",
+"rows": 347
+},
+{
+"fixture": "gt00162-duckdb",
+"csv_url": "https://github.com/strumswell/sentiment-apple-events/blob/b6f4f7799374aba757874f5426b3a2c1bf7d29b5/data/cleaned_nouns/2018_Jun_Pre_CleanedNounsOnly.csv",
+"license": "MIT License",
+"rows": 386
+},
+{
+"fixture": "gt00164-duckdb",
+"csv_url": "https://github.com/liuyongjie0722/dash-sample-apps/blob/04b946a0363c9b28caff846b3b35304d2bd3bb39/apps/dash-phylogeny/data/measles/nextstrain_measles_metadata.csv",
+"license": "MIT License",
+"rows": 96
+},
+{
+"fixture": "gt00165-duckdb",
+"csv_url": "https://github.com/COSD-PANDA/datasd/blob/e331104a442396c5021a53113d6e5da64eaf322f/src/assets/data/inventory.csv",
+"license": "MIT License",
+"rows": 145
+},
+{
+"fixture": "gt00170-duckdb",
+"csv_url": "https://github.com/sakethsundar/covid-forecaster/blob/be9167b5c479fd57323fd2604727cb13693f6fe5/eval/one-week/2020-04-25/projections_2020-04-20_2020-04-25.csv",
+"license": "MIT License",
+"rows": 52
+},
+{
+"fixture": "gt00173-duckdb",
+"csv_url": "https://github.com/SkillsFundingAgency/sfs-sitedesign/blob/654947dce7c62deeabf14aa066a6b7b9927bd0a2/app/assets/documents/beta/v115-0-0/signed-in/external/allocation-statements/16-to-19/funding-breakdown-fe/16-to-19_2021-to-2022_published-12-09-2021_casterbridge-college.csv",
+"license": "MIT License",
+"rows": 131
+},
+{
+"fixture": "gt00175-duckdb",
+"csv_url": "https://github.com/donasaur/hiv-model/blob/97dc3f1461b08067331178e1038a2a21463156bb/parameters.csv",
+"license": "MIT License",
+"rows": 79
+},
+{
+"fixture": "gt00177-duckdb",
+"csv_url": "https://github.com/mfineman/Picture_of_Health/blob/da8aba630e9065dc0e17000801a09e98b2922473/Data/combinedData.csv",
+"license": "MIT License",
+"rows": 50
+},
+{
+"fixture": "gt00182-duckdb",
+"csv_url": "https://github.com/Matchoc/stockmarketpy/blob/1fecfe6343aed7b5d41758901420d4774d9be229/data/predictions/prediction-20170210-092045.csv",
+"license": "Apache License 2.0",
+"rows": 272
+},
+{
+"fixture": "gt00183-duckdb",
+"csv_url": "https://github.com/intake/intake/blob/ded664427ea1d31e23e7521ef4d170df2934d741/intake/interface/tests/data/crime.csv",
+"license": "BSD 2-Clause \"Simplified\" License",
+"rows": 55
+},
+{
+"fixture": "gt00184-duckdb",
+"csv_url": "https://github.com/aksel-blaise/gmarchnet/blob/4cf3078c9df16e93014909e85e6911ce8560a7bf/citref/40/scopus(1).csv",
+"license": "MIT License",
+"rows": 80
+},
+{
+"fixture": "gt00191-duckdb",
+"csv_url": "https://github.com/DLR-SC/repository-synergy/blob/9e2d3a3da7198c7d23aaff220b0a53fe662cdebc/data/evaluation/manual/results/reposynergy.annotation.csv",
+"license": "MIT License",
+"rows": 310
+},
+{
+"fixture": "gt00192-duckdb",
+"csv_url": "https://github.com/S2-group/ecsa-2021-replication-package/blob/3e52b7ae67aa17d361189e5e8ee694d8fa32d49f/dataset/phase3/energy-term-datapoints.csv",
+"license": "MIT License",
+"rows": 180
+},
+{
+"fixture": "gt00193-duckdb",
+"csv_url": "https://github.com/biox-rbootcamp/biox-rbootcamp.github.io/blob/7680ea13a261317a842f60c2f0b2ebb8eb9ec9f5/assets/lectures/linear_regression/data/c_data2.csv",
+"license": "Creative Commons Zero v1.0 Universal",
+"rows": 81
+},
+{
+"fixture": "gt00195-duckdb",
+"csv_url": "https://github.com/lesterpjy/numeric-t5/blob/5ab7af46059e08a99cc82bcc863ce40f6132989d/error_analysis/rc_exp_1_stage_3_5_e60_drop/eval_reports_valid_set/ea_spans_sample_100.csv",
+"license": "MIT License",
+"rows": 100
+},
+{
+"fixture": "gt00199-duckdb",
+"csv_url": "https://github.com/MagicalBearClaw/HackerNewsClassification/blob/04a49032c3988d2f9b0a04bea9b53e40bc9127e3/data/test.csv",
+"license": "MIT License",
+"rows": 198
+},
+{
+"fixture": "gt00202-duckdb",
+"csv_url": "https://github.com/UWSEDS-aut17/uwseds-group-city-fynders/blob/7461f1e428be0dc4d7340725ce4f0f19fa196f4c/data/rank_file.csv",
+"license": "MIT License",
+"rows": 50
+},
+{
+"fixture": "gt00207-duckdb",
+"csv_url": "https://github.com/ag-gipp/dataAnnoMathTex/blob/d1e66b9d420a02af2f1017f09daf3d2d8c80846f/runs/Philipp(keepFCDB)/evaluation/Planck_length.csv",
+"license": "Apache License 2.0",
+"rows": 56
+},
+{
+"fixture": "gt00208-duckdb",
+"csv_url": "https://github.com/UMEC/healthcare-workforce/blob/cf0c6dd28233d12e73f55d27a9c6b8c3e6d043ab/models/data/example/admin2/service_characteristics.csv",
+"license": "BSD 2-Clause \"Simplified\" License",
+"rows": 98
+},
+{
+"fixture": "gt00210-duckdb",
+"csv_url": "https://github.com/GoogleCloudPlatform/datacatalog-connectors-rdbms/blob/b406f88bd6ad3f10cc33980f7d7396a3ac439929/google-datacatalog-rdbms-connector/tests/google/datacatalog_connectors/rdbms/test_data/rdbms_full_dump.csv",
+"license": "Apache License 2.0",
+"rows": 74
+},
+{
+"fixture": "gt00211-duckdb",
+"csv_url": "https://github.com/nicolay-zlobin/gekko-batcher/blob/d213fdd5838f254c1c9301de9b92cf10135f0e58/sample_results.csv",
+"license": "MIT License",
+"rows": 64
+},
+{
+"fixture": "gt00213-duckdb",
+"csv_url": "https://github.com/rahulmkumar/ZeroSim/blob/63eb357c4831b666581df0de4355f85095653d06/symbols/Archive/AMEX_Finviz.csv",
+"license": "MIT License",
+"rows": 382
+},
+{
+"fixture": "gt00214-duckdb",
+"csv_url": "https://github.com/microsoft/ContextualSP/blob/969fe9d9e3237a1106d62effb221601583512d75/poset_decoding/traversal_path_prediction/MatchZoo-py/matchzoo/datasets/toy/train.csv",
+"license": "MIT License",
+"rows": 100
+},
+{
+"fixture": "gt00215-duckdb",
+"csv_url": "https://github.com/epri-dev/StorageVET/blob/f277d6a52081315e6a173b4d510ee0b2a13dc5da/test/model_params/034-pv_ice_ice_bill_reduction.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 113
+},
+{
+"fixture": "gt00216-duckdb",
+"csv_url": "https://github.com/AnirudhVIyer/Diabetes_Prediction/blob/2d306580743a9bd72f9cbe2b3b2760e3a4f59430/Dataset%20Diabetes%20Type1%20(Total).csv",
+"license": "MIT License",
+"rows": 306
+},
+{
+"fixture": "gt00217-duckdb",
+"csv_url": "https://github.com/sanderroosendaal/rowingdata/blob/95d07d52605fafe33595946bdb2aea8072da66bf/testdata/testdatasummary.csv",
+"license": "MIT License",
+"rows": 79
+},
+{
+"fixture": "gt00218-duckdb",
+"csv_url": "https://github.com/MapofLife/MOL/blob/e3c50ee4ec8364c61cfff3ea68ece1098674f4d6/workflow/field-definitions/MOL%20Layer%20Field%20Information%20-%20as%20of%20January%205,%202012.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 57
+},
+{
+"fixture": "gt00225-duckdb",
+"csv_url": "https://github.com/TommasoBelluzzo/InitialMargin/blob/8c3452d76f1cc13a55e8112c20f3299dd1613622/Solution/InitialMargin.Tests/Data/CsvPledgor.csv",
+"license": "MIT License",
+"rows": 227
+},
+{
+"fixture": "gt00226-duckdb",
+"csv_url": "https://github.com/letsgoexploring/economic-data/blob/41056789903507510acda93752384f5ccfd1aa05/quantity-theory/csv/quantity_theory_open_data_M.csv",
+"license": "MIT License",
+"rows": 90
+},
+{
+"fixture": "gt00227-duckdb",
+"csv_url": "https://github.com/Breezen/Coursera-Machine-Learning/blob/77267e106cb865a5f95d37093d4219b3458aea27/1_Regression/Week1_Simple%20Linear%20Regression/Philadelphia_Crime_Rate_noNA.csv",
+"license": "MIT License",
+"rows": 99
+},
+{
+"fixture": "gt00232-duckdb",
+"csv_url": "https://github.com/parkjan4/DSIP/blob/9a1fabd1b87f70d5f94a14b6c5adc0c6895cfbf0/Project/human-resources-data-set/production_staff.csv",
+"license": "MIT License",
+"rows": 256
+},
+{
+"fixture": "gt00235-duckdb",
+"csv_url": "https://github.com/jutzca/Review_disease_modifying_effects_drugs_SCI/blob/b28f1e1a90288f921578f432ffde74afa1bfa1e2/Studies/scopus/new/%20polyethylene_glycol_scopus.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 82
+},
+{
+"fixture": "gt00239-duckdb",
+"csv_url": "https://github.com/databrew/intro-to-data-science/blob/ac54ceb80895c4789d7a4197bebf25b108d0ee9c/data/whale-dives-messy.csv",
+"license": "MIT License",
+"rows": 402
+},
+{
+"fixture": "gt00240-duckdb",
+"csv_url": "https://github.com/iriscatter/StockExplorer/blob/de89d83fbdae794f1d0c2acea9eef0b993dd41b6/FileExample/GOOGL_Tweets_20201212.csv",
+"license": "MIT License",
+"rows": 130
+},
+{
+"fixture": "gt00244-duckdb",
+"csv_url": "https://github.com/nanthony007/fe-awakening/blob/96be8446e5a96fe81b0bb387a10f44820b818ca5/data/skills.csv",
+"license": "MIT License",
+"rows": 88
+},
+{
+"fixture": "gt00245-duckdb",
+"csv_url": "https://github.com/alixaxel/dump.HN/blob/11fd7291c89c68daf4196a47e8cfa47e4df30c8d/data/users/h/hr.csv",
+"license": "MIT License",
+"rows": 106
+},
+{
+"fixture": "gt00247-duckdb",
+"csv_url": "https://github.com/CMU-IDS-2020/a3-arpit-laura/blob/20a5691dd1a03941284ff46005d0cc5202e8a898/neighbourhood_scores.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 482
+},
+{
+"fixture": "gt00253-duckdb",
+"csv_url": "https://github.com/wpfwxn/https-github.com-phuse-org-phuse-scripts/blob/a1dc5d321cc8759428b6334fa1babe77eaa30bc5/contributed/Nonclinical/R/KronaApp/Data/1_month_rat_PDS-FAKEDRUG-111/PP.csv",
+"license": "MIT License",
+"rows": 180
+},
+{
+"fixture": "gt00255-duckdb",
+"csv_url": "https://github.com/sumansamui/Utterance_to_Words_Splitting/blob/eb1f34b105f200e82337807b810fa520b8dbbee1/output/utterance_level_meta_info.csv",
+"license": "Apache License 2.0",
+"rows": 203
+},
+{
+"fixture": "gt00260-duckdb",
+"csv_url": "https://github.com/dfreestone/timing_tasks/blob/2fb1e22a3fe091fa673da4ad54a92f8afe6e0480/Switch%20procedure/data/FB_switch_task_2016_Mar_16_1050.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 92
+},
+{
+"fixture": "gt00261-duckdb",
+"csv_url": "https://github.com/faucetsdn/daq/blob/419089e941d2a5af9abdb5e2e71c8e77c2af11b7/docker/include/bacnet/bacnetFaux/src/main/resources/pics.csv",
+"license": "Apache License 2.0",
+"rows": 485
+},
+{
+"fixture": "gt00264-duckdb",
+"csv_url": "https://github.com/sanjaymeena/simplified_switchboard_dialog_act_corpus/blob/e3c10ac594be0a412610ab3197961f32592314a0/data/switchboard_conversations/CRIME/sw_0292_3023.utt.csv",
+"license": "Apache License 2.0",
+"rows": 87
+},
+{
+"fixture": "gt00266-duckdb",
+"csv_url": "https://github.com/martinwalters/myRepository/blob/a967b787b7ff7bfdd483c4e601b425fc75ec80e4/pokedex/data/csv/pokemon_species.csv",
+"license": "MIT License",
+"rows": 721
+},
+{
+"fixture": "gt00267-duckdb",
+"csv_url": "https://github.com/TRI-AMDD/beep/blob/74a1ab1d37075af4baa43f8059c64deb42ef2edc/beep/tests/test_files/data-share/raw/parameters/RapidC_parameters%20-%20GP.csv",
+"license": "Apache License 2.0",
+"rows": 60
+},
+{
+"fixture": "gt00268-duckdb",
+"csv_url": "https://github.com/science-automation/ETL-Synthea-Python/blob/8840475755a84ca37d5091d41b06e227216d511a/vocab/CONCEPT.csv",
+"license": "Apache License 2.0",
+"rows": 422
+},
+{
+"fixture": "gt00270-duckdb",
+"csv_url": "https://github.com/NREL/RODeO/blob/6c0abf717c561b33d81388812a21a6a42872d4ff/Projects/VTA_bus_project/Output/Test%20multiple%20devies/Storage_dispatch_summary_Test2_A-6_twoDEV.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 77
+},
+{
+"fixture": "gt00275-duckdb",
+"csv_url": "https://github.com/arx-deidentifier/genetic-benchmark/blob/14a262ce10280757060de9ca414f56080297c3eb/results/parametrization/Experiment1_popUnique_all.csv",
+"license": "Apache License 2.0",
+"rows": 240
+},
+{
+"fixture": "gt00278-duckdb",
+"csv_url": "https://github.com/LewisAJones/LBG_sim/blob/0afa2b71d299db2eee745ff5ee041161926f77ea/data/raw_data/binned_collections/coniacian.csv",
+"license": "MIT License",
+"rows": 295
+},
+{
+"fixture": "gt00281-duckdb",
+"csv_url": "https://github.com/jakekohlhepp/selection_injury/blob/992b2de97e9349dc67618e7c515286b398778c8e/mkdata/out/list_var_desc.csv",
+"license": "MIT License",
+"rows": 100
+},
+{
+"fixture": "gt00282-duckdb",
+"csv_url": "https://github.com/mrava87/SEG_NLP/blob/5afbbbfad0a2aba7ab692f5e002d54e0ea7cc97b/data/77/4/df_SEG.csv",
+"license": "MIT License",
+"rows": 72
+},
+{
+"fixture": "gt00285-duckdb",
+"csv_url": "https://github.com/TRI-AMDD/beep/blob/74a1ab1d37075af4baa43f8059c64deb42ef2edc/beep/tests/test_files/data-share/raw/parameters/PreDiag_parameters%20-%20GP.csv",
+"license": "Apache License 2.0",
+"rows": 386
+},
+{
+"fixture": "gt00287-duckdb",
+"csv_url": "https://github.com/JoeyBernhardt/thermal-variability/blob/f773f404fe715e29597d8fd379f7dd08714ae60f/Tetraselmis_experiment/data-processed/growth_toy.csv",
+"license": "MIT License",
+"rows": 366
+},
+{
+"fixture": "gt00294-duckdb",
+"csv_url": "https://github.com/CHANGE-Lab/traits-review/blob/73ad8ca0d26c3d66d551476445f0c653c2e1c5b3/data/unprocessed-data/traits_classification_FuncBiogeog_to_append_revised.csv",
+"license": "Creative Commons Attribution 4.0 International",
+"rows": 240
+},
+{
+"fixture": "gt00296-duckdb",
+"csv_url": "https://github.com/axiom-data-science/bufrtools/blob/472238b51366f4ac4da29dc14b7d22b1dec5e58a/bufrtools/tables/data/CREX_TableD_en_05.csv",
+"license": "MIT License",
+"rows": 71
+},
+{
+"fixture": "gt00301-duckdb",
+"csv_url": "https://github.com/aravart/speech-games/blob/f54f250a86b2aaff870d37386a722fe3e21f2ea2/theory/rec-errors/no_corrections_data.csv",
+"license": "MIT License",
+"rows": 244
+},
+{
+"fixture": "gt00307-duckdb",
+"csv_url": "https://github.com/efaysal/efaysal.github.io/blob/9ed5985e1670aeb1d36ae5d249a7898ee4b11498/SocioEconomicEcosystem/FrGrSwRETURNVOLATILITY/BISRETURNCOEFFQBMONTECARLOWeeklyMemSD_iSharesBondGovernment&CorporateUCITSETF.csv",
+"license": "MIT License",
+"rows": 115
+},
+{
+"fixture": "gt00308-duckdb",
+"csv_url": "https://github.com/deeplearningunb/review_analyzer/blob/47e5091c26fea3635df61b33999a757aff05e8f8/web_scrapping/movies/sully.csv",
+"license": "MIT License",
+"rows": 283
+},
+{
+"fixture": "gt00309-duckdb",
+"csv_url": "https://github.com/Kao-PMP/Pilot_Project/blob/79451e75b64d832644a4967f828bf5d685cd5a2d/harmonization_config/categorization_function_parameters.csv",
+"license": "Apache License 2.0",
+"rows": 821
+},
+{
+"fixture": "gt00314-duckdb",
+"csv_url": "https://github.com/wjhopper/SSW-858/blob/858611fad654e61b761a0f1991ecacd60dd9a75f/data/hate_crimes.csv",
+"license": "MIT License",
+"rows": 51
+},
+{
+"fixture": "gt00316-duckdb",
+"csv_url": "https://github.com/ArashMassoudieh/GIFMod/blob/467ffa65d92be7f29e813a412a4292e51653fd04/src/GUI/PropList.csv",
+"license": "MIT License",
+"rows": 222
+},
+{
+"fixture": "gt00319-duckdb",
+"csv_url": "https://github.com/SAP-samples/datahub-dine/blob/fd8d7a0208a80d6d1a80b10d5adf0a368e2afaf5/data/product.csv",
+"license": "Apache License 2.0",
+"rows": 106
+},
+{
+"fixture": "gt00320-duckdb",
+"csv_url": "https://github.com/cuiods/DataRepository/blob/8ec11b9f237299b875b88ff6c2e2079c09d7963d/Homework1/district_new.csv",
+"license": "Apache License 2.0",
+"rows": 77
+},
+{
+"fixture": "gt00321-duckdb",
+"csv_url": "https://github.com/omotenashicoin-project/MTNSj/blob/694d25986d336e748efcb68fb86e88c2bbb55a61/core/target/site/jacoco/jacoco.csv",
+"license": "Apache License 2.0",
+"rows": 666
+},
+{
+"fixture": "gt00322-duckdb",
+"csv_url": "https://github.com/dli-invest/conscrap/blob/e8e007889708ce8abfb8e5229adacf9175f3945c/data/IDK.CN.csv",
+"license": "MIT License",
+"rows": 224
+},
+{
+"fixture": "gt00327-duckdb",
+"csv_url": "https://github.com/WeeBeasties/Michigan-COVID/blob/915c5e02da0b6e36d6e096e4ac649b2510061b06/processedData/notDetroit.csv",
+"license": "MIT License",
+"rows": 231
+},
+{
+"fixture": "gt00328-duckdb",
+"csv_url": "https://github.com/WamdamProject/WaMDaM_UseCases/blob/df3da5bb88a33c984f3a579b96c0a6a58ba58abd/5_Results_CSV/3.3dentifyDemandSites_TimeSeriesValues.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 68
+},
+{
+"fixture": "gt00331-duckdb",
+"csv_url": "https://github.com/jnguyen1098/wyvern/blob/aae884bc57f2d44e103ec049da2680c7b5aecc11/entrance_courses.csv",
+"license": "ISC License",
+"rows": 62
+},
+{
+"fixture": "gt00335-duckdb",
+"csv_url": "https://github.com/ClaraGalliano/barometre_scienceouverte_toulon/blob/5e0bea6da33b7f9d0b8e975e1d42e1ee0873d2c8/Data/raw/2018/pubmed_toulon_2018.csv",
+"license": "Apache License 2.0",
+"rows": 116
+},
+{
+"fixture": "gt00337-duckdb",
+"csv_url": "https://github.com/CoronaWhy/coronamed-api/blob/bfcc7080da60310d91030481bb6525cd8d87b12d/app_console/seeds/sheets/Key%20Scientific%20Questions/Development%20of%20a%20point-of-care%20test%20and%20rapid%20bed-side%20tests.csv",
+"license": "MIT License",
+"rows": 77
+},
+{
+"fixture": "gt00338-duckdb",
+"csv_url": "https://github.com/holtzy/data_to_viz/blob/cbcd25c2472dea8e2c0d4d3762b2ad177bc262bf/Example_dataset/multivariate.csv",
+"license": "MIT License",
+"rows": 201
+},
+{
+"fixture": "gt00341-duckdb",
+"csv_url": "https://github.com/lonelywolves/sentimentanalysis/blob/6a5396b438c99a8496330a533a5e597997ef979d/youtuberdatum/PopsugarCommentList/TO_EvKuM_dJDsc_comment.csv",
+"license": "MIT License",
+"rows": 327
+},
+{
+"fixture": "gt00342-duckdb",
+"csv_url": "https://github.com/zhurui0509/COVID-Forecast-Graph/blob/ef39ebbce8e284e05f9881a7f64b74e817ff9921/cdc_model_assumptions.csv",
+"license": "MIT License",
+"rows": 79
+},
+{
+"fixture": "gt00343-duckdb",
+"csv_url": "https://github.com/NREL/hasty/blob/d293056f169fedb7988d5ccc524c05a6881ef6a9/hasty/lib/Components.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 63
+},
+{
+"fixture": "gt00345-duckdb",
+"csv_url": "https://github.com/CoronaWhy/coronamed-api/blob/bfcc7080da60310d91030481bb6525cd8d87b12d/app_console/seeds/sheets/Key%20Scientific%20Questions/How%20does%20temperature%20and%20humidity%20affect%20the%20transmission%20of%202019-nCoV_.csv",
+"license": "MIT License",
+"rows": 73
+},
+{
+"fixture": "gt00346-duckdb",
+"csv_url": "https://github.com/nvvijay/Serendip/blob/7279cfe66d79918f7fbeee436bb72ffd52a08825/Datamodel/Metadata/Movie_review/TopicModel/HTML/749_0/tokens.csv",
+"license": "MIT License",
+"rows": 986
+},
+{
+"fixture": "gt00348-duckdb",
+"csv_url": "https://github.com/checkmatey/checkonchain.com/blob/deb3adbec8249951e3f88558f9bbbc6c851f81ca/research/dcr_competitive_compliments/analysis/inflation_data.csv",
+"license": "MIT License",
+"rows": 161
+},
+{
+"fixture": "gt00350-duckdb",
+"csv_url": "https://github.com/openmainframeproject/feilong/blob/86cb2006abd2ddec42e525d5697be38387332e89/doc/source/errcode.csv",
+"license": "Apache License 2.0",
+"rows": 89
+},
+{
+"fixture": "gt00352-duckdb",
+"csv_url": "https://github.com/wri/policy-toolkit/blob/8aaa001ab3c9af206da240fbd25c7344ffa5f7dc/notebooks/tmp-data/negative_data.csv",
+"license": "MIT License",
+"rows": 117
+},
+{
+"fixture": "gt00355-duckdb",
+"csv_url": "https://github.com/clulab/eidos/blob/ce70d2e16ed4e4e501b82dbc2ed2afeb93076d53/src/main/resources/org/clulab/wm/eidos/english/context/timenormeval/gold_timenorm.csv",
+"license": "Apache License 2.0",
+"rows": 119
+},
+{
+"fixture": "gt00356-duckdb",
+"csv_url": "https://github.com/efaysal/efaysal.github.io/blob/9ed5985e1670aeb1d36ae5d249a7898ee4b11498/SocioEconomicEcosystem/TORVANSTOCKS/%20USA%20_Membership_RESULTS_SSCB.csv",
+"license": "MIT License",
+"rows": 500
+},
+{
+"fixture": "gt00360-duckdb",
+"csv_url": "https://github.com/SAP-samples/hana-opensap-cloud-2020/blob/dec22846678f76e59dc9f996860721bb7e03ecc6/db/csv/opensap.MD-Products.csv",
+"license": "Apache License 2.0",
+"rows": 106
+},
+{
+"fixture": "gt00361-duckdb",
+"csv_url": "https://github.com/datalogue/demo-data/blob/8ad3832dcdf8c21ca670bed0a13d60ea066620db/pii/hr_data.csv",
+"license": "MIT License",
+"rows": 75
+},
+{
+"fixture": "gt00362-duckdb",
+"csv_url": "https://github.com/nascimentorapha/term-paper/blob/b63c4dd49bad2690eed1078c78372c33603dbdd7/codes/tests/result_test_ml.csv",
+"license": "MIT License",
+"rows": 119
+},
+{
+"fixture": "gt00363-duckdb",
+"csv_url": "https://github.com/UVA-DSI-2019-Capstones/ARL/blob/74d43bf975db90da70696d4b68002d6971164840/db/turk_data/dme_16_feedback.csv",
+"license": "MIT License",
+"rows": 50
+},
+{
+"fixture": "gt00364-duckdb",
+"csv_url": "https://github.com/tmu-research-project-2020/google-scholar-scraper/blob/05694875a33589edee90f66069f91bffa0af4052/data/conf_csv/ICASSP.csv",
+"license": "MIT License",
+"rows": 66
+},
+{
+"fixture": "gt00365-duckdb",
+"csv_url": "https://github.com/Alioio/social_media_youtube_analysis_project/blob/a38f2da7d5c4f6a4ab3b2525348748b617f5a3bf/data_raw/comments/videoinfo_G1s_JKh9i2E_2021_03_17-11_51_10_comments_comments_153.csv",
+"license": "MIT License",
+"rows": 153
+},
+{
+"fixture": "gt00369-duckdb",
+"csv_url": "https://github.com/jcr179/Persona-4-SRS/blob/d4f788e57e9cfcd4df45b8f6293718c880608f8c/word/cum_freq_pct/90p0.csv",
+"license": "MIT License",
+"rows": 356
+},
+{
+"fixture": "gt00371-duckdb",
+"csv_url": "https://github.com/mesmacosta/gcs-file-ingestor/blob/71f3c23b649374959def75f88a006b48cc7fa793/local_bucket_sync/first_level/second_level/tree_species.csv",
+"license": "MIT License",
+"rows": 57
+},
+{
+"fixture": "gt00372-duckdb",
+"csv_url": "https://github.com/AdamJHowell/AdamJHowell/blob/6d2ffa8b53ef654346922b73079b7062a78da070/csv/dvddb.csv",
+"license": "MIT License",
+"rows": 98
+},
+{
+"fixture": "gt00376-duckdb",
+"csv_url": "https://github.com/gchure/modelling_growth/blob/b9d58bff70debad402ea17fd2a02f76b28283dcf/data/collated_mass_fraction_measurements.csv",
+"license": "MIT License",
+"rows": 83
+},
+{
+"fixture": "gt00379-duckdb",
+"csv_url": "https://github.com/shashanksingh28/code-similarity/blob/66f8714083dfefa65f295e32e3a6168f4d8c608e/evaluation/Userstudy/temp.csv",
+"license": "MIT License",
+"rows": 86
+},
+{
+"fixture": "gt00383-duckdb",
+"csv_url": "https://github.com/earth-chris/grad-school/blob/ea5be566d810ca9d792625b2e97acd2065c9d09a/courses/ess-211/demilitarization_project/YearlyData.csv",
+"license": "MIT License",
+"rows": 90
+},
+{
+"fixture": "gt00384-duckdb",
+"csv_url": "https://github.com/DLR-SC/repository-synergy/blob/9e2d3a3da7198c7d23aaff220b0a53fe662cdebc/data/evaluation/manual/results/d02_evaluation.csv",
+"license": "MIT License",
+"rows": 90
+},
+{
+"fixture": "gt00385-duckdb",
+"csv_url": "https://github.com/wcmc-its/citation-impact/blob/f204cd58d1b3ffd74d2c21d59d5a652c2bce8759/citation_impact_lite/citation/data/sample_times_cited_data_1_with_authors.csv",
+"license": "Apache License 2.0",
+"rows": 113
+},
+{
+"fixture": "gt00386-duckdb",
+"csv_url": "https://github.com/bioversity/crop-research-ontology/blob/e6c1d002ea9b5b2606ee93e8df92e35a4ac21ad2/crop_research.csv",
+"license": "Creative Commons Attribution 4.0 International",
+"rows": 309
+},
+{
+"fixture": "gt00388-duckdb",
+"csv_url": "https://github.com/mtgjson/mtgcsv/blob/10dee3a38ec2e82d65ee32a8ffc4ee286c652117/csv/UDS.csv",
+"license": "MIT License",
+"rows": 143
+},
+{
+"fixture": "gt00393-duckdb",
+"csv_url": "https://github.com/Plan-T42/Cross-Corporal-Multi-Task-Learning-for-ABSA/blob/6dfc78677dd61cb22d2d6cc686c7d7acfd2b870d/ColabNotebooks/organic/annotated/data/test/dataframePreProcessedWithLabels.csv",
+"license": "MIT License",
+"rows": 214
+},
+{
+"fixture": "gt00394-duckdb",
+"csv_url": "https://github.com/georgep49/njgForestModel/blob/9ffa4462a635d63e086c6d1cb26ad103aa5f366d/growthModel/HeightData.csv",
+"license": "MIT License",
+"rows": 173
+},
+{
+"fixture": "gt00395-duckdb",
+"csv_url": "https://github.com/cfognom/MMS_SLAMS_detection_and_magnetospheric_classification/blob/75eeb9869d0f4a07588833b403a699440922369a/events/slams_burst.csv",
+"license": "MIT License",
+"rows": 301
+},
+{
+"fixture": "gt00396-duckdb",
+"csv_url": "https://github.com/arx-deidentifier/genetic-benchmark/blob/14a262ce10280757060de9ca414f56080297c3eb/results/ga_variants/Experiment3_popUnique_all.csv",
+"license": "Apache License 2.0",
+"rows": 180
+},
+{
+"fixture": "gt00397-duckdb",
+"csv_url": "https://github.com/nadavborenstein/Iggy/blob/a1b3c340915c5020da35b467c2da65be565eb230/dataset/Ig-nobel-retreival-task/Ig_retrival_test.csv",
+"license": "Apache License 2.0",
+"rows": 422
+},
+{
+"fixture": "gt00398-duckdb",
+"csv_url": "https://github.com/amitabduls15/Repository/blob/d004fce0d4f64cb3a0f65ac217929e0a2babbe71/Deep%20Learning/Klasifikasi/Hero%20%20Dota%202/Data/p5_training_data.csv",
+"license": "MIT License",
+"rows": 99
+},
+{
+"fixture": "gt00399-duckdb",
+"csv_url": "https://github.com/psych10/psych10/blob/8b8ae1f88da63e4c0210f5fc0b67ec62c4f3e325/notebooks/Session07-Zscores/CrimeOneYearofData_clean.csv",
+"license": "MIT License",
+"rows": 51
+},
+{
+"fixture": "gt00402-duckdb",
+"csv_url": "https://github.com/Kao-PMP/Pilot_Project/blob/79451e75b64d832644a4967f828bf5d685cd5a2d/harmonization_config/categorization_function_metadata.csv",
+"license": "Apache License 2.0",
+"rows": 432
+},
+{
+"fixture": "gt00407-duckdb",
+"csv_url": "https://github.com/zjohn77/buckshotpp/blob/440dd0f7cfa42219bfd604a8011eee4c9bb31920/data/news_headlines.csv",
+"license": "MIT License",
+"rows": 93
+},
+{
+"fixture": "gt00408-duckdb",
+"csv_url": "https://github.com/paulcronk/psinsights/blob/cd465f20254fbdb30032ce40b6fe30d32de0d524/pagespeed-results.csv",
+"license": "Apache License 2.0",
+"rows": 124
+},
+{
+"fixture": "gt00410-duckdb",
+"csv_url": "https://github.com/efaysal/efaysal.github.io/blob/9ed5985e1670aeb1d36ae5d249a7898ee4b11498/SocioEconomicEcosystem/FrGrSwRETURNVOLATILITY/SHARPECOEFFQBMONTECARLOWeeklyMemSD_ETF_iShares.csv",
+"license": "MIT License",
+"rows": 118
+},
+{
+"fixture": "gt00411-duckdb",
+"csv_url": "https://github.com/zhezhangue/StockPrediction/blob/e9dbe485614b40c2755adc7c8896e9f1cad8c473/dataset/factors.csv",
+"license": "MIT License",
+"rows": 259
+},
+{
+"fixture": "gt00412-duckdb",
+"csv_url": "https://github.com/mlldaniel/ForecastAutmation/blob/112bf349193150c6766f001204d231361a3b8dd7/backup/resources/English/keywords/bin/Keyword1List.csv",
+"license": "MIT License",
+"rows": 607
+},
+{
+"fixture": "gt00414-duckdb",
+"csv_url": "https://github.com/ulfkemmsies/DSE_Exodus/blob/35aa53b10bcc123d83b73fa76afd6036e4db03e2/data.csv",
+"license": "MIT License",
+"rows": 249
+},
+{
+"fixture": "gt00417-duckdb",
+"csv_url": "https://github.com/henry32144/intelligent-asset-allocation/blob/62aa4e70dae50c60c4dae7acfe0388028be242a2/model/test.csv",
+"license": "MIT License",
+"rows": 79
+},
+{
+"fixture": "gt00423-duckdb",
+"csv_url": "https://github.com/ZZR0/ISSTA21-JIT-DP/blob/8e7874ec9b983fcb45b8a4ebe5222721ffe75da5/Data_Extraction/git_base/issue_datasets/gerrit/gerrit-issues%20(32).csv",
+"license": "MIT License",
+"rows": 100
+},
+{
+"fixture": "gt00424-duckdb",
+"csv_url": "https://github.com/digital-land/brownfield-land-collection-old/blob/e9c1a7136485e2d84140a15e7315f10159908c68/var/harmonised/f246d75236bbc81fe089b39d6ebf247c9191b9b28561282c47d773e7db6bab4c.csv",
+"license": "MIT License",
+"rows": 58
+},
+{
+"fixture": "gt00425-duckdb",
+"csv_url": "https://github.com/VEuPathDB/ApiCommonData/blob/9ed01eb7ada981dfa929889fcba397928b3cf500/Load/ontology/Gates/woman/doc/WOMAN_variableMap.csv",
+"license": "Apache License 2.0",
+"rows": 83
+},
+{
+"fixture": "gt00427-duckdb",
+"csv_url": "https://github.com/agmip/ace-lookup/blob/d8224a231cb8c01729e63010916a2a85517ce4c1/src/main/resources/management_codes_1.0.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 287
+},
+{
+"fixture": "gt00428-duckdb",
+"csv_url": "https://github.com/parkjan4/DSIP/blob/9a1fabd1b87f70d5f94a14b6c5adc0c6895cfbf0/Project/results/pay.csv",
+"license": "MIT License",
+"rows": 232
+},
+{
+"fixture": "gt00429-duckdb",
+"csv_url": "https://github.com/sakethsundar/covid-forecaster/blob/be9167b5c479fd57323fd2604727cb13693f6fe5/eval/two-weeks/2020-04-18/projections_2020-04-06_2020-04-18.csv",
+"license": "MIT License",
+"rows": 52
+},
+{
+"fixture": "gt00430-duckdb",
+"csv_url": "https://github.com/EarthSystemDiagnostics/cpt-picarr/blob/3420d9f813e153c3bb5bec6fcc671ead9068e420/tests/testthat/test_data/HIDS2041_IsoWater_20151125_111138_with_suffix.csv",
+"license": "MIT License",
+"rows": 162
+},
+{
+"fixture": "gt00431-duckdb",
+"csv_url": "https://github.com/manliu1225/Facebook_crawler/blob/0f75a1c4382dd4effc3178d84b99b0cad97337cd/data/posts_covid/TheStraitsTimes.csv",
+"license": "Apache License 2.0",
+"rows": 141
+},
+{
+"fixture": "gt00432-duckdb",
+"csv_url": "https://github.com/john-decker/NEA-Funding-Project/blob/da7f6c50316586112d0c5168a664cea627e0e9ef/data/nea_adjusted_to_2020_w_majority_and_gdp.csv",
+"license": "MIT License",
+"rows": 51
+},
+{
+"fixture": "gt00434-duckdb",
+"csv_url": "https://github.com/tm-dd/MunkiManageScripts/blob/9b4ad599adc4c44ec9bbe3c59e51d7b7384d017b/MunkiData/scripts_and_configs/munki_infos.csv",
+"license": "MIT License",
+"rows": 73
+},
+{
+"fixture": "gt00436-duckdb",
+"csv_url": "https://github.com/tcartwright/SqlServer.Rules/blob/90052d427546bf4c1bdd41a4b18b2994c5d45c7c/SQL%20Server%20Rules.csv",
+"license": "MIT License",
+"rows": 94
+},
+{
+"fixture": "gt00444-duckdb",
+"csv_url": "https://github.com/inertia7/timeSeries_sp500_R/blob/3f863deba581aeae570017c2169d7c2a70774e33/data/data_master_1.csv",
+"license": "MIT License",
+"rows": 252
+},
+{
+"fixture": "gt00445-duckdb",
+"csv_url": "https://github.com/mdaquin/fca.js/blob/b565a593da314c3780e169c36cd4a5f0eaceb0f5/example_data/country_2.csv",
+"license": "MIT License",
+"rows": 147
+},
+{
+"fixture": "gt00447-duckdb",
+"csv_url": "https://github.com/OHDSI/ETL-LambdaBuilder/blob/88ae2aab1e3870728d0a34ad59ae0a6a7bc697d8/docs/CPRD/Vocab%20Updates/JNJ_CPRD_TEST_ENT.csv",
+"license": "Apache License 2.0",
+"rows": 324
+},
+{
+"fixture": "gt00453-duckdb",
+"csv_url": "https://github.com/minhptx/iswc-2016-semantic-labeling/blob/5c6fa3da9163bf222a9116beeb50f2f1d5c6dc96/data/datasets/memex/data/sipsap.com.csv",
+"license": "Apache License 2.0",
+"rows": 81
+},
+{
+"fixture": "gt00457-duckdb",
+"csv_url": "https://github.com/DSSAT/icasa-mvl/blob/93a859af7e0c2631fee96aca0de934e4a9c705f5/src/main/resources/icasa-mvl/Soils_data.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 125
+},
+{
+"fixture": "gt00462-duckdb",
+"csv_url": "https://github.com/PacktWorkshops/The-Applied-Data-Science-Workshop/blob/366a476190a85ef441d7cedf36d7cf02de503030/data/countries/country_data_merged.csv",
+"license": "MIT License",
+"rows": 83
+},
+{
+"fixture": "gt00464-duckdb",
+"csv_url": "https://github.com/LibrariesHacked/mobilelibraries-database/blob/94b37e827263fd2d45e988ad78963f6e559d1e80/data/york.csv",
+"license": "MIT License",
+"rows": 53
+},
+{
+"fixture": "gt00466-duckdb",
+"csv_url": "https://github.com/agancsos/java/blob/30d7123c337c03c15fd2665f7ffe511fb0bc638a/JavaETL/resources/csv/StockValuations.csv",
+"license": "MIT License",
+"rows": 482
+},
+{
+"fixture": "gt00467-duckdb",
+"csv_url": "https://github.com/ledwindra/ideas-repec/blob/24fcc38a173a9d1cbdd2d90c4929b94ba7912d00/data/journal-article.csv",
+"license": "Do What The F*ck You Want To Public License",
+"rows": 252
+},
+{
+"fixture": "gt00468-duckdb",
+"csv_url": "https://github.com/jmichaelov/does-surprisal-explain-n400/blob/7e9662da6f806ade99d6814906c9957091841fb7/jrnn/stimuli/kim_2005.csv",
+"license": "MIT License",
+"rows": 384
+},
+{
+"fixture": "gt00469-duckdb",
+"csv_url": "https://github.com/LASER-UMASS/AutomatedRepairApplicabilityData/blob/e33f0ccbfe63010cab7fe72cc05b8d289760e8a8/AnnotationScripts/Defects4JSpecific/all_diffs.csv",
+"license": "MIT License",
+"rows": 387
+},
+{
+"fixture": "gt00471-duckdb",
+"csv_url": "https://github.com/gy19sr/COVID_Analysis/blob/ceca6e733cdc334151bc57f5c5ca4d0e0087a77c/significant_policies.csv",
+"license": "The Unlicense",
+"rows": 67
+},
+{
+"fixture": "gt00478-duckdb",
+"csv_url": "https://github.com/utipe/imf_fiscal/blob/34aa3df063ba7abbc8a5d27238ce80efc5f33f5e/output/details/modelcheck.csv",
+"license": "MIT License",
+"rows": 106
+},
+{
+"fixture": "gt00483-duckdb",
+"csv_url": "https://github.com/UMEC/healthcare-workforce/blob/cf0c6dd28233d12e73f55d27a9c6b8c3e6d043ab/models/data/example/original/service_characteristics.csv",
+"license": "BSD 2-Clause \"Simplified\" License",
+"rows": 97
+},
+{
+"fixture": "gt00484-duckdb",
+"csv_url": "https://github.com/dmangum2/alvearie-fhir-ig-pre-actions/blob/141dce3d25fe41487639062351dde365fc46eb62/docs/0.1.0/StructureDefinition-cdm-appointment.csv",
+"license": "Apache License 2.0",
+"rows": 56
+},
+{
+"fixture": "gt00485-duckdb",
+"csv_url": "https://github.com/JavierMNieto/uiuc-scheduler/blob/8907236fe0b72db95b8dd2bf9f365cec22e75d9b/data/raw/2018-winter.csv",
+"license": "MIT License",
+"rows": 52
+},
+{
+"fixture": "gt00486-duckdb",
+"csv_url": "https://github.com/diazrenata/redwing/blob/21525f9839107947290af52c6e0b04b3511bc72d/neon_mammals/provisional_rata_raw/filesToStack10072/stackedFiles/variables_10072.csv",
+"license": "MIT License",
+"rows": 113
+},
+{
+"fixture": "gt00487-duckdb",
+"csv_url": "https://github.com/OCHA-DAP/dap-scrapers/blob/7c1be927650bcfa49e36ce651e490b3dda65de67/fixtures/2013-08-28-indicators-dump.csv",
+"license": "The Unlicense",
+"rows": 211
+},
+{
+"fixture": "gt00490-duckdb",
+"csv_url": "https://github.com/utipe/imf_fiscal/blob/34aa3df063ba7abbc8a5d27238ce80efc5f33f5e/dic/all_dic_mon.csv",
+"license": "MIT License",
+"rows": 1673
+},
+{
+"fixture": "gt00491-duckdb",
+"csv_url": "https://github.com/CellMigStandOrg/MIACME/blob/de8778b1557288b1814505a92bb5eb5e13127b28/descriptors-ranking/MIACME-descriptors-ranking%20(anonymised)%20-%20Sheet1.csv",
+"license": "BSD 2-Clause \"Simplified\" License",
+"rows": 71
+},
+{
+"fixture": "gt00493-duckdb",
+"csv_url": "https://github.com/jovanroderick/SuLe/blob/8041fd45380d08974df57fe62bb9dfebcaddc15c/Dataset3.csv",
+"license": "MIT License",
+"rows": 51
+},
+{
+"fixture": "gt00494-duckdb",
+"csv_url": "https://github.com/mlldaniel/ForecastAutmation/blob/112bf349193150c6766f001204d231361a3b8dd7/backup/resources/English/keywords/bin/(test)keywords2.csv",
+"license": "MIT License",
+"rows": 607
+},
+{
+"fixture": "gt00498-duckdb",
+"csv_url": "https://github.com/NREL/RODeO/blob/6c0abf717c561b33d81388812a21a6a42872d4ff/Projects/VTA_bus_project/Output/Test%20multiple%20devies/Storage_dispatch_summary_Test2_A-6_oneDEV_wholesale.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 77
+},
+{
+"fixture": "gt00499-duckdb",
+"csv_url": "https://github.com/thatguy1104/NLP-Data-Mining-Engine/blob/e0ace18f53a9bccb758b236ca8c6413bb2cc2d12/src/main/IHE_KEYWORDS/lda_speciality_keywords.csv",
+"license": "MIT License",
+"rows": 81
+},
+{
+"fixture": "gt00501-duckdb",
+"csv_url": "https://github.com/RDeconomist/teaching2/blob/77fde069c8ced4f423fa7d1ef966ae8b93e89678/mpFrameworks.csv",
+"license": "MIT License",
+"rows": 220
+},
+{
+"fixture": "gt00506-duckdb",
+"csv_url": "https://github.com/PacktWorkshops/The-Applied-Data-Science-Workshop/blob/366a476190a85ef441d7cedf36d7cf02de503030/data/countries/interest_rates.csv",
+"license": "MIT License",
+"rows": 84
+},
+{
+"fixture": "gt00507-duckdb",
+"csv_url": "https://github.com/SA-retrospective/study/blob/94840c53d0989b2a3d199e56e303e1804f7cce98/labelled/p1/p1-data_original_cast_labelling.csv",
+"license": "The Unlicense",
+"rows": 59
+},
+{
+"fixture": "gt00510-duckdb",
+"csv_url": "https://github.com/vgcrld/vgctools/blob/22ede11e79c9bb5ae6c7d4fdf39ce747015e25cd/vmware/TrendDatastore.csv",
+"license": "MIT License",
+"rows": 320
+},
+{
+"fixture": "gt00511-duckdb",
+"csv_url": "https://github.com/letsgoexploring/economic-data/blob/875e1d2911134068900673c0aa6b287c1bfb0ce1/inflation-forecasts/csv/inflation_forecastsQ.csv",
+"license": "MIT License",
+"rows": 198
+},
+{
+"fixture": "gt00518-duckdb",
+"csv_url": "https://github.com/banksean/HAWK800/blob/79268f826f5dff530f7854dc163eac0020b22d53/ccmsgs.csv",
+"license": "MIT License",
+"rows": 126
+},
+{
+"fixture": "gt00519-duckdb",
+"csv_url": "https://github.com/devs-nest/backend/blob/1eef4b3e866344edb803724523f86de5a4ede3c5/devsnest/scripts/contents_sheet.csv",
+"license": "Apache License 2.0",
+"rows": 59
+},
+{
+"fixture": "gt00520-duckdb",
+"csv_url": "https://github.com/Ruzick/company_explore_data/blob/54c069fa00c26e337c6a1b4b23f6ccccd3d3784a/data/NGL-Energy-Partners.csv",
+"license": "BSD 2-Clause \"Simplified\" License",
+"rows": 53
+},
+{
+"fixture": "gt00521-duckdb",
+"csv_url": "https://github.com/databrew/intro-to-data-science/blob/9a2fd6a30edac677156aaf2b77f9c3b68c89f368/data/whales-dives.csv",
+"license": "MIT License",
+"rows": 111
+},
+{
+"fixture": "gt00522-duckdb",
+"csv_url": "https://github.com/DLR-SC/repository-synergy/blob/9e2d3a3da7198c7d23aaff220b0a53fe662cdebc/data/evaluation/manual/results/reposynergy.repositorypair_scores.csv",
+"license": "MIT License",
+"rows": 90
+},
+{
+"fixture": "gt00523-duckdb",
+"csv_url": "https://github.com/tdwg/chrono/blob/c92e03abb4f41296f7add9176fb6f519b8058ab3/vocabulary/term_versions.csv",
+"license": "Creative Commons Attribution 4.0 International",
+"rows": 53
+},
+{
+"fixture": "gt00524-duckdb",
+"csv_url": "https://github.com/bbogin/sr2s/blob/0918002aa050368dbeec0f7fed8bd1c1083dacae/download/timelog_SR2S_TAM_2014-06-01_to_2014-06-30.csv",
+"license": "MIT License",
+"rows": 193
+},
+{
+"fixture": "gt00525-duckdb",
+"csv_url": "https://github.com/Leibniz-HBI/xjournalism-twitter/blob/e3404dfb9c134e3b98a24d5a0717633a2d0f6093/bigram_JB_LS_WL.csv",
+"license": "MIT License",
+"rows": 628
+},
+{
+"fixture": "gt00528-duckdb",
+"csv_url": "https://github.com/akbarda/data_mining_ugm/blob/8fb8e59f8da5457a0dc3428a394412b3c9e6cbcf/data/Data%20publikasi%20csv/pub27csv.csv",
+"license": "MIT License",
+"rows": 138
+},
+{
+"fixture": "gt00533-duckdb",
+"csv_url": "https://github.com/forc-db/GROA/blob/3ec6b91d3396004a7128a6b1c4e59c5643c8af1e/GROA-ForC_integration/GROA-ForC%20mapping/GROA-ForC%20variable%20mapping.csv",
+"license": "Creative Commons Attribution 4.0 International",
+"rows": 126
+},
+{
+"fixture": "gt00537-duckdb",
+"csv_url": "https://github.com/VaibhavSachaa/DataCamp/blob/27c5ef367180c770980d5560242fa519848b1e37/Data%20Scientist%20with%20Python/Course%2017%20-%20Joining%20Data%20in%20SQL/economies.csv",
+"license": "MIT License",
+"rows": 380
+},
+{
+"fixture": "gt00539-duckdb",
+"csv_url": "https://github.com/brendawyang/graphs-mislead-repo/blob/657bcd5c97597acf29e347576b5acb044434b140/Study%205/data/clean/s5_notice_df.csv",
+"license": "MIT License",
+"rows": 325
+},
+{
+"fixture": "gt00541-duckdb",
+"csv_url": "https://github.com/softwaresaved/habeas-corpus/blob/b081256dcb7f2751dff093faf8b7e072e5d35da1/data/sampling/output_CORD19_software_mentions.csv",
+"license": "MIT License",
+"rows": 100
+},
+{
+"fixture": "gt00545-duckdb",
+"csv_url": "https://github.com/minimaxir/interactive-facebook-reactions/blob/ae1478bbfd8272e9dc386968f92c8a5565e331af/data/barackobama_facebook_statuses.csv",
+"license": "MIT License",
+"rows": 156
+},
+{
+"fixture": "gt00546-duckdb",
+"csv_url": "https://github.com/QuantEcon/phd_workshops/blob/1ddc73c37dbc0fe06f1e01dbb15d503132d4dfd6/Natasha/data.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 70
+},
+{
+"fixture": "gt00547-duckdb",
+"csv_url": "https://github.com/ArashMassoudieh/GIFMod/blob/467ffa65d92be7f29e813a412a4292e51653fd04/src/resources/GWAGUIPropList.csv",
+"license": "MIT License",
+"rows": 89
+},
+{
+"fixture": "gt00548-duckdb",
+"csv_url": "https://github.com/ehameyie/IMFS-Summer-Kaggle/blob/a7644ce0115cd413495ef4d49249050c2857bce3/submission/Phase%201%20-%20submission/submission_phase1_team6.csv",
+"license": "The Unlicense",
+"rows": 516
+},
+{
+"fixture": "gt00551-duckdb",
+"csv_url": "https://github.com/calvinyusno2359/WebScraping/blob/1d0592c1d24f16757cb714f15d5715ee08354d00/raw/Wellaholic/Wellaholic_(Lavender_Outlet).csv",
+"license": "MIT License",
+"rows": 95
+},
+{
+"fixture": "gt00554-duckdb",
+"csv_url": "https://github.com/Faidh-Wealth/WS-Trade-Info/blob/dc022684ba400460c076f125b414d41063f1bc58/etf_info/NYSE_ETF_WS.csv",
+"license": "MIT License",
+"rows": 580
+},
+{
+"fixture": "gt00560-duckdb",
+"csv_url": "https://github.com/pranjalgoel89/Stock-Predictions/blob/aad268201e7101d3a4a03c6e9c6ffd171e4e467a/Merging%20quant%20and%20news/Finding%20news%20impact/Impact.csv",
+"license": "MIT License",
+"rows": 173
+},
+{
+"fixture": "gt00562-duckdb",
+"csv_url": "https://github.com/Code4SierraLeone/shdms/blob/0d58ce188b1132d2316e98a0ee818363566b6639/modules/templates/IFRC/ADAT/PMI.xls.Question.csv",
+"license": "MIT License",
+"rows": 132
+},
+{
+"fixture": "gt00563-duckdb",
+"csv_url": "https://github.com/Unidata/netcdf-java/blob/53dc507a39c13d6d1530afd0888240bff421334f/cdm-core/src/main/resources/resources/thredds/dl/GRIB-GCMD.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 185
+},
+{
+"fixture": "gt00564-duckdb",
+"csv_url": "https://github.com/DLR-SC/repository-synergy/blob/9e2d3a3da7198c7d23aaff220b0a53fe662cdebc/data/evaluation/manual/manual_eval_3batches.csv",
+"license": "MIT License",
+"rows": 90
+},
+{
+"fixture": "gt00567-duckdb",
+"csv_url": "https://github.com/HamidSajjadi/SLR-Query-Formulation/blob/dea5ecce83dce52ee7e946bac9729f7b9a4770ab/data/SIGIR_topics.csv",
+"license": "MIT License",
+"rows": 177
+},
+{
+"fixture": "gt00568-duckdb",
+"csv_url": "https://github.com/erictleung/simplewriter/blob/66c5072568302b11611adc0514371c97728d67da/data/wordlist.csv",
+"license": "The Unlicense",
+"rows": 1001
+},
+{
+"fixture": "gt00571-duckdb",
+"csv_url": "https://github.com/researchart/re19/blob/ba302acaab5514e1396902b17a0587bdf5a92c2c/submissions/96aydemir/Manually%20tagged%20datasets/wasp.csv",
+"license": "BSD 2-Clause \"Simplified\" License",
+"rows": 62
+},
+{
+"fixture": "gt00573-duckdb",
+"csv_url": "https://github.com/SkillsFundingAgency/sfs-sitedesign/blob/654947dce7c62deeabf14aa066a6b7b9927bd0a2/app/assets/documents/beta/v112-0-0/signed-in/external/allocation-statements/general-annual-grant/funding-breakdown-1/gag_2021-to-2022_published-12-09-2021_mole-catch-academy.csv",
+"license": "MIT License",
+"rows": 68
+},
+{
+"fixture": "gt00575-duckdb",
+"csv_url": "https://github.com/dli-invest/conscrap/blob/503c88aa4d205b681a2fbc197c53756cfc32f7a9/data/IDK.CN.csv",
+"license": "MIT License",
+"rows": 224
+},
+{
+"fixture": "gt00577-duckdb",
+"csv_url": "https://github.com/UMEC/healthcare-workforce/blob/cf0c6dd28233d12e73f55d27a9c6b8c3e6d043ab/models/data/testdata/more_provider/service_characteristics.csv",
+"license": "BSD 2-Clause \"Simplified\" License",
+"rows": 98
+},
+{
+"fixture": "gt00581-duckdb",
+"csv_url": "https://github.com/salmanahmedshaikh/GeoFlinkViaRESTAPI/blob/b537a7636e944e4c06d1e875c7eeba9b8f201b26/qureyOutput_RangeQuery.csv",
+"license": "MIT License",
+"rows": 288
+},
+{
+"fixture": "gt00583-duckdb",
+"csv_url": "https://github.com/rtwhite1546/COVID-19-FSRP/blob/b4b76d0bc9793c29a4a2af9c980cc47fa03f158a/StateData2.csv",
+"license": "MIT License",
+"rows": 51
+},
+{
+"fixture": "gt00584-duckdb",
+"csv_url": "https://github.com/NREL/dgen_globetrotter/blob/afef63c75a0721e18d2c3748a73a6f5300d2054b/india/reference_data/discom_consumption.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 72
+},
+{
+"fixture": "gt00595-duckdb",
+"csv_url": "https://github.com/cambridge-cares/TheWorldAvatar/blob/f402b12ec758f0aa77e07a006cfef2914a738281/JPS_Ontology/KBTemplates/TBox/ontosdg.csv",
+"license": "MIT License",
+"rows": 82
+},
+{
+"fixture": "gt00597-duckdb",
+"csv_url": "https://github.com/ONEcampaign/humanitarian-data-service/blob/11225df6d560b3f52b20927d02eb2aa5501276a0/resources/data/derived/example/refugee_and_total_populations_by_country.csv",
+"license": "MIT License",
+"rows": 181
+},
+{
+"fixture": "gt00599-duckdb",
+"csv_url": "https://github.com/OS-ABC/AIOPS-Anomaly-Detection/blob/387bf319946c5312958b17fe0b4e01826d5809a3/LogAnomaly/pca/data/HDFS/data_test.csv",
+"license": "Apache License 2.0",
+"rows": 160
+},
+{
+"fixture": "gt00603-duckdb",
+"csv_url": "https://github.com/hideshis/scripts_for_research/blob/f633bdef0f9b959d7b18c8b95f169306eb8bb50d/IWESEP2016/evolution_lifetime_interval_and_bug/synthesized_info.csv",
+"license": "MIT License",
+"rows": 276
+},
+{
+"fixture": "gt00606-duckdb",
+"csv_url": "https://github.com/sakethsundar/covid-forecaster/blob/be9167b5c479fd57323fd2604727cb13693f6fe5/eval/one-week/2020-04-11/projections_2020-04-06_2020-04-11.csv",
+"license": "MIT License",
+"rows": 52
+},
+{
+"fixture": "gt00608-duckdb",
+"csv_url": "https://github.com/rtwhite1546/Fall-2021-Neural-Networks/blob/3e6059a6dd6afe888968564a9d06d4d96afde1e7/data/US_State_Data.csv",
+"license": "MIT License",
+"rows": 50
+},
+{
+"fixture": "gt00611-duckdb",
+"csv_url": "https://github.com/jonhilgart22/founder_nlp_analysis/blob/c2240204a865ad7184fb6eb625076be86c1954b6/data/processed/PitchBook_CA_VCInvest=0.csv",
+"license": "MIT License",
+"rows": 106
+},
+{
+"fixture": "gt00612-duckdb",
+"csv_url": "https://github.com/ucsb-cs48-s20/project-s0-t4-new-city/blob/87db549bedd25013d44b5bae15d94e33713544da/sheet.csv",
+"license": "MIT License",
+"rows": 58
+},
+{
+"fixture": "gt00613-duckdb",
+"csv_url": "https://github.com/NREL/RODeO/blob/6c0abf717c561b33d81388812a21a6a42872d4ff/Projects/Solar_Hydrogen/Output/Storage_dispatch_summary_Test1.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 76
+},
+{
+"fixture": "gt00616-duckdb",
+"csv_url": "https://github.com/covid-19-impact-lab/presentations/blob/e3f9a7ea6de1f959f9b8528bd0fb716c058ce9a8/aggregate-data/oecd-gdp-growth.csv",
+"license": "MIT License",
+"rows": 60
+},
+{
+"fixture": "gt00617-duckdb",
+"csv_url": "https://github.com/striblab/20150316-mpls_charter/blob/ba4f8961046af8e1e375d0b2419b90556ecabce2/builds/development/data/_raw/schools2015.csv",
+"license": "MIT License",
+"rows": 351
+},
+{
+"fixture": "gt00619-duckdb",
+"csv_url": "https://github.com/m1key/data-science-sandbox/blob/d09e55320c1c5a9f9959f4c514929b2cf7681ff1/Smoking_Prevalence_in_Adults__1984-2013.csv",
+"license": "MIT License",
+"rows": 90
+},
+{
+"fixture": "gt00620-duckdb",
+"csv_url": "https://github.com/nightingaleproject/vrdr-dotnet/blob/7f7850d50f327059149c45000a5afce0855a047f/VRDRdotNETLibraryCoverage.csv",
+"license": "Apache License 2.0",
+"rows": 443
+},
+{
+"fixture": "gt00622-duckdb",
+"csv_url": "https://github.com/alexogeny/astutus/blob/a65bc529097f7984dd2b68295d965a12799b882f/modules/data/ArtifactInfo.csv",
+"license": "MIT License",
+"rows": 95
+},
+{
+"fixture": "gt00623-duckdb",
+"csv_url": "https://github.com/Chit-Chaat/Collegiate_Explorer_APP/blob/f30171d01fec62a836332b5508374144fbb487c7/crawler/niche_reviews/reviews/text/f9d170d7-75a1-43fc-acfe-358be0e93529_text.csv",
+"license": "MIT License",
+"rows": 96
+},
+{
+"fixture": "gt00632-duckdb",
+"csv_url": "https://github.com/BrockDSL/geodata-listing/blob/f1f0d67a21887d0104bbbc177f5da79f2fa190fc/_data/geodata-metadata.csv",
+"license": "MIT License",
+"rows": 101
+},
+{
+"fixture": "gt00639-duckdb",
+"csv_url": "https://github.com/Bearstar85/Selection_Competition_2021/blob/4a327491de5b9eae4c52381ded5e4a9146ac44f3/05_CompetitionExp/Data/GrowthRateComp.csv",
+"license": "Creative Commons Attribution 4.0 International",
+"rows": 72
+},
+{
+"fixture": "gt00640-duckdb",
+"csv_url": "https://github.com/jutzca/Review_disease_modifying_effects_drugs_SCI/blob/b28f1e1a90288f921578f432ffde74afa1bfa1e2/Studies/scopus/polyethylene_glycol_scopus.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 82
+},
+{
+"fixture": "gt00641-duckdb",
+"csv_url": "https://github.com/covid-19-impact-lab/liss-questionnaires/blob/655de25325a561933f3a4a6b9cc092a5e2e0722a/docs/source/wave-2/variable_table-waves-2-e.csv",
+"license": "MIT License",
+"rows": 152
+},
+{
+"fixture": "gt00643-duckdb",
+"csv_url": "https://github.com/rtwhite1546/COVID-19-FSRP/blob/b4b76d0bc9793c29a4a2af9c980cc47fa03f158a/StateData.csv",
+"license": "MIT License",
+"rows": 51
+},
+{
+"fixture": "gt00648-duckdb",
+"csv_url": "https://github.com/jipearson/blue-team/blob/c830809ed1438679334e7d31629c1f4d342bff71/Resources/combined_df.csv",
+"license": "MIT License",
+"rows": 306
+},
+{
+"fixture": "gt00649-duckdb",
+"csv_url": "https://github.com/eugeniftimoaie/webapp-top-6-construction-companies/blob/bb3e10c1c18bdd3b5c096938ee05d78f964f61e4/data/construction_top_6_europe_2020.csv",
+"license": "MIT License",
+"rows": 94
+},
+{
+"fixture": "gt00651-duckdb",
+"csv_url": "https://github.com/digital-land/brownfield-land-collection/blob/189456ab4fcd2751e3ac042b4ea6b6c1e50654d5/harmonised/brownfield-land/f246d75236bbc81fe089b39d6ebf247c9191b9b28561282c47d773e7db6bab4c.csv",
+"license": "MIT License",
+"rows": 58
+},
+{
+"fixture": "gt00652-duckdb",
+"csv_url": "https://github.com/NICTA/serene/blob/c3059f35cb95b08a119fb375aae51e3d09e51a65/matcher/src/test/resources/datasets/open-gov-data/CityCouncilData/data/US/CityOfHartford/CDBG_1998_to_2015.csv",
+"license": "Apache License 2.0",
+"rows": 227
+},
+{
+"fixture": "gt00653-duckdb",
+"csv_url": "https://github.com/ebi-uniprot/QuickGOBE/blob/051027ff5fe858969cd69393f370254e4dcc5c8a/ontology-rest/src/test/jmeter/data/eco-names-1-per-line.csv",
+"license": "Apache License 2.0",
+"rows": 775
+},
+{
+"fixture": "gt00654-duckdb",
+"csv_url": "https://github.com/chews0n/glowing-waffle/blob/e853d082924e29ab1d13cddd78e27918f2d41bf7/docs/file_headers.csv",
+"license": "Apache License 2.0",
+"rows": 75
+},
+{
+"fixture": "gt00655-duckdb",
+"csv_url": "https://github.com/GameTechDev/PresentMon/blob/09d0a1b10ba6cc9def2ab9a4bfe40197f5960ca4/Tests/Gold/test_case_1.csv",
+"license": "MIT License",
+"rows": 53
+},
+{
+"fixture": "gt00656-duckdb",
+"csv_url": "https://github.com/kirenz/datasets/blob/968053b8d2b5410b49d7b88e95880e37e81e70d1/WDIData_2016_subset.csv",
+"license": "MIT License",
+"rows": 184
+},
+{
+"fixture": "gt00658-duckdb",
+"csv_url": "https://github.com/amabdallah/WaM-DaM/blob/08298758dd7bd70727a14f13d8a989769ca6f1f8/02UseCases/UseCasesDocs/Results/UseCase4.80.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 191
+},
+{
+"fixture": "gt00661-duckdb",
+"csv_url": "https://github.com/LucyGwilliamAdmin/sandpit-data/blob/fd97c55c984d424b0d2d971949a030223cb60a00/data/indicator_8-9-1.csv",
+"license": "MIT License",
+"rows": 91
+},
+{
+"fixture": "gt00663-duckdb",
+"csv_url": "https://github.com/superpower1/Poke_farm/blob/5e232a27d9744b412a0814821fd8cd89b35fdd79/pokemon_data/pokemon_species.csv",
+"license": "MIT License",
+"rows": 386
+},
+{
+"fixture": "gt00665-duckdb",
+"csv_url": "https://github.com/EcologicalTraitData/ETS/blob/e4177f54656364f265702353ef2fc076c276d29f/docs/v0.9.1/ETS.csv",
+"license": "Creative Commons Attribution 4.0 International",
+"rows": 95
+},
+{
+"fixture": "gt00669-duckdb",
+"csv_url": "https://github.com/Plan-T42/Cross-Corporal-Multi-Task-Learning-for-ABSA/blob/6dfc78677dd61cb22d2d6cc686c7d7acfd2b870d/ColabNotebooks/organic/annotated/data/test/ground_truth_Coarse_WithLabels.csv",
+"license": "MIT License",
+"rows": 106
+},
+{
+"fixture": "gt00672-duckdb",
+"csv_url": "https://github.com/NREL/RODeO/blob/6c0abf717c561b33d81388812a21a6a42872d4ff/Projects/VTA_bus_project/Output/Testing%20works%20with%20old%20files/Storage_dispatch_summary_Test2_A-6_oneDEV_wholesale.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 77
+},
+{
+"fixture": "gt00673-duckdb",
+"csv_url": "https://github.com/catalyst-offgrid/catalyst-aip/blob/c7c7825614d895334e7a557a327103b9e16fb93a/data/Energy/Census/UgandaDistrictData.csv",
+"license": "MIT License",
+"rows": 113
+},
+{
+"fixture": "gt00676-duckdb",
+"csv_url": "https://github.com/19neloyk/article-based-AI-investment/blob/c116288309ccf6ad54dece1f6f3d055c82ca3d34/refinedvergeArticles.csv",
+"license": "MIT License",
+"rows": 486
+},
+{
+"fixture": "gt00677-duckdb",
+"csv_url": "https://github.com/LasseBoerresen/Mayday/blob/7d34a0ca95e0c577d5912c91164f0d3a338f2ed8/XL430_W250_control_table.csv",
+"license": "MIT License",
+"rows": 74
+},
+{
+"fixture": "gt00678-duckdb",
+"csv_url": "https://github.com/alexseong/azure-intelligence-inventory-optimization/blob/b0b55c43a0d282cb3a0be14c2a3b5d5a78c898a5/Manual%20Deployment%20Guide/Scripts/webjobs/UploadStaticDataToADLSTest/staticData/publicparameters/store_product_supplier.csv",
+"license": "MIT License",
+"rows": 120
+},
+{
+"fixture": "gt00679-duckdb",
+"csv_url": "https://github.com/ONEcampaign/humanitarian-data-service/blob/11225df6d560b3f52b20927d02eb2aa5501276a0/resources/data/derived/example/sorted_percent_need_and_funding_pop.csv",
+"license": "MIT License",
+"rows": 181
+},
+{
+"fixture": "gt00681-duckdb",
+"csv_url": "https://github.com/salmanahmedshaikh/GeoFlinkViaRESTAPI/blob/b537a7636e944e4c06d1e875c7eeba9b8f201b26/qureyOutput_kNNQuery.csv",
+"license": "MIT License",
+"rows": 205
+},
+{
+"fixture": "gt00683-duckdb",
+"csv_url": "https://github.com/MarcinStachowiak/datashift/blob/d87e5a882a04c8ada092d2ed0a8b56acf3da5de8/tests/example/raw_data_1.csv",
+"license": "MIT License",
+"rows": 101
+},
+{
+"fixture": "gt00686-duckdb",
+"csv_url": "https://github.com/jorgeluis500/SQL-challenges-and-projects/blob/d8883a14cfaafcb956fa08c8ff2c89b827772536/Preppin%20Data/PD%20-%202019%20Week%2028/Input/PD%20Week%2028%20Input.csv",
+"license": "MIT License",
+"rows": 91
+},
+{
+"fixture": "gt00689-duckdb",
+"csv_url": "https://github.com/RhoInc/data-library/blob/ca9f4e7fc025e60d7b4a0ca882d863782e811887/data/clinical-trials/sdtm/cdisc-pilot-01/meta_var.csv",
+"license": "MIT License",
+"rows": 313
+},
+{
+"fixture": "gt00694-duckdb",
+"csv_url": "https://github.com/psandboge/japanese-lists-to-json/blob/2bded258427dd62a1db8f172a979ea148ff64d58/src/main/data/jlpt/n4_.csv",
+"license": "Apache License 2.0",
+"rows": 586
+},
+{
+"fixture": "gt00697-duckdb",
+"csv_url": "https://github.com/lovroselic/Coursera/blob/1598b4fe02eb3addbc847f4f3ec21fb5b6e0be08/Visual/UNICEF-CME_DF_2019-1.0-download.csv",
+"license": "MIT License",
+"rows": 101
+},
+{
+"fixture": "gt00701-duckdb",
+"csv_url": "https://github.com/bbogin/sr2s/blob/0918002aa050368dbeec0f7fed8bd1c1083dacae/invoice/localTest/timelog_SR2S_TAM_2014-07-28_to_2014-08-25.csv",
+"license": "MIT License",
+"rows": 206
+},
+{
+"fixture": "gt00709-duckdb",
+"csv_url": "https://github.com/SoumyaBarikeri/RedditBias/blob/2e1b5a2e50a9138deee6731fd7a8186c8e30f4fd/data/race/reddit_comments_race_black_biased_valid_reduced.csv",
+"license": "MIT License",
+"rows": 253
+},
+{
+"fixture": "gt00714-duckdb",
+"csv_url": "https://github.com/MapofLife/MOL/blob/e3c50ee4ec8364c61cfff3ea68ece1098674f4d6/workflow/field-definitions/MOL%20Layer%20Field%20Information%20-%20as%20of%20September%2014,%202011.csv",
+"license": "BSD 3-Clause \"New\" or \"Revised\" License",
+"rows": 75
+},
+{
+"fixture": "gt00721-duckdb",
+"csv_url": "https://github.com/datacommonsorg/data/blob/c710e7bd7426dea3dba445a661f4929349cb2a20/scripts/world_bank/wdi/schema_csvs/WorldBankIndicators_prod.csv",
+"license": "Apache License 2.0",
+"rows": 70
+},
+{
+"fixture": "gt00722-duckdb",
+"csv_url": "https://github.com/jeffreyshen19/blog/blob/5d81db5457275a767ef568923ca995288d8dda49/data/police-militarization/1033-by-state.csv",
+"license": "MIT License",
+"rows": 54
+},
+{
+"fixture": "gt00724-duckdb",
+"csv_url": "https://github.com/wri/policy-toolkit/blob/8aaa001ab3c9af206da240fbd25c7344ffa5f7dc/data/interim/india-negative.csv",
+"license": "MIT License",
+"rows": 117
+},
+{
+"fixture": "gt00728-duckdb",
+"csv_url": "https://github.com/hollymoeller/HsuMoeller_PriorityEffects/blob/7d8592676035e4158976dccafaba8e6c5ceade2d/MetMut%20(1).csv",
+"license": "MIT License",
+"rows": 1624
+},
+{
+"fixture": "gt00731-duckdb",
+"csv_url": "https://github.com/tanaes/EMP_impact/blob/766c1441cdaa5f6a48d0f017c5a2edef26fe106a/emp_citation_table.csv",
+"license": "MIT License",
+"rows": 74
+},
+{
+"fixture": "gt00734-duckdb",
+"csv_url": "https://github.com/YANG-DB/yang-db/blob/2d334e666040b6962806d13c3279332520be7142/fuse-domain/fuse-domain-cyber/fuse-domain-cyber-ext/src/test/resources/sample/data/lov_BehaviorsTypes.csv",
+"license": "Apache License 2.0",
+"rows": 147
+},
+{
+"fixture": "gt00735-duckdb",
+"csv_url": "https://github.com/JBris/image_classification_examples/blob/af3e571ee0eaa41cdd14604d4edf39edfe1ecd65/python/corona_covid_19/data/metadata.csv",
+"license": "MIT License",
+"rows": 97
+},
+{
+"fixture": "gt00736-duckdb",
+"csv_url": "https://github.com/mcallaghan/cc-topography/blob/0a48cc7ef19013076aceba7195a9375e499cbf6e/tables/topic_info_1861.csv",
+"license": "MIT License",
+"rows": 140
+},
+{
+"fixture": "gt00740-duckdb",
+"csv_url": "https://github.com/SapientsUOM/JATT/blob/cf932938b1ca67fdda78bdd651e458c3193c21ad/BenchmarkPrograms/JavaFlags/flags_numbers.csv",
+"license": "MIT License",
+"rows": 331
+},
+{
+"fixture": "gt00741-duckdb",
+"csv_url": "https://github.com/JoeyBernhardt/Daph-TSR/blob/60ad868e9f70c5549ed1c73c3a8014a067e080f7/data-processed/data7.csv",
+"license": "MIT License",
+"rows": 190
+},
+{
+"fixture": "gt00744-duckdb",
+"csv_url": "https://github.com/Code4SierraLeone/shdms/blob/0d58ce188b1132d2316e98a0ee818363566b6639/modules/templates/historic/CRMT/gis_layer_wms.csv",
+"license": "MIT License",
+"rows": 56
+},
+{
+"fixture": "gt00745-duckdb",
+"csv_url": "https://github.com/superpower1/Poke_farm/blob/5e232a27d9744b412a0814821fd8cd89b35fdd79/pokemon_data/experiences.csv",
+"license": "MIT License",
+"rows": 600
+}
+]
+}

@@ -1,0 +1,57 @@
+{
+ "jev": {
+  "opus, kept of five": 3.62,
+  "opus, AUC": 0.855,
+  "opus, databases": 26,
+  "sonnet, kept of five": 3.44,
+  "sonnet, AUC": 0.844,
+  "sonnet, databases": 50,
+  "gemini, kept of five": 3.8,
+  "gemini, AUC": 0.854,
+  "gemini, databases": 50
+ },
+ "jevfast": {
+  "opus, kept of five": 3.65,
+  "opus, AUC": 0.856,
+  "opus, databases": 26,
+  "sonnet, kept of five": 3.44,
+  "sonnet, AUC": 0.844,
+  "sonnet, databases": 50,
+  "gemini, kept of five": 3.76,
+  "gemini, AUC": 0.856,
+  "gemini, databases": 50
+ },
+ "jev + lunap": {
+  "opus, kept of five": 3.81,
+  "opus, AUC": 0.908,
+  "opus, databases": 26,
+  "sonnet, kept of five": 3.64,
+  "sonnet, AUC": 0.885,
+  "sonnet, databases": 50,
+  "gemini, kept of five": 4.04,
+  "gemini, AUC": 0.9,
+  "gemini, databases": 50
+ },
+ "jevfast + lunap": {
+  "opus, kept of five": 3.73,
+  "opus, AUC": 0.907,
+  "opus, databases": 26,
+  "sonnet, kept of five": 3.58,
+  "sonnet, AUC": 0.884,
+  "sonnet, databases": 50,
+  "gemini, kept of five": 3.98,
+  "gemini, AUC": 0.899,
+  "gemini, databases": 50
+ },
+ "jevfast + deepseek + glm + lunap": {
+  "opus, kept of five": 4.0,
+  "opus, AUC": 0.937,
+  "opus, databases": 26,
+  "sonnet, kept of five": 3.82,
+  "sonnet, AUC": 0.907,
+  "sonnet, databases": 50,
+  "gemini, kept of five": 4.26,
+  "gemini, AUC": 0.942,
+  "gemini, databases": 50
+ }
+}

@@ -219,6 +219,21 @@ it are in its chapter 14 and are the ones that decide.
    statement keep the five and cut 536 s to 16 s over 93 databases; the
    look's price is bounded, and saying when a guess is a guess is what is
    left.
+1j. **Meaning and results before the bottleneck**: word vectors and the
+   result read together, a correction learned beside the look, the title
+   student's inner state. [Run](reports/fusion-2026-10-28.md) on 28 October:
+   none establishes a consistent gain, and a shared contextual encoder is
+   proposed as a hypothesis of its own.
+1k. **Where the look stops**: cheaper teachers, GitTables' tables, the
+   ideas of round 1j's handoff, and what the count can see.
+   [Run](reports/ceiling-2026-10-29.md) on 28 and 29 October: on 50
+   databases the count saw no less than 0.19 of a panel, so the 43 never
+   counted were judged and it sees 0.12–0.22 on 93; Luna asked for a chance
+   teaches as Jev does, and DeepSeek and GLM go; GitTables' panels, a name's
+   head word and a column's spread each move the look by under a tenth; a
+   person's first click buys +0.17. The five without a person is at its
+   ceiling by model judges; what moves it next is the person, and the
+   count's next step is about 150 databases.
 2. **The judged set**: assembled, split by project, judged.
 3. **The ranker, C**: linear, trees, a tiny network, against A and B on the
    judged set, with its cost.
