@@ -252,7 +252,7 @@ function card(p, rank, blind) {
 
 // Compare -------------------------------------------------------------------
 
-const NAMES = { O: "O · the schema's order", A: "A · the schema", B1: "B1 · and its statistics" };
+const NAMES = Object.assign({ O: "O · the schema's order", A: "A · the schema", B1: "B1 · and its statistics" }, DATA.names || {});
 function compare() {
   const main = document.getElementById("main");
   main.replaceChildren(

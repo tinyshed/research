@@ -1,0 +1,299 @@
+{
+  "about": "Gold questions for round 1c's two final check fixtures, written blind by Claude Haiku on 28 October 2026 from each schema with rough row counts and a line on what it holds, before round 1c's ranker was run on them; read as analytical questions and matched by identity, with nothing added by hand. Run once; nothing in round 1c changed after.",
+  "fixtures": {
+    "classicmodels": {
+      "engine": "mysql",
+      "questions": [
+        {
+          "question": "How much revenue is booked each month?",
+          "why": "the top line, the first trend to watch",
+          "base": "orderdetails",
+          "measure": "sum(orderdetails.quantityOrdered * orderdetails.priceEach)",
+          "time": {
+            "column": "orders.orderDate",
+            "bucket": "month"
+          },
+          "breakdown": null,
+          "top": null,
+          "filter": null,
+          "joins": [
+            "orderdetails.orderNumber -> orders.orderNumber"
+          ]
+        },
+        {
+          "question": "How much gross margin does each month make?",
+          "why": "revenue alone hides whether sales cover the buy price",
+          "base": "orderdetails",
+          "measure": "sum(orderdetails.quantityOrdered * (orderdetails.priceEach - products.buyPrice))",
+          "time": {
+            "column": "orders.orderDate",
+            "bucket": "month"
+          },
+          "breakdown": null,
+          "top": null,
+          "filter": null,
+          "joins": [
+            "orderdetails.orderNumber -> orders.orderNumber",
+            "orderdetails.productCode -> products.productCode"
+          ]
+        },
+        {
+          "question": "How much cash is collected each month?",
+          "why": "payments received, to set against revenue booked",
+          "base": "payments",
+          "measure": "sum(payments.amount)",
+          "time": {
+            "column": "payments.paymentDate",
+            "bucket": "month"
+          },
+          "breakdown": null,
+          "top": null,
+          "filter": null,
+          "joins": []
+        },
+        {
+          "question": "How many different customers place orders each month?",
+          "why": "is the active customer base growing or shrinking",
+          "base": "orders",
+          "measure": "count(distinct orders.customerNumber)",
+          "time": {
+            "column": "orders.orderDate",
+            "bucket": "month"
+          },
+          "breakdown": null,
+          "top": null,
+          "filter": null,
+          "joins": []
+        },
+        {
+          "question": "How many orders are in each status, month by month?",
+          "why": "cancelled, on hold or disputed orders signal trouble",
+          "base": "orders",
+          "measure": "count(*)",
+          "time": {
+            "column": "orders.orderDate",
+            "bucket": "month"
+          },
+          "breakdown": "orders.status",
+          "top": null,
+          "filter": null,
+          "joins": []
+        },
+        {
+          "question": "Which customers bring in the most revenue?",
+          "why": "how much the business depends on its top accounts",
+          "base": "orderdetails",
+          "measure": "sum(orderdetails.quantityOrdered * orderdetails.priceEach)",
+          "time": null,
+          "breakdown": "customers.customerName",
+          "top": 12,
+          "filter": null,
+          "joins": [
+            "orderdetails.orderNumber -> orders.orderNumber",
+            "orders.customerNumber -> customers.customerNumber"
+          ]
+        },
+        {
+          "question": "How is revenue split across product lines each month?",
+          "why": "which lines drive the business, and how that shifts",
+          "base": "orderdetails",
+          "measure": "sum(orderdetails.quantityOrdered * orderdetails.priceEach)",
+          "time": {
+            "column": "orders.orderDate",
+            "bucket": "month"
+          },
+          "breakdown": "products.productLine",
+          "top": null,
+          "filter": null,
+          "joins": [
+            "orderdetails.orderNumber -> orders.orderNumber",
+            "orderdetails.productCode -> products.productCode"
+          ]
+        },
+        {
+          "question": "How many orders shipped after their required date each month?",
+          "why": "late deliveries put repeat business at risk",
+          "base": "orders",
+          "measure": "count(*)",
+          "time": {
+            "column": "orders.shippedDate",
+            "bucket": "month"
+          },
+          "breakdown": null,
+          "top": null,
+          "filter": "orders.shippedDate > orders.requiredDate",
+          "joins": []
+        },
+        {
+          "question": "Which products bring in the most revenue?",
+          "why": "the scale models that carry the sales",
+          "base": "orderdetails",
+          "measure": "sum(orderdetails.quantityOrdered * orderdetails.priceEach)",
+          "time": null,
+          "breakdown": "products.productName",
+          "top": 12,
+          "filter": null,
+          "joins": [
+            "orderdetails.productCode -> products.productCode"
+          ]
+        },
+        {
+          "question": "Which sales reps bring in the most revenue?",
+          "why": "who owns the accounts that sell the most",
+          "base": "orderdetails",
+          "measure": "sum(orderdetails.quantityOrdered * orderdetails.priceEach)",
+          "time": null,
+          "breakdown": "employees.employeeNumber",
+          "top": 12,
+          "filter": null,
+          "joins": [
+            "orderdetails.orderNumber -> orders.orderNumber",
+            "orders.customerNumber -> customers.customerNumber",
+            "customers.salesRepEmployeeNumber -> employees.employeeNumber"
+          ]
+        }
+      ]
+    },
+    "credit": {
+      "engine": "mysql",
+      "questions": [
+        {
+          "question": "How much was charged each month?",
+          "why": "the spend that earns the company its money, over time",
+          "base": "charge",
+          "measure": "sum(charge.charge_amt)",
+          "time": {
+            "column": "charge.charge_dt",
+            "bucket": "month"
+          },
+          "breakdown": null,
+          "top": null,
+          "filter": null,
+          "joins": []
+        },
+        {
+          "question": "How much was paid back each month?",
+          "why": "repayments against what members have charged and owe",
+          "base": "payment",
+          "measure": "sum(payment.payment_amt)",
+          "time": {
+            "column": "payment.payment_dt",
+            "bucket": "month"
+          },
+          "breakdown": null,
+          "top": null,
+          "filter": null,
+          "joins": []
+        },
+        {
+          "question": "How many new members joined each month?",
+          "why": "growth of the member base",
+          "base": "member",
+          "measure": "count(*)",
+          "time": {
+            "column": "member.issue_dt",
+            "bucket": "month"
+          },
+          "breakdown": null,
+          "top": null,
+          "filter": null,
+          "joins": []
+        },
+        {
+          "question": "How much do members owe now, by region?",
+          "why": "where outstanding balances sit",
+          "base": "member",
+          "measure": "sum(member.curr_balance)",
+          "time": null,
+          "breakdown": "region.region_name",
+          "top": null,
+          "filter": null,
+          "joins": [
+            "member.region_no -> region.region_no"
+          ]
+        },
+        {
+          "question": "Which categories bring in the most charges?",
+          "why": "where spending concentrates",
+          "base": "charge",
+          "measure": "sum(charge.charge_amt)",
+          "time": null,
+          "breakdown": "category.category_desc",
+          "top": null,
+          "filter": null,
+          "joins": [
+            "charge.category_no -> category.category_no"
+          ]
+        },
+        {
+          "question": "Which providers take the most charges?",
+          "why": "the merchants that receive the most card spend",
+          "base": "charge",
+          "measure": "sum(charge.charge_amt)",
+          "time": null,
+          "breakdown": "provider.provider_name",
+          "top": 12,
+          "filter": null,
+          "joins": [
+            "charge.provider_no -> provider.provider_no"
+          ]
+        },
+        {
+          "question": "How much was billed on statements each month?",
+          "why": "the amount sent to members as bills, over time",
+          "base": "statement",
+          "measure": "sum(statement.statement_amt)",
+          "time": {
+            "column": "statement.statement_dt",
+            "bucket": "month"
+          },
+          "breakdown": null,
+          "top": null,
+          "filter": null,
+          "joins": []
+        },
+        {
+          "question": "What is the average charge each month?",
+          "why": "whether members are spending more per purchase",
+          "base": "charge",
+          "measure": "avg(charge.charge_amt)",
+          "time": {
+            "column": "charge.charge_dt",
+            "bucket": "month"
+          },
+          "breakdown": null,
+          "top": null,
+          "filter": null,
+          "joins": []
+        },
+        {
+          "question": "Which regions' members spend the most?",
+          "why": "where the charges come from, by the member's home region",
+          "base": "charge",
+          "measure": "sum(charge.charge_amt)",
+          "time": null,
+          "breakdown": "region.region_name",
+          "top": null,
+          "filter": null,
+          "joins": [
+            "charge.member_no -> member.member_no",
+            "member.region_no -> region.region_no"
+          ]
+        },
+        {
+          "question": "Which corporations have the most members?",
+          "why": "the corporate accounts that hold the most cards",
+          "base": "member",
+          "measure": "count(*)",
+          "time": null,
+          "breakdown": "corporation.corp_name",
+          "top": 12,
+          "filter": "member.corp_no IS NOT NULL",
+          "joins": [
+            "member.corp_no -> corporation.corp_no"
+          ]
+        }
+      ]
+    }
+  }
+}
