@@ -794,7 +794,9 @@ def compile_sql(schema: Schema, q: Question, engine: str, bucket_name: str | Non
             yref = b(y)
         value = f"SUM({b(x)} * {yref})"
     elif m.kind == "flagged":
-        value = f"SUM(CASE WHEN {b(m.cols[0])} THEN 1 ELSE 0 END)" if engine != "mysql" else f"SUM({b(m.cols[0])} <> 0)"
+        # a flag may be a boolean or an integer 0 or 1, as BIRD's are; both
+        # cast to an integer on PostgreSQL, which takes no integer as a truth
+        value = f"SUM(CASE WHEN {b(m.cols[0])}::int <> 0 THEN 1 ELSE 0 END)" if engine != "mysql" else f"SUM({b(m.cols[0])} <> 0)"
     elif m.kind == "net":
         value = f"SUM({b(m.cols[0])} * {b(m.cols[1])} * (1 - COALESCE({b(m.cols[2])}, 0)))"
     elif m.kind == "parents":
