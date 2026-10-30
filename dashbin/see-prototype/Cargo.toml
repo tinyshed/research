@@ -1,0 +1,22 @@
+[package]
+name = "see-prototype"
+version = "0.1.0"
+edition = "2024"
+publish = false
+description = "A prototype of dashbin see: lemmesee's numbers and screen in a terminal, and the same frame as a picture"
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "see"
+path = "src/main.rs"
+
+[dependencies]
+ratatui = "0.29"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+ab_glyph = "0.2"
+image = { version = "0.25", default-features = false, features = ["png"] }
+regex = "1"
