@@ -35,6 +35,9 @@ pub struct Number {
     /// A funnel's steps, the titles of the numbers it is made of.
     #[serde(default)]
     pub parts: Vec<String>,
+    /// What the value is when it is not the whole's count: a sample, the catalog.
+    #[serde(default)]
+    pub estimate: Option<String>,
 }
 
 #[derive(Debug, Clone, Deserialize)]
@@ -47,6 +50,9 @@ pub struct Panel {
     #[serde(default)]
     pub rows: Vec<Vec<Option<String>>>,
     pub error: Option<String>,
+    /// What the rows are when they are not the whole's: a sample, the newest rows.
+    #[serde(default)]
+    pub estimate: Option<String>,
 }
 
 impl Panel {

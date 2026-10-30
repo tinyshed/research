@@ -14,6 +14,7 @@ see <doc.json>                                                      a screen doc
     [--shot <out.png> --size 150x46 --px 15 --press x,down,f]   the frame as a picture, keys played first
     [--html <out.html>]    the same screen as one static page
     [--doc <out.json>] [--doc-only]
+    [--unbounded]          read as lemmesee's rounds read, whole tables and all
 ```
 
 At the screen: `←↑↓→` a panel, `enter` that panel alone, `f` keep, `x` drop
@@ -63,10 +64,53 @@ goes on between them; its later steps and those shares leave the band. Each card
 foot the database and the rows; a value's day is under the pointer. One
 page, no script, no request; it fits a phone.
 
+## What looking costs
+
+Chapter 14's bound, held by `src/core/bound.rs` and the runner: a look reads
+a source's catalog and statistics, at most 10 000 rows of a table in a
+statement, inside 2 s of server time a table, and never a table above
+10 000 rows whole. Every statement the core writes is planned before it
+runs, cheapest first:
+
+- as written, when every table it names is small;
+- from the catalog or the statistics, reading no row: a whole table's count
+  (`reltuples`), a column's distinct values (`n_distinct`), rows by a value
+  (`most_common_vals`, which `ANALYZE` took from rows, not pages);
+- exact through an index, when its window holds few rows;
+- exact over the newest 7 000 rows of a table kept in its time's order (its
+  time's correlation with its pages at 0.95 or more), off its last pages by
+  a range of `ctid`, its first and cut-short day dropped, at least 7 days;
+- over a sample of about 7 000 rows of the big table's pages,
+  `TABLESAMPLE SYSTEM … REPEATABLE (17)`, the same pages for every
+  statement, its counts and sums scaled, its averages kept;
+- not at all, saying why: a count of distinct values or "two or more"
+  where no exact way holds, a day of a log (a sample of a log's pages is a
+  few moments), the rows of a value kept together on its pages, a sample too
+  thin to say a day (20 of its rows), a value (5) or a number (30).
+
+A window's end, `MAX` of a time, is read once a look and written into every
+statement that ends there. Each statement runs in a read-only transaction,
+its timeout what is left of its tables' 2 s (and never more than the 0.5 s of
+`--ssh`), joins in their written order as lookups by key through an index,
+and a guard before it: a `DO` block reads the statement's plan in the
+database and refuses it if it would read a big table in sequence or along an
+index with nothing to look up. What is not the whole's answer is said: `≈`
+before it on the screen and the page, and what it is beside it.
+
+`cost.py` measures a look: every statement of its trace (`SEE_TRACE=<file>`)
+run again under `EXPLAIN (ANALYZE, BUFFERS)`, the rows each read of each
+table, whether it read a big one whole, the server's time. `drift.py` sets a
+bounded look's answers against the whole's; `looks.py` runs both on every
+PostgreSQL store of the corpus with a table above 10 000 rows, one after the
+other on each.
+
 ## Not done
 
-- Chapter 14's bound on what looking costs: the numbers count whole tables;
-  above 10 000 rows they should come from the engine's estimates and samples.
+- A count of distinct values over a window too big to read exactly, and
+  "two or more", are refused; the statistics' `n_distinct` of a whole column
+  runs low on big skewed ones.
+- A number over a window of a table kept in time order comes from a sample
+  of its pages, not its newest rows.
 - A MySQL runner, and `postgres://` without a container; the snapshot is
   still made by round 1's harness.
 - The mockups' one cursor across every chart of the page, and the table of

@@ -65,6 +65,11 @@ fn as_bars(p: &Panel) -> bool {
     ["rows of", "sum of", "distinct", "count"].iter().any(|w| p.title.starts_with(w)) || matches!(p.bucket.as_deref(), Some("month" | "year"))
 }
 
+/// An estimate's mark before its value, what it is under the pointer.
+fn approx(estimate: Option<&str>) -> String {
+    estimate.map(|e| format!("<span class='est' title='{}'>≈</span>", esc(e))).unwrap_or_default()
+}
+
 fn grid(top: f64, lines: &[f64], u: &str) -> String {
     lines.iter().map(|v| format!("<i class='gl' style='bottom:{:.2}%'><span>{}{u}</span></i>", 100.0 * v / top, esc(&fmt(*v)))).collect()
 }
@@ -124,7 +129,7 @@ fn timed(p: &Panel) -> String {
     } else {
         format!("<div class='trace'>{}</div>", line_svg(&vals, top, SERIES[0], partial, &tips))
     };
-    format!("<div class='cv'>{}{u}<small>{}</small></div><div class='plot'>{}{marks}</div>{}", esc(&full(last)), esc(&at), grid(top, &lines, u), axis(&times, b))
+    format!("<div class='cv'>{}{}{u}<small>{}</small></div><div class='plot'>{}{marks}</div>{}", approx(p.estimate.as_deref()), esc(&full(last)), esc(&at), grid(top, &lines, u), axis(&times, b))
 }
 
 /// A time split by a few values: a small chart a value, one scale for all,
@@ -215,15 +220,15 @@ fn card(p: &Panel, kept: bool, span: usize, database: &str) -> String {
         Shape::Line => timed(p),
         Shape::Split => split(p),
         Shape::Bars => ranked(p),
-        Shape::Number => format!("<div class='cv'>{}</div>", esc(&num(&p.rows[0][0]).map(full).unwrap_or_else(|| label(&p.rows[0][0])))),
+        Shape::Number => format!("<div class='cv'>{}{}</div>", approx(p.estimate.as_deref()), esc(&num(&p.rows[0][0]).map(full).unwrap_or_else(|| label(&p.rows[0][0])))),
         Shape::Empty => empty(p),
     };
     let badge = if kept { "<span class='badge'>kept</span>" } else { "" };
     let rows = p.rows.len();
     format!("<section class='sec s{span}'><header class='sh'><h2 class='st'>{name}</h2><span class='meta'>{lede}</span><span class='pv'>{}</span></header>\
 <div class='cell'><div class='cl'><span title='{}'>{}</span>{badge}</div>{body}</div>\
-<footer class='sf'><span class='tk'><i></i></span>{} · {rows} row{}</footer></section>",
-        esc(&window), esc(&p.title), esc(&once(&p.title)), esc(database), if rows == 1 { "" } else { "s" })
+<footer class='sf'><span class='tk'><i></i></span>{} · {rows} row{}{}</footer></section>",
+        esc(&window), esc(&p.title), esc(&once(&p.title)), esc(database), if rows == 1 { "" } else { "s" }, p.estimate.as_deref().map(|e| format!(" · ≈ {}", esc(e))).unwrap_or_default())
 }
 
 /// A funnel read from its number: the steps its title names, the counts it shows.
@@ -242,7 +247,7 @@ fn told_by(steps: &[(String, f64)]) -> Vec<String> {
 
 /// A funnel as bars from one left edge, each the part of the first that is
 /// left, on a faint track of the whole, the share that went on between them.
-fn funnel(steps: &[(String, f64)], span: usize, database: &str) -> String {
+fn funnel(steps: &[(String, f64)], span: usize, database: &str, estimate: Option<&str>) -> String {
     let first = steps[0].1;
     let mut body = String::new();
     for (i, (name, v)) in steps.iter().enumerate() {
@@ -256,19 +261,23 @@ fn funnel(steps: &[(String, f64)], span: usize, database: &str) -> String {
     let end = 100.0 * steps[steps.len() - 1].1 / first;
     format!("<section class='sec s{span}'><header class='sh'><h2 class='st'>Funnel</h2><span class='meta'>how many go on</span><span class='pv'>all rows</span></header>\
 <div class='cell'><div class='fun'>{body}</div></div>\
-<footer class='sf'><span class='tk'><i></i></span>{} · {end:.1}% of {} reach the last step</footer></section>", esc(database), esc(&steps[0].0))
+<footer class='sf'><span class='tk'><i></i></span>{} · {}{end:.1}% of {} reach the last step</footer></section>", esc(database), if estimate.is_some() { "≈ " } else { "" }, esc(&steps[0].0))
 }
 
 pub fn page(doc: &Doc, panels: &[Panel], c: &Choices) -> String {
     let store = &doc.store;
     let database = if store.database.is_empty() { store.name.as_str() } else { store.database.as_str() };
-    let funnels: Vec<Vec<(String, f64)>> = doc.numbers.iter().filter(|n| n.kind == "funnel").filter_map(steps).collect();
+    let funnels: Vec<(Vec<(String, f64)>, Option<String>)> = doc.numbers.iter().filter(|n| n.kind == "funnel").filter_map(|n| steps(n).map(|s| (s, n.estimate.clone()))).collect();
     // what a funnel shows stays off the band: its later steps and the shares between them; its first stays a headline
-    let mut told: Vec<String> = funnels.iter().flat_map(|f| told_by(f)).collect();
+    let mut told: Vec<String> = funnels.iter().flat_map(|(f, _)| told_by(f)).collect();
     told.extend(doc.numbers.iter().filter(|n| n.kind == "funnel" && steps(n).is_some()).flat_map(|n| n.parts.iter().skip(1).cloned()));
     let band: Vec<&Number> = doc.numbers.iter().filter(|n| !(n.kind == "funnel" && steps(n).is_some()) && !told.contains(&n.title)).collect();
     let tiles: String = band.iter().map(|n| {
-        format!("<div class='cell tile'><div class='cl'>{}</div><div class='cv{}'>{}</div></div>", esc(&n.title), if n.shown.chars().count() > 12 { " long" } else { "" }, esc(&n.shown))
+        // a number not run is a dash, why under the pointer
+        if let Some(why) = n.shown.strip_prefix("not run: ") {
+            return format!("<div class='cell tile'><div class='cl'>{}</div><div class='cv dim' title='{}'>—</div></div>", esc(&n.title), esc(why));
+        }
+        format!("<div class='cell tile'><div class='cl'>{}</div><div class='cv{}'>{}{}</div></div>", esc(&n.title), if n.shown.chars().count() > 12 { " long" } else { "" }, approx(n.estimate.as_deref()), esc(&n.shown))
     }).collect();
     // the funnels first, a third of a row each, then the panels; each row filled by its charts
     let mut widths: Vec<usize> = vec![2; funnels.len()];
@@ -276,7 +285,7 @@ pub fn page(doc: &Doc, panels: &[Panel], c: &Choices) -> String {
     let mut charts: Vec<bool> = vec![false; funnels.len()];
     charts.extend(panels.iter().map(|p| matches!(p.shape(), Shape::Line | Shape::Empty)));
     let spans = rows(&widths, &charts);
-    let cards: String = funnels.iter().zip(&spans).map(|(f, s)| funnel(f, *s, database))
+    let cards: String = funnels.iter().zip(&spans).map(|((f, e), s)| funnel(f, *s, database, e.as_deref()))
         .chain(panels.iter().zip(&spans[funnels.len()..]).map(|(p, s)| card(p, c.kept.contains(&p.key), *s, database)))
         .collect();
     let numbers = if doc.numbers.is_empty() {
@@ -355,6 +364,7 @@ h1{{font-size:24px;font-weight:600;letter-spacing:-0.02em;margin:0;line-height:1
 .fb{{height:18px;margin-top:4px;border-radius:2px;background:color-mix(in oklab,var(--c1) 12%,transparent)}}
 .fb i{{display:block;height:100%;border-radius:2px;background:var(--c1)}}
 .on{{font-size:11px;color:var(--text-3);padding:6px 0;font-variant-numeric:tabular-nums}}
+.est{{color:var(--text-3);font-weight:500;margin-right:3px;cursor:help}}
 .note{{color:var(--text-3);font-size:12px;margin-top:18px}}
 @media (max-width:900px){{.page>*{{grid-column:1/-1}}}}
 @media (max-width:760px){{main{{padding:16px 16px 32px}} .head .meta{{margin-left:0}} .cells{{grid-template-columns:repeat(2,minmax(0,1fr))}} .pv{{display:none}}}}

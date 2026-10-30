@@ -48,12 +48,19 @@ fn main() {
     let value = if value.get("tables").is_some() {
         let user = opt("--user").or_else(|| value.get("role").and_then(|r| r.as_str()).map(str::to_string)).unwrap_or_else(|| "postgres".into());
         let database = value.get("database").and_then(|d| d.as_str()).unwrap_or_default().to_string();
-        let run = if let Some(host) = opt("--ssh") {
-            see_prototype::core::run::Runner::Ssh { host, key: opt("--key"), container: opt("--container").unwrap_or_else(|| fail("--ssh", "needs --container".into())), user, database }
+        use see_prototype::core::run::{Conn, Runner};
+        let conn = if let Some(host) = opt("--ssh") {
+            Conn::Ssh { host, key: opt("--key"), container: opt("--container").unwrap_or_else(|| fail("--ssh", "needs --container".into())), user, database }
         } else if let Some(container) = opt("--docker") {
-            see_prototype::core::run::Runner::Docker { container, user, database }
+            Conn::Docker { container, user, database }
         } else {
             fail(path, "a snapshot needs --docker <container> or --ssh <host> --container <container>".into())
+        };
+        // chapter 14's bound on what looking costs, unless asked to read as the rounds read
+        let run = if args.iter().any(|a| a == "--unbounded") || value.get("engine").and_then(|e| e.as_str()) != Some("postgresql") {
+            Runner::new(conn)
+        } else {
+            Runner::new(conn).bounded(see_prototype::core::bound::Catalog::from_snapshot(&value))
         };
         let ranker = opt("--ranker").map(PathBuf::from).unwrap_or_else(|| PathBuf::from(concat!(env!("CARGO_MANIFEST_DIR"), "/../../lemmesee/corpus/round-1l/learn/luna-and-deepseek/ranker.txt")));
         let model = see_prototype::core::model::Model::load(&ranker).unwrap_or_else(|e| fail("ranker", e));

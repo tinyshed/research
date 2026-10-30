@@ -45,6 +45,8 @@ pub struct Tile {
     pub table: String,
     pub column: Option<String>,
     pub days: Option<i64>,
+    /// what the value is when it is not the whole's count: a sample, the catalog
+    pub estimate: Option<String>,
 }
 
 fn tile(title: String, sql: String, what: &'static str, table: &str) -> Tile {
@@ -407,10 +409,20 @@ pub fn row(schema: &Schema, run: &Runner) -> Vec<Tile> {
                 None => if err.is_some() { None } else { Some(0.0) },
             };
             t.error = err;
+            t.estimate = run.note(sql);
         }
     }
     let values: HashMap<String, Option<f64>> = tiles.iter().map(|t| (t.title.clone(), t.value)).collect();
+    let estimated: HashMap<String, bool> = tiles.iter().map(|t| (t.title.clone(), t.estimate.is_some())).collect();
     for t in tiles.iter_mut() {
+        // a share of an estimate, or a funnel through one, is an estimate too
+        let parts: Vec<&String> = match &t.of {
+            Some((top, bottom)) => vec![top, bottom],
+            None => t.parts.iter().collect(),
+        };
+        if t.estimate.is_none() && t.kind != "number" && parts.iter().any(|p| estimated.get(*p).copied().unwrap_or(false)) {
+            t.estimate = Some("from estimates".into());
+        }
         if let Some((top, bottom)) = &t.of {
             t.value = match (values.get(top).copied().flatten(), values.get(bottom).copied().flatten()) {
                 (Some(a), Some(b)) if b != 0.0 => Some(a / b),
@@ -419,6 +431,10 @@ pub fn row(schema: &Schema, run: &Runner) -> Vec<Tile> {
         }
         if t.kind == "funnel" {
             t.value = None;
+        }
+        // a share left without a value is not an estimate of one
+        if t.value.is_none() && t.kind == "share" {
+            t.estimate = None;
         }
     }
     tiles
@@ -446,7 +462,8 @@ pub fn shown(t: &Tile, tiles: &[Tile]) -> String {
     match t.value {
         None => match &t.error {
             None => "—".into(),
-            Some(e) => format!("not run: {}", e.chars().take(60).collect::<String>()),
+            // the bound's refusals say "not run" themselves
+            Some(e) => format!("not run: {}", e.strip_prefix("not run: ").unwrap_or(e).chars().take(60).collect::<String>()),
         },
         Some(v) if t.kind == "share" => format!("{:.1}%", 100.0 * v),
         Some(v) if v.abs() >= 10.0 => commas(v),

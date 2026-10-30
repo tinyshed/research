@@ -298,7 +298,15 @@ pub fn draw(f: &mut Frame, app: &mut App) {
             if let Some(n) = app.doc.numbers.get(r * per + c) {
                 let w = cell.width.saturating_sub(2) as usize;
                 let colour = TEXT;
-                let mut lines = vec![Line::styled(n.shown.clone(), Style::default().fg(colour).add_modifier(Modifier::BOLD))];
+                // an estimate says so, quietly: a sample's or the catalog's, not the whole's count
+                let mut value = vec![Span::styled(n.shown.clone(), Style::default().fg(colour).add_modifier(Modifier::BOLD))];
+                if n.shown.starts_with("not run") {
+                    // a number not run is a dash; why is in --html, under the pointer
+                    value = vec![dim("—")];
+                } else if n.estimate.is_some() {
+                    value.insert(0, dim("≈ "));
+                }
+                let mut lines = vec![Line::from(value)];
                 lines.extend(wrap(&n.title, w, label_lines as usize).into_iter().map(|l| Line::styled(l, Style::default().fg(OVERLAY0))));
                 f.render_widget(Paragraph::new(lines), *cell);
             }
@@ -380,11 +388,14 @@ fn panel(f: &mut Frame, area: Rect, p: &Panel, selected: bool, kept: bool) {
         }
     }
     let inner = |r: Rect| Rect { x: r.x + 2, width: r.width.saturating_sub(2), ..r };
-    let room = title.width.saturating_sub(if kept { 10 } else { 4 }) as usize;
+    let room = title.width.saturating_sub(if kept { 10 } else { 4 } + if p.estimate.is_some() { 2 } else { 0 }) as usize;
     let mut spans = vec![
         Span::styled("● ", Style::default().fg(role_colour(&p.role))),
         Span::styled(fit_title(&p.title, room), if selected { Style::default().fg(TEXT).add_modifier(Modifier::BOLD) } else { Style::default().fg(SUBTEXT) }),
     ];
+    if p.estimate.is_some() {
+        spans.push(dim(" ≈"));
+    }
     if kept {
         spans.push(Span::styled("  kept", Style::default().fg(GREEN)));
     }

@@ -2,6 +2,7 @@
 //! `tests/golden.rs`: the schema read, the questions made and compiled, the
 //! ranker's features and score, and the choice.
 
+pub mod bound;
 pub mod build;
 pub mod charts;
 pub mod generate;

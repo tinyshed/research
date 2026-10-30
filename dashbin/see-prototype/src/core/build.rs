@@ -27,9 +27,10 @@ pub enum Event {
     Ran(usize, usize),
 }
 
-fn panel(p: Ran, role: &str) -> Value {
+fn panel(p: Ran, role: &str, run: &Runner) -> Value {
+    let estimate = run.note(&p.sql);
     json!({"key": p.title, "title": p.title, "role": role, "template": p.template, "bucket": p.bucket,
-           "rows": p.rows.into_iter().take(200).collect::<Vec<_>>(), "error": p.error})
+           "rows": p.rows.into_iter().take(200).collect::<Vec<_>>(), "error": p.error, "estimate": estimate})
 }
 
 pub fn build(snap: &Value, name: &str, about: &str, model: &Model, run: &Runner, tell: &(dyn Fn(Event) + Sync)) -> Value {
@@ -80,7 +81,7 @@ pub fn build(snap: &Value, name: &str, about: &str, model: &Model, run: &Runner,
     let mut ran = 0;
     let mut panels: Vec<Value> = Vec::new();
     for i in &five {
-        panels.push(panel(charts::run_item(&s, i, run), &role_of(i)));
+        panels.push(panel(charts::run_item(&s, i, run), &role_of(i), run));
         ran += 1;
         tell(Event::Ran(ran, total));
     }
@@ -88,7 +89,7 @@ pub fn build(snap: &Value, name: &str, about: &str, model: &Model, run: &Runner,
     for (ro, idx) in &spares {
         let mut v: Vec<Value> = Vec::new();
         for &i in idx {
-            v.push(panel(charts::run_question(&s, &r.qs[i], run), ro));
+            v.push(panel(charts::run_question(&s, &r.qs[i], run), ro, run));
             ran += 1;
             tell(Event::Ran(ran, total));
         }
@@ -97,7 +98,7 @@ pub fn build(snap: &Value, name: &str, about: &str, model: &Model, run: &Runner,
     tell(Event::Done(format!("{ran} run, {} spare", ran - five.len())));
     json!({
         "store": {"name": name, "engine": s.engine, "database": snap.get("database").cloned().unwrap_or(Value::Null), "about": about},
-        "numbers": tiles.iter().map(|t| json!({"key": t.title, "title": t.title, "shown": numbers::shown(t, &tiles), "kind": t.kind, "parts": t.parts})).collect::<Vec<_>>(),
+        "numbers": tiles.iter().map(|t| json!({"key": t.title, "title": t.title, "shown": numbers::shown(t, &tiles), "kind": t.kind, "parts": t.parts, "estimate": t.estimate})).collect::<Vec<_>>(),
         "panels": panels,
         "spares": reserve,
     })
