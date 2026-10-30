@@ -1,0 +1,77 @@
+City
+  CityId: numeric, primary key
+  CityName: varchar
+
+State
+  StateId: numeric, primary key
+  StateName: varchar
+
+ZipCode
+  ZipCodeId: numeric, primary key
+  ZipCode: varchar
+  StateId: numeric, references State.StateId, nullable
+  CityId: numeric, references City.CityId, nullable
+
+Membership
+  MembershipId: numeric, primary key
+  MembershipType: varchar
+  MembershipLimitPerMonth: numeric
+  MembershipMonthlyPrice: numeric
+  MembershipMonthlyTax: numeric
+  MembershipDVDLostPrice: numeric
+
+Payment
+  PaymentId: numeric, primary key
+  MemberId: numeric
+  AmountPaid: numeric
+  AmountPaidDate: timestamp
+  AmountPaidUntilDate: timestamp
+
+Genre
+  GenreId: numeric, primary key
+  GenreName: varchar
+
+Rating
+  RatingId: numeric, primary key
+  RatingName: varchar
+  RatingDescription: varchar
+
+Role
+  RoleId: numeric, primary key
+  RoleName: varchar
+
+MoviePerson
+  PersonId: numeric, primary key
+  PersonFirstName: varchar
+  PersonLastName: varchar, nullable
+  PersonInitial: varchar, nullable
+  PersonDateOfBirth: timestamp, nullable
+
+DVD
+  DVDId: numeric, primary key
+  DVDTitle: varchar
+  GenreId: numeric, references Genre.GenreId
+  RatingId: numeric, references Rating.RatingId
+  DVDReleaseDate: timestamp
+  TheaterReleaseDate: timestamp, nullable
+  DVDQuantityOnHand: numeric
+  DVDQuantityOnRent: numeric
+  DVDLostQuantity: numeric
+
+RentalQueue
+  MemberId: numeric, part of the primary key
+  DVDId: numeric, part of the primary key, references DVD.DVDId
+  DateAddedInQueue: timestamp
+
+MoviePersonRole
+  PersonId: numeric, part of the primary key, references MoviePerson.PersonId
+  RoleId: numeric, part of the primary key, references Role.RoleId
+  DVDId: numeric, part of the primary key, references DVD.DVDId
+
+Rental
+  RentalId: numeric, primary key
+  MemberId: numeric
+  DVDId: numeric, references DVD.DVDId
+  RentalRequestDate: timestamp
+  RentalShippedDate: timestamp, nullable
+  RentalReturnedDate: timestamp, nullable

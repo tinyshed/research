@@ -1,0 +1,9 @@
+{"numbers": [
+  {"title": "Money earned, last 30 days", "what": "sum", "table": "Payment", "column": "AmountPaid", "where": null, "days": 30, "over": null},
+  {"title": "Members who rented, last 30 days", "what": "count distinct", "table": "Rental", "column": "MemberId", "where": null, "days": 30, "over": null},
+  {"title": "Rentals returned, last 30 days", "what": "count", "table": "Rental", "column": null, "where": "RentalReturnedDate IS NOT NULL", "days": 30, "over": null},
+  {"title": "Members who rented two or more times", "what": "two or more", "table": "Rental", "column": "MemberId", "where": null, "days": null, "over": null},
+  {"title": "Share of rental requests not shipped, last 7 days", "what": "share", "table": "Rental", "column": null, "where": "RentalShippedDate IS NULL", "days": 7, "over": {"title": "Rental requests, last 7 days", "what": "count", "table": "Rental", "column": null, "where": null, "days": 7, "over": null}},
+  {"title": "Rental requests, last 7 days", "what": "count", "table": "Rental", "column": null, "where": null, "days": 7, "over": null},
+  {"title": "DVDs lost", "what": "sum", "table": "DVD", "column": "DVDLostQuantity", "where": null, "days": null, "over": null}
+]}

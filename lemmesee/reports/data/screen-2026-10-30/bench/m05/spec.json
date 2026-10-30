@@ -1,0 +1,27 @@
+{
+ "about": "An internal expense-claims system where field staff submit expenses against job vouchers, accounts approve them, and approved money is paid out to each employee's wallet.",
+ "tables": {
+  "bills": {"role": "event", "rows": 2400, "time": "created_at", "growth": 0.01, "follows": {"table": "expenses", "per": 0.6, "minutes": 20}, "columns": {}},
+  "employees": {"role": "entity", "rows": 120, "time": "created_at", "growth": 0.01, "follows": null, "columns": {"wallet_balance": {"money": [5000, 2]}}},
+  "expense_categories": {"role": "lookup", "rows": 8, "time": null, "growth": 0, "follows": null, "columns": {"name": {"values": {"Travel": 1, "Food": 1, "Materials": 1, "Tools": 1, "Accommodation": 1, "Fuel": 1, "Phone": 1, "Site supplies": 1}}}},
+  "expenses": {"role": "event", "rows": 9000, "time": "date", "growth": 0.012, "follows": null, "columns": {"category_id": {"values": {"Travel": 4, "Food": 3, "Materials": 3, "Tools": 1, "Accommodation": 2, "Fuel": 3, "Phone": 1, "Site supplies": 2}}, "amount": {"money": [1500, 3]}, "approved_amount": {"money": [1300, 3]}}},
+  "jobs": {"role": "entity", "rows": 40, "time": "created_at", "growth": 0.01, "follows": null, "columns": {}},
+  "password_resets": {"role": "technical", "rows": 350, "time": "created_at", "growth": 0.01, "follows": null, "columns": {}},
+  "payments": {"role": "event", "rows": 2600, "time": "date", "growth": 0.01, "follows": null, "columns": {"payment_mode": {"values": {"1": 5, "2": 3, "3": 2}}, "amount": {"money": [4500, 3]}}},
+  "received_docs": {"role": "event", "rows": 1500, "time": "created_at", "growth": 0.01, "follows": {"table": "vouchers", "per": 0.7, "minutes": 1440}, "columns": {}},
+  "returnable_list_docs": {"role": "dead", "rows": 300, "time": "created_at", "growth": 0, "follows": null, "columns": {}},
+  "site_completion_docs": {"role": "event", "rows": 900, "time": "created_at", "growth": 0.01, "follows": {"table": "vouchers", "per": 0.4, "minutes": 2880}, "columns": {}},
+  "submitted_docs": {"role": "event", "rows": 2000, "time": "created_at", "growth": 0.01, "follows": {"table": "vouchers", "per": 0.9, "minutes": 30}, "columns": {}},
+  "vouchers": {"role": "event", "rows": 2200, "time": "date", "growth": 0.012, "follows": null, "columns": {"status": {"values": {"1": 6, "2": 22, "3": 4, "4": 68}}, "approved_amount": {"money": [2800, 3]}, "approval_date": {"after": "date", "hours": [24, 240]}}},
+  "voucher_job": {"role": "event", "rows": 2200, "time": "created_at", "growth": 0.012, "follows": {"table": "vouchers", "per": 1, "minutes": 5}, "columns": {}}
+ },
+ "stories": [
+  {"id": "fuel-claims-surge", "says": "From late in the period, fuel becomes the most common expense category, as field crews drive further to sites.", "table": "expenses", "from_day": 74, "change": {"column": "category_id", "values": {"Fuel": 18, "Travel": 4, "Food": 3, "Materials": 3, "Tools": 1, "Accommodation": 2, "Phone": 1, "Site supplies": 2}}, "seen_in": [{"table": "expenses", "column": "category_id"}, {"table": "expenses", "column": "date"}]},
+  {"id": "vouchers-sent-back", "says": "Vouchers sent back for correction (status 3) rise sharply in the last weeks, while paid vouchers (status 4) fall.", "table": "vouchers", "from_day": 66, "change": {"column": "status", "values": {"1": 15, "2": 25, "3": 30, "4": 30}}, "seen_in": [{"table": "vouchers", "column": "status"}, {"table": "vouchers", "column": "date"}]},
+  {"id": "transfer-payouts-grow", "says": "Payouts by bank transfer (payment mode 2) nearly double in size from late in the period.", "table": "payments", "from_day": 70, "change": {"column": "amount", "times": 1.8, "where": {"payment_mode": "2"}}, "seen_in": [{"table": "payments", "column": "amount"}, {"table": "payments", "column": "payment_mode"}, {"table": "payments", "column": "date"}]}
+ ],
+ "decoys": [
+  {"id": "password-reset-tokens", "says": "Tokens for password-reset emails are short-lived bookkeeping that says nothing about spending or approvals.", "tables": ["password_resets"], "kind": "bookkeeping"},
+  {"id": "legacy-returnables-import", "says": "Scans of old returnable lists were imported in one batch on the migration day and never added to, so the whole table lands on a single day.", "tables": ["returnable_list_docs"], "kind": "dead"}
+ ]
+}

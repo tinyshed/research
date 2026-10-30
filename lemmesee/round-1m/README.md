@@ -5,6 +5,7 @@ harness not yet committed. The weekly screen over round 1l's Luna and
 DeepSeek ranker shows over time 16 of the bench's 29 planted stories against
 round 1c's 10, and on the owner's busiest database fills four of the five
 places the owner's bot asked for.
+[Reported](../reports/screen-2026-10-30.md) with rounds 1l to 1o.
 
 Round 1l found the yardstick wrong: the 93 public databases are frozen
 datasets, where a timeline is 6 % of the judged panels and a weekly screen

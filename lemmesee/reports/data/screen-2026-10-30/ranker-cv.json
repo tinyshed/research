@@ -1,0 +1,248 @@
+{
+ "schemas": 480,
+ "answered by": {
+  "haiku": 150,
+  "gemini": 480,
+  "luna": 480,
+  "deepseek": 480,
+  "jev": 480,
+  "votes3": 480,
+  "votes5": 480
+ },
+ "against luna and deepseek": {
+  "prior": {
+   "deepseek ndcg@5": 0.3182519905348515,
+   "deepseek precision": 0.30833333333333335,
+   "deepseek recall": 0.20333333333333334,
+   "deepseek recall of what can be said": 0.2708067940552017,
+   "luna ndcg@5": 0.3088791266350085,
+   "luna precision": 0.27958333333333335,
+   "luna recall": 0.18375,
+   "luna recall of what can be said": 0.26906294706723893
+  },
+  "first teachers": {
+   "deepseek ndcg@5": 0.5521002078491652,
+   "deepseek precision": 0.4766666666666667,
+   "deepseek recall": 0.31541666666666673,
+   "deepseek recall of what can be said": 0.40481245576786984,
+   "luna ndcg@5": 0.5031814471334206,
+   "luna precision": 0.40458333333333335,
+   "luna recall": 0.28125,
+   "luna recall of what can be said": 0.4020028612303291
+  },
+  "luna and deepseek": {
+   "deepseek ndcg@5": 0.5645477696668114,
+   "deepseek precision": 0.475,
+   "deepseek recall": 0.31583333333333335,
+   "deepseek recall of what can be said": 0.4100495399858457,
+   "luna ndcg@5": 0.5318871825081548,
+   "luna precision": 0.4025,
+   "luna recall": 0.28250000000000003,
+   "luna recall of what can be said": 0.407618025751073
+  },
+  "jev": {
+   "deepseek ndcg@5": 0.327576021135643,
+   "deepseek precision": 0.27458333333333335,
+   "deepseek recall": 0.15416666666666667,
+   "deepseek recall of what can be said": 0.1956829440905874,
+   "luna ndcg@5": 0.306891956772091,
+   "luna precision": 0.22458333333333336,
+   "luna recall": 0.13041666666666668,
+   "luna recall of what can be said": 0.1836909871244635
+  },
+  "luna, deepseek and jev": {
+   "deepseek ndcg@5": 0.5252507620261917,
+   "deepseek precision": 0.44625,
+   "deepseek recall": 0.3004166666666667,
+   "deepseek recall of what can be said": 0.39108280254777067,
+   "luna ndcg@5": 0.4978388092639479,
+   "luna precision": 0.3862500000000001,
+   "luna recall": 0.2708333333333333,
+   "luna recall of what can be said": 0.39213161659513596
+  },
+  "all five": {
+   "deepseek ndcg@5": 0.5344316757252436,
+   "deepseek precision": 0.4575000000000001,
+   "deepseek recall": 0.30625,
+   "deepseek recall of what can be said": 0.398690728945506,
+   "luna ndcg@5": 0.4996152438663522,
+   "luna precision": 0.39125000000000004,
+   "luna recall": 0.27125,
+   "luna recall of what can be said": 0.3899141630901288
+  },
+  "votes of the three": {
+   "deepseek ndcg@5": 0.536468554379302,
+   "deepseek precision": 0.45333333333333337,
+   "deepseek recall": 0.30625,
+   "deepseek recall of what can be said": 0.40162774239207366,
+   "luna ndcg@5": 0.5030563626374852,
+   "luna precision": 0.38166666666666677,
+   "luna recall": 0.27375000000000005,
+   "luna recall of what can be said": 0.3953862660944207
+  },
+  "votes of the five": {
+   "deepseek ndcg@5": 0.5314479044418108,
+   "deepseek precision": 0.45208333333333334,
+   "deepseek recall": 0.3025,
+   "deepseek recall of what can be said": 0.3935598018400566,
+   "luna ndcg@5": 0.49595084425700386,
+   "luna precision": 0.3829166666666667,
+   "luna recall": 0.26666666666666666,
+   "luna recall of what can be said": 0.38369098712446353
+  }
+ },
+ "against jev": {
+  "prior": {
+   "jev ndcg@5": 0.20864724260229506,
+   "jev precision": 0.23833333333333334,
+   "jev recall": 0.13541666666666666,
+   "jev recall of what can be said": 0.13541666666666666
+  },
+  "first teachers": {
+   "jev ndcg@5": 0.26961821221189886,
+   "jev precision": 0.24666666666666667,
+   "jev recall": 0.14583333333333334,
+   "jev recall of what can be said": 0.14583333333333334
+  },
+  "luna and deepseek": {
+   "jev ndcg@5": 0.25553451464437443,
+   "jev precision": 0.23333333333333334,
+   "jev recall": 0.12541666666666668,
+   "jev recall of what can be said": 0.12541666666666668
+  },
+  "jev": {
+   "jev ndcg@5": 0.4979845826867964,
+   "jev precision": 0.41666666666666674,
+   "jev recall": 0.26833333333333337,
+   "jev recall of what can be said": 0.26833333333333337
+  },
+  "luna, deepseek and jev": {
+   "jev ndcg@5": 0.3648977521903101,
+   "jev precision": 0.3195833333333334,
+   "jev recall": 0.19666666666666668,
+   "jev recall of what can be said": 0.19666666666666668
+  },
+  "all five": {
+   "jev ndcg@5": 0.34866072031470025,
+   "jev precision": 0.30791666666666667,
+   "jev recall": 0.19083333333333335,
+   "jev recall of what can be said": 0.19083333333333335
+  },
+  "votes of the three": {
+   "jev ndcg@5": 0.33982061139243563,
+   "jev precision": 0.29791666666666666,
+   "jev recall": 0.175,
+   "jev recall of what can be said": 0.175
+  },
+  "votes of the five": {
+   "jev ndcg@5": 0.33444523772028467,
+   "jev precision": 0.29041666666666666,
+   "jev recall": 0.1716666666666667,
+   "jev recall of what can be said": 0.1716666666666667
+  }
+ },
+ "against the first teachers": {
+  "prior": {
+   "gemini ndcg@5": 0.2931917760854539,
+   "gemini precision": 0.3120833333333334,
+   "gemini recall": 0.19875000000000004,
+   "gemini recall of what can be said": 0.24233193277310924,
+   "haiku ndcg@5": 0.3112467398491336,
+   "haiku precision": 0.32133333333333336,
+   "haiku recall": 0.2106666666666666,
+   "haiku recall of what can be said": 0.27477777777777773
+  },
+  "first teachers": {
+   "gemini ndcg@5": 0.5862848126799414,
+   "gemini precision": 0.54125,
+   "gemini recall": 0.3629166666666667,
+   "gemini recall of what can be said": 0.4362044817927171,
+   "haiku ndcg@5": 0.569773082069967,
+   "haiku precision": 0.5133333333333333,
+   "haiku recall": 0.3333333333333333,
+   "haiku recall of what can be said": 0.42844444444444446
+  },
+  "luna and deepseek": {
+   "gemini ndcg@5": 0.5524636434907334,
+   "gemini precision": 0.52375,
+   "gemini recall": 0.3483333333333334,
+   "gemini recall of what can be said": 0.42135854341736695,
+   "haiku ndcg@5": 0.5718177842164206,
+   "haiku precision": 0.49866666666666676,
+   "haiku recall": 0.3333333333333333,
+   "haiku recall of what can be said": 0.43111111111111117
+  },
+  "jev": {
+   "gemini ndcg@5": 0.3668597330121929,
+   "gemini precision": 0.35583333333333333,
+   "gemini recall": 0.20875000000000005,
+   "gemini recall of what can be said": 0.249124649859944,
+   "haiku ndcg@5": 0.3258157891388325,
+   "haiku precision": 0.2866666666666667,
+   "haiku recall": 0.172,
+   "haiku recall of what can be said": 0.21344444444444444
+  },
+  "luna, deepseek and jev": {
+   "gemini ndcg@5": 0.5355476358964016,
+   "gemini precision": 0.5058333333333334,
+   "gemini recall": 0.3366666666666667,
+   "gemini recall of what can be said": 0.4038515406162465,
+   "haiku ndcg@5": 0.5260191305712197,
+   "haiku precision": 0.4666666666666667,
+   "haiku recall": 0.3173333333333333,
+   "haiku recall of what can be said": 0.4066666666666667
+  },
+  "all five": {
+   "gemini ndcg@5": 0.5545319176575885,
+   "gemini precision": 0.51625,
+   "gemini recall": 0.34875000000000006,
+   "gemini recall of what can be said": 0.4184173669467787,
+   "haiku ndcg@5": 0.5421830963800145,
+   "haiku precision": 0.48133333333333334,
+   "haiku recall": 0.32,
+   "haiku recall of what can be said": 0.41044444444444445
+  },
+  "votes of the three": {
+   "gemini ndcg@5": 0.5363009444570724,
+   "gemini precision": 0.5054166666666667,
+   "gemini recall": 0.34125,
+   "gemini recall of what can be said": 0.41088935574229696,
+   "haiku ndcg@5": 0.5392597892749474,
+   "haiku precision": 0.4773333333333334,
+   "haiku recall": 0.3333333333333333,
+   "haiku recall of what can be said": 0.43100000000000005
+  },
+  "votes of the five": {
+   "gemini ndcg@5": 0.5483441038718441,
+   "gemini precision": 0.5104166666666666,
+   "gemini recall": 0.3383333333333333,
+   "gemini recall of what can be said": 0.40752801120448184,
+   "haiku ndcg@5": 0.5392297231997527,
+   "haiku precision": 0.48133333333333345,
+   "haiku recall": 0.32666666666666666,
+   "haiku recall of what can be said": 0.42411111111111105
+  }
+ },
+ "teachers agree": {
+  "haiku's five in gemini's ten": 0.7146666666666667,
+  "haiku's five in luna's ten": 0.588,
+  "haiku's five in deepseek's ten": 0.6706666666666666,
+  "haiku's five in jev's ten": 0.3293333333333333,
+  "gemini's five in haiku's ten": 0.7306666666666666,
+  "gemini's five in luna's ten": 0.5929166666666668,
+  "gemini's five in deepseek's ten": 0.6708333333333333,
+  "gemini's five in jev's ten": 0.4029166666666667,
+  "luna's five in haiku's ten": 0.5506666666666666,
+  "luna's five in gemini's ten": 0.5204166666666666,
+  "luna's five in deepseek's ten": 0.56875,
+  "luna's five in jev's ten": 0.31541666666666673,
+  "deepseek's five in haiku's ten": 0.6613333333333332,
+  "deepseek's five in gemini's ten": 0.6329166666666667,
+  "deepseek's five in luna's ten": 0.5945833333333332,
+  "deepseek's five in jev's ten": 0.3266666666666667,
+  "jev's five in haiku's ten": 0.30133333333333334,
+  "jev's five in gemini's ten": 0.36750000000000005,
+  "jev's five in luna's ten": 0.28625000000000006,
+  "jev's five in deepseek's ten": 0.3108333333333334
+ }
+}

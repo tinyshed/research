@@ -1,0 +1,127 @@
+{
+  "about": "A bike rental business with several branches, where customers book bikes for set dates, pick them up and return them, and get billed; its counter staff and operations manager use the system every week.",
+  "tables": {
+    "CUSTOMER": {
+      "role": "entity",
+      "rows": 3000,
+      "time": null,
+      "growth": 0.01,
+      "follows": null,
+      "columns": {
+        "MEMBERSHIP_TYPE": {"values": {"standard": 0.7, "silver": 0.2, "gold": 0.1}}
+      }
+    },
+    "BIKE_CATEGORY": {
+      "role": "lookup",
+      "rows": 5,
+      "time": null,
+      "growth": 0,
+      "follows": null,
+      "columns": {
+        "COST_PER_DAY": {"money": [35, 1.6]},
+        "LATE_FEE_PER_HOUR": {"money": [5, 1.5]}
+      }
+    },
+    "LOCATION": {
+      "role": "lookup",
+      "rows": 12,
+      "time": null,
+      "growth": 0,
+      "follows": null,
+      "columns": {}
+    },
+    "BIKE": {
+      "role": "entity",
+      "rows": 400,
+      "time": null,
+      "growth": 0,
+      "follows": null,
+      "columns": {
+        "MODEL_YEAR": {"number": [2015, 2026]},
+        "MILEAGE": {"number": [0, 90000]},
+        "AVAILABILITY_FLAG": {"values": {"true": 0.85, "false": 0.15}}
+      }
+    },
+    "DISCOUNT": {
+      "role": "lookup",
+      "rows": 15,
+      "time": null,
+      "growth": 0,
+      "follows": null,
+      "columns": {
+        "DISCOUNT_PERCENTAGE": {"number": [5, 30]}
+      }
+    },
+    "INSURANCE": {
+      "role": "lookup",
+      "rows": 4,
+      "time": null,
+      "growth": 0,
+      "follows": null,
+      "columns": {
+        "COVERAGE_TYPE": {"values": {"basic": 0.4, "standard": 0.35, "full": 0.25}},
+        "COST_PER_DAY": {"money": [6, 1.5]}
+      }
+    },
+    "BOOKING": {
+      "role": "event",
+      "rows": 14000,
+      "time": "FROM_DT_TIME",
+      "growth": 0.01,
+      "follows": null,
+      "columns": {
+        "BOOKING_STATUS": {"values": {"completed": 0.75, "confirmed": 0.1, "cancelled": 0.15}},
+        "AMOUNT": {"money": [85, 2.5]},
+        "RET_DT_TIME": {"after": "FROM_DT_TIME", "hours": [4, 168]},
+        "ACT_RET_DT_TIME": {"after": "RET_DT_TIME", "hours": [0, 4]},
+        "INS_CODE": {"empty": 0.4},
+        "DISCOUNT_CODE": {"empty": 0.7}
+      }
+    },
+    "BILLING": {
+      "role": "event",
+      "rows": 14000,
+      "time": "BILL_DATE",
+      "growth": 0.01,
+      "follows": {"table": "BOOKING", "per": 1, "minutes": 60},
+      "columns": {
+        "BILL_STATUS": {"values": {"paid": 0.8, "pending": 0.15, "disputed": 0.05}},
+        "DISCOUNT_AMOUNT": {"number": [0, 40]},
+        "TOTAL_AMOUNT": {"money": [90, 2.5]},
+        "TAX_AMOUNT": {"money": [8, 1.5]},
+        "TOTAL_LATE_FEE": {"number": [0, 80]}
+      }
+    }
+  },
+  "stories": [
+    {
+      "id": "cancellations-climb",
+      "says": "From 10 October cancelled bookings jump from about one in seven to about two in five, so the counter loses bikes it had planned to rent.",
+      "table": "BOOKING",
+      "from_day": 70,
+      "change": {"column": "BOOKING_STATUS", "values": {"completed": 0.45, "confirmed": 0.15, "cancelled": 0.4}},
+      "seen_in": [
+        {"table": "BOOKING", "column": "BOOKING_STATUS"},
+        {"table": "BOOKING", "column": "FROM_DT_TIME"}
+      ]
+    },
+    {
+      "id": "surge-in-bookings",
+      "says": "From 18 October new bookings per day more than double, after a campaign for the autumn trail season.",
+      "table": "BOOKING",
+      "from_day": 78,
+      "change": {"rate": 2.2, "where": null},
+      "seen_in": [
+        {"table": "BOOKING", "column": "FROM_DT_TIME"}
+      ]
+    }
+  ],
+  "decoys": [
+    {
+      "id": "billing-repeats-bookings",
+      "says": "BILLING writes one row per booking an hour after it is made, so counting it beside BOOKING counts every rental twice; it is not worth a place on the screen.",
+      "tables": ["BILLING"],
+      "kind": "mirror"
+    }
+  ]
+}

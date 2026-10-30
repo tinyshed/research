@@ -1,0 +1,9 @@
+{"numbers": [
+  {"title": "orders in the last 30 days", "what": "count", "table": "orders", "column": null, "where": null, "days": 30, "over": null},
+  {"title": "orders in the last 7 days", "what": "count", "table": "orders", "column": null, "where": null, "days": 7, "over": null},
+  {"title": "customers who have ordered", "what": "count distinct", "table": "orders", "column": "idUser", "where": null, "days": null, "over": null},
+  {"title": "customers who ordered two or more times", "what": "two or more", "table": "orders", "column": "idUser", "where": null, "days": null, "over": null},
+  {"title": "live products out of stock", "what": "count", "table": "products", "column": null, "where": "Quantity <= 0 AND archive = 0", "days": null, "over": null},
+  {"title": "share of live products out of stock", "what": "share", "table": "products", "column": null, "where": "Quantity <= 0 AND archive = 0", "days": null, "over": {"title": "live products", "what": "count", "table": "products", "column": null, "where": "archive = 0", "days": null, "over": null}},
+  {"title": "staff who logged in during the last 7 days", "what": "count distinct", "table": "employeelogintime", "column": "idEmployee", "where": null, "days": 7, "over": null}
+]}

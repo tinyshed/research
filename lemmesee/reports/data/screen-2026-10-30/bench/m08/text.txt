@@ -1,0 +1,53 @@
+brands
+  Id: int, primary key
+  Name: varchar
+
+cars
+  Id: int
+  ModelId: int
+  BrandId: int
+  ColorId: int
+  DailyPrice: decimal
+  ModelYear: smallint
+  Description: varchar, nullable
+  FindeksScore: int, nullable
+
+colors
+  Id: int, primary key
+  Name: varchar
+
+customers
+  Id: int
+  UserId: int, references users.Id
+  CompanyName: varchar, nullable
+  FindeksScore: int, nullable
+
+models
+  Id: int
+  BrandId: int, references brands.Id
+  Name: varchar
+
+operationclaims
+  Id: int, primary key
+  Name: varchar
+
+rentals
+  Id: int
+  CarId: int
+  CustomerId: int
+  RentDate: datetime, nullable
+  ReturnDate: datetime, nullable
+
+useroperationclaims
+  Id: int
+  UserId: int
+  OperationClaimId: int
+
+users
+  Id: int, primary key
+  FirstName: varchar
+  LastName: varchar
+  Email: varchar
+  PasswordHash: varchar
+  Status: bit
+  Age: datetime, nullable

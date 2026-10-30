@@ -1,0 +1,117 @@
+{
+  "about": "A car rental company that lists its fleet by brand, model, color and daily price, takes bookings from individual and corporate customers, and is run by its branch managers and staff.",
+  "tables": {
+    "brands": {
+      "role": "lookup",
+      "rows": 12,
+      "time": null,
+      "growth": 0,
+      "follows": null,
+      "columns": {}
+    },
+    "colors": {
+      "role": "lookup",
+      "rows": 12,
+      "time": null,
+      "growth": 0,
+      "follows": null,
+      "columns": {}
+    },
+    "cars": {
+      "role": "entity",
+      "rows": 300,
+      "time": null,
+      "growth": 0,
+      "follows": null,
+      "columns": {
+        "DailyPrice": {"money": [1500, 1.6]},
+        "ModelYear": {"number": [2015, 2026]}
+      }
+    },
+    "models": {
+      "role": "entity",
+      "rows": 60,
+      "time": null,
+      "growth": 0,
+      "follows": null,
+      "columns": {}
+    },
+    "customers": {
+      "role": "entity",
+      "rows": 1400,
+      "time": null,
+      "growth": 0.01,
+      "follows": null,
+      "columns": {
+        "CompanyName": {"empty": 0.7},
+        "FindeksScore": {"number": [800, 1900]}
+      }
+    },
+    "operationclaims": {
+      "role": "lookup",
+      "rows": 6,
+      "time": null,
+      "growth": 0,
+      "follows": null,
+      "columns": {}
+    },
+    "rentals": {
+      "role": "event",
+      "rows": 16000,
+      "time": "RentDate",
+      "growth": 0.01,
+      "follows": null,
+      "columns": {
+        "ReturnDate": {"after": "RentDate", "hours": [12, 240]}
+      }
+    },
+    "useroperationclaims": {
+      "role": "technical",
+      "rows": 40,
+      "time": null,
+      "growth": 0,
+      "follows": null,
+      "columns": {}
+    },
+    "users": {
+      "role": "entity",
+      "rows": 1600,
+      "time": null,
+      "growth": 0.01,
+      "follows": null,
+      "columns": {
+        "Status": {"values": {"true": 0.95, "false": 0.05}}
+      }
+    }
+  },
+  "stories": [
+    {
+      "id": "fleet-cut-back",
+      "says": "From 6 October rentals per day fall by two fifths, while cars that need repair are taken off the lot.",
+      "table": "rentals",
+      "from_day": 66,
+      "change": {"rate": 0.6, "where": null},
+      "seen_in": [
+        {"table": "rentals", "column": "RentDate"}
+      ]
+    },
+    {
+      "id": "campaign-surge",
+      "says": "From 20 October rentals per day jump by two and a half times, after a weekend discount campaign.",
+      "table": "rentals",
+      "from_day": 80,
+      "change": {"rate": 2.5, "where": null},
+      "seen_in": [
+        {"table": "rentals", "column": "RentDate"}
+      ]
+    }
+  ],
+  "decoys": [
+    {
+      "id": "permission-grants",
+      "says": "useroperationclaims only records which staff login may do which task, so it is software bookkeeping; counting it shows access grants, not rentals.",
+      "tables": ["useroperationclaims"],
+      "kind": "bookkeeping"
+    }
+  ]
+}

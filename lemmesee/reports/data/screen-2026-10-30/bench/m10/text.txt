@@ -1,0 +1,76 @@
+tbl_admin
+  id_admin: int, primary key
+  username: varchar, nullable
+  password: varchar, nullable
+  level_admin: int, nullable
+  nama: varchar, nullable
+
+tbl_informasi
+  id_informasi: int, primary key
+  nama_kegiatan: varchar, nullable
+  tgl_pendaftaran: date, nullable
+  tgl_tutup: date, nullable
+  tgl_lulus_adm: date, nullable
+  tgl_ujian_cat: date, nullable
+  waktu_pengerjaan: time, nullable
+  alur_pendaftaran: text, nullable
+
+tbl_jawaban
+  id_jawaban: int, primary key
+  id_peserta: int, references tbl_peserta.id_peserta, nullable
+  list_soal: longtext, nullable
+  list_jawaban: longtext, nullable
+  waktu_mulai: datetime, nullable
+  waktu_selesai: datetime, nullable
+  status_jawaban: enum, nullable
+
+tbl_lab
+  id_lab: int, primary key
+  nama_lab: varchar, nullable
+  jumlah_formasi: int, nullable
+  jumlah_peserta: int, nullable
+  jumlah_lulus_adm: int, nullable
+  lampiran: text, nullable
+
+tbl_nilai
+  id_nilai: int, primary key
+  id_peserta: int, references tbl_peserta.id_peserta, nullable
+  id_soal: int, references tbl_soal.id_soal, nullable
+  nilai_peserta: int, nullable
+
+tbl_pertanyaan
+  id_pertanyaan: int, primary key
+  id_soal: int, references tbl_soal.id_soal, nullable
+  pertanyaan: text, nullable
+  option_1: varchar, nullable
+  option_2: varchar, nullable
+  option_3: varchar, nullable
+  option_4: varchar, nullable
+  jawaban: varchar, nullable
+
+tbl_peserta
+  id_peserta: int, primary key
+  id_lab: int, references tbl_lab.id_lab, nullable
+  nim: int, nullable
+  password_peserta: varchar, nullable
+  nama_peserta: varchar, nullable
+  ipk: varchar, nullable
+  tmp_lahir: varchar, nullable
+  tgl_lahir: date, nullable
+  jenis_kelamin: enum, nullable
+  agama: varchar, nullable
+  no_hp: varchar, nullable
+  email: varchar, nullable
+  foto: text, nullable
+  berkas_peserta: text, nullable
+  tgl_selesai_pendaftaran: date, nullable
+  status_pendaftaran: varchar, nullable
+  status_verifikasi: enum, nullable
+
+tbl_soal
+  id_soal: int, primary key
+  nama_soal: varchar, nullable
+  jumlah_soal: int, nullable
+  minimal_benar: int, nullable
+  total_nilai: int, nullable
+  passing_grade: int, nullable

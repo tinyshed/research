@@ -1,0 +1,145 @@
+{
+ "gold numbers found": 0.529,
+ "of": 87,
+ "our numbers in the gold": 0.476,
+ "ours": 124,
+ "per database": {
+  "m00": {
+   "gold": 7,
+   "found": 5,
+   "ours": 11,
+   "ours in gold": 5,
+   "missed": [
+    "share LINEITEM, 30 days",
+    "count PARTSUPP"
+   ]
+  },
+  "m01": {
+   "gold": 7,
+   "found": 1,
+   "ours": 8,
+   "ours in gold": 1,
+   "missed": [
+    "count distinct Account.account_id",
+    "count distinct generates.account_id",
+    "two or more generates.account_id",
+    "share Mealplan, 30 days",
+    "count Mealplan, 7 days",
+    "count Meal, 30 days"
+   ]
+  },
+  "m02": {
+   "gold": 7,
+   "found": 4,
+   "ours": 12,
+   "ours in gold": 4,
+   "missed": [
+    "count approved_loans, 30 days",
+    "count payment_transactions, 7 days",
+    "share approved_loans, 30 days"
+   ]
+  },
+  "m03": {
+   "gold": 7,
+   "found": 5,
+   "ours": 11,
+   "ours in gold": 7,
+   "missed": [
+    "sum Reimbursements.AmountAwarded, 30 days",
+    "average Reimbursements.AmountAwarded, 30 days"
+   ]
+  },
+  "m04": {
+   "gold": 7,
+   "found": 4,
+   "ours": 9,
+   "ours in gold": 5,
+   "missed": [
+    "count products",
+    "share products",
+    "count distinct employeelogintime.idEmployee, 7 days"
+   ]
+  },
+  "m05": {
+   "gold": 8,
+   "found": 5,
+   "ours": 13,
+   "ours in gold": 6,
+   "missed": [
+    "sum payments.amount, 30 days",
+    "share expenses, 7 days",
+    "sum employees.wallet_balance"
+   ]
+  },
+  "m06": {
+   "gold": 7,
+   "found": 6,
+   "ours": 12,
+   "ours in gold": 9,
+   "missed": [
+    "sum BILLING.TOTAL_LATE_FEE, 30 days"
+   ]
+  },
+  "m07": {
+   "gold": 7,
+   "found": 2,
+   "ours": 11,
+   "ours in gold": 2,
+   "missed": [
+    "sum CheckOut.noOfNight, 30 days",
+    "count CheckOut",
+    "count distinct Reservation.guestId",
+    "two or more Reservation.guestId",
+    "share CheckOut"
+   ]
+  },
+  "m08": {
+   "gold": 7,
+   "found": 5,
+   "ours": 9,
+   "ours in gold": 8,
+   "missed": [
+    "share customers",
+    "average cars.DailyPrice"
+   ]
+  },
+  "m09": {
+   "gold": 7,
+   "found": 1,
+   "ours": 9,
+   "ours in gold": 1,
+   "missed": [
+    "count distinct Rental.MemberId, 30 days",
+    "count Rental, 30 days",
+    "two or more Rental.MemberId",
+    "share Rental, 7 days",
+    "count Rental, 7 days",
+    "sum DVD.DVDLostQuantity"
+   ]
+  },
+  "m10": {
+   "gold": 8,
+   "found": 4,
+   "ours": 9,
+   "ours in gold": 6,
+   "missed": [
+    "count distinct tbl_peserta.id_peserta",
+    "sum tbl_lab.jumlah_lulus_adm",
+    "average tbl_nilai.nilai_peserta",
+    "sum tbl_lab.jumlah_formasi"
+   ]
+  },
+  "m11": {
+   "gold": 8,
+   "found": 4,
+   "ours": 10,
+   "ours in gold": 5,
+   "missed": [
+    "share communication_table",
+    "sum communication_table.final_reimburse_val_benco",
+    "sum balanceinfo.availBal",
+    "count balanceinfo"
+   ]
+  }
+ }
+}

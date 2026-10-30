@@ -1,0 +1,467 @@
+=== round-1k product_look 2026-10-30T10:57:09Z
+look taught by     policy judges           kept   difference [95%]
+first teachers     plain  first judges     2.99   
+first teachers     plain  product judges   2.01   
+first teachers     axes   first judges     2.89   
+first teachers     axes   product judges   1.89   
+jev and luna       plain  first judges     2.95   -0.04 [-0.20, +0.12]
+jev and luna       plain  product judges   2.12   +0.11 [-0.01, +0.23]
+jev and luna       axes   first judges     2.97   +0.07 [-0.03, +0.18]
+jev and luna       axes   product judges   1.98   +0.09 [+0.01, +0.18]
+product teachers   plain  first judges     2.06   -0.93 [-1.19, -0.66]
+product teachers   plain  product judges   1.79   -0.22 [-0.47, +0.02]
+product teachers   axes   first judges     2.14   -0.75 [-1.02, -0.49]
+product teachers   axes   product judges   1.73   -0.16 [-0.40, +0.08]
+all four           plain  first judges     2.65   -0.34 [-0.52, -0.16]
+all four           plain  product judges   2.04   +0.03 [-0.14, +0.20]
+all four           axes   first judges     2.74   -0.15 [-0.30, -0.00]
+all four           axes   product judges   1.99   +0.10 [-0.03, +0.24]
+=== round-1k product_teachers 2026-10-30T10:57:16Z
+score                       keep    first judges   auc  product judges   auc  databases
+jev                         0.30            3.18 0.897            2.25 0.894  93
+deepseek and glm            0.37            3.33 0.908            2.19 0.879  93
+jev and luna                0.26            3.36 0.945            2.45 0.938  93
+product teachers            0.10            2.85 0.812            2.38 0.944  93
+all four                    0.13            3.38 0.928            2.65 0.964  93
+pmjev                       0.15            2.35 0.729            1.95 0.850  93
+pmlunap                     0.10            2.96 0.802            2.42 0.941  91
+product judges themselves   0.14            3.50 0.853            3.04 1.000  93
+=== round-1l build 2026-10-30T10:57:18Z
+{
+ "haiku questions": 1500,
+ "haiku questions read": 1469,
+ "haiku questions expressible": 1172,
+ "gemini questions": 4800,
+ "gemini questions read": 4735,
+ "gemini questions expressible": 3990,
+ "luna questions": 4800,
+ "luna questions read": 4536,
+ "luna questions expressible": 3321,
+ "deepseek questions": 4800,
+ "deepseek questions read": 4685,
+ "deepseek questions expressible": 3658,
+ "schemas": 480,
+ "questions": 160728
+}
+jev: 480 schemas
+=== round-1l fit 2026-10-30T10:57:42Z
+first teachers: 480 schemas, 600 trees; first by gain: m_rows, m_order, has_by, base_subject_rank, by_order, by_path, base_ncols, shape_split
+luna and deepseek: 480 schemas, 600 trees; first by gain: m_order, m_rows, by_order, base_subject_rank, m_position, has_by, by_path, by_table_ncols
+jev: 480 schemas, 600 trees; first by gain: m_order, by_typed, m_role_number, base_ncols, m_sum, by_order, has_time, by_status
+luna, deepseek and jev: 480 schemas, 600 trees; first by gain: m_order, by_order, by_typed, m_role_number, base_subject_rank, by_status, m_rows, by_path
+all five: 480 schemas, 600 trees; first by gain: by_order, m_order, m_rows, base_subject_rank, m_role_number, by_path, by_typed, shape_split
+votes of the three: 480 schemas, 600 trees; first by gain: m_order, m_rows, by_order, base_subject_rank, base_ncols, m_moneyword, m_role_number, has_by
+votes of the five: 480 schemas, 600 trees; first by gain: m_rows, m_order, base_subject_rank, by_order, base_ncols, by_typed, shape_split, base_ncols_share
+=== round-1l cv 2026-10-30T10:58:37Z
+fold 0 done
+fold 1 done
+fold 2 done
+fold 3 done
+fold 4 done
+{
+ "schemas": 480,
+ "answered by": {
+  "haiku": 150,
+  "gemini": 480,
+  "luna": 480,
+  "deepseek": 480,
+  "jev": 480,
+  "votes3": 480,
+  "votes5": 480
+ },
+ "against luna and deepseek": {
+  "prior": {
+   "deepseek ndcg@5": 0.3182519905348515,
+   "deepseek precision": 0.30833333333333335,
+   "deepseek recall": 0.20333333333333334,
+   "deepseek recall of what can be said": 0.2708067940552017,
+   "luna ndcg@5": 0.3088791266350085,
+   "luna precision": 0.27958333333333335,
+   "luna recall": 0.18375,
+   "luna recall of what can be said": 0.26906294706723893
+  },
+  "first teachers": {
+   "deepseek ndcg@5": 0.5521002078491652,
+   "deepseek precision": 0.4766666666666667,
+   "deepseek recall": 0.31541666666666673,
+   "deepseek recall of what can be said": 0.40481245576786984,
+   "luna ndcg@5": 0.5031814471334206,
+   "luna precision": 0.40458333333333335,
+   "luna recall": 0.28125,
+   "luna recall of what can be said": 0.4020028612303291
+  },
+  "luna and deepseek": {
+   "deepseek ndcg@5": 0.5645477696668114,
+   "deepseek precision": 0.475,
+   "deepseek recall": 0.31583333333333335,
+   "deepseek recall of what can be said": 0.4100495399858457,
+   "luna ndcg@5": 0.5318871825081548,
+   "luna precision": 0.4025,
+   "luna recall": 0.28250000000000003,
+   "luna recall of what can be said": 0.407618025751073
+  },
+  "jev": {
+   "deepseek ndcg@5": 0.327576021135643,
+   "deepseek precision": 0.27458333333333335,
+   "deepseek recall": 0.15416666666666667,
+   "deepseek recall of what can be said": 0.1956829440905874,
+   "luna ndcg@5": 0.306891956772091,
+   "luna precision": 0.22458333333333336,
+   "luna recall": 0.13041666666666668,
+   "luna recall of what can be said": 0.1836909871244635
+  },
+  "luna, deepseek and jev": {
+   "deepseek ndcg@5": 0.5252507620261917,
+   "deepseek precision": 0.44625,
+   "deepseek recall": 0.3004166666666667,
+   "deepseek recall of what can be said": 0.39108280254777067,
+   "luna ndcg@5": 0.4978388092639479,
+   "luna precision": 0.3862500000000001,
+   "luna recall": 0.2708333333333333,
+   "luna recall of what can be said": 0.39213161659513596
+  },
+  "all five": {
+   "deepseek ndcg@5": 0.5344316757252436,
+   "deepseek precision": 0.4575000000000001,
+   "deepseek recall": 0.30625,
+   "deepseek recall of what can be said": 0.398690728945506,
+   "luna ndcg@5": 0.4996152438663522,
+   "luna precision": 0.39125000000000004,
+   "luna recall": 0.27125,
+   "luna recall of what can be said": 0.3899141630901288
+  },
+  "votes of the three": {
+   "deepseek ndcg@5": 0.536468554379302,
+   "deepseek precision": 0.45333333333333337,
+   "deepseek recall": 0.30625,
+   "deepseek recall of what can be said": 0.40162774239207366,
+   "luna ndcg@5": 0.5030563626374852,
+   "luna precision": 0.38166666666666677,
+   "luna recall": 0.27375000000000005,
+   "luna recall of what can be said": 0.3953862660944207
+  },
+  "votes of the five": {
+   "deepseek ndcg@5": 0.5314479044418108,
+   "deepseek precision": 0.45208333333333334,
+   "deepseek recall": 0.3025,
+   "deepseek recall of what can be said": 0.3935598018400566,
+   "luna ndcg@5": 0.49595084425700386,
+   "luna precision": 0.3829166666666667,
+   "luna recall": 0.26666666666666666,
+   "luna recall of what can be said": 0.38369098712446353
+  }
+ },
+ "against jev": {
+  "prior": {
+   "jev ndcg@5": 0.20864724260229506,
+   "jev precision": 0.23833333333333334,
+   "jev recall": 0.13541666666666666,
+   "jev recall of what can be said": 0.13541666666666666
+  },
+  "first teachers": {
+   "jev ndcg@5": 0.26961821221189886,
+   "jev precision": 0.24666666666666667,
+   "jev recall": 0.14583333333333334,
+   "jev recall of what can be said": 0.14583333333333334
+  },
+  "luna and deepseek": {
+   "jev ndcg@5": 0.25553451464437443,
+   "jev precision": 0.23333333333333334,
+   "jev recall": 0.12541666666666668,
+   "jev recall of what can be said": 0.12541666666666668
+  },
+  "jev": {
+   "jev ndcg@5": 0.4979845826867964,
+   "jev precision": 0.41666666666666674,
+   "jev recall": 0.26833333333333337,
+   "jev recall of what can be said": 0.26833333333333337
+  },
+  "luna, deepseek and jev": {
+   "jev ndcg@5": 0.3648977521903101,
+   "jev precision": 0.3195833333333334,
+   "jev recall": 0.19666666666666668,
+   "jev recall of what can be said": 0.19666666666666668
+  },
+  "all five": {
+   "jev ndcg@5": 0.34866072031470025,
+   "jev precision": 0.30791666666666667,
+   "jev recall": 0.19083333333333335,
+   "jev recall of what can be said": 0.19083333333333335
+  },
+  "votes of the three": {
+   "jev ndcg@5": 0.33982061139243563,
+   "jev precision": 0.29791666666666666,
+   "jev recall": 0.175,
+   "jev recall of what can be said": 0.175
+  },
+  "votes of the five": {
+   "jev ndcg@5": 0.33444523772028467,
+   "jev precision": 0.29041666666666666,
+   "jev recall": 0.1716666666666667,
+   "jev recall of what can be said": 0.1716666666666667
+  }
+ },
+ "against the first teachers": {
+  "prior": {
+   "gemini ndcg@5": 0.2931917760854539,
+   "gemini precision": 0.3120833333333334,
+   "gemini recall": 0.19875000000000004,
+   "gemini recall of what can be said": 0.24233193277310924,
+   "haiku ndcg@5": 0.3112467398491336,
+   "haiku precision": 0.32133333333333336,
+   "haiku recall": 0.2106666666666666,
+   "haiku recall of what can be said": 0.27477777777777773
+  },
+  "first teachers": {
+   "gemini ndcg@5": 0.5862848126799414,
+   "gemini precision": 0.54125,
+   "gemini recall": 0.3629166666666667,
+   "gemini recall of what can be said": 0.4362044817927171,
+   "haiku ndcg@5": 0.569773082069967,
+   "haiku precision": 0.5133333333333333,
+   "haiku recall": 0.3333333333333333,
+   "haiku recall of what can be said": 0.42844444444444446
+  },
+  "luna and deepseek": {
+   "gemini ndcg@5": 0.5524636434907334,
+   "gemini precision": 0.52375,
+   "gemini recall": 0.3483333333333334,
+   "gemini recall of what can be said": 0.42135854341736695,
+   "haiku ndcg@5": 0.5718177842164206,
+   "haiku precision": 0.49866666666666676,
+   "haiku recall": 0.3333333333333333,
+   "haiku recall of what can be said": 0.43111111111111117
+  },
+  "jev": {
+   "gemini ndcg@5": 0.3668597330121929,
+   "gemini precision": 0.35583333333333333,
+   "gemini recall": 0.20875000000000005,
+   "gemini recall of what can be said": 0.249124649859944,
+   "haiku ndcg@5": 0.3258157891388325,
+   "haiku precision": 0.2866666666666667,
+   "haiku recall": 0.172,
+   "haiku recall of what can be said": 0.21344444444444444
+  },
+  "luna, deepseek and jev": {
+   "gemini ndcg@5": 0.5355476358964016,
+   "gemini precision": 0.5058333333333334,
+   "gemini recall": 0.3366666666666667,
+   "gemini recall of what can be said": 0.4038515406162465,
+   "haiku ndcg@5": 0.5260191305712197,
+   "haiku precision": 0.4666666666666667,
+   "haiku recall": 0.3173333333333333,
+   "haiku recall of what can be said": 0.4066666666666667
+  },
+  "all five": {
+   "gemini ndcg@5": 0.5545319176575885,
+   "gemini precision": 0.51625,
+   "gemini recall": 0.34875000000000006,
+   "gemini recall of what can be said": 0.4184173669467787,
+   "haiku ndcg@5": 0.5421830963800145,
+   "haiku precision": 0.48133333333333334,
+   "haiku recall": 0.32,
+   "haiku recall of what can be said": 0.41044444444444445
+  },
+  "votes of the three": {
+   "gemini ndcg@5": 0.5363009444570724,
+   "gemini precision": 0.5054166666666667,
+   "gemini recall": 0.34125,
+   "gemini recall of what can be said": 0.41088935574229696,
+   "haiku ndcg@5": 0.5392597892749474,
+   "haiku precision": 0.4773333333333334,
+   "haiku recall": 0.3333333333333333,
+   "haiku recall of what can be said": 0.43100000000000005
+  },
+  "votes of the five": {
+   "gemini ndcg@5": 0.5483441038718441,
+   "gemini precision": 0.5104166666666666,
+   "gemini recall": 0.3383333333333333,
+   "gemini recall of what can be said": 0.40752801120448184,
+   "haiku ndcg@5": 0.5392297231997527,
+   "haiku precision": 0.48133333333333345,
+   "haiku recall": 0.32666666666666666,
+   "haiku recall of what can be said": 0.42411111111111105
+  }
+ },
+ "teachers agree": {
+  "haiku's five in gemini's ten": 0.7146666666666667,
+  "haiku's five in luna's ten": 0.588,
+  "haiku's five in deepseek's ten": 0.6706666666666666,
+  "haiku's five in jev's ten": 0.3293333333333333,
+  "gemini's five in haiku's ten": 0.7306666666666666,
+  "gemini's five in luna's ten": 0.5929166666666668,
+  "gemini's five in deepseek's ten": 0.6708333333333333,
+  "gemini's five in jev's ten": 0.4029166666666667,
+  "luna's five in haiku's ten": 0.5506666666666666,
+  "luna's five in gemini's ten": 0.5204166666666666,
+  "luna's five in deepseek's ten": 0.56875,
+  "luna's five in jev's ten": 0.31541666666666673,
+  "deepseek's five in haiku's ten": 0.6613333333333332,
+  "deepseek's five in gemini's ten": 0.6329166666666667,
+  "deepseek's five in luna's ten": 0.5945833333333332,
+  "deepseek's five in jev's ten": 0.3266666666666667,
+  "jev's five in haiku's ten": 0.30133333333333334,
+  "jev's five in gemini's ten": 0.36750000000000005,
+  "jev's five in luna's ten": 0.28625000000000006,
+  "jev's five in deepseek's ten": 0.3108333333333334
+ }
+}
+=== round-1l judged 2026-10-30T11:02:15Z
+ranker taught by       judges          measure           mean   minus first teachers [95%]
+round 1c as shipped    first judges    kept of judged   0.512   +0.000 [+0.000, +0.000]
+round 1c as shipped    first judges    judged of five   0.953   +0.000 [+0.000, +0.000]
+round 1c as shipped    first judges    auc              0.704   +0.000 [+0.000, +0.000]
+round 1c as shipped    product judges  kept of judged   0.323   +0.000 [+0.000, +0.000]
+round 1c as shipped    product judges  judged of five   0.953   +0.000 [+0.000, +0.000]
+round 1c as shipped    product judges  auc              0.659   +0.000 [+0.000, +0.000]
+first teachers         first judges    kept of judged   0.512   
+first teachers         first judges    judged of five   0.953   
+first teachers         first judges    auc              0.704   
+first teachers         product judges  kept of judged   0.323   
+first teachers         product judges  judged of five   0.953   
+first teachers         product judges  auc              0.659   
+luna and deepseek      first judges    kept of judged   0.491   -0.022 [-0.052, +0.008]
+luna and deepseek      first judges    judged of five   0.927   -0.026 [-0.045, -0.009]
+luna and deepseek      first judges    auc              0.673   -0.031 [-0.051, -0.009]
+luna and deepseek      product judges  kept of judged   0.330   +0.007 [-0.016, +0.030]
+luna and deepseek      product judges  judged of five   0.927   -0.026 [-0.045, -0.009]
+luna and deepseek      product judges  auc              0.689   +0.030 [-0.004, +0.068]
+jev                    first judges    kept of judged   0.374   -0.136 [-0.188, -0.085]
+jev                    first judges    judged of five   0.796   -0.157 [-0.207, -0.111]
+jev                    first judges    auc              0.547   -0.157 [-0.199, -0.114]
+jev                    product judges  kept of judged   0.266   -0.056 [-0.102, -0.009]
+jev                    product judges  judged of five   0.796   -0.157 [-0.207, -0.111]
+jev                    product judges  auc              0.598   -0.062 [-0.126, -0.000]
+luna, deepseek and jev first judges    kept of judged   0.462   -0.050 [-0.086, -0.013]
+luna, deepseek and jev first judges    judged of five   0.905   -0.047 [-0.071, -0.026]
+luna, deepseek and jev first judges    auc              0.639   -0.065 [-0.092, -0.036]
+luna, deepseek and jev product judges  kept of judged   0.328   +0.005 [-0.023, +0.033]
+luna, deepseek and jev product judges  judged of five   0.905   -0.047 [-0.071, -0.026]
+luna, deepseek and jev product judges  auc              0.688   +0.029 [-0.010, +0.074]
+all five               first judges    kept of judged   0.480   -0.032 [-0.061, -0.003]
+all five               first judges    judged of five   0.918   -0.034 [-0.052, -0.019]
+all five               first judges    auc              0.674   -0.029 [-0.051, -0.005]
+all five               product judges  kept of judged   0.330   +0.007 [-0.018, +0.035]
+all five               product judges  judged of five   0.918   -0.034 [-0.052, -0.019]
+all five               product judges  auc              0.693   +0.034 [-0.000, +0.073]
+votes of the three     first judges    kept of judged   0.454   -0.058 [-0.087, -0.029]
+votes of the three     first judges    judged of five   0.905   -0.047 [-0.068, -0.029]
+votes of the three     first judges    auc              0.611   -0.092 [-0.122, -0.065]
+votes of the three     product judges  kept of judged   0.315   -0.008 [-0.030, +0.014]
+votes of the three     product judges  judged of five   0.905   -0.047 [-0.068, -0.029]
+votes of the three     product judges  auc              0.657   -0.002 [-0.039, +0.036]
+votes of the five      first judges    kept of judged   0.471   -0.041 [-0.068, -0.015]
+votes of the five      first judges    judged of five   0.929   -0.024 [-0.040, -0.009]
+votes of the five      first judges    auc              0.633   -0.071 [-0.097, -0.048]
+votes of the five      product judges  kept of judged   0.317   -0.007 [-0.024, +0.011]
+votes of the five      product judges  judged of five   0.929   -0.024 [-0.040, -0.009]
+votes of the five      product judges  auc              0.664   +0.005 [-0.025, +0.035]
+round 1c as shipped    first judges    judged of ten    0.996   +0.000 [+0.000, +0.000]
+round 1c as shipped    first judges    kept in ten      0.383   +0.000 [+0.000, +0.000]
+first teachers         first judges    judged of ten    0.996   
+first teachers         first judges    kept in ten      0.383   
+luna and deepseek      first judges    judged of ten    0.957   -0.039 [-0.058, -0.022]
+luna and deepseek      first judges    kept in ten      0.376   -0.007 [-0.026, +0.012]
+jev                    first judges    judged of ten    0.848   -0.147 [-0.195, -0.102]
+jev                    first judges    kept in ten      0.309   -0.076 [-0.113, -0.040]
+luna, deepseek and jev first judges    judged of ten    0.946   -0.049 [-0.076, -0.027]
+luna, deepseek and jev first judges    kept in ten      0.359   -0.024 [-0.047, -0.000]
+all five               first judges    judged of ten    0.978   -0.017 [-0.028, -0.008]
+all five               first judges    kept in ten      0.379   -0.004 [-0.021, +0.014]
+votes of the three     first judges    judged of ten    0.943   -0.053 [-0.078, -0.031]
+votes of the three     first judges    kept in ten      0.368   -0.015 [-0.041, +0.011]
+votes of the five      first judges    judged of ten    0.975   -0.020 [-0.034, -0.009]
+votes of the five      first judges    kept in ten      0.365   -0.018 [-0.038, +0.002]
+round 1c as shipped    product judges  judged of ten    0.996   +0.000 [+0.000, +0.000]
+round 1c as shipped    product judges  kept in ten      0.274   +0.000 [+0.000, +0.000]
+first teachers         product judges  judged of ten    0.996   
+first teachers         product judges  kept in ten      0.274   
+luna and deepseek      product judges  judged of ten    0.957   -0.039 [-0.058, -0.022]
+luna and deepseek      product judges  kept in ten      0.288   +0.014 [-0.002, +0.031]
+jev                    product judges  judged of ten    0.848   -0.147 [-0.195, -0.102]
+jev                    product judges  kept in ten      0.256   -0.017 [-0.046, +0.014]
+luna, deepseek and jev product judges  judged of ten    0.946   -0.049 [-0.076, -0.027]
+luna, deepseek and jev product judges  kept in ten      0.283   +0.009 [-0.011, +0.030]
+all five               product judges  judged of ten    0.978   -0.017 [-0.028, -0.008]
+all five               product judges  kept in ten      0.282   +0.007 [-0.008, +0.024]
+votes of the three     product judges  judged of ten    0.943   -0.053 [-0.078, -0.031]
+votes of the three     product judges  kept in ten      0.281   +0.006 [-0.011, +0.024]
+votes of the five      product judges  judged of ten    0.975   -0.020 [-0.034, -0.009]
+votes of the five      product judges  kept in ten      0.283   +0.008 [-0.007, +0.025]
+=== round-1m roles 2026-10-30T11:02:32Z
+five                     first judges           minus the look   product judges           minus the look
+look, each axis once             2.88                                    1.90                         
+                       other 68%, pulse 23%, money 5%, health 4%
++ money seat                     2.92     +0.04 [-0.07, +0.15]           1.98     +0.09 [+0.00, +0.18]
+                       other 68%, pulse 19%, money 9%, health 4%
+roles                            2.80     -0.09 [-0.23, +0.06]           1.85     -0.05 [-0.18, +0.08]
+                       other 69%, pulse 14%, money 9%, health 7%, people 2%
+roles, pulses free               2.80     -0.08 [-0.20, +0.04]           1.90     +0.01 [-0.10, +0.11]
+                       other 63%, pulse 20%, money 8%, health 7%, people 2%
+roles, from the ten              2.86     -0.02 [-0.16, +0.12]           1.87     -0.03 [-0.16, +0.09]
+                       other 74%, pulse 13%, money 8%, health 5%, people 1%
+=== round-1m bench count 2026-10-30T11:02:38Z
+m00 {'round 1c': '1/3', 'round 1c, roles': '1/3', 'round 1c, screen': '1/3', 'luna and deepseek': '0/3', 'luna and deepseek, roles': '0/3', 'luna and deepseek, screen': '0/3', 'luna, deepseek and jev': '1/3', 'luna, deepseek and jev, roles': '1/3', 'luna, deepseek and jev, screen': '1/3', 'look over ten': '1/3', 'look over ten, roles': '2/3', 'look over thirty': '1/3', 'look over thirty, roles': '1/3'}
+m01 {'round 1c': '2/2', 'round 1c, roles': '1/2', 'round 1c, screen': '1/2', 'luna and deepseek': '2/2', 'luna and deepseek, roles': '1/2', 'luna and deepseek, screen': '2/2', 'luna, deepseek and jev': '1/2', 'luna, deepseek and jev, roles': '1/2', 'luna, deepseek and jev, screen': '1/2', 'look over ten': '2/2', 'look over ten, roles': '2/2', 'look over thirty': '2/2', 'look over thirty, roles': '2/2'}
+m02 {'round 1c': '2/3', 'round 1c, roles': '2/3', 'round 1c, screen': '2/3', 'luna and deepseek': '3/3', 'luna and deepseek, roles': '2/3', 'luna and deepseek, screen': '2/3', 'luna, deepseek and jev': '3/3', 'luna, deepseek and jev, roles': '3/3', 'luna, deepseek and jev, screen': '3/3', 'look over ten': '2/3', 'look over ten, roles': '2/3', 'look over thirty': '2/3', 'look over thirty, roles': '2/3'}
+m03 {'round 1c': '2/3', 'round 1c, roles': '2/3', 'round 1c, screen': '1/3', 'luna and deepseek': '2/3', 'luna and deepseek, roles': '2/3', 'luna and deepseek, screen': '1/3', 'luna, deepseek and jev': '2/3', 'luna, deepseek and jev, roles': '2/3', 'luna, deepseek and jev, screen': '1/3', 'look over ten': '2/3', 'look over ten, roles': '3/3', 'look over thirty': '0/3', 'look over thirty, roles': '1/3'}
+m04 {'round 1c': '2/2', 'round 1c, roles': '1/2', 'round 1c, screen': '1/2', 'luna and deepseek': '2/2', 'luna and deepseek, roles': '1/2', 'luna and deepseek, screen': '1/2', 'luna, deepseek and jev': '2/2', 'luna, deepseek and jev, roles': '1/2', 'luna, deepseek and jev, screen': '1/2', 'look over ten': '1/2', 'look over ten, roles': '0/2', 'look over thirty': '2/2', 'look over thirty, roles': '0/2'}
+m05 {'round 1c': '2/3', 'round 1c, roles': '2/3', 'round 1c, screen': '1/3', 'luna and deepseek': '2/3', 'luna and deepseek, roles': '2/3', 'luna and deepseek, screen': '2/3', 'luna, deepseek and jev': '3/3', 'luna, deepseek and jev, roles': '3/3', 'luna, deepseek and jev, screen': '1/3', 'look over ten': '1/3', 'look over ten, roles': '1/3', 'look over thirty': '1/3', 'look over thirty, roles': '1/3'}
+m06 {'round 1c': '2/2', 'round 1c, roles': '2/2', 'round 1c, screen': '1/2', 'luna and deepseek': '1/2', 'luna and deepseek, roles': '1/2', 'luna and deepseek, screen': '1/2', 'luna, deepseek and jev': '2/2', 'luna, deepseek and jev, roles': '2/2', 'luna, deepseek and jev, screen': '1/2', 'look over ten': '2/2', 'look over ten, roles': '2/2', 'look over thirty': '2/2', 'look over thirty, roles': '2/2'}
+m07 {'round 1c': '2/2', 'round 1c, roles': '2/2', 'round 1c, screen': '2/2', 'luna and deepseek': '2/2', 'luna and deepseek, roles': '2/2', 'luna and deepseek, screen': '2/2', 'luna, deepseek and jev': '2/2', 'luna, deepseek and jev, roles': '2/2', 'luna, deepseek and jev, screen': '2/2', 'look over ten': '1/2', 'look over ten, roles': '2/2', 'look over thirty': '1/2', 'look over thirty, roles': '2/2'}
+m08 {'round 1c': '2/2', 'round 1c, roles': '2/2', 'round 1c, screen': '2/2', 'luna and deepseek': '2/2', 'luna and deepseek, roles': '2/2', 'luna and deepseek, screen': '2/2', 'luna, deepseek and jev': '2/2', 'luna, deepseek and jev, roles': '2/2', 'luna, deepseek and jev, screen': '2/2', 'look over ten': '2/2', 'look over ten, roles': '2/2', 'look over thirty': '2/2', 'look over thirty, roles': '2/2'}
+m09 {'round 1c': '1/2', 'round 1c, roles': '0/2', 'round 1c, screen': '1/2', 'luna and deepseek': '1/2', 'luna and deepseek, roles': '1/2', 'luna and deepseek, screen': '1/2', 'luna, deepseek and jev': '1/2', 'luna, deepseek and jev, roles': '0/2', 'luna, deepseek and jev, screen': '1/2', 'look over ten': '1/2', 'look over ten, roles': '1/2', 'look over thirty': '1/2', 'look over thirty, roles': '1/2'}
+m10 {'round 1c': '3/3', 'round 1c, roles': '3/3', 'round 1c, screen': '3/3', 'luna and deepseek': '3/3', 'luna and deepseek, roles': '3/3', 'luna and deepseek, screen': '3/3', 'luna, deepseek and jev': '2/3', 'luna, deepseek and jev, roles': '3/3', 'luna, deepseek and jev, screen': '3/3', 'look over ten': '3/3', 'look over ten, roles': '3/3', 'look over thirty': '3/3', 'look over thirty, roles': '3/3'}
+m11 {'round 1c': '0/2', 'round 1c, roles': '1/2', 'round 1c, screen': '1/2', 'luna and deepseek': '0/2', 'luna and deepseek, roles': '1/2', 'luna and deepseek, screen': '1/2', 'luna, deepseek and jev': '0/2', 'luna, deepseek and jev, roles': '1/2', 'luna, deepseek and jev, screen': '1/2', 'look over ten': '0/2', 'look over ten, roles': '1/2', 'look over thirty': '0/2', 'look over thirty, roles': '1/2'}
+
+five                              found  over time  decoys  mirrors
+round 1c                           0.72       0.34    0.08     0.00
+round 1c, roles                    0.66       0.28    0.33     0.00
+round 1c, screen                   0.59       0.48    0.17     0.00
+luna and deepseek                  0.69       0.38    0.08     0.00
+luna and deepseek, roles           0.62       0.34    0.08     0.00
+luna and deepseek, screen          0.62       0.55    0.00     0.00
+luna, deepseek and jev             0.72       0.31    0.08     0.00
+luna, deepseek and jev, roles      0.72       0.34    0.08     0.00
+luna, deepseek and jev, screen     0.62       0.52    0.00     0.00
+look over ten                      0.62       0.28    0.08     0.00
+look over ten, roles               0.72       0.31    0.08     0.00
+look over thirty                   0.59       0.31    0.08     0.00
+look over thirty, roles            0.62       0.31    0.17     0.00
+=== round-1m bench reach 2026-10-30T11:02:41Z
+m00 partial_shipments_rise   values best place 83: rows of ORDERS by ORDERS.O_ORDERDATE split by ORDERS.O_ORDERSTATUS
+m00 urgent_orders_value      money  best place 45: sum of ORDERS.O_TOTALPRICE by ORDERS.O_ORDERDATE
+m00 air_freight_takeover     values best place 109: rows of LINEITEM by LINEITEM.L_SHIPDATE split by LINEITEM.L_SHIPMODE
+m01 planning_drops           rate   best place 5: rows of Mealplan by Mealplan.meal_date
+m01 snacks_overtake_meals    values best place 40: rows of Meal by Meal.last_served split by Meal.meal_type
+m02 recent_loans_overdue     values best place 40: sum of approved_loans.daily_payment by approved_loans.date_approved split by approved_loans.status
+m02 riverside_loans_grow     money  best place 4: sum of loan.loan_amount by loan.date_loan
+m02 late_payments_spike      rate   best place 1: sum of payment_transactions.amount by payment_transactions.date
+m03 denials-climb            values best place 76: sum of Reimbursements.AmountAwarded by Reimbursements.DateSubmitted split by ReimbursementStatuses.ReimbursementStatus
+m03 paid-awards-jump         money  best place 5: sum of Reimbursements.AmountAwarded by Reimbursements.DateSubmitted
+m03 certifications-take-over values best place 78: sum of Events.Cost by Events.StartDate split by EventTypes.EventType
+m04 cancellations-rise       values best place 14: rows of orders by orders.orderData split by status.status
+m04 promotion-order-surge    rate   best place 1: rows of orders by orders.orderData
+m05 fuel-claims-surge        values best place 130: distinct expense_categories in expenses by expenses.date
+m05 vouchers-sent-back       values best place 58: rows of vouchers by vouchers.date split by vouchers.status
+m05 transfer-payouts-grow    money  best place 11: sum of payments.amount by payments.date
+m06 cancellations-climb      values best place 70: rows of BOOKING by BOOKING.FROM_DT_TIME split by BOOKING.BOOKING_STATUS
+m06 surge-in-bookings        rate   best place 2: rows of BOOKING by BOOKING.FROM_DT_TIME
+m07 no-shows-rise            values best place 33: rows of Reservation by Reservation.resvDate split by Reservation.status
+m07 room-rates-up            money  best place 3: sum of CheckOut.totalPrice by CheckOut.date
+m08 fleet-cut-back           rate   best place 1: rows of rentals by rentals.RentDate
+m08 campaign-surge           rate   best place 1: rows of rentals by rentals.RentDate
+m09 price_rise               money  best place None: none made
+m09 rental_surge             rate   best place 3: rows of Rental by Rental.RentalRequestDate
+m10 verification_rejects     values best place 24: rows of tbl_peserta by tbl_peserta.tgl_lahir split by tbl_peserta.status_verifikasi
+m10 tests_timing_out         values best place 42: rows of tbl_jawaban by tbl_jawaban.waktu_mulai split by tbl_jawaban.status_jawaban
+m10 last_week_rush           rate   best place 1: rows of tbl_peserta by tbl_peserta.tgl_lahir
+m11 conference_costs         money  best place 10: sum of event_form.event_cost by event_form.curr_date
+m11 funds_run_short          values best place 327: rows of communication_table by event_form.curr_date split by communication_table.exceeding_available_funds
+
+28 of 29 stories have a question that shows them over time; its place: median 19, in the ten 12, in the thirty 15
+  values: 14 of 14 made, median place 64
+  money: 6 of 7 made, median place 8
+  rate: 8 of 8 made, median place 1
+=== done 2026-10-30T11:02:42Z
+3.13.18 2.5.4 4.7.0 1.9.1 1.18.1

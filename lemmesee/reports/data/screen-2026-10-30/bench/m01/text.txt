@@ -1,0 +1,84 @@
+Account
+  account_id: varchar, primary key
+  fname: varchar, nullable
+  lname: varchar, nullable
+  pword: char, nullable
+  plantype: varchar, nullable
+
+Profile
+  account_id: varchar, references Account.account_id
+  profile_id: varchar, primary key
+  fname: varchar, nullable
+  lname: varchar, nullable
+  glutentolerant: varchar, nullable
+  diabetic: varchar, nullable
+  lactoseintolerant: varchar, nullable
+  vegetarian: varchar, nullable
+  vegan: varchar, nullable
+
+Recipe
+  recipe_id: varchar, primary key
+  recipe_name: varchar, nullable
+  creationdate: date, nullable
+  calorie_count: int, nullable
+  prep_time: int, nullable
+  unit: varchar, nullable
+
+Ingredients
+  ingredient_id: varchar, primary key
+  name: varchar, nullable
+
+Mealplan
+  mid: varchar, primary key
+  meal_date: date, nullable
+  calorie_count: int, nullable
+
+Meal
+  meal_id: varchar, primary key
+  meal_name: varchar, nullable
+  last_served: date, nullable
+  served_date: date, nullable
+  meal_type: varchar, nullable
+  images: blob, nullable
+
+Instruction
+  recipe_id: varchar, references Recipe.recipe_id
+  instruction_id: varchar, primary key
+  instruction_number: int, nullable
+  step: varchar, nullable
+
+SupermarketList
+  mid: varchar, references Mealplan.mid
+  item_id: varchar, primary key
+  item_name: varchar, nullable
+  amount: decimal, nullable
+  unit: varchar, nullable
+
+generates
+  profile_id: varchar, references Profile.profile_id, nullable
+  account_id: varchar, references Account.account_id, nullable
+  mid: varchar, primary key, references Mealplan.mid
+
+madeupof
+  mid: varchar, references Mealplan.mid, nullable
+  meal_id: varchar, primary key, references Meal.meal_id
+
+has_a
+  recipe_id: varchar, part of the primary key, references Recipe.recipe_id
+  ingredient_id: varchar, part of the primary key, references Ingredients.ingredient_id
+  amount: decimal, nullable
+  unit: varchar, nullable
+
+adds
+  recipe_id: varchar, primary key, references Recipe.recipe_id
+  profile_id: varchar, references Profile.profile_id, nullable
+
+uses
+  recipe_id: varchar, primary key, references Recipe.recipe_id
+  meal_id: varchar, references Meal.meal_id, nullable
+
+hasInStock
+  account_id: varchar, references Account.account_id, nullable
+  profile_id: varchar, part of the primary key, references Profile.profile_id
+  ingredient_id: varchar, part of the primary key, references Ingredients.ingredient_id
+  status: varchar, nullable

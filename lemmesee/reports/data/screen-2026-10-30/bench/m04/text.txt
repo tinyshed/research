@@ -1,0 +1,73 @@
+categories
+  idCategory: unsignedtinyint, primary key
+  category: char
+
+employeelogintime
+  idLogged: int
+  idEmployee: unsignedint, references employees.idEmployee
+  Time: datetime
+  IP: varchar
+
+employees
+  idEmployee: unsignedint
+  idPrem: unsignedtinyint, references permissions.idPrem
+  archive: unsignedtinyint
+  name: varchar
+  surname: varchar
+  email: varchar
+  password: varchar, nullable
+
+orders
+  idOrder: unsignedint
+  idUser: unsignedint, nullable
+  idCart: unsignedint
+  idStatus: unsignedtinyint
+  orderData: datetime
+  postCode: char
+  phone: varchar
+  name: varchar
+  surname: varchar
+  postCity: varchar
+  email: varchar
+  adress: varchar
+
+permissions
+  idPrem: unsignedtinyint, primary key
+  permission: char
+
+productgallery
+  idFoto: unsignedint
+  idProduct: unsignedint, references products.idProduct
+  photo: varchar
+
+products
+  idProduct: unsignedint
+  idFoto: unsignedtinyint
+  archive: unsignedtinyint
+  idCategory: unsignedtinyint, references categories.idCategory
+  Quantity: int
+  price: decimal, nullable
+  Specification: mediumtext, nullable
+  name: varchar
+
+productsincarts
+  idCart: unsignedint
+  idProduct: unsignedint
+  howMuch: int
+
+status
+  idStatus: unsignedtinyint, primary key
+  status: text, nullable
+
+users
+  idUser: unsignedint
+  archive: unsignedtinyint
+  currentCart: unsignedint
+  postCode: char, nullable
+  name: varchar, nullable
+  phone: char
+  surname: varchar
+  postCity: varchar
+  email: varchar
+  password: varchar
+  address: varchar

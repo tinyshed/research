@@ -1,0 +1,9 @@
+{"numbers": [
+  {"title": "Households using the app", "what": "count distinct", "table": "Account", "column": "account_id", "where": null, "days": null, "over": null},
+  {"title": "Households that have planned a meal", "what": "count distinct", "table": "generates", "column": "account_id", "where": null, "days": null, "over": null},
+  {"title": "Households that planned meals two or more times", "what": "two or more", "table": "generates", "column": "account_id", "where": null, "days": null, "over": null},
+  {"title": "Share of meal plans turned into a supermarket list in the last 30 days", "what": "share", "table": "Mealplan", "column": null, "where": "mid IN (SELECT mid FROM SupermarketList)", "days": 30, "over": {"title": "All meal plans in the last 30 days", "what": "count", "table": "Mealplan", "column": null, "where": null, "days": 30, "over": null}},
+  {"title": "New recipes in the last 30 days", "what": "count", "table": "Recipe", "column": null, "where": null, "days": 30, "over": null},
+  {"title": "Meal plans dated in the last 7 days", "what": "count", "table": "Mealplan", "column": null, "where": null, "days": 7, "over": null},
+  {"title": "Meals served in the last 30 days", "what": "count", "table": "Meal", "column": null, "where": null, "days": 30, "over": null}
+]}

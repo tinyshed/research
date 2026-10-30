@@ -1,0 +1,48 @@
+{
+  "about": "A small Philippine micro-lending office that signs up borrowers, approves short daily-payment loans, and collects payments; used by its loan officers and field collectors.",
+  "tables": {
+    "address": {"role": "entity", "rows": 1800, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "approved_loans": {"role": "event", "rows": 3000, "time": "date_approved", "growth": 0.01, "follows": {"table": "loan", "per": 0.75, "minutes": 2880}, "columns": {
+      "status": {"values": {"active": 55, "completed": 30, "overdue": 10, "defaulted": 5}},
+      "daily_payment": {"money": [200, 1.5]},
+      "loan_started": {"after": "date_approved", "hours": [24, 96]},
+      "due_date": {"after": "loan_started", "hours": [1680, 2880]}
+    }},
+    "clients": {"role": "entity", "rows": 1800, "time": null, "growth": 0, "follows": null, "columns": {
+      "status": {"values": {"active": 85, "inactive": 10, "flagged": 5}}
+    }},
+    "co_maker": {"role": "entity", "rows": 1100, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "debtor_business": {"role": "entity", "rows": 250, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "loan": {"role": "event", "rows": 4000, "time": "date_loan", "growth": 0.01, "follows": null, "columns": {
+      "area": {"values": {"Poblacion": 40, "Riverside": 30, "Hilltop": 20, "Market Road": 10}},
+      "loan_amount": {"money": [20000, 1.6]},
+      "interest": {"number": [5, 20]},
+      "status": {"values": {"approved": 60, "pending": 15, "rejected": 20, "cancelled": 5}},
+      "verified": {"values": {"true": 80, "false": 20}},
+      "terms": {"number": [60, 120]}
+    }},
+    "names": {"role": "entity", "rows": 1800, "time": null, "growth": 0, "follows": {"table": "clients", "per": 1, "minutes": 1}, "columns": {}},
+    "payment_transactions": {"role": "event", "rows": 15000, "time": "date", "growth": 0.01, "follows": {"table": "loan", "per": 3.75, "minutes": 1440}, "columns": {
+      "amount": {"money": [200, 1.5]},
+      "notes": {"values": {"on time": 85, "late": 10, "partial": 5}}
+    }},
+    "staff": {"role": "entity", "rows": 14, "time": null, "growth": 0, "follows": null, "columns": {
+      "position": {"values": {"loan officer": 4, "collector": 8, "admin": 2}}
+    }},
+    "task": {"role": "entity", "rows": 300, "time": null, "growth": 0, "follows": null, "columns": {
+      "status": {"values": {"done": 60, "pending": 30, "failed": 10}}
+    }},
+    "users": {"role": "technical", "rows": 14, "time": null, "growth": 0, "follows": null, "columns": {
+      "user_type": {"values": {"collector": 8, "loan officer": 4, "admin": 2}}
+    }}
+  },
+  "stories": [
+    {"id": "recent_loans_overdue", "says": "Loans approved from day 70 are coming back overdue or defaulted at several times the old rate.", "table": "approved_loans", "from_day": 70, "change": {"column": "status", "values": {"active": 40, "completed": 15, "overdue": 35, "defaulted": 10}}, "seen_in": [{"table": "approved_loans", "column": "status"}, {"table": "approved_loans", "column": "date_approved"}]},
+    {"id": "riverside_loans_grow", "says": "From day 68 the average loan in Riverside nearly doubled while the other areas held steady.", "table": "loan", "from_day": 68, "change": {"column": "loan_amount", "times": 1.9, "where": {"area": "Riverside"}}, "seen_in": [{"table": "loan", "column": "loan_amount"}, {"table": "loan", "column": "area"}, {"table": "loan", "column": "date_loan"}]},
+    {"id": "late_payments_spike", "says": "Since day 72 late payments have come in at three times their usual daily rate.", "table": "payment_transactions", "from_day": 72, "change": {"rate": 3, "where": {"notes": "late"}}, "seen_in": [{"table": "payment_transactions", "column": "notes"}, {"table": "payment_transactions", "column": "date"}]}
+  ],
+  "decoys": [
+    {"id": "client_names_mirror", "says": "names repeats each client once more, so counting clients and names together doubles the count of people; it is not worth a place.", "tables": ["clients", "names"], "kind": "mirror"},
+    {"id": "login_accounts", "says": "users holds staff login accounts, which is software bookkeeping; its count tracks logins, not lending.", "tables": ["users"], "kind": "bookkeeping"}
+  ]
+}

@@ -1,0 +1,10 @@
+{"numbers": [
+  {"title": "paid out in the last 30 days", "what": "sum", "table": "payments", "column": "amount", "where": null, "days": 30, "over": null},
+  {"title": "people who have raised a voucher", "what": "count distinct", "table": "vouchers", "column": "employee_id", "where": null, "days": null, "over": null},
+  {"title": "people who raised two or more vouchers", "what": "two or more", "table": "vouchers", "column": "employee_id", "where": null, "days": null, "over": null},
+  {"title": "vouchers in the last 30 days", "what": "count", "table": "vouchers", "column": null, "where": null, "days": 30, "over": null},
+  {"title": "vouchers in the last 7 days", "what": "count", "table": "vouchers", "column": null, "where": null, "days": 7, "over": null},
+  {"title": "vouchers still waiting for approval", "what": "count", "table": "vouchers", "column": null, "where": "approval_date IS NULL", "days": null, "over": null},
+  {"title": "share of last 7 days' expenses not approved in full", "what": "share", "table": "expenses", "column": null, "where": "approved_amount IS NULL OR approved_amount < amount", "days": 7, "over": {"title": "expenses in the last 7 days", "what": "count", "table": "expenses", "column": null, "where": null, "days": 7, "over": null}},
+  {"title": "money in employee wallets", "what": "sum", "table": "employees", "column": "wallet_balance", "where": null, "days": null, "over": null}
+]}

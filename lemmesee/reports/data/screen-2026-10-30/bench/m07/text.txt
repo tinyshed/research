@@ -1,0 +1,50 @@
+Guest
+  guestId: varchar, primary key
+  guestFirstName: varchar
+  guestLastName: varchar
+  guestAddress: varchar
+  passportNumber: varchar
+  guestCountry: varchar
+  guestContact: varchar
+  guestStatus: varchar
+
+RoomType
+  typeId: int, primary key
+  typeName: varchar
+  typePrice: decimal
+
+Room
+  roomNumber: varchar, primary key
+  typeId: int, references RoomType.typeId
+  roomStatus: varchar
+
+User
+  userId: varchar, primary key
+  firstName: varchar
+  email: varchar
+  contact: varchar
+  userRole: varchar
+  userName: varchar
+  password: varchar
+
+Reservation
+  resvId: varchar, primary key
+  resvDate: date
+  guestId: varchar, references Guest.guestId
+  checkInDate: date
+  checkOutDate: date
+  userId: varchar, references User.userId
+  status: varchar, nullable
+
+CheckOut
+  checkOutId: int, primary key
+  resvId: varchar, references Reservation.resvId
+  userId: varchar, references User.userId
+  date: date
+  noOfNight: int
+  totalPrice: decimal
+
+ReservationDetail
+  resvId: varchar, part of the primary key, references Reservation.resvId
+  roomNumber: varchar, part of the primary key, references Room.roomNumber
+  roomPrice: decimal

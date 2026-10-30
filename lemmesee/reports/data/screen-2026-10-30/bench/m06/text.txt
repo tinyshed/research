@@ -1,0 +1,72 @@
+CUSTOMER
+  DL_NUMBER: char, primary key
+  FNAME: varchar
+  MNAME: varchar, nullable
+  LNAME: varchar
+  PHONE_NUMBER: number
+  EMAIL_ID: varchar
+  STREET: varchar
+  CITY: varchar
+  STATE_NAME: varchar
+  ZIPCODE: number
+  MEMBERSHIP_TYPE: char
+  MEMBERSHIP_ID: char, nullable
+
+BIKE_CATEGORY
+  CATEGORY_NAME: varchar, primary key
+  COST_PER_DAY: number
+  LATE_FEE_PER_HOUR: number
+
+LOCATION
+  LOCATION_ID: char, primary key
+  LOCATION_NAME: varchar
+  STREET: varchar
+  CITY: varchar
+  STATE_NAME: varchar
+  ZIPCODE: number
+
+BIKE
+  REGISTRATION_NUMBER: char, primary key
+  MODEL_NAME: varchar
+  MAKE: varchar
+  MODEL_YEAR: number
+  MILEAGE: integer
+  BIKE_CATEGORY_NAME: varchar, references BIKE_CATEGORY.CATEGORY_NAME
+  LOC_ID: char, references LOCATION.LOCATION_ID
+  AVAILABILITY_FLAG: char
+
+DISCOUNT
+  DISCOUNT_CODE: char, primary key
+  DISCOUNT_NAME: varchar
+  EXPIRY_DATE: date
+  DISCOUNT_PERCENTAGE: number
+
+INSURANCE
+  INSURANCE_CODE: char, primary key
+  INSURANCE_NAME: varchar
+  COVERAGE_TYPE: varchar
+  COST_PER_DAY: number
+
+BOOKING
+  BOOKING_ID: char, primary key
+  FROM_DT_TIME: timestamp
+  RET_DT_TIME: timestamp
+  AMOUNT: number
+  BOOKING_STATUS: char
+  PICKUP_LOC: char, references LOCATION.LOCATION_ID
+  DROP_LOC: char, references LOCATION.LOCATION_ID
+  REG_NUM: char, references BIKE.REGISTRATION_NUMBER
+  DL_NUM: char, references CUSTOMER.DL_NUMBER
+  INS_CODE: char, references INSURANCE.INSURANCE_CODE, nullable
+  ACT_RET_DT_TIME: timestamp, nullable
+  DISCOUNT_CODE: char, references DISCOUNT.DISCOUNT_CODE, nullable
+
+BILLING
+  BILL_ID: char, primary key
+  BILL_DATE: date
+  BILL_STATUS: char
+  DISCOUNT_AMOUNT: number
+  TOTAL_AMOUNT: number
+  TAX_AMOUNT: number
+  BOOKING_ID: char, references BOOKING.BOOKING_ID
+  TOTAL_LATE_FEE: number

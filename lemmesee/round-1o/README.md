@@ -2,6 +2,7 @@
 
 Status: run on 30 October 2026 as a development probe; not reported, not
 committed, the owner's judgment of the new page not yet given.
+[Reported](../reports/screen-2026-10-30.md) with rounds 1l to 1o.
 
 Round 1n's row of numbers matched six of the eight on the owner's own
 dashboard. This round checks it on the bench, fixes what the check showed,

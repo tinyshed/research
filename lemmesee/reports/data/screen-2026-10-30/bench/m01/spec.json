@@ -1,0 +1,50 @@
+{
+  "about": "A meal-planning app where households set up profiles with dietary needs, plan meals day by day, and turn each plan into a supermarket list; used by home cooks and families.",
+  "tables": {
+    "Account": {"role": "entity", "rows": 600, "time": null, "growth": 0.005, "follows": null, "columns": {
+      "plantype": {"values": {"free": 70, "premium": 25, "family": 5}}
+    }},
+    "Profile": {"role": "entity", "rows": 1300, "time": null, "growth": 0.005, "follows": null, "columns": {
+      "glutentolerant": {"values": {"true": 8, "false": 92}},
+      "diabetic": {"values": {"true": 6, "false": 94}},
+      "lactoseintolerant": {"values": {"true": 12, "false": 88}},
+      "vegetarian": {"values": {"true": 15, "false": 85}},
+      "vegan": {"values": {"true": 5, "false": 95}}
+    }},
+    "Recipe": {"role": "entity", "rows": 1200, "time": "creationdate", "growth": 0.01, "follows": null, "columns": {
+      "calorie_count": {"number": [60, 1200]},
+      "prep_time": {"number": [5, 120]}
+    }},
+    "Ingredients": {"role": "dead", "rows": 400, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "Mealplan": {"role": "event", "rows": 2500, "time": "meal_date", "growth": 0.01, "follows": null, "columns": {
+      "calorie_count": {"number": [1200, 2600]}
+    }},
+    "Meal": {"role": "event", "rows": 10000, "time": "served_date", "growth": 0.01, "follows": {"table": "Mealplan", "per": 4, "minutes": 2}, "columns": {
+      "meal_type": {"values": {"breakfast": 25, "lunch": 25, "dinner": 25, "snack": 25}}
+    }},
+    "Instruction": {"role": "entity", "rows": 4800, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "SupermarketList": {"role": "entity", "rows": 5000, "time": null, "growth": 0, "follows": {"table": "Mealplan", "per": 2, "minutes": 5}, "columns": {
+      "amount": {"number": [1, 500]},
+      "unit": {"values": {"g": 30, "ml": 15, "piece": 25, "tbsp": 10, "tsp": 10, "cup": 10}}
+    }},
+    "generates": {"role": "entity", "rows": 2500, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "madeupof": {"role": "entity", "rows": 10000, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "has_a": {"role": "entity", "rows": 7200, "time": null, "growth": 0, "follows": null, "columns": {
+      "amount": {"number": [1, 500]},
+      "unit": {"values": {"g": 40, "ml": 20, "piece": 25, "tbsp": 10, "tsp": 5}}
+    }},
+    "adds": {"role": "event", "rows": 1200, "time": null, "growth": 0.01, "follows": {"table": "Recipe", "per": 1, "minutes": 1}, "columns": {}},
+    "uses": {"role": "entity", "rows": 1200, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "hasInStock": {"role": "entity", "rows": 2000, "time": null, "growth": 0, "follows": null, "columns": {
+      "status": {"values": {"in stock": 60, "low": 25, "out": 15}}
+    }}
+  },
+  "stories": [
+    {"id": "planning_drops", "says": "From day 74 the number of daily meal plans fell to about 60 percent of normal as households stopped planning.", "table": "Mealplan", "from_day": 74, "change": {"rate": 0.6, "where": null}, "seen_in": [{"table": "Mealplan", "column": "meal_date"}]},
+    {"id": "snacks_overtake_meals", "says": "From day 66 snacks overtook the three meals in the plans, roughly doubling their share.", "table": "Meal", "from_day": 66, "change": {"column": "meal_type", "values": {"breakfast": 15, "lunch": 15, "dinner": 20, "snack": 50}}, "seen_in": [{"table": "Meal", "column": "meal_type"}, {"table": "Meal", "column": "served_date"}]}
+  ],
+  "decoys": [
+    {"id": "recipe_adds_mirror", "says": "adds records each recipe once more than Recipe does, so counting both double-counts every new recipe.", "tables": ["Recipe", "adds"], "kind": "mirror"},
+    {"id": "ingredient_import", "says": "Ingredients was loaded once from a food list and never changes, so a trend over it is flat and not worth a place.", "tables": ["Ingredients"], "kind": "dead"}
+  ]
+}

@@ -1,0 +1,94 @@
+address
+  account_no: int, references clients.account_no, nullable
+  purok_no: int, nullable
+  barangay: varchar, nullable
+  city: varchar, nullable
+  province: varchar, nullable
+  country: varchar
+  postal_code: int, nullable
+
+approved_loans
+  loan_no: varchar, references loan.loan_no, nullable
+  date_approved: date, nullable
+  loan_started: date, nullable
+  daily_payment: decimal, nullable
+  due_date: date, nullable
+  status: varchar
+
+clients
+  account_no: int, primary key
+  profile_img: varchar
+  email: varchar, nullable
+  number1: varchar, nullable
+  number2: varchar, nullable
+  birthdate: varchar, nullable
+  gender: varchar, nullable
+  added_info: varchar, nullable
+  status: varchar, nullable
+
+co_maker
+  co_maker_no: int
+  name: varchar, nullable
+  cedula_no: varchar, nullable
+  date_issued: varchar, nullable
+  address_issued: varchar, nullable
+  loan_no: varchar, references loan.loan_no, nullable
+  account_no: int
+
+debtor_business
+  business_no: int
+  business_name: varchar, nullable
+  business_address: varchar
+  loan_no: varchar, references loan.loan_no, nullable
+  account_no: int, nullable
+
+loan
+  loan_no: varchar
+  account_no: int, references clients.account_no, nullable
+  area: varchar, nullable
+  loan_amount: decimal, nullable
+  interest: int, nullable
+  collector: varchar, nullable
+  date_loan: date, nullable
+  status: varchar
+  verified: varchar
+  reason: varchar, nullable
+  approved: varchar, nullable
+  terms: int, nullable
+
+names
+  account_no: int, references clients.account_no, nullable
+  firstname: varchar, nullable
+  middlename: varchar, nullable
+  lastname: varchar, nullable
+
+payment_transactions
+  transaction_id: int
+  loan_no: varchar, references loan.loan_no, nullable
+  date: date, nullable
+  amount: decimal, nullable
+  payment_no: int
+  notes: varchar, nullable
+
+staff
+  username: varchar
+  firstname: varchar, nullable
+  middlename: varchar, nullable
+  lastname: varchar, nullable
+  number: int, nullable
+  address: varchar, nullable
+  email: varchar, nullable
+  position: varchar
+  bio: varchar, nullable
+  profile_img: varchar, nullable
+
+task
+  task_id: int
+  username: varchar, references users.username, nullable
+  description: varchar, nullable
+  status: varchar, nullable
+
+users
+  username: varchar, primary key
+  password: varchar
+  user_type: varchar

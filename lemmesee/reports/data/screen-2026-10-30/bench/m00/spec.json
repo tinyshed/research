@@ -1,0 +1,44 @@
+{
+  "about": "A wholesale distributor of industrial parts that takes orders from business customers, ships them from supplier stock, and is run by its sales and operations managers.",
+  "tables": {
+    "REGION": {"role": "dead", "rows": 5, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "NATION": {"role": "dead", "rows": 25, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "PART": {"role": "entity", "rows": 2000, "time": null, "growth": 0.005, "follows": null, "columns": {
+      "P_MFGR": {"values": {"Manufacturer#1": 20, "Manufacturer#2": 20, "Manufacturer#3": 20, "Manufacturer#4": 20, "Manufacturer#5": 20}},
+      "P_SIZE": {"number": [1, 50]},
+      "P_RETAILPRICE": {"money": [1000, 1.5]}
+    }},
+    "SUPPLIER": {"role": "entity", "rows": 200, "time": null, "growth": 0.005, "follows": null, "columns": {
+      "S_ACCTBAL": {"money": [4500, 2]}
+    }},
+    "PARTSUPP": {"role": "entity", "rows": 8000, "time": null, "growth": 0.005, "follows": null, "columns": {
+      "PS_AVAILQTY": {"number": [1, 9999]},
+      "PS_SUPPLYCOST": {"money": [500, 2]}
+    }},
+    "CUSTOMER": {"role": "entity", "rows": 3000, "time": null, "growth": 0.005, "follows": null, "columns": {
+      "C_MKTSEGMENT": {"values": {"AUTOMOBILE": 20, "BUILDING": 20, "FURNITURE": 20, "HOUSEHOLD": 20, "MACHINERY": 20}},
+      "C_ACCTBAL": {"money": [4500, 2]}
+    }},
+    "ORDERS": {"role": "event", "rows": 4500, "time": "O_ORDERDATE", "growth": 0.01, "follows": null, "columns": {
+      "O_ORDERSTATUS": {"values": {"F": 49, "O": 48, "P": 3}},
+      "O_TOTALPRICE": {"money": [25000, 2.5]},
+      "O_ORDERPRIORITY": {"values": {"1-URGENT": 20, "2-HIGH": 20, "3-MEDIUM": 20, "4-NOT SPECIFIED": 20, "5-LOW": 20}}
+    }},
+    "LINEITEM": {"role": "event", "rows": 18000, "time": "L_COMMITDATE", "growth": 0.01, "follows": {"table": "ORDERS", "per": 4, "minutes": 10}, "columns": {
+      "L_QUANTITY": {"number": [1, 50]},
+      "L_EXTENDEDPRICE": {"money": [30000, 2]},
+      "L_RETURNFLAG": {"values": {"N": 80, "R": 10, "A": 10}},
+      "L_SHIPMODE": {"values": {"AIR": 15, "REG AIR": 14, "MAIL": 14, "RAIL": 14, "SHIP": 14, "TRUCK": 15, "FOB": 14}},
+      "L_SHIPDATE": {"after": "L_COMMITDATE", "hours": [24, 240]},
+      "L_RECEIPTDATE": {"after": "L_SHIPDATE", "hours": [24, 240]}
+    }}
+  },
+  "stories": [
+    {"id": "partial_shipments_rise", "says": "From day 72, orders shipped only in part climbed from a few percent to about a third of all orders.", "table": "ORDERS", "from_day": 72, "change": {"column": "O_ORDERSTATUS", "values": {"F": 35, "O": 35, "P": 30}}, "seen_in": [{"table": "ORDERS", "column": "O_ORDERSTATUS"}, {"table": "ORDERS", "column": "O_ORDERDATE"}]},
+    {"id": "urgent_orders_value", "says": "From day 65 the total value of urgent orders nearly doubled while the other priorities held steady.", "table": "ORDERS", "from_day": 65, "change": {"column": "O_TOTALPRICE", "times": 1.9, "where": {"O_ORDERPRIORITY": "1-URGENT"}}, "seen_in": [{"table": "ORDERS", "column": "O_TOTALPRICE"}, {"table": "ORDERS", "column": "O_ORDERPRIORITY"}]},
+    {"id": "air_freight_takeover", "says": "From day 70 air freight took over most line shipments, pushing the other modes down.", "table": "LINEITEM", "from_day": 70, "change": {"column": "L_SHIPMODE", "values": {"AIR": 45, "REG AIR": 5, "MAIL": 8, "RAIL": 8, "SHIP": 8, "TRUCK": 16, "FOB": 10}}, "seen_in": [{"table": "LINEITEM", "column": "L_SHIPMODE"}, {"table": "LINEITEM", "column": "L_COMMITDATE"}]}
+  ],
+  "decoys": [
+    {"id": "region_nation_load", "says": "REGION and NATION were loaded once from a fixed reference list and never change, so a trend over them is flat and not worth a place; they have no date column, so all their rows come from that one load.", "tables": ["REGION", "NATION"], "kind": "dead"}
+  ]
+}

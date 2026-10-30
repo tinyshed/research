@@ -1,0 +1,76 @@
+REGION
+  R_REGIONKEY: integer, primary key
+  R_NAME: char
+  R_COMMENT: varchar, nullable
+
+NATION
+  N_NATIONKEY: integer, primary key
+  N_NAME: char
+  N_REGIONKEY: integer, references REGION.R_REGIONKEY
+  N_COMMENT: varchar, nullable
+
+PART
+  P_PARTKEY: integer, primary key
+  P_NAME: varchar
+  P_MFGR: char
+  P_BRAND: char
+  P_TYPE: varchar
+  P_SIZE: integer
+  P_CONTAINER: char
+  P_RETAILPRICE: decimal
+  P_COMMENT: varchar
+
+SUPPLIER
+  S_SUPPKEY: integer, primary key
+  S_NAME: char
+  S_ADDRESS: varchar
+  S_NATIONKEY: integer, references NATION.N_NATIONKEY
+  S_PHONE: char
+  S_ACCTBAL: decimal
+  S_COMMENT: varchar
+
+PARTSUPP
+  PS_PARTKEY: integer, part of the primary key, references PART.P_PARTKEY
+  PS_SUPPKEY: integer, part of the primary key, references SUPPLIER.S_SUPPKEY
+  PS_AVAILQTY: integer
+  PS_SUPPLYCOST: decimal
+  PS_COMMENT: varchar
+
+CUSTOMER
+  C_CUSTKEY: integer, primary key
+  C_NAME: varchar
+  C_ADDRESS: varchar
+  C_NATIONKEY: integer, references NATION.N_NATIONKEY
+  C_PHONE: char
+  C_ACCTBAL: decimal
+  C_MKTSEGMENT: char
+  C_COMMENT: varchar
+
+ORDERS
+  O_ORDERKEY: integer, primary key
+  O_CUSTKEY: integer, references CUSTOMER.C_CUSTKEY
+  O_ORDERSTATUS: char
+  O_TOTALPRICE: decimal
+  O_ORDERDATE: date
+  O_ORDERPRIORITY: char
+  O_CLERK: char
+  O_SHIPPRIORITY: integer
+  O_COMMENT: varchar
+
+LINEITEM
+  L_ORDERKEY: integer, part of the primary key, references ORDERS.O_ORDERKEY
+  L_PARTKEY: integer, references PARTSUPP.PS_PARTKEY
+  L_SUPPKEY: integer, references PARTSUPP.PS_SUPPKEY
+  L_LINENUMBER: integer, part of the primary key
+  L_QUANTITY: decimal
+  L_EXTENDEDPRICE: decimal
+  L_DISCOUNT: decimal
+  L_TAX: decimal
+  L_RETURNFLAG: char
+  L_LINESTATUS: char
+  L_SHIPDATE: date
+  L_COMMITDATE: date
+  L_RECEIPTDATE: date
+  L_SHIPINSTRUCT: char
+  L_SHIPMODE: char
+  L_COMMENT: varchar

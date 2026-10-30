@@ -2,6 +2,7 @@
 
 Status: built on 30 October 2026 as a development probe; not reported, the
 harness not yet committed, the numbers not yet judged.
+[Reported](../reports/screen-2026-10-30.md) with rounds 1l to 1o.
 
 The owner's own product dashboard for one of the owner's databases opens
 with eight numbers — accounts, the thing made, who made it, who made it

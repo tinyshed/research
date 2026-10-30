@@ -1,0 +1,9 @@
+{"numbers": [
+  {"title": "Customers who ordered in the last 30 days", "what": "count distinct", "table": "ORDERS", "column": "O_CUSTKEY", "where": null, "days": 30, "over": null},
+  {"title": "Orders fulfilled in the last 30 days", "what": "count", "table": "ORDERS", "column": null, "where": "O_ORDERSTATUS = 'F'", "days": 30, "over": null},
+  {"title": "Revenue from fulfilled orders in the last 30 days", "what": "sum", "table": "ORDERS", "column": "O_TOTALPRICE", "where": "O_ORDERSTATUS = 'F'", "days": 30, "over": null},
+  {"title": "Customers who have ordered two or more times", "what": "two or more", "table": "ORDERS", "column": "O_CUSTKEY", "where": null, "days": null, "over": null},
+  {"title": "Share of order lines received late in the last 30 days", "what": "share", "table": "LINEITEM", "column": null, "where": "L_RECEIPTDATE > L_COMMITDATE", "days": 30, "over": {"title": "All order lines in the last 30 days", "what": "count", "table": "LINEITEM", "column": null, "where": null, "days": 30, "over": null}},
+  {"title": "New orders in the last 7 days", "what": "count", "table": "ORDERS", "column": null, "where": null, "days": 7, "over": null},
+  {"title": "Supplier listings with no stock left", "what": "count", "table": "PARTSUPP", "column": null, "where": "PS_AVAILQTY = 0", "days": null, "over": null}
+]}

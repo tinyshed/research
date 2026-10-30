@@ -1,0 +1,106 @@
+{
+ "jev": {
+  "keep": 0.301,
+  "first judges": {
+   "kept of five": 3.183,
+   "auc": 0.897,
+   "databases": 93
+  },
+  "product judges": {
+   "kept of five": 2.253,
+   "auc": 0.894,
+   "databases": 93
+  }
+ },
+ "deepseek and glm": {
+  "keep": 0.371,
+  "first judges": {
+   "kept of five": 3.328,
+   "auc": 0.908,
+   "databases": 93
+  },
+  "product judges": {
+   "kept of five": 2.188,
+   "auc": 0.879,
+   "databases": 93
+  }
+ },
+ "jev and luna": {
+  "keep": 0.258,
+  "first judges": {
+   "kept of five": 3.36,
+   "auc": 0.945,
+   "databases": 93
+  },
+  "product judges": {
+   "kept of five": 2.446,
+   "auc": 0.938,
+   "databases": 93
+  }
+ },
+ "product teachers": {
+  "keep": 0.101,
+  "first judges": {
+   "kept of five": 2.849,
+   "auc": 0.812,
+   "databases": 93
+  },
+  "product judges": {
+   "kept of five": 2.376,
+   "auc": 0.944,
+   "databases": 93
+  }
+ },
+ "all four": {
+  "keep": 0.129,
+  "first judges": {
+   "kept of five": 3.382,
+   "auc": 0.928,
+   "databases": 93
+  },
+  "product judges": {
+   "kept of five": 2.645,
+   "auc": 0.964,
+   "databases": 93
+  }
+ },
+ "pmjev": {
+  "keep": 0.153,
+  "first judges": {
+   "kept of five": 2.355,
+   "auc": 0.729,
+   "databases": 93
+  },
+  "product judges": {
+   "kept of five": 1.946,
+   "auc": 0.85,
+   "databases": 93
+  }
+ },
+ "pmlunap": {
+  "keep": 0.104,
+  "first judges": {
+   "kept of five": 2.956,
+   "auc": 0.802,
+   "databases": 91
+  },
+  "product judges": {
+   "kept of five": 2.423,
+   "auc": 0.941,
+   "databases": 91
+  }
+ },
+ "product judges themselves": {
+  "keep": 0.136,
+  "first judges": {
+   "kept of five": 3.5,
+   "auc": 0.853,
+   "databases": 93
+  },
+  "product judges": {
+   "kept of five": 3.038,
+   "auc": 1.0,
+   "databases": 93
+  }
+ }
+}

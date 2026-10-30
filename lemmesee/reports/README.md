@@ -52,3 +52,8 @@ so, never by editing the number it replaces.
   43 never judged were judged and it sees 0.12–0.22 on 93; a pairwise count is two to three times less sensitive;
   Luna asked for a chance teaches as Jev does and DeepSeek and GLM can go; GitTables' panels, a name's head word and
   a summed column's spread each move the look by less than a tenth; a person's first click buys +0.17, z 4.0.
+- [A weekly screen and its numbers](screen-2026-10-30.md), rounds 1l to 1o: teaching the product's question to the
+  look's and the ranker's teachers moves nothing the judges count; on a bench of twelve living databases with planted
+  stories a screen of roles shows 16 of 29 over time against round 1c's 10, +6 [+3, +9], and the owner chose it as the
+  closest of four; a row of numbers read from the schema gives six of the eight on the owner's own dashboard and 53 %
+  of the numbers Haiku wrote for the bench.

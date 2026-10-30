@@ -1,0 +1,2316 @@
+{
+ "total": {
+  "round 1c": {
+   "stories found": 0.724,
+   "found over time": 0.345,
+   "decoys shown a five": 0.08,
+   "mirrors twice a five": 0.0,
+   "databases": 12
+  },
+  "round 1c, roles": {
+   "stories found": 0.655,
+   "found over time": 0.276,
+   "decoys shown a five": 0.33,
+   "mirrors twice a five": 0.0,
+   "databases": 12
+  },
+  "round 1c, screen": {
+   "stories found": 0.586,
+   "found over time": 0.483,
+   "decoys shown a five": 0.17,
+   "mirrors twice a five": 0.0,
+   "databases": 12
+  },
+  "luna and deepseek": {
+   "stories found": 0.69,
+   "found over time": 0.379,
+   "decoys shown a five": 0.08,
+   "mirrors twice a five": 0.0,
+   "databases": 12
+  },
+  "luna and deepseek, roles": {
+   "stories found": 0.621,
+   "found over time": 0.345,
+   "decoys shown a five": 0.08,
+   "mirrors twice a five": 0.0,
+   "databases": 12
+  },
+  "luna and deepseek, screen": {
+   "stories found": 0.621,
+   "found over time": 0.552,
+   "decoys shown a five": 0.0,
+   "mirrors twice a five": 0.0,
+   "databases": 12
+  },
+  "luna, deepseek and jev": {
+   "stories found": 0.724,
+   "found over time": 0.31,
+   "decoys shown a five": 0.08,
+   "mirrors twice a five": 0.0,
+   "databases": 12
+  },
+  "luna, deepseek and jev, roles": {
+   "stories found": 0.724,
+   "found over time": 0.345,
+   "decoys shown a five": 0.08,
+   "mirrors twice a five": 0.0,
+   "databases": 12
+  },
+  "luna, deepseek and jev, screen": {
+   "stories found": 0.621,
+   "found over time": 0.517,
+   "decoys shown a five": 0.0,
+   "mirrors twice a five": 0.0,
+   "databases": 12
+  },
+  "look over ten": {
+   "stories found": 0.621,
+   "found over time": 0.276,
+   "decoys shown a five": 0.08,
+   "mirrors twice a five": 0.0,
+   "databases": 12
+  },
+  "look over ten, roles": {
+   "stories found": 0.724,
+   "found over time": 0.31,
+   "decoys shown a five": 0.08,
+   "mirrors twice a five": 0.0,
+   "databases": 12
+  },
+  "look over thirty": {
+   "stories found": 0.586,
+   "found over time": 0.31,
+   "decoys shown a five": 0.08,
+   "mirrors twice a five": 0.0,
+   "databases": 12
+  },
+  "look over thirty, roles": {
+   "stories found": 0.621,
+   "found over time": 0.31,
+   "decoys shown a five": 0.17,
+   "mirrors twice a five": 0.0,
+   "databases": 12
+  }
+ },
+ "per database": {
+  "m00": {
+   "round 1c": {
+    "stories": 3,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of LINEITEM by LINEITEM.L_SHIPDATE",
+     "rows of ORDERS by ORDERS.O_ORDERDATE",
+     "rows of LINEITEM by LINEITEM.L_RETURNFLAG",
+     "rows of ORDERS by ORDERS.O_ORDERSTATUS",
+     "rows of PARTSUPP, by PART.P_NAME, the twelve most"
+    ]
+   },
+   "round 1c, roles": {
+    "stories": 3,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of LINEITEM by LINEITEM.L_SHIPDATE",
+     "rows of LINEITEM by LINEITEM.L_RETURNFLAG",
+     "rows of ORDERS by ORDERS.O_ORDERSTATUS",
+     "rows of ORDERS by ORDERS.O_ORDERPRIORITY",
+     "rows of PARTSUPP, by PART.P_NAME, the twelve most"
+    ]
+   },
+   "round 1c, screen": {
+    "stories": 3,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of LINEITEM by LINEITEM.L_SHIPDATE",
+     "rows of ORDERS by ORDERS.O_ORDERSTATUS",
+     "sum of LINEITEM.L_TAX by LINEITEM.L_SHIPDATE",
+     "rows of PARTSUPP, by PART.P_NAME, the twelve most",
+     "distinct CUSTOMER in ORDERS by ORDERS.O_ORDERDATE"
+    ]
+   },
+   "luna and deepseek": {
+    "stories": 3,
+    "found": 0,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of LINEITEM by LINEITEM.L_SHIPDATE",
+     "rows of ORDERS by ORDERS.O_ORDERDATE",
+     "rows of LINEITEM by LINEITEM.L_COMMITDATE",
+     "rows of ORDERS, by CUSTOMER.C_NAME, the twelve most",
+     "rows of PARTSUPP, by PART.P_NAME, the twelve most"
+    ]
+   },
+   "luna and deepseek, roles": {
+    "stories": 3,
+    "found": 0,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of LINEITEM by LINEITEM.L_SHIPDATE",
+     "rows of ORDERS, by CUSTOMER.C_NAME, the twelve most",
+     "rows of ORDERS, by REGION.R_NAME, the twelve most",
+     "rows of PARTSUPP, by PART.P_NAME, the twelve most",
+     "sum of LINEITEM.L_TAX by LINEITEM.L_COMMITDATE"
+    ]
+   },
+   "luna and deepseek, screen": {
+    "stories": 3,
+    "found": 0,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of LINEITEM by LINEITEM.L_SHIPDATE",
+     "sum of LINEITEM.L_TAX by LINEITEM.L_SHIPDATE",
+     "rows of ORDERS, by CUSTOMER.C_NAME, the twelve most",
+     "rows of PARTSUPP, by PART.P_NAME, the twelve most",
+     "distinct CUSTOMER in ORDERS by ORDERS.O_ORDERDATE"
+    ]
+   },
+   "luna, deepseek and jev": {
+    "stories": 3,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of LINEITEM by LINEITEM.L_SHIPDATE",
+     "rows of ORDERS by ORDERS.O_ORDERDATE",
+     "rows of LINEITEM, by ORDERS (by key), the twelve most",
+     "rows of ORDERS by ORDERS.O_ORDERSTATUS",
+     "rows of PARTSUPP, by SUPPLIER.S_NAME, the twelve most"
+    ]
+   },
+   "luna, deepseek and jev, roles": {
+    "stories": 3,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of LINEITEM by LINEITEM.L_SHIPDATE",
+     "sum of LINEITEM.L_TAX, by ORDERS (by key), the twelve most",
+     "rows of ORDERS by ORDERS.O_ORDERSTATUS",
+     "rows of ORDERS, by NATION.N_NAME, the twelve most",
+     "rows of PARTSUPP, by SUPPLIER.S_NAME, the twelve most"
+    ]
+   },
+   "luna, deepseek and jev, screen": {
+    "stories": 3,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of LINEITEM by LINEITEM.L_SHIPDATE",
+     "sum of LINEITEM.L_TAX by LINEITEM.L_SHIPDATE",
+     "rows of ORDERS by ORDERS.O_ORDERSTATUS",
+     "rows of PARTSUPP, by SUPPLIER.S_NAME, the twelve most",
+     "distinct CUSTOMER in ORDERS by ORDERS.O_ORDERDATE"
+    ]
+   },
+   "look over ten": {
+    "stories": 3,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of LINEITEM by LINEITEM.L_SHIPMODE",
+     "rows of ORDERS by ORDERS.O_ORDERDATE",
+     "rows of LINEITEM by LINEITEM.L_RETURNFLAG",
+     "rows of LINEITEM by LINEITEM.L_SHIPDATE",
+     "rows of ORDERS by ORDERS.O_ORDERPRIORITY"
+    ]
+   },
+   "look over ten, roles": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of LINEITEM by LINEITEM.L_SHIPMODE",
+     "rows of LINEITEM by LINEITEM.L_RETURNFLAG",
+     "rows of ORDERS by ORDERS.O_ORDERPRIORITY",
+     "rows of ORDERS by ORDERS.O_ORDERSTATUS",
+     "rows of ORDERS by ORDERS.O_ORDERDATE"
+    ]
+   },
+   "look over thirty": {
+    "stories": 3,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of LINEITEM by LINEITEM.L_SHIPMODE",
+     "rows of ORDERS by ORDERS.O_ORDERDATE",
+     "rows of LINEITEM by LINEITEM.L_RETURNFLAG",
+     "rows of LINEITEM by LINEITEM.L_SHIPDATE",
+     "rows of ORDERS by ORDERS.O_ORDERPRIORITY"
+    ]
+   },
+   "look over thirty, roles": {
+    "stories": 3,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of LINEITEM by LINEITEM.L_SHIPMODE",
+     "rows of LINEITEM by LINEITEM.L_RETURNFLAG",
+     "rows of ORDERS by ORDERS.O_ORDERPRIORITY",
+     "rows of ORDERS by ORDERS.O_ORDERDATE",
+     "sum of LINEITEM.L_TAX by LINEITEM.L_SHIPDATE"
+    ]
+   },
+   "about": "A wholesale distributor of industrial parts that takes orders from business customers, ships them from supplier stock, and is run by its sales and operations managers."
+  },
+  "m01": {
+   "round 1c": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of has_a.amount, by Ingredients.name, the twelve most",
+     "rows of Meal by Meal.meal_type",
+     "sum of has_a.amount by has_a.unit",
+     "rows of Recipe by Recipe.creationdate",
+     "rows of Mealplan by Mealplan.meal_date"
+    ]
+   },
+   "round 1c, roles": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of has_a.amount, by Ingredients.name, the twelve most",
+     "rows of Meal by Meal.meal_type",
+     "sum of has_a.amount by has_a.unit",
+     "rows of Recipe by Recipe.creationdate",
+     "rows of hasInStock by hasInStock.status"
+    ]
+   },
+   "round 1c, screen": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of has_a.amount, by Ingredients.name, the twelve most",
+     "rows of Meal by Meal.meal_type",
+     "rows of Recipe by Recipe.creationdate",
+     "sum of has_a.amount by Recipe.creationdate",
+     "distinct Mealplan in generates by Mealplan.meal_date"
+    ]
+   },
+   "luna and deepseek": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of has_a.amount, by Ingredients.name, the twelve most",
+     "rows of Meal by Meal.last_served",
+     "sum of has_a.amount by Recipe.creationdate",
+     "rows of Meal by Meal.meal_type",
+     "rows of Mealplan by Mealplan.meal_date"
+    ]
+   },
+   "luna and deepseek, roles": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of has_a.amount, by Ingredients.name, the twelve most",
+     "rows of Meal by Meal.last_served",
+     "sum of has_a.amount by Recipe.creationdate",
+     "rows of Meal by Meal.meal_type",
+     "rows of hasInStock by hasInStock.status"
+    ]
+   },
+   "luna and deepseek, screen": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Meal by Meal.last_served",
+     "sum of has_a.amount by Recipe.creationdate",
+     "rows of Meal by Meal.meal_type",
+     "sum of Mealplan.calorie_count by Mealplan.meal_date",
+     "distinct Recipe in has_a by Recipe.creationdate"
+    ]
+   },
+   "luna, deepseek and jev": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of has_a.amount, by Ingredients.name, the twelve most",
+     "sum of has_a.amount, by Recipe (by key), the twelve most",
+     "sum of SupermarketList.amount, by Mealplan (by key), the twelve most",
+     "sum of SupermarketList.amount by Mealplan.meal_date",
+     "rows of Meal by Meal.meal_type"
+    ]
+   },
+   "luna, deepseek and jev, roles": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of has_a.amount, by Ingredients.name, the twelve most",
+     "sum of has_a.amount, by Recipe (by key), the twelve most",
+     "sum of SupermarketList.amount, by Mealplan (by key), the twelve most",
+     "rows of Mealplan by Mealplan.meal_date",
+     "rows of hasInStock by hasInStock.status"
+    ]
+   },
+   "luna, deepseek and jev, screen": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of has_a.amount, by Ingredients.name, the twelve most",
+     "sum of SupermarketList.amount, by Mealplan (by key), the twelve most",
+     "sum of has_a.amount by Recipe.creationdate",
+     "rows of Mealplan by Mealplan.meal_date",
+     "distinct Mealplan in generates by Mealplan.meal_date"
+    ]
+   },
+   "look over ten": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Meal by Meal.meal_type",
+     "rows of Mealplan by Mealplan.meal_date",
+     "rows of Recipe by Recipe.creationdate",
+     "sum of has_a.amount by has_a.unit",
+     "sum of SupermarketList.amount by SupermarketList.unit"
+    ]
+   },
+   "look over ten, roles": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Meal by Meal.meal_type",
+     "rows of Mealplan by Mealplan.meal_date",
+     "sum of has_a.amount by has_a.unit",
+     "sum of SupermarketList.amount by SupermarketList.unit",
+     "sum of has_a.amount, by Ingredients.name, the twelve most"
+    ]
+   },
+   "look over thirty": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Meal by Meal.meal_type",
+     "rows of Mealplan by Mealplan.meal_date",
+     "rows of Recipe by Recipe.creationdate",
+     "sum of has_a.amount by has_a.unit",
+     "rows of Account by Account.plantype"
+    ]
+   },
+   "look over thirty, roles": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Meal by Meal.meal_type",
+     "rows of Mealplan by Mealplan.meal_date",
+     "sum of has_a.amount by has_a.unit",
+     "rows of Account by Account.plantype",
+     "rows of hasInStock by hasInStock.status"
+    ]
+   },
+   "about": "A meal-planning app where households set up profiles with dietary needs, plan meals day by day, and turn each plan into a supermarket list; used by home cooks and families."
+  },
+  "m02": {
+   "round 1c": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of payment_transactions.amount by payment_transactions.date",
+     "rows of loan by loan.date_loan",
+     "rows of loan by loan.status",
+     "rows of approved_loans by approved_loans.status",
+     "rows of clients by clients.status"
+    ]
+   },
+   "round 1c, roles": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of payment_transactions.amount by payment_transactions.date",
+     "rows of loan by loan.date_loan",
+     "rows of loan by loan.status",
+     "rows of approved_loans by approved_loans.status",
+     "rows of clients by clients.status"
+    ]
+   },
+   "round 1c, screen": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of payment_transactions.amount by payment_transactions.date",
+     "rows of loan by loan.date_loan",
+     "rows of clients by clients.status",
+     "rows of approved_loans by approved_loans.date_approved split by approved_loans.status",
+     "distinct clients in loan by loan.date_loan"
+    ]
+   },
+   "luna and deepseek": {
+    "stories": 3,
+    "found": 3,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of payment_transactions.amount by payment_transactions.date",
+     "sum of loan.loan_amount by loan.date_loan",
+     "rows of approved_loans by approved_loans.date_approved",
+     "rows of loan by loan.status",
+     "rows of approved_loans by approved_loans.status"
+    ]
+   },
+   "luna and deepseek, roles": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of payment_transactions.amount by payment_transactions.date",
+     "rows of approved_loans by approved_loans.date_approved",
+     "rows of loan by loan.date_loan split by loan.status",
+     "rows of approved_loans by approved_loans.status",
+     "sum of payment_transactions.amount by payment_transactions.notes"
+    ]
+   },
+   "luna and deepseek, screen": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of payment_transactions.amount by payment_transactions.date",
+     "rows of approved_loans by approved_loans.date_approved",
+     "rows of approved_loans by approved_loans.date_approved split by approved_loans.status",
+     "rows of loan by loan.status",
+     "distinct clients in loan by loan.date_loan"
+    ]
+   },
+   "luna, deepseek and jev": {
+    "stories": 3,
+    "found": 3,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of payment_transactions.amount by payment_transactions.date",
+     "sum of loan.loan_amount by loan.status",
+     "sum of loan.loan_amount by loan.date_loan",
+     "sum of approved_loans.daily_payment by approved_loans.status",
+     "sum of payment_transactions.amount by payment_transactions.notes"
+    ]
+   },
+   "luna, deepseek and jev, roles": {
+    "stories": 3,
+    "found": 3,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of loan.loan_amount by loan.status",
+     "sum of loan.loan_amount by loan.date_loan",
+     "sum of payment_transactions.amount by payment_transactions.notes",
+     "rows of approved_loans by approved_loans.status",
+     "rows of payment_transactions by payment_transactions.date"
+    ]
+   },
+   "luna, deepseek and jev, screen": {
+    "stories": 3,
+    "found": 3,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of payment_transactions.amount by payment_transactions.date",
+     "sum of loan.loan_amount by loan.status",
+     "rows of approved_loans by approved_loans.date_approved split by approved_loans.status",
+     "rows of payment_transactions by payment_transactions.date",
+     "distinct clients in loan by loan.date_loan"
+    ]
+   },
+   "look over ten": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of approved_loans by approved_loans.status",
+     "rows of payment_transactions by payment_transactions.date",
+     "rows of loan by loan.status",
+     "rows of loan by loan.date_loan",
+     "rows of clients by clients.status"
+    ]
+   },
+   "look over ten, roles": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of loan by loan.status",
+     "sum of approved_loans.daily_payment by approved_loans.status",
+     "rows of payment_transactions by payment_transactions.date",
+     "rows of clients by clients.status",
+     "sum of approved_loans.daily_payment by approved_loans.date_approved"
+    ]
+   },
+   "look over thirty": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of approved_loans by approved_loans.status",
+     "rows of payment_transactions by payment_transactions.date",
+     "rows of loan by loan.status",
+     "rows of approved_loans by approved_loans.date_approved",
+     "rows of clients by clients.status"
+    ]
+   },
+   "look over thirty, roles": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of loan by loan.status",
+     "sum of approved_loans.daily_payment by approved_loans.status",
+     "rows of payment_transactions by payment_transactions.date",
+     "rows of clients by clients.status",
+     "rows of payment_transactions by payment_transactions.notes"
+    ]
+   },
+   "about": "A small Philippine micro-lending office that signs up borrowers, approves short daily-payment loans, and collects payments; used by its loan officers and field collectors."
+  },
+  "m03": {
+   "round 1c": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Reimbursements by Reimbursements.DateSubmitted",
+     "rows of Reimbursements, by ReimbursementStatuses.ReimbursementStatus, the twelve most",
+     "rows of Events by Events.StartDate",
+     "rows of Events, by EventTypes.EventType, the twelve most",
+     "rows of ApprovalDates by ApprovalDates.DirectSupervisor"
+    ]
+   },
+   "round 1c, roles": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 0,
+    "decoys": 1,
+    "mirrors": 0,
+    "five": [
+     "rows of Reimbursements by Reimbursements.DateSubmitted",
+     "rows of Reimbursements, by ReimbursementStatuses.ReimbursementStatus, the twelve most",
+     "sum of Events.Cost by Events.StartDate",
+     "rows of Events, by EventTypes.EventType, the twelve most",
+     "rows of Employees, by EmployeeTypes.EmployeeType, the twelve most"
+    ]
+   },
+   "round 1c, screen": {
+    "stories": 3,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 1,
+    "mirrors": 0,
+    "five": [
+     "rows of Reimbursements by Reimbursements.DateSubmitted",
+     "sum of Events.Cost by Events.StartDate",
+     "rows of Employees, by EmployeeTypes.EmployeeType, the twelve most",
+     "rows of Reimbursements by Reimbursements.DateSubmitted split by ReimbursementStatuses.ReimbursementStatus",
+     "distinct Grades in Events by Events.StartDate"
+    ]
+   },
+   "luna and deepseek": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Events by Events.StartDate",
+     "rows of Reimbursements by Reimbursements.DateSubmitted",
+     "rows of Reimbursements, by ReimbursementStatuses.ReimbursementStatus, the twelve most",
+     "rows of Events, by EventTypes.EventType, the twelve most",
+     "rows of ApprovalDates by ApprovalDates.DirectSupervisor"
+    ]
+   },
+   "luna and deepseek, roles": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Events by Events.StartDate",
+     "sum of Reimbursements.ProjectedAmount by Reimbursements.DateSubmitted",
+     "rows of Reimbursements, by ReimbursementStatuses.ReimbursementStatus, the twelve most",
+     "rows of Events, by EventTypes.EventType, the twelve most",
+     "rows of ReimbursementNotes, by NoteReasons.NoteReason, the twelve most"
+    ]
+   },
+   "luna and deepseek, screen": {
+    "stories": 3,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Events by Events.StartDate",
+     "sum of Events.Cost by Events.StartDate",
+     "rows of Reimbursements by Reimbursements.DateSubmitted split by ReimbursementStatuses.ReimbursementStatus",
+     "rows of ReimbursementNotes, by NoteReasons.NoteReason, the twelve most",
+     "distinct Employees in Reimbursements by Reimbursements.DateSubmitted"
+    ]
+   },
+   "luna, deepseek and jev": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Events by Events.StartDate",
+     "rows of Reimbursements by Reimbursements.DateSubmitted",
+     "sum of Reimbursements.ProjectedAmount, by ReimbursementStatuses.ReimbursementStatus, the twelve most",
+     "sum of Events.Cost, by EventTypes.EventType, the twelve most",
+     "rows of ApprovalDates by ApprovalDates.DirectSupervisor"
+    ]
+   },
+   "luna, deepseek and jev, roles": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Events by Events.StartDate",
+     "sum of Reimbursements.ProjectedAmount by Reimbursements.DateSubmitted",
+     "sum of Events.Cost, by EventTypes.EventType, the twelve most",
+     "rows of Reimbursements, by ReimbursementStatuses.ReimbursementStatus, the twelve most",
+     "rows of ReimbursementNotes, by NoteReasons.NoteReason, the twelve most"
+    ]
+   },
+   "luna, deepseek and jev, screen": {
+    "stories": 3,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Events by Events.StartDate",
+     "sum of Events.Cost by Events.StartDate",
+     "rows of Reimbursements by Reimbursements.DateSubmitted split by ReimbursementStatuses.ReimbursementStatus",
+     "rows of ReimbursementNotes, by NoteReasons.NoteReason, the twelve most",
+     "distinct Employees in Reimbursements by Reimbursements.DateSubmitted"
+    ]
+   },
+   "look over ten": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Events by Events.StartDate",
+     "rows of Events, by EventTypes.EventType, the twelve most",
+     "rows of Reimbursements by Reimbursements.DateSubmitted",
+     "rows of Reimbursements, by ReimbursementStatuses.ReimbursementStatus, the twelve most",
+     "rows of ApprovalDates by ApprovalDates.DirectSupervisor"
+    ]
+   },
+   "look over ten, roles": {
+    "stories": 3,
+    "found": 3,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Events by Events.StartDate",
+     "sum of Reimbursements.AmountAwarded by Reimbursements.DateSubmitted",
+     "rows of Events, by EventTypes.EventType, the twelve most",
+     "rows of Reimbursements, by ReimbursementStatuses.ReimbursementStatus, the twelve most",
+     "rows of Reimbursements, by Events (by key), the twelve most"
+    ]
+   },
+   "look over thirty": {
+    "stories": 3,
+    "found": 0,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Events by Events.StartDate",
+     "rows of Reimbursements by ReimbursementStatuses.ReimbursementStatus",
+     "rows of Reimbursements by Reimbursements.DateSubmitted",
+     "rows of Events, by Events.Time, the twelve most",
+     "rows of ApprovalDates by ApprovalDates.DirectSupervisor"
+    ]
+   },
+   "look over thirty, roles": {
+    "stories": 3,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Events by Events.StartDate",
+     "rows of Reimbursements by ReimbursementStatuses.ReimbursementStatus",
+     "sum of Reimbursements.AmountAwarded by Reimbursements.DateSubmitted",
+     "rows of Events, by Events.Time, the twelve most",
+     "rows of Reimbursements, by Employees (named), the twelve most"
+    ]
+   },
+   "about": "An employer's training reimbursement system where staff submit claims for courses, conferences and certifications, supervisors and a benefits coordinator approve them, and the grade a course earns decides what can be paid."
+  },
+  "m04": {
+   "round 1c": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 1,
+    "mirrors": 0,
+    "five": [
+     "rows of orders by orders.orderData",
+     "rows of orders, by status.status, the twelve most",
+     "rows of employeelogintime by employeelogintime.Time",
+     "sum of products.price × products.Quantity, by categories.category, the twelve most",
+     "rows of users, by users.postCode, the twelve most"
+    ]
+   },
+   "round 1c, roles": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of orders by orders.orderData",
+     "rows of orders by status.status",
+     "sum of products.price × products.Quantity, by categories.category, the twelve most",
+     "rows of users, by users.postCode, the twelve most",
+     "rows of users, by users.postCity, the twelve most"
+    ]
+   },
+   "round 1c, screen": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of orders by orders.orderData",
+     "sum of products.price × products.Quantity, by categories.category, the twelve most",
+     "rows of users, by users.postCode, the twelve most",
+     "rows of users, by users.postCity, the twelve most",
+     "rows of orders by orders.orderData split by status.status"
+    ]
+   },
+   "luna and deepseek": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 1,
+    "mirrors": 0,
+    "five": [
+     "rows of orders by orders.orderData",
+     "rows of orders, by status.status, the twelve most",
+     "rows of employeelogintime by employeelogintime.Time",
+     "rows of products, by categories.category, the twelve most",
+     "rows of users, by users.postCode, the twelve most"
+    ]
+   },
+   "luna and deepseek, roles": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of orders by orders.orderData",
+     "rows of orders by status.status",
+     "sum of products.price × products.Quantity, by categories.category, the twelve most",
+     "rows of users, by users.postCode, the twelve most",
+     "rows of products, by products.Specification, the twelve most"
+    ]
+   },
+   "luna and deepseek, screen": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of orders by orders.orderData",
+     "rows of products, by categories.category, the twelve most",
+     "rows of orders by orders.orderData split by status.status",
+     "rows of users, by users.postCode, the twelve most",
+     "rows of products, by products.Specification, the twelve most"
+    ]
+   },
+   "luna, deepseek and jev": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 1,
+    "mirrors": 0,
+    "five": [
+     "rows of orders by orders.orderData",
+     "sum of products.price × products.Quantity, by categories.category, the twelve most",
+     "rows of orders, by status.status, the twelve most",
+     "sum of products.price × products.Quantity, by products.name, the twelve most",
+     "rows of employeelogintime by employeelogintime.Time"
+    ]
+   },
+   "luna, deepseek and jev, roles": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of orders by orders.orderData",
+     "sum of products.price × products.Quantity, by categories.category, the twelve most",
+     "rows of orders by status.status",
+     "sum of products.price × products.Quantity, by products.name, the twelve most",
+     "rows of users, by users.postCode, the twelve most"
+    ]
+   },
+   "luna, deepseek and jev, screen": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of orders by orders.orderData",
+     "sum of products.price × products.Quantity, by categories.category, the twelve most",
+     "sum of products.price × products.Quantity, by products.name, the twelve most",
+     "rows of orders by orders.orderData split by status.status",
+     "rows of users, by users.postCode, the twelve most"
+    ]
+   },
+   "look over ten": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 1,
+    "mirrors": 0,
+    "five": [
+     "rows of employeelogintime by employeelogintime.Time",
+     "rows of orders by status.status",
+     "rows of orders by orders.orderData",
+     "rows of orders, by orders.postCode, the twelve most",
+     "rows of orders, by orders.postCity, the twelve most"
+    ]
+   },
+   "look over ten, roles": {
+    "stories": 2,
+    "found": 0,
+    "found over time": 0,
+    "decoys": 1,
+    "mirrors": 0,
+    "five": [
+     "rows of employeelogintime by employeelogintime.Time",
+     "rows of orders by status.status",
+     "rows of orders, by orders.postCode, the twelve most",
+     "rows of orders, by orders.postCity, the twelve most",
+     "sum of products.price × products.Quantity, by categories.category, the twelve most"
+    ]
+   },
+   "look over thirty": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 2,
+    "decoys": 1,
+    "mirrors": 0,
+    "five": [
+     "rows of employeelogintime by employeelogintime.Time",
+     "rows of orders by status.status",
+     "rows of orders by orders.orderData split by status.status",
+     "rows of orders, by orders.postCode, the twelve most",
+     "rows of orders, by orders.postCity, the twelve most"
+    ]
+   },
+   "look over thirty, roles": {
+    "stories": 2,
+    "found": 0,
+    "found over time": 0,
+    "decoys": 1,
+    "mirrors": 0,
+    "five": [
+     "rows of employeelogintime by employeelogintime.Time",
+     "rows of orders by status.status",
+     "rows of orders, by orders.postCode, the twelve most",
+     "rows of orders, by orders.postCity, the twelve most",
+     "sum of products.price × products.Quantity by categories.category"
+    ]
+   },
+   "about": "A small online shop where customers place orders for catalogue products, and staff log in to a back office to fulfil and track those orders."
+  },
+  "m05": {
+   "round 1c": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of expenses by expenses.date",
+     "rows of vouchers by vouchers.status",
+     "rows of expenses by expenses.created_at",
+     "sum of vouchers.approved_amount by vouchers.date",
+     "sum of payments.amount by payments.date"
+    ]
+   },
+   "round 1c, roles": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of expenses by expenses.date",
+     "rows of vouchers by vouchers.status",
+     "sum of expenses.amount by expenses.created_at",
+     "sum of vouchers.approved_amount by vouchers.date",
+     "sum of payments.amount by payments.date"
+    ]
+   },
+   "round 1c, screen": {
+    "stories": 3,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of expenses by expenses.date",
+     "sum of expenses.amount by expenses.date",
+     "sum of vouchers.approved_amount by vouchers.created_at",
+     "rows of vouchers by vouchers.date split by vouchers.status",
+     "distinct employees in payments by payments.date"
+    ]
+   },
+   "luna and deepseek": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of expenses.amount by expenses.date",
+     "sum of payments.amount by payments.date",
+     "rows of vouchers by vouchers.date",
+     "sum of expenses.amount by expenses.created_at",
+     "rows of vouchers by vouchers.status"
+    ]
+   },
+   "luna and deepseek, roles": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of expenses by expenses.date",
+     "sum of payments.amount by payments.date",
+     "sum of vouchers.approved_amount by vouchers.date",
+     "sum of expenses.amount by expenses.created_at",
+     "rows of vouchers by vouchers.status"
+    ]
+   },
+   "luna and deepseek, screen": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of expenses.amount by expenses.date",
+     "rows of expenses by expenses.date",
+     "rows of vouchers by vouchers.date split by vouchers.status",
+     "sum of payments.amount by payments.created_at",
+     "distinct employees in payments by payments.date"
+    ]
+   },
+   "luna, deepseek and jev": {
+    "stories": 3,
+    "found": 3,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of expenses.amount by expenses.date",
+     "sum of vouchers.approved_amount by vouchers.status",
+     "sum of vouchers.approved_amount by vouchers.date",
+     "sum of expenses.amount, by expense_categories (by key), the twelve most",
+     "sum of payments.amount by payments.date"
+    ]
+   },
+   "luna, deepseek and jev, roles": {
+    "stories": 3,
+    "found": 3,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of vouchers.approved_amount by vouchers.status",
+     "sum of vouchers.approved_amount by vouchers.date",
+     "sum of expenses.amount, by expense_categories (by key), the twelve most",
+     "sum of payments.amount by payments.date",
+     "rows of expenses by expenses.date"
+    ]
+   },
+   "luna, deepseek and jev, screen": {
+    "stories": 3,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of expenses.amount by expenses.date",
+     "rows of expenses by expenses.date",
+     "sum of vouchers.approved_amount, by employees (by key), the twelve most",
+     "rows of vouchers by vouchers.date split by vouchers.status",
+     "distinct employees in payments by payments.date"
+    ]
+   },
+   "look over ten": {
+    "stories": 3,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of expenses by expenses.date",
+     "rows of vouchers by vouchers.status",
+     "rows of vouchers by vouchers.date",
+     "rows of expenses by expenses.created_at",
+     "rows of vouchers by vouchers.created_at"
+    ]
+   },
+   "look over ten, roles": {
+    "stories": 3,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of expenses by expenses.date",
+     "rows of vouchers by vouchers.status",
+     "sum of vouchers.approved_amount by vouchers.date",
+     "sum of vouchers.approved_amount by vouchers.created_at",
+     "sum of expenses.amount by expenses.created_at"
+    ]
+   },
+   "look over thirty": {
+    "stories": 3,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of expenses by expenses.date",
+     "rows of vouchers by vouchers.status",
+     "rows of vouchers by vouchers.date",
+     "rows of expenses by expense_categories.name",
+     "rows of bills by bills.created_at"
+    ]
+   },
+   "look over thirty, roles": {
+    "stories": 3,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of expenses by expenses.date",
+     "rows of vouchers by vouchers.status",
+     "sum of vouchers.approved_amount by vouchers.date",
+     "rows of expenses by expense_categories.name",
+     "sum of vouchers.approved_amount by vouchers.created_at"
+    ]
+   },
+   "about": "An internal expense-claims system where field staff submit expenses against job vouchers, accounts approve them, and approved money is paid out to each employee's wallet."
+  },
+  "m06": {
+   "round 1c": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of BOOKING by BOOKING.BOOKING_STATUS",
+     "rows of BOOKING by BOOKING.FROM_DT_TIME",
+     "rows of BILLING by BILLING.BILL_DATE",
+     "rows of BILLING by BILLING.BILL_STATUS",
+     "rows of CUSTOMER by CUSTOMER.MEMBERSHIP_TYPE"
+    ]
+   },
+   "round 1c, roles": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of BOOKING by BOOKING.FROM_DT_TIME",
+     "sum of BOOKING.AMOUNT by BOOKING.BOOKING_STATUS",
+     "sum of BILLING.TOTAL_LATE_FEE by BILLING.BILL_DATE",
+     "rows of BILLING by BILLING.BILL_STATUS",
+     "rows of CUSTOMER by CUSTOMER.MEMBERSHIP_TYPE"
+    ]
+   },
+   "round 1c, screen": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of BOOKING by BOOKING.FROM_DT_TIME",
+     "sum of BOOKING.AMOUNT by BOOKING.FROM_DT_TIME",
+     "rows of CUSTOMER by CUSTOMER.MEMBERSHIP_TYPE",
+     "rows of BILLING by BILLING.BILL_DATE split by BILLING.BILL_STATUS",
+     "distinct BOOKING in BILLING by BILLING.BILL_DATE"
+    ]
+   },
+   "luna and deepseek": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of BOOKING by BOOKING.FROM_DT_TIME",
+     "rows of BOOKING, by BIKE.MODEL_NAME, the twelve most",
+     "sum of BILLING.TOTAL_AMOUNT by BILLING.BILL_DATE",
+     "rows of BILLING by BILLING.BILL_STATUS",
+     "rows of BIKE, by LOCATION.LOCATION_NAME, the twelve most"
+    ]
+   },
+   "luna and deepseek, roles": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of BOOKING by BOOKING.FROM_DT_TIME",
+     "sum of BOOKING.AMOUNT, by DISCOUNT.DISCOUNT_NAME, the twelve most",
+     "sum of BILLING.TOTAL_AMOUNT by BILLING.BILL_DATE",
+     "rows of BILLING by BILLING.BILL_STATUS",
+     "rows of BIKE, by LOCATION.LOCATION_NAME, the twelve most"
+    ]
+   },
+   "luna and deepseek, screen": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of BOOKING by BOOKING.FROM_DT_TIME",
+     "sum of BOOKING.AMOUNT by BOOKING.FROM_DT_TIME",
+     "rows of BILLING by BILLING.BILL_DATE split by BILLING.BILL_STATUS",
+     "rows of BIKE, by LOCATION.LOCATION_NAME, the twelve most",
+     "distinct BOOKING in BILLING by BILLING.BILL_DATE"
+    ]
+   },
+   "luna, deepseek and jev": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of BOOKING.AMOUNT by BOOKING.FROM_DT_TIME",
+     "sum of BOOKING.AMOUNT by BOOKING.BOOKING_STATUS",
+     "sum of BILLING.TOTAL_AMOUNT by BILLING.BILL_DATE",
+     "sum of BILLING.TOTAL_AMOUNT by BILLING.BILL_STATUS",
+     "rows of BIKE, by LOCATION.LOCATION_NAME, the twelve most"
+    ]
+   },
+   "luna, deepseek and jev, roles": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of BOOKING.AMOUNT by BOOKING.BOOKING_STATUS",
+     "rows of BOOKING by BOOKING.FROM_DT_TIME",
+     "sum of BILLING.TOTAL_AMOUNT by BILLING.BILL_DATE",
+     "sum of BILLING.TOTAL_AMOUNT by BILLING.BILL_STATUS",
+     "rows of BIKE, by LOCATION.LOCATION_NAME, the twelve most"
+    ]
+   },
+   "luna, deepseek and jev, screen": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of BOOKING.AMOUNT by BOOKING.FROM_DT_TIME",
+     "rows of BOOKING by BOOKING.FROM_DT_TIME",
+     "rows of BILLING by BILLING.BILL_DATE split by BILLING.BILL_STATUS",
+     "rows of BIKE, by LOCATION.LOCATION_NAME, the twelve most",
+     "distinct BOOKING in BILLING by BILLING.BILL_DATE"
+    ]
+   },
+   "look over ten": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of BOOKING by BOOKING.BOOKING_STATUS",
+     "rows of BOOKING by BOOKING.FROM_DT_TIME",
+     "rows of BILLING by BILLING.BILL_STATUS",
+     "rows of BILLING by BILLING.BILL_DATE",
+     "rows of CUSTOMER by CUSTOMER.MEMBERSHIP_TYPE"
+    ]
+   },
+   "look over ten, roles": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of BILLING by BILLING.BILL_STATUS",
+     "rows of CUSTOMER by CUSTOMER.MEMBERSHIP_TYPE",
+     "sum of BOOKING.AMOUNT by BOOKING.BOOKING_STATUS",
+     "rows of BOOKING by BOOKING.FROM_DT_TIME",
+     "rows of BOOKING, by DISCOUNT.DISCOUNT_NAME, the twelve most"
+    ]
+   },
+   "look over thirty": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of BOOKING by BOOKING.BOOKING_STATUS",
+     "rows of BOOKING by BOOKING.FROM_DT_TIME",
+     "rows of BILLING by BILLING.BILL_STATUS",
+     "rows of BILLING by BILLING.BILL_DATE",
+     "rows of CUSTOMER by CUSTOMER.MEMBERSHIP_TYPE"
+    ]
+   },
+   "look over thirty, roles": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of BILLING by BILLING.BILL_STATUS",
+     "rows of CUSTOMER by CUSTOMER.MEMBERSHIP_TYPE",
+     "sum of BOOKING.AMOUNT by BOOKING.BOOKING_STATUS",
+     "rows of BOOKING by BOOKING.FROM_DT_TIME",
+     "rows of BOOKING, by DISCOUNT.DISCOUNT_NAME, the twelve most"
+    ]
+   },
+   "about": "A bike rental business with several branches, where customers book bikes for set dates, pick them up and return them, and get billed; its counter staff and operations manager use the system every week."
+  },
+  "m07": {
+   "round 1c": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Reservation by Reservation.status",
+     "rows of Reservation by Reservation.resvDate",
+     "sum of CheckOut.totalPrice by CheckOut.date",
+     "sum of ReservationDetail.roomPrice, by Room.roomStatus, the twelve most",
+     "sum of CheckOut.totalPrice, by Reservation (by key), the twelve most"
+    ]
+   },
+   "round 1c, roles": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Reservation by Reservation.status",
+     "rows of Reservation by Reservation.resvDate",
+     "sum of CheckOut.totalPrice by CheckOut.date",
+     "sum of ReservationDetail.roomPrice, by Room.roomStatus, the twelve most",
+     "sum of CheckOut.totalPrice, by Reservation (by key), the twelve most"
+    ]
+   },
+   "round 1c, screen": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Reservation by Reservation.resvDate",
+     "sum of CheckOut.totalPrice by CheckOut.date",
+     "sum of ReservationDetail.roomPrice, by Room.roomStatus, the twelve most",
+     "rows of Reservation by Reservation.resvDate split by Reservation.status",
+     "distinct Reservation in CheckOut by CheckOut.date"
+    ]
+   },
+   "luna and deepseek": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Reservation by Reservation.resvDate",
+     "sum of CheckOut.totalPrice by CheckOut.date",
+     "rows of Reservation by Reservation.status",
+     "sum of CheckOut.totalPrice, by Reservation (by key), the twelve most",
+     "sum of ReservationDetail.roomPrice, by Room.roomStatus, the twelve most"
+    ]
+   },
+   "luna and deepseek, roles": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Reservation by Reservation.resvDate",
+     "sum of CheckOut.totalPrice by CheckOut.date",
+     "rows of Reservation by Reservation.status",
+     "sum of CheckOut.totalPrice, by Reservation (by key), the twelve most",
+     "sum of ReservationDetail.roomPrice, by Room.roomStatus, the twelve most"
+    ]
+   },
+   "luna and deepseek, screen": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Reservation by Reservation.resvDate",
+     "sum of CheckOut.totalPrice by CheckOut.date",
+     "rows of Reservation by Reservation.resvDate split by Reservation.status",
+     "sum of ReservationDetail.roomPrice, by Room.roomStatus, the twelve most",
+     "distinct Reservation in CheckOut by CheckOut.date"
+    ]
+   },
+   "luna, deepseek and jev": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of CheckOut.totalPrice by CheckOut.date",
+     "rows of Reservation by Reservation.resvDate",
+     "rows of Reservation by Reservation.status",
+     "sum of CheckOut.totalPrice, by Reservation (by key), the twelve most",
+     "sum of ReservationDetail.roomPrice, by Room.roomStatus, the twelve most"
+    ]
+   },
+   "luna, deepseek and jev, roles": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of CheckOut.totalPrice by CheckOut.date",
+     "rows of Reservation by Reservation.resvDate",
+     "rows of Reservation by Reservation.status",
+     "sum of CheckOut.totalPrice, by Reservation (by key), the twelve most",
+     "sum of ReservationDetail.roomPrice, by Room.roomStatus, the twelve most"
+    ]
+   },
+   "luna, deepseek and jev, screen": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of CheckOut.totalPrice by CheckOut.date",
+     "rows of Reservation by Reservation.resvDate",
+     "sum of CheckOut.totalPrice, by Reservation (by key), the twelve most",
+     "rows of Reservation by Reservation.resvDate split by Reservation.status",
+     "distinct Reservation in ReservationDetail by Reservation.resvDate"
+    ]
+   },
+   "look over ten": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Reservation by Reservation.status",
+     "rows of Reservation by Reservation.resvDate",
+     "rows of CheckOut by CheckOut.date",
+     "rows of Reservation, by User.userName, the twelve most",
+     "rows of Reservation by Reservation.checkInDate"
+    ]
+   },
+   "look over ten, roles": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Reservation by Reservation.status",
+     "rows of Reservation by Reservation.resvDate",
+     "rows of Reservation, by User.userName, the twelve most",
+     "sum of CheckOut.totalPrice by CheckOut.date",
+     "rows of Reservation, by Guest (named), the twelve most"
+    ]
+   },
+   "look over thirty": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Reservation by Reservation.status",
+     "rows of Reservation by Reservation.resvDate",
+     "rows of Reservation by User.contact",
+     "rows of CheckOut by CheckOut.date",
+     "rows of Reservation by User.userRole"
+    ]
+   },
+   "look over thirty, roles": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Reservation by Reservation.status",
+     "rows of Reservation by User.contact",
+     "rows of Reservation by Reservation.resvDate",
+     "rows of Reservation by User.userRole",
+     "sum of CheckOut.totalPrice by CheckOut.date"
+    ]
+   },
+   "about": "A hotel's front-desk system where guests reserve rooms, check in and check out, used by reception staff and the hotel manager."
+  },
+  "m08": {
+   "round 1c": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of rentals by rentals.RentDate",
+     "rows of users by users.Age",
+     "rows of users by users.Status",
+     "rows of cars, by colors.Name, the twelve most",
+     "rows of cars, by brands.Name, the twelve most"
+    ]
+   },
+   "round 1c, roles": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 2,
+    "decoys": 1,
+    "mirrors": 0,
+    "five": [
+     "rows of rentals by rentals.RentDate",
+     "rows of users by users.Status",
+     "rows of cars, by brands.Name, the twelve most",
+     "sum of cars.DailyPrice, by colors.Name, the twelve most",
+     "rows of useroperationclaims, by operationclaims.Name, the twelve most"
+    ]
+   },
+   "round 1c, screen": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of rentals by rentals.RentDate",
+     "rows of cars, by colors.Name, the twelve most",
+     "sum of cars.DailyPrice by cars.ModelYear",
+     "rows of users by users.Age split by users.Status",
+     "distinct users in customers by users.Age"
+    ]
+   },
+   "luna and deepseek": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of rentals by rentals.RentDate",
+     "rows of cars, by colors.Name, the twelve most",
+     "rows of cars by cars.ModelYear",
+     "rows of users by users.Age",
+     "rows of rentals by rentals.ReturnDate"
+    ]
+   },
+   "luna and deepseek, roles": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of rentals by rentals.RentDate",
+     "rows of cars, by colors.Name, the twelve most",
+     "sum of cars.DailyPrice by cars.ModelYear",
+     "rows of users by users.Status",
+     "rows of rentals, by rentals.Id, the twelve most"
+    ]
+   },
+   "luna and deepseek, screen": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of rentals by rentals.RentDate",
+     "rows of cars, by colors.Name, the twelve most",
+     "sum of cars.DailyPrice by cars.ModelYear",
+     "rows of users by users.Age split by users.Status",
+     "distinct users in customers by users.Age"
+    ]
+   },
+   "luna, deepseek and jev": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of rentals by rentals.RentDate",
+     "sum of cars.DailyPrice, by colors.Name, the twelve most",
+     "sum of cars.DailyPrice, by brands.Name, the twelve most",
+     "rows of users by users.Status",
+     "rows of rentals by rentals.ReturnDate"
+    ]
+   },
+   "luna, deepseek and jev, roles": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of rentals by rentals.RentDate",
+     "sum of cars.DailyPrice, by colors.Name, the twelve most",
+     "sum of cars.DailyPrice, by brands.Name, the twelve most",
+     "rows of users by users.Status",
+     "rows of rentals, by rentals.Id, the twelve most"
+    ]
+   },
+   "luna, deepseek and jev, screen": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of rentals by rentals.RentDate",
+     "sum of cars.DailyPrice, by colors.Name, the twelve most",
+     "sum of cars.DailyPrice by cars.ModelYear",
+     "rows of users by users.Age split by users.Status",
+     "distinct users in customers by users.Age"
+    ]
+   },
+   "look over ten": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of rentals by rentals.RentDate",
+     "rows of users by users.Status",
+     "rows of users by users.Age",
+     "rows of cars, by cars.Description, the twelve most",
+     "rows of rentals by rentals.ReturnDate"
+    ]
+   },
+   "look over ten, roles": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of rentals by rentals.RentDate",
+     "rows of users by users.Status",
+     "rows of cars, by cars.Description, the twelve most",
+     "rows of cars, by brands.Name, the twelve most",
+     "sum of cars.DailyPrice, by colors.Name, the twelve most"
+    ]
+   },
+   "look over thirty": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of rentals by rentals.RentDate",
+     "rows of users by users.Status",
+     "rows of users by users.Age",
+     "rows of cars, by cars.Description, the twelve most",
+     "rows of rentals by rentals.ReturnDate"
+    ]
+   },
+   "look over thirty, roles": {
+    "stories": 2,
+    "found": 2,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of rentals by rentals.RentDate",
+     "sum of cars.DailyPrice by cars.ModelYear",
+     "rows of users by users.Status",
+     "rows of cars, by cars.Description, the twelve most",
+     "average of cars.DailyPrice, by colors.Name, the twelve most"
+    ]
+   },
+   "about": "A car rental company that lists its fleet by brand, model, color and daily price, takes bookings from individual and corporate customers, and is run by its branch managers and staff."
+  },
+  "m09": {
+   "round 1c": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of DVD by DVD.DVDReleaseDate",
+     "rows of DVD, by Genre.GenreName, the twelve most",
+     "rows of Rental by Rental.RentalRequestDate",
+     "rows of Payment by Payment.AmountPaidDate",
+     "rows of RentalQueue by RentalQueue.DateAddedInQueue"
+    ]
+   },
+   "round 1c, roles": {
+    "stories": 2,
+    "found": 0,
+    "found over time": 0,
+    "decoys": 2,
+    "mirrors": 0,
+    "five": [
+     "rows of DVD by DVD.DVDReleaseDate",
+     "rows of MoviePersonRole, by Role.RoleName, the twelve most",
+     "rows of ZipCode, by State.StateName, the twelve most",
+     "rows of ZipCode, by City.CityName, the twelve most",
+     "sum of DVD.DVDQuantityOnRent, by Genre.GenreName, the twelve most"
+    ]
+   },
+   "round 1c, screen": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 1,
+    "mirrors": 0,
+    "five": [
+     "rows of DVD by DVD.DVDReleaseDate",
+     "rows of MoviePersonRole, by Role.RoleName, the twelve most",
+     "rows of ZipCode, by State.StateName, the twelve most",
+     "sum of DVD.DVDQuantityOnRent by DVD.DVDReleaseDate",
+     "distinct DVD in Rental by Rental.RentalRequestDate"
+    ]
+   },
+   "luna and deepseek": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Rental by Rental.RentalRequestDate",
+     "rows of DVD by DVD.DVDReleaseDate",
+     "rows of DVD, by Genre.GenreName, the twelve most",
+     "rows of Payment by Payment.AmountPaidDate",
+     "rows of Rental by Rental.RentalShippedDate"
+    ]
+   },
+   "luna and deepseek, roles": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 1,
+    "mirrors": 0,
+    "five": [
+     "rows of Rental by Rental.RentalRequestDate",
+     "rows of DVD, by Genre.GenreName, the twelve most",
+     "rows of Rental, by DVD (by key), the twelve most",
+     "rows of ZipCode, by State.StateName, the twelve most",
+     "sum of DVD.DVDQuantityOnRent by DVD.DVDReleaseDate"
+    ]
+   },
+   "luna and deepseek, screen": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Rental by Rental.RentalRequestDate",
+     "rows of DVD, by Genre.GenreName, the twelve most",
+     "rows of MoviePersonRole, by Role.RoleName, the twelve most",
+     "sum of DVD.DVDQuantityOnRent by DVD.DVDReleaseDate",
+     "distinct DVD in Rental by Rental.RentalRequestDate"
+    ]
+   },
+   "luna, deepseek and jev": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of DVD by DVD.DVDReleaseDate",
+     "rows of Rental by Rental.RentalRequestDate",
+     "sum of DVD.DVDQuantityOnHand, by Genre.GenreName, the twelve most",
+     "rows of Payment by Payment.AmountPaidDate",
+     "rows of RentalQueue by RentalQueue.DateAddedInQueue"
+    ]
+   },
+   "luna, deepseek and jev, roles": {
+    "stories": 2,
+    "found": 0,
+    "found over time": 0,
+    "decoys": 1,
+    "mirrors": 0,
+    "five": [
+     "rows of DVD by DVD.DVDReleaseDate",
+     "sum of DVD.DVDQuantityOnHand, by Genre.GenreName, the twelve most",
+     "rows of Rental, by DVD (by key), the twelve most",
+     "rows of Rental, by Rating.RatingName, the twelve most",
+     "rows of ZipCode, by State.StateName, the twelve most"
+    ]
+   },
+   "luna, deepseek and jev, screen": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of DVD by DVD.DVDReleaseDate",
+     "rows of Rental, by DVD (by key), the twelve most",
+     "rows of MoviePersonRole, by Role.RoleName, the twelve most",
+     "sum of DVD.DVDQuantityOnRent by DVD.DVDReleaseDate",
+     "distinct DVD in Rental by Rental.RentalRequestDate"
+    ]
+   },
+   "look over ten": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Rental by Rental.RentalRequestDate",
+     "rows of DVD, by Genre.GenreName, the twelve most",
+     "rows of RentalQueue by RentalQueue.DateAddedInQueue",
+     "rows of DVD, by Rating.RatingName, the twelve most",
+     "rows of Payment by Payment.AmountPaidDate"
+    ]
+   },
+   "look over ten, roles": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Rental by Rental.RentalRequestDate",
+     "rows of DVD, by Genre.GenreName, the twelve most",
+     "rows of DVD, by Rating.RatingName, the twelve most",
+     "sum of DVD.DVDQuantityOnHand by DVD.DVDReleaseDate"
+    ]
+   },
+   "look over thirty": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of Rental by Rental.RentalRequestDate",
+     "rows of DVD, by Genre.GenreName, the twelve most",
+     "rows of RentalQueue by RentalQueue.DateAddedInQueue",
+     "rows of MoviePersonRole, by Role.RoleName, the twelve most",
+     "rows of Payment by Payment.AmountPaidDate"
+    ]
+   },
+   "look over thirty, roles": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 1,
+    "mirrors": 0,
+    "five": [
+     "rows of Rental by Rental.RentalRequestDate",
+     "rows of MoviePersonRole, by Role.RoleName, the twelve most",
+     "rows of DVD, by Rating.RatingName, the twelve most",
+     "rows of ZipCode, by State.StateName, the twelve most",
+     "sum of DVD.DVDQuantityOnRent, by Genre.GenreName, the twelve most"
+    ]
+   },
+   "about": "A DVD-by-mail rental service where members pay a monthly fee, queue titles, and get DVDs shipped and returned; its staff check rentals and payments each week."
+  },
+  "m10": {
+   "round 1c": {
+    "stories": 3,
+    "found": 3,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of tbl_peserta by tbl_peserta.tgl_lahir",
+     "rows of tbl_peserta by tbl_peserta.status_verifikasi",
+     "rows of tbl_jawaban by tbl_jawaban.status_jawaban",
+     "rows of tbl_jawaban by tbl_jawaban.waktu_mulai",
+     "sum of tbl_nilai.nilai_peserta, by tbl_soal (by key), the twelve most"
+    ]
+   },
+   "round 1c, roles": {
+    "stories": 3,
+    "found": 3,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of tbl_peserta by tbl_peserta.tgl_lahir",
+     "rows of tbl_peserta by tbl_peserta.status_verifikasi",
+     "rows of tbl_jawaban by tbl_jawaban.status_jawaban",
+     "rows of tbl_jawaban, by tbl_jawaban.list_soal, the twelve most",
+     "sum of tbl_nilai.nilai_peserta, by tbl_soal (by key), the twelve most"
+    ]
+   },
+   "round 1c, screen": {
+    "stories": 3,
+    "found": 3,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of tbl_peserta by tbl_peserta.tgl_lahir",
+     "rows of tbl_jawaban by tbl_jawaban.status_jawaban",
+     "sum of tbl_nilai.nilai_peserta, by tbl_soal (by key), the twelve most",
+     "rows of tbl_peserta by tbl_peserta.tgl_lahir split by tbl_peserta.status_verifikasi",
+     "distinct tbl_peserta in tbl_jawaban by tbl_jawaban.waktu_mulai"
+    ]
+   },
+   "luna and deepseek": {
+    "stories": 3,
+    "found": 3,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of tbl_peserta by tbl_peserta.tgl_lahir",
+     "rows of tbl_peserta by tbl_peserta.status_verifikasi",
+     "rows of tbl_jawaban by tbl_jawaban.waktu_mulai",
+     "rows of tbl_jawaban by tbl_jawaban.status_jawaban",
+     "rows of tbl_nilai, by tbl_soal (by key), the twelve most"
+    ]
+   },
+   "luna and deepseek, roles": {
+    "stories": 3,
+    "found": 3,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of tbl_peserta by tbl_peserta.tgl_lahir",
+     "rows of tbl_peserta by tbl_peserta.status_verifikasi",
+     "rows of tbl_jawaban by tbl_jawaban.waktu_mulai split by tbl_jawaban.status_jawaban",
+     "rows of tbl_jawaban, by tbl_peserta (by key), the twelve most",
+     "rows of tbl_nilai, by tbl_soal (by key), the twelve most"
+    ]
+   },
+   "luna and deepseek, screen": {
+    "stories": 3,
+    "found": 3,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of tbl_peserta by tbl_peserta.tgl_lahir",
+     "rows of tbl_peserta by tbl_peserta.status_verifikasi",
+     "rows of tbl_jawaban by tbl_jawaban.waktu_mulai split by tbl_jawaban.status_jawaban",
+     "rows of tbl_nilai, by tbl_soal (by key), the twelve most",
+     "distinct tbl_peserta in tbl_jawaban by tbl_jawaban.waktu_mulai"
+    ]
+   },
+   "luna, deepseek and jev": {
+    "stories": 3,
+    "found": 2,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of tbl_peserta by tbl_peserta.status_verifikasi",
+     "rows of tbl_peserta, by tbl_peserta.status_pendaftaran, the twelve most",
+     "rows of tbl_jawaban by tbl_jawaban.status_jawaban",
+     "rows of tbl_jawaban by tbl_jawaban.waktu_mulai",
+     "rows of tbl_nilai, by tbl_peserta (by key), the twelve most"
+    ]
+   },
+   "luna, deepseek and jev, roles": {
+    "stories": 3,
+    "found": 3,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of tbl_peserta by tbl_peserta.status_verifikasi",
+     "rows of tbl_jawaban by tbl_jawaban.status_jawaban",
+     "rows of tbl_peserta by tbl_peserta.tgl_lahir",
+     "rows of tbl_jawaban, by tbl_peserta (by key), the twelve most",
+     "rows of tbl_nilai, by tbl_soal (by key), the twelve most"
+    ]
+   },
+   "luna, deepseek and jev, screen": {
+    "stories": 3,
+    "found": 3,
+    "found over time": 2,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of tbl_jawaban by tbl_jawaban.status_jawaban",
+     "rows of tbl_peserta by tbl_peserta.tgl_lahir",
+     "rows of tbl_peserta by tbl_peserta.tgl_lahir split by tbl_peserta.status_verifikasi",
+     "rows of tbl_nilai, by tbl_peserta (by key), the twelve most",
+     "distinct tbl_peserta in tbl_jawaban by tbl_jawaban.waktu_mulai"
+    ]
+   },
+   "look over ten": {
+    "stories": 3,
+    "found": 3,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of tbl_peserta by tbl_peserta.status_verifikasi",
+     "rows of tbl_peserta by tbl_peserta.tgl_lahir",
+     "rows of tbl_peserta by tbl_peserta.jenis_kelamin",
+     "rows of tbl_jawaban by tbl_jawaban.waktu_mulai",
+     "rows of tbl_jawaban by tbl_jawaban.status_jawaban"
+    ]
+   },
+   "look over ten, roles": {
+    "stories": 3,
+    "found": 3,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of tbl_peserta by tbl_peserta.status_verifikasi",
+     "rows of tbl_peserta by tbl_peserta.jenis_kelamin",
+     "rows of tbl_peserta by tbl_peserta.tgl_lahir",
+     "rows of tbl_jawaban by tbl_jawaban.status_jawaban",
+     "rows of tbl_peserta, by tbl_peserta.status_pendaftaran, the twelve most"
+    ]
+   },
+   "look over thirty": {
+    "stories": 3,
+    "found": 3,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of tbl_peserta by tbl_peserta.status_verifikasi",
+     "rows of tbl_peserta by tbl_peserta.tgl_lahir",
+     "rows of tbl_peserta by tbl_peserta.jenis_kelamin",
+     "rows of tbl_jawaban by tbl_jawaban.waktu_mulai",
+     "rows of tbl_jawaban by tbl_jawaban.status_jawaban"
+    ]
+   },
+   "look over thirty, roles": {
+    "stories": 3,
+    "found": 3,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of tbl_peserta by tbl_peserta.status_verifikasi",
+     "rows of tbl_peserta by tbl_peserta.jenis_kelamin",
+     "rows of tbl_peserta by tbl_peserta.tgl_lahir",
+     "rows of tbl_jawaban by tbl_jawaban.status_jawaban",
+     "rows of tbl_peserta, by tbl_peserta.status_pendaftaran, the twelve most"
+    ]
+   },
+   "about": "An Indonesian online selection system for lab positions in which applicants register, have their documents verified, and sit timed computer-based tests; admins check registrations and results each week."
+  },
+  "m11": {
+   "round 1c": {
+    "stories": 2,
+    "found": 0,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of event_form by event_form.event_type",
+     "rows of event_form by event_form.curr_date",
+     "rows of communication_table by communication_table.approval_status",
+     "rows of communication_table, by event_form (by key), the twelve most",
+     "rows of employees, by employees.address, the twelve most"
+    ]
+   },
+   "round 1c, roles": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of event_form by event_form.curr_date",
+     "rows of communication_table by communication_table.approval_status",
+     "sum of event_form.event_cost by event_form.event_type",
+     "rows of communication_table, by event_form (by key), the twelve most",
+     "rows of employees, by employees.address, the twelve most"
+    ]
+   },
+   "round 1c, screen": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of event_form by event_form.curr_date",
+     "sum of event_form.event_cost by event_form.curr_date",
+     "rows of employees, by employees.address, the twelve most",
+     "rows of communication_table by event_form.curr_date split by communication_table.approval_status",
+     "distinct event_form in communication_table by event_form.curr_date"
+    ]
+   },
+   "luna and deepseek": {
+    "stories": 2,
+    "found": 0,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of event_form by event_form.curr_date",
+     "rows of event_form by event_form.event_type",
+     "rows of communication_table by communication_table.approval_status",
+     "rows of communication_table, by event_form (by key), the twelve most",
+     "rows of balanceinfo, by employees (named), the twelve most"
+    ]
+   },
+   "luna and deepseek, roles": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of event_form by event_form.curr_date",
+     "rows of communication_table by communication_table.approval_status",
+     "sum of event_form.event_cost by event_form.event_type",
+     "rows of communication_table, by event_form (by key), the twelve most",
+     "rows of balanceinfo, by employees (named), the twelve most"
+    ]
+   },
+   "luna and deepseek, screen": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of event_form by event_form.curr_date",
+     "sum of event_form.event_cost by event_form.curr_date",
+     "rows of communication_table by event_form.curr_date split by communication_table.approval_status",
+     "distinct event_form in communication_table by event_form.curr_date",
+     "rows of balanceinfo, by employees (named), the twelve most"
+    ]
+   },
+   "luna, deepseek and jev": {
+    "stories": 2,
+    "found": 0,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of event_form by event_form.event_type",
+     "rows of event_form by event_form.curr_date",
+     "sum of communication_table.pending_amount_val by communication_table.approval_status",
+     "sum of communication_table.pending_amount_val, by communication_table.grade_status_direct_sup, the twelve most",
+     "rows of balanceinfo, by employees (named), the twelve most"
+    ]
+   },
+   "luna, deepseek and jev, roles": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "sum of event_form.event_cost by event_form.event_type",
+     "rows of event_form by event_form.curr_date",
+     "sum of communication_table.pending_amount_val, by communication_table.grade_status_direct_sup, the twelve most",
+     "rows of communication_table by communication_table.approval_status",
+     "rows of balanceinfo, by employees (named), the twelve most"
+    ]
+   },
+   "luna, deepseek and jev, screen": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 1,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of event_form by event_form.curr_date",
+     "sum of event_form.event_cost by event_form.curr_date",
+     "rows of communication_table by event_form.curr_date split by communication_table.approval_status",
+     "rows of balanceinfo, by employees (named), the twelve most",
+     "distinct event_form in communication_table by event_form.curr_date"
+    ]
+   },
+   "look over ten": {
+    "stories": 2,
+    "found": 0,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of event_form by event_form.event_type",
+     "rows of event_form by event_form.curr_date",
+     "rows of event_form by event_form.grading_format",
+     "rows of event_form by event_form.event_date",
+     "rows of communication_table by communication_table.approval_status"
+    ]
+   },
+   "look over ten, roles": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of event_form by event_form.grading_format",
+     "rows of communication_table by communication_table.approval_status",
+     "rows of event_form by event_form.work_time_missed",
+     "sum of event_form.event_cost by event_form.event_type",
+     "rows of event_form by event_form.curr_date"
+    ]
+   },
+   "look over thirty": {
+    "stories": 2,
+    "found": 0,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of event_form by event_form.event_type",
+     "rows of event_form by event_form.curr_date",
+     "rows of event_form by event_form.grading_format",
+     "rows of event_form by event_form.event_date",
+     "rows of communication_table by communication_table.approval_status"
+    ]
+   },
+   "look over thirty, roles": {
+    "stories": 2,
+    "found": 1,
+    "found over time": 0,
+    "decoys": 0,
+    "mirrors": 0,
+    "five": [
+     "rows of event_form by event_form.grading_format",
+     "rows of communication_table by communication_table.approval_status",
+     "rows of event_form by event_form.work_time_missed",
+     "sum of event_form.event_cost by event_form.event_type",
+     "rows of event_form by event_form.curr_date"
+    ]
+   },
+   "about": "An internal event reimbursement system where employees submit forms for conferences, training and team events, managers and the benefits office approve the amounts, and each employee has a balance; its staff check approvals and remaining funds each week."
+  }
+ }
+}

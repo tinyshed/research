@@ -4,6 +4,7 @@ Status: run on 30 October 2026 as a development probe; not reported, the
 harness not yet committed. No ranker is kept: the product's question moves
 the money panels up on the owner's databases and nothing on the 93 public
 ones by the product judges.
+[Reported](../reports/screen-2026-10-30.md) with rounds 1l to 1o.
 
 Round 1k found the look's fives poor for a product: on the owner's two
 databases the money panel and the health panel were made by the generator

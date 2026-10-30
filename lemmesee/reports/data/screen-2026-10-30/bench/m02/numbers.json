@@ -1,0 +1,9 @@
+{"numbers": [
+  {"title": "Borrowers with a loan", "what": "count distinct", "table": "loan", "column": "account_no", "where": null, "days": null, "over": null},
+  {"title": "Payments collected in the last 30 days", "what": "sum", "table": "payment_transactions", "column": "amount", "where": null, "days": 30, "over": null},
+  {"title": "Loans approved in the last 30 days", "what": "count", "table": "approved_loans", "column": null, "where": null, "days": 30, "over": null},
+  {"title": "Borrowers with two or more loans", "what": "two or more", "table": "loan", "column": "account_no", "where": null, "days": null, "over": null},
+  {"title": "Borrowers with a new loan in the last 30 days", "what": "count distinct", "table": "loan", "column": "account_no", "where": null, "days": 30, "over": null},
+  {"title": "Payments received in the last 7 days", "what": "count", "table": "payment_transactions", "column": null, "where": null, "days": 7, "over": null},
+  {"title": "Loans approved against applications in the last 30 days", "what": "share", "table": "approved_loans", "column": null, "where": null, "days": 30, "over": {"title": "Loan applications in the last 30 days", "what": "count", "table": "loan", "column": null, "where": null, "days": 30, "over": null}}
+]}

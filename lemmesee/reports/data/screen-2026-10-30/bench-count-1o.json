@@ -1,0 +1,304 @@
+{
+ "total": {
+  "round 1m's screen": [
+   29,
+   18,
+   16
+  ],
+  "round 1o's screen": [
+   29,
+   18,
+   17
+  ]
+ },
+ "per database": {
+  "m00": {
+   "round 1m's screen": {
+    "found": 0,
+    "shown": 0,
+    "five": [
+     "rows of LINEITEM by LINEITEM.L_SHIPDATE",
+     "sum of LINEITEM.L_TAX by LINEITEM.L_SHIPDATE",
+     "rows of ORDERS, by CUSTOMER.C_NAME, the twelve most",
+     "rows of PARTSUPP, by PART.P_NAME, the twelve most",
+     "distinct CUSTOMER in ORDERS by ORDERS.O_ORDERDATE"
+    ]
+   },
+   "round 1o's screen": {
+    "found": 0,
+    "shown": 0,
+    "five": [
+     "rows of LINEITEM by LINEITEM.L_SHIPDATE",
+     "sum of LINEITEM.L_TAX by LINEITEM.L_SHIPDATE",
+     "rows of ORDERS, by CUSTOMER.C_NAME, the twelve most",
+     "rows of PARTSUPP, by PART.P_NAME, the twelve most",
+     "distinct CUSTOMER in ORDERS by ORDERS.O_ORDERDATE"
+    ]
+   }
+  },
+  "m01": {
+   "round 1m's screen": {
+    "found": 2,
+    "shown": 1,
+    "five": [
+     "rows of Meal by Meal.last_served",
+     "sum of has_a.amount by Recipe.creationdate",
+     "rows of Meal by Meal.meal_type",
+     "sum of Mealplan.calorie_count by Mealplan.meal_date",
+     "distinct Recipe in has_a by Recipe.creationdate"
+    ]
+   },
+   "round 1o's screen": {
+    "found": 2,
+    "shown": 2,
+    "five": [
+     "rows of Meal by Meal.last_served split by Meal.meal_type",
+     "sum of has_a.amount by Recipe.creationdate",
+     "rows of Meal by Meal.meal_type",
+     "sum of Mealplan.calorie_count by Mealplan.meal_date",
+     "distinct Recipe in has_a by Recipe.creationdate"
+    ]
+   }
+  },
+  "m02": {
+   "round 1m's screen": {
+    "found": 2,
+    "shown": 2,
+    "five": [
+     "sum of payment_transactions.amount by payment_transactions.date",
+     "rows of approved_loans by approved_loans.date_approved",
+     "rows of approved_loans by approved_loans.date_approved split by approved_loans.status",
+     "rows of loan by loan.status",
+     "distinct clients in loan by loan.date_loan"
+    ]
+   },
+   "round 1o's screen": {
+    "found": 2,
+    "shown": 2,
+    "five": [
+     "sum of payment_transactions.amount by payment_transactions.date",
+     "rows of approved_loans by approved_loans.date_approved",
+     "share of approved_loans overdue/defaulted a day",
+     "rows of loan by loan.status",
+     "distinct clients in loan by loan.date_loan"
+    ]
+   }
+  },
+  "m03": {
+   "round 1m's screen": {
+    "found": 1,
+    "shown": 1,
+    "five": [
+     "rows of Events by Events.StartDate",
+     "sum of Events.Cost by Events.StartDate",
+     "rows of Reimbursements by Reimbursements.DateSubmitted split by ReimbursementStatuses.ReimbursementStatus",
+     "rows of ReimbursementNotes, by NoteReasons.NoteReason, the twelve most",
+     "distinct Employees in Reimbursements by Reimbursements.DateSubmitted"
+    ]
+   },
+   "round 1o's screen": {
+    "found": 1,
+    "shown": 1,
+    "five": [
+     "rows of Events by Events.StartDate split by EventTypes.EventType",
+     "sum of Events.Cost by Events.StartDate",
+     "rows of Reimbursements by Reimbursements.DateSubmitted split by ReimbursementStatuses.ReimbursementStatus",
+     "rows of ReimbursementNotes, by NoteReasons.NoteReason, the twelve most",
+     "distinct Employees in Reimbursements by Reimbursements.DateSubmitted"
+    ]
+   }
+  },
+  "m04": {
+   "round 1m's screen": {
+    "found": 1,
+    "shown": 1,
+    "five": [
+     "rows of orders by orders.orderData",
+     "rows of products, by categories.category, the twelve most",
+     "rows of orders by orders.orderData split by status.status",
+     "rows of users, by users.postCode, the twelve most",
+     "rows of products, by products.Specification, the twelve most"
+    ]
+   },
+   "round 1o's screen": {
+    "found": 1,
+    "shown": 1,
+    "five": [
+     "rows of orders by orders.orderData",
+     "rows of products, by categories.category, the twelve most",
+     "rows of orders by orders.orderData split by status.status",
+     "rows of users, by users.postCode, the twelve most",
+     "rows of products, by products.Specification, the twelve most"
+    ]
+   }
+  },
+  "m05": {
+   "round 1m's screen": {
+    "found": 2,
+    "shown": 2,
+    "five": [
+     "sum of expenses.amount by expenses.date",
+     "rows of expenses by expenses.date",
+     "rows of vouchers by vouchers.date split by vouchers.status",
+     "sum of payments.amount by payments.created_at",
+     "distinct employees in payments by payments.date"
+    ]
+   },
+   "round 1o's screen": {
+    "found": 2,
+    "shown": 2,
+    "five": [
+     "sum of expenses.amount by expenses.date",
+     "rows of expenses by expenses.date",
+     "rows of vouchers by vouchers.date split by vouchers.status",
+     "sum of payments.amount by payments.created_at",
+     "distinct employees in payments by payments.date"
+    ]
+   }
+  },
+  "m06": {
+   "round 1m's screen": {
+    "found": 1,
+    "shown": 1,
+    "five": [
+     "rows of BOOKING by BOOKING.FROM_DT_TIME",
+     "sum of BOOKING.AMOUNT by BOOKING.FROM_DT_TIME",
+     "rows of BILLING by BILLING.BILL_DATE split by BILLING.BILL_STATUS",
+     "rows of BIKE, by LOCATION.LOCATION_NAME, the twelve most",
+     "distinct BOOKING in BILLING by BILLING.BILL_DATE"
+    ]
+   },
+   "round 1o's screen": {
+    "found": 1,
+    "shown": 1,
+    "five": [
+     "rows of BOOKING by BOOKING.FROM_DT_TIME split by CUSTOMER.MEMBERSHIP_TYPE",
+     "sum of BOOKING.AMOUNT by BOOKING.FROM_DT_TIME",
+     "share of BILLING disputed a day",
+     "rows of BIKE, by LOCATION.LOCATION_NAME, the twelve most",
+     "distinct BOOKING in BILLING by BILLING.BILL_DATE"
+    ]
+   }
+  },
+  "m07": {
+   "round 1m's screen": {
+    "found": 2,
+    "shown": 2,
+    "five": [
+     "rows of Reservation by Reservation.resvDate",
+     "sum of CheckOut.totalPrice by CheckOut.date",
+     "rows of Reservation by Reservation.resvDate split by Reservation.status",
+     "sum of ReservationDetail.roomPrice, by Room.roomStatus, the twelve most",
+     "distinct Reservation in CheckOut by CheckOut.date"
+    ]
+   },
+   "round 1o's screen": {
+    "found": 2,
+    "shown": 2,
+    "five": [
+     "rows of Reservation by Reservation.resvDate",
+     "sum of CheckOut.totalPrice by CheckOut.date",
+     "share of Reservation no-show/cancelled a day",
+     "sum of ReservationDetail.roomPrice, by Room.roomStatus, the twelve most",
+     "distinct Reservation in CheckOut by CheckOut.date"
+    ]
+   }
+  },
+  "m08": {
+   "round 1m's screen": {
+    "found": 2,
+    "shown": 2,
+    "five": [
+     "rows of rentals by rentals.RentDate",
+     "rows of cars, by colors.Name, the twelve most",
+     "sum of cars.DailyPrice by cars.ModelYear",
+     "rows of users by users.Age split by users.Status",
+     "distinct users in customers by users.Age"
+    ]
+   },
+   "round 1o's screen": {
+    "found": 2,
+    "shown": 2,
+    "five": [
+     "rows of rentals by rentals.RentDate",
+     "rows of cars, by colors.Name, the twelve most",
+     "sum of cars.DailyPrice by cars.ModelYear",
+     "rows of users by users.Age split by users.Status",
+     "distinct users in customers by users.Age"
+    ]
+   }
+  },
+  "m09": {
+   "round 1m's screen": {
+    "found": 1,
+    "shown": 1,
+    "five": [
+     "rows of Rental by Rental.RentalRequestDate",
+     "rows of DVD, by Genre.GenreName, the twelve most",
+     "rows of MoviePersonRole, by Role.RoleName, the twelve most",
+     "sum of DVD.DVDQuantityOnRent by DVD.DVDReleaseDate",
+     "distinct DVD in Rental by Rental.RentalRequestDate"
+    ]
+   },
+   "round 1o's screen": {
+    "found": 1,
+    "shown": 1,
+    "five": [
+     "rows of Rental by Rental.RentalRequestDate",
+     "rows of DVD, by Genre.GenreName, the twelve most",
+     "rows of MoviePersonRole, by Role.RoleName, the twelve most",
+     "sum of DVD.DVDQuantityOnRent by DVD.DVDReleaseDate",
+     "distinct DVD in Rental by Rental.RentalRequestDate"
+    ]
+   }
+  },
+  "m10": {
+   "round 1m's screen": {
+    "found": 3,
+    "shown": 2,
+    "five": [
+     "rows of tbl_peserta by tbl_peserta.tgl_lahir",
+     "rows of tbl_peserta by tbl_peserta.status_verifikasi",
+     "rows of tbl_jawaban by tbl_jawaban.waktu_mulai split by tbl_jawaban.status_jawaban",
+     "rows of tbl_nilai, by tbl_soal (by key), the twelve most",
+     "distinct tbl_peserta in tbl_jawaban by tbl_jawaban.waktu_mulai"
+    ]
+   },
+   "round 1o's screen": {
+    "found": 3,
+    "shown": 2,
+    "five": [
+     "rows of tbl_peserta by tbl_peserta.tgl_lahir",
+     "rows of tbl_peserta by tbl_peserta.status_verifikasi",
+     "rows of tbl_jawaban by tbl_jawaban.waktu_mulai split by tbl_jawaban.status_jawaban",
+     "rows of tbl_nilai, by tbl_soal (by key), the twelve most",
+     "distinct tbl_peserta in tbl_jawaban by tbl_jawaban.waktu_mulai"
+    ]
+   }
+  },
+  "m11": {
+   "round 1m's screen": {
+    "found": 1,
+    "shown": 1,
+    "five": [
+     "rows of event_form by event_form.curr_date",
+     "sum of event_form.event_cost by event_form.curr_date",
+     "rows of communication_table by event_form.curr_date split by communication_table.approval_status",
+     "distinct event_form in communication_table by event_form.curr_date",
+     "rows of balanceinfo, by employees (named), the twelve most"
+    ]
+   },
+   "round 1o's screen": {
+    "found": 1,
+    "shown": 1,
+    "five": [
+     "rows of event_form by event_form.curr_date split by event_form.event_type",
+     "sum of event_form.event_cost by event_form.curr_date",
+     "share of communication_table rejected/cancelled a day",
+     "sum of event_form.event_cost by event_type, the last week",
+     "rows of balanceinfo, by employees (named), the twelve most"
+    ]
+   }
+  }
+ }
+}

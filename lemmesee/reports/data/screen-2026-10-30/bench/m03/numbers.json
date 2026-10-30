@@ -1,0 +1,9 @@
+{"numbers": [
+  {"title": "amount awarded in the last 30 days", "what": "sum", "table": "Reimbursements", "column": "AmountAwarded", "where": null, "days": 30, "over": null},
+  {"title": "claims submitted in the last 30 days", "what": "count", "table": "Reimbursements", "column": null, "where": null, "days": 30, "over": null},
+  {"title": "people who have claimed", "what": "count distinct", "table": "Reimbursements", "column": "Employee", "where": null, "days": null, "over": null},
+  {"title": "people who claimed two or more times", "what": "two or more", "table": "Reimbursements", "column": "Employee", "where": null, "days": null, "over": null},
+  {"title": "claims submitted in the last 7 days", "what": "count", "table": "Reimbursements", "column": null, "where": null, "days": 7, "over": null},
+  {"title": "share of last 7 days' claims not awarded", "what": "share", "table": "Reimbursements", "column": null, "where": "AmountAwarded IS NULL", "days": 7, "over": {"title": "claims submitted in the last 7 days", "what": "count", "table": "Reimbursements", "column": null, "where": null, "days": 7, "over": null}},
+  {"title": "average award in the last 30 days", "what": "average", "table": "Reimbursements", "column": "AmountAwarded", "where": null, "days": 30, "over": null}
+]}

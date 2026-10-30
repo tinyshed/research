@@ -1,0 +1,108 @@
+bills
+  id: unsignedbigint, primary key
+  file_name: varchar
+  expense_id: unsignedbigint, references expenses.id, nullable
+  created_at: timestamp, nullable
+  updated_at: timestamp, nullable
+
+employees
+  id: unsignedbigint, primary key
+  name: varchar
+  code: varchar
+  number: varchar
+  email: varchar
+  password: varchar
+  photo: varchar, nullable
+  aadhar_photo: varchar, nullable
+  wallet_balance: decimal
+  user_id: unsignedbigint, nullable
+  created_at: timestamp, nullable
+  updated_at: timestamp, nullable
+
+expense_categories
+  id: unsignedbigint, primary key
+  name: varchar
+  created_at: timestamp, nullable
+  updated_at: timestamp, nullable
+
+expenses
+  id: unsignedbigint, primary key
+  date: date
+  category_id: unsignedbigint, references expense_categories.id, nullable
+  description: varchar
+  bill: varchar, nullable
+  amount: decimal
+  approved_amount: decimal, nullable
+  voucher_id: unsignedbigint, references vouchers.id, nullable
+  remark: varchar, nullable
+  created_at: timestamp, nullable
+  updated_at: timestamp, nullable
+
+jobs
+  id: unsignedbigint, primary key
+  name: varchar
+  number: varchar
+  created_at: timestamp, nullable
+  updated_at: timestamp, nullable
+
+password_resets
+  email: varchar
+  token: varchar
+  created_at: timestamp, nullable
+
+payments
+  id: unsignedbigint, primary key
+  date: date
+  payment_mode: int
+  amount: decimal
+  remark: varchar, nullable
+  employee_id: unsignedbigint, references employees.id, nullable
+  created_at: timestamp, nullable
+  updated_at: timestamp, nullable
+
+received_docs
+  id: unsignedbigint, primary key
+  file_name: varchar
+  voucher_id: unsignedbigint, references vouchers.id, nullable
+  created_at: timestamp, nullable
+  updated_at: timestamp, nullable
+
+returnable_list_docs
+  id: unsignedbigint, primary key
+  file_name: varchar
+  voucher_id: unsignedbigint, references vouchers.id, nullable
+  created_at: timestamp, nullable
+  updated_at: timestamp, nullable
+
+site_completion_docs
+  id: unsignedbigint, primary key
+  file_name: varchar
+  voucher_id: unsignedbigint, references vouchers.id, nullable
+  created_at: timestamp, nullable
+  updated_at: timestamp, nullable
+
+submitted_docs
+  id: unsignedbigint, primary key
+  file_name: varchar
+  voucher_id: unsignedbigint, references vouchers.id, nullable
+  created_at: timestamp, nullable
+  updated_at: timestamp, nullable
+
+voucher_job
+  id: unsignedbigint, primary key
+  job_id: unsignedbigint, references jobs.id, nullable
+  voucher_id: unsignedbigint, references vouchers.id, nullable
+  created_at: timestamp, nullable
+  updated_at: timestamp, nullable
+
+vouchers
+  id: unsignedbigint, primary key
+  date: date
+  special_remark: varchar, nullable
+  number: varchar, nullable
+  approval_date: date, nullable
+  approved_amount: decimal, nullable
+  status: int
+  employee_id: unsignedbigint, references employees.id, nullable
+  created_at: timestamp, nullable
+  updated_at: timestamp, nullable

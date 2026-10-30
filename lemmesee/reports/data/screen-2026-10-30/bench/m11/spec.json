@@ -1,0 +1,31 @@
+{
+  "about": "An internal event reimbursement system where employees submit forms for conferences, training and team events, managers and the benefits office approve the amounts, and each employee has a balance; its staff check approvals and remaining funds each week.",
+  "tables": {
+    "employees": {"role": "entity", "rows": 400, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "event_form": {"role": "event", "rows": 3600, "time": "curr_date", "growth": 0.01, "follows": null, "columns": {
+      "event_type": {"values": {"conference": 0.25, "training": 0.3, "certification": 0.15, "team event": 0.15, "client meal": 0.15}},
+      "event_cost": {"money": [350, 2.2]},
+      "estim_reimbursement": {"money": [300, 2.0]},
+      "event_date": {"after": "curr_date", "hours": [48, 1200]},
+      "grading_format": {"values": {"pass_fail": 0.5, "letter": 0.3, "none": 0.2}},
+      "work_time_missed": {"values": {"0 hours": 0.3, "4 hours": 0.3, "8 hours": 0.4}}
+    }},
+    "approvers": {"role": "technical", "rows": 8, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "communication_table": {"role": "event", "rows": 3600, "time": null, "growth": 0.01, "follows": {"table": "event_form", "per": 1, "minutes": 60}, "columns": {
+      "approval_status": {"values": {"approved": 0.7, "pending": 0.15, "rejected": 0.1, "cancelled": 0.05}},
+      "exceeding_available_funds": {"values": {"no": 0.9, "yes": 0.1}},
+      "final_reimburse_val_benco": {"money": [280, 2.0]}
+    }},
+    "balanceinfo": {"role": "entity", "rows": 400, "time": null, "growth": 0, "follows": null, "columns": {
+      "initalBal": {"money": [1500, 1.5]},
+      "availBal": {"money": [900, 1.8]}
+    }}
+  },
+  "stories": [
+    {"id": "conference_costs", "says": "Conference requests now cost about 60 percent more than before, from day 72 on.", "table": "event_form", "from_day": 72, "change": {"column": "event_cost", "times": 1.6, "where": {"event_type": "conference"}}, "seen_in": [{"table": "event_form", "column": "event_cost"}, {"table": "event_form", "column": "event_type"}, {"table": "event_form", "column": "curr_date"}]},
+    {"id": "funds_run_short", "says": "Reimbursement requests exceeding the available funds rose from about one in ten to two in five from day 76.", "table": "communication_table", "from_day": 76, "change": {"column": "exceeding_available_funds", "values": {"no": 0.6, "yes": 0.4}}, "seen_in": [{"table": "communication_table", "column": "exceeding_available_funds"}, {"table": "event_form", "column": "curr_date"}]}
+  ],
+  "decoys": [
+    {"id": "approver_logins", "says": "approvers holds the login accounts of the people who sign off forms, so counting its rows says nothing about requests or money", "tables": ["approvers"], "kind": "bookkeeping"}
+  ]
+}

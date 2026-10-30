@@ -1,0 +1,85 @@
+Attachments
+  ID: int, primary key
+  Reimbursement: int, references Reimbursements.ID
+  AttachmentPath: varchar2
+
+ReimbursementNotes
+  ID: int, primary key
+  Reimbursement: int, references Reimbursements.ID
+  NoteReason: int, references NoteReasons.ID
+  Note: varchar2
+
+NoteReasons
+  ID: int, primary key
+  NoteReason: varchar2
+
+Reimbursements
+  ID: int, primary key
+  Employee: int, references Employees.ID
+  DateSubmitted: date
+  Event: int, references Events.ID
+  WorkTimeMissed: varchar2
+  Justification: varchar2
+  ProjectedAmount: number
+  BenefitsCoordinator: int, references Employees.ID, nullable
+  ApprovalDates: int, references ApprovalDates.ID
+  ReimbursementStatus: int, references ReimbursementStatuses.ID
+  AmountAwarded: number, nullable
+
+ApprovalDates
+  ID: int, primary key
+  DirectSupervisor: date, nullable
+  DepartmentHead: date, nullable
+  BenefitsCoordinator: date, nullable
+
+Employees
+  ID: int, primary key
+  FirstName: varchar2
+  LastName: varchar2
+  Email: varchar2
+  Password: varchar2
+  EmployeeType: int, references EmployeeTypes.ID
+  DirectSupervisor: int, references Employees.ID, nullable
+  DepartmentHead: int, references Employees.ID, nullable
+  AvailableReimbursement: number, nullable
+
+EmployeeTypes
+  ID: int, primary key
+  EmployeeType: varchar2
+
+Events
+  ID: int, primary key
+  Name: varchar2
+  EventType: int, references EventTypes.ID
+  Description: varchar2
+  StartDate: date
+  EndDate: date
+  Time: varchar2
+  Location: varchar2
+  Cost: number
+  Grades: int, references Grades.ID
+
+EventTypes
+  ID: int, primary key
+  EventType: varchar2
+  PercentCovered: number
+
+Grades
+  ID: int, primary key
+  GradingFormat: int, references GradingFormats.ID
+  Passing: int, references GradeLetters.ID
+  Recieved: number, nullable
+
+GradingFormats
+  ID: int, primary key
+  GradingFormat: varchar2
+
+GradeLetters
+  ID: int, primary key
+  GradeLetter: varchar2
+  MinPercentage: number
+  MaxPercentage: number
+
+ReimbursementStatuses
+  ID: int, primary key
+  ReimbursementStatus: varchar2

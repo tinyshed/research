@@ -1,0 +1,65 @@
+employees
+  empId: serial, primary key
+  username: varchar
+  password: varchar
+  firstName: varchar
+  lastName: varchar
+  address: varchar
+  email: varchar
+  phone: varchar
+
+event_form
+  form_id: serial, primary key
+  firstName: varchar
+  lastName: varchar
+  empId: int, references employees.empId
+  curr_date: date
+  event_date: date
+  event_time: varchar
+  event_location: varchar
+  event_cost: numeric
+  event_type: varchar
+  description: varchar
+  grading_format: varchar
+  wrjust: varchar, nullable
+  event_attachments: varchar, nullable
+  work_time_missed: varchar
+  estim_reimbursement: numeric
+
+approvers
+  aid: serial, primary key
+  a_role: int, nullable
+  a_username: varchar, nullable
+  a_password: varchar, nullable
+
+communication_table
+  form_id: int, references event_form.form_id, nullable
+  employee_id: int, references employees.empId, nullable
+  estim_reimbursement: doubleprecision, nullable
+  requestor_need_additional_info_from: varchar, nullable
+  requestee_response: varchar, nullable
+  alter_reimbursment_amount: doubleprecision, nullable
+  reason_for_larger_amount: varchar, nullable
+  exceeding_available_funds: varchar, nullable
+  pending_amount_val: doubleprecision, nullable
+  notify_employee: varchar, nullable
+  employee_option_to_cancel: varchar, nullable
+  approval_status: varchar, nullable
+  event_grade: varchar, nullable
+  event_presentation: varchar, nullable
+  mgmt_view_present: varchar, nullable
+  dir_mgr_appr_present: varchar, nullable
+  grade_status_direct_sup: varchar, nullable
+  direct_sup_appr: varchar, nullable
+  dept_head_appr: varchar, nullable
+  benco_final_appr: varchar, nullable
+  final_reimburse_val_benco: doubleprecision, nullable
+  escalation_email_direct_sup: varchar, nullable
+  automatic_approv_direct_sup: varchar, nullable
+  automatic_approv_dept_head: varchar, nullable
+  marked_urgent: varchar, nullable
+
+balanceinfo
+  empId: int, references employees.empId
+  initalBal: numeric
+  availBal: numeric

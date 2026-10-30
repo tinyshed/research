@@ -1,0 +1,23 @@
+{
+ "about": "A small online shop where customers place orders for catalogue products, and staff log in to a back office to fulfil and track those orders.",
+ "tables": {
+  "categories": {"role": "lookup", "rows": 8, "time": null, "growth": 0, "follows": null, "columns": {"category": {"values": {"Lighting": 1, "Furniture": 1, "Garden": 1, "Kitchen": 1, "Tools": 1, "Textiles": 1, "Decor": 1, "Storage": 1}}}},
+  "employeelogintime": {"role": "technical", "rows": 3000, "time": "Time", "growth": 0.01, "follows": null, "columns": {}},
+  "employees": {"role": "entity", "rows": 25, "time": null, "growth": 0, "follows": null, "columns": {"idPrem": {"values": {"admin": 1, "manager": 3, "packer": 6}}, "archive": {"values": {"0": 9, "1": 1}}}},
+  "orders": {"role": "event", "rows": 9000, "time": "orderData", "growth": 0.01, "follows": null, "columns": {"idStatus": {"values": {"New": 2, "Paid": 12, "Shipped": 18, "Delivered": 60, "Cancelled": 8}}}},
+  "productsincarts": {"role": "event", "rows": 18000, "time": null, "growth": 0.01, "follows": {"table": "orders", "per": 2.0, "minutes": 5}, "columns": {"howMuch": {"number": [1, 4]}}},
+  "products": {"role": "entity", "rows": 180, "time": null, "growth": 0, "follows": null, "columns": {"idCategory": {"values": {"Lighting": 3, "Furniture": 3, "Garden": 2, "Kitchen": 2, "Tools": 2, "Textiles": 2, "Decor": 2, "Storage": 2}}, "Quantity": {"number": [0, 80]}, "price": {"money": [90, 3]}, "archive": {"values": {"0": 9, "1": 1}}}},
+  "productgallery": {"role": "dead", "rows": 400, "time": null, "growth": 0, "follows": null, "columns": {}},
+  "status": {"role": "lookup", "rows": 5, "time": null, "growth": 0, "follows": null, "columns": {"status": {"values": {"New": 1, "Paid": 1, "Shipped": 1, "Delivered": 1, "Cancelled": 1}}}},
+  "users": {"role": "entity", "rows": 1500, "time": null, "growth": 0, "follows": null, "columns": {"archive": {"values": {"0": 97, "1": 3}}}},
+  "permissions": {"role": "lookup", "rows": 3, "time": null, "growth": 0, "follows": null, "columns": {"permission": {"values": {"admin": 1, "manager": 1, "packer": 1}}}}
+ },
+ "stories": [
+  {"id": "cancellations-rise", "says": "From late in the period, a much larger share of orders ends cancelled, while delivered orders fall back.", "table": "orders", "from_day": 68, "change": {"column": "idStatus", "values": {"Cancelled": 32, "Delivered": 40, "Shipped": 14, "Paid": 12, "New": 2}}, "seen_in": [{"table": "orders", "column": "idStatus"}, {"table": "orders", "column": "orderData"}]},
+  {"id": "promotion-order-surge", "says": "Order volume doubles across the final week once a promotion starts, so the daily count of orders climbs sharply.", "table": "orders", "from_day": 80, "change": {"rate": 2.0, "where": null}, "seen_in": [{"table": "orders", "column": "orderData"}]}
+ ],
+ "decoys": [
+  {"id": "login-audit-log", "says": "Staff login timestamps are kept for security audits; they measure the back office rather than the shop.", "tables": ["employeelogintime"], "kind": "bookkeeping"},
+  {"id": "supplier-photo-import", "says": "Product photos were bulk-imported from the supplier catalogue once and never change, so a chart of them is one flat bar.", "tables": ["productgallery"], "kind": "dead"}
+ ]
+}

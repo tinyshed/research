@@ -1,0 +1,110 @@
+{
+  "about": "A hotel's front-desk system where guests reserve rooms, check in and check out, used by reception staff and the hotel manager.",
+  "tables": {
+    "Guest": {
+      "role": "entity",
+      "rows": 2500,
+      "time": null,
+      "growth": 0.01,
+      "follows": null,
+      "columns": {
+        "guestStatus": {"values": {"active": 0.85, "inactive": 0.15}}
+      }
+    },
+    "RoomType": {
+      "role": "lookup",
+      "rows": 5,
+      "time": null,
+      "growth": 0,
+      "follows": null,
+      "columns": {
+        "typePrice": {"money": [120, 1.8]}
+      }
+    },
+    "Room": {
+      "role": "entity",
+      "rows": 120,
+      "time": null,
+      "growth": 0,
+      "follows": null,
+      "columns": {
+        "roomStatus": {"values": {"available": 0.5, "occupied": 0.4, "maintenance": 0.1}}
+      }
+    },
+    "User": {
+      "role": "entity",
+      "rows": 12,
+      "time": null,
+      "growth": 0,
+      "follows": null,
+      "columns": {
+        "userRole": {"values": {"receptionist": 0.6, "manager": 0.2, "admin": 0.2}}
+      }
+    },
+    "Reservation": {
+      "role": "event",
+      "rows": 6000,
+      "time": "resvDate",
+      "growth": 0.01,
+      "follows": null,
+      "columns": {
+        "status": {"values": {"confirmed": 0.6, "checked-out": 0.3, "cancelled": 0.05, "no-show": 0.05}},
+        "checkInDate": {"after": "resvDate", "hours": [24, 720]},
+        "checkOutDate": {"after": "checkInDate", "hours": [24, 336]}
+      }
+    },
+    "CheckOut": {
+      "role": "event",
+      "rows": 5400,
+      "time": "date",
+      "growth": 0.01,
+      "follows": {"table": "Reservation", "per": 0.9, "minutes": 28800},
+      "columns": {
+        "noOfNight": {"number": [1, 14]},
+        "totalPrice": {"money": [360, 1.6]}
+      }
+    },
+    "ReservationDetail": {
+      "role": "event",
+      "rows": 6600,
+      "time": null,
+      "growth": 0.01,
+      "follows": {"table": "Reservation", "per": 1.1, "minutes": 1},
+      "columns": {
+        "roomPrice": {"money": [120, 1.8]}
+      }
+    }
+  },
+  "stories": [
+    {
+      "id": "no-shows-rise",
+      "says": "From 12 October about one reservation in five ends as a no-show, up from one in twenty, so rooms sold for those nights sit empty.",
+      "table": "Reservation",
+      "from_day": 72,
+      "change": {"column": "status", "values": {"confirmed": 0.45, "checked-out": 0.3, "no-show": 0.2, "cancelled": 0.05}},
+      "seen_in": [
+        {"table": "Reservation", "column": "status"},
+        {"table": "Reservation", "column": "resvDate"}
+      ]
+    },
+    {
+      "id": "room-rates-up",
+      "says": "From 16 October room rates rise by about a third, so each checkout totals about a third more.",
+      "table": "CheckOut",
+      "from_day": 76,
+      "change": {"column": "totalPrice", "times": 1.35, "where": null},
+      "seen_in": [
+        {"table": "CheckOut", "column": "totalPrice"},
+        {"table": "CheckOut", "column": "date"}
+      ]
+    }
+  ],
+  "decoys": [
+    {
+      "id": "reservation-detail-repeats-reservations",
+      "says": "ReservationDetail has one row per room of each reservation, made a minute after it, so counting it beside Reservation counts the same stays twice.",
+      "tables": ["ReservationDetail"],
+      "kind": "mirror"
+    }
+  ]
+}

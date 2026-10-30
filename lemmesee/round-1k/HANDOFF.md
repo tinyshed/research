@@ -112,8 +112,16 @@ table names, the owner's judgments) is kept only locally, in
    the database), who did it, who did it twice, the shares, the funnel, the
    new in 7 and 30 days, a month's money, a week's failures. On the database
    the owner keeps a dashboard for, six of its eight numbers come out exactly;
-   on the bench it finds people and the thing in 8 schemas of 12. Next: judge
-   the numbers, money by kind, percentiles (p95 of a delay).
+   on the bench it finds people and the thing in 8 schemas of 12.
+   Then [round 1o](../round-1o/README.md) (30 October, not committed): Haiku's
+   gold numbers for the bench, the row fixed from 24 % of them found to 53 %;
+   health as a failed share a day, speed as a 95th percentile a day, the
+   week's money by kind, and the pulse split by where it happened (private
+   and group chats), on the owner's page as a fifth five; the owner called the
+   new charts fine. Rounds 1l to 1o are reported in
+   [screen-2026-10-30.md](../reports/screen-2026-10-30.md). Next: a prototype
+   of `dashbin see` in `research/dashbin`, within chapter 14's bound on what
+   looking may cost, then chapter 14's round.
 3. A second button: carrying a person's answer over by the columns' roles
    (carrying it over by shared axes was tried and hurts).
 4. The move to Rust and `dashbin see` v1; checks by people on 10 to 15 public

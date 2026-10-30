@@ -1,0 +1,35 @@
+{
+  "about": "An Indonesian online selection system for lab positions in which applicants register, have their documents verified, and sit timed computer-based tests; admins check registrations and results each week.",
+  "tables": {
+    "tbl_admin": {"role": "technical", "rows": 6, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "tbl_informasi": {"role": "lookup", "rows": 12, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "tbl_jawaban": {"role": "event", "rows": 6000, "time": "waktu_mulai", "growth": 0.01, "follows": null, "columns": {
+      "status_jawaban": {"values": {"selesai": 0.94, "waktu_habis": 0.04, "dibatalkan": 0.02}},
+      "waktu_selesai": {"after": "waktu_mulai", "hours": [0.5, 1.5]}
+    }},
+    "tbl_lab": {"role": "lookup", "rows": 40, "time": null, "growth": 0, "follows": null, "columns": {
+      "jumlah_formasi": {"number": [2, 12]}
+    }},
+    "tbl_nilai": {"role": "event", "rows": 12000, "time": null, "growth": 0.01, "follows": {"table": "tbl_jawaban", "per": 2, "minutes": 5}, "columns": {
+      "nilai_peserta": {"number": [40, 100]}
+    }},
+    "tbl_pertanyaan": {"role": "entity", "rows": 1500, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "tbl_peserta": {"role": "entity", "rows": 9000, "time": "tgl_selesai_pendaftaran", "growth": 0.02, "follows": null, "columns": {
+      "status_verifikasi": {"values": {"terverifikasi": 0.75, "menunggu": 0.18, "ditolak": 0.07}},
+      "jenis_kelamin": {"values": {"Laki-laki": 0.55, "Perempuan": 0.45}}
+    }},
+    "tbl_soal": {"role": "lookup", "rows": 20, "time": null, "growth": 0, "follows": null, "columns": {
+      "jumlah_soal": {"number": [20, 60]},
+      "passing_grade": {"number": [55, 75]}
+    }}
+  },
+  "stories": [
+    {"id": "verification_rejects", "says": "The share of applicants rejected at document verification rose from under a tenth to about a quarter from day 70.", "table": "tbl_peserta", "from_day": 70, "change": {"column": "status_verifikasi", "values": {"terverifikasi": 0.5, "menunggu": 0.22, "ditolak": 0.28}}, "seen_in": [{"table": "tbl_peserta", "column": "status_verifikasi"}, {"table": "tbl_peserta", "column": "tgl_selesai_pendaftaran"}]},
+    {"id": "tests_timing_out", "says": "Attempts ending by timeout rose from about 4 percent to a quarter from day 76.", "table": "tbl_jawaban", "from_day": 76, "change": {"column": "status_jawaban", "values": {"selesai": 0.7, "waktu_habis": 0.25, "dibatalkan": 0.05}}, "seen_in": [{"table": "tbl_jawaban", "column": "status_jawaban"}, {"table": "tbl_jawaban", "column": "waktu_mulai"}]},
+    {"id": "last_week_rush", "says": "Registrations ran about two and a half times the usual daily rate from day 80, in the final stretch before closing.", "table": "tbl_peserta", "from_day": 80, "change": {"rate": 2.5, "where": null}, "seen_in": [{"table": "tbl_peserta", "column": "tgl_selesai_pendaftaran"}]}
+  ],
+  "decoys": [
+    {"id": "answer_fanout", "says": "tbl_nilai holds one score per question in each attempt, about two per attempt, so counting its rows as tests taken doubles the number", "tables": ["tbl_nilai"], "kind": "mirror"},
+    {"id": "admin_accounts", "says": "tbl_admin holds the few staff login accounts, which say nothing about applicants or tests", "tables": ["tbl_admin"], "kind": "bookkeeping"}
+  ]
+}

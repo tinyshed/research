@@ -1,0 +1,41 @@
+{
+  "about": "A DVD-by-mail rental service where members pay a monthly fee, queue titles, and get DVDs shipped and returned; its staff check rentals and payments each week.",
+  "tables": {
+    "City": {"role": "entity", "rows": 800, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "State": {"role": "lookup", "rows": 51, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "ZipCode": {"role": "dead", "rows": 3000, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "Membership": {"role": "lookup", "rows": 4, "time": null, "growth": 0, "follows": null, "columns": {
+      "MembershipType": {"values": {"Basic": 0.5, "Standard": 0.3, "Premium": 0.2}},
+      "MembershipLimitPerMonth": {"number": [2, 10]},
+      "MembershipMonthlyPrice": {"money": [14, 1.4]},
+      "MembershipMonthlyTax": {"money": [1, 1.5]},
+      "MembershipDVDLostPrice": {"money": [25, 1.3]}
+    }},
+    "Payment": {"role": "event", "rows": 9000, "time": "AmountPaidDate", "growth": 0.01, "follows": null, "columns": {
+      "AmountPaid": {"money": [14, 1.3]},
+      "AmountPaidUntilDate": {"after": "AmountPaidDate", "hours": [700, 740]}
+    }},
+    "Genre": {"role": "lookup", "rows": 24, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "Rating": {"role": "lookup", "rows": 6, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "Role": {"role": "lookup", "rows": 12, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "MoviePerson": {"role": "entity", "rows": 4000, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "DVD": {"role": "entity", "rows": 4000, "time": null, "growth": 0, "follows": null, "columns": {
+      "DVDQuantityOnHand": {"number": [0, 12]},
+      "DVDQuantityOnRent": {"number": [0, 4]},
+      "DVDLostQuantity": {"number": [0, 1]}
+    }},
+    "RentalQueue": {"role": "event", "rows": 5000, "time": "DateAddedInQueue", "growth": 0.01, "follows": null, "columns": {}},
+    "MoviePersonRole": {"role": "entity", "rows": 6000, "time": null, "growth": 0, "follows": null, "columns": {}},
+    "Rental": {"role": "event", "rows": 9000, "time": "RentalRequestDate", "growth": 0.01, "follows": null, "columns": {
+      "RentalShippedDate": {"after": "RentalRequestDate", "hours": [18, 72]},
+      "RentalReturnedDate": {"after": "RentalShippedDate", "hours": [96, 240]}
+    }}
+  },
+  "stories": [
+    {"id": "price_rise", "says": "Monthly membership payments rose by about a third from day 74 onward, when a price change took effect.", "table": "Payment", "from_day": 74, "change": {"column": "AmountPaid", "times": 1.35, "where": null}, "seen_in": [{"table": "Payment", "column": "AmountPaid"}, {"table": "Payment", "column": "AmountPaidDate"}]},
+    {"id": "rental_surge", "says": "Rental requests per day roughly doubled from day 78, after a promotion went out.", "table": "Rental", "from_day": 78, "change": {"rate": 2.0, "where": null}, "seen_in": [{"table": "Rental", "column": "RentalRequestDate"}]}
+  ],
+  "decoys": [
+    {"id": "zip_import", "says": "ZipCode was loaded once from a postal file and never changes, so counting it shows a flat line that says nothing about the business", "tables": ["ZipCode"], "kind": "dead"}
+  ]
+}

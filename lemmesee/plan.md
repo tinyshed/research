@@ -234,6 +234,24 @@ it are in its chapter 14 and are the ones that decide.
    person's first click buys +0.17. The five without a person is at its
    ceiling by model judges; what moves it next is the person, and the
    count's next step is about 150 databases.
+1l. **The ranker taught the product's question**: Luna, DeepSeek and Jev
+   on round 1c's 480 schemas. [Run](reports/screen-2026-10-30.md) on 30
+   October: the writers ask what Haiku and Gemini asked, Jev agrees with no
+   one, and no ranker keeps more by the product judges on the 93.
+1m. **A bench of living databases, and the five as a screen**: twelve
+   applications made with planted stories, and the best of each role over a
+   time. [Run](reports/screen-2026-10-30.md) on 30 October: a status's change
+   shows only in a split over time, which round 1c's ranker places 64th; the
+   screen shows 16 of 29 stories against 10, and the owner chose it.
+1n. **Numbers first**: people, the thing done, its makers, the shares, the
+   new, from the schema. [Run](reports/screen-2026-10-30.md) on 30 October:
+   six of the eight numbers on the owner's dashboard.
+1o. **The numbers checked, and a product's charts**: Haiku's gold rows for
+   the bench, a failed share, a percentile, money by kind, the pulse split by
+   where it happened. [Run](reports/screen-2026-10-30.md) on 30 October: 53 %
+   of the gold numbers found, up from 24 %; the same stories, said in the
+   owner's terms. Next: a prototype of `dashbin see` and Dashbin's chapter 14
+   round.
 2. **The judged set**: assembled, split by project, judged.
 3. **The ranker, C**: linear, trees, a tiny network, against A and B on the
    judged set, with its cost.

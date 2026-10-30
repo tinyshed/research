@@ -1,0 +1,10 @@
+{"numbers": [
+  {"title": "Employees who submitted a form", "what": "count distinct", "table": "event_form", "column": "empId", "where": null, "days": null, "over": null},
+  {"title": "Forms submitted, last 30 days", "what": "count", "table": "event_form", "column": null, "where": null, "days": 30, "over": null},
+  {"title": "Forms submitted, last 7 days", "what": "count", "table": "event_form", "column": null, "where": null, "days": 7, "over": null},
+  {"title": "Employees with two or more forms", "what": "two or more", "table": "event_form", "column": "empId", "where": null, "days": null, "over": null},
+  {"title": "Share of requests with a final amount set by benefits office", "what": "share", "table": "communication_table", "column": null, "where": "final_reimburse_val_benco IS NOT NULL", "days": null, "over": {"title": "All reimbursement requests", "what": "count", "table": "communication_table", "column": null, "where": null, "days": null, "over": null}},
+  {"title": "Total reimbursement set by benefits office", "what": "sum", "table": "communication_table", "column": "final_reimburse_val_benco", "where": null, "days": null, "over": null},
+  {"title": "Remaining funds across employees", "what": "sum", "table": "balanceinfo", "column": "availBal", "where": null, "days": null, "over": null},
+  {"title": "Employees with no balance left", "what": "count", "table": "balanceinfo", "column": null, "where": "availBal <= 0", "days": null, "over": null}
+]}

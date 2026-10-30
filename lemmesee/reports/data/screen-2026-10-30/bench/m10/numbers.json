@@ -1,0 +1,10 @@
+{"numbers": [
+  {"title": "Applicants registered", "what": "count distinct", "table": "tbl_peserta", "column": "id_peserta", "where": null, "days": null, "over": null},
+  {"title": "Applicants who finished a timed test", "what": "count distinct", "table": "tbl_jawaban", "column": "id_peserta", "where": "waktu_selesai IS NOT NULL", "days": null, "over": null},
+  {"title": "Test sessions started, last 7 days", "what": "count", "table": "tbl_jawaban", "column": null, "where": null, "days": 7, "over": null},
+  {"title": "Share of test sessions not finished, last 7 days", "what": "share", "table": "tbl_jawaban", "column": null, "where": "waktu_selesai IS NULL", "days": 7, "over": {"title": "Test sessions started, last 7 days", "what": "count", "table": "tbl_jawaban", "column": null, "where": null, "days": 7, "over": null}},
+  {"title": "Applicants with two or more test sessions", "what": "two or more", "table": "tbl_jawaban", "column": "id_peserta", "where": null, "days": null, "over": null},
+  {"title": "Applicants passed the admin check", "what": "sum", "table": "tbl_lab", "column": "jumlah_lulus_adm", "where": null, "days": null, "over": null},
+  {"title": "Average test score", "what": "average", "table": "tbl_nilai", "column": "nilai_peserta", "where": null, "days": null, "over": null},
+  {"title": "Seats offered across labs", "what": "sum", "table": "tbl_lab", "column": "jumlah_formasi", "where": null, "days": null, "over": null}
+]}
