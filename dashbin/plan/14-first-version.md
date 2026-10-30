@@ -55,6 +55,15 @@ meaning something false?
 |---|---|
 | what looking costs a source | its catalog and statistics, and at most 10 000 rows a table, inside 2 s a table — never a full scan |
 
+Measured on 30 October, [What looking costs a store](../reports/see-bound-2026-10-30.md):
+`see`'s prototype holds the bound on every PostgreSQL store of lemmesee's
+corpus with a table above 10 000 rows, 36 of them, and on two production
+stores — the catalog and statistics first, then an index, a log's newest
+rows or a sample of pages, a guard in the database refusing a whole read.
+What it costs is answers: estimates marked as such, and a quarter of the
+panels refused, distinct counts above all, which the next round of `see`
+owes.
+
 If guessed panels miss either line, they are not drawn by default: `see`
 draws what it knows and offers its guesses on request, marked as guesses. If
 known panels miss theirs, the rules for a kind are changed and the round runs

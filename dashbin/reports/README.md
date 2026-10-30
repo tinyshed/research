@@ -40,3 +40,7 @@ gives it, what its memory costs, and the plugin host it will carry.
 - [TinyStore 0.4.0 against issues 34 to 37](tinystore-0.4.0-recheck-2026-10-27.md):
   all four closed and rerun: aggregating in memory and ExactSum, a backup at one moment in either order,
   files committing with their rows, older keys and a reseal; #29 the one still open.
+- [What looking costs a store](see-bound-2026-10-30.md):
+  `see` held to chapter 14's bound on 36 PostgreSQL stores up to 32 million rows: no big table read whole,
+  at most 9 000 rows a table a statement, 124.8 s of server time down to 1.36 s; 81 % of its numbers within 1 %,
+  a quarter of its panels refused, distinct counts most of them.

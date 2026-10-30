@@ -1,0 +1,3445 @@
+{
+ "summary": {
+  "stores": 36,
+  "numbers": {
+   "compared": 172,
+   "refused": 54,
+   "within_1pct": 0.814,
+   "within_10pct": 0.89,
+   "within_25pct": 0.983,
+   "median_error": 0.0
+  },
+  "panels": {
+   "compared": 613,
+   "refused": 154
+  },
+  "by_day": {
+   "compared": 133,
+   "median_error": 0.0,
+   "within_10pct": 0.835,
+   "median_corr": 1.0,
+   "median_days_kept": 1.0
+  },
+  "ranked": {
+   "compared": 304,
+   "median_top5": 1.0,
+   "all_five": 0.684
+  }
+ },
+ "numbers": [
+  {
+   "store": "airlines-postgres",
+   "title": "flights in all",
+   "whole": 21758.0,
+   "bounded": 21758.0,
+   "error": 0.0
+  },
+  {
+   "store": "airlines-postgres",
+   "title": "boarding_passes in all",
+   "whole": 2463832.0,
+   "bounded": 2463832.0,
+   "error": 0.0
+  },
+  {
+   "store": "airlines-postgres",
+   "title": "flights with boarding_passes",
+   "whole": 11445.0,
+   "bounded": 10025.0,
+   "error": 0.12407164700742683
+  },
+  {
+   "store": "airlines-postgres",
+   "title": "share of flights with boarding_passes",
+   "whole": 52.6,
+   "bounded": 46.1,
+   "error": 0.12357414448669202
+  },
+  {
+   "store": "airlines-postgres",
+   "title": "bookings.total_amount, 30 days",
+   "whole": 0.0,
+   "bounded": 0.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdaddress-postgres",
+   "title": "congress in all",
+   "whole": 540.0,
+   "bounded": 540.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdauthors-postgres",
+   "title": "Paper in all",
+   "whole": 2254920.0,
+   "bounded": 2255197.0,
+   "error": 0.0001228424955209054
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "cust_order in all",
+   "whole": 7550.0,
+   "bounded": 7550.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "book in all",
+   "whole": 11127.0,
+   "bounded": 11127.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "cust_order with book",
+   "whole": 7550.0,
+   "bounded": 7550.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "cust_order with two book or more",
+   "whole": 0.0,
+   "bounded": 0.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "share of cust_order with book",
+   "whole": 100.0,
+   "bounded": 100.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "share of them with two or more",
+   "whole": 0.0,
+   "bounded": 0.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdchicagocrime-postgres",
+   "title": "Ward in all",
+   "whole": 50.0,
+   "bounded": 50.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdcoinmarketcap-postgres",
+   "title": "coins in all",
+   "whole": 8927.0,
+   "bounded": 8927.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdcoinmarketcap-postgres",
+   "title": "historical in all",
+   "whole": 4441972.0,
+   "bounded": 4441621.0,
+   "error": 7.901895824647251e-05
+  },
+  {
+   "store": "birdcoinmarketcap-postgres",
+   "title": "coins with historical",
+   "whole": 8927.0,
+   "bounded": 6899.0,
+   "error": 0.22717598297300326
+  },
+  {
+   "store": "birdcoinmarketcap-postgres",
+   "title": "share of coins with historical",
+   "whole": 100.0,
+   "bounded": 77.3,
+   "error": 0.22700000000000004
+  },
+  {
+   "store": "birdcollegecompletion-postgres",
+   "title": "institution_details in all",
+   "whole": 3798.0,
+   "bounded": 3798.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdcollegecompletion-postgres",
+   "title": "institution_grads in all",
+   "whole": 1302102.0,
+   "bounded": 1302102.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdcollegecompletion-postgres",
+   "title": "institution_details with institution_grads",
+   "whole": 3979.0,
+   "bounded": 3965.0,
+   "error": 0.0035184719778838906
+  },
+  {
+   "store": "birdcollegecompletion-postgres",
+   "title": "share of institution_details with institution_grads",
+   "whole": 104.8,
+   "bounded": 104.4,
+   "error": 0.0038167938931296897
+  },
+  {
+   "store": "birdfoodinspection2-postgres",
+   "title": "employee in all",
+   "whole": 75.0,
+   "bounded": 75.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdfoodinspection2-postgres",
+   "title": "inspection in all",
+   "whole": 143870.0,
+   "bounded": 143870.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdfoodinspection2-postgres",
+   "title": "employee with inspection",
+   "whole": 28.0,
+   "bounded": 27.0,
+   "error": 0.03571428571428571
+  },
+  {
+   "store": "birdfoodinspection2-postgres",
+   "title": "share of employee with inspection",
+   "whole": 37.3,
+   "bounded": 36.0,
+   "error": 0.034852546916890007
+  },
+  {
+   "store": "birdlegislator-postgres",
+   "title": "historical in all",
+   "whole": 11864.0,
+   "bounded": 11864.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdmenu-postgres",
+   "title": "Dish in all",
+   "whole": 426713.0,
+   "bounded": 426713.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdmovies4-postgres",
+   "title": "movie in all",
+   "whole": 4627.0,
+   "bounded": 4627.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdmovies4-postgres",
+   "title": "movie.revenue, 30 days",
+   "whole": 0.0,
+   "bounded": 0.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdmusicplatform2-postgres",
+   "title": "podcasts in all",
+   "whole": 108578.0,
+   "bounded": 108578.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdmusictracker-postgres",
+   "title": "torrents in all",
+   "whole": 75719.0,
+   "bounded": 75719.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdolympics-postgres",
+   "title": "person in all",
+   "whole": 128854.0,
+   "bounded": 128854.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdolympics-postgres",
+   "title": "games in all",
+   "whole": 51.0,
+   "bounded": 51.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdolympics-postgres",
+   "title": "person with games",
+   "whole": 128854.0,
+   "bounded": 104827.0,
+   "error": 0.18646685395874402
+  },
+  {
+   "store": "birdolympics-postgres",
+   "title": "share of person with games",
+   "whole": 100.0,
+   "bounded": 81.4,
+   "error": 0.18599999999999994
+  },
+  {
+   "store": "birdretailcomplains-postgres",
+   "title": "client in all",
+   "whole": 5369.0,
+   "bounded": 5369.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdretailcomplains-postgres",
+   "title": "events in all",
+   "whole": 23419.0,
+   "bounded": 23419.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdretailcomplains-postgres",
+   "title": "client with events",
+   "whole": 5284.0,
+   "bounded": 5284.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdretailcomplains-postgres",
+   "title": "share of client with events",
+   "whole": 98.4,
+   "bounded": 98.4,
+   "error": 0.0
+  },
+  {
+   "store": "birdretails-postgres",
+   "title": "customer in all",
+   "whole": 150000.0,
+   "bounded": 150000.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdretails-postgres",
+   "title": "orders in all",
+   "whole": 1500000.0,
+   "bounded": 1500000.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdretails-postgres",
+   "title": "customer with orders",
+   "whole": 100000.0,
+   "bounded": 92482.0,
+   "error": 0.07518
+  },
+  {
+   "store": "birdretails-postgres",
+   "title": "share of customer with orders",
+   "whole": 66.7,
+   "bounded": 61.7,
+   "error": 0.07496251874062969
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "Player in all",
+   "whole": 469.0,
+   "bounded": 469.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "Match in all",
+   "whole": 577.0,
+   "bounded": 577.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "Match, 7 days",
+   "whole": 0.0,
+   "bounded": 0.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "Match, 30 days",
+   "whole": 0.0,
+   "bounded": 0.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "Player with Match",
+   "whole": 187.0,
+   "bounded": 187.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "Player with two Match or more",
+   "whole": 104.0,
+   "bounded": 104.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "Player active, 30 days",
+   "whole": 0.0,
+   "bounded": 0.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "share of Player with Match",
+   "whole": 39.9,
+   "bounded": 39.9,
+   "error": 0.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "share of them with two or more",
+   "whole": 55.6,
+   "bounded": 55.6,
+   "error": 0.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "Match.Win_Margin, 30 days",
+   "whole": 0.0,
+   "bounded": 0.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdsocialmedia-postgres",
+   "title": "location in all",
+   "whole": 6211.0,
+   "bounded": 6211.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "member in all",
+   "whole": 33.0,
+   "bounded": 33.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdsynthea-postgres",
+   "title": "patients in all",
+   "whole": 1462.0,
+   "bounded": 1462.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdsynthea-postgres",
+   "title": "encounters in all",
+   "whole": 20524.0,
+   "bounded": 20524.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdsynthea-postgres",
+   "title": "patients with encounters",
+   "whole": 1461.0,
+   "bounded": 1461.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdsynthea-postgres",
+   "title": "share of patients with encounters",
+   "whole": 99.9,
+   "bounded": 99.9,
+   "error": 0.0
+  },
+  {
+   "store": "birdtalkingdata-postgres",
+   "title": "sample_submission in all",
+   "whole": 13700.0,
+   "bounded": 13700.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdtalkingdata-postgres",
+   "title": "events in all",
+   "whole": 3252950.0,
+   "bounded": 3252950.0,
+   "error": 0.0
+  },
+  {
+   "store": "birdtalkingdata-postgres",
+   "title": "sample_submission with events",
+   "whole": 60865.0,
+   "bounded": 21556.0,
+   "error": 0.645839152222131
+  },
+  {
+   "store": "birdtalkingdata-postgres",
+   "title": "share of sample_submission with events",
+   "whole": 444.3,
+   "bounded": 157.3,
+   "error": 0.6459599369795184
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "CUSTOMER in all",
+   "whole": 3000.0,
+   "bounded": 3000.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "ORDERS in all",
+   "whole": 4500.0,
+   "bounded": 4500.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "ORDERS, 7 days",
+   "whole": 433.0,
+   "bounded": 433.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "ORDERS, 30 days",
+   "whole": 1961.0,
+   "bounded": 1961.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "CUSTOMER with ORDERS",
+   "whole": 2033.0,
+   "bounded": 2033.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "CUSTOMER with two ORDERS or more",
+   "whole": 1044.0,
+   "bounded": 1044.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "CUSTOMER active, 30 days",
+   "whole": 1225.0,
+   "bounded": 1225.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "share of CUSTOMER with ORDERS",
+   "whole": 67.8,
+   "bounded": 67.8,
+   "error": 0.0
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "share of them with two or more",
+   "whole": 51.4,
+   "bounded": 51.4,
+   "error": 0.0
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "ORDERS.O_TOTALPRICE, 30 days",
+   "whole": 63415526.0,
+   "bounded": 63415526.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "LINEITEM.L_EXTENDEDPRICE, 30 days",
+   "whole": 235357482.0,
+   "bounded": 272059327.0,
+   "error": 0.15594084661391813
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "clients in all",
+   "whole": 1800.0,
+   "bounded": 1800.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "loan done in all",
+   "whole": 2364.0,
+   "bounded": 2364.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "loan done, 7 days",
+   "whole": 206.0,
+   "bounded": 206.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "loan done, 30 days",
+   "whole": 983.0,
+   "bounded": 983.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "clients with loan done",
+   "whole": 1142.0,
+   "bounded": 1142.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "clients with two loan done or more",
+   "whole": 547.0,
+   "bounded": 547.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "clients active, 30 days",
+   "whole": 647.0,
+   "bounded": 647.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "share of clients with loan done",
+   "whole": 63.4,
+   "bounded": 63.4,
+   "error": 0.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "share of them with two or more",
+   "whole": 47.9,
+   "bounded": 47.9,
+   "error": 0.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "loan.loan_amount, 30 days",
+   "whole": 24524593.0,
+   "bounded": 24524593.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "payment_transactions.amount, 30 days",
+   "whole": 1469053.0,
+   "bounded": 1683967.0,
+   "error": 0.14629424534036553
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "share of loan rejected/cancelled, 7 days",
+   "whole": 27.0,
+   "bounded": 27.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "users in all",
+   "whole": 1500.0,
+   "bounded": 1500.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "orders in all",
+   "whole": 9000.0,
+   "bounded": 9000.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "orders, 7 days",
+   "whole": 1552.0,
+   "bounded": 1552.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "orders, 30 days",
+   "whole": 4558.0,
+   "bounded": 4558.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "users with orders",
+   "whole": 101.0,
+   "bounded": 101.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "users with two orders or more",
+   "whole": 101.0,
+   "bounded": 101.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "users active, 30 days",
+   "whole": 101.0,
+   "bounded": 101.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "share of users with orders",
+   "whole": 6.7,
+   "bounded": 6.7,
+   "error": 0.0
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "share of them with two or more",
+   "whole": 100.0,
+   "bounded": 100.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "CUSTOMER in all",
+   "whole": 3000.0,
+   "bounded": 3000.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "BOOKING done in all",
+   "whole": 10384.0,
+   "bounded": 11078.0,
+   "error": 0.06683359013867489
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "BOOKING done, 7 days",
+   "whole": 1570.0,
+   "bounded": 1876.0,
+   "error": 0.19490445859872613
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "BOOKING done, 30 days",
+   "whole": 4916.0,
+   "bounded": 5326.0,
+   "error": 0.08340113913751017
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "BOOKING.AMOUNT, 30 days",
+   "whole": 465690.0,
+   "bounded": 505574.0,
+   "error": 0.08564495694560759
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "BILLING.TOTAL_AMOUNT, 30 days",
+   "whole": 604337.0,
+   "bounded": 633633.0,
+   "error": 0.048476264071205304
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "share of BILLING disputed, 7 days",
+   "whole": 5.2,
+   "bounded": 4.1,
+   "error": 0.21153846153846165
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "customers in all",
+   "whole": 1400.0,
+   "bounded": 1400.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "rentals in all",
+   "whole": 16000.0,
+   "bounded": 16000.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "rentals, 7 days",
+   "whole": 2496.0,
+   "bounded": 2706.0,
+   "error": 0.08413461538461539
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "rentals, 30 days",
+   "whole": 6902.0,
+   "bounded": 8400.0,
+   "error": 0.21703853955375255
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "customers with rentals",
+   "whole": 101.0,
+   "bounded": 101.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "share of customers with rentals",
+   "whole": 7.2,
+   "bounded": 7.2,
+   "error": 0.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "tbl_peserta in all",
+   "whole": 9000.0,
+   "bounded": 9000.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "tbl_jawaban in all",
+   "whole": 6000.0,
+   "bounded": 6000.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "tbl_jawaban, 7 days",
+   "whole": 646.0,
+   "bounded": 646.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "tbl_jawaban, 30 days",
+   "whole": 2626.0,
+   "bounded": 2626.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "tbl_peserta with tbl_jawaban",
+   "whole": 3738.0,
+   "bounded": 3738.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "tbl_peserta with two tbl_jawaban or more",
+   "whole": 1208.0,
+   "bounded": 1208.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "tbl_peserta active, 30 days",
+   "whole": 1970.0,
+   "bounded": 1970.0,
+   "error": 0.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "share of tbl_peserta with tbl_jawaban",
+   "whole": 41.5,
+   "bounded": 41.5,
+   "error": 0.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "share of them with two or more",
+   "whole": 32.3,
+   "bounded": 32.3,
+   "error": 0.0
+  }
+ ],
+ "by_day": [
+  {
+   "store": "airlines-postgres",
+   "title": "rows of flights by flights.scheduled_departure",
+   "days": 29,
+   "of": 29,
+   "error": 0.2752808988764045,
+   "corr": 0.25871439257054407
+  },
+  {
+   "store": "airlines-postgres",
+   "title": "share of flights Cancelled a day",
+   "days": 29,
+   "of": 29,
+   "error": 1.0,
+   "corr": 0.6161287416989903
+  },
+  {
+   "store": "airlines-postgres",
+   "title": "sum of segments.price by flights.scheduled_departure",
+   "days": 29,
+   "of": 29,
+   "error": 0.7181326493849214,
+   "corr": 0.8013982817214976
+  },
+  {
+   "store": "airlines-postgres",
+   "title": "rows of flights by flights.scheduled_arrival",
+   "days": 29,
+   "of": 29,
+   "error": 0.2823529411764706,
+   "corr": 0.5693074454326201
+  },
+  {
+   "store": "airlines-postgres",
+   "title": "rows of flights by flights.actual_departure",
+   "days": 28,
+   "of": 28,
+   "error": 0.19786096256684493,
+   "corr": 0.09030633970688533
+  },
+  {
+   "store": "airlines-postgres",
+   "title": "rows of flights with flights.actual_departure after flights.scheduled_arrival by flights.scheduled_departure",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "airlines-postgres",
+   "title": "rows of flights with flights.actual_arrival after flights.scheduled_arrival by flights.scheduled_departure",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "airlines-postgres",
+   "title": "rows of flights with flights.actual_departure after flights.scheduled_departure by flights.scheduled_departure",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "airlines-postgres",
+   "title": "rows of flights with flights.actual_arrival after flights.scheduled_departure by flights.scheduled_departure",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "birdauthors-postgres",
+   "title": "rows of Paper by Paper.Year",
+   "days": 27,
+   "of": 200,
+   "error": 0.17143824027072757,
+   "corr": 0.9989371274996927
+  },
+  {
+   "store": "birdauthors-postgres",
+   "title": "rows of PaperAuthor by Paper.Year",
+   "days": 39,
+   "of": 189,
+   "error": 0.29784206782072564,
+   "corr": 0.8940143848702626
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "sum of order_line.price by cust_order.order_date",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "distinct shipping_method in cust_order by cust_order.order_date",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "sum of order_line.price by book.publication_date",
+   "days": 1,
+   "of": 1,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "distinct cust_order in order_line by cust_order.order_date",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "distinct cust_order in order_line by book.publication_date",
+   "days": 1,
+   "of": 1,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "distinct book in order_line by cust_order.order_date",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "distinct book in order_line by book.publication_date",
+   "days": 1,
+   "of": 1,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "rows of cust_order by cust_order.order_date",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "rows of order_line by cust_order.order_date",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "rows of order_line by book.publication_date",
+   "days": 1,
+   "of": 1,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "birdcardgames-postgres",
+   "title": "sum of sets.totalSetSize by sets.releaseDate",
+   "days": 1,
+   "of": 1,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "birdcardgames-postgres",
+   "title": "rows of sets by sets.releaseDate",
+   "days": 1,
+   "of": 1,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "birdcardgames-postgres",
+   "title": "rows of sets with sets.isForeignOnly by sets.releaseDate",
+   "days": 1,
+   "of": 1,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "birdcardgames-postgres",
+   "title": "rows of sets with sets.isFoilOnly by sets.releaseDate",
+   "days": 1,
+   "of": 1,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "birdcardgames-postgres",
+   "title": "rows of sets with sets.isNonFoilOnly by sets.releaseDate",
+   "days": 1,
+   "of": 1,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "birdcardgames-postgres",
+   "title": "average of sets.totalSetSize by sets.releaseDate",
+   "days": 1,
+   "of": 1,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "birdcardgames-postgres",
+   "title": "sum of sets.baseSetSize by sets.releaseDate",
+   "days": 1,
+   "of": 1,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "birdcardgames-postgres",
+   "title": "distinct sets.tcgplayerGroupId in sets by sets.releaseDate",
+   "days": 1,
+   "of": 1,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "birdcardgames-postgres",
+   "title": "distinct sets.mcmId in sets by sets.releaseDate",
+   "days": 1,
+   "of": 1,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "birdcardgames-postgres",
+   "title": "rows of rulings by rulings.date",
+   "days": 2,
+   "of": 3,
+   "error": 1.0391435578192794,
+   "corr": null
+  },
+  {
+   "store": "birdeuropeanfootball1-postgres",
+   "title": "rows of matchs by matchs.Date",
+   "days": 28,
+   "of": 29,
+   "error": 0.09401709401709402,
+   "corr": 0.9887917242624676
+  },
+  {
+   "store": "birdeuropeanfootball1-postgres",
+   "title": "sum of matchs.FTHG by matchs.Date",
+   "days": 28,
+   "of": 29,
+   "error": 0.0803115766854687,
+   "corr": 0.9914090232174736
+  },
+  {
+   "store": "birdeuropeanfootball1-postgres",
+   "title": "average of matchs.FTHG by matchs.Date",
+   "days": 28,
+   "of": 29,
+   "error": 0.030697115384615406,
+   "corr": 0.8151433203240069
+  },
+  {
+   "store": "birdfoodinspection2-postgres",
+   "title": "rows of violation by inspection.inspection_date",
+   "days": 1,
+   "of": 20,
+   "error": 9.232375979112271,
+   "corr": null
+  },
+  {
+   "store": "birdmovies4-postgres",
+   "title": "rows of movie by movie.release_date",
+   "days": 4,
+   "of": 4,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "birdmovies4-postgres",
+   "title": "sum of movie.revenue by movie.release_date",
+   "days": 4,
+   "of": 4,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdmovies4-postgres",
+   "title": "sum of movie.budget by movie.release_date",
+   "days": 4,
+   "of": 4,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdmovies4-postgres",
+   "title": "average of movie.budget by movie.release_date",
+   "days": 4,
+   "of": 4,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdmovies4-postgres",
+   "title": "average of movie.revenue by movie.release_date",
+   "days": 4,
+   "of": 4,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdmusictracker-postgres",
+   "title": "rows of tags by torrents.groupYear",
+   "days": 17,
+   "of": 38,
+   "error": 0.5887813549279084,
+   "corr": 0.746556035526666
+  },
+  {
+   "store": "birdolympics-postgres",
+   "title": "rows of games by games.games_year",
+   "days": 35,
+   "of": 35,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdolympics-postgres",
+   "title": "average of games_competitor.age by games.games_year",
+   "days": 34,
+   "of": 35,
+   "error": 0.007148181304743085,
+   "corr": 0.8791743020338353
+  },
+  {
+   "store": "birdolympics-postgres",
+   "title": "rows of games_competitor by games.games_year",
+   "days": 34,
+   "of": 35,
+   "error": 0.07659056092347273,
+   "corr": 0.9930609357462885
+  },
+  {
+   "store": "birdolympics-postgres",
+   "title": "rows of competitor_event by games.games_year",
+   "days": 34,
+   "of": 35,
+   "error": 0.08818985574214108,
+   "corr": 0.9821101384477047
+  },
+  {
+   "store": "birdretailcomplains-postgres",
+   "title": "average of reviews.Stars by reviews.Date",
+   "days": 1,
+   "of": 1,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "birdretailcomplains-postgres",
+   "title": "average of callcenterlogs.priority by callcenterlogs.Date received",
+   "days": 9,
+   "of": 9,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdretailcomplains-postgres",
+   "title": "distinct client in callcenterlogs by callcenterlogs.Date received",
+   "days": 12,
+   "of": 12,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "birdretailcomplains-postgres",
+   "title": "distinct callcenterlogs.call_id in callcenterlogs by callcenterlogs.Date received",
+   "days": 12,
+   "of": 12,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdretailcomplains-postgres",
+   "title": "distinct callcenterlogs.Complaint ID in callcenterlogs by callcenterlogs.Date received",
+   "days": 12,
+   "of": 12,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "birdretailcomplains-postgres",
+   "title": "rows of reviews by reviews.Date",
+   "days": 1,
+   "of": 1,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "birdretailcomplains-postgres",
+   "title": "rows of callcenterlogs by callcenterlogs.Date received",
+   "days": 12,
+   "of": 12,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdretailcomplains-postgres",
+   "title": "rows of client by client.month",
+   "days": 12,
+   "of": 12,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "distinct Season in Match by Match.Match_Date",
+   "days": 26,
+   "of": 26,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "distinct Player in Match by Match.Match_Date",
+   "days": 26,
+   "of": 26,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "distinct Player in Wicket_Taken by Match.Match_Date",
+   "days": 26,
+   "of": 26,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "rows of Match by Match.Match_Date",
+   "days": 26,
+   "of": 26,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "rows of Player_Match by Match.Match_Date",
+   "days": 19,
+   "of": 26,
+   "error": 0.8181818181818182,
+   "corr": 0.699354623575047
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "rows of Wicket_Taken by Match.Match_Date",
+   "days": 26,
+   "of": 26,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "rows of Extra_Runs by Match.Match_Date",
+   "days": 26,
+   "of": 26,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdsynthea-postgres",
+   "title": "rows of patients by patients.birthdate",
+   "days": 2,
+   "of": 2,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "birdsynthea-postgres",
+   "title": "distinct patients in conditions by conditions.START",
+   "days": 18,
+   "of": 18,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdsynthea-postgres",
+   "title": "distinct encounters in conditions by conditions.START",
+   "days": 18,
+   "of": 18,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdsynthea-postgres",
+   "title": "distinct all_prevalences in conditions by conditions.START",
+   "days": 18,
+   "of": 18,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdsynthea-postgres",
+   "title": "rows of conditions by conditions.START",
+   "days": 18,
+   "of": 18,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdsynthea-postgres",
+   "title": "rows of medications by medications.START",
+   "days": 16,
+   "of": 16,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birdtalkingdata-postgres",
+   "title": "rows of events by events.timestamp",
+   "days": 7,
+   "of": 9,
+   "error": 0.23986897676195565,
+   "corr": 0.005638957226109914
+  },
+  {
+   "store": "birdtalkingdata-postgres",
+   "title": "rows of app_events with app_events.is_active by events.timestamp",
+   "days": 7,
+   "of": 9,
+   "error": 0.2110117242773398,
+   "corr": -0.09617541148899704
+  },
+  {
+   "store": "birdtalkingdata-postgres",
+   "title": "sum of app_events.is_active by events.timestamp",
+   "days": 7,
+   "of": 9,
+   "error": 0.2110117242773398,
+   "corr": -0.09617541148899704
+  },
+  {
+   "store": "birdtalkingdata-postgres",
+   "title": "sum of app_events.is_installed by events.timestamp",
+   "days": 7,
+   "of": 9,
+   "error": 0.16849507007320585,
+   "corr": 0.01938131066079402
+  },
+  {
+   "store": "birdtalkingdata-postgres",
+   "title": "rows of app_events by events.timestamp",
+   "days": 7,
+   "of": 9,
+   "error": 0.16849507007320585,
+   "corr": 0.01938131066079402
+  },
+  {
+   "store": "birduniversity-postgres",
+   "title": "rows of university_ranking_year by university_ranking_year.year",
+   "days": 12,
+   "of": 12,
+   "error": 0.290849183765164,
+   "corr": 0.9931263025317466
+  },
+  {
+   "store": "birduniversity-postgres",
+   "title": "average of university_year.student_staff_ratio by university_year.year",
+   "days": 6,
+   "of": 6,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "birduniversity-postgres",
+   "title": "average of university_ranking_year.score by university_ranking_year.year",
+   "days": 12,
+   "of": 12,
+   "error": 0.17276565024329826,
+   "corr": 0.988737476071503
+  },
+  {
+   "store": "birduniversity-postgres",
+   "title": "rows of university_year by university_year.year",
+   "days": 6,
+   "of": 6,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "rows of LINEITEM by LINEITEM.L_SHIPDATE",
+   "days": 23,
+   "of": 29,
+   "error": 0.0,
+   "corr": 0.7990855460148969
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "sum of LINEITEM.L_TAX by LINEITEM.L_SHIPDATE",
+   "days": 23,
+   "of": 29,
+   "error": 0.0,
+   "corr": 0.791248063582423
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "distinct CUSTOMER in ORDERS by ORDERS.O_ORDERDATE",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "average of LINEITEM.L_TAX by LINEITEM.L_SHIPDATE",
+   "days": 23,
+   "of": 29,
+   "error": 0.0,
+   "corr": 0.8941946161469488
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "sum of LINEITEM.L_TAX by LINEITEM.L_COMMITDATE",
+   "days": 25,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "sum of LINEITEM.L_TAX by LINEITEM.L_RECEIPTDATE",
+   "days": 22,
+   "of": 29,
+   "error": 0.17971043592656258,
+   "corr": 0.8657751381282695
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "distinct ORDERS in LINEITEM by LINEITEM.L_SHIPDATE",
+   "days": 23,
+   "of": 29,
+   "error": 0.0,
+   "corr": 0.8098826504387795
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "distinct ORDERS in LINEITEM by LINEITEM.L_COMMITDATE",
+   "days": 25,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "distinct ORDERS in LINEITEM by LINEITEM.L_RECEIPTDATE",
+   "days": 22,
+   "of": 29,
+   "error": 0.19801223241590216,
+   "corr": 0.8800960785844572
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "rows of ORDERS by ORDERS.O_ORDERDATE",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "rows of LINEITEM by LINEITEM.L_COMMITDATE",
+   "days": 25,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "rows of LINEITEM by LINEITEM.L_RECEIPTDATE",
+   "days": 22,
+   "of": 29,
+   "error": 0.1872355896351137,
+   "corr": 0.8726265478121634
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "sum of payment_transactions.amount by payment_transactions.date",
+   "days": 26,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "rows of approved_loans by approved_loans.date_approved",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "share of approved_loans overdue/defaulted a day",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "distinct clients in loan by loan.date_loan",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "sum of loan.loan_amount by loan.date_loan",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "sum of approved_loans.daily_payment by approved_loans.date_approved",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "sum of payment_transactions.payment_no by payment_transactions.date",
+   "days": 26,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "average of payment_transactions.amount by payment_transactions.date",
+   "days": 26,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "distinct payment_transactions.transaction_id in payment_transactions by payment_transactions.date",
+   "days": 26,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "rows of loan by loan.date_loan",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "rows of payment_transactions by payment_transactions.date",
+   "days": 26,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "rows of approved_loans by approved_loans.loan_started",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "rows of orders by orders.orderData",
+   "days": 28,
+   "of": 28,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "rows of employeelogintime by employeelogintime.Time",
+   "days": 4,
+   "of": 4,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "sum of BOOKING.AMOUNT by BOOKING.FROM_DT_TIME",
+   "days": 25,
+   "of": 28,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "share of BILLING disputed a day",
+   "days": 24,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "distinct BOOKING in BILLING by BILLING.BILL_DATE",
+   "days": 24,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "distinct BIKE in BOOKING by BOOKING.FROM_DT_TIME",
+   "days": 25,
+   "of": 28,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "distinct LOCATION in BOOKING by BOOKING.FROM_DT_TIME",
+   "days": 25,
+   "of": 28,
+   "error": 0.0,
+   "corr": null
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "distinct CUSTOMER in BOOKING by BOOKING.FROM_DT_TIME",
+   "days": 25,
+   "of": 28,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "rows of BOOKING by BOOKING.FROM_DT_TIME",
+   "days": 25,
+   "of": 28,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "rows of BOOKING by BOOKING.RET_DT_TIME",
+   "days": 25,
+   "of": 28,
+   "error": 0.0,
+   "corr": 0.9635775399880054
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "rows of BOOKING by BOOKING.ACT_RET_DT_TIME",
+   "days": 25,
+   "of": 28,
+   "error": 0.0,
+   "corr": 0.9883226999385133
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "rows of BILLING by BILLING.BILL_DATE",
+   "days": 24,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "rows of rentals by rentals.RentDate",
+   "days": 27,
+   "of": 28,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "sum of cars.DailyPrice by cars.ModelYear",
+   "days": 12,
+   "of": 12,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "distinct users in customers by users.Age",
+   "days": 28,
+   "of": 28,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "rows of users with users.Status by users.Age",
+   "days": 28,
+   "of": 28,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "average of cars.DailyPrice by cars.ModelYear",
+   "days": 12,
+   "of": 12,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "average of cars.FindeksScore by cars.ModelYear",
+   "days": 12,
+   "of": 12,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "distinct rentals.CarId in rentals by rentals.RentDate",
+   "days": 27,
+   "of": 28,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "distinct rentals.CustomerId in rentals by rentals.RentDate",
+   "days": 27,
+   "of": 28,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "distinct rentals.Id in rentals by rentals.RentDate",
+   "days": 27,
+   "of": 28,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "distinct cars.ModelId in cars by cars.ModelYear",
+   "days": 12,
+   "of": 12,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "rows of cars by cars.ModelYear",
+   "days": 12,
+   "of": 12,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "rows of users by users.Age",
+   "days": 28,
+   "of": 28,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "rows of rentals by rentals.ReturnDate",
+   "days": 27,
+   "of": 28,
+   "error": 0.0,
+   "corr": 0.8949748547444066
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "rows of customers by users.Age",
+   "days": 28,
+   "of": 28,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "rows of tbl_peserta by tbl_peserta.tgl_lahir",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "distinct tbl_peserta in tbl_jawaban by tbl_jawaban.waktu_mulai",
+   "days": 28,
+   "of": 28,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "distinct tbl_lab in tbl_peserta by tbl_peserta.tgl_lahir",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "distinct tbl_peserta in tbl_jawaban by tbl_jawaban.waktu_selesai",
+   "days": 28,
+   "of": 28,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "rows of tbl_jawaban by tbl_jawaban.waktu_mulai",
+   "days": 28,
+   "of": 28,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "rows of tbl_peserta by tbl_peserta.tgl_selesai_pendaftaran",
+   "days": 29,
+   "of": 29,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "rows of tbl_jawaban by tbl_jawaban.waktu_selesai",
+   "days": 28,
+   "of": 28,
+   "error": 0.0,
+   "corr": 1.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "rows of tbl_nilai by tbl_peserta.tgl_lahir",
+   "days": 29,
+   "of": 29,
+   "error": 0.11560693641618497,
+   "corr": 0.9940093683454754
+  }
+ ],
+ "ranked": [
+  {
+   "store": "airlines-postgres",
+   "title": "rows of boarding_passes, by flights (by key), the twelve most",
+   "top5": 0.0
+  },
+  {
+   "store": "airlines-postgres",
+   "title": "rows of flights by flights.status",
+   "top5": 1.0
+  },
+  {
+   "store": "airlines-postgres",
+   "title": "rows of boarding_passes by flights.status",
+   "top5": 0.4
+  },
+  {
+   "store": "airlines-postgres",
+   "title": "rows of segments, by flights (by key), the twelve most",
+   "top5": 0.0
+  },
+  {
+   "store": "airlines-postgres",
+   "title": "rows of segments by segments.fare_conditions",
+   "top5": 1.0
+  },
+  {
+   "store": "airlines-postgres",
+   "title": "rows of tickets, by bookings (by key), the twelve most",
+   "top5": 0.0
+  },
+  {
+   "store": "birdaddress-postgres",
+   "title": "rows of zip_data, by state.name, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdaddress-postgres",
+   "title": "rows of zip_data, by CBSA.CBSA_name, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdaddress-postgres",
+   "title": "rows of zip_congress, by congress (named), the twelve most",
+   "top5": 0.0
+  },
+  {
+   "store": "birdaddress-postgres",
+   "title": "rows of congress, by congress.state, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdaddress-postgres",
+   "title": "rows of CBSA by CBSA.CBSA_type",
+   "top5": 1.0
+  },
+  {
+   "store": "birdaddress-postgres",
+   "title": "rows of country, by state.name, the twelve most",
+   "top5": 0.4
+  },
+  {
+   "store": "birdaddress-postgres",
+   "title": "rows of zip_data, by zip_data.state_fips, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdaddress-postgres",
+   "title": "sum of zip_data.multi_family_delivery_units, by state.name, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdaddress-postgres",
+   "title": "rows of congress, by state.name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdaddress-postgres",
+   "title": "sum of zip_data.total_beneficiaries, by state.name, the twelve most",
+   "top5": 0.6
+  },
+  {
+   "store": "birdaddress-postgres",
+   "title": "sum of zip_data.total_delivery_receptacles, by state.name, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdaddress-postgres",
+   "title": "sum of zip_data.total_delivery_receptacles, by CBSA.CBSA_name, the twelve most",
+   "top5": 0.6
+  },
+  {
+   "store": "birdaddress-postgres",
+   "title": "sum of zip_data.total_beneficiaries, by CBSA.CBSA_name, the twelve most",
+   "top5": 0.6
+  },
+  {
+   "store": "birdaddress-postgres",
+   "title": "rows of zip_data by zip_data.type",
+   "top5": 1.0
+  },
+  {
+   "store": "birdaddress-postgres",
+   "title": "rows of zip_data by zip_data.division",
+   "top5": 1.0
+  },
+  {
+   "store": "birdaddress-postgres",
+   "title": "rows of zip_data by zip_data.time_zone",
+   "top5": 0.8
+  },
+  {
+   "store": "birdaddress-postgres",
+   "title": "rows of zip_data by zip_data.multi_county",
+   "top5": 1.0
+  },
+  {
+   "store": "birdairline-postgres",
+   "title": "rows of Airlines, by Air Carriers.Description, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdairline-postgres",
+   "title": "rows of Airlines, by Airports.Description, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdairline-postgres",
+   "title": "rows of Airlines, by Airlines.FL_DATE, the twelve most",
+   "top5": 0.2
+  },
+  {
+   "store": "birdairline-postgres",
+   "title": "rows of Airlines, by Airlines.ORIGIN_AIRPORT_ID, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdairline-postgres",
+   "title": "rows of Airlines, by Airlines.ORIGIN_AIRPORT_SEQ_ID, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdairline-postgres",
+   "title": "rows of Airlines, by Airlines.ORIGIN_CITY_MARKET_ID, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdappstore-postgres",
+   "title": "rows of playstore by playstore.Type",
+   "top5": 0.6666666666666666
+  },
+  {
+   "store": "birdappstore-postgres",
+   "title": "rows of playstore, by playstore.Category, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdappstore-postgres",
+   "title": "rows of user_reviews by user_reviews.Sentiment",
+   "top5": 1.0
+  },
+  {
+   "store": "birdappstore-postgres",
+   "title": "average of playstore.Rating by playstore.Type",
+   "top5": 0.6666666666666666
+  },
+  {
+   "store": "birdappstore-postgres",
+   "title": "rows of playstore, by playstore.Genres, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdappstore-postgres",
+   "title": "rows of playstore by playstore.Content Rating",
+   "top5": 1.0
+  },
+  {
+   "store": "birdappstore-postgres",
+   "title": "average of playstore.Rating, by playstore.Category, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdauthors-postgres",
+   "title": "rows of Paper, by Conference.ShortName, the twelve most",
+   "top5": 0.6
+  },
+  {
+   "store": "birdauthors-postgres",
+   "title": "rows of PaperAuthor, by Journal.ShortName, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdauthors-postgres",
+   "title": "rows of Paper, by Journal.ShortName, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdauthors-postgres",
+   "title": "rows of PaperAuthor, by Conference.ShortName, the twelve most",
+   "top5": 0.2
+  },
+  {
+   "store": "birdauthors-postgres",
+   "title": "rows of PaperAuthor, by Author.Name, the twelve most",
+   "top5": 0.2
+  },
+  {
+   "store": "birdauthors-postgres",
+   "title": "rows of Paper, by Paper.Title, the twelve most",
+   "top5": 0.6
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "rows of book, by publisher.publisher_name, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "rows of book, by book_language.language_name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "rows of order_history by order_status.status_value",
+   "top5": 0.8
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "rows of customer_address by order_status.status_value",
+   "top5": 1.0
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "rows of order_status by order_status.status_value",
+   "top5": 1.0
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "rows of address_status by address_status.address_status",
+   "top5": 1.0
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "sum of order_line.price, by cust_order (by key), the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "sum of order_line.price, by publisher.publisher_name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "sum of order_line.price, by country.country_name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "rows of cust_order, by shipping_method.method_name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "rows of cust_order, by address.street_name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdbooks-postgres",
+   "title": "rows of cust_order, by customer (named), the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcardgames-postgres",
+   "title": "rows of cards, by cards.types, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcardgames-postgres",
+   "title": "rows of cards by cards.borderColor",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcardgames-postgres",
+   "title": "sum of sets.totalSetSize by type, the last week",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcardgames-postgres",
+   "title": "rows of sets with sets.isForeignOnly, by sets.type, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcardgames-postgres",
+   "title": "sum of sets.totalSetSize, by sets.type, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcardgames-postgres",
+   "title": "sum of sets.totalSetSize by sets.isFoilOnly",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcardgames-postgres",
+   "title": "sum of sets.totalSetSize by sets.isNonFoilOnly",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcardgames-postgres",
+   "title": "rows of sets, by sets.type, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcardgames-postgres",
+   "title": "rows of sets by sets.isFoilOnly",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcardgames-postgres",
+   "title": "rows of sets by sets.isNonFoilOnly",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcardgames-postgres",
+   "title": "distinct sets.mcmId in sets, by sets.type, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdchicagocrime-postgres",
+   "title": "rows of Crime, by IUCR.primary_description, the twelve most",
+   "top5": 0.6
+  },
+  {
+   "store": "birdchicagocrime-postgres",
+   "title": "rows of Crime, by FBI_Code.title, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdchicagocrime-postgres",
+   "title": "rows of Neighborhood, by Community_Area.community_area_name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdchicagocrime-postgres",
+   "title": "rows of Ward by Ward.city_hall_office_room",
+   "top5": 1.0
+  },
+  {
+   "store": "birdchicagocrime-postgres",
+   "title": "rows of Neighborhood by Community_Area.side",
+   "top5": 1.0
+  },
+  {
+   "store": "birdchicagocrime-postgres",
+   "title": "rows of Crime, by Community_Area.community_area_name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdchicagocrime-postgres",
+   "title": "rows of Crime, by District.district_name, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdchicagocrime-postgres",
+   "title": "rows of Crime, by Ward (named), the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdchicagocrime-postgres",
+   "title": "rows of Crime, by Crime.location_description, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcoinmarketcap-postgres",
+   "title": "rows of coins by coins.status",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcoinmarketcap-postgres",
+   "title": "rows of coins by coins.category",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcoinmarketcap-postgres",
+   "title": "rows of historical by coins.status",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcoinmarketcap-postgres",
+   "title": "sum of historical.volume_24h by coins.status",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcoinmarketcap-postgres",
+   "title": "average of historical.cmc_rank by coins.status",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcoinmarketcap-postgres",
+   "title": "rows of historical, by coins.name, the twelve most",
+   "top5": 0.0
+  },
+  {
+   "store": "birdcollegecompletion-postgres",
+   "title": "rows of institution_details, by institution_details.state, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcollegecompletion-postgres",
+   "title": "rows of institution_details, by institution_details.state_sector_ct, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcollegecompletion-postgres",
+   "title": "rows of state_sector_grads by state_sector_grads.gender",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcollegecompletion-postgres",
+   "title": "rows of state_sector_grads, by state_sector_grads.state, the twelve most",
+   "top5": 0.0
+  },
+  {
+   "store": "birdcollegecompletion-postgres",
+   "title": "rows of state_sector_grads, by state_sector_grads.state_abbr, the twelve most",
+   "top5": 0.0
+  },
+  {
+   "store": "birdcollegecompletion-postgres",
+   "title": "sum of institution_details.awards_per_value \u00d7 institution_details.student_count, by institution_details.state, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcollegecompletion-postgres",
+   "title": "sum of institution_details.awards_per_value, by institution_details.state, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcollegecompletion-postgres",
+   "title": "rows of institution_grads by institution_grads.gender",
+   "top5": 1.0
+  },
+  {
+   "store": "birdcollegecompletion-postgres",
+   "title": "rows of institution_grads, by institution_details.nicknames, the twelve most",
+   "top5": 0.2
+  },
+  {
+   "store": "birdcollegecompletion-postgres",
+   "title": "rows of institution_grads by institution_grads.race",
+   "top5": 0.8
+  },
+  {
+   "store": "birdcollegecompletion-postgres",
+   "title": "rows of institution_grads by institution_grads.cohort",
+   "top5": 1.0
+  },
+  {
+   "store": "birdeuropeanfootball1-postgres",
+   "title": "rows of matchs, by divisions.name, the twelve most",
+   "top5": 0.6
+  },
+  {
+   "store": "birdeuropeanfootball1-postgres",
+   "title": "rows of divisions by divisions.country",
+   "top5": 1.0
+  },
+  {
+   "store": "birdeuropeanfootball1-postgres",
+   "title": "rows of matchs by matchs.FTR",
+   "top5": 1.0
+  },
+  {
+   "store": "birdeuropeanfootball2-postgres",
+   "title": "rows of Match, by Country.name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdeuropeanfootball2-postgres",
+   "title": "rows of Match, by League.name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdeuropeanfootball2-postgres",
+   "title": "rows of Team_Attributes by Team_Attributes.buildUpPlaySpeedClass",
+   "top5": 1.0
+  },
+  {
+   "store": "birdeuropeanfootball2-postgres",
+   "title": "rows of Team_Attributes by Team_Attributes.buildUpPlayDribblingClass",
+   "top5": 1.0
+  },
+  {
+   "store": "birdeuropeanfootball2-postgres",
+   "title": "rows of Player_Attributes by Player_Attributes.attacking_work_rate",
+   "top5": 0.8
+  },
+  {
+   "store": "birdeuropeanfootball2-postgres",
+   "title": "rows of Match, by Match.stage, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdeuropeanfootball2-postgres",
+   "title": "sum of Match.stage, by Match.stage, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdeuropeanfootball2-postgres",
+   "title": "average of Match.stage, by Match.stage, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdeuropeanfootball2-postgres",
+   "title": "sum of Match.home_team_goal, by Match.stage, the twelve most",
+   "top5": 0.2
+  },
+  {
+   "store": "birdeuropeanfootball2-postgres",
+   "title": "rows of Match by Match.home_team_goal",
+   "top5": 1.0
+  },
+  {
+   "store": "birdeuropeanfootball2-postgres",
+   "title": "rows of Match by Match.away_team_goal",
+   "top5": 1.0
+  },
+  {
+   "store": "birdeuropeanfootball2-postgres",
+   "title": "rows of Match by Match.season",
+   "top5": 1.0
+  },
+  {
+   "store": "birdeuropeanfootball2-postgres",
+   "title": "rows of Match by Country.name",
+   "top5": 1.0
+  },
+  {
+   "store": "birdfoodinspection2-postgres",
+   "title": "rows of violation, by inspection_point.Description, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdfoodinspection2-postgres",
+   "title": "rows of establishment by establishment.risk_level",
+   "top5": 0.75
+  },
+  {
+   "store": "birdfoodinspection2-postgres",
+   "title": "sum of employee.salary by employee.title",
+   "top5": 1.0
+  },
+  {
+   "store": "birdfoodinspection2-postgres",
+   "title": "average of employee.salary by employee.title",
+   "top5": 1.0
+  },
+  {
+   "store": "birdfoodinspection2-postgres",
+   "title": "rows of inspection, by establishment.dba_name, the twelve most",
+   "top5": 0.4
+  },
+  {
+   "store": "birdfoodinspection2-postgres",
+   "title": "rows of inspection, by inspection.inspection_type, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdfoodinspection2-postgres",
+   "title": "rows of inspection, by employee (named), the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdfoodinspection2-postgres",
+   "title": "rows of inspection by inspection.results",
+   "top5": 1.0
+  },
+  {
+   "store": "birdimageandlanguage-postgres",
+   "title": "rows of IMG_OBJ, by OBJ_CLASSES.OBJ_CLASS, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdimageandlanguage-postgres",
+   "title": "rows of IMG_REL, by PRED_CLASSES.PRED_CLASS, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdimageandlanguage-postgres",
+   "title": "rows of IMG_OBJ_ATT, by ATT_CLASSES.ATT_CLASS, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdimageandlanguage-postgres",
+   "title": "rows of IMG_REL, by IMG_REL.IMG_ID, the twelve most",
+   "top5": 0.0
+  },
+  {
+   "store": "birdimageandlanguage-postgres",
+   "title": "rows of IMG_OBJ, by IMG_OBJ.OBJ_SAMPLE_ID, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdimageandlanguage-postgres",
+   "title": "sum of IMG_OBJ.H, by OBJ_CLASSES.OBJ_CLASS, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdimageandlanguage-postgres",
+   "title": "rows of IMG_REL, by IMG_REL.OBJ1_SAMPLE_ID, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdimageandlanguage-postgres",
+   "title": "rows of IMG_REL, by IMG_REL.OBJ2_SAMPLE_ID, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdlegislator-postgres",
+   "title": "rows of historical-terms by historical-terms.type",
+   "top5": 0.6666666666666666
+  },
+  {
+   "store": "birdlegislator-postgres",
+   "title": "rows of current-terms by current-terms.type",
+   "top5": 1.0
+  },
+  {
+   "store": "birdlegislator-postgres",
+   "title": "rows of historical-terms, by historical-terms.state, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdlegislator-postgres",
+   "title": "rows of current-terms, by current-terms.state, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdlegislator-postgres",
+   "title": "rows of current by current.gender_bio",
+   "top5": 1.0
+  },
+  {
+   "store": "birdlegislator-postgres",
+   "title": "average of historical-terms.class, by historical-terms.state, the twelve most",
+   "top5": 0.4
+  },
+  {
+   "store": "birdlegislator-postgres",
+   "title": "sum of historical-terms.class, by historical-terms.state, the twelve most",
+   "top5": 0.4
+  },
+  {
+   "store": "birdlegislator-postgres",
+   "title": "average of current-terms.class, by current-terms.state, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdlegislator-postgres",
+   "title": "sum of current-terms.class, by current-terms.state, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdlegislator-postgres",
+   "title": "rows of current-terms, by social-media (by key), the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdlegislator-postgres",
+   "title": "rows of current-terms by current-terms.party",
+   "top5": 1.0
+  },
+  {
+   "store": "birdlegislator-postgres",
+   "title": "rows of current-terms, by current-terms.end, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdlegislator-postgres",
+   "title": "rows of historical, by historical.google_entity_id_id, the twelve most",
+   "top5": 0.2
+  },
+  {
+   "store": "birdlegislator-postgres",
+   "title": "distinct social-media in current-terms by current-terms.type",
+   "top5": 1.0
+  },
+  {
+   "store": "birdlegislator-postgres",
+   "title": "distinct historical in current by current.gender_bio",
+   "top5": 1.0
+  },
+  {
+   "store": "birdlegislator-postgres",
+   "title": "distinct social-media in current-terms by current-terms.party",
+   "top5": 1.0
+  },
+  {
+   "store": "birdmentalhealthsurvey-postgres",
+   "title": "rows of Answer, by Survey.Description, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdmentalhealthsurvey-postgres",
+   "title": "rows of Answer, by Question.questiontext, the twelve most",
+   "top5": 0.0
+  },
+  {
+   "store": "birdmentalhealthsurvey-postgres",
+   "title": "rows of Survey by Survey.Description",
+   "top5": 1.0
+  },
+  {
+   "store": "birdmentalhealthsurvey-postgres",
+   "title": "rows of Answer by Survey.Description",
+   "top5": 1.0
+  },
+  {
+   "store": "birdmenu-postgres",
+   "title": "rows of Menu, by Menu.currency, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdmenu-postgres",
+   "title": "rows of MenuPage, by Menu (by key), the twelve most",
+   "top5": 0.6
+  },
+  {
+   "store": "birdmenu-postgres",
+   "title": "rows of MenuItem, by Dish.name, the twelve most",
+   "top5": 0.6
+  },
+  {
+   "store": "birdmenu-postgres",
+   "title": "rows of MenuItem, by MenuPage (by key), the twelve most",
+   "top5": 0.0
+  },
+  {
+   "store": "birdmovies4-postgres",
+   "title": "rows of movie_cast, by gender.gender, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdmovies4-postgres",
+   "title": "rows of movie_crew, by department.department_name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdmovies4-postgres",
+   "title": "sum of movie.revenue, by movie.title, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdmovies4-postgres",
+   "title": "rows of movie_languages, by language_role.language_role, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdmovies4-postgres",
+   "title": "rows of movie_languages, by language.language_name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdmovies4-postgres",
+   "title": "rows of movie_cast, by movie (by key), the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdmovies4-postgres",
+   "title": "rows of movie_keywords, by keyword.keyword_name, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdmusicplatform2-postgres",
+   "title": "rows of reviews, by podcasts.title, the twelve most",
+   "top5": 0.4
+  },
+  {
+   "store": "birdmusicplatform2-postgres",
+   "title": "rows of reviews, by reviews.author_id, the twelve most",
+   "top5": 0.6
+  },
+  {
+   "store": "birdmusicplatform2-postgres",
+   "title": "rows of runs by runs.run_at",
+   "top5": 1.0
+  },
+  {
+   "store": "birdmusicplatform2-postgres",
+   "title": "rows of runs, by runs.max_rowid, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdmusicplatform2-postgres",
+   "title": "average of reviews.rating, by podcasts.title, the twelve most",
+   "top5": 0.0
+  },
+  {
+   "store": "birdmusicplatform2-postgres",
+   "title": "rows of categories, by podcasts.title, the twelve most",
+   "top5": 0.0
+  },
+  {
+   "store": "birdmusicplatform2-postgres",
+   "title": "rows of reviews per podcasts",
+   "top5": 1.0
+  },
+  {
+   "store": "birdmusictracker-postgres",
+   "title": "rows of tags, by torrents (by key), the twelve most",
+   "top5": 0.0
+  },
+  {
+   "store": "birdmusictracker-postgres",
+   "title": "sum of torrents.totalSnatched, by torrents.releaseType, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdmusictracker-postgres",
+   "title": "average of torrents.totalSnatched, by torrents.releaseType, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdmusictracker-postgres",
+   "title": "rows of torrents, by torrents.releaseType, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdmusictracker-postgres",
+   "title": "rows of torrents, by torrents.groupName, the twelve most",
+   "top5": 0.6
+  },
+  {
+   "store": "birdmusictracker-postgres",
+   "title": "rows of tags, by torrents.releaseType, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdolympics-postgres",
+   "title": "rows of competitor_event, by medal.medal_name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdolympics-postgres",
+   "title": "rows of competitor_event, by event.event_name, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdolympics-postgres",
+   "title": "rows of games_competitor, by games (by key), the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdolympics-postgres",
+   "title": "average of games_competitor.age, by games (by key), the twelve most",
+   "top5": 0.2
+  },
+  {
+   "store": "birdolympics-postgres",
+   "title": "rows of person_region, by noc_region.region_name, the twelve most",
+   "top5": 0.6
+  },
+  {
+   "store": "birdolympics-postgres",
+   "title": "rows of event, by sport.sport_name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdretailcomplains-postgres",
+   "title": "rows of callcenterlogs by callcenterlogs.type",
+   "top5": 1.0
+  },
+  {
+   "store": "birdretailcomplains-postgres",
+   "title": "rows of client, by client.state, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdretailcomplains-postgres",
+   "title": "rows of callcenterlogs by callcenterlogs.outcome",
+   "top5": 1.0
+  },
+  {
+   "store": "birdretailcomplains-postgres",
+   "title": "rows of client, by state (by key), the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdretailcomplains-postgres",
+   "title": "rows of events, by client.state, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdretailcomplains-postgres",
+   "title": "rows of events, by client (by key), the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdretailcomplains-postgres",
+   "title": "rows of client, by district (by key), the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdretails-postgres",
+   "title": "rows of lineitem by lineitem.l_returnflag",
+   "top5": 1.0
+  },
+  {
+   "store": "birdretails-postgres",
+   "title": "rows of lineitem by lineitem.l_shipmode",
+   "top5": 0.8
+  },
+  {
+   "store": "birdretails-postgres",
+   "title": "rows of lineitem by lineitem.l_shipinstruct",
+   "top5": 1.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "rows of Wicket_Taken, by Out_Type.Out_Name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "rows of Player_Match, by Rolee.Role_Desc, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "rows of Player_Match, by Team.Team_Name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "rows of Outcome by Outcome.Outcome_Type",
+   "top5": 1.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "rows of Match, by Out_Type.Out_Name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "rows of Match, by Team.Team_Name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "rows of Match, by Toss_Decision.Toss_Name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdsoccer2016-postgres",
+   "title": "rows of Match, by Win_By.Win_Type, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdsocialmedia-postgres",
+   "title": "rows of twitter, by location (by key), the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdsocialmedia-postgres",
+   "title": "rows of twitter by twitter.Weekday",
+   "top5": 1.0
+  },
+  {
+   "store": "birdsocialmedia-postgres",
+   "title": "rows of user by user.Gender",
+   "top5": 1.0
+  },
+  {
+   "store": "birdsocialmedia-postgres",
+   "title": "rows of location, by location.Country, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdsocialmedia-postgres",
+   "title": "rows of twitter, by twitter.Lang, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdsocialmedia-postgres",
+   "title": "rows of twitter by twitter.IsReshare",
+   "top5": 0.6666666666666666
+  },
+  {
+   "store": "birdsocialmedia-postgres",
+   "title": "sum of twitter.RetweetCount, by location (by key), the twelve most",
+   "top5": 0.6
+  },
+  {
+   "store": "birdsocialmedia-postgres",
+   "title": "rows of twitter by user.Gender",
+   "top5": 0.8
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "rows of member, by major.major_name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "rows of attendance, by event.event_name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "rows of event by event.type",
+   "top5": 1.0
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "rows of event by event.status",
+   "top5": 1.0
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "sum of income.amount by income.source",
+   "top5": 1.0
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "rows of budget by budget.event_status",
+   "top5": 1.0
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "rows of zip_code, by zip_code.state, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "rows of zip_code, by zip_code.short_state, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "rows of expense by budget.event_status",
+   "top5": 1.0
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "sum of budget.amount by budget.category",
+   "top5": 1.0
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "sum of income.amount, by member (named), the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "sum of budget.amount, by event.event_name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "sum of budget.amount by budget.event_status",
+   "top5": 1.0
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "rows of zip_code by zip_code.type",
+   "top5": 1.0
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "rows of budget by budget.category",
+   "top5": 1.0
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "rows of expense, by budget (by key), the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "rows of expense, by member (named), the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "distinct zip_code in member, by major.major_name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "distinct event in budget by budget.category",
+   "top5": 1.0
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "distinct member in expense, by budget (by key), the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdstudentclub-postgres",
+   "title": "distinct member in expense by expense.expense_description",
+   "top5": 1.0
+  },
+  {
+   "store": "birdsynthea-postgres",
+   "title": "rows of patients by patients.prefix",
+   "top5": 1.0
+  },
+  {
+   "store": "birdsynthea-postgres",
+   "title": "sum of claims.TOTAL, by patients (by key), the twelve most",
+   "top5": 0.2
+  },
+  {
+   "store": "birdsynthea-postgres",
+   "title": "sum of claims.TOTAL by patients.prefix",
+   "top5": 1.0
+  },
+  {
+   "store": "birdsynthea-postgres",
+   "title": "sum of claims.TOTAL, by encounters.DESCRIPTION, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdsynthea-postgres",
+   "title": "sum of claims.TOTAL by patients.race",
+   "top5": 1.0
+  },
+  {
+   "store": "birdsynthea-postgres",
+   "title": "rows of patients by patients.gender",
+   "top5": 1.0
+  },
+  {
+   "store": "birdsynthea-postgres",
+   "title": "rows of patients by patients.race",
+   "top5": 1.0
+  },
+  {
+   "store": "birdtalkingdata-postgres",
+   "title": "rows of app_labels, by label_categories.category, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdtalkingdata-postgres",
+   "title": "rows of app_events by app_events.is_active",
+   "top5": 1.0
+  },
+  {
+   "store": "birdtalkingdata-postgres",
+   "title": "rows of app_events_relevant by app_events_relevant.is_active",
+   "top5": 1.0
+  },
+  {
+   "store": "birdtalkingdata-postgres",
+   "title": "rows of app_events with app_events.is_active, by app_all (by key), the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdtalkingdata-postgres",
+   "title": "rows of events, by sample_submission (by key), the twelve most",
+   "top5": 0.6
+  },
+  {
+   "store": "birdtalkingdata-postgres",
+   "title": "rows of app_events, by app_all (by key), the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birduniversity-postgres",
+   "title": "rows of university_ranking_year, by ranking_criteria.criteria_name, the twelve most",
+   "top5": 0.6
+  },
+  {
+   "store": "birduniversity-postgres",
+   "title": "rows of university_year, by university.university_name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birduniversity-postgres",
+   "title": "rows of university, by country.country_name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birduniversity-postgres",
+   "title": "rows of university_ranking_year, by university.university_name, the twelve most",
+   "top5": 0.2
+  },
+  {
+   "store": "birduniversity-postgres",
+   "title": "average of university_ranking_year.score, by ranking_criteria.criteria_name, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdvideogames-postgres",
+   "title": "rows of game_platform, by platform.platform_name, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdvideogames-postgres",
+   "title": "rows of game_publisher, by publisher.publisher_name, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "birdvideogames-postgres",
+   "title": "rows of region_sales, by region.region_name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdvideogames-postgres",
+   "title": "rows of game, by genre.genre_name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdvideogames-postgres",
+   "title": "sum of region_sales.num_sales, by region.region_name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "birdvideogames-postgres",
+   "title": "sum of region_sales.num_sales, by platform.platform_name, the twelve most",
+   "top5": 0.2
+  },
+  {
+   "store": "birdvideogames-postgres",
+   "title": "sum of region_sales.num_sales, by publisher.publisher_name, the twelve most",
+   "top5": 0.6
+  },
+  {
+   "store": "birdvideogames-postgres",
+   "title": "sum of region_sales.num_sales, by game.game_name, the twelve most",
+   "top5": 0.0
+  },
+  {
+   "store": "birdvideogames-postgres",
+   "title": "rows of region_sales, by game_platform (by key), the twelve most",
+   "top5": 0.2
+  },
+  {
+   "store": "birdvideogames-postgres",
+   "title": "rows of region_sales, by platform.platform_name, the twelve most",
+   "top5": 0.0
+  },
+  {
+   "store": "birdvideogames-postgres",
+   "title": "rows of region_sales, by publisher.publisher_name, the twelve most",
+   "top5": 0.6
+  },
+  {
+   "store": "birdvideogames-postgres",
+   "title": "rows of region_sales, by game.game_name, the twelve most",
+   "top5": 0.2
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "rows of ORDERS, by CUSTOMER.C_NAME, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "rows of PARTSUPP, by PART.P_NAME, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "sum of LINEITEM.L_TAX, by ORDERS (by key), the twelve most",
+   "top5": 0.2
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "rows of LINEITEM, by ORDERS (by key), the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "rows of LINEITEM by LINEITEM.L_RETURNFLAG",
+   "top5": 1.0
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "rows of LINEITEM by LINEITEM.L_SHIPMODE",
+   "top5": 1.0
+  },
+  {
+   "store": "storym00-postgres",
+   "title": "rows of LINEITEM, by NATION.N_NAME, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "rows of loan by loan.status",
+   "top5": 1.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "rows of approved_loans by approved_loans.status",
+   "top5": 1.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "rows of loan, by clients (by key), the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "rows of loan by loan.area",
+   "top5": 1.0
+  },
+  {
+   "store": "storym02-postgres",
+   "title": "rows of payment_transactions by payment_transactions.notes",
+   "top5": 1.0
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "rows of products, by categories.category, the twelve most",
+   "top5": 0.2
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "rows of users, by users.postCode, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "rows of products, by products.Specification, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "rows of orders by status.status",
+   "top5": 1.0
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "rows of status by status.status",
+   "top5": 1.0
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "sum of products.price \u00d7 products.Quantity, by categories.category, the twelve most",
+   "top5": 0.4
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "sum of products.price, by categories.category, the twelve most",
+   "top5": 0.2
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "average of products.price, by categories.category, the twelve most",
+   "top5": 0.8
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "sum of products.price \u00d7 products.Quantity, by products.Specification, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "rows of orders, by status.status, the twelve most",
+   "top5": 0.6
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "rows of orders, by orders.postCode, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "rows of orders, by orders.postCity, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym04-postgres",
+   "title": "rows of orders, by orders.adress, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "rows of BIKE, by LOCATION.LOCATION_NAME, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "rows of BOOKING by BOOKING.BOOKING_STATUS",
+   "top5": 1.0
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "rows of BILLING by BILLING.BILL_STATUS",
+   "top5": 1.0
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "sum of BOOKING.AMOUNT, by DISCOUNT.DISCOUNT_NAME, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "sum of BOOKING.AMOUNT, by INSURANCE.INSURANCE_NAME, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "sum of BOOKING.AMOUNT by BOOKING.BOOKING_STATUS",
+   "top5": 1.0
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "sum of BOOKING.AMOUNT, by BIKE.MODEL_NAME, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "rows of BOOKING, by BIKE.MODEL_NAME, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "rows of BOOKING, by DISCOUNT.DISCOUNT_NAME, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "rows of BOOKING, by INSURANCE.INSURANCE_NAME, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym06-postgres",
+   "title": "rows of BOOKING, by LOCATION.LOCATION_NAME, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "rows of cars, by colors.Name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "rows of users by users.Status",
+   "top5": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "average of customers.FindeksScore by users.Status",
+   "top5": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "rows of customers by users.Status",
+   "top5": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "sum of cars.DailyPrice, by colors.Name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "sum of cars.DailyPrice, by brands.Name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "average of cars.DailyPrice, by colors.Name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "rows of cars, by brands.Name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "average of cars.FindeksScore, by colors.Name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym08-postgres",
+   "title": "average of cars.FindeksScore, by brands.Name, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "rows of tbl_peserta by tbl_peserta.status_verifikasi",
+   "top5": 1.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "rows of tbl_nilai, by tbl_soal (by key), the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "rows of tbl_peserta, by tbl_peserta.status_pendaftaran, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "rows of tbl_jawaban by tbl_jawaban.status_jawaban",
+   "top5": 1.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "rows of tbl_peserta, by tbl_lab (by key), the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "rows of tbl_peserta by tbl_peserta.jenis_kelamin",
+   "top5": 1.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "rows of tbl_peserta, by tbl_peserta.nama_peserta, the twelve most",
+   "top5": 1.0
+  },
+  {
+   "store": "storym10-postgres",
+   "title": "rows of tbl_jawaban, by tbl_peserta (by key), the twelve most",
+   "top5": 1.0
+  }
+ ]
+}
