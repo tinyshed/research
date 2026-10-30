@@ -36,10 +36,15 @@ DONE = {"published", "complete", "completed", "done", "paid", "success", "succes
         "approved", "confirmed", "delivered", "closed", "finished", "applied", "committed", "fulfilled",
         "settled", "accepted", "resolved", "shipped", "sent", "ok"}
 FAILED = {"failed", "failure", "error", "errored", "cancelled", "canceled", "rejected", "refunded", "declined",
-          "expired", "timeout", "timedout", "lost", "aborted", "bounced", "retracted", "denied", "void", "voided"}
+          "expired", "timeout", "timedout", "lost", "aborted", "bounced", "retracted", "denied", "void", "voided",
+          # money owed and not paid, a promise not kept (round 1o)
+          "overdue", "defaulted", "default", "late", "unpaid", "missed", "noshow", "no-show", "no_show", "disputed",
+          "chargeback", "returned"}
 STATUSY = {"status", "state", "stage", "result", "outcome", "resolution"}
 REPLACED = {"merged", "replaced", "duplicate", "superseded"}
 WINDOWS = (7, 30)
+MONEYTAB = {"payment", "order", "invoice", "transaction", "sale", "booking", "rental", "purchase", "charge", "bill",
+            "billing", "subscription", "reimbursement", "claim", "loan", "expense", "donation", "deposit"}
 
 
 @dataclass
@@ -51,6 +56,11 @@ class Tile:
     error: str | None = None
     kind: str = "number"
     parts: list[str] = field(default_factory=list)
+    # what it counts, to be matched against a person's numbers (round 1o)
+    what: str = ""                     # count | count distinct | two or more | sum | share | funnel
+    table: str = ""
+    column: str | None = None
+    days: int | None = None
 
 
 def quote(engine: str):
@@ -72,6 +82,30 @@ def live_rows(schema, tb, E, engine: str) -> list[str]:
     return out
 
 
+MONEYNAME = (("amount", "total", "price", "paid", "revenue", "value", "payment", "sales", "income", "award", "cost"),
+             ("fee", "charge", "fare", "salary", "wage", "budget", "balance"))
+NOTMONEY = ("tax", "discount", "rate", "percent", "qty", "quantity", "count")
+
+
+def money_column(tb):
+    """The money a table is about: round 1c's money first, then a number
+    named for money even run together (TOTALPRICE), amounts before fees,
+    and never a tax or a discount (round 1o)."""
+    cands = []
+    for c in tb.columns:
+        if c.fk is not None or c.pk or c.fam not in ("decimal", "float", "int"):
+            continue
+        name = "".join(c.tk)
+        if any(w in name for w in NOTMONEY):
+            continue
+        tier = next((k for k, words in enumerate(MONEYNAME) if any(w in name for w in words)), None)
+        if c.measure == "money":
+            tier = 0 if tier is None else tier
+        if tier is not None and not (c.fam == "int" and c.measure != "money" and tier > 0):
+            cands.append((tier, c.c, c))
+    return min(cands, key=lambda x: x[:2])[2] if cands else None
+
+
 def since(engine: str, days: int) -> str:
     return f"NOW() - INTERVAL {days} DAY" if engine == "mysql" else f"NOW() - INTERVAL '{days} days'"
 
@@ -90,8 +124,31 @@ PEOPLE = {"user", "account", "member", "customer", "client", "person", "people",
           "seller", "driver", "rider", "tenant", "learner", "teacher", "candidate", "applicant", "visitor"}
 
 
+def named_people(tb) -> bool:
+    return has(tb.tk, PEOPLE) or any(has([w.rstrip("s")], PEOPLE) for w in tb.tk)
+
+
 def people(tb) -> bool:
-    return tb.person or has(tb.tk, PEOPLE) or any(has([w.rstrip("s")], PEOPLE) for w in tb.tk)
+    """A table of people: named so, or with a person's name (round 1c's person)."""
+    return tb.person or named_people(tb)
+
+
+def guess_links(schema) -> None:
+    """Keys round 1c's reader left unguessed, by a column named for a table:
+    idUser and CustomerId to users and customers (round 1o)."""
+    from aq import singular
+    names = {singular("".join(tb.tk)): tb for tb in schema.tables}
+    names |= {singular(tb.tk[-1]): tb for tb in schema.tables if tb.tk and singular(tb.tk[-1]) not in names}
+    for tb in schema.tables:
+        for c in tb.columns:
+            if c.pk or c.fk is not None or c.fam not in ("int", "text") or len(c.tk) < 2 or "id" not in (c.tk[0], c.tk[-1]):
+                continue
+            rest = c.tk[1:] if c.tk[0] == "id" else c.tk[:-1]
+            parent = names.get(singular("".join(rest)))
+            if parent is not None and parent.t != tb.t:
+                c.fk, c.fk_guessed = parent.t, True
+                tb.out.append((c.c, parent.t))
+                parent.referenced_by.append((tb.t, c.c))
 
 
 def actor_and_object(schema):
@@ -101,15 +158,18 @@ def actor_and_object(schema):
     and is not itself people."""
     tabs = [tb for tb in schema.tables if not tb.boilerplate and tb.role not in ("lookup", "link")]
     pointing = {tb.t: {child for child, _ in tb.referenced_by if child != tb.t} for tb in schema.tables}
-    rank = lambda tb: (len(pointing[tb.t]), tb.rows or 0)
+    # people the product's activity points at come first: a table of logins' users is not its customers (round 1o)
+    timed_pointing = {t: {c for c in kids if schema.tables[c].timed} for t, kids in pointing.items()}
+    rank = lambda tb: (len(timed_pointing[tb.t]), len(pointing[tb.t]), tb.rows or 0)
     folk = [tb for tb in tabs if people(tb) and pointing[tb.t]]
     pool = folk or [tb for tb in tabs if (tb.rows is None or tb.rows >= 10) and pointing[tb.t]]
     actor = max(pool, key=rank, default=None)
     if actor is None:
-        return None, None, None
+        return None, None, None, None
     best = None
     for tb in tabs:
-        if tb.t == actor.t or people(tb) or not tb.timed:
+        # a form that holds its maker's name is not people: only its own name says so (round 1o)
+        if tb.t == actor.t or named_people(tb) or not tb.timed:
             continue
         via = [c for c, p in tb.out if p == actor.t]
         if len(via) > 1:
@@ -121,9 +181,23 @@ def actor_and_object(schema):
             key = (len(pointing[tb.t]), tb.rows or 0)
             if best is None or key > best[0]:
                 best = (key, tb, via[0])
-    if best is None:
-        return actor, None, None
-    return actor, best[1], best[2]
+    if best is not None:
+        return actor, best[1], best[2], None
+    # no timed table points at them, but a table of links joins them to one: a profile to its meal plans (round 1o)
+    two = None
+    for tb in schema.tables:
+        if tb.timed or tb.boilerplate:
+            continue
+        mine = [c for c, p in tb.out if p == actor.t]
+        theirs = [p for c, p in tb.out if p != actor.t and schema.tables[p].timed and not named_people(schema.tables[p])]
+        if mine and theirs:
+            target = max(theirs, key=lambda p: (len(pointing[p]), schema.tables[p].rows or 0))
+            key = (len(pointing[target]), tb.rows or 0)
+            if two is None or key > two[0]:
+                two = (key, schema.tables[target], mine[0], tb)
+    if two is None:
+        return actor, None, None, None
+    return actor, two[1], two[2], two[3]
 
 
 def probe(run, engine, database, schema, tb, col, E) -> dict[str, float]:
@@ -133,7 +207,8 @@ def probe(run, engine, database, schema, tb, col, E) -> dict[str, float]:
 
 def row(schema, engine: str, database: str, run) -> list[Tile]:
     E = quote(engine)
-    actor, obj, via = actor_and_object(schema)
+    guess_links(schema)
+    actor, obj, via, link = actor_and_object(schema)
     tiles: list[Tile] = []
     if actor is None:
         return tiles
@@ -141,7 +216,7 @@ def row(schema, engine: str, database: str, run) -> list[Tile]:
     a_live = live_rows(schema, actor, E, engine)
     where = lambda conds: (" WHERE " + " AND ".join(conds)) if conds else ""
     total_a = f"{actor.name} in all"
-    tiles.append(Tile(total_a, f"SELECT COUNT(*) FROM {A} b{where(a_live)}"))
+    tiles.append(Tile(total_a, f"SELECT COUNT(*) FROM {A} b{where(a_live)}", what="count", table=actor.name))
     if obj is not None:
         O = E(obj.name)
         o_live = live_rows(schema, obj, E, engine)
@@ -152,26 +227,57 @@ def row(schema, engine: str, database: str, run) -> list[Tile]:
             if hit and len(hit) < len(vals):
                 done = [f"b.{E(st.name)} IN (" + ", ".join("'" + v.replace("'", "''") + "'" for v in hit) + ")"]
                 break
-        f = E(obj.columns[via].name)
         label = f"{obj.name}" + (" done" if done else "")
-        tiles.append(Tile(f"{label} in all", f"SELECT COUNT(*) FROM {O} b{where(o_live + done)}"))
-        # who did the thing the product is for did it to the end: a draft is not a split made
+        tiles.append(Tile(f"{label} in all", f"SELECT COUNT(*) FROM {O} b{where(o_live + done)}", what="count", table=obj.name))
+        # the thing done this week and this month, by its own time (round 1o)
+        o_when = created(obj) or next((c for c in obj.columns if c.time == "event"), None)
+        if o_when is not None:
+            for d in WINDOWS:
+                tiles.append(Tile(f"{label}, {d} days", f"SELECT COUNT(*) FROM {O} b"
+                                  f"{where(o_live + done + [f'b.{E(o_when.name)} >= {since(engine, d)}'])}",
+                                  what="count", table=obj.name, days=d))
         actors = f"{actor.name} with {label}"
-        tiles.append(Tile(actors, f"SELECT COUNT(DISTINCT b.{f}) FROM {O} b{where(o_live + done)}"))
         again = f"{actor.name} with two {label} or more"
-        tiles.append(Tile(again, f"SELECT COUNT(*) FROM (SELECT b.{f} FROM {O} b{where(o_live + done + [f'b.{f} IS NOT NULL'])} "
-                                 f"GROUP BY b.{f} HAVING COUNT(*) >= 2) x"))
-        tiles.append(Tile(f"share of {actor.name} with {label}", of=(actors, total_a), kind="share"))
-        tiles.append(Tile(f"share of them with two or more", of=(again, actors), kind="share"))
-        tiles.append(Tile(f"{actor.name} → with {label} → with two or more", kind="funnel", parts=[total_a, actors, again]))
+        if link is None:
+            # who did the thing the product is for did it to the end: a draft is not a thing made
+            fname = obj.columns[via].name
+            f = E(fname)
+            tiles.append(Tile(actors, f"SELECT COUNT(DISTINCT b.{f}) FROM {O} b{where(o_live + done)}",
+                              what="count distinct", table=obj.name, column=fname))
+            tiles.append(Tile(again, f"SELECT COUNT(*) FROM (SELECT b.{f} FROM {O} b{where(o_live + done + [f'b.{f} IS NOT NULL'])} "
+                                     f"GROUP BY b.{f} HAVING COUNT(*) >= 2) x", what="two or more", table=obj.name, column=fname))
+            if o_when is not None:
+                # who was active in the last month: a month's distinct people (round 1o)
+                tiles.append(Tile(f"{actor.name} active, 30 days", f"SELECT COUNT(DISTINCT b.{f}) FROM {O} b"
+                                  f"{where(o_live + done + [f'b.{E(o_when.name)} >= {since(engine, 30)}'])}",
+                                  what="count distinct", table=obj.name, column=fname, days=30))
+        else:
+            # through the table of links, every link one time it was done
+            fname = link.columns[via].name
+            f = E(fname)
+            L = E(link.name)
+            tiles.append(Tile(actors, f"SELECT COUNT(DISTINCT b.{f}) FROM {L} b", what="count distinct", table=link.name,
+                              column=fname))
+            tiles.append(Tile(again, f"SELECT COUNT(*) FROM (SELECT b.{f} FROM {L} b WHERE b.{f} IS NOT NULL GROUP BY b.{f} "
+                                     f"HAVING COUNT(*) >= 2) x", what="two or more", table=link.name, column=fname))
+        tiles.append(Tile(f"share of {actor.name} with {label}", of=(actors, total_a), kind="share", what="share",
+                          table=tiles[-2].table, column=tiles[-2].column))
+        tiles.append(Tile(f"share of them with two or more", of=(again, actors), kind="share", what="share",
+                          table=tiles[-2].table, column=tiles[-2].column))
+        tiles.append(Tile(f"{actor.name} → with {label} → with two or more", kind="funnel", parts=[total_a, actors, again],
+                          what="funnel", table=actor.name))
     made = created(actor)
     if made is not None:
         for d in WINDOWS:
             tiles.append(Tile(f"new {actor.name}, {d} days",
-                              f"SELECT COUNT(*) FROM {A} b{where(a_live + [f'b.{E(made.name)} >= {since(engine, d)}'])}"))
-    # what it earned: the busiest timed table with money, its done rows, the last month
-    for tb in sorted((t for t in schema.tables if t.timed and not t.boilerplate), key=lambda t: -(t.rows or 0)):
-        money = next((c for c in tb.columns if c.measure == "money" and c.fk is None), None)
+                              f"SELECT COUNT(*) FROM {A} b{where(a_live + [f'b.{E(made.name)} >= {since(engine, d)}'])}",
+                              what="count", table=actor.name, days=d))
+    # what it earned, the last month: the thing's own money, else a table of payments or orders, else the busiest (round 1o)
+    def earns(t):
+        return (0 if obj is not None and t.t == obj.t else 1 if has(t.tk, MONEYTAB) or any(has([w.rstrip("s")], MONEYTAB)
+                                                                                           for w in t.tk) else 2, -(t.rows or 0))
+    for tb in sorted((t for t in schema.tables if t.timed and not t.boilerplate), key=earns):
+        money = money_column(tb)
         when = created(tb) or next((c for c in tb.columns if c.time == "event"), None)
         if money is None or when is None:
             continue
@@ -184,8 +290,11 @@ def row(schema, engine: str, database: str, run) -> list[Tile]:
                 break
         tiles.append(Tile(f"{tb.name}.{money.name}, 30 days",
                           f"SELECT SUM(b.{E(money.name)}) FROM {E(tb.name)} b"
-                          f"{where(live_rows(schema, tb, E, engine) + done + [f'b.{E(when.name)} >= {since(engine, 30)}'])}"))
-        break
+                          f"{where(live_rows(schema, tb, E, engine) + done + [f'b.{E(when.name)} >= {since(engine, 30)}'])}",
+                          what="sum", table=tb.name, column=money.name, days=30))
+        # the thing's own money, and beside it a table of payments' when that is another (round 1o)
+        if obj is None or tb.t != obj.t or sum(1 for t in tiles if t.what == "sum") >= 2:
+            break
     # what failed: the busiest timed table whose status has failed values, the last week
     for tb in sorted((t for t in schema.tables if t.timed and not t.boilerplate), key=lambda t: -(t.rows or 0)):
         when = created(tb) or next((c for c in tb.columns if c.time == "event"), None)
@@ -202,7 +311,7 @@ def row(schema, engine: str, database: str, run) -> list[Tile]:
             tiles.append(Tile(f"share of {tb.name} {'/'.join(bad[:3])}, 7 days",
                               f"SELECT AVG(CASE WHEN {cond} THEN 1.0 ELSE 0 END) FROM {E(tb.name)} b"
                               f"{where(live_rows(schema, tb, E, engine) + [f'b.{E(when.name)} >= {since(engine, 7)}'])}",
-                              kind="share"))
+                              kind="share", what="share", table=tb.name, column=st.name, days=7))
             break
     by_title = {}
     for t in tiles:
@@ -241,7 +350,8 @@ def main(see_dir: Path, fixture: str, ssh: str | None = None, container: str | N
     out = see_dir / "look" / fixture
     out.mkdir(parents=True, exist_ok=True)
     (out / "kpi.json").write_text(json.dumps([{"title": t.title, "kind": t.kind, "value": t.value, "shown": shown(t, by_title),
-                                               "sql": t.sql, "error": t.error} for t in tiles], ensure_ascii=False, indent=1),
+                                               "sql": t.sql, "error": t.error, "what": t.what, "table": t.table,
+                                               "column": t.column, "days": t.days} for t in tiles], ensure_ascii=False, indent=1),
                                   encoding="utf-8")
     for t in tiles:
         print(f"  {t.title:60} {shown(t, by_title)}")
