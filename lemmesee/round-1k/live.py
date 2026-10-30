@@ -87,7 +87,9 @@ def look_scores(see_dir: Path, fixtures: list[str]) -> dict:
     for fe in fixtures:
         _, qfeat = look1e.questions(see_dir, fe)
         panels = json.loads((see_dir / "look" / fe / "pool.json").read_text(encoding="utf-8"))["panels"]
-        mine = [p for p in panels if "round 1" not in p["in"]]
+        # the look's candidates as round 1k gave them: a later round's own five is drawn, not scored
+        mine = [p for p in panels if "round 1" not in p["in"]
+                and not (p["in"] and all(n.startswith("five: ") for n in p["in"]))]
         for p in mine:
             p["question"] = qfeat.get(p["title"], {})
             p["more"] = look1e.more(p)
@@ -134,6 +136,8 @@ def chart(p: dict) -> str:
     if len(rows) == 1 and (len(rows[0]) == 1 or p.get("bucket") is None and len(rows[0]) == 1):
         v = _num(rows[0][-1])
         return f"<div class='hero'>{_esc(_fmt(v) if v is not None else rows[0][-1])}</div>"
+    if p.get("bucket") is not None and p.get("template") == "T6" and len(rows[0]) >= 3:
+        return split_chart(p, rows)
     labels = [("∅" if r[0] is None else str(r[0])) if len(r) > 1 else "" for r in rows]
     vals = [_num(r[-1]) for r in rows]
     pts = [(lab, v) for lab, v in zip(labels, vals) if v is not None]
@@ -195,6 +199,42 @@ def chart(p: dict) -> str:
             f"<line x1='{L}' x2='{L}' y1='0' y2='{h}' class='axis'/>{''.join(bars)}</svg>")
 
 
+SERIES = ("var(--s1)", "var(--s2)", "var(--s3)", "var(--s4)", "var(--s5)", "var(--s6)")
+
+
+def split_chart(p: dict, rows: list) -> str:
+    """A time split by a few values: a line for each of the six largest, a
+    key beneath, every point carrying its tooltip."""
+    by: dict[str, dict[str, float]] = {}
+    for r in rows:
+        v = _num(r[-1])
+        if v is not None:
+            by.setdefault("∅" if r[1] is None else str(r[1]), {})[str(r[0])] = v
+    groups = sorted(by, key=lambda g: -sum(by[g].values()))[:len(SERIES)]
+    times = sorted({t for g in groups for t in by[g]})
+    if not times:
+        return "<div class='more'>no numbers to draw</div>"
+    W, H, L, R, T, B = 320, 132, 36, 8, 8, 18
+    hi = max(v for g in groups for v in by[g].values()) or 1.0
+    x = {t: L + (W - L - R) * (i / max(1, len(times) - 1)) for i, t in enumerate(times)}
+    y = lambda v: T + (H - T - B) * (1 - v / hi)
+    lines, hits = [], []
+    for g, colour in zip(groups, SERIES):
+        pts = [(t, by[g].get(t, 0.0)) for t in times]
+        d = " ".join(f"{'M' if i == 0 else 'L'}{x[t]:.1f},{y(v):.1f}" for i, (t, v) in enumerate(pts))
+        lines.append(f"<path d='{d}' fill='none' stroke='{colour}' stroke-width='2' stroke-linejoin='round'/>")
+        hits += [f"<circle cx='{x[t]:.1f}' cy='{y(v):.1f}' r='5' fill='transparent'><title>{_esc(g)}, {_esc(t)}: {_esc(_fmt(v))}</title></circle>"
+                 for t, v in pts]
+    key = "".join(f"<span style='color:{c}'>■</span> {_esc(g[:18])} &nbsp;" for g, c in zip(groups, SERIES))
+    return (f"<svg viewBox='0 0 {W} {H}' role='img' aria-label='{_esc(p['title'])}'>"
+            f"<line x1='{L}' x2='{W - R}' y1='{H - B}' y2='{H - B}' class='axis'/>"
+            f"<text x='{L - 4}' y='{T + 8}' class='tick' text-anchor='end'>{_esc(_fmt(hi))}</text>"
+            f"{''.join(lines)}"
+            f"<text x='{L}' y='{H - 4}' class='tick'>{_esc(times[0][:10])}</text>"
+            f"<text x='{W - R}' y='{H - 4}' class='tick' text-anchor='end'>{_esc(times[-1][:10])}</text>{''.join(hits)}</svg>"
+            f"<div class='more'>{key}</div>")
+
+
 def page(see_dir: Path, fixtures: list[str]) -> None:
     sets = local.module("live_sets", ROOT / "round-1g" / "sets.py")
     scored, dg = look_scores(see_dir, fixtures)
@@ -206,11 +246,14 @@ def page(see_dir: Path, fixtures: list[str]) -> None:
         fives = {"the look, each axis once": [s["mine"][i] for i in chooser.choose(s["scores"], sets.AXIS_ONCE)],
                  "round 1c's ranker": [p for p in s["mine"] if "round 1c" in p["in"]][:5],
                  "round 1's rules": [p for p in s["panels"] if "round 1" in p["in"]][:5]}
+        # a later round's five, marked in the pool as "five: <name>"
+        for tag in sorted({n for p in s["panels"] for n in p["in"] if n.startswith("five: ")}):
+            fives[tag[6:]] = [p for p in s["panels"] if tag in p["in"]]
         order = list(fives)
         rng.shuffle(order)
         key[fe] = {}
         blocks = []
-        for letter, system in zip("XYZ", order):
+        for letter, system in zip("XYZ" if len(order) == 3 else "ABCDEFGH", order):
             key[fe][letter] = system
             panels = rng.sample(fives[system], len(fives[system]))
             cards = []
@@ -228,15 +271,26 @@ def page(see_dir: Path, fixtures: list[str]) -> None:
             blocks.append(f"<div class='five'><h3>Five {letter}</h3>{''.join(cards)}"
                           f"<label class='best'><input type='radio' name='{fe}-best' data-k='{fe}/best' value='{letter}'> "
                           f"the five I would keep</label></div>")
-        sections.append(f"<section><h2>{fe}</h2><div class='row'>{''.join(blocks)}</div></section>")
+        # round 1n's numbers, when made: shown above the fives, not judged with them
+        kpi_p = see_dir / "look" / fe / "kpi.json"
+        kpis = ""
+        if kpi_p.exists():
+            tiles = json.loads(kpi_p.read_text(encoding="utf-8"))
+            kpis = ("<h3>Numbers</h3><div class='kpis'>" + "".join(
+                f"<div class='kpi'><div class='k'>{_esc(t['title'])}</div><div class='v'>{_esc(t['shown'])}</div></div>"
+                for t in tiles) + "</div>")
+        sections.append(f"<section><h2>{fe}</h2>{kpis}<div class='row'>{''.join(blocks)}</div></section>")
     html = f"""<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Your databases' fives</title><style>
-:root{{--bg:#fff;--fg:#0b0b0b;--mut:#52514e;--line:#e5e5ea;--card:#fcfcfb;--s1:#2a78d6}}
-@media (prefers-color-scheme: dark){{:root{{--bg:#111;--fg:#f0efec;--mut:#c3c2b7;--line:#333;--card:#1a1a19;--s1:#3987e5}}}}
+:root{{--bg:#fff;--fg:#0b0b0b;--mut:#52514e;--line:#e5e5ea;--card:#fcfcfb;--s1:#2a78d6;--s2:#d97706;--s3:#1f9d55;--s4:#d64545;--s5:#8b5cf6;--s6:#6b7280}}
+@media (prefers-color-scheme: dark){{:root{{--bg:#111;--fg:#f0efec;--mut:#c3c2b7;--line:#333;--card:#1a1a19;--s1:#3987e5;--s2:#f59e0b;--s3:#34c178;--s4:#f06a6a;--s5:#a78bfa;--s6:#9ca3af}}}}
 svg{{width:100%;height:auto;display:block;margin:4px 0}} .line{{fill:none;stroke:var(--s1);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}}
 .bar{{fill:var(--s1)}} .bar:hover{{opacity:.8}} .end{{fill:var(--s1);stroke:var(--card);stroke-width:2}}
 .axis{{stroke:var(--line);stroke-width:1}} .tick{{fill:var(--mut);font-size:10px}} .lab{{fill:var(--fg);font-size:10px}}
 .hero{{font-size:48px;font-weight:600;margin:8px 0}} summary{{font-size:12px;color:var(--mut);cursor:pointer}}
+.kpis{{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin-bottom:16px}}
+.kpi{{border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--card)}}
+.kpi .k{{font-size:12px;color:var(--mut);min-height:30px}} .kpi .v{{font-size:28px;font-weight:600;font-variant-numeric:tabular-nums}}
 body{{background:var(--bg);color:var(--fg);font:14px/1.4 system-ui,sans-serif;margin:16px}}
 .row{{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}}
 .five{{border:1px solid var(--line);border-radius:8px;padding:8px}}
@@ -246,7 +300,7 @@ td{{border-bottom:1px solid var(--line);padding:2px 8px 2px 0}} .more,.err{{colo
 label{{font-size:12px;color:var(--mut);margin-right:8px}} .best{{display:block;margin-top:8px;color:var(--fg)}}
 button{{margin:16px 0;padding:8px 12px}} textarea{{width:100%;height:120px}}</style></head><body>
 <h1>Your databases' fives</h1>
-<p>Three fives for each database, shuffled, unnamed. Mark each panel worth a place on a first screen, each that
+<p>{"Three" if all(len(v) == 3 for v in key.values()) else "Several"} fives for each database, shuffled, unnamed. Mark each panel worth a place on a first screen, each that
 repeats another of its five, and the five you would keep. Then copy your answers and send them back.</p>
 {''.join(sections)}
 <button onclick="out.value=JSON.stringify(Object.fromEntries([...document.querySelectorAll('input:checked')].map(e=>[e.dataset.k+(e.type==='radio'?'':''), e.type==='radio'?e.value:true])),null,1);out.select();try{{document.execCommand('copy')}}catch(e){{}}">Copy my answers</button>
