@@ -97,7 +97,7 @@ pub fn build(snap: &Value, name: &str, about: &str, model: &Model, run: &Runner,
     tell(Event::Done(format!("{ran} run, {} spare", ran - five.len())));
     json!({
         "store": {"name": name, "engine": s.engine, "database": snap.get("database").cloned().unwrap_or(Value::Null), "about": about},
-        "numbers": tiles.iter().map(|t| json!({"key": t.title, "title": t.title, "shown": numbers::shown(t, &tiles), "kind": t.kind})).collect::<Vec<_>>(),
+        "numbers": tiles.iter().map(|t| json!({"key": t.title, "title": t.title, "shown": numbers::shown(t, &tiles), "kind": t.kind, "parts": t.parts})).collect::<Vec<_>>(),
         "panels": panels,
         "spares": reserve,
     })

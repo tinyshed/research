@@ -86,7 +86,7 @@ def main(see_dir: Path, fixture: str, out: Path, ssh: str | None = None, contain
     doc = {"store": {"name": fixture, "engine": snap["engine"], "database": snap["database"],
                      "about": json.loads((see_dir / fixture / "runs.json").read_text(encoding="utf-8")).get("note", "")
                      if (see_dir / fixture / "runs.json").exists() else ""},
-           "numbers": [{"key": t.title, "title": t.title, "shown": kpi.shown(t, by_title), "kind": t.kind} for t in numbers],
+           "numbers": [{"key": t.title, "title": t.title, "shown": kpi.shown(t, by_title), "kind": t.kind, "parts": t.parts} for t in numbers],
            "panels": panels, "spares": reserve}
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")

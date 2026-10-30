@@ -11,7 +11,7 @@ use ratatui::style::{Color, Modifier, Style};
 use ratatui::text::{Line, Span};
 use ratatui::widgets::{Block, BorderType, Borders, Clear, List, ListItem, ListState, Padding, Paragraph};
 
-use crate::doc::{Doc, Panel, Shape, fmt, label, num};
+use crate::doc::{Doc, Panel, Shape, bare, fmt, label, num, once, short_date, today};
 use crate::state::{self, State};
 
 /// The terminal's own colours: its background and text untouched, its
@@ -223,49 +223,11 @@ fn cut(s: &str, width: usize) -> String {
 /// without their tables; then cut at a word. Nothing scrolls: a title that
 /// moves pulls the eye from the charts all the time.
 fn fit_title(title: &str, width: usize) -> String {
-    let dotted = |w: &str| {
-        w.split_once('.')
-            .filter(|(t, c)| !c.is_empty() && t.chars().next().is_some_and(|ch| ch.is_alphabetic() || ch == '_') && t.chars().all(|ch| ch.is_alphanumeric() || ch == '_'))
-            .map(|(t, c)| (t.to_string(), c.to_string()))
-    };
-    let mut seen: Vec<String> = Vec::new();
-    let once = title
-        .split_whitespace()
-        .map(|w| match dotted(w) {
-            Some((t, c)) if seen.contains(&t) => c,
-            Some((t, _)) => {
-                seen.push(t);
-                w.to_string()
-            }
-            None => {
-                seen.push(w.trim_end_matches(',').to_string());
-                w.to_string()
-            }
-        })
-        .collect::<Vec<_>>()
-        .join(" ");
+    let once = once(title);
     if once.chars().count() <= width {
         return once;
     }
-    let bare = once.split_whitespace().map(|w| dotted(w).map(|(_, c)| c).unwrap_or_else(|| w.to_string())).collect::<Vec<_>>().join(" ");
-    cut(&bare, width)
-}
-
-/// Today as the database writes a day, in UTC: the day a chart's last point
-/// may only have begun.
-fn today() -> String {
-    let days = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_secs() / 86_400).unwrap_or(0) as i64;
-    // days to a civil date, after Howard Hinnant
-    let z = days + 719_468;
-    let era = z.div_euclid(146_097);
-    let doe = z - era * 146_097;
-    let yoe = (doe - doe / 1460 + doe / 36_524 - doe / 146_096) / 365;
-    let doy = doe - (365 * yoe + yoe / 4 - yoe / 100);
-    let mp = (5 * doy + 2) / 153;
-    let d = doy - (153 * mp + 2) / 5 + 1;
-    let m = if mp < 10 { mp + 3 } else { mp - 9 };
-    let y = yoe + era * 400 + if m <= 2 { 1 } else { 0 };
-    format!("{y:04}-{m:02}-{d:02}")
+    cut(&bare(&once), width)
 }
 
 /// The last value of a line, written where it ends, ` today` after it when
@@ -450,14 +412,6 @@ fn panel(f: &mut Frame, area: Rect, p: &Panel, selected: bool, kept: bool) {
 
 fn unit(p: &Panel) -> &'static str {
     if p.title.starts_with("share of") { "%" } else { "" }
-}
-
-fn short_date(s: &str) -> String {
-    const M: [&str; 12] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    match (s.get(5..7).and_then(|m| m.parse::<usize>().ok()), s.get(8..10).and_then(|d| d.parse::<u32>().ok())) {
-        (Some(m), Some(d)) if (1..=12).contains(&m) && s.len() >= 10 => format!("{} {}", M[m - 1], d),
-        _ => s.to_string(),
-    }
 }
 
 trait Tint {

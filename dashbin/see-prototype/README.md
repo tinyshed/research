@@ -52,14 +52,25 @@ table once and is cut at a word if it still does not fit; nothing scrolls.
 `--shot` draws the frame in Windows Terminal's Campbell colours, box lines
 and blocks drawn as shapes, as the terminal draws them.
 
+`--html` is the same screen in the language of the dashbin mockups: their
+tokens, dark or light by the reader's setting, a card a role on six
+columns, the numbers as a band of tiles. A panel is its last value over its
+chart: a count or a sum by day as bars, a share or a time as a line over its
+area, a split as small charts on one scale, a ranking as a list; the day
+still going faded or dashed. A funnel of the numbers is a card of its own,
+its steps as bars from one edge on a track of the first, the share that
+goes on between them; its later steps and those shares leave the band. Each card's head says its window in mono, its
+foot the database and the rows; a value's day is under the pointer. One
+page, no script, no request; it fits a phone.
+
 ## Not done
 
 - Chapter 14's bound on what looking costs: the numbers count whole tables;
   above 10 000 rows they should come from the engine's estimates and samples.
 - A MySQL runner, and `postgres://` without a container; the snapshot is
   still made by round 1's harness.
-- `--html` is still the first look, its own colours and filled columns, not
-  the screen's.
+- The mockups' one cursor across every chart of the page, and the table of
+  values at it under a chart of several lines.
 - A ranking by a linked table's label groups by the row and shows the label,
   so two rows of one name are shown twice.
 
