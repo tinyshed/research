@@ -4,7 +4,8 @@ The look learns keep only, so meaning is not asked, and the input is half.
 
     JUDGE_KEY=... python -I jevfast.py <look dir> [<at once>]
 
-writes <look dir>/jevfast-<n>.json and prints what it cost.
+writes <look dir>/jevfast-<n>.json (pmjev-<n>.json with --product, the product's question) and prints what it
+cost.
 """
 
 from __future__ import annotations
@@ -60,12 +61,12 @@ def ask(look: Path, at_once: int = 64, product: bool = False) -> None:
     by_packet: dict[str, dict] = {}
     cost, missing = 0.0, 0
     with ThreadPoolExecutor(at_once) as pool:
-        for n, name, keep, c in pool.map(one, items):
+        for n, panel, keep, c in pool.map(one, items):
             cost += c or 0.0
             if keep is None:
                 missing += 1
                 continue
-            by_packet.setdefault(n, {})[name] = {"keep": keep >= 0.5, "wrong": None, "p_keep": round(keep, 4)}
+            by_packet.setdefault(n, {})[panel] = {"keep": keep >= 0.5, "wrong": None, "p_keep": round(keep, 4)}
     for n, ans in by_packet.items():
         (look / f"{name}-{n}.json").write_text(json.dumps({"panels": ans}, ensure_ascii=False), encoding="utf-8")
     print(f"{look}: {sum(len(v) for v in by_packet.values())} panels answered, {missing} not; cost ${cost:.4f}", flush=True)

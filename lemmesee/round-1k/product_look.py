@@ -1,9 +1,9 @@
 """The look taught the product's way: round 1j's baseline look, its folds and
-seeds, taught by three pairs of teachers in turn — Jev, DeepSeek and GLM as
-round 1j; Jev (fast) and Luna as round 1k; and the same two asked the
-product's question (pmjev, pmlunap) — and each five counted by the first
-judges (Sonnet and Gemini) and by the product judges (pmsonnet, pmgemini),
-each pair averaged, differences bootstrapped over families.
+seeds, taught by each set of teachers in turn — Jev, DeepSeek and GLM as
+round 1j; Jev (fast) and Luna as round 1k; the same two asked the product's
+question (pmjev, pmlunap); and all four together — and each five counted by
+the first judges (Sonnet and Gemini) and by the product judges (pmsonnet,
+pmgemini), each pair averaged, differences bootstrapped over families.
 
     python -I product_look.py <out>
 
@@ -25,7 +25,8 @@ ROOT = HERE.parent
 sys.path.insert(0, str(HERE))
 import local  # noqa: E402
 
-TARGETS = {"first teachers": None, "jev and luna": ("jevfast", "lunap"), "product teachers": ("pmjev", "pmlunap")}
+TARGETS = {"first teachers": None, "jev and luna": ("jevfast", "lunap"), "product teachers": ("pmjev", "pmlunap"),
+            "all four": ("jevfast", "lunap", "pmjev", "pmlunap")}
 JUDGES = {"first judges": ("sonnet", "gemini"), "product judges": ("pmsonnet", "pmgemini")}
 
 
