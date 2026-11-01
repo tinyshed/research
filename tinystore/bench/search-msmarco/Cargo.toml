@@ -18,6 +18,8 @@ serde_json = "=1.0.151"
 flate2 = "1"
 sha2 = "0.10"
 memmap2 = "0.9"
+# TinyStore's own search, from the main tinystore/source holds, its search alone
+tinystore = { path = "../../source/crates/tinystore", default-features = false, features = ["search"] }
 
 [lints.rust]
 unexpected_cfgs = "allow"

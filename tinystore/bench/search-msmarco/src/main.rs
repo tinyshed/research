@@ -48,6 +48,7 @@ mod prepare;
 mod queries;
 mod sizes;
 mod tant1;
+mod tiny1;
 
 use std::io::Write;
 use std::path::Path;
@@ -73,6 +74,7 @@ fn main() {
                 "fts5" => fts1::build(dir, index),
                 "tantivy" => tant1::build(dir, index, 1024, false),
                 "tantivy-keyed" => tant1::build(dir, index, 1024, true),
+                "tinystore" => tiny1::build(dir, index),
                 other => panic!("no engine {other}"),
             };
             emit(&line);
@@ -150,6 +152,12 @@ impl Engine for fts1::Reader {
     }
 }
 
+impl Engine for tiny1::Reader {
+    fn top(&mut self, terms: &[String], k: usize) -> Vec<(f64, u32)> {
+        tiny1::Reader::top(self, terms, k)
+    }
+}
+
 impl Engine for tant1::Reader {
     fn top(&mut self, terms: &[String], k: usize) -> Vec<(f64, u32)> {
         tant1::Reader::top(self, terms, k)
@@ -191,6 +199,7 @@ pub fn open_engine(name: &str, index: &Path) -> Box<dyn Engine> {
         "fast2" => Box::new(fast2::Reader::open(index)),
         "fts5" => Box::new(fts1::Reader::open(index)),
         "tantivy" => Box::new(tant1::Reader::open(index, tantivy::ReloadPolicy::Manual)),
+        "tinystore" => Box::new(tiny1::Reader::open(index)),
         "tantivy-exhaustive" => {
             let mut reader = tant1::Reader::open(index, tantivy::ReloadPolicy::Manual);
             reader.exhaustive = true;
