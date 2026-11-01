@@ -44,6 +44,9 @@ four seconds a query; H2.1 fails on this machine, bare Linux still to run.
 [The compact blocks made fast](search-fast-2026-11-01.md): where their time went and a change at a time, exact
 throughout; the same blocks bit-packed in one SQLite row a key, a fixed directory and a byte of length a document reach
 Tantivy's p99 and 1.6 times its p50 in WSL2's containers, in 1.99 bytes a posting against compact's 3.18.
+[Two fields and prefixes over ordinary SQLite tables](search-fields-2026-11-01.md): words as written and stems,
+the last word a prefix of 32 words; one dictionary row a word and lists by rowid pass Tantivy's p99, 0.73–0.78 of it,
+3.7 times faster than the lab's field-prefixed keys, in 1.99 bytes a posting against 3.13.
 
 The 22–23 September architecture implementation rounds on
 `codex/architecture-measurements` measured intermediate uncommitted states.
