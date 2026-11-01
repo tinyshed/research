@@ -57,3 +57,8 @@ so, never by editing the number it replaces.
   stories a screen of roles shows 16 of 29 over time against round 1c's 10, +6 [+3, +9], and the owner chose it as the
   closest of four; a row of numbers read from the schema gives six of the eight on the owner's own dashboard and 53 %
   of the numbers Haiku wrote for the bench.
+- [Keys on the databases others measured theirs on](keys-external-2026-11-01.md), round 1p: on Spider, BIRD and all of
+  CTU round 1b's key model draws keys at F1 0.775 against the rules' 0.547; in SchemaPile's pair task it is right
+  where its candidates reach and loses where they do not, and a variant widened on validation takes it to 0.913 /
+  0.900 / 0.886; a T5 trained on related pairs cannot tell them from unrelated ones; Gemini 3.8 Flash is the ceiling;
+  the model is a file of 938 KiB, checked against the libraries.

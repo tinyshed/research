@@ -1,0 +1,57 @@
+{
+  "reported": {
+    "spider": {
+      "covered: right": 656,
+      "kinds of column and key differ": 34,
+      "target with no primary key": 22,
+      "referred column not the target key": 17,
+      "column is its table's own key": 25,
+      "target key not of a key kind": 6,
+      "target key over several columns": 3,
+      "covered: wrong": 5
+    },
+    "bird": {
+      "covered: right": 323,
+      "target key over several columns": 11,
+      "covered: wrong": 7,
+      "column is its table's own key": 23,
+      "target with no primary key": 11,
+      "referred column not the target key": 6
+    },
+    "ctu": {
+      "covered: right": 982,
+      "column is its table's own key": 140,
+      "covered: wrong": 60,
+      "target key over several columns": 26,
+      "target key not of a key kind": 48,
+      "target with no primary key": 8,
+      "referred column not the target key": 3
+    }
+  },
+  "-both": {
+    "spider": {
+      "covered: right": 701,
+      "kinds of column and key differ": 34,
+      "covered: wrong": 6,
+      "referred column not the target key": 17,
+      "target key not of a key kind": 6,
+      "target key over several columns": 3,
+      "target with no primary key": 1
+    },
+    "bird": {
+      "covered: right": 343,
+      "target key over several columns": 11,
+      "covered: wrong": 11,
+      "target with no primary key": 10,
+      "referred column not the target key": 6
+    },
+    "ctu": {
+      "covered: right": 1123,
+      "covered: wrong": 59,
+      "target key over several columns": 26,
+      "target key not of a key kind": 48,
+      "target with no primary key": 8,
+      "referred column not the target key": 3
+    }
+  }
+}

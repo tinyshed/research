@@ -1,0 +1,21 @@
+{
+  "device": "cuda",
+  "torch": "2.11.0+cu128",
+  "seconds": 788,
+  "median_seconds_a_pair": 0.8164241313934326,
+  "spider": {
+    "pairs": 768,
+    "constrained": 0.95703125,
+    "free": 0.9296875
+  },
+  "bird": {
+    "pairs": 381,
+    "constrained": 0.9343832020997376,
+    "free": 0.868766404199475
+  },
+  "ctu": {
+    "pairs": 1267,
+    "constrained": 0.9289660615627466,
+    "free": 0.9029202841357538
+  }
+}

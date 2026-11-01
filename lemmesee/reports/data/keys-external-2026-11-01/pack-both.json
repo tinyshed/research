@@ -1,0 +1,23 @@
+{
+  "bytes": {
+    "file": 960819,
+    "first": {
+      "trees": 829,
+      "inner nodes": 51398,
+      "leaves": 52227
+    },
+    "second": {
+      "trees": 400,
+      "inner nodes": 12000,
+      "leaves": 12400
+    }
+  },
+  "KiB": 938.3,
+  "pairs": 712774,
+  "first stage, largest margin difference": 2.164532838833111e-05,
+  "second stage, largest margin difference": 0.15556715542410515,
+  "second stage on the same features, largest margin difference": 5.518921817326827e-07,
+  "pairs whose second-stage margin differs by over 1e-4": 11,
+  "keys drawn": 2590,
+  "keys drawn differently": 0
+}

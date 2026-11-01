@@ -1,0 +1,127 @@
+{
+  "25": {
+    "variant": "both",
+    "training pairs": 6206601,
+    "validation pairs": 674751,
+    "validation keys among candidates": 6693,
+    "threshold": 0.7926409760555935,
+    "validation": {
+      "precision": 0.6523883696780893,
+      "recall": 0.7509338114447931,
+      "f1": 0.6982010141001598,
+      "average_precision": 0.7034910117137899,
+      "novel_f1": 0.6975336939580086
+    },
+    "validation, the paper's task": {
+      "pairs": 6781,
+      "covered": 0.8781890576611119,
+      "recall_at_1": 0.8458929361451113
+    },
+    "seconds": 154,
+    "first trees": 25,
+    "compact KiB": {
+      "first": 23,
+      "second": 177
+    }
+  },
+  "50": {
+    "variant": "both",
+    "training pairs": 6206601,
+    "validation pairs": 674751,
+    "validation keys among candidates": 6693,
+    "threshold": 0.8194490522719555,
+    "validation": {
+      "precision": 0.6842847075405215,
+      "recall": 0.7253847303152547,
+      "f1": 0.7042355671598491,
+      "average_precision": 0.7045244771817915,
+      "novel_f1": 0.6961113778204512
+    },
+    "validation, the paper's task": {
+      "pairs": 6781,
+      "covered": 0.8781890576611119,
+      "recall_at_1": 0.8479575283881433
+    },
+    "seconds": 172,
+    "first trees": 50,
+    "compact KiB": {
+      "first": 46,
+      "second": 177
+    }
+  },
+  "100": {
+    "variant": "both",
+    "training pairs": 6206601,
+    "validation pairs": 674751,
+    "validation keys among candidates": 6693,
+    "threshold": 0.7983633588487244,
+    "validation": {
+      "precision": 0.6809865835479062,
+      "recall": 0.7507844016136261,
+      "f1": 0.7141841955656623,
+      "average_precision": 0.7220075496683114,
+      "novel_f1": 0.703179217856138
+    },
+    "validation, the paper's task": {
+      "pairs": 6781,
+      "covered": 0.8781890576611119,
+      "recall_at_1": 0.8492847662586639
+    },
+    "seconds": 160,
+    "first trees": 100,
+    "compact KiB": {
+      "first": 91,
+      "second": 177
+    }
+  },
+  "200": {
+    "variant": "both",
+    "training pairs": 6206601,
+    "validation pairs": 674751,
+    "validation keys among candidates": 6693,
+    "threshold": 0.8424684657306206,
+    "validation": {
+      "precision": 0.7206645898234684,
+      "recall": 0.7258329598087554,
+      "f1": 0.7232395414619622,
+      "average_precision": 0.7361593920192558,
+      "novel_f1": 0.7029644268774704
+    },
+    "validation, the paper's task": {
+      "pairs": 6781,
+      "covered": 0.8781890576611119,
+      "recall_at_1": 0.8504645332546822
+    },
+    "seconds": 217,
+    "first trees": 200,
+    "compact KiB": {
+      "first": 182,
+      "second": 177
+    }
+  },
+  "400": {
+    "variant": "both",
+    "training pairs": 6206601,
+    "validation pairs": 674751,
+    "validation keys among candidates": 6693,
+    "threshold": 0.8377327143217527,
+    "validation": {
+      "precision": 0.7218995062445541,
+      "recall": 0.7427162707306141,
+      "f1": 0.7321599528683997,
+      "average_precision": 0.7467269572329822,
+      "novel_f1": 0.705744660099483
+    },
+    "validation, the paper's task": {
+      "pairs": 6781,
+      "covered": 0.8781890576611119,
+      "recall_at_1": 0.8507594750036868
+    },
+    "seconds": 389,
+    "first trees": 400,
+    "compact KiB": {
+      "first": 365,
+      "second": 177
+    }
+  }
+}

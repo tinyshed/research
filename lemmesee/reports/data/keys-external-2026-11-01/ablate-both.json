@@ -1,0 +1,106 @@
+{
+  "thresholds": {
+    "first stage alone": 0.7080327868461609,
+    "both stages": 0.8090700218978171
+  },
+  "first stage alone": {
+    "spider": {
+      "candidates": {
+        "precision": 0.9127837514934289,
+        "recall": 0.8988235294117647,
+        "f1": 0.905749851807943
+      },
+      "every declared key": {
+        "recall": 0.8386388583973655,
+        "f1": 0.8741418764302059
+      },
+      "the paper's task": 0.91015625
+    },
+    "bird": {
+      "candidates": {
+        "precision": 0.8626086956521739,
+        "recall": 0.8671328671328671,
+        "f1": 0.8648648648648648
+      },
+      "every declared key": {
+        "recall": 0.8184818481848185,
+        "f1": 0.8399661303979677
+      },
+      "the paper's task": 0.889763779527559
+    },
+    "ctu": {
+      "candidates": {
+        "precision": 0.6369268897149938,
+        "recall": 0.5857549857549857,
+        "f1": 0.6102701098248738
+      },
+      "every declared key": {
+        "recall": 0.5544768069039914,
+        "f1": 0.5928489042675894
+      },
+      "the paper's task": 0.8823993685872139
+    },
+    "all": {
+      "candidates": {
+        "precision": 0.7561136814276272,
+        "recall": 0.7201762669184766,
+        "f1": 0.7377075608576495
+      },
+      "every declared key": {
+        "recall": 0.6787303470780184,
+        "f1": 0.7153353134281695
+      },
+      "the paper's task": 0.8923841059602649
+    }
+  },
+  "both stages": {
+    "spider": {
+      "candidates": {
+        "precision": 0.911377245508982,
+        "recall": 0.8952941176470588,
+        "f1": 0.9032640949554895
+      },
+      "every declared key": {
+        "recall": 0.8353457738748628,
+        "f1": 0.8717067583046963
+      },
+      "the paper's task": 0.9127604166666666
+    },
+    "bird": {
+      "candidates": {
+        "precision": 0.8913857677902621,
+        "recall": 0.8321678321678322,
+        "f1": 0.8607594936708861
+      },
+      "every declared key": {
+        "recall": 0.7854785478547854,
+        "f1": 0.8350877192982455
+      },
+      "the paper's task": 0.8976377952755905
+    },
+    "ctu": {
+      "candidates": {
+        "precision": 0.7796887796887797,
+        "recall": 0.5424501424501424,
+        "f1": 0.6397849462365591
+      },
+      "every declared key": {
+        "recall": 0.5134843581445523,
+        "f1": 0.6191869918699187
+      },
+      "the paper's task": 0.8863456985003947
+    },
+    "all": {
+      "candidates": {
+        "precision": 0.8451737451737452,
+        "recall": 0.6890147938306579,
+        "f1": 0.7591468701231142
+      },
+      "every declared key": {
+        "recall": 0.6493622070602195,
+        "f1": 0.7344405301123973
+      },
+      "the paper's task": 0.8965231788079471
+    }
+  }
+}

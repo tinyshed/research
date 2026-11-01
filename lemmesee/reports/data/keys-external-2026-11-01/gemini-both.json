@@ -1,0 +1,161 @@
+{
+  "spider: the paper's task": {
+    "pairs": 768,
+    "recall_at_1": 0.9869791666666666
+  },
+  "bird: the paper's task": {
+    "pairs": 381,
+    "recall_at_1": 0.952755905511811
+  },
+  "ctu: the paper's task": {
+    "pairs": 1267,
+    "recall_at_1": 0.9850039463299132
+  },
+  "pairs unreadable": 0,
+  "spider, all: round 1b's task": {
+    "databases": 204,
+    "keys declared": 911,
+    "round 1b's model": {
+      "precision": 0.911377245508982,
+      "recall": 0.8353457738748628,
+      "f1": 0.8717067583046963
+    },
+    "gemini": {
+      "precision": 0.9125910509885536,
+      "recall": 0.9626783754116356,
+      "f1": 0.936965811965812
+    },
+    "f1_model_minus_gemini_95": [
+      -0.09009893150219597,
+      -0.04029989442051241
+    ]
+  },
+  "spider, novel: round 1b's task": {
+    "databases": 162,
+    "keys declared": 756,
+    "round 1b's model": {
+      "precision": 0.9090909090909091,
+      "recall": 0.8333333333333334,
+      "f1": 0.8695652173913043
+    },
+    "gemini": {
+      "precision": 0.9128787878787878,
+      "recall": 0.9563492063492064,
+      "f1": 0.9341085271317829
+    },
+    "f1_model_minus_gemini_95": [
+      -0.09314717796439527,
+      -0.03713671215634428
+    ]
+  },
+  "bird, all: round 1b's task": {
+    "databases": 76,
+    "keys declared": 606,
+    "round 1b's model": {
+      "precision": 0.896421845574388,
+      "recall": 0.7854785478547854,
+      "f1": 0.8372911169744943
+    },
+    "gemini": {
+      "precision": 0.9349593495934959,
+      "recall": 0.9488448844884488,
+      "f1": 0.9418509418509419
+    },
+    "f1_model_minus_gemini_95": [
+      -0.15980412104023098,
+      -0.05159904046121654
+    ]
+  },
+  "bird, novel: round 1b's task": {
+    "databases": 64,
+    "keys declared": 545,
+    "round 1b's model": {
+      "precision": 0.8851063829787233,
+      "recall": 0.763302752293578,
+      "f1": 0.819704433497537
+    },
+    "gemini": {
+      "precision": 0.9328493647912885,
+      "recall": 0.9431192660550459,
+      "f1": 0.9379562043795621
+    },
+    "f1_model_minus_gemini_95": [
+      -0.177404789570973,
+      -0.058508249930171195
+    ]
+  },
+  "ctu, all: round 1b's task": {
+    "databases": 118,
+    "keys declared": 1854,
+    "round 1b's model": {
+      "precision": 0.7841845140032949,
+      "recall": 0.5134843581445523,
+      "f1": 0.6205997392438071
+    },
+    "gemini": {
+      "precision": 0.8683173888576252,
+      "recall": 0.8322545846817692,
+      "f1": 0.8499036078215367
+    },
+    "f1_model_minus_gemini_95": [
+      -0.3331285336145184,
+      -0.14032747674490123
+    ]
+  },
+  "ctu, novel: round 1b's task": {
+    "databases": 97,
+    "keys declared": 1665,
+    "round 1b's model": {
+      "precision": 0.7572362278244631,
+      "recall": 0.4870870870870871,
+      "f1": 0.5928362573099415
+    },
+    "gemini": {
+      "precision": 0.8596491228070176,
+      "recall": 0.824024024024024,
+      "f1": 0.8414596749463354
+    },
+    "f1_model_minus_gemini_95": [
+      -0.37088830172305354,
+      -0.14685989875663025
+    ]
+  },
+  "all, all: round 1b's task": {
+    "databases": 398,
+    "keys declared": 3371,
+    "round 1b's model": {
+      "precision": 0.8484496124031008,
+      "recall": 0.6493622070602195,
+      "f1": 0.7356746765249538
+    },
+    "gemini": {
+      "precision": 0.8932299433343275,
+      "recall": 0.8884603975081579,
+      "f1": 0.8908387864366448
+    },
+    "f1_model_minus_gemini_95": [
+      -0.209352960189277,
+      -0.10571298488616537
+    ]
+  },
+  "all, novel: round 1b's task": {
+    "databases": 323,
+    "keys declared": 2966,
+    "round 1b's model": {
+      "precision": 0.8312444046553268,
+      "recall": 0.6260957518543493,
+      "f1": 0.7142307692307692
+    },
+    "gemini": {
+      "precision": 0.8877169105137802,
+      "recall": 0.8796358732299393,
+      "f1": 0.8836579170194749
+    },
+    "f1_model_minus_gemini_95": [
+      -0.23085918987860726,
+      -0.11293463278905275
+    ]
+  },
+  "databases unreadable": 1,
+  "keys naming nothing of the schema": 1
+}
