@@ -95,6 +95,17 @@ is the 198th, and a JVM starts cold in each cold pass.
   this is a pointer for the profile, not a measured scaling.
 - TinyStore itself searches with FTS5, the arm four seconds a query here;
   the compact blocks are a prototype, not what TinyStore ships.
+
+  > **Correction, 1 November 2026.** The bullet above is wrong. It was read
+  > from the submodule here, pinned at `e307c48`, a commit of the Go code
+  > before the Rust rewrite reached TinyStore's `main`. TinyStore's `main`
+  > searches with its own index, not FTS5: postings in blocks of 128 with a
+  > directory of each block's best possible score, windows of 4,096 passed by
+  > their bounds, a head of recent changes packed 2,048 rows a commit, scores
+  > in whole points (its handbook, `docs/handbook/inside/how-search-finds.md`,
+  > at `4390117b`). That is the design the compact blocks here measure; this
+  > round did not build TinyStore's own code, and its numbers are the
+  > prototype's.
 - The compact arm is the lab's executor in Rust over rusqlite with
   SQLite's 1 MiB page cache as TinyStore opens a file; why it is slower is
   not measured here. A profile of its passes is the next step, and its
