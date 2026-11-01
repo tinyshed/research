@@ -1,0 +1,115 @@
+{
+ "extended": {
+  "best_changes": 11,
+  "flat": {
+   "cells": 96,
+   "cells_tau_below_1": 0,
+   "cells_with_reversal": 0,
+   "reversed_pairs": 0,
+   "tau_mean": 1.0,
+   "tau_min": 1.0,
+   "tied_only": 0
+  },
+  "pg_main_forks": {
+   "cells": 96,
+   "cells_tau_below_1": 85,
+   "cells_with_reversal": 39,
+   "reversed_pairs": 91,
+   "tau_mean": 0.865,
+   "tau_min": 0.5,
+   "tied_only": 340
+  },
+  "pg_pages_with_tuples": {
+   "cells": 96,
+   "cells_tau_below_1": 57,
+   "cells_with_reversal": 28,
+   "reversed_pairs": 34,
+   "tau_mean": 0.9399,
+   "tau_min": 0.5,
+   "tied_only": 191
+  },
+  "pg_total": {
+   "cells": 96,
+   "cells_tau_below_1": 85,
+   "cells_with_reversal": 39,
+   "reversed_pairs": 93,
+   "tau_mean": 0.8632,
+   "tau_min": 0.5,
+   "tied_only": 341
+  },
+  "sqlite8k": {
+   "cells": 96,
+   "cells_tau_below_1": 55,
+   "cells_with_reversal": 24,
+   "reversed_pairs": 28,
+   "tau_mean": 0.9208,
+   "tau_min": 0.5,
+   "tied_only": 290
+  }
+ },
+ "external": {
+  "best_changes": 11,
+  "flat": {
+   "cells": 96,
+   "cells_tau_below_1": 0,
+   "cells_with_reversal": 0,
+   "reversed_pairs": 0,
+   "tau_mean": 1.0,
+   "tau_min": 1.0,
+   "tied_only": 0
+  },
+  "pg_main_forks": {
+   "cells": 96,
+   "cells_tau_below_1": 84,
+   "cells_with_reversal": 37,
+   "reversed_pairs": 78,
+   "tau_mean": 0.8753,
+   "tau_min": 0.5,
+   "tied_only": 338
+  },
+  "pg_pages_with_tuples": {
+   "cells": 96,
+   "cells_tau_below_1": 49,
+   "cells_with_reversal": 17,
+   "reversed_pairs": 17,
+   "tau_mean": 0.9529,
+   "tau_min": 0.5,
+   "tied_only": 190
+  },
+  "pg_total": {
+   "cells": 96,
+   "cells_tau_below_1": 84,
+   "cells_with_reversal": 37,
+   "reversed_pairs": 81,
+   "tau_mean": 0.8729,
+   "tau_min": 0.5,
+   "tied_only": 338
+  },
+  "sqlite8k": {
+   "cells": 96,
+   "cells_tau_below_1": 55,
+   "cells_with_reversal": 24,
+   "reversed_pairs": 28,
+   "tau_mean": 0.9208,
+   "tau_min": 0.5,
+   "tied_only": 290
+  }
+ },
+ "model": {
+  "chunks_as_predicted": 1536,
+  "external_rule_holds": 1536,
+  "heap_main_pages": 375492,
+  "heap_pages_empty": 23800,
+  "heap_pages_exact_accounting": 1536,
+  "heap_pages_used_measured": 351692,
+  "heap_pages_used_predicted": 357988,
+  "heap_pages_used_predicted_exactly": 1048,
+  "loads": 1536,
+  "toast_main_pages": 368881,
+  "toast_pages_empty": 0,
+  "toast_pages_exact_accounting": 1536,
+  "toast_pages_used_measured": 368881,
+  "toast_pages_used_predicted": 379183,
+  "toast_pages_used_predicted_exactly": 1039
+ }
+}

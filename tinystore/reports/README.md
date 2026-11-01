@@ -34,6 +34,7 @@ thousand rows or keys a commit, the writer held 92 ms at most where a whole pack
 [Words and vectors out of the model's domain](search-hybrid-2026-10-16.md): Amazon's products and
 StackExchange, fusion by rank against a convex sum of scores, the words' hundred scored again, codes apart.
 [An exact page model of SQLite's files](page-model-2026-11-01.md): from SQLite's documented format, the pages a fresh file takes predicted from its rows' sizes, exact on 1,184 of 1,184 files on Windows and Linux, and the earlier rounds' file sizes explained by it.
+[Codecs in the file, not the payload](codec-pages-2026-11-01.md): Gorilla, Chimp, Elf, ALP, zstd and TinyStore's codec on ALP's 30 datasets, TSBS long and NAB, a block a row at 1–16 KiB and in PostgreSQL 18; the page model exact on 24,576 files, codec order kept with τ 0.94 in SQLite and 0.87 in PostgreSQL, the block length the file wants differing in 53 % of curves.
 
 The 22–23 September architecture implementation rounds on
 `codex/architecture-measurements` measured intermediate uncommitted states.

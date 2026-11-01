@@ -1,0 +1,413 @@
+{
+ "check": {
+  "delta_bytes": {
+   "predicted": 20480,
+   "rebuilt": 20480
+  },
+  "delta_percent_predicted_on_rebuilt_exact": 0.451,
+  "delta_percent_rebuilt": 0.451,
+  "rebuilt_exact_file": 4538368,
+  "rebuilt_rowid_file": 4558848,
+  "rowid_index_pages": {
+   "predicted": 11,
+   "rebuilt": 11
+  },
+  "rowid_table_pages": {
+   "predicted": 121,
+   "rebuilt": 121
+  },
+  "without_rowid_pages": {
+   "predicted": 127,
+   "rebuilt": 127
+  }
+ },
+ "groups_histogram": {
+  "bin_bytes": 128,
+  "counts": {
+   "0": 840,
+   "128": 111,
+   "256": 909,
+   "384": 100,
+   "512": 59,
+   "640": 1
+  },
+  "index_max_local_X": 1002,
+  "max_record": 653,
+  "mean_record": 227.4,
+  "record_bytes": 459390,
+  "records": 2020,
+  "records_over_index_X": 0,
+  "records_over_table_X": 0,
+  "table_max_local_X": 4061
+ },
+ "original": {
+  "file_bytes": 4665344,
+  "freelist": 0,
+  "objects": {
+   "_tinystore_migrations": {
+    "leaf": 1,
+    "pages": 1,
+    "unused_leaf": 4033
+   },
+   "clocks": {
+    "leaf": 1,
+    "pages": 1,
+    "unused_leaf": 3907
+   },
+   "groups": {
+    "internal": 10,
+    "leaf": 117,
+    "pages": 127,
+    "unused_internal": 4994,
+    "unused_leaf": 47048
+   },
+   "label_values": {
+    "internal": 1,
+    "leaf": 3,
+    "pages": 4,
+    "unused_internal": 4068,
+    "unused_leaf": 3687
+   },
+   "payloads": {
+    "internal": 3,
+    "leaf": 748,
+    "pages": 751,
+    "unused_internal": 6278,
+    "unused_leaf": 288611
+   },
+   "postings": {
+    "internal": 1,
+    "leaf": 61,
+    "pages": 62,
+    "unused_internal": 3298,
+    "unused_leaf": 29066
+   },
+   "series": {
+    "internal": 1,
+    "leaf": 37,
+    "pages": 38,
+    "unused_internal": 3798,
+    "unused_leaf": 4780
+   },
+   "series_due": {
+    "internal": 1,
+    "leaf": 8,
+    "pages": 9,
+    "unused_internal": 3958,
+    "unused_leaf": 4650
+   },
+   "series_failed": {
+    "leaf": 1,
+    "pages": 1,
+    "unused_leaf": 4088
+   },
+   "series_failed_id": {
+    "leaf": 1,
+    "pages": 1,
+    "unused_leaf": 4088
+   },
+   "series_ready": {
+    "leaf": 1,
+    "pages": 1,
+    "unused_leaf": 4088
+   },
+   "series_state": {
+    "internal": 1,
+    "leaf": 108,
+    "pages": 109,
+    "unused_internal": 3233,
+    "unused_leaf": 137009
+   },
+   "sqlite_autoindex_clocks_1": {
+    "leaf": 1,
+    "pages": 1,
+    "unused_leaf": 4050
+   },
+   "sqlite_autoindex_label_values_1": {
+    "internal": 1,
+    "leaf": 2,
+    "pages": 3,
+    "unused_internal": 4061,
+    "unused_leaf": 257
+   },
+   "sqlite_autoindex_series_1": {
+    "internal": 1,
+    "leaf": 27,
+    "pages": 28,
+    "unused_internal": 2629,
+    "unused_leaf": 6815
+   },
+   "sqlite_schema": {
+    "leaf": 1,
+    "pages": 1,
+    "unused_leaf": 633
+   },
+   "store_state": {
+    "leaf": 1,
+    "pages": 1,
+    "unused_leaf": 4076
+   }
+  },
+  "page_count": 1139,
+  "page_size": 4096
+ },
+ "predicted": {
+  "delta_bytes": 20480,
+  "rowid_table": {
+   "bytes": 495616,
+   "freelist": 0,
+   "interior": 1,
+   "leaf": 120,
+   "overflow": 0,
+   "pages": 121
+  },
+  "rowid_unique_index": {
+   "bytes": 45056,
+   "freelist": 0,
+   "interior": 1,
+   "leaf": 10,
+   "overflow": 0,
+   "pages": 11
+  },
+  "without_rowid": {
+   "bytes": 520192,
+   "freelist": 0,
+   "interior": 10,
+   "leaf": 117,
+   "overflow": 0,
+   "pages": 127
+  }
+ },
+ "rebuilt": {
+  "exact": {
+   "file_bytes": 4538368,
+   "freelist": 0,
+   "objects": {
+    "_tinystore_migrations": {
+     "leaf": 1,
+     "pages": 1,
+     "unused_leaf": 4033
+    },
+    "clocks": {
+     "leaf": 1,
+     "pages": 1,
+     "unused_leaf": 3907
+    },
+    "groups": {
+     "internal": 10,
+     "leaf": 117,
+     "pages": 127,
+     "unused_internal": 4994,
+     "unused_leaf": 47048
+    },
+    "label_values": {
+     "internal": 1,
+     "leaf": 3,
+     "pages": 4,
+     "unused_internal": 4068,
+     "unused_leaf": 3687
+    },
+    "payloads": {
+     "internal": 3,
+     "leaf": 748,
+     "pages": 751,
+     "unused_internal": 6278,
+     "unused_leaf": 288611
+    },
+    "postings": {
+     "internal": 1,
+     "leaf": 62,
+     "pages": 63,
+     "unused_internal": 3286,
+     "unused_leaf": 33162
+    },
+    "series": {
+     "internal": 1,
+     "leaf": 37,
+     "pages": 38,
+     "unused_internal": 3798,
+     "unused_leaf": 4780
+    },
+    "series_due": {
+     "internal": 1,
+     "leaf": 7,
+     "pages": 8,
+     "unused_internal": 3976,
+     "unused_leaf": 548
+    },
+    "series_failed": {
+     "leaf": 1,
+     "pages": 1,
+     "unused_leaf": 4088
+    },
+    "series_failed_id": {
+     "leaf": 1,
+     "pages": 1,
+     "unused_leaf": 4088
+    },
+    "series_ready": {
+     "leaf": 1,
+     "pages": 1,
+     "unused_leaf": 4088
+    },
+    "series_state": {
+     "internal": 1,
+     "leaf": 77,
+     "pages": 78,
+     "unused_internal": 3479,
+     "unused_leaf": 10281
+    },
+    "sqlite_autoindex_clocks_1": {
+     "leaf": 1,
+     "pages": 1,
+     "unused_leaf": 4050
+    },
+    "sqlite_autoindex_label_values_1": {
+     "internal": 1,
+     "leaf": 2,
+     "pages": 3,
+     "unused_internal": 4061,
+     "unused_leaf": 257
+    },
+    "sqlite_autoindex_series_1": {
+     "internal": 1,
+     "leaf": 27,
+     "pages": 28,
+     "unused_internal": 2629,
+     "unused_leaf": 6815
+    },
+    "sqlite_schema": {
+     "leaf": 1,
+     "pages": 1,
+     "unused_leaf": 628
+    },
+    "store_state": {
+     "leaf": 1,
+     "pages": 1,
+     "unused_leaf": 4076
+    }
+   },
+   "page_count": 1108,
+   "page_size": 4096
+  },
+  "rowid": {
+   "file_bytes": 4558848,
+   "freelist": 0,
+   "objects": {
+    "_tinystore_migrations": {
+     "leaf": 1,
+     "pages": 1,
+     "unused_leaf": 4033
+    },
+    "clocks": {
+     "leaf": 1,
+     "pages": 1,
+     "unused_leaf": 3907
+    },
+    "groups": {
+     "internal": 1,
+     "leaf": 120,
+     "pages": 121,
+     "unused_internal": 3140,
+     "unused_leaf": 20017
+    },
+    "label_values": {
+     "internal": 1,
+     "leaf": 3,
+     "pages": 4,
+     "unused_internal": 4068,
+     "unused_leaf": 3687
+    },
+    "payloads": {
+     "internal": 3,
+     "leaf": 748,
+     "pages": 751,
+     "unused_internal": 6278,
+     "unused_leaf": 288611
+    },
+    "postings": {
+     "internal": 1,
+     "leaf": 62,
+     "pages": 63,
+     "unused_internal": 3286,
+     "unused_leaf": 33162
+    },
+    "series": {
+     "internal": 1,
+     "leaf": 37,
+     "pages": 38,
+     "unused_internal": 3798,
+     "unused_leaf": 4780
+    },
+    "series_due": {
+     "internal": 1,
+     "leaf": 7,
+     "pages": 8,
+     "unused_internal": 3976,
+     "unused_leaf": 548
+    },
+    "series_failed": {
+     "leaf": 1,
+     "pages": 1,
+     "unused_leaf": 4088
+    },
+    "series_failed_id": {
+     "leaf": 1,
+     "pages": 1,
+     "unused_leaf": 4088
+    },
+    "series_ready": {
+     "leaf": 1,
+     "pages": 1,
+     "unused_leaf": 4088
+    },
+    "series_state": {
+     "internal": 1,
+     "leaf": 77,
+     "pages": 78,
+     "unused_internal": 3479,
+     "unused_leaf": 10281
+    },
+    "sqlite_autoindex_clocks_1": {
+     "leaf": 1,
+     "pages": 1,
+     "unused_leaf": 4050
+    },
+    "sqlite_autoindex_groups_1": {
+     "internal": 1,
+     "leaf": 10,
+     "pages": 11,
+     "unused_internal": 3895,
+     "unused_leaf": 6949
+    },
+    "sqlite_autoindex_label_values_1": {
+     "internal": 1,
+     "leaf": 2,
+     "pages": 3,
+     "unused_internal": 4061,
+     "unused_leaf": 257
+    },
+    "sqlite_autoindex_series_1": {
+     "internal": 1,
+     "leaf": 27,
+     "pages": 28,
+     "unused_internal": 2629,
+     "unused_leaf": 6815
+    },
+    "sqlite_schema": {
+     "leaf": 1,
+     "pages": 1,
+     "unused_leaf": 596
+    },
+    "store_state": {
+     "leaf": 1,
+     "pages": 1,
+     "unused_leaf": 4076
+    }
+   },
+   "page_count": 1113,
+   "page_size": 4096
+  }
+ },
+ "sqlite": "3.46.1"
+}

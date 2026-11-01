@@ -1,0 +1,1342 @@
+{
+ "alibaba": {
+  "choices": {
+   "rowid_or_without_rowid": {
+    "key": "inline 16",
+    "measured_best": "rowid",
+    "measured_order": [
+     "rowid",
+     "exact"
+    ],
+    "predicted_best": "rowid",
+    "predicted_order": [
+     "rowid",
+     "exact"
+    ]
+   },
+   "threshold_rowid": {
+    "key": "rowid",
+    "measured_best": "rowid_inline32",
+    "measured_order": [
+     "rowid_inline32",
+     "rowid",
+     "rowid_inline64",
+     "rowid_inline128",
+     "rowid_inline0"
+    ],
+    "predicted_best": "rowid_inline64",
+    "predicted_order": [
+     "rowid_inline64",
+     "rowid_inline32",
+     "rowid",
+     "rowid_inline128",
+     "rowid_inline0"
+    ]
+   },
+   "threshold_without_rowid": {
+    "key": "WITHOUT ROWID",
+    "measured_best": "inline0",
+    "measured_order": [
+     "inline0",
+     "inline32",
+     "exact",
+     "inline64",
+     "inline128"
+    ],
+    "predicted_best": "inline0",
+    "predicted_order": [
+     "inline0",
+     "inline32",
+     "exact",
+     "inline64",
+     "inline128"
+    ]
+   }
+  },
+  "control_file": 6774784,
+  "exact": {
+   "config": {
+    "cap": 32,
+    "inline": 16,
+    "page": 4096,
+    "reencode": 0,
+    "rowid": 0,
+    "variant": "exact"
+   },
+   "file_error_bytes": [
+    -12288,
+    4096
+   ],
+   "measured": {
+    "file": 6774784,
+    "groups": 748,
+    "groups_overflow": 465,
+    "index": 0,
+    "payload_rows": 34429,
+    "payloads": 726
+   },
+   "predicted_range": {
+    "file": [
+     6762496,
+     6778880
+    ],
+    "groups": [
+     745,
+     748
+    ],
+    "groups_overflow": [
+     465,
+     465
+    ],
+    "index": [
+     0,
+     0
+    ],
+    "payload_rows": [
+     34429,
+     34429
+    ],
+    "payloads": [
+     726,
+     728
+    ]
+   },
+   "within_range": {
+    "file": true,
+    "groups": true,
+    "groups_overflow": true,
+    "index": true,
+    "payload_rows": true,
+    "payloads": true
+   }
+  },
+  "inline0": {
+   "config": {
+    "cap": 32,
+    "inline": 0,
+    "page": 4096,
+    "reencode": 1,
+    "rowid": 0,
+    "variant": "inline0"
+   },
+   "file_error_bytes": [
+    -327680,
+    -303104
+   ],
+   "measured": {
+    "delta_vs_control_percent": -15.296,
+    "file": 5738496,
+    "groups": 337,
+    "groups_overflow": 0,
+    "index": 0,
+    "payload_rows": 49452,
+    "payloads": 884
+   },
+   "predicted_range": {
+    "delta_vs_control_percent": [
+     -20.073,
+     -19.71
+    ],
+    "file": [
+     5410816,
+     5435392
+    ],
+    "groups": [
+     333,
+     339
+    ],
+    "groups_overflow": [
+     0,
+     0
+    ],
+    "index": [
+     0,
+     0
+    ],
+    "payload_rows": [
+     49452,
+     49452
+    ],
+    "payloads": [
+     807,
+     809
+    ]
+   },
+   "within_range": {
+    "delta_vs_control_percent": false,
+    "file": false,
+    "groups": true,
+    "groups_overflow": true,
+    "index": true,
+    "payload_rows": true,
+    "payloads": false
+   }
+  },
+  "inline128": {
+   "config": {
+    "cap": 32,
+    "inline": 128,
+    "page": 4096,
+    "reencode": 1,
+    "rowid": 0,
+    "variant": "inline128"
+   },
+   "file_error_bytes": [
+    -8192,
+    12288
+   ],
+   "measured": {
+    "delta_vs_control_percent": 25.695,
+    "file": 8515584,
+    "groups": 1601,
+    "groups_overflow": 1269,
+    "index": 0,
+    "payload_rows": 7663,
+    "payloads": 298
+   },
+   "predicted_range": {
+    "delta_vs_control_percent": [
+     25.574,
+     25.937
+    ],
+    "file": [
+     8507392,
+     8527872
+    ],
+    "groups": [
+     1598,
+     1603
+    ],
+    "groups_overflow": [
+     1268,
+     1269
+    ],
+    "index": [
+     0,
+     0
+    ],
+    "payload_rows": [
+     7663,
+     7663
+    ],
+    "payloads": [
+     299,
+     299
+    ]
+   },
+   "within_range": {
+    "delta_vs_control_percent": true,
+    "file": true,
+    "groups": true,
+    "groups_overflow": true,
+    "index": true,
+    "payload_rows": true,
+    "payloads": false
+   }
+  },
+  "inline32": {
+   "config": {
+    "cap": 32,
+    "inline": 32,
+    "page": 4096,
+    "reencode": 1,
+    "rowid": 0,
+    "variant": "inline32"
+   },
+   "file_error_bytes": [
+    -4096,
+    16384
+   ],
+   "measured": {
+    "delta_vs_control_percent": -1.693,
+    "file": 6660096,
+    "groups": 757,
+    "groups_overflow": 469,
+    "index": 0,
+    "payload_rows": 29324,
+    "payloads": 689
+   },
+   "predicted_range": {
+    "delta_vs_control_percent": [
+     -1.753,
+     -1.33
+    ],
+    "file": [
+     6656000,
+     6676480
+    ],
+    "groups": [
+     755,
+     760
+    ],
+    "groups_overflow": [
+     469,
+     469
+    ],
+    "index": [
+     0,
+     0
+    ],
+    "payload_rows": [
+     29324,
+     29324
+    ],
+    "payloads": [
+     690,
+     691
+    ]
+   },
+   "within_range": {
+    "delta_vs_control_percent": true,
+    "file": true,
+    "groups": true,
+    "groups_overflow": true,
+    "index": true,
+    "payload_rows": true,
+    "payloads": false
+   }
+  },
+  "inline64": {
+   "config": {
+    "cap": 32,
+    "inline": 64,
+    "page": 4096,
+    "reencode": 1,
+    "rowid": 0,
+    "variant": "inline64"
+   },
+   "file_error_bytes": [
+    -12288,
+    8192
+   ],
+   "measured": {
+    "delta_vs_control_percent": 16.385,
+    "file": 7884800,
+    "groups": 1317,
+    "groups_overflow": 988,
+    "index": 0,
+    "payload_rows": 12921,
+    "payloads": 428
+   },
+   "predicted_range": {
+    "delta_vs_control_percent": [
+     16.264,
+     16.566
+    ],
+    "file": [
+     7872512,
+     7892992
+    ],
+    "groups": [
+     1313,
+     1318
+    ],
+    "groups_overflow": [
+     988,
+     989
+    ],
+    "index": [
+     0,
+     0
+    ],
+    "payload_rows": [
+     12921,
+     12921
+    ],
+    "payloads": [
+     429,
+     430
+    ]
+   },
+   "within_range": {
+    "delta_vs_control_percent": true,
+    "file": true,
+    "groups": true,
+    "groups_overflow": true,
+    "index": true,
+    "payload_rows": true,
+    "payloads": false
+   }
+  },
+  "rowid": {
+   "config": {
+    "cap": 32,
+    "inline": 16,
+    "page": 4096,
+    "reencode": 0,
+    "rowid": 1,
+    "variant": "rowid"
+   },
+   "file_error_bytes": [
+    -53248,
+    -24576
+   ],
+   "measured": {
+    "delta_vs_control_percent": -21.403,
+    "file": 5324800,
+    "groups": 381,
+    "groups_overflow": 0,
+    "index": 13,
+    "payload_rows": 34429,
+    "payloads": 726
+   },
+   "predicted_range": {
+    "delta_vs_control_percent": [
+     -22.189,
+     -21.644
+    ],
+    "file": [
+     5271552,
+     5300224
+    ],
+    "groups": [
+     367,
+     374
+    ],
+    "groups_overflow": [
+     0,
+     0
+    ],
+    "index": [
+     13,
+     13
+    ],
+    "payload_rows": [
+     34429,
+     34429
+    ],
+    "payloads": [
+     726,
+     728
+    ]
+   },
+   "within_range": {
+    "delta_vs_control_percent": false,
+    "file": false,
+    "groups": false,
+    "groups_overflow": true,
+    "index": true,
+    "payload_rows": true,
+    "payloads": true
+   }
+  },
+  "rowid_inline0": {
+   "config": {
+    "cap": 32,
+    "inline": 0,
+    "page": 4096,
+    "reencode": 1,
+    "rowid": 1,
+    "variant": "rowid_inline0"
+   },
+   "file_error_bytes": [
+    -311296,
+    -290816
+   ],
+   "measured": {
+    "delta_vs_control_percent": -14.933,
+    "file": 5763072,
+    "groups": 330,
+    "groups_overflow": 0,
+    "index": 13,
+    "payload_rows": 49452,
+    "payloads": 884
+   },
+   "predicted_range": {
+    "delta_vs_control_percent": [
+     -19.528,
+     -19.105
+    ],
+    "file": [
+     5451776,
+     5472256
+    ],
+    "groups": [
+     330,
+     335
+    ],
+    "groups_overflow": [
+     0,
+     0
+    ],
+    "index": [
+     13,
+     13
+    ],
+    "payload_rows": [
+     49452,
+     49452
+    ],
+    "payloads": [
+     807,
+     809
+    ]
+   },
+   "within_range": {
+    "delta_vs_control_percent": false,
+    "file": false,
+    "groups": true,
+    "groups_overflow": true,
+    "index": true,
+    "payload_rows": true,
+    "payloads": false
+   }
+  },
+  "rowid_inline128": {
+   "config": {
+    "cap": 32,
+    "inline": 128,
+    "page": 4096,
+    "reencode": 1,
+    "rowid": 1,
+    "variant": "rowid_inline128"
+   },
+   "file_error_bytes": [
+    -139264,
+    -53248
+   ],
+   "measured": {
+    "delta_vs_control_percent": -19.649,
+    "file": 5443584,
+    "groups": 838,
+    "groups_overflow": 0,
+    "index": 13,
+    "payload_rows": 7663,
+    "payloads": 298
+   },
+   "predicted_range": {
+    "delta_vs_control_percent": [
+     -21.644,
+     -20.435
+    ],
+    "file": [
+     5304320,
+     5390336
+    ],
+    "groups": [
+     803,
+     824
+    ],
+    "groups_overflow": [
+     0,
+     0
+    ],
+    "index": [
+     13,
+     13
+    ],
+    "payload_rows": [
+     7663,
+     7663
+    ],
+    "payloads": [
+     299,
+     299
+    ]
+   },
+   "within_range": {
+    "delta_vs_control_percent": false,
+    "file": false,
+    "groups": false,
+    "groups_overflow": true,
+    "index": true,
+    "payload_rows": true,
+    "payloads": false
+   }
+  },
+  "rowid_inline32": {
+   "config": {
+    "cap": 32,
+    "inline": 32,
+    "page": 4096,
+    "reencode": 1,
+    "rowid": 1,
+    "variant": "rowid_inline32"
+   },
+   "file_error_bytes": [
+    -24576,
+    8192
+   ],
+   "measured": {
+    "delta_vs_control_percent": -22.793,
+    "file": 5230592,
+    "groups": 395,
+    "groups_overflow": 0,
+    "index": 13,
+    "payload_rows": 29324,
+    "payloads": 689
+   },
+   "predicted_range": {
+    "delta_vs_control_percent": [
+     -23.096,
+     -22.612
+    ],
+    "file": [
+     5206016,
+     5238784
+    ],
+    "groups": [
+     388,
+     395
+    ],
+    "groups_overflow": [
+     0,
+     0
+    ],
+    "index": [
+     13,
+     13
+    ],
+    "payload_rows": [
+     29324,
+     29324
+    ],
+    "payloads": [
+     690,
+     691
+    ]
+   },
+   "within_range": {
+    "delta_vs_control_percent": true,
+    "file": true,
+    "groups": true,
+    "groups_overflow": true,
+    "index": true,
+    "payload_rows": true,
+    "payloads": false
+   }
+  },
+  "rowid_inline64": {
+   "config": {
+    "cap": 32,
+    "inline": 64,
+    "page": 4096,
+    "reencode": 1,
+    "rowid": 1,
+    "variant": "rowid_inline64"
+   },
+   "file_error_bytes": [
+    -180224,
+    -118784
+   ],
+   "measured": {
+    "delta_vs_control_percent": -21.1,
+    "file": 5345280,
+    "groups": 684,
+    "groups_overflow": 0,
+    "index": 13,
+    "payload_rows": 12921,
+    "payloads": 428
+   },
+   "predicted_range": {
+    "delta_vs_control_percent": [
+     -23.761,
+     -22.793
+    ],
+    "file": [
+     5165056,
+     5226496
+    ],
+    "groups": [
+     639,
+     654
+    ],
+    "groups_overflow": [
+     0,
+     0
+    ],
+    "index": [
+     13,
+     13
+    ],
+    "payload_rows": [
+     12921,
+     12921
+    ],
+    "payloads": [
+     429,
+     430
+    ]
+   },
+   "within_range": {
+    "delta_vs_control_percent": false,
+    "file": false,
+    "groups": false,
+    "groups_overflow": true,
+    "index": true,
+    "payload_rows": true,
+    "payloads": false
+   }
+  }
+ },
+ "tsbs": {
+  "choices": {
+   "rowid_or_without_rowid": {
+    "key": "inline 16",
+    "measured_best": "exact",
+    "measured_order": [
+     "exact",
+     "rowid"
+    ],
+    "predicted_best": "exact",
+    "predicted_order": [
+     "exact",
+     "rowid"
+    ]
+   },
+   "threshold_rowid": {
+    "key": "rowid",
+    "measured_best": "rowid_inline64",
+    "measured_order": [
+     "rowid_inline64",
+     "rowid_inline32",
+     "rowid",
+     "rowid_inline128",
+     "rowid_inline0"
+    ],
+    "predicted_best": "rowid_inline64",
+    "predicted_order": [
+     "rowid_inline64",
+     "rowid_inline32",
+     "rowid_inline0",
+     "rowid",
+     "rowid_inline128"
+    ]
+   },
+   "threshold_without_rowid": {
+    "key": "WITHOUT ROWID",
+    "measured_best": "inline64",
+    "measured_order": [
+     "inline64",
+     "inline32",
+     "exact",
+     "inline0",
+     "inline128"
+    ],
+    "predicted_best": "inline64",
+    "predicted_order": [
+     "inline64",
+     "inline32",
+     "inline0",
+     "exact",
+     "inline128"
+    ]
+   }
+  },
+  "control_file": 4534272,
+  "exact": {
+   "config": {
+    "cap": 32,
+    "inline": 16,
+    "page": 4096,
+    "reencode": 0,
+    "rowid": 0,
+    "variant": "exact"
+   },
+   "file_error_bytes": [
+    -16384,
+    20480
+   ],
+   "measured": {
+    "file": 4534272,
+    "groups": 127,
+    "groups_overflow": 0,
+    "index": 0,
+    "payload_rows": 12140,
+    "payloads": 751
+   },
+   "predicted_range": {
+    "file": [
+     4517888,
+     4554752
+    ],
+    "groups": [
+     126,
+     128
+    ],
+    "groups_overflow": [
+     0,
+     0
+    ],
+    "index": [
+     0,
+     0
+    ],
+    "payload_rows": [
+     12140,
+     12140
+    ],
+    "payloads": [
+     748,
+     757
+    ]
+   },
+   "within_range": {
+    "file": true,
+    "groups": true,
+    "groups_overflow": true,
+    "index": true,
+    "payload_rows": true,
+    "payloads": true
+   }
+  },
+  "inline0": {
+   "config": {
+    "cap": 32,
+    "inline": 0,
+    "page": 4096,
+    "reencode": 1,
+    "rowid": 0,
+    "variant": "inline0"
+   },
+   "file_error_bytes": [
+    -114688,
+    -81920
+   ],
+   "measured": {
+    "delta_vs_control_percent": 2.168,
+    "file": 4632576,
+    "groups": 126,
+    "groups_overflow": 0,
+    "index": 0,
+    "payload_rows": 12560,
+    "payloads": 776
+   },
+   "predicted_range": {
+    "delta_vs_control_percent": [
+     -0.632,
+     0.632
+    ],
+    "file": [
+     4517888,
+     4550656
+    ],
+    "groups": [
+     124,
+     126
+    ],
+    "groups_overflow": [
+     0,
+     0
+    ],
+    "index": [
+     0,
+     0
+    ],
+    "payload_rows": [
+     12560,
+     12560
+    ],
+    "payloads": [
+     749,
+     757
+    ]
+   },
+   "within_range": {
+    "delta_vs_control_percent": false,
+    "file": false,
+    "groups": true,
+    "groups_overflow": true,
+    "index": true,
+    "payload_rows": true,
+    "payloads": false
+   }
+  },
+  "inline128": {
+   "config": {
+    "cap": 32,
+    "inline": 128,
+    "page": 4096,
+    "reencode": 1,
+    "rowid": 0,
+    "variant": "inline128"
+   },
+   "file_error_bytes": [
+    12288,
+    40960
+   ],
+   "measured": {
+    "delta_vs_control_percent": 58.808,
+    "file": 7200768,
+    "groups": 999,
+    "groups_overflow": 792,
+    "index": 0,
+    "payload_rows": 2200,
+    "payloads": 530
+   },
+   "predicted_range": {
+    "delta_vs_control_percent": [
+     58.808,
+     59.982
+    ],
+    "file": [
+     7213056,
+     7241728
+    ],
+    "groups": [
+     995,
+     1000
+    ],
+    "groups_overflow": [
+     793,
+     795
+    ],
+    "index": [
+     0,
+     0
+    ],
+    "payload_rows": [
+     2200,
+     2200
+    ],
+    "payloads": [
+     534,
+     542
+    ]
+   },
+   "within_range": {
+    "delta_vs_control_percent": true,
+    "file": false,
+    "groups": true,
+    "groups_overflow": false,
+    "index": true,
+    "payload_rows": true,
+    "payloads": false
+   }
+  },
+  "inline32": {
+   "config": {
+    "cap": 32,
+    "inline": 32,
+    "page": 4096,
+    "reencode": 1,
+    "rowid": 0,
+    "variant": "inline32"
+   },
+   "file_error_bytes": [
+    -16384,
+    20480
+   ],
+   "measured": {
+    "delta_vs_control_percent": -0.09,
+    "file": 4530176,
+    "groups": 126,
+    "groups_overflow": 0,
+    "index": 0,
+    "payload_rows": 12140,
+    "payloads": 751
+   },
+   "predicted_range": {
+    "delta_vs_control_percent": [
+     -0.361,
+     0.0
+    ],
+    "file": [
+     4513792,
+     4550656
+    ],
+    "groups": [
+     124,
+     126
+    ],
+    "groups_overflow": [
+     0,
+     0
+    ],
+    "index": [
+     0,
+     0
+    ],
+    "payload_rows": [
+     12140,
+     12140
+    ],
+    "payloads": [
+     748,
+     757
+    ]
+   },
+   "within_range": {
+    "delta_vs_control_percent": true,
+    "file": true,
+    "groups": true,
+    "groups_overflow": true,
+    "index": true,
+    "payload_rows": true,
+    "payloads": true
+   }
+  },
+  "inline64": {
+   "config": {
+    "cap": 32,
+    "inline": 64,
+    "page": 4096,
+    "reencode": 1,
+    "rowid": 0,
+    "variant": "inline64"
+   },
+   "file_error_bytes": [
+    -24576,
+    8192
+   ],
+   "measured": {
+    "delta_vs_control_percent": -0.271,
+    "file": 4521984,
+    "groups": 127,
+    "groups_overflow": 0,
+    "index": 0,
+    "payload_rows": 11839,
+    "payloads": 748
+   },
+   "predicted_range": {
+    "delta_vs_control_percent": [
+     -1.174,
+     0.181
+    ],
+    "file": [
+     4497408,
+     4530176
+    ],
+    "groups": [
+     125,
+     128
+    ],
+    "groups_overflow": [
+     0,
+     0
+    ],
+    "index": [
+     0,
+     0
+    ],
+    "payload_rows": [
+     11839,
+     11839
+    ],
+    "payloads": [
+     742,
+     750
+    ]
+   },
+   "within_range": {
+    "delta_vs_control_percent": true,
+    "file": true,
+    "groups": true,
+    "groups_overflow": true,
+    "index": true,
+    "payload_rows": true,
+    "payloads": true
+   }
+  },
+  "rowid": {
+   "config": {
+    "cap": 32,
+    "inline": 16,
+    "page": 4096,
+    "reencode": 0,
+    "rowid": 1,
+    "variant": "rowid"
+   },
+   "file_error_bytes": [
+    -12288,
+    24576
+   ],
+   "measured": {
+    "delta_vs_control_percent": 0.452,
+    "file": 4554752,
+    "groups": 121,
+    "groups_overflow": 0,
+    "index": 11,
+    "payload_rows": 12140,
+    "payloads": 751
+   },
+   "predicted_range": {
+    "delta_vs_control_percent": [
+     0.271,
+     0.542
+    ],
+    "file": [
+     4542464,
+     4579328
+    ],
+    "groups": [
+     120,
+     121
+    ],
+    "groups_overflow": [
+     0,
+     0
+    ],
+    "index": [
+     11,
+     11
+    ],
+    "payload_rows": [
+     12140,
+     12140
+    ],
+    "payloads": [
+     748,
+     757
+    ]
+   },
+   "within_range": {
+    "delta_vs_control_percent": true,
+    "file": true,
+    "groups": true,
+    "groups_overflow": true,
+    "index": true,
+    "payload_rows": true,
+    "payloads": true
+   }
+  },
+  "rowid_inline0": {
+   "config": {
+    "cap": 32,
+    "inline": 0,
+    "page": 4096,
+    "reencode": 1,
+    "rowid": 1,
+    "variant": "rowid_inline0"
+   },
+   "file_error_bytes": [
+    -106496,
+    -77824
+   ],
+   "measured": {
+    "delta_vs_control_percent": 2.529,
+    "file": 4648960,
+    "groups": 119,
+    "groups_overflow": 0,
+    "index": 11,
+    "payload_rows": 12560,
+    "payloads": 776
+   },
+   "predicted_range": {
+    "delta_vs_control_percent": [
+     -0.09,
+     1.084
+    ],
+    "file": [
+     4542464,
+     4571136
+    ],
+    "groups": [
+     118,
+     120
+    ],
+    "groups_overflow": [
+     0,
+     0
+    ],
+    "index": [
+     11,
+     11
+    ],
+    "payload_rows": [
+     12560,
+     12560
+    ],
+    "payloads": [
+     749,
+     757
+    ]
+   },
+   "within_range": {
+    "delta_vs_control_percent": false,
+    "file": false,
+    "groups": true,
+    "groups_overflow": true,
+    "index": true,
+    "payload_rows": true,
+    "payloads": false
+   }
+  },
+  "rowid_inline128": {
+   "config": {
+    "cap": 32,
+    "inline": 128,
+    "page": 4096,
+    "reencode": 1,
+    "rowid": 1,
+    "variant": "rowid_inline128"
+   },
+   "file_error_bytes": [
+    -24576,
+    4096
+   ],
+   "measured": {
+    "delta_vs_control_percent": 0.994,
+    "file": 4579328,
+    "groups": 348,
+    "groups_overflow": 0,
+    "index": 11,
+    "payload_rows": 2200,
+    "payloads": 530
+   },
+   "predicted_range": {
+    "delta_vs_control_percent": [
+     0.09,
+     1.355
+    ],
+    "file": [
+     4554752,
+     4583424
+    ],
+    "groups": [
+     335,
+     341
+    ],
+    "groups_overflow": [
+     0,
+     0
+    ],
+    "index": [
+     11,
+     11
+    ],
+    "payload_rows": [
+     2200,
+     2200
+    ],
+    "payloads": [
+     534,
+     542
+    ]
+   },
+   "within_range": {
+    "delta_vs_control_percent": true,
+    "file": true,
+    "groups": false,
+    "groups_overflow": true,
+    "index": true,
+    "payload_rows": true,
+    "payloads": false
+   }
+  },
+  "rowid_inline32": {
+   "config": {
+    "cap": 32,
+    "inline": 32,
+    "page": 4096,
+    "reencode": 1,
+    "rowid": 1,
+    "variant": "rowid_inline32"
+   },
+   "file_error_bytes": [
+    -16384,
+    24576
+   ],
+   "measured": {
+    "delta_vs_control_percent": 0.361,
+    "file": 4550656,
+    "groups": 120,
+    "groups_overflow": 0,
+    "index": 11,
+    "payload_rows": 12140,
+    "payloads": 751
+   },
+   "predicted_range": {
+    "delta_vs_control_percent": [
+     0.181,
+     0.452
+    ],
+    "file": [
+     4534272,
+     4575232
+    ],
+    "groups": [
+     119,
+     120
+    ],
+    "groups_overflow": [
+     0,
+     0
+    ],
+    "index": [
+     11,
+     11
+    ],
+    "payload_rows": [
+     12140,
+     12140
+    ],
+    "payloads": [
+     748,
+     757
+    ]
+   },
+   "within_range": {
+    "delta_vs_control_percent": true,
+    "file": true,
+    "groups": true,
+    "groups_overflow": true,
+    "index": true,
+    "payload_rows": true,
+    "payloads": true
+   }
+  },
+  "rowid_inline64": {
+   "config": {
+    "cap": 32,
+    "inline": 64,
+    "page": 4096,
+    "reencode": 1,
+    "rowid": 1,
+    "variant": "rowid_inline64"
+   },
+   "file_error_bytes": [
+    -24576,
+    8192
+   ],
+   "measured": {
+    "delta_vs_control_percent": 0.181,
+    "file": 4542464,
+    "groups": 121,
+    "groups_overflow": 0,
+    "index": 11,
+    "payload_rows": 11839,
+    "payloads": 748
+   },
+   "predicted_range": {
+    "delta_vs_control_percent": [
+     -0.723,
+     0.632
+    ],
+    "file": [
+     4517888,
+     4550656
+    ],
+    "groups": [
+     120,
+     121
+    ],
+    "groups_overflow": [
+     0,
+     0
+    ],
+    "index": [
+     11,
+     11
+    ],
+    "payload_rows": [
+     11839,
+     11839
+    ],
+    "payloads": [
+     742,
+     750
+    ]
+   },
+   "within_range": {
+    "delta_vs_control_percent": true,
+    "file": true,
+    "groups": true,
+    "groups_overflow": true,
+    "index": true,
+    "payload_rows": true,
+    "payloads": true
+   }
+  }
+ }
+}

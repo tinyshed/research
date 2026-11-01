@@ -1,0 +1,41 @@
+{
+ "all_exact": 24576,
+ "by_page_size": {
+  "1024": {
+   "exact": 6144,
+   "files": 6144,
+   "rows": 16674168
+  },
+  "16384": {
+   "exact": 6144,
+   "files": 6144,
+   "rows": 16674168
+  },
+  "4096": {
+   "exact": 6144,
+   "files": 6144,
+   "rows": 16674168
+  },
+  "8192": {
+   "exact": 6144,
+   "files": 6144,
+   "rows": 16674168
+  }
+ },
+ "datasets": 32,
+ "exact": {
+  "dbstat_agrees_with_walk": 24576,
+  "interior": 24576,
+  "leaf": 24576,
+  "overflow": 24576,
+  "page_count": 24576
+ },
+ "files": 24576,
+ "format_errors": 0,
+ "freelist_pages": 0,
+ "misses": [],
+ "pages_measured": 32974878,
+ "pages_predicted": 32974878,
+ "rows": 66696672,
+ "unaccounted_pages": 0
+}
