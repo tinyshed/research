@@ -68,3 +68,7 @@ so, never by editing the number it replaces.
   schema; the planner's sampled values add little on benchmarks; on the owner's busier database the model's
   undeclared keys are mostly real links, 21 of 36 through an alternate key, its precision 0.92–0.93 counted so; a
   database's own declared half finds its other half, 0.673 to 0.738.
+- [Keys into any unique column, and decimal keys](keys-targets-2026-11-01.md), round 1r: a target for every unique
+  column and `decimal` as a key kind, chosen on validation; once on test F1 0.736 against `both`'s 0.734 over every
+  declared key and 0.911 against 0.906 in the pair task; on CTU's pairs 0.934 against 0.886, past the constrained
+  T5; over every declared key of the external databases 0.727 against 0.734, precision lost.

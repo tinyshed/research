@@ -1,0 +1,25 @@
+{
+  "variant": "both, decimal",
+  "threshold": 0.8557110451421832,
+  "validation pairs": 675498,
+  "validation keys among candidates": 6700,
+  "validation, over candidates": {
+    "precision": 0.7474516963334855,
+    "recall": 0.7332835820895522,
+    "f1": 0.7402998568522566
+  },
+  "validation, over every declared key": {
+    "precision": 0.7482123839951316,
+    "recall": 0.6443076116860998,
+    "f1": 0.6923834999296072,
+    "keys": 7633
+  },
+  "validation, the paper's task": {
+    "pairs": 6781,
+    "covered": 0.8815808877746645,
+    "recall_at_1": 0.8551836012387554
+  },
+  "training pairs": 6231702,
+  "training keys": 65248,
+  "seconds": 480
+}

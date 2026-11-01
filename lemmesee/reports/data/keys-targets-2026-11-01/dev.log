@@ -1,0 +1,18 @@
+{"variant": "both", "threshold": 0.8090700218978171, "validation pairs": 674751, "validation keys among candidates": 6693, "validation, over candidates": {"precision": 0.7102131192914476, "recall": 0.7667712535484835, "f1": 0.7374092966448739}, "validation, over every declared key": {"precision": 0.7104898975920287, "recall": 0.6726057906458798, "f1": 0.691029005989636, "keys": 7633}, "validation, the paper's task": {"pairs": 6781, "covered": 0.8781890576611119, "recall_at_1": 0.8522341837487096}}
+both, labels: features, 6206601 training pairs: 33 s
+both, labels: five folds: 373 s
+both, labels: both stages: 441 s
+{"variant": "both, labels", "threshold": 0.8352926799208007, "validation pairs": 674751, "validation keys among candidates": 6677, "validation, over candidates": {"precision": 0.7330565030401899, "recall": 0.7403025310768309, "f1": 0.736661698956781}, "validation, over every declared key": {"precision": 0.733798012753967, "recall": 0.6482379143194026, "f1": 0.6883695047301057, "keys": 7633}, "validation, the paper's task": {"pairs": 6781, "covered": 0.8781890576611119, "recall_at_1": 0.8532664798702256}, "training pairs": 6206601, "training keys": 64729, "seconds": 469}
+both, unique: features, 8503034 training pairs: 45 s
+both, unique: five folds: 470 s
+both, unique: both stages: 562 s
+{"variant": "both, unique", "threshold": 0.8616460308872376, "validation pairs": 734470, "validation keys among candidates": 6707, "validation, over candidates": {"precision": 0.7352204039510541, "recall": 0.7435515133442672, "f1": 0.7393624907338769}, "validation, over every declared key": {"precision": 0.7359575409111013, "recall": 0.65400235818158, "f1": 0.6925638179800222, "keys": 7633}, "validation, the paper's task": {"pairs": 6781, "covered": 0.8801061790296416, "recall_at_1": 0.8568057808582805}, "training pairs": 8503034, "training keys": 65020, "seconds": 593}
+both, decimal: features, 6231702 training pairs: 32 s
+both, decimal: five folds: 383 s
+both, decimal: both stages: 452 s
+{"variant": "both, decimal", "threshold": 0.8557110451421832, "validation pairs": 675498, "validation keys among candidates": 6700, "validation, over candidates": {"precision": 0.7474516963334855, "recall": 0.7332835820895522, "f1": 0.7402998568522566}, "validation, over every declared key": {"precision": 0.7482123839951316, "recall": 0.6443076116860998, "f1": 0.6923834999296072, "keys": 7633}, "validation, the paper's task": {"pairs": 6781, "covered": 0.8815808877746645, "recall_at_1": 0.8551836012387554}, "training pairs": 6231702, "training keys": 65248, "seconds": 480}
+both, unique, decimal: features, 8532655 training pairs: 46 s
+both, unique, decimal: five folds: 498 s
+both, unique, decimal: both stages: 594 s
+{"variant": "both, unique, decimal", "threshold": 0.8122485417681274, "validation pairs": 735257, "validation keys among candidates": 6730, "validation, over candidates": {"precision": 0.7189034369885434, "recall": 0.7832095096582466, "f1": 0.7496799886218177}, "validation, over every declared key": {"precision": 0.7195853791598472, "recall": 0.6912092231101795, "f1": 0.705111927831607, "keys": 7633}, "validation, the paper's task": {"pairs": 6781, "covered": 0.8833505382686919, "recall_at_1": 0.8609349653443444}, "training pairs": 8532655, "training keys": 65539, "seconds": 625}
+chosen: both, unique, decimal

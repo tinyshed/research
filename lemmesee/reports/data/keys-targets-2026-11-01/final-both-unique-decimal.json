@@ -1,0 +1,127 @@
+{
+  "variant": "both, unique, decimal",
+  "threshold": 0.8122485417681274,
+  "validation pairs": 735257,
+  "validation keys among candidates": 6730,
+  "validation, over candidates": {
+    "precision": 0.7189034369885434,
+    "recall": 0.7832095096582466,
+    "f1": 0.7496799886218177
+  },
+  "validation, over every declared key": {
+    "precision": 0.7195853791598472,
+    "recall": 0.6912092231101795,
+    "f1": 0.705111927831607,
+    "keys": 7633
+  },
+  "validation, the paper's task": {
+    "pairs": 6781,
+    "covered": 0.8833505382686919,
+    "recall_at_1": 0.8609349653443444
+  },
+  "training pairs": 8532655,
+  "training keys": 65539,
+  "seconds": 625,
+  "test, beside it": {
+    "base": {
+      "threshold": 0.8319760842520361,
+      "over candidates": {
+        "precision": 0.7283047619047619,
+        "recall": 0.8268315889628924,
+        "f1": 0.7744470550109374
+      },
+      "over every declared key": {
+        "precision": 0.7285333333333334,
+        "recall": 0.7106651802303976,
+        "f1": 0.7194883370955606,
+        "keys": 13455
+      },
+      "the paper's task": {
+        "pairs": 12013,
+        "covered": 0.8706401398484974,
+        "recall_at_1": 0.8390077416132523
+      }
+    },
+    "both": {
+      "threshold": 0.8090700218978171,
+      "over candidates": {
+        "precision": 0.7093821510297483,
+        "recall": 0.8226117722740431,
+        "f1": 0.7618125628327811
+      },
+      "over every declared key": {
+        "precision": 0.709590180986062,
+        "recall": 0.7605351170568562,
+        "f1": 0.7341799397331037,
+        "keys": 13455
+      },
+      "the paper's task": {
+        "pairs": 12013,
+        "covered": 0.9290768334304503,
+        "recall_at_1": 0.9064346957462749
+      }
+    }
+  },
+  "test": {
+    "all": {
+      "pairs": 1229608,
+      "keys": 12470,
+      "rules": {
+        "precision": 0.732719836400818,
+        "recall": 0.28732959101844424,
+        "f1": 0.4127880184331797
+      },
+      "model": {
+        "precision": 0.7049426542872748,
+        "recall": 0.8280673616680032,
+        "f1": 0.7615605870639428
+      },
+      "f1_minus_rules_95": [
+        0.3086186665001666,
+        0.38517601222538844
+      ]
+    },
+    "novel": {
+      "pairs": 708113,
+      "keys": 9686,
+      "rules": {
+        "precision": 0.7458666666666667,
+        "recall": 0.2887672930002065,
+        "f1": 0.41634415004465614
+      },
+      "model": {
+        "precision": 0.6953411428060449,
+        "recall": 0.8028081767499484,
+        "f1": 0.7452201830466242
+      },
+      "f1_minus_rules_95": [
+        0.28593579592183227,
+        0.37216372006320675
+      ]
+    }
+  },
+  "test, over every declared key": {
+    "precision": 0.7058301474604042,
+    "recall": 0.7684132292827945,
+    "f1": 0.7357933316727752,
+    "keys": 13455
+  },
+  "test, the paper's task": {
+    "pairs": 12013,
+    "covered": 0.9324898027137268,
+    "recall_at_1": 0.9105136102555564
+  },
+  "hard": {
+    "keys": 753,
+    "rules": {
+      "precision": 1.0,
+      "recall": 0.37317397078353254,
+      "f1": 0.5435203094777562
+    },
+    "model": {
+      "precision": 0.9757281553398058,
+      "recall": 0.8007968127490039,
+      "f1": 0.8796498905908097
+    }
+  }
+}

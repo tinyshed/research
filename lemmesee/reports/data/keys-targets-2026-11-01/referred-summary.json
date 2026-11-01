@@ -1,0 +1,19 @@
+{
+  "foreign key fields": {
+    "COLUMNS": 93784,
+    "FOREIGN_TABLE": 93784,
+    "REFERRED_COLUMNS": 93784,
+    "ON_DELETE": 93784,
+    "ON_UPDATE": 93784
+  },
+  "keys": {
+    "refers to the target's one-column primary key": 85636,
+    "train: refers to another column than a one-column key": 484,
+    "test: refers to another column than a one-column key": 77,
+    "the target declares no primary key": 3673,
+    "validation: refers to another column than a one-column key": 35,
+    "refers to another column": 597,
+    "the target's key spans several columns": 898,
+    "dropped: refers to another column than a one-column key": 1
+  }
+}
