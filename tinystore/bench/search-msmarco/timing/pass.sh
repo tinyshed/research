@@ -18,6 +18,18 @@ started=$(date -u +%Y-%m-%dT%H:%M:%S.%NZ)
 case "$arm" in
 compact) line=$(/target/release/msmarco time compact $out/compact.db "$run/$set.tsv" "$results" "$mode") ;;
 fts5) line=$(/target/release/msmarco time fts5 $out/fts5.db "$run/$set.tsv" "$results" "$mode") ;;
+# search-fast's arms: the fast reader under its switches, and the fast2 layout
+fast-flat) line=$(env FAST_BOUNDS=loose FAST_SEED=0 FAST_NORMS=flat FAST_READ=sql FAST_AHEAD=8   /target/release/msmarco time fast $out/compact.db "$run/$set.tsv" "$results" "$mode") ;;
+fast-sql) line=$(env FAST_BOUNDS=front FAST_SEED=1 FAST_NORMS=flat FAST_READ=sql FAST_AHEAD=8   /target/release/msmarco time fast $out/compact.db "$run/$set.tsv" "$results" "$mode") ;;
+fast-blob) line=$(env FAST_BOUNDS=front FAST_SEED=1 FAST_NORMS=flat FAST_READ=blob   /target/release/msmarco time fast $out/compact.db "$run/$set.tsv" "$results" "$mode") ;;
+fast2) line=$(env FAST2_TABLE=1 /target/release/msmarco time fast2 $out/compact.db "$run/$set.tsv" "$results" "$mode") ;;
+fast2-notable) line=$(env FAST2_TABLE=0 /target/release/msmarco time fast2 $out/compact.db "$run/$set.tsv" "$results" "$mode") ;;
+fast2-words) line=$(env FAST2_TABLE=0 FAST2_WORDS=1 /target/release/msmarco time fast2 $out/compact.db "$run/$set.tsv" "$results" "$mode") ;;
+fast2-walk) line=$(env FAST2_TABLE=0 FAST2_WALK=1 /target/release/msmarco time fast2 $out/compact.db "$run/$set.tsv" "$results" "$mode") ;;
+fast2-direct) line=$(env FAST2_TABLE=0 FAST2_DIRECT=1 /target/release/msmarco time fast2 $out/compact.db "$run/$set.tsv" "$results" "$mode") ;;
+fast3) line=$(env FAST2_TABLE=0 FAST2_WORDS=1 FAST2_WALK=1 FAST2_DIRECT=1 /target/release/msmarco time fast2 $out/compact.db "$run/$set.tsv" "$results" "$mode") ;;
+fast4) line=$(env FAST2_TABLE=0 FAST2_WORDS=1 FAST2_WALK=1 FAST2_DIRECT=1 FAST2_WINDOWS=1 /target/release/msmarco time fast2 $out/compact.db "$run/$set.tsv" "$results" "$mode") ;;
+fast4-cache) line=$(env FAST2_TABLE=0 FAST2_WORDS=1 FAST2_WALK=1 FAST2_DIRECT=1 FAST2_WINDOWS=1 FAST2_CACHE=1 /target/release/msmarco time fast2 $out/compact.db "$run/$set.tsv" "$results" "$mode") ;;
 tantivy) line=$(/target/release/msmarco time tantivy $out/tantivy "$run/$set.tsv" "$results" "$mode") ;;
 pisa-*)
   line=$(/pisa/driver/pass $out/pisa.block_simdbp.idx $out/pisa.bm25.bmw "$run/$set.pisa" "$results" \

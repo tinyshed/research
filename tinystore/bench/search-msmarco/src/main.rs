@@ -11,6 +11,10 @@
 //! msmarco exact <out> <queries> <results> [threads]     every posting scored, each BM25 variant
 //! msmarco time <engine> <index> <queries> <results> <warm|cold>   the timing harness's pass
 //! msmarco churn <engine> <out> <index> <readers> <rate> <seconds> <seed>   readers beside a writer
+//! msmarco fast-build <compact.db>                     the fast reader's fronts and seeds, fast.db beside it
+//! msmarco profile <compact.db> <queries> <results>    the fast reader's parts timed a query, warm
+//! msmarco fast2-build <compact.db>                    the read layout, fast2.db beside it
+//! msmarco profile2 <compact.db> <queries> <results>   the fast2 reader's parts a query, warm
 //! ```
 //!
 //! An engine is `compact` (window executor, read ahead 8), `compact-window`
@@ -35,6 +39,8 @@ mod churn;
 mod collection;
 mod compact1;
 mod exact;
+mod fast;
+mod fast2;
 mod fts1;
 mod prepare;
 mod queries;
@@ -80,6 +86,10 @@ fn main() {
         "time" => time(arg(1), Path::new(arg(2)), Path::new(arg(3)), Path::new(arg(4)), arg(5)),
         "churn" => churn::churn(&args[1..]),
         "sizes" => emit(&sizes::files(Path::new(arg(1)))),
+        "fast-build" => emit(&fast::build(Path::new(arg(1)), &Path::new(arg(1)).with_file_name("fast.db"))),
+        "profile" => profile(Path::new(arg(1)), Path::new(arg(2)), Path::new(arg(3))),
+        "fast2-build" => emit(&fast2::build(Path::new(arg(1)), &Path::new(arg(1)).with_file_name("fast2.db"))),
+        "profile2" => profile2(Path::new(arg(1)), Path::new(arg(2)), Path::new(arg(3))),
         other => panic!("no command {other}"),
     }
 }
@@ -100,6 +110,26 @@ impl Engine for compact1::Reader {
 
     fn counted(&self) -> Option<(usize, usize)> {
         Some((self.opened, self.statements))
+    }
+}
+
+impl Engine for fast::Reader {
+    fn top(&mut self, terms: &[String], k: usize) -> Vec<(f64, u32)> {
+        fast::Reader::top(self, terms, k)
+    }
+
+    fn counted(&self) -> Option<(usize, usize)> {
+        Some((self.opened, self.statements))
+    }
+}
+
+impl Engine for fast2::Reader {
+    fn top(&mut self, terms: &[String], k: usize) -> Vec<(f64, u32)> {
+        fast2::Reader::top(self, terms, k)
+    }
+
+    fn counted(&self) -> Option<(usize, usize)> {
+        Some((self.spent.blocks, self.spent.blocks))
     }
 }
 
@@ -146,6 +176,8 @@ pub fn open_engine(name: &str, index: &Path) -> Box<dyn Engine> {
             assert_eq!(std::env::var("LAB_EXECUTOR").as_deref(), Ok("window"));
             Box::new(Lab(compact::Compact::open(index)))
         }
+        "fast" => Box::new(fast::Reader::open(index, fast::Switches::from_env())),
+        "fast2" => Box::new(fast2::Reader::open(index)),
         "fts5" => Box::new(fts1::Reader::open(index)),
         "tantivy" => Box::new(tant1::Reader::open(index, tantivy::ReloadPolicy::Manual)),
         "tantivy-exhaustive" => {
@@ -209,6 +241,51 @@ fn time(name: &str, index: &Path, queries: &Path, results: &Path, mode: &str) {
     out.flush().unwrap();
     emit(&json!({"step": "time", "engine": name, "mode": mode, "queries": asked.len(), "open_ms": open_ms,
         "memory": memory()}));
+}
+
+/// The fast reader's parts a query, every query once untimed first: its
+/// lists, its statements, its decoding and lengths, and the whole, with the
+/// blocks, statements, postings decoded and postings scored.
+fn profile(index: &Path, queries: &Path, results: &Path) {
+    let mut switches = fast::Switches::from_env();
+    switches.profile = true;
+    let mut reader = fast::Reader::open(index, switches);
+    let asked = queries::read(queries);
+    for (_, terms) in &asked {
+        std::hint::black_box(reader.top(terms, 10));
+    }
+    let mut out = std::io::BufWriter::new(std::fs::File::create(results).unwrap());
+    for (qid, terms) in &asked {
+        let found = reader.top(terms, 10);
+        let ids: Vec<u32> = found.iter().map(|(_, doc)| doc - 1).collect();
+        let s = reader.spent;
+        writeln!(out, "{}", json!({"qid": qid, "terms": terms.len(), "ns": s.total.as_nanos() as u64,
+            "lists_ns": s.lists.as_nanos() as u64, "statements_ns": s.statements.as_nanos() as u64,
+            "decode_ns": s.decode.as_nanos() as u64, "blocks": reader.opened, "statements": reader.statements,
+            "postings": s.postings, "scored": s.scored, "ids": ids})).unwrap();
+    }
+    out.flush().unwrap();
+    emit(&json!({"step": "profile", "engine": "fast", "switches": switches.to_json(), "queries": asked.len(),
+        "memory": memory()}));
+}
+
+/// The fast2 reader's lists and whole a query, warm, with blocks and postings scored.
+fn profile2(index: &Path, queries: &Path, results: &Path) {
+    let mut reader = fast2::Reader::open(index);
+    let asked = queries::read(queries);
+    for (_, terms) in &asked {
+        std::hint::black_box(reader.top(terms, 10));
+    }
+    let mut out = std::io::BufWriter::new(std::fs::File::create(results).unwrap());
+    for (qid, terms) in &asked {
+        let found = reader.top(terms, 10);
+        let ids: Vec<u32> = found.iter().map(|(_, doc)| doc - 1).collect();
+        let s = reader.spent;
+        writeln!(out, "{}", json!({"qid": qid, "terms": terms.len(), "ns": s.total.as_nanos() as u64,
+            "lists_ns": s.lists.as_nanos() as u64, "blocks": s.blocks, "scored": s.scored, "ids": ids})).unwrap();
+    }
+    out.flush().unwrap();
+    emit(&json!({"step": "profile2", "engine": "fast2", "queries": asked.len(), "memory": memory()}));
 }
 
 /// The process's peak and current resident memory in KiB, on Linux.

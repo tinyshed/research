@@ -8,7 +8,7 @@ publish = false
 # crate from tinystore/search-plan-lab/src by path, unchanged, at the versions
 # that lab pins; what is new here is MS MARCO, one field and the other engines.
 [dependencies]
-rusqlite = { version = "=0.40.2", default-features = false, features = ["bundled", "cache"] }
+rusqlite = { version = "=0.40.2", default-features = false, features = ["bundled", "cache", "blob"] }
 unicode-segmentation = "=1.12.0"
 unicode-normalization = "=0.1.25"
 rust-stemmers = "=1.2.0"
