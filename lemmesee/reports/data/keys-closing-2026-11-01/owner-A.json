@@ -1,0 +1,108 @@
+{
+ "guesses read in the code": 36,
+ "the reading": {
+  "link through another unique column": 21,
+  "link through the primary key": 8,
+  "wrong": 7
+ },
+ "reported, alone": {
+  "drawn": 60,
+  "declared": 35,
+  "link through the primary key": 7,
+  "link through another unique column": 14,
+  "wrong": 3,
+  "not read": 1,
+  "precision, counting links right": 0.9333333333333333,
+  "precision, counting only declarations right": 0.5833333333333334
+ },
+ "reported, drop against any unique column": {
+  "drawn": 59,
+  "declared": 35,
+  "link through the primary key": 7,
+  "link through another unique column": 14,
+  "wrong": 2,
+  "not read": 1,
+  "precision, counting links right": 0.9491525423728814,
+  "precision, counting only declarations right": 0.5932203389830508
+ },
+ "widened, alone": {
+  "drawn": 51,
+  "declared": 32,
+  "link through the primary key": 8,
+  "link through another unique column": 7,
+  "wrong": 4,
+  "not read": 0,
+  "precision, counting links right": 0.9215686274509803,
+  "precision, counting only declarations right": 0.6274509803921569
+ },
+ "widened, drop against any unique column": {
+  "drawn": 49,
+  "declared": 32,
+  "link through the primary key": 8,
+  "link through another unique column": 7,
+  "wrong": 2,
+  "not read": 0,
+  "precision, counting links right": 0.9591836734693877,
+  "precision, counting only declarations right": 0.6530612244897959
+ },
+ "the drop removes": {
+  "wrong guesses": 3,
+  "wrong guesses with a sample": 5,
+  "links": 0,
+  "links with a sample": 11
+ },
+ "distinct values outside the target's primary key, by the reading": {
+  "wrong": {
+   "guesses": 6,
+   "with values": 5,
+   "shares outside the primary key": [
+    0.0,
+    0.58,
+    0.65,
+    0.76,
+    1.0
+   ]
+  },
+  "link through the primary key": {
+   "guesses": 8,
+   "with values": 7,
+   "shares outside the primary key": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "not read": {
+   "guesses": 1,
+   "with values": 1,
+   "shares outside the primary key": [
+    0.33
+   ]
+  },
+  "link through another unique column": {
+   "guesses": 21,
+   "with values": 15,
+   "shares outside the primary key": [
+    0.0,
+    0.82,
+    0.9,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ }
+}

@@ -1,0 +1,130 @@
+{
+  "spider, all": {
+    "related": 768,
+    "unrelated": 620,
+    "auc": {
+      "t5": 0.8250682543682796,
+      "ours": 0.9594191028225807
+    },
+    "average precision": {
+      "t5": 0.8606841068971451,
+      "ours": 0.9698559433700992
+    },
+    "unrelated accepted at 80 % of related": {
+      "t5": 0.27903225806451615,
+      "ours": 0.00967741935483871
+    }
+  },
+  "spider, novel": {
+    "related": 698,
+    "unrelated": 586,
+    "auc": {
+      "t5": 0.8168010502948453,
+      "ours": 0.9552035557467946
+    },
+    "average precision": {
+      "t5": 0.8490741592334641,
+      "ours": 0.9648083212670006
+    },
+    "unrelated accepted at 80 % of related": {
+      "t5": 0.3225255972696246,
+      "ours": 0.011945392491467578
+    }
+  },
+  "bird, all": {
+    "related": 381,
+    "unrelated": 351,
+    "auc": {
+      "t5": 0.7662770786130366,
+      "ours": 0.9431208919397895
+    },
+    "average precision": {
+      "t5": 0.8112838986744086,
+      "ours": 0.9627061685019112
+    },
+    "unrelated accepted at 80 % of related": {
+      "t5": 0.4358974358974359,
+      "ours": 0.002849002849002849
+    }
+  },
+  "bird, novel": {
+    "related": 365,
+    "unrelated": 347,
+    "auc": {
+      "t5": 0.7623781137736372,
+      "ours": 0.940614267103549
+    },
+    "average precision": {
+      "t5": 0.8050292669143365,
+      "ours": 0.9602906929136757
+    },
+    "unrelated accepted at 80 % of related": {
+      "t5": 0.48703170028818443,
+      "ours": 0.002881844380403458
+    }
+  },
+  "ctu, all": {
+    "related": 1267,
+    "unrelated": 1226,
+    "auc": {
+      "t5": 0.7963400847978102,
+      "ours": 0.921610308612012
+    },
+    "average precision": {
+      "t5": 0.8098442281500857,
+      "ours": 0.9392069278289998
+    },
+    "unrelated accepted at 80 % of related": {
+      "t5": 0.3450244698205546,
+      "ours": 0.05628058727569331
+    }
+  },
+  "ctu, novel": {
+    "related": 1201,
+    "unrelated": 1174,
+    "auc": {
+      "t5": 0.8015442128720103,
+      "ours": 0.9261702698063936
+    },
+    "average precision": {
+      "t5": 0.8112836602351081,
+      "ours": 0.9418766163666293
+    },
+    "unrelated accepted at 80 % of related": {
+      "t5": 0.33049403747870526,
+      "ours": 0.04258943781942078
+    }
+  },
+  "all, all": {
+    "related": 2416,
+    "unrelated": 2197,
+    "auc": {
+      "t5": 0.7982690875878304,
+      "ours": 0.9343985213129283
+    },
+    "average precision": {
+      "t5": 0.8242556901419544,
+      "ours": 0.9513621652080395
+    },
+    "unrelated accepted at 80 % of related": {
+      "t5": 0.3623122439690487,
+      "ours": 0.024578971324533454
+    }
+  },
+  "all, novel": {
+    "related": 2264,
+    "unrelated": 2107,
+    "auc": {
+      "t5": 0.7974124196477835,
+      "ours": 0.9349855604991606
+    },
+    "average precision": {
+      "t5": 0.8191264116097168,
+      "ours": 0.9501786671483137
+    },
+    "unrelated accepted at 80 % of related": {
+      "t5": 0.35927859515899385,
+      "ours": 0.025628856193640248
+    }
+  }
+}

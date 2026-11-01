@@ -1,0 +1,664 @@
+{
+  "databases with statistics": {
+    "spider": 204,
+    "bird": 47,
+    "ctu": 118
+  },
+  "spider": {
+    "databases": 204,
+    "keys declared": 911,
+    "model alone": {
+      "precision": 0.9111644657863145,
+      "recall": 0.8331503841931943,
+      "f1": 0.8704128440366973
+    },
+    "model, value keys": {
+      "precision": 0.9057714958775029,
+      "recall": 0.8441273326015367,
+      "f1": 0.8738636363636363
+    },
+    "model, catalog drop": {
+      "precision": 0.9196102314250914,
+      "recall": 0.8287596048298573,
+      "f1": 0.871824480369515
+    },
+    "model, both": {
+      "precision": 0.9139784946236559,
+      "recall": 0.8397365532381997,
+      "f1": 0.8752860411899314
+    },
+    "cascade with Haiku": {
+      "precision": 0.8945615982241953,
+      "recall": 0.884742041712404,
+      "f1": 0.8896247240618101
+    },
+    "cascade with Haiku, both": {
+      "precision": 0.8971238938053098,
+      "recall": 0.8902305159165752,
+      "f1": 0.89366391184573
+    },
+    "model, drop against any unique key": {
+      "precision": 0.9175757575757576,
+      "recall": 0.8309549945115258,
+      "f1": 0.8721198156682027
+    },
+    "gemini-3-flash (whole schema)": {
+      "precision": 0.8901554404145078,
+      "recall": 0.9429198682766191,
+      "f1": 0.9157782515991472
+    },
+    "gemini-3-flash, catalog drop (whole schema)": {
+      "precision": 0.8977871443624869,
+      "recall": 0.9352360043907794,
+      "f1": 0.9161290322580645
+    },
+    "gemini-3-flash, both (whole schema)": {
+      "precision": 0.893042575285566,
+      "recall": 0.9440175631174533,
+      "f1": 0.9178228388473852
+    },
+    "gemini-3-flash, drop against any unique key (whole schema)": {
+      "precision": 0.8964435146443515,
+      "recall": 0.9407244785949506,
+      "f1": 0.9180503481521158
+    },
+    "gemini-3.5-flash-lite (whole schema)": {
+      "precision": 0.8804123711340206,
+      "recall": 0.9374313940724479,
+      "f1": 0.9080276448697501
+    },
+    "gemini-3.5-flash-lite, catalog drop (whole schema)": {
+      "precision": 0.8888888888888888,
+      "recall": 0.9308452250274424,
+      "f1": 0.9093833780160858
+    },
+    "gemini-3.5-flash-lite, both (whole schema)": {
+      "precision": 0.8842975206611571,
+      "recall": 0.9396267837541163,
+      "f1": 0.9111229377328367
+    },
+    "gemini-3.5-flash-lite, drop against any unique key (whole schema)": {
+      "precision": 0.8875,
+      "recall": 0.9352360043907794,
+      "f1": 0.9107429182255479
+    },
+    "gemini-3.8-flash-high (whole schema)": {
+      "precision": 0.9125910509885536,
+      "recall": 0.9626783754116356,
+      "f1": 0.936965811965812
+    },
+    "gemini-3.8-flash-high, catalog drop (whole schema)": {
+      "precision": 0.9157894736842105,
+      "recall": 0.9549945115257958,
+      "f1": 0.9349811929070392
+    },
+    "gemini-3.8-flash-high, both (whole schema)": {
+      "precision": 0.9107883817427386,
+      "recall": 0.9637760702524698,
+      "f1": 0.9365333333333333
+    },
+    "gemini-3.8-flash-high, drop against any unique key (whole schema)": {
+      "precision": 0.9152719665271967,
+      "recall": 0.960482985729967,
+      "f1": 0.9373326191751472
+    },
+    "haiku (whole schema)": {
+      "precision": 0.879,
+      "recall": 0.964873765093304,
+      "f1": 0.9199372056514913
+    },
+    "haiku, catalog drop (whole schema)": {
+      "precision": 0.8824721377912867,
+      "recall": 0.9560922063666301,
+      "f1": 0.9178082191780823
+    },
+    "haiku, both (whole schema)": {
+      "precision": 0.878,
+      "recall": 0.9637760702524698,
+      "f1": 0.9188906331763474
+    },
+    "haiku, drop against any unique key (whole schema)": {
+      "precision": 0.8812877263581489,
+      "recall": 0.9615806805708014,
+      "f1": 0.9196850393700788
+    },
+    "differences": {
+      "model, value keys minus model alone": {
+        "difference": 0.0034507923269390117,
+        "95": [
+          -0.0026654082114204725,
+          0.011128440431293796
+        ]
+      },
+      "model, catalog drop minus model alone": {
+        "difference": 0.0014116363328177117,
+        "95": [
+          -0.004022331977132754,
+          0.006601709544424295
+        ]
+      },
+      "model, drop against any unique key minus model alone": {
+        "difference": 0.0017069716315054606,
+        "95": [
+          -0.0026662508770560756,
+          0.005791841477320481
+        ]
+      },
+      "model, both minus model alone": {
+        "difference": 0.004873197153234088,
+        "95": [
+          -0.003435880649006573,
+          0.014436008684291068
+        ]
+      },
+      "cascade with Haiku minus model alone": {
+        "difference": 0.01921188002511287,
+        "95": [
+          0.009040007852245457,
+          0.03108196600352331
+        ]
+      },
+      "haiku (whole schema) minus cascade with Haiku": {
+        "difference": 0.03031248158968114,
+        "95": [
+          0.013927731994123338,
+          0.052122265803258294
+        ]
+      },
+      "gemini-3-flash, catalog drop (whole schema) minus gemini-3-flash (whole schema)": {
+        "difference": 0.0003507806589173601,
+        "95": [
+          -0.0057199957640517995,
+          0.005460431173349489
+        ]
+      },
+      "gemini-3-flash, drop against any unique key (whole schema) minus gemini-3-flash (whole schema)": {
+        "difference": 0.002272096552968672,
+        "95": [
+          -0.0012437877749704729,
+          0.005820540863776924
+        ]
+      },
+      "gemini-3.5-flash-lite, catalog drop (whole schema) minus gemini-3.5-flash-lite (whole schema)": {
+        "difference": 0.001355733146335747,
+        "95": [
+          -0.004953213548302138,
+          0.006716800032128267
+        ]
+      },
+      "gemini-3.5-flash-lite, drop against any unique key (whole schema) minus gemini-3.5-flash-lite (whole schema)": {
+        "difference": 0.002715273355797798,
+        "95": [
+          -0.001117012088308389,
+          0.0064635877279177745
+        ]
+      },
+      "gemini-3.8-flash-high, catalog drop (whole schema) minus gemini-3.8-flash-high (whole schema)": {
+        "difference": -0.001984619058772785,
+        "95": [
+          -0.0073981283619483085,
+          0.002184002184002276
+        ]
+      },
+      "gemini-3.8-flash-high, drop against any unique key (whole schema) minus gemini-3.8-flash-high (whole schema)": {
+        "difference": 0.00036680720933524036,
+        "95": [
+          -0.0030052492943787312,
+          0.0034293993618149665
+        ]
+      },
+      "haiku, catalog drop (whole schema) minus haiku (whole schema)": {
+        "difference": -0.002128986473408978,
+        "95": [
+          -0.007842976718481665,
+          0.0028883649467372763
+        ]
+      },
+      "haiku, drop against any unique key (whole schema) minus haiku (whole schema)": {
+        "difference": -0.000252166281412447,
+        "95": [
+          -0.0040768080138395835,
+          0.0027086363212533993
+        ]
+      }
+    }
+  },
+  "bird": {
+    "databases": 47,
+    "keys declared": 325,
+    "model alone": {
+      "precision": 0.9328358208955224,
+      "recall": 0.7692307692307693,
+      "f1": 0.8431703204047217
+    },
+    "model, value keys": {
+      "precision": 0.9298892988929889,
+      "recall": 0.7753846153846153,
+      "f1": 0.8456375838926173
+    },
+    "model, catalog drop": {
+      "precision": 0.9393939393939394,
+      "recall": 0.7630769230769231,
+      "f1": 0.8421052631578948
+    },
+    "model, both": {
+      "precision": 0.9363295880149812,
+      "recall": 0.7692307692307693,
+      "f1": 0.8445945945945945
+    },
+    "cascade with Haiku": {
+      "precision": 0.9242902208201893,
+      "recall": 0.9015384615384615,
+      "f1": 0.9127725856697819
+    },
+    "cascade with Haiku, both": {
+      "precision": 0.9212328767123288,
+      "recall": 0.8276923076923077,
+      "f1": 0.8719611021069692
+    },
+    "model, drop against any unique key": {
+      "precision": 0.9398496240601504,
+      "recall": 0.7692307692307693,
+      "f1": 0.8460236886632826
+    },
+    "gemini-3-flash (whole schema)": {
+      "precision": 0.8862973760932945,
+      "recall": 0.9353846153846154,
+      "f1": 0.9101796407185628
+    },
+    "gemini-3-flash, catalog drop (whole schema)": {
+      "precision": 0.8817891373801917,
+      "recall": 0.8492307692307692,
+      "f1": 0.865203761755486
+    },
+    "gemini-3-flash, both (whole schema)": {
+      "precision": 0.8769716088328076,
+      "recall": 0.8553846153846154,
+      "f1": 0.8660436137071651
+    },
+    "gemini-3-flash, drop against any unique key (whole schema)": {
+      "precision": 0.8914956011730205,
+      "recall": 0.9353846153846154,
+      "f1": 0.9129129129129129
+    },
+    "gemini-3.5-flash-lite (whole schema)": {
+      "precision": 0.8869565217391304,
+      "recall": 0.9415384615384615,
+      "f1": 0.9134328358208956
+    },
+    "gemini-3.5-flash-lite, catalog drop (whole schema)": {
+      "precision": 0.8853503184713376,
+      "recall": 0.8553846153846154,
+      "f1": 0.8701095461658842
+    },
+    "gemini-3.5-flash-lite, both (whole schema)": {
+      "precision": 0.8805031446540881,
+      "recall": 0.8615384615384616,
+      "f1": 0.8709175738724728
+    },
+    "gemini-3.5-flash-lite, drop against any unique key (whole schema)": {
+      "precision": 0.892128279883382,
+      "recall": 0.9415384615384615,
+      "f1": 0.9161676646706588
+    },
+    "gemini-3.8-flash-high (whole schema)": {
+      "precision": 0.9303030303030303,
+      "recall": 0.9446153846153846,
+      "f1": 0.9374045801526718
+    },
+    "gemini-3.8-flash-high, catalog drop (whole schema)": {
+      "precision": 0.93,
+      "recall": 0.8584615384615385,
+      "f1": 0.8928
+    },
+    "gemini-3.8-flash-high, both (whole schema)": {
+      "precision": 0.9243421052631579,
+      "recall": 0.8646153846153846,
+      "f1": 0.8934817170111287
+    },
+    "gemini-3.8-flash-high, drop against any unique key (whole schema)": {
+      "precision": 0.9303030303030303,
+      "recall": 0.9446153846153846,
+      "f1": 0.9374045801526718
+    },
+    "haiku (whole schema)": {
+      "precision": 0.8662952646239555,
+      "recall": 0.9569230769230769,
+      "f1": 0.9093567251461989
+    },
+    "haiku, catalog drop (whole schema)": {
+      "precision": 0.8601823708206687,
+      "recall": 0.8707692307692307,
+      "f1": 0.8654434250764527
+    },
+    "haiku, both (whole schema)": {
+      "precision": 0.8549848942598187,
+      "recall": 0.8707692307692307,
+      "f1": 0.8628048780487805
+    },
+    "haiku, drop against any unique key (whole schema)": {
+      "precision": 0.8662952646239555,
+      "recall": 0.9569230769230769,
+      "f1": 0.9093567251461989
+    },
+    "differences": {
+      "model, value keys minus model alone": {
+        "difference": 0.00246726348789561,
+        "95": [
+          0.0,
+          0.007047804516159051
+        ]
+      },
+      "model, catalog drop minus model alone": {
+        "difference": -0.0010650572468269282,
+        "95": [
+          -0.01102985575310289,
+          0.006566943531288283
+        ]
+      },
+      "model, drop against any unique key minus model alone": {
+        "difference": 0.002853368258560862,
+        "95": [
+          0.0,
+          0.008181987231141052
+        ]
+      },
+      "model, both minus model alone": {
+        "difference": 0.0014242741898727873,
+        "95": [
+          -0.009109377223968984,
+          0.01006878588971516
+        ]
+      },
+      "cascade with Haiku minus model alone": {
+        "difference": 0.06960226526506019,
+        "95": [
+          0.017185821697099812,
+          0.14584982197228902
+        ]
+      },
+      "haiku (whole schema) minus cascade with Haiku": {
+        "difference": -0.003415860523583003,
+        "95": [
+          -0.03585187740785467,
+          0.030673981565240815
+        ]
+      },
+      "gemini-3-flash, catalog drop (whole schema) minus gemini-3-flash (whole schema)": {
+        "difference": -0.044975878963076865,
+        "95": [
+          -0.12661602025856344,
+          0.005952434963296449
+        ]
+      },
+      "gemini-3-flash, drop against any unique key (whole schema) minus gemini-3-flash (whole schema)": {
+        "difference": 0.002733272194350045,
+        "95": [
+          0.0,
+          0.009475465313028897
+        ]
+      },
+      "gemini-3.5-flash-lite, catalog drop (whole schema) minus gemini-3.5-flash-lite (whole schema)": {
+        "difference": -0.04332328965501142,
+        "95": [
+          -0.12858994670891544,
+          0.005582137161084577
+        ]
+      },
+      "gemini-3.5-flash-lite, drop against any unique key (whole schema) minus gemini-3.5-flash-lite (whole schema)": {
+        "difference": 0.002734828849763171,
+        "95": [
+          0.0,
+          0.01028135288835652
+        ]
+      },
+      "gemini-3.8-flash-high, catalog drop (whole schema) minus gemini-3.8-flash-high (whole schema)": {
+        "difference": -0.04460458015267177,
+        "95": [
+          -0.13275476303478195,
+          0.0
+        ]
+      },
+      "gemini-3.8-flash-high, drop against any unique key (whole schema) minus gemini-3.8-flash-high (whole schema)": {
+        "difference": 0.0,
+        "95": [
+          0.0,
+          0.0
+        ]
+      },
+      "haiku, catalog drop (whole schema) minus haiku (whole schema)": {
+        "difference": -0.04391330006974625,
+        "95": [
+          -0.13604523045495853,
+          0.0029615866447081363
+        ]
+      },
+      "haiku, drop against any unique key (whole schema) minus haiku (whole schema)": {
+        "difference": 0.0,
+        "95": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  "ctu": {
+    "databases": 118,
+    "keys declared": 1854,
+    "model alone": {
+      "precision": 0.8233695652173914,
+      "recall": 0.49029126213592233,
+      "f1": 0.6146044624746451
+    },
+    "model, value keys": {
+      "precision": 0.7777777777777778,
+      "recall": 0.5323624595469255,
+      "f1": 0.6320845341018251
+    },
+    "model, catalog drop": {
+      "precision": 0.831924882629108,
+      "recall": 0.4778856526429342,
+      "f1": 0.6070572113737582
+    },
+    "model, both": {
+      "precision": 0.7839155158407799,
+      "recall": 0.5204962243797195,
+      "f1": 0.6256077795786061
+    },
+    "cascade with Haiku": {
+      "precision": 0.7334905660377359,
+      "recall": 0.6709816612729234,
+      "f1": 0.7008450704225351
+    },
+    "cascade with Haiku, both": {
+      "precision": 0.7081930415263749,
+      "recall": 0.6806903991370011,
+      "f1": 0.6941694169416942
+    },
+    "model, drop against any unique key": {
+      "precision": 0.8314711359404097,
+      "recall": 0.4816612729234088,
+      "f1": 0.6099726775956283
+    },
+    "gemini-3-flash (whole schema)": {
+      "precision": 0.8290094339622641,
+      "recall": 0.7583603020496225,
+      "f1": 0.7921126760563381
+    },
+    "gemini-3-flash, catalog drop (whole schema)": {
+      "precision": 0.8404907975460123,
+      "recall": 0.7389428263214671,
+      "f1": 0.7864523536165328
+    },
+    "gemini-3-flash, both (whole schema)": {
+      "precision": 0.8325272067714631,
+      "recall": 0.7427184466019418,
+      "f1": 0.7850627137970353
+    },
+    "gemini-3-flash, drop against any unique key (whole schema)": {
+      "precision": 0.8381642512077294,
+      "recall": 0.7486515641855448,
+      "f1": 0.7908831908831908
+    },
+    "gemini-3.5-flash-lite (whole schema)": {
+      "precision": 0.8066630256690334,
+      "recall": 0.796655879180151,
+      "f1": 0.801628222523745
+    },
+    "gemini-3.5-flash-lite, catalog drop (whole schema)": {
+      "precision": 0.817717206132879,
+      "recall": 0.7766990291262136,
+      "f1": 0.7966804979253113
+    },
+    "gemini-3.5-flash-lite, both (whole schema)": {
+      "precision": 0.8099775784753364,
+      "recall": 0.7793959007551241,
+      "f1": 0.7943925233644861
+    },
+    "gemini-3.5-flash-lite, drop against any unique key (whole schema)": {
+      "precision": 0.815539407490218,
+      "recall": 0.7869471413160734,
+      "f1": 0.800988196541312
+    },
+    "gemini-3.8-flash-high (whole schema)": {
+      "precision": 0.8683173888576252,
+      "recall": 0.8322545846817692,
+      "f1": 0.8499036078215367
+    },
+    "gemini-3.8-flash-high, catalog drop (whole schema)": {
+      "precision": 0.8726224783861671,
+      "recall": 0.8166127292340885,
+      "f1": 0.8436890498746168
+    },
+    "gemini-3.8-flash-high, both (whole schema)": {
+      "precision": 0.8633257403189066,
+      "recall": 0.8176914778856527,
+      "f1": 0.8398891966759002
+    },
+    "gemini-3.8-flash-high, drop against any unique key (whole schema)": {
+      "precision": 0.8765786452353617,
+      "recall": 0.8236245954692557,
+      "f1": 0.8492769744160178
+    },
+    "haiku (whole schema)": {
+      "precision": 0.8238118098895824,
+      "recall": 0.9255663430420712,
+      "f1": 0.871729743459487
+    },
+    "haiku, catalog drop (whole schema)": {
+      "precision": 0.8299454635597422,
+      "recall": 0.9029126213592233,
+      "f1": 0.8648927925600621
+    },
+    "haiku, both (whole schema)": {
+      "precision": 0.8241650294695482,
+      "recall": 0.9050701186623517,
+      "f1": 0.8627249357326479
+    },
+    "haiku, drop against any unique key (whole schema)": {
+      "precision": 0.8290891283055828,
+      "recall": 0.9131607335490831,
+      "f1": 0.8690965092402464
+    },
+    "differences": {
+      "model, value keys minus model alone": {
+        "difference": 0.017480071627180016,
+        "95": [
+          0.0008575735128820705,
+          0.04177858943042523
+        ]
+      },
+      "model, catalog drop minus model alone": {
+        "difference": -0.0075472511008868315,
+        "95": [
+          -0.027563849039417998,
+          0.002551796655172356
+        ]
+      },
+      "model, drop against any unique key minus model alone": {
+        "difference": -0.00463178487901672,
+        "95": [
+          -0.017371910642094646,
+          0.002996119822585741
+        ]
+      },
+      "model, both minus model alone": {
+        "difference": 0.011003317103961074,
+        "95": [
+          -0.013948608556814679,
+          0.035569956485969056
+        ]
+      },
+      "cascade with Haiku minus model alone": {
+        "difference": 0.08624060794789001,
+        "95": [
+          0.03321235123669808,
+          0.16325206000932846
+        ]
+      },
+      "haiku (whole schema) minus cascade with Haiku": {
+        "difference": 0.17088467303695187,
+        "95": [
+          0.05615448132125289,
+          0.26058850322316296
+        ]
+      },
+      "gemini-3-flash, catalog drop (whole schema) minus gemini-3-flash (whole schema)": {
+        "difference": -0.005660322439805299,
+        "95": [
+          -0.01995199433877448,
+          0.0031148862046566084
+        ]
+      },
+      "gemini-3-flash, drop against any unique key (whole schema) minus gemini-3-flash (whole schema)": {
+        "difference": -0.001229485173147249,
+        "95": [
+          -0.010651131024381422,
+          0.005367077497226425
+        ]
+      },
+      "gemini-3.5-flash-lite, catalog drop (whole schema) minus gemini-3.5-flash-lite (whole schema)": {
+        "difference": -0.004947724598433734,
+        "95": [
+          -0.017864708961155218,
+          0.004052221335255846
+        ]
+      },
+      "gemini-3.5-flash-lite, drop against any unique key (whole schema) minus gemini-3.5-flash-lite (whole schema)": {
+        "difference": -0.0006400259824329568,
+        "95": [
+          -0.009024929110823865,
+          0.005977057058757618
+        ]
+      },
+      "gemini-3.8-flash-high, catalog drop (whole schema) minus gemini-3.8-flash-high (whole schema)": {
+        "difference": -0.006214557946919941,
+        "95": [
+          -0.017646238051141405,
+          0.0013503757707385988
+        ]
+      },
+      "gemini-3.8-flash-high, drop against any unique key (whole schema) minus gemini-3.8-flash-high (whole schema)": {
+        "difference": -0.0006266334055189393,
+        "95": [
+          -0.00969097359024973,
+          0.006987467154600191
+        ]
+      },
+      "haiku, catalog drop (whole schema) minus haiku (whole schema)": {
+        "difference": -0.006836950899424821,
+        "95": [
+          -0.02454730855403009,
+          0.002156697556865983
+        ]
+      },
+      "haiku, drop against any unique key (whole schema) minus haiku (whole schema)": {
+        "difference": -0.0026332342192405545,
+        "95": [
+          -0.013742823570236373,
+          0.0036846625138567957
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "variant": "both, roles",
+  "training pairs": 6206601,
+  "validation pairs": 674751,
+  "validation keys among candidates": 6693,
+  "threshold": 0.8506110352535496,
+  "validation": {
+    "precision": 0.7377725397760754,
+    "recall": 0.7482444344837891,
+    "f1": 0.742971589644685,
+    "average_precision": 0.7643459142680085,
+    "novel_f1": 0.715116852381422
+  },
+  "validation, the paper's task": {
+    "pairs": 6781,
+    "covered": 0.8781890576611119,
+    "recall_at_1": 0.8544462468662439
+  },
+  "seconds": 506,
+  "F1 over every declared validation key": 0.6943982251802552,
+  "both, for comparison": {
+    "F1 over every declared validation key": 0.6897898706896551,
+    "the paper's task": {
+      "pairs": 6781,
+      "covered": 0.8781890576611119,
+      "recall_at_1": 0.8534139507447279
+    }
+  },
+  "test": {
+    "all": {
+      "pairs": 1101364,
+      "keys": 12436,
+      "rules": {
+        "precision": 0.7692967409948542,
+        "recall": 0.28851720810550013,
+        "f1": 0.4196491228070175
+      },
+      "model": {
+        "precision": 0.736209801479745,
+        "recall": 0.8081376648440013,
+        "f1": 0.7704987158354735
+      },
+      "f1_minus_rules_95": [
+        0.31301281251345175,
+        0.3888783909767086
+      ]
+    },
+    "novel": {
+      "pairs": 656743,
+      "keys": 9651,
+      "rules": {
+        "precision": 0.7815899581589958,
+        "recall": 0.2903326080198943,
+        "f1": 0.42339075249320035
+      },
+      "model": {
+        "precision": 0.7266256252404771,
+        "recall": 0.7827168169101647,
+        "f1": 0.7536289719159974
+      },
+      "f1_minus_rules_95": [
+        0.28166678722533156,
+        0.3758379904039043
+      ]
+    },
+    "complete": {
+      "pairs": 755560,
+      "keys": 10063,
+      "rules": {
+        "precision": 1.0,
+        "recall": 0.24436052866938288,
+        "f1": 0.3927487621785657
+      },
+      "model": {
+        "precision": 0.8010174697638702,
+        "recall": 0.8292755639471331,
+        "f1": 0.8149016161320247
+      },
+      "f1_minus_rules_95": [
+        0.3768920334222385,
+        0.46633719138914353
+      ]
+    }
+  },
+  "test, the paper's task": {
+    "pairs": 12013,
+    "covered": 0.9290768334304503,
+    "recall_at_1": 0.9097644218763007
+  },
+  "hard": {
+    "keys": 753,
+    "rules": {
+      "precision": 1.0,
+      "recall": 0.37317397078353254,
+      "f1": 0.5435203094777562
+    },
+    "model": {
+      "precision": 0.9754500818330606,
+      "recall": 0.7915006640106241,
+      "f1": 0.8739002932551321
+    }
+  }
+}

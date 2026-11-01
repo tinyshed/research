@@ -1,0 +1,48 @@
+{
+  "questions": 2040,
+  "answered yes": 738,
+  "databases asked": 207,
+  "replies unreadable": 0,
+  "prompt characters": 842285,
+  "round 1p's whole-schema prompt characters": 982750,
+  "spider, model alone": {
+    "precision": 0.9111644657863145,
+    "recall": 0.8331503841931943,
+    "f1": 0.8704128440366973
+  },
+  "spider, cascade": {
+    "precision": 0.8945615982241953,
+    "recall": 0.884742041712404,
+    "f1": 0.8896247240618101
+  },
+  "bird, model alone": {
+    "precision": 0.8961538461538462,
+    "recall": 0.768976897689769,
+    "f1": 0.8277087033747779
+  },
+  "bird, cascade": {
+    "precision": 0.8929765886287625,
+    "recall": 0.8811881188118812,
+    "f1": 0.8870431893687707
+  },
+  "ctu, model alone": {
+    "precision": 0.8233695652173914,
+    "recall": 0.49029126213592233,
+    "f1": 0.6146044624746451
+  },
+  "ctu, cascade": {
+    "precision": 0.7334905660377359,
+    "recall": 0.6709816612729234,
+    "f1": 0.7008450704225351
+  },
+  "all, model alone": {
+    "precision": 0.8685388685388685,
+    "recall": 0.6330465737169979,
+    "f1": 0.7323266986959505
+  },
+  "all, cascade": {
+    "precision": 0.8087636932707355,
+    "recall": 0.7665381192524473,
+    "f1": 0.7870849832470301
+  }
+}

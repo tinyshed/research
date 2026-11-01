@@ -1,0 +1,161 @@
+{
+  "spider: the paper's task": {
+    "pairs": 768,
+    "recall_at_1": 0.0
+  },
+  "bird: the paper's task": {
+    "pairs": 381,
+    "recall_at_1": 0.0
+  },
+  "ctu: the paper's task": {
+    "pairs": 1267,
+    "recall_at_1": 0.0
+  },
+  "pairs unreadable": 2636,
+  "spider, all: round 1b's task": {
+    "databases": 204,
+    "keys declared": 911,
+    "round 1b's model": {
+      "precision": 0.9133574007220217,
+      "recall": 0.8331503841931943,
+      "f1": 0.8714121699196327
+    },
+    "gemini": {
+      "precision": 0.879,
+      "recall": 0.964873765093304,
+      "f1": 0.9199372056514913
+    },
+    "f1_model_minus_gemini_95": [
+      -0.07120796898223009,
+      -0.029175949853474274
+    ]
+  },
+  "spider, novel: round 1b's task": {
+    "databases": 162,
+    "keys declared": 756,
+    "round 1b's model": {
+      "precision": 0.9130434782608695,
+      "recall": 0.8333333333333334,
+      "f1": 0.871369294605809
+    },
+    "gemini": {
+      "precision": 0.8837772397094431,
+      "recall": 0.9656084656084656,
+      "f1": 0.9228824273072059
+    },
+    "f1_model_minus_gemini_95": [
+      -0.07835037485962773,
+      -0.029048914336864615
+    ]
+  },
+  "bird, all: round 1b's task": {
+    "databases": 76,
+    "keys declared": 606,
+    "round 1b's model": {
+      "precision": 0.8959537572254336,
+      "recall": 0.7673267326732673,
+      "f1": 0.8266666666666665
+    },
+    "gemini": {
+      "precision": 0.8335724533715926,
+      "recall": 0.9587458745874587,
+      "f1": 0.8917881811204912
+    },
+    "f1_model_minus_gemini_95": [
+      -0.1341919283744387,
+      -0.0014142871268925275
+    ]
+  },
+  "bird, novel: round 1b's task": {
+    "databases": 64,
+    "keys declared": 545,
+    "round 1b's model": {
+      "precision": 0.8864628820960698,
+      "recall": 0.744954128440367,
+      "f1": 0.8095712861415751
+    },
+    "gemini": {
+      "precision": 0.8227848101265823,
+      "recall": 0.9541284403669725,
+      "f1": 0.8836023789294818
+    },
+    "f1_model_minus_gemini_95": [
+      -0.14760303169492994,
+      -0.00022650028713540638
+    ]
+  },
+  "ctu, all: round 1b's task": {
+    "databases": 118,
+    "keys declared": 1854,
+    "round 1b's model": {
+      "precision": 0.8209764918625678,
+      "recall": 0.48975188781014023,
+      "f1": 0.6135135135135135
+    },
+    "gemini": {
+      "precision": 0.8238118098895824,
+      "recall": 0.9255663430420712,
+      "f1": 0.871729743459487
+    },
+    "f1_model_minus_gemini_95": [
+      -0.35613680313365587,
+      -0.16656480752045288
+    ]
+  },
+  "ctu, novel: round 1b's task": {
+    "databases": 97,
+    "keys declared": 1665,
+    "round 1b's model": {
+      "precision": 0.8014629049111808,
+      "recall": 0.46066066066066064,
+      "f1": 0.5850495804729214
+    },
+    "gemini": {
+      "precision": 0.8146186440677966,
+      "recall": 0.9237237237237237,
+      "f1": 0.8657472558401351
+    },
+    "f1_model_minus_gemini_95": [
+      -0.3847855713755602,
+      -0.17291587526284294
+    ]
+  },
+  "all, all: round 1b's task": {
+    "databases": 398,
+    "keys declared": 3371,
+    "round 1b's model": {
+      "precision": 0.8680781758957655,
+      "recall": 0.6324532779590626,
+      "f1": 0.7317659172816201
+    },
+    "gemini": {
+      "precision": 0.8402116402116402,
+      "recall": 0.9421536636013053,
+      "f1": 0.8882673751922808
+    },
+    "f1_model_minus_gemini_95": [
+      -0.2146260043786079,
+      -0.09376858370914769
+    ]
+  },
+  "all, novel: round 1b's task": {
+    "databases": 323,
+    "keys declared": 2966,
+    "round 1b's model": {
+      "precision": 0.8565320665083136,
+      "recall": 0.6078894133513149,
+      "f1": 0.711102346677184
+    },
+    "gemini": {
+      "precision": 0.8332337118947998,
+      "recall": 0.9399865138233311,
+      "f1": 0.8833967046894803
+    },
+    "f1_model_minus_gemini_95": [
+      -0.2366812398762172,
+      -0.10795220075019123
+    ]
+  },
+  "databases unreadable": 0,
+  "keys naming nothing of the schema": 1
+}

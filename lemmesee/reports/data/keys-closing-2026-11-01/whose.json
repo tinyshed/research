@@ -1,0 +1,52 @@
+{
+  "band": {
+    "candidates with a sample": 462,
+    "keys among them": 88,
+    "included": 218,
+    "keys among the included": 0.27522935779816515,
+    "keys among the included, text keys": 0.48936170212765956,
+    "keys among the included, other keys": 0.21637426900584794
+  },
+  "the rule minus the model alone": {
+    "difference": -0.026162679487121032,
+    "95": [
+      -0.07188967136150248,
+      0.0035955689819641146
+    ]
+  },
+  "databases": 251,
+  "keys declared": 1236,
+  "band candidates drawn": 218,
+  "sure keys dropped": 16,
+  "candidates without statistics": 30,
+  "spider, model alone": {
+    "precision": 0.9111644657863145,
+    "recall": 0.8331503841931943,
+    "f1": 0.8704128440366973
+  },
+  "spider, model and its values": {
+    "precision": 0.8579117330462863,
+    "recall": 0.8748627881448957,
+    "f1": 0.866304347826087
+  },
+  "bird, model alone": {
+    "precision": 0.9328358208955224,
+    "recall": 0.7692307692307693,
+    "f1": 0.8431703204047217
+  },
+  "bird, model and its values": {
+    "precision": 0.7112299465240641,
+    "recall": 0.8184615384615385,
+    "f1": 0.7610872675250357
+  },
+  "all, model alone": {
+    "precision": 0.9164396003633061,
+    "recall": 0.8163430420711975,
+    "f1": 0.8635002139495078
+  },
+  "all, model and its values": {
+    "precision": 0.8158096699923254,
+    "recall": 0.860032362459547,
+    "f1": 0.8373375344623868
+  }
+}

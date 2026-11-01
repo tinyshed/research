@@ -1,0 +1,62 @@
+{
+ "A, reported": {
+  "tables": 63,
+  "keys declared": 52,
+  "keys among candidates": 51,
+  "found": 36,
+  "drawn wrongly": 25,
+  "precision": 0.5901639344262295,
+  "recall": 0.6923076923076923,
+  "f1": 0.6371681415929203
+ },
+ "B, reported": {
+  "tables": 22,
+  "keys declared": 40,
+  "keys among candidates": 39,
+  "found": 34,
+  "drawn wrongly": 1,
+  "precision": 0.9714285714285714,
+  "recall": 0.85,
+  "f1": 0.9066666666666667
+ },
+ "A, both": {
+  "tables": 63,
+  "keys declared": 52,
+  "keys among candidates": 52,
+  "found": 32,
+  "drawn wrongly": 19,
+  "precision": 0.6274509803921569,
+  "recall": 0.6153846153846154,
+  "f1": 0.6213592233009709
+ },
+ "B, both": {
+  "tables": 22,
+  "keys declared": 40,
+  "keys among candidates": 40,
+  "found": 35,
+  "drawn wrongly": 2,
+  "precision": 0.9459459459459459,
+  "recall": 0.875,
+  "f1": 0.9090909090909091
+ },
+ "A, both, roles": {
+  "tables": 63,
+  "keys declared": 52,
+  "keys among candidates": 52,
+  "found": 33,
+  "drawn wrongly": 47,
+  "precision": 0.4125,
+  "recall": 0.6346153846153846,
+  "f1": 0.4999999999999999
+ },
+ "B, both, roles": {
+  "tables": 22,
+  "keys declared": 40,
+  "keys among candidates": 40,
+  "found": 35,
+  "drawn wrongly": 4,
+  "precision": 0.8974358974358975,
+  "recall": 0.875,
+  "f1": 0.8860759493670887
+ }
+}

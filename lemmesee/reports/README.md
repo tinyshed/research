@@ -62,3 +62,9 @@ so, never by editing the number it replaces.
   where its candidates reach and loses where they do not, and a variant widened on validation takes it to 0.913 /
   0.900 / 0.886; a T5 trained on related pairs cannot tell them from unrelated ones; Gemini 3.8 Flash is the ceiling;
   the model is a file of 938 KiB, checked against the libraries.
+- [Closing on the language models](keys-closing-2026-11-01.md), round 1q: the threshold is not the gap; fast models
+  reach F1 0.84–0.89 over every declared key of 398 databases against the widened model's 0.736, the gap mostly
+  recall; a cascade asking Haiku about the model's unsure candidates reaches 0.787, below Haiku given the whole
+  schema; the planner's sampled values add little on benchmarks; on the owner's busier database the model's
+  undeclared keys are mostly real links, 21 of 36 through an alternate key, its precision 0.92–0.93 counted so; a
+  database's own declared half finds its other half, 0.673 to 0.738.

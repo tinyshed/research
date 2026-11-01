@@ -1,0 +1,161 @@
+{
+  "spider: the paper's task": {
+    "pairs": 768,
+    "recall_at_1": 0.0
+  },
+  "bird: the paper's task": {
+    "pairs": 381,
+    "recall_at_1": 0.0
+  },
+  "ctu: the paper's task": {
+    "pairs": 1267,
+    "recall_at_1": 0.0
+  },
+  "pairs unreadable": 2636,
+  "spider, all: round 1b's task": {
+    "databases": 204,
+    "keys declared": 911,
+    "round 1b's model": {
+      "precision": 0.911377245508982,
+      "recall": 0.8353457738748628,
+      "f1": 0.8717067583046963
+    },
+    "gemini": {
+      "precision": 0.879,
+      "recall": 0.964873765093304,
+      "f1": 0.9199372056514913
+    },
+    "f1_model_minus_gemini_95": [
+      -0.07365339973489171,
+      -0.025743289552060827
+    ]
+  },
+  "spider, novel: round 1b's task": {
+    "databases": 162,
+    "keys declared": 756,
+    "round 1b's model": {
+      "precision": 0.9090909090909091,
+      "recall": 0.8333333333333334,
+      "f1": 0.8695652173913043
+    },
+    "gemini": {
+      "precision": 0.8837772397094431,
+      "recall": 0.9656084656084656,
+      "f1": 0.9228824273072059
+    },
+    "f1_model_minus_gemini_95": [
+      -0.08387291802028538,
+      -0.027468190845712417
+    ]
+  },
+  "bird, all: round 1b's task": {
+    "databases": 76,
+    "keys declared": 606,
+    "round 1b's model": {
+      "precision": 0.896421845574388,
+      "recall": 0.7854785478547854,
+      "f1": 0.8372911169744943
+    },
+    "gemini": {
+      "precision": 0.8335724533715926,
+      "recall": 0.9587458745874587,
+      "f1": 0.8917881811204912
+    },
+    "f1_model_minus_gemini_95": [
+      -0.12294928749416353,
+      0.010373630693502932
+    ]
+  },
+  "bird, novel: round 1b's task": {
+    "databases": 64,
+    "keys declared": 545,
+    "round 1b's model": {
+      "precision": 0.8851063829787233,
+      "recall": 0.763302752293578,
+      "f1": 0.819704433497537
+    },
+    "gemini": {
+      "precision": 0.8227848101265823,
+      "recall": 0.9541284403669725,
+      "f1": 0.8836023789294818
+    },
+    "f1_model_minus_gemini_95": [
+      -0.13761716682145636,
+      0.009964061236624466
+    ]
+  },
+  "ctu, all: round 1b's task": {
+    "databases": 118,
+    "keys declared": 1854,
+    "round 1b's model": {
+      "precision": 0.7841845140032949,
+      "recall": 0.5134843581445523,
+      "f1": 0.6205997392438071
+    },
+    "gemini": {
+      "precision": 0.8238118098895824,
+      "recall": 0.9255663430420712,
+      "f1": 0.871729743459487
+    },
+    "f1_model_minus_gemini_95": [
+      -0.34550134200916316,
+      -0.15984401993800001
+    ]
+  },
+  "ctu, novel: round 1b's task": {
+    "databases": 97,
+    "keys declared": 1665,
+    "round 1b's model": {
+      "precision": 0.7572362278244631,
+      "recall": 0.4870870870870871,
+      "f1": 0.5928362573099415
+    },
+    "gemini": {
+      "precision": 0.8146186440677966,
+      "recall": 0.9237237237237237,
+      "f1": 0.8657472558401351
+    },
+    "f1_model_minus_gemini_95": [
+      -0.37160108731153163,
+      -0.16300575568814119
+    ]
+  },
+  "all, all: round 1b's task": {
+    "databases": 398,
+    "keys declared": 3371,
+    "round 1b's model": {
+      "precision": 0.8484496124031008,
+      "recall": 0.6493622070602195,
+      "f1": 0.7356746765249538
+    },
+    "gemini": {
+      "precision": 0.8402116402116402,
+      "recall": 0.9421536636013053,
+      "f1": 0.8882673751922808
+    },
+    "f1_model_minus_gemini_95": [
+      -0.2113655798614233,
+      -0.08835612389094177
+    ]
+  },
+  "all, novel: round 1b's task": {
+    "databases": 323,
+    "keys declared": 2966,
+    "round 1b's model": {
+      "precision": 0.8312444046553268,
+      "recall": 0.6260957518543493,
+      "f1": 0.7142307692307692
+    },
+    "gemini": {
+      "precision": 0.8332337118947998,
+      "recall": 0.9399865138233311,
+      "f1": 0.8833967046894803
+    },
+    "f1_model_minus_gemini_95": [
+      -0.23472689063466634,
+      -0.10114044222191407
+    ]
+  },
+  "databases unreadable": 0,
+  "keys naming nothing of the schema": 1
+}
