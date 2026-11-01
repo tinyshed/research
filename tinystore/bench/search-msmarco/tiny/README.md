@@ -4,23 +4,28 @@ Written on 2 November 2026, before any time was taken. The rounds of
 1 November measured prototypes: the lab's compact blocks, and `fast2`,
 `fast3` and `fast4`, the same blocks bit-packed in one row a key and read
 through a blob handle. TinyStore's `main` has since built that layout in
-its own engine (`a5143eb1`): bit-packed blocks in runs of 32 KiB, a
-fixed-width directory bounded by BM25's saturation in chunks of 256 blocks,
-blob reads, the walk of passive lists, directories kept between searches, a
-key's best ten as a floor, and a head of a row a key a set. A first build
-at `1e25d632`, its directory whole in one row, was stopped at three million
-passages: each million took longer than the one before (292, 475 and 659 s),
-the directories of the most held words written again whole at every pack. This round measures that engine,
-through its public API, beside the arms it was built from.
+its own engine: bit-packed blocks in runs of 32 KiB, a fixed-width
+directory bounded by BM25's saturation, blob reads, the walk of passive
+lists, directories kept between searches and a key's best ten as a floor.
+This round measures that engine, through its public API, beside the arms
+it was built from.
+
+Changed after the hypotheses were written, before any search was timed: a
+first build, at `a5143eb1`, packed each key's postings onto its list where
+it lay, and each million passages took longer than the one before (292,
+475 and 659 s); it was stopped. The engine since keeps postings in
+segments a set writes one after another and merges join (`a3f9f915`), and
+the build below is of that engine.
 
 ## What is built
 
 - `src/tiny1.rs`: an index of the token stream, a passage a document whose
-  value is its tokens, set a thousand a commit and packed after each, as
-  the store's background work packs once a thousand wait; durability to the
-  operating system, as the other builds. A search is the query's terms
-  joined by spaces, the ten hits read with their values, as every TinyStore
-  search reads them. Typo correction is off, as no other engine corrects.
+  value is its tokens, set a thousand a commit while the store's background
+  work merges their segments, as a program's does, then merged into one
+  segment by `search::maintain`; durability to the operating system, as the
+  other builds. A search is the query's terms joined by spaces, the ten
+  hits read with their values, as every TinyStore search reads them. Typo
+  correction is off, as no other engine corrects.
 - `tiny/round.sh`: the steps, `tools`, `build`, `answers`, `timing`.
 - `tiny/agree.py`: TinyStore's ten against compact's on the sample.
 
