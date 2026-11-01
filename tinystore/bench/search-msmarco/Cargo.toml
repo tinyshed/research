@@ -1,0 +1,34 @@
+[package]
+name = "search-msmarco"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+# The search lab's analyzer, blocks and compact format are compiled into this
+# crate from tinystore/search-plan-lab/src by path, unchanged, at the versions
+# that lab pins; what is new here is MS MARCO, one field and the other engines.
+[dependencies]
+rusqlite = { version = "=0.40.2", default-features = false, features = ["bundled", "cache"] }
+unicode-segmentation = "=1.12.0"
+unicode-normalization = "=0.1.25"
+rust-stemmers = "=1.2.0"
+tantivy = { version = "=0.26.2", default-features = false, features = ["mmap", "lz4-compression"] }
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = "=1.0.151"
+flate2 = "1"
+sha2 = "0.10"
+memmap2 = "0.9"
+
+[lints.rust]
+unexpected_cfgs = "allow"
+dead_code = "allow"
+
+[[bin]]
+name = "msmarco"
+path = "src/main.rs"
+
+[profile.release]
+debug = 0
+strip = "symbols"
+lto = "thin"
+codegen-units = 1

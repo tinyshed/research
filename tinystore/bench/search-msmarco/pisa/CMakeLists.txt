@@ -1,0 +1,16 @@
+# The round's PISA driver, built against the PISA checkout build.sh cloned,
+# with the flags PISA gives its own tools: Release, -march=native.
+cmake_minimum_required(VERSION 3.16.9)
+project(pisa_pass CXX C)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE "Release")
+endif()
+set(PISA_BUILD_TOOLS OFF CACHE BOOL "" FORCE)
+set(PISA_ENABLE_TESTING OFF CACHE BOOL "" FORCE)
+set(PISA_ENABLE_BENCHMARKING OFF CACHE BOOL "" FORCE)
+add_subdirectory(${PISA_SOURCE} pisa)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
+add_executable(pass pass.cpp)
+target_link_libraries(pass pisa)
