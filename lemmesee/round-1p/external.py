@@ -366,13 +366,15 @@ def scorer(models: Path, build=None):
 
 
 def choose(rows, scores, meta, graph):
-    """The column the scores put first among a pair's rows, and the one the
-    name score alone does, ties to the earlier column."""
+    """The column and target key the scores put first among a pair's rows,
+    and those the name score alone does, ties to the earlier row; the key is
+    None where the pairs do not carry it."""
     if not rows:
-        return None, None
+        return (None, None), (None, None)
     best = max(rows, key=lambda i: (scores[i], -i))
     by_name = max(rows, key=lambda i: (meta[i][graph.BASE], -i))
-    return meta[best][graph.COLUMN], meta[by_name][graph.COLUMN]
+    pick = lambda i: (meta[i][graph.COLUMN], meta[i][14] if len(meta[i]) > 14 else None)  # noqa: E731
+    return pick(best), pick(by_name)
 
 
 def resample(groups: np.ndarray, values: np.ndarray, rng, n: int = 1000) -> list[float]:
@@ -460,18 +462,26 @@ def score(models: Path, out: Path, build=None, suffix: str = "") -> None:
         s = by_id[f"{p['source']}/{p['db']}"]
         target = next(t for t in s["tables"] if t["name"] == p["foreign_table"])
         rows = rows_of[(s["id"], p["table"], p["foreign_table"])]
-        # The target's key as the pairs took it, a pseudo key included
-        key = meta[rows[0]][14] if rows and len(meta[rows[0]]) > 14 else \
-            target["pk"][0] if len(target["pk"]) == 1 else None
-        whole, name_whole = choose(rows, scores, meta, graph)
-        pair, _ = choose(mini_rows[(f"pair-{j}", p["table"], p["foreign_table"])], mini_scores, mini_meta, graph)
-        right_key = key is not None and key.lower() == p["referred_column"].lower()
-        hit = lambda c: bool(c and right_key and c.lower() == p["column"].lower())  # noqa: E731
+        # The target's keys as the pairs took them, a pseudo key included;
+        # round 1r's widening gives a table several, and a choice its own
+        fallback = target["pk"][0] if len(target["pk"]) == 1 else None
+        held = {(meta[i][14] if len(meta[i]) > 14 else fallback) for i in rows} or {fallback}
+        referred = p["referred_column"].lower()
+        right_key = any(k is not None and k.lower() == referred for k in held)
+        (whole, whole_key), (name_whole, name_key) = choose(rows, scores, meta, graph)
+        (pair, pair_key), _ = choose(mini_rows[(f"pair-{j}", p["table"], p["foreign_table"])], mini_scores,
+                                     mini_meta, graph)
+        key = whole_key or (next(iter(held)) if len(held) == 1 else None)
+
+        def hit(c, k):
+            k = k or fallback
+            return bool(c and k and k.lower() == referred and c.lower() == p["column"].lower())
+
         why = ("referred column is not the target's one-column key" if not right_key
                else "no candidate of the key's kind" if whole is None else "")
         outcomes.append({**p, "key": key, "two tables": pair, "whole database": whole, "name score": name_whole,
-                         "hit two tables": hit(pair), "hit whole database": hit(whole), "hit name score": hit(name_whole),
-                         "unanswerable": why})
+                         "hit two tables": hit(pair, pair_key), "hit whole database": hit(whole, whole_key),
+                         "hit name score": hit(name_whole, name_key), "unanswerable": why})
     with open(out / f"bench-outcomes{suffix}.jsonl", "w", encoding="utf-8") as f:
         for o in outcomes:
             f.write(json.dumps(o, ensure_ascii=False) + "\n")
