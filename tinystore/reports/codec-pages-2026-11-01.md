@@ -207,8 +207,13 @@ every reversed pair [h11-reversals.csv](data/codec-pages-2026-11-01/analysis/h11
 either side, so the smaller payload's rows simply fit fewer to a leaf; 50 have
 overflow pages, but no more on the smaller payload's side, which loses on
 leaves; 12 lose on overflow pages, rows just past the spill limit X that keep
-M bytes on the leaf and one mostly empty overflow page each. At 8 and 16 KiB,
+M bytes on the leaf and one overflow page each (see the correction below). At 8 and 16 KiB,
 37 of the 38 reversals have no overflow at all; at 1 KiB, 31 of 34 have some.
+
+> **Correction, 1 November 2026.** The sentence above first said "one mostly
+> empty overflow page each". In a table b-tree that page is more than 86 %
+> full, as [page-model-2026-11-01](page-model-2026-11-01.md)'s correction says.
+> Found reviewing a paper draft; no count changes.
 
 **What is large is the spread, not the order.** The file-to-payload ratio of
 one codec's rows runs from 1.008 to 4.082 over the cells, 1.149 at the
@@ -285,6 +290,13 @@ codec's blocks a row, which is what
 [metrics-payload-2026-10-09](metrics-payload-2026-10-09.md) found by packing,
 here on 32 datasets. [h13-optima.csv](data/codec-pages-2026-11-01/analysis/h13-optima.csv)
 has every curve.
+
+> **Correction, 1 November 2026.** "120 to 320 in 72 curves of 128 each" is
+> wrong: by h13-optima.csv, Gorilla's payload is smallest at 120 to 320 in 96
+> curves of 128 (120: 36, 160: 20, 200: 12, 240: 12, 320: 16) and ALP's at 120
+> to 240 in 84 (120: 32, 160: 40, 200: 4, 240: 8); 72 is ALP's count at 120
+> and 160 alone. Zstd's 108 is a count per level. Found reviewing a paper
+> draft.
 
 ## H1.4: PostgreSQL, and a file with no pages
 

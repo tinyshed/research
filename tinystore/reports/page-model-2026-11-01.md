@@ -82,6 +82,16 @@ takes the remainder and every overflow page is full. A payload just past X is
 the expensive case: K exceeds X, the cell keeps M bytes on its page, and one
 overflow page holds the rest, mostly empty.
 
+> **Correction, 1 November 2026.** The last sentence holds for an index
+> b-tree, not for a table's. In a table b-tree's leaf K exceeds X only when
+> (P − M) mod (U − 4) exceeds X − M, so the last overflow page holds more than
+> X − M bytes: more than 3,572 of 4,092 at 4 KiB, 87 %. This round's own
+> Linux files show it: at U = 4,096 and a 4,096-byte body, `dbstat` counts
+> 230,880 unused bytes on 480 overflow pages, 481 a page
+> ([results-linux.jsonl](data/page-model-2026-11-01/results-linux.jsonl)).
+> The WITHOUT ROWID paragraph below, an index b-tree, stands. No number of
+> this report changes; the error was found reviewing a paper draft.
+
 **What a page holds (format, 1.6).** A leaf holds cells while
 8 + Σ(2 + cell) ≤ U; an interior page while 12 + Σ(2 + cell) ≤ U. A table
 interior cell is a 4-byte child pointer and the varint of a rowid; an index
