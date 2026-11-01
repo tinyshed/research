@@ -15,6 +15,7 @@
 //! msmarco profile <compact.db> <queries> <results>    the fast reader's parts timed a query, warm
 //! msmarco fast2-build <compact.db>                    the read layout, fast2.db beside it
 //! msmarco profile2 <compact.db> <queries> <results>   the fast2 reader's parts a query, warm
+//! msmarco fields-...                                   search-fields' two fields and prefixes: see fields.rs
 //! ```
 //!
 //! An engine is `compact` (window executor, read ahead 8), `compact-window`
@@ -41,6 +42,7 @@ mod compact1;
 mod exact;
 mod fast;
 mod fast2;
+mod fields;
 mod fts1;
 mod prepare;
 mod queries;
@@ -90,6 +92,15 @@ fn main() {
         "profile" => profile(Path::new(arg(1)), Path::new(arg(2)), Path::new(arg(3))),
         "fast2-build" => emit(&fast2::build(Path::new(arg(1)), &Path::new(arg(1)).with_file_name("fast2.db"))),
         "profile2" => profile2(Path::new(arg(1)), Path::new(arg(2)), Path::new(arg(3))),
+        "fields-queries" => emit(&fields::queries(Path::new(arg(1)), Path::new(arg(2)))),
+        "fields-build" => emit(&match arg(1) {
+            "lab" => fields::build_lab(Path::new(arg(2)), Path::new(arg(3)), Path::new(arg(4))),
+            "native" => fields::build_native(Path::new(arg(2)), Path::new(arg(3))),
+            "tantivy" => fields::build_tantivy(Path::new(arg(2)), Path::new(arg(3)), Path::new(arg(4))),
+            other => panic!("no layout {other}"),
+        }),
+        "fields-answer" => emit(&fields::answer(arg(1), Path::new(arg(2)), Path::new(arg(3)), Path::new(arg(4)))),
+        "fields-time" => emit(&fields::time(arg(1), Path::new(arg(2)), Path::new(arg(3)), Path::new(arg(4)), arg(5))),
         other => panic!("no command {other}"),
     }
 }

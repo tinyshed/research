@@ -79,7 +79,7 @@ impl Packer {
     }
 }
 
-fn pack(docs: &[u32], tfs: &[u32]) -> Vec<u8> {
+pub(crate) fn pack(docs: &[u32], tfs: &[u32]) -> Vec<u8> {
     let gaps: Vec<u32> = docs.windows(2).map(|pair| pair[1] - pair[0] - 1).collect();
     let gap_bits = bits(gaps.iter().copied().max().unwrap_or(0));
     let tf_bits = bits(tfs.iter().map(|tf| tf - 1).max().unwrap_or(0));
@@ -129,7 +129,7 @@ fn unpack(bytes: &[u8], first: u32, docs: &mut Vec<u32>, tfs: &mut Vec<u32>) {
 
 /// `unpack` reading eight bytes at a time: each value one unaligned load,
 /// a shift and a mask. `bytes` ends with eight bytes of zeros.
-fn unpack_words(bytes: &[u8], first: u32, docs: &mut Vec<u32>, tfs: &mut Vec<u32>) {
+pub(crate) fn unpack_words(bytes: &[u8], first: u32, docs: &mut Vec<u32>, tfs: &mut Vec<u32>) {
     let n = usize::from(bytes[0]);
     let gap_bits = u32::from(bytes[1]) + 1;
     let tf_bits = u32::from(bytes[2]) + 1;
@@ -153,7 +153,7 @@ fn unpack_words(bytes: &[u8], first: u32, docs: &mut Vec<u32>, tfs: &mut Vec<u32
     }
 }
 
-fn unpack_varints(payload: &[u8]) -> (Vec<u32>, Vec<u32>) {
+pub(crate) fn unpack_varints(payload: &[u8]) -> (Vec<u32>, Vec<u32>) {
     let (mut docs, mut tfs) = (Vec::new(), Vec::new());
     let (mut at, mut doc) = (0, 0);
     while at < payload.len() {
@@ -165,7 +165,7 @@ fn unpack_varints(payload: &[u8]) -> (Vec<u32>, Vec<u32>) {
 }
 
 /// f32 no smaller than `value`.
-fn up(value: f64) -> f32 {
+pub(crate) fn up(value: f64) -> f32 {
     let narrow = value as f32;
     if f64::from(narrow) < value { narrow.next_up() } else { narrow }
 }

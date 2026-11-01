@@ -34,9 +34,9 @@ use crate::collection::{Collection, read_terms};
 use crate::fts::open;
 
 /// compact.rs's constants and schema, which it keeps private.
-const INLINE: usize = 16;
-const NORMS: u32 = 65_536;
-const SCHEMA: &str = "
+pub(crate) const INLINE: usize = 16;
+pub(crate) const NORMS: u32 = 65_536;
+pub(crate) const SCHEMA: &str = "
 create table ckeys (key text primary key, id integer not null, documents integer not null,
   directory blob, inline blob) without rowid;
 create table cblob (id integer not null, first integer not null, payload blob not null,
@@ -56,17 +56,17 @@ create table gone (doc integer primary key);
 pub const FIELD: usize = 2;
 
 /// Keys a commit while building, so that the log stays a few hundred MiB.
-const KEYS_A_COMMIT: usize = 100_000;
+pub(crate) const KEYS_A_COMMIT: usize = 100_000;
 
 #[derive(Clone, Copy)]
-struct Entry {
-    first: u32,
-    last: u32,
-    most_tf: u32,
-    least_len: u32,
+pub(crate) struct Entry {
+    pub(crate) first: u32,
+    pub(crate) last: u32,
+    pub(crate) most_tf: u32,
+    pub(crate) least_len: u32,
 }
 
-fn encode_directory(entries: &[Entry]) -> Vec<u8> {
+pub(crate) fn encode_directory(entries: &[Entry]) -> Vec<u8> {
     let mut out = Vec::with_capacity(entries.len() * 6);
     let mut previous = 0;
     for entry in entries {
@@ -98,7 +98,7 @@ fn decode_directory(bytes: &[u8]) -> Vec<Entry> {
     entries
 }
 
-fn pack(block: &[Posting]) -> Vec<u8> {
+pub(crate) fn pack(block: &[Posting]) -> Vec<u8> {
     let mut out = Vec::with_capacity(block.len() * 3);
     let mut previous = 0;
     for posting in block {
@@ -119,7 +119,7 @@ fn unpack_raw(payload: &[u8]) -> Vec<(u32, u32)> {
     out
 }
 
-fn pack_inline(postings: &[Posting]) -> Vec<u8> {
+pub(crate) fn pack_inline(postings: &[Posting]) -> Vec<u8> {
     let mut out = Vec::with_capacity(postings.len() * 4);
     let mut previous = 0;
     for posting in postings {

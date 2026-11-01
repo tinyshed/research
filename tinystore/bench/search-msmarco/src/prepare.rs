@@ -28,12 +28,15 @@ use crate::analyze::{Analysis, Analyzer};
 /// Passages tokenized at once, split among the threads.
 const BATCH: usize = 40_000;
 
-/// A text as the one field every engine indexes.
+/// A text as the one field every engine indexes; with MSMARCO_TOKENS=surface,
+/// as the words written, for search-fields' second field.
 pub fn terms(analyzer: &Analyzer, text: &str) -> Vec<String> {
+    static SURFACE: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
+    let surface = *SURFACE.get_or_init(|| std::env::var("MSMARCO_TOKENS").as_deref() == Ok("surface"));
     analyzer
         .tokens(text)
         .into_iter()
-        .map(|token| token.stem.unwrap_or(token.surface))
+        .map(|token| if surface { token.surface } else { token.stem.unwrap_or(token.surface) })
         .collect()
 }
 
