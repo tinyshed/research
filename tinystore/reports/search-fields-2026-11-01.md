@@ -90,6 +90,34 @@ finishing and was stopped, so the check against it waits for a sample.
 Tantivy's top tens share 97.1 % of their documents with the lab's, its BM25
 keeping a field's length in a byte.
 
+## Does a boost cost Tantivy its fast path?
+
+Tantivy's p99 grew 2.8 times from one field to two where the native
+layout's grew 2.0, and each of Tantivy's term queries here is wrapped in a
+`BoostQuery` for its field's weight, which might leave it off its block-max
+path. A second run at research commit `2d450dc`, 16:27–16:47 UTC, asked it with
+both fields weighed 1.0 and plain term queries (`FIELDS_EQUAL=1`), and the
+native layout with the same weights, beside both as before
+([summary.md](data/search-fields-2026-11-01/timing/20261101T162754Z/summary.md)):
+
+| set | arm | p50 | p99 |
+|---|---|---|---|
+| fields | Tantivy, boosted | 5.62; 5.54; 5.68; 5.41 | 77.2; 75.4; 78.6; 77.7 |
+| fields | Tantivy, equal and plain | 5.53; 5.32; 5.40; 5.32 | 75.6; 71.6; 75.2; 72.1 |
+| fields | native, the lab's weights | 8.49; 8.04; 8.02; 8.00 | 56.7; 55.6; 58.7; 56.8 |
+| fields | native, equal | 7.89; 7.99; 7.28; 7.51 | 53.0; 53.3; 50.5; 52.5 |
+| prefix | Tantivy, boosted | 13.04; 12.87; 12.91; 13.22 | 177.0; 170.5; 174.9; 174.9 |
+| prefix | Tantivy, equal and plain | 12.83; 12.70; 12.68; 12.45 | 171.2; 168.7; 168.0; 173.4 |
+| prefix | native, the lab's weights | 17.39; 17.28; 16.35; 16.52 | 129.1; 128.4; 125.9; 132.1 |
+| prefix | native, equal | 15.80; 15.94; 16.00; 15.92 | 114.8; 112.2; 116.2; 116.4 |
+
+**No**: without boosts Tantivy is 1–7 % faster, its p50 0.94–0.99 and its
+p99 0.93–0.99 of the boosted arm's in the same rounds. At equal weights the
+native layout's p99 is 0.67–0.75 of Tantivy's on the sample and 0.67–0.69
+on the prefixes, its p50 1.35–1.50 and 1.23–1.28 times. The lead at p99
+stands; why Tantivy's tail grows more with a second field — 18 term queries
+for six words — is not measured here.
+
 ## Limits
 
 - One machine, in WSL2's VM; the prototype's code, not TinyStore's, which
