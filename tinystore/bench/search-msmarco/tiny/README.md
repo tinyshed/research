@@ -4,10 +4,13 @@ Written on 2 November 2026, before any time was taken. The rounds of
 1 November measured prototypes: the lab's compact blocks, and `fast2`,
 `fast3` and `fast4`, the same blocks bit-packed in one row a key and read
 through a blob handle. TinyStore's `main` has since built that layout in
-its own engine (`1e25d632`): bit-packed blocks in runs of 32 KiB, a
-fixed-width directory bounded by BM25's saturation, blob reads, the walk of
-passive lists, directories kept between searches, a key's best ten as a
-floor, and a head of a row a key a set. This round measures that engine,
+its own engine (`a5143eb1`): bit-packed blocks in runs of 32 KiB, a
+fixed-width directory bounded by BM25's saturation in chunks of 256 blocks,
+blob reads, the walk of passive lists, directories kept between searches, a
+key's best ten as a floor, and a head of a row a key a set. A first build
+at `1e25d632`, its directory whole in one row, was stopped at three million
+passages: each million took longer than the one before (292, 475 and 659 s),
+the directories of the most held words written again whole at every pack. This round measures that engine,
 through its public API, beside the arms it was built from.
 
 ## What is built
