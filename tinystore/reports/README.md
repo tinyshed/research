@@ -41,6 +41,9 @@ variant, 3.18 bytes a posting against 1.61–2.11; the timing and writing harnes
 [MS MARCO's queries timed, in WSL2's containers](search-msmarco-timing-2026-11-01.md): one query at a time, cold and warm,
 the compact blocks' p99 3.0–3.5 times Tantivy's and their p50 4.8 times, PISA and Lucene under Tantivy, FTS5
 four seconds a query; H2.1 fails on this machine, bare Linux still to run.
+[The compact blocks made fast](search-fast-2026-11-01.md): where their time went and a change at a time, exact
+throughout; the same blocks bit-packed in one SQLite row a key, a fixed directory and a byte of length a document reach
+Tantivy's p99 and 1.6 times its p50 in WSL2's containers, in 1.99 bytes a posting against compact's 3.18.
 
 The 22–23 September architecture implementation rounds on
 `codex/architecture-measurements` measured intermediate uncommitted states.
