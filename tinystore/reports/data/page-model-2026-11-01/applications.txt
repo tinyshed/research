@@ -1,0 +1,89 @@
+python 3.13.15, sqlite 3.50.4
+
+== Closed-form thresholds, (id integer primary key, body blob) strict, rowid 5000
+  page 1024: largest body for r rows a leaf page: 1:4096, 2:498, 3:328, 4:244, 5:193, 6:159, 7:135, 8:118
+  page 4096: largest body for r rows a leaf page: 1:16384, 2:2034, 3:1352, 4:1012, 5:807, 6:671, 7:574, 8:501
+  page 8192: largest body for r rows a leaf page: 1:32768, 2:4082, 3:2718, 4:2036, 5:1626, 6:1354, 7:1159, 8:1013
+  page 16384: largest body for r rows a leaf page: 1:65536, 2:8178, 3:5448, 4:4084, 5:3265, 6:2719, 7:2329, 8:2037
+  page 1024: table leaf X = 989, index X = 230, M = 103, overflow page content = 1020
+  page 4096: table leaf X = 4061, index X = 1002, M = 489, overflow page content = 4092
+  page 8192: table leaf X = 8157, index X = 2030, M = 1003, overflow page content = 8188
+  page 16384: table leaf X = 16349, index X = 4086, M = 2031, overflow page content = 16380
+
+== A1. measurements.md, 'The adaptive codec against the one it replaced': noisy float payloads
+   240 samples a block; 7.415 and 6.644 payload B/sample are 1779.6 and 1594.6 bytes a block
+  body 1780 bytes, 10,000 rows
+  rows 10000, body bytes 17800000, page size 4096
+  predicted: table b-tree 5000 leaf + 12 interior + 0 overflow pages, file 5013 pages = 20533248 bytes
+  measured:  table b-tree 5000 leaf + 12 interior + 0 overflow pages, file 5013 pages = 20533248 bytes, unused in b-tree pages 2549206
+  table b-tree bytes per body byte: 1.1533
+  body 1595 bytes, 10,000 rows
+  rows 10000, body bytes 15950000, page size 4096
+  predicted: table b-tree 5000 leaf + 12 interior + 0 overflow pages, file 5013 pages = 20533248 bytes
+  measured:  table b-tree 5000 leaf + 12 interior + 0 overflow pages, file 5013 pages = 20533248 bytes, unused in b-tree pages 4399206
+  table b-tree bytes per body byte: 1.2871
+  two rows a page for bodies 1353..2034 bytes, three for 1013..1352
+
+== A2. measurements.md, 'The whole file...': floats closed at about 1300 bytes, three rows a page
+  body 1300 bytes, 10,000 rows
+  rows 10000, body bytes 13000000, page size 4096
+  predicted: table b-tree 3334 leaf + 9 interior + 0 overflow pages, file 3344 pages = 13697024 bytes
+  measured:  table b-tree 3334 leaf + 9 interior + 0 overflow pages, file 3344 pages = 13697024 bytes, unused in b-tree pages 539653
+  table b-tree bytes per body byte: 1.0533
+
+== A3. grid-2026-09-21: payload rows average 560 bytes, 580 rows
+  body 560 bytes, 580 rows
+  rows 580, body bytes 324800, page size 4096
+  predicted: table b-tree 83 leaf + 1 interior + 0 overflow pages, file 85 pages = 348160 bytes
+  measured:  table b-tree 83 leaf + 1 interior + 0 overflow pages, file 85 pages = 348160 bytes, unused in b-tree pages 12277
+  table b-tree bytes per body byte: 1.0593
+  body 583 bytes, 580 rows
+  rows 580, body bytes 338140, page size 4096
+  predicted: table b-tree 97 leaf + 1 interior + 0 overflow pages, file 99 pages = 405504 bytes
+  measured:  table b-tree 97 leaf + 1 interior + 0 overflow pages, file 99 pages = 405504 bytes, unused in b-tree pages 56060
+  table b-tree bytes per body byte: 1.1871
+  seven rows a page up to 574 bytes, six up to 671
+  at 1024-byte pages: two rows a page up to 498 bytes, one up to 4096
+
+== A4. metrics-layout-2026-10-09: Alibaba's WITHOUT ROWID groups and their overflow pages
+  index b-tree: a row spills past P = 1002 bytes and keeps M = 489 on its page; one overflow page holds rows up to P = 4581
+  465 overflow pages x 4096 = 1904640; content 312228 + unused 1590552 + 4-byte links 1860 = 1904640
+  mean overflowing row if every chain is one page: P = 489 + 312228/465 = 1160.5
+  WITHOUT ROWID body 980: P 987, local 987, cell 989, overflow pages 0; as a rowid table: overflow pages 0
+  WITHOUT ROWID body 1000: P 1007, local 489, cell 495, overflow pages 1; as a rowid table: overflow pages 0
+  WITHOUT ROWID body 1100: P 1107, local 489, cell 495, overflow pages 1; as a rowid table: overflow pages 0
+  WITHOUT ROWID body 1160: P 1167, local 489, cell 495, overflow pages 1; as a rowid table: overflow pages 0
+  blob_without_rowid, body 980 bytes, 2,000 rows
+  rows 2000, body bytes 1960000, page size 4096
+  predicted: table b-tree 401 leaf + 103 interior + 0 overflow pages, file 505 pages = 2068480 bytes
+  measured:  table b-tree 401 leaf + 103 interior + 0 overflow pages, file 505 pages = 2068480 bytes, unused in b-tree pages 75467
+  table b-tree bytes per body byte: 1.0533
+  blob_rowid, body 980 bytes, 2,000 rows
+  rows 2000, body bytes 1960000, page size 4096
+  predicted: table b-tree 500 leaf + 1 interior + 0 overflow pages, file 502 pages = 2056192 bytes
+  measured:  table b-tree 500 leaf + 1 interior + 0 overflow pages, file 502 pages = 2056192 bytes, unused in b-tree pages 64250
+  table b-tree bytes per body byte: 1.0470
+  blob_without_rowid, body 1100 bytes, 2,000 rows
+  rows 2000, body bytes 2200000, page size 4096
+  predicted: table b-tree 250 leaf + 36 interior + 2000 overflow pages, file 2287 pages = 9367552 bytes
+  measured:  table b-tree 250 leaf + 36 interior + 2000 overflow pages, file 2287 pages = 9367552 bytes, unused in b-tree pages 174028
+  table b-tree bytes per body byte: 4.2561
+  blob_rowid, body 1100 bytes, 2,000 rows
+  rows 2000, body bytes 2200000, page size 4096
+  predicted: table b-tree 667 leaf + 3 interior + 0 overflow pages, file 671 pages = 2748416 bytes
+  measured:  table b-tree 667 leaf + 3 interior + 0 overflow pages, file 671 pages = 2748416 bytes, unused in b-tree pages 513789
+  table b-tree bytes per body byte: 1.2474
+
+== A5. metrics-payload-2026-10-09: the nonsparse fixture's payload b-tree, unpacked and packed by eight
+   3,295,691 sealed body bytes over 2,048 blocks is 1,609 bytes a body (metrics-layout baseline table)
+  rowid-baseline: 2,048 bodies of 1,609 bytes
+  rows 2048, body bytes 3295232, page size 4096
+  predicted: table b-tree 1024 leaf + 3 interior + 0 overflow pages, file 1028 pages = 4210688 bytes
+  measured:  table b-tree 1024 leaf + 3 interior + 0 overflow pages, file 1028 pages = 4210688 bytes, unused in b-tree pages 874658
+  table b-tree bytes per body byte: 1.2766
+  count8: 256 packs of 8 x 1,609 = 12,872 bytes
+  rows 256, body bytes 3295232, page size 4096
+  predicted: table b-tree 43 leaf + 1 interior + 768 overflow pages, file 813 pages = 3330048 bytes
+  measured:  table b-tree 43 leaf + 1 interior + 768 overflow pages, file 813 pages = 3330048 bytes, unused in b-tree pages 23264
+  table b-tree bytes per body byte: 1.0093
+   reported: rowid-baseline payload b-tree 4,206,592 bytes (1,027 pages), 0 overflow pages; rowid-compact-count8 3,325,952 bytes (812 pages), 768 overflow pages

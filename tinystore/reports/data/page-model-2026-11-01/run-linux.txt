@@ -1,0 +1,114 @@
+100/1190 configs, 4 s
+200/1190 configs, 7 s
+300/1190 configs, 10 s
+400/1190 configs, 13 s
+500/1190 configs, 17 s
+600/1190 configs, 20 s
+700/1190 configs, 21 s
+800/1190 configs, 22 s
+900/1190 configs, 25 s
+1000/1190 configs, 26 s
+1100/1190 configs, 29 s
+{
+ "environment": {
+  "configs": 1190,
+  "dbstat": true,
+  "finished_utc": "2026-10-31T23:48:45Z",
+  "machine": "x86_64",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "processor": "",
+  "python": "3.14.4",
+  "sqlite": "3.46.1",
+  "started_utc": "2026-10-31T23:48:12Z"
+ },
+ "groups": {
+  "meta": {
+   "configs": 10,
+   "dbstat_agrees": 10,
+   "dbstat_checked": 10,
+   "exact_page_count": 10,
+   "format_errors": 0,
+   "leaf_exact": 10,
+   "max_abs_page_diff": 0,
+   "overflow_exact": 10,
+   "sum_meas": 1708,
+   "sum_pred": 1708
+  },
+  "mixed": {
+   "configs": 7,
+   "dbstat_agrees": 7,
+   "dbstat_checked": 7,
+   "exact_page_count": 7,
+   "format_errors": 0,
+   "leaf_exact": 7,
+   "max_abs_page_diff": 0,
+   "overflow_exact": 7,
+   "sum_meas": 11646,
+   "sum_pred": 11646
+  },
+  "mixed_without_rowid": {
+   "configs": 7,
+   "dbstat_agrees": 7,
+   "dbstat_checked": 7,
+   "exact_page_count": 7,
+   "format_errors": 0,
+   "leaf_exact": 7,
+   "max_abs_page_diff": 0,
+   "overflow_exact": 7,
+   "sum_meas": 19224,
+   "sum_pred": 19224
+  },
+  "random_order": {
+   "configs": 6,
+   "dbstat_agrees": 6,
+   "dbstat_checked": 6,
+   "exact_page_count": 1,
+   "format_errors": 0,
+   "leaf_exact": 1,
+   "max_abs_page_diff": 18,
+   "overflow_exact": 6,
+   "sum_meas": 795,
+   "sum_pred": 742
+  },
+  "sweep": {
+   "configs": 580,
+   "dbstat_agrees": 580,
+   "dbstat_checked": 580,
+   "exact_page_count": 580,
+   "format_errors": 0,
+   "leaf_exact": 580,
+   "max_abs_page_diff": 0,
+   "overflow_exact": 580,
+   "sum_meas": 246362,
+   "sum_pred": 246362
+  },
+  "without_rowid": {
+   "configs": 290,
+   "dbstat_agrees": 290,
+   "dbstat_checked": 290,
+   "exact_page_count": 290,
+   "format_errors": 0,
+   "leaf_exact": 290,
+   "max_abs_page_diff": 0,
+   "overflow_exact": 290,
+   "sum_meas": 214133,
+   "sum_pred": 214133
+  },
+  "without_rowid_vacuum": {
+   "configs": 290,
+   "dbstat_agrees": 290,
+   "dbstat_checked": 290,
+   "exact_page_count": 290,
+   "format_errors": 0,
+   "leaf_exact": 290,
+   "max_abs_page_diff": 0,
+   "overflow_exact": 290,
+   "sum_meas": 212431,
+   "sum_pred": 212431
+  }
+ }
+}
+
+real	0m33.899s
+user	0m25.799s
+sys	0m7.637s

@@ -33,6 +33,7 @@ commit of its own and split past twice the mean, under 130,000 writes and a lang
 thousand rows or keys a commit, the writer held 92 ms at most where a whole pack held it a second.
 [Words and vectors out of the model's domain](search-hybrid-2026-10-16.md): Amazon's products and
 StackExchange, fusion by rank against a convex sum of scores, the words' hundred scored again, codes apart.
+[An exact page model of SQLite's files](page-model-2026-11-01.md): from SQLite's documented format, the pages a fresh file takes predicted from its rows' sizes, exact on 1,184 of 1,184 files on Windows and Linux, and the earlier rounds' file sizes explained by it.
 
 The 22–23 September architecture implementation rounds on
 `codex/architecture-measurements` measured intermediate uncommitted states.
