@@ -38,6 +38,9 @@ StackExchange, fusion by rank against a convex sum of scores, the words' hundred
 [MS MARCO without a clock](search-msmarco-2026-11-01.md): the compact blocks beside FTS5, Tantivy, PISA and
 Lucene on 8.8 million passages and one token stream, every top ten exact, effectiveness equal within a BM25
 variant, 3.18 bytes a posting against 1.61–2.11; the timing and writing harnesses written, not yet run.
+[MS MARCO's queries timed, in WSL2's containers](search-msmarco-timing-2026-11-01.md): one query at a time, cold and warm,
+the compact blocks' p99 3.0–3.5 times Tantivy's and their p50 4.8 times, PISA and Lucene under Tantivy, FTS5
+four seconds a query; H2.1 fails on this machine, bare Linux still to run.
 
 The 22–23 September architecture implementation rounds on
 `codex/architecture-measurements` measured intermediate uncommitted states.
