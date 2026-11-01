@@ -1,0 +1,66 @@
+/perf/msmarco:
+total 9176388
+drwxr-xr-x    9 root     root          4096 Nov  1 01:13 .
+drwxr-xr-x    5 root     root          4096 Nov  1 00:36 ..
+drwxr-xr-x    2 root     root          4096 Nov  1 01:02 answers
+drwxr-xr-x    3 root     root          4096 Nov  1 01:13 churn
+-rw-r--r--    1 root     root           311 Nov  1 00:39 collection.json
+-rw-r--r--    1 root     root     1419988992 Nov  1 00:45 compact.db
+-rw-r--r--    1 root     root         32768 Nov  1 01:02 compact.db-shm
+-rw-r--r--    1 root     root             0 Nov  1 01:02 compact.db-wal
+-rw-r--r--    1 root     root     1506238464 Nov  1 00:48 fts5.db
+-rw-r--r--    1 root     root         32768 Nov  1 01:02 fts5.db-shm
+-rw-r--r--    1 root     root             0 Nov  1 01:02 fts5.db-wal
+drwxr-xr-x    2 root     root          4096 Nov  1 00:47 lucene
+-rw-r--r--    1 root     root     1392077168 Nov  1 00:39 msmarco.docs
+-rw-r--r--    1 root     root      69623474 Nov  1 00:38 msmarco.documents
+-rw-r--r--    1 root     root     1392077160 Nov  1 00:39 msmarco.freqs
+-rw-r--r--    1 root     root      35367296 Nov  1 00:38 msmarco.sizes
+-rw-r--r--    1 root     root      24885509 Nov  1 00:38 msmarco.terms
+-rw-r--r--    1 root     root     539125097 Nov  1 00:44 pisa.block_simdbp.idx
+-rw-r--r--    1 root     root     146455400 Nov  1 00:44 pisa.bm25.bmw
+-rw-r--r--    1 root     root     131516251 Nov  1 00:44 pisa.doclex
+-rw-r--r--    1 root     root      42147322 Nov  1 00:44 pisa.termlex
+drwxr-xr-x    2 root     root          4096 Nov  1 01:02 q
+drwxr-xr-x    2 root     root          4096 Nov  1 01:17 tantivy
+drwxr-xr-x    2 root     root          4096 Nov  1 00:47 tantivy-keyed
+drwxr-xr-x    3 root     root          4096 Nov  1 01:07 timing
+-rw-r--r--    1 root     root     2696975853 Nov  1 00:38 tokens.tsv
+
+/perf/msmarco/lucene:
+total 982864
+drwxr-xr-x    2 root     root          4096 Nov  1 00:47 .
+drwxr-xr-x    9 root     root          4096 Nov  1 01:13 ..
+-rw-r--r--    1 root     root           495 Nov  1 00:46 _2.fdm
+-rw-r--r--    1 root     root        118895 Nov  1 00:46 _2.fdt
+-rw-r--r--    1 root     root          3069 Nov  1 00:46 _2.fdx
+-rw-r--r--    1 root     root           248 Nov  1 00:47 _2.fnm
+-rw-r--r--    1 root     root       8841882 Nov  1 00:46 _2.nvd
+-rw-r--r--    1 root     root           103 Nov  1 00:46 _2.nvm
+-rw-r--r--    1 root     root           582 Nov  1 00:47 _2.si
+-rw-r--r--    1 root     root     522695681 Nov  1 00:47 _2_Lucene104_0.doc
+-rw-r--r--    1 root     root     432155845 Nov  1 00:47 _2_Lucene104_0.pos
+-rw-r--r--    1 root     root           112 Nov  1 00:47 _2_Lucene104_0.psm
+-rw-r--r--    1 root     root      24424859 Nov  1 00:47 _2_Lucene104_0.tim
+-rw-r--r--    1 root     root        444667 Nov  1 00:47 _2_Lucene104_0.tip
+-rw-r--r--    1 root     root           188 Nov  1 00:47 _2_Lucene104_0.tmd
+-rw-r--r--    1 root     root      17695067 Nov  1 00:47 _2_Lucene90_0.dvd
+-rw-r--r--    1 root     root           158 Nov  1 00:47 _2_Lucene90_0.dvm
+-rw-r--r--    1 root     root            78 Nov  1 00:47 _2_Lucene90_0.dvs
+-rw-r--r--    1 root     root           155 Nov  1 00:47 segments_1
+-rw-r--r--    1 root     root             0 Nov  1 00:45 write.lock
+
+/perf/msmarco/tantivy:
+total 1044708
+drwxr-xr-x    2 root     root          4096 Nov  1 01:17 .
+drwxr-xr-x    9 root     root          4096 Nov  1 01:13 ..
+-rw-------    1 root     root           258 Nov  1 01:17 .managed.json
+-rw-r--r--    1 root     root             0 Nov  1 01:16 .tantivy-meta.lock
+-rw-r--r--    1 root     root             0 Nov  1 01:12 .tantivy-writer.lock
+-rw-r--r--    1 root     root        168752 Nov  1 01:17 c5e3025718414ba8ae8c614afe698a0a.fast
+-rw-r--r--    1 root     root       8841928 Nov  1 01:16 c5e3025718414ba8ae8c614afe698a0a.fieldnorm
+-rw-r--r--    1 root     root     546887136 Nov  1 01:17 c5e3025718414ba8ae8c614afe698a0a.idx
+-rw-r--r--    1 root     root     448196203 Nov  1 01:17 c5e3025718414ba8ae8c614afe698a0a.pos
+-rw-r--r--    1 root     root      35579429 Nov  1 01:17 c5e3025718414ba8ae8c614afe698a0a.store
+-rw-r--r--    1 root     root      30066469 Nov  1 01:17 c5e3025718414ba8ae8c614afe698a0a.term
+-rw-------    1 root     root           711 Nov  1 01:17 meta.json

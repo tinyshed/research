@@ -1,0 +1,52 @@
+2026-11-01T00:35:39Z
+400000 passages, 272191 terms, 9 s
+800000 passages, 443084 terms, 18 s
+1200000 passages, 593694 terms, 27 s
+1600000 passages, 730140 terms, 37 s
+2000000 passages, 855846 terms, 46 s
+2400000 passages, 974914 terms, 54 s
+2800000 passages, 1090138 terms, 63 s
+3200000 passages, 1199279 terms, 73 s
+3600000 passages, 1303415 terms, 84 s
+4000000 passages, 1405322 terms, 92 s
+4400000 passages, 1504597 terms, 101 s
+4800000 passages, 1601139 terms, 109 s
+5200000 passages, 1696270 terms, 117 s
+5600000 passages, 1788706 terms, 126 s
+6000000 passages, 1878693 terms, 137 s
+6400000 passages, 1998744 terms, 147 s
+6800000 passages, 2084858 terms, 157 s
+7200000 passages, 2167799 terms, 167 s
+7600000 passages, 2240156 terms, 175 s
+8000000 passages, 2315853 terms, 183 s
+8400000 passages, 2385375 terms, 191 s
+8800000 passages, 2458447 terms, 197 s
+{"analyzed_seconds":198.57202445,"average_length":57.19762983267138,"documents":8841823,"longest_token_bytes":249,"memory":{"hwm_kib":3288652,"rss_kib":551580},"postings":345553319,"reanalyzed":8842,"reanalyzed_changed":0,"seconds":222.043169581,"step":"prepare","terms":2465971,"threads":6,"tokens":505731319}
+{"sets":{"dev":{"empty":0,"mean_terms":5.830515759312321,"queries":6980,"terms":40697,"unknown_terms":32},"dl19":{"empty":0,"mean_terms":5.325581395348837,"queries":43,"terms":229,"unknown_terms":1},"dl20":{"empty":0,"mean_terms":5.962962962962963,"queries":54,"terms":322,"unknown_terms":0},"sample":{"empty":0,"mean_terms":5.776663628076572,"queries":1097,"terms":6337,"unknown_terms":5}},"step":"queries"}
+/perf/msmarco:
+total 5479536
+drwxr-xr-x 3 root root       4096 Nov  1 00:39 .
+drwxr-xr-x 5 root root       4096 Nov  1 00:36 ..
+-rw-r--r-- 1 root root        311 Nov  1 00:39 collection.json
+-rw-r--r-- 1 root root 1392077168 Nov  1 00:39 msmarco.docs
+-rw-r--r-- 1 root root   69623474 Nov  1 00:38 msmarco.documents
+-rw-r--r-- 1 root root 1392077160 Nov  1 00:39 msmarco.freqs
+-rw-r--r-- 1 root root   35367296 Nov  1 00:38 msmarco.sizes
+-rw-r--r-- 1 root root   24885509 Nov  1 00:38 msmarco.terms
+drwxr-xr-x 2 root root       4096 Nov  1 00:39 q
+-rw-r--r-- 1 root root 2696975853 Nov  1 00:38 tokens.tsv
+
+/perf/msmarco/q:
+total 752
+drwxr-xr-x 2 root root   4096 Nov  1 00:39 .
+drwxr-xr-x 3 root root   4096 Nov  1 00:39 ..
+-rw-r--r-- 1 root root 364818 Nov  1 00:39 dev.pisa
+-rw-r--r-- 1 root root 266692 Nov  1 00:39 dev.tsv
+-rw-r--r-- 1 root root   2071 Nov  1 00:39 dl19.pisa
+-rw-r--r-- 1 root root   1598 Nov  1 00:39 dl19.tsv
+-rw-r--r-- 1 root root   2871 Nov  1 00:39 dl20.pisa
+-rw-r--r-- 1 root root   2099 Nov  1 00:39 dl20.tsv
+-rw-r--r-- 1 root root    409 Nov  1 00:39 queries.json
+-rw-r--r-- 1 root root  56882 Nov  1 00:39 sample.pisa
+-rw-r--r-- 1 root root  41577 Nov  1 00:39 sample.tsv
+2026-11-01T00:39:22Z

@@ -1,0 +1,292 @@
+{
+ "postings": 345553319,
+ "postings_counted": {
+  "prepare": 345553319,
+  "compact": 345553319,
+  "fts5": 345553319,
+  "tantivy": 345553319,
+  "lucene": 345553319
+ },
+ "engines": {
+  "compact": {
+   "objects": [
+    {
+     "object": "cblob",
+     "role": "blocks: documents and frequencies",
+     "bytes": 912347136
+    },
+    {
+     "object": "docs",
+     "role": "document keys",
+     "bytes": 165687296
+    },
+    {
+     "object": "sqlite_autoindex_docs_1",
+     "role": "document keys",
+     "bytes": 155262976
+    },
+    {
+     "object": "ckeys",
+     "role": "keys, directories, short lists inline",
+     "bytes": 115843072
+    },
+    {
+     "object": "norms",
+     "role": "lengths",
+     "bytes": 70819840
+    },
+    {
+     "object": "stats",
+     "role": "statistics",
+     "bytes": 4096
+    },
+    {
+     "object": "sqlite_schema",
+     "role": "metadata, empty tables",
+     "bytes": 4096
+    },
+    {
+     "object": "head_by_key",
+     "role": "metadata, empty tables",
+     "bytes": 4096
+    },
+    {
+     "object": "head",
+     "role": "metadata, empty tables",
+     "bytes": 4096
+    },
+    {
+     "object": "gone",
+     "role": "metadata, empty tables",
+     "bytes": 4096
+    },
+    {
+     "object": "cpos",
+     "role": "metadata, empty tables",
+     "bytes": 4096
+    }
+   ],
+   "query": 1099014144,
+   "positions": 0,
+   "whole": 1419984896
+  },
+  "fts5": {
+   "objects": [
+    {
+     "object": "idx_data",
+     "role": "postings with positions, term dictionary",
+     "bytes": 1329692672
+    },
+    {
+     "object": "idx_docsize",
+     "role": "lengths",
+     "bytes": 122458112
+    },
+    {
+     "object": "idx_idx",
+     "role": "segment index",
+     "bytes": 794624
+    },
+    {
+     "object": "sqlite_schema",
+     "role": "metadata, empty tables",
+     "bytes": 4096
+    },
+    {
+     "object": "idx_config",
+     "role": "statistics",
+     "bytes": 4096
+    }
+   ],
+   "query": 1452949504,
+   "positions": 0,
+   "whole": 1452953600
+  },
+  "tantivy": {
+   "objects": [
+    {
+     "object": "idx",
+     "role": "documents and frequencies, skips, block maxima",
+     "bytes": 546887136
+    },
+    {
+     "object": "pos",
+     "role": "positions",
+     "bytes": 448196203
+    },
+    {
+     "object": "store",
+     "role": "document store, empty",
+     "bytes": 35579429
+    },
+    {
+     "object": "term",
+     "role": "term dictionary",
+     "bytes": 30066469
+    },
+    {
+     "object": "fieldnorm",
+     "role": "lengths",
+     "bytes": 8841928
+    },
+    {
+     "object": "fast",
+     "role": "document keys",
+     "bytes": 168752
+    },
+    {
+     "object": "json",
+     "role": "metadata, empty tables",
+     "bytes": 969
+    },
+    {
+     "object": "lock",
+     "role": "metadata, empty tables",
+     "bytes": 0
+    }
+   ],
+   "query": 585795533,
+   "positions": 448196203,
+   "whole": 1069740886
+  },
+  "lucene": {
+   "objects": [
+    {
+     "object": "doc",
+     "role": "documents and frequencies, skips, impacts",
+     "bytes": 522695681
+    },
+    {
+     "object": "pos",
+     "role": "positions",
+     "bytes": 432155845
+    },
+    {
+     "object": "tim",
+     "role": "term dictionary",
+     "bytes": 24424859
+    },
+    {
+     "object": "dvd",
+     "role": "document keys",
+     "bytes": 17695067
+    },
+    {
+     "object": "nvd",
+     "role": "lengths",
+     "bytes": 8841882
+    },
+    {
+     "object": "tip",
+     "role": "term dictionary",
+     "bytes": 444667
+    },
+    {
+     "object": "fdt",
+     "role": "document store, empty",
+     "bytes": 118895
+    },
+    {
+     "object": "fdx",
+     "role": "document store, empty",
+     "bytes": 3069
+    },
+    {
+     "object": "si",
+     "role": "metadata, empty tables",
+     "bytes": 582
+    },
+    {
+     "object": "fdm",
+     "role": "document store, empty",
+     "bytes": 495
+    },
+    {
+     "object": "fnm",
+     "role": "metadata, empty tables",
+     "bytes": 248
+    },
+    {
+     "object": "tmd",
+     "role": "term dictionary",
+     "bytes": 188
+    },
+    {
+     "object": "dvm",
+     "role": "document keys",
+     "bytes": 158
+    },
+    {
+     "object": "segments_1",
+     "role": "metadata, empty tables",
+     "bytes": 155
+    },
+    {
+     "object": "psm",
+     "role": "documents and frequencies, skips, impacts",
+     "bytes": 112
+    },
+    {
+     "object": "nvm",
+     "role": "lengths",
+     "bytes": 103
+    },
+    {
+     "object": "dvs",
+     "role": "document keys",
+     "bytes": 78
+    },
+    {
+     "object": "lock",
+     "role": "metadata, empty tables",
+     "bytes": 0
+    }
+   ],
+   "query": 556407492,
+   "positions": 432155845,
+   "whole": 1006382084
+  },
+  "pisa": {
+   "objects": [
+    {
+     "object": "index",
+     "role": "documents and frequencies",
+     "bytes": 539125097
+    },
+    {
+     "object": "wand",
+     "role": "block maxima, lengths, term statistics",
+     "bytes": 146455400
+    },
+    {
+     "object": "doclex",
+     "role": "document keys",
+     "bytes": 131516251
+    },
+    {
+     "object": "termlex",
+     "role": "term dictionary",
+     "bytes": 42147322
+    }
+   ],
+   "query": 727727819,
+   "positions": 0,
+   "whole": 859244070
+  }
+ },
+ "compact_columns": {
+  "step": "columns",
+  "engine": "compact",
+  "keys": 2465971,
+  "key_bytes": 27347180,
+  "directory_bytes": 15739372,
+  "inline_bytes": 24829263,
+  "keys_with_blocks": 143271,
+  "keys_inline": 2322700,
+  "postings": 345553319,
+  "postings_inline": 4823122,
+  "blocks": 2752140,
+  "block_payload_bytes": 772967147,
+  "sqlite": "3.46.1"
+ }
+}
