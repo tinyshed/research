@@ -63,7 +63,7 @@ JSON line a block length:
 
 | Codec | Name | Where |
 |---|---|---|
-| TinyStore's adaptive codec | `tinystore` | `tinystore/`, Go, against `../../source` |
+| TinyStore's adaptive codec | `tinystore` | `tinystore/`, Go, against `../../source-go` |
 | Gorilla | `gorilla` | `java/` |
 | Chimp, Chimp128 | `chimp`, `chimp128` | `java/` |
 | Elf | `elf` | `java/` |

@@ -16,6 +16,6 @@ require (
 )
 
 replace (
-	github.com/tinyshed/tinystore => ../source
-	github.com/tinyshed/tinystore/server => ../source/server
+	github.com/tinyshed/tinystore => ../source-go
+	github.com/tinyshed/tinystore/server => ../source-go/server
 )

@@ -20,7 +20,7 @@ From a clone of this repository:
 
 ```sh
 cd <repo>
-git submodule update --init tinystore/source
+git submodule update --init tinystore/source-go
 python3 tinystore/sqlite-bench/build_native.py
 cd tinystore/metrics-max-bench
 export SQLITE3_STATIC=1

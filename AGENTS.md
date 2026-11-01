@@ -13,7 +13,8 @@ this one repeats only where a measurement needs them.
 
 | Path | What it is |
 |---|---|
-| `tinystore/source/` | TinyStore, a submodule pinned to the commit the latest round measured |
+| `tinystore/source/` | TinyStore, a submodule at the commit of its `main` the latest round of its Rust code measured |
+| `tinystore/source-go/` | TinyStore at `e307c48`, its Go code before the Rust rewrite, a submodule the Go modules here build against |
 | `tinystore/reports/` | the dated rounds and their raw output in `data/`; `README.md` indexes them |
 | `tinystore/measurements.md` | every number the rounds settled on |
 | `tinystore/open-questions.md` | what is not built, and the gate each question must pass |
@@ -29,11 +30,18 @@ this one repeats only where a measurement needs them.
 
 ## How the code builds
 
+TinyStore's `main` is Rust since the rewrite reached it on 19 October 2026;
+its Go engines left the tree at its `4a70d8d`, naming `e81a050` their
+reference. `tinystore/source` follows `main`, and a round of the Rust code
+builds against it. The Go modules here measured the Go code, and keep it:
+`tinystore/source-go` stays at `e307c48`, the last Go commit any of them
+measured, and is not moved.
+
 Every Go module under `tinystore/` is named under
 `github.com/tinyshed/tinystore/`, because Go lets only a path under that
 prefix import TinyStore's `internal/`, whichever repository holds it. Each one
-`replace`s TinyStore with `../source` (or `../../source`), so it builds against
-the submodule's commit and nothing else.
+`replace`s TinyStore with `../source-go` (or `../../source-go`), so it builds
+against that commit and nothing else.
 
 ```sh
 git submodule update --init
@@ -41,9 +49,9 @@ cd tinystore/spike
 GOWORK=off TINYSTORE_SPIKE=1 go test -run <name> -v -count=1 .
 ```
 
-**The submodule's commit is part of the round.** Move it on purpose, with
-`git -C tinystore/source checkout <commit>`, fix what the move broke, and
-commit the new pointer with the round that measured it. A report names the
+**The submodule's commit is part of the round.** Move `tinystore/source` on
+purpose, with `git -C tinystore/source checkout <commit>`, fix what the move
+broke, and commit the new pointer with the round that measured it. A report names the
 TinyStore commit it measured; TinyStore never rewrites a commit a report
 cites, and neither do we here.
 

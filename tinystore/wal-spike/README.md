@@ -14,7 +14,7 @@ TMPDIR=<disk-backed-scratch> target/release/tinystore-wal-spike network
 ```
 
 `source-revision` pins the product worktree; `source/` is ignored. The old Go
-submodule at `../source` stays untouched. SQLite's research-only `dbpage`
+submodule at `../source-go` stays untouched. SQLite's research-only `dbpage`
 compile flag is needed for verification and page application, not capture.
 
 The capture checks native WAL salts and rolling checksums and emits complete

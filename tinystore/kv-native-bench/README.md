@@ -2,7 +2,7 @@
 
 This is retained research code for the [8 October round](../reports/kv-native-2026-10-08.md),
 not a production port. It builds the real public Go API from
-`../source` at `e307c48a40126aad0e2873b6bf3aaedef8115483`, and a synchronous
+`../source-go` at `e307c48a40126aad0e2873b6bf3aaedef8115483`, and a synchronous
 Rust slice using **stock rusqlite 0.40.1**, Rust 1.99.0 and the externally
 linked official SQLite 3.53.4 archive built by `../sqlite-bench/build_native.py`.
 That archive matches the Go backend's SQLite source and chosen compile options;
@@ -74,7 +74,7 @@ accounting domains.
 From a research clone, verify the source commit before mounting it:
 
 ```sh
-git -C <repo>/tinystore/source rev-parse HEAD
+git -C <repo>/tinystore/source-go rev-parse HEAD
 # Must be e307c48a40126aad0e2873b6bf3aaedef8115483.
 # Build the matched SQLite archive first, as sqlite-bench documents.
 ```

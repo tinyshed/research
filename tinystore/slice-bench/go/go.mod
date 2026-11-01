@@ -14,4 +14,4 @@ require (
 )
 
 // build.sh points this at the tree of the Go commit the round measures.
-replace github.com/tinyshed/tinystore => ../../source
+replace github.com/tinyshed/tinystore => ../../source-go

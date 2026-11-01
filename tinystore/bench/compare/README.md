@@ -1,7 +1,7 @@
 # Engine comparison harness
 
 This module builds against the repository's TinyStore submodule at
-`../../source`. The current pin is
+`../../source-go`. The current pin is
 `e307c48a40126aad0e2873b6bf3aaedef8115483`. Compile without running measurement
 loops:
 

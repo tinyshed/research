@@ -30,8 +30,8 @@ Initialize the repository submodule and select the measured production commit:
 
 ```sh
 cd "<repo>"
-git submodule update --init tinystore/source
-git -C tinystore/source checkout e307c48a40126aad0e2873b6bf3aaedef8115483
+git submodule update --init tinystore/source-go
+git -C tinystore/source-go checkout e307c48a40126aad0e2873b6bf3aaedef8115483
 cd tinystore/metrics-opt-bench
 python3 ../sqlite-bench/build_native.py
 export SQLITE3_STATIC=1

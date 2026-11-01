@@ -14,4 +14,4 @@ require (
 	golang.org/x/sys v0.48.0 // indirect
 )
 
-replace github.com/tinyshed/tinystore => ../../source
+replace github.com/tinyshed/tinystore => ../../source-go

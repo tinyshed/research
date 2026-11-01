@@ -10,13 +10,13 @@ Prerequisites: Linux amd64, Go 1.27.1, Rust 1.99.0, Python 3, GNU time,
 `taskset`, `lscpu`, a C compiler and `ar`, network access for pinned dependencies.
 Matplotlib is used only to regenerate the standalone figure.
 
-The Go module imports TinyStore through `../../source`. Initialize the
+The Go module imports TinyStore through `../../source-go`. Initialize the
 repository submodule and select the measured commit before reproducing:
 
 ```sh
 cd "<repo>"
-git submodule update --init tinystore/source
-git -C tinystore/source checkout e307c48a40126aad0e2873b6bf3aaedef8115483
+git submodule update --init tinystore/source-go
+git -C tinystore/source-go checkout e307c48a40126aad0e2873b6bf3aaedef8115483
 cd tinystore/metrics-bench
 ```
 

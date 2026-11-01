@@ -8,4 +8,4 @@ require github.com/tinyshed/tinystore v0.0.0
 
 require github.com/klauspost/compress v1.20.1 // indirect
 
-replace github.com/tinyshed/tinystore => ../../source
+replace github.com/tinyshed/tinystore => ../../source-go

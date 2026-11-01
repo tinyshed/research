@@ -9,13 +9,13 @@ Prerequisites: Linux amd64, Go 1.27.1, Rust 1.99.0, Python 3, a C compiler,
 `ar`, `taskset`, `lscpu`, and network access for pinned build dependencies.
 Keep the disk location and machine otherwise idle while measuring.
 
-The Go module uses `../../source` as its TinyStore checkout. For a fresh
+The Go module uses `../../source-go` as its TinyStore checkout. For a fresh
 copy of these artifacts, create that sibling checkout at the measured commit:
 
 ```sh
 cd "<repo>"
-git submodule update --init tinystore/source
-git -C tinystore/source checkout e307c48a40126aad0e2873b6bf3aaedef8115483
+git submodule update --init tinystore/source-go
+git -C tinystore/source-go checkout e307c48a40126aad0e2873b6bf3aaedef8115483
 cd tinystore/sqlite-bench
 ```
 

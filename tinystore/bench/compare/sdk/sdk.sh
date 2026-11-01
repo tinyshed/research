@@ -19,7 +19,7 @@ if [ -s "$out/sdk-kv.json" ]; then
 	echo "$(date -u +%H:%M:%S) have $out/sdk-kv.json" >> "$out/progress.txt"
 	exit 0
 fi
-go build -C ../../source/cmd/tinystore -o /tmp/tinystore . || exit 1
+go build -C ../../source-go/cmd/tinystore -o /tmp/tinystore . || exit 1
 export TINYSTORE_BIN=/tmp/tinystore
 if [ "${COMPARE_GO_MODES:-0}" = 1 ]; then
 	go build -o /tmp/compare-mode . || exit 1

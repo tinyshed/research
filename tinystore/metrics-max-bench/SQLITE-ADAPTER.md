@@ -47,7 +47,7 @@ and tests stopped throughout measurement.
 
 Mount this research checkout at `/src` and a persistent Linux volume at `/work`.
 Set `CARGO_HOME=/work/cargo`, `RUSTUP_HOME=/work/rustup`, `GOWORK=off` and
-`CGO_ENABLED=0`. Install Rust at those locations. Initialize `tinystore/source`
+`CGO_ENABLED=0`. Install Rust at those locations. Initialize `tinystore/source-go`
 at its pinned commit. From the host research checkout, archive the original
 Rust baseline without including current edits:
 

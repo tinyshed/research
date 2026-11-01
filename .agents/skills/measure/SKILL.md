@@ -11,9 +11,10 @@ payload beside file. This is how to keep them.
 
 ## Which TinyStore is measured
 
-`tinystore/source` is a checkout like any other, and every module here and
-`server-spike`'s binary build from it, so what it has checked out is what is
-measured.
+`tinystore/source` is TinyStore's `main`, its Rust code, a checkout like any
+other: a round of the Rust code builds from it, so what it has checked out is
+what is measured. The Go modules here and `server-spike`'s binary build from
+`tinystore/source-go`, the Go code at `e307c48`, which stays where it is.
 
 - **The pinned commit**: `git submodule update --init`.
 - **A later commit of TinyStore's `main`**: `git -C tinystore/source fetch`,

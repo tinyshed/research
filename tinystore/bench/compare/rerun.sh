@@ -11,7 +11,7 @@ out="${OUT:?OUT names the results directory}"
 engine="${ENGINE:?ENGINE names the round}"
 set -e
 go build -o /tmp/compare .
-go build -C ../../source/cmd/tinystore -o /tmp/tinystore .
+go build -C ../../source-go/cmd/tinystore -o /tmp/tinystore .
 set +e
 export TINYSTORE_BIN=/tmp/tinystore
 

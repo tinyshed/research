@@ -25,7 +25,7 @@ write returned once it is synced. The Rust side builds with CI's flags on
 Linux, `-DHAVE_FDATASYNC=1` among them. Each side keeps its own defaults
 otherwise: its readers, its group commit, its threads or goroutines.
 
-The Go module here builds against `../../source` like every other; the round
+The Go module here builds against `../../source-go` like every other; the round
 measures the Go commit `build.sh` names, whose tree it lays beside a copy of
 `go/` and points the copy's `replace` at. The submodule's pointer does not
 move with this round: every other module here builds against the Go tree.

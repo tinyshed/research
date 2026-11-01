@@ -72,7 +72,7 @@ With the prototype in a research checkout, Linux Go/Rust/Python, `taskset`
 and GNU time installed:
 
 ```sh
-git -C tinystore/source checkout {env['tinystore_commit']}
+git -C tinystore/source-go checkout {env['tinystore_commit']}
 cd tinystore/rust-spike
 GOWORK=off CGO_ENABLED=0 python3 run.py --passes 5 --seconds 0.15
 python3 render_report.py

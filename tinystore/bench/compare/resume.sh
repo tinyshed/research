@@ -5,7 +5,7 @@ set -eu
 
 out="${OUT:-results/2026-10-01}"
 baseline="${BASELINE_ROOT:-/baseline}"
-candidate="${CANDIDATE_ROOT:-../../source}"
+candidate="${CANDIDATE_ROOT:-../../source-go}"
 mkdir -p "$out"
 
 cp go.mod /tmp/compare-baseline.mod

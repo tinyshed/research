@@ -25,13 +25,13 @@ Use Linux with Go 1.27.1, Rust 1.99.0, Python 3, `taskset` and GNU `time`.
 There are no third-party Go, Rust or Python dependencies. Keep the machine
 quiet while timings run.
 
-The directory layout is `tinystore/source`, `tinystore/rust-spike` and
+The directory layout is `tinystore/source-go`, `tinystore/rust-spike` and
 `tinystore/reports`. In a research checkout, select the source commit:
 
 ```sh
 cd "<repo>"
-git submodule update --init tinystore/source
-git -C tinystore/source checkout e307c48a40126aad0e2873b6bf3aaedef8115483
+git submodule update --init tinystore/source-go
+git -C tinystore/source-go checkout e307c48a40126aad0e2873b6bf3aaedef8115483
 cd tinystore/rust-spike
 GOWORK=off CGO_ENABLED=0 python3 run.py --passes 5 --seconds 0.15
 ```

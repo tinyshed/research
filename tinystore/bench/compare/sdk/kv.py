@@ -17,7 +17,7 @@ import re
 import sys
 import time
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../../../source/sdk/python/src"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../../../source-go/sdk/python/src"))
 
 import tinystore  # noqa: E402
 
