@@ -26,6 +26,10 @@
 //! msmarco fields-answer <lab|lab-exhaustive|native|tantivy> <index> <queries> <results>
 //! msmarco fields-time <lab|native|tantivy> <index> <queries> <results> <warm|cold>
 //! ```
+//!
+//! FIELDS_EQUAL=1 weighs both fields 1.0 in `native` and `tantivy`, and asks
+//! Tantivy plain term queries, no `BoostQuery`: whether a boost costs Tantivy
+//! its block-max path is what it measures.
 
 use std::cell::RefCell;
 use std::cmp::Reverse;
@@ -50,6 +54,12 @@ pub const B: usize = 2;
 pub const BS: usize = 3;
 const EXPAND: usize = 32;
 const SEEDS: usize = 10;
+
+/// A field's weight: the lab's, or 1.0 under FIELDS_EQUAL=1.
+fn weight(field: usize) -> f64 {
+    static EQUAL: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
+    if *EQUAL.get_or_init(|| std::env::var("FIELDS_EQUAL").as_deref() == Ok("1")) { 1.0 } else { FIELDS[field].1 }
+}
 
 // --- the queries -------------------------------------------------------------
 
@@ -736,7 +746,7 @@ impl Native {
                 continue;
             }
             let row = id * 4 + field as i64;
-            let scale = FIELDS[field].1 * idf(self.documents, held[field] as u64);
+            let scale = weight(field) * idf(self.documents, held[field] as u64);
             let average = self.average[field];
             if held[field] as usize <= INLINE {
                 // A short list, whole: its bound and its seed from its postings.
@@ -1073,7 +1083,11 @@ impl Tant {
                     tantivy::Term::from_field_text(field_handle, &word),
                     IndexRecordOption::WithFreqs,
                 );
-                Box::new(BoostQuery::new(Box::new(term), FIELDS[field].1 as f32)) as Box<dyn Query>
+                if std::env::var("FIELDS_EQUAL").as_deref() == Ok("1") {
+                    Box::new(term) as Box<dyn Query>
+                } else {
+                    Box::new(BoostQuery::new(Box::new(term), weight(field) as f32)) as Box<dyn Query>
+                }
             })
             .collect();
         if clauses.is_empty() {

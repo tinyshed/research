@@ -18,6 +18,8 @@ lab) line=$(env LAB_EXECUTOR=window LAB_AHEAD=8 $bin fields-time lab $out/fields
 native) line=$($bin fields-time native $out/fields-native.db "$run/$set.tsv" "$results" "$mode") ;;
 native-nocache) line=$(env FIELDS_CACHE=0 $bin fields-time native $out/fields-native.db "$run/$set.tsv" "$results" "$mode") ;;
 tantivy) line=$($bin fields-time tantivy $out/fields-tantivy "$run/$set.tsv" "$results" "$mode") ;;
+tantivy-equal) line=$(env FIELDS_EQUAL=1 $bin fields-time tantivy $out/fields-tantivy "$run/$set.tsv" "$results" "$mode") ;;
+native-equal) line=$(env FIELDS_EQUAL=1 $bin fields-time native $out/fields-native.db "$run/$set.tsv" "$results" "$mode") ;;
 *) echo "no arm $arm" >&2; exit 2 ;;
 esac
 printf '{"arm":"%s","mode":"%s","round":%s,"set":"%s","started":"%s","ended":"%s","pass":%s}\n' \
