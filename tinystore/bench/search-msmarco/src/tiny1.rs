@@ -6,9 +6,10 @@
 //! keeps as they are, and English is not stemmed, so it indexes the stream
 //! as the other engines do.
 //!
-//! The build sets a thousand passages a commit while the store's
-//! background work merges their segments, as it does in a program, and
-//! merges what is left into one segment at the end, as `maintain` does;
+//! The build sets a thousand passages a commit, two sets in flight from
+//! two threads, while the store's background work merges their segments,
+//! as it does in a program, and merges what is left into one segment at
+//! the end, as `maintain` does;
 //! the store commits to the operating system alone, as the other engines'
 //! builds do. A search reads the ten hits' values too, which every search
 //! of TinyStore does.
@@ -41,23 +42,36 @@ pub fn build(dir: &Path, store_dir: &Path) -> Value {
     let input = BufReader::with_capacity(1 << 22, File::open(dir.join("tokens.tsv")).unwrap());
     let mut batch: Vec<(String, String)> = Vec::with_capacity(BATCH);
     let mut rows = 0u64;
-    let flush = |batch: &mut Vec<(String, String)>| {
-        index.set_many(batch.iter().map(|(id, tokens)| (id.as_str(), tokens))).unwrap();
-        batch.clear();
-    };
-    for line in input.lines() {
-        let line = line.unwrap();
-        let (pid, tokens) = line.split_once('\t').unwrap();
-        batch.push((pid.to_owned(), tokens.to_owned()));
-        rows += 1;
-        if batch.len() == BATCH {
-            flush(&mut batch);
+    // sets in flight at once, each a thread: the next set's words read while one commits, as
+    // tantivy's arm reads the next document while its indexing thread indexes; TINY_CALLERS=1 for one
+    let callers: usize = std::env::var("TINY_CALLERS").ok().and_then(|v| v.parse().ok()).unwrap_or(2);
+    let (send, receive) = std::sync::mpsc::sync_channel::<Vec<(String, String)>>(callers);
+    let receive = std::sync::Mutex::new(receive);
+    std::thread::scope(|scope| {
+        for _ in 0..callers {
+            scope.spawn(|| {
+                loop {
+                    let next = receive.lock().unwrap().recv();
+                    let Ok(batch) = next else { return };
+                    index.set_many(batch.iter().map(|(id, tokens)| (id.as_str(), tokens))).unwrap();
+                }
+            });
         }
-        if rows % 500_000 == 0 {
-            eprintln!("tinystore {rows} documents, {:.0} s, {}", started.elapsed().as_secs_f64(), written());
+        for line in input.lines() {
+            let line = line.unwrap();
+            let (pid, tokens) = line.split_once('\t').unwrap();
+            batch.push((pid.to_owned(), tokens.to_owned()));
+            rows += 1;
+            if batch.len() == BATCH {
+                send.send(std::mem::replace(&mut batch, Vec::with_capacity(BATCH))).unwrap();
+            }
+            if rows % 500_000 == 0 {
+                eprintln!("tinystore {rows} documents, {:.0} s, {}", started.elapsed().as_secs_f64(), written());
+            }
         }
-    }
-    flush(&mut batch);
+        send.send(std::mem::take(&mut batch)).unwrap();
+        drop(send);
+    });
     let setting = started.elapsed().as_secs_f64();
     tinystore::search::maintain(&store).unwrap();
     let seconds = started.elapsed().as_secs_f64();
@@ -66,7 +80,7 @@ pub fn build(dir: &Path, store_dir: &Path) -> Value {
     store.close().unwrap();
     drop(store);
     json!({"step": "build", "engine": "tinystore", "documents": rows, "seconds": seconds,
-        "set_seconds": setting, "merge_seconds": seconds - setting, "written": written(),
+        "callers": callers, "set_seconds": setting, "merge_seconds": seconds - setting, "written": written(),
         "objects": objects(&store_dir.join("search.db")),
         "postings": postings(&store_dir.join("search.db")), "memory": crate::memory()})
 }

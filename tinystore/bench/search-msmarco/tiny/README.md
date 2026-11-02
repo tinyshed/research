@@ -14,16 +14,20 @@ Changed after the hypotheses were written, before any search was timed: a
 first build, at `a5143eb1`, packed each key's postings onto its list where
 it lay, and each million passages took longer than the one before (292,
 475 and 659 s); it was stopped. The engine since keeps postings in
-segments a set writes one after another and merges join (`a3f9f915`), and
-the build below is of that engine.
+segments a set writes one after another and merges join (`a3f9f915`), made
+faster through the night of 2 November (`df8bfc1e`, `6e58e0e8`,
+`d2e65efd`), and the build below is of that engine, two sets in flight.
 
 ## What is built
 
 - `src/tiny1.rs`: an index of the token stream, a passage a document whose
-  value is its tokens, set a thousand a commit while the store's background
-  work merges their segments, as a program's does, then merged into one
-  segment by `search::maintain`; durability to the operating system, as the
-  other builds. A search is the query's terms joined by spaces, the ten
+  value is its tokens, set a thousand a commit from two threads, so that
+  one set's words are read while the other commits, as Tantivy's arm reads
+  the next document while its one indexing thread indexes
+  (`TINY_CALLERS=1` for one), while the store's background work merges
+  their segments, as a program's does, then merged into one segment by
+  `search::maintain`; durability to the operating system, as the other
+  builds. A search is the query's terms joined by spaces, the ten
   hits read with their values, as every TinyStore search reads them. Typo
   correction is off, as no other engine corrects.
 - `tiny/round.sh`: the steps, `tools`, `build`, `answers`, `timing`.
