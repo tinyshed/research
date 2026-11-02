@@ -94,6 +94,11 @@ panels, each panel with its own query or a reference to a shared one.
 - **The document is what an export is.** Exporting a dashboard writes this
   document with the shared queries it names; importing checks that their
   plugins and instances exist, by name and label.
+- **It is JSON wherever it goes** — stored, over the api and as a file
+  (chapter 11, decided 2 November). It names its schema and version in
+  `$schema`; a query's `sql` is a string or a list of lines; a dashboard and a
+  panel carry a `note` the interface shows as their description, which is what
+  a comment would have been.
 
 A flow is stored the same way (chapter 7): one document with its version,
 its history and its references, on the same machinery, with a schema of its

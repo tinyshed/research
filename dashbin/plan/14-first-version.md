@@ -161,7 +161,6 @@ nothing guesses it again.
   on one dashboard (chapter 9).
 - A thousand flows in `dashbin.db`, and a process killed inside a commit unit
   (chapters 4 and 7).
-- The TOML file's round trip over generated documents (chapter 11).
 
 ## Open
 

@@ -3,7 +3,8 @@
 **Status: draft, second round, 27 October 2026.** The first round went
 through one review, which kept its shape and sharpened `see`, `push` and the
 file; what it changed is listed under *Forks*. Nothing is agreed until Dmitry
-says so.
+says so, except what is marked decided: on 2 November, that a dashboard's
+file is the document's own JSON.
 
 Dashbin has one public surface, its api, and every client uses it: the
 browser, the command line, the terminal's `show`, a chat's bot. What the
@@ -101,24 +102,32 @@ repository is revoked by itself, is a step for later.
 
 ### A dashboard is a file
 
-The document a dashboard is (chapter 9) has a spelling for people: TOML, the
-same fields, so a dashboard lives in a repository beside the code it watches.
-The terminal draws it, the hub serves it, and the same file goes both ways.
+The document a dashboard is (chapter 9) is its file as well: the same JSON,
+so a dashboard lives in a repository beside the code it watches. The
+terminal draws it, the hub serves it, and the same file goes both ways.
 
-**Read and written exactly, and tested so.** TOML has no `null`, so the
-document has none either: a value that is absent is a field left out, which
-its schema says, and a visualization's options are nested tables. A test
-generates documents — every visualization's options among them, shared and
-own queries, empty lists — and checks that writing, reading and writing again
-gives the same bytes and the same document; it is a gate, because a file that
-loses a field on the way back is a dashboard that changes when nobody touched
-it.
+**One spelling, JSON — decided 2 November.** Dashboards are written by
+models and by the browser's editor far more than by hand, and the hub, the
+api, the browser and a model all speak the document's JSON already. A second
+spelling would be a second parser, a gate on its round trip and a language a
+model has to learn twice. TOML stays for what an operator writes by hand on a
+server: `dashbin.toml`, `agent.toml`.
+
+- **A query's SQL may be written as lines**: `sql` is a string or a list of
+  strings joined by newlines, as a notebook keeps a cell's source, so a query
+  reads and diffs line by line.
+- **A note instead of a comment**: a dashboard and a panel carry a `note`,
+  which the interface shows as their description. A comment in a file is lost
+  the first time someone saves from the browser; a note is part of the
+  document.
+- **The file names its schema** in `$schema`, with a version, so an editor
+  completes its fields and a wrong one is named by its path.
 
 ```
-dashbin pull revenue > revenue.dash.toml       # the hub's document, as a file
-dashbin show revenue.dash.toml --watch         # edit it, the terminal redraws on save
-dashbin diff revenue.dash.toml                 # what the hub would change
-dashbin push revenue.dash.toml                 # saved against the version it was pulled at
+dashbin pull revenue > revenue.dash.json       # the hub's document, as a file
+dashbin show revenue.dash.json --watch         # edit it, the terminal redraws on save
+dashbin diff revenue.dash.json                 # what the hub would change
+dashbin push revenue.dash.json                 # saved against the version it was pulled at
 ```
 
 `push` names the version it was pulled at; when the hub's has moved, it is
@@ -129,12 +138,12 @@ names instances by name or by a selector; a file made on a laptop names the
 laptop's. `push` resolves each against the hub:
 
 ```
-$ dashbin push app.dash.toml
-app.dash.toml reads:
+$ dashbin push app.dash.json
+app.dash.json reads:
   data          not on this hub        map it: --map data=tinystore-prod
   site=$site    10 instances match
 refused: one source has no instance here
-$ dashbin push app.dash.toml --map data=tinystore-prod
+$ dashbin push app.dash.json --map data=tinystore-prod
 ```
 
 A source that matches nothing is refused by name, with the instances that
@@ -161,7 +170,7 @@ tinystore at ./data
 │ ▂▁▁▅▁▁▁▂▁▁▁▃            │ │ 11:02 api  slow request  ms=1200        │
 └─────────────────────────┘ └──────────────────────────────────────────┘
 
-$ dashbin see ./data --save overview.dash.toml
+$ dashbin see ./data --save overview.dash.json
 ```
 
 - **What it knows and what it guesses are two kinds of panel, and it says
@@ -170,7 +179,7 @@ $ dashbin see ./data --save overview.dash.toml
   histogram a 95th percentile — a stream's fields, Dashbin's own datasets. A
   table in someone's database gives panels that are **guessed**: a time column
   is rows per day, a number column is offered as a sum. A guessed panel is
-  marked in the terminal and in the file it is saved to (`guessed = true`),
+  marked in the terminal and in the file it is saved to (`"guessed": true`),
   `push` says so, and its title is the column's name and never a meaning: `see`
   does not know which statuses are paid or whether refunds come off, and does
   not write "revenue". Chapter 9's suggestions choose how each is drawn. How
@@ -234,7 +243,7 @@ $ dashbin see ./data --save overview.dash.toml
   lets the person say what a column means — `amount` is in kopecks, paid is
   `status = 'paid'`, refunds are `status = 'refunded'` — and that is kept
   beside the instance: in the hub's metadata, or in the project's
-  `.dashbin/see.toml` without a hub. Panels built from a confirmed meaning are
+  `.dashbin/see.json` without a hub. Panels built from a confirmed meaning are
   known, not guessed, and nobody is asked twice.
 - **`--save` writes what it drew as a dashboard's file**, the start of one
   rather than a wizard.
@@ -250,7 +259,7 @@ r     a range        /      look for a name                   s  save as a dashb
 What was kept and dropped is remembered for that store: the next `see` of
 `./data` starts with the kept panels first and without the dropped ones, and
 offers only what is new since. It lives in a small file — beside the project,
-`.dashbin/see.toml`, which a team may commit, or in the user's own
+`.dashbin/see.json`, which a team may commit, or in the user's own
 configuration for a store with no project — and never in the store looked at.
 `s` saves the kept panels as a dashboard's file. What people keep and drop is
 also exactly what tells good guesses from bad ones, which is why chapter 14's
@@ -339,7 +348,7 @@ them, `show --watch` lets them fix two titles and a range in their editor, and
 
 ### Dashboards in a repository
 
-A team keeps `dashboards/*.dash.toml` beside its code. CI runs `dashbin diff`
+A team keeps `dashboards/*.dash.json` beside its code. CI runs `dashbin diff`
 on a pull request, so a reviewer sees what the hub would change, and
 `dashbin push` with a service account's token on merge; a push retried after a
 dropped connection carries its `Idempotency-Key` and saves once.
@@ -369,9 +378,10 @@ programme the hub revokes it by itself; until then the owner revokes it with
    for versions, `Idempotency-Key`, `RateLimit` headers, `Deprecation` and
    `Sunset`.
 5. **The browser gets the binary wire, everyone else a JSON line per message.**
-6. **Dashboards and flows as TOML files** with `pull`, `push` and `diff` —
-   kept, with no `null` in the document and a test that a file survives being
-   written, read and written again.
+6. **Dashboards and flows as files** with `pull`, `push` and `diff` — kept;
+   **their spelling changed on 2 November from TOML to the document's own
+   JSON**, decided with Dmitry: one spelling for the hub, the browser, the
+   file and a model, and no round trip to keep.
 7. **`see`, `show` and `query` without a hub**, from a project's file. Kept.
 8. **`see` and a built-in `tinystore` plugin** — kept, with known and guessed
    panels told apart, and its guesses measured before it is built.
@@ -386,13 +396,13 @@ a person keep and drop panels, and remembers it for that store.
 ## What it asks of other chapters
 
 - Chapter 3: the JSON line per message as the public spelling of a stream.
-- Chapter 4: a bucket that forgets for idempotency keys; a dashboard's
-  document spelled as TOML, read and written exactly.
+- Chapter 4: a bucket that forgets for idempotency keys.
 - Chapter 5: the run endpoint as both streams.
 - Chapter 6: the plugin's commands and its catalog; a built-in `tinystore`
   plugin.
 - Chapter 8: `dashbin agent run`.
-- Chapter 9: "copy as command", and the drawing `see` and `show` share.
+- Chapter 9: "copy as command", the drawing `see` and `show` share, and the
+  document's `sql` as lines, its `note` and its `$schema`.
 - Chapter 10: `dashbin login`, and the tokens' kinds.
 - Chapter 12: the verbs the binary takes are this chapter's map.
 - Chapter 13: the crate that derives the schema, the tests of the command
@@ -401,7 +411,6 @@ a person keep and drop panels, and remembers it for that store.
 ## Not checked yet
 
 - `see` on real stores, known and guessed apart — chapter 14's first round.
-- The TOML file's round trip over generated documents.
 - What the command line's drawing and the documentation page would add to the
   binary.
 - The JSON line stream against the binary wire for a refresh of twenty panels.
