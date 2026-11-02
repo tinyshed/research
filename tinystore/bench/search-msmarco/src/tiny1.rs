@@ -9,7 +9,8 @@
 //! The build sets a thousand passages a commit, two sets in flight from
 //! two threads, while the store's background work merges their segments,
 //! as it does in a program, and merges what is left into one segment at
-//! the end, as `maintain` does;
+//! the end, as `maintain` does, unless `TINY_MAINTAIN=0` leaves the
+//! segments as the background work left them, as a live index has them;
 //! the store commits to the operating system alone, as the other engines'
 //! builds do. A search reads the ten hits' values too, which every search
 //! of TinyStore does.
@@ -73,14 +74,19 @@ pub fn build(dir: &Path, store_dir: &Path) -> Value {
         drop(send);
     });
     let setting = started.elapsed().as_secs_f64();
-    tinystore::search::maintain(&store).unwrap();
+    let maintain = std::env::var("TINY_MAINTAIN").map_or(true, |v| v != "0");
+    if maintain {
+        tinystore::search::maintain(&store).unwrap();
+    }
     let seconds = started.elapsed().as_secs_f64();
-    eprintln!("tinystore {rows} documents, {seconds:.0} s, merged into one, {}", written());
+    let merged = if maintain { "merged into one" } else { "left as merged" };
+    eprintln!("tinystore {rows} documents, {seconds:.0} s, {merged}, {}", written());
     drop(index);
     store.close().unwrap();
     drop(store);
     json!({"step": "build", "engine": "tinystore", "documents": rows, "seconds": seconds,
-        "callers": callers, "set_seconds": setting, "merge_seconds": seconds - setting, "written": written(),
+        "callers": callers, "maintained": maintain, "segments": segments(&store_dir.join("search.db")),
+        "set_seconds": setting, "merge_seconds": seconds - setting, "written": written(),
         "objects": objects(&store_dir.join("search.db")),
         "postings": postings(&store_dir.join("search.db")), "memory": crate::memory()})
 }
@@ -101,6 +107,19 @@ fn objects(file: &Path) -> Value {
         .query_map([], |row| {
             Ok(json!({"name": row.get::<_, String>(0)?, "bytes": row.get::<_, i64>(1)?,
                 "pages": row.get::<_, i64>(2)?, "payload": row.get::<_, i64>(3)?}))
+        })
+        .unwrap();
+    Value::Array(rows.map(Result::unwrap).collect())
+}
+
+/// The index's segments, a count a level, as the build left them.
+fn segments(file: &Path) -> Value {
+    let connection = rusqlite::Connection::open(file).unwrap();
+    let mut select =
+        connection.prepare("select level, count(*), sum(docs) from _tinystore_search_segments group by level").unwrap();
+    let rows = select
+        .query_map([], |row| {
+            Ok(json!({"level": row.get::<_, i64>(0)?, "segments": row.get::<_, i64>(1)?, "docs": row.get::<_, i64>(2)?}))
         })
         .unwrap();
     Value::Array(rows.map(Result::unwrap).collect())

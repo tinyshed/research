@@ -30,7 +30,10 @@ faster through the night of 2 November (`df8bfc1e`, `6e58e0e8`,
   builds. A search is the query's terms joined by spaces, the ten
   hits read with their values, as every TinyStore search reads them. Typo
   correction is off, as no other engine corrects.
-- `tiny/round.sh`: the steps, `tools`, `build`, `answers`, `timing`.
+- `tiny/round.sh`: the steps, `tools`, `build`, `live`, `answers`, `timing`;
+  `live` builds the index as `build` does and leaves its segments as the
+  background work left them, `TINY_MAINTAIN=0`, which the timing's arm
+  `tinystore-live` searches; `DATA` names another round's directory.
 - `tiny/agree.py`: TinyStore's ten against compact's on the sample.
 
 TinyStore analyzes the tokens again; they are lower-case words already,

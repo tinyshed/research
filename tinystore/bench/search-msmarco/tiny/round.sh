@@ -6,16 +6,17 @@
 #
 #   sh tinystore/bench/search-msmarco/tiny/round.sh tools     # the msmarco binary, with TinyStore
 #   sh tinystore/bench/search-msmarco/tiny/round.sh build     # TinyStore's index of the token stream
+#   sh tinystore/bench/search-msmarco/tiny/round.sh live      # the same, its segments as background work left them
 #   sh tinystore/bench/search-msmarco/tiny/round.sh answers   # its ten for the sample, beside compact's
 #   sh tinystore/bench/search-msmarco/tiny/round.sh timing    # the arms, ROUNDS rounds (4)
 #
 # Passes are timing/pass.sh's, each container 2 CPUs and 6 GiB, warm, one
 # query at a time, the arms in one order and then the other; raw lines go
-# to tinystore/reports/data/search-tinystore-2026-11-02/.
+# to tinystore/reports/data/search-tinystore-2026-11-02/, or DATA's.
 set -eu
 export MSYS_NO_PATHCONV=1
 repo=$(pwd -W 2>/dev/null || pwd)
-data=tinystore/reports/data/search-tinystore-2026-11-02
+data=${DATA:-tinystore/reports/data/search-tinystore-2026-11-02}
 mkdir -p "$data/logs" "$data/answers"
 mounts="-v $repo:/src -v search-msmarco-cargo:/usr/local/cargo/registry -v search-msmarco-target:/target \
   -v search-msmarco-perf:/perf -e CARGO_TARGET_DIR=/target"
@@ -32,6 +33,11 @@ build)
     > "$data/logs/build-tinystore.jsonl"
   docker run --rm -v search-msmarco-perf:/perf alpine:3 ls -la $out/tinystore > "$data/logs/files.txt"
   cat "$data/logs/build-tinystore.jsonl"
+  ;;
+live)
+  docker run --rm $limits $mounts -e TINY_MAINTAIN=0 rust:1.99 sh -c     "rm -rf $out/tinystore-live; $bin build tinystore $out $out/tinystore-live" > "$data/logs/build-tinystore-live.jsonl"
+  docker run --rm -v search-msmarco-perf:/perf alpine:3 ls -la $out/tinystore-live > "$data/logs/files-live.txt"
+  cat "$data/logs/build-tinystore-live.jsonl"
   ;;
 answers)
   for engine in tinystore compact; do
@@ -61,7 +67,7 @@ timing)
   docker info --format '{"docker":"{{.ServerVersion}}","kernel":"{{.KernelVersion}}","cpus":{{.NCPU}},"memory":{{.MemTotal}}}' >> "$log"
   pass() {
     case "$1" in
-    compact | fast* | tantivy | tinystore)
+    compact | fast* | tantivy | tinystore*)
       docker run --rm $limits -v "$repo:/src:ro" -v search-msmarco-target:/target -v search-msmarco-perf:/perf \
         rust:1.99 sh $here/pass.sh "$1" warm "$2" all "$run" >> "$log"
       ;;

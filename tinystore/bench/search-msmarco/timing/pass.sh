@@ -32,6 +32,8 @@ fast4) line=$(env FAST2_TABLE=0 FAST2_WORDS=1 FAST2_WALK=1 FAST2_DIRECT=1 FAST2_
 fast4-cache) line=$(env FAST2_TABLE=0 FAST2_WORDS=1 FAST2_WALK=1 FAST2_DIRECT=1 FAST2_WINDOWS=1 FAST2_CACHE=1 /target/release/msmarco time fast2 $out/compact.db "$run/$set.tsv" "$results" "$mode") ;;
 tantivy) line=$(/target/release/msmarco time tantivy $out/tantivy "$run/$set.tsv" "$results" "$mode") ;;
 tinystore) line=$(/target/release/msmarco time tinystore $out/tinystore "$run/$set.tsv" "$results" "$mode") ;;
+# the index as a build's background merges left it, not merged into one
+tinystore-live) line=$(/target/release/msmarco time tinystore $out/tinystore-live "$run/$set.tsv" "$results" "$mode") ;;
 pisa-*)
   line=$(/pisa/driver/pass $out/pisa.block_simdbp.idx $out/pisa.bm25.bmw "$run/$set.pisa" "$results" \
     "${arm#pisa-}" "$mode")
