@@ -1,0 +1,214 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "probe",
+    "version": ""
+  },
+  "paths": {
+    "/api/v1/setup": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Setup"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Token"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/instances": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewInstance"
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/api/v1/run": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Run"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FrameJson"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ColumnJson": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "total": {
+            "description": "A decimal as its exact digits.",
+            "type": "string"
+          },
+          "values": {
+            "type": "array",
+            "items": true
+          }
+        },
+        "required": [
+          "name",
+          "values",
+          "total"
+        ]
+      },
+      "FrameJson": {
+        "type": "object",
+        "properties": {
+          "columns": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ColumnJson"
+            }
+          },
+          "truncated": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "columns",
+          "truncated"
+        ]
+      },
+      "NewInstance": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "placement": {
+            "$ref": "#/components/schemas/Placement"
+          },
+          "plugin": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "plugin",
+          "placement"
+        ]
+      },
+      "Placement": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "const": "hub"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "agent": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string",
+                "const": "agent"
+              }
+            },
+            "required": [
+              "kind",
+              "agent",
+              "id"
+            ]
+          }
+        ]
+      },
+      "Run": {
+        "type": "object",
+        "properties": {
+          "on": {
+            "type": "string"
+          },
+          "sql": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "on",
+          "sql"
+        ]
+      },
+      "Setup": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "login": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "login"
+        ]
+      },
+      "Token": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "token"
+        ]
+      }
+    }
+  }
+}
