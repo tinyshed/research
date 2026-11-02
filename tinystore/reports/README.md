@@ -47,6 +47,9 @@ Tantivy's p99 and 1.6 times its p50 in WSL2's containers, in 1.99 bytes a postin
 [Two fields and prefixes over ordinary SQLite tables](search-fields-2026-11-01.md): words as written and stems,
 the last word a prefix of 32 words; one dictionary row a word and lists by rowid pass Tantivy's p99, 0.73–0.78 of it,
 3.7 times faster than the lab's field-prefixed keys, in 1.99 bytes a posting against 3.13.
+[TinyStore's own search on MS MARCO](search-tinystore-2026-11-02.md): a build that wrote a page for each word a set
+held, stopped; postings in segments since, the 8.8 million passages built in 291 s with two sets in flight, p99 1.25–1.28
+times Tantivy's and 1.20–1.27 times `fast4-cache`'s, 1.75 bytes a posting, the same answers as the compact blocks.
 
 The 22–23 September architecture implementation rounds on
 `codex/architecture-measurements` measured intermediate uncommitted states.
