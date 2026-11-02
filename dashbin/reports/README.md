@@ -44,3 +44,6 @@ gives it, what its memory costs, and the plugin host it will carry.
   `see` held to chapter 14's bound on 36 PostgreSQL stores up to 32 million rows: no big table read whole,
   at most 9 000 rows a table a statement, 124.8 s of server time down to 1.36 s; 81 % of its numbers within 1 %,
   a quarter of its panels refused, distinct counts most of them.
+- [The api's schema from axum's handlers](openapi-2026-11-03.md):
+  utoipa and aide on three routes shaped as the hub's; a schema built at start costs +524 KB and +463 KB, built by a
+  test nothing; utoipa taken, its schema written by a test into a committed file.
