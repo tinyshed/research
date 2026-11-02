@@ -1,0 +1,25 @@
+    22.86%  [.] _RNvNtNtCsfAtv10qAPBl_9tinystore6search4read6ranked
+    20.67%  [.] _RNvXNtNtCsfAtv10qAPBl_9tinystore6search4readNtB2_6SourceNtNtB4_7execute5Fetch5block
+     9.77%  [.] _RNvNtNtCsfAtv10qAPBl_9tinystore6search6packed6unpack
+     3.82%  [.] _RNvNtNtCsfAtv10qAPBl_9tinystore6search7execute9next_from
+     3.33%  [.] _RNvMNtNtCsfAtv10qAPBl_9tinystore6search7executeNtB2_4List4seek
+     3.08%  [.] _RINvNtNtNtNtCskADBYZwJmSU_4core5slice4sort8unstable9quicksort9quicksortmNvYmNtNtBa_3cmp10PartialOrd2ltECsfAtv10qAPBl_9tinystore
+     2.79%  [k] _copy_to_iter
+     2.01%  [.] _RNvNtNtCsfAtv10qAPBl_9tinystore6search4read4onto
+     1.44%  [.] round
+     1.35%  [k] filemap_get_read_batch
+     1.22%  [k] xas_load
+     1.21%  [.] _RNvMNtNtCsfAtv10qAPBl_9tinystore6search7executeNtB2_4List3doc
+     1.09%  [.] __memmove_avx512_unaligned_erms
+     0.92%  [.] _int_malloc
+     0.84%  [k] filemap_read
+     0.84%  [.] _RNvNtNtCsfAtv10qAPBl_9tinystore6sqlite5mutex5leave
+     0.64%  [.] pcache1Fetch
+     0.62%  [.] ceil
+     0.59%  [.] malloc_consolidate
+     0.59%  [.] _RNvMs_NtNtCsfAtv10qAPBl_9tinystore6search4readNtB4_6Source5chunk
+     0.52%  [.] _RINvYNtNtNtCs8ZKwes1zzDd_3std4hash6random11RandomStateNtNtCskADBYZwJmSU_4core4hash11BuildHasher8hash_oneRNtNtBU_3any6TypeIdECsfAtv10qAPBl_9tinystore
+===
+{"engine":"tinystore","memory":{"hwm_kib":66156,"rss_kib":61284},"mode":"warm","open_ms":8.062387000000001,"queries":1097,"step":"time"}
+[ perf record: Woken up 3616 times to write data ]
+[ perf record: Captured and wrote 905.525 MB /perf/prof-q/q-tiny.data (57053 samples) ]

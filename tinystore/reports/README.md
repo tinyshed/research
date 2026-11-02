@@ -50,6 +50,9 @@ the last word a prefix of 32 words; one dictionary row a word and lists by rowid
 [TinyStore's own search on MS MARCO](search-tinystore-2026-11-02.md): a build that wrote a page for each word a set
 held, stopped; postings in segments since, the 8.8 million passages built in 291 s with two sets in flight, p99 1.25–1.28
 times Tantivy's and 1.20–1.27 times `fast4-cache`'s, 1.75 bytes a posting, the same answers as the compact blocks.
+[TinyStore's searches made fast](search-tinystore-queries-2026-11-02.md): a live index of 22 segments searches 1.03–1.13
+times as long as one merged; decoding and lengths read for every posting were the engine's cost beside the prototype's,
+and without them `60a5903c` takes p50 3.26–3.51 ms and p99 21.0–22.7, 1.37–1.49 and 0.74–0.82 times Tantivy's.
 
 The 22–23 September architecture implementation rounds on
 `codex/architecture-measurements` measured intermediate uncommitted states.

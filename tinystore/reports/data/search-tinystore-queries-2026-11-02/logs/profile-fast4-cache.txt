@@ -1,0 +1,25 @@
+    41.44%  [.] _RNvMs1_NtCsd33c1qLW15A_7msmarco5fast2NtB5_6Reader3top
+    10.66%  [.] _RNvMs0_NtCsd33c1qLW15A_7msmarco5fast2NtB5_6Cursor5score
+     7.55%  [.] _RNvNtCsd33c1qLW15A_7msmarco5fast212unpack_words
+     7.07%  [k] _copy_to_iter
+     4.27%  [.] _RINvNtNtNtNtCskADBYZwJmSU_4core5slice4sort8unstable9quicksort9quicksortmNvYmNtNtBa_3cmp10PartialOrd2ltECsdNSaqYobGBL_12datasketches
+     2.26%  [.] _RNvMs0_NtCsd33c1qLW15A_7msmarco5fast2NtB5_6Cursor4load
+     1.65%  [k] filemap_read
+     1.43%  [k] filemap_get_read_batch
+     1.23%  [.] accessPayload
+     0.98%  [k] atime_needs_update
+     0.98%  [.] __memmove_avx512_unaligned_erms
+     0.96%  [k] vfs_read
+     0.95%  [k] entry_SYSCALL_64
+     0.94%  [k] ext4_file_read_iter
+     0.86%  [.] pcache1Fetch
+     0.85%  [k] do_syscall_64
+     0.80%  [k] xas_load
+     0.78%  [k] x64_sys_call
+     0.63%  [.] _RINvNtNtNtNtCskADBYZwJmSU_4core5slice4sort6shared9smallsort25insertion_sort_shift_leftjNCINvMNtCsgFX3jaOk65H_5alloc5sliceSj7sort_byNCNvNtCsd33c1qLW15A_7msmarco5fast28windoweds1_0E0EB2b_
+     0.52%  [k] filemap_get_pages
+     0.50%  [.] pcache1FetchStage2
+===
+{"engine":"fast2","memory":{"hwm_kib":54372,"rss_kib":54372},"mode":"warm","open_ms":12.56987,"queries":1097,"step":"time"}
+[ perf record: Woken up 1906 times to write data ]
+[ perf record: Captured and wrote 476.504 MB /perf/prof-q/q-fast4.data (30025 samples) ]
