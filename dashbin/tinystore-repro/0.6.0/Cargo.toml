@@ -1,0 +1,10 @@
+[package]
+name = "ts-repro-060"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+tinystore = { version = "=0.6.0", default-features = false, features = ["config-load", "mcp"] }
+serde_json = "1"
+serde = { version = "1", features = ["derive"] }

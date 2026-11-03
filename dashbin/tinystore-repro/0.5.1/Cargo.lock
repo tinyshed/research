@@ -702,6 +702,7 @@ name = "ts-repro-051"
 version = "0.0.0"
 dependencies = [
  "serde",
+ "serde_json",
  "tinystore",
  "tracing",
  "tracing-subscriber",
