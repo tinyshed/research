@@ -1,0 +1,36 @@
+[package]
+name = "show-probe"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+# what dashbin show and dashbin mcp would add to the one binary: each variant beside a plain one that prints alike
+[features]
+ratatui = ["dep:ratatui-core", "dep:ratatui-widgets", "dep:terminal_size"]
+mcp = ["tinystore/mcp"]
+
+[dependencies]
+ratatui-core = { version = "0.1.2", optional = true }
+ratatui-widgets = { version = "0.3.2", optional = true }
+terminal_size = { version = "0.4", optional = true }
+tinystore = { version = "=0.6.0", default-features = false, features = ["config-load"] }
+serde_json = "1"
+
+[[bin]]
+name = "plain"
+
+[[bin]]
+name = "with_ratatui"
+required-features = ["ratatui"]
+
+[[bin]]
+name = "config_only"
+
+[[bin]]
+name = "with_mcp"
+required-features = ["mcp"]
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+strip = true
