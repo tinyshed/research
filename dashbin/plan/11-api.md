@@ -141,7 +141,7 @@ laptop's. `push` resolves each against the hub:
 $ dashbin push app.dash.json
 app.dash.json reads:
   data          not on this hub        map it: --map data=tinystore-prod
-  site=$site    10 instances match
+  site=@site    10 instances match
 refused: one source has no instance here
 $ dashbin push app.dash.json --map data=tinystore-prod
 ```
@@ -330,10 +330,11 @@ things, so running one is a verb of its own.
 
 ## Later
 
-- **`dashbin mcp`**: an MCP server over the same api, reads only, inside its
+- **`dashbin mcp` over a hub**: the same tools over the api, inside its
   token's limits, so an assistant can look at dashboards and data the way the
-  person who made the token can. TinyStore's command line has `tinystore mcp`;
-  Dashbin's would be the same shape.
+  person who made the token can. Its first form, built in slice 4 on 3
+  November, reads a project as `show` does, without a hub: TinyStore's own
+  server on stdin, its tools that write offered only as `--write` names them.
 - **Pictures in a terminal** through Sixel or kitty's protocol where one has
   them (chapter 9), and `--png` for a chat.
 

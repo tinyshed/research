@@ -126,16 +126,16 @@ shows what was approved and what is announced now, side by side. A title or
 a narrower `allow` is not a change; it is shown.
 
 **A new plugin version is checked against what uses it, not trusted again.**
-The greeting carries each instance's functions with their params and columns.
+The greeting carries each instance's functions with their args and columns.
 When they no longer fit a saved query or a flow that reaches the instance — a
-function gone, a parameter's type moved — those say so, by name, before a
+function gone, an argument's type moved — those say so, by name, before a
 call fails on them. A version whose functions still fit is shown and nothing
 else.
 
 **Labels are the hub's.** The operator's `labels` are a suggestion the admin
 sees when approving; what an instance is labelled — and therefore which
 selector reaches it — is decided on the hub, so an agent cannot announce
-itself into `site=$all`.
+itself into `site=@site`.
 
 Whether an agent is connected is the live registry's, held in memory and in
 no column, so no row says "unavailable" about a process that came back an
@@ -231,9 +231,9 @@ a binary one.
 
 | Direction | Message | Carries |
 |---|---|---|
-| agent → hub | `agent.hello` | the call protocol's versions it speaks, the frame wire's versions it writes, the binary's version, and the instances: id, title, plugin and version, its functions with their params and columns, what is allowed, suggested labels |
+| agent → hub | `agent.hello` | the call protocol's versions it speaks, the frame wire's versions it writes, the binary's version, and the instances: id, title, plugin and version, its functions with their args and columns, what is allowed, suggested labels |
 | hub → agent | `agent.welcome` | the call protocol's version and the frame wire's version the hub chose from those |
-| hub → agent | `call` | the call's id, the instance's id, the function, its typed params (chapter 5), `from`/`to`/`step`, what the hub asks for — rows, bytes, duration — and the call's first credit |
+| hub → agent | `call` | the call's id, the instance's id, the function, its args and the typed parameters they name (chapter 5), `from`/`to`/`step`, what the hub asks for — rows, bytes, duration — and the call's first credit |
 | hub → agent | `credit` | a call's id and how many more bytes it may send |
 | agent → hub | frames | binary messages: the call's id, then a message of chapter 3's wire — frame, batch, end or error |
 | agent → hub | result | an action's answer, as JSON |
@@ -358,7 +358,7 @@ Each server runs `dashbin agent run` with one `[instance.orders]` — `postgres`
 five, `mysql` on five — and a read-only user that sees the tables dashboards
 need. The admin adds ten agents on the hub, pastes each token into its
 server's file, approves ten announced instances and labels each `site=…`. A
-panel reads `revenue-by-day` on `site=$site`; the hub calls ten agents, one
+panel reads `revenue-by-day` on `site=@site`; the hub calls ten agents, one
 call each. `msk`'s agent is away: nine lines are drawn, the tenth is named,
 and the collector reads `msk`'s missed hours when it comes back (chapter 7).
 
@@ -409,7 +409,7 @@ queries and flows that use it; the WebSocket is kept, with the reason.
 - Chapter 4: agents, their tokens, and an instance's placement.
 - Chapter 5: a call on an agent carries what the hub asks for and its credit;
   an agent's calls share the budget for frames in flight.
-- Chapter 6: a process plugin honours credit; a plugin's functions, params
+- Chapter 6: a process plugin honours credit; a plugin's functions, args
   and columns are what `agent.hello` announces; a bundle has a hash an
   operator can pin.
 - Chapter 9: the agents page, approving what an agent announces, a changed

@@ -39,13 +39,13 @@ a plugin's function. An alert, written out:
   "name": "Failed payments",
   "trigger": { "every": "1m" },
   "steps": [
-    { "query": { "read": "stripe.charges", "on": "all", "params": { "status": "failed" },
+    { "query": { "read": "stripe.charges", "on": "all", "args": { "status": "failed" },
                  "calculate": { "values": { "id": { "op": "count", "as": "failed", "empty": "zero" } },
                                 "by": ["instance"] } },
       "window": "1h" },
     { "check": "failed > 5", "for": "10m" },
     { "action": "telegram-ops.send", "when": "state changed",
-      "params": { "text": "{{subject.instance}}: {{value}} failed payments in an hour, {{state}}" } }
+      "args": { "text": "{{subject.instance}}: {{value}} failed payments in an hour, {{state}}" } }
   ]
 }
 ```
@@ -67,7 +67,7 @@ A button, and a webhook:
 
 ```json
 { "name": "Refund", "trigger": { "click": "dashboard:payments" },
-  "steps": [ { "action": "stripe-eu.refund", "params": { "charge": "{{variables.charge}}" } } ] }
+  "steps": [ { "action": "stripe-eu.refund", "args": { "charge": "@charge" } } ] }
 
 { "name": "GitHub pushes", "trigger": { "webhook": "github.push" },
   "steps": [ { "keep": "deploys", "as": "events" } ] }
@@ -254,7 +254,7 @@ later.
 
 ## Buttons
 
-A button is a flow with a click trigger, placed on a dashboard. Its params
+A button is a flow with a click trigger, placed on a dashboard. Its args
 come from the dashboard's variables, within the values they allow (chapter
 5); it may ask for a confirmation first. Clicking needs the dashboard's
 `interact` permission, Go Dashbin's third permission, which exists for
@@ -267,7 +267,7 @@ and a second tab would anyway. So:
 - **An action declares what makes two calls the same operation**:
   `action({ once: ['charge'], idempotency: '24h' }, …)` for a refund — two
   refunds of one charge are one operation, whoever asks and from where. The
-  run's job id is the flow, the action and those params; TinyStore's
+  run's job id is the flow, the action and those args; TinyStore's
   `dedupe` makes a second request inside the window add nothing, and the
   same key goes to the provider as its idempotency key.
 - **An action that declares nothing** gets an id per request, made when the
@@ -325,7 +325,7 @@ flow, marked, rather than leaving it to fail every minute or to run as nobody.
 
 ### Revenue of ten sites, collected
 
-Every hour, `revenue-by-day` on `site=$all` into the series dataset
+Every hour, `revenue-by-day` on `site=@site`, `all` of them, into the series dataset
 `revenue`. At 13:00 the hub has been down since 10:40: the run due at 13:00
 reads each site from where that site's window ended, 10:00, to 13:00;
 `pg-msk`'s agent is away, so `msk` keeps its window end at 10:00 while the

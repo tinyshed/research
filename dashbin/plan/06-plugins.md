@@ -24,7 +24,7 @@ settings({ key: secret({ title: 'Secret key' }) })
 hosts('api.stripe.com')
 
 export const charges = read({
-  params: { status: text({ optional: true }) },
+  args: { status: text({ optional: true }) },
   columns: { amount: money('currency') },    // minor units; the currency is that column
   precision: 'second',                       // so the kernel hands this read whole seconds
 }, async ({ from, to, status }, { config, limit }) => {
@@ -40,7 +40,7 @@ export const charges = read({
 })
 
 export const refund = action({
-  params: { charge: text() },
+  args: { charge: text() },
 }, async ({ charge }, { config, id }) => {
   const stripe = new Stripe(config.key.reveal())
   const r = await stripe.refunds.create({ charge }, { idempotencyKey: id })
@@ -59,18 +59,20 @@ What each part is:
   as an alias (`read({ was: 'payments' }, …)`), or every saved query naming it
   breaks. A title is optional; translations live in `locales/ru.json`, keyed by
   the same ids.
-- **`params`** declares the function's own parameters, with chapter 3's
-  types, for the same reason a saved query declares its own (chapter 5): the
+- **`args`** declares the function's own arguments, with chapter 3's types,
+  for the same reason a saved query declares its parameters (chapter 5): the
   query editor builds its form from them and the kernel converts and refuses
-  by name.
+  by name. A document writes them under the read's `args`; a built-in SQL
+  plugin's `sql` read takes one, `sql`.
 - **`columns`** declares what a column cannot say by itself: a unit, money in
   minor units with its currency column (chapter 3), the type of a column that
   may come back empty.
 - **`precision`** is how finely the source takes a time; the kernel widens a
   finer range to it before the call and says so (chapter 5), which is why
   `from.getTime() / 1000` is whole here.
-- **The first argument** holds the parameters: the kernel's (`from`, `to`,
-  `fromUs`, `toUs`, `step`, `zone`) and the function's own, bound.
+- **The first argument** holds the kernel's parameters (`from`, `to`,
+  `fromUs`, `toUs`, `step`, `zone`) and the function's args, an arg written
+  as `@name` already replaced by its value.
 - **The second** holds the call's own values: `config` (this instance's
   settings, a secret as an object whose `reveal()` gives the text), `id` (the
   operation's id, below), `signal` (aborted when the call is cancelled, for
@@ -450,7 +452,7 @@ import { settings, hosts, secret, text, action, webhook } from 'dashbin'
 settings({ token: secret({ title: 'Bot token' }), hook: secret({ title: 'Webhook secret', optional: true }) })
 hosts('api.telegram.org')
 
-export const send = action({ params: { chat: text(), text: text() } }, async ({ chat, text }, { config }) => {
+export const send = action({ args: { chat: text(), text: text() } }, async ({ chat, text }, { config }) => {
   const r = await fetch(`https://api.telegram.org/bot${config.token.reveal()}/sendMessage`, {
     method: 'POST', headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ chat_id: chat, text, parse_mode: 'HTML' }),

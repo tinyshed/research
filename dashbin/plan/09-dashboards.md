@@ -43,30 +43,27 @@ each asset gzipped, once.
 
 ## A dashboard, as stored
 
-**A dashboard is one document**: its range, zone, variables and rows of
+**A dashboard is one document**: its range, zone, variables and a list of
 panels, each panel with its own query or a reference to a shared one.
 
 ```json
 {
-  "name": "Revenue",
+  "$schema": "https://tinyshed.org/dashbin/dashboard.v1.json",
+  "title": "Revenue",
   "range": "now-30d .. now",
   "zone": "Europe/Moscow",
   "refresh": "5m",
   "variables": [
     { "name": "site", "from": { "label": "site", "read": "postgres.sql" }, "multi": true, "default": "all" }
   ],
-  "rows": [
-    { "height": 2, "panels": [
-      { "width": 2, "title": "Total", "viz": "number",
-        "query": { "reads": [ { "read": "postgres.sql", "on": "site=$site", "sql": "…",
-                                "calculate": { "values": { "revenue": { "op": "sum" } }, "by": [] } } ] },
-        "thresholds": [ { "below": 100000, "state": "warn" } ] },
-      { "width": 1, "title": "Orders today", "viz": "number", "repeat": "site",
-        "query": { "shared": "orders-today" } }
-    ] },
-    { "height": 4, "panels": [
-      { "width": 6, "title": "Revenue by day", "viz": "line", "query": { "shared": "revenue-by-day" } }
-    ] }
+  "panels": [
+    { "width": 2, "height": 2, "title": "Total", "viz": "number",
+      "query": { "reads": [ { "read": "postgres.sql", "on": "site=@site", "args": { "sql": "…" },
+                              "calculate": { "values": { "revenue": { "op": "sum" } }, "by": [] } } ] },
+      "thresholds": [ { "below": 100000, "state": "warn" } ] },
+    { "width": 1, "height": 2, "title": "Orders today", "viz": "number", "repeat": "site",
+      "query": { "shared": "orders-today" } },
+    { "width": 6, "height": 4, "title": "Revenue by day", "viz": "line", "query": { "shared": "revenue-by-day" } }
   ]
 }
 ```
@@ -96,7 +93,8 @@ panels, each panel with its own query or a reference to a shared one.
   plugins and instances exist, by name and label.
 - **It is JSON wherever it goes** — stored, over the api and as a file
   (chapter 11, decided 2 November). It names its schema and version in
-  `$schema`; a query's `sql` is a string or a list of lines; a dashboard and a
+  `$schema`, and carries a `title`: its name is the file's or the hub's,
+  `revenue` for `dashboards/revenue.dash.json`; a read's `sql` is a string or a list of lines; a dashboard and a
   panel carry a `note` the interface shows as their description, which is what
   a comment would have been.
 
@@ -124,16 +122,23 @@ alert that must move together.
 
 ## The grid
 
-**A dashboard is rows of panels on six columns**, as the design brief and Go
-Dashbin have it: six is the whole width, three a half, two a third, one a
-narrow number. A row has a height; a panel in it has a width, and the widths
-of a row add up to six at most.
+**A dashboard is a list of panels on six columns**, as the design brief and
+Go Dashbin have it: six is the whole width, three a half, two a third, one a
+narrow number. Panels flow as words do: each takes its width on the current
+line when it fits there and starts the next line when it does not, and a
+line is as tall as its tallest panel. A width left out is six.
 
-- **Rows, not coordinates.** Panels cannot overlap, the order on a phone is
-  the order of the rows, and dragging moves a panel within its row or to
-  another.
-- **On a narrow screen a row that does not fit wraps; on a phone every panel
-  takes the whole width**, in reading order. The column count is CSS, never an
+Decided with Dmitry on 3 November, against rows of panels: a row bought a
+forced break and a shared height, and cost a model a level of nesting, an
+error of its own — widths over six — and two lists to edit to move one panel.
+
+- **A space is a panel**, `{ "viz": "space", "width": 2 }`: it holds columns
+  empty, which is what a forced break was for. It has no title and no query,
+  and a phone or a narrow terminal leaves it out.
+- **Order, not coordinates.** Panels cannot overlap, the order on a phone is
+  the order of the list, and dragging moves a panel in it.
+- **On a narrow screen lines wrap sooner; on a phone every panel takes the
+  whole width**, in the list's order. The column count is CSS, never an
   inline style: an inline custom property outranks every media query, and Go
   Dashbin's six columns stayed six on a phone.
 - **Editing is on a desktop.** A phone reads a dashboard and does not
@@ -167,7 +172,7 @@ as a selector, and it feeds every panel's query that names it.
 | a query's answer | `status`: the distinct statuses of payments |
 
 - **`all` is a value written out**, and so is a variable holding several:
-  `site=$site` with `all` reaches every site's instance, the eleventh included
+  `site=@site` with `all` reaches every site's instance, the eleventh included
   (chapter 5).
 - **A viewer picks only what the variable allows**, checked on the hub before
   anything runs (chapter 5); the selector in the browser is a courtesy.
@@ -179,11 +184,11 @@ as a selector, and it feeds every panel's query that names it.
 
 **Repeat** draws one panel per value of a variable, or per instance a
 selector matches: `"repeat": "site"` lays out `orders-today` once per site,
-each titled with its site, in its row, at the panel's own width, wrapping. An
+each titled with its site, in the panel's place, at its own width, wrapping. An
 eleventh site appears without editing the dashboard.
 
 **Combined** is one panel over several instances. Drawn without a
-calculation, `revenue-by-day` on `site=$site` is a line per site, each frame
+calculation, `revenue-by-day` on `site=@site` is a line per site, each frame
 named by its instance's label. A total over sites is a calculation
 (`revenue: sum` by nothing), and the kernel refuses it when a site is missing
 rather than handing the panel nine-tenths of the revenue (chapter 5).
@@ -237,6 +242,7 @@ something:
 | donut, funnel | allowed, never suggested (below) |
 | text | a note in Markdown, no query |
 | button | a button flow's click (chapter 7) |
+| space | empty columns where a line must break; no title, no query |
 
 Every chart offers itself as a table, which is also what a screen reader is
 given. Charts are ECharts, tree-shaken to what each uses, chosen in Go Dashbin
@@ -283,7 +289,7 @@ point's time and value, the row's columns. A panel maps it to one of:
   panel follows;
 - **open a dashboard** with variables and a range from the event:
   `date = {{event.time}}`;
-- **press a button**: a button flow's action with params from the event,
+- **press a button**: a button flow's action with args from the event,
   under chapter 7's rules — its id is the operation, its permission is
   `interact`.
 
@@ -383,8 +389,8 @@ Revenue · all sites · 20–27 Oct · Europe/Moscow
 - **It draws once and exits** in the first version; `--json` and `--csv`
   print the frames themselves for a script. `--watch`, full screen and
   refreshing, comes later.
-- **Rows follow the terminal's width** by the phone's rule: a row that does
-  not fit wraps, a narrow terminal stacks panels.
+- **Panels flow by the terminal's width** as by a screen's: a line wraps
+  where the terminal ends, and a narrow terminal stacks panels.
 - **Drawing is ratatui's**: a line in Braille dots, bars, sparklines, tables.
   Braille and block characters pass every terminal and every SSH session;
   real images through Sixel or kitty's protocol, where a terminal has them,
@@ -451,7 +457,7 @@ goes to no data, by the same rule.
 ### node_exporter, collected
 
 A panel reads the `node` dataset (chapter 7) through `datasets.series` on
-`site=$site`, `rate` per step. The editor suggests a line, since a time and a
+`site=@site`, `rate` per step. The editor suggests a line, since a time and a
 rate are values over time; the axis says "per second", in the unit the
 column carries. Ten minutes the agent was away are a gap in the line, not a
 slope across it.
@@ -488,7 +494,8 @@ After two reviews:
 
 Added: a dashboard is one document in one row, with a version checked on
 save, its history and its references beside it, and a channel as a nudge;
-rows of panels instead of coordinates, for a review to look at; the terminal
+a list of panels flowing on six columns instead of coordinates or rows, a
+space as a panel where a line must break; the terminal
 as a second drawer, `dashbin show` in the first version and `--watch` later;
 a chat as a third, after the first version, with commands, buttons under
 alerts and a Mini App whose sign-in the kernel checks.
@@ -503,7 +510,7 @@ alerts and a Mini App whose sign-in the kernel checks.
 - Chapter 6: a plugin's browser bundle and its visualizations, declared with
   the settings' builders; a messenger's plugin turning its updates into the
   kernel's messages.
-- Chapter 7: an alert made from a panel; a button's click with params from an
+- Chapter 7: an alert made from a panel; a button's click with args from an
   event; flows stored on the same machinery.
 - Chapter 10: `interact`, who may edit a dashboard, a personal token for the
   terminal, a sandboxed frame as the boundary for plugin code in the browser,

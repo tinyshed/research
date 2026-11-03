@@ -57,7 +57,7 @@ instances it runs on. This settles chapter 2's first open question with the
 smallest syntax that covers the three scenarios:
 
 - `site=kazan` — instances with that label; `site=kazan, env=prod` — both;
-- `site=$site` — a dashboard variable; a variable holding several values
+- `site=@site` — a dashboard variable; a variable holding several values
   (`kazan`, `spb`) matches any of them;
 - `name=pg-msk` — one instance by its name;
 - `all` — every instance of the read's plugin, written out on purpose.
@@ -116,6 +116,23 @@ What Go Dashbin settled stays: a parameter is spelled `@name` and the plugin
 binds it through its driver, never as text in the query; `@@version` is
 untouched; a value never outlives its call (MySQL session variables leaked the
 last query's parameters to the next one).
+
+**`@name` is the one spelling of a reference**, decided with Dmitry on 3
+November: in a SQL text, where the plugin binds it; in a selector,
+`site=@site`; and as the whole value of a function's argument,
+`"status": "@status"`, which the kernel replaces with the typed value before
+the call. The selector spelled it `$site` before, and PostgreSQL already
+spends `$` on `$1` and `$$`. A template in a message,
+`{{subject.instance}}` (chapter 7), is text for a person rather than a
+reference, and keeps its braces.
+
+**A read is a call of a plugin's function**, decided the same day: `read`
+names the function, `on` chooses the instances, and `args` holds what the
+function takes, as its plugin declares it (chapter 6) — `postgres.sql` takes
+`sql`, the statement, and `stripe.charges` takes `status`. Parameters are the
+typed values the args reach by `@name`: the kernel's, and the query's own.
+Kept apart, a plugin's argument can never be called `on`, and the document
+says which words are the plugin's.
 
 **In a JS plugin**, parameters arrive as the values of chapter 3's table read
 backwards: `bigint` past 2⁵³, a decimal as a string. Time comes twice:
@@ -286,7 +303,7 @@ collector, the query editor — so the same query with the same parameters is
 the same number wherever it is read.
 
 ```json
-{ "read": "postgres.sql", "on": "site=$site", "sql": "…",
+{ "read": "postgres.sql", "on": "site=@site", "args": { "sql": "…" },
   "calculate": { "values": { "revenue": { "op": "sum", "empty": "zero" } }, "by": ["site"] } }
 ```
 
@@ -408,7 +425,7 @@ anything runs or joins.
 
 ### Ten sites, one dashboard
 
-Revenue by day, ten instances behind ten agents, `site=$site` with "all"
+Revenue by day, ten instances behind ten agents, `site=@site` with "all"
 selected, and a number at the top with the total of all ten, `revenue: sum`
 by nothing. One request; ten calls, at most four per instance, which is one
 each. `msk`'s agent is away: nine lines draw and the panel names the tenth as
