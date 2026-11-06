@@ -47,3 +47,9 @@ gives it, what its memory costs, and the plugin host it will carry.
 - [The api's schema from axum's handlers](openapi-2026-11-03.md):
   utoipa and aide on three routes shaped as the hub's; a schema built at start costs +524 KB and +463 KB, built by a
   test nothing; utoipa taken, its schema written by a test into a committed file.
+- [What a read-only MySQL read can promise](mysql-read-2026-11-06.md):
+  sqlx-mysql at +430 KB over mysql_async at +2 MB, placeholders with a cast, a count and a kill for the cap and every
+  stop, a lexer that reads the session's sql_mode and refuses what would undo a promise.
+- [An agent's socket, and ten agents through a proxy](agent-2026-11-06.md):
+  tokio-tungstenite and rustls on ring at +1.6 MB; a cancel through the chain in 4 ms; a slow link that a hub counting
+  messages drops and one counting bytes keeps; Caddy's reload dropping every agent unless `stream_close_delay`.
