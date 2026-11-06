@@ -1,0 +1,9 @@
+# the row cap on MariaDb: 10000 rows and one more
+
+- 168 000 rows, sql_select_limit: `SELECT * FROM probe.big`: cut at 10001 after 8.1345ms (first row 4.0807ms); kill killed in 2.9628ms; 0 rows drained, then ended; all after 11.1392ms; nothing of reader's runs after 1.8233ms
+- 168 000 rows, no limit, kill: `SELECT * FROM probe.big`: cut at 10001 after 8.5367ms (first row 3.7261ms); kill killed in 2.5985ms; 6096 rows drained, then 1317 Query execution was interrupted; all after 13.1574ms; nothing of reader's runs after 1.1974ms
+- LIMIT 1000000 wins over sql_select_limit, kill: `SELECT * FROM probe.big LIMIT 1000000`: cut at 10001 after 9.4098ms (first row 4.1866ms); kill killed in 2.8762ms; 10757 rows drained, then 1317 Query execution was interrupted; all after 15.7485ms; nothing of reader's runs after 1.2339ms
+- sorted, sql_select_limit: `SELECT * FROM probe.big ORDER BY note`: cut at 10001 after 75.627ms (first row 64.6726ms); kill killed in 2.4324ms; 0 rows drained, then ended; all after 78.0963ms; nothing of reader's runs after 1.2441ms
+- sorted, no limit, kill: `SELECT * FROM probe.big ORDER BY note`: cut at 10001 after 76.9604ms (first row 66.9887ms); kill killed in 2.4567ms; 3139 rows drained, then 1317 Query execution was interrupted; all after 80.3567ms; nothing of reader's runs after 1.1204ms
+- endless join, LIMIT of its own, kill: `SELECT a.id, b.id FROM probe.big a, probe.big b LIMIT 100000000000`: cut at 10001 after 7.4979ms (first row 5.0262ms); kill killed in 2.0985ms; 61492 rows drained, then 1317 Query execution was interrupted; all after 23.6938ms; nothing of reader's runs after 1.4711ms
+- endless join, dropped without a kill: cut at 10001 after 7.8184ms; the connection dropped without a kill; still running after 10 s: ["[Int(1608), Int(10), Bytes(\"Sending ..\"), Bytes(\"SELECT a..\")]"]

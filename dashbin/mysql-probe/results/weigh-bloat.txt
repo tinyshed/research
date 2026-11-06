@@ -1,0 +1,153 @@
+## baseline
+ File  .text     Size Crate
+14.5%  27.6%   1.6MiB [Unknown]
+ 9.6%  18.3%   1.1MiB std
+ 8.7%  16.5% 986.9KiB tinystore
+ 4.4%   8.4% 501.2KiB dashbin
+ 1.7%   3.2% 188.6KiB axum
+ 1.2%   2.3% 137.2KiB tokio_postgres
+ 1.2%   2.3% 137.2KiB tokio
+ 1.0%   1.9% 115.5KiB jiff
+ 0.9%   1.8% 106.6KiB libsqlite3_sys
+ 0.9%   1.7% 100.6KiB yaml_rust2
+ 0.8%   1.6%  94.2KiB serde_json
+ 0.8%   1.4%  86.0KiB hyper
+ 0.6%   1.2%  70.4KiB ratatui_widgets
+ 0.6%   1.2%  69.0KiB serde_path_to_error
+ 0.5%   0.9%  52.8KiB toml
+ 0.4%   0.7%  42.7KiB http
+ 0.4%   0.7%  41.3KiB ratatui_core
+ 0.4%   0.7%  41.2KiB rusqlite
+ 0.3%   0.6%  37.5KiB jiff_core
+ 0.3%   0.5%  28.6KiB toml_parser
+ 0.2%   0.4%  26.0KiB postgres_protocol
+ 0.2%   0.4%  20.9KiB hyper_util
+ 0.2%   0.3%  18.7KiB fst
+ 0.2%   0.3%  17.8KiB kasuari
+ 0.2%   0.3%  17.5KiB hashbrown
+ 0.2%   0.3%  17.2KiB postgres_types
+ 0.1%   0.2%  14.9KiB tracing_subscriber
+ 0.1%   0.2%  14.6KiB levenshtein_automata
+ 0.1%   0.2%  14.0KiB tower
+ 0.1%   0.2%  12.7KiB serde_core
+ 0.1%   0.2%  11.8KiB unicode_segmentation
+ 0.1%   0.2%  11.2KiB http_body_util
+ 0.1%   0.2%  11.1KiB sha2
+ 0.1%   0.2%   9.7KiB matchit
+ 0.1%   0.2%   9.6KiB poly1305
+ 0.1%   0.1%   6.8KiB bytes
+ 0.1%   0.1%   6.2KiB memchr
+ 0.1%   0.1%   5.9KiB base64
+ 0.1%   0.1%   5.7KiB toml_datetime
+ 0.0%   0.1%   5.5KiB axum_core
+ 0.0%   0.1%   5.3KiB tracing_core
+ 0.0%   0.1%   5.1KiB cipher
+ 0.0%   0.1%   5.0KiB mime
+ 0.0%   0.1%   5.0KiB chacha20
+ 0.0%   0.1%   4.9KiB httparse
+ 0.5%   0.9%  51.2KiB And 37 more crates. Use -n N to show more.
+52.5% 100.0%   5.8MiB .text section size, the file size is 11.1MiB
+
+Note: numbers above are a result of guesswork. They are not 100% correct and never will be.
+## mysql_async
+ File  .text     Size Crate
+12.1%  23.0%   1.6MiB [Unknown]
+ 9.3%  17.8%   1.2MiB std
+ 7.3%  13.8% 988.2KiB tinystore
+ 3.8%   7.2% 513.2KiB dashbin
+ 2.0%   3.9% 276.6KiB regex_automata
+ 1.4%   2.8% 196.8KiB mysql_async
+ 1.4%   2.6% 188.8KiB axum
+ 1.2%   2.2% 158.2KiB regex_syntax
+ 1.1%   2.1% 151.5KiB tokio
+ 1.0%   1.9% 136.1KiB tokio_postgres
+ 1.0%   1.9% 135.7KiB aho_corasick
+ 0.8%   1.6% 115.5KiB jiff
+ 0.8%   1.5% 106.6KiB libsqlite3_sys
+ 0.7%   1.4% 100.6KiB yaml_rust2
+ 0.7%   1.3%  94.2KiB serde_json
+ 0.6%   1.2%  86.0KiB hyper
+ 0.5%   1.0%  70.4KiB ratatui_widgets
+ 0.5%   1.0%  69.0KiB serde_path_to_error
+ 0.4%   0.8%  56.2KiB mysql_common
+ 0.4%   0.7%  52.7KiB toml
+ 0.3%   0.6%  45.2KiB num_bigint
+ 0.3%   0.6%  44.7KiB miniz_oxide
+ 0.3%   0.6%  42.7KiB http
+ 0.3%   0.6%  41.3KiB ratatui_core
+ 0.3%   0.6%  41.2KiB rusqlite
+ 0.3%   0.5%  37.5KiB jiff_core
+ 0.2%   0.4%  28.6KiB toml_parser
+ 0.2%   0.4%  26.0KiB postgres_protocol
+ 0.2%   0.3%  23.4KiB sha2
+ 0.2%   0.3%  20.9KiB hyper_util
+ 0.1%   0.3%  20.3KiB hashbrown
+ 0.1%   0.3%  19.4KiB memchr
+ 0.1%   0.3%  18.7KiB fst
+ 0.1%   0.2%  17.8KiB kasuari
+ 0.1%   0.2%  17.2KiB postgres_types
+ 0.1%   0.2%  14.9KiB tracing_subscriber
+ 0.1%   0.2%  14.5KiB levenshtein_automata
+ 0.1%   0.2%  14.0KiB tower
+ 0.1%   0.2%  12.7KiB serde_core
+ 0.1%   0.2%  11.8KiB unicode_segmentation
+ 0.1%   0.2%  11.2KiB http_body_util
+ 0.1%   0.1%   9.7KiB matchit
+ 0.1%   0.1%   9.6KiB poly1305
+ 0.1%   0.1%   8.9KiB regex
+ 0.1%   0.1%   7.0KiB bytes
+ 0.8%   1.5% 109.4KiB And 52 more crates. Use -n N to show more.
+52.5% 100.0%   7.0MiB .text section size, the file size is 13.3MiB
+
+Note: numbers above are a result of guesswork. They are not 100% correct and never will be.
+## sqlx
+ File  .text     Size Crate
+13.9%  26.1%   1.6MiB [Unknown]
+ 9.4%  17.7%   1.1MiB std
+ 8.3%  15.7% 988.2KiB tinystore
+ 4.4%   8.2% 517.1KiB dashbin
+ 1.6%   3.0% 188.6KiB axum
+ 1.2%   2.2% 137.7KiB tokio
+ 1.2%   2.2% 137.2KiB tokio_postgres
+ 1.1%   2.0% 128.8KiB sqlx_mysql
+ 1.0%   1.8% 115.6KiB jiff
+ 0.9%   1.7% 106.6KiB libsqlite3_sys
+ 0.8%   1.6% 100.6KiB yaml_rust2
+ 0.8%   1.5%  94.2KiB serde_json
+ 0.7%   1.4%  86.0KiB hyper
+ 0.6%   1.2%  73.0KiB crypto_bigint
+ 0.6%   1.1%  70.3KiB ratatui_widgets
+ 0.6%   1.1%  69.0KiB serde_path_to_error
+ 0.4%   0.8%  52.7KiB toml
+ 0.4%   0.7%  42.7KiB http
+ 0.3%   0.7%  41.3KiB rusqlite
+ 0.3%   0.7%  41.3KiB ratatui_core
+ 0.3%   0.6%  38.3KiB sqlx_core
+ 0.3%   0.6%  37.5KiB jiff_core
+ 0.2%   0.5%  29.0KiB postgres_protocol
+ 0.2%   0.5%  28.6KiB toml_parser
+ 0.2%   0.3%  20.9KiB hyper_util
+ 0.2%   0.3%  18.7KiB fst
+ 0.2%   0.3%  17.9KiB hashbrown
+ 0.1%   0.3%  17.8KiB kasuari
+ 0.1%   0.3%  17.2KiB postgres_types
+ 0.1%   0.2%  14.9KiB tracing_subscriber
+ 0.1%   0.2%  14.6KiB levenshtein_automata
+ 0.1%   0.2%  14.5KiB rsa
+ 0.1%   0.2%  14.0KiB tower
+ 0.1%   0.2%  12.7KiB serde_core
+ 0.1%   0.2%  11.8KiB unicode_segmentation
+ 0.1%   0.2%  11.6KiB sha2
+ 0.1%   0.2%  11.2KiB http_body_util
+ 0.1%   0.2%  10.8KiB base64ct
+ 0.1%   0.2%   9.7KiB matchit
+ 0.1%   0.2%   9.6KiB poly1305
+ 0.1%   0.1%   9.4KiB bytes
+ 0.1%   0.1%   7.6KiB der
+ 0.1%   0.1%   6.2KiB memchr
+ 0.0%   0.1%   5.9KiB base64
+ 0.0%   0.1%   5.7KiB toml_datetime
+ 0.8%   1.5%  96.9KiB And 47 more crates. Use -n N to show more.
+53.2% 100.0%   6.2MiB .text section size, the file size is 11.6MiB
+
+Note: numbers above are a result of guesswork. They are not 100% correct and never will be.

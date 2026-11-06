@@ -1,0 +1,22 @@
+# the two servers the mysql probe reads: MySQL 8.4 with its default caching_sha2_password, and MariaDB 11
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: probe-root
+    ports:
+      - 127.0.0.1:13306:3306
+    healthcheck:
+      test: [CMD, mysqladmin, ping, -h, 127.0.0.1, -uroot, -pprobe-root]
+      interval: 2s
+      retries: 60
+  mariadb:
+    image: mariadb:11
+    environment:
+      MARIADB_ROOT_PASSWORD: probe-root
+    ports:
+      - 127.0.0.1:13307:3306
+    healthcheck:
+      test: [CMD, healthcheck.sh, --connect, --innodb_initialized]
+      interval: 2s
+      retries: 60

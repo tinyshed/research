@@ -1,0 +1,9 @@
+# the row cap on MySql: 10000 rows and one more
+
+- 168 000 rows, sql_select_limit: `SELECT * FROM probe.big`: cut at 10001 after 8.9177ms (first row 4.366ms); kill killed in 3.0436ms; 0 rows drained, then ended; all after 11.9972ms; nothing of reader's runs after 2.2046ms
+- 168 000 rows, no limit, kill: `SELECT * FROM probe.big`: cut at 10001 after 8.4385ms (first row 4.8006ms); kill killed in 3.1214ms; 7288 rows drained, then 1317 Query execution was interrupted; all after 13.936ms; nothing of reader's runs after 1.0771ms
+- LIMIT 1000000 wins over sql_select_limit, kill: `SELECT * FROM probe.big LIMIT 1000000`: cut at 10001 after 9.6004ms (first row 4.2782ms); kill killed in 2.717ms; 7653 rows drained, then 1317 Query execution was interrupted; all after 14.8372ms; nothing of reader's runs after 1.0928ms
+- sorted, sql_select_limit: `SELECT * FROM probe.big ORDER BY note`: cut at 10001 after 77.8424ms (first row 73.139ms); kill killed in 2.6868ms; 0 rows drained, then ended; all after 80.564ms; nothing of reader's runs after 1.1487ms
+- sorted, no limit, kill: `SELECT * FROM probe.big ORDER BY note`: cut at 10001 after 82.6314ms (first row 77.8456ms); kill killed in 2.9893ms; 23318 rows drained, then 1317 Query execution was interrupted; all after 93.0753ms; nothing of reader's runs after 1.0906ms
+- endless join, LIMIT of its own, kill: `SELECT a.id, b.id FROM probe.big a, probe.big b LIMIT 100000000000`: cut at 10001 after 11.9074ms (first row 8.4901ms); kill killed in 2.3885ms; 76595 rows drained, then 1317 Query execution was interrupted; all after 34.769ms; nothing of reader's runs after 1.1778ms
+- endless join, dropped without a kill: cut at 10001 after 11.4376ms; the connection dropped without a kill; still running after 10 s: ["[Int(872), Int(10), Bytes(\"Sending ..\"), Bytes(\"SELECT a..\")]"]
