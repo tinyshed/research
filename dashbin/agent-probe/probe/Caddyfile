@@ -1,0 +1,9 @@
+{
+	local_certs
+	skip_install_trust
+}
+
+hub.probe {
+	tls internal
+	reverse_proxy hub:7317
+}

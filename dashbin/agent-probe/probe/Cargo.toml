@@ -1,0 +1,20 @@
+# A prototype hub and agent of plan chapter 8, never shipped: copied into a detached worktree of dashbin as
+# crates/agent-probe by build.sh, so that it reads through dashbin's own plugins with the workspace's patches
+[package]
+name = "agent-probe"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+dashbin = { path = "../dashbin", features = ["postgres", "mysql"] }
+tokio = { version = "1.48", features = ["rt-multi-thread", "macros", "time", "net", "sync", "io-util", "process"] }
+axum = { version = "0.8.9", default-features = false, features = ["json", "tokio", "http1"] }
+hyper = { version = "1", features = ["http1", "server"] }
+hyper-util = { version = "0.1", features = ["tokio"] }
+tokio-tungstenite = { version = "0.29.0", default-features = false, features = ["connect", "handshake", "__rustls-tls"] }
+rustls = { version = "0.23.35", default-features = false, features = ["ring", "std", "tls12"] }
+rustls-pki-types = "1"
+futures-util = { version = "0.3", default-features = false, features = ["sink", "std"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

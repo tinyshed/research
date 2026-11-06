@@ -1,0 +1,110 @@
+# The spike's world: three databases on lan; a hub behind Caddy, which holds TLS with its own CA, on wan; and ten
+# agents on both, five beside postgres, three beside mysql, two beside mariadb. Cutting an agent from wan loses
+# its hub and keeps its database, as a site's server would.
+name: agent-probe
+
+x-agent: &agent
+  image: agent-probe:local
+  command: [agent-probe, agent]
+  cap_add: [NET_ADMIN]
+  networks: [wan, lan]
+  volumes:
+    - caddy-data:/caddy:ro
+
+x-dial: &dial
+  PROBE_HUB: wss://hub.probe/api/v1/agent
+  PROBE_CA: /caddy/caddy/pki/authorities/local/root.crt
+
+x-postgres: &postgres '{"host":"postgres","database":"postgres","user":"postgres"}'
+x-mysql: &mysql '{"host":"mysql","database":"mysql","user":"root","password":"probe"}'
+x-mariadb: &mariadb '{"host":"mariadb","database":"mysql","user":"root","password":"probe"}'
+
+services:
+  postgres:
+    image: postgres:18
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports: [127.0.0.1:25432:5432]
+    networks: [lan]
+    healthcheck:
+      test: [CMD, pg_isready, -U, postgres]
+      interval: 1s
+      retries: 60
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: probe
+    ports: [127.0.0.1:23306:3306]
+    networks: [lan]
+    healthcheck:
+      test: [CMD, mysqladmin, ping, -h, 127.0.0.1, -uroot, -pprobe]
+      interval: 1s
+      retries: 90
+  mariadb:
+    image: mariadb:11
+    environment:
+      MARIADB_ROOT_PASSWORD: probe
+    ports: [127.0.0.1:23307:3306]
+    networks: [lan]
+    healthcheck:
+      test: [CMD, healthcheck.sh, --connect, --innodb_initialized]
+      interval: 1s
+      retries: 90
+
+  hub:
+    build: ./docker
+    image: agent-probe:local
+    command: [agent-probe, hub]
+    environment:
+      PROBE_LISTEN: 0.0.0.0:7317
+      PROBE_AGENTS: site1,site2,site3,site4,site5,site6,site7,site8,site9,site10
+      PROBE_LIVENESS: ${PROBE_LIVENESS:-bytes}
+    ports: [127.0.0.1:27317:7317]
+    networks: [wan]
+  caddy:
+    image: caddy:2
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./Caddyfile.changed:/etc/caddy/Caddyfile.changed:ro
+      - caddy-data:/data
+    networks:
+      wan:
+        aliases: [hub.probe]
+
+  agent1:
+    <<: *agent
+    environment: { <<: *dial, PROBE_AGENT: site1, PROBE_TOKEN: token-site1, PROBE_PLUGIN: postgres, PROBE_SETTINGS: *postgres }
+  agent2:
+    <<: *agent
+    environment: { <<: *dial, PROBE_AGENT: site2, PROBE_TOKEN: token-site2, PROBE_PLUGIN: postgres, PROBE_SETTINGS: *postgres }
+  agent3:
+    <<: *agent
+    environment: { <<: *dial, PROBE_AGENT: site3, PROBE_TOKEN: token-site3, PROBE_PLUGIN: postgres, PROBE_SETTINGS: *postgres }
+  agent4:
+    <<: *agent
+    environment: { <<: *dial, PROBE_AGENT: site4, PROBE_TOKEN: token-site4, PROBE_PLUGIN: postgres, PROBE_SETTINGS: *postgres }
+  agent5:
+    <<: *agent
+    environment: { <<: *dial, PROBE_AGENT: site5, PROBE_TOKEN: token-site5, PROBE_PLUGIN: postgres, PROBE_SETTINGS: *postgres }
+  agent6:
+    <<: *agent
+    environment: { <<: *dial, PROBE_AGENT: site6, PROBE_TOKEN: token-site6, PROBE_PLUGIN: mysql, PROBE_SETTINGS: *mysql }
+  agent7:
+    <<: *agent
+    environment: { <<: *dial, PROBE_AGENT: site7, PROBE_TOKEN: token-site7, PROBE_PLUGIN: mysql, PROBE_SETTINGS: *mysql }
+  agent8:
+    <<: *agent
+    environment: { <<: *dial, PROBE_AGENT: site8, PROBE_TOKEN: token-site8, PROBE_PLUGIN: mysql, PROBE_SETTINGS: *mysql }
+  agent9:
+    <<: *agent
+    environment: { <<: *dial, PROBE_AGENT: site9, PROBE_TOKEN: token-site9, PROBE_PLUGIN: mysql, PROBE_SETTINGS: *mariadb }
+  agent10:
+    <<: *agent
+    environment: { <<: *dial, PROBE_AGENT: site10, PROBE_TOKEN: token-site10, PROBE_PLUGIN: mysql, PROBE_SETTINGS: *mariadb }
+
+networks:
+  wan: {}
+  lan: {}
+
+volumes:
+  caddy-data: {}
