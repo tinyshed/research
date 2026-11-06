@@ -1,0 +1,12 @@
+{
+	local_certs
+	skip_install_trust
+}
+
+hub.probe {
+	tls internal
+	header X-Probe changed
+	reverse_proxy hub:7317 {
+		stream_close_delay 10m
+	}
+}

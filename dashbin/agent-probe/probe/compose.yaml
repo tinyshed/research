@@ -66,6 +66,8 @@ services:
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - ./Caddyfile.changed:/etc/caddy/Caddyfile.changed:ro
+      - ./Caddyfile.delay:/etc/caddy/Caddyfile.delay:ro
+      - ./Caddyfile.delay.changed:/etc/caddy/Caddyfile.delay.changed:ro
       - caddy-data:/data
     networks:
       wan:

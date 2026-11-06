@@ -81,7 +81,10 @@ async fn read_through(on: &str, sql: &str, wait: Option<u64>) -> (u16, Duration,
     let (status, body) = request("POST", "/api/v1/run", &asked.to_string()).await;
     let said = serde_json::from_str::<Value>(&body).ok();
     let said = match said {
-        Some(frame) if status == 200 => format!("{} rows", frame["rows"]),
+        Some(frame) if status == 200 => {
+            let rows = frame["columns"][0]["values"].as_array().map_or(0, Vec::len);
+            format!("{rows} rows")
+        }
         Some(failure) => format!("{}: {}", failure["kind"], failure["message"]),
         None => body.chars().take(120).collect(),
     };
@@ -420,7 +423,15 @@ async fn hub_restart() {
 }
 
 async fn proxy_reload() {
-    for (what, config) in [("the same config, forced", "/etc/caddy/Caddyfile"), ("a changed config", "/etc/caddy/Caddyfile.changed"), ("back", "/etc/caddy/Caddyfile")] {
+    // stream_close_delay keeps a config's upgraded streams open for a while after it is replaced
+    let steps = [
+        ("the same config, forced", "/etc/caddy/Caddyfile"),
+        ("a changed config", "/etc/caddy/Caddyfile.changed"),
+        ("a config that delays closing streams", "/etc/caddy/Caddyfile.delay"),
+        ("that config changed", "/etc/caddy/Caddyfile.delay.changed"),
+        ("back", "/etc/caddy/Caddyfile"),
+    ];
+    for (what, config) in steps {
         let since = wire::now();
         let said = docker(&["exec", &container("caddy"), "caddy", "reload", "--config", config, "--force"]).await;
         tokio::time::sleep(Duration::from_secs(5)).await;
