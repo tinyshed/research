@@ -4,8 +4,8 @@
 first round went through one review and the second through another; the third
 is Dmitry's, after slices 4 to 6 built dashboards as files, the `Plugin`
 trait, and MySQL. What each round changed is listed under *Forks*. What
-slice 7 leaves for later says so where it stands; the spike of *Not checked
-yet* comes before its code.
+slice 7 leaves for later says so where it stands. The spike before its code,
+[an agent's socket](../reports/agent-2026-11-06.md), is in this text.
 
 The first user runs ten sites on ten servers that cannot see each other, and
 none of them may open a port. An agent is how their databases reach a hub
@@ -84,7 +84,7 @@ token = "dbat_7Q…"                     # the hub gave it once, on adding the a
 
 [limits]                               # the agent's ceilings; the hub may ask for less
 rows = 10_000
-bytes = "16MiB"
+bytes = "4MiB"
 duration = "30s"
 calls = 8
 
@@ -236,21 +236,32 @@ the api a browser uses is not on it. Nothing listens on the agent's server.
   speaks plain HTTP behind it and listens on `127.0.0.1` unless its file says
   otherwise, so it is never open to the internet by accident. The hub that
   terminates TLS itself waits for someone who needs it.
-- **The agent's TLS trusts the system's roots, or a CA file the operator
-  names** (`tls.ca`), or a pinned certificate hash (`tls.pin`) for a hub with
-  a self-signed certificate. Plain `ws://` is allowed for a hub on
-  `127.0.0.1`, which is how a tunnel looks, and refused otherwise. With
-  rustls in the binary for the agent, TLS for the SQL plugins' sources is a
-  slice of its own, and a small one.
-- **Liveness is the socket's own ping**: every 15 s, and a connection silent
-  for 45 s is closed. 15 s is also under every idle close between the two:
-  Cloudflare closes a quiet WebSocket after about 100 s, nginx's default
-  after 60.
+- **The agent's TLS is rustls on ring, trusting the system's roots, or a CA
+  file the operator names** (`tls.ca`): +1.6 MB in the binary with the
+  WebSocket's both sides, where aws-lc-rs would be 2.1 MB more; a pinned
+  certificate hash (`tls.pin`) waits for a hub whose certificate no CA file
+  can name. Plain `ws://` is allowed for a hub on `127.0.0.1`, which is how a
+  tunnel looks, and refused otherwise. With rustls in the binary for the
+  agent, TLS for the SQL plugins' sources is a slice of its own, and a small
+  one.
+- **Liveness is bytes, not messages**: each side pings every 15 s, and a
+  connection from which no byte has arrived for 45 s is closed. A WebSocket
+  library hands over a message only when it is whole, so a side that counted
+  messages would let a peer go while its answer still arrives: in the spike a
+  hub counting messages dropped a 10 MB answer over 1 Mbit/s at 42 s, and one
+  counting bytes had it whole at 85 s. The hub's door therefore does its own
+  upgrade over hyper, with the socket under the WebSocket watched. 15 s is
+  also under every idle close between the two: Cloudflare closes a quiet
+  WebSocket after about 100 s, nginx's default after 60.
 - **An agent that cannot reach the hub waits, it does not stop**: one second,
   doubling to thirty, with a fifth of that as jitter so ten agents that saw
-  the same outage do not dial in one volley; a connection that lasted a minute
-  starts the wait over. A proxy that reloads its configuration and closes the
-  sockets through it, as Caddy may, is an outage like any other.
+  the same outage do not dial in one volley; a connection the hub welcomed
+  starts the wait over, so that a reload of the proxy costs a second and not
+  the thirty that three short connections in a row grew the wait to.
+- **A proxy that reloads closes the sockets through it**: Caddy does, with the
+  same configuration or a changed one, unless its `reverse_proxy` has
+  `stream_close_delay`, with which the spike's ten agents stayed connected
+  through every reload. The recipe sets it.
 
 **Why a WebSocket, when newer transports exist.** What matters between an
 agent and a hub is passing whatever stands between them:
@@ -354,7 +365,7 @@ effective = min(what the hub asked, what the instance allows, what the agent all
 | Ceiling | Why |
 |---|---|
 | rows | a chart needs a count, and the cap is the plugin's (FRAME-04) |
-| bytes | one row holding one long string is as large as it likes; the agent counts the bytes of the answer it encoded and refuses its own answer past the ceiling, as `limit` |
+| bytes | one row holding one long string is as large as it likes; the agent counts the bytes of the answer it encoded and refuses its own answer past the ceiling, saying both; 4 MiB by default |
 | duration | the statement's bound a SQL plugin sets, and the call's end for any other |
 | calls | at once, across the agent; the hub's four per instance (chapter 5) sits under it |
 
@@ -371,11 +382,15 @@ to 64 MiB, and queues what it is asked to send without an end. So:
   socket and hands each answer to the call it is for, which holds it until its
   caller takes it; a slow browser or a stalled command line holds its own
   answer, never the socket, so pings and every other call go on.
-- **A ping waits behind one message at most**, so the bytes ceiling over the
-  slowest link a hub expects is well under 45 s: 16 MiB at 1 MB/s is 16 s.
+- **An agent's answers wait behind its biggest one**, since a frame crosses
+  as one message: in the spike, `site5`'s small reads timed out while its
+  10 MB answer crossed 1 Mbit/s, and the other nine agents' did not slow.
+  The bytes ceiling is how long that can be: 4 MiB is about 34 s at 1 Mbit/s
+  and 3 s at 10, and still holds 10 000 rows of a dozen short columns. Frames
+  that stream end the wait.
 
 **What the hub holds for an agent is bounded by calls times bytes**: eight
-calls of 16 MiB at the worst. The hub's own reads hold their frames the same
+calls of 4 MiB at the worst. The hub's own reads hold their frames the same
 way; chapter 5's budget for frames in flight is the hub's, for every source,
 and is set by the load run.
 
@@ -435,7 +450,8 @@ needs it.
 | the agent dies mid-call | the call fails as unavailable; the panel names the instance and how long its agent has been away |
 | the agent stops answering pings | the connection closes after 45 s; its instances read as unavailable |
 | the hub restarts | every agent waits and dials again, spread by their jitter; nothing is lost but what was in flight |
-| the proxy reloads and closes the sockets | the same as a restart of the hub |
+| the proxy reloads and closes the sockets | the same as a restart of the hub, every agent back within a second or two; with `stream_close_delay`, nothing |
+| the link to the hub is cut without a word | the hub lets the agent go after 45 s without a byte, and its calls fail as unavailable; a statement on the database ends by its own bound, 30 s, before either side notices |
 | a database behind the agent is down | that instance's calls fail with the database's safe message; the agent's other instances answer |
 | a person stops reading a big answer | their call holds its answer until it ends; the socket and the agent's other calls go on |
 | a token is pasted onto the wrong server | the hub refuses it, naming the agent the file says and the one the token is |
@@ -449,8 +465,9 @@ The agent is the hub's binary, with jemalloc's decay set to zero at start in
 agent mode: about 6 MiB idle, measured against 5 for a musl build
 ([memory and allocators](../reports/memory-and-allocators-2026-10-24.md)).
 What it holds for a call is the call's frame, and the agent's calls at once
-bound that. With its built-in SQL plugins under load and over a slow socket it
-is not measured yet.
+bound that. The spike's agent, on musl's allocator, was 4.6 to 4.8 MiB idle
+and 11.7 MiB at its peak with four reads of 10 000 rows at once beside
+PostgreSQL, 12.4 beside MySQL; Dashbin's agent mode is not measured yet.
 
 ## Against three scenarios
 
@@ -539,6 +556,14 @@ With them, from Dmitry and a review of the round:
   by an agent's token alone; the envelope shared with whatever a person's
   socket becomes.
 
+After the spike, agreed with Dmitry:
+
+- **rustls on ring with the system's roots**, and `tls.pin` later.
+- **Liveness is bytes**, and the hub's door upgrades the request itself.
+- **The wait starts over once the hub welcomed the agent.**
+- **The recipe for Caddy sets `stream_close_delay`.**
+- **The bytes ceiling is 4 MiB by default.**
+
 ## Later
 
 - Labels, `all`, and one panel over every agent's instance.
@@ -547,7 +572,8 @@ With them, from Dmitry and a review of the round:
 - Frames that stream: chapter 3's binary wire, small batches, credit per call
   and per agent, for every source alike.
 - JS and process plugins on an agent, and the `bundle` message.
-- TLS for the SQL plugins' own sources, and a hub that terminates TLS itself.
+- TLS for the SQL plugins' own sources, a hub that terminates TLS itself, and
+  `tls.pin`.
 
 ## What it asks of other chapters
 
@@ -568,18 +594,13 @@ With them, from Dmitry and a review of the round:
 
 ## Not checked yet
 
-The spike before slice 7, in `agent-probe/`:
+The spike before slice 7 checked the weight, ten agents end to end through
+Caddy's TLS, a cancel, a lost hub, a slow link, restarts and the prototype
+agent's memory ([an agent's socket](../reports/agent-2026-11-06.md)). Not
+checked:
 
-- The weight in the static binary of the WebSocket's server on the hub and
-  its client on the agent, and of rustls with each way of trusting a root.
-- Ten agents end to end through a proxy that holds TLS: a call there and back,
-  connections dropped and restored, a hub and a proxy restarted, `$cancel`
-  reaching PostgreSQL and MySQL behind an agent, and one connection
-  overloaded while the others answer.
-- The agent's memory with `postgres` and `mysql` under four calls each, and
-  over a socket slower than its answers.
-
-Not before slice 7:
-
+- Dashbin's agent mode with jemalloc, and hundreds of agents, whom a jitter of
+  200 ms at a one-second wait does not spread.
+- A real network rather than Docker's loopback.
 - An agent behind a corporate HTTP proxy, and a hub behind Cloudflare Tunnel.
 - The window, the batch size and each agent's share, once frames stream.
