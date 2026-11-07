@@ -1,0 +1,230 @@
+{
+  "threshold": 0.8373612937315371,
+  "paper": {
+    "Jaccard-Levenshtein (Valentine)": [
+      0.58,
+      0.63,
+      0.36
+    ],
+    "GPT-3.5": [
+      0.88,
+      0.82,
+      0.86
+    ],
+    "StarChat-alpha": [
+      0.64,
+      0.61,
+      0.82
+    ],
+    "T5-base, SchemaPile": [
+      0.92,
+      0.83,
+      0.91
+    ],
+    "StarCoder 15.5B, SchemaPile": [
+      0.97,
+      0.94,
+      0.97
+    ]
+  },
+  "paper_order": [
+    "livesqlbench"
+  ],
+  "round 1b's task": {
+    "livesqlbench, all": {
+      "databases": 22,
+      "pairs": 9516,
+      "keys": 272,
+      "one-column keys declared": 299,
+      "rules": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "model": {
+        "precision": 0.6808510638297872,
+        "recall": 0.11764705882352941,
+        "f1": 0.2006269592476489
+      },
+      "f1_minus_rules_95": [
+        0.10176827552947794,
+        0.3161302182163188
+      ]
+    },
+    "livesqlbench, novel": {
+      "databases": 22,
+      "pairs": 9516,
+      "keys": 272,
+      "one-column keys declared": 299,
+      "rules": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "model": {
+        "precision": 0.6808510638297872,
+        "recall": 0.11764705882352941,
+        "f1": 0.2006269592476489
+      },
+      "f1_minus_rules_95": [
+        0.10026328209589207,
+        0.31059447395283657
+      ]
+    },
+    "all, all": {
+      "databases": 22,
+      "pairs": 9516,
+      "keys": 272,
+      "one-column keys declared": 299,
+      "rules": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "model": {
+        "precision": 0.6808510638297872,
+        "recall": 0.11764705882352941,
+        "f1": 0.2006269592476489
+      },
+      "f1_minus_rules_95": [
+        0.1037855984096173,
+        0.3003289841149266
+      ]
+    },
+    "all, novel": {
+      "databases": 22,
+      "pairs": 9516,
+      "keys": 272,
+      "one-column keys declared": 299,
+      "rules": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "model": {
+        "precision": 0.6808510638297872,
+        "recall": 0.11764705882352941,
+        "f1": 0.2006269592476489
+      },
+      "f1_minus_rules_95": [
+        0.09893121982780072,
+        0.3013952981359689
+      ]
+    }
+  },
+  "the paper's task": {
+    "livesqlbench: the paper's filters": {
+      "pairs": 285,
+      "databases": 22,
+      "unanswerable": {
+        "referred column is not the target's one-column key": 13
+      },
+      "two tables": {
+        "recall_at_1": 0.6912280701754386,
+        "95": [
+          0.5602596465921386,
+          0.8064576088259983
+        ]
+      },
+      "whole database": {
+        "recall_at_1": 0.6666666666666666,
+        "95": [
+          0.551685079790202,
+          0.7748367955321598
+        ]
+      },
+      "name score": {
+        "recall_at_1": 0.6982456140350877,
+        "95": [
+          0.5777628635346755,
+          0.8137936212074143
+        ]
+      }
+    },
+    "livesqlbench: and no constraint over several columns": {
+      "pairs": 285,
+      "databases": 22,
+      "unanswerable": {
+        "referred column is not the target's one-column key": 13
+      },
+      "two tables": {
+        "recall_at_1": 0.6912280701754386,
+        "95": [
+          0.5657748985013282,
+          0.8058326728749752
+        ]
+      },
+      "whole database": {
+        "recall_at_1": 0.6666666666666666,
+        "95": [
+          0.5517130857648099,
+          0.778561572590061
+        ]
+      },
+      "name score": {
+        "recall_at_1": 0.6982456140350877,
+        "95": [
+          0.5676545357238426,
+          0.8175789069292516
+        ]
+      }
+    },
+    "livesqlbench: and novel databases only": {
+      "pairs": 285,
+      "databases": 22,
+      "unanswerable": {
+        "referred column is not the target's one-column key": 13
+      },
+      "two tables": {
+        "recall_at_1": 0.6912280701754386,
+        "95": [
+          0.5723724914994333,
+          0.803157576107011
+        ]
+      },
+      "whole database": {
+        "recall_at_1": 0.6666666666666666,
+        "95": [
+          0.5543404817861339,
+          0.7706222550355898
+        ]
+      },
+      "name score": {
+        "recall_at_1": 0.6982456140350877,
+        "95": [
+          0.5590505597547989,
+          0.8160832083958021
+        ]
+      }
+    },
+    "livesqlbench: no filter": {
+      "pairs": 285,
+      "databases": 22,
+      "unanswerable": {
+        "referred column is not the target's one-column key": 13
+      },
+      "two tables": {
+        "recall_at_1": 0.6912280701754386,
+        "95": [
+          0.5645727528703859,
+          0.8061360544217687
+        ]
+      },
+      "whole database": {
+        "recall_at_1": 0.6666666666666666,
+        "95": [
+          0.5513252858598438,
+          0.7859879206212251
+        ]
+      },
+      "name score": {
+        "recall_at_1": 0.6982456140350877,
+        "95": [
+          0.575723497955332,
+          0.8175704733184738
+        ]
+      }
+    }
+  },
+  "seconds": 2
+}

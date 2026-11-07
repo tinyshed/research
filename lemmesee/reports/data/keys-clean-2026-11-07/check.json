@@ -1,0 +1,34 @@
+{
+  "process": {
+    "pairs": 674751,
+    "meta identical": true,
+    "pairs whose features differ between the two builds": 99327,
+    "identical": false
+  },
+  "sorted": {
+    "pairs": 674751,
+    "meta identical": true,
+    "pairs whose features differ between the two builds": 0,
+    "identical": true
+  },
+  "long stems": {
+    "train": {
+      "candidate pairs": 6206601,
+      "pairs whose stem has over twelve trigrams": 956307,
+      "columns with a candidate": 330392,
+      "columns whose stem has over twelve trigrams": 44195
+    },
+    "validation": {
+      "candidate pairs": 674751,
+      "pairs whose stem has over twelve trigrams": 101551,
+      "columns with a candidate": 39504,
+      "columns whose stem has over twelve trigrams": 5519
+    },
+    "external": {
+      "candidate pairs": 712774,
+      "pairs whose stem has over twelve trigrams": 219645,
+      "columns with a candidate": 15644,
+      "columns whose stem has over twelve trigrams": 2948
+    }
+  }
+}

@@ -1,0 +1,472 @@
+{
+ "frozen model": {
+  "precision": 0.6808510638297872,
+  "recall": 0.10702341137123746,
+  "f1": 0.18497109826589594,
+  "precision_95": [
+   0.4666279069767442,
+   0.8450975081256771
+  ],
+  "recall_95": [
+   0.052618721069775415,
+   0.16945216201731866
+  ],
+  "f1_95": [
+   0.09492317314514022,
+   0.28045309357624504
+  ],
+  "macro f1 over databases": 0.16225769180314636
+ },
+ "models": {
+  "gemini-3.5-flash-lite": {
+   "precision": 0.9314079422382672,
+   "recall": 0.862876254180602,
+   "f1": 0.8958333333333334,
+   "precision_95": [
+    0.8840515921616657,
+    0.9696214983980942
+   ],
+   "recall_95": [
+    0.7622029304201602,
+    0.945087575259989
+   ],
+   "f1_95": [
+    0.8330209474903717,
+    0.9427925243356408
+   ],
+   "macro f1 over databases": 0.851875737697226,
+   "frozen minus this": {
+    "precision": {
+     "point": -0.25055687840847995,
+     "95": [
+      -0.47442860006466814,
+      -0.0796665439188925
+     ]
+    },
+    "recall": {
+     "point": -0.7558528428093645,
+     "95": [
+      -0.836893842568228,
+      -0.6584154293995016
+     ]
+    },
+    "f1": {
+     "point": -0.7108622350674374,
+     "95": [
+      -0.7989735064912373,
+      -0.6149257262221837
+     ]
+    }
+   },
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 0
+   },
+   "the paper's task": {
+    "unanswered": 0,
+    "unreadable": 1,
+    "livesqlbench": {
+     "pairs": 285,
+     "recall_at_1": 0.6701754385964912,
+     "95": [
+      0.5444773282978672,
+      0.7824971569044146
+     ]
+    }
+   },
+   "usage": {
+    "heldout-db": {
+     "answered": 22,
+     "models named": [
+      "gemini-3.5-flash-lite"
+     ],
+     "input tokens": 23305,
+     "output tokens": 7454,
+     "reasoning tokens": 0,
+     "requests with reasoning tokens": 0,
+     "median input tokens": 1050.0,
+     "median output tokens": 328.5,
+     "median reasoning tokens": 0.0,
+     "seconds, median": 1.715211549999367,
+     "seconds, 90th": 2.241487309994409,
+     "seconds, largest": 2.5208851999923354,
+     "seconds, total": 38.44447529995523,
+     "price, total": 0.0256265,
+     "price, median a request": 0.0010856999999999998,
+     "attempts beyond the first": 0,
+     "finish reasons": {
+      "stop": 22
+     },
+     "in flight": [
+      4
+     ]
+    },
+    "heldout-pair": {
+     "answered": 285,
+     "models named": [
+      "gemini-3.5-flash-lite"
+     ],
+     "input tokens": 38578,
+     "output tokens": 13363,
+     "reasoning tokens": 0,
+     "requests with reasoning tokens": 0,
+     "median input tokens": 123.0,
+     "median output tokens": 46.0,
+     "median reasoning tokens": 0.0,
+     "seconds, median": 0.8342515000113053,
+     "seconds, 90th": 0.9685079399991082,
+     "seconds, largest": 1.3971288000029745,
+     "seconds, total": 245.28180709992012,
+     "price, total": 0.0449809,
+     "price, median a request": 0.00015209999999999998,
+     "attempts beyond the first": 0,
+     "finish reasons": {
+      "stop": 285
+     },
+     "in flight": [
+      4
+     ]
+    }
+   }
+  },
+  "gemini-3-flash": {
+   "precision": 0.9283154121863799,
+   "recall": 0.8662207357859532,
+   "f1": 0.8961937716262977,
+   "precision_95": [
+    0.8777738927738927,
+    0.9676416010049104
+   ],
+   "recall_95": [
+    0.7658069270449521,
+    0.9488817891373802
+   ],
+   "f1_95": [
+    0.8344776995305165,
+    0.9445656740957252
+   ],
+   "macro f1 over databases": 0.8521192441907325,
+   "frozen minus this": {
+    "precision": {
+     "point": -0.2474643483565927,
+     "95": [
+      -0.4702407205332935,
+      -0.07664645412470032
+     ]
+    },
+    "recall": {
+     "point": -0.7591973244147157,
+     "95": [
+      -0.8426005747126436,
+      -0.6603627698891267
+     ]
+    },
+    "f1": {
+     "point": -0.7112226733604017,
+     "95": [
+      -0.7999220171192923,
+      -0.6147545228755167
+     ]
+    }
+   },
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 0
+   },
+   "the paper's task": {
+    "unanswered": 0,
+    "unreadable": 1,
+    "livesqlbench": {
+     "pairs": 285,
+     "recall_at_1": 0.6596491228070176,
+     "95": [
+      0.5265101674641148,
+      0.7824124396135266
+     ]
+    }
+   },
+   "usage": {
+    "heldout-db": {
+     "answered": 22,
+     "models named": [
+      "gemini-3-flash"
+     ],
+     "input tokens": 23305,
+     "output tokens": 7497,
+     "reasoning tokens": 0,
+     "requests with reasoning tokens": 0,
+     "median input tokens": 1050.0,
+     "median output tokens": 378.5,
+     "median reasoning tokens": 0.0,
+     "seconds, median": 1.6765872999967542,
+     "seconds, 90th": 2.4395032399930643,
+     "seconds, largest": 2.6581044999911683,
+     "seconds, total": 37.28056600000127,
+     "price, total": 0.0341435,
+     "price, median a request": 0.00167475,
+     "attempts beyond the first": 0,
+     "finish reasons": {
+      "stop": 22
+     },
+     "in flight": [
+      4
+     ]
+    },
+    "heldout-pair": {
+     "answered": 285,
+     "models named": [
+      "gemini-3-flash"
+     ],
+     "input tokens": 38578,
+     "output tokens": 13224,
+     "reasoning tokens": 0,
+     "requests with reasoning tokens": 0,
+     "median input tokens": 123.0,
+     "median output tokens": 45.0,
+     "median reasoning tokens": 0.0,
+     "seconds, median": 0.8291825000051176,
+     "seconds, 90th": 0.9865395599917974,
+     "seconds, largest": 1.5804650000063702,
+     "seconds, total": 245.80857169970113,
+     "price, total": 0.058961,
+     "price, median a request": 0.0001995,
+     "attempts beyond the first": 0,
+     "finish reasons": {
+      "stop": 285
+     },
+     "in flight": [
+      4
+     ]
+    }
+   }
+  },
+  "gemini-3.8-flash-high": {
+   "precision": 0.9379310344827586,
+   "recall": 0.9096989966555183,
+   "f1": 0.9235993208828523,
+   "precision_95": [
+    0.8909059882097424,
+    0.9748444579698384
+   ],
+   "recall_95": [
+    0.8139910010316115,
+    0.9795935662400553
+   ],
+   "f1_95": [
+    0.8687553166313825,
+    0.964984471495377
+   ],
+   "macro f1 over databases": 0.9093887071709653,
+   "frozen minus this": {
+    "precision": {
+     "point": -0.2570799706529714,
+     "95": [
+      -0.4807002082087507,
+      -0.08647205073693241
+     ]
+    },
+    "recall": {
+     "point": -0.8026755852842808,
+     "95": [
+      -0.8793145568909356,
+      -0.7173810500410173
+     ]
+    },
+    "f1": {
+     "point": -0.7386282226169564,
+     "95": [
+      -0.8317038532149515,
+      -0.6433514125147767
+     ]
+    }
+   },
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 0
+   },
+   "the paper's task": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "livesqlbench": {
+     "pairs": 285,
+     "recall_at_1": 0.8807017543859649,
+     "95": [
+      0.7840351605758583,
+      0.9507691241685144
+     ]
+    }
+   },
+   "usage": {
+    "heldout-db": {
+     "answered": 22,
+     "models named": [
+      "gemini-3.8-flash-n"
+     ],
+     "input tokens": 23305,
+     "output tokens": 142340,
+     "reasoning tokens": 134840,
+     "requests with reasoning tokens": 22,
+     "median input tokens": 1050.0,
+     "median output tokens": 3605.5,
+     "median reasoning tokens": 3334.0,
+     "seconds, median": 28.81429680000292,
+     "seconds, 90th": 128.30885403000147,
+     "seconds, largest": 164.37225949999993,
+     "seconds, total": 1029.9118865999772,
+     "price, total": 0.55125375,
+     "price, median a request": 0.014121,
+     "attempts beyond the first": 0,
+     "finish reasons": {
+      "stop": 22
+     },
+     "in flight": [
+      4
+     ]
+    },
+    "heldout-pair": {
+     "answered": 285,
+     "models named": [
+      "gemini-3.8-flash-n"
+     ],
+     "input tokens": 38578,
+     "output tokens": 318148,
+     "reasoning tokens": 308195,
+     "requests with reasoning tokens": 285,
+     "median input tokens": 123.0,
+     "median output tokens": 435.0,
+     "median reasoning tokens": 402.0,
+     "seconds, median": 5.471383900003275,
+     "seconds, 90th": 24.035123839994775,
+     "seconds, largest": 93.04322550000506,
+     "seconds, total": 2999.834827299841,
+     "price, total": 1.2219885000000001,
+     "price, median a request": 0.00172875,
+     "attempts beyond the first": 0,
+     "finish reasons": {
+      "stop": 285
+     },
+     "in flight": [
+      4
+     ]
+    }
+   }
+  },
+  "claude-haiku-5-5": {
+   "precision": 0.926829268292683,
+   "recall": 0.8896321070234113,
+   "f1": 0.9078498293515359,
+   "precision_95": [
+    0.8740421638199278,
+    0.9688443678630881
+   ],
+   "recall_95": [
+    0.7827608639084049,
+    0.9679735199481542
+   ],
+   "f1_95": [
+    0.8384743103052014,
+    0.9566898084815322
+   ],
+   "macro f1 over databases": 0.8748817614827739,
+   "frozen minus this": {
+    "precision": {
+     "point": -0.24597820446289576,
+     "95": [
+      -0.47189610872684923,
+      -0.07961348772720032
+     ]
+    },
+    "recall": {
+     "point": -0.7826086956521738,
+     "95": [
+      -0.8727511961722487,
+      -0.6636732521081873
+     ]
+    },
+    "f1": {
+     "point": -0.7228787310856399,
+     "95": [
+      -0.8298682377722709,
+      -0.6114408442508703
+     ]
+    }
+   },
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 0
+   },
+   "the paper's task": {
+    "unanswered": 0,
+    "unreadable": 2,
+    "livesqlbench": {
+     "pairs": 285,
+     "recall_at_1": 0.7894736842105263,
+     "95": [
+      0.6731981620986269,
+      0.8971885880077369
+     ]
+    }
+   },
+   "usage": {
+    "heldout-db": {
+     "answered": 22,
+     "models named": [
+      "claude-haiku-5-5"
+     ],
+     "input tokens": 32497,
+     "output tokens": 31139,
+     "reasoning tokens": 21582,
+     "requests with reasoning tokens": 22,
+     "median input tokens": 1493.0,
+     "median output tokens": 1260.0,
+     "median reasoning tokens": 942.5,
+     "seconds, median": 5.235249199991813,
+     "seconds, 90th": 6.711670139989293,
+     "seconds, largest": 12.068472600003588,
+     "seconds, total": 120.6593378999678,
+     "price, total": 0.018819199999999998,
+     "price, median a request": 0.00081175,
+     "attempts beyond the first": 0,
+     "finish reasons": {
+      "end_turn": 22
+     },
+     "in flight": [
+      1
+     ]
+    },
+    "heldout-pair": {
+     "answered": 285,
+     "models named": [
+      "claude-haiku-5-5"
+     ],
+     "input tokens": 56961,
+     "output tokens": 67890,
+     "reasoning tokens": 53453,
+     "requests with reasoning tokens": 285,
+     "median input tokens": 189.0,
+     "median output tokens": 190.0,
+     "median reasoning tokens": 138.0,
+     "seconds, median": 1.371602700004587,
+     "seconds, 90th": 2.2315352400037227,
+     "seconds, largest": 4.90160320000723,
+     "seconds, total": 440.20369760003814,
+     "price, total": 0.0396411,
+     "price, median a request": 0.00011609999999999999,
+     "attempts beyond the first": 0,
+     "finish reasons": {
+      "end_turn": 283,
+      "refusal": 2
+     },
+     "in flight": [
+      1
+     ]
+    }
+   }
+  }
+ },
+ "frozen model, the paper's task": 0.6666666666666666
+}

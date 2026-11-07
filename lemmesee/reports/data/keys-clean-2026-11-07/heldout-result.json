@@ -1,0 +1,149 @@
+{
+  "frozen": {
+    "frozen at": "2026-11-07T16:20:06+00:00",
+    "model": "round 1s refit of both, seed 20261027",
+    "keys.bin sha256": "56a7719b12838148e959c67723d00bee8749a012852bde298d1eaacdc5ed6ba9",
+    "keys.bin bytes": 960819,
+    "keys-first.ubj sha256": "ef315bd228b8e4c26e209ab0a9f271205dfb918697449b59e314545e07ad6c2a",
+    "keys-second.txt sha256": "a0ed0f74a4d7b5c1762a4ff191895de271bc0ece4100efc839c0e1db40218e9e",
+    "threshold": 0.8373612937315371,
+    "held-out set": "LiveSQLBench-Base-Full-v1, chosen by the owner on 7 November 2026, not yet fetched"
+  },
+  "databases declaring a key": 22,
+  "keys": 299,
+  "over every declared key": {
+    "precision": 0.6808510638297872,
+    "recall": 0.10702341137123746,
+    "f1": 0.18497109826589594,
+    "precision_95": [
+      0.4666279069767442,
+      0.8450975081256771
+    ],
+    "recall_95": [
+      0.052618721069775415,
+      0.16945216201731866
+    ],
+    "f1_95": [
+      0.09492317314514022,
+      0.28045309357624504
+    ],
+    "macro f1 over databases": 0.16225769180314636
+  },
+  "by database, tp fp fn": {
+    "livesqlbench/archeology_scan": [
+      0,
+      0,
+      21
+    ],
+    "livesqlbench/cold_chain_pharma_compliance": [
+      1,
+      0,
+      9
+    ],
+    "livesqlbench/cross_border": [
+      5,
+      0,
+      8
+    ],
+    "livesqlbench/crypto_exchange": [
+      2,
+      3,
+      5
+    ],
+    "livesqlbench/cybermarket_pattern": [
+      3,
+      1,
+      14
+    ],
+    "livesqlbench/disaster_relief": [
+      2,
+      0,
+      14
+    ],
+    "livesqlbench/exchange_traded_funds": [
+      2,
+      0,
+      14
+    ],
+    "livesqlbench/fake_account": [
+      2,
+      0,
+      9
+    ],
+    "livesqlbench/households": [
+      3,
+      0,
+      4
+    ],
+    "livesqlbench/hulushows": [
+      0,
+      1,
+      6
+    ],
+    "livesqlbench/insider_trading": [
+      0,
+      1,
+      10
+    ],
+    "livesqlbench/labor_certification_applications": [
+      0,
+      2,
+      13
+    ],
+    "livesqlbench/mental_health": [
+      1,
+      2,
+      8
+    ],
+    "livesqlbench/museum_artifact": [
+      0,
+      1,
+      15
+    ],
+    "livesqlbench/organ_transplant": [
+      0,
+      1,
+      25
+    ],
+    "livesqlbench/planets_data": [
+      0,
+      1,
+      6
+    ],
+    "livesqlbench/polar_equipment": [
+      9,
+      0,
+      18
+    ],
+    "livesqlbench/reverse_logistics": [
+      0,
+      1,
+      5
+    ],
+    "livesqlbench/robot_fault_prediction": [
+      1,
+      0,
+      16
+    ],
+    "livesqlbench/solar_panel": [
+      0,
+      0,
+      9
+    ],
+    "livesqlbench/sports_events": [
+      0,
+      0,
+      17
+    ],
+    "livesqlbench/virtual_idol": [
+      1,
+      1,
+      21
+    ]
+  },
+  "Rust": {
+    "keys drawn": 47,
+    "drawn by Python only": [],
+    "drawn by Rust only": []
+  }
+}

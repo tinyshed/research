@@ -72,3 +72,9 @@ so, never by editing the number it replaces.
   column and `decimal` as a key kind, chosen on validation; once on test F1 0.736 against `both`'s 0.734 over every
   declared key and 0.911 against 0.906 in the pair task; on CTU's pairs 0.934 against 0.886, past the constrained
   T5; over every declared key of the external databases 0.727 against 0.734, precision lost.
+- [The key model on fixed features, one protocol and a held-out set](keys-clean-2026-11-07.md), round 1s: the letter
+  trigrams in a fixed order, a defect that moved the external F1 over 0.731–0.737; refitted, the widened model reads 0.731
+  over every declared key of 398 databases and 0.736 on SchemaPile's test, the widening's gain off SchemaPile gone; a
+  reader in Rust draws exactly the libraries' keys; four language models under one protocol 0.834–0.890; on
+  LiveSQLBench, which nothing had read, the frozen model reaches F1 0.185 where the language models reach
+  0.896–0.924.
