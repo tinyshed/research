@@ -1,0 +1,30 @@
+{
+ "1s": {
+  "schemas": 252,
+  "keys": 6555,
+  "precision": 0.8029411764705883,
+  "recall": 0.7080091533180778,
+  "f1": 0.7524929063640049,
+  "f1_95": [
+   0.7052665387314548,
+   0.7951932011453783
+  ]
+ },
+ "seven-restyled": {
+  "schemas": 252,
+  "keys": 6555,
+  "precision": 0.7817361543248289,
+  "recall": 0.7665903890160183,
+  "f1": 0.7740891935608103,
+  "f1_95": [
+   0.7364342813491727,
+   0.8073901257785796
+  ],
+  "minus 1s, f1_95": [
+   -0.002146299649951344,
+   0.047053357286587834
+  ],
+  "minus 1s, f1": 0.021596287196805397
+ },
+ "note": "both GitHub sets pooled after each was read once: 252 schemas with a one-column key of the 257 the rule kept; not pre-registered"
+}

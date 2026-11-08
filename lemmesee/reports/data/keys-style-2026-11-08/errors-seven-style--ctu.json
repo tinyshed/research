@@ -1,0 +1,2695 @@
+{
+ "model": "seven-style",
+ "set": "ctu",
+ "threshold": 0.8459303825605176,
+ "declared keys": 1854,
+ "pairs": 1849548,
+ "kinds": {
+  "found": 927,
+  "below the threshold": 599,
+  "won by another target": 318,
+  "not a candidate": 10,
+  "drawn, no key declared": 157,
+  "drawn, wrong target": 42
+ },
+ "F1": 0.6221,
+ "per database": {
+  "ctu/Bench": {
+   "below the threshold": 200,
+   "won by another target": 139,
+   "found": 23,
+   "drawn, no key declared": 31,
+   "drawn, wrong target": 4
+  },
+  "ctu/Mooney_Family": {
+   "below the threshold": 134
+  },
+  "ctu/Bench5": {
+   "found": 77,
+   "won by another target": 16,
+   "below the threshold": 6,
+   "drawn, wrong target": 12,
+   "drawn, no key declared": 8
+  },
+  "ctu/tpcds": {
+   "found": 68,
+   "below the threshold": 13,
+   "won by another target": 21,
+   "drawn, wrong target": 3,
+   "drawn, no key declared": 1
+  },
+  "ctu/AdventureWorks2014": {
+   "found": 69,
+   "below the threshold": 6,
+   "won by another target": 14,
+   "drawn, wrong target": 11,
+   "drawn, no key declared": 5
+  },
+  "ctu/SAT": {
+   "below the threshold": 62,
+   "found": 3
+  },
+  "ctu/Mondial": {
+   "found": 47,
+   "won by another target": 1,
+   "drawn, no key declared": 4
+  },
+  "ctu/tpce": {
+   "below the threshold": 43,
+   "won by another target": 4,
+   "found": 1,
+   "drawn, no key declared": 2
+  },
+  "ctu/Bench4": {
+   "found": 32,
+   "below the threshold": 6,
+   "won by another target": 2,
+   "drawn, no key declared": 3,
+   "drawn, wrong target": 1
+  },
+  "ctu/TubePricing": {
+   "found": 31,
+   "below the threshold": 8,
+   "drawn, no key declared": 3
+  },
+  "ctu/PTE": {
+   "won by another target": 35,
+   "below the threshold": 4
+  },
+  "ctu/Mesh": {
+   "won by another target": 32,
+   "found": 1,
+   "drawn, no key declared": 2
+  },
+  "ctu/lahman_2014": {
+   "below the threshold": 15,
+   "found": 16,
+   "drawn, no key declared": 3
+  },
+  "ctu/OpenML_2016": {
+   "below the threshold": 11,
+   "won by another target": 1,
+   "found": 18,
+   "drawn, no key declared": 4
+  },
+  "ctu/Airline": {
+   "won by another target": 7,
+   "below the threshold": 25,
+   "found": 1
+  },
+  "ctu/Dunur": {
+   "found": 16,
+   "below the threshold": 16
+  },
+  "ctu/Bench3": {
+   "won by another target": 8,
+   "found": 22
+  },
+  "ctu/Bench6": {
+   "won by another target": 3,
+   "found": 16,
+   "below the threshold": 1,
+   "drawn, wrong target": 3,
+   "drawn, no key declared": 1
+  },
+  "ctu/sakila": {
+   "found": 22,
+   "drawn, no key declared": 1
+  },
+  "ctu/geneea": {
+   "below the threshold": 2,
+   "found": 18,
+   "drawn, no key declared": 2
+  },
+  "ctu/ErgastF1": {
+   "found": 20,
+   "below the threshold": 1
+  },
+  "ctu/Elti": {
+   "found": 20
+  },
+  "ctu/NCAA": {
+   "found": 17,
+   "drawn, no key declared": 3
+  },
+  "ctu/YelpDataset3": {
+   "found": 4,
+   "drawn, no key declared": 16
+  },
+  "ctu/ChEMBL": {
+   "found": 12,
+   "below the threshold": 2,
+   "drawn, no key declared": 4
+  },
+  "ctu/imdb_full": {
+   "found": 18
+  },
+  "ctu/Bench2": {
+   "found": 12,
+   "below the threshold": 4
+  },
+  "ctu/YelpDataset3_disc_clean": {
+   "found": 16
+  },
+  "ctu/stats": {
+   "found": 12,
+   "won by another target": 1,
+   "drawn, no key declared": 2
+  },
+  "ctu/Basketball_men": {
+   "found": 3,
+   "drawn, no key declared": 11
+  },
+  "ctu/Hockey": {
+   "below the threshold": 2,
+   "not a candidate": 10,
+   "drawn, no key declared": 2
+  },
+  "ctu/northwind": {
+   "found": 12,
+   "below the threshold": 1,
+   "drawn, no key declared": 1
+  },
+  "ctu/Carcinogenesis": {
+   "found": 8,
+   "below the threshold": 5
+  },
+  "ctu/cs": {
+   "found": 8,
+   "below the threshold": 1,
+   "won by another target": 1,
+   "drawn, no key declared": 1,
+   "drawn, wrong target": 1
+  },
+  "ctu/meta": {
+   "found": 3,
+   "below the threshold": 1,
+   "drawn, no key declared": 8
+  },
+  "ctu/Mondial_geo": {
+   "found": 10,
+   "below the threshold": 2
+  },
+  "ctu/stats_CEB": {
+   "found": 12
+  },
+  "ctu/TalkingData": {
+   "found": 4,
+   "won by another target": 3,
+   "drawn, no key declared": 4,
+   "drawn, wrong target": 1
+  },
+  "ctu/Chinook": {
+   "found": 9,
+   "below the threshold": 2
+  },
+  "ctu/Credit": {
+   "found": 9,
+   "drawn, no key declared": 2
+  },
+  "ctu/Grants": {
+   "found": 7,
+   "won by another target": 2,
+   "below the threshold": 1
+  },
+  "ctu/pubs": {
+   "found": 9,
+   "below the threshold": 1
+  },
+  "ctu/AustralianFootball": {
+   "found": 5,
+   "drawn, no key declared": 4
+  },
+  "ctu/financial": {
+   "found": 8,
+   "drawn, no key declared": 1
+  },
+  "ctu/Financial_ijs": {
+   "found": 8,
+   "drawn, no key declared": 1
+  },
+  "ctu/PremierLeague": {
+   "found": 5,
+   "drawn, no key declared": 4
+  },
+  "ctu/Student_loan": {
+   "below the threshold": 8,
+   "found": 1
+  },
+  "ctu/Bupa": {
+   "won by another target": 8
+  },
+  "ctu/classicmodels": {
+   "found": 7,
+   "below the threshold": 1
+  },
+  "ctu/mutagenesis_188": {
+   "found": 8
+  },
+  "ctu/mutagenesis_42": {
+   "found": 8
+  },
+  "ctu/Pima": {
+   "won by another target": 8
+  },
+  "ctu/ccs": {
+   "found": 4,
+   "drawn, no key declared": 3
+  },
+  "ctu/tpcc": {
+   "found": 3,
+   "below the threshold": 1,
+   "drawn, no key declared": 3
+  },
+  "ctu/tpcd": {
+   "found": 6,
+   "below the threshold": 1
+  },
+  "ctu/tpch": {
+   "found": 7
+  },
+  "ctu/employee": {
+   "found": 6
+  },
+  "ctu/Financial_std": {
+   "found": 6
+  },
+  "ctu/genes": {
+   "below the threshold": 1,
+   "won by another target": 2,
+   "drawn, no key declared": 1,
+   "drawn, wrong target": 2
+  },
+  "ctu/Hepatitis_std": {
+   "found": 6
+  },
+  "ctu/imdb_ijs": {
+   "found": 6
+  },
+  "ctu/imdb_MovieLens": {
+   "found": 6
+  },
+  "ctu/imdb_small": {
+   "found": 6
+  },
+  "ctu/legalActs": {
+   "below the threshold": 2,
+   "found": 2,
+   "won by another target": 1,
+   "drawn, wrong target": 1
+  },
+  "ctu/NBA": {
+   "found": 5,
+   "drawn, no key declared": 1
+  },
+  "ctu/Same_gen": {
+   "found": 6
+  },
+  "ctu/Biodegradability": {
+   "found": 5
+  },
+  "ctu/CDESchools": {
+   "won by another target": 2,
+   "drawn, wrong target": 1,
+   "drawn, no key declared": 2
+  },
+  "ctu/Telstra": {
+   "below the threshold": 4,
+   "drawn, no key declared": 1
+  },
+  "ctu/Toxicology": {
+   "found": 5
+  },
+  "ctu/Accidents": {
+   "found": 3,
+   "drawn, no key declared": 1
+  },
+  "ctu/Atherosclerosis": {
+   "won by another target": 2,
+   "below the threshold": 1,
+   "drawn, wrong target": 1
+  },
+  "ctu/Basketball_women": {
+   "found": 2,
+   "drawn, no key declared": 2
+  },
+  "ctu/GOSales": {
+   "found": 3,
+   "drawn, no key declared": 1
+  },
+  "ctu/nations": {
+   "won by another target": 3,
+   "drawn, no key declared": 1
+  },
+  "ctu/SAP": {
+   "found": 1,
+   "won by another target": 2,
+   "drawn, wrong target": 1
+  },
+  "ctu/university": {
+   "found": 4
+  },
+  "ctu/UW_std": {
+   "found": 4
+  },
+  "ctu/Walmart": {
+   "found": 3,
+   "drawn, no key declared": 1
+  },
+  "ctu/arnaud_citeseer": {
+   "found": 1,
+   "drawn, no key declared": 2
+  },
+  "ctu/CiteSeer": {
+   "found": 1,
+   "drawn, no key declared": 2
+  },
+  "ctu/CORA": {
+   "found": 3
+  },
+  "ctu/Countries": {
+   "found": 3
+  },
+  "ctu/ctu_crossSchema1": {
+   "found": 3
+  },
+  "ctu/ctu_crossSchema2": {
+   "found": 3
+  },
+  "ctu/mutagenesis": {
+   "found": 3
+  },
+  "ctu/PubMed_Diabetes": {
+   "found": 2,
+   "drawn, no key declared": 1
+  },
+  "ctu/restbase": {
+   "below the threshold": 1,
+   "found": 2
+  },
+  "ctu/SalesDB": {
+   "below the threshold": 1,
+   "found": 2
+  },
+  "ctu/Seznam": {
+   "found": 3
+  },
+  "ctu/Shakespeare": {
+   "found": 3
+  },
+  "ctu/Simpsons": {
+   "found": 3
+  },
+  "ctu/VisualGenome": {
+   "found": 3
+  },
+  "ctu/WebKP": {
+   "below the threshold": 2,
+   "found": 1
+  },
+  "ctu/world": {
+   "found": 2,
+   "drawn, no key declared": 1
+  },
+  "ctu/Yelp": {
+   "found": 3
+  },
+  "ctu/ConsumerExpenditures": {
+   "found": 2
+  },
+  "ctu/Dallas": {
+   "found": 2
+  },
+  "ctu/Facebook": {
+   "found": 2
+  },
+  "ctu/FNHK": {
+   "found": 2
+  },
+  "ctu/IMDB_1R": {
+   "found": 2
+  },
+  "ctu/medical": {
+   "below the threshold": 1,
+   "found": 1
+  },
+  "ctu/Mondial_Tutorial": {
+   "found": 2
+  },
+  "ctu/SFScores": {
+   "found": 2
+  },
+  "ctu/twitterfromsearch4_20101001": {
+   "found": 2
+  },
+  "ctu/Walmart_2014": {
+   "found": 2
+  },
+  "ctu/Chess": {
+   "found": 1
+  },
+  "ctu/CraftBeer": {
+   "found": 1
+  },
+  "ctu/ctu_datatype_benchmark": {
+   "found": 1
+  },
+  "ctu/DCG": {
+   "found": 1
+  },
+  "ctu/ftp": {
+   "found": 1
+  },
+  "ctu/MuskLarge": {
+   "found": 1
+  },
+  "ctu/MuskSmall": {
+   "found": 1
+  },
+  "ctu/nhl_draft": {
+   "found": 1
+  },
+  "ctu/Pyrimidine": {
+   "found": 1
+  },
+  "ctu/trains": {
+   "found": 1
+  },
+  "ctu/Triazine": {
+   "found": 1
+  },
+  "ctu/UTube": {
+   "found": 1
+  }
+ },
+ "shown": {
+  "found": [
+   {
+    "database": "ctu/Accidents",
+    "table": "oseba",
+    "column": "upravna_enota",
+    "target": "upravna_enota",
+    "score": 0.9467
+   },
+   {
+    "database": "ctu/Accidents",
+    "table": "nesreca",
+    "column": "upravna_enota",
+    "target": "upravna_enota",
+    "score": 0.9864
+   },
+   {
+    "database": "ctu/Accidents",
+    "table": "oseba",
+    "column": "id_nesreca",
+    "target": "nesreca",
+    "score": 0.9268
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "SalesPerson",
+    "column": "TerritoryID",
+    "target": "SalesTerritory",
+    "score": 0.9176
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "PurchaseOrderHeader",
+    "column": "EmployeeID",
+    "target": "Employee",
+    "score": 0.9582
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "Customer",
+    "column": "StoreID",
+    "target": "Store",
+    "score": 0.9553
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "SalesOrderHeader",
+    "column": "SalesPersonID",
+    "target": "SalesPerson",
+    "score": 0.9395
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "WorkOrderRouting",
+    "column": "WorkOrderID",
+    "target": "WorkOrder",
+    "score": 0.945
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "SalesOrderHeader",
+    "column": "BillToAddressID",
+    "target": "Address",
+    "score": 0.9087
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "StateProvince",
+    "column": "CountryRegionCode",
+    "target": "CountryRegion",
+    "score": 0.9816
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "ProductInventory",
+    "column": "ProductID",
+    "target": "Product",
+    "score": 0.9367
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "SalesTerritory",
+    "column": "CountryRegionCode",
+    "target": "CountryRegion",
+    "score": 0.9806
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "WorkOrder",
+    "column": "ScrapReasonID",
+    "target": "ScrapReason",
+    "score": 0.9614
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "ProductCostHistory",
+    "column": "ProductID",
+    "target": "Product",
+    "score": 0.9589
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "Customer",
+    "column": "PersonID",
+    "target": "Person",
+    "score": 0.9636
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "SalesTaxRate",
+    "column": "StateProvinceID",
+    "target": "StateProvince",
+    "score": 0.9846
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "BusinessEntityAddress",
+    "column": "AddressID",
+    "target": "Address",
+    "score": 0.9681
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "ProductModelIllustration",
+    "column": "ProductModelID",
+    "target": "ProductModel",
+    "score": 0.9151
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "ProductInventory",
+    "column": "LocationID",
+    "target": "Location",
+    "score": 0.9689
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "BusinessEntityAddress",
+    "column": "AddressTypeID",
+    "target": "AddressType",
+    "score": 0.9697
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "PurchaseOrderDetail",
+    "column": "PurchaseOrderID",
+    "target": "PurchaseOrderHeader",
+    "score": 0.9661
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "SalesTerritoryHistory",
+    "column": "TerritoryID",
+    "target": "SalesTerritory",
+    "score": 0.9723
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "Product",
+    "column": "SizeUnitMeasureCode",
+    "target": "UnitMeasure",
+    "score": 0.9364
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "ProductProductPhoto",
+    "column": "ProductPhotoID",
+    "target": "ProductPhoto",
+    "score": 0.9525
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "StateProvince",
+    "column": "TerritoryID",
+    "target": "SalesTerritory",
+    "score": 0.9018
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "ProductReview",
+    "column": "ProductID",
+    "target": "Product",
+    "score": 0.9536
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "SalesOrderHeader",
+    "column": "TerritoryID",
+    "target": "SalesTerritory",
+    "score": 0.8526
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "CountryRegionCurrency",
+    "column": "CurrencyCode",
+    "target": "Currency",
+    "score": 0.9885
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "Vendor",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.866
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "ProductModelIllustration",
+    "column": "IllustrationID",
+    "target": "Illustration",
+    "score": 0.9575
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "BusinessEntityAddress",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.9564
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "WorkOrder",
+    "column": "ProductID",
+    "target": "Product",
+    "score": 0.9342
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "BillOfMaterials",
+    "column": "UnitMeasureCode",
+    "target": "UnitMeasure",
+    "score": 0.9601
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "SalesOrderHeader",
+    "column": "CreditCardID",
+    "target": "CreditCard",
+    "score": 0.9482
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "SalesOrderHeaderSalesReason",
+    "column": "SalesOrderID",
+    "target": "SalesOrderHeader",
+    "score": 0.8557
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "BusinessEntityContact",
+    "column": "PersonID",
+    "target": "Person",
+    "score": 0.967
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "ProductModelProductDescriptionCulture",
+    "column": "ProductDescriptionID",
+    "target": "ProductDescription",
+    "score": 0.9506
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "ProductModelProductDescriptionCulture",
+    "column": "CultureID",
+    "target": "Culture",
+    "score": 0.9593
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "CurrencyRate",
+    "column": "ToCurrencyCode",
+    "target": "Currency",
+    "score": 0.966
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "PurchaseOrderDetail",
+    "column": "ProductID",
+    "target": "Product",
+    "score": 0.9293
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "ProductDocument",
+    "column": "DocumentNode",
+    "target": "Document",
+    "score": 0.9516
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "Person",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.8995
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "SpecialOfferProduct",
+    "column": "ProductID",
+    "target": "Product",
+    "score": 0.954
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "ProductListPriceHistory",
+    "column": "ProductID",
+    "target": "Product",
+    "score": 0.9474
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "CurrencyRate",
+    "column": "FromCurrencyCode",
+    "target": "Currency",
+    "score": 0.9663
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "ProductDocument",
+    "column": "ProductID",
+    "target": "Product",
+    "score": 0.9572
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "Product",
+    "column": "WeightUnitMeasureCode",
+    "target": "UnitMeasure",
+    "score": 0.9487
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "SalesOrderHeaderSalesReason",
+    "column": "SalesReasonID",
+    "target": "SalesReason",
+    "score": 0.9581
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "EmployeeDepartmentHistory",
+    "column": "ShiftID",
+    "target": "Shift",
+    "score": 0.9553
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "PersonCreditCard",
+    "column": "CreditCardID",
+    "target": "CreditCard",
+    "score": 0.9857
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "Store",
+    "column": "SalesPersonID",
+    "target": "SalesPerson",
+    "score": 0.9584
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "ProductProductPhoto",
+    "column": "ProductID",
+    "target": "Product",
+    "score": 0.9402
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "PurchaseOrderHeader",
+    "column": "ShipMethodID",
+    "target": "ShipMethod",
+    "score": 0.9761
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "ProductModelProductDescriptionCulture",
+    "column": "ProductModelID",
+    "target": "ProductModel",
+    "score": 0.9204
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "PurchaseOrderHeader",
+    "column": "VendorID",
+    "target": "Vendor",
+    "score": 0.9547
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "TransactionHistory",
+    "column": "ProductID",
+    "target": "Product",
+    "score": 0.9316
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "SpecialOfferProduct",
+    "column": "SpecialOfferID",
+    "target": "SpecialOffer",
+    "score": 0.9698
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "BusinessEntityContact",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.9546
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "BusinessEntityContact",
+    "column": "ContactTypeID",
+    "target": "ContactType",
+    "score": 0.9585
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "EmployeeDepartmentHistory",
+    "column": "DepartmentID",
+    "target": "Department",
+    "score": 0.9438
+   }
+  ],
+  "below the threshold": [
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "BillOfMaterials",
+    "column": "ProductAssemblyID",
+    "target": "Product",
+    "score": 0.825
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "SalesOrderHeader",
+    "column": "ShipToAddressID",
+    "target": "Address",
+    "score": 0.7878
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "Product",
+    "column": "ProductSubcategoryID",
+    "target": "ProductSubcategory",
+    "score": 0.7808
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "Store",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.837
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "Product",
+    "column": "ProductModelID",
+    "target": "ProductModel",
+    "score": 0.7933
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "SalesOrderDetail",
+    "column": "SalesOrderID",
+    "target": "SalesOrderHeader",
+    "score": 0.823
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "Div1AirportSeqID",
+    "target": "L_AIRPORT_SEQ_ID",
+    "score": 0.5372
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "Quarter",
+    "target": "L_QUARTERS",
+    "score": 0.8037
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "DestCityMarketID",
+    "target": "L_CITY_MARKET_ID",
+    "score": 0.2262
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "OriginStateFips",
+    "target": "L_STATE_FIPS",
+    "score": 0.7439
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "OriginState",
+    "target": "L_STATE_ABR_AVIATION",
+    "score": 0.4036
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "ArrivalDelayGroups",
+    "target": "L_ONTIME_DELAY_GROUPS",
+    "score": 0.8182
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "OriginAirportID",
+    "target": "L_AIRPORT_ID",
+    "score": 0.2769
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "OriginCityMarketID",
+    "target": "L_CITY_MARKET_ID",
+    "score": 0.182
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "DestAirportID",
+    "target": "L_AIRPORT_ID",
+    "score": 0.266
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "Origin",
+    "target": "L_AIRPORT",
+    "score": 0.0335
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "DistanceGroup",
+    "target": "L_DISTANCE_GROUP_250",
+    "score": 0.7922
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "DestAirportSeqID",
+    "target": "L_AIRPORT_SEQ_ID",
+    "score": 0.5102
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "DepTimeBlk",
+    "target": "L_DEPARRBLK",
+    "score": 0.7231
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "AirlineID",
+    "target": "L_AIRLINE_ID",
+    "score": 0.3825
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "Div1AirportID",
+    "target": "L_AIRPORT_ID",
+    "score": 0.2558
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "Div2AirportSeqID",
+    "target": "L_AIRPORT_SEQ_ID",
+    "score": 0.5372
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "DestState",
+    "target": "L_STATE_ABR_AVIATION",
+    "score": 0.4119
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "DestWac",
+    "target": "L_WORLD_AREA_CODES",
+    "score": 0.127
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "Month",
+    "target": "L_MONTHS",
+    "score": 0.8125
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "DestStateFips",
+    "target": "L_STATE_FIPS",
+    "score": 0.7685
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "OriginAirportSeqID",
+    "target": "L_AIRPORT_SEQ_ID",
+    "score": 0.4666
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "UniqueCarrier",
+    "target": "L_UNIQUE_CARRIERS",
+    "score": 0.608
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "Div2AirportID",
+    "target": "L_AIRPORT_ID",
+    "score": 0.2558
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "DepartureDelayGroups",
+    "target": "L_ONTIME_DELAY_GROUPS",
+    "score": 0.8353
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "DayOfWeek",
+    "target": "L_WEEKDAYS",
+    "score": 0.7336
+   },
+   {
+    "database": "ctu/Atherosclerosis",
+    "table": "Letter",
+    "column": "ICO",
+    "target": "Entry",
+    "score": 0.5053
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "schedule",
+    "column": "ttid",
+    "target": "task_type",
+    "score": 0.0472
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "E_COMPANY_COMPETITOR",
+    "column": "CP_IN_ID",
+    "target": "E_INDUSTRY",
+    "score": 0.039
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "E_CUSTOMER_TAXRATE",
+    "column": "CX_C_ID",
+    "target": "E_CUSTOMER",
+    "score": 0.2786
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "app_events_relevant",
+    "column": "app_id",
+    "target": "app_all",
+    "score": 0.7938
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "tm055_supply_1b",
+    "column": "tm",
+    "target": "time",
+    "score": 0.5441
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "E_TRADE_REQUEST",
+    "column": "TR_S_SYMB",
+    "target": "E_SECURITY",
+    "score": 0.4237
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "PurchaseOrderHeader",
+    "column": "EmployeeID",
+    "target": "employee",
+    "score": 0.3598
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "ON_TIME_ON_TIME_PERFORMANCE_2016_1",
+    "column": "DAYOFWEEK",
+    "target": "L_WEEKDAYS",
+    "score": 0.3298
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "E_LAST_TRADE",
+    "column": "LT_S_SYMB",
+    "target": "E_SECURITY",
+    "score": 0.5501
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "tm222_charging",
+    "column": "class",
+    "target": "class",
+    "score": 0.7877
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "tm022_switch",
+    "column": "class",
+    "target": "class",
+    "score": 0.7877
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "tm015_eod_signaled",
+    "column": "class",
+    "target": "class",
+    "score": 0.7877
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "tm058_asr_or_switch_10",
+    "column": "tm",
+    "target": "time",
+    "score": 0.5531
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "app_labels",
+    "column": "label_id",
+    "target": "label_categories",
+    "score": 0.3672
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "key",
+    "column": "station_nbr",
+    "target": "station",
+    "score": 0.8176
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "comments",
+    "column": "PostId",
+    "target": "posts",
+    "score": 0.7914
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "E_COMPANY",
+    "column": "CO_AD_ID",
+    "target": "E_ADDRESS",
+    "score": 0.0174
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "ON_TIME_ON_TIME_PERFORMANCE_2016_1",
+    "column": "ORIGINAIRPORTID",
+    "target": "L_AIRPORT_ID",
+    "score": 0.7908
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "tm018_switch",
+    "column": "tm",
+    "target": "time",
+    "score": 0.5445
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "E_HOLDING",
+    "column": "H_T_ID",
+    "target": "E_TRADE",
+    "score": 0.0278
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "tm040_switch",
+    "column": "class",
+    "target": "class",
+    "score": 0.7877
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "setup_differences",
+    "column": "task_id",
+    "target": "task",
+    "score": 0.7707
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "bibliographical_reference",
+    "column": "implementation_id",
+    "target": "implementation",
+    "score": 0.8122
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "ON_TIME_ON_TIME_PERFORMANCE_2016_1",
+    "column": "ORIGINSTATEFIPS",
+    "target": "L_STATE_FIPS",
+    "score": 0.7402
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "tm021_eoc_disabled",
+    "column": "tm",
+    "target": "time",
+    "score": 0.6114
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "badges",
+    "column": "UserId",
+    "target": "users",
+    "score": 0.7445
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "ON_TIME_ON_TIME_PERFORMANCE_2016_1",
+    "column": "DESTAIRPORTSEQID",
+    "target": "L_AIRPORT_SEQ_ID",
+    "score": 0.818
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "postLinks",
+    "column": "PostId",
+    "target": "posts",
+    "score": 0.7067
+   }
+  ],
+  "won by another target": [
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "Password",
+    "column": "BusinessEntityID",
+    "target": "Person",
+    "score": 0.0338,
+    "won by": "BusinessEntity",
+    "its score": 0.8645
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "SalesPersonQuotaHistory",
+    "column": "BusinessEntityID",
+    "target": "SalesPerson",
+    "score": 0.0357,
+    "won by": "BusinessEntity",
+    "its score": 0.9588
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "SalesTerritoryHistory",
+    "column": "BusinessEntityID",
+    "target": "SalesPerson",
+    "score": 0.0336,
+    "won by": "BusinessEntity",
+    "its score": 0.9575
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "Employee",
+    "column": "BusinessEntityID",
+    "target": "Person",
+    "score": 0.0345,
+    "won by": "BusinessEntity",
+    "its score": 0.8587
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "EmployeeDepartmentHistory",
+    "column": "BusinessEntityID",
+    "target": "Employee",
+    "score": 0.018,
+    "won by": "BusinessEntity",
+    "its score": 0.9421
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "EmployeePayHistory",
+    "column": "BusinessEntityID",
+    "target": "Employee",
+    "score": 0.0189,
+    "won by": "BusinessEntity",
+    "its score": 0.9493
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "Document",
+    "column": "Owner",
+    "target": "Employee",
+    "score": 0.0144,
+    "won by": "Person",
+    "its score": 0.1193
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "SalesPerson",
+    "column": "BusinessEntityID",
+    "target": "Employee",
+    "score": 0.0112,
+    "won by": "BusinessEntity",
+    "its score": 0.8365
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "PersonPhone",
+    "column": "BusinessEntityID",
+    "target": "Person",
+    "score": 0.0333,
+    "won by": "BusinessEntity",
+    "its score": 0.959
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "JobCandidate",
+    "column": "BusinessEntityID",
+    "target": "Employee",
+    "score": 0.018,
+    "won by": "BusinessEntity",
+    "its score": 0.9606
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "PersonCreditCard",
+    "column": "BusinessEntityID",
+    "target": "Person",
+    "score": 0.0397,
+    "won by": "BusinessEntity",
+    "its score": 0.9541
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "EmailAddress",
+    "column": "BusinessEntityID",
+    "target": "Person",
+    "score": 0.0333,
+    "won by": "BusinessEntity",
+    "its score": 0.9537
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "BillOfMaterials",
+    "column": "ComponentID",
+    "target": "Product",
+    "score": 0.1004,
+    "won by": "Person",
+    "its score": 0.1057
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "ProductVendor",
+    "column": "BusinessEntityID",
+    "target": "Vendor",
+    "score": 0.0037,
+    "won by": "BusinessEntity",
+    "its score": 0.9575
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "DivAirportLandings",
+    "target": "L_DIVERSIONS",
+    "score": 0.0015,
+    "won by": "L_AIRPORT_ID",
+    "its score": 0.5109
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "Dest",
+    "target": "L_AIRPORT",
+    "score": 0.0061,
+    "won by": "L_STATE_ABR_AVIATION",
+    "its score": 0.0079
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "OriginWac",
+    "target": "L_WORLD_AREA_CODES",
+    "score": 0.0085,
+    "won by": "L_AIRPORT_SEQ_ID",
+    "its score": 0.0245
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "ArrDel15",
+    "target": "L_YESNO_RESP",
+    "score": 0.0051,
+    "won by": "L_ONTIME_DELAY_GROUPS",
+    "its score": 0.0282
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "Diverted",
+    "target": "L_YESNO_RESP",
+    "score": 0.0022,
+    "won by": "L_DIVERSIONS",
+    "its score": 0.6238
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "Cancelled",
+    "target": "L_YESNO_RESP",
+    "score": 0.0067,
+    "won by": "L_DISTANCE_GROUP_250",
+    "its score": 0.1973
+   },
+   {
+    "database": "ctu/Airline",
+    "table": "On_Time_On_Time_Performance_2016_1",
+    "column": "DepDel15",
+    "target": "L_YESNO_RESP",
+    "score": 0.0052,
+    "won by": "L_ONTIME_DELAY_GROUPS",
+    "its score": 0.0531
+   },
+   {
+    "database": "ctu/Atherosclerosis",
+    "table": "Death",
+    "column": "ICO",
+    "target": "Entry",
+    "score": 0.3262,
+    "won by": "Letter",
+    "its score": 0.6968
+   },
+   {
+    "database": "ctu/Atherosclerosis",
+    "table": "Contr",
+    "column": "ICO",
+    "target": "Entry",
+    "score": 0.735,
+    "won by": "Letter",
+    "its score": 0.9088
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "ON_TIME_ON_TIME_PERFORMANCE_2016_1",
+    "column": "DESTWAC",
+    "target": "L_WORLD_AREA_CODES",
+    "score": 0.0056,
+    "won by": "utube_states",
+    "its score": 0.0317
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "SpecialOfferProduct",
+    "column": "ProductID",
+    "target": "product",
+    "score": 0.4478,
+    "won by": "Product",
+    "its score": 0.6442
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "SalesOrderHeader",
+    "column": "CreditCardID",
+    "target": "creditcard",
+    "score": 0.2673,
+    "won by": "CreditCard",
+    "its score": 0.5965
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "transactions",
+    "column": "customerid",
+    "target": "customers",
+    "score": 0.1448,
+    "won by": "Customers",
+    "its score": 0.7105
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "resource_type",
+    "column": "id",
+    "target": "target",
+    "score": 0.0037,
+    "won by": "users",
+    "its score": 0.0272
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "ShoppingCartItem",
+    "column": "ProductID",
+    "target": "product",
+    "score": 0.4961,
+    "won by": "Product",
+    "its score": 0.5149
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "WorkOrderRouting",
+    "column": "WorkOrderID",
+    "target": "workorder",
+    "score": 0.4177,
+    "won by": "WORKORDER",
+    "its score": 0.4198
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "E_COMPANY",
+    "column": "CO_IN_ID",
+    "target": "E_INDUSTRY",
+    "score": 0.0192,
+    "won by": "Country",
+    "its score": 0.0599
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "Reviews",
+    "column": "user_id",
+    "target": "users",
+    "score": 0.0417,
+    "won by": "Users",
+    "its score": 0.6816
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "ON_TIME_ON_TIME_PERFORMANCE_2016_1",
+    "column": "CANCELLED",
+    "target": "L_YESNO_RESP",
+    "score": 0.0008,
+    "won by": "cars",
+    "its score": 0.0219
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "Product",
+    "column": "SizeUnitMeasureCode",
+    "target": "unitmeasure",
+    "score": 0.6356,
+    "won by": "UnitMeasure",
+    "its score": 0.8668
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "ProductModelProductDescriptionCulture",
+    "column": "ProductModelID",
+    "target": "productmodel",
+    "score": 0.3214,
+    "won by": "PRODUCTMODEL",
+    "its score": 0.3282
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "SalesOrderDetail",
+    "column": "SalesOrderID",
+    "target": "salesorderheader",
+    "score": 0.2219,
+    "won by": "SalesOrderHeader",
+    "its score": 0.3018
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "registration",
+    "column": "student_id",
+    "target": "student",
+    "score": 0.3332,
+    "won by": "students",
+    "its score": 0.7246
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "Address",
+    "column": "StateProvinceID",
+    "target": "stateprovince",
+    "score": 0.3136,
+    "won by": "StateProvince",
+    "its score": 0.7766
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "CountryRegionCurrency",
+    "column": "CurrencyCode",
+    "target": "currency",
+    "score": 0.776,
+    "won by": "CURRENCY",
+    "its score": 0.7861
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "MATCH_STATS",
+    "column": "TID",
+    "target": "TEAMS",
+    "score": 0.0194,
+    "won by": "L_AIRPORT_ID",
+    "its score": 0.2093
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "ProductInventory",
+    "column": "ProductID",
+    "target": "product",
+    "score": 0.4806,
+    "won by": "Product",
+    "its score": 0.638
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "ON_TIME_ON_TIME_PERFORMANCE_2016_1",
+    "column": "ORIGINWAC",
+    "target": "L_WORLD_AREA_CODES",
+    "score": 0.0037,
+    "won by": "utube_states",
+    "its score": 0.0454
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "posts",
+    "column": "ParentId",
+    "target": "posts",
+    "score": 0.0233,
+    "won by": "payment",
+    "its score": 0.1331
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "Product",
+    "column": "WeightUnitMeasureCode",
+    "target": "unitmeasure",
+    "score": 0.6325,
+    "won by": "UnitMeasure",
+    "its score": 0.8705
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "CountryRegionCurrency",
+    "column": "CountryRegionCode",
+    "target": "countryregion",
+    "score": 0.6776,
+    "won by": "CountryRegion",
+    "its score": 0.834
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "ON_TIME_ON_TIME_PERFORMANCE_2016_1",
+    "column": "DEPDEL15",
+    "target": "L_YESNO_RESP",
+    "score": 0.0006,
+    "won by": "DEPARTMENT",
+    "its score": 0.0088
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "C_Customer",
+    "column": "c_d_id",
+    "target": "C_District",
+    "score": 0.0096,
+    "won by": "CreditCard",
+    "its score": 0.0814
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "BusinessEntityAddress",
+    "column": "AddressID",
+    "target": "address",
+    "score": 0.3139,
+    "won by": "Address",
+    "its score": 0.4662
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "gender_age",
+    "column": "device_id",
+    "target": "phone_brand_device_model2",
+    "score": 0.0005,
+    "won by": "gender_age_train",
+    "its score": 0.046
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "SalesPerson",
+    "column": "BusinessEntityID",
+    "target": "employee",
+    "score": 0.0045,
+    "won by": "BusinessEntity",
+    "its score": 0.6654
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "CONTR",
+    "column": "ICO",
+    "target": "ENTRY",
+    "score": 0.2081,
+    "won by": "LETTER",
+    "its score": 0.2672
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "E_COMPANY",
+    "column": "CO_ST_ID",
+    "target": "E_STATUS_TYPE",
+    "score": 0.0139,
+    "won by": "Country",
+    "its score": 0.0419
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "PurchaseOrderHeader",
+    "column": "VendorID",
+    "target": "vendor",
+    "score": 0.3976,
+    "won by": "VENDOR",
+    "its score": 0.4977
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "E_HOLDING_HISTORY",
+    "column": "HH_T_ID",
+    "target": "E_TRADE",
+    "score": 0.0663,
+    "won by": "E_HOLDING",
+    "its score": 0.1588
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "ProductModelProductDescriptionCulture",
+    "column": "ProductDescriptionID",
+    "target": "productdescription",
+    "score": 0.3331,
+    "won by": "ProductDescription",
+    "its score": 0.6342
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "StateProvince",
+    "column": "TerritoryID",
+    "target": "salesterritory",
+    "score": 0.2163,
+    "won by": "SALESTERRITORY",
+    "its score": 0.2812
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "Product",
+    "column": "ProductModelID",
+    "target": "productmodel",
+    "score": 0.0707,
+    "won by": "PRODUCTMODEL",
+    "its score": 0.0723
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "SalesOrderHeader",
+    "column": "TerritoryID",
+    "target": "salesterritory",
+    "score": 0.2111,
+    "won by": "SALESTERRITORY",
+    "its score": 0.2716
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "ProductInventory",
+    "column": "LocationID",
+    "target": "location",
+    "score": 0.3411,
+    "won by": "LOCATION",
+    "its score": 0.3938
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "SalesOrderHeaderSalesReason",
+    "column": "SalesReasonID",
+    "target": "salesreason",
+    "score": 0.3229,
+    "won by": "SalesReason",
+    "its score": 0.6772
+   }
+  ],
+  "not a candidate": [
+   {
+    "database": "ctu/Hockey",
+    "table": "CombinedShutouts",
+    "column": "IDgoalie2",
+    "target": "Master"
+   },
+   {
+    "database": "ctu/Hockey",
+    "table": "ScoringSC",
+    "column": "playerID",
+    "target": "Master"
+   },
+   {
+    "database": "ctu/Hockey",
+    "table": "AwardsPlayers",
+    "column": "playerID",
+    "target": "Master"
+   },
+   {
+    "database": "ctu/Hockey",
+    "table": "ScoringShootout",
+    "column": "playerID",
+    "target": "Master"
+   },
+   {
+    "database": "ctu/Hockey",
+    "table": "CombinedShutouts",
+    "column": "IDgoalie1",
+    "target": "Master"
+   },
+   {
+    "database": "ctu/Hockey",
+    "table": "GoaliesSC",
+    "column": "playerID",
+    "target": "Master"
+   },
+   {
+    "database": "ctu/Hockey",
+    "table": "ScoringSup",
+    "column": "playerID",
+    "target": "Master"
+   },
+   {
+    "database": "ctu/Hockey",
+    "table": "Goalies",
+    "column": "playerID",
+    "target": "Master"
+   },
+   {
+    "database": "ctu/Hockey",
+    "table": "GoaliesShootout",
+    "column": "playerID",
+    "target": "Master"
+   },
+   {
+    "database": "ctu/Hockey",
+    "table": "Scoring",
+    "column": "playerID",
+    "target": "Master"
+   }
+  ],
+  "drawn, no key declared": [
+   {
+    "database": "ctu/Accidents",
+    "table": "upravna_enota",
+    "column": "ime_upravna_enota",
+    "target": "upravna_enota",
+    "score": 0.8616
+   },
+   {
+    "database": "ctu/Telstra",
+    "table": "target",
+    "column": "fault_severity",
+    "target": "severity_type",
+    "score": 0.9472
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "EmailAddress",
+    "column": "EmailAddressID",
+    "target": "Address",
+    "score": 0.9145
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "SalesOrderDetail",
+    "column": "ProductID",
+    "target": "Product",
+    "score": 0.9373
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "SalesOrderDetail",
+    "column": "SpecialOfferID",
+    "target": "SpecialOffer",
+    "score": 0.9615
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "TransactionHistoryArchive",
+    "column": "ProductID",
+    "target": "Product",
+    "score": 0.9316
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "WorkOrderRouting",
+    "column": "ProductID",
+    "target": "Product",
+    "score": 0.9513
+   },
+   {
+    "database": "ctu/tpcc",
+    "table": "C_Customer",
+    "column": "c_w_id",
+    "target": "C_Warehouse",
+    "score": 0.8812
+   },
+   {
+    "database": "ctu/tpcc",
+    "table": "C_New_Order",
+    "column": "no_w_id",
+    "target": "C_Warehouse",
+    "score": 0.8871
+   },
+   {
+    "database": "ctu/tpcc",
+    "table": "C_Order",
+    "column": "o_w_id",
+    "target": "C_Warehouse",
+    "score": 0.9201
+   },
+   {
+    "database": "ctu/arnaud_citeseer",
+    "table": "cites",
+    "column": "cited_paper_id",
+    "target": "paper",
+    "score": 0.8773
+   },
+   {
+    "database": "ctu/arnaud_citeseer",
+    "table": "cites",
+    "column": "citing_paper_id",
+    "target": "paper",
+    "score": 0.896
+   },
+   {
+    "database": "ctu/tpcds",
+    "table": "web_page",
+    "column": "wp_customer_sk",
+    "target": "customer",
+    "score": 0.9885
+   },
+   {
+    "database": "ctu/AustralianFootball",
+    "table": "matches",
+    "column": "win_tid",
+    "target": "teams",
+    "score": 0.9669
+   },
+   {
+    "database": "ctu/AustralianFootball",
+    "table": "matches",
+    "column": "lose_tid",
+    "target": "teams",
+    "score": 0.9807
+   },
+   {
+    "database": "ctu/AustralianFootball",
+    "table": "matches",
+    "column": "h_tid",
+    "target": "teams",
+    "score": 0.9603
+   },
+   {
+    "database": "ctu/AustralianFootball",
+    "table": "matches",
+    "column": "a_tid",
+    "target": "teams",
+    "score": 0.9618
+   },
+   {
+    "database": "ctu/tpce",
+    "table": "E_CHARGE",
+    "column": "CH_C_TIER",
+    "target": "E_CUSTOMER",
+    "score": 0.8608
+   },
+   {
+    "database": "ctu/tpce",
+    "table": "E_HOLDING",
+    "column": "H_S_SYMB",
+    "target": "E_SECURITY",
+    "score": 0.8708
+   },
+   {
+    "database": "ctu/Basketball_men",
+    "table": "coaches",
+    "column": "post_wins",
+    "target": "series_post",
+    "score": 0.9594
+   },
+   {
+    "database": "ctu/Basketball_men",
+    "table": "coaches",
+    "column": "post_losses",
+    "target": "series_post",
+    "score": 0.8659
+   },
+   {
+    "database": "ctu/Basketball_men",
+    "table": "draft",
+    "column": "playerID",
+    "target": "players",
+    "score": 0.9873
+   },
+   {
+    "database": "ctu/Basketball_men",
+    "table": "player_allstar",
+    "column": "d_rebounds",
+    "target": "draft",
+    "score": 0.9212
+   },
+   {
+    "database": "ctu/Basketball_men",
+    "table": "players_teams",
+    "column": "dRebounds",
+    "target": "draft",
+    "score": 0.9023
+   },
+   {
+    "database": "ctu/Basketball_men",
+    "table": "players_teams",
+    "column": "PostGP",
+    "target": "series_post",
+    "score": 0.8808
+   },
+   {
+    "database": "ctu/Basketball_men",
+    "table": "players_teams",
+    "column": "PostoRebounds",
+    "target": "series_post",
+    "score": 0.9215
+   },
+   {
+    "database": "ctu/Basketball_men",
+    "table": "players_teams",
+    "column": "PostdRebounds",
+    "target": "series_post",
+    "score": 0.9381
+   },
+   {
+    "database": "ctu/Basketball_men",
+    "table": "players_teams",
+    "column": "PostRebounds",
+    "target": "series_post",
+    "score": 0.9296
+   },
+   {
+    "database": "ctu/Basketball_men",
+    "table": "players_teams",
+    "column": "PostfgMade",
+    "target": "series_post",
+    "score": 0.9016
+   },
+   {
+    "database": "ctu/Basketball_men",
+    "table": "players_teams",
+    "column": "PostftMade",
+    "target": "series_post",
+    "score": 0.9204
+   },
+   {
+    "database": "ctu/nations",
+    "table": "stat",
+    "column": "country_id",
+    "target": "country",
+    "score": 0.8983
+   },
+   {
+    "database": "ctu/Basketball_women",
+    "table": "coaches",
+    "column": "playerCoach",
+    "target": "players",
+    "score": 0.9742
+   },
+   {
+    "database": "ctu/Basketball_women",
+    "table": "draft",
+    "column": "playerID",
+    "target": "players",
+    "score": 0.8551
+   },
+   {
+    "database": "ctu/NBA",
+    "table": "Game",
+    "column": "ResultOfTeam1",
+    "target": "Team",
+    "score": 0.8562
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "CUSTOMER",
+    "column": "CUSTOMERID",
+    "target": "Customers",
+    "score": 0.8625
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "CUSTOMER",
+    "column": "STOREID",
+    "target": "stores",
+    "score": 0.9354
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "EMAILADDRESS",
+    "column": "EMAILADDRESSID",
+    "target": "Address",
+    "score": 0.8472
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "EMPLOYEEDEPARTMENTHISTORY",
+    "column": "BUSINESSENTITYID",
+    "target": "BusinessEntity",
+    "score": 0.8491
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "SALESORDERDETAIL",
+    "column": "SALESORDERID",
+    "target": "SalesOrderHeader",
+    "score": 0.8562
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "SALESORDERHEADER",
+    "column": "SALESPERSONID",
+    "target": "SalesPerson",
+    "score": 0.9103
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "SALESORDERHEADERSALESREASON",
+    "column": "SALESORDERID",
+    "target": "SalesOrderHeader",
+    "score": 0.8504
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "SALESPERSON",
+    "column": "BUSINESSENTITYID",
+    "target": "BusinessEntity",
+    "score": 0.8749
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "STORE",
+    "column": "BUSINESSENTITYID",
+    "target": "BusinessEntity",
+    "score": 0.8734
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "STORE",
+    "column": "SALESPERSONID",
+    "target": "SalesPerson",
+    "score": 0.9155
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "Sales",
+    "column": "EVENTID",
+    "target": "events",
+    "score": 0.883
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "TRANSACTIONHISTORY",
+    "column": "REFERENCEORDERID",
+    "target": "bibliographical_reference",
+    "score": 0.9376
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "TRANSACTIONHISTORYARCHIVE",
+    "column": "REFERENCEORDERID",
+    "target": "bibliographical_reference",
+    "score": 0.9365
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "charge",
+    "column": "statement_no",
+    "target": "statement",
+    "score": 0.9121
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "customer",
+    "column": "customerid",
+    "target": "Customers",
+    "score": 0.8625
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "customer",
+    "column": "storeid",
+    "target": "stores",
+    "score": 0.9354
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "emailaddress",
+    "column": "emailaddressid",
+    "target": "Address",
+    "score": 0.8472
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "employeedepartmenthistory",
+    "column": "businessentityid",
+    "target": "BusinessEntity",
+    "score": 0.8491
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "gasstations",
+    "column": "chainid",
+    "target": "charge",
+    "score": 0.9343
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "payment",
+    "column": "statement_no",
+    "target": "statement",
+    "score": 0.9432
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "salesorderdetail",
+    "column": "salesorderid",
+    "target": "SalesOrderHeader",
+    "score": 0.8562
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "salesorderheader",
+    "column": "salespersonid",
+    "target": "SalesPerson",
+    "score": 0.9103
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "salesorderheadersalesreason",
+    "column": "salesorderid",
+    "target": "SalesOrderHeader",
+    "score": 0.8504
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "salesperson",
+    "column": "businessentityid",
+    "target": "BusinessEntity",
+    "score": 0.8749
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "store",
+    "column": "businessentityid",
+    "target": "BusinessEntity",
+    "score": 0.8734
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "store",
+    "column": "salespersonid",
+    "target": "SalesPerson",
+    "score": 0.9155
+   }
+  ],
+  "drawn, wrong target": [
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "EmailAddress",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.9537,
+    "declared": "Person"
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "Employee",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.8587,
+    "declared": "Person"
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "EmployeeDepartmentHistory",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.9421,
+    "declared": "Employee"
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "EmployeePayHistory",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.9493,
+    "declared": "Employee"
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "JobCandidate",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.9606,
+    "declared": "Employee"
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "Password",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.8645,
+    "declared": "Person"
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "PersonCreditCard",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.9541,
+    "declared": "Person"
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "PersonPhone",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.959,
+    "declared": "Person"
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "ProductVendor",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.9575,
+    "declared": "Vendor"
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "SalesPersonQuotaHistory",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.9588,
+    "declared": "SalesPerson"
+   },
+   {
+    "database": "ctu/AdventureWorks2014",
+    "table": "SalesTerritoryHistory",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.9575,
+    "declared": "SalesPerson"
+   },
+   {
+    "database": "ctu/Atherosclerosis",
+    "table": "Contr",
+    "column": "ICO",
+    "target": "Letter",
+    "score": 0.9088,
+    "declared": "Entry"
+   },
+   {
+    "database": "ctu/tpcds",
+    "table": "store_returns",
+    "column": "sr_hdemo_sk",
+    "target": "customer_demographics",
+    "score": 0.8929,
+    "declared": "household_demographics"
+   },
+   {
+    "database": "ctu/tpcds",
+    "table": "web_sales",
+    "column": "ws_ship_cdemo_sk",
+    "target": "ship_mode",
+    "score": 0.8499,
+    "declared": "customer_demographics"
+   },
+   {
+    "database": "ctu/tpcds",
+    "table": "web_sales",
+    "column": "ws_ship_hdemo_sk",
+    "target": "ship_mode",
+    "score": 0.8499,
+    "declared": "household_demographics"
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "Product",
+    "column": "SizeUnitMeasureCode",
+    "target": "UnitMeasure",
+    "score": 0.8668,
+    "declared": "unitmeasure"
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "Product",
+    "column": "WeightUnitMeasureCode",
+    "target": "UnitMeasure",
+    "score": 0.8705,
+    "declared": "unitmeasure"
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "SalesTerritory",
+    "column": "CountryRegionCode",
+    "target": "CountryRegion",
+    "score": 0.8604,
+    "declared": "countryregion"
+   },
+   {
+    "database": "ctu/Bench",
+    "table": "train",
+    "column": "store_nbr",
+    "target": "stores",
+    "score": 0.8971,
+    "declared": "key"
+   },
+   {
+    "database": "ctu/Bench4",
+    "table": "tube",
+    "column": "end_a",
+    "target": "type_end_form",
+    "score": 0.8677,
+    "declared": "tube_end_form"
+   },
+   {
+    "database": "ctu/Bench5",
+    "table": "EmailAddress",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.955,
+    "declared": "Person"
+   },
+   {
+    "database": "ctu/Bench5",
+    "table": "Employee",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.87,
+    "declared": "Person"
+   },
+   {
+    "database": "ctu/Bench5",
+    "table": "EmployeeDepartmentHistory",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.956,
+    "declared": "Employee"
+   },
+   {
+    "database": "ctu/Bench5",
+    "table": "EmployeePayHistory",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.9599,
+    "declared": "Employee"
+   },
+   {
+    "database": "ctu/Bench5",
+    "table": "JobCandidate",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.9616,
+    "declared": "Employee"
+   },
+   {
+    "database": "ctu/Bench5",
+    "table": "Password",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.8771,
+    "declared": "Person"
+   },
+   {
+    "database": "ctu/Bench5",
+    "table": "PersonCreditCard",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.9631,
+    "declared": "Person"
+   },
+   {
+    "database": "ctu/Bench5",
+    "table": "PersonPhone",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.9659,
+    "declared": "Person"
+   },
+   {
+    "database": "ctu/Bench5",
+    "table": "ProductVendor",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.9644,
+    "declared": "Vendor"
+   },
+   {
+    "database": "ctu/Bench5",
+    "table": "SalesPerson",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.8743,
+    "declared": "Employee"
+   },
+   {
+    "database": "ctu/Bench5",
+    "table": "SalesPersonQuotaHistory",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.9583,
+    "declared": "SalesPerson"
+   },
+   {
+    "database": "ctu/Bench5",
+    "table": "SalesTerritoryHistory",
+    "column": "BusinessEntityID",
+    "target": "BusinessEntity",
+    "score": 0.9609,
+    "declared": "SalesPerson"
+   },
+   {
+    "database": "ctu/Bench6",
+    "table": "LEGALACT_LINK",
+    "column": "ACTID1",
+    "target": "SCRAPEFIX",
+    "score": 0.947,
+    "declared": "LEGALACTS"
+   },
+   {
+    "database": "ctu/Bench6",
+    "table": "LEGALACT_LINK",
+    "column": "ACTID2",
+    "target": "SCRAPEFIX",
+    "score": 0.9473,
+    "declared": "LEGALACTS"
+   },
+   {
+    "database": "ctu/Bench6",
+    "table": "LEGALACT_PEOPLE",
+    "column": "ACTID",
+    "target": "SCRAPEFIX",
+    "score": 0.9425,
+    "declared": "LEGALACTS"
+   },
+   {
+    "database": "ctu/genes",
+    "table": "Interactions",
+    "column": "GeneID1",
+    "target": "Genes",
+    "score": 0.8973,
+    "declared": "Classification"
+   },
+   {
+    "database": "ctu/genes",
+    "table": "Interactions",
+    "column": "GeneID2",
+    "target": "Genes",
+    "score": 0.9294,
+    "declared": "Classification"
+   },
+   {
+    "database": "ctu/CDESchools",
+    "table": "frpm",
+    "column": "CDSCode",
+    "target": "satscores",
+    "score": 0.9694,
+    "declared": "schools"
+   },
+   {
+    "database": "ctu/SAP",
+    "table": "Sales",
+    "column": "REFID",
+    "target": "Mailings1_2",
+    "score": 0.8883,
+    "declared": "Customers"
+   },
+   {
+    "database": "ctu/legalActs",
+    "table": "legalact_people",
+    "column": "actId",
+    "target": "scrapefix",
+    "score": 0.9594,
+    "declared": "legalacts"
+   },
+   {
+    "database": "ctu/cs",
+    "table": "ACCOUNT_TRANSACTIONS",
+    "column": "ACCTP_OTHER_ACCOUNT_KEY",
+    "target": "ACCOUNTS",
+    "score": 0.9283,
+    "declared": "ACCOUNT_TYPES"
+   },
+   {
+    "database": "ctu/TalkingData",
+    "table": "app_events_relevant",
+    "column": "event_id",
+    "target": "events",
+    "score": 0.9763,
+    "declared": "events_relevant"
+   }
+  ]
+ }
+}

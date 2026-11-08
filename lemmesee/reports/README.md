@@ -83,4 +83,6 @@ so, never by editing the number it replaces.
   wrote offline take LiveSQLBench from 0.185 to 0.587 and SchemaPile renamed from 0.515 to 0.794; on 80 GitHub
   schemas created after SchemaPile, read once, the chosen model reaches F1 0.792 against round 1s's 0.744, +0.048
   [+0.014, +0.084]; no threshold reaches 0.80 on CTU or LiveSQLBench, and schemas written or renamed by language
-  models teach less than drawn styles.
+  models teach less than drawn styles. Added the next morning: on 177 more GitHub schemas, read once, +0.011
+  [−0.016, +0.042], and over both sets +0.022 [−0.002, +0.047]; the chosen model's second stage had runaway leaves,
+  bounded since, and reading a schema's own style takes LiveSQLBench to 0.671 on development data only.

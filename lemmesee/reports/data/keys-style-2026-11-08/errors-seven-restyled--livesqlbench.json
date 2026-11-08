@@ -1,0 +1,1849 @@
+{
+ "model": "seven-restyled",
+ "set": "livesqlbench (development)",
+ "threshold": 0.8225333178420389,
+ "declared keys": 299,
+ "pairs": 10470,
+ "kinds": {
+  "found": 138,
+  "below the threshold": 80,
+  "won by another target": 68,
+  "not a candidate": 13,
+  "drawn, no key declared": 18,
+  "drawn, wrong target": 15
+ },
+ "F1": 0.5872,
+ "per database": {
+  "livesqlbench/polar_equipment": {
+   "found": 27,
+   "drawn, no key declared": 1
+  },
+  "livesqlbench/organ_transplant": {
+   "below the threshold": 9,
+   "won by another target": 12,
+   "found": 4,
+   "drawn, no key declared": 1,
+   "drawn, wrong target": 1
+  },
+  "livesqlbench/virtual_idol": {
+   "found": 10,
+   "below the threshold": 11,
+   "won by another target": 1
+  },
+  "livesqlbench/archeology_scan": {
+   "found": 21
+  },
+  "livesqlbench/cybermarket_pattern": {
+   "found": 8,
+   "below the threshold": 6,
+   "won by another target": 3,
+   "drawn, wrong target": 1,
+   "drawn, no key declared": 1
+  },
+  "livesqlbench/museum_artifact": {
+   "found": 11,
+   "below the threshold": 4,
+   "drawn, no key declared": 4
+  },
+  "livesqlbench/cross_border": {
+   "found": 11,
+   "below the threshold": 2,
+   "drawn, no key declared": 5
+  },
+  "livesqlbench/robot_fault_prediction": {
+   "below the threshold": 11,
+   "won by another target": 4,
+   "found": 2,
+   "drawn, wrong target": 1
+  },
+  "livesqlbench/sports_events": {
+   "won by another target": 11,
+   "below the threshold": 5,
+   "found": 1
+  },
+  "livesqlbench/disaster_relief": {
+   "won by another target": 3,
+   "below the threshold": 9,
+   "found": 4
+  },
+  "livesqlbench/exchange_traded_funds": {
+   "not a candidate": 13,
+   "found": 3
+  },
+  "livesqlbench/labor_certification_applications": {
+   "found": 2,
+   "won by another target": 10,
+   "below the threshold": 1,
+   "drawn, no key declared": 1,
+   "drawn, wrong target": 1
+  },
+  "livesqlbench/insider_trading": {
+   "won by another target": 7,
+   "below the threshold": 3,
+   "drawn, wrong target": 3
+  },
+  "livesqlbench/planets_data": {
+   "won by another target": 6,
+   "drawn, wrong target": 6
+  },
+  "livesqlbench/fake_account": {
+   "found": 7,
+   "below the threshold": 4
+  },
+  "livesqlbench/mental_health": {
+   "won by another target": 1,
+   "found": 6,
+   "below the threshold": 2,
+   "drawn, no key declared": 2
+  },
+  "livesqlbench/cold_chain_pharma_compliance": {
+   "found": 7,
+   "below the threshold": 2,
+   "won by another target": 1
+  },
+  "livesqlbench/crypto_exchange": {
+   "found": 5,
+   "below the threshold": 1,
+   "won by another target": 1,
+   "drawn, no key declared": 3
+  },
+  "livesqlbench/solar_panel": {
+   "below the threshold": 5,
+   "found": 3,
+   "won by another target": 1,
+   "drawn, wrong target": 1
+  },
+  "livesqlbench/households": {
+   "found": 5,
+   "below the threshold": 2
+  },
+  "livesqlbench/hulushows": {
+   "won by another target": 5,
+   "below the threshold": 1,
+   "drawn, wrong target": 1
+  },
+  "livesqlbench/reverse_logistics": {
+   "won by another target": 2,
+   "below the threshold": 2,
+   "found": 1
+  }
+ },
+ "shown": {
+  "found": [
+   {
+    "database": "livesqlbench/archeology_scan",
+    "table": "registration",
+    "column": "crewref",
+    "target": "personnel",
+    "score": 0.9869
+   },
+   {
+    "database": "livesqlbench/archeology_scan",
+    "table": "conservation",
+    "column": "arcref",
+    "target": "projects",
+    "score": 0.9838
+   },
+   {
+    "database": "livesqlbench/archeology_scan",
+    "table": "scans",
+    "column": "arcref",
+    "target": "projects",
+    "score": 0.972
+   },
+   {
+    "database": "livesqlbench/archeology_scan",
+    "table": "mesh",
+    "column": "zoneref",
+    "target": "sites",
+    "score": 0.9925
+   },
+   {
+    "database": "livesqlbench/archeology_scan",
+    "table": "qualitycontrol",
+    "column": "arcref",
+    "target": "projects",
+    "score": 0.9774
+   },
+   {
+    "database": "livesqlbench/archeology_scan",
+    "table": "scans",
+    "column": "zoneref",
+    "target": "sites",
+    "score": 0.9863
+   },
+   {
+    "database": "livesqlbench/archeology_scan",
+    "table": "conservation",
+    "column": "zoneref",
+    "target": "sites",
+    "score": 0.9875
+   },
+   {
+    "database": "livesqlbench/archeology_scan",
+    "table": "processing",
+    "column": "equipref",
+    "target": "equipment",
+    "score": 0.9606
+   },
+   {
+    "database": "livesqlbench/archeology_scan",
+    "table": "registration",
+    "column": "arcref",
+    "target": "projects",
+    "score": 0.9885
+   },
+   {
+    "database": "livesqlbench/archeology_scan",
+    "table": "spatial",
+    "column": "arcref",
+    "target": "projects",
+    "score": 0.9885
+   },
+   {
+    "database": "livesqlbench/archeology_scan",
+    "table": "pointcloud",
+    "column": "crewref",
+    "target": "personnel",
+    "score": 0.9869
+   },
+   {
+    "database": "livesqlbench/archeology_scan",
+    "table": "environment",
+    "column": "equipref",
+    "target": "equipment",
+    "score": 0.973
+   },
+   {
+    "database": "livesqlbench/archeology_scan",
+    "table": "features",
+    "column": "equipref",
+    "target": "equipment",
+    "score": 0.973
+   },
+   {
+    "database": "livesqlbench/archeology_scan",
+    "table": "scans",
+    "column": "crewref",
+    "target": "personnel",
+    "score": 0.9768
+   },
+   {
+    "database": "livesqlbench/archeology_scan",
+    "table": "environment",
+    "column": "zoneref",
+    "target": "sites",
+    "score": 0.9887
+   },
+   {
+    "database": "livesqlbench/archeology_scan",
+    "table": "processing",
+    "column": "zoneref",
+    "target": "sites",
+    "score": 0.9795
+   },
+   {
+    "database": "livesqlbench/archeology_scan",
+    "table": "qualitycontrol",
+    "column": "crewref",
+    "target": "personnel",
+    "score": 0.9755
+   },
+   {
+    "database": "livesqlbench/archeology_scan",
+    "table": "spatial",
+    "column": "crewref",
+    "target": "personnel",
+    "score": 0.9867
+   },
+   {
+    "database": "livesqlbench/archeology_scan",
+    "table": "features",
+    "column": "zoneref",
+    "target": "sites",
+    "score": 0.9887
+   },
+   {
+    "database": "livesqlbench/archeology_scan",
+    "table": "mesh",
+    "column": "equipref",
+    "target": "equipment",
+    "score": 0.9739
+   },
+   {
+    "database": "livesqlbench/archeology_scan",
+    "table": "pointcloud",
+    "column": "arcref",
+    "target": "projects",
+    "score": 0.9885
+   },
+   {
+    "database": "livesqlbench/cold_chain_pharma_compliance",
+    "table": "vehicles",
+    "column": "carrierbond",
+    "target": "carriers",
+    "score": 0.9113
+   },
+   {
+    "database": "livesqlbench/cold_chain_pharma_compliance",
+    "table": "reviewsandimprovements",
+    "column": "reckeyrev",
+    "target": "shipments",
+    "score": 0.8248
+   },
+   {
+    "database": "livesqlbench/cold_chain_pharma_compliance",
+    "table": "insuranceclaims",
+    "column": "reckeyclaim",
+    "target": "shipments",
+    "score": 0.8456
+   },
+   {
+    "database": "livesqlbench/cold_chain_pharma_compliance",
+    "table": "incidentandriskmanagement",
+    "column": "reckeyrisk",
+    "target": "shipments",
+    "score": 0.9423
+   },
+   {
+    "database": "livesqlbench/cold_chain_pharma_compliance",
+    "table": "environmentalmonitoring",
+    "column": "reckeylink",
+    "target": "shipments",
+    "score": 0.8754
+   },
+   {
+    "database": "livesqlbench/cold_chain_pharma_compliance",
+    "table": "qualitycompliance",
+    "column": "reckeyqc",
+    "target": "shipments",
+    "score": 0.9547
+   },
+   {
+    "database": "livesqlbench/cold_chain_pharma_compliance",
+    "table": "productbatches",
+    "column": "prodlink",
+    "target": "products",
+    "score": 0.9479
+   },
+   {
+    "database": "livesqlbench/cross_border",
+    "table": "SecurityProfile",
+    "column": "flowKey",
+    "target": "DataFlow",
+    "score": 0.9842
+   },
+   {
+    "database": "livesqlbench/cross_border",
+    "table": "AuditAndCompliance",
+    "column": "VendJoin",
+    "target": "VendorManagement",
+    "score": 0.9913
+   },
+   {
+    "database": "livesqlbench/cross_border",
+    "table": "AuditAndCompliance",
+    "column": "COMP_JOIN",
+    "target": "Compliance",
+    "score": 0.9916
+   },
+   {
+    "database": "livesqlbench/cross_border",
+    "table": "Compliance",
+    "column": "vendorTie",
+    "target": "VendorManagement",
+    "score": 0.993
+   },
+   {
+    "database": "livesqlbench/cross_border",
+    "table": "RiskManagement",
+    "column": "flow_link",
+    "target": "DataFlow",
+    "score": 0.9886
+   },
+   {
+    "database": "livesqlbench/cross_border",
+    "table": "Compliance",
+    "column": "risk_tie",
+    "target": "RiskManagement",
+    "score": 0.9974
+   },
+   {
+    "database": "livesqlbench/cross_border",
+    "table": "AuditAndCompliance",
+    "column": "profjoin",
+    "target": "DataProfile",
+    "score": 0.9751
+   },
+   {
+    "database": "livesqlbench/cross_border",
+    "table": "SecurityProfile",
+    "column": "RISKKEY",
+    "target": "RiskManagement",
+    "score": 0.9764
+   },
+   {
+    "database": "livesqlbench/cross_border",
+    "table": "SecurityProfile",
+    "column": "profile_key",
+    "target": "DataProfile",
+    "score": 0.997
+   },
+   {
+    "database": "livesqlbench/cross_border",
+    "table": "VendorManagement",
+    "column": "SEC_JOIN",
+    "target": "SecurityProfile",
+    "score": 0.9737
+   },
+   {
+    "database": "livesqlbench/cross_border",
+    "table": "DataProfile",
+    "column": "riskJoin",
+    "target": "RiskManagement",
+    "score": 0.9932
+   },
+   {
+    "database": "livesqlbench/crypto_exchange",
+    "table": "orders",
+    "column": "UserRef",
+    "target": "users",
+    "score": 0.9933
+   },
+   {
+    "database": "livesqlbench/crypto_exchange",
+    "table": "fees",
+    "column": "Order_Link",
+    "target": "orders",
+    "score": 0.8531
+   },
+   {
+    "database": "livesqlbench/crypto_exchange",
+    "table": "riskandmargin",
+    "column": "ordStamp",
+    "target": "orders",
+    "score": 0.9727
+   },
+   {
+    "database": "livesqlbench/crypto_exchange",
+    "table": "analyticsindicators",
+    "column": "md_ref",
+    "target": "marketdata",
+    "score": 0.9155
+   },
+   {
+    "database": "livesqlbench/crypto_exchange",
+    "table": "orderExecutions",
+    "column": "Ord_Link",
+    "target": "orders",
+    "score": 0.9152
+   },
+   {
+    "database": "livesqlbench/cybermarket_pattern",
+    "table": "vendor_markets",
+    "column": "PlatformID",
+    "target": "markets",
+    "score": 0.9135
+   },
+   {
+    "database": "livesqlbench/cybermarket_pattern",
+    "table": "communications",
+    "column": "EventLink",
+    "target": "transactions",
+    "score": 0.9214
+   },
+   {
+    "database": "livesqlbench/cybermarket_pattern",
+    "table": "vendor_markets",
+    "column": "VendorKey",
+    "target": "vendors",
+    "score": 0.9925
+   },
+   {
+    "database": "livesqlbench/cybermarket_pattern",
+    "table": "vendor_payment_methods",
+    "column": "VendorLink",
+    "target": "vendors",
+    "score": 0.9886
+   },
+   {
+    "database": "livesqlbench/cybermarket_pattern",
+    "table": "transactions",
+    "column": "AcqLink",
+    "target": "buyers",
+    "score": 0.9897
+   },
+   {
+    "database": "livesqlbench/cybermarket_pattern",
+    "table": "risk_analytics",
+    "column": "TxnLink",
+    "target": "transactions",
+    "score": 0.9159
+   },
+   {
+    "database": "livesqlbench/cybermarket_pattern",
+    "table": "transactions",
+    "column": "VendorLink",
+    "target": "vendors",
+    "score": 0.9628
+   },
+   {
+    "database": "livesqlbench/cybermarket_pattern",
+    "table": "vendor_countries",
+    "column": "SellerKey",
+    "target": "vendors",
+    "score": 0.9809
+   },
+   {
+    "database": "livesqlbench/disaster_relief",
+    "table": "environmentandhealth",
+    "column": "env_dist_ref",
+    "target": "disasterevents",
+    "score": 0.8714
+   },
+   {
+    "database": "livesqlbench/disaster_relief",
+    "table": "humanresources",
+    "column": "hr_ops_ref",
+    "target": "operations",
+    "score": 0.9499
+   },
+   {
+    "database": "livesqlbench/disaster_relief",
+    "table": "operation_hub_map",
+    "column": "opsregistry",
+    "target": "operations",
+    "score": 0.9934
+   },
+   {
+    "database": "livesqlbench/disaster_relief",
+    "table": "operation_hub_map",
+    "column": "hubregistry",
+    "target": "distributionhubs",
+    "score": 0.9944
+   },
+   {
+    "database": "livesqlbench/exchange_traded_funds",
+    "table": "holdings",
+    "column": "securitykey",
+    "target": "securities",
+    "score": 0.9743
+   },
+   {
+    "database": "livesqlbench/exchange_traded_funds",
+    "table": "sector_allocations",
+    "column": "sectorlink",
+    "target": "sectors",
+    "score": 0.972
+   },
+   {
+    "database": "livesqlbench/exchange_traded_funds",
+    "table": "bond_allocations",
+    "column": "ratinglink",
+    "target": "bond_ratings",
+    "score": 0.9814
+   },
+   {
+    "database": "livesqlbench/fake_account",
+    "table": "risk_and_moderation",
+    "column": "acct_risk",
+    "target": "accounts",
+    "score": 0.8768
+   }
+  ],
+  "below the threshold": [
+   {
+    "database": "livesqlbench/cold_chain_pharma_compliance",
+    "table": "shipsensorlink",
+    "column": "shpnode",
+    "target": "shipments",
+    "score": 0.6801
+   },
+   {
+    "database": "livesqlbench/cold_chain_pharma_compliance",
+    "table": "shipsensorlink",
+    "column": "devnode",
+    "target": "monitoringdevices",
+    "score": 0.81
+   },
+   {
+    "database": "livesqlbench/cross_border",
+    "table": "DataProfile",
+    "column": "Flow_Sign",
+    "target": "DataFlow",
+    "score": 0.6189
+   },
+   {
+    "database": "livesqlbench/cross_border",
+    "table": "VendorManagement",
+    "column": "riskassoc",
+    "target": "RiskManagement",
+    "score": 0.7589
+   },
+   {
+    "database": "livesqlbench/crypto_exchange",
+    "table": "accountbalances",
+    "column": "userTAG",
+    "target": "users",
+    "score": 0.6394
+   },
+   {
+    "database": "livesqlbench/cybermarket_pattern",
+    "table": "connection_security",
+    "column": "TxnPointer",
+    "target": "transactions",
+    "score": 0.3305
+   },
+   {
+    "database": "livesqlbench/cybermarket_pattern",
+    "table": "transaction_products",
+    "column": "ListingAge",
+    "target": "products",
+    "score": 0.0233
+   },
+   {
+    "database": "livesqlbench/cybermarket_pattern",
+    "table": "transactions",
+    "column": "PlatformKey",
+    "target": "markets",
+    "score": 0.8076
+   },
+   {
+    "database": "livesqlbench/cybermarket_pattern",
+    "table": "transaction_products",
+    "column": "ProdCat",
+    "target": "products",
+    "score": 0.3386
+   },
+   {
+    "database": "livesqlbench/cybermarket_pattern",
+    "table": "products",
+    "column": "SellerPointer",
+    "target": "vendors",
+    "score": 0.7937
+   },
+   {
+    "database": "livesqlbench/cybermarket_pattern",
+    "table": "alerts",
+    "column": "EventTag",
+    "target": "transactions",
+    "score": 0.4541
+   },
+   {
+    "database": "livesqlbench/disaster_relief",
+    "table": "transportation",
+    "column": "transportdistref",
+    "target": "disasterevents",
+    "score": 0.4858
+   },
+   {
+    "database": "livesqlbench/disaster_relief",
+    "table": "beneficiariesandassessments",
+    "column": "beneopsref",
+    "target": "operations",
+    "score": 0.1896
+   },
+   {
+    "database": "livesqlbench/disaster_relief",
+    "table": "coordinationandevaluation",
+    "column": "coordopsref",
+    "target": "operations",
+    "score": 0.2722
+   },
+   {
+    "database": "livesqlbench/disaster_relief",
+    "table": "supplies",
+    "column": "supply_dist_ref",
+    "target": "disasterevents",
+    "score": 0.6309
+   },
+   {
+    "database": "livesqlbench/disaster_relief",
+    "table": "coordinationandevaluation",
+    "column": "coord_dist_ref",
+    "target": "disasterevents",
+    "score": 0.8136
+   },
+   {
+    "database": "livesqlbench/disaster_relief",
+    "table": "financials",
+    "column": "findistref",
+    "target": "disasterevents",
+    "score": 0.5103
+   },
+   {
+    "database": "livesqlbench/disaster_relief",
+    "table": "beneficiariesandassessments",
+    "column": "bene_dist_ref",
+    "target": "disasterevents",
+    "score": 0.7454
+   },
+   {
+    "database": "livesqlbench/disaster_relief",
+    "table": "financials",
+    "column": "fin_ops_ref",
+    "target": "operations",
+    "score": 0.7268
+   },
+   {
+    "database": "livesqlbench/disaster_relief",
+    "table": "humanresources",
+    "column": "hrdistref",
+    "target": "disasterevents",
+    "score": 0.6945
+   },
+   {
+    "database": "livesqlbench/fake_account",
+    "table": "monitoring",
+    "column": "acct_mon",
+    "target": "accounts",
+    "score": 0.7178
+   },
+   {
+    "database": "livesqlbench/fake_account",
+    "table": "network_metrics",
+    "column": "acct_node",
+    "target": "accounts",
+    "score": 0.5521
+   },
+   {
+    "database": "livesqlbench/fake_account",
+    "table": "security_sessions",
+    "column": "acct_gate",
+    "target": "accounts",
+    "score": 0.4609
+   },
+   {
+    "database": "livesqlbench/fake_account",
+    "table": "profiles",
+    "column": "acct_anchor",
+    "target": "accounts",
+    "score": 0.4566
+   },
+   {
+    "database": "livesqlbench/households",
+    "table": "households",
+    "column": "loczone",
+    "target": "locations",
+    "score": 0.0749
+   },
+   {
+    "database": "livesqlbench/households",
+    "table": "households",
+    "column": "locregion",
+    "target": "locations",
+    "score": 0.1964
+   },
+   {
+    "database": "livesqlbench/hulushows",
+    "table": "content_info",
+    "column": "content_key",
+    "target": "core",
+    "score": 0.2468
+   },
+   {
+    "database": "livesqlbench/insider_trading",
+    "table": "trade_records",
+    "column": "sym_anchor",
+    "target": "instruments",
+    "score": 0.6521
+   },
+   {
+    "database": "livesqlbench/insider_trading",
+    "table": "order_behaviour",
+    "column": "OST_ref",
+    "target": "order_status_types",
+    "score": 0.6009
+   },
+   {
+    "database": "livesqlbench/insider_trading",
+    "table": "trade_records",
+    "column": "tr_anchor",
+    "target": "traders",
+    "score": 0.5805
+   },
+   {
+    "database": "livesqlbench/labor_certification_applications",
+    "table": "case_worksite",
+    "column": "wsstate",
+    "target": "worksite",
+    "score": 0.3845
+   },
+   {
+    "database": "livesqlbench/mental_health",
+    "table": "clinicians",
+    "column": "fac_connect",
+    "target": "facilities",
+    "score": 0.7547
+   },
+   {
+    "database": "livesqlbench/mental_health",
+    "table": "assessmentsymptomsandrisk",
+    "column": "asr_key",
+    "target": "assessmentbasics",
+    "score": 0.0034
+   },
+   {
+    "database": "livesqlbench/museum_artifact",
+    "table": "ConditionAssessments",
+    "column": "art_exam",
+    "target": "ArtifactsCore",
+    "score": 0.1628
+   },
+   {
+    "database": "livesqlbench/museum_artifact",
+    "table": "RiskAssessments",
+    "column": "art_concern",
+    "target": "ArtifactsCore",
+    "score": 0.0827
+   },
+   {
+    "database": "livesqlbench/museum_artifact",
+    "table": "ConditionAssessments",
+    "column": "case_exam",
+    "target": "Showcases",
+    "score": 0.238
+   },
+   {
+    "database": "livesqlbench/museum_artifact",
+    "table": "RiskAssessments",
+    "column": "hall_concern",
+    "target": "ExhibitionHalls",
+    "score": 0.5177
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "transplant_matching",
+    "column": "donor_ref_reg",
+    "target": "demographics",
+    "score": 0.5895
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "recipients_immunology",
+    "column": "immu_recip_registry",
+    "target": "recipients_demographics",
+    "score": 0.1996
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "clinical",
+    "column": "clin_recip_registry",
+    "target": "recipients_demographics",
+    "score": 0.2703
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "logistics",
+    "column": "log_match_registry",
+    "target": "transplant_matching",
+    "score": 0.0151
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "compatibility_metrics",
+    "column": "donor_ref_reg",
+    "target": "demographics",
+    "score": 0.7215
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "compatibility_metrics",
+    "column": "match_comp_registry",
+    "target": "transplant_matching",
+    "score": 0.0053
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "data_source_and_quality",
+    "column": "q_match_registry",
+    "target": "transplant_matching",
+    "score": 0.023
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "allocation_details",
+    "column": "allc_match_registry",
+    "target": "transplant_matching",
+    "score": 0.0046
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "medical_history",
+    "column": "contrib_med_registry",
+    "target": "demographics",
+    "score": 0.2123
+   },
+   {
+    "database": "livesqlbench/reverse_logistics",
+    "table": "case_management",
+    "column": "casetie",
+    "target": "returns",
+    "score": 0.8155
+   },
+   {
+    "database": "livesqlbench/reverse_logistics",
+    "table": "returns",
+    "column": "srctxn",
+    "target": "orders",
+    "score": 0.2083
+   },
+   {
+    "database": "livesqlbench/robot_fault_prediction",
+    "table": "actuation_data",
+    "column": "actoperref",
+    "target": "operation",
+    "score": 0.6483
+   },
+   {
+    "database": "livesqlbench/robot_fault_prediction",
+    "table": "actuation_data",
+    "column": "actrecref",
+    "target": "robot_record",
+    "score": 0.0496
+   },
+   {
+    "database": "livesqlbench/robot_fault_prediction",
+    "table": "robot_details",
+    "column": "botdetreg",
+    "target": "robot_record",
+    "score": 0.7049
+   },
+   {
+    "database": "livesqlbench/robot_fault_prediction",
+    "table": "joint_condition",
+    "column": "jcdetref",
+    "target": "robot_details",
+    "score": 0.4831
+   },
+   {
+    "database": "livesqlbench/robot_fault_prediction",
+    "table": "system_controller",
+    "column": "systemoverseeroperation",
+    "target": "operation",
+    "score": 0.7516
+   },
+   {
+    "database": "livesqlbench/robot_fault_prediction",
+    "table": "performance_and_safety",
+    "column": "effectivenessactuation",
+    "target": "actuation_data",
+    "score": 0.2252
+   },
+   {
+    "database": "livesqlbench/robot_fault_prediction",
+    "table": "maintenance_and_fault",
+    "column": "upkeepactuation",
+    "target": "actuation_data",
+    "score": 0.1785
+   },
+   {
+    "database": "livesqlbench/robot_fault_prediction",
+    "table": "maintenance_and_fault",
+    "column": "upkeepoperation",
+    "target": "operation",
+    "score": 0.7663
+   },
+   {
+    "database": "livesqlbench/robot_fault_prediction",
+    "table": "system_controller",
+    "column": "systemoverseeractuation",
+    "target": "actuation_data",
+    "score": 0.1731
+   },
+   {
+    "database": "livesqlbench/robot_fault_prediction",
+    "table": "mechanical_status",
+    "column": "mechdetref",
+    "target": "robot_details",
+    "score": 0.1474
+   },
+   {
+    "database": "livesqlbench/robot_fault_prediction",
+    "table": "joint_performance",
+    "column": "jperfoperref",
+    "target": "operation",
+    "score": 0.7803
+   },
+   {
+    "database": "livesqlbench/solar_panel",
+    "table": "environmental_conditions",
+    "column": "snapref",
+    "target": "plant_record",
+    "score": 0.8059
+   }
+  ],
+  "won by another target": [
+   {
+    "database": "livesqlbench/cold_chain_pharma_compliance",
+    "table": "environmentalmonitoring",
+    "column": "devlink",
+    "target": "monitoringdevices",
+    "score": 0.2461,
+    "won by": "shipsensorlink",
+    "its score": 0.2546
+   },
+   {
+    "database": "livesqlbench/crypto_exchange",
+    "table": "marketstats",
+    "column": "md_link",
+    "target": "marketdata",
+    "score": 0.3049,
+    "won by": "users",
+    "its score": 0.7477
+   },
+   {
+    "database": "livesqlbench/cybermarket_pattern",
+    "table": "transaction_products",
+    "column": "SellerPointer",
+    "target": "products",
+    "score": 0.0903,
+    "won by": "vendors",
+    "its score": 0.7245
+   },
+   {
+    "database": "livesqlbench/cybermarket_pattern",
+    "table": "transaction_products",
+    "column": "EventLink",
+    "target": "transactions",
+    "score": 0.8465,
+    "won by": "communications",
+    "its score": 0.9622
+   },
+   {
+    "database": "livesqlbench/cybermarket_pattern",
+    "table": "transaction_products",
+    "column": "Subcategory",
+    "target": "products",
+    "score": 0.0132,
+    "won by": "connection_security",
+    "its score": 0.1858
+   },
+   {
+    "database": "livesqlbench/disaster_relief",
+    "table": "transportation",
+    "column": "transportsupref",
+    "target": "supplies",
+    "score": 0.1643,
+    "won by": "transportation",
+    "its score": 0.2257
+   },
+   {
+    "database": "livesqlbench/disaster_relief",
+    "table": "transportation",
+    "column": "transport_hub_ref",
+    "target": "distributionhubs",
+    "score": 0.3282,
+    "won by": "transportation",
+    "its score": 0.6541
+   },
+   {
+    "database": "livesqlbench/disaster_relief",
+    "table": "supplies",
+    "column": "supplyhubref",
+    "target": "distributionhubs",
+    "score": 0.0958,
+    "won by": "supplies",
+    "its score": 0.1482
+   },
+   {
+    "database": "livesqlbench/hulushows",
+    "table": "promo_info",
+    "column": "content_key",
+    "target": "core",
+    "score": 0.3838,
+    "won by": "content_info",
+    "its score": 0.759
+   },
+   {
+    "database": "livesqlbench/hulushows",
+    "table": "show_rollups",
+    "column": "srlinks",
+    "target": "rollups",
+    "score": 0.5621,
+    "won by": "promo_info",
+    "its score": 0.8161
+   },
+   {
+    "database": "livesqlbench/hulushows",
+    "table": "availabilitys",
+    "column": "content_key",
+    "target": "core",
+    "score": 0.2145,
+    "won by": "content_info",
+    "its score": 0.6465
+   },
+   {
+    "database": "livesqlbench/hulushows",
+    "table": "show_rollups",
+    "column": "srkeys",
+    "target": "core",
+    "score": 0.4241,
+    "won by": "availabilitys",
+    "its score": 0.9017
+   },
+   {
+    "database": "livesqlbench/hulushows",
+    "table": "core",
+    "column": "studiolink",
+    "target": "companies",
+    "score": 0.1603,
+    "won by": "core",
+    "its score": 0.3796
+   },
+   {
+    "database": "livesqlbench/insider_trading",
+    "table": "reg_compliance",
+    "column": "REC_COMP",
+    "target": "market_conditions",
+    "score": 0.2019,
+    "won by": "trade_records",
+    "its score": 0.8804
+   },
+   {
+    "database": "livesqlbench/insider_trading",
+    "table": "sentiment_analytics",
+    "column": "REC_SA",
+    "target": "market_conditions",
+    "score": 0.1162,
+    "won by": "trade_records",
+    "its score": 0.6965
+   },
+   {
+    "database": "livesqlbench/insider_trading",
+    "table": "corporate_events",
+    "column": "REC_EVT",
+    "target": "market_conditions",
+    "score": 0.2169,
+    "won by": "trade_records",
+    "its score": 0.8718
+   },
+   {
+    "database": "livesqlbench/insider_trading",
+    "table": "enforcement_actions",
+    "column": "REC_ENF",
+    "target": "market_conditions",
+    "score": 0.12,
+    "won by": "trade_records",
+    "its score": 0.7198
+   },
+   {
+    "database": "livesqlbench/insider_trading",
+    "table": "trader_relationships",
+    "column": "rel_root",
+    "target": "traders",
+    "score": 0.0178,
+    "won by": "trade_records",
+    "its score": 0.1584
+   },
+   {
+    "database": "livesqlbench/insider_trading",
+    "table": "manipulation_signals",
+    "column": "REC_TAG",
+    "target": "market_conditions",
+    "score": 0.1038,
+    "won by": "trade_records",
+    "its score": 0.7417
+   },
+   {
+    "database": "livesqlbench/insider_trading",
+    "table": "order_behaviour",
+    "column": "REC_NODE",
+    "target": "market_conditions",
+    "score": 0.242,
+    "won by": "trade_records",
+    "its score": 0.8324
+   },
+   {
+    "database": "livesqlbench/labor_certification_applications",
+    "table": "employer_poc",
+    "column": "firmlink",
+    "target": "employer",
+    "score": 0.003,
+    "won by": "prevailing_wage",
+    "its score": 0.7695
+   },
+   {
+    "database": "livesqlbench/labor_certification_applications",
+    "table": "case_worksite",
+    "column": "dockkey",
+    "target": "cases",
+    "score": 0.2321,
+    "won by": "attorney",
+    "its score": 0.7731
+   },
+   {
+    "database": "livesqlbench/labor_certification_applications",
+    "table": "case_attorney",
+    "column": "counselmail",
+    "target": "attorney",
+    "score": 0.1672,
+    "won by": "employer_poc",
+    "its score": 0.7345
+   },
+   {
+    "database": "livesqlbench/labor_certification_applications",
+    "table": "case_worksite",
+    "column": "wszip",
+    "target": "worksite",
+    "score": 0.0938,
+    "won by": "employer_poc",
+    "its score": 0.1506
+   },
+   {
+    "database": "livesqlbench/labor_certification_applications",
+    "table": "case_attorney",
+    "column": "docketkey",
+    "target": "cases",
+    "score": 0.2158,
+    "won by": "attorney",
+    "its score": 0.9018
+   },
+   {
+    "database": "livesqlbench/labor_certification_applications",
+    "table": "cases",
+    "column": "homefirm",
+    "target": "employer",
+    "score": 0.0001,
+    "won by": "attorney",
+    "its score": 0.0018
+   },
+   {
+    "database": "livesqlbench/labor_certification_applications",
+    "table": "case_worksite",
+    "column": "ws_addr1",
+    "target": "worksite",
+    "score": 0.1716,
+    "won by": "cases",
+    "its score": 0.1848
+   },
+   {
+    "database": "livesqlbench/labor_certification_applications",
+    "table": "cases",
+    "column": "homezip",
+    "target": "employer",
+    "score": 0.0002,
+    "won by": "attorney",
+    "its score": 0.0045
+   },
+   {
+    "database": "livesqlbench/labor_certification_applications",
+    "table": "employer_poc",
+    "column": "firmzip",
+    "target": "employer",
+    "score": 0.0019,
+    "won by": "cases",
+    "its score": 0.0765
+   },
+   {
+    "database": "livesqlbench/labor_certification_applications",
+    "table": "case_worksite",
+    "column": "wscity",
+    "target": "worksite",
+    "score": 0.0669,
+    "won by": "cases",
+    "its score": 0.0964
+   },
+   {
+    "database": "livesqlbench/mental_health",
+    "table": "assessmentsocialanddiagnosis",
+    "column": "asd_key",
+    "target": "assessmentbasics",
+    "score": 0.0062,
+    "won by": "assessmentsymptomsandrisk",
+    "its score": 0.0174
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "data_source_and_quality",
+    "column": "q_don_ref",
+    "target": "demographics",
+    "score": 0.0558,
+    "won by": "risk_evaluation",
+    "its score": 0.6691
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "risk_evaluation",
+    "column": "donor_ref_reg",
+    "target": "demographics",
+    "score": 0.3152,
+    "won by": "data_source_and_quality",
+    "its score": 0.4754
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "allocation_details",
+    "column": "donor_ref_reg",
+    "target": "demographics",
+    "score": 0.6771,
+    "won by": "data_source_and_quality",
+    "its score": 0.7327
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "hla_info",
+    "column": "immu_don_registry",
+    "target": "demographics",
+    "score": 0.0082,
+    "won by": "administrative_and_review",
+    "its score": 0.0417
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "administrative_and_review",
+    "column": "adm_don_ref",
+    "target": "demographics",
+    "score": 0.0206,
+    "won by": "administrative_and_review",
+    "its score": 0.138
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "function_and_recovery",
+    "column": "recov_don_registry",
+    "target": "demographics",
+    "score": 0.0098,
+    "won by": "administrative_and_review",
+    "its score": 0.029
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "logistics",
+    "column": "rec_ref_reg",
+    "target": "recipients_demographics",
+    "score": 0.6073,
+    "won by": "recipients_immunology",
+    "its score": 0.719
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "administrative_and_review",
+    "column": "adm_rec_ref",
+    "target": "recipients_demographics",
+    "score": 0.0172,
+    "won by": "administrative_and_review",
+    "its score": 0.231
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "administrative_and_review",
+    "column": "adm_rev_registry",
+    "target": "transplant_matching",
+    "score": 0.0121,
+    "won by": "clinical",
+    "its score": 0.0133
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "logistics",
+    "column": "don_ref_reg",
+    "target": "demographics",
+    "score": 0.6155,
+    "won by": "function_and_recovery",
+    "its score": 0.8377
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "risk_evaluation",
+    "column": "risk_eval_registry",
+    "target": "transplant_matching",
+    "score": 0.01,
+    "won by": "administrative_and_review",
+    "its score": 0.0109
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "data_source_and_quality",
+    "column": "q_rec_ref",
+    "target": "recipients_demographics",
+    "score": 0.1524,
+    "won by": "recipients_immunology",
+    "its score": 0.7039
+   },
+   {
+    "database": "livesqlbench/planets_data",
+    "table": "planet_instrument_observations",
+    "column": "subjectlink",
+    "target": "planets",
+    "score": 0.527,
+    "won by": "stars",
+    "its score": 0.8347
+   },
+   {
+    "database": "livesqlbench/planets_data",
+    "table": "data_quality_tracking",
+    "column": "targetlink",
+    "target": "planets",
+    "score": 0.0668,
+    "won by": "stars",
+    "its score": 0.8686
+   },
+   {
+    "database": "livesqlbench/planets_data",
+    "table": "orbital_characteristics",
+    "column": "bodylink",
+    "target": "planets",
+    "score": 0.4951,
+    "won by": "data_quality_tracking",
+    "its score": 0.8339
+   },
+   {
+    "database": "livesqlbench/planets_data",
+    "table": "planet_instrument_observations",
+    "column": "facilitylink",
+    "target": "instruments_surveys",
+    "score": 0.0393,
+    "won by": "data_quality_tracking",
+    "its score": 0.9483
+   },
+   {
+    "database": "livesqlbench/planets_data",
+    "table": "physical_properties",
+    "column": "objectlink",
+    "target": "planets",
+    "score": 0.4102,
+    "won by": "data_quality_tracking",
+    "its score": 0.8679
+   },
+   {
+    "database": "livesqlbench/planets_data",
+    "table": "planets",
+    "column": "hostlink",
+    "target": "stars",
+    "score": 0.6222,
+    "won by": "data_quality_tracking",
+    "its score": 0.8721
+   },
+   {
+    "database": "livesqlbench/reverse_logistics",
+    "table": "financial_management",
+    "column": "casetag",
+    "target": "returns",
+    "score": 0.484,
+    "won by": "case_management",
+    "its score": 0.7411
+   },
+   {
+    "database": "livesqlbench/reverse_logistics",
+    "table": "quality_assessment",
+    "column": "inspectref",
+    "target": "returns",
+    "score": 0.2772,
+    "won by": "return_processing",
+    "its score": 0.6966
+   },
+   {
+    "database": "livesqlbench/robot_fault_prediction",
+    "table": "mechanical_status",
+    "column": "mechactref",
+    "target": "actuation_data",
+    "score": 0.0218,
+    "won by": "maintenance_and_fault",
+    "its score": 0.0417
+   },
+   {
+    "database": "livesqlbench/robot_fault_prediction",
+    "table": "performance_and_safety",
+    "column": "effectivenessrobot",
+    "target": "robot_details",
+    "score": 0.0708,
+    "won by": "robot_record",
+    "its score": 0.1456
+   },
+   {
+    "database": "livesqlbench/robot_fault_prediction",
+    "table": "joint_performance",
+    "column": "jperfdetref",
+    "target": "robot_details",
+    "score": 0.3364,
+    "won by": "performance_and_safety",
+    "its score": 0.8388
+   },
+   {
+    "database": "livesqlbench/robot_fault_prediction",
+    "table": "operation",
+    "column": "operrecref",
+    "target": "robot_record",
+    "score": 0.1808,
+    "won by": "operation",
+    "its score": 0.5268
+   },
+   {
+    "database": "livesqlbench/solar_panel",
+    "table": "alert",
+    "column": "snapalrt",
+    "target": "plant_record",
+    "score": 0.5095,
+    "won by": "electrical_performance",
+    "its score": 0.8397
+   },
+   {
+    "database": "livesqlbench/sports_events",
+    "table": "pit_stops",
+    "column": "wunit",
+    "target": "drivers",
+    "score": 0.0146,
+    "won by": "circuits",
+    "its score": 0.4908
+   },
+   {
+    "database": "livesqlbench/sports_events",
+    "table": "constructor_results",
+    "column": "matchref",
+    "target": "races",
+    "score": 0.3753,
+    "won by": "pit_stops",
+    "its score": 0.4041
+   },
+   {
+    "database": "livesqlbench/sports_events",
+    "table": "sprint_results",
+    "column": "matchref",
+    "target": "races",
+    "score": 0.2779,
+    "won by": "pit_stops",
+    "its score": 0.3846
+   },
+   {
+    "database": "livesqlbench/sports_events",
+    "table": "constructor_standings",
+    "column": "rref",
+    "target": "races",
+    "score": 0.3617,
+    "won by": "constructor_results",
+    "its score": 0.5404
+   }
+  ],
+  "not a candidate": [
+   {
+    "database": "livesqlbench/exchange_traded_funds",
+    "table": "risk_metrics",
+    "column": "investmentref",
+    "target": "funds"
+   },
+   {
+    "database": "livesqlbench/exchange_traded_funds",
+    "table": "family_exchanges",
+    "column": "exchangeref",
+    "target": "exchanges"
+   },
+   {
+    "database": "livesqlbench/exchange_traded_funds",
+    "table": "family_categories",
+    "column": "categorylink",
+    "target": "categories"
+   },
+   {
+    "database": "livesqlbench/exchange_traded_funds",
+    "table": "bond_allocations",
+    "column": "fundlink",
+    "target": "funds"
+   },
+   {
+    "database": "livesqlbench/exchange_traded_funds",
+    "table": "funds",
+    "column": "listingvenue",
+    "target": "exchanges"
+   },
+   {
+    "database": "livesqlbench/exchange_traded_funds",
+    "table": "sector_allocations",
+    "column": "productlink",
+    "target": "funds"
+   },
+   {
+    "database": "livesqlbench/exchange_traded_funds",
+    "table": "annual_returns",
+    "column": "portfolioref",
+    "target": "funds"
+   },
+   {
+    "database": "livesqlbench/exchange_traded_funds",
+    "table": "holdings",
+    "column": "instrumentref",
+    "target": "funds"
+   },
+   {
+    "database": "livesqlbench/exchange_traded_funds",
+    "table": "funds",
+    "column": "productclass",
+    "target": "categories"
+   },
+   {
+    "database": "livesqlbench/exchange_traded_funds",
+    "table": "funds",
+    "column": "parentgroup",
+    "target": "families"
+   },
+   {
+    "database": "livesqlbench/exchange_traded_funds",
+    "table": "family_exchanges",
+    "column": "familyref",
+    "target": "families"
+   },
+   {
+    "database": "livesqlbench/exchange_traded_funds",
+    "table": "performance",
+    "column": "productref",
+    "target": "funds"
+   },
+   {
+    "database": "livesqlbench/exchange_traded_funds",
+    "table": "family_categories",
+    "column": "familylink",
+    "target": "families"
+   }
+  ],
+  "drawn, no key declared": [
+   {
+    "database": "livesqlbench/cross_border",
+    "table": "RiskManagement",
+    "column": "recordRegistry",
+    "target": "DataFlow",
+    "score": 0.9553
+   },
+   {
+    "database": "livesqlbench/cross_border",
+    "table": "DataProfile",
+    "column": "Record_Registry",
+    "target": "DataFlow",
+    "score": 0.8353
+   },
+   {
+    "database": "livesqlbench/cross_border",
+    "table": "SecurityProfile",
+    "column": "RecordRegistry",
+    "target": "DataFlow",
+    "score": 0.9141
+   },
+   {
+    "database": "livesqlbench/cross_border",
+    "table": "Compliance",
+    "column": "recordRegistry",
+    "target": "DataFlow",
+    "score": 0.9079
+   },
+   {
+    "database": "livesqlbench/cross_border",
+    "table": "AuditAndCompliance",
+    "column": "record_registry",
+    "target": "DataFlow",
+    "score": 0.9062
+   },
+   {
+    "database": "livesqlbench/crypto_exchange",
+    "table": "orders",
+    "column": "exchSpot",
+    "target": "marketdata",
+    "score": 0.8848
+   },
+   {
+    "database": "livesqlbench/crypto_exchange",
+    "table": "Exchange_OrderType_Map",
+    "column": "exchSpot",
+    "target": "marketdata",
+    "score": 0.9872
+   },
+   {
+    "database": "livesqlbench/crypto_exchange",
+    "table": "Exchange_OrderType_Map",
+    "column": "ORDERtune",
+    "target": "orders",
+    "score": 0.8547
+   },
+   {
+    "database": "livesqlbench/cybermarket_pattern",
+    "table": "vendor_countries",
+    "column": "OpRegions",
+    "target": "transactions",
+    "score": 0.8287
+   },
+   {
+    "database": "livesqlbench/labor_certification_applications",
+    "table": "employer",
+    "column": "zipref",
+    "target": "preparer",
+    "score": 0.8271
+   },
+   {
+    "database": "livesqlbench/mental_health",
+    "table": "encounters",
+    "column": "clin_id",
+    "target": "clinicians",
+    "score": 0.9495
+   },
+   {
+    "database": "livesqlbench/mental_health",
+    "table": "encounters",
+    "column": "fac_id",
+    "target": "facilities",
+    "score": 0.9453
+   },
+   {
+    "database": "livesqlbench/museum_artifact",
+    "table": "ArtifactsCore",
+    "column": "ARTregID",
+    "target": "ArtifactSecurityAccess",
+    "score": 0.8378
+   },
+   {
+    "database": "livesqlbench/museum_artifact",
+    "table": "SurfaceAndPhysicalReadings",
+    "column": "saltRisk",
+    "target": "RiskAssessments",
+    "score": 0.9626
+   },
+   {
+    "database": "livesqlbench/museum_artifact",
+    "table": "SurfaceAndPhysicalReadings",
+    "column": "condRisk",
+    "target": "RiskAssessments",
+    "score": 0.9607
+   },
+   {
+    "database": "livesqlbench/museum_artifact",
+    "table": "Monitor_Showcase_Map",
+    "column": "case_ID",
+    "target": "Showcases",
+    "score": 0.9833
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "demographics",
+    "column": "nation_ref",
+    "target": "risk_evaluation",
+    "score": 0.8887
+   },
+   {
+    "database": "livesqlbench/polar_equipment",
+    "table": "OperationMaintenance",
+    "column": "comm_link",
+    "target": "Communication",
+    "score": 0.9949
+   }
+  ],
+  "drawn, wrong target": [
+   {
+    "database": "livesqlbench/cybermarket_pattern",
+    "table": "transaction_products",
+    "column": "EventLink",
+    "target": "communications",
+    "score": 0.9622,
+    "declared": "transactions"
+   },
+   {
+    "database": "livesqlbench/hulushows",
+    "table": "show_rollups",
+    "column": "srkeys",
+    "target": "availabilitys",
+    "score": 0.9017,
+    "declared": "core"
+   },
+   {
+    "database": "livesqlbench/insider_trading",
+    "table": "order_behaviour",
+    "column": "REC_NODE",
+    "target": "trade_records",
+    "score": 0.8324,
+    "declared": "market_conditions"
+   },
+   {
+    "database": "livesqlbench/insider_trading",
+    "table": "corporate_events",
+    "column": "REC_EVT",
+    "target": "trade_records",
+    "score": 0.8718,
+    "declared": "market_conditions"
+   },
+   {
+    "database": "livesqlbench/insider_trading",
+    "table": "reg_compliance",
+    "column": "REC_COMP",
+    "target": "trade_records",
+    "score": 0.8804,
+    "declared": "market_conditions"
+   },
+   {
+    "database": "livesqlbench/labor_certification_applications",
+    "table": "case_attorney",
+    "column": "docketkey",
+    "target": "attorney",
+    "score": 0.9018,
+    "declared": "cases"
+   },
+   {
+    "database": "livesqlbench/organ_transplant",
+    "table": "logistics",
+    "column": "don_ref_reg",
+    "target": "function_and_recovery",
+    "score": 0.8377,
+    "declared": "demographics"
+   },
+   {
+    "database": "livesqlbench/planets_data",
+    "table": "planets",
+    "column": "hostlink",
+    "target": "data_quality_tracking",
+    "score": 0.8721,
+    "declared": "stars"
+   },
+   {
+    "database": "livesqlbench/planets_data",
+    "table": "orbital_characteristics",
+    "column": "bodylink",
+    "target": "data_quality_tracking",
+    "score": 0.8339,
+    "declared": "planets"
+   },
+   {
+    "database": "livesqlbench/planets_data",
+    "table": "physical_properties",
+    "column": "objectlink",
+    "target": "data_quality_tracking",
+    "score": 0.8679,
+    "declared": "planets"
+   },
+   {
+    "database": "livesqlbench/planets_data",
+    "table": "planet_instrument_observations",
+    "column": "subjectlink",
+    "target": "stars",
+    "score": 0.8347,
+    "declared": "planets"
+   },
+   {
+    "database": "livesqlbench/planets_data",
+    "table": "planet_instrument_observations",
+    "column": "facilitylink",
+    "target": "data_quality_tracking",
+    "score": 0.9483,
+    "declared": "instruments_surveys"
+   },
+   {
+    "database": "livesqlbench/planets_data",
+    "table": "data_quality_tracking",
+    "column": "targetlink",
+    "target": "stars",
+    "score": 0.8686,
+    "declared": "planets"
+   },
+   {
+    "database": "livesqlbench/robot_fault_prediction",
+    "table": "joint_performance",
+    "column": "jperfdetref",
+    "target": "performance_and_safety",
+    "score": 0.8388,
+    "declared": "robot_details"
+   },
+   {
+    "database": "livesqlbench/solar_panel",
+    "table": "alert",
+    "column": "snapalrt",
+    "target": "electrical_performance",
+    "score": 0.8397,
+    "declared": "plant_record"
+   }
+  ]
+ }
+}

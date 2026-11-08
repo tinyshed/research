@@ -27,6 +27,13 @@ resamples both arms together. LiveSQLBench is development data from round
 training renamed into; BEAVER was read once by an earlier freeze and is seen
 since. Only the GitHub reading is clean.
 
+**Added on the morning of 8 November** (§7): a defect in the chosen model's
+second stage, mended; features that read a schema's own house style from
+its columns; and a second clean set, the 177 GitHub schemas the same rule
+kept and did not select, read once. On it the chosen model's gain over
+`1s` is +0.011 [−0.016, +0.042], and over both GitHub sets +0.022
+[−0.002, +0.047]: smaller than the first reading's.
+
 | Question | Answer | What follows |
 |---|---|---|
 | **On schemas nobody here had read, once?** | 80 GitHub schemas created 1 July 2025 to 6 November 2026, 1 600 tables, 2 022 keys: the chosen `seven-restyled` **0.792** [0.747, 0.829] against `1s`'s 0.744 [0.685, 0.798], **+0.048 [+0.014, +0.084]**; `seven-relative` 0.799, +0.055 [+0.020, +0.097]; `cues-restyled` 0.781, +0.037 [+0.001, +0.077] | the repaired model carries to new real schemas: the paper's model is `seven-restyled`, the paper's claims stand on this reading |
@@ -37,6 +44,9 @@ since. Only the GitHub reading is clean.
 | Can a threshold reach 0.80 on CTU and LiveSQLBench? | No: a perfect threshold for every schema on `cues-restyled`'s scores reaches CTU 0.764–0.777 and LiveSQLBench 0.631–0.654; a perfect has-a-key decision with today's targets 0.868 and 0.782 | the rest is ranking: semantics, and CTU's `Bench` (101 keys into tables differing only in case) |
 | Is SchemaPile's test a fair 0.80? | On its 1 821 schemas whose every rule-named key is declared F1 is 0.76–0.78; on the other 294 precision is 0.45–0.54: many false keys are undeclared real ones | SchemaPile's test caps any model of names near 0.78 |
 | Does the reader in Rust carry it? | Yes: on 1 899 817 external and 1 502 214 test pairs no hashed feature differs, the first stage's margins are equal, the second's within 1.4e-4, the same 2 903 and 15 121 keys drawn | the model is a file and a reader of 2 400 lines; at 2.6 ms a median database through its reference path, a fast path still to write |
+| **And on 177 more GitHub schemas, read once in the morning?** | 4 533 keys: `seven-restyled` 0.767 [0.715, 0.813] against `1s`'s 0.756, **+0.011 [−0.016, +0.042]**; `seven-bounded` 0.775, `seven-style` 0.762; both sets pooled afterwards, 252 schemas: +0.022 [−0.002, +0.047] | on `table_id` names the repair costs nothing and gains little; its gains are where the style shifts |
+| What was wrong with the chosen model? | Its second stage holds 43 leaves over 50, up to 15 832, drawing pairs its first stage scores under 0.001 at 1.0; bounded, validation average precision 0.689 → 0.779 | a stacked second stage needs its leaves bounded |
+| Does reading the schema's own style help? | On LiveSQLBench 0.619 → 0.671 (`seven-style`), at CTU −0.032; not on the second GitHub set (0.762) | it reads the style it was written for, on development data only |
 
 ## 1. What round 1s's reading lost
 
@@ -268,6 +278,118 @@ fast again for a median database, three times on `Bench`, whose candidates
 version 6 widened 2.8 times. A fast path for versions 6 to 8, as round 1s
 wrote one for its features, is the next piece of work.
 
+## 7. The morning: a defect, the schema's own style, a second GitHub set
+
+Added on the morning of 8 November, at the owner's request to keep going; the
+specification's entries of the morning say when each step was fixed.
+[errors.py](../round-1t/errors.py) sorted `seven-restyled`'s declared and
+drawn keys on two development sets
+([errors-*.json](data/keys-style-2026-11-08/), 60 of each kind shown):
+
+| | found | missed: under the threshold | missed: another target won | missed: no candidate | drawn, no key declared | drawn, another target declared |
+|---|---|---|---|---|---|---|
+| CTU, 1 854 keys | 1 096 | 437 | 311 | 10 | 241 | 82 |
+| LiveSQLBench, 299 keys | 138 | 80 | 68 | 13 | 18 | 15 |
+
+On CTU, `Bench` makes 442 of the 1 081 errors; a logic program's facts
+(Mooney_Family, PTE, Mesh, SAT, Pima, Bupa: columns `arg1`, `name2`, `tm`)
+most of the rest; and many keys drawn where none is declared read as real
+undeclared ones (`lineitem.l_partkey` into `part` in TPC-H, `teamID` into
+`teams` in lahman). On LiveSQLBench the model keeps its precision and loses
+recall: keys named in one schema's own style (`acct_mon`, `acct_node`,
+`acct_gate`, `acct_anchor` into `accounts`) each score 0.46 to 0.72, under
+the threshold.
+
+**A defect.** In AdventureWorks the model drew `PasswordSalt` into
+`SalesPersonQuotaHistory` and `SalesTerritory.Name` into
+`SpecialOfferProduct` at 1.0, pairs its first stage scores at 1e-5 to 3e-4.
+`seven-restyled`'s second stage holds 43 leaves of absolute value over 50,
+the largest 15 832, where `seven-relative`'s largest is 7.9 and
+`cues-restyled`'s 10.3 ([second-stage-leaves.json](data/keys-style-2026-11-08/second-stage-leaves.json));
+one pair's margin took +2 082 from its own score's leaves. The second stage
+is LightGBM at its defaults for a leaf's least hessian (0.001) and its
+largest output (none), which lets a leaf on a few near-certain pairs run
+away. `seven-bounded` is the same fit with each leaf at most 1.0, a leaf's
+hessian at least 1 and an L2 of 1 (`BOUNDED` in fit.py): its largest leaf
+2.6, validation F1 0.740 → 0.749 and average precision 0.689 → 0.779.
+
+**The schema's own style** ([style.py](../round-1t/style.py)): six features
+that read a pair against the schema's other columns named alike, from the
+first stage's scores and the names alone — of the columns sharing the
+pair's lead word (its first word not a key word), the mean of their best
+score into the pair's target and the share of them whose best target it is,
+and how many they are; of those sharing its last word, how many and their
+mean best over the schema's; and how many columns the target is the best
+of. `seven-style` adds them to the relative stage with shift-aware stacking
+and bounded leaves; `seven-style2` gives a name of one word no lead word,
+after `seven-style` lost CTU's logic-program databases.
+
+| | threshold | SchemaPile test | renamed | Spider | BIRD | CTU | LiveSQLBench | pooled development |
+|---|---|---|---|---|---|---|---|---|
+| `1s` | 0.837 | 0.736 | 0.515 | 0.869 | 0.830 | 0.609 | 0.185 | 0.700 |
+| `seven-restyled`, the rule's | 0.823 | 0.726 | 0.794 | 0.888 | 0.816 | 0.670 | 0.587 | **0.748** |
+| `seven-bounded` | 0.818 | 0.734 | 0.809 | **0.891** | 0.812 | 0.654 | 0.619 | 0.745 |
+| `seven-relative-bounded` | 0.832 | 0.719 | 0.775 | 0.886 | 0.811 | 0.666 | 0.643 | 0.748 |
+| `seven-style` | 0.846 | 0.725 | 0.797 | 0.885 | 0.810 | 0.622 | **0.671** | 0.733 |
+| `seven-style2` | 0.862 | 0.725 | 0.806 | 0.879 | 0.818 | 0.618 | 0.645 | 0.728 |
+| `seven-bounded` and `seven-style` averaged ([blend.py](../round-1t/blend.py)) | 0.830 | 0.732 | **0.812** | 0.886 | 0.811 | 0.641 | 0.639 | 0.740 |
+
+The rule, unchanged, still chooses `seven-restyled`. The schema's own style
+takes LiveSQLBench from `seven-bounded`'s 0.619 to 0.671 (keys found 138 →
+171 against `seven-restyled`, drawn false 33 → 40) and costs CTU 0.032;
+giving one-word names no lead word costs LiveSQLBench 0.026 and mends
+nothing on CTU. What CTU's differences are made of
+([mooney-family-scores.txt](data/keys-style-2026-11-08/mooney-family-scores.txt)):
+
+| Mooney_Family, 134 keys | first stage, keys' 10th–90th percentile | second stage, the same | threshold | keys drawn |
+|---|---|---|---|---|
+| `seven-restyled` | 0.185–0.249 | 0.792–0.846 | 0.823 | 73 |
+| `seven-bounded` | 0.142–0.211 | 0.548–0.655 | 0.818 | 0 |
+| `seven-style` | 0.142–0.211 | 0.744–0.801 | 0.846 | 0 |
+
+Every key of a logic program's facts scores alike, so each such database is
+drawn whole or not at all; three of them (Mooney_Family, SAT, Dunur, 117 keys
+`seven-restyled` drew) make most of CTU's difference between the morning's
+fits, and `seven-restyled` drew Mooney_Family through its runaway leaves.
+`seven-bounded`'s first stage, refitted on the same data by the same
+procedure, scores those keys lower too; the fits run on the graphics card,
+whose histogram sums need not repeat exactly, a hypothesis not separated
+here. CTU's interval is 0.47 to 0.78 for every one of these fits.
+
+**The second GitHub set, once.** The 177 schemas the collector's rule kept
+and did not select (every one after the first 80 by SHA-256 of
+`owner/name`), written by `github.py parse rest` and frozen by hash at
+06:52 UTC before any was read ([frozen-rest-set.json](data/keys-style-2026-11-08/frozen-rest-set.json));
+3 908 tables, 4 533 one-column keys (258 composite left out), created
+2 July 2025 to 4 November 2026, 141 without a licence
+([github-rest-summary.json](data/keys-style-2026-11-08/github-rest-summary.json),
+[github-rest-manifest.json](data/keys-style-2026-11-08/github-rest-manifest.json)).
+Four models frozen at 08:33 UTC ([frozen-rest.json](data/keys-style-2026-11-08/frozen-rest.json))
+and read once ([heldout-github-2025-rest.json](data/keys-style-2026-11-08/heldout-github-2025-rest.json)):
+
+| | P / R / F1 [95 %] | minus `1s` | macro F1 | F1 at 0.5 | keys among candidates |
+|---|---|---|---|---|---|
+| `1s` | 0.783 / 0.731 / 0.756 [0.687, 0.813] | | 0.750 | 0.720 | 4 447 |
+| **`seven-restyled`**, the rule's | 0.762 / 0.771 / **0.767** [0.715, 0.813] | +0.011 [−0.016, +0.042] | 0.761 | 0.718 | 4 467 |
+| `seven-bounded` | 0.786 / 0.764 / 0.775 [0.728, 0.816] | +0.019 [−0.010, +0.055] | 0.762 | 0.730 | 4 467 |
+| `seven-style` | 0.771 / 0.752 / 0.762 [0.715, 0.806] | +0.006 [−0.033, +0.045] | 0.750 | 0.718 | 4 467 |
+
+Both GitHub sets together, pooled after each was read once and not fixed
+before either reading ([heldout-github-both-pooled.json](data/keys-style-2026-11-08/heldout-github-both-pooled.json)):
+252 schemas with a one-column key, 6 555 keys; `1s` 0.752 [0.705, 0.795],
+`seven-restyled` 0.774 [0.736, 0.807], **+0.022 [−0.002, +0.047]**.
+
+On new schemas from GitHub, which mostly name keys `table_id` as SchemaPile
+does, the repaired model gains less than the first reading said: +0.011 on
+the larger second set, its interval over zero, and +0.022 over both, the
+interval reaching zero. The first set's +0.048 was the higher draw. The
+repair's large gains are where the house style differs — LiveSQLBench,
+SchemaPile renamed — and where names are `table_id` it costs nothing and
+gains a little. The mended leaves read 0.008 above `seven-restyled` on the
+second set and the schema's own style 0.005 below it, both within their
+intervals: neither is shown to carry to new GitHub schemas, and the schema's
+own style stands on LiveSQLBench, development data, alone.
+
 ## Limits
 
 - One seed a fit. Round 1s found a seed can move the pooled external F1 by
@@ -285,6 +407,11 @@ wrote one for its features, is the next piece of work.
   of another set they do not hold is read as before.
 - `seven-restyled` reads SchemaPile's test 0.010 below `1s`, on the rule's
   line.
+- `seven-restyled`, the model the rule chose and the paper's, carries the
+  runaway leaves of §7; the mended `seven-bounded` was not the rule's choice
+  on development data and is not shown better on the second GitHub set.
+- CTU's differences between fits are mostly a few databases drawn whole or
+  not at all (§7); a difference there under 0.05 says little.
 
 ## What the paper changes
 
@@ -302,6 +429,11 @@ wrote one for its features, is the next piece of work.
   names near 0.78.
 - The model is the same 938 KiB with 170 KB of lexicons, and the Rust reader
   draws exactly the libraries' keys.
+- **Since the morning** (§7), the claim on new GitHub schemas is smaller:
+  over both sets, 252 schemas, `seven-restyled` 0.774 against 0.752,
+  +0.022 [−0.002, +0.047]. The paper's claim is then the shift of style —
+  large gains where names are not `table_id`, none lost where they are — and
+  the GitHub sets show the second half.
 
 ## Environment and reproduction
 
@@ -315,7 +447,7 @@ wrote one for its features, is the next piece of work.
 | GitHub | 80 repositories, each file pinned by commit in [github-manifest.json](data/keys-style-2026-11-08/github-manifest.json); their contents are not published, most carry no licence |
 | language models | Claude Haiku 5.5 and Claude Sonnet 5.5 (medium effort) as Claude Code agents for schemas, lexicons and renamings; Claude Opus 5.5 (extra-high effort) as design agents; 8 November 2026 |
 | research commit | `590eb79` and this round's files |
-| times (UTC) | first fits 22:02–22:50 on 7 November; the night's fits 23:00 to 02:50; GitHub reading 02:58 |
+| times (UTC) | first fits 22:02–22:50 on 7 November; the night's fits 23:00 to 02:50; GitHub reading 02:58; the morning's fits and scorings 06:57 to 08:32, the second GitHub set written 06:52 and read 08:34–08:36 |
 
 ```sh
 cd <repo>/lemmesee
@@ -342,4 +474,19 @@ $P -I round-1t/parity.py check corpus/round-1t/models/seven-restyled corpus/roun
 MSYS_NO_PATHCONV=1 docker run --rm --cpuset-cpus 3 -v <repo>:/src -v lemmesee-cargo:/usr/local/cargo/registry \
   -w /src/lemmesee rust:1.99.1 sh round-1t/reader/bench.sh corpus/round-1s/models/both <1s threshold> \
   corpus/round-1t/models/seven-restyled <threshold> corpus/round-1t/bench7
+# the morning (§7)
+$P -I round-1t/errors.py seven-restyled ctu "livesqlbench (development)" "schemapile test"
+$P -I round-1t/errors.py seven-style ctu "livesqlbench (development)"
+$P -I round-1t/fit.py fit seven-bounded seven-style seven-relative-bounded seven-style2
+$P -I round-1t/fit.py score seven-bounded seven-style seven-relative-bounded seven-style2
+$P -I round-1t/blend.py seven-bounded seven-style
+$P -I round-1t/fit.py summarize
+corpus/round-1t/.venv-parse/Scripts/python -I round-1t/github.py parse rest
+$P -I round-1t/fit.py freeze-rest seven-restyled 1s seven-bounded seven-style
+$P -I round-1t/fit.py heldout "github 2025, rest" frozen-rest.json
 ```
+
+The set's hash was frozen at 06:52 UTC by a few lines run once, written
+into `frozen-rest-set.json` beside the fit's other freezes; the pooled
+reading of both sets, and the leaf counts, by a few lines over the saved
+files whose output is in the data folder.
