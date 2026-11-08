@@ -225,7 +225,8 @@ something:
   rate per second, money in its currency with its minor units, formatted by
   the browser's `Intl` in the person's language. A chart never puts two units
   on one axis; a second unit is a second axis or a refusal.
-- **Times are drawn in the dashboard's zone**, from microseconds.
+- **Times are drawn in the dashboard's zone**, from microseconds: an axis by its
+  days there, a table's instant with its offset, `2026-11-01 00:00:00+03`.
 - **A threshold colours a value the kernel gave**; comparing it with a number
   is the same comparison an alert makes, not a second calculation.
 

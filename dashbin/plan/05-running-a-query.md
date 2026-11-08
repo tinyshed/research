@@ -134,6 +134,30 @@ typed values the args reach by `@name`: the kernel's, and the query's own.
 Kept apart, a plugin's argument can never be called `on`, and the document
 says which words are the plugin's.
 
+**Built in slice 5, 6 November**, with Dmitry and a second review:
+
+- The kernel makes the parameters and the plugin binds them. `@from`, `@to`
+  and `@zone` are the kernel's, resolved once a showing; a variable's value is
+  checked among the values it allows before any panel reads, which for a
+  variable whose values a read gives means that read runs first, with limits
+  of its own. `from`, `to`, `zone` and `step` are no variable's.
+- A plugin says which `@name`s its own language reaches, so a name the
+  dashboard lacks is refused when the document is checked, and binds them
+  through its driver. PostgreSQL's lexer skips strings, `E''` strings, quoted
+  names, dollar-quoted bodies and nested comments, leaves `@>`, `<@`, `@@`,
+  `@?` and `@-@` alone, and turns each `@name` into `($1::timestamptz)`, its
+  value sent as text; `@x` written without a space is a parameter, never
+  PostgreSQL's absolute value.
+- `on: "name=@site"` is resolved by the kernel, and `"label": "name"` gives a
+  variable the ids of a plugin's instances: `name` is the label every instance
+  has, so the switch between sites works before labels do.
+- An argument's whole value written as `"@status"` waits for the first plugin
+  with a plain argument, and with it a mark on an argument that is a language,
+  so that a variable never becomes a statement.
+- `d`, `w`, `mo` and `y` are counted on the calendar of the dashboard's zone,
+  `m` and `h` in seconds; `/d`, `/w`, `/mo` and `/y` round to the start of the
+  unit there, a week starting on Monday.
+
 **In a JS plugin**, parameters arrive as the values of chapter 3's table read
 backwards: `bigint` past 2⁵³, a decimal as a string. Time comes twice:
 
