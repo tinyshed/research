@@ -41,6 +41,8 @@ Commands (run with the venv python that has sqlglot installed):
   python github.py find    # code search -> work/candidates.json
   python github.py fetch   # repo metadata, HEAD, chosen file -> work/repos.json
   python github.py parse   # steps 4-8 -> manifest/hidden/summary/sha256
+  python github.py parse rest   # the same for the kept beyond the first 80,
+                                # into heldout-github-rest/
 
 Everything lives in lemmesee/corpus/round-1t/heldout-github/ (git-ignored).
 Uses the authenticated `gh` CLI; no token is read, printed or written.
@@ -677,6 +679,10 @@ def sha256_file(p):
 
 
 def cmd_parse():
+    # `parse rest`: the schemas the rule kept and did not select, written
+    # beside the first set as a second held-out set (added 8 November 2026)
+    rest = len(sys.argv) > 2 and sys.argv[2] == "rest"
+    out = OUT + "-rest" if rest else OUT
     cands = jload("candidates.json", {})
     repos = jload("repos.json", {})
     st = {"repos_found": len(cands), "drops": {}}
@@ -743,20 +749,21 @@ def cmd_parse():
     # step 6: sha256 of owner/name, first MAX_REPOS
     kept.sort(key=lambda r: hashlib.sha256(
         r["full_name"].encode()).hexdigest())
-    chosen = kept[:MAX_REPOS]
-    st["not_selected_over_80"] = len(kept) - len(chosen)
+    chosen = kept[MAX_REPOS:] if rest else kept[:MAX_REPOS]
+    st["not_selected_over_80"] = len(kept) - MAX_REPOS if rest else len(kept) - len(chosen)
+    st["selected"] = "the kept after the first %d" % MAX_REPOS if rest else "the first %d" % MAX_REPOS
 
     import shutil
     for sub in ("raw",):
-        shutil.rmtree(os.path.join(OUT, sub), ignore_errors=True)
-        os.makedirs(os.path.join(OUT, sub))
+        shutil.rmtree(os.path.join(out, sub), ignore_errors=True)
+        os.makedirs(os.path.join(out, sub))
     manifest, lines = [], []
     n_tab = n_fk1 = n_fkc = 0
     for rec in chosen:
         fn = rec["full_name"]
         safe = fn.replace("/", "__")
         tables, fks = rec["_tables"], rec["_fks"]
-        with open(os.path.join(OUT, "raw", safe + ".sql"), "w",
+        with open(os.path.join(out, "raw", safe + ".sql"), "w",
                   encoding="utf-8", newline="") as f:
             f.write(rec["_text"])
         manifest.append({
@@ -782,16 +789,16 @@ def cmd_parse():
         n_fkc += sum(1 for _, c, _ in fks if len(c) > 1)
         n_fk1 += len(one)
         n_tab += len(tl)
-        rid = "github2025/" + safe
+        rid = ("github2025b/" if rest else "github2025/") + safe
         lines.append(json.dumps({
-            "id": rid, "repo": rid, "source": "github2025",
+            "id": rid, "repo": rid, "source": "github2025b" if rest else "github2025",
             "licence": rec["licence"] or "", "split": "external",
             "novel": False, "closed": [], "tables": tl, "fk": one},
             ensure_ascii=False))
-    with open(os.path.join(OUT, "hidden.jsonl"), "w", encoding="utf-8",
+    with open(os.path.join(out, "hidden.jsonl"), "w", encoding="utf-8",
               newline="\n") as f:
         f.write("".join(l + "\n" for l in lines))
-    with open(os.path.join(OUT, "manifest.json"), "w", encoding="utf-8",
+    with open(os.path.join(out, "manifest.json"), "w", encoding="utf-8",
               newline="\n") as f:
         json.dump(manifest, f, indent=1, ensure_ascii=False)
     dates = sorted(m["created_at"] for m in manifest)
@@ -803,21 +810,21 @@ def cmd_parse():
               composite_fks=n_fkc,
               created_at_min=dates[0] if dates else None,
               created_at_max=dates[-1] if dates else None, licences=lic)
-    with open(os.path.join(OUT, "summary.json"), "w", encoding="utf-8",
+    with open(os.path.join(out, "summary.json"), "w", encoding="utf-8",
               newline="\n") as f:
         json.dump(st, f, indent=1)
-    with open(os.path.join(OUT, "sha256.txt"), "w", encoding="utf-8",
+    with open(os.path.join(out, "sha256.txt"), "w", encoding="utf-8",
               newline="\n") as f:
         f.write("%s  hidden.jsonl\n" % sha256_file(
-            os.path.join(OUT, "hidden.jsonl")))
-        for fnm in sorted(os.listdir(os.path.join(OUT, "raw"))):
+            os.path.join(out, "hidden.jsonl")))
+        for fnm in sorted(os.listdir(os.path.join(out, "raw"))):
             f.write("%s  raw/%s\n" % (sha256_file(
-                os.path.join(OUT, "raw", fnm)), fnm))
+                os.path.join(out, "raw", fnm)), fnm))
     print(json.dumps(st, indent=1))
 
 
 if __name__ == "__main__":
     cmds = {"find": cmd_find, "fetch": cmd_fetch, "parse": cmd_parse}
     if len(sys.argv) not in (2, 3) or sys.argv[1] not in cmds:
-        sys.exit("usage: github.py find | fetch [N] | parse")
+        sys.exit("usage: github.py find | fetch [N] | parse [rest]")
     cmds[sys.argv[1]]()

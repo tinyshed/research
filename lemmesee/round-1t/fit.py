@@ -93,7 +93,21 @@ FITS = {
     "cues-restyled-more": ("cues", True, False, {"llm control": True}),
     "seven-relative-llm": ("seven", True, False, {"dictionary shortening": True, "relative graph": True,
                                                   "shift-aware": True, "llm renamed": True}),
+    # the morning of 8 November: the second stage's leaves bounded (BOUNDED), and
+    # the graph stage read against the schema's columns named alike (style.py)
+    "seven-bounded": ("seven", True, False, {"dictionary shortening": True, "bounded second": True}),
+    "seven-relative-bounded": ("seven", True, False, {"dictionary shortening": True, "relative graph": True,
+                                                      "shift-aware": True, "bounded second": True}),
+    "seven-style": ("seven", True, False, {"dictionary shortening": True, "style graph": True,
+                                           "shift-aware": True, "bounded second": True}),
+    # a name of one word has no lead word (style.py, `style2`)
+    "seven-style2": ("seven", True, False, {"dictionary shortening": True, "style graph": "style2",
+                                            "shift-aware": True, "bounded second": True}),
 }
+# A second stage whose leaves cannot run away: seven-restyled's held 43
+# leaves over 50, up to 15 832, drawing pairs its first stage scored under
+# 0.001 (each leaf at most 0.05 x 20 = 1.0, a leaf's hessian at least 1)
+BOUNDED = dict(max_delta_step=20.0, min_child_weight=1.0, reg_lambda=1.0)
 MODELS = {"1s": (ROOT / "round-1s" / "models" / "both", "both")}
 MODELS.update({n: (OUT / "models" / n, f[0]) for n, f in FITS.items()})
 
@@ -104,9 +118,13 @@ def fit_pairs(pool, schemas, guesses, variant, opts):
     from sklearn.metrics import average_precision_score  # noqa: E402
     from train import NEGATIVES  # noqa: E402
     import stack  # noqa: E402
-    if not (opts.get("reliable negatives") or opts.get("relative graph") or opts.get("shift-aware")):
+    if not (opts.get("reliable negatives") or opts.get("relative graph") or opts.get("shift-aware")
+            or opts.get("bounded second") or opts.get("style graph")):
         return widen.fit(pool, schemas, guesses, variant)
     gf = stack.graph_features if opts.get("relative graph") else graph.graph_features
+    if opts.get("style graph"):
+        import style  # noqa: E402
+        gf = style.graph_features2 if opts["style graph"] == "style2" else style.graph_features
     t0 = time.time()
     clock = lambda what: print(f"{variant}: {what}: {time.time() - t0:.0f} s", flush=True)  # noqa: E731
     x, meta = cues.build_all(pool, schemas, "train", guesses, variant)
@@ -141,7 +159,7 @@ def fit_pairs(pool, schemas, guesses, variant, opts):
     rows = np.flatnonzero(sample)
     whole.fit(x[rows], y[rows])
     del x
-    second = lgb.LGBMClassifier(**graph.SECOND)
+    second = lgb.LGBMClassifier(**graph.SECOND, **(BOUNDED if opts.get("bounded second") else {}))
     second.fit(gf(meta, oof)[sample], y[sample])
     clock("both stages")
     sv = second.predict_proba(gf(meta_v, graph.first_scores(whole, xv, True)))[:, 1]
@@ -156,6 +174,8 @@ def fit_pairs(pool, schemas, guesses, variant, opts):
               "seconds": round(time.time() - t0)}
     if opts.get("relative graph"):
         result["graph"] = "relative"
+    if opts.get("style graph"):
+        result["graph"] = "style2" if opts["style graph"] == "style2" else "style"
     return result, whole, second
 
 
@@ -335,7 +355,9 @@ def summarize() -> None:
         print(row)
 
 
-HELDOUT = {"github 2025": OUT / "heldout-github", "beaver": OUT / "heldout-beaver"}
+HELDOUT = {"github 2025": OUT / "heldout-github", "beaver": OUT / "heldout-beaver",
+           # the 177 the rule kept beyond the first 80, written on the morning of 8 November
+           "github 2025, rest": OUT / "heldout-github-rest"}
 
 
 def freeze(names: list[str]) -> None:
@@ -393,6 +415,36 @@ def freeze_final(names: list[str]) -> None:
     print(json.dumps(frozen, indent=1))
 
 
+def freeze_rest(names: list[str]) -> None:
+    """The models read on the second GitHub set, frozen by hash before it is
+    read; a blend (`a+b`, blend.py) by its parts and its validation threshold;
+    the set's hash as frozen at 06:52 UTC, checked unchanged."""
+    import hashlib
+    from datetime import datetime, timezone
+    path = OUT / "frozen-rest.json"
+    if path.exists():
+        raise SystemExit("already frozen")
+    first = json.load(open(OUT / "frozen-rest-set.json", encoding="utf-8"))
+    which = "github 2025, rest"
+    h = hashlib.sha256((HELDOUT[which] / "hidden.jsonl").read_bytes()).hexdigest()
+    assert h == first[which], "the second GitHub set changed since it was frozen"
+    frozen = {"frozen at": datetime.now(timezone.utc).isoformat(timespec="seconds"), "models": {},
+              which: h, f"{which}, frozen at": first[f"{which}, frozen at"], "chosen by the rule": names[0]}
+    for n in names:
+        parts = n.split("+")
+        rec = {"parts": {}}
+        for part in parts:
+            d, variant = MODELS[part]
+            rec["parts"][part] = {"variant": variant, **{f: hashlib.sha256((d / f).read_bytes()).hexdigest()
+                                                         for f in ("keys-first.ubj", "keys-second.txt",
+                                                                   "graph-final.json")}}
+        if len(parts) > 1:
+            rec["threshold"] = json.load(open(OUT / "scored" / f"{n}.json", encoding="utf-8"))["threshold"]
+        frozen["models"][n] = rec
+    path.write_text(json.dumps(frozen, indent=1) + "\n", encoding="utf-8")
+    print(json.dumps(frozen, indent=1))
+
+
 def heldout(which: str, frozen_file: str = "frozen.json") -> None:
     """The frozen models, once, on one held-out set."""
     import hashlib
@@ -410,14 +462,20 @@ def heldout(which: str, frozen_file: str = "frozen.json") -> None:
     result = {"frozen": frozen, "sets": {}}
     with letters.pool(graph.WORKERS) as pool:
         for n, f in frozen["models"].items():
-            d, variant = MODELS[n]
-            for k in ("keys-first.ubj", "keys-second.txt", "graph-final.json"):
-                assert hashlib.sha256((d / k).read_bytes()).hexdigest() == f[k], (n, k)
-            first, second = widen.load_models(d)
-            threshold = json.load(open(d / "graph-final.json", encoding="utf-8"))["threshold"]
+            # a model, or a blend of models of one variant (frozen-rest.json)
+            parts = f["parts"] if "parts" in f else {n: f}
+            loaded = []
+            for part, pf in parts.items():
+                d, variant = MODELS[part]
+                for k in ("keys-first.ubj", "keys-second.txt", "graph-final.json"):
+                    assert hashlib.sha256((d / k).read_bytes()).hexdigest() == pf[k], (part, k)
+                final = json.load(open(d / "graph-final.json", encoding="utf-8"))
+                loaded.append((*widen.load_models(d), final))
+            threshold = f["threshold"] if len(parts) > 1 else loaded[0][2]["threshold"]
             for s, schemas in data.items():
                 x, meta = cues.build_all(pool, schemas, "external", {}, variant)
-                raw = second.predict(stack.of(json.load(open(d / 'graph-final.json', encoding='utf-8')))(meta, first.predict_proba(x)[:, 1]))
+                raw = sum(second.predict(stack.of(final)(meta, first.predict_proba(x)[:, 1]))
+                          for first, second, final in loaded) / len(loaded)
                 kept = keys.one_target(raw, [(m[graph.SID], m[graph.TABLE], m[graph.COLUMN]) for m in meta])
                 ids, per = per_database(schemas, "external", meta, kept, threshold)
                 _, half = per_database(schemas, "external", meta, kept, 0.5)
@@ -459,6 +517,8 @@ if __name__ == "__main__":
         freeze_set(sys.argv[2])
     elif cmd == "freeze-final":
         freeze_final(sys.argv[2:])
+    elif cmd == "freeze-rest":
+        freeze_rest(sys.argv[2:])
     elif cmd == "heldout":
         heldout(sys.argv[2], *sys.argv[3:4])
     else:

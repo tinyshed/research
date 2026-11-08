@@ -67,4 +67,7 @@ def graph_features(meta, scores):
 
 def of(result: dict):
     """The graph stage a fit's graph-final.json names."""
+    if result.get("graph") in ("style", "style2"):
+        import style  # noqa: E402  (it builds on this module)
+        return style.graph_features if result["graph"] == "style" else style.graph_features2
     return graph_features if result.get("graph") == "relative" else graph.graph_features

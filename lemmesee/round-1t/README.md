@@ -179,6 +179,38 @@ data; the report says so first.
   reported. `seven-restyled-pu` and `six-restyled-pu` were not fitted: the
   first ran out of memory beside other work, and the night's queue went to
   the fits above instead.
+- **The morning of 8 November: a defect, and a second GitHub set.** Read
+  key by key on CTU and LiveSQLBench (`errors.py`), `seven-restyled`'s
+  second stage was found to hold 43 leaves of values over 50 (up to 15 832;
+  `seven-relative`'s and `cues-restyled`'s stay under 11), which draw pairs
+  the first stage scores under 0.001 at 1.0 (in AdventureWorks,
+  `PasswordSalt` into `SalesPersonQuotaHistory`). On LiveSQLBench the model
+  misses 161 of 299 keys and draws 33 false ones: keys named in one
+  schema's own style (`acct_mon`, `acct_gate`, `acct_anchor` into
+  `accounts`) each scored under the threshold. Two changes are tried on the
+  development sets only, as before: a second stage whose leaves are bounded
+  (`bounded second`), and features that read a pair against the other
+  columns of its schema named alike (`style.py`). The rule above chooses
+  among them and the night's fits, unchanged. **The second GitHub set**,
+  written at 06:51 UTC before any of its schemas was read: the 177 schemas
+  `github.py`'s rule kept and did not select (every one after the first 80
+  by SHA-256 of `owner/name`), written by `github.py parse rest` into
+  `heldout-github-rest/`, frozen by hash before any model is read on it, and
+  read once by the rule's choice, `seven-restyled` and `1s`.
+- **Before the second set is read** (frozen at 08:33 UTC): `seven-bounded`,
+  `seven-relative-bounded`, `seven-style`, `seven-style2` (a name of one word
+  with no lead word) and the blend `seven-bounded+seven-style` (`blend.py`)
+  were fitted and scored on the development sets. The rule still chooses
+  `seven-restyled` (pooled 0.748; `seven-relative-bounded` ties it at 0.748
+  but is 0.017 under `1s` on SchemaPile's test). On CTU, the differences
+  between fits are mostly three databases of a logic program's facts
+  (Mooney_Family, SAT, Dunur): every key of one scores alike, so each is
+  drawn whole or not at all, and `seven-restyled` drew Mooney_Family's 73
+  through its runaway leaves (its keys' second-stage scores 0.79–0.85, at
+  0.55–0.66 once the leaves are bounded). Read once on the second set, as
+  frozen in `frozen-rest.json` before it is read: `seven-restyled` (the
+  rule's), `1s`, `seven-bounded` (the defect mended) and `seven-style` (the
+  best on LiveSQLBench, 0.671), all four reported, nothing chosen after.
 
 ## Run
 
