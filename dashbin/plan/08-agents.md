@@ -1,6 +1,8 @@
 # 8. Agents
 
-**Status: agreed in its third round, 6 November 2026, for slice 7.** The
+**Built in slice 7, 8 November 2026,** as Dashbin's `75d4a73`: the agent, its
+link, the hub's door and approval through the api, and the command line
+through a hub. **Status: agreed in its third round, 6 November 2026.** The
 first round went through one review and the second through another; the third
 is Dmitry's, after slices 4 to 6 built dashboards as files, the `Plugin`
 trait, and MySQL. What each round changed is listed under *Forks*. What
@@ -79,7 +81,7 @@ admin:
 ```toml
 hub = "wss://dashbin.example.com/api/v1/agent"
 agent = "kazan"                        # the name the hub gave it; a token of another agent is refused
-token = "dbat_7Q…"                     # the hub gave it once, on adding the agent
+token = "dba_7Q…"                      # the hub gave it once, on adding the agent
 # tls.ca = "/etc/dashbin/hub-ca.pem"   # or tls.pin = "sha256:…", for a self-signed hub
 
 [limits]                               # the agent's ceilings; the hub may ask for less
@@ -178,9 +180,10 @@ hour ago.
 
 **An agent is who its token proved; its name in the greeting is a check.** An
 admin adds an agent on the hub by its name, and the hub answers its first
-token, once. The token is a row in the same table as a person's, of its own
-kind (`dbat_`), stored as SHA-256, bound to that agent. The operator writes
-the name beside the token, and the hub compares the two at every connection:
+token, once. The token is of its own kind (`dba_`), a row of its own table,
+since a person's token row is its account's, stored as SHA-256 and bound to
+that agent. The operator writes the name beside the token, and the hub
+compares the two at every connection:
 
 | The greeting says | The token is | The hub |
 |---|---|---|
