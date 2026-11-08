@@ -78,3 +78,9 @@ so, never by editing the number it replaces.
   reader in Rust draws exactly the libraries' keys; four language models under one protocol 0.834–0.890; on
   LiveSQLBench, which nothing had read, the frozen model reaches F1 0.185 where the language models reach
   0.896–0.924.
+- [The key model in another house style](keys-style-2026-11-08.md), round 1t: training on SchemaPile renamed into
+  drawn house styles, cues that need no list of styles, and words split and expanded from lexicons language models
+  wrote offline take LiveSQLBench from 0.185 to 0.587 and SchemaPile renamed from 0.515 to 0.794; on 80 GitHub
+  schemas created after SchemaPile, read once, the chosen model reaches F1 0.792 against round 1s's 0.744, +0.048
+  [+0.014, +0.084]; no threshold reaches 0.80 on CTU or LiveSQLBench, and schemas written or renamed by language
+  models teach less than drawn styles.

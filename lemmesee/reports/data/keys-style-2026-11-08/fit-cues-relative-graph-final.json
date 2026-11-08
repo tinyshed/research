@@ -1,0 +1,28 @@
+{
+  "variant": "cues",
+  "options": {
+    "relative graph": true,
+    "shift-aware": true
+  },
+  "training pairs": 6165730,
+  "negatives left out": 0,
+  "validation pairs": 1289568,
+  "validation keys among candidates": 13132,
+  "threshold": 0.8412459998904066,
+  "validation": {
+    "precision": 0.7279959499529906,
+    "recall": 0.7665245202558635,
+    "f1": 0.7467636039912459,
+    "average_precision": 0.7791959396556358
+  },
+  "seconds": 774,
+  "graph": "relative",
+  "fit": "cues-relative",
+  "seed": 20261027,
+  "grams": "sorted",
+  "data": {
+    "validation renamed beside": 1019,
+    "train renamed": 4012,
+    "train left, the style did not fit": 111
+  }
+}

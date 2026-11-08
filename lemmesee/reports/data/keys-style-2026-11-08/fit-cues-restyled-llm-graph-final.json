@@ -1,0 +1,29 @@
+{
+  "variant": "cues",
+  "training pairs": 6256276,
+  "validation pairs": 1289568,
+  "validation keys among candidates": 13132,
+  "threshold": 0.8106036181361967,
+  "validation": {
+    "precision": 0.7540825415676959,
+    "recall": 0.7736064575083765,
+    "f1": 0.7637197413922718,
+    "average_precision": 0.7913011580519116,
+    "novel_f1": 0.7520007855845241
+  },
+  "validation, the paper's task": {
+    "pairs": 13361,
+    "covered": 0.873662151036599,
+    "recall_at_1": 0.850011226704588
+  },
+  "seconds": 524,
+  "fit": "cues-restyled-llm",
+  "seed": 20261027,
+  "grams": "sorted",
+  "data": {
+    "validation renamed beside": 1019,
+    "train renamed": 4012,
+    "train left, the style did not fit": 111,
+    "language-model renamed": 394
+  }
+}

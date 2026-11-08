@@ -1,0 +1,24 @@
+{
+  "variant": "cues",
+  "training pairs": 6206601,
+  "validation pairs": 674751,
+  "validation keys among candidates": 6693,
+  "threshold": 0.8502358827036278,
+  "validation": {
+    "precision": 0.7456009543692216,
+    "recall": 0.7470491558344539,
+    "f1": 0.7463243525636242,
+    "average_precision": 0.7696825736189205,
+    "novel_f1": 0.7150187487665285
+  },
+  "validation, the paper's task": {
+    "pairs": 6781,
+    "covered": 0.8781890576611119,
+    "recall_at_1": 0.8560684264857691
+  },
+  "seconds": 502,
+  "fit": "cues",
+  "seed": 20261027,
+  "grams": "sorted",
+  "data": {}
+}

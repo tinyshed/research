@@ -1,0 +1,293 @@
+{
+ "frozen": {
+  "frozen at": "2026-11-08T00:09:18+00:00",
+  "models": {
+   "1s": {
+    "variant": "both",
+    "keys-first.ubj": "ef315bd228b8e4c26e209ab0a9f271205dfb918697449b59e314545e07ad6c2a",
+    "keys-second.txt": "a0ed0f74a4d7b5c1762a4ff191895de271bc0ece4100efc839c0e1db40218e9e",
+    "graph-final.json": "4b21dc43bbc1c4c0df183c965e463406ded8a99c71357a62b695f4a1ff15752e"
+   },
+   "cues": {
+    "variant": "cues",
+    "keys-first.ubj": "fad10aeeb92e65532a360650e0733d0766d6ed16be4f13a7af97a19cd2f8920d",
+    "keys-second.txt": "efff38fc4cda290db2e602f7efd75045464376034e7bdbf809aefb4f70564ad8",
+    "graph-final.json": "3a7342c5f74c2f04894142651111572bd9cb64c01da47840ef2ab9a58a3c9f17"
+   },
+   "cues-restyled": {
+    "variant": "cues",
+    "keys-first.ubj": "b12d10734bd15f0804a61a706c1a62dce47b8f849264caafe8fc34e5d5828ba7",
+    "keys-second.txt": "e96b64dfba236d7b4eef7519c6af0681fd9adc74d618c685b55c2c416ca9e497",
+    "graph-final.json": "8304fbedb83f3f3b1112783bafe384d387c36e3811f1b8236e0ef93a004595a8"
+   }
+  },
+  "beaver": "3360dd6799e4ac51f528086c4d39ecbf3d121c19f9579eb0fea1c26f17dde879"
+ },
+ "sets": {
+  "beaver": {
+   "1s": {
+    "databases": [
+     "beaver/csail_stata_cinder",
+     "beaver/csail_stata_glance",
+     "beaver/csail_stata_neutron",
+     "beaver/csail_stata_nova",
+     "beaver/dw",
+     "beaver/keystone"
+    ],
+    "per database": [
+     [
+      9,
+      1,
+      9
+     ],
+     [
+      14,
+      0,
+      3
+     ],
+     [
+      70,
+      75,
+      93
+     ],
+     [
+      8,
+      24,
+      17
+     ],
+     [
+      0,
+      0,
+      200
+     ],
+     [
+      12,
+      38,
+      5
+     ]
+    ],
+    "per database at 0.5": [
+     [
+      16,
+      14,
+      2
+     ],
+     [
+      17,
+      4,
+      0
+     ],
+     [
+      112,
+      133,
+      51
+     ],
+     [
+      11,
+      42,
+      14
+     ],
+     [
+      1,
+      16,
+      199
+     ],
+     [
+      13,
+      46,
+      4
+     ]
+    ],
+    "candidates hold": 230,
+    "precision": 0.450199203187251,
+    "recall": 0.25681818181818183,
+    "f1": 0.32706222865412443,
+    "f1_95": [
+     0.09308134995228319,
+     0.5362903225806452
+    ],
+    "keys": 440,
+    "macro f1": 0.43992318557734267,
+    "f1 at 0.5": 0.39306358381502887
+   },
+   "cues": {
+    "databases": [
+     "beaver/csail_stata_cinder",
+     "beaver/csail_stata_glance",
+     "beaver/csail_stata_neutron",
+     "beaver/csail_stata_nova",
+     "beaver/dw",
+     "beaver/keystone"
+    ],
+    "per database": [
+     [
+      13,
+      2,
+      5
+     ],
+     [
+      14,
+      0,
+      3
+     ],
+     [
+      87,
+      41,
+      76
+     ],
+     [
+      8,
+      26,
+      17
+     ],
+     [
+      0,
+      1,
+      200
+     ],
+     [
+      13,
+      41,
+      4
+     ]
+    ],
+    "per database at 0.5": [
+     [
+      16,
+      14,
+      2
+     ],
+     [
+      17,
+      0,
+      0
+     ],
+     [
+      124,
+      86,
+      39
+     ],
+     [
+      9,
+      50,
+      16
+     ],
+     [
+      0,
+      7,
+      200
+     ],
+     [
+      13,
+      49,
+      4
+     ]
+    ],
+    "candidates hold": 230,
+    "precision": 0.5487804878048781,
+    "recall": 0.3068181818181818,
+    "f1": 0.3935860058309038,
+    "f1_95": [
+     0.10302330090812138,
+     0.6303769458603113
+    ],
+    "keys": 440,
+    "macro f1": 0.4877377270728092,
+    "f1 at 0.5": 0.4339393939393939,
+    "minus 1s, f1_95": [
+     -0.0006922694452205425,
+     0.1305605450729665
+    ]
+   },
+   "cues-restyled": {
+    "databases": [
+     "beaver/csail_stata_cinder",
+     "beaver/csail_stata_glance",
+     "beaver/csail_stata_neutron",
+     "beaver/csail_stata_nova",
+     "beaver/dw",
+     "beaver/keystone"
+    ],
+    "per database": [
+     [
+      15,
+      7,
+      3
+     ],
+     [
+      15,
+      0,
+      2
+     ],
+     [
+      70,
+      11,
+      93
+     ],
+     [
+      6,
+      24,
+      19
+     ],
+     [
+      0,
+      0,
+      200
+     ],
+     [
+      11,
+      36,
+      6
+     ]
+    ],
+    "per database at 0.5": [
+     [
+      16,
+      12,
+      2
+     ],
+     [
+      17,
+      0,
+      0
+     ],
+     [
+      125,
+      74,
+      38
+     ],
+     [
+      11,
+      37,
+      14
+     ],
+     [
+      0,
+      7,
+      200
+     ],
+     [
+      13,
+      44,
+      4
+     ]
+    ],
+    "candidates hold": 230,
+    "precision": 0.6,
+    "recall": 0.26590909090909093,
+    "f1": 0.368503937007874,
+    "f1_95": [
+     0.10011153348013153,
+     0.6254779572239195
+    ],
+    "keys": 440,
+    "macro f1": 0.4705337183308495,
+    "f1 at 0.5": 0.45728643216080406,
+    "minus 1s, f1_95": [
+     -0.014285765679266425,
+     0.11243936786105463
+    ]
+   }
+  }
+ }
+}

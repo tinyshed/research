@@ -1,0 +1,29 @@
+{
+  "variant": "eight",
+  "options": {
+    "dictionary shortening": true,
+    "relative graph": true,
+    "shift-aware": true
+  },
+  "training pairs": 8604249,
+  "negatives left out": 0,
+  "validation pairs": 1674960,
+  "validation keys among candidates": 14601,
+  "threshold": 0.8247263254667623,
+  "validation": {
+    "precision": 0.71397917324077,
+    "recall": 0.7748099445243476,
+    "f1": 0.743151809761545,
+    "average_precision": 0.775657558597909
+  },
+  "seconds": 890,
+  "graph": "relative",
+  "fit": "eight-relative",
+  "seed": 20261027,
+  "grams": "sorted",
+  "data": {
+    "validation renamed beside": 1022,
+    "train renamed": 3999,
+    "train left, the style did not fit": 124
+  }
+}
