@@ -99,3 +99,9 @@ so, never by editing the number it replaces.
   models level with round 1s's; one fit with every fix, `nine-mended`, made the paper's model before its numbers, reads
   a fresh clean set of 100 schemas once at 0.715 against round 1s's 0.738, −0.023 [−0.062, +0.020], and its macro F1
   0.775 against 0.725, +0.050 [+0.016, +0.092]; its hard negatives cost the keys named after their target.
+- [The paper's final key model measured](keys-final-2026-11-09.md), round 1t continued: `nine-mended` over every
+  declared key of the 398 external databases 0.755 [0.674, 0.829] (round 1's rules 0.500), 0.079–0.135 below round 1s's
+  four language models, the gap recall; on the fresh GitHub set the four read 0.849–0.911 against its 0.715; its
+  reader in Rust exact on 3.4 million pairs, 2.7–2.8 ms a database; 1 054 108 bytes with its lexicons, 619 676 with
+  gzip; see keeps 0.79–0.87 of a database's joining questions through its keys; the GitHub sets read again with the
+  fixed collector put it 0.055 above round 1s's over 452 schemas, but not on the set read once with that collector.

@@ -197,6 +197,10 @@ other way. Of today's fixes, the key-word-first styles and the bounded
 leaves carry; the hard negatives, as written, cost more than they mend. No
 fit is made after this reading.
 
+**Continued** in [keys-final-2026-11-09.md](keys-final-2026-11-09.md): every other number the paper
+reports for `nine-mended` — the reader in Rust, its size, see's questions, the GitHub sets read again with
+the fixed collector, SchemaPile-Perm, Nexus, the bounds, database A, and the language models on the fresh set.
+
 ## Limits
 
 - One judge, of the family that wrote the lexicons of `seven-restyled` and

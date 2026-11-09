@@ -1,0 +1,33 @@
+{
+ "repos_found": 28045,
+ "drops": {
+  "created_before_2025-07-01": 12431,
+  "no_sql_with_references": 2,
+  "repo_unavailable": 2,
+  "fewer_than_5_tables": 86,
+  "fewer_than_3_resolved_fks": 26,
+  "no_table_parsed": 27,
+  "sample_database_overlap": 2
+ },
+ "repos_with_metadata": 28045,
+ "repos_without_metadata": 0,
+ "survivors_not_fetched_beyond_prefix": 15212,
+ "after_repo_filters_with_a_chosen_file": 398,
+ "parsed_and_passing_thresholds": 257,
+ "kept_after_dedupe": 257,
+ "not_selected_over_80": 177,
+ "selected": "the first 80",
+ "schemas": 80,
+ "tables": 1600,
+ "one_column_fks": 2022,
+ "composite_fks": 34,
+ "created_at_min": "2025-07-01T18:22:55Z",
+ "created_at_max": "2026-11-06T03:30:38Z",
+ "licences": {
+  "none": 63,
+  "GPL-3.0": 2,
+  "MIT": 11,
+  "AGPL-3.0": 2,
+  "Apache-2.0": 2
+ }
+}

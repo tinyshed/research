@@ -1,0 +1,52 @@
+{
+ "model": {
+  "keys.bin": 960820,
+  "keys-first.ubj": 4074349,
+  "keys-second.txt": 1417619
+ },
+ "lexicons": {
+  "vocab.txt": {
+   "sha256": "74ed95ba641aa436c68b0aeb580a45fde325231898fc82fe1c02ef4abe0a6765",
+   "bytes, as the repository holds it (LF)": 57176,
+   "bytes, the working copy on Windows (CRLF)": 62539
+  },
+  "abbrev.json": {
+   "sha256": "f4b3f186029f4b4f4c27372753352a83b57c7b21e511e1982d888e99d184e3ca",
+   "bytes, as the repository holds it (LF)": 29406,
+   "bytes, the working copy on Windows (CRLF)": 32539
+  },
+  "roles.json": {
+   "sha256": "f5cd2ff0a82de2a0bba0bba100d04cbb82d48b47a2807e403673d7139afc4fe0",
+   "bytes, as the repository holds it (LF)": 6706,
+   "bytes, the working copy on Windows (CRLF)": 6706
+  }
+ },
+ "the model the reader reads (keys.bin) and its lexicons, bytes": 1054108,
+ "lexicons' share of that": 0.0885,
+ "related.json, version 8 only, not read": 67575,
+ "pack.json": {
+  "file bytes": 960820,
+  "KiB": 938.3,
+  "sha256": "dd83e18fb4f4e3b40662af1191bfba14918656509b4678d99dd75f897224cbed",
+  "first": {
+   "trees": 829,
+   "inner nodes": 51398,
+   "leaves": 52227
+  },
+  "second": {
+   "trees": 400,
+   "inner nodes": 12000,
+   "leaves": 12400
+  }
+ },
+ "lexicons, bytes (LF)": 93288,
+ "gzip -9 -n, bytes (gzip 1.14)": {
+  "keys.bin": 583398,
+  "vocab.txt": 25159,
+  "abbrev.json": 8564,
+  "roles.json": 2555
+ },
+ "gzip -9 -n, total": 619676,
+ "raw, total": 1054108,
+ "note": "zstd was not installed; gzip -9 -n each file alone"
+}

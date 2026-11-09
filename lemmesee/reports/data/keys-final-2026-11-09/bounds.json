@@ -1,0 +1,52 @@
+{
+ "schemapile test": {
+  "declared keys": 13455,
+  "keys among the candidates": 13029,
+  "coverage": 0.9683,
+  "F1 at the model's threshold": 0.7317,
+  "F1 at the best threshold for the set": 0.732,
+  "the best threshold for the set": 0.82,
+  "F1 with each schema at its own best threshold": 0.8054,
+  "recall bound: every candidate key found": 0.9683
+ },
+ "spider": {
+  "declared keys": 911,
+  "keys among the candidates": 896,
+  "coverage": 0.9835,
+  "F1 at the model's threshold": 0.8797,
+  "F1 at the best threshold for the set": 0.8863,
+  "the best threshold for the set": 0.72,
+  "F1 with each schema at its own best threshold": 0.924,
+  "recall bound: every candidate key found": 0.9835
+ },
+ "bird": {
+  "declared keys": 606,
+  "keys among the candidates": 587,
+  "coverage": 0.9686,
+  "F1 at the model's threshold": 0.8149,
+  "F1 at the best threshold for the set": 0.8149,
+  "the best threshold for the set": 0.74,
+  "F1 with each schema at its own best threshold": 0.8526,
+  "recall bound: every candidate key found": 0.9686
+ },
+ "ctu": {
+  "declared keys": 1854,
+  "keys among the candidates": 1844,
+  "coverage": 0.9946,
+  "F1 at the model's threshold": 0.6626,
+  "F1 at the best threshold for the set": 0.6746,
+  "the best threshold for the set": 0.7,
+  "F1 with each schema at its own best threshold": 0.7774,
+  "recall bound: every candidate key found": 0.9946
+ },
+ "livesqlbench (development)": {
+  "declared keys": 299,
+  "keys among the candidates": 286,
+  "coverage": 0.9565,
+  "F1 at the model's threshold": 0.5421,
+  "F1 at the best threshold for the set": 0.6069,
+  "the best threshold for the set": 0.54,
+  "F1 with each schema at its own best threshold": 0.6701,
+  "recall bound: every candidate key found": 0.9565
+ }
+}

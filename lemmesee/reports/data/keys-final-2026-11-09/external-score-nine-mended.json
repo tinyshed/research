@@ -1,0 +1,541 @@
+{
+  "threshold": 0.8216860824985658,
+  "paper": {
+    "Jaccard-Levenshtein (Valentine)": [
+      0.58,
+      0.63,
+      0.36
+    ],
+    "GPT-3.5": [
+      0.88,
+      0.82,
+      0.86
+    ],
+    "StarChat-alpha": [
+      0.64,
+      0.61,
+      0.82
+    ],
+    "T5-base, SchemaPile": [
+      0.92,
+      0.83,
+      0.91
+    ],
+    "StarCoder 15.5B, SchemaPile": [
+      0.97,
+      0.94,
+      0.97
+    ]
+  },
+  "paper_order": [
+    "spider",
+    "bird",
+    "ctu"
+  ],
+  "round 1b's task": {
+    "spider, all": {
+      "databases": 204,
+      "pairs": 15003,
+      "keys": 896,
+      "one-column keys declared": 911,
+      "rules": {
+        "precision": 0.9453781512605042,
+        "recall": 0.5022321428571429,
+        "f1": 0.6559766763848396
+      },
+      "model": {
+        "precision": 0.9106933019976499,
+        "recall": 0.8649553571428571,
+        "f1": 0.8872352604464796
+      },
+      "f1_minus_rules_95": [
+        0.18640478202936167,
+        0.28220647117251063
+      ]
+    },
+    "spider, novel": {
+      "databases": 162,
+      "pairs": 12265,
+      "keys": 741,
+      "one-column keys declared": 756,
+      "rules": {
+        "precision": 0.9447236180904522,
+        "recall": 0.5074224021592443,
+        "f1": 0.6602282704126426
+      },
+      "model": {
+        "precision": 0.9105113636363636,
+        "recall": 0.865047233468286,
+        "f1": 0.8871972318339101
+      },
+      "f1_minus_rules_95": [
+        0.17905842707792866,
+        0.28290129957446847
+      ]
+    },
+    "bird, all": {
+      "databases": 75,
+      "pairs": 35266,
+      "keys": 587,
+      "one-column keys declared": 606,
+      "rules": {
+        "precision": 0.9238754325259516,
+        "recall": 0.454855195911414,
+        "f1": 0.6095890410958904
+      },
+      "model": {
+        "precision": 0.8145695364238411,
+        "recall": 0.838160136286201,
+        "f1": 0.8261964735516372
+      },
+      "f1_minus_rules_95": [
+        0.12535259848339175,
+        0.34034917944936177
+      ]
+    },
+    "bird, novel": {
+      "databases": 63,
+      "pairs": 33920,
+      "keys": 526,
+      "one-column keys declared": 545,
+      "rules": {
+        "precision": 0.912,
+        "recall": 0.43346007604562736,
+        "f1": 0.5876288659793814
+      },
+      "model": {
+        "precision": 0.7970479704797048,
+        "recall": 0.8212927756653993,
+        "f1": 0.8089887640449438
+      },
+      "f1_minus_rules_95": [
+        0.11649989498638794,
+        0.36015664056770585
+      ]
+    },
+    "ctu, all": {
+      "databases": 118,
+      "pairs": 1849548,
+      "keys": 1844,
+      "one-column keys declared": 1854,
+      "rules": {
+        "precision": 0.7897435897435897,
+        "recall": 0.25054229934924077,
+        "f1": 0.3804034582132565
+      },
+      "model": {
+        "precision": 0.8126959247648903,
+        "recall": 0.5623644251626898,
+        "f1": 0.6647435897435897
+      },
+      "f1_minus_rules_95": [
+        0.20675180657872919,
+        0.3948342460760417
+      ]
+    },
+    "ctu, novel": {
+      "databases": 97,
+      "pairs": 1835367,
+      "keys": 1655,
+      "one-column keys declared": 1665,
+      "rules": {
+        "precision": 0.7554671968190855,
+        "recall": 0.229607250755287,
+        "f1": 0.35217794253938833
+      },
+      "model": {
+        "precision": 0.7973214285714286,
+        "recall": 0.5395770392749245,
+        "f1": 0.6436036036036037
+      },
+      "f1_minus_rules_95": [
+        0.202890236712656,
+        0.42017290444565863
+      ]
+    },
+    "all, all": {
+      "databases": 397,
+      "pairs": 1899817,
+      "keys": 3327,
+      "one-column keys declared": 3371,
+      "rules": {
+        "precision": 0.8733333333333333,
+        "recall": 0.35437330928764654,
+        "f1": 0.5041693393200769
+      },
+      "model": {
+        "precision": 0.8436470157451483,
+        "recall": 0.6925157799819658,
+        "f1": 0.7606470782436449
+      },
+      "f1_minus_rules_95": [
+        0.2077518334681967,
+        0.30542303047691594
+      ]
+    },
+    "all, novel": {
+      "databases": 322,
+      "pairs": 1881552,
+      "keys": 2922,
+      "one-column keys declared": 2966,
+      "rules": {
+        "precision": 0.8549087749782798,
+        "recall": 0.33675564681724846,
+        "f1": 0.4831819297814879
+      },
+      "model": {
+        "precision": 0.830938292476754,
+        "recall": 0.6728268309377139,
+        "f1": 0.7435703479576399
+      },
+      "f1_minus_rules_95": [
+        0.20541963406967167,
+        0.32187635741340287
+      ]
+    }
+  },
+  "the paper's task": {
+    "spider: the paper's filters": {
+      "pairs": 768,
+      "databases": 194,
+      "unanswerable": {
+        "no candidate of the key's kind": 7,
+        "referred column is not the target's one-column key": 17
+      },
+      "two tables": {
+        "recall_at_1": 0.953125,
+        "95": [
+          0.922426263616195,
+          0.975947371043279
+        ]
+      },
+      "whole database": {
+        "recall_at_1": 0.9557291666666666,
+        "95": [
+          0.925103184223753,
+          0.9792487854856906
+        ]
+      },
+      "name score": {
+        "recall_at_1": 0.9192708333333334,
+        "95": [
+          0.8815295333009237,
+          0.9517465300166288
+        ]
+      }
+    },
+    "bird: the paper's filters": {
+      "pairs": 381,
+      "databases": 62,
+      "unanswerable": {
+        "referred column is not the target's one-column key": 12
+      },
+      "two tables": {
+        "recall_at_1": 0.9002624671916011,
+        "95": [
+          0.8467445463033698,
+          0.9440701806336985
+        ]
+      },
+      "whole database": {
+        "recall_at_1": 0.9238845144356955,
+        "95": [
+          0.8631692640777078,
+          0.966543992846557
+        ]
+      },
+      "name score": {
+        "recall_at_1": 0.8320209973753281,
+        "95": [
+          0.7468471927966102,
+          0.9009084988603061
+        ]
+      }
+    },
+    "ctu: the paper's filters": {
+      "pairs": 1267,
+      "databases": 106,
+      "unanswerable": {
+        "referred column is not the target's one-column key": 30
+      },
+      "two tables": {
+        "recall_at_1": 0.9439621152328335,
+        "95": [
+          0.9016123310810811,
+          0.9683826273046532
+        ]
+      },
+      "whole database": {
+        "recall_at_1": 0.9565903709550119,
+        "95": [
+          0.9204518711737213,
+          0.9781154545284185
+        ]
+      },
+      "name score": {
+        "recall_at_1": 0.8500394632991318,
+        "95": [
+          0.7999776785714287,
+          0.8994686692678155
+        ]
+      }
+    },
+    "spider: and no constraint over several columns": {
+      "pairs": 765,
+      "databases": 194,
+      "unanswerable": {
+        "no candidate of the key's kind": 7,
+        "referred column is not the target's one-column key": 15
+      },
+      "two tables": {
+        "recall_at_1": 0.9555555555555556,
+        "95": [
+          0.927471842463754,
+          0.9786965870174346
+        ]
+      },
+      "whole database": {
+        "recall_at_1": 0.9581699346405229,
+        "95": [
+          0.9288192679206915,
+          0.980256202255069
+        ]
+      },
+      "name score": {
+        "recall_at_1": 0.9228758169934641,
+        "95": [
+          0.886273335681578,
+          0.9560144736842104
+        ]
+      }
+    },
+    "bird: and no constraint over several columns": {
+      "pairs": 381,
+      "databases": 62,
+      "unanswerable": {
+        "referred column is not the target's one-column key": 12
+      },
+      "two tables": {
+        "recall_at_1": 0.9002624671916011,
+        "95": [
+          0.8370245726495726,
+          0.9458321757249523
+        ]
+      },
+      "whole database": {
+        "recall_at_1": 0.9238845144356955,
+        "95": [
+          0.8618937664314377,
+          0.9665811302464553
+        ]
+      },
+      "name score": {
+        "recall_at_1": 0.8320209973753281,
+        "95": [
+          0.7402127167754351,
+          0.9005867317299872
+        ]
+      }
+    },
+    "ctu: and no constraint over several columns": {
+      "pairs": 1259,
+      "databases": 106,
+      "unanswerable": {
+        "referred column is not the target's one-column key": 22
+      },
+      "two tables": {
+        "recall_at_1": 0.9499602859412232,
+        "95": [
+          0.9107245595109673,
+          0.9739150929072099
+        ]
+      },
+      "whole database": {
+        "recall_at_1": 0.9626687847498014,
+        "95": [
+          0.9237849459098091,
+          0.9830765989499433
+        ]
+      },
+      "name score": {
+        "recall_at_1": 0.8554408260524226,
+        "95": [
+          0.8024510727041269,
+          0.8989773050195045
+        ]
+      }
+    },
+    "spider: and novel databases only": {
+      "pairs": 698,
+      "databases": 161,
+      "unanswerable": {
+        "no candidate of the key's kind": 7,
+        "referred column is not the target's one-column key": 17
+      },
+      "two tables": {
+        "recall_at_1": 0.9484240687679083,
+        "95": [
+          0.9190642422273148,
+          0.9722708975346688
+        ]
+      },
+      "whole database": {
+        "recall_at_1": 0.9512893982808023,
+        "95": [
+          0.9195978062828764,
+          0.9760323560601832
+        ]
+      },
+      "name score": {
+        "recall_at_1": 0.9183381088825215,
+        "95": [
+          0.8780363364858138,
+          0.9508463666695508
+        ]
+      }
+    },
+    "bird: and novel databases only": {
+      "pairs": 365,
+      "databases": 55,
+      "unanswerable": {
+        "referred column is not the target's one-column key": 12
+      },
+      "two tables": {
+        "recall_at_1": 0.8986301369863013,
+        "95": [
+          0.8359326567000411,
+          0.9469566008552452
+        ]
+      },
+      "whole database": {
+        "recall_at_1": 0.9232876712328767,
+        "95": [
+          0.8530498223072718,
+          0.9661537728658537
+        ]
+      },
+      "name score": {
+        "recall_at_1": 0.8301369863013699,
+        "95": [
+          0.7307591623036649,
+          0.8987083277246826
+        ]
+      }
+    },
+    "ctu: and novel databases only": {
+      "pairs": 1201,
+      "databases": 92,
+      "unanswerable": {
+        "referred column is not the target's one-column key": 17
+      },
+      "two tables": {
+        "recall_at_1": 0.9533721898417985,
+        "95": [
+          0.9256624001956119,
+          0.9717937281189404
+        ]
+      },
+      "whole database": {
+        "recall_at_1": 0.9658617818484596,
+        "95": [
+          0.9444309600862999,
+          0.9817493146102254
+        ]
+      },
+      "name score": {
+        "recall_at_1": 0.8559533721898418,
+        "95": [
+          0.8094712971996167,
+          0.9048121860866148
+        ]
+      }
+    },
+    "spider: no filter": {
+      "pairs": 842,
+      "databases": 201,
+      "unanswerable": {
+        "no candidate of the key's kind": 7,
+        "referred column is not the target's one-column key": 17
+      },
+      "two tables": {
+        "recall_at_1": 0.9536817102137767,
+        "95": [
+          0.9281429438939836,
+          0.9757823983277745
+        ]
+      },
+      "whole database": {
+        "recall_at_1": 0.9584323040380047,
+        "95": [
+          0.9317063076697676,
+          0.9788330308648744
+        ]
+      },
+      "name score": {
+        "recall_at_1": 0.9192399049881235,
+        "95": [
+          0.8859063345230891,
+          0.948981216690498
+        ]
+      }
+    },
+    "bird: no filter": {
+      "pairs": 404,
+      "databases": 64,
+      "unanswerable": {
+        "no candidate of the key's kind": 1,
+        "referred column is not the target's one-column key": 12
+      },
+      "two tables": {
+        "recall_at_1": 0.9034653465346535,
+        "95": [
+          0.8473229830300942,
+          0.9492609355924128
+        ]
+      },
+      "whole database": {
+        "recall_at_1": 0.9257425742574258,
+        "95": [
+          0.8660659843205575,
+          0.9666904761904762
+        ]
+      },
+      "name score": {
+        "recall_at_1": 0.8391089108910891,
+        "95": [
+          0.75,
+          0.9043419257368054
+        ]
+      }
+    },
+    "ctu: no filter": {
+      "pairs": 1390,
+      "databases": 111,
+      "unanswerable": {
+        "referred column is not the target's one-column key": 42
+      },
+      "two tables": {
+        "recall_at_1": 0.9402877697841726,
+        "95": [
+          0.8864449538773663,
+          0.9710512918733872
+        ]
+      },
+      "whole database": {
+        "recall_at_1": 0.9517985611510792,
+        "95": [
+          0.9022378345385128,
+          0.9810410801225715
+        ]
+      },
+      "name score": {
+        "recall_at_1": 0.8510791366906475,
+        "95": [
+          0.795496927403203,
+          0.9000946844926694
+        ]
+      }
+    }
+  },
+  "seconds": 278
+}
