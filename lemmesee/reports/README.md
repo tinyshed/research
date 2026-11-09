@@ -88,3 +88,8 @@ so, never by editing the number it replaces.
   bounded since, and reading a schema's own style takes LiveSQLBench to 0.671 on development data only. Added on
   9 November: on 100 clean GitHub schemas whose keys are not named `table_id`, read once, the paper's model reads
   0.670 against round 1s's 0.700, −0.030 [−0.060, −0.002]; their style is mostly a key word first, not LiveSQLBench's.
+- [see's questions through a model's keys](keys-questions-2026-11-09.md), round 1u: with round 1t's frozen key model
+  and no declaration, `see` still asks a database's questions that join through declared keys 0.886 / 0.808 / 0.814
+  of the time on Spider, BIRD and CTU and 0.398 on LiveSQLBench, against 0.687 / 0.654 / 0.615 / 0.007 with round 1's
+  rules; about one in eight of the model's questions goes through a key nobody declared, and the ranker's five keep
+  0.72–0.91 of the declared five.
