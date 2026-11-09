@@ -1,0 +1,36 @@
+{
+ "pool": 27492,
+ "fetched prefix by SHA-256": 1500,
+ "drops": {
+  "style: over 25 % of keys end in id": 702,
+  "fewer_than_5_tables": 350,
+  "fewer_than_3_resolved_fks": 113,
+  "no_table_parsed": 135,
+  "sample_database_overlap": 32,
+  "no_sql_with_references": 14,
+  "held by a SchemaPile schema": 23,
+  "no_sql_file": 5,
+  "no one-column key": 11,
+  "no_head_or_tree": 2,
+  "a schema of the two GitHub sets": 3,
+  "duplicate_table_set": 2
+ },
+ "passing": 108,
+ "schemas": 100,
+ "tables": 2020,
+ "one_column_fks": 1791,
+ "composite_fks": 154,
+ "key_columns_ending_in_id": 24,
+ "share_ending_in_id": 0.0134,
+ "created_before_2025_07_01": 80,
+ "created_at_min": "2012-06-30T22:40:11Z",
+ "created_at_max": "2026-10-28T11:16:46Z",
+ "licences": {
+  "none": 83,
+  "AGPL-3.0": 2,
+  "MIT": 7,
+  "GPL-3.0": 3,
+  "Apache-2.0": 4,
+  "Unlicense": 1
+ }
+}

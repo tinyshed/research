@@ -1,0 +1,82 @@
+{
+ "answered": 1087,
+ "of": 1087,
+ "answers by kind": {
+  "undeclared, drawn": {
+   "yes": 352,
+   "no": 138,
+   "unsure": 11
+  },
+  "control: not a key": {
+   "no": 285,
+   "unsure": 3
+  },
+  "control: declared": {
+   "yes": 292,
+   "no": 2,
+   "unsure": 4
+  }
+ },
+ "1s": {
+  "drawn": 1438,
+  "found (declared)": 1129,
+  "drawn, no key declared": 280,
+  "of them, the judge's yes": 233,
+  "precision, declared keys": 0.7851,
+  "precision, declared keys and the judge's yes": 0.9471,
+  "with the judge: P / R / F1": [
+   0.9471,
+   0.6362,
+   0.7611
+  ],
+  "with the judge: F1, 95 %": [
+   0.6696,
+   0.8385
+  ]
+ },
+ "seven-restyled": {
+  "drawn": 1566,
+  "found (declared)": 1123,
+  "drawn, no key declared": 405,
+  "of them, the judge's yes": 310,
+  "precision, declared keys": 0.7171,
+  "precision, declared keys and the judge's yes": 0.9151,
+  "with the judge: P / R / F1": [
+   0.9151,
+   0.6693,
+   0.7731
+  ],
+  "with the judge: F1, 95 %": [
+   0.6794,
+   0.843
+  ],
+  "with the judge: F1 minus 1s, 95 %": [
+   0.012,
+   -0.0314,
+   0.0514
+  ]
+ },
+ "seven-bounded": {
+  "drawn": 1543,
+  "found (declared)": 1141,
+  "drawn, no key declared": 363,
+  "of them, the judge's yes": 284,
+  "precision, declared keys": 0.7395,
+  "precision, declared keys and the judge's yes": 0.9235,
+  "with the judge: P / R / F1": [
+   0.9235,
+   0.6656,
+   0.7736
+  ],
+  "with the judge: F1, 95 %": [
+   0.6802,
+   0.8419
+  ],
+  "with the judge: F1 minus 1s, 95 %": [
+   0.0125,
+   -0.0257,
+   0.0514
+  ]
+ },
+ "undeclared pairs the judge called yes, any model": 352
+}

@@ -93,3 +93,9 @@ so, never by editing the number it replaces.
   of the time on Spider, BIRD and CTU and 0.398 on LiveSQLBench, against 0.687 / 0.654 / 0.615 / 0.007 with round 1's
   rules; about one in eight of the model's questions goes through a key nobody declared, and the ranker's five keep
   0.72–0.91 of the declared five.
+- [The key model mended, and a fresh set in another house style](keys-mended-2026-11-09.md), round 1t continued: a
+  blind judge finds seven in ten of the "false" keys on the style set real (precision 0.92–0.95 counted so); the
+  collector had hidden `decimal` keys and lost primary keys, and the set read again with both fixed puts the newer
+  models level with round 1s's; one fit with every fix, `nine-mended`, made the paper's model before its numbers, reads
+  a fresh clean set of 100 schemas once at 0.715 against round 1s's 0.738, −0.023 [−0.062, +0.020], and its macro F1
+  0.775 against 0.725, +0.050 [+0.016, +0.092]; its hard negatives cost the keys named after their target.

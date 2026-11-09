@@ -477,6 +477,10 @@ is not `table_id`. On real schemas whose foreign style is a key word first
 it gains nothing and draws more keys, a part of them likely undeclared real
 ones, a part the defect's.
 
+**Continued on 9 November** in [keys-mended-2026-11-09.md](keys-mended-2026-11-09.md): a blind judge of the keys
+this section counts false, the collector's two defects behind its loss (primary keys lost, `decimal` keys
+hidden), the set read again with both fixed, one mended fit and a fresh clean set read once.
+
 ## Limits
 
 - One seed a fit. Round 1s found a seed can move the pooled external F1 by
@@ -527,6 +531,12 @@ ones, a part the defect's.
   trained on — a key word last, a key named after its target's key,
   shortened words — seen on LiveSQLBench and SchemaPile renamed, both
   development data; no clean set in those styles has been read.
+- **Continued in [keys-mended-2026-11-09.md](keys-mended-2026-11-09.md)**:
+  the −0.030 traced mostly to the collector (`decimal` keys hidden, primary
+  keys lost) and to real keys no declaration names; the paper's model is
+  `nine-mended` from then on, read once on a fresh clean set at 0.715
+  against `1s`'s 0.738, −0.023 [−0.062, +0.020], its macro F1 +0.050
+  [+0.016, +0.092].
 
 ## Environment and reproduction
 

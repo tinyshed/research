@@ -1,0 +1,129 @@
+{
+ "note": "the style set as its keys and types are read by the fixed collector; a corrected reading of a seen set",
+ "github style, fixed, all": {
+  "1s": 0.709,
+  "seven-restyled": 0.6816,
+  "seven-bounded": 0.6942,
+  "seven-style": 0.6894,
+  "seven-restyled minus 1s": [
+   -0.0274,
+   -0.0573,
+   0.0002
+  ],
+  "seven-bounded minus 1s": [
+   -0.0148,
+   -0.0415,
+   0.0104
+  ],
+  "seven-style minus 1s": [
+   -0.0196,
+   -0.0496,
+   0.0102
+  ]
+ },
+ "github style, fixed, without ETL_HTS": {
+  "1s": 0.7509,
+  "seven-restyled": 0.7202,
+  "seven-bounded": 0.7338,
+  "seven-style": 0.7292,
+  "seven-restyled minus 1s": [
+   -0.0307,
+   -0.0637,
+   -0.0028
+  ],
+  "seven-bounded minus 1s": [
+   -0.0171,
+   -0.0433,
+   0.0082
+  ],
+  "seven-style minus 1s": [
+   -0.0217,
+   -0.0538,
+   0.0068
+  ]
+ },
+ "github style, fixed, without ETL_HTS, the Dolibarr copy and bronzeward": {
+  "1s": 0.791,
+  "seven-restyled": 0.7741,
+  "seven-bounded": 0.781,
+  "seven-style": 0.7775,
+  "seven-restyled minus 1s": [
+   -0.0169,
+   -0.0416,
+   0.002
+  ],
+  "seven-bounded minus 1s": [
+   -0.01,
+   -0.0382,
+   0.0144
+  ],
+  "seven-style minus 1s": [
+   -0.0135,
+   -0.0481,
+   0.0141
+  ]
+ },
+ "github style, typed, all": {
+  "1s": 0.7067,
+  "seven-restyled": 0.7627,
+  "seven-bounded": 0.7789,
+  "seven-style": 0.7748,
+  "seven-restyled minus 1s": [
+   0.056,
+   -0.0399,
+   0.1852
+  ],
+  "seven-bounded minus 1s": [
+   0.0722,
+   -0.0225,
+   0.2043
+  ],
+  "seven-style minus 1s": [
+   0.0681,
+   -0.0331,
+   0.2073
+  ]
+ },
+ "github style, typed, without ETL_HTS": {
+  "1s": 0.7495,
+  "seven-restyled": 0.741,
+  "seven-bounded": 0.7555,
+  "seven-style": 0.7504,
+  "seven-restyled minus 1s": [
+   -0.0085,
+   -0.05,
+   0.0398
+  ],
+  "seven-bounded minus 1s": [
+   0.006,
+   -0.0323,
+   0.0531
+  ],
+  "seven-style minus 1s": [
+   0.0009,
+   -0.0409,
+   0.0508
+  ]
+ },
+ "github style, typed, without ETL_HTS, the Dolibarr copy and bronzeward": {
+  "1s": 0.7859,
+  "seven-restyled": 0.7988,
+  "seven-bounded": 0.8051,
+  "seven-style": 0.8006,
+  "seven-restyled minus 1s": [
+   0.0129,
+   -0.023,
+   0.0576
+  ],
+  "seven-bounded minus 1s": [
+   0.0192,
+   -0.0187,
+   0.064
+  ],
+  "seven-style minus 1s": [
+   0.0147,
+   -0.028,
+   0.0608
+  ]
+ }
+}

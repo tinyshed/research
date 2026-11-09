@@ -1,0 +1,42 @@
+{
+ "key word first (id_x, fk_x, cod_x)": {
+  "keys": 976,
+  "share": 0.485,
+  "not a candidate": 29,
+  "recall, 1s": 0.793,
+  "recall, seven-bounded": 0.76,
+  "recall, nine-mended": 0.808
+ },
+ "other": {
+  "keys": 553,
+  "share": 0.275,
+  "not a candidate": 71,
+  "recall, 1s": 0.309,
+  "recall, seven-bounded": 0.275,
+  "recall, nine-mended": 0.217
+ },
+ "the target's name": {
+  "keys": 301,
+  "share": 0.15,
+  "not a candidate": 28,
+  "recall, 1s": 0.711,
+  "recall, seven-bounded": 0.701,
+  "recall, nine-mended": 0.601
+ },
+ "another key word last": {
+  "keys": 152,
+  "share": 0.076,
+  "not a candidate": 4,
+  "recall, 1s": 0.658,
+  "recall, seven-bounded": 0.882,
+  "recall, nine-mended": 0.862
+ },
+ "ends in id": {
+  "keys": 31,
+  "share": 0.015,
+  "not a candidate": 1,
+  "recall, 1s": 0.677,
+  "recall, seven-bounded": 0.71,
+  "recall, nine-mended": 0.677
+ }
+}

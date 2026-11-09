@@ -1,0 +1,30 @@
+{
+  "variant": "nine",
+  "options": {
+    "dictionary shortening": true,
+    "bounded second": true,
+    "hard negatives": true,
+    "key word first": true
+  },
+  "training pairs": 8603420,
+  "negatives left out": 0,
+  "hard negatives added": 37267,
+  "validation pairs": 1674439,
+  "validation keys among candidates": 14600,
+  "threshold": 0.8216860824985658,
+  "validation": {
+    "precision": 0.7842341689610202,
+    "recall": 0.7413698630136987,
+    "f1": 0.7621998450813324,
+    "average_precision": 0.7938157657800334
+  },
+  "seconds": 745,
+  "fit": "nine-mended",
+  "seed": 20261027,
+  "grams": "sorted",
+  "data": {
+    "validation renamed beside": 1022,
+    "train renamed": 3999,
+    "train left, the style did not fit": 124
+  }
+}
