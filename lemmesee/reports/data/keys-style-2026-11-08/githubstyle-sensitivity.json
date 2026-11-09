@@ -1,0 +1,69 @@
+{
+ "note": "diagnosis after the one reading; the set is development data from here on",
+ "without ETL_HTS (182 keys into tables whose T-SQL primary keys the parser missed)": {
+  "databases": 99,
+  "1s": 0.7417,
+  "seven-restyled": 0.708,
+  "seven-bounded": 0.7246,
+  "seven-style": 0.7186,
+  "seven-restyled minus 1s": [
+   -0.0337,
+   -0.0661,
+   -0.004
+  ],
+  "seven-bounded minus 1s": [
+   -0.0171,
+   -0.0437,
+   0.0094
+  ],
+  "seven-style minus 1s": [
+   -0.0231,
+   -0.0552,
+   0.0056
+  ]
+ },
+ "without the Dolibarr copy and bronzeward (94 of the 125 extra drawn keys)": {
+  "databases": 98,
+  "1s": 0.7332,
+  "seven-restyled": 0.7144,
+  "seven-bounded": 0.7241,
+  "seven-style": 0.7188,
+  "seven-restyled minus 1s": [
+   -0.0188,
+   -0.0436,
+   0.0008
+  ],
+  "seven-bounded minus 1s": [
+   -0.0091,
+   -0.038,
+   0.0147
+  ],
+  "seven-style minus 1s": [
+   -0.0144,
+   -0.0489,
+   0.0127
+  ]
+ },
+ "without all three": {
+  "databases": 97,
+  "1s": 0.7814,
+  "seven-restyled": 0.761,
+  "seven-bounded": 0.7712,
+  "seven-style": 0.7661,
+  "seven-restyled minus 1s": [
+   -0.0204,
+   -0.047,
+   -0.0001
+  ],
+  "seven-bounded minus 1s": [
+   -0.0102,
+   -0.0399,
+   0.0159
+  ],
+  "seven-style minus 1s": [
+   -0.0153,
+   -0.0511,
+   0.0142
+  ]
+ }
+}

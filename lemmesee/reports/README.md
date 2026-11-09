@@ -85,4 +85,6 @@ so, never by editing the number it replaces.
   [+0.014, +0.084]; no threshold reaches 0.80 on CTU or LiveSQLBench, and schemas written or renamed by language
   models teach less than drawn styles. Added the next morning: on 177 more GitHub schemas, read once, +0.011
   [−0.016, +0.042], and over both sets +0.022 [−0.002, +0.047]; the chosen model's second stage had runaway leaves,
-  bounded since, and reading a schema's own style takes LiveSQLBench to 0.671 on development data only.
+  bounded since, and reading a schema's own style takes LiveSQLBench to 0.671 on development data only. Added on
+  9 November: on 100 clean GitHub schemas whose keys are not named `table_id`, read once, the paper's model reads
+  0.670 against round 1s's 0.700, −0.030 [−0.060, −0.002]; their style is mostly a key word first, not LiveSQLBench's.

@@ -34,6 +34,12 @@ kept and did not select, read once. On it the chosen model's gain over
 `1s` is +0.011 [−0.016, +0.042], and over both GitHub sets +0.022
 [−0.002, +0.047]: smaller than the first reading's.
 
+**Added on 9 November** (§8): a clean set of 100 GitHub schemas whose keys
+are not named `table_id`, chosen by a rule on names fixed before the
+reading and read once: the paper's model 0.670 against `1s`'s 0.700,
+−0.030 [−0.060, −0.002]. Its foreign style is mostly a key word first, not
+LiveSQLBench's.
+
 | Question | Answer | What follows |
 |---|---|---|
 | **On schemas nobody here had read, once?** | 80 GitHub schemas created 1 July 2025 to 6 November 2026, 1 600 tables, 2 022 keys: the chosen `seven-restyled` **0.792** [0.747, 0.829] against `1s`'s 0.744 [0.685, 0.798], **+0.048 [+0.014, +0.084]**; `seven-relative` 0.799, +0.055 [+0.020, +0.097]; `cues-restyled` 0.781, +0.037 [+0.001, +0.077] | the repaired model carries to new real schemas: the paper's model is `seven-restyled`, the paper's claims stand on this reading |
@@ -47,6 +53,7 @@ kept and did not select, read once. On it the chosen model's gain over
 | **And on 177 more GitHub schemas, read once in the morning?** | 4 533 keys: `seven-restyled` 0.767 [0.715, 0.813] against `1s`'s 0.756, **+0.011 [−0.016, +0.042]**; `seven-bounded` 0.775, `seven-style` 0.762; both sets pooled afterwards, 252 schemas: +0.022 [−0.002, +0.047] | on `table_id` names the repair costs nothing and gains little; its gains are where the style shifts |
 | What was wrong with the chosen model? | Its second stage holds 43 leaves over 50, up to 15 832, drawing pairs its first stage scores under 0.001 at 1.0; bounded, validation average precision 0.689 → 0.779 | a stacked second stage needs its leaves bounded |
 | Does reading the schema's own style help? | On LiveSQLBench 0.619 → 0.671 (`seven-style`), at CTU −0.032; not on the second GitHub set (0.762) | it reads the style it was written for, on development data only |
+| **And on a clean set in another house style, 9 November?** | 100 GitHub schemas, 1 791 keys, 1.3 % ending in `id`, read once: `1s` 0.700, `seven-restyled` 0.670, **−0.030 [−0.060, −0.002]**; `seven-bounded` −0.015 [−0.043, +0.012] | GitHub's foreign style is mostly a key word first (`id_pessoa`), which `1s` reads; the repair gains on keys named after their target and loses precision (§8) |
 
 ## 1. What round 1s's reading lost
 
@@ -390,6 +397,86 @@ second set and the schema's own style 0.005 below it, both within their
 intervals: neither is shown to carry to new GitHub schemas, and the schema's
 own style stands on LiveSQLBench, development data, alone.
 
+## 8. A clean set in another house style, 9 November
+
+Added on 9 November at the owner's request, because the gain where the style
+shifts stood on development data only. The rule was written into the
+specification at 12:57 UTC before any schema was read
+([README](../round-1t/README.md), its last entry) and applied by `github.py
+pool-style`, `fetch-style` and `parse-style`: the first collector's 28 045
+repositories, any creation date, without the 400 the two GitHub sets
+fetched, forks, archives and the 148 SchemaPile names; per repository the
+same file, parser and thresholds; dropped as well a schema repeating one of
+the 257 already kept and one of which a SchemaPile schema holds 80 % of the
+table names; kept when at most 25 % of its declared one-column keys have a
+column ending in `id`; the first 100 by SHA-256 of `owner/name`. The pool's
+first 1 500 by that hash were fetched, 108 passed, the first 100 were taken
+([github-style-summary.json](data/keys-style-2026-11-08/github-style-summary.json)):
+2 020 tables, 1 791 one-column keys (154 composite left out), 1.3 % of the
+key columns ending in `id` against LiveSQLBench's 0.7 % and Spider's 80 %;
+80 created before July 2025, the earliest in 2012. The set and the four
+models as `frozen-rest.json` held them were frozen at 13:38 UTC
+([frozen-style.json](data/keys-style-2026-11-08/frozen-style.json)) and read
+once ([heldout-github-style.json](data/keys-style-2026-11-08/heldout-github-style.json)):
+
+| | P / R / F1 [95 %] | minus `1s` | macro F1 | F1 at 0.5 | keys among candidates |
+|---|---|---|---|---|---|
+| **`1s`** | 0.786 / 0.631 / **0.700** [0.596, 0.796] | | 0.726 | 0.684 | 1 475 |
+| `seven-restyled`, the rule's | 0.718 / 0.628 / 0.670 [0.566, 0.773] | **−0.030 [−0.060, −0.002]** | 0.723 | 0.664 | 1 510 |
+| `seven-bounded` | 0.740 / 0.638 / 0.685 [0.580, 0.782] | −0.015 [−0.043, +0.012] | 0.733 | 0.668 | 1 510 |
+| `seven-style` | 0.742 / 0.626 / 0.679 [0.573, 0.783] | −0.021 [−0.053, +0.010] | 0.735 | 0.664 | 1 510 |
+
+**The repair does not carry to this set: the paper's model reads it 0.030
+below the old one, its interval under zero.** Recall is the same; precision
+falls.
+
+Looked into after the reading, the set development data from then on
+([errors-*--githubstyle.json](data/keys-style-2026-11-08/),
+[githubstyle-shapes.json](data/keys-style-2026-11-08/githubstyle-shapes.json),
+[key-name-shapes.json](data/keys-style-2026-11-08/key-name-shapes.json),
+[githubstyle-sensitivity.json](data/keys-style-2026-11-08/githubstyle-sensitivity.json)):
+
+| a key's name | this set | LiveSQLBench | Spider | recall here: `1s` | `seven-restyled` | `seven-bounded` |
+|---|---|---|---|---|---|---|
+| a key word first (`id_pessoa`, `idpais`, `fk_projet`, `cod_x`) | 45.6 % | 0.3 % | 0.2 % | 0.791 | 0.780 | 0.795 |
+| the target's name (`machine` into `machine`) | 19.5 % | 0.7 % | 5.7 % | 0.756 | 0.811 | 0.819 |
+| a key word last but `id` (`ref`, `link`, `key`, `code`) | 2.1 % | 32.4 % | 6.8 % | 0.947 | 0.947 | 0.947 |
+| ending in `id` | 1.3 % | 0.7 % | 79.5 % | 0.667 | 0.667 | 0.625 |
+| any other | 31.5 % | 65.9 % | 7.8 % | 0.298 | 0.270 | 0.277 |
+
+- **Another style, not LiveSQLBench's.** A key not ending in `id` on GitHub
+  is mostly a key word first, the habit of schemas written in Spanish,
+  Portuguese, Vietnamese and Indonesian, which SchemaPile holds and `1s`
+  already reads (0.79). LiveSQLBench's style — a key word last, `ref`,
+  `link`, `registry`, or none — is 2 % of this set. The filter on names
+  selected a foreign style, but not the one the repair was built for.
+- **The repair gains where a key is named after its target** (0.756 →
+  0.811–0.819) and **loses precision**: `seven-restyled` draws 405 keys no
+  declaration names against `1s`'s 280. 94 of the 125 more are in two
+  databases: a copy of Dolibarr, whose `fk_projet` into `llx_projet` and
+  `fk_pays` into `llx_c_pays` read as the references Dolibarr makes and its
+  file does not declare, and one whose `machine` and `observation` columns
+  name tables of those names. Whether they are real was not judged.
+  Without the two, `seven-restyled` is −0.019 [−0.044, +0.001] and
+  `seven-bounded` −0.009 [−0.038, +0.015].
+- **The runaway leaves of §7 again**: 20 of `seven-restyled`'s false keys
+  score 1.0 (`pelicula.sinopsis` into `rolpelicula`); `1s` has none.
+  `seven-bounded`, the leaves bounded, halves the gap.
+- **A defect of the set, not of the models**: 182 keys (one database,
+  `ETL_HTS`, a data vault in T-SQL) point into tables whose `PRIMARY KEY
+  CLUSTERED (… ASC)` the collector's parser, trying PostgreSQL's dialect
+  first, did not read; no model has them as candidates. 208 of `1s`'s 314
+  keys outside the candidates are into tables without a parsed key.
+  Without that database the differences stand: −0.034 [−0.066, −0.004],
+  −0.017 [−0.044, +0.009], −0.023 [−0.055, +0.006].
+
+What this says: the repair's gain is a gain on the styles it was trained to
+read — a key word last, a key named after its target's key, shortened
+words — and on SchemaPile renamed into them. It is not a gain on whatever
+is not `table_id`. On real schemas whose foreign style is a key word first
+it gains nothing and draws more keys, a part of them likely undeclared real
+ones, a part the defect's.
+
 ## Limits
 
 - One seed a fit. Round 1s found a seed can move the pooled external F1 by
@@ -434,6 +521,12 @@ own style stands on LiveSQLBench, development data, alone.
   +0.022 [−0.002, +0.047]. The paper's claim is then the shift of style —
   large gains where names are not `table_id`, none lost where they are — and
   the GitHub sets show the second half.
+- **Since 9 November** (§8), the first half is narrower: on a clean set of
+  real schemas not named `table_id`, mostly a key word first, the paper's
+  model is 0.030 below the old one. The gain holds for the styles it was
+  trained on — a key word last, a key named after its target's key,
+  shortened words — seen on LiveSQLBench and SchemaPile renamed, both
+  development data; no clean set in those styles has been read.
 
 ## Environment and reproduction
 
@@ -447,7 +540,7 @@ own style stands on LiveSQLBench, development data, alone.
 | GitHub | 80 repositories, each file pinned by commit in [github-manifest.json](data/keys-style-2026-11-08/github-manifest.json); their contents are not published, most carry no licence |
 | language models | Claude Haiku 5.5 and Claude Sonnet 5.5 (medium effort) as Claude Code agents for schemas, lexicons and renamings; Claude Opus 5.5 (extra-high effort) as design agents; 8 November 2026 |
 | research commit | `590eb79` and this round's files |
-| times (UTC) | first fits 22:02–22:50 on 7 November; the night's fits 23:00 to 02:50; GitHub reading 02:58; the morning's fits and scorings 06:57 to 08:32, the second GitHub set written 06:52 and read 08:34–08:36 |
+| times (UTC) | first fits 22:02–22:50 on 7 November; the night's fits 23:00 to 02:50; GitHub reading 02:58; the morning's fits and scorings 06:57 to 08:32, the second GitHub set written 06:52 and read 08:34–08:36; on 9 November the style set's rule written 12:57, its pool fetched 13:00–13:36, the set and models frozen 13:38 and read once |
 
 ```sh
 cd <repo>/lemmesee
@@ -484,6 +577,13 @@ $P -I round-1t/fit.py summarize
 corpus/round-1t/.venv-parse/Scripts/python -I round-1t/github.py parse rest
 $P -I round-1t/fit.py freeze-rest seven-restyled 1s seven-bounded seven-style
 $P -I round-1t/fit.py heldout "github 2025, rest" frozen-rest.json
+# 9 November (§8); work/schemapile.json holds SchemaPile's repository names and table sets
+corpus/round-1t/.venv-parse/Scripts/python -I round-1t/github.py pool-style
+corpus/round-1t/.venv-parse/Scripts/python -I round-1t/github.py fetch-style 1500
+corpus/round-1t/.venv-parse/Scripts/python -I round-1t/github.py parse-style
+$P -I round-1t/fit.py freeze-style
+$P -I round-1t/fit.py heldout "github style" frozen-style.json
+$P -I round-1t/shapes.py    # after the reading: the keys by the shape of their names
 ```
 
 The set's hash was frozen at 06:52 UTC by a few lines run once, written
