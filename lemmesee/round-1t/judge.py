@@ -2,8 +2,12 @@
 and no declaration names; added on 9 November 2026, the set development
 data since its one reading.
 
-    python -I judge.py pack    # packets and the hidden key
-    python -I judge.py count   # after the judges wrote their answers
+    python -I judge.py pack [fresh]    # packets and the hidden key
+    python -I judge.py count [fresh]   # after the judges wrote their answers
+
+`fresh` (added on 9 November 2026, after the fresh set's one reading): the
+same protocol on the fresh set, for `1s` and `nine-mended`, into
+corpus/round-1t/judge-fresh/.
 
 The pairs judged, for `1s`, `seven-restyled` and `seven-bounded` alike: every
 pair one of them draws whose column no declaration names ("drawn, no key
@@ -38,19 +42,26 @@ import letters  # noqa: E402
 import fit  # noqa: E402
 import graph  # noqa: E402
 
-D = fit.OUT / "judge-style"
-MODELS = ("1s", "seven-restyled", "seven-bounded")
+SETS = {"style": ("judge-style", "heldout-github-style", "githubstyle-all", ("1s", "seven-restyled", "seven-bounded")),
+        "fresh": ("judge-fresh", "heldout-github-style-fresh", "githubfresh", ("1s", "nine-mended"))}
+D, FOLDER, TAG, MODELS = (fit.OUT / SETS["style"][0], *SETS["style"][1:])
+
+
+def use(which: str) -> None:
+    global D, FOLDER, TAG, MODELS
+    folder, FOLDER, TAG, MODELS = SETS[which]
+    D = fit.OUT / folder
 SEED = 20261109
 PER_PACKET = 60  # pairs a packet, about
 
 
 def errors_of(n):
-    return json.load(open(fit.OUT / "errors" / f"{n}--githubstyle-all.json", encoding="utf-8"))
+    return json.load(open(fit.OUT / "errors" / f"{n}--{TAG}.json", encoding="utf-8"))
 
 
 def pack() -> None:
     schemas = {s["id"]: s for s in (json.loads(line) for line in
-                                    open(fit.OUT / "heldout-github-style" / "hidden.jsonl", encoding="utf-8"))}
+                                    open(fit.OUT / FOLDER / "hidden.jsonl", encoding="utf-8"))}
     rng = random.Random(SEED)
     pairs = {}  # (db, table, column, target) -> {"models": [...], "kind": ...}
     drawn_any = set()
@@ -182,4 +193,5 @@ def count() -> None:
 
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
+    use(sys.argv[2] if len(sys.argv) > 2 else "style")
     {"pack": pack, "count": count}[sys.argv[1]]()

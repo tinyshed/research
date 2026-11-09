@@ -106,9 +106,13 @@ def run(snap, guess: bool, model, names, table):
     return ids, through, five, keyset
 
 
-def drawn_keys(pool, schemas, split, guesses):
-    d = fit.MODELS[MODEL][0]
-    frozen = json.load(open(fit.OUT / "frozen-final.json", encoding="utf-8"))["models"][MODEL]
+def drawn_keys(pool, schemas, split, guesses, model=MODEL):
+    d = fit.MODELS[model][0]
+    fresh = json.load(open(fit.OUT / "frozen-fresh.json", encoding="utf-8"))["models"]
+    if model in fresh:  # the four frozen on 9 November, nine-mended among them
+        frozen = fresh[model]["parts"][model]
+    else:
+        frozen = json.load(open(fit.OUT / "frozen-final.json", encoding="utf-8"))["models"][model]
     for k in ("keys-first.ubj", "keys-second.txt", "graph-final.json"):
         assert hashlib.sha256((d / k).read_bytes()).hexdigest() == frozen[k], k
     first, second = widen.load_models(d)
@@ -141,7 +145,10 @@ def macro(per: np.ndarray, num: int, den: int, idx: np.ndarray) -> dict:
             "95": [round(float(np.nanpercentile(boots, 2.5)), 4), round(float(np.nanpercentile(boots, 97.5)), 4)]}
 
 
-def main() -> None:
+def main(models: tuple = (MODEL,), sets: tuple = SETS, name: str = "questions.json") -> None:
+    """`models` one or more of round 1t's; with one, its run is labelled
+    `model`, as the first run of 9 November wrote it; with more, each by its
+    name, every model in the same run over the same snapshots."""
     import lightgbm as lgb
     assert letters.is_sorted()
     ranker = lgb.Booster(model_file=str(ROOT / "corpus" / "round-1c" / "learn" / "ranker.txt"))
@@ -151,23 +158,26 @@ def main() -> None:
     lsb, lsb_guesses = keys.load(fit.ROOT / "round-1s" / "heldout")
     data = {src: ([s for s in ext if s["source"] == src], "external", ext_guesses) for src in ("spider", "bird", "ctu")}
     data["livesqlbench (development)"] = (lsb, "external", lsb_guesses)
-    result = {"model": MODEL, "sets": {}}
+    labels = {m: ("model" if len(models) == 1 else m) for m in models}
+    result = {"model": models[0] if len(models) == 1 else list(models), "sets": {}}
     OUT.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     with letters.pool(graph.WORKERS) as pool:
-        for set_name in (sys.argv[1:] or SETS):
+        for set_name in sets:
             schemas, split, guesses = data[set_name]
             schemas = [s for s in schemas if s["split"] == split and s["fk"]]
-            drawn = drawn_keys(pool, schemas, split, guesses)
+            drawn = {m: drawn_keys(pool, schemas, split, guesses, m) for m in models}
             rows, per_db = [], {}
+            runs_of = ["rules"] + [labels[m] for m in models]
             for s in schemas:
                 runs = {"declared": run(snapshot(s, s["fk"]), False, ranker, names, table),
-                        "rules": run(snapshot(s, []), True, ranker, names, table),
-                        "model": run(snapshot(s, drawn.get(s["id"], [])), False, ranker, names, table)}
+                        "rules": run(snapshot(s, []), True, ranker, names, table)}
+                for m in models:
+                    runs[labels[m]] = run(snapshot(s, drawn[m].get(s["id"], [])), False, ranker, names, table)
                 d_ids, d_through, d_five, declared = runs["declared"]
                 joins = {i for i, th in zip(d_ids, d_through) if th}
                 rec = {"questions, declared": len(d_ids), "joining, declared": len(joins)}
-                for r in ("rules", "model"):
+                for r in runs_of:
                     ids, through, five, _ = runs[r]
                     asked = set(ids)
                     rec[f"questions, {r}"] = len(asked)
@@ -177,29 +187,32 @@ def main() -> None:
                 rec["the declared five"] = len(d_five)
                 per_db[s["id"]] = rec
                 rows.append(rec)
-            cols = ["joining, declared", "joining still asked, rules", "joining still asked, model",
-                    "through an undeclared key, rules", "through an undeclared key, model",
-                    "questions, rules", "questions, model", "the declared five", "the declared five kept, rules",
-                    "the declared five kept, model"]
-            per = np.array([[r[c] for c in cols] for r in rows], dtype=float)
-            idx = np.random.default_rng(SEED).integers(0, len(per), (1000, len(per)))
-            summary = {"databases": len(per), "joining questions, declared": int(per[:, 0].sum())}
-            for j, r in ((1, "rules"), (2, "model")):
-                summary[f"joining still asked, {r}"] = pooled(per, j, 0, idx)
-                summary[f"joining still asked, {r}, mean over databases"] = macro(per, j, 0, idx)
-            for j, k, r in ((3, 5, "rules"), (4, 6, "model")):
-                summary[f"questions through an undeclared key, {r}"] = int(per[:, j].sum())
-                summary[f"share of the run's questions through an undeclared key, {r}"] = pooled(per, j, k, idx)
-            for j, r in ((8, "rules"), (9, "model")):
-                summary[f"the declared five kept, {r}"] = pooled(per, j, 7, idx)
+            idx = np.random.default_rng(SEED).integers(0, len(rows), (1000, len(rows)))
+            col = lambda c: np.array([r[c] for r in rows], dtype=float)  # noqa: E731
+            summary = {"databases": len(rows), "joining questions, declared": int(col("joining, declared").sum())}
+            for r in runs_of:
+                per = np.stack([col("joining, declared"), col(f"joining still asked, {r}"),
+                                col(f"through an undeclared key, {r}"), col(f"questions, {r}"),
+                                col("the declared five"), col(f"the declared five kept, {r}")], axis=1)
+                summary[f"joining still asked, {r}"] = pooled(per, 1, 0, idx)
+                summary[f"joining still asked, {r}, mean over databases"] = macro(per, 1, 0, idx)
+                summary[f"questions through an undeclared key, {r}"] = int(per[:, 2].sum())
+                summary[f"share of the run's questions through an undeclared key, {r}"] = pooled(per, 2, 3, idx)
+                summary[f"the declared five kept, {r}"] = pooled(per, 5, 4, idx)
             summary["seconds"] = round(time.time() - t0)
             result["sets"][set_name] = {"summary": summary, "per database": per_db}
             print(set_name, json.dumps(summary), flush=True)
-    if sys.argv[1:]:
+    if tuple(sets) != SETS:
         return
-    (OUT / "questions.json").write_text(json.dumps(result, indent=1) + "\n", encoding="utf-8")
+    (OUT / name).write_text(json.dumps(result, indent=1) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
-    main()
+    a = sys.argv[1:]
+    if a[:1] == ["--models"]:
+        # `--models nine-mended seven-restyled`: round 1u again, on 9 November, for the paper's final model
+        ms = tuple(x for x in a[1:] if x in fit.MODELS)
+        main(ms, tuple(x for x in a[1:] if x not in fit.MODELS) or SETS, "questions-" + "+".join(ms) + ".json")
+    else:
+        main(sets=tuple(a) or SETS)

@@ -410,7 +410,15 @@ HELDOUT = {"github 2025": OUT / "heldout-github", "beaver": OUT / "heldout-beave
            # and their types in the training's families as well
            "github style, typed": OUT / "heldout-github-style-typed",
            # the fresh clean set, its rule written at 14:06 UTC on 9 November (github.py parse-style fresh)
-           "github fresh": OUT / "heldout-github-style-fresh"}
+           "github fresh": OUT / "heldout-github-style-fresh",
+           # corrected readings of seen sets, the fixed collector (github.py parse typed / rest-typed)
+           "github 2025, typed": OUT / "heldout-github-typed",
+           "github 2025, rest, typed": OUT / "heldout-github-rest-typed",
+           "github style, typed, five models": OUT / "heldout-github-style-typed",
+           # nine-mended on the style set as first read and with its keys fixed (9 November, seen sets)
+           "github style, nine-mended": OUT / "heldout-github-style",
+           "github style, fixed, nine-mended": OUT / "heldout-github-style-fixed"}
+CORRECTED = ("1s", "seven-restyled", "seven-bounded", "seven-style", "nine-mended")
 
 
 def freeze(names: list[str]) -> None:
@@ -547,6 +555,46 @@ def freeze_fresh(stage: str) -> None:
     print(json.dumps({k: v for k, v in frozen.items() if k != "models"}, indent=1))
 
 
+def freeze_corrected() -> None:
+    """The five models and the three seen GitHub sets as the fixed collector
+    writes them, by hash, into frozen-corrected.json: corrected readings."""
+    import hashlib
+    from datetime import datetime, timezone
+    path = OUT / "frozen-corrected.json"
+    if path.exists():
+        raise SystemExit("already frozen")
+    frozen = {"frozen at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+              "corrected readings of seen sets; no model is chosen on them": True, "models": {}}
+    for n in CORRECTED:
+        d, variant = MODELS[n]
+        frozen["models"][n] = {"parts": {n: {"variant": variant, **{
+            f: hashlib.sha256((d / f).read_bytes()).hexdigest()
+            for f in ("keys-first.ubj", "keys-second.txt", "graph-final.json")}}}}
+    for which in ("github 2025, typed", "github 2025, rest, typed", "github style, typed, five models"):
+        frozen[which] = hashlib.sha256((HELDOUT[which] / "hidden.jsonl").read_bytes()).hexdigest()
+    path.write_text(json.dumps(frozen, indent=1) + "\n", encoding="utf-8")
+    print(json.dumps({k: v for k, v in frozen.items() if k != "models"}, indent=1))
+
+
+def freeze_sets(name: str, models: list[str], sets: list[str]) -> None:
+    """Models and seen sets by hash into <name>: a reading of seen sets."""
+    import hashlib
+    from datetime import datetime, timezone
+    path = OUT / name
+    if path.exists():
+        raise SystemExit("already frozen")
+    frozen = {"frozen at": datetime.now(timezone.utc).isoformat(timespec="seconds"), "seen sets": True, "models": {}}
+    for n in models:
+        d, variant = MODELS[n]
+        frozen["models"][n] = {"parts": {n: {"variant": variant, **{
+            f: hashlib.sha256((d / f).read_bytes()).hexdigest()
+            for f in ("keys-first.ubj", "keys-second.txt", "graph-final.json")}}}}
+    for which in sets:
+        frozen[which] = hashlib.sha256((HELDOUT[which] / "hidden.jsonl").read_bytes()).hexdigest()
+    path.write_text(json.dumps(frozen, indent=1) + "\n", encoding="utf-8")
+    print(json.dumps({k: v for k, v in frozen.items() if k != "models"}, indent=1))
+
+
 def heldout(which: str, frozen_file: str = "frozen.json") -> None:
     """The frozen models, once, on one held-out set."""
     import hashlib
@@ -600,7 +648,7 @@ def heldout(which: str, frozen_file: str = "frozen.json") -> None:
                             "f1 at 0.5": prf(*np.array(by[n]["per database at 0.5"]).sum(axis=0))[2]})
             print(f"{s:12} {n:22} P {p:.3f} R {r:.3f} F1 {f:.3f} {by[n]['f1_95']}")
         for n in names:
-            if n != "1s":
+            if n != "1s" and "1s" in boots:  # a reading of nine-mended alone has no 1s to subtract
                 by[n]["minus 1s, f1_95"] = interval(boots[n][:, 2] - boots["1s"][:, 2])
                 print(f"{s:12} {n:22} minus 1s {by[n]['f1'] - by['1s']['f1']:+.3f} {by[n]['minus 1s, f1_95']}")
     done.write_text(json.dumps(result, indent=1) + "\n", encoding="utf-8")
@@ -621,6 +669,10 @@ if __name__ == "__main__":
         freeze_final(sys.argv[2:])
     elif cmd == "freeze-rest":
         freeze_rest(sys.argv[2:])
+    elif cmd == "freeze-sets":
+        freeze_sets(sys.argv[2], sys.argv[3].split(","), sys.argv[4:])
+    elif cmd == "freeze-corrected":
+        freeze_corrected()
     elif cmd == "freeze-fresh":
         freeze_fresh(sys.argv[2])
     elif cmd == "freeze-style":

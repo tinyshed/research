@@ -579,7 +579,7 @@ pub struct Model {
     /// round 1t: a keys.bin of version 2 reads version 5's cues too
     pub cues: bool,
     /// round 1t: version 3 reads six.rs's candidates; its flags say which
-    /// cues (1 version 7, 2 version 8) and whether the graph stage reads its
+    /// cues (1 version 7, 2 version 8, 8 version 9) and whether the graph stage reads its
     /// schema relatively (4)
     pub version: u8,
     pub flags: u8,
@@ -884,7 +884,7 @@ impl Model {
     /// Version 3: six.rs's candidates by name, graph.py's 19 features and,
     /// where the flags say, stack.py's six; one target a column.
     pub fn score_six(&self, s: &Schema, threshold: f64, scratch: &mut Scratch) -> (Scored, Vec<[f32; 19]>) {
-        let (pairs, _) = six::pairs(s, self.flags & 3 != 0, self.flags & 2 != 0, false);
+        let (pairs, _) = six::pairs(s, self.flags & 3 != 0, self.flags & 2 != 0, self.flags & 8 != 0, false);
         let first: Vec<f32> = pairs.iter().map(|p| first_margin(&self.first, &p.features, scratch)).collect();
         let probs: Vec<f32> = first.iter().map(|&m| sigmoid32(m)).collect();
         let g = graph_features(s, &pairs, &probs);

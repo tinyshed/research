@@ -788,8 +788,15 @@ def sha256_file(p):
 def cmd_parse():
     # `parse rest`: the schemas the rule kept and did not select, written
     # beside the first set as a second held-out set (added 8 November 2026)
-    rest = len(sys.argv) > 2 and sys.argv[2] == "rest"
-    out = OUT + "-rest" if rest else OUT
+    # `parse typed` / `parse rest-typed` (added on 9 November 2026): the same
+    # sets with fill_keys and the training's families, into
+    # heldout-github-typed/ and heldout-github-rest-typed/
+    global PK_FALLBACK, TRAINING_FAMILIES
+    mode = sys.argv[2] if len(sys.argv) > 2 else ""
+    assert mode in ("", "rest", "typed", "rest-typed"), mode
+    rest = mode in ("rest", "rest-typed")
+    PK_FALLBACK = TRAINING_FAMILIES = mode.endswith("typed")
+    out = OUT + ("-" + mode if mode else "")
     cands = jload("candidates.json", {})
     repos = jload("repos.json", {})
     st = {"repos_found": len(cands), "drops": {}}
@@ -1210,5 +1217,5 @@ if __name__ == "__main__":
     cmds = {"find": cmd_find, "fetch": cmd_fetch, "parse": cmd_parse, "pool-style": cmd_pool_style,
             "fetch-style": cmd_fetch_style, "parse-style": cmd_parse_style}
     if len(sys.argv) not in (2, 3) or sys.argv[1] not in cmds:
-        sys.exit("usage: github.py find | fetch [N] | parse [rest] | pool-style | fetch-style N | parse-style [fixed|typed|fresh]")
+        sys.exit("usage: github.py find | fetch [N] | parse [rest|typed|rest-typed] | pool-style | fetch-style N | parse-style [fixed|typed|fresh]")
     cmds[sys.argv[1]]()

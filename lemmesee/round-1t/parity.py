@@ -52,9 +52,9 @@ def pack(models: Path) -> None:
     stages = packer.read(data)  # round 1p's reader knows version 1 only
     variant = variant_of(models)
     fit = json.load(open(models / "graph-final.json", encoding="utf-8"))
-    if variant in ("six", "seven", "eight"):
-        flags = (1 if variant in ("seven", "eight") else 0) | (2 if variant == "eight" else 0) | (
-            4 if fit.get("graph") == "relative" else 0)
+    if variant in ("six", "seven", "eight", "nine"):
+        flags = (1 if variant in ("seven", "eight", "nine") else 0) | (2 if variant == "eight" else 0) | (
+            4 if fit.get("graph") == "relative" else 0) | (8 if variant == "nine" else 0)
         data = data[:4] + bytes([3, flags]) + data[5:]
     elif cues.VARIANTS[variant]:
         data = data[:4] + bytes([2]) + data[5:]

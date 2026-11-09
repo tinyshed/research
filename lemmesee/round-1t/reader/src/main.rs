@@ -90,8 +90,8 @@ fn dump(args: &[String]) {
             continue;
         }
         let v = args.get(2).map(String::as_str).unwrap_or("both");
-        let (ps, names) = if matches!(v, "six" | "seven" | "eight") {
-            reader::six::pairs(&s, v != "six", v == "eight", true)
+        let (ps, names) = if matches!(v, "six" | "seven" | "eight" | "nine") {
+            reader::six::pairs(&s, v != "six", v == "eight", v == "nine", true)
         } else {
             pairs_named(&s, true, v == "cues")
         };

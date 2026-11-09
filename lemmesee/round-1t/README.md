@@ -309,3 +309,13 @@ $P -I round-1t/fit.py fit cues restyled cues-restyled cues-restyled-taught
 $P -I round-1t/fit.py score 1s cues restyled cues-restyled cues-restyled-taught
 $P -I round-1t/fit.py summarize
 ```
+- **The paper's final model measured** (9 November, afternoon; nothing
+  chosen, nothing fitted): `paper.py` runs rounds 1p, 1q and 1s's own
+  measurements on `nine-mended` with version 9's pairs; `fit.py
+  freeze-corrected` and `freeze-sets` freeze the readings of seen sets
+  (the first two GitHub sets as the fixed collector writes them,
+  `github.py parse typed` and `parse rest-typed`; the style set for
+  `nine-mended`); `judge.py pack fresh` judges the fresh set's undeclared
+  keys as the style set's were; round 1s's four language models were asked
+  on the fresh set under round 1s's protocol, at the owner's approval. The
+  report is `keys-final-2026-11-09.md`.

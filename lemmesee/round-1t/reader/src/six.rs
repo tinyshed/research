@@ -54,6 +54,57 @@ pub fn lex() -> &'static Lex {
     })
 }
 
+// --- version 9's roles (roles.py) -------------------------------------------
+
+pub struct Roles {
+    selfw: std::collections::HashSet<String>,
+    actor: std::collections::HashSet<String>,
+    person: std::collections::HashSet<String>,
+}
+
+pub fn roles() -> &'static Roles {
+    static ROLES: std::sync::OnceLock<Roles> = std::sync::OnceLock::new();
+    ROLES.get_or_init(|| {
+        let m: HashMap<String, Vec<String>> = serde_json::from_str(include_str!("../../roles.json")).unwrap();
+        let set = |k: &str| m.get(k).map(|v| v.iter().cloned().collect()).unwrap_or_default();
+        Roles { selfw: set("self"), actor: set("actor"), person: set("person") }
+    })
+}
+
+/// roles.py's `_tokens`: camel case split as its two substitutions do, then
+/// the ASCII letters' runs, lower-cased.
+fn role_tokens(name: &str) -> Vec<String> {
+    let c: Vec<char> = name.chars().collect();
+    let mut s1: Vec<char> = Vec::with_capacity(c.len() + 8);
+    for (i, &ch) in c.iter().enumerate() {
+        if i > 0 && ch.is_ascii_uppercase() && (c[i - 1].is_ascii_lowercase() || c[i - 1].is_ascii_digit()) {
+            s1.push(' ');
+        }
+        s1.push(ch);
+    }
+    let mut s2: Vec<char> = Vec::with_capacity(s1.len() + 8);
+    for (i, &ch) in s1.iter().enumerate() {
+        if i > 0 && ch.is_ascii_uppercase() && s1[i - 1].is_ascii_uppercase()
+            && s1.get(i + 1).is_some_and(|n| n.is_ascii_lowercase()) {
+            s2.push(' ');
+        }
+        s2.push(ch);
+    }
+    let lower: String = s2.iter().collect::<String>().to_lowercase();
+    lower.split(|ch: char| !ch.is_ascii_alphabetic()).filter(|t| !t.is_empty()).map(String::from).collect()
+}
+
+/// roles.py's `carries`: a token among the words, or, four letters or more, the
+/// name run together beginning or ending with one.
+fn carries(name: &str, words: &std::collections::HashSet<String>) -> bool {
+    let toks = role_tokens(name);
+    if toks.iter().any(|t| words.contains(t)) {
+        return true;
+    }
+    let run = toks.concat();
+    words.iter().any(|w| w.chars().count() >= 4 && (run.starts_with(w.as_str()) || run.ends_with(w.as_str())))
+}
+
 /// `split`: a token as vocabulary words, or itself.
 fn split(token: &str) -> Vec<String> {
     let lx = lex();
@@ -185,7 +236,7 @@ fn strip_digits(s: &str) -> &str {
 
 /// six.py's `pairs`, its version 7 and 8 cues as asked, each pair's named
 /// features kept when `keep_names`.
-pub fn pairs(s: &Schema, seven: bool, eight: bool, keep_names: bool) -> (Vec<Pair>, Vec<Named>) {
+pub fn pairs(s: &Schema, seven: bool, eight: bool, nine: bool, keep_names: bool) -> (Vec<Pair>, Vec<Named>) {
     let n_tables = s.tables.len();
     let mut targets: Vec<View> = Vec::new();
     for (ti, t) in s.tables.iter().enumerate() {
@@ -400,6 +451,19 @@ pub fn pairs(s: &Schema, seven: bool, eight: bool, keep_names: bool) -> (Vec<Pai
                         tail.set("v8 entity matches".into(), hits.min(3) as f64 / 3.0);
                         tail.set("v8 the table's entity names the column".into(),
                                  b(tw.iter().any(|w| rel.get(w).is_some_and(|rs| rs.iter().any(|r| cw7.contains(r))))));
+                    }
+                }
+                if nine {
+                    let r = roles();
+                    let own = target.name == table.name;
+                    if carries(&column.name, &r.selfw) {
+                        tail.set("v9 self word, own table".into(), b(own));
+                        tail.set("v9 self word, another table".into(), b(!own));
+                    }
+                    if carries(&column.name, &r.actor) {
+                        let person = carries(&target.name, &r.person);
+                        tail.set("v9 actor word, a table of people".into(), b(person));
+                        tail.set("v9 actor word, another table".into(), b(!person));
                     }
                 }
                 let tail_hashed = hashed(&tail);
