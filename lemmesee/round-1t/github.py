@@ -496,7 +496,45 @@ def norm(name):
     return (name or "").strip().strip('`"[]').lower()
 
 
+# The training's families (round-1b/prepare.py's `family`, its lists copied
+# here), added on 9 November 2026: the sets written before read `text` as
+# text where SchemaPile reads it as longtext, and `decimal`, `numeric`,
+# floats, booleans and times as other. Off for the sets written before it.
+TRAINING_FAMILIES = False
+B_INT = {"int", "integer", "bigint", "smallint", "tinyint", "mediumint", "unsignedint", "unsignedbigint",
+         "unsignedsmallint", "unsignedtinyint", "unsignedmediumint", "int2", "int4", "int8", "serial",
+         "bigserial", "smallserial", "number", "tech_id"}
+B_LONG_TEXT = {"text", "longtext", "mediumtext", "clob", "nclob", "ntext"}
+B_DECIMAL = {"decimal", "numeric", "money", "smallmoney", "udecimal"}
+B_FLOAT = {"float", "double", "real", "doubleprecision", "float4", "float8", "binary_double", "binary_float"}
+B_BOOL = {"boolean", "bool", "bit", "boolean_char"}
+
+
+def training_family(typ):
+    t = re.sub(r"[\s_]+", "", re.sub(r"\(.*?\)", "", typ or "").strip().lower())
+    t = t.replace("unsigned", "unsigned") if t.startswith("unsigned") else t.replace("unsigned", "")
+    if t in B_INT:
+        return "int"
+    if t in ("uuid", "uniqueidentifier"):
+        return "uuid"
+    if t in B_LONG_TEXT:
+        return "longtext"
+    if "char" in t or t in {"enum", "string", "tinytext", "code", "set", "citext"}:
+        return "text"
+    if t in B_DECIMAL:
+        return "decimal"
+    if t in B_FLOAT:
+        return "float"
+    if t in B_BOOL:
+        return "bool"
+    if "time" in t or t in {"date", "datetime", "datetime2", "smalldatetime"}:
+        return "date" if t == "date" else "time"
+    return "other"
+
+
 def family(typ):
+    if TRAINING_FAMILIES:
+        return training_family(typ)
     base = re.sub(r"\(.*?\)", "", typ).strip().lower()
     w = re.split(r"[\s\[]", base)[0] if base else ""
     if w in ("smallint", "integer", "int", "bigint", "serial", "bigserial",
@@ -641,6 +679,8 @@ def parse_file(text, dialect_list=DIALECTS):
                     add_column(tname, x, tab)
                 else:
                     add_constraint(tname, x, tab)
+    if PK_FALLBACK:
+        fill_keys(text, tables)
     for tname, tab in tables.items():
         for c in tab["pk"]:
             if c in tab["cols"]:
@@ -661,6 +701,73 @@ def parse_file(text, dialect_list=DIALECTS):
             seen.add((t, cols, rt))
             good.append((t, cols, rt))
     return d, tables, good
+
+
+# Primary keys a dialect's parse lost, read from the statements' text for a
+# table left with none (added on 9 November 2026, after the style set's
+# reading: T-SQL's `PRIMARY KEY CLUSTERED (col ASC)` under PostgreSQL's
+# dialect, `CONSTRAINT pk PRIMARY KEY (col)` with its comma missing, MySQL's
+# `col INT PRIMARY KEY AUTO_INCREMENT`, phpMyAdmin's `ALTER TABLE t ADD
+# PRIMARY KEY (id), ADD KEY ...`). Off for the sets written before it.
+PK_FALLBACK = False
+PK_LIST = re.compile(r"\bprimary\s+key\s*(?:clustered|nonclustered)?\s*\(([^()]*)\)", re.I)
+PK_BARE = re.compile(r"\bprimary\s+key\b(?!\s*(?:clustered|nonclustered)?\s*\()", re.I)
+CREATE_BODY = re.compile(r"^create\s+(?:or\s+replace\s+)?(?:(?:global\s+|local\s+)?(?:temporary|temp)\s+|unlogged\s+)?"
+                         r"table\s+(?:if\s+not\s+exists\s+)?([^\s(]+)\s*\((.*)\)", re.I | re.S)
+ALTER_PK = re.compile(r"^alter\s+table\s+(?:only\s+)?(?:if\s+exists\s+)?([^\s(]+)\s.*?\badd\s+(?:constraint\s+\S+\s+)?"
+                      r"primary\s+key\s*(?:clustered|nonclustered)?\s*\(([^()]*)\)", re.I | re.S)
+NOT_A_COLUMN = re.compile(r"(constraint|primary|unique|key|index|foreign|check|exclude|period)\b", re.I)
+
+
+def _table_name(raw):
+    return norm(re.split(r"\.(?=[^.]*$)", raw)[-1])
+
+
+def _key_columns(s):
+    return [norm(re.sub(r"\s+(asc|desc)\b.*$", "", c.strip(), flags=re.I | re.S)) for c in s.split(",") if c.strip()]
+
+
+def _top_level(body):
+    parts, depth, cur = [], 0, []
+    for ch in body:
+        if ch == "(":
+            depth += 1
+        elif ch == ")":
+            depth -= 1
+        if ch == "," and depth == 0:
+            parts.append("".join(cur))
+            cur = []
+        else:
+            cur.append(ch)
+    parts.append("".join(cur))
+    return parts
+
+
+def fill_keys(text, tables):
+    for st in split_statements(text):
+        cols, tname = [], None
+        m = CREATE_BODY.match(st)
+        if m:
+            tname = _table_name(m.group(1))
+            body = m.group(2)
+            found = PK_LIST.search(body)
+            if found:
+                cols = _key_columns(found.group(1))
+            else:
+                for part in _top_level(body):
+                    p = part.strip()
+                    if PK_BARE.search(p) and not NOT_A_COLUMN.match(p):
+                        first = re.match(r'[`"\[]?([^\s`"\]]+)', p)
+                        if first:
+                            cols = [norm(first.group(1))]
+                            break
+        else:
+            m = ALTER_PK.match(st)
+            if m:
+                tname, cols = _table_name(m.group(1)), _key_columns(m.group(2))
+        tab = tables.get(tname)
+        if tab is not None and not tab["pk"] and cols and all(c in tab["cols"] for c in cols):
+            tab["pk"] = cols
 
 
 def overlaps_sample(names):
@@ -840,6 +947,7 @@ def cmd_parse():
 STYLE_OUT = OUT + "-style"
 STYLE_MAX_ID = 0.25
 STYLE_TAKE = 100
+FRESH_SKIP = 1500  # the style set's fetched prefix: none of it is the fresh set's
 SP_HOLDS = 0.8
 FETCHED_DROPS = ("no_sql_file", "no_sql_with_references", "no_head_or_tree")
 
@@ -948,6 +1056,20 @@ def cmd_fetch_style():
 
 
 def cmd_parse_style():
+    # `parse-style fixed`: the same pool, the primary keys fill_keys reads
+    # too, into heldout-github-style-fixed/ (added on 9 November 2026)
+    # `parse-style typed`: and the training's families too, into
+    # heldout-github-style-typed/
+    global PK_FALLBACK, TRAINING_FAMILIES
+    mode = sys.argv[2] if len(sys.argv) > 2 else ""
+    # `parse-style fresh`: the fresh clean set of 9 November, written at
+    # 14:06 UTC: the pool after its first FRESH_SKIP by SHA-256, both fixes
+    # on, into heldout-github-style-fresh/
+    assert mode in ("", "fixed", "typed", "fresh"), mode
+    PK_FALLBACK = mode in ("fixed", "typed", "fresh")
+    TRAINING_FAMILIES = mode in ("typed", "fresh")
+    out = STYLE_OUT + ("-" + mode if mode else "")
+    skip = FRESH_SKIP if mode == "fresh" else 0
     _style_dirs()
     repos = jload("repos.json", {})
     sp = jload("schemapile.json", None)
@@ -956,7 +1078,7 @@ def cmd_parse_style():
         for t in names:
             posting.setdefault(t, []).append(i)
     seen_sets = set()
-    for d in (OUT, OUT + "-rest"):
+    for d in (OUT, OUT + "-rest") + ((STYLE_OUT,) if mode == "fresh" else ()):
         with open(os.path.join(d, "hidden.jsonl"), encoding="utf-8") as f:
             for line in f:
                 seen_sets.add(frozenset(t["name"] for t in json.loads(line)["tables"]))
@@ -970,7 +1092,8 @@ def cmd_parse_style():
         st["drops"][why] = st["drops"].get(why, 0) + 1
 
     ok = []
-    for fn in surv[:prefix]:
+    st["skipped, fetched before"] = skip
+    for fn in surv[skip:prefix]:
         rec = repos[fn]
         if "drop" in rec:
             drop(rec["drop"])
@@ -1031,15 +1154,15 @@ def cmd_parse_style():
         sys.exit("fewer than %d pass in the fetched prefix: fetch a longer one" % STYLE_TAKE)
     chosen = kept[:STYLE_TAKE]
     import shutil
-    shutil.rmtree(os.path.join(STYLE_OUT, "raw"), ignore_errors=True)
-    os.makedirs(os.path.join(STYLE_OUT, "raw"))
+    shutil.rmtree(os.path.join(out, "raw"), ignore_errors=True)
+    os.makedirs(os.path.join(out, "raw"))
     manifest, lines = [], []
     n_tab = n_fk1 = n_fkc = n_id = 0
     for rec in chosen:
         fn = rec["full_name"]
         safe = fn.replace("/", "__")
         tables, fks = rec["_tables"], rec["_fks"]
-        with open(os.path.join(STYLE_OUT, "raw", safe + ".sql"), "w", encoding="utf-8", newline="") as f:
+        with open(os.path.join(out, "raw", safe + ".sql"), "w", encoding="utf-8", newline="") as f:
             f.write(rec["_text"])
         manifest.append({"full_name": fn, "created_at": rec["created_at"], "default_branch": rec["default_branch"],
                          "commit": rec["commit"], "path": rec["path"], "licence": rec["licence"],
@@ -1057,13 +1180,13 @@ def cmd_parse_style():
         n_fk1 += len(one)
         n_id += sum(ends_in_id(c) for _, c, _ in one)
         n_tab += len(tl)
-        rid = "githubstyle/" + safe
-        lines.append(json.dumps({"id": rid, "repo": rid, "source": "githubstyle", "licence": rec["licence"] or "",
+        rid = ("githubfresh/" if mode == "fresh" else "githubstyle/") + safe
+        lines.append(json.dumps({"id": rid, "repo": rid, "source": "githubfresh" if mode == "fresh" else "githubstyle", "licence": rec["licence"] or "",
                                  "split": "external", "novel": False, "closed": [], "tables": tl, "fk": one},
                                 ensure_ascii=False))
-    with open(os.path.join(STYLE_OUT, "hidden.jsonl"), "w", encoding="utf-8", newline="\n") as f:
+    with open(os.path.join(out, "hidden.jsonl"), "w", encoding="utf-8", newline="\n") as f:
         f.write("".join(line + "\n" for line in lines))
-    with open(os.path.join(STYLE_OUT, "manifest.json"), "w", encoding="utf-8", newline="\n") as f:
+    with open(os.path.join(out, "manifest.json"), "w", encoding="utf-8", newline="\n") as f:
         json.dump(manifest, f, indent=1, ensure_ascii=False)
     dates = sorted(m["created_at"] for m in manifest)
     lic = {}
@@ -1074,12 +1197,12 @@ def cmd_parse_style():
               key_columns_ending_in_id=n_id, share_ending_in_id=round(n_id / n_fk1, 4) if n_fk1 else None,
               created_before_2025_07_01=sum(1 for m in manifest if m["created_at"][:10] < CREATED_FROM),
               created_at_min=dates[0], created_at_max=dates[-1], licences=lic)
-    with open(os.path.join(STYLE_OUT, "summary.json"), "w", encoding="utf-8", newline="\n") as f:
+    with open(os.path.join(out, "summary.json"), "w", encoding="utf-8", newline="\n") as f:
         json.dump(st, f, indent=1)
-    with open(os.path.join(STYLE_OUT, "sha256.txt"), "w", encoding="utf-8", newline="\n") as f:
-        f.write("%s  hidden.jsonl\n" % sha256_file(os.path.join(STYLE_OUT, "hidden.jsonl")))
-        for fnm in sorted(os.listdir(os.path.join(STYLE_OUT, "raw"))):
-            f.write("%s  raw/%s\n" % (sha256_file(os.path.join(STYLE_OUT, "raw", fnm)), fnm))
+    with open(os.path.join(out, "sha256.txt"), "w", encoding="utf-8", newline="\n") as f:
+        f.write("%s  hidden.jsonl\n" % sha256_file(os.path.join(out, "hidden.jsonl")))
+        for fnm in sorted(os.listdir(os.path.join(out, "raw"))):
+            f.write("%s  raw/%s\n" % (sha256_file(os.path.join(out, "raw", fnm)), fnm))
     print(json.dumps(st, indent=1))
 
 
@@ -1087,5 +1210,5 @@ if __name__ == "__main__":
     cmds = {"find": cmd_find, "fetch": cmd_fetch, "parse": cmd_parse, "pool-style": cmd_pool_style,
             "fetch-style": cmd_fetch_style, "parse-style": cmd_parse_style}
     if len(sys.argv) not in (2, 3) or sys.argv[1] not in cmds:
-        sys.exit("usage: github.py find | fetch [N] | parse [rest] | pool-style | fetch-style N | parse-style")
+        sys.exit("usage: github.py find | fetch [N] | parse [rest] | pool-style | fetch-style N | parse-style [fixed|typed|fresh]")
     cmds[sys.argv[1]]()

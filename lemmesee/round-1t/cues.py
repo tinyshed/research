@@ -42,7 +42,7 @@ import keys  # noqa: E402
 import widen  # noqa: E402
 from train import HASHED, norm, tokens  # noqa: E402
 
-VARIANTS = {"both": False, "cues": True, "six": True, "seven": True, "eight": True}
+VARIANTS = {"both": False, "cues": True, "six": True, "seven": True, "eight": True, "nine": True}
 
 
 def lcp(a: str, b: str) -> int:
@@ -138,9 +138,10 @@ def add_cues(f: dict, s: dict, table: dict, column: dict, target: dict, key: str
 
 
 def pairs(schemas, split, guesses, variant):
-    if variant in ("six", "seven", "eight"):
+    if variant in ("six", "seven", "eight", "nine"):
         import six  # noqa: E402
-        yield from six.pairs(schemas, split, guesses, seven=variant in ("seven", "eight"), eight=variant == "eight")
+        yield from six.pairs(schemas, split, guesses, seven=variant in ("seven", "eight", "nine"),
+                             eight=variant == "eight", nine=variant == "nine")
         return
     with_cues = VARIANTS[variant]
     for s in schemas:

@@ -94,11 +94,26 @@ def join(ws: list[str], case: str) -> str:
     return "".join(ws)
 
 
+# A key word first (`fk_cliente`, `id_pessoa`, `cod_produto`), added on
+# 9 November 2026 for the mended fit: the style set's keys were mostly so
+# named, and no drawn style put a key word anywhere but last. Drawn from a
+# generator of its own, seeded by the style's, so every other draw is as it was.
+KEY_FIRST = False
+FIRST_WORDS = [("fk",), ("id",), ("fk", "id"), ("cod",), ("codigo",), ("num",)]
+KEY_FIRST_SHARE = 0.3
+
+
 def draw(rng: random.Random) -> dict:
     """A house style."""
+    first = None
+    if KEY_FIRST:
+        own = random.Random(repr(rng.getstate()[1][:8]))
+        if own.random() < KEY_FIRST_SHARE:
+            first = own.choice(FIRST_WORDS)
     pk_end = rng.choice(KEY_ENDS)
     ref_end = pk_end if rng.random() < 0.4 else rng.choice(KEY_ENDS)
     return {
+        "key_first": first,
         "shorten": rng.choice(("keep", "keep", "first", "consonants", "mixed", "dictionary", "dictionary")
                               if DICTIONARY else ("keep", "keep", "first", "consonants", "mixed")),
         "shorten_share": rng.choice((0.3, 0.6, 1.0)),
@@ -154,6 +169,9 @@ def restyle(schema: dict, rng: random.Random, style: dict | None = None) -> dict
         case = table_case[t["name"]]
         if st["pk_named"] == "keep" or not ws:
             return join([word(w) for w in ws], case)
+        if st.get("key_first"):
+            fw = ["id"] if st["key_first"][0] == "fk" else list(st["key_first"])
+            return join(fw + entity[t["name"]], case)
         if st["pk_named"] == "bare" and len(ws) == 1 and ws[0] in ("id", "key", "code", "no"):
             return join([st["pk_end"]], case)
         body = ws[:-1] if len(ws) > 1 and ws[-1] in KEY_ENDS else (ws if ws[0] not in KEY_ENDS else [])
@@ -186,7 +204,15 @@ def restyle(schema: dict, rng: random.Random, style: dict | None = None) -> dict
             how = st["ref_from"]
             pk_words = words(new_pk[target]) if target in new_pk and len(pk_of[target]) == 1 else []
             pk_body = pk_words[:-1] if len(pk_words) > 1 and pk_words[-1] in KEY_ENDS else pk_words
-            if how == "target pk" and pk_body and not all(w in KEY_ENDS for w in pk_body):
+            if st.get("key_first"):
+                if how == "entity" and target in entity:
+                    core = entity[target]
+                elif how == "target pk" and pk_body:
+                    core = [w for w in pk_body if w not in KEY_ENDS and w not in st["key_first"]]
+                else:
+                    core = [word(w) for w in body if w not in KEY_ENDS]
+                new = join(list(st["key_first"]) + (core or entity.get(target, ["ref"])), case)
+            elif how == "target pk" and pk_body and not all(w in KEY_ENDS for w in pk_body):
                 new = join(pk_body + [end], case)
             elif how == "entity" and target in entity and body == words(target)[:len(body)] + []:
                 new = join(entity[target] + [end], case)

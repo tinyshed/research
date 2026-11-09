@@ -77,8 +77,9 @@ def words(name):
     return {singular(w) for w in tokens(name) if w not in keys.KEY_WORDS and len(w) >= 2}
 
 
-def pairs(schemas, split, guesses, seven=False, eight=False):
+def pairs(schemas, split, guesses, seven=False, eight=False, nine=False):
     import cues  # noqa: E402  (version 5, after this module is imported by it)
+    import roles  # noqa: E402  (version 9)
     import words7  # noqa: E402
     for s in schemas:
         if s["split"] != split or not s["fk"]:
@@ -185,4 +186,6 @@ def pairs(schemas, split, guesses, seven=False, eight=False):
                         words7.add_cues(f, col, target, g["key"])
                     if eight:
                         words7.add_related(f, col, target)
+                    if nine:
+                        roles.add_cues(f, col, target, table)
                     yield s, table, col, target, label, guess == target["name"], f, g["key"]

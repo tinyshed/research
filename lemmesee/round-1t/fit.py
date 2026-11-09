@@ -37,6 +37,7 @@ import random
 import sys
 import time
 from collections import defaultdict
+from functools import lru_cache
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -100,6 +101,9 @@ FITS = {
                                                       "shift-aware": True, "bounded second": True}),
     "seven-style": ("seven", True, False, {"dictionary shortening": True, "style graph": True,
                                            "shift-aware": True, "bounded second": True}),
+    # 9 November, the mended fit (README's last entries): every fix together, not a search
+    "nine-mended": ("nine", True, False, {"dictionary shortening": True, "bounded second": True,
+                                          "hard negatives": True, "key word first": True}),
     # a name of one word has no lead word (style.py, `style2`)
     "seven-style2": ("seven", True, False, {"dictionary shortening": True, "style graph": "style2",
                                             "shift-aware": True, "bounded second": True}),
@@ -112,6 +116,34 @@ MODELS = {"1s": (ROOT / "round-1s" / "models" / "both", "both")}
 MODELS.update({n: (OUT / "models" / n, f[0]) for n, f in FITS.items()})
 
 
+HARD_KEY_WORDS = {"id", "key", "code", "cod", "codigo", "no", "num", "nr", "fk", "pk", "ref", "uid", "uuid", "link", "ptr"}
+
+
+@lru_cache(maxsize=1_000_000)
+def looks_like(column: str, target: str) -> bool:
+    """An ordinary column named as a shortening of the target or sharing its
+    first three letters: `used` and `users`, `puntos` and `productos`."""
+    from train import singular, tokens
+    toks = tokens(column)
+    if not toks or toks[0] in HARD_KEY_WORDS or toks[-1] in HARD_KEY_WORDS:
+        return False
+    c = "".join(toks)
+    t = singular("".join(tokens(target)))
+    if len(c) < 3 or c == t or c == t + "s":
+        return False
+    if len(_common(c, t)) >= 3:
+        return True
+    it = iter(t)
+    return c[0] == t[:1] and len(c) < len(t) and all(ch in it for ch in c)
+
+
+def _common(a: str, b: str) -> str:
+    n = 0
+    while n < min(len(a), len(b)) and a[n] == b[n]:
+        n += 1
+    return a[:n]
+
+
 def fit_pairs(pool, schemas, guesses, variant, opts):
     """widen.fit, with the options a FITS entry may carry."""
     import lightgbm as lgb  # noqa: E402
@@ -119,7 +151,7 @@ def fit_pairs(pool, schemas, guesses, variant, opts):
     from train import NEGATIVES  # noqa: E402
     import stack  # noqa: E402
     if not (opts.get("reliable negatives") or opts.get("relative graph") or opts.get("shift-aware")
-            or opts.get("bounded second") or opts.get("style graph")):
+            or opts.get("bounded second") or opts.get("style graph") or opts.get("hard negatives")):
         return widen.fit(pool, schemas, guesses, variant)
     gf = stack.graph_features if opts.get("relative graph") else graph.graph_features
     if opts.get("style graph"):
@@ -134,6 +166,16 @@ def fit_pairs(pool, schemas, guesses, variant, opts):
     folds = np.array([graph.fold_of(m[graph.REPO]) for m in meta])
     sample = y | (np.random.default_rng(SEED).random(len(y)) < NEGATIVES)
     left_out = 0
+    hard_added = 0
+    if opts.get("hard negatives"):
+        # every ordinary column sharing a prefix or a shortening with its
+        # candidate target's name, no key of the schema, kept, not sampled
+        keyed = {(m[graph.SID], m[graph.TABLE], m[graph.COLUMN]) for m in meta if m[graph.LABEL]}
+        hard = np.fromiter((not m[graph.LABEL] and (m[graph.SID], m[graph.TABLE], m[graph.COLUMN]) not in keyed
+                            and looks_like(m[graph.COLUMN], m[graph.TARGET]) for m in meta), dtype=bool, count=len(meta))
+        hard_added = int((hard & ~sample).sum())
+        sample |= hard
+        clock(f"hard negatives: {int(hard.sum())}, {hard_added} not sampled before")
     if opts.get("reliable negatives"):
         ruled = np.array([m[graph.RULES] for m in meta], dtype=bool)
         left_out = int((sample & ruled & ~y).sum())
@@ -168,6 +210,7 @@ def fit_pairs(pool, schemas, guesses, variant, opts):
     threshold = keys.best_threshold(yv, kept)
     p, r, f = keys.at_threshold(yv, kept, threshold)
     result = {"variant": variant, "options": opts, "training pairs": len(meta), "negatives left out": left_out,
+              "hard negatives added": hard_added,
               "validation pairs": len(meta_v), "validation keys among candidates": int(yv.sum()),
               "threshold": threshold, "validation": {"precision": p, "recall": r, "f1": f,
                                                      "average_precision": float(average_precision_score(yv, kept))},
@@ -235,8 +278,10 @@ def fit(names: list[str]) -> None:
             opts = rest[0] if rest else {}
             t0 = time.time()
             restyle.DICTIONARY = bool(opts.get("dictionary shortening"))
+            restyle.KEY_FIRST = bool(opts.get("key word first"))
             schemas, guesses, counts = training_data(with_restyle, with_teachers, opts)
             restyle.DICTIONARY = False
+            restyle.KEY_FIRST = False
             print(f"{name}: {len(schemas)} schemas {counts} ({time.time() - t0:.0f} s)", flush=True)
             result, whole, second = fit_pairs(pool, schemas, guesses, variant, opts)
             result.update(fit=name, seed=SEED, grams="sorted", data=counts)
@@ -359,7 +404,13 @@ HELDOUT = {"github 2025": OUT / "heldout-github", "beaver": OUT / "heldout-beave
            # the 177 the rule kept beyond the first 80, written on the morning of 8 November
            "github 2025, rest": OUT / "heldout-github-rest",
            # 100 schemas in another house style, written on 9 November (github.py parse-style)
-           "github style": OUT / "heldout-github-style"}
+           "github style": OUT / "heldout-github-style",
+           # the same 100, their primary keys read by the fixed parser: a corrected reading of a seen set
+           "github style, fixed": OUT / "heldout-github-style-fixed",
+           # and their types in the training's families as well
+           "github style, typed": OUT / "heldout-github-style-typed",
+           # the fresh clean set, its rule written at 14:06 UTC on 9 November (github.py parse-style fresh)
+           "github fresh": OUT / "heldout-github-style-fresh"}
 
 
 def freeze(names: list[str]) -> None:
@@ -447,13 +498,13 @@ def freeze_rest(names: list[str]) -> None:
     print(json.dumps(frozen, indent=1))
 
 
-def freeze_style() -> None:
+def freeze_style(which: str = "github style", name: str = "frozen-style.json") -> None:
     """The set in another house style, hashed before it is read, and the four
     models exactly as frozen-rest.json holds them, their files checked
     unchanged since; written to frozen-style.json."""
     import hashlib
     from datetime import datetime, timezone
-    path = OUT / "frozen-style.json"
+    path = OUT / name
     if path.exists():
         raise SystemExit("already frozen")
     rest = json.load(open(OUT / "frozen-rest.json", encoding="utf-8"))
@@ -462,10 +513,36 @@ def freeze_style() -> None:
             d = MODELS[part][0]
             for k in ("keys-first.ubj", "keys-second.txt", "graph-final.json"):
                 assert hashlib.sha256((d / k).read_bytes()).hexdigest() == pf[k], (part, k)
-    which = "github style"
     frozen = {"frozen at": datetime.now(timezone.utc).isoformat(timespec="seconds"), "models": rest["models"],
               "models as frozen at": rest["frozen at"], "chosen by the rule": rest["chosen by the rule"],
               which: hashlib.sha256((HELDOUT[which] / "hidden.jsonl").read_bytes()).hexdigest()}
+    path.write_text(json.dumps(frozen, indent=1) + "\n", encoding="utf-8")
+    print(json.dumps({k: v for k, v in frozen.items() if k != "models"}, indent=1))
+
+
+def freeze_fresh(stage: str) -> None:
+    """`models`: 1s, seven-restyled, seven-bounded and nine-mended frozen by
+    hash into frozen-fresh.json before the fresh set is fetched; `set`: the
+    set's hash added once it is written, before it is read."""
+    import hashlib
+    from datetime import datetime, timezone
+    path = OUT / "frozen-fresh.json"
+    now = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    if stage == "models":
+        if path.exists():
+            raise SystemExit("already frozen")
+        frozen = {"frozen at": now, "chosen as the paper's model": "nine-mended", "models": {}}
+        for n in ("nine-mended", "1s", "seven-restyled", "seven-bounded"):
+            d, variant = MODELS[n]
+            frozen["models"][n] = {"parts": {n: {"variant": variant, **{
+                f: hashlib.sha256((d / f).read_bytes()).hexdigest()
+                for f in ("keys-first.ubj", "keys-second.txt", "graph-final.json")}}}}
+    else:
+        frozen = json.load(open(path, encoding="utf-8"))
+        if "github fresh" in frozen:
+            raise SystemExit("the set is frozen already")
+        frozen["github fresh"] = hashlib.sha256((HELDOUT["github fresh"] / "hidden.jsonl").read_bytes()).hexdigest()
+        frozen["github fresh, frozen at"] = now
     path.write_text(json.dumps(frozen, indent=1) + "\n", encoding="utf-8")
     print(json.dumps({k: v for k, v in frozen.items() if k != "models"}, indent=1))
 
@@ -544,8 +621,15 @@ if __name__ == "__main__":
         freeze_final(sys.argv[2:])
     elif cmd == "freeze-rest":
         freeze_rest(sys.argv[2:])
+    elif cmd == "freeze-fresh":
+        freeze_fresh(sys.argv[2])
     elif cmd == "freeze-style":
-        freeze_style()
+        if sys.argv[2:] == ["fixed"]:
+            freeze_style("github style, fixed", "frozen-style-fixed.json")
+        elif sys.argv[2:] == ["typed"]:
+            freeze_style("github style, typed", "frozen-style-typed.json")
+        else:
+            freeze_style()
     elif cmd == "heldout":
         heldout(sys.argv[2], *sys.argv[3:4])
     else:

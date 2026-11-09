@@ -2,7 +2,8 @@
 each model's recall on each shape; added on 9 November 2026, after the one
 reading of the set, which is development data from then on.
 
-    python -I shapes.py
+    python -I shapes.py          # the style set
+    python -I shapes.py fresh    # the fresh set, after its one reading
 
 A key's shape, from its column's name and its target's (letters and digits,
 lower-cased): a key word first (`id_pessoa`, `idpais`, `fk_projet`,
@@ -31,6 +32,8 @@ import fit  # noqa: E402
 import graph  # noqa: E402
 
 MODELS = ("1s", "seven-restyled", "seven-bounded")
+SETS = {"style": ("heldout-github-style", "githubstyle-all", MODELS),
+        "fresh": ("heldout-github-style-fresh", "githubfresh-all", ("1s", "seven-bounded", "nine-mended"))}
 
 
 def shape(col: str, target: str) -> str:
@@ -47,14 +50,15 @@ def shape(col: str, target: str) -> str:
     return "other"
 
 
-def main() -> None:
-    schemas = [json.loads(line) for line in open(fit.OUT / "heldout-github-style" / "hidden.jsonl", encoding="utf-8")]
+def main(which: str = "style") -> None:
+    folder, tag, models = SETS[which]
+    schemas = [json.loads(line) for line in open(fit.OUT / folder / "hidden.jsonl", encoding="utf-8")]
     errors.SHOWN = 10 ** 7
     found, rows, outside = {}, [], set()
     with letters.pool(graph.WORKERS) as pool:
-        for n in MODELS:
-            errors.one(n, "githubstyle-all", schemas, "external", {}, pool)
-            e = json.load(open(fit.OUT / "errors" / f"{n}--githubstyle-all.json", encoding="utf-8"))
+        for n in models:
+            errors.one(n, tag, schemas, "external", {}, pool)
+            e = json.load(open(fit.OUT / "errors" / f"{n}--{tag}.json", encoding="utf-8"))
             found[n] = {(x["database"], x["table"], x["column"]) for x in e["shown"]["found"]}
             if n == "1s":
                 rows = [x for k in ("found", "below the threshold", "won by another target", "not a candidate")
@@ -72,10 +76,10 @@ def main() -> None:
                **{f"recall, {n}": round(c[n] / c["keys"], 3) for n in found}}
            for s, c in sorted(by.items(), key=lambda kv: -kv[1]["keys"])}
     print(json.dumps(out, indent=1))
-    (fit.OUT / "errors" / "githubstyle-shapes.json").write_text(json.dumps(out, indent=1) + "\n", encoding="utf-8")
+    (fit.OUT / "errors" / f"{tag.split('-')[0]}-shapes.json").write_text(json.dumps(out, indent=1) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
     assert letters.is_sorted()
-    main()
+    main(*sys.argv[1:2])

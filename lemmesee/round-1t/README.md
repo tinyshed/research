@@ -247,6 +247,56 @@ data; the report says so first.
   models at 13:38 UTC (`frozen-style.json`) and read once
   (`fit.py heldout "github style" frozen-style.json`). Looked into after
   the reading, the set is development data from then on.
+- **A fresh clean set and one mended fit**, written at 14:06 UTC on
+  9 November 2026, before the fit below is made and before any of the set's
+  repositories is fetched; the owner approved the plan as a whole.
+  - *The set*: the style set's pool, filters and order exactly, with the
+    parser's primary-key fallback on (`github.py` `fill_keys`, written after
+    the style set's reading: T-SQL's `PRIMARY KEY CLUSTERED`, a key with its
+    comma missing, MySQL's inline key, `ALTER TABLE … ADD PRIMARY KEY`), and
+    without every repository fetched so far — the 400 of the two GitHub
+    sets and the style pool's first 1 500 by SHA-256. The first 100 that
+    pass, in the same SHA-256 order. Its repositories are fetched only after
+    the new fit is frozen. *Added at 14:11 UTC, before the fit and the
+    fetch*: the collector writes each column's type in the training's
+    families too (`github.py` `training_family`, round 1b's `family`): the
+    sets written before read `text` as text where SchemaPile reads it as
+    longtext, and `decimal`, `numeric`, floats, booleans and times as other,
+    so a `decimal` key, which version 6 reads as an integer, was no
+    candidate (245 of the style set's 1 791 keys).
+  - *The fit*: one, every fix together, not a search — the second stage's
+    leaves bounded as `seven-bounded`'s; hard negatives from SchemaPile's
+    training split (never the style set): ordinary columns that share a
+    prefix or a shortening with a candidate target's name and are no key,
+    all kept rather than sampled; the drawn styles gaining a key word first
+    (`fk_`, `id_`, `fk_id_`, `cod_`, `codigo_`, `num_`); and a multilingual
+    lexicon of roles that Claude Haiku 5.5 writes once, offline, as it wrote
+    the earlier ones — words naming a reference to a row's own table
+    (`jefe`, `chefe`, `boss`, `supervisor`, `parent`) and words naming a
+    creator or an owner (`criador`, `create_by`, `owner`), read as cues
+    against the pair's target. Haiku teaches it and judges nothing. A bug
+    that breaks the fit is mended and said; nothing is tuned.
+  - *What is decided now*: the new fit becomes the paper's model, because it
+    mends known defects, whatever its development numbers; they are reported
+    beside `seven-bounded`'s. `1s`, `seven-restyled`, `seven-bounded` and the
+    new fit are frozen by hash, the set fetched, frozen and read once, and
+    the reading reported whatever it is, beside every earlier reading, the
+    style set's −0.030 included.
+  Done as written: `nine-mended` fitted at 14:15–14:27 UTC, frozen with the
+  three others at 14:34:57 (`frozen-fresh.json`); the pool fetched to 3 100
+  by the hash, 113 passing after its first 1 500, the first 100 taken; the
+  set frozen at 14:51:38 and read once (`fit.py heldout "github fresh"
+  frozen-fresh.json`). Looked into after the reading, the set is
+  development data from then on.
+- **The style set judged, and read again with the fixed parser** (9
+  November, development data): Claude Sonnet 5.5 at medium effort, which
+  taught none of `1s`, `seven-restyled` and `seven-bounded`, judged blind
+  every pair one of them drew that no declaration names, among declared
+  keys and candidate pairs no model draws as controls (`judge.py`,
+  `judge-prompt.md`); and the set rewritten with `fill_keys`
+  (`github.py parse-style fixed`, the same 100 schemas and keys) was read by
+  the same four frozen models (`frozen-style-fixed.json`), a corrected
+  reading of a seen set, no model chosen on it.
 
 ## Run
 
