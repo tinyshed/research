@@ -64,7 +64,7 @@ def one(name, set_name, schemas, split, guesses, pool):
 
     declared_cols = {}
     for sid, ks in truth.items():
-        for t, c, r in ks:
+        for t, c, r in sorted(ks):  # a column declared into two targets keeps the last, the same every run
             declared_cols[(sid, t, c)] = r
     for (sid, t, c), r in declared_cols.items():
         row = {"database": sid, "table": t, "column": c, "target": r}

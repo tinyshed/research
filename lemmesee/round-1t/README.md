@@ -211,6 +211,42 @@ data; the report says so first.
   frozen in `frozen-rest.json` before it is read: `seven-restyled` (the
   rule's), `1s`, `seven-bounded` (the defect mended) and `seven-style` (the
   best on LiveSQLBench, 0.671), all four reported, nothing chosen after.
+- **A clean set in another house style**, written at 12:57 UTC on
+  9 November 2026 before any of its schemas was read; the owner chose the
+  source and the cut-off. Why: the round's gain where the style shifts stands
+  on development data only (LiveSQLBench, SchemaPile renamed) and on BEAVER,
+  read early by the first pass's models. The rule, applied by `github.py`:
+  - *the pool*: the 28 045 repositories the first collector's code search
+    found, created at any date, not forks, not archived, without the 400
+    fetched for the two GitHub sets above and without every repository
+    SchemaPile names (its `repo` field, compared case-insensitively);
+  - *per repository* the same file, parser and thresholds as the GitHub set
+    (steps 3 to 5 of `github.py`: the `.sql` file declaring the most keys at
+    the default branch's head, at least five tables and three resolving
+    keys, no copy of a sample database);
+  - *dropped as well*: a schema with the table-name set of one of the 257
+    the first rule kept, and a schema of which one SchemaPile schema holds
+    80 % of the table names, three at least;
+  - *the style filter, on names alone*: of the schema's declared one-column
+    keys, at most 25 % have a column whose name, lower-cased with everything
+    but letters and digits taken out, ends in `id`; no model's score is
+    read by it;
+  - *the set*: the first 100 that pass, by SHA-256 of `owner/name`. The pool
+    is fetched in that order a prefix at a time, so the first 100 passing in
+    a prefix are the first 100 of the pool; the collector reports counts
+    only before the reading.
+  The set is frozen by hash, then read once by `1s`, `seven-restyled` (the
+  paper's model, the rule's), `seven-bounded` and `seven-style` as
+  `frozen-rest.json` holds them, their hashes checked unchanged; no fit is
+  made before the reading. Reported: precision, recall and F1 with 95 %
+  intervals over databases, each minus `1s`, macro F1, F1 at 0.5, the keys
+  the candidates hold, and the set's share of key columns ending in `id`
+  beside LiveSQLBench's and Spider's.
+  Done as written: the pool's first 1 500 by the hash fetched (300, then
+  1 000, then 1 500), 108 passing, the first 100 taken; frozen with the
+  models at 13:38 UTC (`frozen-style.json`) and read once
+  (`fit.py heldout "github style" frozen-style.json`). Looked into after
+  the reading, the set is development data from then on.
 
 ## Run
 

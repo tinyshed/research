@@ -357,7 +357,9 @@ def summarize() -> None:
 
 HELDOUT = {"github 2025": OUT / "heldout-github", "beaver": OUT / "heldout-beaver",
            # the 177 the rule kept beyond the first 80, written on the morning of 8 November
-           "github 2025, rest": OUT / "heldout-github-rest"}
+           "github 2025, rest": OUT / "heldout-github-rest",
+           # 100 schemas in another house style, written on 9 November (github.py parse-style)
+           "github style": OUT / "heldout-github-style"}
 
 
 def freeze(names: list[str]) -> None:
@@ -445,6 +447,29 @@ def freeze_rest(names: list[str]) -> None:
     print(json.dumps(frozen, indent=1))
 
 
+def freeze_style() -> None:
+    """The set in another house style, hashed before it is read, and the four
+    models exactly as frozen-rest.json holds them, their files checked
+    unchanged since; written to frozen-style.json."""
+    import hashlib
+    from datetime import datetime, timezone
+    path = OUT / "frozen-style.json"
+    if path.exists():
+        raise SystemExit("already frozen")
+    rest = json.load(open(OUT / "frozen-rest.json", encoding="utf-8"))
+    for n, rec in rest["models"].items():
+        for part, pf in rec["parts"].items():
+            d = MODELS[part][0]
+            for k in ("keys-first.ubj", "keys-second.txt", "graph-final.json"):
+                assert hashlib.sha256((d / k).read_bytes()).hexdigest() == pf[k], (part, k)
+    which = "github style"
+    frozen = {"frozen at": datetime.now(timezone.utc).isoformat(timespec="seconds"), "models": rest["models"],
+              "models as frozen at": rest["frozen at"], "chosen by the rule": rest["chosen by the rule"],
+              which: hashlib.sha256((HELDOUT[which] / "hidden.jsonl").read_bytes()).hexdigest()}
+    path.write_text(json.dumps(frozen, indent=1) + "\n", encoding="utf-8")
+    print(json.dumps({k: v for k, v in frozen.items() if k != "models"}, indent=1))
+
+
 def heldout(which: str, frozen_file: str = "frozen.json") -> None:
     """The frozen models, once, on one held-out set."""
     import hashlib
@@ -519,6 +544,8 @@ if __name__ == "__main__":
         freeze_final(sys.argv[2:])
     elif cmd == "freeze-rest":
         freeze_rest(sys.argv[2:])
+    elif cmd == "freeze-style":
+        freeze_style()
     elif cmd == "heldout":
         heldout(sys.argv[2], *sys.argv[3:4])
     else:

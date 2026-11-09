@@ -823,8 +823,269 @@ def cmd_parse():
     print(json.dumps(st, indent=1))
 
 
+# ---------------------------------------------------------------- style set
+# The third held-out set, added on 9 November 2026 (round-1t/README.md): the
+# search's pool beyond the 400 the two GitHub sets fetched, any creation
+# date, no repository SchemaPile names; per repository steps 3 to 5 as
+# above; a schema dropped when it repeats one of the 257 kept above or one
+# SchemaPile schema holds SP_HOLDS of its table names; kept when at most
+# STYLE_MAX_ID of its declared one-column keys have a column ending in `id`;
+# the first STYLE_TAKE by SHA-256 of owner/name. Its own directory:
+# heldout-github-style/, the first sets' files untouched.
+#
+#   python github.py pool-style    # needs work/schemapile.json (fit side)
+#   python github.py fetch-style N # the first N of the pool by SHA-256
+#   python github.py parse-style   # counts only; the set once 100 pass
+
+STYLE_OUT = OUT + "-style"
+STYLE_MAX_ID = 0.25
+STYLE_TAKE = 100
+SP_HOLDS = 0.8
+FETCHED_DROPS = ("no_sql_file", "no_sql_with_references", "no_head_or_tree")
+
+
+def _style_dirs():
+    global WORK
+    WORK = os.path.join(STYLE_OUT, "work")
+    os.makedirs(os.path.join(WORK, "files"), exist_ok=True)
+
+
+def ends_in_id(name):
+    return re.sub(r"[^a-z0-9]", "", name.lower()).endswith("id")
+
+
+def by_hash(fn):
+    return hashlib.sha256(fn.encode()).hexdigest()
+
+
+def cmd_pool_style():
+    with open(os.path.join(OUT, "work", "repos.json"), encoding="utf-8") as f:
+        first = json.load(f)
+    _style_dirs()
+    sp = jload("schemapile.json", None)
+    if sp is None:
+        sys.exit("work/schemapile.json first: SchemaPile's repos and table sets")
+    named = set(sp["repos"])
+    repos = jload("repos.json", {})
+    st = {"found": len(first), "drops": {}}
+
+    def drop(why):
+        st["drops"][why] = st["drops"].get(why, 0) + 1
+
+    todo = []
+    for fn, r in first.items():
+        if "path" in r or "sql_files" in r or r.get("drop") in FETCHED_DROPS:
+            drop("fetched for the two GitHub sets")
+        elif r.get("drop") == "repo_unavailable":
+            drop("repo_unavailable")
+        elif r.get("fork"):
+            drop("fork")
+        elif r.get("archived"):
+            drop("archived")
+        elif r["full_name"].lower() in named:
+            drop("named in SchemaPile")
+        elif fn not in repos:
+            if "commit" in r:
+                repos[fn] = {k: r[k] for k in ("full_name", "created_at", "licence", "fork", "archived",
+                                               "default_branch", "commit")}
+            else:
+                todo.append(fn)
+    print("metadata again, for the head: %d" % len(todo), flush=True)
+    for i in range(0, len(todo), 50):
+        chunk = todo[i:i + 50]
+        for fn, m in zip(chunk, graphql_meta(chunk)):
+            if m is None:
+                repos[fn] = {"full_name": fn, "drop": "repo_unavailable"}
+                continue
+            dbr = m.get("defaultBranchRef")
+            lic = (m.get("licenseInfo") or {}).get("spdxId")
+            rec = {"full_name": m["nameWithOwner"], "created_at": m["createdAt"],
+                   "licence": None if lic in ("NOASSERTION", "") else lic,
+                   "fork": m["isFork"], "archived": m["isArchived"]}
+            if not dbr:
+                rec["drop"] = "no_head_or_tree"
+            else:
+                rec["default_branch"] = dbr["name"]
+                rec["commit"] = dbr["target"]["oid"]
+            repos[fn] = rec
+        if (i // 50) % 10 == 9:
+            jsave("repos.json", repos)
+            print("  metadata %d/%d" % (i + 50, len(todo)), flush=True)
+    jsave("repos.json", repos)
+    st["pool"] = sum(1 for r in repos.values() if "commit" in r)
+    st["pool, created before 2025-07-01"] = sum(1 for r in repos.values() if "commit" in r
+                                               and r["created_at"][:10] < CREATED_FROM)
+    print(json.dumps(st, indent=1))
+
+
+def cmd_fetch_style():
+    _style_dirs()
+    repos = jload("repos.json", {})
+    limit = int(sys.argv[2])
+    surv = sorted((fn for fn, r in repos.items() if "commit" in r), key=lambda fn: by_hash(repos[fn]["full_name"]))
+    need = [fn for fn in surv[:limit] if "path" not in repos[fn] and "drop" not in repos[fn]]
+    print("pool: %d, the first %d, to fetch: %d" % (len(surv), limit, len(need)), flush=True)
+
+    def one(fn):
+        try:
+            return fn, fetch_files(repos[fn])
+        except Exception as e:
+            print("  error: %s" % str(e)[:80], flush=True)
+            return None
+
+    n = 0
+    with ThreadPoolExecutor(4) as ex:
+        for res in ex.map(one, need):
+            if res is None:
+                continue
+            repos[res[0]] = res[1]
+            n += 1
+            if n % 25 == 0:
+                jsave("repos.json", repos)
+                print("  files %d/%d" % (n, len(need)), flush=True)
+    jsave("repos.json", repos)
+    print("done: fetched %d" % n, flush=True)
+
+
+def cmd_parse_style():
+    _style_dirs()
+    repos = jload("repos.json", {})
+    sp = jload("schemapile.json", None)
+    posting = {}
+    for i, names in enumerate(sp["tables"]):
+        for t in names:
+            posting.setdefault(t, []).append(i)
+    seen_sets = set()
+    for d in (OUT, OUT + "-rest"):
+        with open(os.path.join(d, "hidden.jsonl"), encoding="utf-8") as f:
+            for line in f:
+                seen_sets.add(frozenset(t["name"] for t in json.loads(line)["tables"]))
+    surv = sorted((fn for fn, r in repos.items() if "commit" in r), key=lambda fn: by_hash(repos[fn]["full_name"]))
+    prefix = 0
+    while prefix < len(surv) and ("path" in repos[surv[prefix]] or "drop" in repos[surv[prefix]]):
+        prefix += 1
+    st = {"pool": len(surv), "fetched prefix by SHA-256": prefix, "drops": {}}
+
+    def drop(why):
+        st["drops"][why] = st["drops"].get(why, 0) + 1
+
+    ok = []
+    for fn in surv[:prefix]:
+        rec = repos[fn]
+        if "drop" in rec:
+            drop(rec["drop"])
+            continue
+        p = os.path.join(WORK, "files", rec["full_name"].replace("/", "__") + ".sql")
+        with open(p, encoding="utf-8", newline="") as f:
+            text = f.read()
+        try:
+            r = parse_file(text)
+        except Exception:
+            r = None
+        if r is None:
+            drop("no_table_parsed")
+            continue
+        d, tables, fks = r
+        names = set(tables)
+        if overlaps_sample(names):
+            drop("sample_database_overlap")
+            continue
+        if len(tables) < MIN_TABLES:
+            drop("fewer_than_%d_tables" % MIN_TABLES)
+            continue
+        if len(fks) < MIN_FKS:
+            drop("fewer_than_%d_resolved_fks" % MIN_FKS)
+            continue
+        if frozenset(names) in seen_sets:
+            drop("a schema of the two GitHub sets")
+            continue
+        shared = {}
+        for t in names:
+            for i in posting.get(t, ()):
+                shared[i] = shared.get(i, 0) + 1
+        top = max(shared.values(), default=0)
+        if top >= 3 and top / len(names) >= SP_HOLDS:
+            drop("held by a SchemaPile schema")
+            continue
+        one = [(t, c[0], rt) for t, c, rt in fks if len(c) == 1]
+        if not one:
+            drop("no one-column key")
+            continue
+        if sum(ends_in_id(c) for _, c, _ in one) / len(one) > STYLE_MAX_ID:
+            drop("style: over %d %% of keys end in id" % round(STYLE_MAX_ID * 100))
+            continue
+        ok.append(dict(rec, dialect=d, _tables=tables, _fks=fks, _text=text))
+    groups = {}
+    for rec in ok:
+        groups.setdefault(frozenset(rec["_tables"]), []).append(rec)
+    kept = []
+    for g in groups.values():
+        g.sort(key=lambda r: (r["created_at"], r["full_name"]))
+        kept.append(g[0])
+        for _ in g[1:]:
+            drop("duplicate_table_set")
+    kept.sort(key=lambda r: by_hash(r["full_name"]))
+    st["passing"] = len(kept)
+    if len(kept) < STYLE_TAKE:
+        print(json.dumps(st, indent=1))
+        sys.exit("fewer than %d pass in the fetched prefix: fetch a longer one" % STYLE_TAKE)
+    chosen = kept[:STYLE_TAKE]
+    import shutil
+    shutil.rmtree(os.path.join(STYLE_OUT, "raw"), ignore_errors=True)
+    os.makedirs(os.path.join(STYLE_OUT, "raw"))
+    manifest, lines = [], []
+    n_tab = n_fk1 = n_fkc = n_id = 0
+    for rec in chosen:
+        fn = rec["full_name"]
+        safe = fn.replace("/", "__")
+        tables, fks = rec["_tables"], rec["_fks"]
+        with open(os.path.join(STYLE_OUT, "raw", safe + ".sql"), "w", encoding="utf-8", newline="") as f:
+            f.write(rec["_text"])
+        manifest.append({"full_name": fn, "created_at": rec["created_at"], "default_branch": rec["default_branch"],
+                         "commit": rec["commit"], "path": rec["path"], "licence": rec["licence"],
+                         "html_url": "https://github.com/%s/blob/%s/%s" % (fn, rec["commit"],
+                                                                         urllib.parse.quote(rec["path"])),
+                         "dialect": rec["dialect"]})
+        tl = []
+        for tn, tab in tables.items():
+            cols = [{"name": cn, "family": family(c["type"]), "type": c["type"], "nullable": c["nullable"],
+                     "unique": c["unique"], "primary": c["primary"], "index": bool(c.get("index", False)),
+                     "position": i} for i, (cn, c) in enumerate(tab["cols"].items())]
+            tl.append({"name": tn, "pk": [c for c in tab["pk"] if c in tab["cols"]], "columns": cols})
+        one = [[t, c[0], rt] for t, c, rt in fks if len(c) == 1]
+        n_fkc += sum(1 for _, c, _ in fks if len(c) > 1)
+        n_fk1 += len(one)
+        n_id += sum(ends_in_id(c) for _, c, _ in one)
+        n_tab += len(tl)
+        rid = "githubstyle/" + safe
+        lines.append(json.dumps({"id": rid, "repo": rid, "source": "githubstyle", "licence": rec["licence"] or "",
+                                 "split": "external", "novel": False, "closed": [], "tables": tl, "fk": one},
+                                ensure_ascii=False))
+    with open(os.path.join(STYLE_OUT, "hidden.jsonl"), "w", encoding="utf-8", newline="\n") as f:
+        f.write("".join(line + "\n" for line in lines))
+    with open(os.path.join(STYLE_OUT, "manifest.json"), "w", encoding="utf-8", newline="\n") as f:
+        json.dump(manifest, f, indent=1, ensure_ascii=False)
+    dates = sorted(m["created_at"] for m in manifest)
+    lic = {}
+    for m in manifest:
+        k = m["licence"] or "none"
+        lic[k] = lic.get(k, 0) + 1
+    st.update(schemas=len(chosen), tables=n_tab, one_column_fks=n_fk1, composite_fks=n_fkc,
+              key_columns_ending_in_id=n_id, share_ending_in_id=round(n_id / n_fk1, 4) if n_fk1 else None,
+              created_before_2025_07_01=sum(1 for m in manifest if m["created_at"][:10] < CREATED_FROM),
+              created_at_min=dates[0], created_at_max=dates[-1], licences=lic)
+    with open(os.path.join(STYLE_OUT, "summary.json"), "w", encoding="utf-8", newline="\n") as f:
+        json.dump(st, f, indent=1)
+    with open(os.path.join(STYLE_OUT, "sha256.txt"), "w", encoding="utf-8", newline="\n") as f:
+        f.write("%s  hidden.jsonl\n" % sha256_file(os.path.join(STYLE_OUT, "hidden.jsonl")))
+        for fnm in sorted(os.listdir(os.path.join(STYLE_OUT, "raw"))):
+            f.write("%s  raw/%s\n" % (sha256_file(os.path.join(STYLE_OUT, "raw", fnm)), fnm))
+    print(json.dumps(st, indent=1))
+
+
 if __name__ == "__main__":
-    cmds = {"find": cmd_find, "fetch": cmd_fetch, "parse": cmd_parse}
+    cmds = {"find": cmd_find, "fetch": cmd_fetch, "parse": cmd_parse, "pool-style": cmd_pool_style,
+            "fetch-style": cmd_fetch_style, "parse-style": cmd_parse_style}
     if len(sys.argv) not in (2, 3) or sys.argv[1] not in cmds:
-        sys.exit("usage: github.py find | fetch [N] | parse [rest]")
+        sys.exit("usage: github.py find | fetch [N] | parse [rest] | pool-style | fetch-style N | parse-style")
     cmds[sys.argv[1]]()
