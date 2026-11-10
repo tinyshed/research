@@ -1,0 +1,4402 @@
+{
+"01-001": {
+"pair": [
+"140322_hive-schema-3.1.0.oracle.sql",
+"SDS",
+"CD_ID",
+"CDS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-002": {
+"pair": [
+"257813_pro_ryan.sql",
+"coupon",
+"id_customer",
+"customer"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-003": {
+"pair": [
+"495764_sub_contract.sql",
+"nominee",
+"user_id",
+"master_user"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-004": {
+"pair": [
+"086201_db2_engine_7.4.0.sql",
+"ACT_RU_TASK",
+"CASE_EXECUTION_ID_",
+"ACT_RU_CASE_EXECUTION"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"01-005": {
+"pair": [
+"217407_keycloak.sql",
+"FED_USER_GROUP_MEMBERSHIP",
+"GROUP_ID",
+"GROUP_ATTRIBUTE"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"01-006": {
+"pair": [
+"378051_V5.4.20210810_1738__TBE366.sql",
+"ACT_HI_TASKINST",
+"ASSIGNEE_",
+"ACT_ID_USER"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"01-007": {
+"pair": [
+"433453_laundrydev.sql",
+"complaints",
+"faculty_id",
+"faculties"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-008": {
+"pair": [
+"107466_schema-072.sql",
+"EXPERIMENTS",
+"IS_PUBLIC",
+"EXPERIMENTS"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"01-009": {
+"pair": [
+"042600_V_61__create_sec.sql",
+"sec_cds",
+"security_id",
+"sec_security"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"01-010": {
+"pair": [
+"566034_offersnearme.sql",
+"adminbusinesschat",
+"BusinessId",
+"businessdetails"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-011": {
+"pair": [
+"207202_schema.sql",
+"entries",
+"deck",
+"decks"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-012": {
+"pair": [
+"324917_schema-044.sql",
+"DATA_SET_TYPES",
+"DBIN_ID",
+"DATABASE_INSTANCES"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"01-013": {
+"pair": [
+"086201_db2_engine_7.4.0.sql",
+"ACT_RE_CASE_DEF",
+"DEPLOYMENT_ID_",
+"ACT_RE_DEPLOYMENT"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-014": {
+"pair": [
+"411230_001-auto.sql",
+"action",
+"row_id",
+"item"
+],
+"kind": "named by one",
+"answer": "unsure"
+},
+"01-015": {
+"pair": [
+"316782_transcribedb.ddl",
+"REGISTEREDAPPUSERS_ACTIVITY_LOG",
+"user_id",
+"REGISTEREDAPPUSERS"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"01-016": {
+"pair": [
+"148773_database.sql",
+"PARTY_ROLE_ENTITY_GROUP.SELLER_PARTY_JOIN",
+"SELLER_ID",
+"PARTY_ROLE_ENTITY_GROUP.SELLER"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"01-017": {
+"pair": [
+"108115_hive-schema-4.0.0.oracle.sql",
+"TBLS",
+"TBL_NAME",
+"WRITE_SET"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"01-018": {
+"pair": [
+"282052_ltc_botino.sql",
+"housing",
+"type_housing_id",
+"type_housing"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-019": {
+"pair": [
+"008133_schema-169.sql",
+"scripts",
+"PERS_ID_REGISTERER",
+"PERSONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-020": {
+"pair": [
+"363685_online_bookshop.sql",
+"author_and_categories",
+"category_id",
+"book_category"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-021": {
+"pair": [
+"539321_schema_0.sql",
+"plan_notification",
+"template",
+"plan_notification"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"01-022": {
+"pair": [
+"209992_flowable.db2.all.create.sql",
+"ACT_FO_FORM_DEFINITION",
+"DEPLOYMENT_ID_",
+"ACT_FO_FORM_DEPLOYMENT"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-023": {
+"pair": [
+"498454_db.sql",
+"mst_ticket_pricedefault",
+"ticketpricedef_ticket_id",
+"mst_ticket_text"
+],
+"kind": "taught by both",
+"answer": "no"
+},
+"01-024": {
+"pair": [
+"021962_V_55__create_sec.sql",
+"sec_ndffxdigitaloption",
+"security_id",
+"sec_idkey"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"01-025": {
+"pair": [
+"304155_schema-051.sql",
+"SAMPLE_TYPE_PROPERTY_TYPES",
+"SATY_ID",
+"SAMPLE_TYPES"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"01-026": {
+"pair": [
+"659339_vaskenba_mehe.sql",
+"game_regions",
+"region_id_2",
+"regions"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-027": {
+"pair": [
+"017064_pa_hpp.sql",
+"menu_item",
+"url",
+"type_of_materials"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"01-028": {
+"pair": [
+"209992_flowable.db2.all.create.sql",
+"ACT_HI_ACTINST",
+"PROC_DEF_ID_",
+"ACT_RE_PROCDEF"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-029": {
+"pair": [
+"017064_pa_hpp.sql",
+"overhead_cost",
+"oc_id",
+"overhead_component"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-030": {
+"pair": [
+"524452_Ambari-DDL-MySQL-CREATE.sql",
+"viewparameter",
+"label",
+"QRTZ_LOCKS"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"01-031": {
+"pair": [
+"231608_flowable.hsql.all.create.sql",
+"ACT_RU_VARIABLE",
+"PROC_INST_ID_",
+"ACT_RU_EXECUTION"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-032": {
+"pair": [
+"217407_keycloak.sql",
+"AUTHENTICATOR_CONFIG",
+"REALM_ID",
+"REALM_ATTRIBUTE"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"01-033": {
+"pair": [
+"099061_V_49__create_sec.sql",
+"sec_capfloor",
+"currency_id",
+"sec_currency"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"01-034": {
+"pair": [
+"042600_V_61__create_sec.sql",
+"sec_cash",
+"security_id",
+"sec_security"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"01-035": {
+"pair": [
+"647706_bdpyme10112020.sql",
+"tbl_clientes",
+"idcliente",
+"tbl_modalidades_pagos"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"01-036": {
+"pair": [
+"148514_elearning_academy.sql",
+"user_profile_education",
+"user_id",
+"user_profile_userprofile"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"01-037": {
+"pair": [
+"437996_schema-128.sql",
+"SAMPLE_PROPERTIES",
+"STPT_ID",
+"SAMPLE_TYPE_PROPERTY_TYPES"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"01-038": {
+"pair": [
+"372684_backend_db_script_v2.sql",
+"group_role",
+"role_id",
+"role_resource"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"01-039": {
+"pair": [
+"086201_db2_engine_7.4.0.sql",
+"ACT_HI_PROCINST",
+"SUPER_CASE_INSTANCE_ID_",
+"ACT_HI_CASEINST"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-040": {
+"pair": [
+"527016_002activiti.sql",
+"act_ru_job",
+"EXECUTION_ID_",
+"act_ru_execution"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-041": {
+"pair": [
+"116673_giripalma.sql",
+"ospos_inventory",
+"trans_user",
+"ospos_employees"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-042": {
+"pair": [
+"336251_schema-079.sql",
+"EXPERIMENT_TYPE_PROPERTY_TYPES",
+"EXTY_ID",
+"EXPERIMENT_TYPES"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"01-043": {
+"pair": [
+"006332_jolly_rex_db_2019-04-20.sql",
+"tbl_entertainer_busy_schedule_staff",
+"creator_id",
+"tbl_admin"
+],
+"kind": "taught by both",
+"answer": "unsure"
+},
+"01-044": {
+"pair": [
+"282052_ltc_botino.sql",
+"artisan_appel_telephone",
+"artisan_id",
+"artisan"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-045": {
+"pair": [
+"501544_global_baseline.sql",
+"UserMembership",
+"areaOid",
+"Area"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-046": {
+"pair": [
+"675478_sts.cst_create_tibero.sql",
+"COMTNEMPLYRINFO",
+"PSTINST_CODE",
+"COMTNFILEDETAIL"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"01-047": {
+"pair": [
+"290479_test2_22_10_2018.sql",
+"trans_quotation",
+"vehicle_id",
+"trans_vehicle_services"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"01-048": {
+"pair": [
+"112443_flowable.db2.all.create.sql",
+"ACT_RU_HISTORY_JOB",
+"CUSTOM_VALUES_ID_",
+"ACT_GE_BYTEARRAY"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-049": {
+"pair": [
+"524452_Ambari-DDL-MySQL-CREATE.sql",
+"taskAttempt",
+"taskAttemptId",
+"taskAttempt"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"01-050": {
+"pair": [
+"433453_laundrydev.sql",
+"cu_deliver_orders",
+"cue_id",
+"cu_employees"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-051": {
+"pair": [
+"679725_1-schema.sql",
+"color_pattern_translation",
+"species",
+"species_translation"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-052": {
+"pair": [
+"140322_hive-schema-3.1.0.oracle.sql",
+"TBL_PRIVS",
+"TBL_ID",
+"TBLS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-053": {
+"pair": [
+"366544_install.sql",
+"cm_patient",
+"patient_id",
+"patient"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-054": {
+"pair": [
+"231608_flowable.hsql.all.create.sql",
+"ACT_RU_DEADLETTER_JOB",
+"PROC_DEF_ID_",
+"ACT_RE_PROCDEF"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-055": {
+"pair": [
+"217407_keycloak.sql",
+"USER_SESSION_NOTE",
+"USER_SESSION",
+"USER_SESSION"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"01-056": {
+"pair": [
+"476349_ecodb.sql",
+"mshop_index_price",
+"currencyid",
+"mshop_locale_currency"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"01-057": {
+"pair": [
+"581579_goodlife%201-8.sql",
+"keys",
+"user_id",
+"admin"
+],
+"kind": "taught by both",
+"answer": "unsure"
+},
+"01-058": {
+"pair": [
+"107466_schema-072.sql",
+"EXPERIMENTS",
+"PROJ_ID",
+"PROJECTS"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"01-059": {
+"pair": [
+"384635_V_51__create_sec.sql",
+"sec_equityoption",
+"security_id",
+"sec_raw"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"01-060": {
+"pair": [
+"378051_V5.4.20210810_1738__TBE366.sql",
+"ACT_HI_TASKINST",
+"ACT_INST_ID_",
+"ACT_HI_ACTINST"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-061": {
+"pair": [
+"361218_oas_schema_sql.sql",
+"act_ru_task",
+"EXECUTION_ID_",
+"act_ru_task"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"01-062": {
+"pair": [
+"045700_beta_micro_v2.0.sql",
+"users_portfolio",
+"user_id",
+"users"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-063": {
+"pair": [
+"541715_V_47__create_sec.sql",
+"sec_swap",
+"pay_daycount_id",
+"sec_daycount"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-064": {
+"pair": [
+"008133_schema-169.sql",
+"SEMANTIC_ANNOTATIONS",
+"SATY_ID",
+"SAMPLE_TYPES"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-065": {
+"pair": [
+"379234_V1.0__Create_Tables.sql",
+"ACT_HI_INCIDENT",
+"ROOT_CAUSE_INCIDENT_ID_",
+"ACT_HI_INCIDENT"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"01-066": {
+"pair": [
+"679179_schema.sql",
+"dirtlist",
+"userId",
+"dirtapiauth"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"02-001": {
+"pair": [
+"627545_V1__Base_version.sql",
+"oa_leave",
+"reason",
+"t02_stockin_mate"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"02-002": {
+"pair": [
+"020987_dss.sql",
+"student",
+"experience_id",
+"experience"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"02-003": {
+"pair": [
+"366785_mysql.ddl",
+"j3_publisher_assertion_j3_signature",
+"PublisherAssertion_to_key",
+"j3_publisher_assertion"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"02-004": {
+"pair": [
+"656145_schema-186.sql",
+"CONTENT_COPIES",
+"DATA_ID",
+"DATA_ALL"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"02-005": {
+"pair": [
+"093422_V_57__create_sec.sql",
+"sec_equity_variance_swap",
+"region_scheme",
+"sec_yieldconvention"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"02-006": {
+"pair": [
+"097909_createTables.sql",
+"user_contactinfo",
+"userId",
+"user_"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"02-007": {
+"pair": [
+"628339_db_eduBingo.sql",
+"TBL_USER",
+"ID_USER_DETAILS",
+"TBL_USER_DETAILS"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"02-008": {
+"pair": [
+"686260_unions.sql",
+"unions.user",
+"personal_info",
+"unions.feature"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"02-009": {
+"pair": [
+"588497_Ambari-DDL-Oracle-CREATE.sql",
+"workflow",
+"parentWorkflowId",
+"workflow"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"02-010": {
+"pair": [
+"087341_CREATE_ADE_DB.sql",
+"ng_thermalboundary",
+"surfacegeometry_id",
+"ng_layer"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"02-011": {
+"pair": [
+"003055_MySqlTotal-480.sql",
+"cmsTab",
+"id",
+"umbracoNode"
+],
+"kind": "taught by both",
+"answer": "no"
+},
+"02-012": {
+"pair": [
+"165292_V_59__create_sec.sql",
+"sec_swap",
+"receive_businessdayconvention_id",
+"sec_businessdayconvention"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"02-013": {
+"pair": [
+"310943_schema-122.sql",
+"EXPERIMENT_PROPERTIES",
+"PERS_ID_AUTHOR",
+"PERSONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"02-014": {
+"pair": [
+"044768_schema-050.sql",
+"DATA_SET_RELATIONSHIPS",
+"DATA_ID_PARENT",
+"DATA"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"02-015": {
+"pair": [
+"686260_unions.sql",
+"unions.floor",
+"create_user_id",
+"unions.user"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"02-016": {
+"pair": [
+"554409_identity.sql",
+"IDN_OAUTH2_DEVICE_FLOW",
+"IDP_ID",
+"IDP"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"02-017": {
+"pair": [
+"532158_03.wecube.flow_engine.schema.sql",
+"act_re_decision_req_def",
+"DEPLOYMENT_ID_",
+"act_re_deployment"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"02-018": {
+"pair": [
+"136918_elogic.sql",
+"re_quote_subitems",
+"id_re_quote_item",
+"re_quote_items"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"02-019": {
+"pair": [
+"037255_schema-057.sql",
+"EXTERNAL_DATA",
+"CVTE_ID_STOR_FMT",
+"CONTROLLED_VOCABULARY_TERMS"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"02-020": {
+"pair": [
+"225219_001-auto.sql",
+"access_log",
+"badge_id",
+"ipn_message"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"02-021": {
+"pair": [
+"571107_mssql.sql",
+"notification",
+"owner",
+"member"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"02-022": {
+"pair": [
+"586699_init.sql",
+"act_hi_identitylink",
+"USER_ID_",
+"act_id_user"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"02-023": {
+"pair": [
+"182279_Oracle.create.sql",
+"SuggestionFile",
+"Suggestion",
+"Suggestion"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"02-024": {
+"pair": [
+"586699_init.sql",
+"act_hi_detail",
+"PROC_INST_ID_",
+"act_hi_taskinst"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"02-025": {
+"pair": [
+"267727_ubmp_schema.sql",
+"bla_sensor_switch_status",
+"sensor_id_",
+"bla_sensor"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"02-026": {
+"pair": [
+"249340_001-auto.sql",
+"ipn_message",
+"payer_email",
+"soda_status"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"02-027": {
+"pair": [
+"030800_migration.sql",
+"Account",
+"currentUserId",
+"User"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"02-028": {
+"pair": [
+"140424_20110820180949.sql",
+"role_fun",
+"functionId",
+"role_fun"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"02-029": {
+"pair": [
+"377729_skripsi.sql",
+"tb_nilai_supplier",
+"C6",
+"tb_harga"
+],
+"kind": "named by one",
+"answer": "unsure"
+},
+"02-030": {
+"pair": [
+"025264_schema-095.sql",
+"DATA_STORE_SERVICES",
+"DATA_STORE_ID",
+"DATA_STORES"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"02-031": {
+"pair": [
+"143593_Ambari-DDL-Oracle-CREATE.sql",
+"viewinstancedata",
+"view_instance_name",
+"viewentity"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"02-032": {
+"pair": [
+"302646_Create.sql",
+"category",
+"category_parent_id",
+"category"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"02-033": {
+"pair": [
+"499663_byteball-sqlite-light.sql",
+"attestations",
+"address",
+"addresses"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"02-034": {
+"pair": [
+"093799_flowable.db2.all.create.sql",
+"ACT_RE_PROCDEF",
+"DEPLOYMENT_ID_",
+"ACT_RE_DEPLOYMENT"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"02-035": {
+"pair": [
+"421582_mmonit-schema.mysql",
+"messageformat",
+"subjectsingle",
+"groupedhost"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"02-036": {
+"pair": [
+"308130_agm.sql",
+"tm_store_owner",
+"sub_district",
+"kecamatan"
+],
+"kind": "taught by both",
+"answer": "unsure"
+},
+"02-037": {
+"pair": [
+"097909_createTables.sql",
+"arch_flownode_instance",
+"executedBy",
+"user_"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"02-038": {
+"pair": [
+"334442_38e50502dfc7f94334f6a6a7390d8bdb_createLibrary.sql",
+"Book",
+"description",
+"HasAuthor"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"02-039": {
+"pair": [
+"435664_lets-hike.sql",
+"currency",
+"name",
+"order_items"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"02-040": {
+"pair": [
+"355302_schema-071.sql",
+"ATTACHMENTS",
+"EXAC_ID",
+"ATTACHMENT_CONTENTS"
+],
+"kind": "control: declared",
+"answer": "no"
+},
+"02-041": {
+"pair": [
+"453912_1434714202.sql",
+"apps_feed_tags",
+"tf_id",
+"apps_feed_translation"
+],
+"kind": "taught by both",
+"answer": "no"
+},
+"02-042": {
+"pair": [
+"656145_schema-186.sql",
+"EXPERIMENTS_ALL",
+"PERS_ID_REGISTERER",
+"PERSONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"02-043": {
+"pair": [
+"269589_701520575049.sql",
+"room_numbers",
+"room_id",
+"rooms"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"02-044": {
+"pair": [
+"225219_001-auto.sql",
+"storage_slot",
+"member_id",
+"members"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"02-045": {
+"pair": [
+"446197_Cria%C3%A7%C3%A3o%20do%20banco%20Local.sql",
+"CLASSE_APLIC",
+"CLAS_ANO",
+"RELACAO_COMENT"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"02-046": {
+"pair": [
+"268095_V_55__create_sec.sql",
+"sec_equityindexoption",
+"currency_id",
+"sec_currency"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"02-047": {
+"pair": [
+"093799_flowable.db2.all.create.sql",
+"ACT_APP_DEPLOYMENT_RESOURCE",
+"RESOURCE_BYTES_",
+"ACT_GE_BYTEARRAY"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"02-048": {
+"pair": [
+"017008_setup-ci.sql",
+"privilege",
+"roleId",
+"adminRole"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"02-049": {
+"pair": [
+"310943_schema-122.sql",
+"SAMPLES_ALL",
+"DBIN_ID",
+"DATABASE_INSTANCES"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"02-050": {
+"pair": [
+"140424_20110820180949.sql",
+"reg_attach",
+"regId",
+"reg_attach"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"02-051": {
+"pair": [
+"003192_install.sql",
+"vbs_cost_type_values",
+"vehicle_id",
+"vbs_vehicle"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"02-052": {
+"pair": [
+"376539_V20150918161430__egi_core_ddl.sql",
+"qrtz_calendars",
+"sched_name",
+"qrtz_scheduler_state"
+],
+"kind": "taught by both",
+"answer": "no"
+},
+"02-053": {
+"pair": [
+"370864_emergency_response_v15.sql",
+"audit_user",
+"record_changed",
+"user_information"
+],
+"kind": "taught by both",
+"answer": "unsure"
+},
+"02-054": {
+"pair": [
+"586699_init.sql",
+"act_ru_task",
+"ASSIGNEE_",
+"act_id_user"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"02-055": {
+"pair": [
+"601017_flowable.sql",
+"act_hi_taskinst",
+"ASSIGNEE_",
+"act_id_user"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"02-056": {
+"pair": [
+"009392_CloudStore.sql",
+"Interventi",
+"Messaggio",
+"Preferenze"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"02-057": {
+"pair": [
+"313403_sakai_12_mysql_conversion.sql",
+"dash_calendar_item",
+"repeating_event_id",
+"dash_repeating_event"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"02-058": {
+"pair": [
+"450173_mims_dev.sql",
+"mims_packsizeinformation",
+"CreatedBy",
+"mims_userinformation"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"02-059": {
+"pair": [
+"254159_dolphinscheduler_h2.sql",
+"QRTZ_BLOB_TRIGGERS",
+"SCHED_NAME",
+"QRTZ_TRIGGERS"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"02-060": {
+"pair": [
+"044768_schema-050.sql",
+"MATERIAL_PROPERTIES",
+"MTPT_ID",
+"MATERIAL_TYPE_PROPERTY_TYPES"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"02-061": {
+"pair": [
+"025999_create.sql",
+"logistics",
+"address_num",
+"addresses"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"02-062": {
+"pair": [
+"256116_structure.sql",
+"commits_users",
+"commit_id",
+"commits"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"02-063": {
+"pair": [
+"230521_V1__Initial_Setup.sql",
+"tm_text_unit_current_variant",
+"tm_text_unit_id",
+"tm_text_unit"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"02-064": {
+"pair": [
+"568393_hive-schema-4.0.0.postgres.sql",
+"DB_PRIVS",
+"DB_ID",
+"DBS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"02-065": {
+"pair": [
+"422383_InitTables_characters.sql",
+"petids",
+"petid",
+"items"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"03-001": {
+"pair": [
+"470930_schema.sql",
+"WorkoutExercises",
+"weight_unit",
+"UnitIndex"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-002": {
+"pair": [
+"523334_schema-149.sql",
+"ATTACHMENTS",
+"PROJ_ID",
+"PROJECTS"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"03-003": {
+"pair": [
+"306252_V0_0_1__activiti.sql",
+"ACT_RU_EVENT_SUBSCR",
+"EXECUTION_ID_",
+"ACT_RU_EXECUTION"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-004": {
+"pair": [
+"185821_createTables.sql",
+"waiting_event",
+"relatedActivityInstanceId",
+"flownode_instance"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-005": {
+"pair": [
+"049841_schema-142.sql",
+"PROJECTS",
+"PERS_ID_MODIFIER",
+"PERSONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-006": {
+"pair": [
+"555007_poc_latest.sql",
+"vendor_registration",
+"vendor_bank_account_type_id",
+"vendor_bank_account_type"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-007": {
+"pair": [
+"452094_nimzo.sql",
+"_app.product_shipping_method",
+"shipping_method_id",
+"_app.brand"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"03-008": {
+"pair": [
+"207821_schema.sql",
+"genes_secondary_project",
+"secondary_project_id",
+"project"
+],
+"kind": "taught by both",
+"answer": "unsure"
+},
+"03-009": {
+"pair": [
+"593107_create-oracle-schema.sql",
+"BLOCKS",
+"LAST_MODIFIED_BY",
+"PROCESSED_DATASETS"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"03-010": {
+"pair": [
+"556868_create.sql",
+"bands",
+"security_token",
+"venues"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"03-011": {
+"pair": [
+"207821_schema.sql",
+"stats_unidimensional_results_withWeight",
+"organisation_id",
+"organisation"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-012": {
+"pair": [
+"159995_initialschema.sql",
+"participants",
+"mixed_cancelled",
+"types"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"03-013": {
+"pair": [
+"452094_nimzo.sql",
+"_app.product_price",
+"product_id",
+"_app.product_bundle"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"03-014": {
+"pair": [
+"463315_dam.map_create_postgres.sql",
+"COMTNEMPLYRINFO",
+"LOCK_CNT",
+"COMTCCMMNDETAILCODE"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"03-015": {
+"pair": [
+"012942_vndrosport.sql",
+"admin",
+"password",
+"detail_pesanan"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"03-016": {
+"pair": [
+"117790_MySqlTotal-480.sql",
+"cmsContentTypeAllowedContentType",
+"Id",
+"cmsContentType"
+],
+"kind": "taught by both",
+"answer": "unsure"
+},
+"03-017": {
+"pair": [
+"075043_database.sql",
+"categorygroups",
+"uid",
+"fieldlayouttabs"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"03-018": {
+"pair": [
+"415231_octobererp_db.sql",
+"users_groups",
+"user_group_id",
+"users_groups"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"03-019": {
+"pair": [
+"226484_hive-schema-4.0.0.oracle.sql",
+"NEXT_WRITE_ID",
+"NWI_DATABASE",
+"NEXT_LOCK_ID"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"03-020": {
+"pair": [
+"489619_script.sql",
+"Conto",
+"n_fattura",
+"Fatture"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"03-021": {
+"pair": [
+"157116_create_db.sql",
+"qrtz_cron_triggers",
+"SCHED_NAME",
+"qrtz_triggers"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-022": {
+"pair": [
+"259215_elearningta.sql",
+"jadwal",
+"KodeKelas",
+"kelas"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-023": {
+"pair": [
+"149428_V1__initial_tables.sql",
+"reserver_person",
+"person_ref",
+"person"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"03-024": {
+"pair": [
+"207821_schema.sql",
+"biological_sample_relationship",
+"biological_sample_b_id",
+"biological_sample"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-025": {
+"pair": [
+"325041_01.wecube.mysql.create.schema.sql",
+"plugin_package_resource_files",
+"plugin_package_id",
+"plugin_package_authorities"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"03-026": {
+"pair": [
+"137719_jolly_rex_db_2019-06-10.sql",
+"tbl_food_items",
+"food_id",
+"tbl_food"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-027": {
+"pair": [
+"243857_schema-036.sql",
+"PERSONS",
+"PERS_ID_REGISTERER",
+"PERSONS"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"03-028": {
+"pair": [
+"140026_schema-144.sql",
+"AUTHORIZATION_GROUP_PERSONS",
+"AG_ID",
+"AUTHORIZATION_GROUPS"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"03-029": {
+"pair": [
+"041266_trustnote-sqlite.sql",
+"catchup_chain_balls",
+"ball",
+"balls"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-030": {
+"pair": [
+"159995_initialschema.sql",
+"participants",
+"mixed_partner_id",
+"participants"
+],
+"kind": "named by one",
+"answer": "unsure"
+},
+"03-031": {
+"pair": [
+"143686_kora3_arcs_install.sql",
+"kora_project_group_user",
+"user_id",
+"kora_failed_jobs"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"03-032": {
+"pair": [
+"633700_structure.sql",
+"comments",
+"compilation_release_id",
+"compilation_releases"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"03-033": {
+"pair": [
+"207821_schema.sql",
+"phenotyped_colony",
+"gf_acc",
+"genomic_feature"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-034": {
+"pair": [
+"262328_gist_pos_10022017.sql",
+"hr_evaluator",
+"employee_id",
+"user_department"
+],
+"kind": "taught by both",
+"answer": "no"
+},
+"03-035": {
+"pair": [
+"678566_okay.sql",
+"admin_message",
+"hostel_id",
+"hostel"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-036": {
+"pair": [
+"117790_MySqlTotal-480.sql",
+"umbracoUserLogins",
+"userID",
+"umbracoUser"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-037": {
+"pair": [
+"499498_create_database.sql",
+"researcher",
+"last_name",
+"institution"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"03-038": {
+"pair": [
+"389431_smpnokab_book-v3.sql",
+"tb_direktori_guru_staf",
+"kategori",
+"tb_member_kategori"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"03-039": {
+"pair": [
+"325041_01.wecube.mysql.create.schema.sql",
+"core_ru_proc_exec_binding",
+"proc_def_id",
+"ACT_RE_PROCDEF"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"03-040": {
+"pair": [
+"430436_moduleSchemas.sql",
+"SQLiC5Shop.vipCoupons",
+"couponCode",
+"SqlPoorEscape.customers"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"03-041": {
+"pair": [
+"139733_h2_engine_7.15.0-alpha1.sql",
+"ACT_HI_IDENTITYLINK",
+"ROOT_PROC_INST_ID_",
+"ACT_HI_PROCINST"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-042": {
+"pair": [
+"105510_uss.umt_create_altibase.sql",
+"COMTCCMMNCLCODE",
+"FRST_REGISTER_ID",
+"COMTCZIP"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"03-043": {
+"pair": [
+"049841_schema-142.sql",
+"MATERIAL_PROPERTIES",
+"PERS_ID_AUTHOR",
+"PERSONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-044": {
+"pair": [
+"402079_deccan.sql",
+"budget_tbl",
+"budget_misc",
+"payment_gps_tbl"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"03-045": {
+"pair": [
+"498138_projectstudenv3origin.sql",
+"appoint",
+"teacher_id",
+"teacher"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-046": {
+"pair": [
+"633700_structure.sql",
+"repository_positions",
+"repository_id",
+"repositories"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-047": {
+"pair": [
+"207821_schema.sql",
+"stats_rrplus_results",
+"external_db_id",
+"external_db"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-048": {
+"pair": [
+"252537_1.sql",
+"grouping",
+"description",
+"album_media"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"03-049": {
+"pair": [
+"629117_create_tbl_mysql.sql",
+"game",
+"team1",
+"eteam"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"03-050": {
+"pair": [
+"370141_unions-postgres.sql",
+"policy",
+"update_user_id",
+"user"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-051": {
+"pair": [
+"185821_createTables.sql",
+"pending_mapping",
+"actorId",
+"actor"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-052": {
+"pair": [
+"402079_deccan.sql",
+"payments_tbl",
+"order_id",
+"order_tbl"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-053": {
+"pair": [
+"157116_create_db.sql",
+"qrtz_triggers",
+"MISFIRE_INSTR",
+"SIMBA_CONDITION"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"03-054": {
+"pair": [
+"207821_schema.sql",
+"phenotype_call_summary",
+"allele_acc",
+"allele"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-055": {
+"pair": [
+"393885_MySQLCreate.sql",
+"import_task",
+"exec_interval",
+"score_card_item"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"03-056": {
+"pair": [
+"523334_schema-149.sql",
+"EXPERIMENT_TYPE_PROPERTY_TYPES",
+"PERS_ID_REGISTERER",
+"PERSONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-057": {
+"pair": [
+"147418_V_65__create_sec.sql",
+"sec_credit_default_swap",
+"std_upfrontamt_notional_currency_id",
+"sec_currency"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-058": {
+"pair": [
+"495858_database.sql",
+"products",
+"category_id",
+"categories"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"03-059": {
+"pair": [
+"519054_schema-152.sql",
+"SAMPLE_TYPE_PROPERTY_TYPES",
+"SATY_ID",
+"SAMPLE_TYPES"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"03-060": {
+"pair": [
+"061443_apiman_h2.ddl",
+"memberships",
+"org_id",
+"organizations"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-061": {
+"pair": [
+"078847_1552583210.sql",
+"shared_addresses",
+"definition",
+"watched_light_addresses"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"03-062": {
+"pair": [
+"308205_schema-166.sql",
+"MATERIAL_PROPERTIES",
+"PERS_ID_REGISTERER",
+"PERSONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"03-063": {
+"pair": [
+"189429_postgres_engine_7.11.15-ee.sql",
+"ACT_HI_OP_LOG",
+"EXECUTION_ID_",
+"ACT_RU_EXECUTION"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"03-064": {
+"pair": [
+"393885_MySQLCreate.sql",
+"rejection_listing",
+"author_id",
+"profile"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"03-065": {
+"pair": [
+"103690_schema-148.sql",
+"MATERIALS",
+"MATY_ID",
+"MATERIAL_TYPES"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"04-001": {
+"pair": [
+"227493_vehiclemart_dev.sql",
+"ba_identify_code",
+"bz_id",
+"ba_identify_code"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"04-002": {
+"pair": [
+"168106_intervalue.sql",
+"peer_hosts",
+"count_invalid_joints",
+"shared_addresses"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"04-003": {
+"pair": [
+"279609_MasterBuild.sql",
+"phr.rec_healthrecord_requests",
+"user_id_requestor",
+"phr.user_users"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-004": {
+"pair": [
+"302339_intranet_v01.sql",
+"menu_category",
+"id_category",
+"category"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-005": {
+"pair": [
+"605549_byteball-sqlite-light.sql",
+"authentifiers",
+"address",
+"addresses"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-006": {
+"pair": [
+"026072_schema-176.sql",
+"METAPROJECT_ASSIGNMENTS_ALL",
+"DATA_ID",
+"DATA_ALL"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"04-007": {
+"pair": [
+"248083_createTables.sql",
+"arch_process_comment",
+"processInstanceId",
+"arch_process_instance"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"04-008": {
+"pair": [
+"176088_METADADOS.sql",
+"fin_regra_import_linha",
+"version",
+"est_produto_saldo"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"04-009": {
+"pair": [
+"397175_flowable.postgres.all.create.sql",
+"ACT_HI_VARINST",
+"TASK_ID_",
+"ACT_HI_TASKINST"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-010": {
+"pair": [
+"564961_pos.sql",
+"hr_memo",
+"reviewed_id",
+"user_department"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"04-011": {
+"pair": [
+"572864_postgresql.sql",
+"IDN_OAUTH2_DEVICE_FLOW",
+"CODE_ID",
+"IDN_OAUTH2_AUTHORIZATION_CODE"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-012": {
+"pair": [
+"509150_sql.sql",
+"BKP_USUARIO",
+"IDUSUARIO",
+"USUARIO"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-013": {
+"pair": [
+"300423_cloud_db.sql",
+"MONETIZATION_STATUS",
+"TENANT_DOMAIN",
+"ORGANIZATIONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-014": {
+"pair": [
+"233712_V_44__create_sec.sql",
+"sec_nondeliverablefxoption",
+"expiry_accuracy",
+"sec_issuertype"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"04-015": {
+"pair": [
+"102794_Dump20120916.sql",
+"t_operator",
+"id_activity_assigned",
+"t_activity"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"04-016": {
+"pair": [
+"416379_V_43__create_sec.sql",
+"sec_irfutureoption",
+"currency_id",
+"sec_currency"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"04-017": {
+"pair": [
+"248083_createTables.sql",
+"flownode_instance",
+"abortedByBoundary",
+"flownode_instance"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"04-018": {
+"pair": [
+"248083_createTables.sql",
+"ref_biz_data_inst",
+"data_id",
+"blob_"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"04-019": {
+"pair": [
+"284464_jat_db.sql",
+"sys_ak_module_link",
+"ak_id",
+"sys_access_key"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-020": {
+"pair": [
+"227493_vehiclemart_dev.sql",
+"ba_goods_operate_log",
+"goods_id",
+"ba_goods_info"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-021": {
+"pair": [
+"319403_V_57__create_sec.sql",
+"sec_credit_default_swap",
+"daycount_convention_id",
+"sec_daycount"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"04-022": {
+"pair": [
+"116828_thakshilawa_institute.sql",
+"class_days",
+"class_id",
+"classess"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-023": {
+"pair": [
+"509150_sql.sql",
+"INTERNACAO",
+"ID_CONSULTA",
+"CONSULTA"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-024": {
+"pair": [
+"545162_schema.sql",
+"tb_refund",
+"payment_id",
+"tb_payment"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-025": {
+"pair": [
+"106484_V_60__create_sec.sql",
+"sec_credit_default_swap",
+"notional_id",
+"sec_futurebundle"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"04-026": {
+"pair": [
+"340052_structure_v11.mysql",
+"host_names",
+"workspace_id",
+"assets"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-027": {
+"pair": [
+"099026_schema-143.sql",
+"GRID_CUSTOM_COLUMNS",
+"PERS_ID_REGISTERER",
+"PERSONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-028": {
+"pair": [
+"483285_postgresql.sql",
+"indexed_archives_entries",
+"indexed_archives_id",
+"indexed_archives"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"04-029": {
+"pair": [
+"179944_flowable.db2.all.create.sql",
+"ACT_ID_TOKEN",
+"USER_ID_",
+"ACT_ID_USER"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-030": {
+"pair": [
+"572864_postgresql.sql",
+"IDN_AUTH_SESSION_APP_INFO",
+"APP_ID",
+"SP_APP"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-031": {
+"pair": [
+"564961_pos.sql",
+"hr_incident_report",
+"dept_id",
+"user_department"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-032": {
+"pair": [
+"406473_1550959522.sql",
+"peer_hosts",
+"count_nonserial_joints",
+"peer_hosts"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"04-033": {
+"pair": [
+"564961_pos.sql",
+"hr_employee_leaves",
+"leave_id",
+"leave_type"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"04-034": {
+"pair": [
+"512560_all-changes.sql",
+"user_group_project",
+"user_group_id",
+"user_group_AUD"
+],
+"kind": "taught by both",
+"answer": "unsure"
+},
+"04-035": {
+"pair": [
+"429536_irida_latest.sql",
+"user_group_project_AUD",
+"project_id",
+"project"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-036": {
+"pair": [
+"018119_bangladesh_betar_db.sql",
+"product_stock_infos",
+"product_id",
+"product_infos"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-037": {
+"pair": [
+"493250_create_schema.sql",
+"support_parts",
+"user_id",
+"register_contacts"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"04-038": {
+"pair": [
+"568642_schema-140.sql",
+"DATA_ALL",
+"PERS_ID_REGISTERER",
+"PERSONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-039": {
+"pair": [
+"370194_hive-schema-3.1.0.postgres.sql",
+"DB_PRIVS",
+"DB_ID",
+"DBS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-040": {
+"pair": [
+"386727_mep_schema_0.18.sql",
+"pages_contentpage",
+"page_ptr_id",
+"django_comments"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"04-041": {
+"pair": [
+"374183_InitTables_characters.sql",
+"hairequips",
+"equipid",
+"equips"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"04-042": {
+"pair": [
+"284464_jat_db.sql",
+"act_hi_comment",
+"TASK_ID_",
+"act_hi_taskinst"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-043": {
+"pair": [
+"477852_byteball-sqlite-light.sql",
+"my_witnesses",
+"address",
+"addresses"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-044": {
+"pair": [
+"180367_schema-183.sql",
+"PROPERTY_TYPES",
+"PERS_ID_REGISTERER",
+"PERSONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-045": {
+"pair": [
+"387907_data.mysql.sql",
+"core_note2followable",
+"FOLLOWABLE_ITEMS_FK",
+"core_content"
+],
+"kind": "taught by both",
+"answer": "no"
+},
+"04-046": {
+"pair": [
+"063468_V_64__create_sec.sql",
+"sec_capfloorcmsspread",
+"security_id",
+"sec_equity"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"04-047": {
+"pair": [
+"605549_byteball-sqlite-light.sql",
+"headers_commission_contributions",
+"address",
+"addresses"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-048": {
+"pair": [
+"179944_flowable.db2.all.create.sql",
+"ACT_DMN_DECISION_TABLE",
+"PARENT_DEPLOYMENT_ID_",
+"ACT_DMN_DEPLOYMENT"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-049": {
+"pair": [
+"220112_flowable.h2.all.create.sql",
+"ACT_DMN_HI_DECISION_EXECUTION",
+"DEPLOYMENT_ID_",
+"ACT_DMN_DEPLOYMENT"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-050": {
+"pair": [
+"102794_Dump20120916.sql",
+"t_operator",
+"id_machine_attached",
+"t_machine"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"04-051": {
+"pair": [
+"295454_schema-118.sql",
+"relationship_types",
+"pers_id_registerer",
+"PERSONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-052": {
+"pair": [
+"022908_activiti.oracle.create.engine.sql",
+"ACT_RU_TASK",
+"PROC_INST_ID_",
+"ACT_RU_EXECUTION"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"04-053": {
+"pair": [
+"026072_schema-176.sql",
+"CONTROLLED_VOCABULARIES",
+"PERS_ID_REGISTERER",
+"PERSONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-054": {
+"pair": [
+"386727_mep_schema_0.18.sql",
+"wagtailcore_pageviewrestriction",
+"page_id",
+"wagtailcore_pageviewrestriction"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"04-055": {
+"pair": [
+"167893_schema-063.sql",
+"AUTHORIZATION_GROUPS",
+"PERS_ID_REGISTERER",
+"PERSONS"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"04-056": {
+"pair": [
+"137462_db_cscl.sql",
+"tabel_mkm",
+"id_mahasiswa",
+"mahasiswa"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-057": {
+"pair": [
+"605549_byteball-sqlite-light.sql",
+"inputs",
+"address",
+"addresses"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-058": {
+"pair": [
+"429536_irida_latest.sql",
+"analysis_submission_remote_file_single_AUD",
+"analysis_submission_id",
+"analysis_submission"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"04-059": {
+"pair": [
+"167589_xa_core_db_postgres.sql",
+"xa_access_audit",
+"added_by_id",
+"x_portal_user"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-060": {
+"pair": [
+"035029_sibimcompleto22.sql",
+"usuario",
+"direccion_nroPuerta",
+"s_diario"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"04-061": {
+"pair": [
+"248083_createTables.sql",
+"connector_instance",
+"stackTrace",
+"contract_data"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"04-062": {
+"pair": [
+"181043_hive-schema-4.0.0.oracle.sql",
+"TBLS",
+"DB_ID",
+"DBS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-063": {
+"pair": [
+"661148_V3.4.201803080936__TBE122.sql",
+"ACT_HI_COMMENT",
+"TASK_ID_",
+"ACT_HI_TASKINST"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"04-064": {
+"pair": [
+"025950_Ambari-DDL-Oracle-CREATE.sql",
+"role_success_criteria",
+"role",
+"roles"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"04-065": {
+"pair": [
+"279609_MasterBuild.sql",
+"sys_resource_endpoints",
+"display_name",
+"rec_ccr_vitalsign_results_datetime"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"05-001": {
+"pair": [
+"427807_pos10152017.sql",
+"cnt_phone",
+"name",
+"cnt_phone_type"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"05-002": {
+"pair": [
+"656576_db.sql",
+"bookmark",
+"lecture_page_id",
+"lecture_page"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-003": {
+"pair": [
+"016410_derrida_schema.sql",
+"interventions_intervention",
+"quote_language_id",
+"annotator_store_annotationgroup"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"05-004": {
+"pair": [
+"117348_joffice21-user.sql",
+"contract_file",
+"fileId",
+"contract_file"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"05-005": {
+"pair": [
+"408141_001-auto.sql",
+"device_item",
+"device_id",
+"device"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"05-006": {
+"pair": [
+"631213_schema-119.sql",
+"scripts",
+"PERS_ID_REGISTERER",
+"PERSONS"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"05-007": {
+"pair": [
+"180805_script-dump-estrucutura-db.sql",
+"caja_cab",
+"usuarios_id",
+"grupo_usuarios"
+],
+"kind": "taught by both",
+"answer": "no"
+},
+"05-008": {
+"pair": [
+"383856_V_66__create_sec.sql",
+"sec_equity",
+"security_id",
+"sec_raw"
+],
+"kind": "named by one",
+"answer": "unsure"
+},
+"05-009": {
+"pair": [
+"318060_camunda_mysql.sql",
+"ACT_HI_INCIDENT",
+"EXECUTION_ID_",
+"ACT_RU_EXECUTION"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"05-010": {
+"pair": [
+"643917_create_empty_database.sql",
+"auth_forgot_password_tracking",
+"code_replaced_by_newer",
+"annotation_type"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"05-011": {
+"pair": [
+"185805_V_63__create_sec.sql",
+"sec_swap",
+"receive_businessdayconvention_id",
+"sec_businessdayconvention"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-012": {
+"pair": [
+"098729_hive-schema-3.1.1000.postgres.sql",
+"KEY_CONSTRAINTS",
+"PARENT_TBL_ID",
+"TBLS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-013": {
+"pair": [
+"045413_schema-047.sql",
+"PROJECTS",
+"PERS_ID_REGISTERER",
+"PERSONS"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"05-014": {
+"pair": [
+"694737_banco_dados.sql",
+"temp_2L",
+"id_cliente",
+"cadastro_cliente"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-015": {
+"pair": [
+"327256_create_educational.sql",
+"groups",
+"profile_id",
+"profiles"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-016": {
+"pair": [
+"016410_derrida_schema.sql",
+"outwork_outwork",
+"page_ptr_id",
+"pages_richtextpage"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"05-017": {
+"pair": [
+"370091_hive-schema-3.0.0.derby.sql",
+"APP.COLUMNS_V2",
+"CD_ID",
+"APP.CDS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-018": {
+"pair": [
+"656576_db.sql",
+"payment_method_currency",
+"payment_method_id",
+"payment_method"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-019": {
+"pair": [
+"441334_byteball-sqlite.sql",
+"attestations",
+"unit",
+"units"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"05-020": {
+"pair": [
+"144961_apiman_oracle12.ddl",
+"policydefs",
+"form_type",
+"client_versions"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"05-021": {
+"pair": [
+"211757_schema-153.sql",
+"DELETIONS",
+"PERS_ID_REGISTERER",
+"PERSONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-022": {
+"pair": [
+"270329_001-auto.sql",
+"storage_request",
+"member_id",
+"members"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-023": {
+"pair": [
+"652081_DATABASEIMP.sql",
+"avored_order_histories",
+"order_id",
+"avored_orders"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-024": {
+"pair": [
+"147967_activiti.h2.complete.sql",
+"ACT_RU_EXECUTION",
+"PROC_INST_ID_",
+"ACT_RU_EXECUTION"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-025": {
+"pair": [
+"088411_bildel.sql",
+"products",
+"brand_id",
+"brands"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-026": {
+"pair": [
+"268441_tracker.sql",
+"IssueVisitHistory",
+"issue_id",
+"IssueVisitHistory"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"05-027": {
+"pair": [
+"290954_V_45__create_sec.sql",
+"sec_capfloorcmsspread",
+"daycountconvention_id",
+"sec_daycount"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"05-028": {
+"pair": [
+"138201_homelib.sql",
+"user_cart",
+"rowid",
+"notification"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"05-029": {
+"pair": [
+"028123_schema-161.sql",
+"PROJECTS",
+"PERS_ID_MODIFIER",
+"PERSONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-030": {
+"pair": [
+"139851_Ambari-DDL-SQLAnywhere-CREATE.sql",
+"QRTZ_PAUSED_TRIGGER_GRPS",
+"SCHED_NAME",
+"QRTZ_SCHEDULER_STATE"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"05-031": {
+"pair": [
+"418618_schema-132.sql",
+"CONTROLLED_VOCABULARIES",
+"PERS_ID_REGISTERER",
+"PERSONS"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"05-032": {
+"pair": [
+"102843_rims-07102015.sql",
+"rims_vehicle",
+"car_make_id",
+"rims_vehicle_car_make"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-033": {
+"pair": [
+"215259_V_47__create_sec.sql",
+"sec_swap",
+"swaptype",
+"sec_irfutureoption"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"05-034": {
+"pair": [
+"321624_byteball-sqlite.sql",
+"attestations",
+"unit",
+"units"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"05-035": {
+"pair": [
+"627172_mysql.sql",
+"nodes",
+"depth",
+"indexed_archives_entries"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"05-036": {
+"pair": [
+"243194_001-auto.sql",
+"audit_log",
+"changed_member_id",
+"members"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"05-037": {
+"pair": [
+"372490_flowable.oracle.create.common.sql",
+"ACT_RU_DEADLETTER_JOB",
+"EXECUTION_ID_",
+"ACT_RU_DEADLETTER_JOB"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"05-038": {
+"pair": [
+"224736_structure_v10.mysql",
+"checkpoints",
+"workspace_id",
+"checkpoints"
+],
+"kind": "taught by both",
+"answer": "no"
+},
+"05-039": {
+"pair": [
+"324091_changelog.sql",
+"StudyActivityEvents",
+"userId",
+"StudyActivityEvents"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"05-040": {
+"pair": [
+"010731_V_52__create_sec.sql",
+"sec_capfloor",
+"daycountconvention_id",
+"sec_daycount"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"05-041": {
+"pair": [
+"311451_mysql.sql",
+"couponsused",
+"account",
+"account"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"05-042": {
+"pair": [
+"089720_flowable.hsql.all.create.sql",
+"ACT_RU_DEADLETTER_JOB",
+"EXECUTION_ID_",
+"ACT_RU_EXECUTION"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-043": {
+"pair": [
+"053347_SVPModel.sql",
+"svp.competition",
+"sealed",
+"svp.shot"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"05-044": {
+"pair": [
+"098803_script1.sql",
+"MEMBERSHIP",
+"SEEN",
+"BAYESIANANALYSIS_HAM"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"05-045": {
+"pair": [
+"204823_beta_micro_v1.6.sql",
+"users_bank_details",
+"user_id",
+"users"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-046": {
+"pair": [
+"541120_schema-150.sql",
+"SAMPLES_ALL",
+"EXPE_ID",
+"EXPERIMENTS_ALL"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"05-047": {
+"pair": [
+"619978_001.sql",
+"ProjectTypeStageType_AUD",
+"ProjectTypeId",
+"ProjectType"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-048": {
+"pair": [
+"264760_hive-schema-4.0.0.oracle.sql",
+"PARTITION_KEYS",
+"TBL_ID",
+"TBLS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-049": {
+"pair": [
+"303927_utl.sys.nsm_create_tibero.sql",
+"COMTHTRSMRCVMNTRNGLOGINFO",
+"LAST_UPDUSR_ID",
+"COMTNAUTHORROLERELATE"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"05-050": {
+"pair": [
+"250443_tes_sabun_cuci_mobil-v17-for_hosting.sql",
+"material_mutation",
+"created_by",
+"material_mutation"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"05-051": {
+"pair": [
+"053542_ct-database.sql",
+"ct_const_av_ded",
+"ct_centre_id",
+"ct_centre"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-052": {
+"pair": [
+"044272_activiti.h2.create.engine.sql",
+"ACT_RU_SUSPENDED_JOB",
+"EXECUTION_ID_",
+"ACT_RU_EXECUTION"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-053": {
+"pair": [
+"089720_flowable.hsql.all.create.sql",
+"PUBLIC.ACT_CMMN_RU_MIL_INST",
+"CASE_INST_ID_",
+"PUBLIC.ACT_CMMN_RU_CASE_INST"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-054": {
+"pair": [
+"159776_install.sql",
+"delivery_price",
+"bonus",
+"order_prod"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"05-055": {
+"pair": [
+"604614_filmecommerce.sql",
+"products_genres",
+"genre_id",
+"genres"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-056": {
+"pair": [
+"143216_jolly_rex_db.sql",
+"tbl_order_food_items",
+"order_id",
+"tbl_orders"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-057": {
+"pair": [
+"275342_auctionmark-oracle-ddl.sql",
+"USERACCT_ITEM",
+"ui_i_id",
+"ITEM"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-058": {
+"pair": [
+"541343_schema-112.sql",
+"DATA_ALL",
+"PERS_ID_MODIFIER",
+"PERSONS"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"05-059": {
+"pair": [
+"270329_001-auto.sql",
+"storage_slot",
+"member_id",
+"members"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-060": {
+"pair": [
+"016410_derrida_schema.sql",
+"books_reference",
+"reference_type_id",
+"annotator_store_annotationgroup"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"05-061": {
+"pair": [
+"243194_001-auto.sql",
+"storage_slot",
+"member_id",
+"members"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-062": {
+"pair": [
+"215259_V_47__create_sec.sql",
+"sec_bond",
+"couponfrequency_id",
+"sec_frequency"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"05-063": {
+"pair": [
+"119119_tables.sql",
+"token",
+"utilizador_userid",
+"utilizador"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"05-064": {
+"pair": [
+"619978_001.sql",
+"VolunteerQualification_AUD",
+"REV",
+"REVINFO"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"05-065": {
+"pair": [
+"363439_lending.sql",
+"user_id",
+"uid",
+"users"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-001": {
+"pair": [
+"150138_gazelle.sql",
+"user_last_access",
+"user_id",
+"users_summary"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"06-002": {
+"pair": [
+"270883_sakai_10_0_mysql_conversion.sql",
+"signup_attachments",
+"fileSize",
+"HIERARCHY_NODE_META"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"06-003": {
+"pair": [
+"609265_model-postgres.sql",
+"audit",
+"description",
+"queue"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"06-004": {
+"pair": [
+"027374_gopro.sql",
+"filiere",
+"intitule",
+"competenceRequiseMetier"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"06-005": {
+"pair": [
+"225546_zetameds_dev.sql",
+"sylius_product_taxon",
+"taxon_id",
+"sylius_taxon"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-006": {
+"pair": [
+"281576_spurtcommerce.sql",
+"login_log",
+"created_by",
+"users"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-007": {
+"pair": [
+"270883_sakai_10_0_mysql_conversion.sql",
+"signup_attachments",
+"meeting_id",
+"signup_meetings"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-008": {
+"pair": [
+"421119_trustnote-sqlite-light.sql",
+"joints",
+"unit",
+"units"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-009": {
+"pair": [
+"338936_Ambari-DDL-MySQL-CREATE.sql",
+"confgroupclusterconfigmapping",
+"cluster_id",
+"clusters"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-010": {
+"pair": [
+"456284_V20150918161430__egi_core_ddl.sql",
+"eg_appconfig",
+"lastmodifiedby",
+"eg_user"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-011": {
+"pair": [
+"267550_createTables.sql",
+"flownode_instance",
+"activityInstanceId",
+"flownode_instance"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"06-012": {
+"pair": [
+"031833_BASE.sql",
+"sap_usuario_asociacion",
+"ID_ROL_USUARIO",
+"org_rol"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"06-013": {
+"pair": [
+"450839_database.sql",
+"seedling",
+"id_tanaman",
+"planttypes"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"06-014": {
+"pair": [
+"114494_schema.sql",
+"notes",
+"post_id",
+"batch_uploads"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"06-015": {
+"pair": [
+"281576_spurtcommerce.sql",
+"banner",
+"created_by",
+"users"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-016": {
+"pair": [
+"323035_pigxx_ac.sql",
+"act_hi_attachment",
+"PROC_INST_ID_",
+"act_hi_actinst"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"06-017": {
+"pair": [
+"338936_Ambari-DDL-MySQL-CREATE.sql",
+"QRTZ_BLOB_TRIGGERS",
+"TRIGGER_NAME",
+"QRTZ_TRIGGERS"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"06-018": {
+"pair": [
+"261850_um.sql",
+"UM_SHARED_USER_ROLE",
+"UM_ROLE_TENANT_ID",
+"UM_TENANT"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-019": {
+"pair": [
+"299259_create_tables.sql",
+"medication_allergies",
+"allergyintoleranceId",
+"allergyintolerance"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"06-020": {
+"pair": [
+"276185_cop.cmy_create_postgres.sql",
+"COMTNCOMMENT",
+"BBS_ID",
+"COMTNBBS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-021": {
+"pair": [
+"426745_schema-181.sql",
+"EXPERIMENT_PROPERTIES",
+"PERS_ID_AUTHOR",
+"PERSONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-022": {
+"pair": [
+"267550_createTables.sql",
+"process_comment",
+"processInstanceId",
+"process_instance"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"06-023": {
+"pair": [
+"338936_Ambari-DDL-MySQL-CREATE.sql",
+"ambari.viewparameter",
+"view_name",
+"ambari.viewmain"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-024": {
+"pair": [
+"627211_create-migration.sql",
+"EMPLOYEE_ENGAGEMEENT",
+"RM_OZNAKA",
+"WORK_POSSITIONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-025": {
+"pair": [
+"426745_schema-181.sql",
+"SAMPLE_PROPERTIES",
+"STPT_ID",
+"SAMPLE_TYPE_PROPERTY_TYPES"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"06-026": {
+"pair": [
+"346270_bd_postgres.sql",
+"detalle_proforma",
+"producto_id",
+"producto"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-027": {
+"pair": [
+"470433_dolphinscheduler_postgre.sql",
+"t_ds_process_instance",
+"environment_code",
+"t_ds_environment"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-028": {
+"pair": [
+"346270_bd_postgres.sql",
+"venta",
+"usuario_id",
+"usuario"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-029": {
+"pair": [
+"401045_hive-schema-4.0.0.derby.sql",
+"APP.TYPE_FIELDS",
+"TYPE_NAME",
+"APP.TYPES"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-030": {
+"pair": [
+"011831_activiti.db2.create.engine.sql",
+"ACT_RU_TIMER_JOB",
+"PROC_DEF_ID_",
+"ACT_RE_PROCDEF"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"06-031": {
+"pair": [
+"394228_flowable.postgres.create.common.sql",
+"ACT_RU_TASK",
+"PARENT_TASK_ID_",
+"ACT_RU_TASK"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-032": {
+"pair": [
+"267550_createTables.sql",
+"profileentry",
+"profileId",
+"profile"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-033": {
+"pair": [
+"426745_schema-181.sql",
+"PROJECTS",
+"PERS_ID_MODIFIER",
+"PERSONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-034": {
+"pair": [
+"061497_myvoqu_fixed-remove%20strip.sql",
+"infaq",
+"id_mentor",
+"user"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-035": {
+"pair": [
+"343130_schema-172.sql",
+"DATA_SET_RELATIONSHIPS_HISTORY",
+"SAMP_ID",
+"SAMPLES_ALL"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"06-036": {
+"pair": [
+"061497_myvoqu_fixed-remove%20strip.sql",
+"group_notif",
+"id_group",
+"grup"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-037": {
+"pair": [
+"005209_generated.ddl",
+"sch",
+"tmn_apt_apt_iata",
+"tmn"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-038": {
+"pair": [
+"179563_hive-schema-4.0.0.mssql.sql",
+"SERDES",
+"SERDE_ID",
+"SERDES"
+],
+"kind": "taught by both",
+"answer": "no"
+},
+"06-039": {
+"pair": [
+"327366_chaldal.sql",
+"attribute_value_product_attribute",
+"product_attribute_id",
+"product_attributes"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-040": {
+"pair": [
+"076390_django_ananas.sql",
+"messenger_chat_participants",
+"chat_id",
+"messenger_chat"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-041": {
+"pair": [
+"231837_createTableScripts.sql",
+"Prerequisite",
+"courseNumber",
+"Course"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-042": {
+"pair": [
+"471679_shkolla.sql",
+"post",
+"tags",
+"stafi"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"06-043": {
+"pair": [
+"078390_V_61__create_sec.sql",
+"sec_cash",
+"security_id",
+"sec_security"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"06-044": {
+"pair": [
+"273469_sylius_dev_2018-06-03.sql",
+"sylius_product_image_product_variants",
+"variant_id",
+"sylius_address"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"06-045": {
+"pair": [
+"319477_cop.smt.lsm_create_oracle.sql",
+"COMTNLEADERSCHDUL",
+"LEADER_ID",
+"COMTNLEADERSTTUS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-046": {
+"pair": [
+"343130_schema-172.sql",
+"DATA_ALL",
+"ORIG_DEL",
+"DELETIONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-047": {
+"pair": [
+"170424_sma.sql",
+"tb_anggota",
+"id_agama",
+"tb_agama"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-048": {
+"pair": [
+"114494_schema.sql",
+"batch_uploads",
+"user_id",
+"artists"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"06-049": {
+"pair": [
+"299364_V9_00_000__init.sql",
+"idm_role_catalogue_role",
+"role_catalogue_id",
+"idm_role_catalogue"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-050": {
+"pair": [
+"442770_init.sql",
+"media",
+"projectnumber",
+"thumbnail"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"06-051": {
+"pair": [
+"629335_siskitnet20170914.sql",
+"tb_indenizacao",
+"id_locatario",
+"tb_usuario"
+],
+"kind": "taught by both",
+"answer": "unsure"
+},
+"06-052": {
+"pair": [
+"074040_db_structure.sql",
+"grade_lesson_plan",
+"session_id",
+"sessions"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-053": {
+"pair": [
+"656071_schedule.sql",
+"day",
+"name",
+"gruppa"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"06-054": {
+"pair": [
+"426745_schema-181.sql",
+"SAMPLE_TYPE_PROPERTY_TYPES",
+"PERS_ID_REGISTERER",
+"PERSONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-055": {
+"pair": [
+"346270_bd_postgres.sql",
+"detalle_salida_inventario",
+"producto_inventario_id",
+"producto_inventario"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-056": {
+"pair": [
+"075531_flowable.postgres.bpmn-engine.create.sql",
+"ACT_EVT_LOG",
+"TASK_ID_",
+"ACT_RU_TASK"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-057": {
+"pair": [
+"615355_db_dump.sql",
+"selected_estate",
+"fk_CLIENT",
+"client"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-058": {
+"pair": [
+"343130_schema-172.sql",
+"PERSONS",
+"PERS_ID_REGISTERER",
+"PERSONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-059": {
+"pair": [
+"242210_createdb.sql",
+"roller_user_permissions",
+"website_id",
+"website"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-060": {
+"pair": [
+"054288_flowable.postgres.all.create.sql",
+"ACT_HI_DETAIL",
+"PROC_INST_ID_",
+"ACT_HI_PROCINST"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-061": {
+"pair": [
+"627211_create-migration.sql",
+"EDUCATION_PLAN",
+"NP_VERZIJA",
+"COURSE"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-062": {
+"pair": [
+"281576_spurtcommerce.sql",
+"product_view_log",
+"created_by",
+"users"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"06-063": {
+"pair": [
+"267550_createTables.sql",
+"arch_flownode_instance",
+"rootContainerId",
+"arch_process_instance"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"06-064": {
+"pair": [
+"200545_schema_0.sql",
+"plan_notification",
+"target_id",
+"user"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"06-065": {
+"pair": [
+"632708_byteball-sqlite.sql",
+"outbox",
+"to",
+"devices"
+],
+"kind": "named by one",
+"answer": "yes"
+},
+"07-001": {
+"pair": [
+"193720_sms_edu4next.sql",
+"student_fees_discounts",
+"student_session_id",
+"student_fees_master"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-002": {
+"pair": [
+"392512_database.sql",
+"workouts_exercises_muscles",
+"muscle",
+"workouts_muscles"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"07-003": {
+"pair": [
+"550546_embedded-db.ddl",
+"Application_PushServer",
+"besPushServers_id",
+"PushServer"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-004": {
+"pair": [
+"294039_actualise.sql",
+"blog_tags",
+"created_by",
+"users"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"07-005": {
+"pair": [
+"546459_3b1_joskalukas_db1_v0.1.5.sql",
+"LogedInUsers",
+"IdUser",
+"Users"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"07-006": {
+"pair": [
+"430853_migration.sql",
+"Satellite",
+"name",
+"Organization"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"07-007": {
+"pair": [
+"659354_synpuf-10p.pgsql.sql",
+"concept_relationship",
+"concept_id_2",
+"concept"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"07-008": {
+"pair": [
+"252480_poc_ulb30-032021.sql",
+"mst_user",
+"username",
+"mst_ulb"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"07-009": {
+"pair": [
+"076953_Ambari-DDL-Oracle-CREATE.sql",
+"viewinstance",
+"view_name",
+"viewmain"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"07-010": {
+"pair": [
+"045525_flowable.h2.all.create.sql",
+"ACT_RU_VARIABLE",
+"TASK_ID_",
+"ACT_RU_TASK"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-011": {
+"pair": [
+"182571_byteball-sqlite-light.sql",
+"earned_headers_commission_recipients",
+"address",
+"addresses"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-012": {
+"pair": [
+"299704_boilerplate.sql",
+"task_attachments",
+"po_id",
+"purchase_order"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-013": {
+"pair": [
+"001382_V1.0_1__jeeshop-install.sql",
+"catalog_category",
+"categoryid",
+"category"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-014": {
+"pair": [
+"612904_queef_170226_205339_kbjmt30zgm_v2.6.2963.sql",
+"02fis_commerce_taxrates",
+"taxZoneId",
+"02fis_commerce_taxrates"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"07-015": {
+"pair": [
+"010672_cockroachdb_engine_7.15.0.sql",
+"ACT_HI_INCIDENT",
+"PROC_DEF_ID_",
+"ACT_RE_PROCDEF"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-016": {
+"pair": [
+"546459_3b1_joskalukas_db1_v0.1.5.sql",
+"TaskLocationLogs",
+"IdTaskLocation",
+"TaskLocations"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-017": {
+"pair": [
+"497179_prod_tables.sql",
+"condition_path",
+"workflow_step_uuid",
+"workflow_step"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-018": {
+"pair": [
+"139210_node_eduoa_dbbak.sql",
+"security_organization_role",
+"organization_id",
+"fw_commodity"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"07-019": {
+"pair": [
+"045525_flowable.h2.all.create.sql",
+"ACT_RU_JOB",
+"CUSTOM_VALUES_ID_",
+"ACT_GE_BYTEARRAY"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"07-020": {
+"pair": [
+"268320_database.sql",
+"phppos_location_item_kits_tier_prices",
+"location_id",
+"phppos_app_config"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"07-021": {
+"pair": [
+"339047_schema.sql",
+"QRTZ_BLOB_TRIGGERS",
+"TRIGGER_GROUP",
+"QRTZ_TRIGGERS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-022": {
+"pair": [
+"050584_hive-schema-3.0.0.mssql.sql",
+"KEY_CONSTRAINTS",
+"CHILD_TBL_ID",
+"TBLS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-023": {
+"pair": [
+"093589_Schema.sql",
+"plot",
+"propertyid",
+"property"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"07-024": {
+"pair": [
+"348429_init.sql",
+"subscriber",
+"subscriber_number",
+"cell"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"07-025": {
+"pair": [
+"516383_hermes_2111.sql",
+"detalle_repuestos",
+"id_detalle_repuestos",
+"gestion"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"07-026": {
+"pair": [
+"294039_actualise.sql",
+"settings",
+"company_address",
+"blog_tags"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"07-027": {
+"pair": [
+"045525_flowable.h2.all.create.sql",
+"ACT_FO_DATABASECHANGELOG",
+"DEPLOYMENT_ID",
+"ACT_DMN_HI_DECISION_EXECUTION"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"07-028": {
+"pair": [
+"015493_DB-PROJECT.ddl",
+"IMPRESE_SEGUITE",
+"cod_dipendente",
+"DIPENDENTI_STUDIO"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"07-029": {
+"pair": [
+"254649_adaptive_learning.sql",
+"course_lecture",
+"updated_by",
+"user"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-030": {
+"pair": [
+"193720_sms_edu4next.sql",
+"teacher_subjects",
+"subject_id",
+"subjects"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-031": {
+"pair": [
+"392984_2020_11_17.sql",
+"sms_schedule",
+"ss_id",
+"sms_delivery"
+],
+"kind": "named by one",
+"answer": "no"
+},
+"07-032": {
+"pair": [
+"010672_cockroachdb_engine_7.15.0.sql",
+"ACT_RU_JOB",
+"DEPLOYMENT_ID_",
+"ACT_RE_DEPLOYMENT"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-033": {
+"pair": [
+"000110_V_51__create_sec.sql",
+"sec_swap",
+"pay_notionalcurrency_id",
+"sec_currency"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-034": {
+"pair": [
+"569128_schema-170.sql",
+"SAMPLE_RELATIONSHIPS_HISTORY",
+"PERS_ID_AUTHOR",
+"PERSONS"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-035": {
+"pair": [
+"002271_activiti.db2.create.engine.sql",
+"ACT_RU_VARIABLE",
+"PROC_INST_ID_",
+"ACT_RU_EXECUTION"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"07-036": {
+"pair": [
+"388796_cms.sql",
+"cms_core_ncc_post",
+"PostStatus",
+"cms_core_ncc_comment"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"07-037": {
+"pair": [
+"161228_741521438131.sql",
+"blogcategories",
+"name",
+"password_resets"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"07-038": {
+"pair": [
+"153923_thoga_lk.sql",
+"address",
+"district",
+"districts"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-039": {
+"pair": [
+"139210_node_eduoa_dbbak.sql",
+"fw_port",
+"country_id",
+"fw_country"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-040": {
+"pair": [
+"450785_db_siip3.sql",
+"addresses",
+"province_id",
+"provinces"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-041": {
+"pair": [
+"444165_DATABASE.sql",
+"feedback",
+"review",
+"user_types"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"07-042": {
+"pair": [
+"534088_toolai.sql",
+"shop_product",
+"categoryB2B_id",
+"shop_category"
+],
+"kind": "taught by both",
+"answer": "unsure"
+},
+"07-043": {
+"pair": [
+"213128_sylius.sql",
+"sylius_shipping_category",
+"name",
+"sylius_promotion_rule"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"07-044": {
+"pair": [
+"274789_sem_test_prev.sql",
+"t_became_a_view",
+"id",
+"column_undeleted_in_this_table"
+],
+"kind": "control: not a key",
+"answer": "no"
+},
+"07-045": {
+"pair": [
+"191509_export.sql",
+"report",
+"username",
+"account"
+],
+"kind": "control: declared",
+"answer": "yes"
+},
+"07-046": {
+"pair": [
+"008906_1475015600.sql",
+"identity_role",
+"role_id",
+"role"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-047": {
+"pair": [
+"252480_poc_ulb30-032021.sql",
+"trans_wms",
+"ulb_id",
+"mst_ulb"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-048": {
+"pair": [
+"388796_cms.sql",
+"cms_core_ncc_user_role",
+"RoleId",
+"cms_core_ncc_role"
+],
+"kind": "taught by both",
+"answer": "yes"
+},
+"07-049": {
+"pair": [
+"469358_Ambari-DDL-MySQL-CREATE.sql",
+"QRTZ_SIMPROP_TRIGGERS",
+"TRIGGER_NAME",
+"QRTZ_TRIGGERS"
+],
+"kind": "named by one",
+"answer": "yes"
+}
+}

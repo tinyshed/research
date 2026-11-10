@@ -1,0 +1,44 @@
+{
+ "pool": 27492,
+ "prefix by SHA-256": 3100,
+ "fetched prefix by SHA-256": 4700,
+ "drops": {
+  "style: over 25 % of keys end in id": 743,
+  "fewer_than_5_tables": 385,
+  "no_table_parsed": 149,
+  "fewer_than_3_resolved_fks": 121,
+  "no_sql_with_references": 10,
+  "sample_database_overlap": 27,
+  "no one-column key": 17,
+  "no_sql_file": 5,
+  "no_head_or_tree": 6,
+  "held by a SchemaPile schema": 20,
+  "a schema of the four GitHub sets": 5
+ },
+ "passing": 112,
+ "half": "style3",
+ "schemas": 100,
+ "tables": 1634,
+ "one_column_fks": 1762,
+ "composite_fks": 15,
+ "key_columns_ending_in_id": 91,
+ "share_ending_in_id": 0.0516,
+ "created_before_2025_07_01": 63,
+ "created_at_min": "2014-08-05T15:41:43Z",
+ "created_at_max": "2026-11-07T16:17:34Z",
+ "licences": {
+  "none": 82,
+  "MIT": 12,
+  "ISC": 1,
+  "GPL-3.0": 4,
+  "Apache-2.0": 1
+ },
+ "schemas_by_size": {
+  "0 to 4 tables": 0,
+  "5 to 9 tables": 38,
+  "10 to 19 tables": 42,
+  "20 to 39 tables": 12,
+  "40 to 99 tables": 7,
+  "100 to more tables": 1
+ }
+}

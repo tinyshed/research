@@ -1,0 +1,118 @@
+{
+ "answered": 420,
+ "of": 420,
+ "answers by kind": {
+  "undeclared, drawn": {
+   "unsure": 26,
+   "yes": 158,
+   "no": 116
+  },
+  "control: not a key": {
+   "no": 58,
+   "unsure": 2
+  },
+  "control: declared": {
+   "yes": 53,
+   "no": 2,
+   "unsure": 5
+  }
+ },
+ "models": {
+  "1s": {
+   "sampled": 126,
+   "yes": 96,
+   "no": 20,
+   "unsure": 10,
+   "share called keys": 0.7619,
+   "drawn": 1324,
+   "declared keys found": 1109,
+   "keys no declaration names": 215,
+   "precision, declarations": 0.8376,
+   "precision, with the judge's share": 0.9613
+  },
+  "eleven--wide": {
+   "sampled": 162,
+   "yes": 113,
+   "no": 44,
+   "unsure": 5,
+   "share called keys": 0.6975,
+   "drawn": 1458,
+   "declared keys found": 1181,
+   "keys no declaration names": 277,
+   "precision, declarations": 0.81,
+   "precision, with the judge's share": 0.9425
+  },
+  "eleven-seed2--wide": {
+   "sampled": 138,
+   "yes": 107,
+   "no": 26,
+   "unsure": 5,
+   "share called keys": 0.7754,
+   "drawn": 1399,
+   "declared keys found": 1145,
+   "keys no declaration names": 254,
+   "precision, declarations": 0.8184,
+   "precision, with the judge's share": 0.9592
+  },
+  "ten--wide": {
+   "sampled": 178,
+   "yes": 120,
+   "no": 49,
+   "unsure": 9,
+   "share called keys": 0.6742,
+   "drawn": 1516,
+   "declared keys found": 1211,
+   "keys no declaration names": 305,
+   "precision, declarations": 0.7988,
+   "precision, with the judge's share": 0.9344
+  },
+  "ten--graph": {
+   "sampled": 167,
+   "yes": 121,
+   "no": 37,
+   "unsure": 9,
+   "share called keys": 0.7246,
+   "drawn": 1515,
+   "declared keys found": 1224,
+   "keys no declaration names": 291,
+   "precision, declarations": 0.8079,
+   "precision, with the judge's share": 0.9471
+  },
+  "eleven-taught--wide": {
+   "sampled": 221,
+   "yes": 145,
+   "no": 59,
+   "unsure": 17,
+   "share called keys": 0.6561,
+   "drawn": 1625,
+   "declared keys found": 1246,
+   "keys no declaration names": 379,
+   "precision, declarations": 0.7668,
+   "precision, with the judge's share": 0.9198
+  },
+  "eleven--wide+eleven-taught--wide@0.7": {
+   "sampled": 172,
+   "yes": 124,
+   "no": 42,
+   "unsure": 6,
+   "share called keys": 0.7209,
+   "drawn": 1483,
+   "declared keys found": 1195,
+   "keys no declaration names": 288,
+   "precision, declarations": 0.8058,
+   "precision, with the judge's share": 0.9458
+  },
+  "nine-mended": {
+   "sampled": 162,
+   "yes": 108,
+   "no": 45,
+   "unsure": 9,
+   "share called keys": 0.6667,
+   "drawn": 1428,
+   "declared keys found": 1152,
+   "keys no declaration names": 276,
+   "precision, declarations": 0.8067,
+   "precision, with the judge's share": 0.9356
+  }
+ }
+}

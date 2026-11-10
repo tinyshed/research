@@ -1,0 +1,560 @@
+{
+ "first": {
+  "eleven": {
+   "fit": "eleven",
+   "options": {
+    "people": true
+   },
+   "seed": 20261027,
+   "grams": "sorted",
+   "data": {
+    "validation renamed beside": 1022,
+    "train renamed": 3999,
+    "train left, the style did not fit": 124
+   },
+   "training pairs": 8603420,
+   "validation pairs": 1674439,
+   "sample": 920601,
+   "negatives left out": 0,
+   "seconds": 659
+  },
+  "eleven-seed2": {
+   "fit": "eleven-seed2",
+   "options": {
+    "people": true,
+    "seed": 20261028
+   },
+   "seed": 20261028,
+   "grams": "sorted",
+   "data": {
+    "validation renamed beside": 1022,
+    "train renamed": 3999,
+    "train left, the style did not fit": 124
+   },
+   "training pairs": 8603420,
+   "validation pairs": 1674439,
+   "sample": 919990,
+   "negatives left out": 0,
+   "seconds": 699
+  },
+  "eleven-taught": {
+   "fit": "eleven-taught",
+   "options": {
+    "people": true,
+    "taught": "taught-more.json",
+    "not taught": "declared-otherwise.json"
+   },
+   "seed": 20261027,
+   "grams": "sorted",
+   "data": {
+    "schemas with teachers' answers": 2369,
+    "taught keys": 25839,
+    "schemas taught from nothing declared": 0,
+    "validation renamed beside": 1022,
+    "train renamed": 3999,
+    "train left, the style did not fit": 124
+   },
+   "training pairs": 8603116,
+   "validation pairs": 1674058,
+   "sample": 913267,
+   "negatives left out": 25110,
+   "seconds": 665
+  },
+  "ten": {
+   "fit": "ten",
+   "options": {},
+   "seed": 20261027,
+   "grams": "sorted",
+   "data": {
+    "validation renamed beside": 1022,
+    "train renamed": 3999,
+    "train left, the style did not fit": 124
+   },
+   "training pairs": 8603420,
+   "validation pairs": 1674439,
+   "sample": 920601,
+   "negatives left out": 0,
+   "seconds": 653
+  },
+  "ten-taught": {
+   "fit": "ten-taught",
+   "options": {
+    "taught": true
+   },
+   "seed": 20261027,
+   "grams": "sorted",
+   "data": {
+    "schemas with teachers' answers": 1359,
+    "taught keys": 23013,
+    "schemas taught from nothing declared": 0,
+    "validation renamed beside": 1022,
+    "train renamed": 3999,
+    "train left, the style did not fit": 124
+   },
+   "training pairs": 8603106,
+   "validation pairs": 1674058,
+   "sample": 911603,
+   "negatives left out": 24820,
+   "seconds": 716
+  },
+  "ten-taught-more": {
+   "fit": "ten-taught-more",
+   "options": {
+    "taught": "taught-more.json"
+   },
+   "seed": 20261027,
+   "grams": "sorted",
+   "data": {
+    "schemas with teachers' answers": 2369,
+    "taught keys": 27591,
+    "schemas taught from nothing declared": 0,
+    "validation renamed beside": 1022,
+    "train renamed": 3999,
+    "train left, the style did not fit": 124
+   },
+   "training pairs": 8603016,
+   "validation pairs": 1674058,
+   "sample": 914141,
+   "negatives left out": 25737,
+   "seconds": 724
+  },
+  "ten-unsure": {
+   "fit": "ten-unsure",
+   "options": {
+    "taught": "taught-more.json",
+    "teach": "leave out"
+   },
+   "seed": 20261027,
+   "grams": "sorted",
+   "data": {
+    "schemas with teachers' answers": 2369,
+    "taught keys": 0,
+    "schemas taught from nothing declared": 0,
+    "validation renamed beside": 1022,
+    "train renamed": 3999,
+    "train left, the style did not fit": 124
+   },
+   "training pairs": 8603420,
+   "validation pairs": 1674439,
+   "sample": 815911,
+   "negatives left out": 104931,
+   "seconds": 636
+  }
+ },
+ "second": {
+  "eleven--graph": {
+   "first": "eleven",
+   "kind": "graph",
+   "tag": "",
+   "params": {},
+   "threshold": 0.8407974205689824,
+   "sample": 920601,
+   "left out as unlabeled": 0,
+   "validation": {
+    "precision": 0.7977790352242184,
+    "recall": 0.7725342465753424,
+    "f1": 0.7849537198134873,
+    "average_precision": 0.8098047658415408
+   },
+   "validation, declarations only": null,
+   "seconds": 366,
+   "importance, the ten largest shares": {
+    "score": 0.6424,
+    "lead over the column's next": 0.2042,
+    "rank in column": 0.0376,
+    "same last word, mean best": 0.0226,
+    "confident columns of the schema": 0.0189,
+    "column's best": 0.0174,
+    "base": 0.0135,
+    "others into the target, best": 0.011,
+    "others into the target, sum": 0.0095,
+    "back from the target": 0.0077
+   }
+  },
+  "eleven--wide": {
+   "first": "eleven",
+   "kind": "wide",
+   "tag": "",
+   "params": {},
+   "threshold": 0.7980627105736274,
+   "sample": 920601,
+   "left out as unlabeled": 0,
+   "validation": {
+    "precision": 0.8011960225297268,
+    "recall": 0.7891780821917809,
+    "f1": 0.7951416445257239,
+    "average_precision": 0.8224093039885404
+   },
+   "validation, declarations only": null,
+   "seconds": 247,
+   "importance, the ten largest shares": {
+    "valley: the pair above it": 0.5599,
+    "score over the schema's best": 0.2731,
+    "score": 0.0248,
+    "log lead over the column's next": 0.0127,
+    "valley: columns above it": 0.0097,
+    "last word: others over tables": 0.0068,
+    "lead over the column's next": 0.006,
+    "others into the target, sum": 0.0059,
+    "place among the schema's column bests": 0.0054,
+    "valley: how far apart its sides": 0.0051
+   }
+  },
+  "eleven-seed2--graph": {
+   "first": "eleven-seed2",
+   "kind": "graph",
+   "tag": "",
+   "params": {
+    "random_state": 20261028
+   },
+   "threshold": 0.8508675530287609,
+   "sample": 919990,
+   "left out as unlabeled": 0,
+   "validation": {
+    "precision": 0.7949267595569847,
+    "recall": 0.761986301369863,
+    "f1": 0.7781080608497989,
+    "average_precision": 0.8078279554591422
+   },
+   "validation, declarations only": null,
+   "seconds": 47,
+   "importance, the ten largest shares": {
+    "score": 0.7616,
+    "rank in column": 0.0706,
+    "lead over the column's next": 0.0488,
+    "confident columns of the schema": 0.0211,
+    "same last word, mean best": 0.0202,
+    "column's best": 0.0195,
+    "base": 0.0122,
+    "others into the target, best": 0.0109,
+    "others into the target, sum": 0.0092,
+    "back from the target": 0.0077
+   }
+  },
+  "eleven-seed2--wide": {
+   "first": "eleven-seed2",
+   "kind": "wide",
+   "tag": "",
+   "params": {
+    "random_state": 20261028
+   },
+   "threshold": 0.8144826189063585,
+   "sample": 919990,
+   "left out as unlabeled": 0,
+   "validation": {
+    "precision": 0.8005935556811759,
+    "recall": 0.7760273972602739,
+    "f1": 0.7881190873678352,
+    "average_precision": 0.8172642996252096
+   },
+   "validation, declarations only": null,
+   "seconds": 75,
+   "importance, the ten largest shares": {
+    "valley: the pair above it": 0.5022,
+    "score": 0.1999,
+    "score over the schema's best": 0.143,
+    "lead over the column's next": 0.011,
+    "log lead over the column's next": 0.0106,
+    "last word: others over tables": 0.0098,
+    "place among the schema's column bests": 0.0097,
+    "base": 0.007,
+    "valley: columns above it": 0.0066,
+    "same name: others whose best is the target": 0.0054
+   }
+  },
+  "eleven-taught--wide": {
+   "first": "eleven-taught",
+   "kind": "wide",
+   "tag": "",
+   "params": {},
+   "threshold": 0.8599259387373047,
+   "sample": 913267,
+   "left out as unlabeled": 0,
+   "validation": {
+    "precision": 0.875898272259314,
+    "recall": 0.8273637589062199,
+    "f1": 0.850939519223628,
+    "average_precision": 0.860403523255914
+   },
+   "validation, declarations only": {
+    "precision": 0.6313072790477193,
+    "recall": 0.820958904109589,
+    "f1": 0.7137497766926696,
+    "threshold": 0.8867743359979348,
+    "f1 at the taught threshold": 0.7119020484497823
+   },
+   "seconds": 224,
+   "importance, the ten largest shares": {
+    "valley: the pair above it": 0.5699,
+    "score over the schema's best": 0.2443,
+    "score": 0.0606,
+    "log lead over the column's next": 0.0148,
+    "lead over the column's next": 0.0088,
+    "targets of the column, log": 0.0051,
+    "rank in column": 0.0047,
+    "others into the target, sum": 0.0046,
+    "last word: others' mean best": 0.0046,
+    "same name: lead over the group's other target": 0.0043
+   }
+  },
+  "ten--graph": {
+   "first": "ten",
+   "kind": "graph",
+   "tag": "",
+   "params": {},
+   "threshold": 0.8294828239211769,
+   "sample": 920601,
+   "left out as unlabeled": 0,
+   "validation": {
+    "precision": 0.7894297054522665,
+    "recall": 0.7765068493150685,
+    "f1": 0.7829149545941094,
+    "average_precision": 0.8053785843834667
+   },
+   "seconds": 95,
+   "importance, the ten largest shares": {
+    "score": 0.5786,
+    "lead over the column's next": 0.2676,
+    "rank in column": 0.0387,
+    "same last word, mean best": 0.0199,
+    "column's best": 0.0193,
+    "confident columns of the schema": 0.0193,
+    "base": 0.012,
+    "others into the target, sum": 0.0104,
+    "others into the target, best": 0.0099,
+    "back from the target": 0.0072
+   }
+  },
+  "ten--wide": {
+   "first": "ten",
+   "kind": "wide",
+   "tag": "",
+   "params": {},
+   "threshold": 0.7883810207080268,
+   "sample": 920601,
+   "left out as unlabeled": 0,
+   "validation": {
+    "precision": 0.7937417973337018,
+    "recall": 0.7870547945205479,
+    "f1": 0.7903841524228772,
+    "average_precision": 0.8192511263482953
+   },
+   "seconds": 285,
+   "importance, the ten largest shares": {
+    "valley: the pair above it": 0.5624,
+    "score over the schema's best": 0.1784,
+    "lead over the column's next": 0.0671,
+    "score": 0.0588,
+    "log lead over the column's next": 0.0114,
+    "valley: columns above it": 0.0091,
+    "last word: others over tables": 0.0059,
+    "others into the target, sum": 0.0053,
+    "sum of the column's scores": 0.005,
+    "rank in column": 0.005
+   }
+  },
+  "ten--wide-sure": {
+   "first": "ten",
+   "kind": "wide",
+   "tag": "sure",
+   "params": {},
+   "threshold": 0.9633269505851946,
+   "sample": 884768,
+   "left out as unlabeled": 35833,
+   "validation": {
+    "precision": 0.7811034482758621,
+    "recall": 0.7757534246575343,
+    "f1": 0.7784192439862543,
+    "average_precision": 0.7953901338780954
+   },
+   "seconds": 124,
+   "importance, the ten largest shares": {
+    "valley: the pair above it": 0.5674,
+    "score over the schema's best": 0.2661,
+    "score": 0.0249,
+    "lead over the column's next": 0.0143,
+    "log lead over the column's next": 0.0094,
+    "valley: columns above it": 0.0091,
+    "rank in column": 0.0062,
+    "others into the target, sum": 0.0056,
+    "last word: others over tables": 0.0056,
+    "base": 0.0046
+   }
+  },
+  "ten--wide-taught": {
+   "first": "ten",
+   "kind": "wide",
+   "tag": "taught",
+   "params": {},
+   "threshold": 0.8492577886873377,
+   "sample": 867008,
+   "left out as unlabeled": 63530,
+   "validation": {
+    "precision": 0.8302963902664052,
+    "recall": 0.8008342602892102,
+    "f1": 0.8152992469282601,
+    "average_precision": 0.8348541622599819
+   },
+   "validation, declarations only": {
+    "precision": 0.7684089525999054,
+    "recall": 0.7783561643835616,
+    "f1": 0.773350573343768,
+    "threshold": 0.928597860781712,
+    "f1 at the taught threshold": 0.7568092167052781
+   },
+   "seconds": 473,
+   "importance, the ten largest shares": {
+    "valley: the pair above it": 0.5619,
+    "score over the schema's best": 0.1746,
+    "lead over the column's next": 0.0761,
+    "score": 0.0368,
+    "log lead over the column's next": 0.0152,
+    "rank in column": 0.0094,
+    "last word: others over tables": 0.0076,
+    "valley: the column's best above it": 0.0064,
+    "same name: others whose best is the target": 0.0062,
+    "others into the target, sum": 0.0059
+   }
+  },
+  "ten-taught--graph": {
+   "first": "ten-taught",
+   "kind": "graph",
+   "tag": "",
+   "params": {},
+   "threshold": 0.8202477761180077,
+   "sample": 911603,
+   "left out as unlabeled": 0,
+   "validation": {
+    "precision": 0.8518793273986153,
+    "recall": 0.8182120463613909,
+    "f1": 0.8347063384376816,
+    "average_precision": 0.8481271925184355
+   },
+   "validation, declarations only": {
+    "precision": 0.6411969458791825,
+    "recall": 0.7822602739726028,
+    "f1": 0.7047389855609034,
+    "threshold": 0.9023068131822586,
+    "f1 at the taught threshold": 0.7005169442848937
+   },
+   "seconds": 41,
+   "importance, the ten largest shares": {
+    "score": 0.7337,
+    "lead over the column's next": 0.1309,
+    "rank in column": 0.0362,
+    "column's best": 0.0225,
+    "same last word, mean best": 0.0143,
+    "base": 0.0107,
+    "confident columns of the schema": 0.0104,
+    "others into the target, sum": 0.0103,
+    "others into the target, best": 0.0093,
+    "back from the target": 0.009
+   }
+  },
+  "ten-taught--wide": {
+   "first": "ten-taught",
+   "kind": "wide",
+   "tag": "",
+   "params": {},
+   "threshold": 0.7775013767288773,
+   "sample": 911603,
+   "left out as unlabeled": 0,
+   "validation": {
+    "precision": 0.8518337168878225,
+    "recall": 0.8263822914687441,
+    "f1": 0.8389150090415914,
+    "average_precision": 0.8546124155259206
+   },
+   "validation, declarations only": {
+    "precision": 0.6264549169727381,
+    "recall": 0.8294520547945206,
+    "f1": 0.7138015384161976,
+    "threshold": 0.8394214642792223,
+    "f1 at the taught threshold": 0.7095337349741597
+   },
+   "seconds": 224,
+   "importance, the ten largest shares": {
+    "valley: the pair above it": 0.5712,
+    "score over the schema's best": 0.1846,
+    "score": 0.1159,
+    "log lead over the column's next": 0.0145,
+    "lead over the column's next": 0.0076,
+    "last word: others' mean best": 0.0052,
+    "others into the target, sum": 0.0052,
+    "targets of the column, log": 0.0051,
+    "same name: lead over the group's other target": 0.0045,
+    "rank in column": 0.0042
+   }
+  },
+  "ten-unsure--graph": {
+   "first": "ten-unsure",
+   "kind": "graph",
+   "tag": "",
+   "params": {},
+   "threshold": 0.8237335610015196,
+   "sample": 815911,
+   "left out as unlabeled": 0,
+   "validation": {
+    "precision": 0.858636137381782,
+    "recall": 0.827054794520548,
+    "f1": 0.842549628440847,
+    "average_precision": 0.7720891620259265
+   },
+   "validation, declarations only": {
+    "precision": 0.7548177699641625,
+    "recall": 0.7645890410958904,
+    "f1": 0.7596719861172547,
+    "threshold": 0.9108418091614323,
+    "f1 at the taught threshold": 0.7539100302812726
+   },
+   "seconds": 61,
+   "importance, the ten largest shares": {
+    "score": 0.6405,
+    "lead over the column's next": 0.2109,
+    "rank in column": 0.0364,
+    "column's best": 0.0188,
+    "same last word, mean best": 0.0185,
+    "confident columns of the schema": 0.0174,
+    "base": 0.0122,
+    "others into the target, sum": 0.0101,
+    "back from the target": 0.0096,
+    "others into the target, best": 0.0092
+   }
+  },
+  "ten-unsure--wide": {
+   "first": "ten-unsure",
+   "kind": "wide",
+   "tag": "",
+   "params": {},
+   "threshold": 0.8037106731104051,
+   "sample": 815911,
+   "left out as unlabeled": 0,
+   "validation": {
+    "precision": 0.8658848614072495,
+    "recall": 0.8344520547945206,
+    "f1": 0.8498779211719568,
+    "average_precision": 0.7878927286333075
+   },
+   "validation, declarations only": {
+    "precision": 0.7691324815063887,
+    "recall": 0.7833561643835616,
+    "f1": 0.7761791652527994,
+    "threshold": 0.9071137079365267,
+    "f1 at the taught threshold": 0.7643515904385471
+   },
+   "seconds": 111,
+   "importance, the ten largest shares": {
+    "valley: the pair above it": 0.5715,
+    "score over the schema's best": 0.1521,
+    "score": 0.0799,
+    "lead over the column's next": 0.0684,
+    "log lead over the column's next": 0.0154,
+    "valley: columns above it": 0.0071,
+    "rank in column": 0.0068,
+    "last word: others over tables": 0.0061,
+    "others into the target, sum": 0.0049,
+    "place among the schema's column bests": 0.0046
+   }
+  }
+ }
+}

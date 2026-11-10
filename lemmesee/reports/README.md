@@ -105,3 +105,10 @@ so, never by editing the number it replaces.
   reader in Rust exact on 3.4 million pairs, 2.7–2.8 ms a database; 1 054 108 bytes with its lexicons, 619 676 with
   gzip; see keeps 0.79–0.87 of a database's joining questions through its keys; the GitHub sets read again with the
   fixed collector put it 0.055 above round 1s's over 452 schemas, but not on the set read once with that collector.
+- [The key model against the size of a schema](keys-size-2026-11-10.md), round 1v: `nine-mended`'s F1 falls from 0.876
+  in schemas under five tables to 0.601 at 40 to 99 on SchemaPile's own test, and its distance from Gemini 3.8 Flash grows
+  from 0.08 to 0.29; a training schema of ten tables or more declares about two thirds of its keys, by round 1's rules and
+  by two language models whose added keys a blind judge calls real nine times in ten; a first stage that reads a name
+  against the whole schema, read once on 718 plain GitHub schemas, 0.757 against 0.702, +0.055 [+0.038, +0.074], and
+  +0.087 in schemas of 40 tables or more; on 100 schemas in another house style, read once, +0.011 [−0.003, +0.025]; the
+  teachers' keys taught raise recall and no F1 over declared keys; a seed alone moves a fit by 0.01.

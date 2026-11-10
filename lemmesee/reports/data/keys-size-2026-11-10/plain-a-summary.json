@@ -1,0 +1,51 @@
+{
+ "pool": 27492,
+ "prefix by SHA-256": 3100,
+ "fetched prefix by SHA-256": 4700,
+ "drops": {
+  "a schema of the four GitHub sets": 206,
+  "fewer_than_5_tables": 738,
+  "fewer_than_3_resolved_fks": 217,
+  "no_table_parsed": 289,
+  "sample_database_overlap": 55,
+  "no_sql_with_references": 24,
+  "held by a SchemaPile schema": 56,
+  "no_sql_file": 7,
+  "no one-column key": 32,
+  "no_head_or_tree": 5,
+  "style: at most 25 % of keys end in id (the style set's and the fresh set's)": 21,
+  "duplicate_table_set": 14
+ },
+ "passing": 1436,
+ "half": "plain-a",
+ "schemas": 718,
+ "tables": 14756,
+ "one_column_fks": 16399,
+ "composite_fks": 726,
+ "key_columns_ending_in_id": 14907,
+ "share_ending_in_id": 0.909,
+ "created_before_2025_07_01": 262,
+ "created_at_min": "2008-06-12T03:53:05Z",
+ "created_at_max": "2026-11-06T17:56:51Z",
+ "licences": {
+  "none": 560,
+  "GPL-3.0": 13,
+  "GPL-2.0": 5,
+  "Apache-2.0": 33,
+  "MIT": 83,
+  "AGPL-3.0": 15,
+  "BSD-3-Clause": 5,
+  "LGPL-2.1": 1,
+  "MulanPSL-2.0": 1,
+  "MPL-2.0": 1,
+  "ISC": 1
+ },
+ "schemas_by_size": {
+  "0 to 4 tables": 0,
+  "5 to 9 tables": 248,
+  "10 to 19 tables": 246,
+  "20 to 39 tables": 156,
+  "40 to 99 tables": 56,
+  "100 to more tables": 12
+ }
+}

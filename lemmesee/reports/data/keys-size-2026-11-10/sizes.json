@@ -1,0 +1,5857 @@
+{
+ "schemapile validation": {
+  "1s": {
+   "databases": 1038,
+   "keys": 7633,
+   "precision": 0.729333139619352,
+   "recall": 0.6576706406393292,
+   "f1": 0.6916505924497106,
+   "f1_95": [
+    0.6582402364389833,
+    0.7221151806920162
+   ],
+   "macro f1": 0.7214482706772772,
+   "by tables": {
+    "0-4": {
+     "databases": 390,
+     "keys": 688,
+     "precision": 0.8658892128279884,
+     "recall": 0.8633720930232558,
+     "f1": 0.8646288209606987,
+     "macro f1": 0.841406833906834
+    },
+    "5-9": {
+     "databases": 325,
+     "keys": 1474,
+     "precision": 0.7658600392413342,
+     "recall": 0.7944369063772049,
+     "f1": 0.7798867798867798,
+     "macro f1": 0.7146550382232273
+    },
+    "10-19": {
+     "databases": 203,
+     "keys": 2030,
+     "precision": 0.7232015245354931,
+     "recall": 0.7477832512315271,
+     "f1": 0.7352869944296441,
+     "macro f1": 0.6340265715466661
+    },
+    "20-39": {
+     "databases": 87,
+     "keys": 1716,
+     "precision": 0.6531871144619602,
+     "recall": 0.5553613053613053,
+     "f1": 0.6003149606299213,
+     "macro f1": 0.5117353056740342
+    },
+    "40-99": {
+     "databases": 32,
+     "keys": 1641,
+     "precision": 0.70817843866171,
+     "recall": 0.4643510054844607,
+     "f1": 0.5609127714390872,
+     "macro f1": 0.4640782919766647
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 84,
+     "precision": 0.6470588235294118,
+     "recall": 0.2619047619047619,
+     "f1": 0.37288135593220334,
+     "macro f1": 0.37288135593220334
+    }
+   },
+   "what becomes of a declared key": {
+    "0-4": {
+     "keys": 688,
+     "found": 0.8633720930232558,
+     "first, under the threshold": 0.04796511627906977,
+     "another table first": 0.015988372093023256,
+     "no candidate": 0.07267441860465117,
+     "its table scored first": 0.9113372093023255,
+     "targets a column, mean": 2.190690690690691,
+     "f1 at the model's threshold": 0.8646288209606987,
+     "f1 at the best threshold for this size": 0.8711656441717791,
+     "the best threshold for this size": 0.9304811358451843,
+     "precision there": 0.922077922077922,
+     "precision at 0.5": 0.7318235995232419
+    },
+    "5-9": {
+     "keys": 1474,
+     "found": 0.7944369063772049,
+     "first, under the threshold": 0.07869742198100407,
+     "another table first": 0.04341926729986431,
+     "no candidate": 0.08344640434192672,
+     "its table scored first": 0.8731343283582089,
+     "targets a column, mean": 4.40081799591002,
+     "f1 at the model's threshold": 0.7798867798867799,
+     "f1 at the best threshold for this size": 0.7829326109041652,
+     "the best threshold for this size": 0.8630484938621521,
+     "precision there": 0.7816091954022989,
+     "precision at 0.5": 0.6542497376705142
+    },
+    "10-19": {
+     "keys": 2030,
+     "found": 0.7472906403940887,
+     "first, under the threshold": 0.08177339901477833,
+     "another table first": 0.07192118226600985,
+     "no candidate": 0.09901477832512315,
+     "its table scored first": 0.829064039408867,
+     "targets a column, mean": 9.405703175631887,
+     "f1 at the model's threshold": 0.7348026156454347,
+     "f1 at the best threshold for this size": 0.7378155461134717,
+     "the best threshold for this size": 0.8738800883293152,
+     "precision there": 0.7488584474885844,
+     "precision at 0.5": 0.5811722912966252
+    },
+    "20-39": {
+     "keys": 1716,
+     "found": 0.5553613053613053,
+     "first, under the threshold": 0.12062937062937062,
+     "another table first": 0.08916083916083917,
+     "no candidate": 0.23484848484848486,
+     "its table scored first": 0.675990675990676,
+     "targets a column, mean": 18.193052213037564,
+     "f1 at the model's threshold": 0.6003149606299213,
+     "f1 at the best threshold for this size": 0.6012991030003093,
+     "the best threshold for this size": 0.8244036436080933,
+     "precision there": 0.6407382992748847,
+     "precision at 0.5": 0.4874835309617918
+    },
+    "40-99": {
+     "keys": 1641,
+     "found": 0.4643510054844607,
+     "first, under the threshold": 0.35405240706886043,
+     "another table first": 0.08226691042047532,
+     "no candidate": 0.09932967702620353,
+     "its table scored first": 0.8184034125533212,
+     "targets a column, mean": 36.89649104647552,
+     "f1 at the model's threshold": 0.5609127714390872,
+     "f1 at the best threshold for this size": 0.6104173012488577,
+     "the best threshold for this size": 0.6827055215835571,
+     "precision there": 0.610231425091352,
+     "precision at 0.5": 0.5331707317073171
+    },
+    "100+": {
+     "keys": 84,
+     "found": 0.2619047619047619,
+     "first, under the threshold": 0.5833333333333334,
+     "another table first": 0.15476190476190477,
+     "no candidate": 0.0,
+     "its table scored first": 0.8452380952380952,
+     "targets a column, mean": 19.439655172413794,
+     "f1 at the model's threshold": 0.3728813559322034,
+     "f1 at the best threshold for this size": 0.6086956521739131,
+     "the best threshold for this size": 0.16218301653862,
+     "precision there": 0.4794520547945205,
+     "precision at 0.5": 0.4406779661016949
+    }
+   }
+  },
+  "seven-bounded": {
+   "databases": 1038,
+   "keys": 7633,
+   "precision": 0.7074893390191898,
+   "recall": 0.6955325560068125,
+   "f1": 0.7014599986787342,
+   "f1_95": [
+    0.6704344082891179,
+    0.730932190520994
+   ],
+   "macro f1": 0.7341912474389364,
+   "by tables": {
+    "0-4": {
+     "databases": 390,
+     "keys": 688,
+     "precision": 0.8482758620689655,
+     "recall": 0.8938953488372093,
+     "f1": 0.8704883227176222,
+     "macro f1": 0.8709979834979835
+    },
+    "5-9": {
+     "databases": 325,
+     "keys": 1474,
+     "precision": 0.7434491163924436,
+     "recall": 0.8276797829036635,
+     "f1": 0.78330658105939,
+     "macro f1": 0.7182320018633427
+    },
+    "10-19": {
+     "databases": 203,
+     "keys": 2030,
+     "precision": 0.694945054945055,
+     "recall": 0.7788177339901478,
+     "f1": 0.7344947735191637,
+     "macro f1": 0.6308737808413004
+    },
+    "20-39": {
+     "databases": 87,
+     "keys": 1716,
+     "precision": 0.6777702243371856,
+     "recall": 0.581002331002331,
+     "f1": 0.6256667712582366,
+     "macro f1": 0.5209371522740188
+    },
+    "40-99": {
+     "databases": 32,
+     "keys": 1641,
+     "precision": 0.6438557763061075,
+     "recall": 0.5332114564290067,
+     "f1": 0.5833333333333334,
+     "macro f1": 0.4758755173193116
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 84,
+     "precision": 0.6363636363636364,
+     "recall": 0.25,
+     "f1": 0.358974358974359,
+     "macro f1": 0.358974358974359
+    }
+   },
+   "what becomes of a declared key": {
+    "0-4": {
+     "keys": 688,
+     "found": 0.8938953488372093,
+     "first, under the threshold": 0.055232558139534885,
+     "another table first": 0.023255813953488372,
+     "no candidate": 0.027616279069767442,
+     "its table scored first": 0.9491279069767442,
+     "targets a column, mean": 2.281196089706728,
+     "f1 at the model's threshold": 0.8704883227176221,
+     "f1 at the best threshold for this size": 0.8760207869339273,
+     "the best threshold for this size": 0.9179571866989136,
+     "precision there": 0.8952959028831563,
+     "precision at 0.5": 0.7242937853107345
+    },
+    "5-9": {
+     "keys": 1474,
+     "found": 0.8276797829036635,
+     "first, under the threshold": 0.08344640434192672,
+     "another table first": 0.05698778833107191,
+     "no candidate": 0.03188602442333786,
+     "its table scored first": 0.9111261872455902,
+     "targets a column, mean": 4.778520949015649,
+     "f1 at the model's threshold": 0.78330658105939,
+     "f1 at the best threshold for this size": 0.7854119179420385,
+     "the best threshold for this size": 0.8414360880851746,
+     "precision there": 0.7551659361302442,
+     "precision at 0.5": 0.6205757432751298
+    },
+    "10-19": {
+     "keys": 2030,
+     "found": 0.7783251231527094,
+     "first, under the threshold": 0.1,
+     "another table first": 0.08078817733990148,
+     "no candidate": 0.040886699507389164,
+     "its table scored first": 0.8783251231527094,
+     "targets a column, mean": 10.018012273850323,
+     "f1 at the model's threshold": 0.7340301974448316,
+     "f1 at the best threshold for this size": 0.7364476642518112,
+     "the best threshold for this size": 0.8872753977775574,
+     "precision there": 0.7470856563608718,
+     "precision at 0.5": 0.5635103926096998
+    },
+    "20-39": {
+     "keys": 1716,
+     "found": 0.581002331002331,
+     "first, under the threshold": 0.2867132867132867,
+     "another table first": 0.11072261072261072,
+     "no candidate": 0.02156177156177156,
+     "its table scored first": 0.8677156177156177,
+     "targets a column, mean": 20.345360379801466,
+     "f1 at the model's threshold": 0.6256667712582366,
+     "f1 at the best threshold for this size": 0.6752643796750064,
+     "the best threshold for this size": 0.6110439300537109,
+     "precision there": 0.6057380842202684,
+     "precision at 0.5": 0.5637994292702813
+    },
+    "40-99": {
+     "keys": 1641,
+     "found": 0.5326020719073735,
+     "first, under the threshold": 0.3266301035953687,
+     "another table first": 0.11882998171846434,
+     "no candidate": 0.021937842778793418,
+     "its table scored first": 0.8592321755027422,
+     "targets a column, mean": 40.61985494960912,
+     "f1 at the model's threshold": 0.5826666666666667,
+     "f1 at the best threshold for this size": 0.5974150311153662,
+     "the best threshold for this size": 0.4149174094200134,
+     "precision there": 0.49191959006700825,
+     "precision at 0.5": 0.506039689387403
+    },
+    "100+": {
+     "keys": 84,
+     "found": 0.25,
+     "first, under the threshold": 0.5952380952380952,
+     "another table first": 0.15476190476190477,
+     "no candidate": 0.0,
+     "its table scored first": 0.8452380952380952,
+     "targets a column, mean": 65.46569646569647,
+     "f1 at the model's threshold": 0.358974358974359,
+     "f1 at the best threshold for this size": 0.6666666666666666,
+     "the best threshold for this size": 0.40510332584381104,
+     "precision there": 0.5789473684210527,
+     "precision at 0.5": 0.5686274509803921
+    }
+   }
+  },
+  "nine-mended": {
+   "databases": 1038,
+   "keys": 7633,
+   "precision": 0.722539328971182,
+   "recall": 0.6799423555613783,
+   "f1": 0.7005939524838013,
+   "f1_95": [
+    0.665647769587579,
+    0.7343262336814909
+   ],
+   "macro f1": 0.7293493870778444,
+   "by tables": {
+    "0-4": {
+     "databases": 390,
+     "keys": 688,
+     "precision": 0.8365122615803815,
+     "recall": 0.8924418604651163,
+     "f1": 0.8635724331926863,
+     "macro f1": 0.8675821400821401
+    },
+    "5-9": {
+     "databases": 325,
+     "keys": 1474,
+     "precision": 0.7571884984025559,
+     "recall": 0.8039348710990502,
+     "f1": 0.7798617966436326,
+     "macro f1": 0.7139671577397226
+    },
+    "10-19": {
+     "databases": 203,
+     "keys": 2030,
+     "precision": 0.7169014084507043,
+     "recall": 0.7522167487684729,
+     "f1": 0.7341346153846154,
+     "macro f1": 0.6183108704574356
+    },
+    "20-39": {
+     "databases": 87,
+     "keys": 1716,
+     "precision": 0.6920415224913494,
+     "recall": 0.5827505827505828,
+     "f1": 0.6327111673521038,
+     "macro f1": 0.5237176886889158
+    },
+    "40-99": {
+     "databases": 32,
+     "keys": 1641,
+     "precision": 0.6622257053291536,
+     "recall": 0.5149299207800122,
+     "f1": 0.57936235858759,
+     "macro f1": 0.4769678420555169
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 84,
+     "precision": 0.5757575757575758,
+     "recall": 0.2261904761904762,
+     "f1": 0.32478632478632485,
+     "macro f1": 0.32478632478632485
+    }
+   },
+   "what becomes of a declared key": {
+    "0-4": {
+     "keys": 688,
+     "found": 0.8924418604651163,
+     "first, under the threshold": 0.05813953488372093,
+     "another table first": 0.02180232558139535,
+     "no candidate": 0.027616279069767442,
+     "its table scored first": 0.9505813953488372,
+     "targets a column, mean": 2.281196089706728,
+     "f1 at the model's threshold": 0.8635724331926864,
+     "f1 at the best threshold for this size": 0.8687589158345221,
+     "the best threshold for this size": 0.8556376099586487,
+     "precision there": 0.8529411764705882,
+     "precision at 0.5": 0.7324913892078071
+    },
+    "5-9": {
+     "keys": 1474,
+     "found": 0.8039348710990502,
+     "first, under the threshold": 0.11058344640434192,
+     "another table first": 0.05359565807327001,
+     "no candidate": 0.03188602442333786,
+     "its table scored first": 0.9145183175033921,
+     "targets a column, mean": 4.778520949015649,
+     "f1 at the model's threshold": 0.7798617966436328,
+     "f1 at the best threshold for this size": 0.7833865814696486,
+     "the best threshold for this size": 0.7643392086029053,
+     "precision there": 0.7403381642512077,
+     "precision at 0.5": 0.6433878157503715
+    },
+    "10-19": {
+     "keys": 2030,
+     "found": 0.7517241379310344,
+     "first, under the threshold": 0.1330049261083744,
+     "another table first": 0.07438423645320197,
+     "no candidate": 0.040886699507389164,
+     "its table scored first": 0.8847290640394089,
+     "targets a column, mean": 10.018012273850323,
+     "f1 at the model's threshold": 0.7336538461538461,
+     "f1 at the best threshold for this size": 0.7411347517730497,
+     "the best threshold for this size": 0.8737242221832275,
+     "precision there": 0.7627737226277372,
+     "precision at 0.5": 0.5637384412153237
+    },
+    "20-39": {
+     "keys": 1716,
+     "found": 0.5827505827505828,
+     "first, under the threshold": 0.28088578088578087,
+     "another table first": 0.1148018648018648,
+     "no candidate": 0.02156177156177156,
+     "its table scored first": 0.8636363636363636,
+     "targets a column, mean": 20.345360379801466,
+     "f1 at the model's threshold": 0.6327111673521038,
+     "f1 at the best threshold for this size": 0.6789288612388423,
+     "the best threshold for this size": 0.6708523631095886,
+     "precision there": 0.6335184250378597,
+     "precision at 0.5": 0.5609857978279031
+    },
+    "40-99": {
+     "keys": 1641,
+     "found": 0.5149299207800122,
+     "first, under the threshold": 0.34064594759293115,
+     "another table first": 0.12248628884826325,
+     "no candidate": 0.021937842778793418,
+     "its table scored first": 0.8555758683729433,
+     "targets a column, mean": 40.61985494960912,
+     "f1 at the model's threshold": 0.57936235858759,
+     "f1 at the best threshold for this size": 0.5978294573643411,
+     "the best threshold for this size": 0.717362105846405,
+     "precision there": 0.6085858585858586,
+     "precision at 0.5": 0.5054495912806539
+    },
+    "100+": {
+     "keys": 84,
+     "found": 0.2261904761904762,
+     "first, under the threshold": 0.6071428571428571,
+     "another table first": 0.16666666666666666,
+     "no candidate": 0.0,
+     "its table scored first": 0.8333333333333334,
+     "targets a column, mean": 65.46569646569647,
+     "f1 at the model's threshold": 0.3247863247863248,
+     "f1 at the best threshold for this size": 0.47719298245614034,
+     "the best threshold for this size": 0.02141384221613407,
+     "precision there": 0.3383084577114428,
+     "precision at 0.5": 0.35294117647058826
+    }
+   }
+  }
+ },
+ "schemapile validation, renamed": {
+  "1s": {
+   "databases": 1022,
+   "keys": 7456,
+   "precision": 0.6919257340241797,
+   "recall": 0.42985515021459225,
+   "f1": 0.5302779616148245,
+   "f1_95": [
+    0.490751013242351,
+    0.5674940444989921
+   ],
+   "macro f1": 0.5590190546129805,
+   "by tables": {
+    "0-4": {
+     "databases": 390,
+     "keys": 688,
+     "precision": 0.8362676056338029,
+     "recall": 0.690406976744186,
+     "f1": 0.7563694267515925,
+     "macro f1": 0.7105067155067155
+    },
+    "5-9": {
+     "databases": 320,
+     "keys": 1460,
+     "precision": 0.7248628884826326,
+     "recall": 0.5431506849315069,
+     "f1": 0.6209866875489428,
+     "macro f1": 0.5274889113724253
+    },
+    "10-19": {
+     "databases": 201,
+     "keys": 2022,
+     "precision": 0.6679331306990881,
+     "recall": 0.43471810089020774,
+     "f1": 0.5266626722588377,
+     "macro f1": 0.4440454806000669
+    },
+    "20-39": {
+     "databases": 81,
+     "keys": 1622,
+     "precision": 0.5841584158415841,
+     "recall": 0.2909987669543773,
+     "f1": 0.388477366255144,
+     "macro f1": 0.320976690355766
+    },
+    "40-99": {
+     "databases": 29,
+     "keys": 1580,
+     "precision": 0.688360450563204,
+     "recall": 0.34810126582278483,
+     "f1": 0.46237915090374115,
+     "macro f1": 0.33177694095275256
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 84,
+     "precision": 0.7659574468085106,
+     "recall": 0.42857142857142855,
+     "f1": 0.5496183206106869,
+     "macro f1": 0.5496183206106869
+    }
+   },
+   "what becomes of a declared key": {
+    "0-4": {
+     "keys": 688,
+     "found": 0.690406976744186,
+     "first, under the threshold": 0.20203488372093023,
+     "another table first": 0.030523255813953487,
+     "no candidate": 0.07703488372093023,
+     "its table scored first": 0.8924418604651163,
+     "targets a column, mean": 2.177937287495278,
+     "f1 at the model's threshold": 0.7563694267515924,
+     "f1 at the best threshold for this size": 0.7771260997067448,
+     "the best threshold for this size": 0.7115758657455444,
+     "precision there": 0.7840236686390533,
+     "precision at 0.5": 0.6924969249692496
+    },
+    "5-9": {
+     "keys": 1460,
+     "found": 0.5431506849315069,
+     "first, under the threshold": 0.2534246575342466,
+     "another table first": 0.10068493150684932,
+     "no candidate": 0.10273972602739725,
+     "its table scored first": 0.7965753424657535,
+     "targets a column, mean": 4.351164658634538,
+     "f1 at the model's threshold": 0.6209866875489428,
+     "f1 at the best threshold for this size": 0.6677556354132637,
+     "the best threshold for this size": 0.5838778614997864,
+     "precision there": 0.6383510306058713,
+     "precision at 0.5": 0.5994301994301995
+    },
+    "10-19": {
+     "keys": 2022,
+     "found": 0.4342235410484669,
+     "first, under the threshold": 0.32146389713155293,
+     "another table first": 0.14540059347181009,
+     "no candidate": 0.09891196834817013,
+     "its table scored first": 0.7556874381800198,
+     "targets a column, mean": 9.380151387720774,
+     "f1 at the model's threshold": 0.5260635110844817,
+     "f1 at the best threshold for this size": 0.5989085948158254,
+     "the best threshold for this size": 0.5168813467025757,
+     "precision there": 0.5542929292929293,
+     "precision at 0.5": 0.5460173338836154
+    },
+    "20-39": {
+     "keys": 1622,
+     "found": 0.2909987669543773,
+     "first, under the threshold": 0.31689272503082616,
+     "another table first": 0.14549938347718866,
+     "no candidate": 0.2466091245376079,
+     "its table scored first": 0.6078914919852034,
+     "targets a column, mean": 18.042266604737577,
+     "f1 at the model's threshold": 0.388477366255144,
+     "f1 at the best threshold for this size": 0.4730473047304731,
+     "the best threshold for this size": 0.38111332058906555,
+     "precision there": 0.4270109235352532,
+     "precision at 0.5": 0.4424581005586592
+    },
+    "40-99": {
+     "keys": 1580,
+     "found": 0.34810126582278483,
+     "first, under the threshold": 0.4316455696202532,
+     "another table first": 0.11012658227848102,
+     "no candidate": 0.11012658227848102,
+     "its table scored first": 0.779746835443038,
+     "targets a column, mean": 36.92475839852738,
+     "f1 at the model's threshold": 0.46237915090374104,
+     "f1 at the best threshold for this size": 0.5914686515888921,
+     "the best threshold for this size": 0.48338690400123596,
+     "precision there": 0.5399895452169368,
+     "precision at 0.5": 0.5412647374062165
+    },
+    "100+": {
+     "keys": 84,
+     "found": 0.42857142857142855,
+     "first, under the threshold": 0.4642857142857143,
+     "another table first": 0.10714285714285714,
+     "no candidate": 0.0,
+     "its table scored first": 0.8928571428571429,
+     "targets a column, mean": 19.439655172413794,
+     "f1 at the model's threshold": 0.549618320610687,
+     "f1 at the best threshold for this size": 0.6938775510204082,
+     "the best threshold for this size": 0.5510625839233398,
+     "precision there": 0.6071428571428571,
+     "precision at 0.5": 0.5483870967741935
+    }
+   }
+  },
+  "seven-bounded": {
+   "databases": 1022,
+   "keys": 7456,
+   "precision": 0.8266464799394398,
+   "recall": 0.7322961373390557,
+   "f1": 0.7766161723917219,
+   "f1_95": [
+    0.750100765609773,
+    0.8003276525715589
+   ],
+   "macro f1": 0.774125311010481,
+   "by tables": {
+    "0-4": {
+     "databases": 390,
+     "keys": 688,
+     "precision": 0.8790560471976401,
+     "recall": 0.8662790697674418,
+     "f1": 0.8726207906295753,
+     "macro f1": 0.8683002183002183
+    },
+    "5-9": {
+     "databases": 320,
+     "keys": 1460,
+     "precision": 0.8049281314168378,
+     "recall": 0.8054794520547945,
+     "f1": 0.8052036973639165,
+     "macro f1": 0.748199559795901
+    },
+    "10-19": {
+     "databases": 201,
+     "keys": 2022,
+     "precision": 0.8061650992685475,
+     "recall": 0.7631058358061326,
+     "f1": 0.7840447154471545,
+     "macro f1": 0.7043846897473126
+    },
+    "20-39": {
+     "databases": 81,
+     "keys": 1622,
+     "precision": 0.8051529790660226,
+     "recall": 0.6165228113440198,
+     "f1": 0.6983240223463687,
+     "macro f1": 0.6277508624319674
+    },
+    "40-99": {
+     "databases": 29,
+     "keys": 1580,
+     "precision": 0.8709150326797386,
+     "recall": 0.6746835443037975,
+     "f1": 0.760342368045649,
+     "macro f1": 0.6805713558632053
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 84,
+     "precision": 0.9186046511627907,
+     "recall": 0.9404761904761905,
+     "f1": 0.9294117647058823,
+     "macro f1": 0.9294117647058823
+    }
+   },
+   "what becomes of a declared key": {
+    "0-4": {
+     "keys": 688,
+     "found": 0.8662790697674418,
+     "first, under the threshold": 0.059593023255813955,
+     "another table first": 0.040697674418604654,
+     "no candidate": 0.03343023255813953,
+     "its table scored first": 0.9258720930232558,
+     "targets a column, mean": 2.2708272859216256,
+     "f1 at the model's threshold": 0.8726207906295754,
+     "f1 at the best threshold for this size": 0.874820143884892,
+     "the best threshold for this size": 0.7753771543502808,
+     "precision there": 0.8660968660968661,
+     "precision at 0.5": 0.7817955112219451
+    },
+    "5-9": {
+     "keys": 1460,
+     "found": 0.8054794520547945,
+     "first, under the threshold": 0.07260273972602739,
+     "another table first": 0.06917808219178082,
+     "no candidate": 0.05273972602739726,
+     "its table scored first": 0.8780821917808219,
+     "targets a column, mean": 4.7383998966007495,
+     "f1 at the model's threshold": 0.8052036973639165,
+     "f1 at the best threshold for this size": 0.8100208768267223,
+     "the best threshold for this size": 0.8383691906929016,
+     "precision there": 0.8231966053748232,
+     "precision at 0.5": 0.6537656903765691
+    },
+    "10-19": {
+     "keys": 2022,
+     "found": 0.7626112759643917,
+     "first, under the threshold": 0.10286844708209693,
+     "another table first": 0.09396636993076163,
+     "no candidate": 0.040553907022749754,
+     "its table scored first": 0.8654797230464887,
+     "targets a column, mean": 10.027299895000404,
+     "f1 at the model's threshold": 0.7835365853658537,
+     "f1 at the best threshold for this size": 0.7875620590540894,
+     "the best threshold for this size": 0.850051760673523,
+     "precision there": 0.8349030470914127,
+     "precision at 0.5": 0.6399091253313139
+    },
+    "20-39": {
+     "keys": 1622,
+     "found": 0.6165228113440198,
+     "first, under the threshold": 0.21454993834771888,
+     "another table first": 0.1461159062885327,
+     "no candidate": 0.02281134401972873,
+     "its table scored first": 0.8310727496917386,
+     "targets a column, mean": 20.069439181508148,
+     "f1 at the model's threshold": 0.6983240223463687,
+     "f1 at the best threshold for this size": 0.7054144998470481,
+     "the best threshold for this size": 0.617052435874939,
+     "precision there": 0.7000607164541591,
+     "precision at 0.5": 0.6530837004405287
+    },
+    "40-99": {
+     "keys": 1580,
+     "found": 0.6746835443037975,
+     "first, under the threshold": 0.17531645569620252,
+     "another table first": 0.11962025316455696,
+     "no candidate": 0.030379746835443037,
+     "its table scored first": 0.85,
+     "targets a column, mean": 40.866833125260094,
+     "f1 at the model's threshold": 0.760342368045649,
+     "f1 at the best threshold for this size": 0.7722110888443554,
+     "the best threshold for this size": 0.7204431891441345,
+     "precision there": 0.8175388967468176,
+     "precision at 0.5": 0.7108433734939759
+    },
+    "100+": {
+     "keys": 84,
+     "found": 0.9404761904761905,
+     "first, under the threshold": 0.011904761904761904,
+     "another table first": 0.047619047619047616,
+     "no candidate": 0.0,
+     "its table scored first": 0.9523809523809523,
+     "targets a column, mean": 64.85654885654886,
+     "f1 at the model's threshold": 0.9294117647058824,
+     "f1 at the best threshold for this size": 0.9382716049382716,
+     "the best threshold for this size": 0.9009431004524231,
+     "precision there": 0.9743589743589743,
+     "precision at 0.5": 0.8315789473684211
+    }
+   }
+  },
+  "nine-mended": {
+   "databases": 1022,
+   "keys": 7456,
+   "precision": 0.8514881402024475,
+   "recall": 0.755901287553648,
+   "f1": 0.8008525754884548,
+   "f1_95": [
+    0.7734145695854757,
+    0.8256260744835694
+   ],
+   "macro f1": 0.79223942569004,
+   "by tables": {
+    "0-4": {
+     "databases": 390,
+     "keys": 688,
+     "precision": 0.8859259259259259,
+     "recall": 0.8691860465116279,
+     "f1": 0.8774761555392515,
+     "macro f1": 0.8706105006105006
+    },
+    "5-9": {
+     "databases": 320,
+     "keys": 1460,
+     "precision": 0.8322938322938322,
+     "recall": 0.8226027397260274,
+     "f1": 0.8274199104374785,
+     "macro f1": 0.7743723650407339
+    },
+    "10-19": {
+     "databases": 201,
+     "keys": 2022,
+     "precision": 0.832381940840685,
+     "recall": 0.7932739861523245,
+     "f1": 0.8123575588756647,
+     "macro f1": 0.7392261867551299
+    },
+    "20-39": {
+     "databases": 81,
+     "keys": 1622,
+     "precision": 0.8430321592649311,
+     "recall": 0.6787916152897657,
+     "f1": 0.7520491803278689,
+     "macro f1": 0.6607672499042752
+    },
+    "40-99": {
+     "databases": 29,
+     "keys": 1580,
+     "precision": 0.8888888888888888,
+     "recall": 0.6734177215189874,
+     "f1": 0.7662945624774937,
+     "macro f1": 0.6671520989387884
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 84,
+     "precision": 0.9577464788732394,
+     "recall": 0.8095238095238095,
+     "f1": 0.8774193548387098,
+     "macro f1": 0.8774193548387098
+    }
+   },
+   "what becomes of a declared key": {
+    "0-4": {
+     "keys": 688,
+     "found": 0.8691860465116279,
+     "first, under the threshold": 0.056686046511627904,
+     "another table first": 0.040697674418604654,
+     "no candidate": 0.03343023255813953,
+     "its table scored first": 0.9258720930232558,
+     "targets a column, mean": 2.2708272859216256,
+     "f1 at the model's threshold": 0.8774761555392516,
+     "f1 at the best threshold for this size": 0.8842419716206124,
+     "the best threshold for this size": 0.873572051525116,
+     "precision there": 0.9093701996927803,
+     "precision at 0.5": 0.7997448979591837
+    },
+    "5-9": {
+     "keys": 1460,
+     "found": 0.8226027397260274,
+     "first, under the threshold": 0.05410958904109589,
+     "another table first": 0.07054794520547945,
+     "no candidate": 0.05273972602739726,
+     "its table scored first": 0.8767123287671232,
+     "targets a column, mean": 4.7383998966007495,
+     "f1 at the model's threshold": 0.8274199104374784,
+     "f1 at the best threshold for this size": 0.831523642732049,
+     "the best threshold for this size": 0.8458156585693359,
+     "precision there": 0.8508960573476703,
+     "precision at 0.5": 0.6871232876712329
+    },
+    "10-19": {
+     "keys": 2022,
+     "found": 0.7927794263105836,
+     "first, under the threshold": 0.08803165182987141,
+     "another table first": 0.07863501483679525,
+     "no candidate": 0.040553907022749754,
+     "its table scored first": 0.880811078140455,
+     "targets a column, mean": 10.027299895000404,
+     "f1 at the model's threshold": 0.8118511015446949,
+     "f1 at the best threshold for this size": 0.8165983606557377,
+     "the best threshold for this size": 0.8380635976791382,
+     "precision there": 0.8469713071200851,
+     "precision at 0.5": 0.6623177283192633
+    },
+    "20-39": {
+     "keys": 1622,
+     "found": 0.6787916152897657,
+     "first, under the threshold": 0.15906288532675708,
+     "another table first": 0.13933415536374846,
+     "no candidate": 0.02281134401972873,
+     "its table scored first": 0.8378545006165228,
+     "targets a column, mean": 20.069439181508148,
+     "f1 at the model's threshold": 0.7520491803278688,
+     "f1 at the best threshold for this size": 0.7552948843271424,
+     "the best threshold for this size": 0.7531405687332153,
+     "precision there": 0.8009675190048376,
+     "precision at 0.5": 0.651702786377709
+    },
+    "40-99": {
+     "keys": 1580,
+     "found": 0.6734177215189874,
+     "first, under the threshold": 0.19746835443037974,
+     "another table first": 0.09873417721518987,
+     "no candidate": 0.030379746835443037,
+     "its table scored first": 0.8708860759493671,
+     "targets a column, mean": 40.866833125260094,
+     "f1 at the model's threshold": 0.7662945624774937,
+     "f1 at the best threshold for this size": 0.7734650670430487,
+     "the best threshold for this size": 0.7764225006103516,
+     "precision there": 0.8740031897926634,
+     "precision at 0.5": 0.7529266789895256
+    },
+    "100+": {
+     "keys": 84,
+     "found": 0.8095238095238095,
+     "first, under the threshold": 0.08333333333333333,
+     "another table first": 0.10714285714285714,
+     "no candidate": 0.0,
+     "its table scored first": 0.8928571428571429,
+     "targets a column, mean": 64.85654885654886,
+     "f1 at the model's threshold": 0.8774193548387097,
+     "f1 at the best threshold for this size": 0.9,
+     "the best threshold for this size": 0.7494579553604126,
+     "precision there": 0.9473684210526315,
+     "precision at 0.5": 0.8809523809523809
+    }
+   }
+  }
+ },
+ "schemapile test": {
+  "1s": {
+   "databases": 2115,
+   "keys": 13455,
+   "precision": 0.7238204833141542,
+   "recall": 0.7479747305834262,
+   "f1": 0.7356994042179905,
+   "f1_95": [
+    0.7157381503834456,
+    0.7550711355477581
+   ],
+   "macro f1": 0.7272175138736643,
+   "by tables": {
+    "0-4": {
+     "databases": 791,
+     "keys": 1384,
+     "precision": 0.8894009216589862,
+     "recall": 0.8367052023121387,
+     "f1": 0.8622486969471332,
+     "macro f1": 0.8167509481668773
+    },
+    "5-9": {
+     "databases": 669,
+     "keys": 2955,
+     "precision": 0.7598350253807107,
+     "recall": 0.8104906937394247,
+     "f1": 0.7843458326510562,
+     "macro f1": 0.7190771330071473
+    },
+    "10-19": {
+     "databases": 447,
+     "keys": 4124,
+     "precision": 0.7274136403897254,
+     "recall": 0.796556741028128,
+     "f1": 0.7604166666666666,
+     "macro f1": 0.6641597008392228
+    },
+    "20-39": {
+     "databases": 138,
+     "keys": 2252,
+     "precision": 0.6868774361195322,
+     "recall": 0.7042628774422736,
+     "f1": 0.6954615215961412,
+     "macro f1": 0.5750735312934769
+    },
+    "40-99": {
+     "databases": 70,
+     "keys": 2740,
+     "precision": 0.6247619047619047,
+     "recall": 0.5985401459854015,
+     "f1": 0.6113699906803356,
+     "macro f1": 0.49589866096265484
+    }
+   },
+   "what becomes of a declared key": {
+    "0-4": {
+     "keys": 1384,
+     "found": 0.8359826589595376,
+     "first, under the threshold": 0.05635838150289017,
+     "another table first": 0.02384393063583815,
+     "no candidate": 0.0838150289017341,
+     "its table scored first": 0.8923410404624278,
+     "targets a column, mean": 2.207055214723926,
+     "f1 at the model's threshold": 0.8615040953090097,
+     "f1 at the best threshold for this size": 0.8630797773654917,
+     "the best threshold for this size": 0.8219765424728394,
+     "precision there": 0.8871090770404272,
+     "precision at 0.5": 0.7916941331575478
+    },
+    "5-9": {
+     "keys": 2955,
+     "found": 0.8104906937394247,
+     "first, under the threshold": 0.0754653130287648,
+     "another table first": 0.04128595600676819,
+     "no candidate": 0.0727580372250423,
+     "its table scored first": 0.8859560067681895,
+     "targets a column, mean": 4.295143871308814,
+     "f1 at the model's threshold": 0.7843458326510562,
+     "f1 at the best threshold for this size": 0.7859025032938076,
+     "the best threshold for this size": 0.8489028215408325,
+     "precision there": 0.7654796278472891,
+     "precision at 0.5": 0.6469842878864673
+    },
+    "10-19": {
+     "keys": 4124,
+     "found": 0.7960717749757517,
+     "first, under the threshold": 0.07395732298739088,
+     "another table first": 0.05213385063045587,
+     "no candidate": 0.07783705140640156,
+     "its table scored first": 0.8700290979631425,
+     "targets a column, mean": 8.570475746268658,
+     "f1 at the model's threshold": 0.7599537037037037,
+     "f1 at the best threshold for this size": 0.7635714285714286,
+     "the best threshold for this size": 0.8686719536781311,
+     "precision there": 0.75,
+     "precision at 0.5": 0.5780451623537168
+    },
+    "20-39": {
+     "keys": 2252,
+     "found": 0.7042628774422736,
+     "first, under the threshold": 0.13943161634103018,
+     "another table first": 0.08037300177619894,
+     "no candidate": 0.07593250444049733,
+     "its table scored first": 0.8436944937833037,
+     "targets a column, mean": 16.51869282778735,
+     "f1 at the model's threshold": 0.6954615215961412,
+     "f1 at the best threshold for this size": 0.6982700516737812,
+     "the best threshold for this size": 0.8563263416290283,
+     "precision there": 0.7066848567530696,
+     "precision at 0.5": 0.5117066290550071
+    },
+    "40-99": {
+     "keys": 2740,
+     "found": 0.5985401459854015,
+     "first, under the threshold": 0.17992700729927008,
+     "another table first": 0.15,
+     "no candidate": 0.07153284671532846,
+     "its table scored first": 0.7784671532846715,
+     "targets a column, mean": 30.66373671300082,
+     "f1 at the model's threshold": 0.6113699906803355,
+     "f1 at the best threshold for this size": 0.6126430313262052,
+     "the best threshold for this size": 0.8401105999946594,
+     "precision there": 0.6302585874179853,
+     "precision at 0.5": 0.44048419636852726
+    }
+   }
+  },
+  "seven-bounded": {
+   "databases": 2115,
+   "keys": 13455,
+   "precision": 0.7003312377475833,
+   "recall": 0.7699739873652918,
+   "f1": 0.7335032568677428,
+   "f1_95": [
+    0.7138753256142519,
+    0.7524497633600906
+   ],
+   "macro f1": 0.7486223935681028,
+   "by tables": {
+    "0-4": {
+     "databases": 791,
+     "keys": 1384,
+     "precision": 0.8795093795093795,
+     "recall": 0.8807803468208093,
+     "f1": 0.8801444043321299,
+     "macro f1": 0.8610056680221031
+    },
+    "5-9": {
+     "databases": 669,
+     "keys": 2955,
+     "precision": 0.7446996466431095,
+     "recall": 0.8558375634517766,
+     "f1": 0.7964100141709968,
+     "macro f1": 0.7406228163555435
+    },
+    "10-19": {
+     "databases": 447,
+     "keys": 4124,
+     "precision": 0.7074671192193466,
+     "recall": 0.8086808923375364,
+     "f1": 0.7546956324960398,
+     "macro f1": 0.6621304788642595
+    },
+    "20-39": {
+     "databases": 138,
+     "keys": 2252,
+     "precision": 0.6663879598662207,
+     "recall": 0.7078152753108348,
+     "f1": 0.6864771748492677,
+     "macro f1": 0.5586081461110135
+    },
+    "40-99": {
+     "databases": 70,
+     "keys": 2740,
+     "precision": 0.5793459552495697,
+     "recall": 0.6142335766423358,
+     "f1": 0.5962798937112489,
+     "macro f1": 0.4820566661935918
+    }
+   },
+   "what becomes of a declared key": {
+    "0-4": {
+     "keys": 1384,
+     "found": 0.880057803468208,
+     "first, under the threshold": 0.06791907514450866,
+     "another table first": 0.025289017341040464,
+     "no candidate": 0.026734104046242775,
+     "its table scored first": 0.9479768786127167,
+     "targets a column, mean": 2.2784828592268416,
+     "f1 at the model's threshold": 0.8794223826714801,
+     "f1 at the best threshold for this size": 0.8809523809523809,
+     "the best threshold for this size": 0.8949728608131409,
+     "precision there": 0.9079754601226994,
+     "precision at 0.5": 0.7796817625458996
+    },
+    "5-9": {
+     "keys": 2955,
+     "found": 0.8558375634517766,
+     "first, under the threshold": 0.07580372250423012,
+     "another table first": 0.03824027072758037,
+     "no candidate": 0.03011844331641286,
+     "its table scored first": 0.9316412859560068,
+     "targets a column, mean": 4.660196545199292,
+     "f1 at the model's threshold": 0.7964100141709967,
+     "f1 at the best threshold for this size": 0.8012412216233872,
+     "the best threshold for this size": 0.8729515671730042,
+     "precision there": 0.7743055555555556,
+     "precision at 0.5": 0.6356013416387158
+    },
+    "10-19": {
+     "keys": 4124,
+     "found": 0.80819592628516,
+     "first, under the threshold": 0.09141610087293889,
+     "another table first": 0.05892337536372454,
+     "no candidate": 0.041464597478176525,
+     "its table scored first": 0.899612027158099,
+     "targets a column, mean": 9.426040362953692,
+     "f1 at the model's threshold": 0.7542430414120842,
+     "f1 at the best threshold for this size": 0.7594328286469598,
+     "the best threshold for this size": 0.8780184388160706,
+     "precision there": 0.7527393997141496,
+     "precision at 0.5": 0.5709309689677011
+    },
+    "20-39": {
+     "keys": 2252,
+     "found": 0.7078152753108348,
+     "first, under the threshold": 0.16962699822380106,
+     "another table first": 0.08126110124333925,
+     "no candidate": 0.04129662522202487,
+     "its table scored first": 0.8774422735346359,
+     "targets a column, mean": 17.221214313539985,
+     "f1 at the model's threshold": 0.6864771748492678,
+     "f1 at the best threshold for this size": 0.6887984579139002,
+     "the best threshold for this size": 0.8124097585678101,
+     "precision there": 0.6652875465453041,
+     "precision at 0.5": 0.5381734370498416
+    },
+    "40-99": {
+     "keys": 2740,
+     "found": 0.6142335766423358,
+     "first, under the threshold": 0.22773722627737225,
+     "another table first": 0.14489051094890512,
+     "no candidate": 0.013138686131386862,
+     "its table scored first": 0.841970802919708,
+     "targets a column, mean": 37.80976253298153,
+     "f1 at the model's threshold": 0.5962798937112489,
+     "f1 at the best threshold for this size": 0.5985020031353423,
+     "the best threshold for this size": 0.805795431137085,
+     "precision there": 0.5724758413862046,
+     "precision at 0.5": 0.4533762057877814
+    }
+   }
+  },
+  "nine-mended": {
+   "databases": 2115,
+   "keys": 13455,
+   "precision": 0.7149035734543392,
+   "recall": 0.749386845039019,
+   "f1": 0.7317391777640697,
+   "f1_95": [
+    0.7109323635940006,
+    0.7508196632335534
+   ],
+   "macro f1": 0.7410287795421099,
+   "by tables": {
+    "0-4": {
+     "databases": 791,
+     "keys": 1384,
+     "precision": 0.8779956427015251,
+     "recall": 0.8735549132947977,
+     "f1": 0.8757696486780153,
+     "macro f1": 0.8570865782623052
+    },
+    "5-9": {
+     "databases": 669,
+     "keys": 2955,
+     "precision": 0.74954240390482,
+     "recall": 0.8314720812182741,
+     "f1": 0.7883844055831862,
+     "macro f1": 0.7292510098562884
+    },
+    "10-19": {
+     "databases": 447,
+     "keys": 4124,
+     "precision": 0.7239991053455602,
+     "recall": 0.784917555771096,
+     "f1": 0.7532286212914484,
+     "macro f1": 0.6549123785544573
+    },
+    "20-39": {
+     "databases": 138,
+     "keys": 2252,
+     "precision": 0.6740547588005215,
+     "recall": 0.6887211367673179,
+     "f1": 0.6813090270151548,
+     "macro f1": 0.5413199843268827
+    },
+    "40-99": {
+     "databases": 70,
+     "keys": 2740,
+     "precision": 0.6085169966380276,
+     "recall": 0.5945255474452554,
+     "f1": 0.6014399113900682,
+     "macro f1": 0.48576383830385694
+    }
+   },
+   "what becomes of a declared key": {
+    "0-4": {
+     "keys": 1384,
+     "found": 0.8728323699421965,
+     "first, under the threshold": 0.07153179190751445,
+     "another table first": 0.028901734104046242,
+     "no candidate": 0.026734104046242775,
+     "its table scored first": 0.944364161849711,
+     "targets a column, mean": 2.2784828592268416,
+     "f1 at the model's threshold": 0.875045273451648,
+     "f1 at the best threshold for this size": 0.8789105631210894,
+     "the best threshold for this size": 0.8592140674591064,
+     "precision there": 0.8957239309827457,
+     "precision at 0.5": 0.7779827798277983
+    },
+    "5-9": {
+     "keys": 2955,
+     "found": 0.8314720812182741,
+     "first, under the threshold": 0.09644670050761421,
+     "another table first": 0.04196277495769882,
+     "no candidate": 0.03011844331641286,
+     "its table scored first": 0.9279187817258884,
+     "targets a column, mean": 4.660196545199292,
+     "f1 at the model's threshold": 0.7883844055831862,
+     "f1 at the best threshold for this size": 0.7903591070850857,
+     "the best threshold for this size": 0.8363543748855591,
+     "precision there": 0.7570498915401301,
+     "precision at 0.5": 0.6485889570552147
+    },
+    "10-19": {
+     "keys": 4124,
+     "found": 0.7844325897187197,
+     "first, under the threshold": 0.11517943743937924,
+     "another table first": 0.05892337536372454,
+     "no candidate": 0.041464597478176525,
+     "its table scored first": 0.899612027158099,
+     "targets a column, mean": 9.426040362953692,
+     "f1 at the model's threshold": 0.7527632344386271,
+     "f1 at the best threshold for this size": 0.7541598312631825,
+     "the best threshold for this size": 0.8297894597053528,
+     "precision there": 0.7297052154195012,
+     "precision at 0.5": 0.5926966292134831
+    },
+    "20-39": {
+     "keys": 2252,
+     "found": 0.6887211367673179,
+     "first, under the threshold": 0.19271758436944939,
+     "another table first": 0.07726465364120781,
+     "no candidate": 0.04129662522202487,
+     "its table scored first": 0.8814387211367674,
+     "targets a column, mean": 17.221214313539985,
+     "f1 at the model's threshold": 0.6813090270151548,
+     "f1 at the best threshold for this size": 0.6944729813026504,
+     "the best threshold for this size": 0.7604330778121948,
+     "precision there": 0.6462715105162524,
+     "precision at 0.5": 0.5180131004366813
+    },
+    "40-99": {
+     "keys": 2740,
+     "found": 0.5945255474452554,
+     "first, under the threshold": 0.2514598540145985,
+     "another table first": 0.14087591240875913,
+     "no candidate": 0.013138686131386862,
+     "its table scored first": 0.845985401459854,
+     "targets a column, mean": 37.80976253298153,
+     "f1 at the model's threshold": 0.6014399113900682,
+     "f1 at the best threshold for this size": 0.6184830274484326,
+     "the best threshold for this size": 0.70772784948349,
+     "precision there": 0.5572139303482587,
+     "precision at 0.5": 0.46360153256704983
+    }
+   }
+  }
+ },
+ "schemapile test, renamed": {
+  "1s": {
+   "databases": 2055,
+   "keys": 12491,
+   "precision": 0.6587162837162838,
+   "recall": 0.4223040589224241,
+   "f1": 0.5146592516708132,
+   "f1_95": [
+    0.48749505861394316,
+    0.5397399504328129
+   ],
+   "macro f1": 0.5203811658045637,
+   "by tables": {
+    "0-4": {
+     "databases": 787,
+     "keys": 1376,
+     "precision": 0.8470705064548163,
+     "recall": 0.6199127906976745,
+     "f1": 0.7159043222828368,
+     "macro f1": 0.6465081932045083
+    },
+    "5-9": {
+     "databases": 660,
+     "keys": 2910,
+     "precision": 0.6989553656220323,
+     "recall": 0.5058419243986254,
+     "f1": 0.5869218500797447,
+     "macro f1": 0.5012624477087759
+    },
+    "10-19": {
+     "databases": 419,
+     "keys": 3881,
+     "precision": 0.6375598086124402,
+     "recall": 0.41200721463540324,
+     "f1": 0.500547816559712,
+     "macro f1": 0.4085684416554564
+    },
+    "20-39": {
+     "databases": 129,
+     "keys": 2139,
+     "precision": 0.6115107913669064,
+     "recall": 0.3576437587657784,
+     "f1": 0.4513274336283186,
+     "macro f1": 0.35056726584096043
+    },
+    "40-99": {
+     "databases": 60,
+     "keys": 2185,
+     "precision": 0.5158450704225352,
+     "recall": 0.26819221967963386,
+     "f1": 0.35290575127973506,
+     "macro f1": 0.22224629735863552
+    }
+   },
+   "what becomes of a declared key": {
+    "0-4": {
+     "keys": 1376,
+     "found": 0.6191860465116279,
+     "first, under the threshold": 0.24273255813953487,
+     "another table first": 0.053052325581395346,
+     "no candidate": 0.08502906976744186,
+     "its table scored first": 0.8619186046511628,
+     "targets a column, mean": 2.194449797648873,
+     "f1 at the model's threshold": 0.7150650440621066,
+     "f1 at the best threshold for this size": 0.7596439169139466,
+     "the best threshold for this size": 0.6696128845214844,
+     "precision there": 0.7757575757575758,
+     "precision at 0.5": 0.6860391661402401
+    },
+    "5-9": {
+     "keys": 2910,
+     "found": 0.5058419243986254,
+     "first, under the threshold": 0.31443298969072164,
+     "another table first": 0.10549828178694158,
+     "no candidate": 0.07422680412371134,
+     "its table scored first": 0.820274914089347,
+     "targets a column, mean": 4.257239679605669,
+     "f1 at the model's threshold": 0.5869218500797448,
+     "f1 at the best threshold for this size": 0.6563630384741861,
+     "the best threshold for this size": 0.5941323041915894,
+     "precision there": 0.6292559899117276,
+     "precision at 0.5": 0.5894677236693092
+    },
+    "10-19": {
+     "keys": 3881,
+     "found": 0.41174954908528727,
+     "first, under the threshold": 0.3705230610667354,
+     "another table first": 0.13707807266168515,
+     "no candidate": 0.08064931718629219,
+     "its table scored first": 0.7822726101520227,
+     "targets a column, mean": 8.4420209550675,
+     "f1 at the model's threshold": 0.5002347785255908,
+     "f1 at the best threshold for this size": 0.5782701929949964,
+     "the best threshold for this size": 0.5555242896080017,
+     "precision there": 0.5377797473964103,
+     "precision at 0.5": 0.5173994582204626
+    },
+    "20-39": {
+     "keys": 2139,
+     "found": 0.3576437587657784,
+     "first, under the threshold": 0.37353903693314633,
+     "another table first": 0.19121084618980833,
+     "no candidate": 0.07760635811126694,
+     "its table scored first": 0.7311827956989247,
+     "targets a column, mean": 16.267643710870804,
+     "f1 at the model's threshold": 0.45132743362831856,
+     "f1 at the best threshold for this size": 0.5276048152760482,
+     "the best threshold for this size": 0.5331889986991882,
+     "precision there": 0.4744307577454274,
+     "precision at 0.5": 0.46082621082621084
+    },
+    "40-99": {
+     "keys": 2185,
+     "found": 0.26819221967963386,
+     "first, under the threshold": 0.445766590389016,
+     "another table first": 0.18947368421052632,
+     "no candidate": 0.0965675057208238,
+     "its table scored first": 0.7139588100686499,
+     "targets a column, mean": 29.73864620715258,
+     "f1 at the model's threshold": 0.352905751279735,
+     "f1 at the best threshold for this size": 0.4281842818428184,
+     "the best threshold for this size": 0.5208601951599121,
+     "precision there": 0.3931852986217458,
+     "precision at 0.5": 0.38452956489401263
+    }
+   }
+  },
+  "seven-bounded": {
+   "databases": 2055,
+   "keys": 12491,
+   "precision": 0.8151342554922701,
+   "recall": 0.8020174525658474,
+   "f1": 0.808522658488358,
+   "f1_95": [
+    0.7913715348268405,
+    0.8241646185857348
+   ],
+   "macro f1": 0.806103737139825,
+   "by tables": {
+    "0-4": {
+     "databases": 787,
+     "keys": 1376,
+     "precision": 0.9174107142857143,
+     "recall": 0.8960755813953488,
+     "f1": 0.9066176470588235,
+     "macro f1": 0.888470840186215
+    },
+    "5-9": {
+     "databases": 660,
+     "keys": 2910,
+     "precision": 0.8292682926829268,
+     "recall": 0.8529209621993127,
+     "f1": 0.8409283415212604,
+     "macro f1": 0.7864228217134211
+    },
+    "10-19": {
+     "databases": 419,
+     "keys": 3881,
+     "precision": 0.8164326573062922,
+     "recall": 0.8090698273640814,
+     "f1": 0.8127345671023684,
+     "macro f1": 0.7397561265695849
+    },
+    "20-39": {
+     "databases": 129,
+     "keys": 2139,
+     "precision": 0.7860936745533559,
+     "recall": 0.7611033193080879,
+     "f1": 0.773396674584323,
+     "macro f1": 0.7183439546193764
+    },
+    "40-99": {
+     "databases": 60,
+     "keys": 2185,
+     "precision": 0.7539292730844793,
+     "recall": 0.7025171624713958,
+     "f1": 0.7273158019426677,
+     "macro f1": 0.5942229847729205
+    }
+   },
+   "what becomes of a declared key": {
+    "0-4": {
+     "keys": 1376,
+     "found": 0.8953488372093024,
+     "first, under the threshold": 0.03924418604651163,
+     "another table first": 0.03343023255813953,
+     "no candidate": 0.03197674418604651,
+     "its table scored first": 0.934593023255814,
+     "targets a column, mean": 2.2730355300014744,
+     "f1 at the model's threshold": 0.9058823529411765,
+     "f1 at the best threshold for this size": 0.9074559760209816,
+     "the best threshold for this size": 0.8701767921447754,
+     "precision there": 0.9365815931941222,
+     "precision at 0.5": 0.8214055448098001
+    },
+    "5-9": {
+     "keys": 2910,
+     "found": 0.8529209621993127,
+     "first, under the threshold": 0.04879725085910653,
+     "another table first": 0.06529209621993128,
+     "no candidate": 0.032989690721649485,
+     "its table scored first": 0.9017182130584193,
+     "targets a column, mean": 4.608183122310235,
+     "f1 at the model's threshold": 0.8409283415212604,
+     "f1 at the best threshold for this size": 0.8532061473237944,
+     "the best threshold for this size": 0.8856381177902222,
+     "precision there": 0.8778625954198473,
+     "precision at 0.5": 0.693833780160858
+    },
+    "10-19": {
+     "keys": 3881,
+     "found": 0.8088121618139654,
+     "first, under the threshold": 0.06029373872713218,
+     "another table first": 0.08760628703942283,
+     "no candidate": 0.043287812419479516,
+     "its table scored first": 0.8691059005410977,
+     "targets a column, mean": 9.274599156118143,
+     "f1 at the model's threshold": 0.8124757344376861,
+     "f1 at the best threshold for this size": 0.8193038413534878,
+     "the best threshold for this size": 0.9016400575637817,
+     "precision there": 0.8870870870870871,
+     "precision at 0.5": 0.6590954373381152
+    },
+    "20-39": {
+     "keys": 2139,
+     "found": 0.7611033193080879,
+     "first, under the threshold": 0.057971014492753624,
+     "another table first": 0.13978494623655913,
+     "no candidate": 0.04114071996259935,
+     "its table scored first": 0.8190743338008415,
+     "targets a column, mean": 17.004394149160298,
+     "f1 at the model's threshold": 0.773396674584323,
+     "f1 at the best threshold for this size": 0.7793936406211487,
+     "the best threshold for this size": 0.8570383191108704,
+     "precision there": 0.82429614181439,
+     "precision at 0.5": 0.6181427034779491
+    },
+    "40-99": {
+     "keys": 2185,
+     "found": 0.7025171624713958,
+     "first, under the threshold": 0.1368421052631579,
+     "another table first": 0.13729977116704806,
+     "no candidate": 0.02334096109839817,
+     "its table scored first": 0.8393592677345538,
+     "targets a column, mean": 36.93033815908969,
+     "f1 at the model's threshold": 0.7273158019426677,
+     "f1 at the best threshold for this size": 0.7299760191846523,
+     "the best threshold for this size": 0.831221878528595,
+     "precision there": 0.766750629722922,
+     "precision at 0.5": 0.5608431810923028
+    }
+   }
+  },
+  "nine-mended": {
+   "databases": 2055,
+   "keys": 12491,
+   "precision": 0.8171798754837624,
+   "recall": 0.7775998719077736,
+   "f1": 0.7968987160027895,
+   "f1_95": [
+    0.7780345939295414,
+    0.8142443821992713
+   ],
+   "macro f1": 0.7952478348301207,
+   "by tables": {
+    "0-4": {
+     "databases": 787,
+     "keys": 1376,
+     "precision": 0.9164156626506024,
+     "recall": 0.8844476744186046,
+     "f1": 0.9001479289940829,
+     "macro f1": 0.876518681093014
+    },
+    "5-9": {
+     "databases": 660,
+     "keys": 2910,
+     "precision": 0.8320715760495526,
+     "recall": 0.8309278350515464,
+     "f1": 0.8314993122420907,
+     "macro f1": 0.7800071044496882
+    },
+    "10-19": {
+     "databases": 419,
+     "keys": 3881,
+     "precision": 0.8230728051391863,
+     "recall": 0.7923215666065447,
+     "f1": 0.8074044899566759,
+     "macro f1": 0.7281105099541274
+    },
+    "20-39": {
+     "databases": 129,
+     "keys": 2139,
+     "precision": 0.7968591691995948,
+     "recall": 0.7353903693314633,
+     "f1": 0.7648918064672988,
+     "macro f1": 0.705796451362844
+    },
+    "40-99": {
+     "databases": 60,
+     "keys": 2185,
+     "precision": 0.7363542739443872,
+     "recall": 0.6544622425629291,
+     "f1": 0.6929973346256361,
+     "macro f1": 0.5580560620385937
+    }
+   },
+   "what becomes of a declared key": {
+    "0-4": {
+     "keys": 1376,
+     "found": 0.8837209302325582,
+     "first, under the threshold": 0.04796511627906977,
+     "another table first": 0.036337209302325583,
+     "no candidate": 0.03197674418604651,
+     "its table scored first": 0.9316860465116279,
+     "targets a column, mean": 2.2730355300014744,
+     "f1 at the model's threshold": 0.8994082840236687,
+     "f1 at the best threshold for this size": 0.9019165727170236,
+     "the best threshold for this size": 0.8706808686256409,
+     "precision there": 0.933852140077821,
+     "precision at 0.5": 0.8233376792698827
+    },
+    "5-9": {
+     "keys": 2910,
+     "found": 0.8309278350515464,
+     "first, under the threshold": 0.06323024054982818,
+     "another table first": 0.07285223367697595,
+     "no candidate": 0.032989690721649485,
+     "its table scored first": 0.8941580756013746,
+     "targets a column, mean": 4.608183122310235,
+     "f1 at the model's threshold": 0.8314993122420908,
+     "f1 at the best threshold for this size": 0.8381981981981982,
+     "the best threshold for this size": 0.8938040733337402,
+     "precision there": 0.8810606060606061,
+     "precision at 0.5": 0.6972003261755912
+    },
+    "10-19": {
+     "keys": 3881,
+     "found": 0.7918062355063128,
+     "first, under the threshold": 0.08039165163617625,
+     "another table first": 0.08451430043803143,
+     "no candidate": 0.043287812419479516,
+     "its table scored first": 0.872197887142489,
+     "targets a column, mean": 9.274599156118143,
+     "f1 at the model's threshold": 0.8068793488249967,
+     "f1 at the best threshold for this size": 0.8104610407117822,
+     "the best threshold for this size": 0.8566810488700867,
+     "precision there": 0.8498727735368957,
+     "precision at 0.5": 0.6584148532641245
+    },
+    "20-39": {
+     "keys": 2139,
+     "found": 0.7353903693314633,
+     "first, under the threshold": 0.08134642356241234,
+     "another table first": 0.14212248714352502,
+     "no candidate": 0.04114071996259935,
+     "its table scored first": 0.8167367928938757,
+     "targets a column, mean": 17.004394149160298,
+     "f1 at the model's threshold": 0.7648918064672988,
+     "f1 at the best threshold for this size": 0.7711026615969582,
+     "the best threshold for this size": 0.8729400634765625,
+     "precision there": 0.8421926910299004,
+     "precision at 0.5": 0.605
+    },
+    "40-99": {
+     "keys": 2185,
+     "found": 0.6544622425629291,
+     "first, under the threshold": 0.1665903890160183,
+     "another table first": 0.15560640732265446,
+     "no candidate": 0.02334096109839817,
+     "its table scored first": 0.8210526315789474,
+     "targets a column, mean": 36.93033815908969,
+     "f1 at the model's threshold": 0.6929973346256361,
+     "f1 at the best threshold for this size": 0.6951969041657182,
+     "the best threshold for this size": 0.7668309211730957,
+     "precision there": 0.6915760869565217,
+     "precision at 0.5": 0.5177649559672032
+    }
+   }
+  }
+ },
+ "spider": {
+  "1s": {
+   "databases": 204,
+   "keys": 911,
+   "precision": 0.9150485436893204,
+   "recall": 0.827661909989023,
+   "f1": 0.8691642651296829,
+   "f1_95": [
+    0.8301493245656524,
+    0.9036902237642115
+   ],
+   "macro f1": 0.8519743741861819,
+   "by tables": {
+    "0-4": {
+     "databases": 130,
+     "keys": 281,
+     "precision": 0.9462809917355371,
+     "recall": 0.8149466192170819,
+     "f1": 0.875717017208413,
+     "macro f1": 0.8433116883116882
+    },
+    "5-9": {
+     "databases": 50,
+     "keys": 303,
+     "precision": 0.9065743944636678,
+     "recall": 0.8646864686468647,
+     "f1": 0.8851351351351351,
+     "macro f1": 0.8777060682994187
+    },
+    "10-19": {
+     "databases": 23,
+     "keys": 307,
+     "precision": 0.8969072164948454,
+     "recall": 0.8501628664495114,
+     "f1": 0.8729096989966556,
+     "macro f1": 0.874136141594457
+    },
+    "20-39": {
+     "databases": 1,
+     "keys": 20,
+     "precision": 1.0,
+     "recall": 0.1,
+     "f1": 0.18181818181818182,
+     "macro f1": 0.18181818181818182
+    }
+   },
+   "what becomes of a declared key": {
+    "0-4": {
+     "keys": 281,
+     "found": 0.8149466192170819,
+     "first, under the threshold": 0.0711743772241993,
+     "another table first": 0.017793594306049824,
+     "no candidate": 0.09608540925266904,
+     "its table scored first": 0.8861209964412812,
+     "targets a column, mean": 1.8584615384615384,
+     "f1 at the model's threshold": 0.875717017208413,
+     "f1 at the best threshold for this size": 0.8803088803088803,
+     "the best threshold for this size": 0.9069101214408875,
+     "precision there": 0.9620253164556962,
+     "precision at 0.5": 0.8810408921933085
+    },
+    "5-9": {
+     "keys": 303,
+     "found": 0.8646864686468647,
+     "first, under the threshold": 0.0429042904290429,
+     "another table first": 0.0165016501650165,
+     "no candidate": 0.07590759075907591,
+     "its table scored first": 0.9075907590759076,
+     "targets a column, mean": 3.5170575692963753,
+     "f1 at the model's threshold": 0.8851351351351351,
+     "f1 at the best threshold for this size": 0.8933333333333333,
+     "the best threshold for this size": 0.7711051106452942,
+     "precision there": 0.9023569023569024,
+     "precision at 0.5": 0.8333333333333334
+    },
+    "10-19": {
+     "keys": 307,
+     "found": 0.8501628664495114,
+     "first, under the threshold": 0.04234527687296417,
+     "another table first": 0.07166123778501629,
+     "no candidate": 0.035830618892508145,
+     "its table scored first": 0.8925081433224755,
+     "targets a column, mean": 7.451190476190476,
+     "f1 at the model's threshold": 0.8729096989966555,
+     "f1 at the best threshold for this size": 0.8770764119601329,
+     "the best threshold for this size": 0.8002176284790039,
+     "precision there": 0.8949152542372881,
+     "precision at 0.5": 0.811377245508982
+    },
+    "20-39": {
+     "keys": 20,
+     "found": 0.1,
+     "first, under the threshold": 0.85,
+     "another table first": 0.05,
+     "no candidate": 0.0,
+     "its table scored first": 0.95,
+     "targets a column, mean": 3.9672131147540983,
+     "f1 at the model's threshold": 0.18181818181818182,
+     "f1 at the best threshold for this size": 0.6938775510204082,
+     "the best threshold for this size": 0.3527222275733948,
+     "precision there": 0.5862068965517241,
+     "precision at 0.5": 0.5714285714285714
+    }
+   }
+  },
+  "seven-bounded": {
+   "databases": 204,
+   "keys": 911,
+   "precision": 0.9184149184149184,
+   "recall": 0.8649835345773875,
+   "f1": 0.8908988128886376,
+   "f1_95": [
+    0.8560113454572201,
+    0.9193173797470432
+   ],
+   "macro f1": 0.8960957727833169,
+   "by tables": {
+    "0-4": {
+     "databases": 130,
+     "keys": 281,
+     "precision": 0.9760956175298805,
+     "recall": 0.8718861209964412,
+     "f1": 0.9210526315789473,
+     "macro f1": 0.9083882783882783
+    },
+    "5-9": {
+     "databases": 50,
+     "keys": 303,
+     "precision": 0.9063545150501672,
+     "recall": 0.8943894389438944,
+     "f1": 0.9003322259136212,
+     "macro f1": 0.8872382457882526
+    },
+    "10-19": {
+     "databases": 23,
+     "keys": 307,
+     "precision": 0.8831168831168831,
+     "recall": 0.8859934853420195,
+     "f1": 0.8845528455284553,
+     "macro f1": 0.8848325725177311
+    },
+    "20-39": {
+     "databases": 1,
+     "keys": 20,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "macro f1": 0.0
+    }
+   },
+   "what becomes of a declared key": {
+    "0-4": {
+     "keys": 281,
+     "found": 0.8718861209964412,
+     "first, under the threshold": 0.08185053380782918,
+     "another table first": 0.02491103202846975,
+     "no candidate": 0.021352313167259787,
+     "its table scored first": 0.9537366548042705,
+     "targets a column, mean": 2.157473309608541,
+     "f1 at the model's threshold": 0.9210526315789473,
+     "f1 at the best threshold for this size": 0.9210526315789473,
+     "the best threshold for this size": 0.8200162649154663,
+     "precision there": 0.9760956175298805,
+     "precision at 0.5": 0.9068100358422939
+    },
+    "5-9": {
+     "keys": 303,
+     "found": 0.8943894389438944,
+     "first, under the threshold": 0.04950495049504951,
+     "another table first": 0.0297029702970297,
+     "no candidate": 0.026402640264026403,
+     "its table scored first": 0.9438943894389439,
+     "targets a column, mean": 3.950850661625709,
+     "f1 at the model's threshold": 0.9003322259136213,
+     "f1 at the best threshold for this size": 0.9048414023372288,
+     "the best threshold for this size": 0.8519648909568787,
+     "precision there": 0.9155405405405406,
+     "precision at 0.5": 0.8641975308641975
+    },
+    "10-19": {
+     "keys": 307,
+     "found": 0.8859934853420195,
+     "first, under the threshold": 0.05537459283387622,
+     "another table first": 0.05537459283387622,
+     "no candidate": 0.003257328990228013,
+     "its table scored first": 0.9413680781758957,
+     "targets a column, mean": 8.783573806881243,
+     "f1 at the model's threshold": 0.8845528455284553,
+     "f1 at the best threshold for this size": 0.887459807073955,
+     "the best threshold for this size": 0.757461667060852,
+     "precision there": 0.8761904761904762,
+     "precision at 0.5": 0.8163265306122449
+    },
+    "20-39": {
+     "keys": 20,
+     "found": 0.0,
+     "first, under the threshold": 0.95,
+     "another table first": 0.05,
+     "no candidate": 0.0,
+     "its table scored first": 0.95,
+     "targets a column, mean": 3.9672131147540983,
+     "f1 at the model's threshold": 0.0,
+     "f1 at the best threshold for this size": 0.6666666666666666,
+     "the best threshold for this size": 0.1919088363647461,
+     "precision there": 0.5135135135135135,
+     "precision at 0.5": 0.6
+    }
+   }
+  },
+  "nine-mended": {
+   "databases": 204,
+   "keys": 911,
+   "precision": 0.9106933019976499,
+   "recall": 0.8507135016465422,
+   "f1": 0.8796821793416572,
+   "f1_95": [
+    0.8447764606868752,
+    0.9103133954262757
+   ],
+   "macro f1": 0.8855751238247064,
+   "by tables": {
+    "0-4": {
+     "databases": 130,
+     "keys": 281,
+     "precision": 0.9760956175298805,
+     "recall": 0.8718861209964412,
+     "f1": 0.9210526315789473,
+     "macro f1": 0.9063369963369963
+    },
+    "5-9": {
+     "databases": 50,
+     "keys": 303,
+     "precision": 0.8827586206896552,
+     "recall": 0.8448844884488449,
+     "f1": 0.8634064080944351,
+     "macro f1": 0.8475317041060076
+    },
+    "10-19": {
+     "databases": 23,
+     "keys": 307,
+     "precision": 0.8838709677419355,
+     "recall": 0.8925081433224755,
+     "f1": 0.8881685575364668,
+     "macro f1": 0.8894317622230521
+    },
+    "20-39": {
+     "databases": 1,
+     "keys": 20,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "macro f1": 0.0
+    }
+   },
+   "what becomes of a declared key": {
+    "0-4": {
+     "keys": 281,
+     "found": 0.8718861209964412,
+     "first, under the threshold": 0.07829181494661921,
+     "another table first": 0.028469750889679714,
+     "no candidate": 0.021352313167259787,
+     "its table scored first": 0.9501779359430605,
+     "targets a column, mean": 2.157473309608541,
+     "f1 at the model's threshold": 0.9210526315789473,
+     "f1 at the best threshold for this size": 0.9213483146067416,
+     "the best threshold for this size": 0.8126755356788635,
+     "precision there": 0.9723320158102767,
+     "precision at 0.5": 0.9025270758122743
+    },
+    "5-9": {
+     "keys": 303,
+     "found": 0.8448844884488449,
+     "first, under the threshold": 0.10561056105610561,
+     "another table first": 0.0231023102310231,
+     "no candidate": 0.026402640264026403,
+     "its table scored first": 0.9504950495049505,
+     "targets a column, mean": 3.950850661625709,
+     "f1 at the model's threshold": 0.863406408094435,
+     "f1 at the best threshold for this size": 0.8838709677419355,
+     "the best threshold for this size": 0.5206601023674011,
+     "precision there": 0.8643533123028391,
+     "precision at 0.5": 0.8616352201257862
+    },
+    "10-19": {
+     "keys": 307,
+     "found": 0.8925081433224755,
+     "first, under the threshold": 0.03908794788273615,
+     "another table first": 0.06514657980456026,
+     "no candidate": 0.003257328990228013,
+     "its table scored first": 0.9315960912052117,
+     "targets a column, mean": 8.783573806881243,
+     "f1 at the model's threshold": 0.8881685575364667,
+     "f1 at the best threshold for this size": 0.8892455858747994,
+     "the best threshold for this size": 0.7743030786514282,
+     "precision there": 0.8765822784810127,
+     "precision at 0.5": 0.8293413173652695
+    },
+    "20-39": {
+     "keys": 20,
+     "found": 0.0,
+     "first, under the threshold": 0.95,
+     "another table first": 0.05,
+     "no candidate": 0.0,
+     "its table scored first": 0.95,
+     "targets a column, mean": 3.9672131147540983,
+     "f1 at the model's threshold": 0.0,
+     "f1 at the best threshold for this size": 0.6923076923076923,
+     "the best threshold for this size": 0.31148844957351685,
+     "precision there": 0.5625,
+     "precision at 0.5": 0.6363636363636364
+    }
+   }
+  },
+  "gemini-3-flash": {
+   "databases": 204,
+   "keys": 911,
+   "precision": 0.882172131147541,
+   "recall": 0.9451152579582875,
+   "f1": 0.9125596184419714,
+   "f1_95": [
+    0.884392267956174,
+    0.9388531430656878
+   ],
+   "macro f1": 0.9354721350335464,
+   "by tables": {
+    "0-4": {
+     "databases": 130,
+     "keys": 281,
+     "precision": 0.9464285714285714,
+     "recall": 0.9430604982206405,
+     "f1": 0.9447415329768271,
+     "macro f1": 0.9502075702075703
+    },
+    "5-9": {
+     "databases": 50,
+     "keys": 303,
+     "precision": 0.8803680981595092,
+     "recall": 0.9471947194719472,
+     "f1": 0.9125596184419714,
+     "macro f1": 0.9144903495496441
+    },
+    "10-19": {
+     "databases": 23,
+     "keys": 307,
+     "precision": 0.8682634730538922,
+     "recall": 0.9446254071661238,
+     "f1": 0.9048361934477378,
+     "macro f1": 0.9089670658176395
+    },
+    "20-39": {
+     "databases": 1,
+     "keys": 20,
+     "precision": 0.5277777777777778,
+     "recall": 0.95,
+     "f1": 0.6785714285714285,
+     "macro f1": 0.6785714285714285
+    }
+   }
+  },
+  "gemini-3.5-flash-lite": {
+   "databases": 204,
+   "keys": 911,
+   "precision": 0.8772819472616633,
+   "recall": 0.9495060373216246,
+   "f1": 0.9119662625197681,
+   "f1_95": [
+    0.8824850717046092,
+    0.9380234945737089
+   ],
+   "macro f1": 0.936848649621636,
+   "by tables": {
+    "0-4": {
+     "databases": 130,
+     "keys": 281,
+     "precision": 0.9432624113475178,
+     "recall": 0.9466192170818505,
+     "f1": 0.9449378330373002,
+     "macro f1": 0.951013431013431
+    },
+    "5-9": {
+     "databases": 50,
+     "keys": 303,
+     "precision": 0.8837920489296636,
+     "recall": 0.9537953795379538,
+     "f1": 0.9174603174603174,
+     "macro f1": 0.9210055010647957
+    },
+    "10-19": {
+     "databases": 23,
+     "keys": 307,
+     "precision": 0.8533724340175953,
+     "recall": 0.9478827361563518,
+     "f1": 0.8981481481481481,
+     "macro f1": 0.9024579134459344
+    },
+    "20-39": {
+     "databases": 1,
+     "keys": 20,
+     "precision": 0.5277777777777778,
+     "recall": 0.95,
+     "f1": 0.6785714285714285,
+     "macro f1": 0.6785714285714285
+    }
+   }
+  },
+  "claude-haiku-5-5": {
+   "databases": 204,
+   "keys": 911,
+   "precision": 0.8673870333988212,
+   "recall": 0.969264544456641,
+   "f1": 0.9155002592016588,
+   "f1_95": [
+    0.8860194124621891,
+    0.9414443418826407
+   ],
+   "macro f1": 0.944557038115428,
+   "by tables": {
+    "0-4": {
+     "databases": 130,
+     "keys": 281,
+     "precision": 0.9421768707482994,
+     "recall": 0.9857651245551602,
+     "f1": 0.9634782608695653,
+     "macro f1": 0.9639194139194139
+    },
+    "5-9": {
+     "databases": 50,
+     "keys": 303,
+     "precision": 0.8768768768768769,
+     "recall": 0.9636963696369637,
+     "f1": 0.918238993710692,
+     "macro f1": 0.921583537407538
+    },
+    "10-19": {
+     "databases": 23,
+     "keys": 307,
+     "precision": 0.8309859154929577,
+     "recall": 0.9609120521172638,
+     "f1": 0.891238670694864,
+     "macro f1": 0.8966245072641383
+    },
+    "20-39": {
+     "databases": 1,
+     "keys": 20,
+     "precision": 0.5277777777777778,
+     "recall": 0.95,
+     "f1": 0.6785714285714285,
+     "macro f1": 0.6785714285714285
+    }
+   }
+  },
+  "gemini-3.8-flash-high": {
+   "databases": 204,
+   "keys": 911,
+   "precision": 0.8953846153846153,
+   "recall": 0.9582875960482986,
+   "f1": 0.9257688229056205,
+   "f1_95": [
+    0.9020720032321529,
+    0.9478934088443046
+   ],
+   "macro f1": 0.9494099239497751,
+   "by tables": {
+    "0-4": {
+     "databases": 130,
+     "keys": 281,
+     "precision": 0.9609929078014184,
+     "recall": 0.9644128113879004,
+     "f1": 0.9626998223801065,
+     "macro f1": 0.9654761904761905
+    },
+    "5-9": {
+     "databases": 50,
+     "keys": 303,
+     "precision": 0.8936170212765957,
+     "recall": 0.9702970297029703,
+     "f1": 0.930379746835443,
+     "macro f1": 0.9350977976570924
+    },
+    "10-19": {
+     "databases": 23,
+     "keys": 307,
+     "precision": 0.8571428571428571,
+     "recall": 0.9576547231270358,
+     "f1": 0.9046153846153845,
+     "macro f1": 0.9013001309446279
+    },
+    "20-39": {
+     "databases": 1,
+     "keys": 20,
+     "precision": 0.6666666666666666,
+     "recall": 0.7,
+     "f1": 0.6829268292682926,
+     "macro f1": 0.6829268292682926
+    }
+   }
+  }
+ },
+ "bird": {
+  "1s": {
+   "databases": 76,
+   "keys": 606,
+   "precision": 0.8383838383838383,
+   "recall": 0.8217821782178217,
+   "f1": 0.83,
+   "f1_95": [
+    0.7623032747794293,
+    0.8855949021211246
+   ],
+   "macro f1": 0.7736397664063629,
+   "by tables": {
+    "0-4": {
+     "databases": 30,
+     "keys": 70,
+     "precision": 0.8333333333333334,
+     "recall": 0.7142857142857143,
+     "f1": 0.7692307692307692,
+     "macro f1": 0.7358730158730159
+    },
+    "5-9": {
+     "databases": 31,
+     "keys": 211,
+     "precision": 0.7659574468085106,
+     "recall": 0.8530805687203792,
+     "f1": 0.8071748878923767,
+     "macro f1": 0.8004930152850356
+    },
+    "10-19": {
+     "databases": 11,
+     "keys": 153,
+     "precision": 0.958041958041958,
+     "recall": 0.8954248366013072,
+     "f1": 0.9256756756756757,
+     "macro f1": 0.8575718575718576
+    },
+    "20-39": {
+     "databases": 3,
+     "keys": 87,
+     "precision": 0.8873239436619719,
+     "recall": 0.7241379310344828,
+     "f1": 0.7974683544303797,
+     "macro f1": 0.5572859545221905
+    },
+    "40-99": {
+     "databases": 1,
+     "keys": 85,
+     "precision": 0.8,
+     "recall": 0.8,
+     "f1": 0.8000000000000002,
+     "macro f1": 0.8000000000000002
+    }
+   },
+   "what becomes of a declared key": {
+    "0-4": {
+     "keys": 70,
+     "found": 0.7142857142857143,
+     "first, under the threshold": 0.12857142857142856,
+     "another table first": 0.04285714285714286,
+     "no candidate": 0.11428571428571428,
+     "its table scored first": 0.8428571428571429,
+     "targets a column, mean": 2.088744588744589,
+     "f1 at the model's threshold": 0.7692307692307693,
+     "f1 at the best threshold for this size": 0.7878787878787878,
+     "the best threshold for this size": 0.8076705932617188,
+     "precision there": 0.8387096774193549,
+     "precision at 0.5": 0.7571428571428571
+    },
+    "5-9": {
+     "keys": 211,
+     "found": 0.8483412322274881,
+     "first, under the threshold": 0.052132701421800945,
+     "another table first": 0.04265402843601896,
+     "no candidate": 0.05687203791469194,
+     "its table scored first": 0.9004739336492891,
+     "targets a column, mean": 3.9370212765957446,
+     "f1 at the model's threshold": 0.8026905829596412,
+     "f1 at the best threshold for this size": 0.8160377358490566,
+     "the best threshold for this size": 0.9048267006874084,
+     "precision there": 0.812206572769953,
+     "precision at 0.5": 0.5658682634730539
+    },
+    "10-19": {
+     "keys": 153,
+     "found": 0.8954248366013072,
+     "first, under the threshold": 0.06535947712418301,
+     "another table first": 0.032679738562091505,
+     "no candidate": 0.006535947712418301,
+     "its table scored first": 0.9607843137254902,
+     "targets a column, mean": 8.365591397849462,
+     "f1 at the model's threshold": 0.9256756756756757,
+     "f1 at the best threshold for this size": 0.9288135593220339,
+     "the best threshold for this size": 0.8681517243385315,
+     "precision there": 0.9647887323943662,
+     "precision at 0.5": 0.8888888888888888
+    },
+    "20-39": {
+     "keys": 87,
+     "found": 0.7241379310344828,
+     "first, under the threshold": 0.05747126436781609,
+     "another table first": 0.06896551724137931,
+     "no candidate": 0.14942528735632185,
+     "its table scored first": 0.7816091954022989,
+     "targets a column, mean": 7.484764542936288,
+     "f1 at the model's threshold": 0.7974683544303798,
+     "f1 at the best threshold for this size": 0.8125,
+     "the best threshold for this size": 0.8287371397018433,
+     "precision there": 0.8904109589041096,
+     "precision at 0.5": 0.7558139534883721
+    },
+    "40-99": {
+     "keys": 85,
+     "found": 0.8,
+     "first, under the threshold": 0.03529411764705882,
+     "another table first": 0.16470588235294117,
+     "no candidate": 0.0,
+     "its table scored first": 0.8352941176470589,
+     "targets a column, mean": 24.700996677740864,
+     "f1 at the model's threshold": 0.8,
+     "f1 at the best threshold for this size": 0.8160919540229885,
+     "the best threshold for this size": 0.675460934638977,
+     "precision there": 0.797752808988764,
+     "precision at 0.5": 0.7802197802197802
+    }
+   }
+  },
+  "seven-bounded": {
+   "databases": 76,
+   "keys": 606,
+   "precision": 0.8098360655737705,
+   "recall": 0.8151815181518152,
+   "f1": 0.8124999999999999,
+   "f1_95": [
+    0.7339193116416889,
+    0.8736253713903509
+   ],
+   "macro f1": 0.740671878294861,
+   "by tables": {
+    "0-4": {
+     "databases": 30,
+     "keys": 70,
+     "precision": 0.7796610169491526,
+     "recall": 0.6571428571428571,
+     "f1": 0.7131782945736433,
+     "macro f1": 0.6782539682539682
+    },
+    "5-9": {
+     "databases": 31,
+     "keys": 211,
+     "precision": 0.7154471544715447,
+     "recall": 0.8341232227488151,
+     "f1": 0.7702407002188183,
+     "macro f1": 0.7745267587922137
+    },
+    "10-19": {
+     "databases": 11,
+     "keys": 153,
+     "precision": 0.9452054794520548,
+     "recall": 0.9019607843137255,
+     "f1": 0.923076923076923,
+     "macro f1": 0.8605544970336259
+    },
+    "20-39": {
+     "databases": 3,
+     "keys": 87,
+     "precision": 0.8888888888888888,
+     "recall": 0.735632183908046,
+     "f1": 0.8050314465408804,
+     "macro f1": 0.5510204081632654
+    },
+    "40-99": {
+     "databases": 1,
+     "keys": 85,
+     "precision": 0.8045977011494253,
+     "recall": 0.8235294117647058,
+     "f1": 0.813953488372093,
+     "macro f1": 0.813953488372093
+    }
+   },
+   "what becomes of a declared key": {
+    "0-4": {
+     "keys": 70,
+     "found": 0.6571428571428571,
+     "first, under the threshold": 0.18571428571428572,
+     "another table first": 0.08571428571428572,
+     "no candidate": 0.07142857142857142,
+     "its table scored first": 0.8428571428571429,
+     "targets a column, mean": 2.2710280373831777,
+     "f1 at the model's threshold": 0.7131782945736435,
+     "f1 at the best threshold for this size": 0.7445255474452555,
+     "the best threshold for this size": 0.6707161664962769,
+     "precision there": 0.7611940298507462,
+     "precision at 0.5": 0.6842105263157895
+    },
+    "5-9": {
+     "keys": 211,
+     "found": 0.8293838862559242,
+     "first, under the threshold": 0.11374407582938388,
+     "another table first": 0.04265402843601896,
+     "no candidate": 0.014218009478672985,
+     "its table scored first": 0.943127962085308,
+     "targets a column, mean": 5.137195121951219,
+     "f1 at the model's threshold": 0.7658643326039387,
+     "f1 at the best threshold for this size": 0.8651399491094147,
+     "the best threshold for this size": 0.9085529446601868,
+     "precision there": 0.9340659340659341,
+     "precision at 0.5": 0.6229508196721312
+    },
+    "10-19": {
+     "keys": 153,
+     "found": 0.9019607843137255,
+     "first, under the threshold": 0.06535947712418301,
+     "another table first": 0.032679738562091505,
+     "no candidate": 0.0,
+     "its table scored first": 0.9673202614379085,
+     "targets a column, mean": 9.437070938215102,
+     "f1 at the model's threshold": 0.9230769230769231,
+     "f1 at the best threshold for this size": 0.9261744966442953,
+     "the best threshold for this size": 0.83174067735672,
+     "precision there": 0.9517241379310345,
+     "precision at 0.5": 0.8520710059171598
+    },
+    "20-39": {
+     "keys": 87,
+     "found": 0.735632183908046,
+     "first, under the threshold": 0.06896551724137931,
+     "another table first": 0.06896551724137931,
+     "no candidate": 0.12643678160919541,
+     "its table scored first": 0.8045977011494253,
+     "targets a column, mean": 17.21627408993576,
+     "f1 at the model's threshold": 0.8050314465408805,
+     "f1 at the best threshold for this size": 0.8050314465408805,
+     "the best threshold for this size": 0.8590048551559448,
+     "precision there": 0.8888888888888888,
+     "precision at 0.5": 0.7010309278350515
+    },
+    "40-99": {
+     "keys": 85,
+     "found": 0.8235294117647058,
+     "first, under the threshold": 0.011764705882352941,
+     "another table first": 0.16470588235294117,
+     "no candidate": 0.0,
+     "its table scored first": 0.8352941176470589,
+     "targets a column, mean": 50.32225913621262,
+     "f1 at the model's threshold": 0.813953488372093,
+     "f1 at the best threshold for this size": 0.8208092485549133,
+     "the best threshold for this size": 0.8052102327346802,
+     "precision there": 0.8068181818181818,
+     "precision at 0.5": 0.7802197802197802
+    }
+   }
+  },
+  "nine-mended": {
+   "databases": 76,
+   "keys": 606,
+   "precision": 0.8162251655629139,
+   "recall": 0.8135313531353136,
+   "f1": 0.8148760330578513,
+   "f1_95": [
+    0.7349895588765775,
+    0.877748659887028
+   ],
+   "macro f1": 0.7559139915802513,
+   "by tables": {
+    "0-4": {
+     "databases": 30,
+     "keys": 70,
+     "precision": 0.8,
+     "recall": 0.6857142857142857,
+     "f1": 0.7384615384615385,
+     "macro f1": 0.7092063492063492
+    },
+    "5-9": {
+     "databases": 31,
+     "keys": 211,
+     "precision": 0.7165991902834008,
+     "recall": 0.8388625592417062,
+     "f1": 0.7729257641921397,
+     "macro f1": 0.7807653968145329
+    },
+    "10-19": {
+     "databases": 11,
+     "keys": 153,
+     "precision": 0.9583333333333334,
+     "recall": 0.9019607843137255,
+     "f1": 0.9292929292929293,
+     "macro f1": 0.8670480035271324
+    },
+    "20-39": {
+     "databases": 3,
+     "keys": 87,
+     "precision": 0.9104477611940298,
+     "recall": 0.7011494252873564,
+     "f1": 0.7922077922077922,
+     "macro f1": 0.5416666666666666
+    },
+    "40-99": {
+     "databases": 1,
+     "keys": 85,
+     "precision": 0.8023255813953488,
+     "recall": 0.8117647058823529,
+     "f1": 0.8070175438596492,
+     "macro f1": 0.8070175438596492
+    }
+   },
+   "what becomes of a declared key": {
+    "0-4": {
+     "keys": 70,
+     "found": 0.6857142857142857,
+     "first, under the threshold": 0.14285714285714285,
+     "another table first": 0.1,
+     "no candidate": 0.07142857142857142,
+     "its table scored first": 0.8285714285714286,
+     "targets a column, mean": 2.2710280373831777,
+     "f1 at the model's threshold": 0.7384615384615385,
+     "f1 at the best threshold for this size": 0.7480916030534351,
+     "the best threshold for this size": 0.817520022392273,
+     "precision there": 0.8032786885245902,
+     "precision at 0.5": 0.7101449275362319
+    },
+    "5-9": {
+     "keys": 211,
+     "found": 0.8341232227488151,
+     "first, under the threshold": 0.11374407582938388,
+     "another table first": 0.037914691943127965,
+     "no candidate": 0.014218009478672985,
+     "its table scored first": 0.9478672985781991,
+     "targets a column, mean": 5.137195121951219,
+     "f1 at the model's threshold": 0.7685589519650655,
+     "f1 at the best threshold for this size": 0.7726269315673289,
+     "the best threshold for this size": 0.8490269184112549,
+     "precision there": 0.7231404958677686,
+     "precision at 0.5": 0.6181229773462783
+    },
+    "10-19": {
+     "keys": 153,
+     "found": 0.9019607843137255,
+     "first, under the threshold": 0.06535947712418301,
+     "another table first": 0.032679738562091505,
+     "no candidate": 0.0,
+     "its table scored first": 0.9673202614379085,
+     "targets a column, mean": 9.437070938215102,
+     "f1 at the model's threshold": 0.9292929292929293,
+     "f1 at the best threshold for this size": 0.9292929292929293,
+     "the best threshold for this size": 0.8475704789161682,
+     "precision there": 0.9583333333333334,
+     "precision at 0.5": 0.8867924528301887
+    },
+    "20-39": {
+     "keys": 87,
+     "found": 0.7011494252873564,
+     "first, under the threshold": 0.09195402298850575,
+     "another table first": 0.08045977011494253,
+     "no candidate": 0.12643678160919541,
+     "its table scored first": 0.7931034482758621,
+     "targets a column, mean": 17.21627408993576,
+     "f1 at the model's threshold": 0.7922077922077922,
+     "f1 at the best threshold for this size": 0.7974683544303798,
+     "the best threshold for this size": 0.7503054141998291,
+     "precision there": 0.8873239436619719,
+     "precision at 0.5": 0.6923076923076923
+    },
+    "40-99": {
+     "keys": 85,
+     "found": 0.8117647058823529,
+     "first, under the threshold": 0.023529411764705882,
+     "another table first": 0.16470588235294117,
+     "no candidate": 0.0,
+     "its table scored first": 0.8352941176470589,
+     "targets a column, mean": 50.32225913621262,
+     "f1 at the model's threshold": 0.8070175438596491,
+     "f1 at the best threshold for this size": 0.8208092485549133,
+     "the best threshold for this size": 0.7454508543014526,
+     "precision there": 0.8068181818181818,
+     "precision at 0.5": 0.7888888888888889
+    }
+   }
+  },
+  "gemini-3-flash": {
+   "databases": 76,
+   "keys": 606,
+   "precision": 0.8002853067047075,
+   "recall": 0.9257425742574258,
+   "f1": 0.8584544758990054,
+   "f1_95": [
+    0.7953493966425,
+    0.9095346268179558
+   ],
+   "macro f1": 0.8590832052832925,
+   "by tables": {
+    "0-4": {
+     "databases": 30,
+     "keys": 70,
+     "precision": 0.7721518987341772,
+     "recall": 0.8714285714285714,
+     "f1": 0.8187919463087248,
+     "macro f1": 0.8523015873015873
+    },
+    "5-9": {
+     "databases": 31,
+     "keys": 211,
+     "precision": 0.8693693693693694,
+     "recall": 0.9146919431279621,
+     "f1": 0.8914549653579676,
+     "macro f1": 0.8552165681672322
+    },
+    "10-19": {
+     "databases": 11,
+     "keys": 153,
+     "precision": 0.9483870967741935,
+     "recall": 0.9607843137254902,
+     "f1": 0.9545454545454546,
+     "macro f1": 0.9430032762156174
+    },
+    "20-39": {
+     "databases": 3,
+     "keys": 87,
+     "precision": 0.535031847133758,
+     "recall": 0.9655172413793104,
+     "f1": 0.6885245901639344,
+     "macro f1": 0.6526378713878713
+    },
+    "40-99": {
+     "databases": 1,
+     "keys": 85,
+     "precision": 0.8636363636363636,
+     "recall": 0.8941176470588236,
+     "f1": 0.8786127167630058,
+     "macro f1": 0.8786127167630058
+    }
+   }
+  },
+  "gemini-3.5-flash-lite": {
+   "databases": 76,
+   "keys": 606,
+   "precision": 0.8452380952380952,
+   "recall": 0.9372937293729373,
+   "f1": 0.888888888888889,
+   "f1_95": [
+    0.8457717716439239,
+    0.9243215875622843
+   ],
+   "macro f1": 0.8762908818426036,
+   "by tables": {
+    "0-4": {
+     "databases": 30,
+     "keys": 70,
+     "precision": 0.8157894736842105,
+     "recall": 0.8857142857142857,
+     "f1": 0.8493150684931505,
+     "macro f1": 0.8718253968253968
+    },
+    "5-9": {
+     "databases": 31,
+     "keys": 211,
+     "precision": 0.875,
+     "recall": 0.9289099526066351,
+     "f1": 0.9011494252873563,
+     "macro f1": 0.8698095021150049
+    },
+    "10-19": {
+     "databases": 11,
+     "keys": 153,
+     "precision": 0.948051948051948,
+     "recall": 0.954248366013072,
+     "f1": 0.9511400651465798,
+     "macro f1": 0.9405462737586151
+    },
+    "20-39": {
+     "databases": 3,
+     "keys": 87,
+     "precision": 0.648854961832061,
+     "recall": 0.9770114942528736,
+     "f1": 0.779816513761468,
+     "macro f1": 0.7382122957344196
+    },
+    "40-99": {
+     "databases": 1,
+     "keys": 85,
+     "precision": 0.9080459770114943,
+     "recall": 0.9294117647058824,
+     "f1": 0.9186046511627908,
+     "macro f1": 0.9186046511627908
+    }
+   }
+  },
+  "claude-haiku-5-5": {
+   "databases": 76,
+   "keys": 606,
+   "precision": 0.8403483309143687,
+   "recall": 0.9554455445544554,
+   "f1": 0.8942084942084942,
+   "f1_95": [
+    0.8399597729165786,
+    0.9369203212500773
+   ],
+   "macro f1": 0.8777862510256961,
+   "by tables": {
+    "0-4": {
+     "databases": 30,
+     "keys": 70,
+     "precision": 0.84,
+     "recall": 0.9,
+     "f1": 0.8689655172413793,
+     "macro f1": 0.8842857142857142
+    },
+    "5-9": {
+     "databases": 31,
+     "keys": 211,
+     "precision": 0.8652173913043478,
+     "recall": 0.943127962085308,
+     "f1": 0.9024943310657596,
+     "macro f1": 0.859701141152754
+    },
+    "10-19": {
+     "databases": 11,
+     "keys": 153,
+     "precision": 0.94375,
+     "recall": 0.9869281045751634,
+     "f1": 0.9648562300319489,
+     "macro f1": 0.9539700871824284
+    },
+    "20-39": {
+     "databases": 3,
+     "keys": 87,
+     "precision": 0.6074074074074074,
+     "recall": 0.9425287356321839,
+     "f1": 0.7387387387387386,
+     "macro f1": 0.691086691086691
+    },
+    "40-99": {
+     "databases": 1,
+     "keys": 85,
+     "precision": 0.9438202247191011,
+     "recall": 0.9882352941176471,
+     "f1": 0.9655172413793103,
+     "macro f1": 0.9655172413793103
+    }
+   }
+  },
+  "gemini-3.8-flash-high": {
+   "databases": 76,
+   "keys": 606,
+   "precision": 0.9,
+   "recall": 0.9356435643564357,
+   "f1": 0.9174757281553398,
+   "f1_95": [
+    0.875295492845245,
+    0.9531307107926608
+   ],
+   "macro f1": 0.8957477249933006,
+   "by tables": {
+    "0-4": {
+     "databases": 30,
+     "keys": 70,
+     "precision": 0.8857142857142857,
+     "recall": 0.8857142857142857,
+     "f1": 0.8857142857142857,
+     "macro f1": 0.8865079365079365
+    },
+    "5-9": {
+     "databases": 31,
+     "keys": 211,
+     "precision": 0.9425837320574163,
+     "recall": 0.933649289099526,
+     "f1": 0.938095238095238,
+     "macro f1": 0.913842256204685
+    },
+    "10-19": {
+     "databases": 11,
+     "keys": 153,
+     "precision": 0.9556962025316456,
+     "recall": 0.9869281045751634,
+     "f1": 0.9710610932475884,
+     "macro f1": 0.9607749781978456
+    },
+    "20-39": {
+     "databases": 3,
+     "keys": 87,
+     "precision": 0.6886792452830188,
+     "recall": 0.8390804597701149,
+     "f1": 0.7564766839378239,
+     "macro f1": 0.5357367052282306
+    },
+    "40-99": {
+     "databases": 1,
+     "keys": 85,
+     "precision": 0.9655172413793104,
+     "recall": 0.9882352941176471,
+     "f1": 0.9767441860465116,
+     "macro f1": 0.9767441860465116
+    }
+   }
+  }
+ },
+ "ctu": {
+  "1s": {
+   "databases": 118,
+   "keys": 1854,
+   "precision": 0.8109318996415771,
+   "recall": 0.48813376483279397,
+   "f1": 0.6094276094276095,
+   "f1_95": [
+    0.5152507202143736,
+    0.7343480164706067
+   ],
+   "macro f1": 0.7413015391635107,
+   "by tables": {
+    "0-4": {
+     "databases": 49,
+     "keys": 116,
+     "precision": 0.8921568627450981,
+     "recall": 0.7844827586206896,
+     "f1": 0.834862385321101,
+     "macro f1": 0.8307256235827665
+    },
+    "5-9": {
+     "databases": 33,
+     "keys": 225,
+     "precision": 0.8994974874371859,
+     "recall": 0.7955555555555556,
+     "f1": 0.8443396226415094,
+     "macro f1": 0.7840328318937945
+    },
+    "10-19": {
+     "databases": 19,
+     "keys": 292,
+     "precision": 0.8289473684210527,
+     "recall": 0.6472602739726028,
+     "f1": 0.7269230769230769,
+     "macro f1": 0.6794097730826183
+    },
+    "20-39": {
+     "databases": 13,
+     "keys": 537,
+     "precision": 0.9057377049180327,
+     "recall": 0.41154562383612664,
+     "f1": 0.5659411011523687,
+     "macro f1": 0.47553010452294375
+    },
+    "40-99": {
+     "databases": 3,
+     "keys": 322,
+     "precision": 0.8518518518518519,
+     "recall": 0.35714285714285715,
+     "f1": 0.5032822757111597,
+     "macro f1": 0.4727668845315904
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 362,
+     "precision": 0.5288461538461539,
+     "recall": 0.30386740331491713,
+     "f1": 0.3859649122807018,
+     "macro f1": 0.3859649122807018
+    }
+   },
+   "what becomes of a declared key": {
+    "0-4": {
+     "keys": 116,
+     "found": 0.7844827586206896,
+     "first, under the threshold": 0.15517241379310345,
+     "another table first": 0.0603448275862069,
+     "no candidate": 0.0,
+     "its table scored first": 0.9396551724137931,
+     "targets a column, mean": 2.022708158116064,
+     "f1 at the model's threshold": 0.8348623853211009,
+     "f1 at the best threshold for this size": 0.8619246861924686,
+     "the best threshold for this size": 0.6058433651924133,
+     "precision there": 0.8373983739837398,
+     "precision at 0.5": 0.7938931297709924
+    },
+    "5-9": {
+     "keys": 225,
+     "found": 0.7955555555555556,
+     "first, under the threshold": 0.08,
+     "another table first": 0.11555555555555555,
+     "no candidate": 0.008888888888888889,
+     "its table scored first": 0.8755555555555555,
+     "targets a column, mean": 3.934375,
+     "f1 at the model's threshold": 0.8443396226415094,
+     "f1 at the best threshold for this size": 0.8526077097505669,
+     "the best threshold for this size": 0.7123791575431824,
+     "precision there": 0.8703703703703703,
+     "precision at 0.5": 0.7106227106227107
+    },
+    "10-19": {
+     "keys": 292,
+     "found": 0.6472602739726028,
+     "first, under the threshold": 0.3047945205479452,
+     "another table first": 0.0410958904109589,
+     "no candidate": 0.00684931506849315,
+     "its table scored first": 0.952054794520548,
+     "targets a column, mean": 6.1365902293120635,
+     "f1 at the model's threshold": 0.7269230769230769,
+     "f1 at the best threshold for this size": 0.7734241908006815,
+     "the best threshold for this size": 0.5327754616737366,
+     "precision there": 0.7694915254237288,
+     "precision at 0.5": 0.7557755775577558
+    },
+    "20-39": {
+     "keys": 537,
+     "found": 0.41154562383612664,
+     "first, under the threshold": 0.21973929236499068,
+     "another table first": 0.24581005586592178,
+     "no candidate": 0.12290502793296089,
+     "its table scored first": 0.6312849162011173,
+     "targets a column, mean": 8.211973121563837,
+     "f1 at the model's threshold": 0.5659411011523687,
+     "f1 at the best threshold for this size": 0.6653266331658292,
+     "the best threshold for this size": 0.316301554441452,
+     "precision there": 0.722707423580786,
+     "precision at 0.5": 0.8065395095367848
+    },
+    "40-99": {
+     "keys": 322,
+     "found": 0.35714285714285715,
+     "first, under the threshold": 0.5496894409937888,
+     "another table first": 0.09316770186335403,
+     "no candidate": 0.0,
+     "its table scored first": 0.906832298136646,
+     "targets a column, mean": 31.636704119850187,
+     "f1 at the model's threshold": 0.5032822757111597,
+     "f1 at the best threshold for this size": 0.5927342256214149,
+     "the best threshold for this size": 0.5080248117446899,
+     "precision there": 0.7711442786069652,
+     "precision at 0.5": 0.7711442786069652
+    },
+    "100+": {
+     "keys": 362,
+     "found": 0.30386740331491713,
+     "first, under the threshold": 0.1712707182320442,
+     "another table first": 0.4447513812154696,
+     "no candidate": 0.08011049723756906,
+     "its table scored first": 0.47513812154696133,
+     "targets a column, mean": 146.78424899787785,
+     "f1 at the model's threshold": 0.38596491228070173,
+     "f1 at the best threshold for this size": 0.3866432337434095,
+     "the best threshold for this size": 0.8393223285675049,
+     "precision there": 0.5314009661835749,
+     "precision at 0.5": 0.2481089258698941
+    }
+   }
+  },
+  "seven-bounded": {
+   "databases": 118,
+   "keys": 1854,
+   "precision": 0.8243021346469622,
+   "recall": 0.5415318230852212,
+   "f1": 0.6536458333333334,
+   "f1_95": [
+    0.5155595659506644,
+    0.794815941348205
+   ],
+   "macro f1": 0.7589141183243073,
+   "by tables": {
+    "0-4": {
+     "databases": 49,
+     "keys": 116,
+     "precision": 0.8067226890756303,
+     "recall": 0.8275862068965517,
+     "f1": 0.8170212765957446,
+     "macro f1": 0.8260005300821627
+    },
+    "5-9": {
+     "databases": 33,
+     "keys": 225,
+     "precision": 0.820627802690583,
+     "recall": 0.8133333333333334,
+     "f1": 0.8169642857142858,
+     "macro f1": 0.7684861187534985
+    },
+    "10-19": {
+     "databases": 19,
+     "keys": 292,
+     "precision": 0.8769230769230769,
+     "recall": 0.7808219178082192,
+     "f1": 0.8260869565217391,
+     "macro f1": 0.7686306539842148
+    },
+    "20-39": {
+     "databases": 13,
+     "keys": 537,
+     "precision": 0.8932926829268293,
+     "recall": 0.5456238361266295,
+     "f1": 0.6774566473988439,
+     "macro f1": 0.5591410956157822
+    },
+    "40-99": {
+     "databases": 3,
+     "keys": 322,
+     "precision": 0.8095238095238095,
+     "recall": 0.4751552795031056,
+     "f1": 0.5988258317025441,
+     "macro f1": 0.5412410887271223
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 362,
+     "precision": 0.5151515151515151,
+     "recall": 0.1408839779005525,
+     "f1": 0.2212581344902386,
+     "macro f1": 0.2212581344902386
+    }
+   },
+   "what becomes of a declared key": {
+    "0-4": {
+     "keys": 116,
+     "found": 0.8275862068965517,
+     "first, under the threshold": 0.10344827586206896,
+     "another table first": 0.06896551724137931,
+     "no candidate": 0.0,
+     "its table scored first": 0.9310344827586207,
+     "targets a column, mean": 2.823809523809524,
+     "f1 at the model's threshold": 0.8170212765957446,
+     "f1 at the best threshold for this size": 0.8421052631578947,
+     "the best threshold for this size": 0.9409827589988708,
+     "precision there": 0.946236559139785,
+     "precision at 0.5": 0.7410071942446043
+    },
+    "5-9": {
+     "keys": 225,
+     "found": 0.8133333333333334,
+     "first, under the threshold": 0.09777777777777778,
+     "another table first": 0.08888888888888889,
+     "no candidate": 0.0,
+     "its table scored first": 0.9111111111111111,
+     "targets a column, mean": 5.8017391304347825,
+     "f1 at the model's threshold": 0.8169642857142857,
+     "f1 at the best threshold for this size": 0.836027713625866,
+     "the best threshold for this size": 0.8771809935569763,
+     "precision there": 0.8701923076923077,
+     "precision at 0.5": 0.7052631578947368
+    },
+    "10-19": {
+     "keys": 292,
+     "found": 0.7808219178082192,
+     "first, under the threshold": 0.1815068493150685,
+     "another table first": 0.03767123287671233,
+     "no candidate": 0.0,
+     "its table scored first": 0.9623287671232876,
+     "targets a column, mean": 8.498272884283248,
+     "f1 at the model's threshold": 0.8260869565217391,
+     "f1 at the best threshold for this size": 0.846815834767642,
+     "the best threshold for this size": 0.6872174143791199,
+     "precision there": 0.8512110726643599,
+     "precision at 0.5": 0.8115015974440895
+    },
+    "20-39": {
+     "keys": 537,
+     "found": 0.5456238361266295,
+     "first, under the threshold": 0.24394785847299813,
+     "another table first": 0.19180633147113593,
+     "no candidate": 0.0186219739292365,
+     "its table scored first": 0.7895716945996276,
+     "targets a column, mean": 17.397596153846155,
+     "f1 at the model's threshold": 0.6774566473988439,
+     "f1 at the best threshold for this size": 0.7674418604651163,
+     "the best threshold for this size": 0.3813275992870331,
+     "precision there": 0.8,
+     "precision at 0.5": 0.8117913832199547
+    },
+    "40-99": {
+     "keys": 322,
+     "found": 0.4751552795031056,
+     "first, under the threshold": 0.43788819875776397,
+     "another table first": 0.08695652173913043,
+     "no candidate": 0.0,
+     "its table scored first": 0.9130434782608695,
+     "targets a column, mean": 63.61260504201681,
+     "f1 at the model's threshold": 0.598825831702544,
+     "f1 at the best threshold for this size": 0.8861911987860395,
+     "the best threshold for this size": 0.5478888750076294,
+     "precision there": 0.8664688427299704,
+     "precision at 0.5": 0.8563049853372434
+    },
+    "100+": {
+     "keys": 362,
+     "found": 0.1408839779005525,
+     "first, under the threshold": 0.47790055248618785,
+     "another table first": 0.3812154696132597,
+     "no candidate": 0.0,
+     "its table scored first": 0.6187845303867403,
+     "targets a column, mean": 346.2885080645161,
+     "f1 at the model's threshold": 0.22125813449023862,
+     "f1 at the best threshold for this size": 0.30962343096234307,
+     "the best threshold for this size": 0.15290117263793945,
+     "precision there": 0.22208883553421369,
+     "precision at 0.5": 0.20155038759689922
+    }
+   }
+  },
+  "nine-mended": {
+   "databases": 118,
+   "keys": 1854,
+   "precision": 0.8126959247648903,
+   "recall": 0.5593311758360302,
+   "f1": 0.6626198083067093,
+   "f1_95": [
+    0.5433908322191833,
+    0.7962800286142654
+   ],
+   "macro f1": 0.768881550206423,
+   "by tables": {
+    "0-4": {
+     "databases": 49,
+     "keys": 116,
+     "precision": 0.8181818181818182,
+     "recall": 0.853448275862069,
+     "f1": 0.8354430379746834,
+     "macro f1": 0.8413022351797862
+    },
+    "5-9": {
+     "databases": 33,
+     "keys": 225,
+     "precision": 0.8201754385964912,
+     "recall": 0.8311111111111111,
+     "f1": 0.82560706401766,
+     "macro f1": 0.7811737678047838
+    },
+    "10-19": {
+     "databases": 19,
+     "keys": 292,
+     "precision": 0.8852459016393442,
+     "recall": 0.7397260273972602,
+     "f1": 0.8059701492537313,
+     "macro f1": 0.7451998777148129
+    },
+    "20-39": {
+     "databases": 13,
+     "keys": 537,
+     "precision": 0.9166666666666666,
+     "recall": 0.553072625698324,
+     "f1": 0.6898954703832753,
+     "macro f1": 0.5870771558099037
+    },
+    "40-99": {
+     "databases": 3,
+     "keys": 322,
+     "precision": 0.8097826086956522,
+     "recall": 0.46273291925465837,
+     "f1": 0.5889328063241107,
+     "macro f1": 0.5344024083133122
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 362,
+     "precision": 0.5085714285714286,
+     "recall": 0.24585635359116023,
+     "f1": 0.3314711359404097,
+     "macro f1": 0.3314711359404097
+    }
+   },
+   "what becomes of a declared key": {
+    "0-4": {
+     "keys": 116,
+     "found": 0.853448275862069,
+     "first, under the threshold": 0.07758620689655173,
+     "another table first": 0.06896551724137931,
+     "no candidate": 0.0,
+     "its table scored first": 0.9310344827586207,
+     "targets a column, mean": 2.823809523809524,
+     "f1 at the model's threshold": 0.8354430379746836,
+     "f1 at the best threshold for this size": 0.8493150684931506,
+     "the best threshold for this size": 0.9306827187538147,
+     "precision there": 0.9029126213592233,
+     "precision at 0.5": 0.6986301369863014
+    },
+    "5-9": {
+     "keys": 225,
+     "found": 0.8311111111111111,
+     "first, under the threshold": 0.11555555555555555,
+     "another table first": 0.05333333333333334,
+     "no candidate": 0.0,
+     "its table scored first": 0.9466666666666667,
+     "targets a column, mean": 5.8017391304347825,
+     "f1 at the model's threshold": 0.82560706401766,
+     "f1 at the best threshold for this size": 0.8384074941451991,
+     "the best threshold for this size": 0.882793128490448,
+     "precision there": 0.8861386138613861,
+     "precision at 0.5": 0.6822742474916388
+    },
+    "10-19": {
+     "keys": 292,
+     "found": 0.7397260273972602,
+     "first, under the threshold": 0.22602739726027396,
+     "another table first": 0.03424657534246575,
+     "no candidate": 0.0,
+     "its table scored first": 0.9657534246575342,
+     "targets a column, mean": 8.498272884283248,
+     "f1 at the model's threshold": 0.8059701492537313,
+     "f1 at the best threshold for this size": 0.8478964401294499,
+     "the best threshold for this size": 0.33775606751441956,
+     "precision there": 0.803680981595092,
+     "precision at 0.5": 0.8211920529801324
+    },
+    "20-39": {
+     "keys": 537,
+     "found": 0.553072625698324,
+     "first, under the threshold": 0.24394785847299813,
+     "another table first": 0.18435754189944134,
+     "no candidate": 0.0186219739292365,
+     "its table scored first": 0.7970204841713222,
+     "targets a column, mean": 17.397596153846155,
+     "f1 at the model's threshold": 0.6898954703832753,
+     "f1 at the best threshold for this size": 0.7478448275862069,
+     "the best threshold for this size": 0.6719072461128235,
+     "precision there": 0.887468030690537,
+     "precision at 0.5": 0.8048780487804879
+    },
+    "40-99": {
+     "keys": 322,
+     "found": 0.46273291925465837,
+     "first, under the threshold": 0.4440993788819876,
+     "another table first": 0.09316770186335403,
+     "no candidate": 0.0,
+     "its table scored first": 0.906832298136646,
+     "targets a column, mean": 63.61260504201681,
+     "f1 at the model's threshold": 0.5889328063241107,
+     "f1 at the best threshold for this size": 0.8716417910447761,
+     "the best threshold for this size": 0.22845666110515594,
+     "precision there": 0.8390804597701149,
+     "precision at 0.5": 0.7783251231527094
+    },
+    "100+": {
+     "keys": 362,
+     "found": 0.24585635359116023,
+     "first, under the threshold": 0.3839779005524862,
+     "another table first": 0.3701657458563536,
+     "no candidate": 0.0,
+     "its table scored first": 0.6298342541436464,
+     "targets a column, mean": 346.2885080645161,
+     "f1 at the model's threshold": 0.33147113594040967,
+     "f1 at the best threshold for this size": 0.3854748603351955,
+     "the best threshold for this size": 0.7022413611412048,
+     "precision there": 0.3898305084745763,
+     "precision at 0.5": 0.2724306688417618
+    }
+   }
+  },
+  "gemini-3-flash": {
+   "databases": 118,
+   "keys": 1854,
+   "precision": 0.8172231985940246,
+   "recall": 0.7524271844660194,
+   "f1": 0.7834877843302444,
+   "f1_95": [
+    0.578824311632595,
+    0.926504599046217
+   ],
+   "macro f1": 0.8815818079239774,
+   "by tables": {
+    "0-4": {
+     "databases": 49,
+     "keys": 116,
+     "precision": 0.875,
+     "recall": 0.9655172413793104,
+     "f1": 0.9180327868852458,
+     "macro f1": 0.9313896987366374
+    },
+    "5-9": {
+     "databases": 33,
+     "keys": 225,
+     "precision": 0.782608695652174,
+     "recall": 0.96,
+     "f1": 0.8622754491017965,
+     "macro f1": 0.8538215616825243
+    },
+    "10-19": {
+     "databases": 19,
+     "keys": 292,
+     "precision": 0.875,
+     "recall": 0.958904109589041,
+     "f1": 0.9150326797385621,
+     "macro f1": 0.8885652399993461
+    },
+    "20-39": {
+     "databases": 13,
+     "keys": 537,
+     "precision": 0.8280141843971631,
+     "recall": 0.8696461824953445,
+     "f1": 0.8483197093551318,
+     "macro f1": 0.7987473831862508
+    },
+    "40-99": {
+     "databases": 3,
+     "keys": 322,
+     "precision": 0.9754601226993865,
+     "recall": 0.9875776397515528,
+     "f1": 0.9814814814814815,
+     "macro f1": 0.9790666037369166
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 362,
+     "precision": 0.021505376344086023,
+     "recall": 0.0055248618784530384,
+     "f1": 0.008791208791208791,
+     "macro f1": 0.008791208791208791
+    }
+   }
+  },
+  "gemini-3.5-flash-lite": {
+   "databases": 118,
+   "keys": 1854,
+   "precision": 0.8867924528301887,
+   "recall": 0.7605177993527508,
+   "f1": 0.818815331010453,
+   "f1_95": [
+    0.6320681631796471,
+    0.9388006545935578
+   ],
+   "macro f1": 0.8881034616763488,
+   "by tables": {
+    "0-4": {
+     "databases": 49,
+     "keys": 116,
+     "precision": 0.875,
+     "recall": 0.9655172413793104,
+     "f1": 0.9180327868852458,
+     "macro f1": 0.932555879494655
+    },
+    "5-9": {
+     "databases": 33,
+     "keys": 225,
+     "precision": 0.7875457875457875,
+     "recall": 0.9555555555555556,
+     "f1": 0.8634538152610443,
+     "macro f1": 0.8541980893317792
+    },
+    "10-19": {
+     "databases": 19,
+     "keys": 292,
+     "precision": 0.8785942492012779,
+     "recall": 0.9417808219178082,
+     "f1": 0.9090909090909092,
+     "macro f1": 0.8832324902953017
+    },
+    "20-39": {
+     "databases": 13,
+     "keys": 537,
+     "precision": 0.8909090909090909,
+     "recall": 0.9124767225325885,
+     "f1": 0.9015639374425023,
+     "macro f1": 0.8610627929077589
+    },
+    "40-99": {
+     "databases": 3,
+     "keys": 322,
+     "precision": 0.9754601226993865,
+     "recall": 0.9875776397515528,
+     "f1": 0.9814814814814815,
+     "macro f1": 0.9790666037369166
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 362,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "macro f1": 0.0
+    }
+   }
+  },
+  "claude-haiku-5-5": {
+   "databases": 118,
+   "keys": 1854,
+   "precision": 0.8158027176648214,
+   "recall": 0.8743257820927723,
+   "f1": 0.8440510283780266,
+   "f1_95": [
+    0.738628532988396,
+    0.9378362223290032
+   ],
+   "macro f1": 0.8916562327634747,
+   "by tables": {
+    "0-4": {
+     "databases": 49,
+     "keys": 116,
+     "precision": 0.8671875,
+     "recall": 0.9568965517241379,
+     "f1": 0.9098360655737704,
+     "macro f1": 0.9220602526724975
+    },
+    "5-9": {
+     "databases": 33,
+     "keys": 225,
+     "precision": 0.7872340425531915,
+     "recall": 0.9866666666666667,
+     "f1": 0.8757396449704142,
+     "macro f1": 0.8670297021633919
+    },
+    "10-19": {
+     "databases": 19,
+     "keys": 292,
+     "precision": 0.8605341246290801,
+     "recall": 0.9931506849315068,
+     "f1": 0.9220985691573927,
+     "macro f1": 0.892964351022034
+    },
+    "20-39": {
+     "databases": 13,
+     "keys": 537,
+     "precision": 0.8275290215588723,
+     "recall": 0.9292364990689013,
+     "f1": 0.8754385964912281,
+     "macro f1": 0.8443719537174843
+    },
+    "40-99": {
+     "databases": 3,
+     "keys": 322,
+     "precision": 0.9698795180722891,
+     "recall": 1.0,
+     "f1": 0.9847094801223241,
+     "macro f1": 0.9828700711053653
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 362,
+     "precision": 0.580327868852459,
+     "recall": 0.4889502762430939,
+     "f1": 0.5307346326836582,
+     "macro f1": 0.5307346326836582
+    }
+   }
+  },
+  "gemini-3.8-flash-high": {
+   "databases": 118,
+   "keys": 1854,
+   "precision": 0.876391982182628,
+   "recall": 0.8489751887810141,
+   "f1": 0.8624657534246575,
+   "f1_95": [
+    0.7199340543196209,
+    0.9686749503232136
+   ],
+   "macro f1": 0.9311329823192757,
+   "by tables": {
+    "0-4": {
+     "databases": 49,
+     "keys": 116,
+     "precision": 0.9126984126984127,
+     "recall": 0.9913793103448276,
+     "f1": 0.9504132231404958,
+     "macro f1": 0.9587949465500486
+    },
+    "5-9": {
+     "databases": 33,
+     "keys": 225,
+     "precision": 0.8620689655172413,
+     "recall": 1.0,
+     "f1": 0.9259259259259259,
+     "macro f1": 0.9319732080159888
+    },
+    "10-19": {
+     "databases": 19,
+     "keys": 292,
+     "precision": 0.90625,
+     "recall": 0.9931506849315068,
+     "f1": 0.9477124183006536,
+     "macro f1": 0.9202452772246822
+    },
+    "20-39": {
+     "databases": 13,
+     "keys": 537,
+     "precision": 0.9388888888888889,
+     "recall": 0.9441340782122905,
+     "f1": 0.9415041782729804,
+     "macro f1": 0.8677624706826373
+    },
+    "40-99": {
+     "databases": 3,
+     "keys": 322,
+     "precision": 0.9877300613496932,
+     "recall": 1.0,
+     "f1": 0.9938271604938271,
+     "macro f1": 0.9929629629629629
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 362,
+     "precision": 0.515695067264574,
+     "recall": 0.31767955801104975,
+     "f1": 0.3931623931623932,
+     "macro f1": 0.3931623931623932
+    }
+   }
+  }
+ },
+ "livesqlbench (development)": {
+  "1s": {
+   "databases": 22,
+   "keys": 299,
+   "precision": 0.6808510638297872,
+   "recall": 0.10702341137123746,
+   "f1": 0.18497109826589594,
+   "f1_95": [
+    0.09492317314514022,
+    0.28045309357624504
+   ],
+   "macro f1": 0.16225769180314636,
+   "by tables": {
+    "5-9": {
+     "databases": 7,
+     "keys": 59,
+     "precision": 0.5625,
+     "recall": 0.15254237288135594,
+     "f1": 0.24000000000000002,
+     "macro f1": 0.18888888888888888
+    },
+    "10-19": {
+     "databases": 15,
+     "keys": 240,
+     "precision": 0.7419354838709677,
+     "recall": 0.09583333333333334,
+     "f1": 0.16974169741697417,
+     "macro f1": 0.14982979982979985
+    }
+   },
+   "what becomes of a declared key": {
+    "5-9": {
+     "keys": 59,
+     "found": 0.15254237288135594,
+     "first, under the threshold": 0.3389830508474576,
+     "another table first": 0.3389830508474576,
+     "no candidate": 0.1694915254237288,
+     "its table scored first": 0.4915254237288136,
+     "targets a column, mean": 5.061290322580645,
+     "f1 at the model's threshold": 0.24,
+     "f1 at the best threshold for this size": 0.45454545454545453,
+     "the best threshold for this size": 0.4706924855709076,
+     "precision there": 0.49019607843137253,
+     "precision at 0.5": 0.5
+    },
+    "10-19": {
+     "keys": 240,
+     "found": 0.09583333333333334,
+     "first, under the threshold": 0.4166666666666667,
+     "another table first": 0.4166666666666667,
+     "no candidate": 0.07083333333333333,
+     "its table scored first": 0.5125,
+     "targets a column, mean": 8.269510926118626,
+     "f1 at the model's threshold": 0.16974169741697417,
+     "f1 at the best threshold for this size": 0.46408839779005523,
+     "the best threshold for this size": 0.4841872453689575,
+     "precision there": 0.6885245901639344,
+     "precision at 0.5": 0.6890756302521008
+    }
+   }
+  },
+  "seven-bounded": {
+   "databases": 22,
+   "keys": 299,
+   "precision": 0.8352272727272727,
+   "recall": 0.4916387959866221,
+   "f1": 0.6189473684210526,
+   "f1_95": [
+    0.45503808909822907,
+    0.7559893554972296
+   ],
+   "macro f1": 0.5080568636600238,
+   "by tables": {
+    "5-9": {
+     "databases": 7,
+     "keys": 59,
+     "precision": 0.675,
+     "recall": 0.4576271186440678,
+     "f1": 0.5454545454545455,
+     "macro f1": 0.4516028633675692
+    },
+    "10-19": {
+     "databases": 15,
+     "keys": 240,
+     "precision": 0.8823529411764706,
+     "recall": 0.5,
+     "f1": 0.6382978723404256,
+     "macro f1": 0.5344020637965025
+    }
+   },
+   "what becomes of a declared key": {
+    "5-9": {
+     "keys": 59,
+     "found": 0.4576271186440678,
+     "first, under the threshold": 0.13559322033898305,
+     "another table first": 0.4067796610169492,
+     "no candidate": 0.0,
+     "its table scored first": 0.5932203389830508,
+     "targets a column, mean": 5.615141955835962,
+     "f1 at the model's threshold": 0.5454545454545454,
+     "f1 at the best threshold for this size": 0.56,
+     "the best threshold for this size": 0.8166784644126892,
+     "precision there": 0.6829268292682927,
+     "precision at 0.5": 0.48333333333333334
+    },
+    "10-19": {
+     "keys": 240,
+     "found": 0.5,
+     "first, under the threshold": 0.26666666666666666,
+     "another table first": 0.17916666666666667,
+     "no candidate": 0.05416666666666667,
+     "its table scored first": 0.7666666666666667,
+     "targets a column, mean": 8.876404494382022,
+     "f1 at the model's threshold": 0.6382978723404256,
+     "f1 at the best threshold for this size": 0.704225352112676,
+     "the best threshold for this size": 0.5448092818260193,
+     "precision there": 0.8064516129032258,
+     "precision at 0.5": 0.7638190954773869
+    }
+   }
+  },
+  "nine-mended": {
+   "databases": 22,
+   "keys": 299,
+   "precision": 0.85,
+   "recall": 0.3979933110367893,
+   "f1": 0.542141230068337,
+   "f1_95": [
+    0.38028228895357746,
+    0.6821700310559006
+   ],
+   "macro f1": 0.43018357598534784,
+   "by tables": {
+    "5-9": {
+     "databases": 7,
+     "keys": 59,
+     "precision": 0.8076923076923077,
+     "recall": 0.3559322033898305,
+     "f1": 0.4941176470588236,
+     "macro f1": 0.38015873015873014
+    },
+    "10-19": {
+     "databases": 15,
+     "keys": 240,
+     "precision": 0.8596491228070176,
+     "recall": 0.4083333333333333,
+     "f1": 0.5536723163841809,
+     "macro f1": 0.4535285040377695
+    }
+   },
+   "what becomes of a declared key": {
+    "5-9": {
+     "keys": 59,
+     "found": 0.3559322033898305,
+     "first, under the threshold": 0.2711864406779661,
+     "another table first": 0.3728813559322034,
+     "no candidate": 0.0,
+     "its table scored first": 0.6271186440677966,
+     "targets a column, mean": 5.615141955835962,
+     "f1 at the model's threshold": 0.49411764705882355,
+     "f1 at the best threshold for this size": 0.5121951219512195,
+     "the best threshold for this size": 0.8370058536529541,
+     "precision there": 0.9130434782608695,
+     "precision at 0.5": 0.45
+    },
+    "10-19": {
+     "keys": 240,
+     "found": 0.4083333333333333,
+     "first, under the threshold": 0.36666666666666664,
+     "another table first": 0.17083333333333334,
+     "no candidate": 0.05416666666666667,
+     "its table scored first": 0.775,
+     "targets a column, mean": 8.876404494382022,
+     "f1 at the model's threshold": 0.5536723163841808,
+     "f1 at the best threshold for this size": 0.6519607843137255,
+     "the best threshold for this size": 0.5424363613128662,
+     "precision there": 0.7916666666666666,
+     "precision at 0.5": 0.7627118644067796
+    }
+   }
+  },
+  "gemini-3-flash": {
+   "databases": 22,
+   "keys": 299,
+   "precision": 0.9283154121863799,
+   "recall": 0.8662207357859532,
+   "f1": 0.8961937716262977,
+   "f1_95": [
+    0.8344776995305165,
+    0.9445656740957252
+   ],
+   "macro f1": 0.8521192441907325,
+   "by tables": {
+    "5-9": {
+     "databases": 7,
+     "keys": 59,
+     "precision": 0.8245614035087719,
+     "recall": 0.7966101694915254,
+     "f1": 0.8103448275862069,
+     "macro f1": 0.7754777365491651
+    },
+    "10-19": {
+     "databases": 15,
+     "keys": 240,
+     "precision": 0.954954954954955,
+     "recall": 0.8833333333333333,
+     "f1": 0.9177489177489178,
+     "macro f1": 0.8878852810901308
+    }
+   }
+  },
+  "gemini-3.5-flash-lite": {
+   "databases": 22,
+   "keys": 299,
+   "precision": 0.9314079422382672,
+   "recall": 0.862876254180602,
+   "f1": 0.8958333333333334,
+   "f1_95": [
+    0.8330209474903717,
+    0.9427925243356408
+   ],
+   "macro f1": 0.851875737697226,
+   "by tables": {
+    "5-9": {
+     "databases": 7,
+     "keys": 59,
+     "precision": 0.8245614035087719,
+     "recall": 0.7966101694915254,
+     "f1": 0.8103448275862069,
+     "macro f1": 0.7754777365491651
+    },
+    "10-19": {
+     "databases": 15,
+     "keys": 240,
+     "precision": 0.9590909090909091,
+     "recall": 0.8791666666666667,
+     "f1": 0.917391304347826,
+     "macro f1": 0.8875281382329878
+    }
+   }
+  },
+  "claude-haiku-5-5": {
+   "databases": 22,
+   "keys": 299,
+   "precision": 0.926829268292683,
+   "recall": 0.8896321070234113,
+   "f1": 0.9078498293515359,
+   "f1_95": [
+    0.8384743103052014,
+    0.9566898084815322
+   ],
+   "macro f1": 0.8748817614827739,
+   "by tables": {
+    "5-9": {
+     "databases": 7,
+     "keys": 59,
+     "precision": 0.8059701492537313,
+     "recall": 0.9152542372881356,
+     "f1": 0.8571428571428572,
+     "macro f1": 0.8487798965740142
+    },
+    "10-19": {
+     "databases": 15,
+     "keys": 240,
+     "precision": 0.9636363636363636,
+     "recall": 0.8833333333333333,
+     "f1": 0.9217391304347826,
+     "macro f1": 0.8870626317735284
+    }
+   }
+  },
+  "gemini-3.8-flash-high": {
+   "databases": 22,
+   "keys": 299,
+   "precision": 0.9379310344827586,
+   "recall": 0.9096989966555183,
+   "f1": 0.9235993208828523,
+   "f1_95": [
+    0.8687553166313825,
+    0.964984471495377
+   ],
+   "macro f1": 0.9093887071709653,
+   "by tables": {
+    "5-9": {
+     "databases": 7,
+     "keys": 59,
+     "precision": 0.8484848484848485,
+     "recall": 0.9491525423728814,
+     "f1": 0.896,
+     "macro f1": 0.9019078144078144
+    },
+    "10-19": {
+     "databases": 15,
+     "keys": 240,
+     "precision": 0.9642857142857143,
+     "recall": 0.9,
+     "f1": 0.9310344827586207,
+     "macro f1": 0.9128797904604355
+    }
+   }
+  }
+ },
+ "github 2025": {
+  "1s": {
+   "databases": 79,
+   "keys": 2022,
+   "precision": 0.8650442477876106,
+   "recall": 0.5801186943620178,
+   "f1": 0.6944937833037299,
+   "f1_95": [
+    0.6234629000124008,
+    0.7626639401349594
+   ],
+   "macro f1": 0.6571652782953206,
+   "by tables": {
+    "5-9": {
+     "databases": 29,
+     "keys": 205,
+     "precision": 0.8,
+     "recall": 0.7219512195121951,
+     "f1": 0.7589743589743589,
+     "macro f1": 0.7206537388094985
+    },
+    "10-19": {
+     "databases": 23,
+     "keys": 347,
+     "precision": 0.9128787878787878,
+     "recall": 0.6945244956772334,
+     "f1": 0.7888707037643207,
+     "macro f1": 0.6536089229757515
+    },
+    "20-39": {
+     "databases": 17,
+     "keys": 614,
+     "precision": 0.8888888888888888,
+     "recall": 0.50814332247557,
+     "f1": 0.6466321243523316,
+     "macro f1": 0.593435161221216
+    },
+    "40-99": {
+     "databases": 10,
+     "keys": 856,
+     "precision": 0.8489208633093526,
+     "recall": 0.5514018691588785,
+     "f1": 0.6685552407932012,
+     "macro f1": 0.5895695590651917
+    }
+   },
+   "what becomes of a declared key": {
+    "5-9": {
+     "keys": 205,
+     "found": 0.7219512195121951,
+     "first, under the threshold": 0.1024390243902439,
+     "another table first": 0.0975609756097561,
+     "no candidate": 0.07804878048780488,
+     "its table scored first": 0.824390243902439,
+     "targets a column, mean": 6.0275735294117645,
+     "f1 at the model's threshold": 0.7589743589743589,
+     "f1 at the best threshold for this size": 0.7726161369193154,
+     "the best threshold for this size": 0.7274041175842285,
+     "precision there": 0.7745098039215687,
+     "precision at 0.5": 0.6903765690376569
+    },
+    "10-19": {
+     "keys": 347,
+     "found": 0.6945244956772334,
+     "first, under the threshold": 0.12968299711815562,
+     "another table first": 0.03170028818443804,
+     "no candidate": 0.1440922190201729,
+     "its table scored first": 0.8242074927953891,
+     "targets a column, mean": 12.810143042912873,
+     "f1 at the model's threshold": 0.7888707037643208,
+     "f1 at the best threshold for this size": 0.8018867924528302,
+     "the best threshold for this size": 0.7936699390411377,
+     "precision there": 0.8823529411764706,
+     "precision at 0.5": 0.7459893048128342
+    },
+    "20-39": {
+     "keys": 614,
+     "found": 0.506514657980456,
+     "first, under the threshold": 0.04723127035830619,
+     "another table first": 0.09771986970684039,
+     "no candidate": 0.3485342019543974,
+     "its table scored first": 0.5537459283387622,
+     "targets a column, mean": 24.300980392156863,
+     "f1 at the model's threshold": 0.644559585492228,
+     "f1 at the best threshold for this size": 0.6502564102564102,
+     "the best threshold for this size": 0.7937479615211487,
+     "precision there": 0.8781163434903048,
+     "precision at 0.5": 0.7516930022573364
+    },
+    "40-99": {
+     "keys": 856,
+     "found": 0.5514018691588785,
+     "first, under the threshold": 0.2803738317757009,
+     "another table first": 0.1378504672897196,
+     "no candidate": 0.030373831775700934,
+     "its table scored first": 0.8317757009345794,
+     "targets a column, mean": 48.06151711378353,
+     "f1 at the model's threshold": 0.6685552407932012,
+     "f1 at the best threshold for this size": 0.7485191168551427,
+     "the best threshold for this size": 0.1137952134013176,
+     "precision there": 0.6943056943056943,
+     "precision at 0.5": 0.7488095238095238
+    }
+   }
+  },
+  "seven-bounded": {
+   "databases": 79,
+   "keys": 2022,
+   "precision": 0.8360062079668908,
+   "recall": 0.7992087042532147,
+   "f1": 0.8171934260429835,
+   "f1_95": [
+    0.7875427900077389,
+    0.8451922014120131
+   ],
+   "macro f1": 0.79369724068981,
+   "by tables": {
+    "5-9": {
+     "databases": 29,
+     "keys": 205,
+     "precision": 0.8225806451612904,
+     "recall": 0.7463414634146341,
+     "f1": 0.7826086956521741,
+     "macro f1": 0.7477000399187912
+    },
+    "10-19": {
+     "databases": 23,
+     "keys": 347,
+     "precision": 0.863768115942029,
+     "recall": 0.8587896253602305,
+     "f1": 0.861271676300578,
+     "macro f1": 0.8415825042725789
+    },
+    "20-39": {
+     "databases": 17,
+     "keys": 614,
+     "precision": 0.8554817275747508,
+     "recall": 0.8387622149837134,
+     "f1": 0.8470394736842105,
+     "macro f1": 0.8331187468677326
+    },
+    "40-99": {
+     "databases": 10,
+     "keys": 856,
+     "precision": 0.8125,
+     "recall": 0.7593457943925234,
+     "f1": 0.7850241545893719,
+     "macro f1": 0.7499364561829285
+    }
+   },
+   "what becomes of a declared key": {
+    "5-9": {
+     "keys": 205,
+     "found": 0.7463414634146341,
+     "first, under the threshold": 0.13170731707317074,
+     "another table first": 0.12195121951219512,
+     "no candidate": 0.0,
+     "its table scored first": 0.8780487804878049,
+     "targets a column, mean": 4.843478260869565,
+     "f1 at the model's threshold": 0.782608695652174,
+     "f1 at the best threshold for this size": 0.7970297029702971,
+     "the best threshold for this size": 0.7821059226989746,
+     "precision there": 0.8090452261306532,
+     "precision at 0.5": 0.6785714285714286
+    },
+    "10-19": {
+     "keys": 347,
+     "found": 0.8587896253602305,
+     "first, under the threshold": 0.10086455331412104,
+     "another table first": 0.040345821325648415,
+     "no candidate": 0.0,
+     "its table scored first": 0.9596541786743515,
+     "targets a column, mean": 9.254441260744986,
+     "f1 at the model's threshold": 0.861271676300578,
+     "f1 at the best threshold for this size": 0.8711111111111111,
+     "the best threshold for this size": 0.8616640567779541,
+     "precision there": 0.8963414634146342,
+     "precision at 0.5": 0.6914893617021277
+    },
+    "20-39": {
+     "keys": 614,
+     "found": 0.8371335504885994,
+     "first, under the threshold": 0.0732899022801303,
+     "another table first": 0.08794788273615635,
+     "no candidate": 0.0016286644951140066,
+     "its table scored first": 0.9104234527687296,
+     "targets a column, mean": 21.254357879758093,
+     "f1 at the model's threshold": 0.8453947368421053,
+     "f1 at the best threshold for this size": 0.8463434675431388,
+     "the best threshold for this size": 0.8155848383903503,
+     "precision there": 0.8540630182421227,
+     "precision at 0.5": 0.7191601049868767
+    },
+    "40-99": {
+     "keys": 856,
+     "found": 0.7593457943925234,
+     "first, under the threshold": 0.102803738317757,
+     "another table first": 0.1378504672897196,
+     "no candidate": 0.0,
+     "its table scored first": 0.8621495327102804,
+     "targets a column, mean": 35.68908540842448,
+     "f1 at the model's threshold": 0.785024154589372,
+     "f1 at the best threshold for this size": 0.7917961466749533,
+     "the best threshold for this size": 0.8525189757347107,
+     "precision there": 0.8459495351925631,
+     "precision at 0.5": 0.7144298688193743
+    }
+   }
+  },
+  "nine-mended": {
+   "databases": 79,
+   "keys": 2022,
+   "precision": 0.8598078010175241,
+   "recall": 0.7522255192878339,
+   "f1": 0.8024268003165391,
+   "f1_95": [
+    0.7613999598788423,
+    0.8382987045410415
+   ],
+   "macro f1": 0.7788768696493903,
+   "by tables": {
+    "5-9": {
+     "databases": 29,
+     "keys": 205,
+     "precision": 0.806282722513089,
+     "recall": 0.751219512195122,
+     "f1": 0.7777777777777778,
+     "macro f1": 0.7519305469063174
+    },
+    "10-19": {
+     "databases": 23,
+     "keys": 347,
+     "precision": 0.8873239436619719,
+     "recall": 0.7262247838616714,
+     "f1": 0.7987321711568939,
+     "macro f1": 0.8098515635982935
+    },
+    "20-39": {
+     "databases": 17,
+     "keys": 614,
+     "precision": 0.8918918918918919,
+     "recall": 0.8061889250814332,
+     "f1": 0.8468776732249788,
+     "macro f1": 0.8053106935914963
+    },
+    "40-99": {
+     "databases": 10,
+     "keys": 856,
+     "precision": 0.8389715832205683,
+     "recall": 0.7242990654205608,
+     "f1": 0.7774294670846396,
+     "macro f1": 0.7408419088202444
+    }
+   },
+   "what becomes of a declared key": {
+    "5-9": {
+     "keys": 205,
+     "found": 0.751219512195122,
+     "first, under the threshold": 0.13170731707317074,
+     "another table first": 0.11707317073170732,
+     "no candidate": 0.0,
+     "its table scored first": 0.8829268292682927,
+     "targets a column, mean": 4.843478260869565,
+     "f1 at the model's threshold": 0.7777777777777778,
+     "f1 at the best threshold for this size": 0.7941888619854721,
+     "the best threshold for this size": 0.7199804782867432,
+     "precision there": 0.7884615384615384,
+     "precision at 0.5": 0.6935483870967742
+    },
+    "10-19": {
+     "keys": 347,
+     "found": 0.7262247838616714,
+     "first, under the threshold": 0.23919308357348704,
+     "another table first": 0.0345821325648415,
+     "no candidate": 0.0,
+     "its table scored first": 0.9654178674351584,
+     "targets a column, mean": 9.254441260744986,
+     "f1 at the model's threshold": 0.7987321711568938,
+     "f1 at the best threshold for this size": 0.8177777777777778,
+     "the best threshold for this size": 0.7335824370384216,
+     "precision there": 0.8414634146341463,
+     "precision at 0.5": 0.716589861751152
+    },
+    "20-39": {
+     "keys": 614,
+     "found": 0.8045602605863192,
+     "first, under the threshold": 0.11726384364820847,
+     "another table first": 0.07654723127035831,
+     "no candidate": 0.0016286644951140066,
+     "its table scored first": 0.9218241042345277,
+     "targets a column, mean": 21.254357879758093,
+     "f1 at the model's threshold": 0.8451668092386655,
+     "f1 at the best threshold for this size": 0.8603896103896104,
+     "the best threshold for this size": 0.7392630577087402,
+     "precision there": 0.8576051779935275,
+     "precision at 0.5": 0.7641379310344828
+    },
+    "40-99": {
+     "keys": 856,
+     "found": 0.7242990654205608,
+     "first, under the threshold": 0.13200934579439252,
+     "another table first": 0.14369158878504673,
+     "no candidate": 0.0,
+     "its table scored first": 0.8563084112149533,
+     "targets a column, mean": 35.68908540842448,
+     "f1 at the model's threshold": 0.7774294670846394,
+     "f1 at the best threshold for this size": 0.7970838396111786,
+     "the best threshold for this size": 0.7613775134086609,
+     "precision there": 0.830379746835443,
+     "precision at 0.5": 0.729758149316509
+    }
+   }
+  }
+ },
+ "github 2025, rest": {
+  "1s": {
+   "databases": 173,
+   "keys": 4533,
+   "precision": 0.809212396929201,
+   "recall": 0.6278402823737039,
+   "f1": 0.7070807453416148,
+   "f1_95": [
+    0.6133977718701755,
+    0.7724925693725061
+   ],
+   "macro f1": 0.630620242135593,
+   "by tables": {
+    "5-9": {
+     "databases": 59,
+     "keys": 439,
+     "precision": 0.8459214501510574,
+     "recall": 0.6378132118451025,
+     "f1": 0.7272727272727273,
+     "macro f1": 0.6791006948410026
+    },
+    "10-19": {
+     "databases": 61,
+     "keys": 879,
+     "precision": 0.8033033033033034,
+     "recall": 0.608646188850967,
+     "f1": 0.6925566343042071,
+     "macro f1": 0.5872993388784006
+    },
+    "20-39": {
+     "databases": 34,
+     "keys": 1023,
+     "precision": 0.7845804988662132,
+     "recall": 0.6764418377321603,
+     "f1": 0.7265091863517059,
+     "macro f1": 0.6666574997185418
+    },
+    "40-99": {
+     "databases": 13,
+     "keys": 703,
+     "precision": 0.8068669527896996,
+     "recall": 0.534850640113798,
+     "f1": 0.6432848588537211,
+     "macro f1": 0.5348006791444646
+    },
+    "100+": {
+     "databases": 6,
+     "keys": 1489,
+     "precision": 0.8216723549488054,
+     "recall": 0.6467427803895232,
+     "f1": 0.7237880496054115,
+     "macro f1": 0.5977229004912548
+    }
+   },
+   "what becomes of a declared key": {
+    "5-9": {
+     "keys": 439,
+     "found": 0.6378132118451025,
+     "first, under the threshold": 0.08656036446469248,
+     "another table first": 0.10933940774487472,
+     "no candidate": 0.1662870159453303,
+     "its table scored first": 0.724373576309795,
+     "targets a column, mean": 5.404440154440154,
+     "f1 at the model's threshold": 0.7272727272727273,
+     "f1 at the best threshold for this size": 0.7272727272727273,
+     "the best threshold for this size": 0.8427637219429016,
+     "precision there": 0.8459214501510574,
+     "precision at 0.5": 0.6796338672768879
+    },
+    "10-19": {
+     "keys": 879,
+     "found": 0.608646188850967,
+     "first, under the threshold": 0.06484641638225255,
+     "another table first": 0.1149032992036405,
+     "no candidate": 0.21160409556313994,
+     "its table scored first": 0.6734926052332195,
+     "targets a column, mean": 11.188179669030733,
+     "f1 at the model's threshold": 0.6925566343042071,
+     "f1 at the best threshold for this size": 0.6951530612244898,
+     "the best threshold for this size": 0.8084403276443481,
+     "precision there": 0.7910014513788098,
+     "precision at 0.5": 0.6506696428571429
+    },
+    "20-39": {
+     "keys": 1023,
+     "found": 0.6764418377321603,
+     "first, under the threshold": 0.12805474095796676,
+     "another table first": 0.07526881720430108,
+     "no candidate": 0.12023460410557185,
+     "its table scored first": 0.804496578690127,
+     "targets a column, mean": 19.772161172161173,
+     "f1 at the model's threshold": 0.726509186351706,
+     "f1 at the best threshold for this size": 0.7458455522971652,
+     "the best threshold for this size": 0.6811251044273376,
+     "precision there": 0.7458455522971652,
+     "precision at 0.5": 0.6794543904518329
+    },
+    "40-99": {
+     "keys": 703,
+     "found": 0.534850640113798,
+     "first, under the threshold": 0.1507823613086771,
+     "another table first": 0.08108108108108109,
+     "no candidate": 0.2332859174964438,
+     "its table scored first": 0.6856330014224751,
+     "targets a column, mean": 40.32147449635662,
+     "f1 at the model's threshold": 0.6432848588537211,
+     "f1 at the best threshold for this size": 0.6560509554140127,
+     "the best threshold for this size": 0.7311134934425354,
+     "precision there": 0.7450271247739603,
+     "precision at 0.5": 0.5786736020806242
+    },
+    "100+": {
+     "keys": 1489,
+     "found": 0.6467427803895232,
+     "first, under the threshold": 0.08730691739422432,
+     "another table first": 0.06581598388179986,
+     "no candidate": 0.20013431833445267,
+     "its table scored first": 0.7340496977837475,
+     "targets a column, mean": 75.32168607875762,
+     "f1 at the model's threshold": 0.7237880496054115,
+     "f1 at the best threshold for this size": 0.7467994310099573,
+     "the best threshold for this size": 0.7199677228927612,
+     "precision there": 0.7936507936507936,
+     "precision at 0.5": 0.753120665742025
+    }
+   }
+  },
+  "seven-bounded": {
+   "databases": 173,
+   "keys": 4533,
+   "precision": 0.7795735129068463,
+   "recall": 0.7661592764173837,
+   "f1": 0.7728081886960392,
+   "f1_95": [
+    0.7224793395473794,
+    0.816021473143853
+   ],
+   "macro f1": 0.7615009162649953,
+   "by tables": {
+    "5-9": {
+     "databases": 59,
+     "keys": 439,
+     "precision": 0.8493827160493828,
+     "recall": 0.7835990888382688,
+     "f1": 0.815165876777251,
+     "macro f1": 0.8188615124052518
+    },
+    "10-19": {
+     "databases": 61,
+     "keys": 879,
+     "precision": 0.7802690582959642,
+     "recall": 0.7918088737201365,
+     "f1": 0.7859966120835686,
+     "macro f1": 0.7368044547402525
+    },
+    "20-39": {
+     "databases": 34,
+     "keys": 1023,
+     "precision": 0.8055822906641001,
+     "recall": 0.8181818181818182,
+     "f1": 0.8118331716779825,
+     "macro f1": 0.7604837873819158
+    },
+    "40-99": {
+     "databases": 13,
+     "keys": 703,
+     "precision": 0.7503828483920367,
+     "recall": 0.6970128022759602,
+     "f1": 0.7227138643067845,
+     "macro f1": 0.6604638983139126
+    },
+    "100+": {
+     "databases": 6,
+     "keys": 1489,
+     "precision": 0.7544338335607094,
+     "recall": 0.7427803895231699,
+     "f1": 0.7485617597292724,
+     "macro f1": 0.6732130156188164
+    }
+   },
+   "what becomes of a declared key": {
+    "5-9": {
+     "keys": 439,
+     "found": 0.7835990888382688,
+     "first, under the threshold": 0.09339407744874716,
+     "another table first": 0.12300683371298406,
+     "no candidate": 0.0,
+     "its table scored first": 0.876993166287016,
+     "targets a column, mean": 4.978601997146933,
+     "f1 at the model's threshold": 0.8151658767772512,
+     "f1 at the best threshold for this size": 0.8257107540173053,
+     "the best threshold for this size": 0.8926834464073181,
+     "precision there": 0.9027027027027027,
+     "precision at 0.5": 0.6860902255639098
+    },
+    "10-19": {
+     "keys": 879,
+     "found": 0.7918088737201365,
+     "first, under the threshold": 0.08532423208191127,
+     "another table first": 0.1217292377701934,
+     "no candidate": 0.0011376564277588168,
+     "its table scored first": 0.8771331058020477,
+     "targets a column, mean": 10.255665566556656,
+     "f1 at the model's threshold": 0.7859966120835686,
+     "f1 at the best threshold for this size": 0.7919770773638969,
+     "the best threshold for this size": 0.8501837253570557,
+     "precision there": 0.7979214780600462,
+     "precision at 0.5": 0.6141215106732348
+    },
+    "20-39": {
+     "keys": 1023,
+     "found": 0.8181818181818182,
+     "first, under the threshold": 0.07429130009775171,
+     "another table first": 0.10166177908113393,
+     "no candidate": 0.005865102639296188,
+     "its table scored first": 0.8924731182795699,
+     "targets a column, mean": 17.07267884322679,
+     "f1 at the model's threshold": 0.8118331716779825,
+     "f1 at the best threshold for this size": 0.817641228939544,
+     "the best threshold for this size": 0.8467586636543274,
+     "precision there": 0.8291457286432161,
+     "precision at 0.5": 0.6646525679758308
+    },
+    "40-99": {
+     "keys": 703,
+     "found": 0.6970128022759602,
+     "first, under the threshold": 0.19487908961593173,
+     "another table first": 0.05405405405405406,
+     "no candidate": 0.05405405405405406,
+     "its table scored first": 0.8918918918918919,
+     "targets a column, mean": 39.09032534246575,
+     "f1 at the model's threshold": 0.7227138643067846,
+     "f1 at the best threshold for this size": 0.7323162274618585,
+     "the best threshold for this size": 0.7621017098426819,
+     "precision there": 0.7144790257104194,
+     "precision at 0.5": 0.5717054263565892
+    },
+    "100+": {
+     "keys": 1489,
+     "found": 0.7427803895231699,
+     "first, under the threshold": 0.1302887844190732,
+     "another table first": 0.1229012760241773,
+     "no candidate": 0.004029550033579583,
+     "its table scored first": 0.8730691739422431,
+     "targets a column, mean": 91.43269361644208,
+     "f1 at the model's threshold": 0.7485617597292724,
+     "f1 at the best threshold for this size": 0.7537754432042022,
+     "the best threshold for this size": 0.7641343474388123,
+     "precision there": 0.737315350032113,
+     "precision at 0.5": 0.6395348837209303
+    }
+   }
+  },
+  "nine-mended": {
+   "databases": 173,
+   "keys": 4533,
+   "precision": 0.7906112014873344,
+   "recall": 0.7504963600264726,
+   "f1": 0.7700316885468538,
+   "f1_95": [
+    0.7239795992820348,
+    0.8119127107210811
+   ],
+   "macro f1": 0.7539627770029365,
+   "by tables": {
+    "5-9": {
+     "databases": 59,
+     "keys": 439,
+     "precision": 0.8486352357320099,
+     "recall": 0.7790432801822323,
+     "f1": 0.8123515439429928,
+     "macro f1": 0.8153029958344225
+    },
+    "10-19": {
+     "databases": 61,
+     "keys": 879,
+     "precision": 0.7808535178777394,
+     "recall": 0.770193401592719,
+     "f1": 0.7754868270332187,
+     "macro f1": 0.7257521685498955
+    },
+    "20-39": {
+     "databases": 34,
+     "keys": 1023,
+     "precision": 0.8191268191268192,
+     "recall": 0.7702834799608993,
+     "f1": 0.7939546599496221,
+     "macro f1": 0.7419382283054671
+    },
+    "40-99": {
+     "databases": 13,
+     "keys": 703,
+     "precision": 0.7808823529411765,
+     "recall": 0.7553342816500711,
+     "f1": 0.7678958785249458,
+     "macro f1": 0.693994081909459
+    },
+    "100+": {
+     "databases": 6,
+     "keys": 1489,
+     "precision": 0.7649173256649893,
+     "recall": 0.7145735392881128,
+     "f1": 0.7388888888888889,
+     "macro f1": 0.6356630930874364
+    }
+   },
+   "what becomes of a declared key": {
+    "5-9": {
+     "keys": 439,
+     "found": 0.7790432801822323,
+     "first, under the threshold": 0.11389521640091116,
+     "another table first": 0.1070615034168565,
+     "no candidate": 0.0,
+     "its table scored first": 0.8929384965831435,
+     "targets a column, mean": 4.978601997146933,
+     "f1 at the model's threshold": 0.8123515439429929,
+     "f1 at the best threshold for this size": 0.8215962441314554,
+     "the best threshold for this size": 0.8099400401115417,
+     "precision there": 0.847457627118644,
+     "precision at 0.5": 0.6846011131725418
+    },
+    "10-19": {
+     "keys": 879,
+     "found": 0.770193401592719,
+     "first, under the threshold": 0.1080773606370876,
+     "another table first": 0.12059158134243458,
+     "no candidate": 0.0011376564277588168,
+     "its table scored first": 0.8782707622298066,
+     "targets a column, mean": 10.255665566556656,
+     "f1 at the model's threshold": 0.7754868270332188,
+     "f1 at the best threshold for this size": 0.7791619479048698,
+     "the best threshold for this size": 0.8024853467941284,
+     "precision there": 0.7756482525366404,
+     "precision at 0.5": 0.6514084507042254
+    },
+    "20-39": {
+     "keys": 1023,
+     "found": 0.7702834799608993,
+     "first, under the threshold": 0.11730205278592376,
+     "another table first": 0.10654936461388075,
+     "no candidate": 0.005865102639296188,
+     "its table scored first": 0.8875855327468231,
+     "targets a column, mean": 17.07267884322679,
+     "f1 at the model's threshold": 0.7939546599496222,
+     "f1 at the best threshold for this size": 0.7967967967967968,
+     "the best threshold for this size": 0.8116515874862671,
+     "precision there": 0.8164102564102564,
+     "precision at 0.5": 0.6616541353383458
+    },
+    "40-99": {
+     "keys": 703,
+     "found": 0.7553342816500711,
+     "first, under the threshold": 0.13229018492176386,
+     "another table first": 0.05832147937411095,
+     "no candidate": 0.05405405405405406,
+     "its table scored first": 0.887624466571835,
+     "targets a column, mean": 39.09032534246575,
+     "f1 at the model's threshold": 0.7678958785249458,
+     "f1 at the best threshold for this size": 0.7678958785249458,
+     "the best threshold for this size": 0.8219434022903442,
+     "precision there": 0.7808823529411765,
+     "precision at 0.5": 0.5802469135802469
+    },
+    "100+": {
+     "keys": 1489,
+     "found": 0.7145735392881128,
+     "first, under the threshold": 0.16588314304902618,
+     "another table first": 0.1155137676292814,
+     "no candidate": 0.004029550033579583,
+     "its table scored first": 0.880456682337139,
+     "targets a column, mean": 91.43269361644208,
+     "f1 at the model's threshold": 0.7388888888888889,
+     "f1 at the best threshold for this size": 0.7558441558441559,
+     "the best threshold for this size": 0.7310236096382141,
+     "precision there": 0.7316153362664991,
+     "precision at 0.5": 0.6471827277514481
+    }
+   }
+  }
+ },
+ "github style": {
+  "1s": {
+   "databases": 100,
+   "keys": 1791,
+   "precision": 0.8076094759511845,
+   "recall": 0.628140703517588,
+   "f1": 0.7066582914572865,
+   "f1_95": [
+    0.5987736097729028,
+    0.8080535093013348
+   ],
+   "macro f1": 0.7234592806136806,
+   "by tables": {
+    "5-9": {
+     "databases": 41,
+     "keys": 237,
+     "precision": 0.8430493273542601,
+     "recall": 0.7932489451476793,
+     "f1": 0.8173913043478261,
+     "macro f1": 0.7606443574464417
+    },
+    "10-19": {
+     "databases": 32,
+     "keys": 428,
+     "precision": 0.904639175257732,
+     "recall": 0.8200934579439252,
+     "f1": 0.8602941176470588,
+     "macro f1": 0.8046353038198788
+    },
+    "20-39": {
+     "databases": 17,
+     "keys": 463,
+     "precision": 0.8114143920595533,
+     "recall": 0.7062634989200864,
+     "f1": 0.7551963048498845,
+     "macro f1": 0.645078581406689
+    },
+    "40-99": {
+     "databases": 7,
+     "keys": 363,
+     "precision": 0.9580838323353293,
+     "recall": 0.44077134986225897,
+     "f1": 0.6037735849056604,
+     "macro f1": 0.4681936002705958
+    },
+    "100+": {
+     "databases": 3,
+     "keys": 300,
+     "precision": 0.4669811320754717,
+     "recall": 0.33,
+     "f1": 0.38671875000000006,
+     "macro f1": 0.38916286600664957
+    }
+   },
+   "what becomes of a declared key": {
+    "5-9": {
+     "keys": 237,
+     "found": 0.7932489451476793,
+     "first, under the threshold": 0.05063291139240506,
+     "another table first": 0.07172995780590717,
+     "no candidate": 0.08438818565400844,
+     "its table scored first": 0.8438818565400844,
+     "targets a column, mean": 4.51685393258427,
+     "f1 at the model's threshold": 0.8173913043478261,
+     "f1 at the best threshold for this size": 0.8201754385964912,
+     "the best threshold for this size": 0.877884566783905,
+     "precision there": 0.8538812785388128,
+     "precision at 0.5": 0.7441860465116279
+    },
+    "10-19": {
+     "keys": 428,
+     "found": 0.8177570093457944,
+     "first, under the threshold": 0.09345794392523364,
+     "another table first": 0.0514018691588785,
+     "no candidate": 0.037383177570093455,
+     "its table scored first": 0.9112149532710281,
+     "targets a column, mean": 7.975280898876404,
+     "f1 at the model's threshold": 0.8578431372549019,
+     "f1 at the best threshold for this size": 0.8680142687277052,
+     "the best threshold for this size": 0.7680926322937012,
+     "precision there": 0.8837772397094431,
+     "precision at 0.5": 0.8181818181818182
+    },
+    "20-39": {
+     "keys": 463,
+     "found": 0.7062634989200864,
+     "first, under the threshold": 0.09503239740820735,
+     "another table first": 0.032397408207343416,
+     "no candidate": 0.16630669546436286,
+     "its table scored first": 0.8012958963282938,
+     "targets a column, mean": 15.249465431218816,
+     "f1 at the model's threshold": 0.7551963048498845,
+     "f1 at the best threshold for this size": 0.765375854214123,
+     "the best threshold for this size": 0.8112578392028809,
+     "precision there": 0.8096385542168675,
+     "precision at 0.5": 0.7117296222664016
+    },
+    "40-99": {
+     "keys": 363,
+     "found": 0.44077134986225897,
+     "first, under the threshold": 0.18181818181818182,
+     "another table first": 0.15151515151515152,
+     "no candidate": 0.22589531680440772,
+     "its table scored first": 0.6225895316804407,
+     "targets a column, mean": 18.662886597938144,
+     "f1 at the model's threshold": 0.6037735849056604,
+     "f1 at the best threshold for this size": 0.6305418719211823,
+     "the best threshold for this size": 0.45930591225624084,
+     "precision there": 0.7804878048780488,
+     "precision at 0.5": 0.7939914163090128
+    },
+    "100+": {
+     "keys": 300,
+     "found": 0.33,
+     "first, under the threshold": 0.02666666666666667,
+     "another table first": 0.03,
+     "no candidate": 0.6133333333333333,
+     "its table scored first": 0.3566666666666667,
+     "targets a column, mean": 68.1690438457475,
+     "f1 at the model's threshold": 0.38671875,
+     "f1 at the best threshold for this size": 0.41647597254004576,
+     "the best threshold for this size": 0.9312644004821777,
+     "precision there": 0.6642335766423357,
+     "precision at 0.5": 0.34967320261437906
+    }
+   }
+  },
+  "seven-bounded": {
+   "databases": 100,
+   "keys": 1791,
+   "precision": 0.7722283205268935,
+   "recall": 0.7855946398659966,
+   "f1": 0.7788541378355937,
+   "f1_95": [
+    0.6917038725404047,
+    0.8525283348921218
+   ],
+   "macro f1": 0.7884324408906441,
+   "by tables": {
+    "5-9": {
+     "databases": 41,
+     "keys": 237,
+     "precision": 0.8211382113821138,
+     "recall": 0.8523206751054853,
+     "f1": 0.8364389233954452,
+     "macro f1": 0.8392858072817299
+    },
+    "10-19": {
+     "databases": 32,
+     "keys": 428,
+     "precision": 0.8609112709832134,
+     "recall": 0.8387850467289719,
+     "f1": 0.8497041420118343,
+     "macro f1": 0.8035979656368111
+    },
+    "20-39": {
+     "databases": 17,
+     "keys": 463,
+     "precision": 0.783157894736842,
+     "recall": 0.8034557235421166,
+     "f1": 0.79317697228145,
+     "macro f1": 0.7423298436470595
+    },
+    "40-99": {
+     "databases": 7,
+     "keys": 363,
+     "precision": 0.6767676767676768,
+     "recall": 0.5537190082644629,
+     "f1": 0.6090909090909091,
+     "macro f1": 0.5597249352456093
+    },
+    "100+": {
+     "databases": 3,
+     "keys": 300,
+     "precision": 0.7054263565891473,
+     "recall": 0.91,
+     "f1": 0.7947598253275109,
+     "macro f1": 0.726569733805423
+    }
+   },
+   "what becomes of a declared key": {
+    "5-9": {
+     "keys": 237,
+     "found": 0.8523206751054853,
+     "first, under the threshold": 0.06751054852320675,
+     "another table first": 0.0759493670886076,
+     "no candidate": 0.004219409282700422,
+     "its table scored first": 0.919831223628692,
+     "targets a column, mean": 5.401762114537445,
+     "f1 at the model's threshold": 0.8364389233954451,
+     "f1 at the best threshold for this size": 0.8445378151260504,
+     "the best threshold for this size": 0.8695188164710999,
+     "precision there": 0.8410041841004184,
+     "precision at 0.5": 0.7201365187713311
+    },
+    "10-19": {
+     "keys": 428,
+     "found": 0.8364485981308412,
+     "first, under the threshold": 0.09345794392523364,
+     "another table first": 0.06074766355140187,
+     "no candidate": 0.009345794392523364,
+     "its table scored first": 0.9299065420560748,
+     "targets a column, mean": 9.679329608938547,
+     "f1 at the model's threshold": 0.8473372781065088,
+     "f1 at the best threshold for this size": 0.8493475682087782,
+     "the best threshold for this size": 0.8271384239196777,
+     "precision there": 0.8626506024096385,
+     "precision at 0.5": 0.7409523809523809
+    },
+    "20-39": {
+     "keys": 463,
+     "found": 0.8034557235421166,
+     "first, under the threshold": 0.13390928725701945,
+     "another table first": 0.05183585313174946,
+     "no candidate": 0.01079913606911447,
+     "its table scored first": 0.937365010799136,
+     "targets a column, mean": 17.915650406504064,
+     "f1 at the model's threshold": 0.7931769722814499,
+     "f1 at the best threshold for this size": 0.8024564994882293,
+     "the best threshold for this size": 0.7326098680496216,
+     "precision there": 0.7626459143968871,
+     "precision at 0.5": 0.6971235194585449
+    },
+    "40-99": {
+     "keys": 363,
+     "found": 0.5537190082644629,
+     "first, under the threshold": 0.20385674931129477,
+     "another table first": 0.2369146005509642,
+     "no candidate": 0.005509641873278237,
+     "its table scored first": 0.7575757575757576,
+     "targets a column, mean": 30.63161094224924,
+     "f1 at the model's threshold": 0.6090909090909091,
+     "f1 at the best threshold for this size": 0.6551724137931034,
+     "the best threshold for this size": 0.5509941577911377,
+     "precision there": 0.6317135549872123,
+     "precision at 0.5": 0.6142506142506142
+    },
+    "100+": {
+     "keys": 300,
+     "found": 0.91,
+     "first, under the threshold": 0.056666666666666664,
+     "another table first": 0.02666666666666667,
+     "no candidate": 0.006666666666666667,
+     "its table scored first": 0.9666666666666667,
+     "targets a column, mean": 86.85420944558521,
+     "f1 at the model's threshold": 0.7947598253275109,
+     "f1 at the best threshold for this size": 0.8291814946619217,
+     "the best threshold for this size": 0.9617714285850525,
+     "precision there": 0.8893129770992366,
+     "precision at 0.5": 0.5387523629489603
+    }
+   }
+  },
+  "nine-mended": {
+   "databases": 100,
+   "keys": 1791,
+   "precision": 0.7510845986984815,
+   "recall": 0.7733109994416527,
+   "f1": 0.7620357634112792,
+   "f1_95": [
+    0.6572694191086925,
+    0.8552919379921132
+   ],
+   "macro f1": 0.7822102567364364,
+   "by tables": {
+    "5-9": {
+     "databases": 41,
+     "keys": 237,
+     "precision": 0.8361344537815126,
+     "recall": 0.8396624472573839,
+     "f1": 0.8378947368421054,
+     "macro f1": 0.8127704227945864
+    },
+    "10-19": {
+     "databases": 32,
+     "keys": 428,
+     "precision": 0.8984771573604061,
+     "recall": 0.8271028037383178,
+     "f1": 0.8613138686131386,
+     "macro f1": 0.821292871133257
+    },
+    "20-39": {
+     "databases": 17,
+     "keys": 463,
+     "precision": 0.8183807439824945,
+     "recall": 0.8077753779697624,
+     "f1": 0.8130434782608695,
+     "macro f1": 0.7533400619850216
+    },
+    "40-99": {
+     "databases": 7,
+     "keys": 363,
+     "precision": 0.6666666666666666,
+     "recall": 0.5013774104683195,
+     "f1": 0.5723270440251573,
+     "macro f1": 0.5271727531828053
+    },
+    "100+": {
+     "databases": 3,
+     "keys": 300,
+     "precision": 0.5726141078838174,
+     "recall": 0.92,
+     "f1": 0.7058823529411763,
+     "macro f1": 0.7063587122587935
+    }
+   },
+   "what becomes of a declared key": {
+    "5-9": {
+     "keys": 237,
+     "found": 0.8396624472573839,
+     "first, under the threshold": 0.09282700421940929,
+     "another table first": 0.06329113924050633,
+     "no candidate": 0.004219409282700422,
+     "its table scored first": 0.9324894514767933,
+     "targets a column, mean": 5.401762114537445,
+     "f1 at the model's threshold": 0.8378947368421052,
+     "f1 at the best threshold for this size": 0.8414634146341463,
+     "the best threshold for this size": 0.7020602822303772,
+     "precision there": 0.8117647058823529,
+     "precision at 0.5": 0.7644927536231884
+    },
+    "10-19": {
+     "keys": 428,
+     "found": 0.8247663551401869,
+     "first, under the threshold": 0.102803738317757,
+     "another table first": 0.0630841121495327,
+     "no candidate": 0.009345794392523364,
+     "its table scored first": 0.927570093457944,
+     "targets a column, mean": 9.679329608938547,
+     "f1 at the model's threshold": 0.8588807785888077,
+     "f1 at the best threshold for this size": 0.8644264194669756,
+     "the best threshold for this size": 0.7014389634132385,
+     "precision there": 0.8574712643678161,
+     "precision at 0.5": 0.8228941684665226
+    },
+    "20-39": {
+     "keys": 463,
+     "found": 0.8077753779697624,
+     "first, under the threshold": 0.1490280777537797,
+     "another table first": 0.032397408207343416,
+     "no candidate": 0.01079913606911447,
+     "its table scored first": 0.9568034557235421,
+     "targets a column, mean": 17.915650406504064,
+     "f1 at the model's threshold": 0.8130434782608695,
+     "f1 at the best threshold for this size": 0.8138528138528138,
+     "the best threshold for this size": 0.8090395331382751,
+     "precision there": 0.8156182212581344,
+     "precision at 0.5": 0.7147887323943662
+    },
+    "40-99": {
+     "keys": 363,
+     "found": 0.5013774104683195,
+     "first, under the threshold": 0.24793388429752067,
+     "another table first": 0.24517906336088155,
+     "no candidate": 0.005509641873278237,
+     "its table scored first": 0.7493112947658402,
+     "targets a column, mean": 30.63161094224924,
+     "f1 at the model's threshold": 0.5723270440251572,
+     "f1 at the best threshold for this size": 0.6504065040650406,
+     "the best threshold for this size": 0.6060514450073242,
+     "precision there": 0.64,
+     "precision at 0.5": 0.5985401459854015
+    },
+    "100+": {
+     "keys": 300,
+     "found": 0.92,
+     "first, under the threshold": 0.04666666666666667,
+     "another table first": 0.02666666666666667,
+     "no candidate": 0.006666666666666667,
+     "its table scored first": 0.9666666666666667,
+     "targets a column, mean": 86.85420944558521,
+     "f1 at the model's threshold": 0.7058823529411765,
+     "f1 at the best threshold for this size": 0.789712556732224,
+     "the best threshold for this size": 0.9404969215393066,
+     "precision there": 0.7229916897506925,
+     "precision at 0.5": 0.5008726003490401
+    }
+   }
+  }
+ },
+ "github fresh": {
+  "1s": {
+   "databases": 100,
+   "keys": 2016,
+   "precision": 0.88093599449415,
+   "recall": 0.6349206349206349,
+   "f1": 0.7379648313635052,
+   "f1_95": [
+    0.6791498760408178,
+    0.7928786722111528
+   ],
+   "macro f1": 0.7246624019962473,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 263,
+     "precision": 0.9282511210762332,
+     "recall": 0.7870722433460076,
+     "f1": 0.8518518518518519,
+     "macro f1": 0.8121790528646483
+    },
+    "10-19": {
+     "databases": 38,
+     "keys": 488,
+     "precision": 0.8795811518324608,
+     "recall": 0.6885245901639344,
+     "f1": 0.7724137931034483,
+     "macro f1": 0.6973210968678574
+    },
+    "20-39": {
+     "databases": 13,
+     "keys": 396,
+     "precision": 0.8628048780487805,
+     "recall": 0.7146464646464646,
+     "f1": 0.781767955801105,
+     "macro f1": 0.7145357872010324
+    },
+    "40-99": {
+     "databases": 8,
+     "keys": 396,
+     "precision": 0.9319148936170213,
+     "recall": 0.553030303030303,
+     "f1": 0.6941362916006338,
+     "macro f1": 0.5689911594651245
+    },
+    "100+": {
+     "databases": 3,
+     "keys": 473,
+     "precision": 0.8245614035087719,
+     "recall": 0.49682875264270615,
+     "f1": 0.6200527704485488,
+     "macro f1": 0.4214466668183645
+    }
+   },
+   "what becomes of a declared key": {
+    "5-9": {
+     "keys": 263,
+     "found": 0.7870722433460076,
+     "first, under the threshold": 0.06844106463878327,
+     "another table first": 0.053231939163498096,
+     "no candidate": 0.09125475285171103,
+     "its table scored first": 0.8555133079847909,
+     "targets a column, mean": 4.978616352201258,
+     "f1 at the model's threshold": 0.8518518518518519,
+     "f1 at the best threshold for this size": 0.8594377510040161,
+     "the best threshold for this size": 0.7515600919723511,
+     "precision there": 0.9106382978723404,
+     "precision at 0.5": 0.8314176245210728
+    },
+    "10-19": {
+     "keys": 488,
+     "found": 0.6885245901639344,
+     "first, under the threshold": 0.12295081967213115,
+     "another table first": 0.12090163934426229,
+     "no candidate": 0.06762295081967214,
+     "its table scored first": 0.8114754098360656,
+     "targets a column, mean": 8.539136302294198,
+     "f1 at the model's threshold": 0.7724137931034483,
+     "f1 at the best threshold for this size": 0.7807017543859649,
+     "the best threshold for this size": 0.6965366005897522,
+     "precision there": 0.839622641509434,
+     "precision at 0.5": 0.7602459016393442
+    },
+    "20-39": {
+     "keys": 396,
+     "found": 0.7146464646464646,
+     "first, under the threshold": 0.1111111111111111,
+     "another table first": 0.08333333333333333,
+     "no candidate": 0.09090909090909091,
+     "its table scored first": 0.8257575757575758,
+     "targets a column, mean": 19.59375,
+     "f1 at the model's threshold": 0.7817679558011049,
+     "f1 at the best threshold for this size": 0.7968545216251638,
+     "the best threshold for this size": 0.7367665767669678,
+     "precision there": 0.8283378746594006,
+     "precision at 0.5": 0.7553444180522565
+    },
+    "40-99": {
+     "keys": 396,
+     "found": 0.553030303030303,
+     "first, under the threshold": 0.18686868686868688,
+     "another table first": 0.1919191919191919,
+     "no candidate": 0.06818181818181818,
+     "its table scored first": 0.73989898989899,
+     "targets a column, mean": 27.180109157064887,
+     "f1 at the model's threshold": 0.694136291600634,
+     "f1 at the best threshold for this size": 0.7435158501440923,
+     "the best threshold for this size": 0.6883571743965149,
+     "precision there": 0.8657718120805369,
+     "precision at 0.5": 0.7745664739884393
+    },
+    "100+": {
+     "keys": 473,
+     "found": 0.49682875264270615,
+     "first, under the threshold": 0.2727272727272727,
+     "another table first": 0.19661733615221988,
+     "no candidate": 0.03382663847780127,
+     "its table scored first": 0.7695560253699789,
+     "targets a column, mean": 109.86554004408524,
+     "f1 at the model's threshold": 0.6200527704485488,
+     "f1 at the best threshold for this size": 0.6666666666666666,
+     "the best threshold for this size": 0.5456956624984741,
+     "precision there": 0.6760869565217391,
+     "precision at 0.5": 0.6583333333333333
+    }
+   }
+  },
+  "seven-bounded": {
+   "databases": 100,
+   "keys": 2016,
+   "precision": 0.8446081714668453,
+   "recall": 0.6254960317460317,
+   "f1": 0.7187232829866058,
+   "f1_95": [
+    0.6463167916599697,
+    0.8000096899224807
+   ],
+   "macro f1": 0.7825287246378037,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 263,
+     "precision": 0.900398406374502,
+     "recall": 0.8593155893536122,
+     "f1": 0.8793774319066147,
+     "macro f1": 0.8634520719354514
+    },
+    "10-19": {
+     "databases": 38,
+     "keys": 488,
+     "precision": 0.8453159041394336,
+     "recall": 0.7950819672131147,
+     "f1": 0.8194297782470961,
+     "macro f1": 0.7886472174041486
+    },
+    "20-39": {
+     "databases": 13,
+     "keys": 396,
+     "precision": 0.8424068767908309,
+     "recall": 0.7424242424242424,
+     "f1": 0.789261744966443,
+     "macro f1": 0.7492171655499822
+    },
+    "40-99": {
+     "databases": 8,
+     "keys": 396,
+     "precision": 0.8142857142857143,
+     "recall": 0.5757575757575758,
+     "f1": 0.6745562130177515,
+     "macro f1": 0.6169199562573907
+    },
+    "100+": {
+     "databases": 3,
+     "keys": 473,
+     "precision": 0.8116883116883117,
+     "recall": 0.2642706131078224,
+     "f1": 0.39872408293460926,
+     "macro f1": 0.2659722222222222
+    }
+   },
+   "what becomes of a declared key": {
+    "5-9": {
+     "keys": 263,
+     "found": 0.8593155893536122,
+     "first, under the threshold": 0.07984790874524715,
+     "another table first": 0.060836501901140684,
+     "no candidate": 0.0,
+     "its table scored first": 0.9391634980988594,
+     "targets a column, mean": 4.956033676333021,
+     "f1 at the model's threshold": 0.8793774319066148,
+     "f1 at the best threshold for this size": 0.883629191321499,
+     "the best threshold for this size": 0.835570216178894,
+     "precision there": 0.9180327868852459,
+     "precision at 0.5": 0.7492063492063492
+    },
+    "10-19": {
+     "keys": 488,
+     "found": 0.7950819672131147,
+     "first, under the threshold": 0.0942622950819672,
+     "another table first": 0.11065573770491803,
+     "no candidate": 0.0,
+     "its table scored first": 0.889344262295082,
+     "targets a column, mean": 8.434343434343434,
+     "f1 at the model's threshold": 0.8194297782470961,
+     "f1 at the best threshold for this size": 0.821505376344086,
+     "the best threshold for this size": 0.8550230860710144,
+     "precision there": 0.8642533936651584,
+     "precision at 0.5": 0.69
+    },
+    "20-39": {
+     "keys": 396,
+     "found": 0.7424242424242424,
+     "first, under the threshold": 0.12121212121212122,
+     "another table first": 0.13131313131313133,
+     "no candidate": 0.005050505050505051,
+     "its table scored first": 0.8636363636363636,
+     "targets a column, mean": 18.547918043621944,
+     "f1 at the model's threshold": 0.789261744966443,
+     "f1 at the best threshold for this size": 0.7941952506596306,
+     "the best threshold for this size": 0.7944700717926025,
+     "precision there": 0.8314917127071824,
+     "precision at 0.5": 0.6694214876033058
+    },
+    "40-99": {
+     "keys": 396,
+     "found": 0.5757575757575758,
+     "first, under the threshold": 0.19444444444444445,
+     "another table first": 0.2196969696969697,
+     "no candidate": 0.010101010101010102,
+     "its table scored first": 0.7702020202020202,
+     "targets a column, mean": 29.360604885614578,
+     "f1 at the model's threshold": 0.6745562130177515,
+     "f1 at the best threshold for this size": 0.7118193891102258,
+     "the best threshold for this size": 0.6990158557891846,
+     "precision there": 0.7507002801120448,
+     "precision at 0.5": 0.6162046908315565
+    },
+    "100+": {
+     "keys": 473,
+     "found": 0.2642706131078224,
+     "first, under the threshold": 0.45665961945031713,
+     "another table first": 0.2452431289640592,
+     "no candidate": 0.03382663847780127,
+     "its table scored first": 0.7209302325581395,
+     "targets a column, mean": 122.33347315436242,
+     "f1 at the model's threshold": 0.39872408293460926,
+     "f1 at the best threshold for this size": 0.6666666666666666,
+     "the best threshold for this size": 0.3997668921947479,
+     "precision there": 0.7428571428571429,
+     "precision at 0.5": 0.75
+    }
+   }
+  },
+  "nine-mended": {
+   "databases": 100,
+   "keys": 2016,
+   "precision": 0.853021978021978,
+   "recall": 0.6160714285714286,
+   "f1": 0.7154377880184332,
+   "f1_95": [
+    0.6371259931640452,
+    0.7910295460906726
+   ],
+   "macro f1": 0.7745690881659061,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 263,
+     "precision": 0.9163179916317992,
+     "recall": 0.8326996197718631,
+     "f1": 0.8725099601593627,
+     "macro f1": 0.8584016168503702
+    },
+    "10-19": {
+     "databases": 38,
+     "keys": 488,
+     "precision": 0.8275109170305677,
+     "recall": 0.7766393442622951,
+     "f1": 0.8012684989429176,
+     "macro f1": 0.7770707523649204
+    },
+    "20-39": {
+     "databases": 13,
+     "keys": 396,
+     "precision": 0.8418079096045198,
+     "recall": 0.7525252525252525,
+     "f1": 0.7946666666666666,
+     "macro f1": 0.7631803350589441
+    },
+    "40-99": {
+     "databases": 8,
+     "keys": 396,
+     "precision": 0.8658008658008658,
+     "recall": 0.5050505050505051,
+     "f1": 0.6379585326953747,
+     "macro f1": 0.5725448984631136
+    },
+    "100+": {
+     "databases": 3,
+     "keys": 473,
+     "precision": 0.8390804597701149,
+     "recall": 0.3086680761099366,
+     "f1": 0.45131375579598143,
+     "macro f1": 0.269085080979467
+    }
+   },
+   "what becomes of a declared key": {
+    "5-9": {
+     "keys": 263,
+     "found": 0.8326996197718631,
+     "first, under the threshold": 0.11406844106463879,
+     "another table first": 0.053231939163498096,
+     "no candidate": 0.0,
+     "its table scored first": 0.9467680608365019,
+     "targets a column, mean": 4.956033676333021,
+     "f1 at the model's threshold": 0.8725099601593626,
+     "f1 at the best threshold for this size": 0.8820116054158608,
+     "the best threshold for this size": 0.7469343543052673,
+     "precision there": 0.8976377952755905,
+     "precision at 0.5": 0.8088737201365188
+    },
+    "10-19": {
+     "keys": 488,
+     "found": 0.7766393442622951,
+     "first, under the threshold": 0.11270491803278689,
+     "another table first": 0.11065573770491803,
+     "no candidate": 0.0,
+     "its table scored first": 0.889344262295082,
+     "targets a column, mean": 8.434343434343434,
+     "f1 at the model's threshold": 0.8012684989429175,
+     "f1 at the best threshold for this size": 0.8092613009922822,
+     "the best threshold for this size": 0.8879491090774536,
+     "precision there": 0.8758949880668258,
+     "precision at 0.5": 0.7098445595854922
+    },
+    "20-39": {
+     "keys": 396,
+     "found": 0.7525252525252525,
+     "first, under the threshold": 0.09848484848484848,
+     "another table first": 0.14393939393939395,
+     "no candidate": 0.005050505050505051,
+     "its table scored first": 0.851010101010101,
+     "targets a column, mean": 18.547918043621944,
+     "f1 at the model's threshold": 0.7946666666666666,
+     "f1 at the best threshold for this size": 0.8016759776536313,
+     "the best threshold for this size": 0.8784236311912537,
+     "precision there": 0.896875,
+     "precision at 0.5": 0.7262443438914027
+    },
+    "40-99": {
+     "keys": 396,
+     "found": 0.5050505050505051,
+     "first, under the threshold": 0.2676767676767677,
+     "another table first": 0.21717171717171718,
+     "no candidate": 0.010101010101010102,
+     "its table scored first": 0.7727272727272727,
+     "targets a column, mean": 29.360604885614578,
+     "f1 at the model's threshold": 0.6379585326953748,
+     "f1 at the best threshold for this size": 0.7171314741035857,
+     "the best threshold for this size": 0.6022067070007324,
+     "precision there": 0.7563025210084033,
+     "precision at 0.5": 0.6962962962962963
+    },
+    "100+": {
+     "keys": 473,
+     "found": 0.3086680761099366,
+     "first, under the threshold": 0.4312896405919662,
+     "another table first": 0.226215644820296,
+     "no candidate": 0.03382663847780127,
+     "its table scored first": 0.7399577167019028,
+     "targets a column, mean": 122.33347315436242,
+     "f1 at the model's threshold": 0.45131375579598143,
+     "f1 at the best threshold for this size": 0.654994850669413,
+     "the best threshold for this size": 0.0722597986459732,
+     "precision there": 0.6385542168674698,
+     "precision at 0.5": 0.7887931034482759
+    }
+   }
+  },
+  "gemini-3-flash": {
+   "databases": 100,
+   "keys": 2016,
+   "precision": 0.7863175675675675,
+   "recall": 0.9236111111111112,
+   "f1": 0.8494525547445255,
+   "f1_95": [
+    0.7751987030554609,
+    0.9031496291711181
+   ],
+   "macro f1": 0.8700720774547704,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 263,
+     "precision": 0.9110320284697508,
+     "recall": 0.973384030418251,
+     "f1": 0.9411764705882352,
+     "macro f1": 0.9438240149581195
+    },
+    "10-19": {
+     "databases": 38,
+     "keys": 488,
+     "precision": 0.8647619047619047,
+     "recall": 0.930327868852459,
+     "f1": 0.8963474827245805,
+     "macro f1": 0.8639994870190835
+    },
+    "20-39": {
+     "databases": 13,
+     "keys": 396,
+     "precision": 0.8665105386416861,
+     "recall": 0.9343434343434344,
+     "f1": 0.8991494532199271,
+     "macro f1": 0.8533319079443376
+    },
+    "40-99": {
+     "databases": 8,
+     "keys": 396,
+     "precision": 0.6232638888888888,
+     "recall": 0.9065656565656566,
+     "f1": 0.7386831275720164,
+     "macro f1": 0.688760978031003
+    },
+    "100+": {
+     "databases": 3,
+     "keys": 473,
+     "precision": 0.7567084078711985,
+     "recall": 0.8942917547568711,
+     "f1": 0.8197674418604651,
+     "macro f1": 0.5688373476063039
+    }
+   }
+  },
+  "gemini-3.5-flash-lite": {
+   "databases": 100,
+   "keys": 2016,
+   "precision": 0.7903361344537815,
+   "recall": 0.9330357142857143,
+   "f1": 0.8557779799818016,
+   "f1_95": [
+    0.7842658498019845,
+    0.90787451258419
+   ],
+   "macro f1": 0.8793463601230315,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 263,
+     "precision": 0.9142857142857143,
+     "recall": 0.973384030418251,
+     "f1": 0.9429097605893186,
+     "macro f1": 0.9445417183074017
+    },
+    "10-19": {
+     "databases": 38,
+     "keys": 488,
+     "precision": 0.8440366972477065,
+     "recall": 0.9426229508196722,
+     "f1": 0.8906098741529526,
+     "macro f1": 0.8748190818852495
+    },
+    "20-39": {
+     "databases": 13,
+     "keys": 396,
+     "precision": 0.8981042654028436,
+     "recall": 0.9570707070707071,
+     "f1": 0.9266503667481663,
+     "macro f1": 0.8700494609055188
+    },
+    "40-99": {
+     "databases": 8,
+     "keys": 396,
+     "precision": 0.65,
+     "recall": 0.9191919191919192,
+     "f1": 0.7615062761506276,
+     "macro f1": 0.725427059294197
+    },
+    "100+": {
+     "databases": 3,
+     "keys": 473,
+     "precision": 0.7364746945898778,
+     "recall": 0.8921775898520085,
+     "f1": 0.8068833652007648,
+     "macro f1": 0.5616220462856921
+    }
+   }
+  },
+  "claude-haiku-5-5": {
+   "databases": 100,
+   "keys": 2016,
+   "precision": 0.791907514450867,
+   "recall": 0.9513888888888888,
+   "f1": 0.8643533123028392,
+   "f1_95": [
+    0.7939998169596719,
+    0.9175695189124119
+   ],
+   "macro f1": 0.899067165928753,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 263,
+     "precision": 0.9188191881918819,
+     "recall": 0.9467680608365019,
+     "f1": 0.9325842696629213,
+     "macro f1": 0.93657756796098
+    },
+    "10-19": {
+     "databases": 38,
+     "keys": 488,
+     "precision": 0.828125,
+     "recall": 0.9774590163934426,
+     "f1": 0.8966165413533834,
+     "macro f1": 0.8842100578606388
+    },
+    "20-39": {
+     "databases": 13,
+     "keys": 396,
+     "precision": 0.9325301204819277,
+     "recall": 0.9772727272727273,
+     "f1": 0.9543773119605427,
+     "macro f1": 0.9496206030015255
+    },
+    "40-99": {
+     "databases": 8,
+     "keys": 396,
+     "precision": 0.6509598603839442,
+     "recall": 0.9419191919191919,
+     "f1": 0.7698658410732714,
+     "macro f1": 0.7616111988191747
+    },
+    "100+": {
+     "databases": 3,
+     "keys": 473,
+     "precision": 0.7359454855195912,
+     "recall": 0.9133192389006343,
+     "f1": 0.8150943396226416,
+     "macro f1": 0.7596097940268484
+    }
+   }
+  },
+  "gemini-3.8-flash-high": {
+   "databases": 100,
+   "keys": 2016,
+   "precision": 0.8816705336426914,
+   "recall": 0.9424603174603174,
+   "f1": 0.9110525053943899,
+   "f1_95": [
+    0.8862040278921972,
+    0.9381276343596918
+   ],
+   "macro f1": 0.9283531035556135,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 263,
+     "precision": 0.943609022556391,
+     "recall": 0.9543726235741445,
+     "f1": 0.948960302457467,
+     "macro f1": 0.9512682020421959
+    },
+    "10-19": {
+     "databases": 38,
+     "keys": 488,
+     "precision": 0.9115384615384615,
+     "recall": 0.9713114754098361,
+     "f1": 0.9404761904761905,
+     "macro f1": 0.932620093003198
+    },
+    "20-39": {
+     "databases": 13,
+     "keys": 396,
+     "precision": 0.9466019417475728,
+     "recall": 0.9848484848484849,
+     "f1": 0.9653465346534653,
+     "macro f1": 0.9420132550965594
+    },
+    "40-99": {
+     "databases": 8,
+     "keys": 396,
+     "precision": 0.907103825136612,
+     "recall": 0.8383838383838383,
+     "f1": 0.8713910761154855,
+     "macro f1": 0.8304797416813545
+    },
+    "100+": {
+     "databases": 3,
+     "keys": 473,
+     "precision": 0.766497461928934,
+     "recall": 0.9577167019027484,
+     "f1": 0.8515037593984962,
+     "macro f1": 0.7858482980434202
+    }
+   }
+  }
+ },
+ "pooled where the language models answered": {
+  "sets": [
+   "spider",
+   "bird",
+   "ctu",
+   "livesqlbench (development)",
+   "github fresh"
+  ],
+  "1s": {
+   "databases": 520,
+   "keys": 5686,
+   "precision": 0.8599405057015369,
+   "recall": 0.610094970102005,
+   "f1": 0.7137860082304527,
+   "f1_95": [
+    0.6631635081804135,
+    0.7641367106050785
+   ],
+   "macro f1": 0.7617478569643326,
+   "by tables": {
+    "0-4": {
+     "databases": 209,
+     "keys": 467,
+     "precision": 0.9158415841584159,
+     "recall": 0.7922912205567452,
+     "f1": 0.8495981630309988,
+     "macro f1": 0.8249390694366772
+    },
+    "5-9": {
+     "databases": 159,
+     "keys": 1061,
+     "precision": 0.8700623700623701,
+     "recall": 0.7888784165881244,
+     "f1": 0.8274839347503707,
+     "macro f1": 0.7972245067445353
+    },
+    "10-19": {
+     "databases": 106,
+     "keys": 1480,
+     "precision": 0.88,
+     "recall": 0.6391891891891892,
+     "f1": 0.7405088062622309,
+     "macro f1": 0.6716307175184744
+    },
+    "20-39": {
+     "databases": 30,
+     "keys": 1040,
+     "precision": 0.8821705426356589,
+     "recall": 0.5471153846153847,
+     "f1": 0.6753709198813056,
+     "macro f1": 0.5774844212598815
+    },
+    "40-99": {
+     "databases": 12,
+     "keys": 803,
+     "precision": 0.8835164835164835,
+     "recall": 0.5006226650062267,
+     "f1": 0.6391096979332274,
+     "macro f1": 0.5641858274429806
+    },
+    "100+": {
+     "databases": 4,
+     "keys": 835,
+     "precision": 0.6997971602434077,
+     "recall": 0.41317365269461076,
+     "f1": 0.519578313253012,
+     "macro f1": 0.4125762281839489
+    }
+   }
+  },
+  "seven-bounded": {
+   "databases": 520,
+   "keys": 5686,
+   "precision": 0.8482204362801378,
+   "recall": 0.6496658459373901,
+   "f1": 0.7357832885170801,
+   "f1_95": [
+    0.6749270193546231,
+    0.7927541955301349
+   ],
+   "macro f1": 0.8039934419707215,
+   "by tables": {
+    "0-4": {
+     "databases": 209,
+     "keys": 467,
+     "precision": 0.9020979020979021,
+     "recall": 0.828693790149893,
+     "f1": 0.8638392857142857,
+     "macro f1": 0.8560388574742643
+    },
+    "5-9": {
+     "databases": 159,
+     "keys": 1061,
+     "precision": 0.833805476864967,
+     "recall": 0.8322337417530632,
+     "f1": 0.8330188679245284,
+     "macro f1": 0.8157527201758292
+    },
+    "10-19": {
+     "databases": 106,
+     "keys": 1480,
+     "precision": 0.8754774637127578,
+     "recall": 0.7743243243243243,
+     "f1": 0.8217999282897095,
+     "macro f1": 0.7774137384838016
+    },
+    "20-39": {
+     "databases": 30,
+     "keys": 1040,
+     "precision": 0.8691588785046729,
+     "recall": 0.6259615384615385,
+     "f1": 0.7277808831749581,
+     "macro f1": 0.6220572873214912
+    },
+    "40-99": {
+     "databases": 12,
+     "keys": 803,
+     "precision": 0.8111510791366906,
+     "recall": 0.5616438356164384,
+     "f1": 0.6637233259749815,
+     "macro f1": 0.6144197003843821
+    },
+    "100+": {
+     "databases": 4,
+     "keys": 835,
+     "precision": 0.6956521739130435,
+     "recall": 0.21077844311377245,
+     "f1": 0.3235294117647059,
+     "macro f1": 0.2547937002892263
+    }
+   }
+  },
+  "nine-mended": {
+   "databases": 520,
+   "keys": 5686,
+   "precision": 0.847238271319621,
+   "recall": 0.6447414702778755,
+   "f1": 0.7322480774992511,
+   "f1_95": [
+    0.676366091784433,
+    0.7853767770255293
+   ],
+   "macro f1": 0.7995303058326259,
+   "by tables": {
+    "0-4": {
+     "databases": 209,
+     "keys": 467,
+     "precision": 0.9074074074074074,
+     "recall": 0.8394004282655246,
+     "f1": 0.8720800889877641,
+     "macro f1": 0.8627933470038732
+    },
+    "5-9": {
+     "databases": 159,
+     "keys": 1061,
+     "precision": 0.8349514563106796,
+     "recall": 0.8105560791705938,
+     "f1": 0.8225729316116691,
+     "macro f1": 0.8027636439970689
+    },
+    "10-19": {
+     "databases": 106,
+     "keys": 1480,
+     "precision": 0.8700787401574803,
+     "recall": 0.7466216216216216,
+     "f1": 0.8036363636363636,
+     "macro f1": 0.7592912490277699
+    },
+    "20-39": {
+     "databases": 30,
+     "keys": 1040,
+     "precision": 0.8805369127516779,
+     "recall": 0.6307692307692307,
+     "f1": 0.735014005602241,
+     "macro f1": 0.6392782460431674
+    },
+    "40-99": {
+     "databases": 12,
+     "keys": 803,
+     "precision": 0.8343313373253493,
+     "recall": 0.5205479452054794,
+     "f1": 0.6411042944785276,
+     "macro f1": 0.5825486630420412
+    },
+    "100+": {
+     "databases": 4,
+     "keys": 835,
+     "precision": 0.673352435530086,
+     "recall": 0.281437125748503,
+     "f1": 0.39695945945945943,
+     "macro f1": 0.28468159471970267
+    }
+   }
+  },
+  "gemini-3-flash": {
+   "databases": 520,
+   "keys": 5686,
+   "precision": 0.818769689935334,
+   "recall": 0.8684488216672529,
+   "f1": 0.8428778697618844,
+   "f1_95": [
+    0.7613932508015154,
+    0.8961059995112922
+   ],
+   "macro f1": 0.8959752376943773,
+   "by tables": {
+    "0-4": {
+     "databases": 209,
+     "keys": 467,
+     "precision": 0.8993839835728953,
+     "recall": 0.9379014989293362,
+     "f1": 0.9182389937106917,
+     "macro f1": 0.9317422343738133
+    },
+    "5-9": {
+     "databases": 159,
+     "keys": 1061,
+     "precision": 0.8597246127366609,
+     "recall": 0.941564561734213,
+     "f1": 0.8987854251012146,
+     "macro f1": 0.891232700317248
+    },
+    "10-19": {
+     "databases": 106,
+     "keys": 1480,
+     "precision": 0.8888174807197944,
+     "recall": 0.9344594594594594,
+     "f1": 0.9110671936758893,
+     "macro f1": 0.8897384701437945
+    },
+    "20-39": {
+     "databases": 30,
+     "keys": 1040,
+     "precision": 0.793918918918919,
+     "recall": 0.9038461538461539,
+     "f1": 0.8453237410071942,
+     "macro f1": 0.8037838609144233
+    },
+    "40-99": {
+     "databases": 12,
+     "keys": 803,
+     "precision": 0.7606060606060606,
+     "recall": 0.937733499377335,
+     "f1": 0.8399330730619075,
+     "macro f1": 0.7771583626851483
+    },
+    "100+": {
+     "databases": 4,
+     "keys": 835,
+     "precision": 0.651840490797546,
+     "recall": 0.5089820359281437,
+     "f1": 0.5716207128446538,
+     "macro f1": 0.4288258129025301
+    }
+   }
+  },
+  "gemini-3.5-flash-lite": {
+   "databases": 520,
+   "keys": 5686,
+   "precision": 0.8436917866215072,
+   "recall": 0.8761871262750616,
+   "f1": 0.8596324734707963,
+   "f1_95": [
+    0.7923145348893154,
+    0.9060915691252699
+   ],
+   "macro f1": 0.9022833505044286,
+   "by tables": {
+    "0-4": {
+     "databases": 209,
+     "keys": 467,
+     "precision": 0.9053497942386831,
+     "recall": 0.9421841541755889,
+     "f1": 0.9233997901364114,
+     "macro f1": 0.9353193590035696
+    },
+    "5-9": {
+     "databases": 159,
+     "keys": 1061,
+     "precision": 0.8639104220499569,
+     "recall": 0.9453345900094251,
+     "f1": 0.9027902790279028,
+     "macro f1": 0.8963763271589881
+    },
+    "10-19": {
+     "databases": 106,
+     "keys": 1480,
+     "precision": 0.8792116973935156,
+     "recall": 0.9344594594594594,
+     "f1": 0.9059941041598428,
+     "macro f1": 0.8909434483145875
+    },
+    "20-39": {
+     "databases": 30,
+     "keys": 1040,
+     "precision": 0.8542581211589113,
+     "recall": 0.9355769230769231,
+     "f1": 0.893070215695273,
+     "macro f1": 0.8465889205115767
+    },
+    "40-99": {
+     "databases": 12,
+     "keys": 803,
+     "precision": 0.7821171634121274,
+     "recall": 0.9476961394769614,
+     "f1": 0.8569819819819818,
+     "macro f1": 0.8049350780605932
+    },
+    "100+": {
+     "databases": 4,
+     "keys": 835,
+     "precision": 0.7364746945898778,
+     "recall": 0.5053892215568863,
+     "f1": 0.5994318181818181,
+     "macro f1": 0.4212165347142691
+    }
+   }
+  },
+  "claude-haiku-5-5": {
+   "databases": 520,
+   "keys": 5686,
+   "precision": 0.8225831641418085,
+   "recall": 0.9263102356665495,
+   "f1": 0.8713706675490116,
+   "f1_95": [
+    0.821679217346252,
+    0.9111623753108167
+   ],
+   "macro f1": 0.911097964740551,
+   "by tables": {
+    "0-4": {
+     "databases": 209,
+     "keys": 467,
+     "precision": 0.9074446680080482,
+     "recall": 0.9657387580299786,
+     "f1": 0.9356846473029046,
+     "macro f1": 0.9426748689906584
+    },
+    "5-9": {
+     "databases": 159,
+     "keys": 1061,
+     "precision": 0.8588334742180896,
+     "recall": 0.9575871819038643,
+     "f1": 0.9055258467023173,
+     "macro f1": 0.8985742092832678
+    },
+    "10-19": {
+     "databases": 106,
+     "keys": 1480,
+     "precision": 0.8646844660194175,
+     "recall": 0.9628378378378378,
+     "f1": 0.9111253196930945,
+     "macro f1": 0.8961158393472428
+    },
+    "20-39": {
+     "databases": 30,
+     "keys": 1040,
+     "precision": 0.8301093355761143,
+     "recall": 0.9490384615384615,
+     "f1": 0.8855989232839838,
+     "macro f1": 0.8691244913059541
+    },
+    "40-99": {
+     "databases": 12,
+     "keys": 803,
+     "precision": 0.783702213279678,
+     "recall": 0.9701120797011208,
+     "f1": 0.8670005564830272,
+     "macro f1": 0.8339180871040671
+    },
+    "100+": {
+     "databases": 4,
+     "keys": 835,
+     "precision": 0.6827354260089686,
+     "recall": 0.7293413173652694,
+     "f1": 0.7052692530399537,
+     "macro f1": 0.7023910036910508
+    }
+   }
+  },
+  "gemini-3.8-flash-high": {
+   "databases": 520,
+   "keys": 5686,
+   "precision": 0.8871022921655833,
+   "recall": 0.9120647203658108,
+   "f1": 0.8994103364550815,
+   "f1_95": [
+    0.8391671854325485,
+    0.9373426951571949
+   ],
+   "macro f1": 0.931676933485081,
+   "by tables": {
+    "0-4": {
+     "databases": 209,
+     "keys": 467,
+     "precision": 0.9372384937238494,
+     "recall": 0.9593147751605996,
+     "f1": 0.9481481481481483,
+     "macro f1": 0.9525746183640921
+    },
+    "5-9": {
+     "databases": 159,
+     "keys": 1061,
+     "precision": 0.9045092838196287,
+     "recall": 0.9641847313854854,
+     "f1": 0.9333941605839416,
+     "macro f1": 0.9327085664665763
+    },
+    "10-19": {
+     "databases": 106,
+     "keys": 1480,
+     "precision": 0.9105431309904153,
+     "recall": 0.9628378378378378,
+     "f1": 0.9359605911330048,
+     "macro f1": 0.9237344191528282
+    },
+    "20-39": {
+     "databases": 30,
+     "keys": 1040,
+     "precision": 0.9119555143651529,
+     "recall": 0.9461538461538461,
+     "f1": 0.928739971684757,
+     "macro f1": 0.8605740460027514
+    },
+    "40-99": {
+     "databases": 12,
+     "keys": 803,
+     "precision": 0.9473684210526315,
+     "recall": 0.9190535491905355,
+     "f1": 0.9329962073324904,
+     "macro f1": 0.8832892506988531
+    },
+    "100+": {
+     "databases": 4,
+     "keys": 835,
+     "precision": 0.6977886977886978,
+     "recall": 0.6802395209580838,
+     "f1": 0.6889023650697392,
+     "macro f1": 0.6876768218231634
+    }
+   }
+  }
+ }
+}

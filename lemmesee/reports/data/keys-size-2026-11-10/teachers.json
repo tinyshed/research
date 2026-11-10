@@ -1,0 +1,120 @@
+{
+ "gemini-3.5-flash-lite": {
+  "train-declared-20": {
+   "prompts": 1038,
+   "answered": 1038,
+   "refused by the proxy's limit": 0,
+   "input tokens": 3676056,
+   "output tokens": 1653808,
+   "reasoning tokens": 0,
+   "seconds, median": 2.437080000003334,
+   "seconds, 90th percentile": 7.341168400002061,
+   "started": "2026-11-09T21:51:46.220+00:00",
+   "ended": "2026-11-09T22:06:54.574+00:00",
+   "against the declarations": {
+    "schemas": 1038,
+    "precision": 0.6082958830518105,
+    "recall": 0.9411012546951171,
+    "declared keys": 37539,
+    "keys no declaration names": 22749
+   }
+  },
+  "train-declared-10": {
+   "prompts": 1610,
+   "answered": 1014,
+   "refused by the proxy's limit": 58,
+   "input tokens": 1143369,
+   "output tokens": 407659,
+   "reasoning tokens": 0,
+   "seconds, median": 1.315557500005525,
+   "seconds, 90th percentile": 1.8469991000019945,
+   "started": "2026-11-09T22:09:57.338+00:00",
+   "ended": "2026-11-09T22:15:54.009+00:00",
+   "against the declarations": {
+    "schemas": 1014,
+    "precision": 0.6241734802701742,
+    "recall": 0.9297818258843465,
+    "declared keys": 9442,
+    "keys no declaration names": 5286
+   }
+  },
+  "validation-declared-10": {
+   "prompts": 323,
+   "answered": 323,
+   "refused by the proxy's limit": 0,
+   "input tokens": 635937,
+   "output tokens": 277224,
+   "reasoning tokens": 0,
+   "seconds, median": 1.538995299997623,
+   "seconds, 90th percentile": 3.8197548000025563,
+   "started": "2026-11-09T22:06:54.715+00:00",
+   "ended": "2026-11-09T22:09:57.172+00:00",
+   "against the declarations": {
+    "schemas": 323,
+    "precision": 0.5423636758635673,
+    "recall": 0.9126302321330653,
+    "declared keys": 5471,
+    "keys no declaration names": 4213
+   }
+  }
+ },
+ "gemini-3-flash": {
+  "train-declared-20": {
+   "prompts": 1038,
+   "answered": 1038,
+   "refused by the proxy's limit": 0,
+   "input tokens": 3676056,
+   "output tokens": 1656660,
+   "reasoning tokens": 0,
+   "seconds, median": 2.4883814999993774,
+   "seconds, 90th percentile": 7.456411899998784,
+   "started": "2026-11-09T21:51:49.740+00:00",
+   "ended": "2026-11-09T22:06:58.228+00:00",
+   "against the declarations": {
+    "schemas": 1036,
+    "precision": 0.6043019549692352,
+    "recall": 0.9448367754830114,
+    "declared keys": 37525,
+    "keys no declaration names": 23216
+   }
+  },
+  "train-declared-10": {
+   "prompts": 1610,
+   "answered": 1011,
+   "refused by the proxy's limit": 58,
+   "input tokens": 1137670,
+   "output tokens": 409579,
+   "reasoning tokens": 0,
+   "seconds, median": 1.3301858999984688,
+   "seconds, 90th percentile": 1.8215319999944768,
+   "started": "2026-11-09T22:09:57.829+00:00",
+   "ended": "2026-11-09T22:15:56.017+00:00",
+   "against the declarations": {
+    "schemas": 1011,
+    "precision": 0.6231645297614784,
+    "recall": 0.9247448979591837,
+    "declared keys": 9408,
+    "keys no declaration names": 5261
+   }
+  },
+  "validation-declared-10": {
+   "prompts": 323,
+   "answered": 323,
+   "refused by the proxy's limit": 0,
+   "input tokens": 635937,
+   "output tokens": 276082,
+   "reasoning tokens": 0,
+   "seconds, median": 1.5494603000042844,
+   "seconds, 90th percentile": 4.002005199996347,
+   "started": "2026-11-09T22:06:58.368+00:00",
+   "ended": "2026-11-09T22:09:57.660+00:00",
+   "against the declarations": {
+    "schemas": 323,
+    "precision": 0.5450988915453162,
+    "recall": 0.9168342167793821,
+    "declared keys": 5471,
+    "keys no declaration names": 4186
+   }
+  }
+ }
+}

@@ -297,6 +297,10 @@ On the fresh set, fewer of `nine-mended`'s undeclared keys are real than
 of `1s`'s, 57 % against 75 %; counted with the judge, both models'
 precision is above 0.9.
 
+**Continued** in [keys-size-2026-11-10.md](keys-size-2026-11-10.md): `nine-mended` by the number of tables of
+a schema, what SchemaPile's declarations leave out, and a first stage read against the whole schema, 0.055 above it
+on a clean set of plain GitHub schemas and not shown above it in another house style.
+
 ## Limits
 
 - The corrected readings are of sets read before; their gain for the
