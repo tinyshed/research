@@ -53,6 +53,9 @@ times Tantivy's and 1.20–1.27 times `fast4-cache`'s, 1.75 bytes a posting, the
 [TinyStore's searches made fast](search-tinystore-queries-2026-11-02.md): a live index of 22 segments searches 1.03–1.13
 times as long as one merged; decoding and lengths read for every posting were the engine's cost beside the prototype's,
 and without them `60a5903c` takes p50 3.26–3.51 ms and p99 21.0–22.7, 1.37–1.49 and 0.74–0.82 times Tantivy's.
+[A prefix's postings in memory](search-prefix-memory-2026-11-10.md): at `02231bd0` a search with `prefix` holds 32 bytes for each
+posting its 64 words hold and reserves none, 46.3 MiB at a million generated documents and 185 at four, `prefix_every` 157 and 628;
+with a budget of 16 MiB up to 39.6 times it, and no search fails `limit`.
 
 The 22–23 September architecture implementation rounds on
 `codex/architecture-measurements` measured intermediate uncommitted states.
