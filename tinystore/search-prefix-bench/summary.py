@@ -1,10 +1,11 @@
 """The tables of search-prefix-memory from round.sh's raw lines.
 
-    python -I summary.py <data>
+    python -I summary.py <data> [measure.jsonl]
 
-Reads <data>/builds.jsonl and <data>/measure.jsonl. A heap is the median of
-a search's heap passes, with every pass's value when they differ; a time is
-the median of its time passes, with their least and most.
+Reads <data>/builds.jsonl and <data>/measure.jsonl, or the file named. A
+heap is the median of a search's heap passes, with every pass's value when
+they differ; a time is the median of its time passes, with their least and
+most.
 """
 
 import json
@@ -54,9 +55,9 @@ def order(index):
     return (words != 50, documents if words == 50 else words)
 
 
-def main(data):
+def main(data, name):
     builds = {line["index"]: line for line in lines(data / "builds.jsonl")}
-    measured = lines(data / "measure.jsonl")
+    measured = lines(data / name)
     heaps, timed, answers, arms, rests = defaultdict(list), defaultdict(list), defaultdict(set), {}, {}
     for line in measured:
         if line["step"] == "arms":
@@ -73,7 +74,8 @@ def main(data):
     indexes = sorted({index for index, _ in arms}, key=order)
     budgets = sorted({memory for _, memory in arms if memory is not None})
 
-    print("# search-prefix-memory\n")
+    reallocs = sorted({line.get("realloc", "copy") for line in arms.values()})
+    print(f"# search-prefix-memory: {name}, a realloc counted as {', '.join(reallocs)}\n")
     print("## Indexes\n")
     rows = []
     for index in indexes:
@@ -150,4 +152,4 @@ def main(data):
 
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
-    main(Path(sys.argv[1]))
+    main(Path(sys.argv[1]), sys.argv[2] if len(sys.argv) > 2 else "measure.jsonl")

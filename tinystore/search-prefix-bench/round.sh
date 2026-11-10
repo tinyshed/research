@@ -10,6 +10,8 @@
 #
 # An index is <documents>x<words a document>; the raw lines go to
 # tinystore/reports/data/search-prefix-memory-2026-11-10/, or DATA's.
+# REALLOC=in-place counts a realloc by what it adds, into measure-in-place.jsonl
+# and summary-in-place.md, rather than as a new block and a copy.
 set -eu
 export MSYS_NO_PATHCONV=1
 repo=$(pwd -W 2>/dev/null || pwd)
@@ -22,6 +24,8 @@ limits="--cpus 2 --memory 6g"
 seed=${SEED:-20261110}
 indexes=${INDEXES:-"250000x50 500000x50 1000000x50 2000000x50 4000000x50 1000000x12 1000000x25 1000000x100"}
 budget=${BUDGET:-16777216}
+realloc=${REALLOC:-copy}
+suffix=${REALLOC:+-$REALLOC}
 
 case "${1:-}" in
 tools)
@@ -46,18 +50,18 @@ measure)
       # the VM's load and, on Windows, the host's CPU in use, since other work may run beside
       load=$(docker run --rm alpine:3 cat /proc/loadavg)
       cpu=$(powershell -NoProfile -Command "(Get-CimInstance Win32_Processor).LoadPercentage" 2>/dev/null | tr -d '\r' || true)
-      printf '{"step":"run","index":"%s","memory":"%s","started":"%s","vm_load":"%s","host_cpu_percent":"%s"}\n' \
-        "$at" "$memory" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$load" "$cpu" >> "$data/environment.jsonl"
-      docker run --rm $limits $mounts rust:1.99 \
-        $bin measure /data/$at $memory ${HEAP_PASSES:-3} ${TIME_PASSES:-9} >> "$data/measure.jsonl"
+      printf '{"step":"run","index":"%s","memory":"%s","realloc":"%s","started":"%s","vm_load":"%s","host_cpu_percent":"%s"}\n' \
+        "$at" "$memory" "$realloc" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$load" "$cpu" >> "$data/environment.jsonl"
+      docker run --rm $limits $mounts -e PREFIX_REALLOC=$realloc rust:1.99 \
+        $bin measure /data/$at $memory ${HEAP_PASSES:-3} ${TIME_PASSES:-9} >> "$data/measure$suffix.jsonl"
     done
   done
   printf '{"step":"ended","at":"%s"}\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$data/environment.jsonl"
   ;;
 summary)
-  python -I tinystore/search-prefix-bench/summary.py "$data" > "$data/summary.md" 2>&1 \
-    || python3 -I tinystore/search-prefix-bench/summary.py "$data" > "$data/summary.md"
-  cat "$data/summary.md"
+  python -I tinystore/search-prefix-bench/summary.py "$data" "measure$suffix.jsonl" > "$data/summary$suffix.md" 2>&1 \
+    || python3 -I tinystore/search-prefix-bench/summary.py "$data" "measure$suffix.jsonl" > "$data/summary$suffix.md"
+  cat "$data/summary$suffix.md"
   ;;
 *)
   echo "round.sh tools|build|measure|summary" >&2

@@ -35,19 +35,27 @@ use tinystore::search::Index;
 use tinystore::{Durability, Options, Store};
 
 /// The system's allocator, counting the bytes it holds and the most it held,
-/// as TinyStore's `tests/metrics_memory.rs` counts them: `realloc` is the
-/// trait's own, a new block, a copy and the old one freed.
+/// as TinyStore's `tests/metrics_memory.rs` counts them: unless
+/// `PREFIX_REALLOC=in-place`, `realloc` is the trait's own, a new block, a
+/// copy and the old one freed, both counted at once; with it, the system's
+/// `realloc`, counted by what it adds, as a block grown where it lies holds.
+/// The first bounds a growth's moment from above, the second from below.
 struct Counting;
 
 static HELD: AtomicU64 = AtomicU64::new(0);
 static MOST: AtomicU64 = AtomicU64::new(0);
+static IN_PLACE: AtomicBool = AtomicBool::new(false);
+
+fn add(bytes: usize) {
+    let held = HELD.fetch_add(bytes as u64, Ordering::Relaxed) + bytes as u64;
+    MOST.fetch_max(held, Ordering::Relaxed);
+}
 
 // SAFETY: every call is the system allocator's, with the caller's own
 // arguments; the counters beside it only add and take away sizes.
 unsafe impl GlobalAlloc for Counting {
     unsafe fn alloc(&self, layout: Layout) -> *mut u8 {
-        let held = HELD.fetch_add(layout.size() as u64, Ordering::Relaxed) + layout.size() as u64;
-        MOST.fetch_max(held, Ordering::Relaxed);
+        add(layout.size());
         // SAFETY: the layout is the caller's, as `alloc`'s contract asks.
         unsafe { System.alloc(layout) }
     }
@@ -56,6 +64,34 @@ unsafe impl GlobalAlloc for Counting {
         HELD.fetch_sub(layout.size() as u64, Ordering::Relaxed);
         // SAFETY: the pointer came from `alloc` above with this layout.
         unsafe { System.dealloc(ptr, layout) }
+    }
+
+    unsafe fn realloc(&self, ptr: *mut u8, layout: Layout, new_size: usize) -> *mut u8 {
+        if !IN_PLACE.load(Ordering::Relaxed) {
+            // SAFETY: `realloc`'s contract makes `new_size`, rounded up to
+            // `layout.align()`, a valid size for that alignment.
+            let grown = unsafe { Layout::from_size_align_unchecked(new_size, layout.align()) };
+            // SAFETY: as `alloc` above; then the two blocks do not overlap, each
+            // holds the bytes copied, and `ptr` came from this allocator.
+            unsafe {
+                let new = self.alloc(grown);
+                if !new.is_null() {
+                    std::ptr::copy_nonoverlapping(ptr, new, layout.size().min(new_size));
+                    self.dealloc(ptr, layout);
+                }
+                return new;
+            }
+        }
+        // SAFETY: the caller's arguments, as `realloc`'s contract asks.
+        let new = unsafe { System.realloc(ptr, layout, new_size) };
+        if !new.is_null() {
+            if new_size >= layout.size() {
+                add(new_size - layout.size());
+            } else {
+                HELD.fetch_sub((layout.size() - new_size) as u64, Ordering::Relaxed);
+            }
+        }
+        new
     }
 }
 
@@ -79,6 +115,7 @@ const LEAST_PREFIX: usize = 2;
 const STEMS: i64 = 1 << 30;
 
 fn main() {
+    IN_PLACE.store(std::env::var("PREFIX_REALLOC").is_ok_and(|how| how == "in-place"), Ordering::SeqCst);
     let args: Vec<String> = std::env::args().collect();
     match (args.get(1).map(String::as_str), args.len()) {
         (Some("build"), 6) => build(Path::new(&args[2]), number(&args[3]), number(&args[4]), number(&args[5])),
@@ -467,8 +504,9 @@ fn measure(dir: &Path, memory: Option<u64>, heap_passes: usize, time_passes: usi
                 "postings": arm.prefixes.iter().map(|chosen| chosen.postings).sum::<u64>()})
         })
         .collect();
+    let realloc = if IN_PLACE.load(Ordering::SeqCst) { "in-place" } else { "copy" };
     let head = json!({"step": "arms", "index": label, "memory": memory, "arms": described, "spreads": spreads,
-        "sqlite": compiled()});
+        "sqlite": compiled(), "realloc": realloc});
     writeln!(out, "{head}").unwrap();
     let line = |kind: &str, pass: usize, arm: &Arm| {
         json!({"step": "search", "index": label, "memory": memory, "kind": kind, "pass": pass, "arm": arm.name})
