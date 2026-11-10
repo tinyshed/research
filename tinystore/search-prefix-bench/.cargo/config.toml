@@ -1,0 +1,4 @@
+[env]
+# TinyStore's own flags for its bundled SQLite, from its .cargo/config.toml at
+# 02231bd0, which reach only builds inside its workspace.
+LIBSQLITE3_FLAGS = "SQLITE_DQS=0 -USQLITE_ENABLE_MEMORY_MANAGEMENT SQLITE_ENABLE_DBPAGE_VTAB -DHAVE_FDATASYNC=1"

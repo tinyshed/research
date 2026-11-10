@@ -1,0 +1,18 @@
+[package]
+name = "search-prefix-bench"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+# TinyStore's search alone, from the commit tinystore/source holds; rusqlite at
+# TinyStore's pin, for SQLite's own memory counters and a check of the keys' rows.
+[dependencies]
+tinystore = { path = "../source/crates/tinystore", default-features = false, features = ["search"] }
+rusqlite = { version = "=0.40.2", default-features = false, features = ["bundled"] }
+serde_json = "=1.0.151"
+
+[profile.release]
+debug = 0
+strip = "symbols"
+lto = "thin"
+codegen-units = 1
