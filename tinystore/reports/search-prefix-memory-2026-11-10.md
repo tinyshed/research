@@ -1,7 +1,9 @@
 # A prefix's postings in memory, against the store's budget — 10 November 2026
 
 **The harness is [search-prefix-bench](../search-prefix-bench/), at research
-commit `4ac4410`; TinyStore at `02231bd0`, its `main`.** A read-only audit
+commit `4ac4410`; TinyStore at `02231bd0`, its `main`.** The first count ran
+at `50d5b3c`, whose allocator `4ac4410` keeps as its default, and gives the
+same heaps byte for byte, checked on a million documents. A read-only audit
 of TinyStore's search, its finding B-4-04, read in `search/read.rs` that a
 search with `prefix` reads the postings of up to 64 words its prefix begins
 whole into memory, 12 bytes a posting, and reserves none of them from the
