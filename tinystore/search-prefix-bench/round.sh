@@ -43,8 +43,11 @@ measure)
     turn=$((turn + 1))
     if [ $((turn % 2)) -eq 1 ]; then order="none $budget"; else order="$budget none"; fi
     for memory in $order; do
-      printf '{"step":"run","index":"%s","memory":"%s","started":"%s"}\n' "$at" "$memory" \
-        "$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$data/environment.jsonl"
+      # the VM's load and, on Windows, the host's CPU in use, since other work may run beside
+      load=$(docker run --rm alpine:3 cat /proc/loadavg)
+      cpu=$(powershell -NoProfile -Command "(Get-CimInstance Win32_Processor).LoadPercentage" 2>/dev/null | tr -d '\r' || true)
+      printf '{"step":"run","index":"%s","memory":"%s","started":"%s","vm_load":"%s","host_cpu_percent":"%s"}\n' \
+        "$at" "$memory" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$load" "$cpu" >> "$data/environment.jsonl"
       docker run --rm $limits $mounts rust:1.99 \
         $bin measure /data/$at $memory ${HEAP_PASSES:-3} ${TIME_PASSES:-9} >> "$data/measure.jsonl"
     done
