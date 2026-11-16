@@ -56,6 +56,9 @@ and without them `60a5903c` takes p50 3.26–3.51 ms and p99 21.0–22.7, 1.37�
 [A prefix's postings in memory](search-prefix-memory-2026-11-10.md): at `02231bd0` a search with `prefix` holds 32 bytes for each
 posting its 64 words hold and reserves none, 46.3 MiB at a million generated documents and 185 at four, `prefix_every` 157 and 628;
 with a budget of 16 MiB up to 39.6 times it, and no search fails `limit`.
+[A directory's scan](dir-scan-2026-11-16.md): a scan that finds nothing over a million files takes 4.40 s on NTFS and 3.44
+on ext4 warm, 23.7 cold, 0.4–0.5 % of a core at `every: '15m'`; the sorted table adds 26–35 % to it and keeps the peak at
+6–9 MiB; the list is 274.8 B a file, the index by change number nearly half of it.
 
 The 22–23 September architecture implementation rounds on
 `codex/architecture-measurements` measured intermediate uncommitted states.

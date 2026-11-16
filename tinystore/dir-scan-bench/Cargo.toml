@@ -1,0 +1,17 @@
+[package]
+name = "dir-scan-bench"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+# A directory scan's walk, its sorted table and its merge against a list in
+# SQLite, as TinyStore's book of external directories plans them; std and
+# rusqlite at TinyStore's pin, no TinyStore.
+[dependencies]
+rusqlite = { version = "=0.40.2", default-features = false, features = ["bundled", "cache"] }
+
+[profile.release]
+debug = 0
+strip = "symbols"
+lto = "thin"
+codegen-units = 1

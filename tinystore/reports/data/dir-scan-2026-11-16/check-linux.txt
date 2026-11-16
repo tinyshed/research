@@ -1,0 +1,17 @@
+{"op":"scan","label":"listed","sort":"table","platform":"linux","seconds":0.0411,"cpu_seconds":0.0100,"peak_rss":5435392,"files":2000,"folders":111,"skipped":0,"added":2000,"changed":0,"removed":0,"commits":2}
+{"op":"scan","label":"a tmpfs over a folder and a link","sort":"table","platform":"linux","seconds":0.0044,"cpu_seconds":0.0000,"peak_rss":5238784,"files":1026,"folders":56,"skipped":2,"added":0,"changed":0,"removed":0,"commits":0}
+{"op":"scan","label":"both gone","sort":"table","platform":"linux","seconds":0.0077,"cpu_seconds":0.0000,"peak_rss":5308416,"files":2000,"folders":111,"skipped":0,"added":0,"changed":0,"removed":0,"commits":0}
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ------------------
+ 79.05    0.041246          19      2113           statx
+  8.59    0.004482          20       222           getdents64
+  4.24    0.002212          18       118           openat
+  4.17    0.002174          18       118           close
+  3.38    0.001764          15       116           fstat
+  0.53    0.000279          13        21           read
+  0.04    0.000020          20         1           write
+  0.00    0.000000           0         1           poll
+  0.00    0.000000           0        17           mmap
+  0.00    0.000000           0         6           mprotect
+  0.00    0.000000           0         1           munmap
+  0.00    0.000000           0         4           brk
