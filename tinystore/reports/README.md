@@ -59,6 +59,9 @@ with a budget of 16 MiB up to 39.6 times it, and no search fails `limit`.
 [A directory's scan](dir-scan-2026-11-16.md): a scan that finds nothing over a million files takes 4.40 s on NTFS and 3.44
 on ext4 warm, 23.7 cold, 0.4–0.5 % of a core at `every: '15m'`; the sorted table adds 26–35 % to it and keeps the peak at
 6–9 MiB; the list is 274.8 B a file, the index by change number nearly half of it.
+[Which files go first under a set's ceiling](files-cache-eviction-2026-11-17.md): a simulated cache of derived files,
+the rank with a day's head start for files used again beats LRU on an hourly clock by 6.2–8.3 points the day after a crawl
+and is never below it elsewhere; seven days loses 3.4 points when the hot set moves weekly.
 
 The 22–23 September architecture implementation rounds on
 `codex/architecture-measurements` measured intermediate uncommitted states.
