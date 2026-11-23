@@ -1,0 +1,29 @@
+[package]
+name = "pack-weigh"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+# What TinyStore's files cost the one binary: a program that keeps rows as a hub does, and the same
+# program keeping a pack's files beside them as `crates/dashbin/src/store/packs.rs` does.
+[features]
+files = ["tinystore/blobs"]
+
+[dependencies]
+tinystore = { version = "=0.11.0", default-features = false, features = ["sql", "kv", "records", "async"] }
+tokio = { version = "1.48", default-features = false, features = ["rt", "macros"] }
+
+[[bin]]
+name = "rows"
+
+[[bin]]
+name = "rows_and_files"
+required-features = ["files"]
+
+# as dashbin's release is built
+[profile.release]
+lto = "fat"
+codegen-units = 1
+strip = true
+
+[workspace]

@@ -1,0 +1,28 @@
+[package]
+name = "pack-probe"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+# What a pack's tables cost a hub: the domain lists and the address ranges people would put in one,
+# compiled into our own text, loaded, held in memory and looked up. The standard library alone, so
+# that a number here is the data's and no crate's. `stored` alone takes TinyStore, to keep a pack
+# as a hub would.
+[features]
+store = ["dep:tinystore", "dep:serde"]
+
+[dependencies]
+tinystore = { version = "=0.11.0", optional = true, default-features = false, features = ["sql", "blobs"] }
+serde = { version = "1", optional = true, features = ["derive"] }
+
+[[bin]]
+name = "pack-probe"
+path = "src/main.rs"
+
+[[bin]]
+name = "stored"
+required-features = ["store"]
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
