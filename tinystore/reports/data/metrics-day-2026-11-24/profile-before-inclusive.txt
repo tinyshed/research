@@ -1,0 +1,110 @@
+--------------------------------------------------------------------------------
+Profile data file '/tmp/cg.out' (creator: callgrind-3.24.0)
+--------------------------------------------------------------------------------
+I1 cache: 
+D1 cache: 
+LL cache: 
+Timerange: Basic block 0 - 8394308312
+Trigger: Program termination
+Profiled target:  <bench> noisy 3 (PID 406, part 1)
+Events recorded:  Ir
+Events shown:     Ir
+Event sort order: Ir
+Thresholds:       99
+Include dirs:     
+User annotated:   
+Auto-annotation:  on
+
+--------------------------------------------------------------------------------
+Ir                     
+--------------------------------------------------------------------------------
+8,428,088,033 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir                      file:function
+--------------------------------------------------------------------------------
+8,428,088,033 (100.0%)  ./csu/../csu/libc-start.c:__libc_start_main@@GLIBC_2.34 [/usr/lib/x86_64-linux-gnu/libc.so.6]
+8,428,088,033 (100.0%)  ./csu/../sysdeps/nptl/libc_start_call_main.h:(below main) [/usr/lib/x86_64-linux-gnu/libc.so.6]
+8,428,088,033 (100.0%)  <tinystore>/.scratch/day/work/../../../../research/tinystore/metrics-day-bench/src/main.rs:day_work::main [<bench>]
+8,428,088,033 (100.0%)  <tinystore>/crates/tinystore/src/metrics/counting.rs:<tinystore::metrics::engine::Engine>::aggregate [<bench>]
+8,428,088,033 (100.0%)  <tinystore>/crates/tinystore/src/metrics/query.rs:<<tinystore::metrics::query::Query>::once_checked<((tinystore::metrics::query::Asked, core::option::Option<tinystore::metrics::page::Paging>), tinystore::metrics::aggregate::Shape), tiny
+8,428,088,033 (100.0%)  <tinystore>/crates/tinystore/src/metrics/query.rs:<tinystore::metrics::query::Query>::aggregate [<bench>]
+8,428,088,033 (100.0%)  <rust>/alloc/src/boxed.rs:<tinystore::metrics::query::Query>::aggregate
+8,428,088,033 (100.0%)  <rust>/core/src/ops/function.rs:<<tinystore::metrics::query::Query>::once_checked<((tinystore::metrics::query::Asked, core::option::Option<tinystore::metrics::page::Paging>), tinystore::metrics::aggregate::Shape), tinystore::metrics::pa
+8,428,088,033 (100.0%)  <rust>/core/src/ops/function.rs:std::rt::lang_start::<core::result::Result<(), alloc::boxed::Box<dyn core::error::Error>>>::{closure#0}
+8,428,088,033 (100.0%)  <rust>/core/src/ops/function.rs:std::rt::lang_start_internal
+8,428,088,033 (100.0%)  <rust>/core/src/ops/function.rs:std::sys::backtrace::__rust_begin_short_backtrace::<fn() -> core::result::Result<(), alloc::boxed::Box<dyn core::error::Error>>, core::result::Result<(), alloc::boxed::Box<dyn core::error::Error>>>
+8,428,088,033 (100.0%)  <rust>/std/src/rt.rs:std::rt::lang_start::<core::result::Result<(), alloc::boxed::Box<dyn core::error::Error>>>::{closure#0} [<bench>]
+8,428,088,033 (100.0%)  <rust>/std/src/rt.rs:std::rt::lang_start_internal [<bench>]
+8,428,088,033 (100.0%)  <rust>/std/src/sys/backtrace.rs:std::sys::backtrace::__rust_begin_short_backtrace::<fn() -> core::result::Result<(), alloc::boxed::Box<dyn core::error::Error>>, core::result::Result<(), alloc::boxed::Box<dyn core::error::Error>>> [<benc
+8,428,088,033 (100.0%)  ???:(below main) [<bench>]
+8,428,088,033 (100.0%)  ???:0x000000000001d300 [/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2]
+8,428,088,033 (100.0%)  ???:main [<bench>]
+6,695,853,965 (79.45%)  <tinystore>/crates/tinystore/src/metrics/counting.rs:<tinystore::metrics::counting::Counting>::groups [<bench>]
+6,619,282,415 (78.54%)  <tinystore>/crates/tinystore/src/metrics/counting.rs:<tinystore::metrics::counting::Counting>::series [<bench>]
+3,138,279,435 (37.24%)  <tinystore>/crates/tinystore/src/metrics/counting.rs:<tinystore::metrics::counting::Fold>::sample [<bench>]
+2,379,214,537 (28.23%)  <tinystore>/crates/tinystore/src/metrics/snapshot.rs:tinystore::metrics::snapshot::decode_block [<bench>]
+1,721,009,156 (20.42%)  <tinystore>/crates/tinystore/src/metrics/values.rs:tinystore::metrics::values::decode [<bench>]
+1,697,323,090 (20.14%)  <tinystore>/crates/tinystore/src/metrics/snapshot.rs:<tinystore::metrics::engine::Engine>::take [<bench>]
+1,697,318,617 (20.14%)  <tinystore>/crates/tinystore/src/sqlite/file.rs:<tinystore::metrics::engine::Engine>::take
+1,697,316,958 (20.14%)  <tinystore>/crates/tinystore/src/sqlite/readers.rs:<tinystore::sqlite::readers::Readers>::read::<alloc::vec::Vec<tinystore::metrics::snapshot::Taken>, <tinystore::metrics::engine::Engine>::snapshot<alloc::vec::Vec<tinystore::metrics::sn
+1,630,731,500 (19.35%)  <tinystore>/crates/tinystore/src/metrics/codec.rs:tinystore::metrics::codec::decode_values_alone [<bench>]
+1,569,089,787 (18.62%)  <rust>/core/src/result.rs:<tinystore::sqlite::readers::Readers>::read::<alloc::vec::Vec<tinystore::metrics::snapshot::Taken>, <tinystore::metrics::engine::Engine>::snapshot<alloc::vec::Vec<tinystore::metrics::snapshot::Taken>, <tinystor
+1,569,088,401 (18.62%)  <rust>/core/src/iter/adapters/mod.rs:core::iter::adapters::try_process::<core::iter::adapters::map::Map<alloc::vec::into_iter::IntoIter<tinystore::metrics::matching::Found>, <tinystore::metrics::engine::Engine>::take::{closure#0}::{clos
+1,569,087,708 (18.62%)  <rust>/alloc/src/vec/mod.rs:core::iter::adapters::try_process::<core::iter::adapters::map::Map<alloc::vec::into_iter::IntoIter<tinystore::metrics::matching::Found>, <tinystore::metrics::engine::Engine>::take::{closure#0}::{closure#0}>, 
+1,569,087,687 (18.62%)  <rust>/alloc/src/vec/in_place_collect.rs:<alloc::vec::Vec<tinystore::metrics::snapshot::Taken> as alloc::vec::spec_from_iter::SpecFromIter<tinystore::metrics::snapshot::Taken, core::iter::adapters::GenericShunt<core::iter::adapters::map
+1,565,525,866 (18.58%)  <rust>/core/src/iter/adapters/map.rs:<alloc::vec::Vec<tinystore::metrics::snapshot::Taken> as alloc::vec::spec_from_iter::SpecFromIter<tinystore::metrics::snapshot::Taken, core::iter::adapters::GenericShunt<core::iter::adapters::map::Ma
+1,565,412,298 (18.57%)  <rust>/alloc/src/vec/into_iter.rs:<alloc::vec::into_iter::IntoIter<tinystore::metrics::matching::Found> as core::iter::traits::iterator::Iterator>::try_fold::<(), core::iter::adapters::map::map_try_fold<tinystore::metrics::matching::Fou
+1,564,189,573 (18.56%)  <tinystore>/crates/tinystore/src/metrics/snapshot.rs:<alloc::vec::into_iter::IntoIter<tinystore::metrics::matching::Found> as core::iter::traits::iterator::Iterator>::try_fold::<(), core::iter::adapters::map::map_try_fold<tinystore::met
+1,564,063,573 (18.56%)  <tinystore>/crates/tinystore/src/metrics/snapshot.rs:<tinystore::metrics::snapshot::Reading>::series [<bench>]
+1,558,530,889 (18.49%)  <tinystore>/crates/tinystore/src/metrics/snapshot.rs:<tinystore::metrics::snapshot::Reading>::fill [<bench>]
+1,464,026,274 (17.37%)  <tinystore>/crates/tinystore/src/metrics/codec.rs:tinystore::metrics::codec::decode_values [<bench>]
+1,411,009,846 (16.74%)  <tinystore>/crates/tinystore/src/metrics/snapshot.rs:<tinystore::metrics::snapshot::Reading>::blocks [<bench>]
+1,348,652,492 (16.00%)  <tinystore>/crates/tinystore/src/metrics/bucket.rs:<tinystore::metrics::bucket::Open>::add [<bench>]
+1,005,817,779 (11.93%)  <rust>/alloc/src/vec/spec_from_iter.rs:tinystore::metrics::codec::decode_values
+1,005,763,293 (11.93%)  <rust>/alloc/src/vec/spec_from_iter_nested.rs:<alloc::vec::Vec<u64> as alloc::vec::spec_from_iter_nested::SpecFromIterNested<u64, core::iter::adapters::map::Map<core::ops::range::Range<usize>, tinystore::metrics::codec::unpack_rice::{cl
+  942,007,089 (11.18%)  <tinystore>/crates/tinystore/src/metrics/codec.rs:<alloc::vec::Vec<u64> as alloc::vec::spec_from_iter_nested::SpecFromIterNested<u64, core::iter::adapters::map::Map<core::ops::range::Range<usize>, tinystore::metrics::codec::unpack_rice:
+  908,221,827 (10.78%)  <tinystore>/crates/tinystore/src/compress/bits.rs:tinystore::compress::bits::read_rice [<bench>]
+  796,199,674 ( 9.45%)  <tinystore>/crates/tinystore/src/metrics/counting.rs:<tinystore::metrics::counting::Counting>::join [<bench>]
+  754,375,003 ( 8.95%)  <tinystore>/crates/tinystore/src/metrics/counting.rs:<tinystore::metrics::counting::Fold>::enter [<bench>]
+  733,555,690 ( 8.70%)  <tinystore>/crates/tinystore/src/metrics/exact.rs:<tinystore::metrics::exact::Exact>::add_float [<bench>]
+  601,777,887 ( 7.14%)  <tinystore>/crates/tinystore/src/metrics/counting.rs:<tinystore::metrics::counting::Joining>::join [<bench>]
+  467,421,609 ( 5.55%)  <tinystore>/crates/tinystore/src/metrics/directory.rs:<tinystore::metrics::directory::Group>::decode [<bench>]
+  460,833,319 ( 5.47%)  ./string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:__memcpy_avx_unaligned_erms [/usr/lib/x86_64-linux-gnu/libc.so.6]
+  441,640,658 ( 5.24%)  <registry>/libsqlite3-sys-0.38.2/sqlite3/sqlite3.c:sqlite3_step [<bench>]
+  432,403,200 ( 5.13%)  <tinystore>/crates/tinystore/src/metrics/clock.rs:<tinystore::metrics::clock::Times>::fill [<bench>]
+  431,474,441 ( 5.12%)  <registry>/libsqlite3-sys-0.38.2/sqlite3/sqlite3.c:sqlite3VdbeExec [<bench>]
+  428,774,400 ( 5.09%)  <rust>/core/src/iter/traits/iterator.rs:<tinystore::metrics::clock::Times>::fill
+  428,256,000 ( 5.08%)  <rust>/core/src/iter/traits/iterator.rs:<core::ops::range::Range<usize> as core::iter::traits::iterator::Iterator>::try_fold::<(), core::iter::traits::iterator::Iterator::try_for_each::call<usize, core::result::Result<(), tinystore::err
+  379,609,950 ( 4.50%)  <tinystore>/crates/tinystore/src/metrics/snapshot.rs:<tinystore::metrics::snapshot::Reading>::clock [<bench>]
+  330,393,600 ( 3.92%)  <tinystore>/crates/tinystore/src/metrics/clock.rs:<core::ops::range::Range<usize> as core::iter::traits::iterator::Iterator>::try_fold::<(), core::iter::traits::iterator::Iterator::try_for_each::call<usize, core::result::Result<(), tiny
+  316,567,768 ( 3.76%)  <tinystore>/crates/tinystore/src/compress/frame.rs:<tinystore::compress::frame::Zstd>::expand [<bench>]
+  315,827,842 ( 3.75%)  <registry>/zstd-0.14.4/src/bulk/decompressor.rs:<zstd::bulk::decompressor::Decompressor>::decompress [<bench>]
+  305,312,861 ( 3.62%)  <registry>/zstd-safe-8.3.0/src/lib.rs:<zstd::bulk::decompressor::Decompressor>::decompress
+  304,672,925 ( 3.61%)  <registry>/zstd-sys-2.1.3+zstd.1.5.7/zstd/lib/decompress/zstd_decompress.c:ZSTD_decompressDCtx [<bench>]
+  303,932,999 ( 3.61%)  <registry>/zstd-sys-2.1.3+zstd.1.5.7/zstd/lib/decompress/zstd_decompress.c:ZSTD_decompressMultiFrame [<bench>]
+  295,718,079 ( 3.51%)  <registry>/zstd-sys-2.1.3+zstd.1.5.7/zstd/lib/decompress/zstd_decompress_block.c:ZSTD_decompressBlock_internal [<bench>]
+  292,821,603 ( 3.47%)  ./string/../sysdeps/x86_64/multiarch/memset-vec-unaligned-erms.S:__memset_avx2_unaligned_erms [/usr/lib/x86_64-linux-gnu/libc.so.6]
+  281,806,996 ( 3.34%)  <tinystore>/crates/tinystore/src/metrics/snapshot.rs:<tinystore::metrics::snapshot::Reading>::part [<bench>]
+  277,706,960 ( 3.30%)  <tinystore>/crates/tinystore/src/metrics/counting.rs:<tinystore::metrics::counting::Fold>::check [<bench>]
+  275,938,474 ( 3.27%)  <tinystore>/crates/tinystore/src/metrics/snapshot.rs:<tinystore::metrics::snapshot::Reading>::keep_clock [<bench>]
+  272,284,996 ( 3.23%)  <tinystore>/crates/tinystore/src/metrics/snapshot.rs:<tinystore::metrics::snapshot::Reading>::payload [<bench>]
+  266,179,500 ( 3.16%)  <tinystore>/crates/tinystore/src/metrics/clock.rs:tinystore::metrics::clock::decode [<bench>]
+  245,954,729 ( 2.92%)  <registry>/rusqlite-0.40.2/src/row.rs:<rusqlite::row::Rows>::get_expected_row [<bench>]
+  244,535,978 ( 2.90%)  <tinystore>/crates/tinystore/src/metrics/codec.rs:tinystore::metrics::codec::stream_of [<bench>]
+  243,300,809 ( 2.89%)  <registry>/rusqlite-0.40.2/src/raw_statement.rs:<rusqlite::row::Rows>::get_expected_row
+  221,529,600 ( 2.63%)  <rust>/core/src/ptr/mod.rs:tinystore::metrics::snapshot::decode_block
+  203,980,873 ( 2.42%)  <registry>/rusqlite-0.40.2/src/statement.rs:<rusqlite::statement::Statement>::query_row::<alloc::vec::Vec<u8>, &[&dyn rusqlite::types::to_sql::ToSql], <tinystore::metrics::snapshot::Reading>::payload::{closure#0}::{closure#0}> [<bench>]
+  201,193,000 ( 2.39%)  <tinystore>/crates/tinystore/src/metrics/snapshot.rs:<tinystore::metrics::snapshot::Reading>::group_rows [<bench>]
+  200,883,945 ( 2.38%)  <registry>/rusqlite-0.40.2/src/row.rs:<rusqlite::row::Rows as fallible_streaming_iterator::FallibleStreamingIterator>::advance [<bench>]
+  199,702,230 ( 2.37%)  <registry>/rusqlite-0.40.2/src/raw_statement.rs:<rusqlite::row::Rows as fallible_streaming_iterator::FallibleStreamingIterator>::advance
+  189,363,960 ( 2.25%)  <rust>/core/src/iter/range.rs:tinystore::metrics::clock::decode
+  183,212,343 ( 2.17%)  <registry>/zstd-sys-2.1.3+zstd.1.5.7/zstd/lib/decompress/zstd_decompress_block.c:ZSTD_decompressSequences_bmi2.constprop.0 [<bench>]
+  178,159,752 ( 2.11%)  <tinystore>/crates/tinystore/src/metrics/exact.rs:<tinystore::metrics::exact::Exact>::read [<bench>]
+  147,300,086 ( 1.75%)  <registry>/libsqlite3-sys-0.38.2/sqlite3/sqlite3.c:sqlite3BtreeTableMoveto [<bench>]
+  143,714,613 ( 1.71%)  <registry>/rusqlite-0.40.2/src/row.rs:<tinystore::metrics::snapshot::Reading>::group_rows
+  143,522,816 ( 1.70%)  <tinystore>/crates/tinystore/src/metrics/summary.rs:<tinystore::metrics::bucket::Open>::add
+  135,018,976 ( 1.60%)  ???:__rustc::__rust_alloc [<bench>]
+  134,084,046 ( 1.59%)  <rust>/std/src/alloc.rs:__rustc::__rdl_alloc [<bench>]
+  133,149,116 ( 1.58%)  <rust>/std/src/sys/alloc/unix.rs:__rustc::__rdl_alloc
+  131,317,200 ( 1.56%)  <tinystore>/crates/tinystore/src/metrics/exact.rs:<tinystore::metrics::counting::Joining>::join

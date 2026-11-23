@@ -342,3 +342,4 @@ Incremental publication; static measurements are complete, concurrent matrices a
 - [Per-pass measurement tables](index-foundations-measurements-2026-10-15.md)
 - [Additional research decision matrix and handoff](followup-handoff-2026-10-15.md)
 - [Pingmon's metrics.db, and records' search by trigrams](pingmon-storage-2026-10-27.md)
+- [A day of metrics by the hour, where its time went and what took it away](metrics-day-2026-11-24.md)

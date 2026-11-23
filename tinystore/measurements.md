@@ -1087,3 +1087,22 @@ some derivations and creates known collisions. An original diagnostic fixture
 also reproduces raw/stem token namespace collisions in both adapters: term
 encoding needs correction and remeasurement before product use. Actual Core admission, format
 recovery, backup, bounded memory and Wire/SDK search remain implementation gates.
+
+## A day of metrics by the hour, 24 November 2026
+
+The [round](reports/metrics-day-2026-11-24.md) reads a day of 600 series of a
+sample a minute, TinyStore `9d6eb149` against `8cca207e`, the least of 31
+runs in each of two passes, on a Ryzen 7 7700 under Windows 11 and in the
+`rust:1.99` container on the same machine.
+
+| Read, noisy counters | Windows, before | Windows, now | Container, before | Container, now |
+|---|---|---|---|---|
+| increase by the hour | 33.04; 34.76 ms | 20.97; 20.22 ms | 28.96; 29.12 ms | 16.59; 17.17 ms |
+| increase, one number | 14.37; 14.76 ms | 11.13; 10.97 ms | 10.53; 11.05 ms | 7.74; 8.40 ms |
+| increase by a calendar's day | 21.97; 21.57 ms | 12.16; 11.43 ms | 17.91; 17.65 ms | 8.38; 8.88 ms |
+| increase by 5 minutes | 50.06; 49.19 ms | 40.55; 38.96 ms | 44.13; 44.35 ms | 38.85; 41.10 ms |
+
+Decoding and counting a sample more costs 13 ns on Windows, from 27; taking a
+series from the file about 13 µs; a bucket of a series about 100 ns. Blocks
+of an hour for a minute's series, tried and not built, took the file from
+0.60 to 1.42 B a sample on ramps and from 2.86 to 3.23 on noisy counters.

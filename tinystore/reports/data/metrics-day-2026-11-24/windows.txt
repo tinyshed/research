@@ -1,0 +1,64 @@
+== noisy, base, pass 1, 22:01:19Z
+increase, one number             14.37   15.80 ms  decoded  216000
+increase by the hour             33.04   34.15 ms  decoded  936000
+increase by the hour, by node    33.23   35.61 ms  decoded  936000
+increase by 5 minutes            50.06   51.58 ms  decoded  936000
+increase by the day, Moscow      21.97   23.27 ms  decoded  216000
+avg by the hour                  33.75   35.08 ms  decoded  936000
+max by the hour                  32.28   33.16 ms  decoded  936000
+== noisy, candidate, pass 1, 22:01:32Z
+increase, one number             11.13   12.14 ms  decoded  216000
+increase by the hour             20.97   22.02 ms  decoded  936000
+increase by the hour, by node    21.05   22.24 ms  decoded  936000
+increase by 5 minutes            40.55   42.33 ms  decoded  936000
+increase by the day, Moscow      12.16   12.97 ms  decoded  216000
+avg by the hour                  25.52   26.66 ms  decoded  936000
+max by the hour                  24.20   24.85 ms  decoded  936000
+== noisy, base, pass 2, 22:01:43Z
+increase, one number             14.76   15.37 ms  decoded  216000
+increase by the hour             34.76   35.66 ms  decoded  936000
+increase by the hour, by node    34.27   35.55 ms  decoded  936000
+increase by 5 minutes            49.19   50.94 ms  decoded  936000
+increase by the day, Moscow      21.57   22.25 ms  decoded  216000
+avg by the hour                  33.66   35.60 ms  decoded  936000
+max by the hour                  32.71   34.66 ms  decoded  936000
+== noisy, candidate, pass 2, 22:01:56Z
+increase, one number             10.97   11.87 ms  decoded  216000
+increase by the hour             20.22   21.90 ms  decoded  936000
+increase by the hour, by node    20.09   21.45 ms  decoded  936000
+increase by 5 minutes            38.96   40.91 ms  decoded  936000
+increase by the day, Moscow      11.43   11.89 ms  decoded  216000
+avg by the hour                  24.29   25.25 ms  decoded  936000
+max by the hour                  23.09   23.80 ms  decoded  936000
+== ramp, base, pass 1, 22:02:06Z
+increase, one number             10.12   10.64 ms  decoded  216000
+increase by the hour             23.97   24.91 ms  decoded  936000
+increase by the hour, by node    23.94   24.77 ms  decoded  936000
+increase by 5 minutes            38.45   39.87 ms  decoded  936000
+increase by the day, Moscow      17.51   18.41 ms  decoded  216000
+avg by the hour                  21.38   21.98 ms  decoded  936000
+max by the hour                  20.28   21.27 ms  decoded  936000
+== ramp, candidate, pass 1, 22:02:14Z
+increase, one number              7.94    8.75 ms  decoded  216000
+increase by the hour             14.50   15.04 ms  decoded  936000
+increase by the hour, by node    14.55   15.35 ms  decoded  936000
+increase by 5 minutes            32.17   33.36 ms  decoded  936000
+increase by the day, Moscow       8.32    9.09 ms  decoded  216000
+avg by the hour                  14.00   14.85 ms  decoded  936000
+max by the hour                  13.32   13.94 ms  decoded  936000
+== ramp, base, pass 2, 22:02:20Z
+increase, one number             10.27   10.71 ms  decoded  216000
+increase by the hour             23.35   24.23 ms  decoded  936000
+increase by the hour, by node    23.50   24.19 ms  decoded  936000
+increase by 5 minutes            39.58   41.87 ms  decoded  936000
+increase by the day, Moscow      17.29   18.20 ms  decoded  216000
+avg by the hour                  20.68   21.23 ms  decoded  936000
+max by the hour                  19.78   20.49 ms  decoded  936000
+== ramp, candidate, pass 2, 22:02:28Z
+increase, one number              8.01    8.55 ms  decoded  216000
+increase by the hour             14.63   15.74 ms  decoded  936000
+increase by the hour, by node    14.70   15.75 ms  decoded  936000
+increase by 5 minutes            32.58   33.86 ms  decoded  936000
+increase by the day, Moscow       8.40    8.77 ms  decoded  216000
+avg by the hour                  14.08   14.74 ms  decoded  936000
+max by the hour                  13.23   14.16 ms  decoded  936000
