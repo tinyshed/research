@@ -178,7 +178,9 @@ sample, from 27.
   above: the rest is 600 series taken from the file, 13 µs a series, in a
   statement for its state, one for its groups, one for each payload decoded
   and a directory of 32 blocks unpacked for the six or seven the day needs.
-  Reading the series of a query in batches would be measured against that.
+  Reading the series of a query in batches would be measured against that;
+  [metrics-day-reads-2026-11-24](metrics-day-reads-2026-11-24.md) did, and
+  found most of it SQLite reading its pages from the system.
 - **Buckets have a cost of their own.** A day by five minutes is 173,400
   buckets of series and stands 16 to 19 ms above a day by the hour on both sides:
   about 100 ns a bucket, a bucket of a series holding an exact sum of 35

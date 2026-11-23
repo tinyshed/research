@@ -1106,3 +1106,10 @@ Decoding and counting a sample more costs 13 ns on Windows, from 27; taking a
 series from the file about 13 µs; a bucket of a series about 100 ns. Blocks
 of an hour for a minute's series, tried and not built, took the file from
 0.60 to 1.42 B a sample on ramps and from 2.86 to 3.23 on noisy counters.
+
+The [next round](reports/metrics-day-reads-2026-11-24.md), `731d8298` against
+`9d6eb149`, batched a snapshot's block bodies and checked a directory's sums
+without building them: a day by the hour on noisy counters 16.88; 16.87 →
+15.58; 15.81 ms in the container. A metrics reader's page cache of 1 MiB is
+what most of taking a series from the file is left waiting on; 8 MiB or a map
+of the file gave about 7 % in the container and was not built.
