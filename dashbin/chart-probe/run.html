@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>running</title>
+		<style>
+			body {
+				margin: 0;
+				background: #141413;
+				color: #9a9a93;
+				font: 13px system-ui, sans-serif;
+			}
+			iframe {
+				width: 700px;
+				height: 360px;
+				border: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<p id="said"></p>
+		<iframe id="frame"></iframe>
+		<script type="module">
+			// Every library draws every case, in turns: a pass goes through them all before the next
+			// begins, so that whatever the machine does meanwhile falls on each alike.
+			const asked = new URLSearchParams(location.search)
+			const libs = (asked.get('libs') ?? 'echarts,chartjs,uplot,tanstack,tanstack-canvas').split(',')
+			const cases = (asked.get('cases') ?? 'day,week,line').split(',')
+			const passes = Number(asked.get('passes') ?? 3)
+			const frame = document.getElementById('frame')
+			const said = document.getElementById('said')
+			const all = []
+			window.all = all
+
+			const one = (lib, which) =>
+				new Promise(done => {
+					frame.src = `bench.html?lib=${lib}&case=${which}&runs=9&warm=2&hide=video`
+					const started = performance.now()
+					const poll = setInterval(() => {
+						const title = frame.contentDocument?.title ?? ''
+						const late = performance.now() - started > 120_000
+						if (!title.startsWith('done') && !title.startsWith('failed') && !late) return
+						clearInterval(poll)
+						done(frame.contentWindow?.result ?? { failed: late ? 'no answer in 120 s' : title })
+					}, 50)
+				})
+
+			for (let pass = 0; pass < passes; pass++) {
+				for (const which of cases) {
+					for (const lib of libs) {
+						said.textContent = `pass ${pass + 1} of ${passes}: ${lib}, ${which}`
+						all.push({ pass, lib, ...(await one(lib, which)), case: which })
+						frame.src = 'about:blank'
+						await new Promise(done => setTimeout(done, 100))
+					}
+				}
+			}
+			document.title = 'all done'
+		</script>
+	</body>
+</html>

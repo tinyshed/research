@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>running</title>
+		<link rel="stylesheet" href="node_modules/uplot/dist/uPlot.min.css" />
+		<style>
+			/* the tokens of Dashbin's page, dark; ?theme=light reads the light ones */
+			:root {
+				--paper: #141413;
+				--surface: #1e1e1c;
+				--line: #2e2e2b;
+				--ink: #ecece8;
+				--muted: #9a9a93;
+				--s1: #7aa2f7;
+				--s2: #e0af68;
+				--s3: #9ece6a;
+				--s4: #bb9af7;
+				--s5: #7dcfff;
+				--s6: #c8a15a;
+			}
+			:root.light {
+				--paper: #f4f4f3;
+				--surface: #ffffff;
+				--line: #e2e2df;
+				--ink: #171716;
+				--muted: #6d6d68;
+				--s1: #2c5bba;
+				--s2: #b7791f;
+				--s3: #3f8f3a;
+				--s4: #7c4dbd;
+				--s5: #1c7ea8;
+				--s6: #8a6d1f;
+			}
+			body {
+				margin: 0;
+				padding: 16px;
+				background: var(--paper);
+				color: var(--ink);
+				font: 13px system-ui, sans-serif;
+			}
+			#chart {
+				width: 620px;
+				height: 300px;
+				padding: 0;
+				background: var(--surface);
+				border: 1px solid var(--line);
+				border-radius: 12px;
+				color: var(--ink);
+			}
+			.u-legend {
+				color: var(--muted);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="chart"></div>
+		<script>
+			const asked = new URLSearchParams(location.search)
+			if (asked.get('theme') === 'light') document.documentElement.classList.add('light')
+			const script = document.createElement('script')
+			script.type = 'module'
+			script.src = `dist/${asked.get('lib') ?? 'echarts'}.js`
+			script.onerror = () => {
+				document.title = 'failed: no such bundle'
+			}
+			document.body.append(script)
+		</script>
+	</body>
+</html>

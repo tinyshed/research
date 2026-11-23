@@ -35,3 +35,7 @@ go.work.sum
 # dir-scan-bench's build and the fixtures it generates
 /tinystore/dir-scan-bench/target/
 /tinystore/dir-scan-bench/fixtures/
+# what the probe downloads and writes comes back from the README's commands
+/dashbin/pack-probe/data/
+/dashbin/chart-probe/node_modules/
+/dashbin/chart-probe/dist/

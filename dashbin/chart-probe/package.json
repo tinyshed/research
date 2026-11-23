@@ -1,0 +1,15 @@
+{
+	"name": "chart-probe",
+	"private": true,
+	"type": "module",
+	"dependencies": {
+		"@tanstack/charts": "^1.5.0",
+		"chart.js": "^4.5.0",
+		"chartgpu": "^0.4.0",
+		"echarts": "^6.1.0",
+		"uplot": "^1.6.32"
+	},
+	"devDependencies": {
+		"@types/bun": "^1.4.0"
+	}
+}
