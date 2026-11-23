@@ -53,3 +53,6 @@ gives it, what its memory costs, and the plugin host it will carry.
 - [An agent's socket, and ten agents through a proxy](agent-2026-11-06.md):
   tokio-tungstenite and rustls on ring at +1.6 MB; a cancel through the chain in 4 ms; a slow link that a hub counting
   messages drops and one counting bytes keeps; Caddy's reload dropping every agent unless `stream_close_delay`.
+- [A chart library for Dashbin's page](charts-2026-11-23.md):
+  ECharts, Chart.js, uPlot and TanStack Charts draw stacked bars and a line of 51 840 points in Chromium; all pass
+  every time line, 23 to 194 KiB gzipped; uPlot by the rule, which left out a tooltip and bars by a name.
