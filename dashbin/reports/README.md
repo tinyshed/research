@@ -59,3 +59,7 @@ gives it, what its memory costs, and the plugin host it will carry.
 - [What a panel's formula is evaluated with](formulas-2026-11-23.md):
   the Common Expression Language, `evalexpr`, `rhai` and a parser of ours in the static binary: 1 472, 196, 2 544 and
   28 KiB; `evalexpr` by the rule; CEL refuses `fails / flows * 100`, and three of four divide whole numbers whole.
+- [What a pack's tables and icons cost a hub](packs-2026-11-23.md):
+  v2fly's domain lists and DB-IP's ranges as plain text: 733 thousand ranges keep 5 MiB as their first
+  addresses alone and answer in 39 ns; kept in TinyStore in one transaction; in Dashbin a pack of them costs a
+  hub 10 MB and a tenth of a second when it opens, and the slice that keeps packs 1 156 KiB of the binary.
