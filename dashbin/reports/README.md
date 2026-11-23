@@ -56,3 +56,6 @@ gives it, what its memory costs, and the plugin host it will carry.
 - [A chart library for Dashbin's page](charts-2026-11-23.md):
   ECharts, Chart.js, uPlot and TanStack Charts draw stacked bars and a line of 51 840 points in Chromium; all pass
   every time line, 23 to 194 KiB gzipped; uPlot by the rule, which left out a tooltip and bars by a name.
+- [What a panel's formula is evaluated with](formulas-2026-11-23.md):
+  the Common Expression Language, `evalexpr`, `rhai` and a parser of ours in the static binary: 1 472, 196, 2 544 and
+  28 KiB; `evalexpr` by the rule; CEL refuses `fails / flows * 100`, and three of four divide whole numbers whole.
