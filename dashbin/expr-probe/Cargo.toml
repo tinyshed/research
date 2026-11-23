@@ -1,0 +1,47 @@
+[package]
+name = "expr-probe"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+# what a formula's evaluator would add to the one binary: each variant beside a plain one that computes alike
+[features]
+cel = ["dep:cel"]
+# the crate as `cargo add cel` gives it: regular expressions, times and encoders
+cel-pratt = ["cel", "cel/parser_pratt"]
+cel-default = ["cel", "cel/regex", "cel/chrono", "cel/ext_encoders"]
+evalexpr = ["dep:evalexpr"]
+rhai = ["dep:rhai"]
+all = ["cel", "evalexpr", "rhai"]
+
+[dependencies]
+cel = { version = "=0.16.0", optional = true, default-features = false }
+evalexpr = { version = "=14.0.0", optional = true }
+rhai = { version = "=1.27.0", optional = true }
+
+[[bin]]
+name = "plain"
+
+[[bin]]
+name = "own"
+
+[[bin]]
+name = "with_cel"
+required-features = ["cel"]
+
+[[bin]]
+name = "with_evalexpr"
+required-features = ["evalexpr"]
+
+[[bin]]
+name = "with_rhai"
+required-features = ["rhai"]
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+strip = true
+
+[[bin]]
+name = "tried"
+required-features = ["all"]
