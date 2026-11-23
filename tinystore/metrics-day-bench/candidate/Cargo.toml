@@ -1,0 +1,17 @@
+[package]
+name = "metrics-day-bench-candidate"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[workspace]
+
+[[bin]]
+name = "metrics-day-bench-candidate"
+path = "../src/main.rs"
+
+[dependencies]
+tinystore = { path = "../../source/crates/tinystore", default-features = false, features = ["metrics"] }
+
+[profile.release]
+debug = 1
