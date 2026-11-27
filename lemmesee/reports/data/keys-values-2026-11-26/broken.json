@@ -1,0 +1,1243 @@
+{
+ "spider": {
+  "declared keys the data do not keep": 30,
+  "databases with one": 13,
+  "the referenced table is empty": 5,
+  "under 1 % of the distinct values unmatched": 7,
+  "1 % to under 10 %": 8,
+  "10 % to under 50 %": 8,
+  "50 % or more": 7,
+  "every value unmatched": 7,
+  "median share of distinct values unmatched": 0.09722222222222221,
+  "keys": [
+   {
+    "database": "spider/allergy_1",
+    "key": "Has_Allergy.StuID -> Student.StuID",
+    "rows": 59,
+    "distinct values": 30,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 34
+   },
+   {
+    "database": "spider/baseball_1",
+    "key": "all_star.player_id -> player.player_id",
+    "rows": 5069,
+    "distinct values": 1741,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 18846
+   },
+   {
+    "database": "spider/baseball_1",
+    "key": "appearances.player_id -> player.player_id",
+    "rows": 100951,
+    "distinct values": 18660,
+    "rows with no match": 7,
+    "distinct values with no match": 7,
+    "rows of the referenced table": 18846
+   },
+   {
+    "database": "spider/baseball_1",
+    "key": "appearances.team_id -> team.team_id",
+    "rows": 100951,
+    "distinct values": 151,
+    "rows with no match": 276,
+    "distinct values with no match": 2,
+    "rows of the referenced table": 2805
+   },
+   {
+    "database": "spider/baseball_1",
+    "key": "manager_award.player_id -> player.player_id",
+    "rows": 177,
+    "distinct values": 83,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 18846
+   },
+   {
+    "database": "spider/baseball_1",
+    "key": "player_award_vote.player_id -> player.player_id",
+    "rows": 6795,
+    "distinct values": 2412,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 18846
+   },
+   {
+    "database": "spider/baseball_1",
+    "key": "player_college.college_id -> college.college_id",
+    "rows": 17350,
+    "distinct values": 1038,
+    "rows with no match": 10,
+    "distinct values with no match": 4,
+    "rows of the referenced table": 1207
+   },
+   {
+    "database": "spider/baseball_1",
+    "key": "hall_of_fame.player_id -> player.player_id",
+    "rows": 4120,
+    "distinct values": 1239,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 18846
+   },
+   {
+    "database": "spider/car_1",
+    "key": "model_list.Maker -> car_makers.Id",
+    "rows": 36,
+    "distinct values": 23,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 22
+   },
+   {
+    "database": "spider/car_1",
+    "key": "car_names.Model -> model_list.Model",
+    "rows": 406,
+    "distinct values": 33,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 36
+   },
+   {
+    "database": "spider/college_1",
+    "key": "STUDENT.DEPT_CODE -> DEPARTMENT.DEPT_CODE",
+    "rows": 8,
+    "distinct values": 5,
+    "rows with no match": 2,
+    "distinct values with no match": 2,
+    "rows of the referenced table": 11
+   },
+   {
+    "database": "spider/flight_2",
+    "key": "flights.DestAirport -> airports.AirportCode",
+    "rows": 1200,
+    "distinct values": 100,
+    "rows with no match": 1200,
+    "distinct values with no match": 100,
+    "rows of the referenced table": 100
+   },
+   {
+    "database": "spider/flight_2",
+    "key": "flights.SourceAirport -> airports.AirportCode",
+    "rows": 1200,
+    "distinct values": 100,
+    "rows with no match": 1200,
+    "distinct values with no match": 100,
+    "rows of the referenced table": 100
+   },
+   {
+    "database": "spider/flight_4",
+    "key": "routes.src_apid -> airports.apid",
+    "rows": 67240,
+    "distinct values": 3315,
+    "rows with no match": 618,
+    "distinct values with no match": 143,
+    "rows of the referenced table": 7184
+   },
+   {
+    "database": "spider/flight_4",
+    "key": "routes.dst_apid -> airports.apid",
+    "rows": 67240,
+    "distinct values": 3321,
+    "rows with no match": 622,
+    "distinct values with no match": 146,
+    "rows of the referenced table": 7184
+   },
+   {
+    "database": "spider/hospital_1",
+    "key": "Undergoes.AssistingNurse -> Nurse.EmployeeID",
+    "rows": 6,
+    "distinct values": 4,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 3
+   },
+   {
+    "database": "spider/hr_1",
+    "key": "employees.DEPARTMENT_ID -> departments.DEPARTMENT_ID",
+    "rows": 107,
+    "distinct values": 12,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 27
+   },
+   {
+    "database": "spider/hr_1",
+    "key": "job_history.JOB_ID -> jobs.JOB_ID",
+    "rows": 11,
+    "distinct values": 9,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 19
+   },
+   {
+    "database": "spider/hr_1",
+    "key": "job_history.DEPARTMENT_ID -> departments.DEPARTMENT_ID",
+    "rows": 11,
+    "distinct values": 7,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 27
+   },
+   {
+    "database": "spider/hr_1",
+    "key": "job_history.EMPLOYEE_ID -> employees.EMPLOYEE_ID",
+    "rows": 11,
+    "distinct values": 8,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 107
+   },
+   {
+    "database": "spider/hr_1",
+    "key": "locations.COUNTRY_ID -> countries.COUNTRY_ID",
+    "rows": 23,
+    "distinct values": 15,
+    "rows with no match": 2,
+    "distinct values with no match": 2,
+    "rows of the referenced table": 25
+   },
+   {
+    "database": "spider/pilot_1",
+    "key": "PilotSkills.plane_name -> Hangar.plane_name",
+    "rows": 13,
+    "distinct values": 5,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 4
+   },
+   {
+    "database": "spider/sakila_1",
+    "key": "customer.store_id -> store.store_id",
+    "rows": 599,
+    "distinct values": 2,
+    "rows with no match": 599,
+    "distinct values with no match": 2,
+    "rows of the referenced table": 0
+   },
+   {
+    "database": "spider/sakila_1",
+    "key": "film.language_id -> language.language_id",
+    "rows": 1000,
+    "distinct values": 1,
+    "rows with no match": 1000,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 0
+   },
+   {
+    "database": "spider/sakila_1",
+    "key": "inventory.store_id -> store.store_id",
+    "rows": 4581,
+    "distinct values": 2,
+    "rows with no match": 4581,
+    "distinct values with no match": 2,
+    "rows of the referenced table": 0
+   },
+   {
+    "database": "spider/sakila_1",
+    "key": "payment.staff_id -> staff.staff_id",
+    "rows": 16049,
+    "distinct values": 2,
+    "rows with no match": 16049,
+    "distinct values with no match": 2,
+    "rows of the referenced table": 0
+   },
+   {
+    "database": "spider/sakila_1",
+    "key": "rental.staff_id -> staff.staff_id",
+    "rows": 16044,
+    "distinct values": 2,
+    "rows with no match": 16044,
+    "distinct values with no match": 2,
+    "rows of the referenced table": 0
+   },
+   {
+    "database": "spider/soccer_1",
+    "key": "Player_Attributes.player_fifa_api_id -> Player.player_fifa_api_id",
+    "rows": 183978,
+    "distinct values": 11062,
+    "rows with no match": 49,
+    "distinct values with no match": 2,
+    "rows of the referenced table": 11060
+   },
+   {
+    "database": "spider/voter_1",
+    "key": "VOTES.state -> AREA_CODE_STATE.state",
+    "rows": 4,
+    "distinct values": 3,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 305
+   },
+   {
+    "database": "spider/wta_1",
+    "key": "rankings.player_id -> players.player_id",
+    "rows": 510437,
+    "distinct values": 2776,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 20662
+   }
+  ]
+ },
+ "bird": {
+  "declared keys the data do not keep": 105,
+  "databases with one": 31,
+  "the referenced table is empty": 3,
+  "under 1 % of the distinct values unmatched": 42,
+  "1 % to under 10 %": 39,
+  "10 % to under 50 %": 9,
+  "50 % or more": 15,
+  "every value unmatched": 6,
+  "median share of distinct values unmatched": 0.017857142857142856,
+  "keys": [
+   {
+    "database": "bird/european_football_1",
+    "key": "matchs.Div -> divisions.division",
+    "rows": 123404,
+    "distinct values": 22,
+    "rows with no match": 2767,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 21
+   },
+   {
+    "database": "bird/app_store",
+    "key": "user_reviews.App -> playstore.App",
+    "rows": 64286,
+    "distinct values": 1074,
+    "rows with no match": 2739,
+    "distinct values with no match": 54,
+    "rows of the referenced table": 10840
+   },
+   {
+    "database": "bird/sales",
+    "key": "Sales.SalesPersonID -> Employees.EmployeeID",
+    "rows": 6715221,
+    "distinct values": 23,
+    "rows with no match": 295041,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 22
+   },
+   {
+    "database": "bird/video_games",
+    "key": "game_publisher.game_id -> game.id",
+    "rows": 11732,
+    "distinct values": 11360,
+    "rows with no match": 43,
+    "distinct values with no match": 43,
+    "rows of the referenced table": 11317
+   },
+   {
+    "database": "bird/authors",
+    "key": "Paper.JournalId -> Journal.Id",
+    "rows": 2254920,
+    "distinct values": 15150,
+    "rows with no match": 1074306,
+    "distinct values with no match": 2,
+    "rows of the referenced table": 15151
+   },
+   {
+    "database": "bird/authors",
+    "key": "Paper.ConferenceId -> Conference.Id",
+    "rows": 2254920,
+    "distinct values": 4550,
+    "rows with no match": 1718515,
+    "distinct values with no match": 5,
+    "rows of the referenced table": 4545
+   },
+   {
+    "database": "bird/authors",
+    "key": "PaperAuthor.AuthorId -> Author.Id",
+    "rows": 2315574,
+    "distinct values": 747998,
+    "rows with no match": 1791014,
+    "distinct values with no match": 684738,
+    "rows of the referenced table": 247030
+   },
+   {
+    "database": "bird/authors",
+    "key": "PaperAuthor.PaperId -> Paper.Id",
+    "rows": 2315574,
+    "distinct values": 403713,
+    "rows with no match": 2496,
+    "distinct values with no match": 857,
+    "rows of the referenced table": 2254920
+   },
+   {
+    "database": "bird/movies_4",
+    "key": "movie_genres.movie_id -> movie.movie_id",
+    "rows": 12160,
+    "distinct values": 4775,
+    "rows with no match": 360,
+    "distinct values with no match": 165,
+    "rows of the referenced table": 4627
+   },
+   {
+    "database": "bird/movies_4",
+    "key": "movie_languages.movie_id -> movie.movie_id",
+    "rows": 11740,
+    "distinct values": 4803,
+    "rows with no match": 369,
+    "distinct values with no match": 176,
+    "rows of the referenced table": 4627
+   },
+   {
+    "database": "bird/movies_4",
+    "key": "movie_crew.person_id -> person.person_id",
+    "rows": 129581,
+    "distinct values": 52885,
+    "rows with no match": 3,
+    "distinct values with no match": 2,
+    "rows of the referenced table": 104838
+   },
+   {
+    "database": "bird/movies_4",
+    "key": "movie_crew.movie_id -> movie.movie_id",
+    "rows": 129581,
+    "distinct values": 4775,
+    "rows with no match": 3223,
+    "distinct values with no match": 164,
+    "rows of the referenced table": 4627
+   },
+   {
+    "database": "bird/movies_4",
+    "key": "production_country.movie_id -> movie.movie_id",
+    "rows": 6436,
+    "distinct values": 4629,
+    "rows with no match": 188,
+    "distinct values with no match": 150,
+    "rows of the referenced table": 4627
+   },
+   {
+    "database": "bird/movies_4",
+    "key": "movie_cast.person_id -> person.person_id",
+    "rows": 59083,
+    "distinct values": 32697,
+    "rows with no match": 3,
+    "distinct values with no match": 2,
+    "rows of the referenced table": 104838
+   },
+   {
+    "database": "bird/movies_4",
+    "key": "movie_cast.movie_id -> movie.movie_id",
+    "rows": 59083,
+    "distinct values": 2443,
+    "rows with no match": 43,
+    "distinct values with no match": 2,
+    "rows of the referenced table": 4627
+   },
+   {
+    "database": "bird/movies_4",
+    "key": "movie_keywords.movie_id -> movie.movie_id",
+    "rows": 36162,
+    "distinct values": 4391,
+    "rows with no match": 677,
+    "distinct values with no match": 122,
+    "rows of the referenced table": 4627
+   },
+   {
+    "database": "bird/movies_4",
+    "key": "movie_company.movie_id -> movie.movie_id",
+    "rows": 13677,
+    "distinct values": 4452,
+    "rows with no match": 363,
+    "distinct values with no match": 139,
+    "rows of the referenced table": 4627
+   },
+   {
+    "database": "bird/social_media",
+    "key": "twitter.UserID -> user.UserID",
+    "rows": 99900,
+    "distinct values": 33185,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 99260
+   },
+   {
+    "database": "bird/social_media",
+    "key": "twitter.LocationID -> location.LocationID",
+    "rows": 99900,
+    "distinct values": 4307,
+    "rows with no match": 449,
+    "distinct values with no match": 53,
+    "rows of the referenced table": 6211
+   },
+   {
+    "database": "bird/works_cycles",
+    "key": "ProductProductPhoto.ProductPhotoID -> ProductPhoto.ProductPhotoID",
+    "rows": 504,
+    "distinct values": 42,
+    "rows with no match": 346,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 100
+   },
+   {
+    "database": "bird/works_cycles",
+    "key": "SalesOrderHeader.CustomerID -> Customer.CustomerID",
+    "rows": 31465,
+    "distinct values": 19119,
+    "rows with no match": 31465,
+    "distinct values with no match": 19119,
+    "rows of the referenced table": 0
+   },
+   {
+    "database": "bird/food_inspection_2",
+    "key": "employee.supervisor -> employee.employee_id",
+    "rows": 75,
+    "distinct values": 8,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 75
+   },
+   {
+    "database": "bird/food_inspection_2",
+    "key": "inspection.license_no -> establishment.license_no",
+    "rows": 143870,
+    "distinct values": 31733,
+    "rows with no match": 178,
+    "distinct values with no match": 91,
+    "rows of the referenced table": 31642
+   },
+   {
+    "database": "bird/food_inspection_2",
+    "key": "inspection.employee_id -> employee.employee_id",
+    "rows": 143870,
+    "distinct values": 28,
+    "rows with no match": 117,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 75
+   },
+   {
+    "database": "bird/law_episode",
+    "key": "Award.person_id -> Person.person_id",
+    "rows": 22,
+    "distinct values": 13,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 800
+   },
+   {
+    "database": "bird/cs_semester",
+    "key": "RA.prof_id -> prof.prof_id",
+    "rows": 35,
+    "distinct values": 13,
+    "rows with no match": 8,
+    "distinct values with no match": 3,
+    "rows of the referenced table": 10
+   },
+   {
+    "database": "bird/movie_platform",
+    "key": "ratings_users.user_id -> lists_users.user_id",
+    "rows": 4297641,
+    "distinct values": 451757,
+    "rows with no match": 2684237,
+    "distinct values with no match": 428639,
+    "rows of the referenced table": 80311
+   },
+   {
+    "database": "bird/movie_platform",
+    "key": "lists_users.user_id -> lists.user_id",
+    "rows": 80311,
+    "distinct values": 23118,
+    "rows with no match": 633,
+    "distinct values with no match": 193,
+    "rows of the referenced table": 79565
+   },
+   {
+    "database": "bird/movie_platform",
+    "key": "lists_users.list_id -> lists.list_id",
+    "rows": 80311,
+    "distinct values": 80311,
+    "rows with no match": 746,
+    "distinct values with no match": 746,
+    "rows of the referenced table": 79565
+   },
+   {
+    "database": "bird/movie_platform",
+    "key": "ratings.user_id -> lists_users.user_id",
+    "rows": 15517252,
+    "distinct values": 451742,
+    "rows with no match": 9760791,
+    "distinct values with no match": 428624,
+    "rows of the referenced table": 80311
+   },
+   {
+    "database": "bird/movie_platform",
+    "key": "ratings.movie_id -> movies.movie_id",
+    "rows": 15517252,
+    "distinct values": 142685,
+    "rows with no match": 154478,
+    "distinct values with no match": 355,
+    "rows of the referenced table": 226087
+   },
+   {
+    "database": "bird/music_platform_2",
+    "key": "reviews.podcast_id -> podcasts.podcast_id",
+    "rows": 1964856,
+    "distinct values": 110111,
+    "rows with no match": 24647,
+    "distinct values with no match": 1533,
+    "rows of the referenced table": 108578
+   },
+   {
+    "database": "bird/address",
+    "key": "alias.zip_code -> zip_data.zip_code",
+    "rows": 41701,
+    "distinct values": 41701,
+    "rows with no match": 138,
+    "distinct values with no match": 138,
+    "rows of the referenced table": 41563
+   },
+   {
+    "database": "bird/address",
+    "key": "area_code.zip_code -> zip_data.zip_code",
+    "rows": 53796,
+    "distinct values": 41698,
+    "rows with no match": 138,
+    "distinct values with no match": 138,
+    "rows of the referenced table": 41563
+   },
+   {
+    "database": "bird/address",
+    "key": "avoid.zip_code -> zip_data.zip_code",
+    "rows": 24114,
+    "distinct values": 11228,
+    "rows with no match": 5,
+    "distinct values with no match": 5,
+    "rows of the referenced table": 41563
+   },
+   {
+    "database": "bird/address",
+    "key": "country.zip_code -> zip_data.zip_code",
+    "rows": 51001,
+    "distinct values": 40361,
+    "rows with no match": 194,
+    "distinct values with no match": 138,
+    "rows of the referenced table": 41563
+   },
+   {
+    "database": "bird/menu",
+    "key": "MenuPage.menu_id -> Menu.id",
+    "rows": 66937,
+    "distinct values": 19816,
+    "rows with no match": 5907,
+    "distinct values with no match": 2289,
+    "rows of the referenced table": 17527
+   },
+   {
+    "database": "bird/menu",
+    "key": "MenuItem.dish_id -> Dish.id",
+    "rows": 1334169,
+    "distinct values": 415050,
+    "rows with no match": 35,
+    "distinct values with no match": 30,
+    "rows of the referenced table": 426713
+   },
+   {
+    "database": "bird/synthea",
+    "key": "conditions.DESCRIPTION -> all_prevalences.ITEM",
+    "rows": 7040,
+    "distinct values": 118,
+    "rows with no match": 5620,
+    "distinct values with no match": 104,
+    "rows of the referenced table": 244
+   },
+   {
+    "database": "bird/synthea",
+    "key": "claims.ENCOUNTER -> encounters.ID",
+    "rows": 20523,
+    "distinct values": 1461,
+    "rows with no match": 20523,
+    "distinct values with no match": 1461,
+    "rows of the referenced table": 20524
+   },
+   {
+    "database": "bird/talkingdata",
+    "key": "gender_age.device_id -> phone_brand_device_model2.device_id",
+    "rows": 186697,
+    "distinct values": 186697,
+    "rows with no match": 97521,
+    "distinct values with no match": 97521,
+    "rows of the referenced table": 89200
+   },
+   {
+    "database": "bird/chicago_crime",
+    "key": "Crime.district_no -> District.district_no",
+    "rows": 268002,
+    "distinct values": 23,
+    "rows with no match": 10,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 22
+   },
+   {
+    "database": "bird/chicago_crime",
+    "key": "Crime.iucr_no -> IUCR.iucr_no",
+    "rows": 268002,
+    "distinct values": 322,
+    "rows with no match": 68,
+    "distinct values with no match": 7,
+    "rows of the referenced table": 401
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "geo_desert.Country -> country.Code",
+    "rows": 155,
+    "distinct values": 40,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 238
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "geo_desert.Desert -> desert.Name",
+    "rows": 155,
+    "distinct values": 64,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 63
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "geo_estuary.Country -> country.Code",
+    "rows": 266,
+    "distinct values": 77,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 238
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "geo_estuary.River -> river.Name",
+    "rows": 266,
+    "distinct values": 217,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 218
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "geo_island.Country -> country.Code",
+    "rows": 202,
+    "distinct values": 59,
+    "rows with no match": 202,
+    "distinct values with no match": 59,
+    "rows of the referenced table": 238
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "geo_lake.Country -> country.Code",
+    "rows": 254,
+    "distinct values": 64,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 238
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "geo_lake.Lake -> lake.Name",
+    "rows": 254,
+    "distinct values": 131,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 130
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "geo_mountain.Country -> country.Code",
+    "rows": 296,
+    "distinct values": 95,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 238
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "geo_mountain.Mountain -> mountain.Name",
+    "rows": 296,
+    "distinct values": 239,
+    "rows with no match": 296,
+    "distinct values with no match": 239,
+    "rows of the referenced table": 0
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "geo_river.Country -> country.Code",
+    "rows": 852,
+    "distinct values": 108,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 238
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "geo_river.River -> river.Name",
+    "rows": 852,
+    "distinct values": 219,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 218
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "geo_sea.Country -> country.Code",
+    "rows": 736,
+    "distinct values": 194,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 238
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "geo_sea.Sea -> sea.Name",
+    "rows": 736,
+    "distinct values": 35,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 35
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "geo_source.Country -> country.Code",
+    "rows": 220,
+    "distinct values": 58,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 238
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "geo_source.River -> river.Name",
+    "rows": 220,
+    "distinct values": 212,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 218
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "islandIn.River -> river.Name",
+    "rows": 1,
+    "distinct values": 1,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 218
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "islandIn.Lake -> lake.Name",
+    "rows": 6,
+    "distinct values": 6,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 130
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "islandIn.Sea -> sea.Name",
+    "rows": 345,
+    "distinct values": 28,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 35
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "islandIn.Island -> island.Name",
+    "rows": 350,
+    "distinct values": 277,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 276
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "isMember.Organization -> organization.Abbreviation",
+    "rows": 8009,
+    "distinct values": 154,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 154
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "isMember.Country -> country.Code",
+    "rows": 8009,
+    "distinct values": 226,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 238
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "located.Sea -> sea.Name",
+    "rows": 466,
+    "distinct values": 30,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 35
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "located.Lake -> lake.Name",
+    "rows": 50,
+    "distinct values": 28,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 130
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "located.River -> river.Name",
+    "rows": 373,
+    "distinct values": 134,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 218
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "located.Country -> country.Code",
+    "rows": 858,
+    "distinct values": 187,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 238
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "locatedOn.Island -> island.Name",
+    "rows": 435,
+    "distinct values": 121,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 276
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "locatedOn.Country -> country.Code",
+    "rows": 435,
+    "distinct values": 97,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 238
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "mergesWith.Sea2 -> sea.Name",
+    "rows": 55,
+    "distinct values": 28,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 35
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "mergesWith.Sea1 -> sea.Name",
+    "rows": 55,
+    "distinct values": 22,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 35
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "mountainOnIsland.Island -> island.Name",
+    "rows": 68,
+    "distinct values": 58,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 276
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "mountainOnIsland.Mountain -> mountain.Name",
+    "rows": 68,
+    "distinct values": 68,
+    "rows with no match": 68,
+    "distinct values with no match": 68,
+    "rows of the referenced table": 0
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "organization.Country -> country.Code",
+    "rows": 125,
+    "distinct values": 55,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 238
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "politics.Dependent -> country.Code",
+    "rows": 39,
+    "distinct values": 10,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 238
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "politics.Country -> country.Code",
+    "rows": 239,
+    "distinct values": 239,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 238
+   },
+   {
+    "database": "bird/mondial_geo",
+    "key": "target.Country -> country.Code",
+    "rows": 205,
+    "distinct values": 205,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 238
+   },
+   {
+    "database": "bird/disney",
+    "key": "characters.hero -> voice-actors.character",
+    "rows": 52,
+    "distinct values": 49,
+    "rows with no match": 12,
+    "distinct values with no match": 11,
+    "rows of the referenced table": 922
+   },
+   {
+    "database": "bird/disney",
+    "key": "director.name -> characters.movie_title",
+    "rows": 56,
+    "distinct values": 56,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 56
+   },
+   {
+    "database": "bird/disney",
+    "key": "movies_total_gross.movie_title -> characters.movie_title",
+    "rows": 579,
+    "distinct values": 573,
+    "rows with no match": 532,
+    "distinct values with no match": 529,
+    "rows of the referenced table": 56
+   },
+   {
+    "database": "bird/disney",
+    "key": "voice-actors.movie -> characters.movie_title",
+    "rows": 922,
+    "distinct values": 139,
+    "rows with no match": 290,
+    "distinct values with no match": 85,
+    "rows of the referenced table": 56
+   },
+   {
+    "database": "bird/college_completion",
+    "key": "institution_grads.unitid -> institution_details.unitid",
+    "rows": 1302102,
+    "distinct values": 3979,
+    "rows with no match": 42606,
+    "distinct values with no match": 181,
+    "rows of the referenced table": 3798
+   },
+   {
+    "database": "bird/college_completion",
+    "key": "state_sector_grads.state -> institution_details.state",
+    "rows": 84942,
+    "distinct values": 52,
+    "rows with no match": 1944,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 3798
+   },
+   {
+    "database": "bird/college_completion",
+    "key": "state_sector_details.state -> institution_details.state",
+    "rows": 312,
+    "distinct values": 52,
+    "rows with no match": 6,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 3798
+   },
+   {
+    "database": "bird/world_development_indicators",
+    "key": "CountryNotes.Countrycode -> Country.CountryCode",
+    "rows": 4857,
+    "distinct values": 215,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 247
+   },
+   {
+    "database": "bird/world_development_indicators",
+    "key": "Footnotes.Countrycode -> Country.CountryCode",
+    "rows": 532415,
+    "distinct values": 278,
+    "rows with no match": 315,
+    "distinct values with no match": 31,
+    "rows of the referenced table": 247
+   },
+   {
+    "database": "bird/world_development_indicators",
+    "key": "Footnotes.Seriescode -> Series.SeriesCode",
+    "rows": 532415,
+    "distinct values": 653,
+    "rows with no match": 111,
+    "distinct values with no match": 3,
+    "rows of the referenced table": 1345
+   },
+   {
+    "database": "bird/retail_complains",
+    "key": "district.state_abbrev -> state.StateCode",
+    "rows": 77,
+    "distinct values": 51,
+    "rows with no match": 3,
+    "distinct values with no match": 3,
+    "rows of the referenced table": 48
+   },
+   {
+    "database": "bird/retail_complains",
+    "key": "events.Complaint ID -> callcenterlogs.Complaint ID",
+    "rows": 23419,
+    "distinct values": 23419,
+    "rows with no match": 20915,
+    "distinct values with no match": 20915,
+    "rows of the referenced table": 3999
+   },
+   {
+    "database": "bird/simpson_episodes",
+    "key": "Award.person -> Person.name",
+    "rows": 64,
+    "distinct values": 41,
+    "rows with no match": 2,
+    "distinct values with no match": 2,
+    "rows of the referenced table": 369
+   },
+   {
+    "database": "bird/formula_1",
+    "key": "races.circuitId -> circuits.circuitId",
+    "rows": 976,
+    "distinct values": 72,
+    "rows with no match": 22,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 72
+   },
+   {
+    "database": "bird/california_schools",
+    "key": "satscores.cds -> schools.CDSCode",
+    "rows": 2269,
+    "distinct values": 2269,
+    "rows with no match": 211,
+    "distinct values with no match": 211,
+    "rows of the referenced table": 17686
+   },
+   {
+    "database": "bird/card_games",
+    "key": "foreign_data.uuid -> cards.uuid",
+    "rows": 229186,
+    "distinct values": 34056,
+    "rows with no match": 16,
+    "distinct values with no match": 3,
+    "rows of the referenced table": 56822
+   },
+   {
+    "database": "bird/card_games",
+    "key": "legalities.uuid -> cards.uuid",
+    "rows": 427907,
+    "distinct values": 55608,
+    "rows with no match": 72,
+    "distinct values with no match": 9,
+    "rows of the referenced table": 56822
+   },
+   {
+    "database": "bird/european_football_2",
+    "key": "Player_Attributes.player_fifa_api_id -> Player.player_fifa_api_id",
+    "rows": 183978,
+    "distinct values": 11062,
+    "rows with no match": 49,
+    "distinct values with no match": 2,
+    "rows of the referenced table": 11060
+   },
+   {
+    "database": "bird/thrombosis_prediction",
+    "key": "Examination.ID -> Patient.ID",
+    "rows": 770,
+    "distinct values": 763,
+    "rows with no match": 700,
+    "distinct values with no match": 694,
+    "rows of the referenced table": 1238
+   },
+   {
+    "database": "bird/toxicology",
+    "key": "atom.molecule_id -> molecule.molecule_id",
+    "rows": 12333,
+    "distinct values": 444,
+    "rows with no match": 3222,
+    "distinct values with no match": 101,
+    "rows of the referenced table": 343
+   },
+   {
+    "database": "bird/toxicology",
+    "key": "bond.molecule_id -> molecule.molecule_id",
+    "rows": 12379,
+    "distinct values": 444,
+    "rows with no match": 3223,
+    "distinct values with no match": 101,
+    "rows of the referenced table": 343
+   },
+   {
+    "database": "bird/codebase_community",
+    "key": "comments.PostId -> posts.Id",
+    "rows": 174285,
+    "distinct values": 53416,
+    "rows with no match": 36,
+    "distinct values with no match": 5,
+    "rows of the referenced table": 91966
+   },
+   {
+    "database": "bird/codebase_community",
+    "key": "postHistory.PostId -> posts.Id",
+    "rows": 303155,
+    "distinct values": 91976,
+    "rows with no match": 41,
+    "distinct values with no match": 10,
+    "rows of the referenced table": 91966
+   },
+   {
+    "database": "bird/codebase_community",
+    "key": "postLinks.RelatedPostId -> posts.Id",
+    "rows": 11102,
+    "distinct values": 5177,
+    "rows with no match": 3,
+    "distinct values with no match": 2,
+    "rows of the referenced table": 91966
+   },
+   {
+    "database": "bird/codebase_community",
+    "key": "postLinks.PostId -> posts.Id",
+    "rows": 11102,
+    "distinct values": 7604,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 91966
+   },
+   {
+    "database": "bird/codebase_community",
+    "key": "posts.ParentId -> posts.Id",
+    "rows": 47755,
+    "distinct values": 29006,
+    "rows with no match": 6,
+    "distinct values with no match": 5,
+    "rows of the referenced table": 91966
+   },
+   {
+    "database": "bird/codebase_community",
+    "key": "tags.ExcerptPostId -> posts.Id",
+    "rows": 596,
+    "distinct values": 596,
+    "rows with no match": 1,
+    "distinct values with no match": 1,
+    "rows of the referenced table": 91966
+   }
+  ]
+ }
+}

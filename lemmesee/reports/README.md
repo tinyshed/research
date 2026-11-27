@@ -118,3 +118,7 @@ so, never by editing the number it replaces.
   1 054 108 bytes with its lexicons, 1.76 GiB on a schema of 678 tables; seven language models asked again, on plain A,
   clean, five at 0.823–0.860 and GPT-6 Luna at 0.766 against its 0.757, the gap recall; on style 3, clean, 0.760–0.875
   against 0.734.
+- [What reading the rows finds on Spider and BIRD](keys-values-2026-11-26.md), round 1x:
+  four value-based methods from the papers over exact inclusion; the strongest, HoPF's foreign-key step with the
+  keys given, reads 0.779 and 0.689 where the key model, reading no row, reads 0.885 and 0.829, +0.106 [+0.057, +0.160]
+  and +0.140 [+0.055, +0.246]; BIRD's rows break 105 of its 601 non-empty declared keys.

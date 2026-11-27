@@ -1,0 +1,6 @@
+machine: AMD Ryzen 7 7700 8-Core Processor, 31 GB, Windows 11 Pro 10.0.26300; not in the Linux container
+python: 3.13.15; sqlite 3.50.4 (Python's sqlite3); numpy 2.5.4; scikit-learn 1.9.1
+one process, one thread; files opened immutable
+rows.py profile: started 2026-11-26T15:06:14Z, ended 15:31 UTC (Spider 15:06:14 to 15:06:36, BIRD 15:06:36 to 15:31)
+score.py: 15:31 to 15:33 UTC; after.py sizes and broken: 15:34 to 15:38 UTC
+beside it on the machine: other rounds' work of the same repository and a container of another project; the times are indicative

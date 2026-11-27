@@ -1,0 +1,92 @@
+{
+ "spider": {
+  "rows": {
+   "median": 38.0,
+   "90th percentile": 231.30000000000032,
+   "largest": 553693.0,
+   "sum": 1849786.0
+  },
+  "cells": {
+   "median": 185.5,
+   "90th percentile": 1251.2000000000064,
+   "largest": 10440086.0,
+   "sum": 24076009.0
+  },
+  "bytes": {
+   "median": 28672.0,
+   "90th percentile": 81920.0,
+   "largest": 316854272.0,
+   "sum": 491782144.0
+  },
+  "seconds, ind on K": {
+   "median": 0.0014986500318627805,
+   "90th percentile": 0.006729980005184193,
+   "largest": 5.490630799962673,
+   "sum": 9.218836899613962
+  },
+  "seconds, ind on U as well": {
+   "median": 0.002723400015383959,
+   "90th percentile": 0.017336860008072122,
+   "largest": 5.521864399954211,
+   "sum": 13.646126199688297
+  },
+  "seconds, with the values": {
+   "median": 0.0036210000107530504,
+   "90th percentile": 0.025404149980750017,
+   "largest": 11.445848499948625,
+   "sum": 21.77562459994806
+  },
+  "seconds, the hybrid rules' own tests": {
+   "median": 5.299982149153948e-06,
+   "90th percentile": 3.7869997322559355e-05,
+   "largest": 0.08542479999596253,
+   "sum": 0.11880639992887154
+  },
+  "databases": 204
+ },
+ "bird": {
+  "rows": {
+   "median": 90199.0,
+   "90th percentile": 4737691.0,
+   "largest": 157378539.0,
+   "sum": 280581646.0
+  },
+  "cells": {
+   "median": 804581.5,
+   "90th percentile": 21632939.0,
+   "largest": 497110537.0,
+   "sum": 1417437648.0
+  },
+  "bytes": {
+   "median": 11511808.0,
+   "90th percentile": 606878208.0,
+   "largest": 4497768448.0,
+   "sum": 22677637120.0
+  },
+  "seconds, ind on K": {
+   "median": 0.20633404998807237,
+   "90th percentile": 6.799785600014729,
+   "largest": 188.73301309999079,
+   "sum": 476.66622670012293
+  },
+  "seconds, ind on U as well": {
+   "median": 0.35307189999730326,
+   "90th percentile": 8.12162325004465,
+   "largest": 280.17583619995276,
+   "sum": 680.6029990001116
+  },
+  "seconds, with the values": {
+   "median": 0.4880575000133831,
+   "90th percentile": 19.288016800041078,
+   "largest": 675.9944496999378,
+   "sum": 1372.0465252003632
+  },
+  "seconds, the hybrid rules' own tests": {
+   "median": 2.7750007575377822e-05,
+   "90th percentile": 0.048012099985498935,
+   "largest": 5.132919900002889,
+   "sum": 6.096916799957398
+  },
+  "databases": 76
+ }
+}

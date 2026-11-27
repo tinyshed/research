@@ -1,0 +1,304 @@
+lemmekey on spider: F1 0.885
+lemmekey on bird: F1 0.829
+== spider
+-- all declared keys
+lemmekey                  911 keys P 0.901 R 0.869 F1 0.885 [0.849, 0.916] macro 0.891
+ind [K]                   911 keys P 0.435 R 0.655 F1 0.523 [0.471, 0.577] macro 0.578  lemmekey minus it +0.362 [+0.297, +0.425]
+zhang [K]                 911 keys P 0.433 R 0.652 F1 0.520 [0.467, 0.575] macro 0.571  lemmekey minus it +0.365 [+0.300, +0.429]
+hopf [K]                  911 keys P 0.805 R 0.755 F1 0.779 [0.725, 0.833] macro 0.820  lemmekey minus it +0.106 [+0.057, +0.160]
+hopf, no names [K]        911 keys P 0.640 R 0.595 F1 0.617 [0.562, 0.667] macro 0.699  lemmekey minus it +0.268 [+0.209, +0.325]
+rostin [K]                911 keys P 0.860 R 0.552 F1 0.672 [0.622, 0.719] macro 0.643  lemmekey minus it +0.212 [+0.164, +0.261]
+rostin, no names [K]      911 keys P 0.674 R 0.419 F1 0.517 [0.455, 0.572] macro 0.487  lemmekey minus it +0.368 [+0.304, +0.439]
+ind [U]                   911 keys P 0.421 R 0.658 F1 0.513 [0.465, 0.564] macro 0.566  lemmekey minus it +0.372 [+0.308, +0.434]
+zhang [U]                 911 keys P 0.419 R 0.654 F1 0.510 [0.458, 0.562] macro 0.559  lemmekey minus it +0.374 [+0.312, +0.439]
+hopf [U]                  911 keys P 0.792 R 0.763 F1 0.777 [0.725, 0.828] macro 0.821  lemmekey minus it +0.108 [+0.060, +0.161]
+hopf, no names [U]        911 keys P 0.632 R 0.600 F1 0.616 [0.566, 0.663] macro 0.697  lemmekey minus it +0.269 [+0.210, +0.326]
+rostin [U]                911 keys P 0.816 R 0.604 F1 0.694 [0.652, 0.733] macro 0.662  lemmekey minus it +0.191 [+0.150, +0.233]
+rostin, no names [U]      911 keys P 0.667 R 0.415 F1 0.512 [0.454, 0.564] macro 0.488  lemmekey minus it +0.373 [+0.312, +0.443]
+lemmekey, filtered        911 keys P 0.929 R 0.851 F1 0.888 [0.854, 0.918] macro 0.883  lemmekey minus it -0.003 [-0.014, +0.009]
+lemmekey, promoted        911 keys P 0.636 R 0.929 F1 0.755 [0.729, 0.782] macro 0.754  lemmekey minus it +0.130 [+0.102, +0.159]
+lemmekey, both            911 keys P 0.645 R 0.910 F1 0.755 [0.728, 0.780] macro 0.749  lemmekey minus it +0.130 [+0.100, +0.161]
+-- declared keys with a non-empty column
+lemmekey                  841 keys P 0.902 R 0.878 F1 0.890 [0.852, 0.921] macro 0.895
+ind [K]                   841 keys P 0.435 R 0.710 F1 0.540 [0.484, 0.591] macro 0.599  lemmekey minus it +0.350 [+0.284, +0.418]
+zhang [K]                 841 keys P 0.433 R 0.706 F1 0.537 [0.478, 0.590] macro 0.592  lemmekey minus it +0.353 [+0.286, +0.420]
+hopf [K]                  841 keys P 0.805 R 0.818 F1 0.811 [0.756, 0.860] macro 0.849  lemmekey minus it +0.078 [+0.034, +0.128]
+hopf, no names [K]        841 keys P 0.640 R 0.644 F1 0.642 [0.594, 0.692] macro 0.724  lemmekey minus it +0.248 [+0.189, +0.304]
+rostin [K]                841 keys P 0.860 R 0.598 F1 0.705 [0.664, 0.743] macro 0.666  lemmekey minus it +0.184 [+0.143, +0.229]
+rostin, no names [K]      841 keys P 0.674 R 0.454 F1 0.543 [0.485, 0.596] macro 0.506  lemmekey minus it +0.347 [+0.281, +0.415]
+ind [U]                   841 keys P 0.421 R 0.712 F1 0.529 [0.477, 0.576] macro 0.587  lemmekey minus it +0.361 [+0.294, +0.426]
+zhang [U]                 841 keys P 0.419 R 0.709 F1 0.526 [0.473, 0.575] macro 0.580  lemmekey minus it +0.363 [+0.294, +0.429]
+hopf [U]                  841 keys P 0.792 R 0.826 F1 0.809 [0.756, 0.856] macro 0.850  lemmekey minus it +0.081 [+0.035, +0.131]
+hopf, no names [U]        841 keys P 0.632 R 0.650 F1 0.641 [0.596, 0.689] macro 0.722  lemmekey minus it +0.249 [+0.188, +0.304]
+rostin [U]                841 keys P 0.816 R 0.654 F1 0.726 [0.690, 0.761] macro 0.687  lemmekey minus it +0.164 [+0.124, +0.204]
+rostin, no names [U]      841 keys P 0.667 R 0.449 F1 0.537 [0.483, 0.588] macro 0.506  lemmekey minus it +0.353 [+0.285, +0.417]
+lemmekey, filtered        841 keys P 0.933 R 0.857 F1 0.893 [0.859, 0.923] macro 0.886  lemmekey minus it -0.004 [-0.015, +0.009]
+lemmekey, promoted        841 keys P 0.624 R 0.942 F1 0.751 [0.724, 0.777] macro 0.752  lemmekey minus it +0.139 [+0.106, +0.169]
+lemmekey, both            841 keys P 0.633 R 0.922 F1 0.751 [0.723, 0.775] macro 0.746  lemmekey minus it +0.139 [+0.102, +0.171]
+{
+ "K": {
+  "declared keys with an inclusion into the declared table": 794,
+  "over all declared keys": 0.8715697036223929,
+  "over those with a non-empty column": 0.9441141498216409,
+  "inclusions": 3884,
+  "columns with an inclusion": 1372
+ },
+ "U": {
+  "declared keys with an inclusion into the declared table": 805,
+  "over all declared keys": 0.8836443468715697,
+  "over those with a non-empty column": 0.9571938168846611,
+  "inclusions": 4241,
+  "columns with an inclusion": 1424
+ }
+}
+{
+ "rostin [K]": {
+  "training inclusions": 4506,
+  "of them declared keys": 474,
+  "leaves": 128,
+  "depth": 14
+ },
+ "rostin, no names [K]": {
+  "training inclusions": 4506,
+  "of them declared keys": 474,
+  "leaves": 168,
+  "depth": 17
+ },
+ "rostin [U]": {
+  "training inclusions": 5136,
+  "of them declared keys": 476,
+  "leaves": 163,
+  "depth": 15
+ },
+ "rostin, no names [U]": {
+  "training inclusions": 5136,
+  "of them declared keys": 476,
+  "leaves": 213,
+  "depth": 20
+ },
+ "lemmekey's drawn keys by what the data say": {
+  "holds": 773,
+  "empty": 61,
+  "fails": 45
+ },
+ "keys promoted": 451
+}
+{
+ "tables": 1045,
+ "empty tables": 71,
+ "tables under ten rows": 451,
+ "declared keys": 911,
+ "with a non-empty column": 841,
+ "kept by the data": 809,
+ "broken by the data": 30,
+ "referenced column in K": 870,
+ "columns": 5247,
+ "empty columns": 370,
+ "inclusions into K": 3884,
+ "inclusions into U": 4241,
+ "columns in K": 794,
+ "columns in U": 2282,
+ "databases with an empty table": 9,
+ "databases with no row at all": 7,
+ "databases with a declared key on an empty column": 9,
+ "median rows of a database": 38.0,
+ "median rows of a table": 11.0
+}
+{
+ "rows": {
+  "median": 38.0,
+  "90th percentile": 231.30000000000032,
+  "largest": 553693.0,
+  "sum": 1849786.0
+ },
+ "cells": {
+  "median": 185.5,
+  "90th percentile": 1251.2000000000064,
+  "largest": 10440086.0,
+  "sum": 24076009.0
+ },
+ "bytes": {
+  "median": 28672.0,
+  "90th percentile": 81920.0,
+  "largest": 316854272.0,
+  "sum": 491782144.0
+ },
+ "seconds, ind on K": {
+  "median": 0.0014986500318627805,
+  "90th percentile": 0.006729980005184193,
+  "largest": 5.490630799962673,
+  "sum": 9.218836899613962
+ },
+ "seconds, ind on U as well": {
+  "median": 0.002723400015383959,
+  "90th percentile": 0.017336860008072122,
+  "largest": 5.521864399954211,
+  "sum": 13.646126199688297
+ },
+ "seconds, with the values": {
+  "median": 0.0036210000107530504,
+  "90th percentile": 0.025404149980750017,
+  "largest": 11.445848499948625,
+  "sum": 21.77562459994806
+ },
+ "seconds, the hybrid rules' own tests": {
+  "median": 5.299982149153948e-06,
+  "90th percentile": 3.7869997322559355e-05,
+  "largest": 0.08542479999596253,
+  "sum": 0.11880639992887154
+ },
+ "databases": 204
+}
+zhang top X % K {10: 0.22, 20: 0.274, 30: 0.363, 40: 0.423, 50: 0.446, 60: 0.496, 70: 0.517, 80: 0.526, 90: 0.526, 100: 0.52}
+zhang top X % U {10: 0.197, 20: 0.252, 30: 0.332, 40: 0.399, 50: 0.431, 60: 0.479, 70: 0.506, 80: 0.516, 90: 0.515, 100: 0.51}
+== bird
+-- all declared keys
+lemmekey                  606 keys P 0.861 R 0.799 F1 0.829 [0.759, 0.890] macro 0.784
+ind [K]                   606 keys P 0.465 R 0.724 F1 0.566 [0.512, 0.637] macro 0.599  lemmekey minus it +0.263 [+0.194, +0.330]
+zhang [K]                 606 keys P 0.458 R 0.715 F1 0.558 [0.500, 0.631] macro 0.597  lemmekey minus it +0.270 [+0.198, +0.344]
+hopf [K]                  606 keys P 0.708 R 0.672 F1 0.689 [0.605, 0.766] macro 0.684  lemmekey minus it +0.140 [+0.055, +0.246]
+hopf, no names [K]        606 keys P 0.653 R 0.642 F1 0.647 [0.570, 0.730] macro 0.671  lemmekey minus it +0.182 [+0.090, +0.289]
+rostin [K]                606 keys P 0.864 R 0.589 F1 0.701 [0.609, 0.777] macro 0.648  lemmekey minus it +0.128 [+0.017, +0.255]
+rostin, no names [K]      606 keys P 0.828 R 0.462 F1 0.593 [0.506, 0.693] macro 0.559  lemmekey minus it +0.236 [+0.099, +0.352]
+ind [U]                   606 keys P 0.439 R 0.701 F1 0.540 [0.481, 0.623] macro 0.594  lemmekey minus it +0.289 [+0.204, +0.357]
+zhang [U]                 606 keys P 0.433 R 0.691 F1 0.532 [0.470, 0.616] macro 0.592  lemmekey minus it +0.296 [+0.208, +0.372]
+hopf [U]                  606 keys P 0.707 R 0.672 F1 0.689 [0.602, 0.769] macro 0.690  lemmekey minus it +0.140 [+0.054, +0.247]
+hopf, no names [U]        606 keys P 0.619 R 0.617 F1 0.618 [0.534, 0.726] macro 0.674  lemmekey minus it +0.211 [+0.097, +0.313]
+rostin [U]                606 keys P 0.785 R 0.500 F1 0.611 [0.534, 0.685] macro 0.580  lemmekey minus it +0.218 [+0.106, +0.325]
+rostin, no names [U]      606 keys P 0.700 R 0.447 F1 0.546 [0.476, 0.630] macro 0.545  lemmekey minus it +0.283 [+0.190, +0.372]
+lemmekey, filtered        606 keys P 0.897 R 0.650 F1 0.754 [0.675, 0.825] macro 0.687  lemmekey minus it +0.075 [+0.015, +0.155]
+lemmekey, promoted        606 keys P 0.576 R 0.858 F1 0.690 [0.581, 0.786] macro 0.710  lemmekey minus it +0.139 [+0.081, +0.196]
+lemmekey, both            606 keys P 0.552 R 0.710 F1 0.621 [0.524, 0.713] macro 0.622  lemmekey minus it +0.208 [+0.130, +0.286]
+-- declared keys with a non-empty column
+lemmekey                  601 keys P 0.862 R 0.799 F1 0.829 [0.761, 0.890] macro 0.784
+ind [K]                   601 keys P 0.465 R 0.730 F1 0.568 [0.513, 0.638] macro 0.599  lemmekey minus it +0.261 [+0.194, +0.328]
+zhang [K]                 601 keys P 0.458 R 0.720 F1 0.560 [0.501, 0.633] macro 0.597  lemmekey minus it +0.269 [+0.197, +0.343]
+hopf [K]                  601 keys P 0.708 R 0.677 F1 0.692 [0.607, 0.769] macro 0.685  lemmekey minus it +0.137 [+0.054, +0.245]
+hopf, no names [K]        601 keys P 0.653 R 0.647 F1 0.650 [0.572, 0.732] macro 0.672  lemmekey minus it +0.179 [+0.090, +0.288]
+rostin [K]                601 keys P 0.864 R 0.594 F1 0.704 [0.612, 0.781] macro 0.649  lemmekey minus it +0.125 [+0.014, +0.256]
+rostin, no names [K]      601 keys P 0.828 R 0.466 F1 0.596 [0.510, 0.695] macro 0.560  lemmekey minus it +0.233 [+0.098, +0.350]
+ind [U]                   601 keys P 0.439 R 0.707 F1 0.542 [0.484, 0.623] macro 0.594  lemmekey minus it +0.287 [+0.207, +0.354]
+zhang [U]                 601 keys P 0.433 R 0.697 F1 0.534 [0.472, 0.617] macro 0.592  lemmekey minus it +0.295 [+0.211, +0.370]
+hopf [U]                  601 keys P 0.707 R 0.677 F1 0.692 [0.604, 0.771] macro 0.690  lemmekey minus it +0.137 [+0.052, +0.246]
+hopf, no names [U]        601 keys P 0.619 R 0.622 F1 0.621 [0.536, 0.727] macro 0.675  lemmekey minus it +0.208 [+0.097, +0.310]
+rostin [U]                601 keys P 0.785 R 0.504 F1 0.614 [0.537, 0.686] macro 0.581  lemmekey minus it +0.215 [+0.104, +0.324]
+rostin, no names [U]      601 keys P 0.700 R 0.451 F1 0.549 [0.480, 0.630] macro 0.545  lemmekey minus it +0.280 [+0.189, +0.368]
+lemmekey, filtered        601 keys P 0.899 R 0.649 F1 0.754 [0.677, 0.826] macro 0.688  lemmekey minus it +0.075 [+0.016, +0.155]
+lemmekey, promoted        601 keys P 0.575 R 0.859 F1 0.689 [0.580, 0.787] macro 0.711  lemmekey minus it +0.140 [+0.081, +0.198]
+lemmekey, both            601 keys P 0.550 R 0.709 F1 0.620 [0.524, 0.710] macro 0.623  lemmekey minus it +0.209 [+0.132, +0.287]
+{
+ "K": {
+  "declared keys with an inclusion into the declared table": 474,
+  "over all declared keys": 0.7821782178217822,
+  "over those with a non-empty column": 0.7886855241264559,
+  "inclusions": 4506,
+  "columns with an inclusion": 945
+ },
+ "U": {
+  "declared keys with an inclusion into the declared table": 476,
+  "over all declared keys": 0.7854785478547854,
+  "over those with a non-empty column": 0.7920133111480865,
+  "inclusions": 5136,
+  "columns with an inclusion": 968
+ }
+}
+{
+ "rostin [K]": {
+  "training inclusions": 3884,
+  "of them declared keys": 793,
+  "leaves": 176,
+  "depth": 23
+ },
+ "rostin, no names [K]": {
+  "training inclusions": 3884,
+  "of them declared keys": 793,
+  "leaves": 433,
+  "depth": 24
+ },
+ "rostin [U]": {
+  "training inclusions": 4241,
+  "of them declared keys": 804,
+  "leaves": 234,
+  "depth": 22
+ },
+ "rostin, no names [U]": {
+  "training inclusions": 4241,
+  "of them declared keys": 804,
+  "leaves": 468,
+  "depth": 27
+ },
+ "lemmekey's drawn keys by what the data say": {
+  "fails": 123,
+  "holds": 434,
+  "empty": 5
+ },
+ "keys promoted": 340
+}
+{
+ "tables": 581,
+ "empty tables": 2,
+ "tables under ten rows": 51,
+ "declared keys": 606,
+ "with a non-empty column": 601,
+ "kept by the data": 496,
+ "broken by the data": 105,
+ "referenced column in K": 578,
+ "columns": 4171,
+ "empty columns": 36,
+ "inclusions into K": 4506,
+ "inclusions into U": 5136,
+ "columns in K": 462,
+ "columns in U": 782,
+ "databases with an empty table": 2,
+ "databases with no row at all": 0,
+ "databases with a declared key on an empty column": 3,
+ "median rows of a database": 90199.0,
+ "median rows of a table": 775.0
+}
+{
+ "rows": {
+  "median": 90199.0,
+  "90th percentile": 4737691.0,
+  "largest": 157378539.0,
+  "sum": 280581646.0
+ },
+ "cells": {
+  "median": 804581.5,
+  "90th percentile": 21632939.0,
+  "largest": 497110537.0,
+  "sum": 1417437648.0
+ },
+ "bytes": {
+  "median": 11511808.0,
+  "90th percentile": 606878208.0,
+  "largest": 4497768448.0,
+  "sum": 22677637120.0
+ },
+ "seconds, ind on K": {
+  "median": 0.20633404998807237,
+  "90th percentile": 6.799785600014729,
+  "largest": 188.73301309999079,
+  "sum": 476.66622670012293
+ },
+ "seconds, ind on U as well": {
+  "median": 0.35307189999730326,
+  "90th percentile": 8.12162325004465,
+  "largest": 280.17583619995276,
+  "sum": 680.6029990001116
+ },
+ "seconds, with the values": {
+  "median": 0.4880575000133831,
+  "90th percentile": 19.288016800041078,
+  "largest": 675.9944496999378,
+  "sum": 1372.0465252003632
+ },
+ "seconds, the hybrid rules' own tests": {
+  "median": 2.7750007575377822e-05,
+  "90th percentile": 0.048012099985498935,
+  "largest": 5.132919900002889,
+  "sum": 6.096916799957398
+ },
+ "databases": 76
+}
+zhang top X % K {10: 0.251, 20: 0.386, 30: 0.502, 40: 0.562, 50: 0.588, 60: 0.613, 70: 0.606, 80: 0.591, 90: 0.574, 100: 0.558}
+zhang top X % U {10: 0.25, 20: 0.377, 30: 0.48, 40: 0.545, 50: 0.569, 60: 0.59, 70: 0.585, 80: 0.565, 90: 0.547, 100: 0.532}
