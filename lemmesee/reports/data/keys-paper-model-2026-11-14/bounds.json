@@ -1,0 +1,107 @@
+{
+ "model": "eleven--wide",
+ "threshold": 0.7980627105736274,
+ "frozen": {
+  "frozen at": "2026-11-10T00:21:24+00:00",
+  "files": {
+   "keys-first.ubj": "3467dc1db672b6bd464318fb1fc31e90b0e698b021253fea27043ccdd0180592",
+   "keys-second.txt": "d6e5466eef9b17021a7c286e76ddd1ac0226a1f2cc1e87ddcce2831749a64d8c",
+   "second.json": "d70c576e362e561a4120a0d781a724a3735df8695fe2bc4ab007b61002ef18cb"
+  }
+ },
+ "beside it": "nine-mended",
+ "eleven--wide": {
+  "schemapile test": {
+   "declared keys": 13455,
+   "keys among the candidates": 13029,
+   "coverage": 0.9683,
+   "F1 at the model's threshold": 0.7609,
+   "F1 at the best threshold for the set": 0.7607,
+   "the best threshold for the set": 0.78,
+   "F1 with each schema at its own best threshold": 0.8241
+  },
+  "spider": {
+   "declared keys": 911,
+   "keys among the candidates": 896,
+   "coverage": 0.9835,
+   "F1 at the model's threshold": 0.8849,
+   "F1 at the best threshold for the set": 0.8885,
+   "the best threshold for the set": 0.68,
+   "F1 with each schema at its own best threshold": 0.9249
+  },
+  "bird": {
+   "declared keys": 606,
+   "keys among the candidates": 587,
+   "coverage": 0.9686,
+   "F1 at the model's threshold": 0.8271,
+   "F1 at the best threshold for the set": 0.8285,
+   "the best threshold for the set": 0.84,
+   "F1 with each schema at its own best threshold": 0.8555
+  },
+  "ctu": {
+   "declared keys": 1854,
+   "keys among the candidates": 1844,
+   "coverage": 0.9946,
+   "F1 at the model's threshold": 0.6639,
+   "F1 at the best threshold for the set": 0.6792,
+   "the best threshold for the set": 0.36,
+   "F1 with each schema at its own best threshold": 0.722
+  },
+  "livesqlbench (development)": {
+   "declared keys": 299,
+   "keys among the candidates": 286,
+   "coverage": 0.9565,
+   "F1 at the model's threshold": 0.5621,
+   "F1 at the best threshold for the set": 0.6354,
+   "the best threshold for the set": 0.32,
+   "F1 with each schema at its own best threshold": 0.6922
+  }
+ },
+ "nine-mended": {
+  "schemapile test": {
+   "declared keys": 13455,
+   "keys among the candidates": 13029,
+   "coverage": 0.9683,
+   "F1 at the model's threshold": 0.7315,
+   "F1 at the best threshold for the set": 0.7318,
+   "the best threshold for the set": 0.82,
+   "F1 with each schema at its own best threshold": 0.8052
+  },
+  "spider": {
+   "declared keys": 911,
+   "keys among the candidates": 896,
+   "coverage": 0.9835,
+   "F1 at the model's threshold": 0.8797,
+   "F1 at the best threshold for the set": 0.8863,
+   "the best threshold for the set": 0.72,
+   "F1 with each schema at its own best threshold": 0.924
+  },
+  "bird": {
+   "declared keys": 606,
+   "keys among the candidates": 587,
+   "coverage": 0.9686,
+   "F1 at the model's threshold": 0.8132,
+   "F1 at the best threshold for the set": 0.8133,
+   "the best threshold for the set": 0.74,
+   "F1 with each schema at its own best threshold": 0.851
+  },
+  "ctu": {
+   "declared keys": 1854,
+   "keys among the candidates": 1844,
+   "coverage": 0.9946,
+   "F1 at the model's threshold": 0.6626,
+   "F1 at the best threshold for the set": 0.6746,
+   "the best threshold for the set": 0.7,
+   "F1 with each schema at its own best threshold": 0.7774
+  },
+  "livesqlbench (development)": {
+   "declared keys": 299,
+   "keys among the candidates": 286,
+   "coverage": 0.9565,
+   "F1 at the model's threshold": 0.5421,
+   "F1 at the best threshold for the set": 0.6069,
+   "the best threshold for the set": 0.54,
+   "F1 with each schema at its own best threshold": 0.6701
+  }
+ }
+}

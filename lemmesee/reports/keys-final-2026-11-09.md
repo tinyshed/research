@@ -12,6 +12,10 @@ main table against round 1s's four language models, and those models asked
 on the fresh set. No model is chosen here and none was fitted. Raw output in
 [data/keys-final-2026-11-09/](data/keys-final-2026-11-09/).
 
+**Continued in [keys-paper-model-2026-11-14.md](keys-paper-model-2026-11-14.md)**:
+the paper's model is `eleven--wide` since 14 November, measured there with
+`nine-mended` beside it; the figures below stay `nine-mended`'s.
+
 Every F1 is over every declared one-column key unless a row says otherwise;
 every interval a 95 % percentile interval of 1 000 resamples of databases
 (seed 20261101), a difference resampling both arms together.

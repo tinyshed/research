@@ -1,0 +1,3439 @@
+{
+ "plain-a-db": {
+  "databases": 718,
+  "keys": 16399,
+  "eleven--wide": {
+   "databases": 718,
+   "keys": 16399,
+   "precision": 0.7735981159697027,
+   "recall": 0.7411427526068662,
+   "f1": 0.7570227343506695,
+   "f1_95": [
+    0.7272309672969025,
+    0.7873059721679712
+   ],
+   "macro f1": 0.8025053583492306,
+   "by tables": {
+    "5-9": {
+     "databases": 248,
+     "keys": 1569,
+     "precision": 0.845398773006135,
+     "recall": 0.8782664117272148,
+     "f1": 0.8615192247577368,
+     "macro f1": 0.8596620071299563
+    },
+    "10-19": {
+     "databases": 246,
+     "keys": 3527,
+     "precision": 0.8311759845772514,
+     "recall": 0.8556847178905586,
+     "f1": 0.8432523051131601,
+     "macro f1": 0.8217499194739947
+    },
+    "20-39": {
+     "databases": 156,
+     "keys": 4782,
+     "precision": 0.822,
+     "recall": 0.773525721455458,
+     "f1": 0.7970265029088558,
+     "macro f1": 0.749482224821628
+    },
+    "40-99": {
+     "databases": 56,
+     "keys": 4026,
+     "precision": 0.7504211117349804,
+     "recall": 0.6639344262295082,
+     "f1": 0.7045334739061676,
+     "macro f1": 0.6692392552522027
+    },
+    "100+": {
+     "databases": 12,
+     "keys": 2495,
+     "precision": 0.5804020100502513,
+     "recall": 0.5555110220440882,
+     "f1": 0.5676838009420437,
+     "macro f1": 0.5379636641348734
+    }
+   },
+   "minus base, f1": 0.054889522790880774,
+   "minus base, f1_95": [
+    0.03829152597152468,
+    0.07375888594610824
+   ],
+   "minus base, macro f1": 0.046600995488892294,
+   "minus base, macro f1_95": [
+    0.03768817469004331,
+    0.05637127813050438
+   ]
+  },
+  "nine-mended": {
+   "databases": 718,
+   "keys": 16399,
+   "precision": 0.7548215162353601,
+   "recall": 0.6563205073480091,
+   "f1": 0.7021332115597887,
+   "f1_95": [
+    0.6575874086486272,
+    0.7440718333922005
+   ],
+   "macro f1": 0.7559043628603384,
+   "by tables": {
+    "5-9": {
+     "databases": 248,
+     "keys": 1569,
+     "precision": 0.849426063470628,
+     "recall": 0.8017845761631612,
+     "f1": 0.8249180327868851,
+     "macro f1": 0.812993244475193
+    },
+    "10-19": {
+     "databases": 246,
+     "keys": 3527,
+     "precision": 0.8285543608124253,
+     "recall": 0.7865041111426141,
+     "f1": 0.8069818181818182,
+     "macro f1": 0.7750389959419637
+    },
+    "20-39": {
+     "databases": 156,
+     "keys": 4782,
+     "precision": 0.8237864077669903,
+     "recall": 0.7097448766206608,
+     "f1": 0.7625252752190519,
+     "macro f1": 0.7120625583125914
+    },
+    "40-99": {
+     "databases": 56,
+     "keys": 4026,
+     "precision": 0.7482131254061078,
+     "recall": 0.5720317933432687,
+     "f1": 0.648367117117117,
+     "macro f1": 0.6054641895890892
+    },
+    "100+": {
+     "databases": 12,
+     "keys": 2495,
+     "precision": 0.4632616487455197,
+     "recall": 0.41442885771543087,
+     "f1": 0.437486778083351,
+     "macro f1": 0.45580509903322813
+    }
+   }
+  },
+  "claude-haiku-5-5": {
+   "databases": 718,
+   "keys": 16399,
+   "precision": 0.7837345003646973,
+   "recall": 0.9173120312214159,
+   "f1": 0.8452785660101706,
+   "f1_95": [
+    0.8078427978381765,
+    0.8746796500179272
+   ],
+   "macro f1": 0.8864157847093885,
+   "by tables": {
+    "5-9": {
+     "databases": 248,
+     "keys": 1569,
+     "precision": 0.8656215005599104,
+     "recall": 0.9853409815168898,
+     "f1": 0.9216095380029805,
+     "macro f1": 0.9211888526988078
+    },
+    "10-19": {
+     "databases": 246,
+     "keys": 3527,
+     "precision": 0.8215297450424929,
+     "recall": 0.9866742273887156,
+     "f1": 0.8965606080123663,
+     "macro f1": 0.8928174751875453
+    },
+    "20-39": {
+     "databases": 156,
+     "keys": 4782,
+     "precision": 0.8009967348341639,
+     "recall": 0.9746967795901297,
+     "f1": 0.8793510046222054,
+     "macro f1": 0.8647086020859928
+    },
+    "40-99": {
+     "databases": 56,
+     "keys": 4026,
+     "precision": 0.7617739403453689,
+     "recall": 0.9642324888226528,
+     "f1": 0.8511291383468538,
+     "macro f1": 0.8304434258158996
+    },
+    "100+": {
+     "databases": 12,
+     "keys": 2495,
+     "precision": 0.6530793088170137,
+     "recall": 0.5907815631262525,
+     "f1": 0.6203703703703703,
+     "macro f1": 0.5799354403996034
+    }
+   },
+   "eleven--wide minus this, f1": -0.08825583165950113,
+   "eleven--wide minus this, f1_95": [
+    -0.10955262677791194,
+    -0.06321615833072425
+   ],
+   "eleven--wide minus this, macro f1": -0.08391042636015789,
+   "eleven--wide minus this, macro f1_95": [
+    -0.09757637092404982,
+    -0.07014024890936382
+   ],
+   "eleven--wide minus this, precision": -0.010136384394994535,
+   "eleven--wide minus this, precision_95": [
+    -0.056903366440061644,
+    0.025620352016302562
+   ],
+   "eleven--wide minus this, recall": -0.17616927861454967,
+   "eleven--wide minus this, recall_95": [
+    -0.23860594396511586,
+    -0.10027042673156328
+   ],
+   "40 tables or more": {
+    "databases": 68,
+    "keys": 6521,
+    "precision": 0.7284101727186183,
+    "recall": 0.8213464192608496,
+    "f1": 0.7720916822834077,
+    "f1_95": [
+     0.6887932800498274,
+     0.8415494472424979
+    ],
+    "macro f1": 0.7862361342718472
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.12114147780902718,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.18259583605884067,
+    -0.053361774211552256
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 2,
+    "keys naming nothing": 7
+   },
+   "usage": {
+    "replies": 718,
+    "input tokens": 2364153,
+    "output tokens": 1276655,
+    "reasoning tokens": 635680,
+    "finished otherwise than at the end": 2,
+    "answered by": [
+     "claude-haiku-5-5"
+    ],
+    "batches": 1,
+    "asked a request at a time": 0
+   }
+  },
+  "claude-sonnet-5-5": {
+   "databases": 718,
+   "keys": 16399,
+   "precision": 0.7966553046442266,
+   "recall": 0.9121287883407525,
+   "f1": 0.8504904051172707,
+   "f1_95": [
+    0.8095815637677395,
+    0.8842437600721234
+   ],
+   "macro f1": 0.8960050910406182,
+   "by tables": {
+    "5-9": {
+     "databases": 248,
+     "keys": 1569,
+     "precision": 0.8847689674843126,
+     "recall": 0.988527724665392,
+     "f1": 0.933774834437086,
+     "macro f1": 0.9344903676170231
+    },
+    "10-19": {
+     "databases": 246,
+     "keys": 3527,
+     "precision": 0.840356368889959,
+     "recall": 0.989509498157074,
+     "f1": 0.9088541666666666,
+     "macro f1": 0.9077825371306146
+    },
+    "20-39": {
+     "databases": 156,
+     "keys": 4782,
+     "precision": 0.818994217627475,
+     "recall": 0.9774153074027604,
+     "f1": 0.8912193726761369,
+     "macro f1": 0.8720949603403784
+    },
+    "40-99": {
+     "databases": 56,
+     "keys": 4026,
+     "precision": 0.775959723096287,
+     "recall": 0.9187779433681073,
+     "f1": 0.8413510747185261,
+     "macro f1": 0.8030324102042482
+    },
+    "100+": {
+     "databases": 12,
+     "keys": 2495,
+     "precision": 0.6444073455759599,
+     "recall": 0.6188376753507014,
+     "f1": 0.631363729298712,
+     "macro f1": 0.6039092732895056
+    }
+   },
+   "eleven--wide minus this, f1": -0.09346767076660123,
+   "eleven--wide minus this, f1_95": [
+    -0.12046161183078856,
+    -0.06282579476140099
+   ],
+   "eleven--wide minus this, macro f1": -0.09349973269138756,
+   "eleven--wide minus this, macro f1_95": [
+    -0.1073948917454709,
+    -0.07989557134525546
+   ],
+   "eleven--wide minus this, precision": -0.023057188674523887,
+   "eleven--wide minus this, precision_95": [
+    -0.0716656636879741,
+    0.020051557482916267
+   ],
+   "eleven--wide minus this, recall": -0.17098603573388627,
+   "eleven--wide minus this, recall_95": [
+    -0.2335253973293084,
+    -0.09739860435119034
+   ],
+   "40 tables or more": {
+    "databases": 68,
+    "keys": 6521,
+    "precision": 0.7319558844059751,
+    "recall": 0.8040177886827173,
+    "f1": 0.7662964045600701,
+    "f1_95": [
+     0.6750269580760263,
+     0.8450375726641147
+    ],
+    "macro f1": 0.7678930331016466
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.11534620008568952,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.18418403355881896,
+    -0.035075096944728594
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 5,
+    "keys naming nothing": 0
+   },
+   "usage": {
+    "replies": 718,
+    "input tokens": 2364153,
+    "output tokens": 753135,
+    "reasoning tokens": 134511,
+    "finished otherwise than at the end": 2,
+    "answered by": [
+     "claude-sonnet-5-5"
+    ],
+    "batches": 1,
+    "asked a request at a time": 0
+   }
+  },
+  "deepseek-v4.1-flash-1017": {
+   "databases": 718,
+   "keys": 16399,
+   "precision": 0.8013417384766641,
+   "recall": 0.844929568876151,
+   "f1": 0.8225586227367171,
+   "f1_95": [
+    0.7813069868034792,
+    0.8587423781361473
+   ],
+   "macro f1": 0.8729381958316726,
+   "by tables": {
+    "5-9": {
+     "databases": 248,
+     "keys": 1569,
+     "precision": 0.877771461057419,
+     "recall": 0.9840662842574889,
+     "f1": 0.9278846153846153,
+     "macro f1": 0.9268348234804149
+    },
+    "10-19": {
+     "databases": 246,
+     "keys": 3527,
+     "precision": 0.8357487922705314,
+     "recall": 0.9810036858519988,
+     "f1": 0.9025694535020217,
+     "macro f1": 0.8945410663266727
+    },
+    "20-39": {
+     "databases": 156,
+     "keys": 4782,
+     "precision": 0.8041470639484231,
+     "recall": 0.965077373483898,
+     "f1": 0.8772930329816558,
+     "macro f1": 0.8539268845023934
+    },
+    "40-99": {
+     "databases": 56,
+     "keys": 4026,
+     "precision": 0.761049723756906,
+     "recall": 0.8211624441132638,
+     "f1": 0.7899641577060932,
+     "macro f1": 0.7107193396436848
+    },
+    "100+": {
+     "databases": 12,
+     "keys": 2495,
+     "precision": 0.7112299465240641,
+     "recall": 0.37314629258517035,
+     "f1": 0.48948475289169296,
+     "macro f1": 0.3203840887680803
+    }
+   },
+   "eleven--wide minus this, f1": -0.06553588838604762,
+   "eleven--wide minus this, f1_95": [
+    -0.09047252426263902,
+    -0.0371933561525765
+   ],
+   "eleven--wide minus this, macro f1": -0.070432837482442,
+   "eleven--wide minus this, macro f1_95": [
+    -0.08575628196379485,
+    -0.05628002027901816
+   ],
+   "eleven--wide minus this, precision": -0.027743622506961385,
+   "eleven--wide minus this, precision_95": [
+    -0.07577585613576915,
+    0.011131979855164459
+   ],
+   "eleven--wide minus this, recall": -0.10378681626928477,
+   "eleven--wide minus this, recall_95": [
+    -0.17183305323364564,
+    -0.02949039514897629
+   ],
+   "40 tables or more": {
+    "databases": 68,
+    "keys": 6521,
+    "precision": 0.7495135326375376,
+    "recall": 0.6497469713234166,
+    "f1": 0.6960735994742895,
+    "f1_95": [
+     0.5915725453420805,
+     0.7876167970290163
+    ],
+    "macro f1": 0.6418366483126958
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.04512339499990892,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.1225780563357148,
+    0.03997625706322088
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 19,
+    "keys naming nothing": 8
+   },
+   "usage": {
+    "replies": 718,
+    "input tokens": 1619187,
+    "output tokens": 5897819,
+    "reasoning tokens": 5567314,
+    "finished otherwise than at the end": 19,
+    "answered by": [
+     "deepseek/deepseek-v4.1-flash-1017"
+    ],
+    "batches": 3,
+    "asked a request at a time": 0
+   }
+  },
+  "gemini-3.5-flash-lite": {
+   "databases": 718,
+   "keys": 16399,
+   "precision": 0.7420153383166683,
+   "recall": 0.9321909872553205,
+   "f1": 0.8263019918380585,
+   "f1_95": [
+    0.7891543091075744,
+    0.8563363842438045
+   ],
+   "macro f1": 0.8679979728105035,
+   "by tables": {
+    "5-9": {
+     "databases": 248,
+     "keys": 1569,
+     "precision": 0.8314363143631436,
+     "recall": 0.9776927979604844,
+     "f1": 0.8986526069127123,
+     "macro f1": 0.9034611117923653
+    },
+    "10-19": {
+     "databases": 246,
+     "keys": 3527,
+     "precision": 0.8178368121442126,
+     "recall": 0.9776013609299689,
+     "f1": 0.8906108743381118,
+     "macro f1": 0.8827826099116463
+    },
+    "20-39": {
+     "databases": 156,
+     "keys": 4782,
+     "precision": 0.7699866755496336,
+     "recall": 0.966750313676286,
+     "f1": 0.8572223252364176,
+     "macro f1": 0.8335876784477719
+    },
+    "40-99": {
+     "databases": 56,
+     "keys": 4026,
+     "precision": 0.737054085155351,
+     "recall": 0.9545454545454546,
+     "f1": 0.8318181818181819,
+     "macro f1": 0.7999116344835452
+    },
+    "100+": {
+     "databases": 12,
+     "keys": 2495,
+     "precision": 0.5534155883238038,
+     "recall": 0.7370741482965932,
+     "f1": 0.6321760055001718,
+     "macro f1": 0.5970781121865796
+    }
+   },
+   "eleven--wide minus this, f1": -0.06927925748738906,
+   "eleven--wide minus this, f1_95": [
+    -0.093207261188255,
+    -0.041638391751000293
+   ],
+   "eleven--wide minus this, macro f1": -0.06549261446127286,
+   "eleven--wide minus this, macro f1_95": [
+    -0.07956553191331035,
+    -0.050654095346026606
+   ],
+   "eleven--wide minus this, precision": 0.03158277765303441,
+   "eleven--wide minus this, precision_95": [
+    -0.0189807430009671,
+    0.07505066689180695
+   ],
+   "eleven--wide minus this, recall": -0.19104823464845422,
+   "eleven--wide minus this, recall_95": [
+    -0.24216156599995703,
+    -0.12758073630516184
+   ],
+   "40 tables or more": {
+    "databases": 68,
+    "keys": 6521,
+    "precision": 0.665573386435516,
+    "recall": 0.8713387517251955,
+    "f1": 0.754681896666224,
+    "f1_95": [
+     0.6851419731521575,
+     0.8249201822804594
+    ],
+    "macro f1": 0.764117483489963
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.10373169219184342,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.1615197256310507,
+    -0.04019499450643087
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 1,
+    "keys naming nothing": 340
+   },
+   "usage": {
+    "replies": 718,
+    "input tokens": 1681123,
+    "output tokens": 584037,
+    "reasoning tokens": 0,
+    "finished otherwise than at the end": 1,
+    "answered by": [
+     "google/gemini-3.5-flash-lite"
+    ],
+    "batches": 2,
+    "asked a request at a time": 518
+   }
+  },
+  "gpt-6-luna": {
+   "databases": 718,
+   "keys": 16399,
+   "precision": 0.6952309985096871,
+   "recall": 0.853405695469236,
+   "f1": 0.766240521229708,
+   "f1_95": [
+    0.7176873133442436,
+    0.8114898821902983
+   ],
+   "macro f1": 0.8387653101940534,
+   "by tables": {
+    "5-9": {
+     "databases": 248,
+     "keys": 1569,
+     "precision": 0.8579449747332959,
+     "recall": 0.9738687061822817,
+     "f1": 0.9122388059701493,
+     "macro f1": 0.9125996581441809
+    },
+    "10-19": {
+     "databases": 246,
+     "keys": 3527,
+     "precision": 0.7737449917511194,
+     "recall": 0.9308193932520555,
+     "f1": 0.845045045045045,
+     "macro f1": 0.8466970784543015
+    },
+    "20-39": {
+     "databases": 156,
+     "keys": 4782,
+     "precision": 0.7303102625298329,
+     "recall": 0.8958594730238394,
+     "f1": 0.8046581517655897,
+     "macro f1": 0.780216073706607
+    },
+    "40-99": {
+     "databases": 56,
+     "keys": 4026,
+     "precision": 0.6824415684759513,
+     "recall": 0.8775459513164431,
+     "f1": 0.7677931109420839,
+     "macro f1": 0.7256468494545892
+    },
+    "100+": {
+     "databases": 12,
+     "keys": 2495,
+     "precision": 0.44629448253346393,
+     "recall": 0.5478957915831664,
+     "f1": 0.49190356243252975,
+     "macro f1": 0.4392804276772953
+    }
+   },
+   "eleven--wide minus this, f1": -0.009217786879038514,
+   "eleven--wide minus this, f1_95": [
+    -0.0436471967055791,
+    0.03240092565849637
+   ],
+   "eleven--wide minus this, macro f1": -0.03625995184482278,
+   "eleven--wide minus this, macro f1_95": [
+    -0.05426206474232684,
+    -0.0168195375337998
+   ],
+   "eleven--wide minus this, precision": 0.07836711746001568,
+   "eleven--wide minus this, precision_95": [
+    0.019866771905471856,
+    0.12974960784066572
+   ],
+   "eleven--wide minus this, recall": -0.11226294286236971,
+   "eleven--wide minus this, recall_95": [
+    -0.17005314489604054,
+    -0.04359298768524603
+   ],
+   "40 tables or more": {
+    "databases": 68,
+    "keys": 6521,
+    "precision": 0.5946601941747572,
+    "recall": 0.7514184940959976,
+    "f1": 0.6639116591016868,
+    "f1_95": [
+     0.5680927266223903,
+     0.7553832874978018
+    ],
+    "macro f1": 0.6751115985527137
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.012961454627306246,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.09379047236633568,
+    0.08195690170796155
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 1892
+   },
+   "usage": {
+    "replies": 718,
+    "input tokens": 1532449,
+    "output tokens": 712378,
+    "reasoning tokens": 376771,
+    "finished otherwise than at the end": 0,
+    "answered by": [
+     "openai/gpt-6-luna"
+    ],
+    "batches": 3,
+    "asked a request at a time": 0
+   }
+  },
+  "gpt-6.1-terra": {
+   "databases": 718,
+   "keys": 16399,
+   "precision": 0.7674396320429283,
+   "recall": 0.9767668760290261,
+   "f1": 0.859542271471117,
+   "f1_95": [
+    0.8352889222815107,
+    0.8825553028119851
+   ],
+   "macro f1": 0.9000364132395283,
+   "by tables": {
+    "5-9": {
+     "databases": 248,
+     "keys": 1569,
+     "precision": 0.8862857142857142,
+     "recall": 0.988527724665392,
+     "f1": 0.9346188611027417,
+     "macro f1": 0.9355449040414641
+    },
+    "10-19": {
+     "databases": 246,
+     "keys": 3527,
+     "precision": 0.8370530357571394,
+     "recall": 0.9889424440034024,
+     "f1": 0.9066805302833377,
+     "macro f1": 0.9065169769248582
+    },
+    "20-39": {
+     "databases": 156,
+     "keys": 4782,
+     "precision": 0.8013369900582791,
+     "recall": 0.9776244249268089,
+     "f1": 0.8807460437076112,
+     "macro f1": 0.8714396961719759
+    },
+    "40-99": {
+     "databases": 56,
+     "keys": 4026,
+     "precision": 0.7480375263258664,
+     "recall": 0.970442126179831,
+     "f1": 0.8448480916855877,
+     "macro f1": 0.8332877592434327
+    },
+    "100+": {
+     "databases": 12,
+     "keys": 2495,
+     "precision": 0.6149307337095946,
+     "recall": 0.9607214428857715,
+     "f1": 0.7498826841858282,
+     "macro f1": 0.7165937549768953
+    }
+   },
+   "eleven--wide minus this, f1": -0.10251953712044748,
+   "eleven--wide minus this, f1_95": [
+    -0.12205178240057038,
+    -0.08203289573413698
+   ],
+   "eleven--wide minus this, macro f1": -0.09753105489029767,
+   "eleven--wide minus this, macro f1_95": [
+    -0.11087143243303961,
+    -0.08457721831289228
+   ],
+   "eleven--wide minus this, precision": 0.006158483926774427,
+   "eleven--wide minus this, precision_95": [
+    -0.014540043130349744,
+    0.026926458676691988
+   ],
+   "eleven--wide minus this, recall": -0.23562412342215988,
+   "eleven--wide minus this, recall_95": [
+    -0.26583593595143873,
+    -0.20421128082354864
+   ],
+   "40 tables or more": {
+    "databases": 68,
+    "keys": 6521,
+    "precision": 0.6911522859335599,
+    "recall": 0.9667228952614629,
+    "f1": 0.8060350338831351,
+    "f1_95": [
+     0.7614020909648949,
+     0.8535831048186252
+    ],
+    "macro f1": 0.8126946996669847
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.15508482940875457,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.19857314601475068,
+    -0.11005302566895572
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 1
+   },
+   "usage": {
+    "replies": 718,
+    "input tokens": 1532449,
+    "output tokens": 509167,
+    "reasoning tokens": 157434,
+    "finished otherwise than at the end": 0,
+    "answered by": [
+     "openai/gpt-6.1-terra"
+    ],
+    "batches": 2,
+    "asked a request at a time": 518
+   }
+  }
+ },
+ "style3-db": {
+  "databases": 100,
+  "keys": 1762,
+  "eleven--wide": {
+   "databases": 100,
+   "keys": 1762,
+   "precision": 0.8100137174211248,
+   "recall": 0.6702610669693531,
+   "f1": 0.7335403726708074,
+   "f1_95": [
+    0.6208637275971131,
+    0.840610768250944
+   ],
+   "macro f1": 0.8096454485544561,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 241,
+     "precision": 0.9247787610619469,
+     "recall": 0.8672199170124482,
+     "f1": 0.8950749464668094,
+     "macro f1": 0.8802664414081596
+    },
+    "10-19": {
+     "databases": 42,
+     "keys": 598,
+     "precision": 0.8611599297012302,
+     "recall": 0.8193979933110368,
+     "f1": 0.8397600685518424,
+     "macro f1": 0.8310873716362273
+    },
+    "20-39": {
+     "databases": 12,
+     "keys": 297,
+     "precision": 0.8388157894736842,
+     "recall": 0.8585858585858586,
+     "f1": 0.848585690515807,
+     "macro f1": 0.8173504979263596
+    },
+    "40-99": {
+     "databases": 7,
+     "keys": 335,
+     "precision": 0.6423357664233577,
+     "recall": 0.5253731343283582,
+     "f1": 0.5779967159277505,
+     "macro f1": 0.3613239860504299
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 291,
+     "precision": 0.6,
+     "recall": 0.17525773195876287,
+     "f1": 0.2712765957446808,
+     "macro f1": 0.2712765957446808
+    }
+   },
+   "minus base, f1": 0.011283319379271406,
+   "minus base, f1_95": [
+    -0.0028263092502310654,
+    0.024951089315979606
+   ],
+   "minus base, macro f1": 0.015202369200482457,
+   "minus base, macro f1_95": [
+    -0.012074533898261667,
+    0.04030943747078221
+   ]
+  },
+  "nine-mended": {
+   "databases": 100,
+   "keys": 1762,
+   "precision": 0.8067226890756303,
+   "recall": 0.6538024971623155,
+   "f1": 0.722257053291536,
+   "f1_95": [
+    0.6153495543196347,
+    0.8287966348874669
+   ],
+   "macro f1": 0.7944430793539736,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 241,
+     "precision": 0.9389671361502347,
+     "recall": 0.8298755186721992,
+     "f1": 0.881057268722467,
+     "macro f1": 0.8670590347797003
+    },
+    "10-19": {
+     "databases": 42,
+     "keys": 598,
+     "precision": 0.8605504587155963,
+     "recall": 0.7842809364548495,
+     "f1": 0.8206474190726158,
+     "macro f1": 0.8135451834952148
+    },
+    "20-39": {
+     "databases": 12,
+     "keys": 297,
+     "precision": 0.8406779661016949,
+     "recall": 0.835016835016835,
+     "f1": 0.8378378378378378,
+     "macro f1": 0.8071093417498648
+    },
+    "40-99": {
+     "databases": 7,
+     "keys": 335,
+     "precision": 0.6539923954372624,
+     "recall": 0.5134328358208955,
+     "f1": 0.5752508361204013,
+     "macro f1": 0.3327428170175282
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 291,
+     "precision": 0.5625,
+     "recall": 0.21649484536082475,
+     "f1": 0.31265508684863524,
+     "macro f1": 0.31265508684863524
+    }
+   }
+  },
+  "claude-haiku-5-5": {
+   "databases": 100,
+   "keys": 1762,
+   "precision": 0.766798418972332,
+   "recall": 0.8808172531214529,
+   "f1": 0.8198626518753301,
+   "f1_95": [
+    0.7547611477948968,
+    0.8953984403243299
+   ],
+   "macro f1": 0.8743802225572425,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 241,
+     "precision": 0.889763779527559,
+     "recall": 0.9377593360995851,
+     "f1": 0.913131313131313,
+     "macro f1": 0.9195810956221946
+    },
+    "10-19": {
+     "databases": 42,
+     "keys": 598,
+     "precision": 0.8689248895434463,
+     "recall": 0.9866220735785953,
+     "f1": 0.9240407204385278,
+     "macro f1": 0.9042085157533568
+    },
+    "20-39": {
+     "databases": 12,
+     "keys": 297,
+     "precision": 0.6735159817351598,
+     "recall": 0.9932659932659933,
+     "f1": 0.8027210884353742,
+     "macro f1": 0.8122288940374047
+    },
+    "40-99": {
+     "databases": 7,
+     "keys": 335,
+     "precision": 0.7033639143730887,
+     "recall": 0.6865671641791045,
+     "f1": 0.6948640483383686,
+     "macro f1": 0.5837830875523158
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 291,
+     "precision": 0.647239263803681,
+     "recall": 0.7250859106529209,
+     "f1": 0.6839546191247973,
+     "macro f1": 0.6839546191247973
+    }
+   },
+   "eleven--wide minus this, f1": -0.08632227920452273,
+   "eleven--wide minus this, f1_95": [
+    -0.15905815808222196,
+    -0.015470252126710066
+   ],
+   "eleven--wide minus this, macro f1": -0.06473477400278638,
+   "eleven--wide minus this, macro f1_95": [
+    -0.1009887271804315,
+    -0.027953251286851326
+   ],
+   "eleven--wide minus this, precision": 0.043215298448792794,
+   "eleven--wide minus this, precision_95": [
+    -0.021121974236157675,
+    0.10411350987331854
+   ],
+   "eleven--wide minus this, recall": -0.2105561861520998,
+   "eleven--wide minus this, recall_95": [
+    -0.3141789328426862,
+    -0.10650268027074265
+   ],
+   "40 tables or more": {
+    "databases": 8,
+    "keys": 626,
+    "precision": 0.6753445635528331,
+    "recall": 0.7044728434504792,
+    "f1": 0.689601250977326,
+    "f1_95": [
+     0.4363926646355753,
+     0.8564054034888667
+    ],
+    "macro f1": 0.596304528998876
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.22868754539356967,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.37765317738176957,
+    -0.07899235744107297
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 0
+   },
+   "usage": {
+    "replies": 100,
+    "input tokens": 246557,
+    "output tokens": 151280,
+    "reasoning tokens": 83153,
+    "finished otherwise than at the end": 0,
+    "answered by": [
+     "claude-haiku-5-5"
+    ],
+    "batches": 1,
+    "asked a request at a time": 0
+   }
+  },
+  "claude-sonnet-5-5": {
+   "databases": 100,
+   "keys": 1762,
+   "precision": 0.8105,
+   "recall": 0.9199772985244041,
+   "f1": 0.8617756512493354,
+   "f1_95": [
+    0.8078190489955196,
+    0.921012505385191
+   ],
+   "macro f1": 0.9061319551387723,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 241,
+     "precision": 0.9285714285714286,
+     "recall": 0.970954356846473,
+     "f1": 0.949290060851927,
+     "macro f1": 0.9556523772817115
+    },
+    "10-19": {
+     "databases": 42,
+     "keys": 598,
+     "precision": 0.8930722891566265,
+     "recall": 0.9916387959866221,
+     "f1": 0.9397781299524564,
+     "macro f1": 0.9223094999425153
+    },
+    "20-39": {
+     "databases": 12,
+     "keys": 297,
+     "precision": 0.7682291666666666,
+     "recall": 0.9932659932659933,
+     "f1": 0.8663729809104258,
+     "macro f1": 0.856910176820706
+    },
+    "40-99": {
+     "databases": 7,
+     "keys": 335,
+     "precision": 0.6701030927835051,
+     "recall": 0.7761194029850746,
+     "f1": 0.7192254495159061,
+     "macro f1": 0.6408258438322801
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 291,
+     "precision": 0.7660256410256411,
+     "recall": 0.8213058419243986,
+     "f1": 0.7927031509121061,
+     "macro f1": 0.7927031509121061
+    }
+   },
+   "eleven--wide minus this, f1": -0.128235278578528,
+   "eleven--wide minus this, f1_95": [
+    -0.2145237179050168,
+    -0.04868277360247834
+   ],
+   "eleven--wide minus this, macro f1": -0.09648650658431623,
+   "eleven--wide minus this, macro f1_95": [
+    -0.1347314282696901,
+    -0.06043374555346605
+   ],
+   "eleven--wide minus this, precision": -0.00048628257887517456,
+   "eleven--wide minus this, precision_95": [
+    -0.04617999915122198,
+    0.05189829781328663
+   ],
+   "eleven--wide minus this, recall": -0.24971623155505107,
+   "eleven--wide minus this, recall_95": [
+    -0.36351211144600626,
+    -0.13148427413107475
+   ],
+   "40 tables or more": {
+    "databases": 8,
+    "keys": 626,
+    "precision": 0.7128571428571429,
+    "recall": 0.7971246006389776,
+    "f1": 0.7526395173453997,
+    "f1_95": [
+     0.5346709906788666,
+     0.8708671267514592
+    ],
+    "macro f1": 0.6598105072172584
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.2917258117616433,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.48019472260873786,
+    -0.0933230940276488
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 0
+   },
+   "usage": {
+    "replies": 100,
+    "input tokens": 246557,
+    "output tokens": 90620,
+    "reasoning tokens": 24731,
+    "finished otherwise than at the end": 0,
+    "answered by": [
+     "claude-sonnet-5-5"
+    ],
+    "batches": 1,
+    "asked a request at a time": 0
+   }
+  },
+  "deepseek-v4.1-flash-1017": {
+   "databases": 100,
+   "keys": 1762,
+   "precision": 0.7777777777777778,
+   "recall": 0.8740068104426788,
+   "f1": 0.8230892570817746,
+   "f1_95": [
+    0.75450216263927,
+    0.893299512006236
+   ],
+   "macro f1": 0.8681182695967606,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 241,
+     "precision": 0.92,
+     "recall": 0.9543568464730291,
+     "f1": 0.9368635437881875,
+     "macro f1": 0.9463614489118357
+    },
+    "10-19": {
+     "databases": 42,
+     "keys": 598,
+     "precision": 0.8892261001517451,
+     "recall": 0.979933110367893,
+     "f1": 0.9323786793953859,
+     "macro f1": 0.9117228433724568
+    },
+    "20-39": {
+     "databases": 12,
+     "keys": 297,
+     "precision": 0.7865168539325843,
+     "recall": 0.9427609427609428,
+     "f1": 0.8575803981623277,
+     "macro f1": 0.801816658199653
+    },
+    "40-99": {
+     "databases": 7,
+     "keys": 335,
+     "precision": 0.5490196078431373,
+     "recall": 0.5014925373134328,
+     "f1": 0.5241809672386895,
+     "macro f1": 0.30676587891655255
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 291,
+     "precision": 0.6748166259168704,
+     "recall": 0.9484536082474226,
+     "f1": 0.7885714285714285,
+     "macro f1": 0.7885714285714285
+    }
+   },
+   "eleven--wide minus this, f1": -0.0895488844109672,
+   "eleven--wide minus this, f1_95": [
+    -0.18504401192722422,
+    -0.0006699820130917534
+   ],
+   "eleven--wide minus this, macro f1": -0.05847282104230456,
+   "eleven--wide minus this, macro f1_95": [
+    -0.09860191707609255,
+    -0.019240265086937706
+   ],
+   "eleven--wide minus this, precision": 0.032235939643347034,
+   "eleven--wide minus this, precision_95": [
+    -0.045802404849175936,
+    0.09587626727816549
+   ],
+   "eleven--wide minus this, recall": -0.20374574347332575,
+   "eleven--wide minus this, recall_95": [
+    -0.3792191973937942,
+    -0.028044091521720774
+   ],
+   "40 tables or more": {
+    "databases": 8,
+    "keys": 626,
+    "precision": 0.620979020979021,
+    "recall": 0.7092651757188498,
+    "f1": 0.6621923937360179,
+    "f1_95": [
+     0.2293619729841411,
+     0.7965050058368454
+    ],
+    "macro f1": 0.36699157262341203
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.20127868815226152,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.43577222029932955,
+    0.16734146698711047
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 3,
+    "keys naming nothing": 1
+   },
+   "usage": {
+    "replies": 100,
+    "input tokens": 173599,
+    "output tokens": 795762,
+    "reasoning tokens": 750755,
+    "finished otherwise than at the end": 3,
+    "answered by": [
+     "deepseek/deepseek-v4.1-flash-1017"
+    ],
+    "batches": 1,
+    "asked a request at a time": 0
+   }
+  },
+  "gemini-3.5-flash-lite": {
+   "databases": 100,
+   "keys": 1762,
+   "precision": 0.7612456747404844,
+   "recall": 0.8740068104426788,
+   "f1": 0.8137384412153236,
+   "f1_95": [
+    0.7121400630617373,
+    0.9066253474247676
+   ],
+   "macro f1": 0.885414667355039,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 241,
+     "precision": 0.930327868852459,
+     "recall": 0.941908713692946,
+     "f1": 0.9360824742268041,
+     "macro f1": 0.9298707758422152
+    },
+    "10-19": {
+     "databases": 42,
+     "keys": 598,
+     "precision": 0.8686567164179104,
+     "recall": 0.9732441471571907,
+     "f1": 0.917981072555205,
+     "macro f1": 0.9046869290740751
+    },
+    "20-39": {
+     "databases": 12,
+     "keys": 297,
+     "precision": 0.7320099255583127,
+     "recall": 0.9932659932659933,
+     "f1": 0.842857142857143,
+     "macro f1": 0.8521267475990745
+    },
+    "40-99": {
+     "databases": 7,
+     "keys": 335,
+     "precision": 0.5291479820627802,
+     "recall": 0.7044776119402985,
+     "f1": 0.6043533930857874,
+     "macro f1": 0.608293206876074
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 291,
+     "precision": 0.7692307692307693,
+     "recall": 0.6872852233676976,
+     "f1": 0.7259528130671505,
+     "macro f1": 0.7259528130671505
+    }
+   },
+   "eleven--wide minus this, f1": -0.08019806854451617,
+   "eleven--wide minus this, f1_95": [
+    -0.1707640000354332,
+    0.013665257364208035
+   ],
+   "eleven--wide minus this, macro f1": -0.07576921880058296,
+   "eleven--wide minus this, macro f1_95": [
+    -0.11033880435060642,
+    -0.04094782845337124
+   ],
+   "eleven--wide minus this, precision": 0.04876804268064039,
+   "eleven--wide minus this, precision_95": [
+    -0.032708346836154256,
+    0.16031082109577785
+   ],
+   "eleven--wide minus this, recall": -0.20374574347332575,
+   "eleven--wide minus this, recall_95": [
+    -0.29821300524268557,
+    -0.10508430339457381
+   ],
+   "40 tables or more": {
+    "databases": 8,
+    "keys": 626,
+    "precision": 0.6175637393767706,
+    "recall": 0.6964856230031949,
+    "f1": 0.6546546546546548,
+    "f1_95": [
+     0.3384000670032231,
+     0.8621878491409246
+    ],
+    "macro f1": 0.6230006576499585
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.1937409490708984,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.3879125614722835,
+    0.03912117966415038
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 15
+   },
+   "usage": {
+    "replies": 100,
+    "input tokens": 181810,
+    "output tokens": 58498,
+    "reasoning tokens": 0,
+    "finished otherwise than at the end": 0,
+    "answered by": [
+     "google/gemini-3.5-flash-lite"
+    ],
+    "batches": 1,
+    "asked a request at a time": 0
+   }
+  },
+  "gemini-3.8-flash": {
+   "databases": 100,
+   "keys": 1762,
+   "precision": 0.8532901833872708,
+   "recall": 0.8978433598183881,
+   "f1": 0.875,
+   "f1_95": [
+    0.818178431318462,
+    0.9367413584048654
+   ],
+   "macro f1": 0.9142416998425766,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 241,
+     "precision": 0.9322709163346613,
+     "recall": 0.970954356846473,
+     "f1": 0.951219512195122,
+     "macro f1": 0.9591804281781835
+    },
+    "10-19": {
+     "databases": 42,
+     "keys": 598,
+     "precision": 0.8998459167950693,
+     "recall": 0.9765886287625418,
+     "f1": 0.9366479550922213,
+     "macro f1": 0.9218388819770734
+    },
+    "20-39": {
+     "databases": 12,
+     "keys": 297,
+     "precision": 0.8647058823529412,
+     "recall": 0.98989898989899,
+     "f1": 0.9230769230769231,
+     "macro f1": 0.8984219601203494
+    },
+    "40-99": {
+     "databases": 7,
+     "keys": 335,
+     "precision": 0.7507598784194529,
+     "recall": 0.7373134328358208,
+     "f1": 0.7439759036144579,
+     "macro f1": 0.6718159419214059
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 291,
+     "precision": 0.7824561403508772,
+     "recall": 0.7663230240549829,
+     "f1": 0.7743055555555555,
+     "macro f1": 0.7743055555555555
+    }
+   },
+   "eleven--wide minus this, f1": -0.1414596273291926,
+   "eleven--wide minus this, f1_95": [
+    -0.21927297583562533,
+    -0.07454553897615271
+   ],
+   "eleven--wide minus this, macro f1": -0.10459625128812056,
+   "eleven--wide minus this, macro f1_95": [
+    -0.14089297244639706,
+    -0.06783022067403226
+   ],
+   "eleven--wide minus this, precision": -0.04327646596614598,
+   "eleven--wide minus this, precision_95": [
+    -0.08320932354062696,
+    1.3071041486771359e-05
+   ],
+   "eleven--wide minus this, recall": -0.22758229284903508,
+   "eleven--wide minus this, recall_95": [
+    -0.3351796860506173,
+    -0.11965987611825041
+   ],
+   "40 tables or more": {
+    "databases": 8,
+    "keys": 626,
+    "precision": 0.7654723127035831,
+    "recall": 0.7507987220447284,
+    "f1": 0.7580645161290323,
+    "f1_95": [
+     0.5151068642151009,
+     0.8932754511406197
+    ],
+    "macro f1": 0.6846271436256746
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.29715081054527587,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.4634304856534091,
+    -0.12233002521237821
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 0
+   },
+   "usage": {
+    "replies": 100,
+    "input tokens": 181810,
+    "output tokens": 343591,
+    "reasoning tokens": 293711,
+    "finished otherwise than at the end": 0,
+    "answered by": [
+     "google/gemini-3.8-flash"
+    ],
+    "batches": 1,
+    "asked a request at a time": 0
+   }
+  },
+  "gpt-6-luna": {
+   "databases": 100,
+   "keys": 1762,
+   "precision": 0.6947318908748824,
+   "recall": 0.8382519863791147,
+   "f1": 0.7597736625514403,
+   "f1_95": [
+    0.6587736053831128,
+    0.8533724965176432
+   ],
+   "macro f1": 0.8348344490271812,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 241,
+     "precision": 0.8798449612403101,
+     "recall": 0.941908713692946,
+     "f1": 0.9098196392785571,
+     "macro f1": 0.912037950772548
+    },
+    "10-19": {
+     "databases": 42,
+     "keys": 598,
+     "precision": 0.8301610541727672,
+     "recall": 0.9481605351170569,
+     "f1": 0.8852459016393442,
+     "macro f1": 0.8689893958166033
+    },
+    "20-39": {
+     "databases": 12,
+     "keys": 297,
+     "precision": 0.6792929292929293,
+     "recall": 0.9057239057239057,
+     "f1": 0.7763347763347762,
+     "macro f1": 0.7678610605081194
+    },
+    "40-99": {
+     "databases": 7,
+     "keys": 335,
+     "precision": 0.38193018480492813,
+     "recall": 0.5552238805970149,
+     "f1": 0.45255474452554745,
+     "macro f1": 0.3350205843939171
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 291,
+     "precision": 0.7549668874172185,
+     "recall": 0.7835051546391752,
+     "f1": 0.7689713322091062,
+     "macro f1": 0.7689713322091062
+    }
+   },
+   "eleven--wide minus this, f1": -0.026233289880632893,
+   "eleven--wide minus this, f1_95": [
+    -0.14595164419483936,
+    0.10252405532157366
+   ],
+   "eleven--wide minus this, macro f1": -0.025189000472725098,
+   "eleven--wide minus this, macro f1_95": [
+    -0.06877202889416596,
+    0.02409537636035066
+   ],
+   "eleven--wide minus this, precision": 0.11528182654624242,
+   "eleven--wide minus this, precision_95": [
+    0.013881672483287883,
+    0.22521436569827993
+   ],
+   "eleven--wide minus this, recall": -0.16799091940976163,
+   "eleven--wide minus this, recall_95": [
+    -0.31082524361446107,
+    -0.0022674740242397684
+   ],
+   "40 tables or more": {
+    "databases": 8,
+    "keys": 626,
+    "precision": 0.5247148288973384,
+    "recall": 0.6613418530351438,
+    "f1": 0.5851590106007067,
+    "f1_95": [
+     0.2020103092783505,
+     0.7773948925638667
+    ],
+    "macro f1": 0.3892644278708157
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.12424530501695036,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.386503634631049,
+    0.2556515151140077
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 156
+   },
+   "usage": {
+    "replies": 100,
+    "input tokens": 162767,
+    "output tokens": 95283,
+    "reasoning tokens": 54969,
+    "finished otherwise than at the end": 0,
+    "answered by": [
+     "openai/gpt-6-luna"
+    ],
+    "batches": 1,
+    "asked a request at a time": 0
+   }
+  },
+  "gpt-6.1-terra": {
+   "databases": 100,
+   "keys": 1762,
+   "precision": 0.7634311512415349,
+   "recall": 0.9597048808172531,
+   "f1": 0.8503897410108121,
+   "f1_95": [
+    0.8023894348894349,
+    0.9074148175307502
+   ],
+   "macro f1": 0.8988649274769933,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 241,
+     "precision": 0.9176470588235294,
+     "recall": 0.970954356846473,
+     "f1": 0.9435483870967741,
+     "macro f1": 0.9496110501877528
+    },
+    "10-19": {
+     "databases": 42,
+     "keys": 598,
+     "precision": 0.8722466960352423,
+     "recall": 0.9933110367892977,
+     "f1": 0.9288506645817044,
+     "macro f1": 0.9093551005857291
+    },
+    "20-39": {
+     "databases": 12,
+     "keys": 297,
+     "precision": 0.7437185929648241,
+     "recall": 0.9966329966329966,
+     "f1": 0.8517985611510792,
+     "macro f1": 0.8507059933530523
+    },
+    "40-99": {
+     "databases": 7,
+     "keys": 335,
+     "precision": 0.6012658227848101,
+     "recall": 0.8507462686567164,
+     "f1": 0.7045735475896168,
+     "macro f1": 0.6559805390130532
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 291,
+     "precision": 0.6928746928746928,
+     "recall": 0.9690721649484536,
+     "f1": 0.8080229226361031,
+     "macro f1": 0.8080229226361031
+    }
+   },
+   "eleven--wide minus this, f1": -0.1168493683400047,
+   "eleven--wide minus this, f1_95": [
+    -0.21231876507723338,
+    -0.027437879047250983
+   ],
+   "eleven--wide minus this, macro f1": -0.08921947892253723,
+   "eleven--wide minus this, macro f1_95": [
+    -0.13117554597618317,
+    -0.050119457457662796
+   ],
+   "eleven--wide minus this, precision": 0.04658256617958989,
+   "eleven--wide minus this, precision_95": [
+    -0.01858840051070413,
+    0.10593517325540037
+   ],
+   "eleven--wide minus this, recall": -0.2894438138479001,
+   "eleven--wide minus this, recall_95": [
+    -0.4326295574535011,
+    -0.14156222457253653
+   ],
+   "40 tables or more": {
+    "databases": 8,
+    "keys": 626,
+    "precision": 0.6435868331441543,
+    "recall": 0.9057507987220448,
+    "f1": 0.7524883875248839,
+    "f1_95": [
+     0.5486709316672729,
+     0.8525594464446505
+    ],
+    "macro f1": 0.6749858369659345
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.2915746819411275,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.4984532740509033,
+    -0.024926851691239458
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 0
+   },
+   "usage": {
+    "replies": 100,
+    "input tokens": 162767,
+    "output tokens": 63367,
+    "reasoning tokens": 22033,
+    "finished otherwise than at the end": 0,
+    "answered by": [
+     "openai/gpt-6.1-terra"
+    ],
+    "batches": 1,
+    "asked a request at a time": 0
+   }
+  }
+ },
+ "db": {
+  "databases": 398,
+  "keys": 3371,
+  "eleven--wide": {
+   "databases": 398,
+   "keys": 3371,
+   "precision": 0.8613713001124016,
+   "recall": 0.6819934737466627,
+   "f1": 0.7612582781456952,
+   "f1_95": [
+    0.6698142453607678,
+    0.8404861570747353
+   ],
+   "macro f1": 0.8412781975713812,
+   "by tables": {
+    "0-4": {
+     "databases": 209,
+     "keys": 467,
+     "precision": 0.8950892857142857,
+     "recall": 0.8586723768736617,
+     "f1": 0.8765027322404371,
+     "macro f1": 0.8754575833523204
+    },
+    "5-9": {
+     "databases": 114,
+     "keys": 739,
+     "precision": 0.8783592644978784,
+     "recall": 0.8403247631935047,
+     "f1": 0.8589211618257262,
+     "macro f1": 0.8394127947311755
+    },
+    "10-19": {
+     "databases": 53,
+     "keys": 752,
+     "precision": 0.8791208791208791,
+     "recall": 0.851063829787234,
+     "f1": 0.8648648648648649,
+     "macro f1": 0.8348920615796049
+    },
+    "20-39": {
+     "databases": 17,
+     "keys": 644,
+     "precision": 0.9060913705583756,
+     "recall": 0.5543478260869565,
+     "f1": 0.6878612716763007,
+     "macro f1": 0.5445750853613369
+    },
+    "40-99": {
+     "databases": 4,
+     "keys": 407,
+     "precision": 0.7889273356401384,
+     "recall": 0.5601965601965602,
+     "f1": 0.6551724137931033,
+     "macro f1": 0.6085793711451222
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 362,
+     "precision": 0.5048543689320388,
+     "recall": 0.143646408839779,
+     "f1": 0.22365591397849463,
+     "macro f1": 0.22365591397849463
+    }
+   },
+   "minus base, f1": 0.005768274868081291,
+   "minus base, f1_95": [
+    -0.007545914699681813,
+    0.018670678538513136
+   ],
+   "minus base, macro f1": 0.015060078112343223,
+   "minus base, macro f1_95": [
+    0.0023413964716471783,
+    0.028018937625023898
+   ]
+  },
+  "nine-mended": {
+   "databases": 398,
+   "keys": 3371,
+   "precision": 0.844013181984621,
+   "recall": 0.6837733610204687,
+   "f1": 0.755490003277614,
+   "f1_95": [
+    0.6744699419154387,
+    0.8301946595700147
+   ],
+   "macro f1": 0.826218119459038,
+   "by tables": {
+    "0-4": {
+     "databases": 209,
+     "keys": 467,
+     "precision": 0.9074074074074074,
+     "recall": 0.8394004282655246,
+     "f1": 0.8720800889877641,
+     "macro f1": 0.8627933470038732
+    },
+    "5-9": {
+     "databases": 114,
+     "keys": 739,
+     "precision": 0.8104575163398693,
+     "recall": 0.8389715832205683,
+     "f1": 0.8244680851063829,
+     "macro f1": 0.8101670775799016
+    },
+    "10-19": {
+     "databases": 53,
+     "keys": 752,
+     "precision": 0.8997134670487106,
+     "recall": 0.8351063829787234,
+     "f1": 0.866206896551724,
+     "macro f1": 0.8330803065379263
+    },
+    "20-39": {
+     "databases": 17,
+     "keys": 644,
+     "precision": 0.9156010230179028,
+     "recall": 0.5559006211180124,
+     "f1": 0.6917874396135266,
+     "macro f1": 0.5445295897369853
+    },
+    "40-99": {
+     "databases": 4,
+     "keys": 407,
+     "precision": 0.8074074074074075,
+     "recall": 0.5356265356265356,
+     "f1": 0.6440177252584933,
+     "macro f1": 0.6025561921998965
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 362,
+     "precision": 0.5085714285714286,
+     "recall": 0.24585635359116023,
+     "f1": 0.3314711359404097,
+     "macro f1": 0.3314711359404097
+    }
+   }
+  },
+  "claude-sonnet-5-5": {
+   "databases": 398,
+   "keys": 3371,
+   "precision": 0.8577382606279522,
+   "recall": 0.915752002373183,
+   "f1": 0.8857962697274031,
+   "f1_95": [
+    0.8190297189415802,
+    0.9374337500177634
+   ],
+   "macro f1": 0.9314246433465405,
+   "by tables": {
+    "0-4": {
+     "databases": 209,
+     "keys": 467,
+     "precision": 0.9338842975206612,
+     "recall": 0.9678800856531049,
+     "f1": 0.9505783385909569,
+     "macro f1": 0.954066985645933
+    },
+    "5-9": {
+     "databases": 114,
+     "keys": 739,
+     "precision": 0.8697729988052568,
+     "recall": 0.9851150202976996,
+     "f1": 0.9238578680203045,
+     "macro f1": 0.9199251513709612
+    },
+    "10-19": {
+     "databases": 53,
+     "keys": 752,
+     "precision": 0.8990147783251231,
+     "recall": 0.9707446808510638,
+     "f1": 0.9335038363171355,
+     "macro f1": 0.9218857603461825
+    },
+    "20-39": {
+     "databases": 17,
+     "keys": 644,
+     "precision": 0.8167388167388168,
+     "recall": 0.8788819875776398,
+     "f1": 0.8466716529543756,
+     "macro f1": 0.7682993688935843
+    },
+    "40-99": {
+     "databases": 4,
+     "keys": 407,
+     "precision": 0.9783132530120482,
+     "recall": 0.9975429975429976,
+     "f1": 0.9878345498783455,
+     "macro f1": 0.9862654454126285
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 362,
+     "precision": 0.5726256983240223,
+     "recall": 0.5662983425414365,
+     "f1": 0.5694444444444444,
+     "macro f1": 0.5694444444444444
+    }
+   },
+   "eleven--wide minus this, f1": -0.12453799158170786,
+   "eleven--wide minus this, f1_95": [
+    -0.18307729447987595,
+    -0.07287313242271813
+   ],
+   "eleven--wide minus this, macro f1": -0.09014644577515929,
+   "eleven--wide minus this, macro f1_95": [
+    -0.11538891404437554,
+    -0.06645674954727161
+   ],
+   "eleven--wide minus this, precision": 0.003633039484449374,
+   "eleven--wide minus this, precision_95": [
+    -0.039545488717339906,
+    0.041404162274166954
+   ],
+   "eleven--wide minus this, recall": -0.23375852862652025,
+   "eleven--wide minus this, recall_95": [
+    -0.3183814435381885,
+    -0.148638212509903
+   ],
+   "40 tables or more": {
+    "databases": 5,
+    "keys": 769,
+    "precision": 0.7904269081500647,
+    "recall": 0.7945383615084526,
+    "f1": 0.7924773022049286,
+    "f1_95": [
+     0.6298342541436464,
+     0.9936189608021878
+    ],
+    "macro f1": 0.9029012452189917
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.31013449428072537,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.5892771022519648,
+    -0.16909619595210146
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 1,
+    "keys naming nothing": 1
+   },
+   "usage": {
+    "replies": 398,
+    "input tokens": 455418,
+    "output tokens": 147349,
+    "reasoning tokens": 24177,
+    "finished otherwise than at the end": 0,
+    "answered by": [
+     "claude-sonnet-5-5"
+    ],
+    "batches": 1,
+    "asked a request at a time": 0
+   }
+  },
+  "deepseek-v4.1-flash-1017": {
+   "databases": 398,
+   "keys": 3371,
+   "precision": 0.8609658566594894,
+   "recall": 0.8303174132304953,
+   "f1": 0.8453639383871941,
+   "f1_95": [
+    0.7384789979830556,
+    0.9162627800263085
+   ],
+   "macro f1": 0.9083611591495265,
+   "by tables": {
+    "0-4": {
+     "databases": 209,
+     "keys": 467,
+     "precision": 0.9224489795918367,
+     "recall": 0.9678800856531049,
+     "f1": 0.9446185997910136,
+     "macro f1": 0.9488266119845067
+    },
+    "5-9": {
+     "databases": 114,
+     "keys": 739,
+     "precision": 0.8413461538461539,
+     "recall": 0.9472259810554804,
+     "f1": 0.8911521323997454,
+     "macro f1": 0.876865057330553
+    },
+    "10-19": {
+     "databases": 53,
+     "keys": 752,
+     "precision": 0.8702830188679245,
+     "recall": 0.9813829787234043,
+     "f1": 0.9225,
+     "macro f1": 0.9115285113709491
+    },
+    "20-39": {
+     "databases": 17,
+     "keys": 644,
+     "precision": 0.7694656488549618,
+     "recall": 0.782608695652174,
+     "f1": 0.7759815242494226,
+     "macro f1": 0.6504587022731619
+    },
+    "40-99": {
+     "databases": 4,
+     "keys": 407,
+     "precision": 0.9507042253521126,
+     "recall": 0.995085995085995,
+     "f1": 0.9723889555822328,
+     "macro f1": 0.9728884649406384
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 362,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "macro f1": 0.0
+    }
+   },
+   "eleven--wide minus this, f1": -0.0841056602414989,
+   "eleven--wide minus this, f1_95": [
+    -0.14789310141924972,
+    -0.02896683320038996
+   ],
+   "eleven--wide minus this, macro f1": -0.0670829615781453,
+   "eleven--wide minus this, macro f1_95": [
+    -0.09068082654571051,
+    -0.04457222240016346
+   ],
+   "eleven--wide minus this, precision": 0.00040544345291215755,
+   "eleven--wide minus this, precision_95": [
+    -0.04285651858140864,
+    0.04574282289139971
+   ],
+   "eleven--wide minus this, recall": -0.1483239394838326,
+   "eleven--wide minus this, recall_95": [
+    -0.2630979919138598,
+    -0.05261948949851665
+   ],
+   "40 tables or more": {
+    "databases": 5,
+    "keys": 769,
+    "precision": 0.9507042253521126,
+    "recall": 0.5266579973992198,
+    "f1": 0.6778242677824269,
+    "f1_95": [
+     0.25085675119945167,
+     0.9818875119161106
+    ],
+    "macro f1": 0.7783107719525107
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.19548145985822363,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.5681473415555859,
+    0.0973122628850554
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 5,
+    "keys naming nothing": 10
+   },
+   "usage": {
+    "replies": 398,
+    "input tokens": 318099,
+    "output tokens": 1555100,
+    "reasoning tokens": 1486283,
+    "finished otherwise than at the end": 5,
+    "answered by": [
+     "deepseek/deepseek-v4.1-flash-1017"
+    ],
+    "batches": 2,
+    "asked a request at a time": 0
+   }
+  },
+  "gemini-3.5-flash-lite": {
+   "databases": 398,
+   "keys": 3371,
+   "precision": 0.8462455303933254,
+   "recall": 0.8424799762681697,
+   "f1": 0.8443585550765571,
+   "f1_95": [
+    0.7228139959721697,
+    0.9215369788183443
+   ],
+   "macro f1": 0.9087188412373888,
+   "by tables": {
+    "0-4": {
+     "databases": 209,
+     "keys": 467,
+     "precision": 0.9053497942386831,
+     "recall": 0.9421841541755889,
+     "f1": 0.9233997901364114,
+     "macro f1": 0.934966203387256
+    },
+    "5-9": {
+     "databases": 114,
+     "keys": 739,
+     "precision": 0.8422330097087378,
+     "recall": 0.939106901217862,
+     "f1": 0.8880358285348687,
+     "macro f1": 0.8796494268103662
+    },
+    "10-19": {
+     "databases": 53,
+     "keys": 752,
+     "precision": 0.8910891089108911,
+     "recall": 0.9574468085106383,
+     "f1": 0.9230769230769231,
+     "macro f1": 0.9124410348867076
+    },
+    "20-39": {
+     "databases": 17,
+     "keys": 644,
+     "precision": 0.8008241758241759,
+     "recall": 0.90527950310559,
+     "f1": 0.8498542274052477,
+     "macro f1": 0.8076448858284527
+    },
+    "40-99": {
+     "databases": 4,
+     "keys": 407,
+     "precision": 0.9639423076923077,
+     "recall": 0.9852579852579852,
+     "f1": 0.9744835965978128,
+     "macro f1": 0.9710044525646747
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 362,
+     "precision": 0.02127659574468085,
+     "recall": 0.0055248618784530384,
+     "f1": 0.008771929824561403,
+     "macro f1": 0.008771929824561403
+    }
+   },
+   "eleven--wide minus this, f1": -0.08310027693086186,
+   "eleven--wide minus this, f1_95": [
+    -0.15217079008855958,
+    -0.029188588709045775
+   ],
+   "eleven--wide minus this, macro f1": -0.06744064366600755,
+   "eleven--wide minus this, macro f1_95": [
+    -0.09110422642256284,
+    -0.04610054019460672
+   ],
+   "eleven--wide minus this, precision": 0.015125769719076199,
+   "eleven--wide minus this, precision_95": [
+    -0.020741577344490395,
+    0.053539562442416457
+   ],
+   "eleven--wide minus this, recall": -0.16048650252150698,
+   "eleven--wide minus this, recall_95": [
+    -0.2680218302460426,
+    -0.07472489717387683
+   ],
+   "40 tables or more": {
+    "databases": 5,
+    "keys": 769,
+    "precision": 0.7901960784313725,
+    "recall": 0.5240572171651495,
+    "f1": 0.6301798279906177,
+    "f1_95": [
+     0.21252153934520393,
+     0.9861830742659758
+    ],
+    "macro f1": 0.778557948016652
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.14783702006641442,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.5859170801428948,
+    0.13564747473930314
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 2
+   },
+   "usage": {
+    "replies": 398,
+    "input tokens": 315835,
+    "output tokens": 89853,
+    "reasoning tokens": 0,
+    "finished otherwise than at the end": 0,
+    "answered by": [
+     "google/gemini-3.5-flash-lite"
+    ],
+    "batches": 2,
+    "asked a request at a time": 0
+   }
+  },
+  "gpt-6-luna": {
+   "databases": 398,
+   "keys": 3371,
+   "precision": 0.77632282202031,
+   "recall": 0.8617620884010679,
+   "f1": 0.8168142837058906,
+   "f1_95": [
+    0.7399268870975222,
+    0.8855145820182343
+   ],
+   "macro f1": 0.8745708643605742,
+   "by tables": {
+    "0-4": {
+     "databases": 209,
+     "keys": 467,
+     "precision": 0.8747433264887063,
+     "recall": 0.9122055674518201,
+     "f1": 0.8930817610062892,
+     "macro f1": 0.9046479835953519
+    },
+    "5-9": {
+     "databases": 114,
+     "keys": 739,
+     "precision": 0.772196261682243,
+     "recall": 0.8944519621109608,
+     "f1": 0.8288401253918495,
+     "macro f1": 0.8427249872178885
+    },
+    "10-19": {
+     "databases": 53,
+     "keys": 752,
+     "precision": 0.8484136310223267,
+     "recall": 0.9601063829787234,
+     "f1": 0.9008109794135994,
+     "macro f1": 0.8868720049574638
+    },
+    "20-39": {
+     "databases": 17,
+     "keys": 644,
+     "precision": 0.6465116279069767,
+     "recall": 0.8633540372670807,
+     "f1": 0.7393617021276596,
+     "macro f1": 0.6817515005693093
+    },
+    "40-99": {
+     "databases": 4,
+     "keys": 407,
+     "precision": 0.9688249400479616,
+     "recall": 0.9926289926289926,
+     "f1": 0.9805825242718447,
+     "macro f1": 0.9783588216986789
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 362,
+     "precision": 0.5018450184501845,
+     "recall": 0.3756906077348066,
+     "f1": 0.42969984202211686,
+     "macro f1": 0.42969984202211686
+    }
+   },
+   "eleven--wide minus this, f1": -0.055556005560195354,
+   "eleven--wide minus this, f1_95": [
+    -0.12254206411717697,
+    0.013172734019776202
+   ],
+   "eleven--wide minus this, macro f1": -0.03329266678919296,
+   "eleven--wide minus this, macro f1_95": [
+    -0.062243500458583255,
+    -0.005650841067092035
+   ],
+   "eleven--wide minus this, precision": 0.0850484780920916,
+   "eleven--wide minus this, precision_95": [
+    0.033242950504740916,
+    0.14431889721395658
+   ],
+   "eleven--wide minus this, recall": -0.1797686146544052,
+   "eleven--wide minus this, recall_95": [
+    -0.2642358178698958,
+    -0.09707065811840762
+   ],
+   "40 tables or more": {
+    "databases": 5,
+    "keys": 769,
+    "precision": 0.7848837209302325,
+    "recall": 0.7022106631989596,
+    "f1": 0.7412491420727522,
+    "f1_95": [
+     0.5182578090629125,
+     0.9895470383275262
+    ],
+    "macro f1": 0.8686270257633666
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.2589063341485489,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.5843374655786754,
+    -0.13431139502383682
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 174
+   },
+   "usage": {
+    "replies": 398,
+    "input tokens": 298157,
+    "output tokens": 214472,
+    "reasoning tokens": 149005,
+    "finished otherwise than at the end": 0,
+    "answered by": [
+     "openai/gpt-6-luna"
+    ],
+    "batches": 2,
+    "asked a request at a time": 0
+   }
+  },
+  "gpt-6.1-terra": {
+   "databases": 398,
+   "keys": 3371,
+   "precision": 0.8347019867549669,
+   "recall": 0.9347374666271137,
+   "f1": 0.881891967534285,
+   "f1_95": [
+    0.8300508642613905,
+    0.9284394062104206
+   ],
+   "macro f1": 0.928259856678143,
+   "by tables": {
+    "0-4": {
+     "databases": 209,
+     "keys": 467,
+     "precision": 0.9336099585062241,
+     "recall": 0.9635974304068522,
+     "f1": 0.9483667017913594,
+     "macro f1": 0.9554454317612212
+    },
+    "5-9": {
+     "databases": 114,
+     "keys": 739,
+     "precision": 0.8595238095238096,
+     "recall": 0.9769959404600812,
+     "f1": 0.9145028499050032,
+     "macro f1": 0.9136306839146884
+    },
+    "10-19": {
+     "databases": 53,
+     "keys": 752,
+     "precision": 0.8614668218859138,
+     "recall": 0.9840425531914894,
+     "f1": 0.9186840471756673,
+     "macro f1": 0.9074933671182384
+    },
+    "20-39": {
+     "databases": 17,
+     "keys": 644,
+     "precision": 0.7594278283485045,
+     "recall": 0.906832298136646,
+     "f1": 0.8266100495399858,
+     "macro f1": 0.7609474445330173
+    },
+    "40-99": {
+     "databases": 4,
+     "keys": 407,
+     "precision": 0.9689737470167065,
+     "recall": 0.9975429975429976,
+     "f1": 0.9830508474576272,
+     "macro f1": 0.9809343098008171
+    },
+    "100+": {
+     "databases": 1,
+     "keys": 362,
+     "precision": 0.6133004926108374,
+     "recall": 0.6878453038674033,
+     "f1": 0.6484375,
+     "macro f1": 0.6484375
+    }
+   },
+   "eleven--wide minus this, f1": -0.12063368938858976,
+   "eleven--wide minus this, f1_95": [
+    -0.18647377952385596,
+    -0.06125055978868628
+   ],
+   "eleven--wide minus this, macro f1": -0.08698165910676181,
+   "eleven--wide minus this, macro f1_95": [
+    -0.111255158252533,
+    -0.06407497107233165
+   ],
+   "eleven--wide minus this, precision": 0.02666931335743472,
+   "eleven--wide minus this, precision_95": [
+    -0.01726849480156851,
+    0.06373251418559991
+   ],
+   "eleven--wide minus this, recall": -0.2527439928804509,
+   "eleven--wide minus this, recall_95": [
+    -0.3446467982260377,
+    -0.1590510954337084
+   ],
+   "40 tables or more": {
+    "databases": 5,
+    "keys": 769,
+    "precision": 0.793939393939394,
+    "recall": 0.8517555266579974,
+    "f1": 0.8218318695106649,
+    "f1_95": [
+     0.6940298507462687,
+     0.9895833333333334
+    ],
+    "macro f1": 0.9144349478406536
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.33948906158646164,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.6016502658230188,
+    -0.1615810994138709
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 1
+   },
+   "usage": {
+    "replies": 398,
+    "input tokens": 298157,
+    "output tokens": 120479,
+    "reasoning tokens": 54064,
+    "finished otherwise than at the end": 0,
+    "answered by": [
+     "openai/gpt-6.1-terra"
+    ],
+    "batches": 1,
+    "asked a request at a time": 298
+   }
+  }
+ },
+ "heldout-db": {
+  "databases": 22,
+  "keys": 299,
+  "eleven--wide": {
+   "databases": 22,
+   "keys": 299,
+   "precision": 0.80625,
+   "recall": 0.431438127090301,
+   "f1": 0.5620915032679737,
+   "f1_95": [
+    0.40663174221321857,
+    0.7065614315021654
+   ],
+   "macro f1": 0.46044561473072587,
+   "by tables": {
+    "5-9": {
+     "databases": 7,
+     "keys": 59,
+     "precision": 0.5869565217391305,
+     "recall": 0.4576271186440678,
+     "f1": 0.5142857142857143,
+     "macro f1": 0.4137721755368814
+    },
+    "10-19": {
+     "databases": 15,
+     "keys": 240,
+     "precision": 0.8947368421052632,
+     "recall": 0.425,
+     "f1": 0.576271186440678,
+     "macro f1": 0.4822265530211866
+    }
+   },
+   "minus base, f1": 0.019950273199636714,
+   "minus base, f1_95": [
+    -0.07343369708288308,
+    0.10384657461853418
+   ],
+   "minus base, macro f1": 0.030262038745378028,
+   "minus base, macro f1_95": [
+    -0.04017882218816209,
+    0.10426603645903915
+   ]
+  },
+  "nine-mended": {
+   "databases": 22,
+   "keys": 299,
+   "precision": 0.85,
+   "recall": 0.3979933110367893,
+   "f1": 0.542141230068337,
+   "f1_95": [
+    0.38028228895357746,
+    0.6821700310559006
+   ],
+   "macro f1": 0.43018357598534784,
+   "by tables": {
+    "5-9": {
+     "databases": 7,
+     "keys": 59,
+     "precision": 0.8076923076923077,
+     "recall": 0.3559322033898305,
+     "f1": 0.4941176470588236,
+     "macro f1": 0.38015873015873014
+    },
+    "10-19": {
+     "databases": 15,
+     "keys": 240,
+     "precision": 0.8596491228070176,
+     "recall": 0.4083333333333333,
+     "f1": 0.5536723163841809,
+     "macro f1": 0.4535285040377695
+    }
+   }
+  },
+  "claude-sonnet-5-5": {
+   "databases": 22,
+   "keys": 299,
+   "precision": 0.9295302013422819,
+   "recall": 0.9264214046822743,
+   "f1": 0.9279731993299833,
+   "f1_95": [
+    0.8745239451363126,
+    0.9662559147424512
+   ],
+   "macro f1": 0.9002593088774803,
+   "by tables": {
+    "5-9": {
+     "databases": 7,
+     "keys": 59,
+     "precision": 0.8125,
+     "recall": 0.8813559322033898,
+     "f1": 0.8455284552845529,
+     "macro f1": 0.8499649859943977
+    },
+    "10-19": {
+     "databases": 15,
+     "keys": 240,
+     "precision": 0.9615384615384616,
+     "recall": 0.9375,
+     "f1": 0.9493670886075949,
+     "macro f1": 0.9237299928895853
+    }
+   },
+   "eleven--wide minus this, f1": -0.3658816960620096,
+   "eleven--wide minus this, f1_95": [
+    -0.5300166304586484,
+    -0.21264617082384393
+   ],
+   "eleven--wide minus this, macro f1": -0.4398136941467544,
+   "eleven--wide minus this, macro f1_95": [
+    -0.5779919867544763,
+    -0.294589938663579
+   ],
+   "eleven--wide minus this, precision": -0.1232802013422819,
+   "eleven--wide minus this, precision_95": [
+    -0.2596492805755396,
+    -0.032599269687554215
+   ],
+   "eleven--wide minus this, recall": -0.4949832775919733,
+   "eleven--wide minus this, recall_95": [
+    -0.64967249275948,
+    -0.3177533356844766
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 0
+   },
+   "usage": {
+    "replies": 22,
+    "input tokens": 32497,
+    "output tokens": 13032,
+    "reasoning tokens": 3232,
+    "finished otherwise than at the end": 0,
+    "answered by": [
+     "claude-sonnet-5-5"
+    ],
+    "batches": 1,
+    "asked a request at a time": 0
+   }
+  },
+  "deepseek-v4.1-flash-1017": {
+   "databases": 22,
+   "keys": 299,
+   "precision": 0.9273356401384083,
+   "recall": 0.8963210702341137,
+   "f1": 0.9115646258503401,
+   "f1_95": [
+    0.8635217170878386,
+    0.9485972127996383
+   ],
+   "macro f1": 0.8736140867547421,
+   "by tables": {
+    "5-9": {
+     "databases": 7,
+     "keys": 59,
+     "precision": 0.8153846153846154,
+     "recall": 0.8983050847457628,
+     "f1": 0.8548387096774194,
+     "macro f1": 0.8314242363612111
+    },
+    "10-19": {
+     "databases": 15,
+     "keys": 240,
+     "precision": 0.9598214285714286,
+     "recall": 0.8958333333333334,
+     "f1": 0.9267241379310346,
+     "macro f1": 0.8933026836050563
+    }
+   },
+   "eleven--wide minus this, f1": -0.3494731225823664,
+   "eleven--wide minus this, f1_95": [
+    -0.5079460934444049,
+    -0.20884975223964714
+   ],
+   "eleven--wide minus this, macro f1": -0.4131684720240162,
+   "eleven--wide minus this, macro f1_95": [
+    -0.5421214789379745,
+    -0.2753288265818207
+   ],
+   "eleven--wide minus this, precision": -0.12108564013840828,
+   "eleven--wide minus this, precision_95": [
+    -0.25833299653320396,
+    -0.03349166403746173
+   ],
+   "eleven--wide minus this, recall": -0.4648829431438127,
+   "eleven--wide minus this, recall_95": [
+    -0.6072735542105447,
+    -0.304474367293965
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 0
+   },
+   "usage": {
+    "replies": 22,
+    "input tokens": 23994,
+    "output tokens": 194699,
+    "reasoning tokens": 188930,
+    "finished otherwise than at the end": 0,
+    "answered by": [
+     "deepseek/deepseek-v4.1-flash-1017"
+    ],
+    "batches": 1,
+    "asked a request at a time": 0
+   }
+  },
+  "gemini-3.5-flash-lite": {
+   "databases": 22,
+   "keys": 299,
+   "precision": 0.9257950530035336,
+   "recall": 0.8762541806020067,
+   "f1": 0.9003436426116839,
+   "f1_95": [
+    0.8282796913231696,
+    0.951840173192771
+   ],
+   "macro f1": 0.8690857970424527,
+   "by tables": {
+    "5-9": {
+     "databases": 7,
+     "keys": 59,
+     "precision": 0.8421052631578947,
+     "recall": 0.8135593220338984,
+     "f1": 0.8275862068965518,
+     "macro f1": 0.8008333333333333
+    },
+    "10-19": {
+     "databases": 15,
+     "keys": 240,
+     "precision": 0.9469026548672567,
+     "recall": 0.8916666666666667,
+     "f1": 0.9184549356223176,
+     "macro f1": 0.9009369467733753
+    }
+   },
+   "eleven--wide minus this, f1": -0.3382521393437101,
+   "eleven--wide minus this, f1_95": [
+    -0.4871407476490225,
+    -0.2051812674544217
+   ],
+   "eleven--wide minus this, macro f1": -0.40864018231172683,
+   "eleven--wide minus this, macro f1_95": [
+    -0.5341363358441638,
+    -0.282070245988167
+   ],
+   "eleven--wide minus this, precision": -0.11954505300353357,
+   "eleven--wide minus this, precision_95": [
+    -0.2530131031980629,
+    -0.03438184307250521
+   ],
+   "eleven--wide minus this, recall": -0.44481605351170567,
+   "eleven--wide minus this, recall_95": [
+    -0.5860986707322884,
+    -0.2944785796727545
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 0
+   },
+   "usage": {
+    "replies": 22,
+    "input tokens": 23283,
+    "output tokens": 8098,
+    "reasoning tokens": 0,
+    "finished otherwise than at the end": 0,
+    "answered by": [
+     "google/gemini-3.5-flash-lite"
+    ],
+    "batches": 1,
+    "asked a request at a time": 0
+   }
+  },
+  "gpt-6-luna": {
+   "databases": 22,
+   "keys": 299,
+   "precision": 0.5719063545150501,
+   "recall": 0.5719063545150501,
+   "f1": 0.5719063545150501,
+   "f1_95": [
+    0.35154027600285465,
+    0.770453145182647
+   ],
+   "macro f1": 0.6144172467557629,
+   "by tables": {
+    "5-9": {
+     "databases": 7,
+     "keys": 59,
+     "precision": 0.84375,
+     "recall": 0.9152542372881356,
+     "f1": 0.8780487804878049,
+     "macro f1": 0.8859227537168712
+    },
+    "10-19": {
+     "databases": 15,
+     "keys": 240,
+     "precision": 0.4978723404255319,
+     "recall": 0.4875,
+     "f1": 0.4926315789473684,
+     "macro f1": 0.48771467684057895
+    }
+   },
+   "eleven--wide minus this, f1": -0.009814851247076373,
+   "eleven--wide minus this, f1_95": [
+    -0.2818333061341667,
+    0.2659843154267726
+   ],
+   "eleven--wide minus this, macro f1": -0.15397163202503705,
+   "eleven--wide minus this, macro f1_95": [
+    -0.3834240744748446,
+    0.10008152491747761
+   ],
+   "eleven--wide minus this, precision": 0.2343436454849499,
+   "eleven--wide minus this, precision_95": [
+    -0.022928397692928267,
+    0.47812165951510166
+   ],
+   "eleven--wide minus this, recall": -0.14046822742474913,
+   "eleven--wide minus this, recall_95": [
+    -0.406375832032213,
+    0.1511715997181114
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 115
+   },
+   "usage": {
+    "replies": 22,
+    "input tokens": 22151,
+    "output tokens": 19708,
+    "reasoning tokens": 14264,
+    "finished otherwise than at the end": 0,
+    "answered by": [
+     "openai/gpt-6-luna"
+    ],
+    "batches": 1,
+    "asked a request at a time": 0
+   }
+  },
+  "gpt-6.1-terra": {
+   "databases": 22,
+   "keys": 299,
+   "precision": 0.9188311688311688,
+   "recall": 0.9464882943143813,
+   "f1": 0.9324546952224052,
+   "f1_95": [
+    0.8767123287671232,
+    0.9708358801431249
+   ],
+   "macro f1": 0.9165186977409039,
+   "by tables": {
+    "5-9": {
+     "databases": 7,
+     "keys": 59,
+     "precision": 0.835820895522388,
+     "recall": 0.9491525423728814,
+     "f1": 0.888888888888889,
+     "macro f1": 0.8924886621315193
+    },
+    "10-19": {
+     "databases": 15,
+     "keys": 240,
+     "precision": 0.941908713692946,
+     "recall": 0.9458333333333333,
+     "f1": 0.9438669438669438,
+     "macro f1": 0.9277327143586166
+    }
+   },
+   "eleven--wide minus this, f1": -0.37036319195443146,
+   "eleven--wide minus this, f1_95": [
+    -0.5287492721910635,
+    -0.21582962847877876
+   ],
+   "eleven--wide minus this, macro f1": -0.456073083010178,
+   "eleven--wide minus this, macro f1_95": [
+    -0.5763455462295257,
+    -0.3272827860593172
+   ],
+   "eleven--wide minus this, precision": -0.11258116883116875,
+   "eleven--wide minus this, precision_95": [
+    -0.2567314223155637,
+    -0.02115843154014305
+   ],
+   "eleven--wide minus this, recall": -0.5150501672240804,
+   "eleven--wide minus this, recall_95": [
+    -0.656504907306434,
+    -0.35185633097662466
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 0
+   },
+   "usage": {
+    "replies": 22,
+    "input tokens": 22151,
+    "output tokens": 10195,
+    "reasoning tokens": 4953,
+    "finished otherwise than at the end": 0,
+    "answered by": [
+     "openai/gpt-6.1-terra"
+    ],
+    "batches": 1,
+    "asked a request at a time": 0
+   }
+  }
+ },
+ "fresh-db": {
+  "databases": 100,
+  "keys": 2016,
+  "eleven--wide": {
+   "databases": 100,
+   "keys": 2016,
+   "precision": 0.868013468013468,
+   "recall": 0.6393849206349206,
+   "f1": 0.7363610397029421,
+   "f1_95": [
+    0.658354748011935,
+    0.8136420420470647
+   ],
+   "macro f1": 0.7963357198866008,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 263,
+     "precision": 0.9271255060728745,
+     "recall": 0.870722433460076,
+     "f1": 0.8980392156862745,
+     "macro f1": 0.8866072062747964
+    },
+    "10-19": {
+     "databases": 38,
+     "keys": 488,
+     "precision": 0.8555555555555555,
+     "recall": 0.7889344262295082,
+     "f1": 0.8208955223880596,
+     "macro f1": 0.7854493222693216
+    },
+    "20-39": {
+     "databases": 13,
+     "keys": 396,
+     "precision": 0.8337950138504155,
+     "recall": 0.76010101010101,
+     "f1": 0.7952443857331571,
+     "macro f1": 0.7677483034837043
+    },
+    "40-99": {
+     "databases": 8,
+     "keys": 396,
+     "precision": 0.8838951310861424,
+     "recall": 0.5959595959595959,
+     "f1": 0.7119155354449472,
+     "macro f1": 0.6643654237953005
+    },
+    "100+": {
+     "databases": 3,
+     "keys": 473,
+     "precision": 0.8625,
+     "recall": 0.2917547568710359,
+     "f1": 0.4360189573459715,
+     "macro f1": 0.26659085611101313
+    }
+   },
+   "minus base, f1": 0.020923251684508926,
+   "minus base, f1_95": [
+    0.005131077265984274,
+    0.04056621559694471
+   ],
+   "minus base, macro f1": 0.021766631720694707,
+   "minus base, macro f1_95": [
+    0.006161487123282514,
+    0.037502305541525505
+   ]
+  },
+  "nine-mended": {
+   "databases": 100,
+   "keys": 2016,
+   "precision": 0.853021978021978,
+   "recall": 0.6160714285714286,
+   "f1": 0.7154377880184332,
+   "f1_95": [
+    0.6371259931640452,
+    0.7910295460906726
+   ],
+   "macro f1": 0.7745690881659061,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 263,
+     "precision": 0.9163179916317992,
+     "recall": 0.8326996197718631,
+     "f1": 0.8725099601593627,
+     "macro f1": 0.8584016168503702
+    },
+    "10-19": {
+     "databases": 38,
+     "keys": 488,
+     "precision": 0.8275109170305677,
+     "recall": 0.7766393442622951,
+     "f1": 0.8012684989429176,
+     "macro f1": 0.7770707523649204
+    },
+    "20-39": {
+     "databases": 13,
+     "keys": 396,
+     "precision": 0.8418079096045198,
+     "recall": 0.7525252525252525,
+     "f1": 0.7946666666666666,
+     "macro f1": 0.7631803350589441
+    },
+    "40-99": {
+     "databases": 8,
+     "keys": 396,
+     "precision": 0.8658008658008658,
+     "recall": 0.5050505050505051,
+     "f1": 0.6379585326953747,
+     "macro f1": 0.5725448984631136
+    },
+    "100+": {
+     "databases": 3,
+     "keys": 473,
+     "precision": 0.8390804597701149,
+     "recall": 0.3086680761099366,
+     "f1": 0.45131375579598143,
+     "macro f1": 0.269085080979467
+    }
+   }
+  },
+  "claude-sonnet-5-5": {
+   "databases": 100,
+   "keys": 2016,
+   "precision": 0.7991071428571429,
+   "recall": 0.9766865079365079,
+   "f1": 0.8790178571428573,
+   "f1_95": [
+    0.8068491341228956,
+    0.9311279805374634
+   ],
+   "macro f1": 0.9200295012112144,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 263,
+     "precision": 0.9321428571428572,
+     "recall": 0.9923954372623575,
+     "f1": 0.9613259668508288,
+     "macro f1": 0.959817183582867
+    },
+    "10-19": {
+     "databases": 38,
+     "keys": 488,
+     "precision": 0.8716094032549728,
+     "recall": 0.9877049180327869,
+     "f1": 0.9260326609029779,
+     "macro f1": 0.9186217551487502
+    },
+    "20-39": {
+     "databases": 13,
+     "keys": 396,
+     "precision": 0.9365853658536586,
+     "recall": 0.9696969696969697,
+     "f1": 0.9528535980148884,
+     "macro f1": 0.9533838649608317
+    },
+    "40-99": {
+     "databases": 8,
+     "keys": 396,
+     "precision": 0.6417657045840407,
+     "recall": 0.9545454545454546,
+     "f1": 0.7675126903553299,
+     "macro f1": 0.7346321152060954
+    },
+    "100+": {
+     "databases": 3,
+     "keys": 473,
+     "precision": 0.7341772151898734,
+     "recall": 0.9809725158562368,
+     "f1": 0.8398190045248869,
+     "macro f1": 0.7837410943934643
+    }
+   },
+   "eleven--wide minus this, f1": -0.1426568174399152,
+   "eleven--wide minus this, f1_95": [
+    -0.22721692720205164,
+    -0.03437869515565721
+   ],
+   "eleven--wide minus this, macro f1": -0.12369378132461362,
+   "eleven--wide minus this, macro f1_95": [
+    -0.16605032773860381,
+    -0.0803634169610029
+   ],
+   "eleven--wide minus this, precision": 0.06890632515632511,
+   "eleven--wide minus this, precision_95": [
+    -0.02238053381093478,
+    0.186949773207317
+   ],
+   "eleven--wide minus this, recall": -0.3373015873015873,
+   "eleven--wide minus this, recall_95": [
+    -0.4463295083575881,
+    -0.21687196193005262
+   ],
+   "40 tables or more": {
+    "databases": 11,
+    "keys": 869,
+    "precision": 0.6895986895986896,
+    "recall": 0.9689298043728424,
+    "f1": 0.8057416267942583,
+    "f1_95": [
+     0.6351349709550504,
+     0.8998663455707938
+    ],
+    "macro f1": 0.7480254731662869
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.2285811329670978,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.4430700381087429,
+    0.0160662658308906
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 0
+   },
+   "usage": {
+    "replies": 100,
+    "input tokens": 275308,
+    "output tokens": 111015,
+    "reasoning tokens": 28383,
+    "finished otherwise than at the end": 0,
+    "answered by": [
+     "claude-sonnet-5-5"
+    ],
+    "batches": 1,
+    "asked a request at a time": 0
+   }
+  },
+  "deepseek-v4.1-flash-1017": {
+   "databases": 100,
+   "keys": 2016,
+   "precision": 0.8610810810810811,
+   "recall": 0.7901785714285714,
+   "f1": 0.8241076047594412,
+   "f1_95": [
+    0.7091036265867664,
+    0.9145988204945229
+   ],
+   "macro f1": 0.8791701315431414,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 263,
+     "precision": 0.9184397163120568,
+     "recall": 0.9847908745247148,
+     "f1": 0.9504587155963302,
+     "macro f1": 0.9542184681503566
+    },
+    "10-19": {
+     "databases": 38,
+     "keys": 488,
+     "precision": 0.8451957295373665,
+     "recall": 0.9733606557377049,
+     "f1": 0.9047619047619048,
+     "macro f1": 0.9057218822100737
+    },
+    "20-39": {
+     "databases": 13,
+     "keys": 396,
+     "precision": 0.9228915662650602,
+     "recall": 0.9671717171717171,
+     "f1": 0.9445129469790382,
+     "macro f1": 0.922396497039251
+    },
+    "40-99": {
+     "databases": 8,
+     "keys": 396,
+     "precision": 0.9290540540540541,
+     "recall": 0.6944444444444444,
+     "f1": 0.7947976878612716,
+     "macro f1": 0.47747918463996186
+    },
+    "100+": {
+     "databases": 3,
+     "keys": 473,
+     "precision": 0.6813559322033899,
+     "recall": 0.4249471458773784,
+     "f1": 0.5234375,
+     "macro f1": 0.476097300662605
+    }
+   },
+   "eleven--wide minus this, f1": -0.08774656505649914,
+   "eleven--wide minus this, f1_95": [
+    -0.19601786992984183,
+    0.03273410373991208
+   ],
+   "eleven--wide minus this, macro f1": -0.0828344116565406,
+   "eleven--wide minus this, macro f1_95": [
+    -0.13167363564506235,
+    -0.03110430562771002
+   ],
+   "eleven--wide minus this, precision": 0.006932386932386958,
+   "eleven--wide minus this, precision_95": [
+    -0.04886879844070746,
+    0.05554161343450321
+   ],
+   "eleven--wide minus this, recall": -0.1507936507936508,
+   "eleven--wide minus this, recall_95": [
+    -0.3574602422828074,
+    0.044745217976984955
+   ],
+   "40 tables or more": {
+    "databases": 11,
+    "keys": 869,
+    "precision": 0.805414551607445,
+    "recall": 0.5477560414269275,
+    "f1": 0.6520547945205479,
+    "f1_95": [
+     0.320398082942097,
+     0.8687615298982189
+    ],
+    "macro f1": 0.4771023071915918
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.07489430069338743,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.41819185683551874,
+    0.33478274978025335
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 5,
+    "keys naming nothing": 0
+   },
+   "usage": {
+    "replies": 100,
+    "input tokens": 189426,
+    "output tokens": 903448,
+    "reasoning tokens": 861654,
+    "finished otherwise than at the end": 5,
+    "answered by": [
+     "deepseek/deepseek-v4.1-flash-1017"
+    ],
+    "batches": 1,
+    "asked a request at a time": 0
+   }
+  },
+  "gemini-3.5-flash-lite": {
+   "databases": 100,
+   "keys": 2016,
+   "precision": 0.7812368531762726,
+   "recall": 0.9211309523809523,
+   "f1": 0.845435920783064,
+   "f1_95": [
+    0.7768643926206369,
+    0.9000454197451757
+   ],
+   "macro f1": 0.8817837479088086,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 263,
+     "precision": 0.9205776173285198,
+     "recall": 0.9695817490494296,
+     "f1": 0.9444444444444444,
+     "macro f1": 0.9458290274894479
+    },
+    "10-19": {
+     "databases": 38,
+     "keys": 488,
+     "precision": 0.8345195729537367,
+     "recall": 0.9610655737704918,
+     "f1": 0.8933333333333333,
+     "macro f1": 0.8834069089299064
+    },
+    "20-39": {
+     "databases": 13,
+     "keys": 396,
+     "precision": 0.8651399491094147,
+     "recall": 0.8585858585858586,
+     "f1": 0.861850443599493,
+     "macro f1": 0.8446939848471353
+    },
+    "40-99": {
+     "databases": 8,
+     "keys": 396,
+     "precision": 0.654320987654321,
+     "recall": 0.9368686868686869,
+     "f1": 0.770508826583593,
+     "macro f1": 0.7514820310572197
+    },
+    "100+": {
+     "databases": 3,
+     "keys": 473,
+     "precision": 0.7301038062283737,
+     "recall": 0.8921775898520085,
+     "f1": 0.8030447193149381,
+     "macro f1": 0.5581770518249648
+    }
+   },
+   "eleven--wide minus this, f1": -0.10907488108012187,
+   "eleven--wide minus this, f1_95": [
+    -0.1974711573699508,
+    -0.0057475313358674035
+   ],
+   "eleven--wide minus this, macro f1": -0.08544802802220786,
+   "eleven--wide minus this, macro f1_95": [
+    -0.12565427337685373,
+    -0.04538642612782317
+   ],
+   "eleven--wide minus this, precision": 0.08677661483719545,
+   "eleven--wide minus this, precision_95": [
+    -0.007895766223265707,
+    0.19919479972394502
+   ],
+   "eleven--wide minus this, recall": -0.28174603174603174,
+   "eleven--wide minus this, recall_95": [
+    -0.39898199672667756,
+    -0.15356579830285533
+   ],
+   "40 tables or more": {
+    "databases": 11,
+    "keys": 869,
+    "precision": 0.6925764192139738,
+    "recall": 0.9125431530494822,
+    "f1": 0.7874875868917578,
+    "f1_95": [
+     0.608650082833119,
+     0.8846734551368863
+    ],
+    "macro f1": 0.6987624912666047
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.2103270930645973,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.4281247479936108,
+    0.025272279823065527
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 7
+   },
+   "usage": {
+    "replies": 100,
+    "input tokens": 194018,
+    "output tokens": 70816,
+    "reasoning tokens": 0,
+    "finished otherwise than at the end": 0,
+    "answered by": [
+     "google/gemini-3.5-flash-lite"
+    ],
+    "batches": 1,
+    "asked a request at a time": 0
+   }
+  },
+  "gpt-6-luna": {
+   "databases": 100,
+   "keys": 2016,
+   "precision": 0.7216494845360825,
+   "recall": 0.9027777777777778,
+   "f1": 0.8021154693697664,
+   "f1_95": [
+    0.7075919851366949,
+    0.8747368767041421
+   ],
+   "macro f1": 0.8577797458374874,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 263,
+     "precision": 0.9388489208633094,
+     "recall": 0.9923954372623575,
+     "f1": 0.9648798521256933,
+     "macro f1": 0.9633818194189712
+    },
+    "10-19": {
+     "databases": 38,
+     "keys": 488,
+     "precision": 0.726027397260274,
+     "recall": 0.8688524590163934,
+     "f1": 0.7910447761194029,
+     "macro f1": 0.8001356344715173
+    },
+    "20-39": {
+     "databases": 13,
+     "keys": 396,
+     "precision": 0.8938679245283019,
+     "recall": 0.9570707070707071,
+     "f1": 0.9243902439024391,
+     "macro f1": 0.8950805977607119
+    },
+    "40-99": {
+     "databases": 8,
+     "keys": 396,
+     "precision": 0.5109612141652614,
+     "recall": 0.7651515151515151,
+     "f1": 0.6127401415571284,
+     "macro f1": 0.6071048577971768
+    },
+    "100+": {
+     "databases": 3,
+     "keys": 473,
+     "precision": 0.7045101088646968,
+     "recall": 0.9577167019027484,
+     "f1": 0.8118279569892474,
+     "macro f1": 0.7571415675478398
+    }
+   },
+   "eleven--wide minus this, f1": -0.06575442966682432,
+   "eleven--wide minus this, f1_95": [
+    -0.17061263435474558,
+    0.0687510150623869
+   ],
+   "eleven--wide minus this, macro f1": -0.061444025950886605,
+   "eleven--wide minus this, macro f1_95": [
+    -0.11654800616388036,
+    -0.006750697292179644
+   ],
+   "eleven--wide minus this, precision": 0.14636398347738555,
+   "eleven--wide minus this, precision_95": [
+    0.046179709893918966,
+    0.2702204558249571
+   ],
+   "eleven--wide minus this, recall": -0.2633928571428572,
+   "eleven--wide minus this, recall_95": [
+    -0.3972597115691653,
+    -0.1034328680887137
+   ],
+   "40 tables or more": {
+    "databases": 11,
+    "keys": 869,
+    "precision": 0.6116504854368932,
+    "recall": 0.8699654775604143,
+    "f1": 0.718289786223278,
+    "f1_95": [
+     0.4974835943831303,
+     0.8567501975675749
+    ],
+    "macro f1": 0.6480239604564487
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.1411292923961175,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.40031268283515137,
+    0.17042449657644285
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 0,
+    "keys naming nothing": 156
+   },
+   "usage": {
+    "replies": 100,
+    "input tokens": 178850,
+    "output tokens": 122344,
+    "reasoning tokens": 73525,
+    "finished otherwise than at the end": 0,
+    "answered by": [
+     "openai/gpt-6-luna"
+    ],
+    "batches": 1,
+    "asked a request at a time": 0
+   }
+  },
+  "gpt-6.1-terra": {
+   "databases": 100,
+   "keys": 2016,
+   "precision": 0.789983844911147,
+   "recall": 0.9702380952380952,
+   "f1": 0.8708815672306321,
+   "f1_95": [
+    0.7972501588605587,
+    0.9245957371293837
+   ],
+   "macro f1": 0.9043180041675021,
+   "by tables": {
+    "5-9": {
+     "databases": 38,
+     "keys": 263,
+     "precision": 0.9316546762589928,
+     "recall": 0.9847908745247148,
+     "f1": 0.9574861367837338,
+     "macro f1": 0.9553221403066605
+    },
+    "10-19": {
+     "databases": 38,
+     "keys": 488,
+     "precision": 0.8461538461538461,
+     "recall": 0.9918032786885246,
+     "f1": 0.9132075471698113,
+     "macro f1": 0.8944372249261215
+    },
+    "20-39": {
+     "databases": 13,
+     "keys": 396,
+     "precision": 0.9393203883495146,
+     "recall": 0.9772727272727273,
+     "f1": 0.957920792079208,
+     "macro f1": 0.9554146207847036
+    },
+    "40-99": {
+     "databases": 8,
+     "keys": 396,
+     "precision": 0.6451048951048951,
+     "recall": 0.9318181818181818,
+     "f1": 0.762396694214876,
+     "macro f1": 0.6768834666256083
+    },
+    "100+": {
+     "databases": 3,
+     "keys": 473,
+     "precision": 0.7118380062305296,
+     "recall": 0.9661733615221987,
+     "f1": 0.8197309417040357,
+     "macro f1": 0.7684955782328245
+    }
+   },
+   "eleven--wide minus this, f1": -0.13452052752769006,
+   "eleven--wide minus this, f1_95": [
+    -0.21848049394073996,
+    -0.031617927865589236
+   ],
+   "eleven--wide minus this, macro f1": -0.10798228428090129,
+   "eleven--wide minus this, macro f1_95": [
+    -0.15164338178142478,
+    -0.06253912448253475
+   ],
+   "eleven--wide minus this, precision": 0.07802962310232098,
+   "eleven--wide minus this, precision_95": [
+    -0.017530141469377144,
+    0.19383380859939064
+   ],
+   "eleven--wide minus this, recall": -0.33085317460317465,
+   "eleven--wide minus this, recall_95": [
+    -0.44045239367654415,
+    -0.20890470648578002
+   ],
+   "40 tables or more": {
+    "databases": 11,
+    "keys": 869,
+    "precision": 0.6803953871499177,
+    "recall": 0.950517836593786,
+    "f1": 0.7930868939030244,
+    "f1_95": [
+     0.6305717193524492,
+     0.8872432112142202
+    ],
+    "macro f1": 0.701868587973031
+   },
+   "eleven--wide minus this, 40 tables or more, f1": -0.21592640007586394,
+   "eleven--wide minus this, 40 tables or more, f1_95": [
+    -0.442405010518577,
+    0.02448129045301331
+   ],
+   "replies": {
+    "unanswered": 0,
+    "unreadable": 1,
+    "keys naming nothing": 0
+   },
+   "usage": {
+    "replies": 100,
+    "input tokens": 178850,
+    "output tokens": 72440,
+    "reasoning tokens": 24108,
+    "finished otherwise than at the end": 0,
+    "answered by": [
+     "openai/gpt-6.1-terra"
+    ],
+    "batches": 1,
+    "asked a request at a time": 0
+   }
+  }
+ }
+}

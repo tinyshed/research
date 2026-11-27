@@ -1,0 +1,50 @@
+{
+  "keys.bin sha256": "ff03c8fa6718cb9f415f5806bb46c4bd32af271aae9f40a2b0d0efa1f898b495",
+  "threshold": 0.7980627105736274,
+  "variant": "eleven",
+  "second stage": "wide",
+  "read of each set": {
+    "external": "all",
+    "test": "all"
+  },
+  "external": {
+    "schemas": 397,
+    "pairs, Python": 1899817,
+    "pairs, Rust": 1899817,
+    "pairs whose names differ": 0,
+    "pairs whose hashed features differ": 0,
+    "first stage, largest margin difference": 0.0,
+    "first stage, pairs differing by over 1e-4": 0,
+    "second stage, largest margin difference": 1.3556309852447157e-07,
+    "second stage, pairs differing by over 1e-4": 0,
+    "keys drawn, Python": 2669,
+    "keys drawn, Rust": 2669,
+    "drawn by Python only": [],
+    "drawn by Rust only": [],
+    "second stage, features a pair": 68,
+    "second stage, pairs whose features differ": 0,
+    "second stage, features that differ": {},
+    "second stage, pairs whose features differ, shown": [],
+    "pairs that differ, shown": []
+  },
+  "test": {
+    "schemas": 2099,
+    "pairs, Python": 1502214,
+    "pairs, Rust": 1502214,
+    "pairs whose names differ": 0,
+    "pairs whose hashed features differ": 0,
+    "first stage, largest margin difference": 0.0,
+    "first stage, pairs differing by over 1e-4": 0,
+    "second stage, largest margin difference": 1.4158768202321426e-07,
+    "second stage, pairs differing by over 1e-4": 0,
+    "keys drawn, Python": 14779,
+    "keys drawn, Rust": 14779,
+    "drawn by Python only": [],
+    "drawn by Rust only": [],
+    "second stage, features a pair": 68,
+    "second stage, pairs whose features differ": 0,
+    "second stage, features that differ": {},
+    "second stage, pairs whose features differ, shown": [],
+    "pairs that differ, shown": []
+  }
+}

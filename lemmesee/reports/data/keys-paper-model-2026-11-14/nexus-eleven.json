@@ -1,0 +1,56 @@
+{
+  "tpch": {
+    "databases": 1,
+    "tables": 8,
+    "tables occurring in Perm": 8,
+    "one-column keys declared": 7,
+    "at round 1b's threshold": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "at this set's best threshold": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "threshold": 0.9141298072735246
+    },
+    "Nexus's XGBoost, F1": 0.35
+  },
+  "tpcds": {
+    "databases": 1,
+    "tables": 24,
+    "tables occurring in Perm": 0,
+    "one-column keys declared": 102,
+    "at round 1b's threshold": {
+      "precision": 0.9523809523809523,
+      "recall": 0.5882352941176471,
+      "f1": 0.7272727272727274
+    },
+    "at this set's best threshold": {
+      "precision": 0.9125,
+      "recall": 0.7156862745098039,
+      "f1": 0.8021978021978022,
+      "threshold": 0.6764751882382702
+    },
+    "Nexus's XGBoost, F1": 0.44
+  },
+  "bird dev": {
+    "databases": 11,
+    "tables": 75,
+    "tables occurring in Perm": 5,
+    "one-column keys declared": 104,
+    "at round 1b's threshold": {
+      "precision": 0.8902439024390244,
+      "recall": 0.7019230769230769,
+      "f1": 0.7849462365591396
+    },
+    "at this set's best threshold": {
+      "precision": 0.8902439024390244,
+      "recall": 0.7019230769230769,
+      "f1": 0.7849462365591396,
+      "threshold": 0.8339127010811906
+    },
+    "Nexus's XGBoost, F1": 0.1
+  }
+}

@@ -112,3 +112,9 @@ so, never by editing the number it replaces.
   against the whole schema, read once on 718 plain GitHub schemas, 0.757 against 0.702, +0.055 [+0.038, +0.074], and
   +0.087 in schemas of 40 tables or more; on 100 schemas in another house style, read once, +0.011 [−0.003, +0.025]; the
   teachers' keys taught raise recall and no F1 over declared keys; a seed alone moves a fit by 0.01.
+- [The paper's key model measured whole](keys-paper-model-2026-11-14.md), round 1w: `eleven--wide`, the paper's model
+  by the owner's choice, over every declared key of the 398 external databases 0.761 [0.671, 0.839] against
+  `nine-mended`'s 0.755, +0.006 [−0.007, +0.019]; its reader in Rust exact on 3.4 million pairs, 3.1 ms a database,
+  1 054 108 bytes with its lexicons, 1.76 GiB on a schema of 678 tables; seven language models asked again, on plain A,
+  clean, five at 0.823–0.860 and GPT-6 Luna at 0.766 against its 0.757, the gap recall; on style 3, clean, 0.760–0.875
+  against 0.734.
