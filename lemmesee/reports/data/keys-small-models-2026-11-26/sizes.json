@@ -1,0 +1,94 @@
+{
+ "what": "each model's bytes on disk: lemmekey's packed trees and lexicons (round 1w's pack.json); a network's weights as 32-bit floats in safetensors, with its tokenizer's files where it has one; a local model's weights as Ollama's registry lists the tag",
+ "bytes": {
+  "lemmekey": 1054108,
+  "gemma4--12b-it-q4_K_M--no-reasoning": 8021618941,
+  "qwen3.5--2b-q4_K_M--no-reasoning": 1945781358,
+  "qwen3.5--4b-q4_K_M--no-reasoning": 3324173934,
+  "qwen3.5--9b-q4_K_M--no-reasoning": 6550825550,
+  "char-s": 2398812,
+  "granite": 194242605
+ },
+ "labels": {
+  "lemmekey": {
+   "text": "lemmekey, 1.05 MB",
+   "offset": [
+    8,
+    10,
+    "left"
+   ]
+  },
+  "gemma4--12b-it-q4_K_M--no-reasoning": {
+   "text": "Gemma 4 12B",
+   "offset": [
+    -9,
+    0,
+    "right"
+   ]
+  },
+  "qwen3.5--2b-q4_K_M--no-reasoning": {
+   "text": "Qwen 3.5 2B",
+   "offset": [
+    -9,
+    0,
+    "right"
+   ]
+  },
+  "qwen3.5--4b-q4_K_M--no-reasoning": {
+   "text": "Qwen 3.5 4B",
+   "offset": [
+    -9,
+    0,
+    "right"
+   ]
+  },
+  "qwen3.5--9b-q4_K_M--no-reasoning": {
+   "text": "Qwen 3.5 9B",
+   "offset": [
+    -9,
+    0,
+    "right"
+   ]
+  },
+  "gpt-6.1-terra": {
+   "text": "GPT-6.1 Terra",
+   "dy": 16
+  },
+  "claude-sonnet-5-5": {
+   "text": "Claude Sonnet 5.5",
+   "dy": 8
+  },
+  "claude-haiku-5-5": {
+   "text": "Claude Haiku 5.5",
+   "dy": 0
+  },
+  "gemini-3.5-flash-lite": {
+   "text": "Gemini 3.5 Flash-Lite",
+   "dy": -2
+  },
+  "deepseek-v4.1-flash-1017": {
+   "text": "DeepSeek V4.1 Flash",
+   "dy": -11
+  },
+  "gpt-6-luna": {
+   "text": "GPT-6 Luna",
+   "dy": -9
+  },
+  "char-s": {
+   "text": "char-s, 2.4 MB",
+   "offset": [
+    9,
+    0,
+    "left"
+   ]
+  },
+  "granite": {
+   "text": "granite, 194 MB",
+   "offset": [
+    9,
+    0,
+    "left"
+   ]
+  }
+ }
+}

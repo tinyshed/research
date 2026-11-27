@@ -1,0 +1,20 @@
+{
+ "name": "granite",
+ "bytes, int8 state": 105782591,
+ "bytes, fp16": 95333162,
+ "validation part": {
+  "float": {
+   "pairs": 61272,
+   "f1 at the frozen threshold": 0.7097505668934241,
+   "f1 at its own best": 0.7124563445867287,
+   "seconds": 494.52741742134094
+  },
+  "int8": {
+   "pairs": 61272,
+   "f1 at the frozen threshold": 0.690951821386604,
+   "f1 at its own best": 0.6962785114045618,
+   "seconds": 254.02574729919434
+  }
+ },
+ "largest difference of a score": 0.6507776379585266
+}

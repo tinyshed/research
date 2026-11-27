@@ -1,0 +1,1779 @@
+{
+ "gemma4--12b-it-q4_K_M--no-reasoning": {
+  "plain-a": {
+   "entries": 20435,
+   "right": 6288,
+   "false": 14127,
+   "repeated for one column, dropped": 20,
+   "by cause": {
+    "names nothing": 11623,
+    "not a declared key": 1751,
+    "its own primary key": 271,
+    "a primary key column": 214,
+    "self-reference": 120,
+    "wrong table": 118,
+    "reversed": 30
+   },
+   "false keys in the ten schemas with the most": 2204,
+   "schemas with a false key": 573,
+   "examples": {
+    "names nothing": [
+     [
+      "products",
+      "category_id",
+      "categories"
+     ],
+     [
+      "blocked",
+      "blocker_id",
+      "users(id)"
+     ],
+     [
+      "comments",
+      "author_id",
+      "users(id)"
+     ],
+     [
+      "comments",
+      "post_id",
+      "posts(id)"
+     ],
+     [
+      "comments",
+      "reply_id",
+      "comments(id)"
+     ],
+     [
+      "friends",
+      "requester_id",
+      "users(id)"
+     ]
+    ],
+    "wrong table": [
+     [
+      "templatevms",
+      "creatorid",
+      "users"
+     ],
+     [
+      "services",
+      "serviceproviderid",
+      "clients"
+     ],
+     [
+      "servicetemplates",
+      "ownerserviceproviderid",
+      "clients"
+     ],
+     [
+      "influencers",
+      "influencer_id",
+      "people"
+     ],
+     [
+      "notes_notifs",
+      "obj_id",
+      "notes"
+     ],
+     [
+      "backs",
+      "email",
+      "users"
+     ]
+    ],
+    "not a declared key": [
+     [
+      "sessions",
+      "subscriptionid",
+      "subscriptions"
+     ],
+     [
+      "ws_activities_comment",
+      "activity_id",
+      "ws_activities"
+     ],
+     [
+      "ws_auth_group_access",
+      "group_id",
+      "ws_auth_group"
+     ],
+     [
+      "sku_interactions",
+      "visit_id",
+      "website_visits"
+     ],
+     [
+      "sales_funnel_events",
+      "visit_id",
+      "website_visits"
+     ],
+     [
+      "order_items",
+      "order_id",
+      "orders"
+     ]
+    ],
+    "self-reference": [
+     [
+      "routetasks",
+      "delayedchildid",
+      "routetasks"
+     ],
+     [
+      "feedback_replies",
+      "feedback_id",
+      "feedback_replies"
+     ],
+     [
+      "feedback_replies",
+      "user_id",
+      "feedback_replies"
+     ],
+     [
+      "chat_threads",
+      "participant_1",
+      "chat_threads"
+     ],
+     [
+      "chat_threads",
+      "participant_2",
+      "chat_threads"
+     ],
+     [
+      "chat_messages",
+      "sender_id",
+      "chat_messages"
+     ]
+    ],
+    "a primary key column": [
+     [
+      "servicetemplatewithvendorids",
+      "servicetemplateid",
+      "servicetemplates"
+     ],
+     [
+      "servicetemplatewithvendorids",
+      "businessaccountid",
+      "parties_businessaccount"
+     ],
+     [
+      "bookshelf",
+      "book_id",
+      "books"
+     ],
+     [
+      "refunds",
+      "email",
+      "users"
+     ],
+     [
+      "refunds",
+      "pid",
+      "projects"
+     ],
+     [
+      "meliinfo",
+      "user_id",
+      "users"
+     ]
+    ],
+    "its own primary key": [
+     [
+      "person",
+      "id",
+      "person"
+     ],
+     [
+      "country_info",
+      "cid",
+      "country_info"
+     ],
+     [
+      "page",
+      "id",
+      "page"
+     ],
+     [
+      "customer",
+      "customerid",
+      "customer"
+     ],
+     [
+      "hadith_study",
+      "id",
+      "hadith_study"
+     ],
+     [
+      "company",
+      "id",
+      "company"
+     ]
+    ],
+    "reversed": [
+     [
+      "agendamentos",
+      "registro_humor_id",
+      "registros_humor"
+     ],
+     [
+      "doctor_invitations",
+      "doctorprofileid",
+      "doctor_profiles"
+     ],
+     [
+      "quality_checklist_templates",
+      "current_version_id",
+      "quality_checklist_versions"
+     ],
+     [
+      "proposal_question_datatypes",
+      "proposal_question_datatype_id",
+      "proposal_questions"
+     ],
+     [
+      "profiles",
+      "default_credit_card_id",
+      "shared_credit_cards"
+     ],
+     [
+      "transactions",
+      "series_id",
+      "transactions"
+     ]
+    ]
+   }
+  },
+  "style3": {
+   "entries": 1609,
+   "right": 809,
+   "false": 800,
+   "repeated for one column, dropped": 0,
+   "by cause": {
+    "names nothing": 614,
+    "not a declared key": 125,
+    "its own primary key": 40,
+    "wrong table": 11,
+    "self-reference": 4,
+    "a primary key column": 4,
+    "reversed": 2
+   },
+   "false keys in the ten schemas with the most": 336,
+   "schemas with a false key": 64,
+   "examples": {
+    "names nothing": [
+     [
+      "thong_tin_giao_hang",
+      "ma_nguoi_dung",
+      "nguoi_dung(ma_nguoi_dung)"
+     ],
+     [
+      "tai_khoan_ngan_hang",
+      "ma_nguoi_dung",
+      "nguoi_dung(ma_nguoi_dung)"
+     ],
+     [
+      "phien_livestream",
+      "ma_nguoi_ban",
+      "nguoi_ban(ma_nguoi_ban)"
+     ],
+     [
+      "ma_giam_gia",
+      "ma_nguoi_ban",
+      "nguoi_ban(ma_nguoi_ban)"
+     ],
+     [
+      "voucher_da_luu",
+      "ma_nguoi_mua",
+      "nguoi_mua(ma_nguoi_mua)"
+     ],
+     [
+      "voucher_da_luu",
+      "ma_voucher",
+      "ma_giam_gia(ma_giam_gia)"
+     ]
+    ],
+    "not a declared key": [
+     [
+      "movimiento_inventario",
+      "orden_trabajo_id_orden",
+      "orden_trabajo"
+     ],
+     [
+      "seguimiento_pintura",
+      "movimiento_inventario_id_movimiento",
+      "movimiento_inventario"
+     ],
+     [
+      "mskt_artists",
+      "id_style",
+      "mskt_styles"
+     ],
+     [
+      "mskt_songs",
+      "id_album",
+      "mskt_albums"
+     ],
+     [
+      "mskt_playlists_songs",
+      "id_song",
+      "mskt_songs"
+     ],
+     [
+      "kardex_movement",
+      "id_product",
+      "products"
+     ]
+    ],
+    "its own primary key": [
+     [
+      "khachhang",
+      "makh",
+      "khachhang"
+     ],
+     [
+      "nhanvien",
+      "manv",
+      "nhanvien"
+     ],
+     [
+      "dichvu",
+      "id_dich_vu",
+      "dichvu"
+     ],
+     [
+      "mon_an_tham_khao",
+      "id_mon_an",
+      "mon_an_tham_khao"
+     ],
+     [
+      "nguoidung",
+      "id_nguoi_dung",
+      "nguoidung"
+     ],
+     [
+      "nhanvienphancong",
+      "id_nhan_vien_phan_cong",
+      "nhanvienphancong"
+     ]
+    ],
+    "reversed": [
+     [
+      "cuochenkhambenh",
+      "id_hoa_don_coc",
+      "hoadon"
+     ],
+     [
+      "cuochentuvan",
+      "id_hoa_don_coc",
+      "hoadon"
+     ]
+    ],
+    "self-reference": [
+     [
+      "hoadon",
+      "id_hoa_don_tham_chieu",
+      "hoadon"
+     ],
+     [
+      "modulos",
+      "cod_modulo_padre",
+      "modulos"
+     ],
+     [
+      "proveedores",
+      "id_proveedor",
+      "proveedores"
+     ],
+     [
+      "dimdepartmentgroup",
+      "parentdepartmentgroupkey",
+      "dimdepartmentgroup"
+     ]
+    ],
+    "wrong table": [
+     [
+      "ketquaxetnghiem",
+      "id_nhan_vien_xet_nghiem",
+      "nhanvienxetnghiem"
+     ],
+     [
+      "lich_su_gui_email",
+      "id_yeu_cau",
+      "yeucaudoica"
+     ],
+     [
+      "theodoi_tien_do",
+      "id_ho_so",
+      "hosokhambenh"
+     ],
+     [
+      "theodoi_tien_do",
+      "id_lich_su",
+      "lichsukham"
+     ],
+     [
+      "yeucaudoica",
+      "id_nhan_vien_gui",
+      "nhanvienphancong"
+     ],
+     [
+      "yeucaudoica",
+      "id_nhan_vien_nhan",
+      "nhanvienphancong"
+     ]
+    ],
+    "a primary key column": [
+     [
+      "dd_mulher",
+      "mul_den_cd",
+      "assunto_denuncia"
+     ],
+     [
+      "luongthang_ky",
+      "manvtn",
+      "nhanvientoanha"
+     ],
+     [
+      "luongthang_tien",
+      "manvtn",
+      "nhanvientoanha"
+     ],
+     [
+      "factadditionalinternationalproductdescription",
+      "productkey",
+      "dimproduct"
+     ]
+    ]
+   }
+  }
+ },
+ "qwen3.5--9b-q4_K_M--no-reasoning": {
+  "plain-a": {
+   "entries": 16133,
+   "right": 10680,
+   "false": 5378,
+   "repeated for one column, dropped": 75,
+   "by cause": {
+    "not a declared key": 2886,
+    "names nothing": 838,
+    "a primary key column": 618,
+    "self-reference": 409,
+    "wrong table": 364,
+    "its own primary key": 194,
+    "reversed": 69
+   },
+   "false keys in the ten schemas with the most": 1417,
+   "schemas with a false key": 466,
+   "examples": {
+    "names nothing": [
+     [
+      "products",
+      "category_id",
+      "categories"
+     ],
+     [
+      "validations",
+      "auth_user_id",
+      "users"
+     ],
+     [
+      "validations",
+      "content_type_id",
+      "content_types"
+     ],
+     [
+      "validations",
+      "object_id",
+      "objects"
+     ],
+     [
+      "annotations",
+      "parent_id",
+      "annotations"
+     ],
+     [
+      "schedule_campuses",
+      "campus_id",
+      "schedule_groups"
+     ]
+    ],
+    "its own primary key": [
+     [
+      "customers",
+      "customer_id",
+      "customers"
+     ],
+     [
+      "workflow_state",
+      "run_id",
+      "workflow_state"
+     ],
+     [
+      "employees",
+      "id",
+      "employees"
+     ],
+     [
+      "studentdetails",
+      "studentid",
+      "studentdetails"
+     ],
+     [
+      "subjectdetails",
+      "subjectid",
+      "subjectdetails"
+     ],
+     [
+      "gpkg_spatial_ref_sys",
+      "srs_id",
+      "gpkg_spatial_ref_sys"
+     ]
+    ],
+    "self-reference": [
+     [
+      "identities",
+      "nameidentifier",
+      "identities"
+     ],
+     [
+      "t_comment",
+      "parentid",
+      "t_comment"
+     ],
+     [
+      "t_comment",
+      "replycommentid",
+      "t_comment"
+     ],
+     [
+      "routetasks",
+      "delayedchildid",
+      "routetasks"
+     ],
+     [
+      "comments",
+      "parent_id",
+      "comments"
+     ],
+     [
+      "users",
+      "invited_by",
+      "users"
+     ]
+    ],
+    "wrong table": [
+     [
+      "templatevms",
+      "creatorid",
+      "users"
+     ],
+     [
+      "tasks",
+      "assigned_to",
+      "candidates"
+     ],
+     [
+      "t_operation_log",
+      "userid",
+      "t_user_auth"
+     ],
+     [
+      "t_user_role",
+      "userid",
+      "t_user_info"
+     ],
+     [
+      "services",
+      "serviceproviderid",
+      "parties"
+     ],
+     [
+      "servicetemplates",
+      "ownerserviceproviderid",
+      "parties"
+     ]
+    ],
+    "not a declared key": [
+     [
+      "sessions",
+      "subscriptionid",
+      "subscriptions"
+     ],
+     [
+      "ws_activities_comment",
+      "activity_id",
+      "ws_activities"
+     ],
+     [
+      "workflow_state",
+      "pipeline_id",
+      "runs"
+     ],
+     [
+      "workflow_state",
+      "parent_run_id",
+      "runs"
+     ],
+     [
+      "workflow_state",
+      "task_id",
+      "runs"
+     ],
+     [
+      "candidates",
+      "emergency_contact",
+      "users"
+     ]
+    ],
+    "a primary key column": [
+     [
+      "servicetemplatewithvendorids",
+      "servicetemplateid",
+      "servicetemplates"
+     ],
+     [
+      "servicetemplatewithvendorids",
+      "businessaccountid",
+      "parties_businessaccount"
+     ],
+     [
+      "userconversation",
+      "userid",
+      "iplog"
+     ],
+     [
+      "_topictouser",
+      "b",
+      "useranalytic"
+     ],
+     [
+      "_conversationparticipants",
+      "b",
+      "useranalytic"
+     ],
+     [
+      "bookshelf",
+      "book_id",
+      "books"
+     ]
+    ],
+    "reversed": [
+     [
+      "exams",
+      "dept",
+      "questions"
+     ],
+     [
+      "voucher",
+      "trans_id",
+      "acc_trans"
+     ],
+     [
+      "ai_operator_sessions",
+      "owner_user_id",
+      "ai_operator_audit"
+     ],
+     [
+      "ai_operator_sessions",
+      "service_order_id",
+      "ai_operator_audit"
+     ],
+     [
+      "ai_operator_pending_actions",
+      "requested_by_user_id",
+      "ai_operator_audit"
+     ],
+     [
+      "ai_operator_pending_actions",
+      "approved_by_user_id",
+      "ai_operator_audit"
+     ]
+    ]
+   }
+  },
+  "style3": {
+   "entries": 1312,
+   "right": 1059,
+   "false": 252,
+   "repeated for one column, dropped": 1,
+   "by cause": {
+    "not a declared key": 131,
+    "self-reference": 29,
+    "a primary key column": 27,
+    "wrong table": 24,
+    "names nothing": 16,
+    "its own primary key": 16,
+    "reversed": 9
+   },
+   "false keys in the ten schemas with the most": 147,
+   "schemas with a false key": 50,
+   "examples": {
+    "self-reference": [
+     [
+      "nguoi_ban",
+      "ma_so_thue",
+      "nguoi_ban"
+     ],
+     [
+      "nguoi_ban",
+      "cccd",
+      "nguoi_ban"
+     ],
+     [
+      "bien_the_san_pham",
+      "ma_bien_the",
+      "bien_the_san_pham"
+     ],
+     [
+      "candidateskills",
+      "candidate",
+      "candidateskills"
+     ],
+     [
+      "site_locations",
+      "location_id",
+      "site_locations"
+     ],
+     [
+      "site_programs",
+      "program_id",
+      "site_programs"
+     ]
+    ],
+    "not a declared key": [
+     [
+      "ma_giam_gia",
+      "ma_nguoi_ban",
+      "nguoi_ban"
+     ],
+     [
+      "ma_giam_gia",
+      "ma_danh_muc",
+      "danh_muc"
+     ],
+     [
+      "san_pham",
+      "ma_nguoi_ban",
+      "nguoi_ban"
+     ],
+     [
+      "chi_tiet_don_hang",
+      "ma_nguoi_ban",
+      "nguoi_ban"
+     ],
+     [
+      "don_hang",
+      "ma_nguoi_mua",
+      "nguoi_mua"
+     ],
+     [
+      "site_posts",
+      "author_profile_id",
+      "site_editor_scopes"
+     ]
+    ],
+    "a primary key column": [
+     [
+      "san_pham_livestream",
+      "ma_nguoi_ban",
+      "nguoi_ban"
+     ],
+     [
+      "thuoc_danh_muc",
+      "ma_san_pham",
+      "san_pham"
+     ],
+     [
+      "thuoc_danh_muc",
+      "ma_nguoi_ban",
+      "nguoi_ban"
+     ],
+     [
+      "bien_the_san_pham",
+      "ma_nguoi_ban",
+      "nguoi_ban"
+     ],
+     [
+      "san_pham_gio_hang",
+      "ma_gio_hang",
+      "gio_hang"
+     ],
+     [
+      "san_pham_gio_hang",
+      "ma_san_pham",
+      "san_pham"
+     ]
+    ],
+    "wrong table": [
+     [
+      "san_pham_gio_hang",
+      "ma_nguoi_mua",
+      "nguoi_mua"
+     ],
+     [
+      "material_clasificacion_subcategoria",
+      "material_clasificacion_categoria_id",
+      "material_categoria_general"
+     ],
+     [
+      "orden_trabajo",
+      "empleado_tentativo_id",
+      "asignacion_herramienta"
+     ],
+     [
+      "autoordertrack",
+      "orderdetid",
+      "orderloctrans"
+     ],
+     [
+      "autoordertrack",
+      "reforderdetid",
+      "orderloctrans"
+     ],
+     [
+      "batchjobparam",
+      "jobid",
+      "batchtrigger"
+     ]
+    ],
+    "names nothing": [
+     [
+      "favorite2user",
+      "idserie",
+      "serie"
+     ],
+     [
+      "current2user",
+      "idserie",
+      "serie"
+     ],
+     [
+      "comment2user",
+      "idserie",
+      "serie"
+     ],
+     [
+      "site_pages",
+      "author_profile_id",
+      "site_editor_scopes"
+     ],
+     [
+      "factura_compra",
+      "tipo_cambio_id_tipo_cambio",
+      "factura_compra_tipo_cambio"
+     ],
+     [
+      "movimiento_inventario",
+      "tipo_movimiento_id_tipo_movimiento",
+      "movimiento_inventario_tipo_movimiento"
+     ]
+    ],
+    "its own primary key": [
+     [
+      "alerta_inventario_nivel_prioridad",
+      "alerta_inventario_nivel_prioridad_id_nivel_prioridad",
+      "alerta_inventario_nivel_prioridad"
+     ],
+     [
+      "movimiento_inventario_clasificacion_salida",
+      "movimiento_inventario_clasificacion_salida_id_clasificacion_salida",
+      "movimiento_inventario_clasificacion_salida"
+     ],
+     [
+      "factura_compra",
+      "factura_compra_id_factura",
+      "factura_compra"
+     ],
+     [
+      "maybay",
+      "mamb",
+      "maybay"
+     ],
+     [
+      "tuyenbay",
+      "matuyen",
+      "tuyenbay"
+     ],
+     [
+      "nguoi",
+      "manguoi",
+      "nguoi"
+     ]
+    ],
+    "reversed": [
+     [
+      "lote",
+      "proyecto_id_proyecto",
+      "lote_fecha_pedido"
+     ],
+     [
+      "empresas",
+      "deleteby",
+      "usuarios"
+     ],
+     [
+      "empresas",
+      "updateby",
+      "usuarios"
+     ],
+     [
+      "nguoidung",
+      "id_nguoi_dung",
+      "xinnghiphep"
+     ],
+     [
+      "vitri",
+      "mavitri",
+      "vanphong"
+     ],
+     [
+      "loaidichvu",
+      "maloaidv",
+      "dichvu"
+     ]
+    ]
+   }
+  }
+ },
+ "qwen3.5--4b-q4_K_M--no-reasoning": {
+  "plain-a": {
+   "entries": 10203,
+   "right": 6067,
+   "false": 4130,
+   "repeated for one column, dropped": 6,
+   "by cause": {
+    "names nothing": 1642,
+    "not a declared key": 1556,
+    "a primary key column": 304,
+    "its own primary key": 227,
+    "self-reference": 195,
+    "wrong table": 153,
+    "reversed": 53
+   },
+   "false keys in the ten schemas with the most": 879,
+   "schemas with a false key": 368,
+   "examples": {
+    "names nothing": [
+     [
+      "products",
+      "category_id",
+      "categories"
+     ],
+     [
+      "department",
+      "hospitalid",
+      "hospital.id"
+     ],
+     [
+      "department",
+      "roleid",
+      "role.id"
+     ],
+     [
+      "user",
+      "hospitalid",
+      "hospital.id"
+     ],
+     [
+      "user",
+      "department",
+      "department.id"
+     ],
+     [
+      "userlogin",
+      "userid",
+      "user.id"
+     ]
+    ],
+    "wrong table": [
+     [
+      "blocked",
+      "blocked_id",
+      "posts"
+     ],
+     [
+      "templatevms",
+      "creatorid",
+      "users"
+     ],
+     [
+      "t_login_log",
+      "userid",
+      "t_user_auth"
+     ],
+     [
+      "t_user_role",
+      "userid",
+      "t_user_info"
+     ],
+     [
+      "message",
+      "repliedtoid",
+      "reply"
+     ],
+     [
+      "emp_details",
+      "cid",
+      "city_info"
+     ]
+    ],
+    "its own primary key": [
+     [
+      "identities",
+      "identityid",
+      "identities"
+     ],
+     [
+      "users",
+      "id",
+      "users"
+     ],
+     [
+      "models",
+      "model_id",
+      "models"
+     ],
+     [
+      "legal_firms",
+      "id",
+      "legal_firms"
+     ],
+     [
+      "pipeline_stages",
+      "id",
+      "pipeline_stages"
+     ],
+     [
+      "topics",
+      "id",
+      "topics"
+     ]
+    ],
+    "not a declared key": [
+     [
+      "sessions",
+      "subscriptionid",
+      "subscriptions"
+     ],
+     [
+      "t_comment",
+      "topicid",
+      "t_talk"
+     ],
+     [
+      "t_mail_log",
+      "topicid",
+      "t_talk"
+     ],
+     [
+      "sku_interactions",
+      "visit_id",
+      "website_visits"
+     ],
+     [
+      "sales_funnel_events",
+      "visit_id",
+      "website_visits"
+     ],
+     [
+      "order_items",
+      "order_date",
+      "orders"
+     ]
+    ],
+    "self-reference": [
+     [
+      "t_menu",
+      "parentid",
+      "t_menu"
+     ],
+     [
+      "t_resource",
+      "parentid",
+      "t_resource"
+     ],
+     [
+      "reply",
+      "commentid",
+      "reply"
+     ],
+     [
+      "users",
+      "invited_by",
+      "users"
+     ],
+     [
+      "tasks",
+      "parent_id",
+      "tasks"
+     ],
+     [
+      "cr_items",
+      "parent_id",
+      "cr_items"
+     ]
+    ],
+    "a primary key column": [
+     [
+      "userconversation",
+      "userid",
+      "iplog"
+     ],
+     [
+      "snackcalories",
+      "id",
+      "mealcalories"
+     ],
+     [
+      "cr_type_children",
+      "parent_type",
+      "cr_type_relations"
+     ],
+     [
+      "cr_type_children",
+      "child_type",
+      "cr_type_relations"
+     ],
+     [
+      "cr_type_children",
+      "relation_tag",
+      "cr_type_relations"
+     ],
+     [
+      "cr_type_relations",
+      "content_type",
+      "cr_items"
+     ]
+    ],
+    "reversed": [
+     [
+      "sim",
+      "imei",
+      "iot_device"
+     ],
+     [
+      "exams",
+      "dept",
+      "questions"
+     ],
+     [
+      "cr_locales",
+      "locale",
+      "cr_items"
+     ],
+     [
+      "cr_revisions",
+      "revision_id",
+      "cr_revision_attributes"
+     ],
+     [
+      "users",
+      "updated_by",
+      "categories"
+     ],
+     [
+      "agendamentos",
+      "registro_humor_id",
+      "registros_humor"
+     ]
+    ]
+   }
+  },
+  "style3": {
+   "entries": 900,
+   "right": 634,
+   "false": 264,
+   "repeated for one column, dropped": 2,
+   "by cause": {
+    "names nothing": 126,
+    "not a declared key": 93,
+    "a primary key column": 18,
+    "its own primary key": 11,
+    "self-reference": 7,
+    "wrong table": 7,
+    "reversed": 2
+   },
+   "false keys in the ten schemas with the most": 203,
+   "schemas with a false key": 32,
+   "examples": {
+    "a primary key column": [
+     [
+      "thong_tin_giao_hang",
+      "so_dien_thoai",
+      "nguoi_dung"
+     ],
+     [
+      "san_pham_livestream",
+      "ma_nguoi_ban",
+      "nguoi_ban"
+     ],
+     [
+      "danh_gia",
+      "ma_bien_the",
+      "bien_the_san_pham"
+     ],
+     [
+      "danh_gia",
+      "ma_nguoi_ban",
+      "nguoi_ban"
+     ],
+     [
+      "danh_gia",
+      "ma_don_hang",
+      "don_hang"
+     ],
+     [
+      "thuoc_danh_muc",
+      "ma_san_pham",
+      "san_pham"
+     ]
+    ],
+    "its own primary key": [
+     [
+      "nguoi_ban",
+      "ma_nguoi_ban",
+      "nguoi_ban"
+     ],
+     [
+      "telefone",
+      "id",
+      "telefone"
+     ],
+     [
+      "endereco",
+      "id",
+      "endereco"
+     ],
+     [
+      "turma",
+      "id",
+      "turma"
+     ],
+     [
+      "ingrediente",
+      "id",
+      "ingrediente"
+     ],
+     [
+      "refeicao",
+      "id",
+      "refeicao"
+     ]
+    ],
+    "self-reference": [
+     [
+      "danh_gia",
+      "ma_danh_gia",
+      "danh_gia"
+     ],
+     [
+      "bien_the_san_pham",
+      "ma_bien_the",
+      "bien_the_san_pham"
+     ],
+     [
+      "alerta_faltante_pedido",
+      "nota_venta_id_nota_venta",
+      "alerta_faltante_pedido"
+     ],
+     [
+      "orden_trabajo",
+      "especificaciones_puerta_id_especificacion_puerta",
+      "orden_trabajo"
+     ],
+     [
+      "barang",
+      "kode_barang",
+      "barang"
+     ],
+     [
+      "coa",
+      "kode_coa",
+      "coa"
+     ]
+    ],
+    "not a declared key": [
+     [
+      "san_pham",
+      "ma_nguoi_ban",
+      "nguoi_ban"
+     ],
+     [
+      "don_hang",
+      "ma_nguoi_mua",
+      "nguoi_mua"
+     ],
+     [
+      "site_posts",
+      "author_profile_id",
+      "site_editor_scopes"
+     ],
+     [
+      "site_posts",
+      "cover_media_id",
+      "site_media"
+     ],
+     [
+      "reserva_inventario",
+      "proyecto_id_proyecto",
+      "lote"
+     ],
+     [
+      "reserva_inventario",
+      "nota_venta_id_nota_venta",
+      "alerta_faltante_pedido"
+     ]
+    ],
+    "wrong table": [
+     [
+      "san_pham_gio_hang",
+      "ma_nguoi_mua",
+      "nguoi_mua"
+     ],
+     [
+      "flowdet",
+      "bom",
+      "bomdet"
+     ],
+     [
+      "turma",
+      "professor",
+      "pessoa"
+     ],
+     [
+      "rezerwacje",
+      "id_osoby",
+      "dane_osobowe"
+     ],
+     [
+      "responsablesporindicador",
+      "fkidresponsable",
+      "usuario"
+     ],
+     [
+      "vexe",
+      "machuyenxe",
+      "tuyenxe"
+     ]
+    ],
+    "names nothing": [
+     [
+      "tb_giohang_chitiet",
+      "ma_giohang",
+      "tb_giohang.id"
+     ],
+     [
+      "tb_giohang_chitiet",
+      "ma_sanpham",
+      "tb_sanpham.id"
+     ],
+     [
+      "codemstr",
+      "codevalue",
+      "None"
+     ],
+     [
+      "dsssexphis",
+      "dssoutboundctrl",
+      "dssoutboundctrl"
+     ],
+     [
+      "dsssexphisdet",
+      "mstrid",
+      "dsssexphis"
+     ],
+     [
+      "dssobjectmapping",
+      "extentity",
+      "None"
+     ]
+    ],
+    "reversed": [
+     [
+      "boleto_factura",
+      "id_factura_boleto",
+      "boleto_codebar"
+     ],
+     [
+      "vitri",
+      "mavitri",
+      "vanphong"
+     ]
+    ]
+   }
+  }
+ },
+ "qwen3.5--2b-q4_K_M--no-reasoning": {
+  "plain-a": {
+   "entries": 1912,
+   "right": 47,
+   "false": 1853,
+   "repeated for one column, dropped": 12,
+   "by cause": {
+    "names nothing": 1772,
+    "not a declared key": 49,
+    "reversed": 14,
+    "a primary key column": 13,
+    "wrong table": 3,
+    "self-reference": 1,
+    "its own primary key": 1
+   },
+   "false keys in the ten schemas with the most": 1360,
+   "schemas with a false key": 52,
+   "examples": {
+    "names nothing": [
+     [
+      "orders",
+      "customer_id",
+      "customers.customer_id"
+     ],
+     [
+      "orders",
+      "store_id",
+      "stores.store_id"
+     ],
+     [
+      "orders",
+      "staff_id",
+      "staffs.staff_id"
+     ],
+     [
+      "order_items",
+      "order_id",
+      "orders.order_id"
+     ],
+     [
+      "order_items",
+      "item_id",
+      "orders.order_id"
+     ],
+     [
+      "order_items",
+      "product_id",
+      "products.product_id"
+     ]
+    ],
+    "not a declared key": [
+     [
+      "users",
+      "github_id",
+      "magic_link_tokens"
+     ],
+     [
+      "users",
+      "google_id",
+      "magic_link_tokens"
+     ],
+     [
+      "users",
+      "authentik_id",
+      "magic_link_tokens"
+     ],
+     [
+      "magic_link_tokens",
+      "email",
+      "users"
+     ],
+     [
+      "stores",
+      "name",
+      "magic_link_tokens"
+     ],
+     [
+      "tools",
+      "name",
+      "magic_link_tokens"
+     ]
+    ],
+    "wrong table": [
+     [
+      "collection_shares",
+      "household_id",
+      "users"
+     ],
+     [
+      "fantasy_team_member",
+      "fantasy_team_id",
+      "fantasy_league"
+     ],
+     [
+      "staff",
+      "hotel_id",
+      "hotelservice"
+     ]
+    ],
+    "a primary key column": [
+     [
+      "qrtz_job_details",
+      "job_group",
+      "t_escheduler_alertgroup"
+     ],
+     [
+      "qrtz_triggers",
+      "trigger_group",
+      "t_escheduler_alertgroup"
+     ],
+     [
+      "qrtz_simple_triggers",
+      "trigger_group",
+      "t_escheduler_alertgroup"
+     ],
+     [
+      "qrtz_cron_triggers",
+      "trigger_group",
+      "t_escheduler_alertgroup"
+     ],
+     [
+      "qrtz_simprop_triggers",
+      "trigger_group",
+      "t_escheduler_alertgroup"
+     ],
+     [
+      "qrtz_blob_triggers",
+      "trigger_group",
+      "t_escheduler_alertgroup"
+     ]
+    ],
+    "reversed": [
+     [
+      "connector_definitions",
+      "source_type",
+      "connector_actions"
+     ],
+     [
+      "connector_definitions",
+      "auth_method",
+      "connector_oauth_providers"
+     ],
+     [
+      "connector_definitions",
+      "instance_config_schema",
+      "connector_instances"
+     ],
+     [
+      "connector_definitions",
+      "category",
+      "connector_actions"
+     ],
+     [
+      "connector_definitions",
+      "is_enterprise",
+      "connector_actions"
+     ],
+     [
+      "connector_definitions",
+      "is_active",
+      "connector_actions"
+     ]
+    ],
+    "self-reference": [
+     [
+      "tbl_users",
+      "status",
+      "tbl_users"
+     ]
+    ],
+    "its own primary key": [
+     [
+      "tbl_products",
+      "product_id",
+      "tbl_products"
+     ]
+    ]
+   }
+  },
+  "style3": {
+   "entries": 487,
+   "right": 21,
+   "false": 463,
+   "repeated for one column, dropped": 3,
+   "by cause": {
+    "names nothing": 410,
+    "a primary key column": 22,
+    "not a declared key": 17,
+    "wrong table": 5,
+    "reversed": 5,
+    "its own primary key": 3,
+    "self-reference": 1
+   },
+   "false keys in the ten schemas with the most": 424,
+   "schemas with a false key": 23,
+   "examples": {
+    "its own primary key": [
+     [
+      "nguoi_dung",
+      "ma_nguoi_dung",
+      "nguoi_dung"
+     ],
+     [
+      "factura_impuestos",
+      "id_factura_impuestos",
+      "factura_impuestos"
+     ],
+     [
+      "users_232143",
+      "user_id_232143",
+      "users_232143"
+     ]
+    ],
+    "wrong table": [
+     [
+      "phien_livestream",
+      "ma_nguoi_ban",
+      "nguoi_dung"
+     ],
+     [
+      "voucher_da_luu",
+      "ma_nguoi_mua",
+      "nguoi_dung"
+     ],
+     [
+      "boleto_factura_detalle_formapago",
+      "id_factura_boleto",
+      "boleto_codebar"
+     ],
+     [
+      "instrumentopago_formapago",
+      "cod_funcioninstrumento",
+      "item_precompromiso"
+     ],
+     [
+      "rezerwacje_uczestnicy",
+      "id_osoby",
+      "dane_osobowe"
+     ]
+    ],
+    "not a declared key": [
+     [
+      "ma_giam_gia",
+      "ma_nguoi_ban",
+      "nguoi_dung"
+     ],
+     [
+      "chi_tiet_don_hang",
+      "ma_nguoi_ban",
+      "nguoi_dung"
+     ],
+     [
+      "don_hang",
+      "ma_nguoi_mua",
+      "nguoi_dung"
+     ],
+     [
+      "clientes",
+      "cod_cliente",
+      "tipo_cliente"
+     ],
+     [
+      "compra",
+      "cod_compra",
+      "tipo_comercio"
+     ],
+     [
+      "compra_detalle",
+      "_item_almacen",
+      "item_existencia_almacen"
+     ]
+    ],
+    "a primary key column": [
+     [
+      "san_pham_livestream",
+      "ma_nguoi_ban",
+      "nguoi_dung"
+     ],
+     [
+      "danh_gia",
+      "ma_nguoi_ban",
+      "nguoi_dung"
+     ],
+     [
+      "thuoc_danh_muc",
+      "ma_nguoi_ban",
+      "nguoi_dung"
+     ],
+     [
+      "san_pham_gio_hang",
+      "ma_nguoi_ban",
+      "nguoi_dung"
+     ],
+     [
+      "gio_hang",
+      "ma_nguoi_mua",
+      "nguoi_dung"
+     ],
+     [
+      "chequera",
+      "cod_chequera",
+      "cheque_bache_det"
+     ]
+    ],
+    "names nothing": [
+     [
+      "material_categoria_general",
+      "material_categoria_general_id_categoria_general",
+      ""
+     ],
+     [
+      "material_categoria_funcional",
+      "material_categoria_funcional_id_categoria_funcional",
+      ""
+     ],
+     [
+      "material_clasificacion_categoria",
+      "material_clasificacion_categoria_id",
+      "material_clasificacion_subcategoria.material_clasificacion_subcategoria_id"
+     ],
+     [
+      "material_clasificacion_subcategoria",
+      "material_clasificacion_subcategoria_id",
+      "material_clasificacion_categoria.material_clasificacion_categoria_id"
+     ],
+     [
+      "material_clasificacion_nivel_especifico",
+      "material_clasificacion_nivel_especifico_id",
+      ""
+     ],
+     [
+      "material_unidad_medida",
+      "material_unidad_medida_id_unidad_medida",
+      ""
+     ]
+    ],
+    "reversed": [
+     [
+      "boleto_factura",
+      "id_factura_boleto",
+      "boleto_codebar"
+     ],
+     [
+      "instrumentopago_funcioninstrumento",
+      "cod_funcioninstrumento",
+      "instrumentopago_formapago"
+     ],
+     [
+      "rezerwacje",
+      "id_rezerwacji",
+      "platnosci"
+     ],
+     [
+      "tacgia",
+      "matg",
+      "vietsach"
+     ],
+     [
+      "sach",
+      "masach",
+      "vietsach"
+     ]
+    ],
+    "self-reference": [
+     [
+      "modulos",
+      "cod_modulo_padre",
+      "modulos"
+     ]
+    ]
+   }
+  }
+ }
+}

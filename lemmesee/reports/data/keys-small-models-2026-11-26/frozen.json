@@ -1,0 +1,31 @@
+{
+ "models": {
+  "char-s": {
+   "files": {
+    "model.safetensors": "a3c06048506f2966a6fc458688c83dfc0683faeae2c0a764bc75454d9bed0653",
+    "threshold.json": "3abb462ebbd1ce14d79c7ce2571a76c982c59e13423e3134463252a81e187098",
+    "fit.json": "866edc408621c2a401c34c01e0269f0f33a99289a8b41333f70c3b709efb8b0d"
+   },
+   "frozen at": "2026-11-27T06:39:30+00:00",
+   "threshold": 0.869714617729187
+  },
+  "granite": {
+   "files": {
+    "model.safetensors": "fd89e401308d1b698d2241fabf4504f46dc2a4e7d1bd9173d065815709be0cf0",
+    "threshold.json": "87188d1f226641b9ed4b82bf0097d9b4bc7a8812c22f2c867025ceda0c99e79b",
+    "fit.json": "316adc3012f1b8fa874e044d7be5e66e143c38a6acbf6bbd42e4d9e49234a2e1"
+   },
+   "frozen at": "2026-11-27T06:39:30+00:00",
+   "threshold": 0.7592254281044006
+  }
+ },
+ "eleven, first stage alone": {
+  "name": "eleven-first",
+  "threshold": 0.76951664686203,
+  "validation pairs": 1674439,
+  "precision": 0.7919400187441424,
+  "recall": 0.7523972602739726,
+  "f1": 0.7716623933124934,
+  "read at": "2026-11-26T15:12:47+00:00"
+ }
+}

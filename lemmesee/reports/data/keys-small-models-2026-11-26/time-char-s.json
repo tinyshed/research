@@ -1,0 +1,2793 @@
+{
+ "name": "char-s",
+ "databases": 397,
+ "timed whole": 383,
+ "a database, median seconds": 0.0429666879999786,
+ "90th percentile": 0.5948541250000754,
+ "99th percentile": 9.315686135744253,
+ "a pair, a database's median seconds": 0.0009256933571464288,
+ "threads": 1,
+ "torch": "2.11.0+cpu",
+ "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.41",
+ "per database": [
+  {
+   "set": "spider",
+   "schema": 0,
+   "pairs": 40,
+   "timed pairs": 40,
+   "seconds": 0.05281682200006799
+  },
+  {
+   "set": "spider",
+   "schema": 32,
+   "pairs": 4,
+   "timed pairs": 4,
+   "seconds": 0.0041421179998906155
+  },
+  {
+   "set": "spider",
+   "schema": 64,
+   "pairs": 24,
+   "timed pairs": 24,
+   "seconds": 0.040305087000206186
+  },
+  {
+   "set": "spider",
+   "schema": 96,
+   "pairs": 2,
+   "timed pairs": 2,
+   "seconds": 0.0026289970001016627
+  },
+  {
+   "set": "spider",
+   "schema": 128,
+   "pairs": 88,
+   "timed pairs": 88,
+   "seconds": 0.1639524810000239
+  },
+  {
+   "set": "spider",
+   "schema": 160,
+   "pairs": 38,
+   "timed pairs": 38,
+   "seconds": 0.038314251999963744
+  },
+  {
+   "set": "spider",
+   "schema": 192,
+   "pairs": 56,
+   "timed pairs": 56,
+   "seconds": 0.04845741899998757
+  },
+  {
+   "set": "spider",
+   "schema": 1,
+   "pairs": 388,
+   "timed pairs": 388,
+   "seconds": 0.27356560399994123
+  },
+  {
+   "set": "spider",
+   "schema": 33,
+   "pairs": 12,
+   "timed pairs": 12,
+   "seconds": 0.009400211999945896
+  },
+  {
+   "set": "spider",
+   "schema": 65,
+   "pairs": 19,
+   "timed pairs": 19,
+   "seconds": 0.01626052400001754
+  },
+  {
+   "set": "spider",
+   "schema": 97,
+   "pairs": 16,
+   "timed pairs": 16,
+   "seconds": 0.012163558999873203
+  },
+  {
+   "set": "spider",
+   "schema": 129,
+   "pairs": 33,
+   "timed pairs": 33,
+   "seconds": 0.02939628800004357
+  },
+  {
+   "set": "spider",
+   "schema": 161,
+   "pairs": 10,
+   "timed pairs": 10,
+   "seconds": 0.00785158799999408
+  },
+  {
+   "set": "spider",
+   "schema": 193,
+   "pairs": 33,
+   "timed pairs": 33,
+   "seconds": 0.024453773999994155
+  },
+  {
+   "set": "spider",
+   "schema": 2,
+   "pairs": 30,
+   "timed pairs": 30,
+   "seconds": 0.025561658000015086
+  },
+  {
+   "set": "spider",
+   "schema": 34,
+   "pairs": 16,
+   "timed pairs": 16,
+   "seconds": 0.012054221999960646
+  },
+  {
+   "set": "spider",
+   "schema": 66,
+   "pairs": 16,
+   "timed pairs": 16,
+   "seconds": 0.010207106999814641
+  },
+  {
+   "set": "spider",
+   "schema": 98,
+   "pairs": 576,
+   "timed pairs": 576,
+   "seconds": 0.5559797290000006
+  },
+  {
+   "set": "spider",
+   "schema": 130,
+   "pairs": 13,
+   "timed pairs": 13,
+   "seconds": 0.009838921999971717
+  },
+  {
+   "set": "spider",
+   "schema": 162,
+   "pairs": 4,
+   "timed pairs": 4,
+   "seconds": 0.003406239000014466
+  },
+  {
+   "set": "spider",
+   "schema": 194,
+   "pairs": 12,
+   "timed pairs": 12,
+   "seconds": 0.014038269999900876
+  },
+  {
+   "set": "spider",
+   "schema": 3,
+   "pairs": 13,
+   "timed pairs": 13,
+   "seconds": 0.010922697000069093
+  },
+  {
+   "set": "spider",
+   "schema": 35,
+   "pairs": 44,
+   "timed pairs": 44,
+   "seconds": 0.04338919400015584
+  },
+  {
+   "set": "spider",
+   "schema": 67,
+   "pairs": 13,
+   "timed pairs": 13,
+   "seconds": 0.011304840000093463
+  },
+  {
+   "set": "spider",
+   "schema": 99,
+   "pairs": 102,
+   "timed pairs": 102,
+   "seconds": 0.1115577589998793
+  },
+  {
+   "set": "spider",
+   "schema": 131,
+   "pairs": 25,
+   "timed pairs": 25,
+   "seconds": 0.021969094000041878
+  },
+  {
+   "set": "spider",
+   "schema": 163,
+   "pairs": 10,
+   "timed pairs": 10,
+   "seconds": 0.007301602000097773
+  },
+  {
+   "set": "spider",
+   "schema": 195,
+   "pairs": 10,
+   "timed pairs": 10,
+   "seconds": 0.009802158999946187
+  },
+  {
+   "set": "spider",
+   "schema": 4,
+   "pairs": 72,
+   "timed pairs": 72,
+   "seconds": 0.07598436800003583
+  },
+  {
+   "set": "spider",
+   "schema": 36,
+   "pairs": 100,
+   "timed pairs": 100,
+   "seconds": 0.08374712800014095
+  },
+  {
+   "set": "spider",
+   "schema": 68,
+   "pairs": 342,
+   "timed pairs": 342,
+   "seconds": 0.6668725459999223
+  },
+  {
+   "set": "spider",
+   "schema": 100,
+   "pairs": 25,
+   "timed pairs": 25,
+   "seconds": 0.019894807000127912
+  },
+  {
+   "set": "spider",
+   "schema": 132,
+   "pairs": 12,
+   "timed pairs": 12,
+   "seconds": 0.013633737999953155
+  },
+  {
+   "set": "spider",
+   "schema": 164,
+   "pairs": 30,
+   "timed pairs": 30,
+   "seconds": 0.04186973300011232
+  },
+  {
+   "set": "spider",
+   "schema": 196,
+   "pairs": 6,
+   "timed pairs": 6,
+   "seconds": 0.006251670999972703
+  },
+  {
+   "set": "spider",
+   "schema": 5,
+   "pairs": 26,
+   "timed pairs": 26,
+   "seconds": 0.02443362300004992
+  },
+  {
+   "set": "spider",
+   "schema": 37,
+   "pairs": 414,
+   "timed pairs": 414,
+   "seconds": 0.34070926499998677
+  },
+  {
+   "set": "spider",
+   "schema": 69,
+   "pairs": 17,
+   "timed pairs": 17,
+   "seconds": 0.01035605700008091
+  },
+  {
+   "set": "spider",
+   "schema": 101,
+   "pairs": 658,
+   "timed pairs": 658,
+   "seconds": 0.3857490450000114
+  },
+  {
+   "set": "spider",
+   "schema": 133,
+   "pairs": 8,
+   "timed pairs": 8,
+   "seconds": 0.008210040999983903
+  },
+  {
+   "set": "spider",
+   "schema": 165,
+   "pairs": 10,
+   "timed pairs": 10,
+   "seconds": 0.011544141000058517
+  },
+  {
+   "set": "spider",
+   "schema": 197,
+   "pairs": 22,
+   "timed pairs": 22,
+   "seconds": 0.013353222999967329
+  },
+  {
+   "set": "spider",
+   "schema": 6,
+   "pairs": 10,
+   "timed pairs": 10,
+   "seconds": 0.009714839999787728
+  },
+  {
+   "set": "spider",
+   "schema": 38,
+   "pairs": 87,
+   "timed pairs": 87,
+   "seconds": 0.06911552600013238
+  },
+  {
+   "set": "spider",
+   "schema": 70,
+   "pairs": 12,
+   "timed pairs": 12,
+   "seconds": 0.013539454000010664
+  },
+  {
+   "set": "spider",
+   "schema": 102,
+   "pairs": 13,
+   "timed pairs": 13,
+   "seconds": 0.01085370700002386
+  },
+  {
+   "set": "spider",
+   "schema": 134,
+   "pairs": 14,
+   "timed pairs": 14,
+   "seconds": 0.009349276999955691
+  },
+  {
+   "set": "spider",
+   "schema": 166,
+   "pairs": 4,
+   "timed pairs": 4,
+   "seconds": 0.0030861160000767995
+  },
+  {
+   "set": "spider",
+   "schema": 198,
+   "pairs": 37,
+   "timed pairs": 37,
+   "seconds": 0.029286081999998714
+  },
+  {
+   "set": "spider",
+   "schema": 7,
+   "pairs": 68,
+   "timed pairs": 68,
+   "seconds": 0.10657074699997793
+  },
+  {
+   "set": "spider",
+   "schema": 39,
+   "pairs": 9,
+   "timed pairs": 9,
+   "seconds": 0.00778218100003869
+  },
+  {
+   "set": "spider",
+   "schema": 71,
+   "pairs": 117,
+   "timed pairs": 117,
+   "seconds": 0.2858598969999093
+  },
+  {
+   "set": "spider",
+   "schema": 103,
+   "pairs": 2,
+   "timed pairs": 2,
+   "seconds": 0.0032050440001967218
+  },
+  {
+   "set": "spider",
+   "schema": 135,
+   "pairs": 28,
+   "timed pairs": 28,
+   "seconds": 0.025919414000100005
+  },
+  {
+   "set": "spider",
+   "schema": 167,
+   "pairs": 6,
+   "timed pairs": 6,
+   "seconds": 0.004799291999916022
+  },
+  {
+   "set": "spider",
+   "schema": 199,
+   "pairs": 10,
+   "timed pairs": 10,
+   "seconds": 0.008871304000194868
+  },
+  {
+   "set": "spider",
+   "schema": 8,
+   "pairs": 23,
+   "timed pairs": 23,
+   "seconds": 0.013917612999875928
+  },
+  {
+   "set": "spider",
+   "schema": 40,
+   "pairs": 19,
+   "timed pairs": 19,
+   "seconds": 0.018329047999941395
+  },
+  {
+   "set": "spider",
+   "schema": 72,
+   "pairs": 144,
+   "timed pairs": 144,
+   "seconds": 0.20197831000018596
+  },
+  {
+   "set": "spider",
+   "schema": 104,
+   "pairs": 120,
+   "timed pairs": 120,
+   "seconds": 0.28758611100010967
+  },
+  {
+   "set": "spider",
+   "schema": 136,
+   "pairs": 22,
+   "timed pairs": 22,
+   "seconds": 0.018276711999988038
+  },
+  {
+   "set": "spider",
+   "schema": 168,
+   "pairs": 406,
+   "timed pairs": 406,
+   "seconds": 0.4816182080000999
+  },
+  {
+   "set": "spider",
+   "schema": 200,
+   "pairs": 31,
+   "timed pairs": 31,
+   "seconds": 0.03126511400000709
+  },
+  {
+   "set": "spider",
+   "schema": 9,
+   "pairs": 30,
+   "timed pairs": 30,
+   "seconds": 0.02973490500016851
+  },
+  {
+   "set": "spider",
+   "schema": 41,
+   "pairs": 44,
+   "timed pairs": 44,
+   "seconds": 0.0429666879999786
+  },
+  {
+   "set": "spider",
+   "schema": 73,
+   "pairs": 22,
+   "timed pairs": 22,
+   "seconds": 0.016352165999933277
+  },
+  {
+   "set": "spider",
+   "schema": 105,
+   "pairs": 85,
+   "timed pairs": 85,
+   "seconds": 0.15268324900011976
+  },
+  {
+   "set": "spider",
+   "schema": 137,
+   "pairs": 7,
+   "timed pairs": 7,
+   "seconds": 0.006854748999785443
+  },
+  {
+   "set": "spider",
+   "schema": 169,
+   "pairs": 18,
+   "timed pairs": 18,
+   "seconds": 0.013280278999900474
+  },
+  {
+   "set": "spider",
+   "schema": 201,
+   "pairs": 11,
+   "timed pairs": 11,
+   "seconds": 0.011143736999883913
+  },
+  {
+   "set": "spider",
+   "schema": 10,
+   "pairs": 271,
+   "timed pairs": 271,
+   "seconds": 0.5818488140000682
+  },
+  {
+   "set": "spider",
+   "schema": 42,
+   "pairs": 33,
+   "timed pairs": 33,
+   "seconds": 0.04684549899980084
+  },
+  {
+   "set": "spider",
+   "schema": 74,
+   "pairs": 60,
+   "timed pairs": 60,
+   "seconds": 0.08002750099990408
+  },
+  {
+   "set": "spider",
+   "schema": 106,
+   "pairs": 70,
+   "timed pairs": 70,
+   "seconds": 0.09010695099982513
+  },
+  {
+   "set": "spider",
+   "schema": 138,
+   "pairs": 34,
+   "timed pairs": 34,
+   "seconds": 0.028047751000030985
+  },
+  {
+   "set": "spider",
+   "schema": 170,
+   "pairs": 3,
+   "timed pairs": 3,
+   "seconds": 0.0046428910000031465
+  },
+  {
+   "set": "spider",
+   "schema": 202,
+   "pairs": 19,
+   "timed pairs": 19,
+   "seconds": 0.014248634000068705
+  },
+  {
+   "set": "spider",
+   "schema": 11,
+   "pairs": 22,
+   "timed pairs": 22,
+   "seconds": 0.019718211000053998
+  },
+  {
+   "set": "spider",
+   "schema": 43,
+   "pairs": 10,
+   "timed pairs": 10,
+   "seconds": 0.012224649000017962
+  },
+  {
+   "set": "spider",
+   "schema": 75,
+   "pairs": 106,
+   "timed pairs": 106,
+   "seconds": 0.13540924900007667
+  },
+  {
+   "set": "spider",
+   "schema": 107,
+   "pairs": 13,
+   "timed pairs": 13,
+   "seconds": 0.013661791000004087
+  },
+  {
+   "set": "spider",
+   "schema": 139,
+   "pairs": 74,
+   "timed pairs": 74,
+   "seconds": 0.06757649899986973
+  },
+  {
+   "set": "spider",
+   "schema": 171,
+   "pairs": 254,
+   "timed pairs": 254,
+   "seconds": 0.3150861100000384
+  },
+  {
+   "set": "spider",
+   "schema": 203,
+   "pairs": 93,
+   "timed pairs": 93,
+   "seconds": 0.05488124399994376
+  },
+  {
+   "set": "spider",
+   "schema": 12,
+   "pairs": 484,
+   "timed pairs": 484,
+   "seconds": 0.3536726859999817
+  },
+  {
+   "set": "spider",
+   "schema": 44,
+   "pairs": 12,
+   "timed pairs": 12,
+   "seconds": 0.01714957899980618
+  },
+  {
+   "set": "spider",
+   "schema": 76,
+   "pairs": 138,
+   "timed pairs": 138,
+   "seconds": 0.23945186600008128
+  },
+  {
+   "set": "spider",
+   "schema": 108,
+   "pairs": 27,
+   "timed pairs": 27,
+   "seconds": 0.019624448999820743
+  },
+  {
+   "set": "spider",
+   "schema": 140,
+   "pairs": 4,
+   "timed pairs": 4,
+   "seconds": 0.005035588000055213
+  },
+  {
+   "set": "spider",
+   "schema": 172,
+   "pairs": 36,
+   "timed pairs": 36,
+   "seconds": 0.040940267999985736
+  },
+  {
+   "set": "spider",
+   "schema": 13,
+   "pairs": 18,
+   "timed pairs": 18,
+   "seconds": 0.011553213999832224
+  },
+  {
+   "set": "spider",
+   "schema": 45,
+   "pairs": 14,
+   "timed pairs": 14,
+   "seconds": 0.012299854000048072
+  },
+  {
+   "set": "spider",
+   "schema": 77,
+   "pairs": 45,
+   "timed pairs": 45,
+   "seconds": 0.07657166900003176
+  },
+  {
+   "set": "spider",
+   "schema": 109,
+   "pairs": 283,
+   "timed pairs": 283,
+   "seconds": 0.5817893809999077
+  },
+  {
+   "set": "spider",
+   "schema": 141,
+   "pairs": 44,
+   "timed pairs": 44,
+   "seconds": 0.11276891500006059
+  },
+  {
+   "set": "spider",
+   "schema": 173,
+   "pairs": 41,
+   "timed pairs": 41,
+   "seconds": 0.04580051900006765
+  },
+  {
+   "set": "spider",
+   "schema": 14,
+   "pairs": 29,
+   "timed pairs": 29,
+   "seconds": 0.025846041000022524
+  },
+  {
+   "set": "spider",
+   "schema": 46,
+   "pairs": 94,
+   "timed pairs": 94,
+   "seconds": 0.23221702799992272
+  },
+  {
+   "set": "spider",
+   "schema": 78,
+   "pairs": 13,
+   "timed pairs": 13,
+   "seconds": 0.010567297999841685
+  },
+  {
+   "set": "spider",
+   "schema": 110,
+   "pairs": 21,
+   "timed pairs": 21,
+   "seconds": 0.0332683999999972
+  },
+  {
+   "set": "spider",
+   "schema": 142,
+   "pairs": 127,
+   "timed pairs": 127,
+   "seconds": 0.17324005599994052
+  },
+  {
+   "set": "spider",
+   "schema": 174,
+   "pairs": 287,
+   "timed pairs": 287,
+   "seconds": 0.24837414599983276
+  },
+  {
+   "set": "spider",
+   "schema": 15,
+   "pairs": 193,
+   "timed pairs": 193,
+   "seconds": 0.3630807879999338
+  },
+  {
+   "set": "spider",
+   "schema": 47,
+   "pairs": 167,
+   "timed pairs": 167,
+   "seconds": 0.3381035229999725
+  },
+  {
+   "set": "spider",
+   "schema": 79,
+   "pairs": 4,
+   "timed pairs": 4,
+   "seconds": 0.00567659100011042
+  },
+  {
+   "set": "spider",
+   "schema": 111,
+   "pairs": 112,
+   "timed pairs": 112,
+   "seconds": 0.24282224799981122
+  },
+  {
+   "set": "spider",
+   "schema": 143,
+   "pairs": 60,
+   "timed pairs": 60,
+   "seconds": 0.17566885900009765
+  },
+  {
+   "set": "spider",
+   "schema": 175,
+   "pairs": 37,
+   "timed pairs": 37,
+   "seconds": 0.03253343300002598
+  },
+  {
+   "set": "spider",
+   "schema": 16,
+   "pairs": 68,
+   "timed pairs": 68,
+   "seconds": 0.06629665700006626
+  },
+  {
+   "set": "spider",
+   "schema": 48,
+   "pairs": 23,
+   "timed pairs": 23,
+   "seconds": 0.034974552999983644
+  },
+  {
+   "set": "spider",
+   "schema": 80,
+   "pairs": 28,
+   "timed pairs": 28,
+   "seconds": 0.02291327500006446
+  },
+  {
+   "set": "spider",
+   "schema": 112,
+   "pairs": 22,
+   "timed pairs": 22,
+   "seconds": 0.023109863999934532
+  },
+  {
+   "set": "spider",
+   "schema": 144,
+   "pairs": 22,
+   "timed pairs": 22,
+   "seconds": 0.02056069800005389
+  },
+  {
+   "set": "spider",
+   "schema": 176,
+   "pairs": 17,
+   "timed pairs": 17,
+   "seconds": 0.015239411000038672
+  },
+  {
+   "set": "spider",
+   "schema": 17,
+   "pairs": 19,
+   "timed pairs": 19,
+   "seconds": 0.019893703999969148
+  },
+  {
+   "set": "spider",
+   "schema": 49,
+   "pairs": 96,
+   "timed pairs": 96,
+   "seconds": 0.21131442399996558
+  },
+  {
+   "set": "spider",
+   "schema": 81,
+   "pairs": 16,
+   "timed pairs": 16,
+   "seconds": 0.017058663999932833
+  },
+  {
+   "set": "spider",
+   "schema": 113,
+   "pairs": 6,
+   "timed pairs": 6,
+   "seconds": 0.0063534220000747155
+  },
+  {
+   "set": "spider",
+   "schema": 145,
+   "pairs": 45,
+   "timed pairs": 45,
+   "seconds": 0.055371889999833
+  },
+  {
+   "set": "spider",
+   "schema": 177,
+   "pairs": 134,
+   "timed pairs": 134,
+   "seconds": 0.24997716999996555
+  },
+  {
+   "set": "spider",
+   "schema": 18,
+   "pairs": 10,
+   "timed pairs": 10,
+   "seconds": 0.006524348000084501
+  },
+  {
+   "set": "spider",
+   "schema": 50,
+   "pairs": 118,
+   "timed pairs": 118,
+   "seconds": 0.21643333900010475
+  },
+  {
+   "set": "spider",
+   "schema": 82,
+   "pairs": 4,
+   "timed pairs": 4,
+   "seconds": 0.005076441000028353
+  },
+  {
+   "set": "spider",
+   "schema": 114,
+   "pairs": 19,
+   "timed pairs": 19,
+   "seconds": 0.023589649000086865
+  },
+  {
+   "set": "spider",
+   "schema": 146,
+   "pairs": 3,
+   "timed pairs": 3,
+   "seconds": 0.0025938940000287403
+  },
+  {
+   "set": "spider",
+   "schema": 178,
+   "pairs": 200,
+   "timed pairs": 200,
+   "seconds": 0.3671742449998874
+  },
+  {
+   "set": "spider",
+   "schema": 19,
+   "pairs": 4,
+   "timed pairs": 4,
+   "seconds": 0.0049306309999792575
+  },
+  {
+   "set": "spider",
+   "schema": 51,
+   "pairs": 56,
+   "timed pairs": 56,
+   "seconds": 0.12567402099989522
+  },
+  {
+   "set": "spider",
+   "schema": 83,
+   "pairs": 27,
+   "timed pairs": 27,
+   "seconds": 0.018487736999986737
+  },
+  {
+   "set": "spider",
+   "schema": 115,
+   "pairs": 20,
+   "timed pairs": 20,
+   "seconds": 0.016897805000098742
+  },
+  {
+   "set": "spider",
+   "schema": 147,
+   "pairs": 31,
+   "timed pairs": 31,
+   "seconds": 0.02639115299984951
+  },
+  {
+   "set": "spider",
+   "schema": 179,
+   "pairs": 33,
+   "timed pairs": 33,
+   "seconds": 0.02073401899997407
+  },
+  {
+   "set": "spider",
+   "schema": 20,
+   "pairs": 70,
+   "timed pairs": 70,
+   "seconds": 0.049765487999820834
+  },
+  {
+   "set": "spider",
+   "schema": 52,
+   "pairs": 790,
+   "timed pairs": 790,
+   "seconds": 1.3125043350000851
+  },
+  {
+   "set": "spider",
+   "schema": 84,
+   "pairs": 33,
+   "timed pairs": 33,
+   "seconds": 0.03887359999998807
+  },
+  {
+   "set": "spider",
+   "schema": 116,
+   "pairs": 13,
+   "timed pairs": 13,
+   "seconds": 0.01783129400018879
+  },
+  {
+   "set": "spider",
+   "schema": 148,
+   "pairs": 66,
+   "timed pairs": 66,
+   "seconds": 0.15989948099991125
+  },
+  {
+   "set": "spider",
+   "schema": 180,
+   "pairs": 24,
+   "timed pairs": 24,
+   "seconds": 0.025740283999994062
+  },
+  {
+   "set": "spider",
+   "schema": 21,
+   "pairs": 4,
+   "timed pairs": 4,
+   "seconds": 0.004702994999888688
+  },
+  {
+   "set": "spider",
+   "schema": 53,
+   "pairs": 327,
+   "timed pairs": 327,
+   "seconds": 0.6247097609998491
+  },
+  {
+   "set": "spider",
+   "schema": 85,
+   "pairs": 21,
+   "timed pairs": 21,
+   "seconds": 0.02657109999995555
+  },
+  {
+   "set": "spider",
+   "schema": 117,
+   "pairs": 12,
+   "timed pairs": 12,
+   "seconds": 0.00818092899999101
+  },
+  {
+   "set": "spider",
+   "schema": 149,
+   "pairs": 236,
+   "timed pairs": 236,
+   "seconds": 0.39097127399986675
+  },
+  {
+   "set": "spider",
+   "schema": 181,
+   "pairs": 158,
+   "timed pairs": 158,
+   "seconds": 0.23565910000002077
+  },
+  {
+   "set": "spider",
+   "schema": 22,
+   "pairs": 15,
+   "timed pairs": 15,
+   "seconds": 0.00944697099998848
+  },
+  {
+   "set": "spider",
+   "schema": 54,
+   "pairs": 325,
+   "timed pairs": 325,
+   "seconds": 0.6332308329999705
+  },
+  {
+   "set": "spider",
+   "schema": 86,
+   "pairs": 37,
+   "timed pairs": 37,
+   "seconds": 0.025024225000152
+  },
+  {
+   "set": "spider",
+   "schema": 118,
+   "pairs": 10,
+   "timed pairs": 10,
+   "seconds": 0.005498948000195014
+  },
+  {
+   "set": "spider",
+   "schema": 150,
+   "pairs": 12,
+   "timed pairs": 12,
+   "seconds": 0.009855741000137641
+  },
+  {
+   "set": "spider",
+   "schema": 182,
+   "pairs": 72,
+   "timed pairs": 72,
+   "seconds": 0.07927383399987775
+  },
+  {
+   "set": "spider",
+   "schema": 23,
+   "pairs": 10,
+   "timed pairs": 10,
+   "seconds": 0.006348565000052986
+  },
+  {
+   "set": "spider",
+   "schema": 55,
+   "pairs": 98,
+   "timed pairs": 98,
+   "seconds": 0.12201383599995097
+  },
+  {
+   "set": "spider",
+   "schema": 87,
+   "pairs": 16,
+   "timed pairs": 16,
+   "seconds": 0.012831878000042707
+  },
+  {
+   "set": "spider",
+   "schema": 119,
+   "pairs": 4,
+   "timed pairs": 4,
+   "seconds": 0.0040501220000805915
+  },
+  {
+   "set": "spider",
+   "schema": 151,
+   "pairs": 30,
+   "timed pairs": 30,
+   "seconds": 0.03156658400007473
+  },
+  {
+   "set": "spider",
+   "schema": 183,
+   "pairs": 44,
+   "timed pairs": 44,
+   "seconds": 0.11865907199990033
+  },
+  {
+   "set": "spider",
+   "schema": 24,
+   "pairs": 13,
+   "timed pairs": 13,
+   "seconds": 0.021508964000076958
+  },
+  {
+   "set": "spider",
+   "schema": 56,
+   "pairs": 21,
+   "timed pairs": 21,
+   "seconds": 0.021637698999938948
+  },
+  {
+   "set": "spider",
+   "schema": 88,
+   "pairs": 19,
+   "timed pairs": 19,
+   "seconds": 0.013573609999866676
+  },
+  {
+   "set": "spider",
+   "schema": 120,
+   "pairs": 22,
+   "timed pairs": 22,
+   "seconds": 0.01934990499989908
+  },
+  {
+   "set": "spider",
+   "schema": 152,
+   "pairs": 23,
+   "timed pairs": 23,
+   "seconds": 0.02569436199996744
+  },
+  {
+   "set": "spider",
+   "schema": 184,
+   "pairs": 62,
+   "timed pairs": 62,
+   "seconds": 0.1916174850000516
+  },
+  {
+   "set": "spider",
+   "schema": 25,
+   "pairs": 4,
+   "timed pairs": 4,
+   "seconds": 0.004322559000002002
+  },
+  {
+   "set": "spider",
+   "schema": 57,
+   "pairs": 32,
+   "timed pairs": 32,
+   "seconds": 0.031605149000142774
+  },
+  {
+   "set": "spider",
+   "schema": 89,
+   "pairs": 12,
+   "timed pairs": 12,
+   "seconds": 0.008358199999975113
+  },
+  {
+   "set": "spider",
+   "schema": 121,
+   "pairs": 48,
+   "timed pairs": 48,
+   "seconds": 0.04068266400008724
+  },
+  {
+   "set": "spider",
+   "schema": 153,
+   "pairs": 11,
+   "timed pairs": 11,
+   "seconds": 0.009374347999937527
+  },
+  {
+   "set": "spider",
+   "schema": 185,
+   "pairs": 13,
+   "timed pairs": 13,
+   "seconds": 0.011527361000162273
+  },
+  {
+   "set": "spider",
+   "schema": 26,
+   "pairs": 71,
+   "timed pairs": 71,
+   "seconds": 0.0582422840000163
+  },
+  {
+   "set": "spider",
+   "schema": 58,
+   "pairs": 198,
+   "timed pairs": 198,
+   "seconds": 0.4021095900000091
+  },
+  {
+   "set": "spider",
+   "schema": 90,
+   "pairs": 592,
+   "timed pairs": 592,
+   "seconds": 0.8226705130000482
+  },
+  {
+   "set": "spider",
+   "schema": 122,
+   "pairs": 97,
+   "timed pairs": 97,
+   "seconds": 0.08191165300013381
+  },
+  {
+   "set": "spider",
+   "schema": 154,
+   "pairs": 83,
+   "timed pairs": 83,
+   "seconds": 0.06788562599990655
+  },
+  {
+   "set": "spider",
+   "schema": 186,
+   "pairs": 32,
+   "timed pairs": 32,
+   "seconds": 0.04012445800003661
+  },
+  {
+   "set": "spider",
+   "schema": 27,
+   "pairs": 28,
+   "timed pairs": 28,
+   "seconds": 0.020448837999992975
+  },
+  {
+   "set": "spider",
+   "schema": 59,
+   "pairs": 36,
+   "timed pairs": 36,
+   "seconds": 0.04496739499995783
+  },
+  {
+   "set": "spider",
+   "schema": 91,
+   "pairs": 20,
+   "timed pairs": 20,
+   "seconds": 0.017817037999975582
+  },
+  {
+   "set": "spider",
+   "schema": 123,
+   "pairs": 17,
+   "timed pairs": 17,
+   "seconds": 0.014039930999842909
+  },
+  {
+   "set": "spider",
+   "schema": 155,
+   "pairs": 8,
+   "timed pairs": 8,
+   "seconds": 0.009712152000020069
+  },
+  {
+   "set": "spider",
+   "schema": 187,
+   "pairs": 19,
+   "timed pairs": 19,
+   "seconds": 0.01591147599992837
+  },
+  {
+   "set": "spider",
+   "schema": 28,
+   "pairs": 6,
+   "timed pairs": 6,
+   "seconds": 0.004355392000206848
+  },
+  {
+   "set": "spider",
+   "schema": 60,
+   "pairs": 170,
+   "timed pairs": 170,
+   "seconds": 0.31265512599998146
+  },
+  {
+   "set": "spider",
+   "schema": 92,
+   "pairs": 18,
+   "timed pairs": 18,
+   "seconds": 0.012938185999928464
+  },
+  {
+   "set": "spider",
+   "schema": 124,
+   "pairs": 8,
+   "timed pairs": 8,
+   "seconds": 0.006028734999972585
+  },
+  {
+   "set": "spider",
+   "schema": 156,
+   "pairs": 646,
+   "timed pairs": 646,
+   "seconds": 0.6117617830000199
+  },
+  {
+   "set": "spider",
+   "schema": 188,
+   "pairs": 19,
+   "timed pairs": 19,
+   "seconds": 0.014807261999976618
+  },
+  {
+   "set": "spider",
+   "schema": 29,
+   "pairs": 287,
+   "timed pairs": 287,
+   "seconds": 0.27379925800005367
+  },
+  {
+   "set": "spider",
+   "schema": 61,
+   "pairs": 40,
+   "timed pairs": 40,
+   "seconds": 0.04247049200012043
+  },
+  {
+   "set": "spider",
+   "schema": 93,
+   "pairs": 20,
+   "timed pairs": 20,
+   "seconds": 0.02057639999998173
+  },
+  {
+   "set": "spider",
+   "schema": 125,
+   "pairs": 17,
+   "timed pairs": 17,
+   "seconds": 0.011066192000043884
+  },
+  {
+   "set": "spider",
+   "schema": 157,
+   "pairs": 184,
+   "timed pairs": 184,
+   "seconds": 0.17671494200021698
+  },
+  {
+   "set": "spider",
+   "schema": 189,
+   "pairs": 6,
+   "timed pairs": 6,
+   "seconds": 0.007108056999868495
+  },
+  {
+   "set": "spider",
+   "schema": 30,
+   "pairs": 25,
+   "timed pairs": 25,
+   "seconds": 0.019985402999964208
+  },
+  {
+   "set": "spider",
+   "schema": 62,
+   "pairs": 66,
+   "timed pairs": 66,
+   "seconds": 0.08460919200001626
+  },
+  {
+   "set": "spider",
+   "schema": 94,
+   "pairs": 129,
+   "timed pairs": 129,
+   "seconds": 0.10541969600012635
+  },
+  {
+   "set": "spider",
+   "schema": 126,
+   "pairs": 5,
+   "timed pairs": 5,
+   "seconds": 0.004254254999978002
+  },
+  {
+   "set": "spider",
+   "schema": 158,
+   "pairs": 17,
+   "timed pairs": 17,
+   "seconds": 0.01297459100010201
+  },
+  {
+   "set": "spider",
+   "schema": 190,
+   "pairs": 49,
+   "timed pairs": 49,
+   "seconds": 0.0505361539999285
+  },
+  {
+   "set": "spider",
+   "schema": 31,
+   "pairs": 21,
+   "timed pairs": 21,
+   "seconds": 0.01576980899994851
+  },
+  {
+   "set": "spider",
+   "schema": 63,
+   "pairs": 60,
+   "timed pairs": 60,
+   "seconds": 0.0738150399999995
+  },
+  {
+   "set": "spider",
+   "schema": 95,
+   "pairs": 85,
+   "timed pairs": 85,
+   "seconds": 0.20972561999997197
+  },
+  {
+   "set": "spider",
+   "schema": 127,
+   "pairs": 16,
+   "timed pairs": 16,
+   "seconds": 0.014437498999996023
+  },
+  {
+   "set": "spider",
+   "schema": 159,
+   "pairs": 24,
+   "timed pairs": 24,
+   "seconds": 0.020646457000111695
+  },
+  {
+   "set": "spider",
+   "schema": 191,
+   "pairs": 16,
+   "timed pairs": 16,
+   "seconds": 0.01417515900016042
+  },
+  {
+   "set": "bird",
+   "schema": 0,
+   "pairs": 6,
+   "timed pairs": 6,
+   "seconds": 0.005026546999943093
+  },
+  {
+   "set": "bird",
+   "schema": 32,
+   "pairs": 40,
+   "timed pairs": 40,
+   "seconds": 0.030761527000095157
+  },
+  {
+   "set": "bird",
+   "schema": 64,
+   "pairs": 108,
+   "timed pairs": 108,
+   "seconds": 0.10771145499984414
+  },
+  {
+   "set": "bird",
+   "schema": 1,
+   "pairs": 43,
+   "timed pairs": 43,
+   "seconds": 0.04491219199985608
+  },
+  {
+   "set": "bird",
+   "schema": 33,
+   "pairs": 344,
+   "timed pairs": 344,
+   "seconds": 0.22222715299994888
+  },
+  {
+   "set": "bird",
+   "schema": 65,
+   "pairs": 56,
+   "timed pairs": 56,
+   "seconds": 0.06553384700009701
+  },
+  {
+   "set": "bird",
+   "schema": 2,
+   "pairs": 4,
+   "timed pairs": 4,
+   "seconds": 0.003617974000007962
+  },
+  {
+   "set": "bird",
+   "schema": 34,
+   "pairs": 235,
+   "timed pairs": 235,
+   "seconds": 0.2149577320001299
+  },
+  {
+   "set": "bird",
+   "schema": 66,
+   "pairs": 216,
+   "timed pairs": 216,
+   "seconds": 0.1616444170001614
+  },
+  {
+   "set": "bird",
+   "schema": 3,
+   "pairs": 1433,
+   "timed pairs": 1433,
+   "seconds": 1.3482616020000933
+  },
+  {
+   "set": "bird",
+   "schema": 35,
+   "pairs": 13,
+   "timed pairs": 13,
+   "seconds": 0.010888780999948722
+  },
+  {
+   "set": "bird",
+   "schema": 67,
+   "pairs": 844,
+   "timed pairs": 844,
+   "seconds": 1.09978701
+  },
+  {
+   "set": "bird",
+   "schema": 4,
+   "pairs": 11,
+   "timed pairs": 11,
+   "seconds": 0.01194442899986825
+  },
+  {
+   "set": "bird",
+   "schema": 36,
+   "pairs": 3575,
+   "timed pairs": 2000,
+   "seconds": 2.4186130665125094
+  },
+  {
+   "set": "bird",
+   "schema": 68,
+   "pairs": 183,
+   "timed pairs": 183,
+   "seconds": 0.11680551299991748
+  },
+  {
+   "set": "bird",
+   "schema": 5,
+   "pairs": 28,
+   "timed pairs": 28,
+   "seconds": 0.022915213000032963
+  },
+  {
+   "set": "bird",
+   "schema": 37,
+   "pairs": 23,
+   "timed pairs": 23,
+   "seconds": 0.017894430999831457
+  },
+  {
+   "set": "bird",
+   "schema": 69,
+   "pairs": 346,
+   "timed pairs": 346,
+   "seconds": 0.24867507199996908
+  },
+  {
+   "set": "bird",
+   "schema": 6,
+   "pairs": 168,
+   "timed pairs": 168,
+   "seconds": 0.14490310699989095
+  },
+  {
+   "set": "bird",
+   "schema": 38,
+   "pairs": 442,
+   "timed pairs": 442,
+   "seconds": 0.43670369300002676
+  },
+  {
+   "set": "bird",
+   "schema": 70,
+   "pairs": 1012,
+   "timed pairs": 1012,
+   "seconds": 0.9765592620001371
+  },
+  {
+   "set": "bird",
+   "schema": 7,
+   "pairs": 125,
+   "timed pairs": 125,
+   "seconds": 0.09139909999998963
+  },
+  {
+   "set": "bird",
+   "schema": 39,
+   "pairs": 60,
+   "timed pairs": 60,
+   "seconds": 0.04145561300015288
+  },
+  {
+   "set": "bird",
+   "schema": 71,
+   "pairs": 75,
+   "timed pairs": 75,
+   "seconds": 0.051370499000086056
+  },
+  {
+   "set": "bird",
+   "schema": 40,
+   "pairs": 1036,
+   "timed pairs": 1036,
+   "seconds": 0.9796076590000666
+  },
+  {
+   "set": "bird",
+   "schema": 72,
+   "pairs": 41,
+   "timed pairs": 41,
+   "seconds": 0.02916217899996809
+  },
+  {
+   "set": "bird",
+   "schema": 9,
+   "pairs": 28,
+   "timed pairs": 28,
+   "seconds": 0.02350468899999214
+  },
+  {
+   "set": "bird",
+   "schema": 41,
+   "pairs": 38,
+   "timed pairs": 38,
+   "seconds": 0.03160464999996293
+  },
+  {
+   "set": "bird",
+   "schema": 73,
+   "pairs": 284,
+   "timed pairs": 284,
+   "seconds": 0.21483801099998345
+  },
+  {
+   "set": "bird",
+   "schema": 10,
+   "pairs": 98,
+   "timed pairs": 98,
+   "seconds": 0.09144520400013789
+  },
+  {
+   "set": "bird",
+   "schema": 42,
+   "pairs": 471,
+   "timed pairs": 471,
+   "seconds": 0.40040888200019253
+  },
+  {
+   "set": "bird",
+   "schema": 74,
+   "pairs": 172,
+   "timed pairs": 172,
+   "seconds": 0.13150436999990234
+  },
+  {
+   "set": "bird",
+   "schema": 11,
+   "pairs": 102,
+   "timed pairs": 102,
+   "seconds": 0.10862625699996897
+  },
+  {
+   "set": "bird",
+   "schema": 43,
+   "pairs": 37,
+   "timed pairs": 37,
+   "seconds": 0.032251832999918406
+  },
+  {
+   "set": "bird",
+   "schema": 75,
+   "pairs": 322,
+   "timed pairs": 322,
+   "seconds": 0.22885811599985573
+  },
+  {
+   "set": "bird",
+   "schema": 12,
+   "pairs": 40,
+   "timed pairs": 40,
+   "seconds": 0.03416044100004001
+  },
+  {
+   "set": "bird",
+   "schema": 44,
+   "pairs": 154,
+   "timed pairs": 154,
+   "seconds": 0.13990588699994078
+  },
+  {
+   "set": "bird",
+   "schema": 13,
+   "pairs": 32,
+   "timed pairs": 32,
+   "seconds": 0.024397913000029803
+  },
+  {
+   "set": "bird",
+   "schema": 45,
+   "pairs": 251,
+   "timed pairs": 251,
+   "seconds": 0.35432638699990093
+  },
+  {
+   "set": "bird",
+   "schema": 14,
+   "pairs": 313,
+   "timed pairs": 313,
+   "seconds": 0.3373201800000061
+  },
+  {
+   "set": "bird",
+   "schema": 46,
+   "pairs": 120,
+   "timed pairs": 120,
+   "seconds": 0.1253583999998682
+  },
+  {
+   "set": "bird",
+   "schema": 15,
+   "pairs": 29,
+   "timed pairs": 29,
+   "seconds": 0.022864445000095657
+  },
+  {
+   "set": "bird",
+   "schema": 47,
+   "pairs": 161,
+   "timed pairs": 161,
+   "seconds": 0.17639877300007356
+  },
+  {
+   "set": "bird",
+   "schema": 16,
+   "pairs": 22,
+   "timed pairs": 22,
+   "seconds": 0.019423137000103452
+  },
+  {
+   "set": "bird",
+   "schema": 48,
+   "pairs": 3032,
+   "timed pairs": 2000,
+   "seconds": 2.1476967491601373
+  },
+  {
+   "set": "bird",
+   "schema": 17,
+   "pairs": 101,
+   "timed pairs": 101,
+   "seconds": 0.10310634600000412
+  },
+  {
+   "set": "bird",
+   "schema": 49,
+   "pairs": 109,
+   "timed pairs": 109,
+   "seconds": 0.0915940679999494
+  },
+  {
+   "set": "bird",
+   "schema": 18,
+   "pairs": 30,
+   "timed pairs": 30,
+   "seconds": 0.024932206000130464
+  },
+  {
+   "set": "bird",
+   "schema": 50,
+   "pairs": 120,
+   "timed pairs": 120,
+   "seconds": 0.11452768799995283
+  },
+  {
+   "set": "bird",
+   "schema": 19,
+   "pairs": 15147,
+   "timed pairs": 2000,
+   "seconds": 23.305524421360428
+  },
+  {
+   "set": "bird",
+   "schema": 51,
+   "pairs": 11,
+   "timed pairs": 11,
+   "seconds": 0.01081634899992423
+  },
+  {
+   "set": "bird",
+   "schema": 20,
+   "pairs": 81,
+   "timed pairs": 81,
+   "seconds": 0.09888876700006222
+  },
+  {
+   "set": "bird",
+   "schema": 52,
+   "pairs": 67,
+   "timed pairs": 67,
+   "seconds": 0.10780936499986638
+  },
+  {
+   "set": "bird",
+   "schema": 21,
+   "pairs": 17,
+   "timed pairs": 17,
+   "seconds": 0.01430592799988517
+  },
+  {
+   "set": "bird",
+   "schema": 53,
+   "pairs": 114,
+   "timed pairs": 114,
+   "seconds": 0.1786147269999674
+  },
+  {
+   "set": "bird",
+   "schema": 22,
+   "pairs": 119,
+   "timed pairs": 119,
+   "seconds": 0.08929265499978101
+  },
+  {
+   "set": "bird",
+   "schema": 54,
+   "pairs": 66,
+   "timed pairs": 66,
+   "seconds": 0.06548184300004323
+  },
+  {
+   "set": "bird",
+   "schema": 23,
+   "pairs": 67,
+   "timed pairs": 67,
+   "seconds": 0.062101175999941916
+  },
+  {
+   "set": "bird",
+   "schema": 55,
+   "pairs": 361,
+   "timed pairs": 361,
+   "seconds": 0.3623234379999758
+  },
+  {
+   "set": "bird",
+   "schema": 24,
+   "pairs": 431,
+   "timed pairs": 431,
+   "seconds": 0.3844076099999256
+  },
+  {
+   "set": "bird",
+   "schema": 56,
+   "pairs": 32,
+   "timed pairs": 32,
+   "seconds": 0.029844207999985883
+  },
+  {
+   "set": "bird",
+   "schema": 25,
+   "pairs": 31,
+   "timed pairs": 31,
+   "seconds": 0.02859192500000063
+  },
+  {
+   "set": "bird",
+   "schema": 57,
+   "pairs": 183,
+   "timed pairs": 183,
+   "seconds": 0.16623798399996303
+  },
+  {
+   "set": "bird",
+   "schema": 26,
+   "pairs": 36,
+   "timed pairs": 36,
+   "seconds": 0.03494653699999617
+  },
+  {
+   "set": "bird",
+   "schema": 58,
+   "pairs": 10,
+   "timed pairs": 10,
+   "seconds": 0.006332793999945352
+  },
+  {
+   "set": "bird",
+   "schema": 27,
+   "pairs": 56,
+   "timed pairs": 56,
+   "seconds": 0.0678914249999707
+  },
+  {
+   "set": "bird",
+   "schema": 59,
+   "pairs": 398,
+   "timed pairs": 398,
+   "seconds": 0.5103436100000636
+  },
+  {
+   "set": "bird",
+   "schema": 28,
+   "pairs": 423,
+   "timed pairs": 423,
+   "seconds": 0.4720994009999231
+  },
+  {
+   "set": "bird",
+   "schema": 60,
+   "pairs": 165,
+   "timed pairs": 165,
+   "seconds": 0.15686437799990927
+  },
+  {
+   "set": "bird",
+   "schema": 29,
+   "pairs": 62,
+   "timed pairs": 62,
+   "seconds": 0.050366095999834215
+  },
+  {
+   "set": "bird",
+   "schema": 61,
+   "pairs": 98,
+   "timed pairs": 98,
+   "seconds": 0.07156294199990043
+  },
+  {
+   "set": "bird",
+   "schema": 30,
+   "pairs": 5,
+   "timed pairs": 5,
+   "seconds": 0.006206524999925023
+  },
+  {
+   "set": "bird",
+   "schema": 62,
+   "pairs": 631,
+   "timed pairs": 631,
+   "seconds": 0.5552699130000747
+  },
+  {
+   "set": "bird",
+   "schema": 31,
+   "pairs": 105,
+   "timed pairs": 105,
+   "seconds": 0.10918168900002456
+  },
+  {
+   "set": "bird",
+   "schema": 63,
+   "pairs": 17,
+   "timed pairs": 17,
+   "seconds": 0.015218949000200155
+  },
+  {
+   "set": "ctu",
+   "schema": 0,
+   "pairs": 60,
+   "timed pairs": 60,
+   "seconds": 0.08961703099998886
+  },
+  {
+   "set": "ctu",
+   "schema": 32,
+   "pairs": 35,
+   "timed pairs": 35,
+   "seconds": 0.03231692399981512
+  },
+  {
+   "set": "ctu",
+   "schema": 64,
+   "pairs": 9179,
+   "timed pairs": 2000,
+   "seconds": 5.783520254743684
+  },
+  {
+   "set": "ctu",
+   "schema": 96,
+   "pairs": 46,
+   "timed pairs": 46,
+   "seconds": 0.04941806099986934
+  },
+  {
+   "set": "ctu",
+   "schema": 1,
+   "pairs": 20543,
+   "timed pairs": 2000,
+   "seconds": 32.11266128831361
+  },
+  {
+   "set": "ctu",
+   "schema": 33,
+   "pairs": 21,
+   "timed pairs": 21,
+   "seconds": 0.023601918999929694
+  },
+  {
+   "set": "ctu",
+   "schema": 65,
+   "pairs": 4,
+   "timed pairs": 4,
+   "seconds": 0.006272970999816607
+  },
+  {
+   "set": "ctu",
+   "schema": 97,
+   "pairs": 41,
+   "timed pairs": 41,
+   "seconds": 0.03401657100016564
+  },
+  {
+   "set": "ctu",
+   "schema": 2,
+   "pairs": 1209,
+   "timed pairs": 1209,
+   "seconds": 1.5702652639999997
+  },
+  {
+   "set": "ctu",
+   "schema": 34,
+   "pairs": 6,
+   "timed pairs": 6,
+   "seconds": 0.004702683999994406
+  },
+  {
+   "set": "ctu",
+   "schema": 66,
+   "pairs": 4,
+   "timed pairs": 4,
+   "seconds": 0.005595715999788808
+  },
+  {
+   "set": "ctu",
+   "schema": 98,
+   "pairs": 310,
+   "timed pairs": 310,
+   "seconds": 0.21666345700009515
+  },
+  {
+   "set": "ctu",
+   "schema": 3,
+   "pairs": 6,
+   "timed pairs": 6,
+   "seconds": 0.0063878240000576625
+  },
+  {
+   "set": "ctu",
+   "schema": 35,
+   "pairs": 560,
+   "timed pairs": 560,
+   "seconds": 0.34764068100002987
+  },
+  {
+   "set": "ctu",
+   "schema": 67,
+   "pairs": 19,
+   "timed pairs": 19,
+   "seconds": 0.014449146999822915
+  },
+  {
+   "set": "ctu",
+   "schema": 99,
+   "pairs": 146,
+   "timed pairs": 146,
+   "seconds": 0.15761963900013143
+  },
+  {
+   "set": "ctu",
+   "schema": 4,
+   "pairs": 377,
+   "timed pairs": 377,
+   "seconds": 0.16265916699990157
+  },
+  {
+   "set": "ctu",
+   "schema": 36,
+   "pairs": 230,
+   "timed pairs": 230,
+   "seconds": 0.14625848300011057
+  },
+  {
+   "set": "ctu",
+   "schema": 68,
+   "pairs": 96,
+   "timed pairs": 96,
+   "seconds": 0.05137435999995432
+  },
+  {
+   "set": "ctu",
+   "schema": 100,
+   "pairs": 6416,
+   "timed pairs": 2000,
+   "seconds": 8.7327762071766
+  },
+  {
+   "set": "ctu",
+   "schema": 5,
+   "pairs": 202,
+   "timed pairs": 202,
+   "seconds": 0.11736714100015888
+  },
+  {
+   "set": "ctu",
+   "schema": 37,
+   "pairs": 54,
+   "timed pairs": 54,
+   "seconds": 0.042273853000097006
+  },
+  {
+   "set": "ctu",
+   "schema": 69,
+   "pairs": 96,
+   "timed pairs": 96,
+   "seconds": 0.05220675999999003
+  },
+  {
+   "set": "ctu",
+   "schema": 101,
+   "pairs": 3665,
+   "timed pairs": 2000,
+   "seconds": 4.1643914541573475
+  },
+  {
+   "set": "ctu",
+   "schema": 6,
+   "pairs": 1337,
+   "timed pairs": 1337,
+   "seconds": 1.0748336730000574
+  },
+  {
+   "set": "ctu",
+   "schema": 38,
+   "pairs": 942,
+   "timed pairs": 942,
+   "seconds": 0.9627327950001927
+  },
+  {
+   "set": "ctu",
+   "schema": 70,
+   "pairs": 349,
+   "timed pairs": 349,
+   "seconds": 0.23621591300002365
+  },
+  {
+   "set": "ctu",
+   "schema": 102,
+   "pairs": 218,
+   "timed pairs": 218,
+   "seconds": 0.17328034000001935
+  },
+  {
+   "set": "ctu",
+   "schema": 7,
+   "pairs": 412,
+   "timed pairs": 412,
+   "seconds": 0.2699534149999181
+  },
+  {
+   "set": "ctu",
+   "schema": 39,
+   "pairs": 529,
+   "timed pairs": 529,
+   "seconds": 0.2209686450000845
+  },
+  {
+   "set": "ctu",
+   "schema": 71,
+   "pairs": 266,
+   "timed pairs": 266,
+   "seconds": 0.2849970970000868
+  },
+  {
+   "set": "ctu",
+   "schema": 103,
+   "pairs": 10,
+   "timed pairs": 10,
+   "seconds": 0.005012317000137045
+  },
+  {
+   "set": "ctu",
+   "schema": 8,
+   "pairs": 1717591,
+   "timed pairs": 2000,
+   "seconds": 1690.2940338844192
+  },
+  {
+   "set": "ctu",
+   "schema": 40,
+   "pairs": 288,
+   "timed pairs": 288,
+   "seconds": 0.1690575830000398
+  },
+  {
+   "set": "ctu",
+   "schema": 72,
+   "pairs": 755,
+   "timed pairs": 755,
+   "seconds": 0.9340204860000085
+  },
+  {
+   "set": "ctu",
+   "schema": 104,
+   "pairs": 5,
+   "timed pairs": 5,
+   "seconds": 0.004740306000030614
+  },
+  {
+   "set": "ctu",
+   "schema": 9,
+   "pairs": 895,
+   "timed pairs": 895,
+   "seconds": 1.1273757139999816
+  },
+  {
+   "set": "ctu",
+   "schema": 41,
+   "pairs": 334,
+   "timed pairs": 334,
+   "seconds": 0.16111888399996133
+  },
+  {
+   "set": "ctu",
+   "schema": 73,
+   "pairs": 17,
+   "timed pairs": 17,
+   "seconds": 0.012219146999996156
+  },
+  {
+   "set": "ctu",
+   "schema": 105,
+   "pairs": 654,
+   "timed pairs": 654,
+   "seconds": 0.896262385
+  },
+  {
+   "set": "ctu",
+   "schema": 10,
+   "pairs": 1030,
+   "timed pairs": 1030,
+   "seconds": 0.8790098970000599
+  },
+  {
+   "set": "ctu",
+   "schema": 42,
+   "pairs": 108,
+   "timed pairs": 108,
+   "seconds": 0.08977920500001346
+  },
+  {
+   "set": "ctu",
+   "schema": 74,
+   "pairs": 487,
+   "timed pairs": 487,
+   "seconds": 0.5835823530001107
+  },
+  {
+   "set": "ctu",
+   "schema": 106,
+   "pairs": 11,
+   "timed pairs": 11,
+   "seconds": 0.017086142999914955
+  },
+  {
+   "set": "ctu",
+   "schema": 11,
+   "pairs": 1047,
+   "timed pairs": 1047,
+   "seconds": 1.3236598539999704
+  },
+  {
+   "set": "ctu",
+   "schema": 43,
+   "pairs": 44,
+   "timed pairs": 44,
+   "seconds": 0.04553976300007889
+  },
+  {
+   "set": "ctu",
+   "schema": 75,
+   "pairs": 3099,
+   "timed pairs": 2000,
+   "seconds": 3.9085257771374393
+  },
+  {
+   "set": "ctu",
+   "schema": 107,
+   "pairs": 32,
+   "timed pairs": 32,
+   "seconds": 0.024562614000160465
+  },
+  {
+   "set": "ctu",
+   "schema": 12,
+   "pairs": 45977,
+   "timed pairs": 2000,
+   "seconds": 75.80606996801528
+  },
+  {
+   "set": "ctu",
+   "schema": 44,
+   "pairs": 12,
+   "timed pairs": 12,
+   "seconds": 0.008743675000005169
+  },
+  {
+   "set": "ctu",
+   "schema": 76,
+   "pairs": 81,
+   "timed pairs": 81,
+   "seconds": 0.05167506099996899
+  },
+  {
+   "set": "ctu",
+   "schema": 108,
+   "pairs": 6,
+   "timed pairs": 6,
+   "seconds": 0.0069012779999866325
+  },
+  {
+   "set": "ctu",
+   "schema": 13,
+   "pairs": 1085,
+   "timed pairs": 1085,
+   "seconds": 0.7891067380001004
+  },
+  {
+   "set": "ctu",
+   "schema": 45,
+   "pairs": 531,
+   "timed pairs": 531,
+   "seconds": 0.41442172899996876
+  },
+  {
+   "set": "ctu",
+   "schema": 77,
+   "pairs": 831,
+   "timed pairs": 831,
+   "seconds": 0.6446418609998545
+  },
+  {
+   "set": "ctu",
+   "schema": 109,
+   "pairs": 22,
+   "timed pairs": 22,
+   "seconds": 0.015675847000011345
+  },
+  {
+   "set": "ctu",
+   "schema": 14,
+   "pairs": 52,
+   "timed pairs": 52,
+   "seconds": 0.041865345999895
+  },
+  {
+   "set": "ctu",
+   "schema": 46,
+   "pairs": 37,
+   "timed pairs": 37,
+   "seconds": 0.03481682400001773
+  },
+  {
+   "set": "ctu",
+   "schema": 78,
+   "pairs": 2505,
+   "timed pairs": 2000,
+   "seconds": 2.321812302142342
+  },
+  {
+   "set": "ctu",
+   "schema": 110,
+   "pairs": 102,
+   "timed pairs": 102,
+   "seconds": 0.09189922099994874
+  },
+  {
+   "set": "ctu",
+   "schema": 15,
+   "pairs": 81,
+   "timed pairs": 81,
+   "seconds": 0.049928733000115244
+  },
+  {
+   "set": "ctu",
+   "schema": 47,
+   "pairs": 53,
+   "timed pairs": 53,
+   "seconds": 0.058255456999859234
+  },
+  {
+   "set": "ctu",
+   "schema": 79,
+   "pairs": 13,
+   "timed pairs": 13,
+   "seconds": 0.010290072999850963
+  },
+  {
+   "set": "ctu",
+   "schema": 111,
+   "pairs": 61,
+   "timed pairs": 61,
+   "seconds": 0.03886160599995492
+  },
+  {
+   "set": "ctu",
+   "schema": 16,
+   "pairs": 48,
+   "timed pairs": 48,
+   "seconds": 0.025659750999921016
+  },
+  {
+   "set": "ctu",
+   "schema": 48,
+   "pairs": 373,
+   "timed pairs": 373,
+   "seconds": 0.43115566300002683
+  },
+  {
+   "set": "ctu",
+   "schema": 80,
+   "pairs": 340,
+   "timed pairs": 340,
+   "seconds": 0.2402378099998259
+  },
+  {
+   "set": "ctu",
+   "schema": 112,
+   "pairs": 13,
+   "timed pairs": 13,
+   "seconds": 0.007933699999966848
+  },
+  {
+   "set": "ctu",
+   "schema": 17,
+   "pairs": 96,
+   "timed pairs": 96,
+   "seconds": 0.09246885700008534
+  },
+  {
+   "set": "ctu",
+   "schema": 49,
+   "pairs": 66,
+   "timed pairs": 66,
+   "seconds": 0.026793985000040266
+  },
+  {
+   "set": "ctu",
+   "schema": 81,
+   "pairs": 5,
+   "timed pairs": 5,
+   "seconds": 0.00435428600007981
+  },
+  {
+   "set": "ctu",
+   "schema": 113,
+   "pairs": 17,
+   "timed pairs": 17,
+   "seconds": 0.014606685999979163
+  },
+  {
+   "set": "ctu",
+   "schema": 18,
+   "pairs": 183,
+   "timed pairs": 183,
+   "seconds": 0.13232709900012196
+  },
+  {
+   "set": "ctu",
+   "schema": 50,
+   "pairs": 3575,
+   "timed pairs": 2000,
+   "seconds": 2.66518827038725
+  },
+  {
+   "set": "ctu",
+   "schema": 82,
+   "pairs": 13,
+   "timed pairs": 13,
+   "seconds": 0.012365820000013628
+  },
+  {
+   "set": "ctu",
+   "schema": 114,
+   "pairs": 31,
+   "timed pairs": 31,
+   "seconds": 0.030088516999967396
+  },
+  {
+   "set": "ctu",
+   "schema": 19,
+   "pairs": 720,
+   "timed pairs": 720,
+   "seconds": 0.9488308190000225
+  },
+  {
+   "set": "ctu",
+   "schema": 51,
+   "pairs": 10,
+   "timed pairs": 10,
+   "seconds": 0.0067583350000859355
+  },
+  {
+   "set": "ctu",
+   "schema": 83,
+   "pairs": 679,
+   "timed pairs": 679,
+   "seconds": 0.6374392400000488
+  },
+  {
+   "set": "ctu",
+   "schema": 115,
+   "pairs": 56,
+   "timed pairs": 56,
+   "seconds": 0.05307429799995589
+  },
+  {
+   "set": "ctu",
+   "schema": 20,
+   "pairs": 9,
+   "timed pairs": 9,
+   "seconds": 0.006706219000079727
+  },
+  {
+   "set": "ctu",
+   "schema": 52,
+   "pairs": 717,
+   "timed pairs": 717,
+   "seconds": 0.7439465579998341
+  },
+  {
+   "set": "ctu",
+   "schema": 84,
+   "pairs": 32,
+   "timed pairs": 32,
+   "seconds": 0.021845710999969015
+  },
+  {
+   "set": "ctu",
+   "schema": 116,
+   "pairs": 159,
+   "timed pairs": 159,
+   "seconds": 0.18192783700010295
+  },
+  {
+   "set": "ctu",
+   "schema": 21,
+   "pairs": 287,
+   "timed pairs": 287,
+   "seconds": 0.22399714500011214
+  },
+  {
+   "set": "ctu",
+   "schema": 53,
+   "pairs": 90,
+   "timed pairs": 90,
+   "seconds": 0.08946381399982783
+  },
+  {
+   "set": "ctu",
+   "schema": 85,
+   "pairs": 28,
+   "timed pairs": 28,
+   "seconds": 0.01900260399997933
+  },
+  {
+   "set": "ctu",
+   "schema": 117,
+   "pairs": 368,
+   "timed pairs": 368,
+   "seconds": 0.3861163869999018
+  },
+  {
+   "set": "ctu",
+   "schema": 22,
+   "pairs": 17,
+   "timed pairs": 17,
+   "seconds": 0.017198656000118717
+  },
+  {
+   "set": "ctu",
+   "schema": 54,
+   "pairs": 108,
+   "timed pairs": 108,
+   "seconds": 0.11988285999996151
+  },
+  {
+   "set": "ctu",
+   "schema": 86,
+   "pairs": 50,
+   "timed pairs": 50,
+   "seconds": 0.033153156000025774
+  },
+  {
+   "set": "ctu",
+   "schema": 23,
+   "pairs": 235,
+   "timed pairs": 235,
+   "seconds": 0.2369509359998574
+  },
+  {
+   "set": "ctu",
+   "schema": 55,
+   "pairs": 79,
+   "timed pairs": 79,
+   "seconds": 0.08245903600004567
+  },
+  {
+   "set": "ctu",
+   "schema": 87,
+   "pairs": 1223,
+   "timed pairs": 1223,
+   "seconds": 0.9494614029999866
+  },
+  {
+   "set": "ctu",
+   "schema": 24,
+   "pairs": 14,
+   "timed pairs": 14,
+   "seconds": 0.016207461000021794
+  },
+  {
+   "set": "ctu",
+   "schema": 56,
+   "pairs": 7880,
+   "timed pairs": 2000,
+   "seconds": 6.759992586459188
+  },
+  {
+   "set": "ctu",
+   "schema": 88,
+   "pairs": 10,
+   "timed pairs": 10,
+   "seconds": 0.013642840999864347
+  },
+  {
+   "set": "ctu",
+   "schema": 25,
+   "pairs": 11,
+   "timed pairs": 11,
+   "seconds": 0.00970230600000832
+  },
+  {
+   "set": "ctu",
+   "schema": 57,
+   "pairs": 72,
+   "timed pairs": 72,
+   "seconds": 0.0772865249998631
+  },
+  {
+   "set": "ctu",
+   "schema": 89,
+   "pairs": 5,
+   "timed pairs": 5,
+   "seconds": 0.006031075000009878
+  },
+  {
+   "set": "ctu",
+   "schema": 26,
+   "pairs": 53,
+   "timed pairs": 53,
+   "seconds": 0.09937494199994035
+  },
+  {
+   "set": "ctu",
+   "schema": 58,
+   "pairs": 108,
+   "timed pairs": 108,
+   "seconds": 0.06860810600005607
+  },
+  {
+   "set": "ctu",
+   "schema": 90,
+   "pairs": 40,
+   "timed pairs": 40,
+   "seconds": 0.02523708299986538
+  },
+  {
+   "set": "ctu",
+   "schema": 27,
+   "pairs": 8,
+   "timed pairs": 8,
+   "seconds": 0.005271774999982881
+  },
+  {
+   "set": "ctu",
+   "schema": 59,
+   "pairs": 976,
+   "timed pairs": 976,
+   "seconds": 0.7961319529999855
+  },
+  {
+   "set": "ctu",
+   "schema": 91,
+   "pairs": 22,
+   "timed pairs": 22,
+   "seconds": 0.013417759000049045
+  },
+  {
+   "set": "ctu",
+   "schema": 28,
+   "pairs": 191,
+   "timed pairs": 191,
+   "seconds": 0.14419661700003417
+  },
+  {
+   "set": "ctu",
+   "schema": 60,
+   "pairs": 714,
+   "timed pairs": 714,
+   "seconds": 0.7941054920001989
+  },
+  {
+   "set": "ctu",
+   "schema": 92,
+   "pairs": 322,
+   "timed pairs": 322,
+   "seconds": 0.1890002899999672
+  },
+  {
+   "set": "ctu",
+   "schema": 29,
+   "pairs": 168,
+   "timed pairs": 168,
+   "seconds": 0.2098101060000772
+  },
+  {
+   "set": "ctu",
+   "schema": 61,
+   "pairs": 3032,
+   "timed pairs": 2000,
+   "seconds": 2.5197666856482654
+  },
+  {
+   "set": "ctu",
+   "schema": 93,
+   "pairs": 280,
+   "timed pairs": 280,
+   "seconds": 0.153745249999929
+  },
+  {
+   "set": "ctu",
+   "schema": 30,
+   "pairs": 60,
+   "timed pairs": 60,
+   "seconds": 0.03731561800009331
+  },
+  {
+   "set": "ctu",
+   "schema": 62,
+   "pairs": 226,
+   "timed pairs": 226,
+   "seconds": 0.19194790500000636
+  },
+  {
+   "set": "ctu",
+   "schema": 94,
+   "pairs": 109,
+   "timed pairs": 109,
+   "seconds": 0.10105973600002471
+  },
+  {
+   "set": "ctu",
+   "schema": 31,
+   "pairs": 80,
+   "timed pairs": 80,
+   "seconds": 0.05281215899981362
+  },
+  {
+   "set": "ctu",
+   "schema": 63,
+   "pairs": 11,
+   "timed pairs": 11,
+   "seconds": 0.009537855999951717
+  },
+  {
+   "set": "ctu",
+   "schema": 95,
+   "pairs": 295,
+   "timed pairs": 295,
+   "seconds": 0.3857163699999546
+  }
+ ]
+}

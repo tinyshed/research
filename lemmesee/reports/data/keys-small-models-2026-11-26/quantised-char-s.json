@@ -1,0 +1,20 @@
+{
+ "name": "char-s",
+ "bytes, int8 state": 1580725,
+ "bytes, fp16": null,
+ "validation part": {
+  "float": {
+   "pairs": 61272,
+   "f1 at the frozen threshold": 0.6446280991735537,
+   "f1 at its own best": 0.6484560570071259,
+   "seconds": 30.669254541397095
+  },
+  "int8": {
+   "pairs": 61272,
+   "f1 at the frozen threshold": 0.6397146254458977,
+   "f1 at its own best": 0.6450116009280743,
+   "seconds": 25.409124612808228
+  }
+ },
+ "largest difference of a score": 0.1403394639492035
+}

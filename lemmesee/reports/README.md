@@ -126,3 +126,7 @@ so, never by editing the number it replaces.
   a positive-unlabelled weighting by the label frequency draws 26 % more keys in schemas of 40 tables or more; F1 over
   declared keys does not move, 0.762 against 0.757; with the judge, recall 0.660 to 0.727 and precision 0.956 to 0.928,
   of which a lower threshold gives most; plain B left unread.
+- [What stands between a megabyte and a remote language model](keys-small-models-2026-11-26.md), round 1z:
+  on 718 clean schemas the key model at 0.757 is above a character network of 2.4 MB (0.595) and a fine-tuned encoder
+  of 190 MB (0.727), above three local language models of 1.9 to 6.6 GB (0.061 to 0.658) and level with Gemma 4 12B at
+  8.0 GB (0.751, +0.006 [−0.021, +0.036]); read with a target's column forgiven, GPT-6 Luna is 0.841 and not 0.766.

@@ -1,0 +1,45 @@
+{
+ "name": "granite",
+ "config": {
+  "kind": "text",
+  "epochs": 1,
+  "batch": 128,
+  "lr": 5e-05
+ },
+ "seed": 20261027,
+ "training rows": 920601,
+ "validation pairs": 1674439,
+ "history": [
+  {
+   "epoch": 1,
+   "loss": 0.05185604075202336,
+   "threshold": 0.7592254281044006,
+   "precision": 0.731237322515213,
+   "recall": 0.7407534246575342,
+   "f1": 0.7359646138142226
+  }
+ ],
+ "chosen": {
+  "epoch": 1,
+  "loss": 0.05185604075202336,
+  "threshold": 0.7592254281044006,
+  "precision": 0.731237322515213,
+  "recall": 0.7407534246575342,
+  "f1": 0.7359646138142226
+ },
+ "parameters": 47662849,
+ "bytes": {
+  "model.safetensors": 190658980,
+  "tokenizer/tokenizer.json": 3583228,
+  "tokenizer/tokenizer_config.json": 397
+ },
+ "seconds": 895,
+ "torch": "2.11.0+cu128",
+ "card": "NVIDIA GeForce RTX 5070",
+ "card memory at most, bytes": 4535133696,
+ "pretrained": {
+  "name": "ibm-granite/granite-embedding-small-english-r2",
+  "revision": "2ab6fa8ea2d674564defd37171ae19079b864b33",
+  "licence": "apache-2.0"
+ }
+}

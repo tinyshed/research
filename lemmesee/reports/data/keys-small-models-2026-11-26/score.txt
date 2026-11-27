@@ -1,0 +1,71 @@
+== plain-a: 718 databases, 16399 keys
+lemmekey                         P 0.774 R 0.741 F1 0.757 macro 0.803 | 5-9:0.862 10-19:0.843 20-39:0.797 40-99:0.705 100+:0.568
+lemmekey, scored again           P 0.774 R 0.741 F1 0.757 macro 0.803 | 5-9:0.862 10-19:0.843 20-39:0.797 40-99:0.705 100+:0.568
+eleven, first stage alone        P 0.780 R 0.723 F1 0.750 macro 0.796 | 5-9:0.858 10-19:0.837 20-39:0.792 40-99:0.698 100+:0.561
+char-s                           P 0.644 R 0.553 F1 0.595 macro 0.640 | 5-9:0.701 10-19:0.680 20-39:0.640 40-99:0.544 100+:0.340
+granite                          P 0.732 R 0.723 F1 0.727 macro 0.762 | 5-9:0.810 10-19:0.800 20-39:0.782 40-99:0.676 100+:0.561
+claude-haiku-5-5                 P 0.784 R 0.917 F1 0.845 macro 0.886 | 5-9:0.922 10-19:0.897 20-39:0.879 40-99:0.851 100+:0.620
+claude-sonnet-5-5                P 0.797 R 0.912 F1 0.850 macro 0.896 | 5-9:0.934 10-19:0.909 20-39:0.891 40-99:0.841 100+:0.631
+deepseek-v4.1-flash-1017         P 0.801 R 0.845 F1 0.823 macro 0.873 | 5-9:0.928 10-19:0.903 20-39:0.877 40-99:0.790 100+:0.489
+gemini-3.5-flash-lite            P 0.742 R 0.932 F1 0.826 macro 0.868 | 5-9:0.899 10-19:0.891 20-39:0.857 40-99:0.832 100+:0.632
+gpt-6-luna                       P 0.695 R 0.853 F1 0.766 macro 0.839 | 5-9:0.912 10-19:0.845 20-39:0.805 40-99:0.768 100+:0.492
+gpt-6.1-terra                    P 0.767 R 0.977 F1 0.860 macro 0.900 | 5-9:0.935 10-19:0.907 20-39:0.881 40-99:0.845 100+:0.750
+gemma4--12b-it-q4_K_M--no-reasoning (718/718) P 0.308 R 0.383 F1 0.342 macro 0.407 | 5-9:0.533 10-19:0.305 20-39:0.319 40-99:0.373 100+:0.255
+    form mended: P 0.677 R 0.843 F1 0.751 minus lemmekey -0.006 [-0.036, 0.021] unreadable 0 targets without their column 10572
+    minus lemmekey -0.415 [-0.466, -0.366]  cut 6 does not fit 1 unreadable 0  median 4.3 s
+qwen3.5--2b-q4_K_M--no-reasoning (718/718) P 0.025 R 0.003 F1 0.005 macro 0.005 | 5-9:0.012 10-19:0.012 20-39:0.005 40-99:0.000 100+:0.000
+    form mended: P 0.294 R 0.034 F1 0.061 minus lemmekey -0.696 [-0.726, -0.663] unreadable 4 targets without their column 1408
+    minus lemmekey -0.752 [-0.782, -0.721]  cut 3 does not fit 1 unreadable 6  median 0.2 s
+qwen3.5--4b-q4_K_M--no-reasoning (718/718) P 0.595 R 0.370 F1 0.456 macro 0.467 | 5-9:0.644 10-19:0.534 20-39:0.440 40-99:0.427 100+:0.221
+    form mended: P 0.670 R 0.560 F1 0.610 minus lemmekey -0.147 [-0.18, -0.117] unreadable 1 targets without their column 1049
+    minus lemmekey -0.301 [-0.341, -0.262]  cut 1 does not fit 1 unreadable 97  median 2.3 s
+qwen3.5--9b-q4_K_M--no-reasoning (718/718) P 0.665 R 0.651 F1 0.658 macro 0.682 | 5-9:0.740 10-19:0.737 20-39:0.710 40-99:0.639 100+:0.391
+    form mended: P 0.665 R 0.651 F1 0.658 minus lemmekey -0.099 [-0.129, -0.07] unreadable 0 targets without their column 0
+    minus lemmekey -0.099 [-0.129, -0.07]  cut 1 does not fit 1 unreadable 0  median 3.4 s
+== style3: 100 databases, 1762 keys
+lemmekey                         P 0.810 R 0.670 F1 0.734 macro 0.810 | 5-9:0.895 10-19:0.840 20-39:0.849 40-99:0.578 100+:0.271
+lemmekey, scored again           P 0.810 R 0.670 F1 0.734 macro 0.810 | 5-9:0.895 10-19:0.840 20-39:0.849 40-99:0.578 100+:0.271
+eleven, first stage alone        P 0.818 R 0.675 F1 0.740 macro 0.799 | 5-9:0.883 10-19:0.836 20-39:0.859 40-99:0.593 100+:0.345
+char-s                           P 0.641 R 0.531 F1 0.581 macro 0.643 | 5-9:0.676 10-19:0.693 20-39:0.712 40-99:0.399 100+:0.207
+granite                          P 0.733 R 0.645 F1 0.686 macro 0.758 | 5-9:0.839 10-19:0.773 20-39:0.775 40-99:0.521 100+:0.426
+claude-haiku-5-5                 P 0.767 R 0.881 F1 0.820 macro 0.874 | 5-9:0.913 10-19:0.924 20-39:0.803 40-99:0.695 100+:0.684
+claude-sonnet-5-5                P 0.810 R 0.920 F1 0.862 macro 0.906 | 5-9:0.949 10-19:0.940 20-39:0.866 40-99:0.719 100+:0.793
+deepseek-v4.1-flash-1017         P 0.778 R 0.874 F1 0.823 macro 0.868 | 5-9:0.937 10-19:0.932 20-39:0.858 40-99:0.524 100+:0.789
+gemini-3.5-flash-lite            P 0.761 R 0.874 F1 0.814 macro 0.885 | 5-9:0.936 10-19:0.918 20-39:0.843 40-99:0.604 100+:0.726
+gemini-3.8-flash                 P 0.853 R 0.898 F1 0.875 macro 0.914 | 5-9:0.951 10-19:0.937 20-39:0.923 40-99:0.744 100+:0.774
+gpt-6-luna                       P 0.695 R 0.838 F1 0.760 macro 0.835 | 5-9:0.910 10-19:0.885 20-39:0.776 40-99:0.453 100+:0.769
+gpt-6.1-terra                    P 0.763 R 0.960 F1 0.850 macro 0.899 | 5-9:0.944 10-19:0.929 20-39:0.852 40-99:0.705 100+:0.808
+gemma4--12b-it-q4_K_M--no-reasoning (100/100) P 0.503 R 0.459 F1 0.480 macro 0.536 | 5-9:0.746 10-19:0.486 20-39:0.387 40-99:0.574 100+:0.000
+    form mended: P 0.781 R 0.713 F1 0.746 minus lemmekey +0.012 [-0.021, 0.053] unreadable 0 targets without their column 581
+    minus lemmekey -0.254 [-0.372, -0.164]  cut 2 does not fit 0 unreadable 0  median 3.4 s
+qwen3.5--2b-q4_K_M--no-reasoning (100/100) P 0.044 R 0.012 F1 0.019 macro 0.015 | 5-9:0.007 10-19:0.035 20-39:0.018 40-99:0.015 100+:0.000
+    form mended: P 0.320 R 0.086 F1 0.136 minus lemmekey -0.598 [-0.703, -0.513] unreadable 0 targets without their column 297
+    minus lemmekey -0.715 [-0.824, -0.605]  cut 1 does not fit 0 unreadable 1  median 0.3 s
+qwen3.5--4b-q4_K_M--no-reasoning (100/100) P 0.706 R 0.360 F1 0.477 macro 0.482 | 5-9:0.710 10-19:0.582 20-39:0.454 40-99:0.308 100+:0.169
+    form mended: P 0.729 R 0.468 F1 0.570 minus lemmekey -0.163 [-0.247, -0.093] unreadable 0 targets without their column 14
+    minus lemmekey -0.257 [-0.358, -0.178]  cut 0 does not fit 0 unreadable 15  median 2.4 s
+qwen3.5--9b-q4_K_M--no-reasoning (100/100) P 0.808 R 0.601 F1 0.689 macro 0.708 | 5-9:0.818 10-19:0.791 20-39:0.837 40-99:0.480 100+:0.241
+    form mended: P 0.808 R 0.601 F1 0.689 minus lemmekey -0.044 [-0.076, -0.008] unreadable 0 targets without their column 0
+    minus lemmekey -0.044 [-0.076, -0.008]  cut 0 does not fit 0 unreadable 0  median 2.8 s
+== external: 398 databases, 3371 keys
+lemmekey                         P 0.861 R 0.682 F1 0.761 macro 0.841 | 0-4:0.877 5-9:0.859 10-19:0.865 20-39:0.688 40-99:0.655 100+:0.224
+lemmekey, scored again           P 0.861 R 0.682 F1 0.761 macro 0.841 | 0-4:0.877 5-9:0.859 10-19:0.865 20-39:0.688 40-99:0.655 100+:0.224
+eleven, first stage alone        P 0.807 R 0.647 F1 0.718 macro 0.813 | 0-4:0.864 5-9:0.840 10-19:0.820 20-39:0.659 40-99:0.654 100+:0.175
+char-s                           P 0.649 R 0.533 F1 0.585 macro 0.702 | 0-4:0.744 5-9:0.722 10-19:0.667 20-39:0.453 40-99:0.494 100+:0.087
+granite                          P 0.704 R 0.683 F1 0.694 macro 0.795 | 0-4:0.826 5-9:0.797 10-19:0.818 20-39:0.657 40-99:0.548 100+:0.282
+claude-sonnet-5-5                P 0.858 R 0.916 F1 0.886 macro 0.931 | 0-4:0.951 5-9:0.924 10-19:0.934 20-39:0.847 40-99:0.988 100+:0.569
+deepseek-v4.1-flash-1017         P 0.861 R 0.830 F1 0.845 macro 0.908 | 0-4:0.945 5-9:0.891 10-19:0.922 20-39:0.776 40-99:0.972 100+:0.000
+gemini-3.5-flash-lite            P 0.846 R 0.842 F1 0.844 macro 0.909 | 0-4:0.923 5-9:0.888 10-19:0.923 20-39:0.850 40-99:0.974 100+:0.009
+gpt-6-luna                       P 0.776 R 0.862 F1 0.817 macro 0.875 | 0-4:0.893 5-9:0.829 10-19:0.901 20-39:0.739 40-99:0.981 100+:0.430
+gpt-6.1-terra                    P 0.835 R 0.935 F1 0.882 macro 0.928 | 0-4:0.948 5-9:0.915 10-19:0.919 20-39:0.827 40-99:0.983 100+:0.648
+== livesqlbench: 22 databases, 299 keys
+lemmekey                         P 0.806 R 0.431 F1 0.562 macro 0.460 | 5-9:0.514 10-19:0.576
+lemmekey, scored again           P 0.806 R 0.431 F1 0.562 macro 0.460 | 5-9:0.514 10-19:0.576
+eleven, first stage alone        P 0.864 R 0.361 F1 0.509 macro 0.391 | 5-9:0.522 10-19:0.506
+char-s                           P 0.396 R 0.127 F1 0.192 macro 0.193 | 5-9:0.217 10-19:0.186
+granite                          P 0.693 R 0.294 F1 0.413 macro 0.354 | 5-9:0.296 10-19:0.441
+claude-sonnet-5-5                P 0.930 R 0.926 F1 0.928 macro 0.900 | 5-9:0.846 10-19:0.949
+deepseek-v4.1-flash-1017         P 0.927 R 0.896 F1 0.912 macro 0.874 | 5-9:0.855 10-19:0.927
+gemini-3.5-flash-lite            P 0.926 R 0.876 F1 0.900 macro 0.869 | 5-9:0.828 10-19:0.918
+gpt-6-luna                       P 0.572 R 0.572 F1 0.572 macro 0.614 | 5-9:0.878 10-19:0.493
+gpt-6.1-terra                    P 0.919 R 0.946 F1 0.932 macro 0.917 | 5-9:0.889 10-19:0.944
