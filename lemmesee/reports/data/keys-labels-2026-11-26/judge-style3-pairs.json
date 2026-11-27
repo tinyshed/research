@@ -1,0 +1,8317 @@
+{
+ "01-001": {
+  "pair": [
+   "githubstyle3/Khan9Tran__QuanLiCongDan",
+   "khaisinh",
+   "cccdme",
+   "congdan"
+  ],
+  "tables": 8,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.5-flash-lite",
+   "gemini-3.8-flash",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "01-002": {
+  "pair": [
+   "githubstyle3/rudi-bruchez__formation-github-copilot",
+   "factinternetsales",
+   "shipdatekey",
+   "dimdate"
+  ],
+  "tables": 30,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "01-003": {
+  "pair": [
+   "githubstyle3/Khan9Tran__QuanLiCongDan",
+   "congdan",
+   "cccd",
+   "cccd"
+  ],
+  "tables": 8,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "01-004": {
+  "pair": [
+   "githubstyle3/rudi-bruchez__formation-github-copilot",
+   "dimreseller",
+   "reselleralternatekey",
+   "dimproductcategory"
+  ],
+  "tables": 30,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-005": {
+  "pair": [
+   "githubstyle3/matrixorigin__matrixone",
+   "t36_remap",
+   "b",
+   "t37_odku_pk"
+  ],
+  "tables": 59,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "01-006": {
+  "pair": [
+   "githubstyle3/matrixorigin__matrixone",
+   "t37_odku_pk",
+   "a",
+   "t29_dup"
+  ],
+  "tables": 59,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "01-007": {
+  "pair": [
+   "githubstyle3/rudi-bruchez__formation-github-copilot",
+   "dimcustomer",
+   "customerkey",
+   "dimcustomer"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite"
+  ],
+  "answer": "no"
+ },
+ "01-008": {
+  "pair": [
+   "githubstyle3/yahia-khroufi__etics-product-recall-toxicity",
+   "fact_analysis",
+   "company_version_sk",
+   "dim_company"
+  ],
+  "tables": 11,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "01-009": {
+  "pair": [
+   "githubstyle3/AnggitHerdianto__PSB",
+   "kuota",
+   "kuota_gel",
+   "gelombang"
+  ],
+  "tables": 12,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "01-010": {
+  "pair": [
+   "githubstyle3/diogomene15__trabalhoLBD",
+   "enturmacao",
+   "ano",
+   "aluno"
+  ],
+  "tables": 16,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-011": {
+  "pair": [
+   "githubstyle3/AnggitHerdianto__PSB",
+   "orang_tua",
+   "ot_pend_ayah",
+   "orang_tua"
+  ],
+  "tables": 12,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-012": {
+  "pair": [
+   "githubstyle3/rudi-bruchez__formation-github-copilot",
+   "factsalesquota",
+   "salesquotakey",
+   "factsalesquota"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite"
+  ],
+  "answer": "no"
+ },
+ "01-013": {
+  "pair": [
+   "githubstyle3/FabioCanelas__Sis_ResComRapida",
+   "producto",
+   "id_categoria",
+   "categoria"
+  ],
+  "tables": 8,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "01-014": {
+  "pair": [
+   "githubstyle3/yahia-khroufi__etics-product-recall-toxicity",
+   "snapshot_dimensions",
+   "product_sk",
+   "dim_product"
+  ],
+  "tables": 11,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "01-015": {
+  "pair": [
+   "githubstyle3/eduardojfrosario__BD",
+   "aluno",
+   "ee",
+   "ee"
+  ],
+  "tables": 9,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "01-016": {
+  "pair": [
+   "githubstyle3/rudi-bruchez__formation-github-copilot",
+   "factadditionalinternationalproductdescription",
+   "productkey",
+   "dimproduct"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "01-017": {
+  "pair": [
+   "githubstyle3/AnggitHerdianto__PSB",
+   "nilai",
+   "nilai_siswa",
+   "users"
+  ],
+  "tables": 12,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-018": {
+  "pair": [
+   "githubstyle3/George280400__mi-primer-repositorio",
+   "domiciliobeneficiario",
+   "iddomicilio",
+   "domicilio"
+  ],
+  "tables": 8,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "01-019": {
+  "pair": [
+   "githubstyle3/matrixorigin__matrixone",
+   "t35_remap",
+   "b",
+   "t37_odku_pk"
+  ],
+  "tables": 59,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "01-020": {
+  "pair": [
+   "githubstyle3/MehiaouiMoh__VosgesTennisAltitude_Mehiaoui_Gailliegue",
+   "adherents_has_matches",
+   "gagnant_id",
+   "password_resets"
+  ],
+  "tables": 20,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-021": {
+  "pair": [
+   "githubstyle3/rudi-bruchez__formation-github-copilot",
+   "prospectivebuyer",
+   "prospectivebuyerkey",
+   "prospectivebuyer"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite"
+  ],
+  "answer": "no"
+ },
+ "01-022": {
+  "pair": [
+   "githubstyle3/rudi-bruchez__formation-github-copilot",
+   "dimaccount",
+   "parentaccountcodealternatekey",
+   "dimaccount"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-023": {
+  "pair": [
+   "githubstyle3/diogomene15__trabalhoLBD",
+   "alunorefeicao",
+   "idaluno",
+   "aluno"
+  ],
+  "tables": 16,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "01-024": {
+  "pair": [
+   "githubstyle3/333moxy__reader",
+   "chapters",
+   "chapter_url",
+   "books"
+  ],
+  "tables": 11,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-025": {
+  "pair": [
+   "githubstyle3/markpete21__athlete-institute-portal",
+   "site_nav_items",
+   "parent_id",
+   "site_nav_items"
+  ],
+  "tables": 15,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "01-026": {
+  "pair": [
+   "githubstyle3/AnggitHerdianto__PSB",
+   "orang_tua",
+   "ot_siswa",
+   "orang_tua"
+  ],
+  "tables": 12,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-027": {
+  "pair": [
+   "githubstyle3/AnggitHerdianto__PSB",
+   "orang_tua",
+   "ot_hp_wali",
+   "test"
+  ],
+  "tables": 12,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-028": {
+  "pair": [
+   "githubstyle3/Penguinnyun__WebBanThietBi",
+   "tbl_product",
+   "parentmenu_id",
+   "tbl_product"
+  ],
+  "tables": 8,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-029": {
+  "pair": [
+   "githubstyle3/rudi-bruchez__formation-github-copilot",
+   "factinternetsalesreason",
+   "salesordernumber",
+   "factinternetsales"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "01-030": {
+  "pair": [
+   "githubstyle3/matrixorigin__matrixone",
+   "t40_qualname",
+   "b",
+   "t37_odku_pk"
+  ],
+  "tables": 59,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "01-031": {
+  "pair": [
+   "githubstyle3/Khan9Tran__QuanLiCongDan",
+   "honnhan",
+   "cccdnam",
+   "congdan"
+  ],
+  "tables": 8,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.5-flash-lite",
+   "gemini-3.8-flash",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "01-032": {
+  "pair": [
+   "githubstyle3/AnggitHerdianto__PSB",
+   "orang_tua",
+   "ot_pek_wali",
+   "orang_tua"
+  ],
+  "tables": 12,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-033": {
+  "pair": [
+   "githubstyle3/matrixorigin__matrixone",
+   "t42_churn",
+   "b",
+   "t37_odku_pk"
+  ],
+  "tables": 59,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "01-034": {
+  "pair": [
+   "githubstyle3/MehiaouiMoh__VosgesTennisAltitude_Mehiaoui_Gailliegue",
+   "cours",
+   "professeur",
+   "produit_vente"
+  ],
+  "tables": 20,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-035": {
+  "pair": [
+   "githubstyle3/AnggitHerdianto__PSB",
+   "jenis_test",
+   "jentest_gel",
+   "gelombang"
+  ],
+  "tables": 12,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "01-036": {
+  "pair": [
+   "githubstyle3/eduardojfrosario__BD",
+   "turma",
+   "ano",
+   "aluno"
+  ],
+  "tables": 9,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-037": {
+  "pair": [
+   "githubstyle3/matrixorigin__matrixone",
+   "t10",
+   "c",
+   "t49_expr_fk_child"
+  ],
+  "tables": 59,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-038": {
+  "pair": [
+   "githubstyle3/matrixorigin__matrixone",
+   "t13",
+   "b",
+   "t37_odku_pk"
+  ],
+  "tables": 59,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-sar--wide-sar@ipw"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "01-039": {
+  "pair": [
+   "githubstyle3/AnggitHerdianto__PSB",
+   "orang_tua",
+   "ot_pend_ibu",
+   "orang_tua"
+  ],
+  "tables": 12,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-040": {
+  "pair": [
+   "githubstyle3/matrixorigin__matrixone",
+   "t45_fk_child",
+   "parent_id",
+   "t38_modify"
+  ],
+  "tables": 59,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "claude-sonnet-5-5"
+  ],
+  "answer": "yes"
+ },
+ "01-041": {
+  "pair": [
+   "githubstyle3/rudi-bruchez__formation-github-copilot",
+   "databaselog",
+   "databaselogid",
+   "databaselog"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite"
+  ],
+  "answer": "no"
+ },
+ "01-042": {
+  "pair": [
+   "githubstyle3/matrixorigin__matrixone",
+   "t49_expr_fk_child",
+   "parent_g2",
+   "t46_fk_parent"
+  ],
+  "tables": 59,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "01-043": {
+  "pair": [
+   "githubstyle3/Khan9Tran__QuanLiCongDan",
+   "khaisinh",
+   "cccdcha",
+   "cccd"
+  ],
+  "tables": 8,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "01-044": {
+  "pair": [
+   "githubstyle3/Fierur__Ltweb08_GiaQuoc",
+   "chitietdathang",
+   "sodh",
+   "dondathang"
+  ],
+  "tables": 7,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "01-045": {
+  "pair": [
+   "githubstyle3/MehiaouiMoh__VosgesTennisAltitude_Mehiaoui_Gailliegue",
+   "cours",
+   "id_cours",
+   "coursunique"
+  ],
+  "tables": 20,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-046": {
+  "pair": [
+   "githubstyle3/rudi-bruchez__formation-github-copilot",
+   "newfactcurrencyrate",
+   "datekey",
+   "dimdate"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "01-047": {
+  "pair": [
+   "githubstyle3/yahia-khroufi__etics-product-recall-toxicity",
+   "dim_execution",
+   "source_run_id",
+   "etl_runs"
+  ],
+  "tables": 11,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "01-048": {
+  "pair": [
+   "githubstyle3/AnggitHerdianto__PSB",
+   "orang_tua",
+   "ot_pek_ayah",
+   "orang_tua"
+  ],
+  "tables": 12,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-049": {
+  "pair": [
+   "githubstyle3/matrixorigin__matrixone",
+   "t18",
+   "b",
+   "t37_odku_pk"
+  ],
+  "tables": 59,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-sar--wide-sar@ipw"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "01-050": {
+  "pair": [
+   "githubstyle3/rudi-bruchez__formation-github-copilot",
+   "adventureworksdwbuildversion",
+   "dbversion",
+   "adventureworksdwbuildversion"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite"
+  ],
+  "answer": "no"
+ },
+ "01-051": {
+  "pair": [
+   "githubstyle3/AnggitHerdianto__PSB",
+   "orang_tua",
+   "ot_pend_wali",
+   "orang_tua"
+  ],
+  "tables": 12,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-052": {
+  "pair": [
+   "githubstyle3/MehiaouiMoh__VosgesTennisAltitude_Mehiaoui_Gailliegue",
+   "user",
+   "email",
+   "tournois"
+  ],
+  "tables": 20,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-053": {
+  "pair": [
+   "githubstyle3/diogomene15__trabalhoLBD",
+   "reponsavelendereco",
+   "idendereco",
+   "endereco"
+  ],
+  "tables": 16,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "01-054": {
+  "pair": [
+   "githubstyle3/markpete21__athlete-institute-portal",
+   "team_follows",
+   "profile_id",
+   "site_programs"
+  ],
+  "tables": 15,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-055": {
+  "pair": [
+   "githubstyle3/rudi-bruchez__formation-github-copilot",
+   "factinternetsales",
+   "customerponumber",
+   "factresellersales"
+  ],
+  "tables": 30,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-056": {
+  "pair": [
+   "githubstyle3/MehiaouiMoh__VosgesTennisAltitude_Mehiaoui_Gailliegue",
+   "password_resets",
+   "user_id",
+   "user"
+  ],
+  "tables": 20,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-sar--wide-sar@ipw"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "01-057": {
+  "pair": [
+   "githubstyle3/annyangya__Hospital",
+   "bed",
+   "wno",
+   "doctor"
+  ],
+  "tables": 5,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-058": {
+  "pair": [
+   "githubstyle3/rudi-bruchez__formation-github-copilot",
+   "dimproduct",
+   "status",
+   "factsalesquota"
+  ],
+  "tables": 30,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-059": {
+  "pair": [
+   "githubstyle3/annyangya__Hospital",
+   "patient",
+   "pward",
+   "bed"
+  ],
+  "tables": 5,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.5-flash-lite",
+   "gemini-3.8-flash",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "no"
+ },
+ "01-060": {
+  "pair": [
+   "githubstyle3/MehiaouiMoh__VosgesTennisAltitude_Mehiaoui_Gailliegue",
+   "coursunique",
+   "id_user",
+   "user"
+  ],
+  "tables": 20,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "01-061": {
+  "pair": [
+   "githubstyle3/eduardojfrosario__BD",
+   "ee",
+   "num_cc",
+   "pessoa"
+  ],
+  "tables": 9,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "deepseek-v4.1-flash-1017"
+  ],
+  "answer": "yes"
+ },
+ "01-062": {
+  "pair": [
+   "githubstyle3/rudi-bruchez__formation-github-copilot",
+   "dimaccount",
+   "accountcodealternatekey",
+   "dimaccount"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-063": {
+  "pair": [
+   "githubstyle3/rudi-bruchez__formation-github-copilot",
+   "dimproductsubcategory",
+   "productsubcategorykey",
+   "dimproductsubcategory"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite"
+  ],
+  "answer": "no"
+ },
+ "01-064": {
+  "pair": [
+   "githubstyle3/rudi-bruchez__formation-github-copilot",
+   "dimdepartmentgroup",
+   "parentdepartmentgroupkey",
+   "dimdepartmentgroup"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "01-065": {
+  "pair": [
+   "githubstyle3/Fierur__Ltweb08_GiaQuoc",
+   "sach",
+   "macd",
+   "tacgia"
+  ],
+  "tables": 7,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "01-066": {
+  "pair": [
+   "githubstyle3/diogomene15__trabalhoLBD",
+   "responsavel",
+   "idpessoa",
+   "pessoa"
+  ],
+  "tables": 16,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "01-067": {
+  "pair": [
+   "githubstyle3/333moxy__reader",
+   "user_books",
+   "chapter",
+   "chapters"
+  ],
+  "tables": 11,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-001": {
+  "pair": [
+   "githubstyle3/tienmanh240503-cloud__QLBN_Service",
+   "lichsutuvan",
+   "id_ho_so",
+   "hosokhambenh"
+  ],
+  "tables": 41,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "02-002": {
+  "pair": [
+   "githubstyle3/Maria-Rek__pg-database",
+   "terminy",
+   "id_hotelu",
+   "hotele"
+  ],
+  "tables": 14,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-003": {
+  "pair": [
+   "githubstyle3/BotSebas__fuddo",
+   "servicios_total",
+   "id_servicio",
+   "servicios"
+  ],
+  "tables": 10,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "02-004": {
+  "pair": [
+   "githubstyle3/AlpacaZenDev__idl3-jwt-softwareDeInventario",
+   "purchases",
+   "id_provider",
+   "providers"
+  ],
+  "tables": 18,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-005": {
+  "pair": [
+   "githubstyle3/hyeah0__SmartWeb_Contents_WebApplication_developer_class",
+   "admin_reply",
+   "admin_num",
+   "final_admin"
+  ],
+  "tables": 19,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-006": {
+  "pair": [
+   "githubstyle3/renatobdo__IntroBD",
+   "cargo",
+   "codigo",
+   "coligacao"
+  ],
+  "tables": 6,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-007": {
+  "pair": [
+   "githubstyle3/Maria-Rek__pg-database",
+   "rezerwacje",
+   "id_terminu",
+   "terminy"
+  ],
+  "tables": 14,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-008": {
+  "pair": [
+   "githubstyle3/khangbkk23__database_shopee",
+   "nguoi_ban",
+   "sao",
+   "danh_muc"
+  ],
+  "tables": 20,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-009": {
+  "pair": [
+   "githubstyle3/Ren-uwu__proyectoSWeb",
+   "indicador",
+   "fkidsentido",
+   "sentido"
+  ],
+  "tables": 25,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-010": {
+  "pair": [
+   "githubstyle3/quangvu26__TrendySocial",
+   "nguoi_dung",
+   "id_user",
+   "nguoi_dung"
+  ],
+  "tables": 16,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-011": {
+  "pair": [
+   "githubstyle3/rogaciano__dd",
+   "xpto_denuncia",
+   "dxp_xpt_cd",
+   "xpto"
+  ],
+  "tables": 44,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-012": {
+  "pair": [
+   "githubstyle3/khangbkk23__database_shopee",
+   "chi_tiet_don_hang",
+   "ma_san_pham",
+   "bien_the_san_pham"
+  ],
+  "tables": 20,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "02-013": {
+  "pair": [
+   "githubstyle3/hyeah0__SmartWeb_Contents_WebApplication_developer_class",
+   "coffee_test",
+   "match_num",
+   "coffee_match"
+  ],
+  "tables": 19,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-014": {
+  "pair": [
+   "githubstyle3/hyeah0__SmartWeb_Contents_WebApplication_developer_class",
+   "coffee_test_result",
+   "test_rs_taste_acid",
+   "coffee_taste_acid"
+  ],
+  "tables": 19,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "02-015": {
+  "pair": [
+   "githubstyle3/AndreJokeis__Proyecto-SQLServer-Unidad-2",
+   "mecanicos",
+   "a\u00f1osexperiencia",
+   "detalles_orden"
+  ],
+  "tables": 7,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-016": {
+  "pair": [
+   "githubstyle3/rogaciano__dd",
+   "difusao_externa",
+   "dex_den_cd",
+   "xpto_denuncia"
+  ],
+  "tables": 44,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-017": {
+  "pair": [
+   "githubstyle3/tienmanh240503-cloud__QLBN_Service",
+   "phongkham",
+   "id_chuyen_nganh",
+   "chuyennganhdinhduong"
+  ],
+  "tables": 41,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-018": {
+  "pair": [
+   "githubstyle3/rogaciano__dd",
+   "vei_modelo",
+   "mod_cd",
+   "dd_mulher"
+  ],
+  "tables": 44,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-019": {
+  "pair": [
+   "githubstyle3/rogaciano__dd",
+   "quantifica_resultado",
+   "qtf_qtd",
+   "quantifica_resultado"
+  ],
+  "tables": 44,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-020": {
+  "pair": [
+   "githubstyle3/tienmanh240503-cloud__QLBN_Service",
+   "chuyennganhdinhduong",
+   "mo_ta",
+   "doi_ca"
+  ],
+  "tables": 41,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-021": {
+  "pair": [
+   "githubstyle3/rogaciano__dd",
+   "aux_faixa_etaria",
+   "fet_ds",
+   "item_tipo"
+  ],
+  "tables": 44,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-022": {
+  "pair": [
+   "githubstyle3/BotSebas__fuddo",
+   "servicios",
+   "id_mesa",
+   "mesas"
+  ],
+  "tables": 10,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "02-023": {
+  "pair": [
+   "githubstyle3/hyeah0__SmartWeb_Contents_WebApplication_developer_class",
+   "coffee_order",
+   "beans_num",
+   "coffee_beans"
+  ],
+  "tables": 19,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-024": {
+  "pair": [
+   "githubstyle3/khangbkk23__database_shopee",
+   "don_hang",
+   "ma_nguoi_mua",
+   "nguoi_mua"
+  ],
+  "tables": 20,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-025": {
+  "pair": [
+   "githubstyle3/uCing4K__Berkat-Dinasti-Sisfor",
+   "pengeluaran",
+   "kategori",
+   "pengiriman"
+  ],
+  "tables": 14,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-026": {
+  "pair": [
+   "githubstyle3/rogaciano__dd",
+   "item",
+   "itm_tpi_cd",
+   "item_tipo"
+  ],
+  "tables": 44,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-027": {
+  "pair": [
+   "githubstyle3/DSI-Ville-Noumea__sirh-ptg-ws",
+   "ptg_pointage_calcule",
+   "id_ref_prime",
+   "ptg_ventil_prime"
+  ],
+  "tables": 5,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-028": {
+  "pair": [
+   "githubstyle3/tienmanh240503-cloud__QLBN_Service",
+   "doi_ca",
+   "id_bac_si",
+   "bacsi"
+  ],
+  "tables": 41,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "02-029": {
+  "pair": [
+   "githubstyle3/renatobdo__IntroBD",
+   "candidato",
+   "sigla",
+   "partido"
+  ],
+  "tables": 6,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-030": {
+  "pair": [
+   "githubstyle3/AlpacaZenDev__idl3-jwt-softwareDeInventario",
+   "purchases",
+   "serie",
+   "sales"
+  ],
+  "tables": 18,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-031": {
+  "pair": [
+   "githubstyle3/rogaciano__dd",
+   "difusao_interna",
+   "din_usu_cd",
+   "usuarios"
+  ],
+  "tables": 44,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-032": {
+  "pair": [
+   "githubstyle3/khangbkk23__database_shopee",
+   "bien_the_san_pham",
+   "ma_nguoi_ban",
+   "nguoi_ban"
+  ],
+  "tables": 20,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-033": {
+  "pair": [
+   "githubstyle3/rogaciano__dd",
+   "assunto_classe",
+   "cla_st",
+   "classificacao"
+  ],
+  "tables": 44,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-034": {
+  "pair": [
+   "githubstyle3/khangbkk23__database_shopee",
+   "danh_gia",
+   "ma_nguoi_ban",
+   "nguoi_ban"
+  ],
+  "tables": 20,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-035": {
+  "pair": [
+   "githubstyle3/khangbkk23__database_shopee",
+   "ma_giam_gia",
+   "ma_nguoi_ban",
+   "nguoi_ban"
+  ],
+  "tables": 20,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-036": {
+  "pair": [
+   "githubstyle3/tienmanh240503-cloud__QLBN_Service",
+   "lichsudoica",
+   "id_lich_su",
+   "lichsutuvan"
+  ],
+  "tables": 41,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-037": {
+  "pair": [
+   "githubstyle3/FoxxxDeveloper__TestPuntoVenta",
+   "usuario",
+   "clave",
+   "proveedor"
+  ],
+  "tables": 13,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-038": {
+  "pair": [
+   "githubstyle3/rogaciano__dd",
+   "acesso_tempo",
+   "atd_cd",
+   "atendimento_tipo"
+  ],
+  "tables": 44,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-039": {
+  "pair": [
+   "githubstyle3/tienmanh240503-cloud__QLBN_Service",
+   "thongbao",
+   "id_nguoi_nhan",
+   "nguoidung"
+  ],
+  "tables": 41,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-040": {
+  "pair": [
+   "githubstyle3/hyeah0__SmartWeb_Contents_WebApplication_developer_class",
+   "coffee_test_result",
+   "test_num",
+   "coffee_test"
+  ],
+  "tables": 19,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-041": {
+  "pair": [
+   "githubstyle3/bbkanev18__ScaleFocus-Project-ManagementApplication",
+   "tasks",
+   "idofproject",
+   "projects"
+  ],
+  "tables": 6,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-042": {
+  "pair": [
+   "githubstyle3/AlpacaZenDev__idl3-jwt-softwareDeInventario",
+   "sales",
+   "id_serie",
+   "series"
+  ],
+  "tables": 18,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-043": {
+  "pair": [
+   "githubstyle3/rogaciano__dd",
+   "assunto_denuncia",
+   "ass_cla_cd",
+   "assunto_classe"
+  ],
+  "tables": 44,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-044": {
+  "pair": [
+   "githubstyle3/rogaciano__dd",
+   "quantifica_resultado",
+   "qtf_tpi_cd",
+   "item_tipo"
+  ],
+  "tables": 44,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-045": {
+  "pair": [
+   "githubstyle3/Pinedah__ESCOM_bda-e2",
+   "hechos_criticas",
+   "id_hecho_critica",
+   "hechos_participacion"
+  ],
+  "tables": 10,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-046": {
+  "pair": [
+   "githubstyle3/AlpacaZenDev__idl3-jwt-softwareDeInventario",
+   "sales_detail",
+   "id_sale_detail",
+   "sales"
+  ],
+  "tables": 18,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-047": {
+  "pair": [
+   "githubstyle3/hyeah0__SmartWeb_Contents_WebApplication_developer_class",
+   "coffee_taste",
+   "taste_num",
+   "coffee_write"
+  ],
+  "tables": 19,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-048": {
+  "pair": [
+   "githubstyle3/khangbkk23__database_shopee",
+   "san_pham_livestream",
+   "ma_nguoi_ban",
+   "nguoi_ban"
+  ],
+  "tables": 20,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-049": {
+  "pair": [
+   "githubstyle3/khangbkk23__database_shopee",
+   "chi_tiet_don_hang",
+   "ma_bien_the",
+   "bien_the_san_pham"
+  ],
+  "tables": 20,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "gemini-3.5-flash-lite",
+   "gemini-3.8-flash",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "02-050": {
+  "pair": [
+   "githubstyle3/tienmanh240503-cloud__QLBN_Service",
+   "cuoctrochuyen",
+   "id_bac_si",
+   "bacsi"
+  ],
+  "tables": 41,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-051": {
+  "pair": [
+   "githubstyle3/khangbkk23__database_shopee",
+   "san_pham_livestream",
+   "ma_san_pham",
+   "san_pham"
+  ],
+  "tables": 20,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-052": {
+  "pair": [
+   "githubstyle3/rogaciano__dd",
+   "vei_modelo",
+   "mar_cd",
+   "vei_marca"
+  ],
+  "tables": 44,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-053": {
+  "pair": [
+   "githubstyle3/JuanDavidVM__AgroValle-Connect",
+   "detalles_orden",
+   "id_orden",
+   "ordenes"
+  ],
+  "tables": 15,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-054": {
+  "pair": [
+   "githubstyle3/rogaciano__dd",
+   "quantifica_resultado",
+   "qtf_cli_cd",
+   "quantifica_resultado"
+  ],
+  "tables": 44,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-sar--wide-sar@ipw"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-055": {
+  "pair": [
+   "githubstyle3/tienmanh240503-cloud__QLBN_Service",
+   "lichsucuocgoi",
+   "nguoi_nhan_thuc_te",
+   "nguoidung"
+  ],
+  "tables": 41,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "gemini-3.5-flash-lite",
+   "gemini-3.8-flash",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "02-056": {
+  "pair": [
+   "githubstyle3/khangbkk23__database_shopee",
+   "thuoc_danh_muc",
+   "ma_nguoi_ban",
+   "nguoi_ban"
+  ],
+  "tables": 20,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-057": {
+  "pair": [
+   "githubstyle3/rogaciano__dd",
+   "resultado_indireto",
+   "rei_usu_cd",
+   "usuarios"
+  ],
+  "tables": 44,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-058": {
+  "pair": [
+   "githubstyle3/AlpacaZenDev__idl3-jwt-softwareDeInventario",
+   "sales",
+   "id_client",
+   "clients"
+  ],
+  "tables": 18,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-059": {
+  "pair": [
+   "githubstyle3/JuanDavidVM__AgroValle-Connect",
+   "productos",
+   "unidad_medida",
+   "seguimiento_despachos"
+  ],
+  "tables": 15,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-060": {
+  "pair": [
+   "githubstyle3/tienmanh240503-cloud__QLBN_Service",
+   "theodoi_tien_do",
+   "id_ho_so",
+   "hosokhambenh"
+  ],
+  "tables": 41,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "02-061": {
+  "pair": [
+   "githubstyle3/AlpacaZenDev__idl3-jwt-softwareDeInventario",
+   "business",
+   "name",
+   "sales"
+  ],
+  "tables": 18,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-062": {
+  "pair": [
+   "githubstyle3/rogaciano__dd",
+   "usuarios",
+   "usu_tipo",
+   "usuarios_tipos"
+  ],
+  "tables": 44,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-063": {
+  "pair": [
+   "githubstyle3/tienmanh240503-cloud__QLBN_Service",
+   "donthuoc",
+   "id_ho_so",
+   "hosodinhduong"
+  ],
+  "tables": 41,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-064": {
+  "pair": [
+   "githubstyle3/AlpacaZenDev__idl3-jwt-softwareDeInventario",
+   "purchases_detail",
+   "id_purchase_detail",
+   "purchases"
+  ],
+  "tables": 18,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-065": {
+  "pair": [
+   "githubstyle3/tienmanh240503-cloud__QLBN_Service",
+   "ketquaxetnghiem",
+   "id_nhan_vien_xet_nghiem",
+   "nhanvienxetnghiem"
+  ],
+  "tables": 41,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "02-066": {
+  "pair": [
+   "githubstyle3/rogaciano__dd",
+   "orgaos_internos",
+   "int_st",
+   "orgaos_internos"
+  ],
+  "tables": 44,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-067": {
+  "pair": [
+   "githubstyle3/rogaciano__dd",
+   "correlatas",
+   "cor_ref_den_cd",
+   "correlatas"
+  ],
+  "tables": 44,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "02-068": {
+  "pair": [
+   "githubstyle3/bbkanev18__ScaleFocus-Project-ManagementApplication",
+   "projects",
+   "idofcreator",
+   "users"
+  ],
+  "tables": 6,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-001": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "item",
+   "referencia",
+   "cxp_edocuenta"
+  ],
+  "tables": 65,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-002": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "vw_cxp",
+   "cod_edocuenta_detalle",
+   "cxc_edocuenta"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-003": {
+  "pair": [
+   "githubstyle3/VUTHANHPHONGs__OfficeBuildingManagement",
+   "luongthang_tien",
+   "nam",
+   "phancongnvtn"
+  ],
+  "tables": 23,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "deepseek-v4.1-flash-1017"
+  ],
+  "answer": "no"
+ },
+ "03-004": {
+  "pair": [
+   "githubstyle3/RainRamiraDev__BootcampWebExtrados",
+   "t_refresh_tokens",
+   "id_user",
+   "t_users"
+  ],
+  "tables": 15,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-005": {
+  "pair": [
+   "githubstyle3/yckim8721__springstudy",
+   "comment_t",
+   "group_no",
+   "comment_t"
+  ],
+  "tables": 8,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "gpt-6-luna"
+  ],
+  "answer": "unsure"
+ },
+ "03-006": {
+  "pair": [
+   "githubstyle3/CirrusRedOrg__EntityFrameworkCore.Jet",
+   "onetoonedependent",
+   "onetoonedependentid2",
+   "onetooneprincipal"
+  ],
+  "tables": 13,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.8-flash",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "03-007": {
+  "pair": [
+   "githubstyle3/VUTHANHPHONGs__OfficeBuildingManagement",
+   "hoadonthang",
+   "macongty",
+   "congty_hoso"
+  ],
+  "tables": 23,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-008": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "compra_impuestos",
+   "totalizar_base_retencion",
+   "boleto_codebar"
+  ],
+  "tables": 65,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-009": {
+  "pair": [
+   "githubstyle3/bustosrme__TP-Final-Laboratorio-de-Bases-de-Datos",
+   "tickets",
+   "idoperador",
+   "operador"
+  ],
+  "tables": 11,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-010": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "compra_impuestos",
+   "cod_impuesto_iva",
+   "impuesto_iva"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-011": {
+  "pair": [
+   "githubstyle3/VUTHANHPHONGs__OfficeBuildingManagement",
+   "nhanviencongty",
+   "macongty",
+   "congty_hoso"
+  ],
+  "tables": 23,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-012": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "item_precompromiso",
+   "cod_item_precompromiso",
+   "item_precompromiso"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-013": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "compra_detalle_formapago",
+   "totalizar_tipo_tarjeta",
+   "instrumentopago_formapago"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gpt-6-luna"
+  ],
+  "answer": "unsure"
+ },
+ "03-014": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "vw_existenciabyalmacen",
+   "id_item",
+   "item"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-015": {
+  "pair": [
+   "githubstyle3/VUTHANHPHONGs__OfficeBuildingManagement",
+   "sudungdichvu",
+   "macongty",
+   "congty_hoso"
+  ],
+  "tables": 23,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-016": {
+  "pair": [
+   "githubstyle3/DanaTinCo__docker_tarea",
+   "conteo_inventario_abc",
+   "created_by",
+   "usuario"
+  ],
+  "tables": 15,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-017": {
+  "pair": [
+   "githubstyle3/bustosrme__TP-Final-Laboratorio-de-Bases-de-Datos",
+   "lineaservicio",
+   "idoperador",
+   "operador"
+  ],
+  "tables": 11,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-018": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "vw_cxp",
+   "id_proveedor",
+   "proveedores"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "03-019": {
+  "pair": [
+   "githubstyle3/bustosrme__TP-Final-Laboratorio-de-Bases-de-Datos",
+   "equipos",
+   "idmodelo",
+   "modelos"
+  ],
+  "tables": 11,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.5-flash-lite",
+   "gemini-3.8-flash",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "03-020": {
+  "pair": [
+   "githubstyle3/VUTHANHPHONGs__OfficeBuildingManagement",
+   "luongthang_tien",
+   "manvtn",
+   "nhanvientoanha"
+  ],
+  "tables": 23,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-021": {
+  "pair": [
+   "githubstyle3/Yghore__SAE3_WEB",
+   "comment2user",
+   "idserie",
+   "user"
+  ],
+  "tables": 7,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-022": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "cxp_edocuenta_formapago",
+   "totalizar_banco_deposito",
+   "banco"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.5-flash-lite",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "03-023": {
+  "pair": [
+   "githubstyle3/FortichAlmanza__EA4_Grupo-2-Integracionfinal",
+   "cliente",
+   "id_empleado_rep_ventas",
+   "empleado"
+  ],
+  "tables": 8,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-024": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "compra",
+   "cod_estatus",
+   "estatus"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-025": {
+  "pair": [
+   "githubstyle3/andrielrib__atividade_padaria",
+   "pedidos",
+   "status",
+   "produtos"
+  ],
+  "tables": 5,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-026": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "vista_chequera_lista",
+   "cod_chequera",
+   "chequera"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-027": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "factura_impuestos",
+   "totalizar_descripcion_base_retencion",
+   "impuesto_islr"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "unsure"
+ },
+ "03-028": {
+  "pair": [
+   "githubstyle3/DanaTinCo__docker_tarea",
+   "reporte_incidencia_producto",
+   "observaciones",
+   "transferencia_producto"
+  ],
+  "tables": 15,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-029": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "modulos",
+   "archivo_php",
+   "vw_cxp"
+  ],
+  "tables": 65,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-030": {
+  "pair": [
+   "githubstyle3/bustosrme__TP-Final-Laboratorio-de-Bases-de-Datos",
+   "tickets",
+   "idcliente",
+   "clientes"
+  ],
+  "tables": 11,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-031": {
+  "pair": [
+   "githubstyle3/CirrusRedOrg__EntityFrameworkCore.Jet",
+   "onetoonefktouniquekeydependent",
+   "onetoonefktouniquekeydependentfk1",
+   "onetoonefktouniquekeydependent"
+  ],
+  "tables": 13,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-032": {
+  "pair": [
+   "githubstyle3/CirrusRedOrg__EntityFrameworkCore.Jet",
+   "onetomanydependent",
+   "onetomanydependentfk2",
+   "onetomanydependent"
+  ],
+  "tables": 13,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-033": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "parametros_generales",
+   "rif",
+   "vw_cxc"
+  ],
+  "tables": 65,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-034": {
+  "pair": [
+   "githubstyle3/CirrusRedOrg__EntityFrameworkCore.Jet",
+   "onetooneseparatefkdependent",
+   "onetooneseparatefkdependentfk2",
+   "onetooneseparatefkdependent"
+  ],
+  "tables": 13,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-035": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "vw_relacion_factura_cliente_boletos",
+   "id_factura",
+   "factura"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-036": {
+  "pair": [
+   "githubstyle3/edelaguila__proyectop32k25",
+   "asignacioncursosalumnos",
+   "codigo_curso",
+   "cursos"
+  ],
+  "tables": 14,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-037": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "factura_impuestos",
+   "cod_impuesto_iva",
+   "impuesto_iva"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-038": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "boleto_factura_detalle_formapago",
+   "totalizar_nombre_banco",
+   "banco"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-039": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "boleto_factura_detalle_formapago",
+   "id_factura_boleto",
+   "factura"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-040": {
+  "pair": [
+   "githubstyle3/VUTHANHPHONGs__OfficeBuildingManagement",
+   "luongthang_tien",
+   "thang",
+   "luongthang_ky"
+  ],
+  "tables": 23,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "unsure"
+ },
+ "03-041": {
+  "pair": [
+   "githubstyle3/CirrusRedOrg__EntityFrameworkCore.Jet",
+   "onetomanydependent",
+   "onetomanydependentfk2",
+   "onetomanyprincipal"
+  ],
+  "tables": 13,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.5-flash-lite",
+   "gemini-3.8-flash",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "03-042": {
+  "pair": [
+   "githubstyle3/VUTHANHPHONGs__OfficeBuildingManagement",
+   "hopdongthue",
+   "macongty",
+   "congty_hoso"
+  ],
+  "tables": 23,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-043": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "vw_existenciabyalmacen",
+   "cod_almacen",
+   "almacen"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-044": {
+  "pair": [
+   "githubstyle3/willingtonortiz__NortenitoSabroson",
+   "insumos",
+   "idproveedor",
+   "proveedores"
+  ],
+  "tables": 9,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-045": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "vw_relacion_factura_cliente",
+   "id_factura",
+   "factura"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-046": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "item_precompromiso",
+   "id_item",
+   "item"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-047": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "factura_detalle_formapago",
+   "totalizar_nro_tarjeta",
+   "parametros_generales"
+  ],
+  "tables": 65,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-048": {
+  "pair": [
+   "githubstyle3/suryotrisongko__CMS-Koperasi",
+   "kop_simpanan",
+   "no_anggota",
+   "anggota"
+  ],
+  "tables": 15,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "03-049": {
+  "pair": [
+   "githubstyle3/VUTHANHPHONGs__OfficeBuildingManagement",
+   "congty_tracuu",
+   "macongty",
+   "congty_hoso"
+  ],
+  "tables": 23,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-050": {
+  "pair": [
+   "githubstyle3/VUTHANHPHONGs__OfficeBuildingManagement",
+   "congty_tracuu",
+   "linhvuc",
+   "luongthang_ky"
+  ],
+  "tables": 23,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-051": {
+  "pair": [
+   "githubstyle3/bustosrme__TP-Final-Laboratorio-de-Bases-de-Datos",
+   "equipos",
+   "idcliente",
+   "operador"
+  ],
+  "tables": 11,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.5-flash-lite",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "no"
+ },
+ "03-052": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "cxc_edocuenta_formapago",
+   "totalizar_nombre_banco",
+   "banco"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-053": {
+  "pair": [
+   "githubstyle3/CirrusRedOrg__EntityFrameworkCore.Jet",
+   "onetomanydependent",
+   "onetomanydependentfk1",
+   "onetomanydependent"
+  ],
+  "tables": 13,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-054": {
+  "pair": [
+   "githubstyle3/Yghore__SAE3_WEB",
+   "favorite2user",
+   "idserie",
+   "user"
+  ],
+  "tables": 7,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-055": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "vw_relacion_factura_cliente",
+   "id_cliente",
+   "clientes"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-056": {
+  "pair": [
+   "githubstyle3/CirrusRedOrg__EntityFrameworkCore.Jet",
+   "onetomanydependent",
+   "onetomanydependentfk1",
+   "onetomanyprincipal"
+  ],
+  "tables": 13,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.5-flash-lite",
+   "gemini-3.8-flash",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "03-057": {
+  "pair": [
+   "githubstyle3/RainRamiraDev__BootcampWebExtrados",
+   "t_users",
+   "id_country",
+   "t_countries"
+  ],
+  "tables": 15,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-058": {
+  "pair": [
+   "githubstyle3/RainRamiraDev__BootcampWebExtrados",
+   "t_tourn_judges",
+   "id_judge",
+   "t_tourn_judges"
+  ],
+  "tables": 15,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-059": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "boleto_factura",
+   "id_factura_boleto",
+   "factura"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-060": {
+  "pair": [
+   "githubstyle3/Yghore__SAE3_WEB",
+   "current2user",
+   "idserie",
+   "user"
+  ],
+  "tables": 7,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-061": {
+  "pair": [
+   "githubstyle3/yckim8721__springstudy",
+   "leave_user_t",
+   "email",
+   "user_t"
+  ],
+  "tables": 8,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "deepseek-v4.1-flash-1017"
+  ],
+  "answer": "no"
+ },
+ "03-062": {
+  "pair": [
+   "githubstyle3/MostafaMohsen58__Cutting-managment-system",
+   "subscription",
+   "meter_key",
+   "tower"
+  ],
+  "tables": 12,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-063": {
+  "pair": [
+   "githubstyle3/kietpham2309pt-debug__HQTCSDL_Doan",
+   "khachhang",
+   "cccd",
+   "hoadon"
+  ],
+  "tables": 7,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-064": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "compra_detalle_formapago",
+   "totalizar_nombre_banco",
+   "banco"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-065": {
+  "pair": [
+   "githubstyle3/VUTHANHPHONGs__OfficeBuildingManagement",
+   "dichvu",
+   "matoanha",
+   "toanha"
+  ],
+  "tables": 23,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-066": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "vista_chequera_lista",
+   "cod_tesor_bandodet",
+   "tesor_bancodet"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-067": {
+  "pair": [
+   "githubstyle3/RainRamiraDev__BootcampWebExtrados",
+   "t_users",
+   "games_won",
+   "t_games"
+  ],
+  "tables": 15,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-068": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "cxp_edocuenta_formapago",
+   "totalizar_monto_efectivo",
+   "cheque_bache_det"
+  ],
+  "tables": 65,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-069": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "compra_impuestos",
+   "totalizar_descripcion_base_retencion",
+   "impuesto_islr"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "unsure"
+ },
+ "03-070": {
+  "pair": [
+   "githubstyle3/CirrusRedOrg__EntityFrameworkCore.Jet",
+   "onetooneseparatefkdependent",
+   "onetooneseparatefkdependentid2",
+   "onetooneseparatefkdependent"
+  ],
+  "tables": 13,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-071": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "compra_detalle",
+   "_item_almacen",
+   "almacen"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-072": {
+  "pair": [
+   "githubstyle3/DanaTinCo__docker_tarea",
+   "cierre_caja_diario",
+   "updated_by",
+   "usuario"
+  ],
+  "tables": 15,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-073": {
+  "pair": [
+   "githubstyle3/VUTHANHPHONGs__OfficeBuildingManagement",
+   "toanha",
+   "sotang",
+   "so"
+  ],
+  "tables": 23,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-074": {
+  "pair": [
+   "githubstyle3/RainRamiraDev__BootcampWebExtrados",
+   "t_card_series",
+   "id_card",
+   "t_cards"
+  ],
+  "tables": 15,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-075": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "vw_item_precomprometidos",
+   "cod_almacen",
+   "almacen"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-076": {
+  "pair": [
+   "githubstyle3/Josedoria93__sql_project",
+   "inventario",
+   "id_producto",
+   "productos"
+  ],
+  "tables": 17,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-077": {
+  "pair": [
+   "githubstyle3/bustosrme__TP-Final-Laboratorio-de-Bases-de-Datos",
+   "equipos",
+   "idoperador",
+   "operador"
+  ],
+  "tables": 11,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-078": {
+  "pair": [
+   "githubstyle3/RainRamiraDev__BootcampWebExtrados",
+   "t_card_series",
+   "id_series",
+   "t_series"
+  ],
+  "tables": 15,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-079": {
+  "pair": [
+   "githubstyle3/bustosrme__TP-Final-Laboratorio-de-Bases-de-Datos",
+   "mensajes",
+   "idcliente",
+   "clientes"
+  ],
+  "tables": 11,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-080": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "vw_cxp",
+   "cod_edocuenta",
+   "cxp_edocuenta"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "03-081": {
+  "pair": [
+   "githubstyle3/VUTHANHPHONGs__OfficeBuildingManagement",
+   "luongthang_ky",
+   "manvtn",
+   "nhanvientoanha"
+  ],
+  "tables": 23,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-082": {
+  "pair": [
+   "githubstyle3/VUTHANHPHONGs__OfficeBuildingManagement",
+   "chitietsudungnv",
+   "ngaysudung",
+   "ngay"
+  ],
+  "tables": 23,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5"
+  ],
+  "answer": "no"
+ },
+ "03-083": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "boleto_factura_detalle",
+   "_item_almacen",
+   "almacen"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-084": {
+  "pair": [
+   "githubstyle3/CirrusRedOrg__EntityFrameworkCore.Jet",
+   "tablewithunmappableprimarykeycolumn",
+   "tablewithunmappableprimarykeycolumnfk",
+   "tablewithunmappableprimarykeycolumn"
+  ],
+  "tables": 13,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-085": {
+  "pair": [
+   "githubstyle3/nguyenddat__ript-virtual-recep",
+   "can_bo_lop_tin_chi",
+   "ma_lop_tin_chi",
+   "lop_tin_chi"
+  ],
+  "tables": 12,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-086": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "vw_relacion_factura_cliente",
+   "cod_factura",
+   "vw_tesor_bancodet"
+  ],
+  "tables": 65,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-087": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "item_precompromiso",
+   "usuario_creacion",
+   "vw_cxp"
+  ],
+  "tables": 65,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-088": {
+  "pair": [
+   "githubstyle3/MostafaMohsen58__Cutting-managment-system",
+   "flat",
+   "building_key",
+   "building"
+  ],
+  "tables": 12,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "03-089": {
+  "pair": [
+   "githubstyle3/MostafaMohsen58__Cutting-managment-system",
+   "city",
+   "zone_key",
+   "city"
+  ],
+  "tables": 12,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite"
+  ],
+  "answer": "no"
+ },
+ "03-090": {
+  "pair": [
+   "githubstyle3/venenux__zaint",
+   "cxc_edocuenta_detalle",
+   "cod_edocuenta_detalle",
+   "cxp_edocuenta_detalle"
+  ],
+  "tables": 65,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven-sar--wide-sar@ipw"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "03-091": {
+  "pair": [
+   "githubstyle3/VUTHANHPHONGs__OfficeBuildingManagement",
+   "luongthang_ky",
+   "thang",
+   "phancongnvtn"
+  ],
+  "tables": 23,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "deepseek-v4.1-flash-1017"
+  ],
+  "answer": "unsure"
+ },
+ "04-001": {
+  "pair": [
+   "githubstyle3/ramaaanr__SIDANG",
+   "anggaran_bidang",
+   "pagu_bidang",
+   "data_bidang"
+  ],
+  "tables": 9,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-002": {
+  "pair": [
+   "githubstyle3/noharm-ai__database",
+   "novidade",
+   "created_by",
+   "usuario"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.5-flash-lite",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "04-003": {
+  "pair": [
+   "githubstyle3/sahrulashar__tugas_uni",
+   "penjualan_d",
+   "kode_barang",
+   "barang"
+  ],
+  "tables": 20,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "04-004": {
+  "pair": [
+   "githubstyle3/phanvandinh99__BarberShop",
+   "lichhen",
+   "taikhoannv",
+   "nhanvien"
+  ],
+  "tables": 10,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-005": {
+  "pair": [
+   "githubstyle3/noharm-ai__database",
+   "notifica",
+   "tooltip",
+   "treinamento_usuario"
+  ],
+  "tables": 30,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-006": {
+  "pair": [
+   "githubstyle3/Barretim__PSG_CAP_202209",
+   "regiao",
+   "id_pais",
+   "participante_evento"
+  ],
+  "tables": 11,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-007": {
+  "pair": [
+   "githubstyle3/ZhangNanBin__BMS-HTML-PHP",
+   "readers",
+   "barcode",
+   "books"
+  ],
+  "tables": 11,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-008": {
+  "pair": [
+   "githubstyle3/noharm-ai__database",
+   "usuario_autorizacao",
+   "idusuario",
+   "usuario"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-009": {
+  "pair": [
+   "githubstyle3/min0731__Mindder",
+   "feedemote",
+   "file_idx",
+   "imagefile"
+  ],
+  "tables": 11,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-010": {
+  "pair": [
+   "githubstyle3/noharm-ai__database",
+   "usuario_extra",
+   "created_by",
+   "usuario"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.5-flash-lite",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "04-011": {
+  "pair": [
+   "githubstyle3/noharm-ai__database",
+   "protocolo",
+   "created_by",
+   "usuario"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.5-flash-lite",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "04-012": {
+  "pair": [
+   "githubstyle3/ZhangNanBin__BMS-HTML-PHP",
+   "borrowing",
+   "rbarcode",
+   "books"
+  ],
+  "tables": 11,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-013": {
+  "pair": [
+   "githubstyle3/nhatlank23__introse",
+   "chude",
+   "macd",
+   "capdo"
+  ],
+  "tables": 19,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-014": {
+  "pair": [
+   "githubstyle3/dohoanganh2004__LibraryManagement",
+   "sach",
+   "mangonngu",
+   "ngonngu"
+  ],
+  "tables": 12,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-015": {
+  "pair": [
+   "githubstyle3/faabreee__proyectoAbast",
+   "tb_number",
+   "numeracion",
+   "tb_operaciones"
+  ],
+  "tables": 8,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-016": {
+  "pair": [
+   "githubstyle3/d3vn0o6__MusicoDatabaseLibrary",
+   "mskt_songs",
+   "id_style",
+   "mskt_styles"
+  ],
+  "tables": 8,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-017": {
+  "pair": [
+   "githubstyle3/Amzhyy__PIA-LabProweb-BookBoost",
+   "libro",
+   "portada_url",
+   "ocupacion"
+  ],
+  "tables": 7,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-018": {
+  "pair": [
+   "githubstyle3/ZhangNanBin__BMS-HTML-PHP",
+   "readers",
+   "typeid",
+   "readertype"
+  ],
+  "tables": 11,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-019": {
+  "pair": [
+   "githubstyle3/ramaaanr__SIDANG",
+   "indikator_dinas",
+   "divisi_indikator",
+   "data_bidang"
+  ],
+  "tables": 9,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5"
+  ],
+  "answer": "yes"
+ },
+ "04-020": {
+  "pair": [
+   "githubstyle3/noharm-ai__database",
+   "treinamento",
+   "created_by",
+   "usuario"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.5-flash-lite",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "04-021": {
+  "pair": [
+   "githubstyle3/Barretim__PSG_CAP_202209",
+   "usuario",
+   "id_tipo_usuario",
+   "tipo_usuario"
+  ],
+  "tables": 11,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-022": {
+  "pair": [
+   "githubstyle3/noharm-ai__database",
+   "usuario_audit",
+   "idusuario",
+   "usuario"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-023": {
+  "pair": [
+   "githubstyle3/noharm-ai__database",
+   "usuario_autorizacao",
+   "schema_name",
+   "schema_config"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "04-024": {
+  "pair": [
+   "githubstyle3/CCliftS__CMP_BD",
+   "subtarea",
+   "id_estado",
+   "tarea_estado"
+  ],
+  "tables": 25,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-025": {
+  "pair": [
+   "githubstyle3/ZhangNanBin__BMS-HTML-PHP",
+   "fine",
+   "rbarcode",
+   "books"
+  ],
+  "tables": 11,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-026": {
+  "pair": [
+   "githubstyle3/ramaaanr__SIDANG",
+   "anggaran_dinas",
+   "pagu_dinas",
+   "indikator_dinas"
+  ],
+  "tables": 9,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-027": {
+  "pair": [
+   "githubstyle3/phanvandinh99__BarberShop",
+   "nhanvien",
+   "sdt",
+   "donhang"
+  ],
+  "tables": 10,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-028": {
+  "pair": [
+   "githubstyle3/noharm-ai__database",
+   "protocolo",
+   "updated_by",
+   "usuario"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.5-flash-lite",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "04-029": {
+  "pair": [
+   "githubstyle3/noharm-ai__database",
+   "treinamento_esquema",
+   "schema_name",
+   "schema_config"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-030": {
+  "pair": [
+   "githubstyle3/UnOrdinary95__ForaVerse",
+   "moderation",
+   "idutilisateur",
+   "utilisateur"
+  ],
+  "tables": 13,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-031": {
+  "pair": [
+   "githubstyle3/CCliftS__CMP_BD",
+   "alcance",
+   "alcance_name",
+   "usuario"
+  ],
+  "tables": 25,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-032": {
+  "pair": [
+   "githubstyle3/nhatlank23__introse",
+   "lichsuchinhsua",
+   "loaics",
+   "lichsuchinhsua"
+  ],
+  "tables": 19,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-033": {
+  "pair": [
+   "githubstyle3/ZhangNanBin__BMS-HTML-PHP",
+   "sendback",
+   "bookbarcode",
+   "books"
+  ],
+  "tables": 11,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-034": {
+  "pair": [
+   "githubstyle3/SKing25__Copetran-",
+   "viaje_programado",
+   "id_conductor_secundario",
+   "empleado"
+  ],
+  "tables": 28,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-035": {
+  "pair": [
+   "githubstyle3/noharm-ai__database",
+   "fila_processamento",
+   "schema_name",
+   "schema_config"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-036": {
+  "pair": [
+   "githubstyle3/SKing25__Copetran-",
+   "nomina_deducido",
+   "concepto",
+   "mantenimiento"
+  ],
+  "tables": 28,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-037": {
+  "pair": [
+   "githubstyle3/FunsizedWrath__NaturaDerm",
+   "compose",
+   "referenceproduit",
+   "produit"
+  ],
+  "tables": 11,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-038": {
+  "pair": [
+   "githubstyle3/SKing25__Copetran-",
+   "contrato",
+   "id_empleado",
+   "empleado"
+  ],
+  "tables": 28,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-039": {
+  "pair": [
+   "githubstyle3/SmartLot-Org__SmartLot_API",
+   "modelos",
+   "id_marca",
+   "marcas"
+  ],
+  "tables": 20,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-040": {
+  "pair": [
+   "githubstyle3/ramaaanr__SIDANG",
+   "user_dinas",
+   "divisi",
+   "data_bidang"
+  ],
+  "tables": 9,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5"
+  ],
+  "answer": "yes"
+ },
+ "04-041": {
+  "pair": [
+   "githubstyle3/SmartLot-Org__SmartLot_API",
+   "roles",
+   "tipo_rol",
+   "usuario_garage"
+  ],
+  "tables": 20,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-042": {
+  "pair": [
+   "githubstyle3/min0731__Mindder",
+   "feedemotecomplete",
+   "emote_idx",
+   "feedemote"
+  ],
+  "tables": 11,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-043": {
+  "pair": [
+   "githubstyle3/SKing25__Copetran-",
+   "viaje_programado",
+   "id_conductor_secundario",
+   "licencia_conduccion"
+  ],
+  "tables": 28,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-044": {
+  "pair": [
+   "githubstyle3/ramaaanr__SIDANG",
+   "profil_bidang",
+   "id_bidang",
+   "indikator_dinas"
+  ],
+  "tables": 9,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-045": {
+  "pair": [
+   "githubstyle3/SmartLot-Org__SmartLot_API",
+   "garages",
+   "ubicacion",
+   "garages"
+  ],
+  "tables": 20,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-046": {
+  "pair": [
+   "githubstyle3/noharm-ai__database",
+   "texto_ajuda",
+   "updated_by",
+   "usuario"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.5-flash-lite",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "04-047": {
+  "pair": [
+   "githubstyle3/faabreee__proyectoAbast",
+   "tb_operaciones",
+   "producto",
+   "tb_productos"
+  ],
+  "tables": 8,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-048": {
+  "pair": [
+   "githubstyle3/noharm-ai__database",
+   "base_conhecimento",
+   "created_by",
+   "usuario"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.5-flash-lite",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "04-049": {
+  "pair": [
+   "githubstyle3/SKing25__Copetran-",
+   "viaje_programado",
+   "id_conductor",
+   "licencia_conduccion"
+  ],
+  "tables": 28,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-050": {
+  "pair": [
+   "githubstyle3/sahrulashar__tugas_uni",
+   "jurnal_umum_d",
+   "kode_coa",
+   "coa"
+  ],
+  "tables": 20,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "04-051": {
+  "pair": [
+   "githubstyle3/SKing25__Copetran-",
+   "licencia_conduccion",
+   "id_empleado",
+   "empleado"
+  ],
+  "tables": 28,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-052": {
+  "pair": [
+   "githubstyle3/hectorEspinoza2002__Proyecto-Anaralisis_ll",
+   "bitacora_acceso",
+   "idusuario",
+   "usuario"
+  ],
+  "tables": 12,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-053": {
+  "pair": [
+   "githubstyle3/CCliftS__CMP_BD",
+   "historial",
+   "id_proceso",
+   "proceso"
+  ],
+  "tables": 25,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-054": {
+  "pair": [
+   "githubstyle3/faabreee__proyectoAbast",
+   "tb_operaciones",
+   "proceso",
+   "tb_ventas"
+  ],
+  "tables": 8,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "gpt-6-luna"
+  ],
+  "answer": "no"
+ },
+ "04-055": {
+  "pair": [
+   "githubstyle3/noharm-ai__database",
+   "treinamento_usuario",
+   "codigo_validacao",
+   "certificado_externo"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-056": {
+  "pair": [
+   "githubstyle3/ZhangNanBin__BMS-HTML-PHP",
+   "borrowingrecords",
+   "bookbarcode",
+   "books"
+  ],
+  "tables": 11,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-057": {
+  "pair": [
+   "githubstyle3/hectorEspinoza2002__Proyecto-Anaralisis_ll",
+   "modulo",
+   "ordenmenu",
+   "opcion"
+  ],
+  "tables": 12,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-058": {
+  "pair": [
+   "githubstyle3/noharm-ai__database",
+   "base_conhecimento",
+   "relacionados",
+   "base_conhecimento"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "04-059": {
+  "pair": [
+   "githubstyle3/sahrulashar__tugas_uni",
+   "audit_log",
+   "record_id",
+   "tbrecord"
+  ],
+  "tables": 20,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-060": {
+  "pair": [
+   "githubstyle3/noharm-ai__database",
+   "protocolo",
+   "schema_name",
+   "schema_config"
+  ],
+  "tables": 30,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-061": {
+  "pair": [
+   "githubstyle3/sahrulashar__tugas_uni",
+   "penjualan",
+   "total_hpp",
+   "coa"
+  ],
+  "tables": 20,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "04-062": {
+  "pair": [
+   "githubstyle3/SKing25__Copetran-",
+   "remesa",
+   "id_destinatario",
+   "cliente"
+  ],
+  "tables": 28,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-063": {
+  "pair": [
+   "githubstyle3/min0731__Mindder",
+   "mainuser",
+   "file_idx",
+   "imagefile"
+  ],
+  "tables": 11,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-064": {
+  "pair": [
+   "githubstyle3/nhatlank23__introse",
+   "logbaihoc",
+   "malog",
+   "lichsuchinhsua"
+  ],
+  "tables": 19,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "04-065": {
+  "pair": [
+   "githubstyle3/ramaaanr__SIDANG",
+   "profil_bidang",
+   "id_bidang",
+   "data_bidang"
+  ],
+  "tables": 9,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "gemini-3.5-flash-lite"
+  ],
+  "answer": "yes"
+ },
+ "04-066": {
+  "pair": [
+   "githubstyle3/dohoanganh2004__LibraryManagement",
+   "tacgia",
+   "matacgia",
+   "nhanvien"
+  ],
+  "tables": 12,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-001": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "shiftmstr",
+   "code",
+   "clientordermstr"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-002": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "receiptdet",
+   "ipdetid",
+   "ipdet"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-003": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "workday",
+   "region",
+   "region"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven-sar--wide-sar@ipw"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-004": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "huodd",
+   "loclotdetid",
+   "loctrans"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-005": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "clientordermstr",
+   "orderno",
+   "ordermstr"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-006": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "ipmstr",
+   "reforderno",
+   "ordermstr"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-007": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "cyclecountdet",
+   "item",
+   "item"
+  ],
+  "tables": 118,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-008": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "flowmstr",
+   "numfield1",
+   "hudet"
+  ],
+  "tables": 118,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-009": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "planbill",
+   "refitemcode",
+   "item"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-010": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "flowmstr",
+   "billsettleterm",
+   "party"
+  ],
+  "tables": 118,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-011": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "clientorderdet",
+   "itemcode",
+   "item"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-012": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "billtrans",
+   "item",
+   "item"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-013": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "loctrans",
+   "reforderno",
+   "ordermstr"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-014": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "subjectlist",
+   "subjectcode",
+   "party"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-015": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "flowmstr",
+   "billfrom",
+   "party"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5"
+  ],
+  "answer": "yes"
+ },
+ "05-016": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "billtrans",
+   "uom",
+   "uom"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-017": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "picklistmstr",
+   "shipto",
+   "party"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5"
+  ],
+  "answer": "no"
+ },
+ "05-018": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "miscordermstr",
+   "subjectlistid",
+   "subjectlist"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-019": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "billtrans",
+   "extrecno",
+   "receiptmstr"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-020": {
+  "pair": [
+   "githubstyle3/TradingLabXYZ__WebBack",
+   "smartcontractevents",
+   "contract",
+   "sessions"
+  ],
+  "tables": 13,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-021": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "billtrans",
+   "batchno",
+   "batchrunlog"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-022": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "dssexphisdet",
+   "undefstr5",
+   "item"
+  ],
+  "tables": 118,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-023": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "flowdet",
+   "pricelistfrom",
+   "pricelistmstr"
+  ],
+  "tables": 118,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-024": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "dssftpctrl",
+   "ftpfolder",
+   "batchtrigger"
+  ],
+  "tables": 118,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-025": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "loctrans",
+   "ipno",
+   "ipmstr"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-026": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "loctrans",
+   "extorderno",
+   "miscordermstr"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-027": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "acc_user",
+   "usr_mphone",
+   "bommstr"
+  ],
+  "tables": 118,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-028": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "workdayshift",
+   "shift",
+   "shiftmstr"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-029": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "acc_rolepermission",
+   "rp_pmid",
+   "acc_permission"
+  ],
+  "tables": 118,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-030": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "flowmstr",
+   "createuser",
+   "acc_user"
+  ],
+  "tables": 118,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-031": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "acc_userrole",
+   "ur_rolecode",
+   "acc_role"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-032": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "ipmstr",
+   "textfield2",
+   "workinghours"
+  ],
+  "tables": 118,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-033": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "loctrans",
+   "billtransid",
+   "billtrans"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-034": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "orderdet",
+   "billto",
+   "party"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5"
+  ],
+  "answer": "no"
+ },
+ "05-035": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "loctrans",
+   "partyto",
+   "party"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-036": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "ordermstr",
+   "routing",
+   "routingmstr"
+  ],
+  "tables": 118,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-037": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "billdet",
+   "transid",
+   "loctrans"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-038": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "actbill",
+   "extrecno",
+   "receiptmstr"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-039": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "dssimphis",
+   "huid",
+   "hudet"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-040": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "dssoutboundctrl",
+   "seqno",
+   "specialtime"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-041": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "hudet",
+   "antiresolvehu",
+   "hudet"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "deepseek-v4.1-flash-1017"
+  ],
+  "answer": "no"
+ },
+ "05-042": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "planbill",
+   "unitqty",
+   "batchtrigger"
+  ],
+  "tables": 118,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-043": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "picklistresult",
+   "pldetid",
+   "billdet"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-044": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "codemstr",
+   "code",
+   "clientordermstr"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-045": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "acc_menucompany",
+   "lastmodifyuser",
+   "acc_user"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "deepseek-v4.1-flash-1017",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "05-046": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "acc_rolepermission",
+   "rp_id",
+   "receiptdet"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-047": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "loctrans",
+   "carrierbilladdr",
+   "partyaddr"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "claude-sonnet-5-5"
+  ],
+  "answer": "yes"
+ },
+ "05-048": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "billtrans",
+   "orderno",
+   "ordermstr"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-049": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "flowdet",
+   "customer",
+   "customer"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.5-flash-lite",
+   "gemini-3.8-flash",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "05-050": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "dssinboundctrl",
+   "seqno",
+   "specialtime"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven-sar--wide-sar@ipw"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-051": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "partyaddr",
+   "seqno",
+   "specialtime"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-052": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "batchrunlog",
+   "message",
+   "workday"
+  ],
+  "tables": 118,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-053": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "prodlineip",
+   "huid",
+   "hudet"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-054": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "orderplanbackflush",
+   "orderloctransid",
+   "orderloctrans"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-055": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "billmstr",
+   "taxcode",
+   "tax"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-056": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "location",
+   "region",
+   "party"
+  ],
+  "tables": 118,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-057": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "cyclecountdet",
+   "orderno",
+   "ordermstr"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-058": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "miscorderdet",
+   "lotno",
+   "location"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-059": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "clientworkinghours",
+   "orderno",
+   "ordermstr"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-060": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "acc_userpre",
+   "precode",
+   "entityopt"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-061": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "cyclecountdet_bak",
+   "orderno",
+   "ordermstr"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-062": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "loctrans",
+   "bin",
+   "storagebin"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.5-flash-lite",
+   "gemini-3.8-flash",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "05-063": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "location",
+   "textfield3",
+   "acc_menuindustry"
+  ],
+  "tables": 118,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-064": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "cyclecountdet_bak",
+   "huid",
+   "hudet"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-065": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "cyclecountresult",
+   "orderno",
+   "ordermstr"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-066": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "ordermstr",
+   "asntemplate",
+   "batchtriggerparam"
+  ],
+  "tables": 118,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-067": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "receiptmstr",
+   "extrecno",
+   "receiptmstr"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-068": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "cyclecountdet_bak",
+   "item",
+   "item"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-069": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "itemflowplandet",
+   "itemflowplanid",
+   "flowplan"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-070": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "loctrans",
+   "shipto",
+   "partyaddr"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.5-flash-lite",
+   "gemini-3.8-flash",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "05-071": {
+  "pair": [
+   "githubstyle3/Notname99__Nhom2",
+   "tb_sanpham",
+   "gia",
+   "tb_giohang"
+  ],
+  "tables": 7,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-072": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "inspectdet",
+   "locto",
+   "location"
+  ],
+  "tables": 118,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-073": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "dssexphisdet",
+   "item",
+   "item"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-074": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "flowdet",
+   "refitemcode",
+   "item"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-075": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "dssexphis",
+   "transno",
+   "acc_userfav"
+  ],
+  "tables": 118,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-076": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "clientlog",
+   "orderno",
+   "ordermstr"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-077": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "receiptmstr",
+   "textfield1",
+   "receiptdet"
+  ],
+  "tables": 118,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-078": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "billtrans",
+   "refitemcode",
+   "item"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-079": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "acc_industry",
+   "createuser",
+   "acc_user"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "deepseek-v4.1-flash-1017",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "05-080": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "picklistresult",
+   "loclotdetid",
+   "locationlotdet"
+  ],
+  "tables": 118,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-081": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "clientordermstr",
+   "usercode",
+   "acc_user"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-082": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "location",
+   "region",
+   "region"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-083": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "dssexphis",
+   "reflocation",
+   "location"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "05-084": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "loctrans",
+   "area",
+   "storagearea"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.5-flash-lite",
+   "gemini-3.8-flash",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "05-085": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "inspectdet",
+   "loclotdetid",
+   "loctrans"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-086": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "acc_company",
+   "title",
+   "routingmstr"
+  ],
+  "tables": 118,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "05-087": {
+  "pair": [
+   "githubstyle3/Novthirteen__sconit_timesseiko",
+   "loctrans",
+   "carrier",
+   "party"
+  ],
+  "tables": 118,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.5-flash-lite",
+   "gemini-3.8-flash",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "06-001": {
+  "pair": [
+   "githubstyle3/DiegoMatheusS__BancoTesteTCC",
+   "tb_pontosmateriais",
+   "idponto",
+   "tb_pontos"
+  ],
+  "tables": 14,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "06-002": {
+  "pair": [
+   "githubstyle3/nghiadmph52748__SD_33",
+   "nhan_vien",
+   "update_by",
+   "nhan_vien"
+  ],
+  "tables": 25,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5"
+  ],
+  "answer": "yes"
+ },
+ "06-003": {
+  "pair": [
+   "githubstyle3/Puertasblindadasgrupo14inventario__Puertas-Blindadas-Inventario",
+   "reporte",
+   "usuario_id_usuario",
+   "usuario"
+  ],
+  "tables": 57,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "06-004": {
+  "pair": [
+   "githubstyle3/sandroide6__SISTEMA-DE-GESTION-DE-INFORMACION-DEL-CONOCIMIENTO-UNIVERSITARIO",
+   "practica_estrategia",
+   "nombre",
+   "aliado"
+  ],
+  "tables": 28,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "06-005": {
+  "pair": [
+   "githubstyle3/serenasensini__Basi-di-dati---Apogeo",
+   "cliente",
+   "tessera",
+   "tessera"
+  ],
+  "tables": 5,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "06-006": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0018",
+   "c_0117",
+   "t_0006"
+  ],
+  "tables": 87,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "06-007": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0046",
+   "c_0238",
+   "t_0095"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite",
+   "gpt-6-luna"
+  ],
+  "answer": "unsure"
+ },
+ "06-008": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0041",
+   "c_0325",
+   "t_0095"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "06-009": {
+  "pair": [
+   "githubstyle3/gm9510__flower-shop-back",
+   "entidad",
+   "nit",
+   "carrito"
+  ],
+  "tables": 14,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "06-010": {
+  "pair": [
+   "githubstyle3/Puertasblindadasgrupo14inventario__Puertas-Blindadas-Inventario",
+   "material_clasificacion_subcategoria",
+   "material_clasificacion_categoria_id",
+   "material_clasificacion_categoria"
+  ],
+  "tables": 57,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "06-011": {
+  "pair": [
+   "githubstyle3/nghiadmph52748__SD_33",
+   "de_giay",
+   "create_by",
+   "nhan_vien"
+  ],
+  "tables": 25,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5"
+  ],
+  "answer": "yes"
+ },
+ "06-012": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0018",
+   "c_0142",
+   "t_0016"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gpt-6-luna"
+  ],
+  "answer": "unsure"
+ },
+ "06-013": {
+  "pair": [
+   "githubstyle3/Puertasblindadasgrupo14inventario__Puertas-Blindadas-Inventario",
+   "reserva_inventario",
+   "proyecto_id_proyecto",
+   "proveedor"
+  ],
+  "tables": 57,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "06-014": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0096",
+   "p_0001",
+   "t_0092"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "claude-sonnet-5-5",
+   "gpt-6.1-terra"
+  ],
+  "answer": "unsure"
+ },
+ "06-015": {
+  "pair": [
+   "githubstyle3/Puertasblindadasgrupo14inventario__Puertas-Blindadas-Inventario",
+   "seguimiento_pintura",
+   "usuario_id_usuario",
+   "usuario"
+  ],
+  "tables": 57,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "06-016": {
+  "pair": [
+   "githubstyle3/DiegoMatheusS__BancoTesteTCC",
+   "tb_pontosmateriais",
+   "idmaterial",
+   "tb_materiais"
+  ],
+  "tables": 14,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "06-017": {
+  "pair": [
+   "githubstyle3/nghiadmph52748__SD_33",
+   "chi_tiet_san_pham",
+   "create_by",
+   "nhan_vien"
+  ],
+  "tables": 25,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5"
+  ],
+  "answer": "yes"
+ },
+ "06-018": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0018",
+   "c_0223",
+   "t_0073"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-sar--wide-sar@ipw"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "06-019": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0002",
+   "c_0058",
+   "t_0012"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite"
+  ],
+  "answer": "unsure"
+ },
+ "06-020": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0018",
+   "c_0187",
+   "t_0025"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite",
+   "gemini-3.8-flash"
+  ],
+  "answer": "unsure"
+ },
+ "06-021": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0096",
+   "c_0221",
+   "t_0073"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-sar--wide-sar@ipw"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "06-022": {
+  "pair": [
+   "githubstyle3/nghiadmph52748__SD_33",
+   "san_pham",
+   "create_by",
+   "nhan_vien"
+  ],
+  "tables": 25,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5"
+  ],
+  "answer": "yes"
+ },
+ "06-023": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0091",
+   "p_0005",
+   "t_0051"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite"
+  ],
+  "answer": "unsure"
+ },
+ "06-024": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0011",
+   "c_0192",
+   "t_0033"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite"
+  ],
+  "answer": "unsure"
+ },
+ "06-025": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0037",
+   "c_0187",
+   "t_0020"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gpt-6-luna"
+  ],
+  "answer": "unsure"
+ },
+ "06-026": {
+  "pair": [
+   "githubstyle3/gm9510__flower-shop-back",
+   "pedido",
+   "idcupon",
+   "pedidocupon"
+  ],
+  "tables": 14,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "06-027": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0022",
+   "c_0183",
+   "t_0032"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite"
+  ],
+  "answer": "unsure"
+ },
+ "06-028": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0094",
+   "p_0122",
+   "t_0084"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite"
+  ],
+  "answer": "no"
+ },
+ "06-029": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0026",
+   "c_0079",
+   "t_0001"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gpt-6-luna"
+  ],
+  "answer": "unsure"
+ },
+ "06-030": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0071",
+   "c_0185",
+   "t_0088"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite",
+   "gemini-3.8-flash",
+   "gpt-6-luna"
+  ],
+  "answer": "unsure"
+ },
+ "06-031": {
+  "pair": [
+   "githubstyle3/nghiadmph52748__SD_33",
+   "mau_sac",
+   "update_by",
+   "nhan_vien"
+  ],
+  "tables": 25,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5"
+  ],
+  "answer": "yes"
+ },
+ "06-032": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0011",
+   "c_0183",
+   "t_0032"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite"
+  ],
+  "answer": "unsure"
+ },
+ "06-033": {
+  "pair": [
+   "githubstyle3/kristok__node-pgq",
+   "subscription",
+   "sub_last_tick",
+   "tick"
+  ],
+  "tables": 6,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-sonnet-5-5",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "unsure"
+ },
+ "06-034": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0081",
+   "c_0469",
+   "t_0056"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "claude-sonnet-5-5"
+  ],
+  "answer": "unsure"
+ },
+ "06-035": {
+  "pair": [
+   "githubstyle3/Puertasblindadasgrupo14inventario__Puertas-Blindadas-Inventario",
+   "alerta_inventario",
+   "alerta_inventario_diferencia_pct",
+   "material"
+  ],
+  "tables": 57,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "06-036": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0026",
+   "c_0187",
+   "t_0025"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite",
+   "gemini-3.8-flash"
+  ],
+  "answer": "unsure"
+ },
+ "06-037": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0045",
+   "c_0086",
+   "t_0085"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite"
+  ],
+  "answer": "unsure"
+ },
+ "06-038": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0001",
+   "c_0272",
+   "t_0073"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-sar--wide-sar@ipw"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "06-039": {
+  "pair": [
+   "githubstyle3/nghiadmph52748__SD_33",
+   "phieu_giam_gia",
+   "create_by",
+   "nhan_vien"
+  ],
+  "tables": 25,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5"
+  ],
+  "answer": "yes"
+ },
+ "06-040": {
+  "pair": [
+   "githubstyle3/nghiadmph52748__SD_33",
+   "hinh_thuc_thanh_toan",
+   "tien_mat",
+   "dia_chi_khach_hang"
+  ],
+  "tables": 25,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "06-041": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0080",
+   "c_0469",
+   "t_0095"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gemini-3.8-flash"
+  ],
+  "answer": "unsure"
+ },
+ "06-042": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0078",
+   "c_0344",
+   "t_0084"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite"
+  ],
+  "answer": "unsure"
+ },
+ "06-043": {
+  "pair": [
+   "githubstyle3/Dakad__ipl_gerasmus",
+   "logiciels_encodes",
+   "num_version",
+   "documents"
+  ],
+  "tables": 16,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "06-044": {
+  "pair": [
+   "githubstyle3/omadara__Medical-Appointment-Management",
+   "doctor",
+   "username",
+   "patient"
+  ],
+  "tables": 5,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "06-045": {
+  "pair": [
+   "githubstyle3/Dakad__ipl_gerasmus",
+   "partenaires",
+   "type_organisation",
+   "documents_signes"
+  ],
+  "tables": 16,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "06-046": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0033",
+   "c_0375",
+   "t_0095"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "06-047": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0026",
+   "c_0079",
+   "t_0012"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite"
+  ],
+  "answer": "unsure"
+ },
+ "06-048": {
+  "pair": [
+   "githubstyle3/nghiadmph52748__SD_33",
+   "trang_thai_don_hang",
+   "create_by",
+   "nhan_vien"
+  ],
+  "tables": 25,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5"
+  ],
+  "answer": "yes"
+ },
+ "06-049": {
+  "pair": [
+   "githubstyle3/nghiadmph52748__SD_33",
+   "hoa_don_chi_tiet",
+   "update_by",
+   "nhan_vien"
+  ],
+  "tables": 25,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5"
+  ],
+  "answer": "yes"
+ },
+ "06-050": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0088",
+   "p_0124",
+   "t_0086"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite"
+  ],
+  "answer": "unsure"
+ },
+ "06-051": {
+  "pair": [
+   "githubstyle3/nghiadmph52748__SD_33",
+   "chat_lieu",
+   "create_by",
+   "nhan_vien"
+  ],
+  "tables": 25,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5"
+  ],
+  "answer": "yes"
+ },
+ "06-052": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0043",
+   "c_0275",
+   "t_0073"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven-sar--wide-sar@ipw"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "06-053": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0055",
+   "p_0124",
+   "t_0052"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gpt-6-luna"
+  ],
+  "answer": "unsure"
+ },
+ "06-054": {
+  "pair": [
+   "githubstyle3/Puertasblindadasgrupo14inventario__Puertas-Blindadas-Inventario",
+   "material_orden_trabajo",
+   "material_sku",
+   "material"
+  ],
+  "tables": 57,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "06-055": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0091",
+   "p_0122",
+   "t_0051"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "claude-sonnet-5-5",
+   "gpt-6.1-terra"
+  ],
+  "answer": "unsure"
+ },
+ "06-056": {
+  "pair": [
+   "githubstyle3/Puertasblindadasgrupo14inventario__Puertas-Blindadas-Inventario",
+   "factura_compra",
+   "proveedor_id_proveedor",
+   "proveedor"
+  ],
+  "tables": 57,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "06-057": {
+  "pair": [
+   "githubstyle3/Dakad__ipl_gerasmus",
+   "choix_mobilites",
+   "num_preference",
+   "partenaires"
+  ],
+  "tables": 16,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "06-058": {
+  "pair": [
+   "githubstyle3/sandroide6__SISTEMA-DE-GESTION-DE-INFORMACION-DEL-CONOCIMIENTO-UNIVERSITARIO",
+   "activ_academica",
+   "num_creditos",
+   "acreditacion"
+  ],
+  "tables": 28,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "06-059": {
+  "pair": [
+   "githubstyle3/nghiadmph52748__SD_33",
+   "chi_tiet_san_pham_anh",
+   "update_by",
+   "nhan_vien"
+  ],
+  "tables": 25,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5"
+  ],
+  "answer": "yes"
+ },
+ "06-060": {
+  "pair": [
+   "githubstyle3/Dakad__ipl_gerasmus",
+   "documents_signes",
+   "id_choix_pref",
+   "choix_mobilites"
+  ],
+  "tables": 16,
+  "kind": "undeclared",
+  "stratum": "named by several language models, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5",
+   "deepseek-v4.1-flash-1017",
+   "gemini-3.5-flash-lite",
+   "gemini-3.8-flash",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "06-061": {
+  "pair": [
+   "githubstyle3/kristok__node-pgq",
+   "event_template",
+   "ev_id",
+   "queue"
+  ],
+  "tables": 6,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "06-062": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0050",
+   "p_0122",
+   "t_0051"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "claude-sonnet-5-5",
+   "gpt-6.1-terra"
+  ],
+  "answer": "unsure"
+ },
+ "06-063": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0095",
+   "c_0238",
+   "t_0073"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-sar--wide-sar@ipw"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "06-064": {
+  "pair": [
+   "githubstyle3/DiegoMatheusS__BancoTesteTCC",
+   "tb_materiais",
+   "idordemgrandeza",
+   "tb_ordemgrandeza"
+  ],
+  "tables": 14,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "06-065": {
+  "pair": [
+   "githubstyle3/Puertasblindadasgrupo14inventario__Puertas-Blindadas-Inventario",
+   "lote",
+   "proyecto_id_proyecto",
+   "proveedor"
+  ],
+  "tables": 57,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "06-066": {
+  "pair": [
+   "githubstyle3/nghiadmph52748__SD_33",
+   "chi_tiet_san_pham",
+   "update_by",
+   "nhan_vien"
+  ],
+  "tables": 25,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5"
+  ],
+  "answer": "yes"
+ },
+ "06-067": {
+  "pair": [
+   "githubstyle3/MarcosLaine__Controle-se",
+   "gastos",
+   "id_gasto_original",
+   "gastos"
+  ],
+  "tables": 14,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "06-068": {
+  "pair": [
+   "githubstyle3/nghiadmph52748__SD_33",
+   "phieu_giam_gia_ca_nhan",
+   "update_by",
+   "nhan_vien"
+  ],
+  "tables": 25,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5"
+  ],
+  "answer": "yes"
+ },
+ "06-069": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0097",
+   "p_0001",
+   "t_0049"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gpt-6-luna"
+  ],
+  "answer": "unsure"
+ },
+ "06-070": {
+  "pair": [
+   "githubstyle3/DiegoMatheusS__BancoTesteTCC",
+   "tb_pontuacao",
+   "idcoleta",
+   "tb_coletas"
+  ],
+  "tables": 14,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "06-071": {
+  "pair": [
+   "githubstyle3/nghiadmph52748__SD_33",
+   "thong_tin_don_hang",
+   "id_trang_thai_don_hang",
+   "trang_thai_don_hang"
+  ],
+  "tables": 25,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "06-072": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0038",
+   "c_0486",
+   "t_0032"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gpt-6-luna"
+  ],
+  "answer": "unsure"
+ },
+ "06-073": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0096",
+   "c_0416",
+   "t_0052"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite"
+  ],
+  "answer": "unsure"
+ },
+ "06-074": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0036",
+   "c_0369",
+   "t_0010"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "claude-sonnet-5-5"
+  ],
+  "answer": "unsure"
+ },
+ "06-075": {
+  "pair": [
+   "githubstyle3/nghiadmph52748__SD_33",
+   "khach_hang",
+   "create_by",
+   "nhan_vien"
+  ],
+  "tables": 25,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5"
+  ],
+  "answer": "yes"
+ },
+ "06-076": {
+  "pair": [
+   "githubstyle3/nghiadmph52748__SD_33",
+   "quyen_han",
+   "update_by",
+   "nhan_vien"
+  ],
+  "tables": 25,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5"
+  ],
+  "answer": "yes"
+ },
+ "06-077": {
+  "pair": [
+   "githubstyle3/nghiadmph52748__SD_33",
+   "trong_luong",
+   "create_by",
+   "nhan_vien"
+  ],
+  "tables": 25,
+  "kind": "undeclared",
+  "stratum": "named by one language model, under 40 tables",
+  "models": [],
+  "language models": [
+   "claude-haiku-5-5"
+  ],
+  "answer": "yes"
+ },
+ "06-078": {
+  "pair": [
+   "githubstyle3/omadara__Medical-Appointment-Management",
+   "admin",
+   "username",
+   "patient"
+  ],
+  "tables": 5,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "06-079": {
+  "pair": [
+   "githubstyle3/Puertasblindadasgrupo14inventario__Puertas-Blindadas-Inventario",
+   "alerta_faltante_pedido",
+   "proveedor_id_proveedor",
+   "proveedor"
+  ],
+  "tables": 57,
+  "kind": "control: declared",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "yes"
+ },
+ "06-080": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0082",
+   "c_0425",
+   "t_0086"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gemini-3.5-flash-lite"
+  ],
+  "answer": "unsure"
+ },
+ "06-081": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0093",
+   "c_0086",
+   "t_0069"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "named by one language model, 40 tables or more",
+  "models": [],
+  "language models": [
+   "gpt-6-luna"
+  ],
+  "answer": "unsure"
+ },
+ "06-082": {
+  "pair": [
+   "githubstyle3/Dakad__ipl_gerasmus",
+   "logiciels_encodes",
+   "id_choix_pref",
+   "informations_etudiants"
+  ],
+  "tables": 16,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "06-083": {
+  "pair": [
+   "githubstyle3/DiegoMatheusS__BancoTesteTCC",
+   "tb_parceiros",
+   "idusuario",
+   "tb_usuarios"
+  ],
+  "tables": 14,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven--wide",
+   "eleven-pu--wide-pu@ipw",
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "yes"
+ },
+ "06-084": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0006",
+   "c_0436",
+   "t_0073"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-sar--wide-sar@ipw"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "06-085": {
+  "pair": [
+   "githubstyle3/omadara__Medical-Appointment-Management",
+   "patient",
+   "username",
+   "admin"
+  ],
+  "tables": 5,
+  "kind": "undeclared",
+  "stratum": "drawn, under 40 tables",
+  "models": [
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "06-086": {
+  "pair": [
+   "githubstyle3/fmguerreiro__pgmold",
+   "t_0077",
+   "c_0505",
+   "t_0087"
+  ],
+  "tables": 87,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-sar--wide-sar@ipw"
+  ],
+  "language models": [],
+  "answer": "unsure"
+ },
+ "07-001": {
+  "pair": [
+   "githubstyle3/ssnvgirish__FACTORY_APP",
+   "frame_production_line_item",
+   "color",
+   "master_frame_color"
+  ],
+  "tables": 47,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "deepseek-v4.1-flash-1017",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "07-002": {
+  "pair": [
+   "githubstyle3/ssnvgirish__FACTORY_APP",
+   "frame_customer_rejection_report",
+   "created_by",
+   "user"
+  ],
+  "tables": 47,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "deepseek-v4.1-flash-1017",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "no"
+ },
+ "07-003": {
+  "pair": [
+   "githubstyle3/ssnvgirish__FACTORY_APP",
+   "frame_health_report",
+   "machine_number",
+   "master_machine"
+  ],
+  "tables": 47,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "deepseek-v4.1-flash-1017",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "unsure"
+ },
+ "07-004": {
+  "pair": [
+   "githubstyle3/ssnvgirish__FACTORY_APP",
+   "sheet_customer_rejection_item",
+   "color",
+   "master_sheet_color"
+  ],
+  "tables": 47,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "deepseek-v4.1-flash-1017",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "07-005": {
+  "pair": [
+   "githubstyle3/ssnvgirish__FACTORY_APP",
+   "sheet_production_line_item",
+   "color",
+   "master_sheet_color"
+  ],
+  "tables": 47,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "deepseek-v4.1-flash-1017",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "07-006": {
+  "pair": [
+   "githubstyle3/ssnvgirish__FACTORY_APP",
+   "sheet_customer_rejection_report",
+   "shift",
+   "master_shift"
+  ],
+  "tables": 47,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "deepseek-v4.1-flash-1017",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "unsure"
+ },
+ "07-007": {
+  "pair": [
+   "githubstyle3/ssnvgirish__FACTORY_APP",
+   "frame_shift_packing_report",
+   "created_by",
+   "user"
+  ],
+  "tables": 47,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "deepseek-v4.1-flash-1017",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "no"
+ },
+ "07-008": {
+  "pair": [
+   "githubstyle3/ssnvgirish__FACTORY_APP",
+   "sheet_health_report",
+   "shift",
+   "master_shift"
+  ],
+  "tables": 47,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "deepseek-v4.1-flash-1017",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "unsure"
+ },
+ "07-009": {
+  "pair": [
+   "githubstyle3/ssnvgirish__FACTORY_APP",
+   "sheet_health_rating_item",
+   "report",
+   "frame_health_report"
+  ],
+  "tables": 47,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven--wide",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "07-010": {
+  "pair": [
+   "githubstyle3/ssnvgirish__FACTORY_APP",
+   "sheet_customer_rejection_item",
+   "report",
+   "frame_health_report"
+  ],
+  "tables": 47,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu-seed2--wide-pu@ipw",
+   "eleven--wide@size-teachers",
+   "eleven-sar--wide-sar@ipw",
+   "eleven-pu--wide-pu@ipw | matched"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "07-011": {
+  "pair": [
+   "githubstyle3/ssnvgirish__FACTORY_APP",
+   "sheet_cleaning_report",
+   "machine_condition",
+   "reference_table"
+  ],
+  "tables": 47,
+  "kind": "control: not a key",
+  "stratum": "",
+  "models": [],
+  "language models": [],
+  "answer": "no"
+ },
+ "07-012": {
+  "pair": [
+   "githubstyle3/ssnvgirish__FACTORY_APP",
+   "frame_customer_rejection_item",
+   "density",
+   "master_frame_density"
+  ],
+  "tables": 47,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "deepseek-v4.1-flash-1017",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "yes"
+ },
+ "07-013": {
+  "pair": [
+   "githubstyle3/ssnvgirish__FACTORY_APP",
+   "sheet_running_feet_report",
+   "shift",
+   "master_shift"
+  ],
+  "tables": 47,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "deepseek-v4.1-flash-1017",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "unsure"
+ },
+ "07-014": {
+  "pair": [
+   "githubstyle3/ssnvgirish__FACTORY_APP",
+   "frame_customer_rejection_item",
+   "report",
+   "sheet_health_report"
+  ],
+  "tables": 47,
+  "kind": "undeclared",
+  "stratum": "drawn, 40 tables or more",
+  "models": [
+   "eleven-pu--wide-pu@ipw"
+  ],
+  "language models": [],
+  "answer": "no"
+ },
+ "07-015": {
+  "pair": [
+   "githubstyle3/ssnvgirish__FACTORY_APP",
+   "sheet_production_details_report",
+   "machine_number",
+   "master_machine"
+  ],
+  "tables": 47,
+  "kind": "undeclared",
+  "stratum": "named by several language models, 40 tables or more",
+  "models": [],
+  "language models": [
+   "deepseek-v4.1-flash-1017",
+   "gpt-6-luna",
+   "gpt-6.1-terra"
+  ],
+  "answer": "unsure"
+ }
+}

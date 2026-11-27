@@ -1,0 +1,38 @@
+eleven--wide
+     under 5: declared   5070 | rules e 0.953 implies    250, weights sum    141.8, positives entering   1007 | teachers e 0.953 implies    250, sum    141.8
+      5 to 9: declared  10965 | rules e 0.867 implies   1682, weights sum   1126.7, positives entering   6338 | teachers e 0.867 implies   1682, sum   1126.7
+    10 to 19: declared  14214 | rules e 0.793 implies   3710, weights sum   2536.1, positives entering  15769 | teachers e 0.690 implies   6386, sum   3656.9
+    20 to 39: declared  10185 | rules e 0.736 implies   3653, weights sum   2465.9, positives entering  15450 | teachers e 0.620 implies   6242, sum   3585.7
+  40 or more: declared  26702 | rules e 0.659 implies  13817, weights sum   3732.7, positives entering  25426 | teachers e 0.710 implies  10906, sum   3142.5
+     under 5: a schema's own e implies    243, weights sum    179.0
+      5 to 9: a schema's own e implies   1566, weights sum   1370.6
+    10 to 19: a schema's own e implies   3379, weights sum   3033.0
+    20 to 39: a schema's own e implies   3338, weights sum   3235.4
+  40 or more: a schema's own e implies   9971, weights sum   6422.9
+  score [0, 0.05]: pairs  8376451 declared 0.0009 g 0.0009
+  score [0.05, 0.2]: pairs   104471 declared 0.0248 g 0.0248
+  score [0.2, 0.5]: pairs    39034 declared 0.0793 g 0.0791
+  score [0.5, 0.7]: pairs    14193 declared 0.1771 g 0.1773
+  score [0.7, 0.8]: pairs     6822 declared 0.2835 g 0.2839
+  score [0.8, 0.9]: pairs     8864 declared 0.4301 g 0.4300
+  score [0.9, 0.95]: pairs     8392 declared 0.6167 g 0.6174
+  score [0.95, 1.0]: pairs    45193 declared 0.8994 g 0.8995
+eleven-seed2--wide
+     under 5: declared   5070 | rules e 0.953 implies    250, weights sum    144.4, positives entering    964 | teachers e 0.953 implies    250, sum    144.4
+      5 to 9: declared  10965 | rules e 0.867 implies   1682, weights sum   1049.7, positives entering   6792 | teachers e 0.867 implies   1682, sum   1049.7
+    10 to 19: declared  14214 | rules e 0.793 implies   3710, weights sum   2407.3, positives entering  15121 | teachers e 0.690 implies   6386, sum   3466.7
+    20 to 39: declared  10185 | rules e 0.736 implies   3653, weights sum   2443.5, positives entering  15072 | teachers e 0.620 implies   6242, sum   3551.8
+  40 or more: declared  26702 | rules e 0.659 implies  13817, weights sum   3987.1, positives entering  21168 | teachers e 0.710 implies  10906, sum   3338.9
+     under 5: a schema's own e implies    243, weights sum    177.1
+      5 to 9: a schema's own e implies   1566, weights sum   1284.9
+    10 to 19: a schema's own e implies   3379, weights sum   2875.5
+    20 to 39: a schema's own e implies   3338, weights sum   3174.3
+  40 or more: a schema's own e implies   9971, weights sum   6694.6
+  score [0, 0.05]: pairs  8364764 declared 0.0009 g 0.0009
+  score [0.05, 0.2]: pairs   112985 declared 0.0207 g 0.0208
+  score [0.2, 0.5]: pairs    42022 declared 0.0772 g 0.0771
+  score [0.5, 0.7]: pairs    13164 declared 0.1684 g 0.1686
+  score [0.7, 0.8]: pairs     6228 declared 0.2503 g 0.2506
+  score [0.8, 0.9]: pairs     8580 declared 0.4117 g 0.4107
+  score [0.9, 0.95]: pairs     8806 declared 0.5771 g 0.5768
+  score [0.95, 1.0]: pairs    46871 declared 0.8966 g 0.8969

@@ -1,0 +1,51 @@
+{
+ "folder": "judge-style3",
+ "packets": 7,
+ "pairs": 480,
+ "kinds": {
+  "undeclared": 360,
+  "control: declared": 60,
+  "control: not a key": 60
+ },
+ "sampled by stratum": {
+  "named by several language models, under 40 tables": 30,
+  "drawn, under 40 tables": 120,
+  "drawn, 40 tables or more": 120,
+  "named by one language model, under 40 tables": 30,
+  "named by one language model, 40 tables or more": 30,
+  "named by several language models, 40 tables or more": 30
+ },
+ "compared models": [
+  "eleven--wide",
+  "eleven-pu--wide-pu@ipw",
+  "eleven-pu-seed2--wide-pu@ipw",
+  "eleven--wide@size-teachers",
+  "eleven-sar--wide-sar@ipw",
+  "eleven-pu--wide-pu@ipw | matched"
+ ],
+ "language models": [
+  "claude-haiku-5-5",
+  "claude-sonnet-5-5",
+  "deepseek-v4.1-flash-1017",
+  "gemini-3.5-flash-lite",
+  "gemini-3.8-flash",
+  "gpt-6-luna",
+  "gpt-6.1-terra"
+ ],
+ "strata": {
+  "drawn, 40 tables or more": 352,
+  "drawn, under 40 tables": 225,
+  "named by one language model, 40 tables or more": 280,
+  "named by one language model, under 40 tables": 89,
+  "named by several language models, 40 tables or more": 186,
+  "named by several language models, under 40 tables": 124
+ },
+ "undeclared keys drawn, every one": {
+  "eleven--wide": 277,
+  "eleven-pu--wide-pu@ipw": 408,
+  "eleven-pu-seed2--wide-pu@ipw": 363,
+  "eleven--wide@size-teachers": 368,
+  "eleven-sar--wide-sar@ipw": 351,
+  "eleven-pu--wide-pu@ipw | matched": 441
+ }
+}

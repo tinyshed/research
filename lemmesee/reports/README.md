@@ -122,3 +122,7 @@ so, never by editing the number it replaces.
   four value-based methods from the papers over exact inclusion; the strongest, HoPF's foreign-key step with the
   keys given, reads 0.779 and 0.689 where the key model, reading no row, reads 0.885 and 0.829, +0.106 [+0.057, +0.160]
   and +0.140 [+0.055, +0.246]; BIRD's rows break 105 of its 601 non-empty declared keys.
+- [The key model's labels corrected](keys-labels-2026-11-26.md), round 1y:
+  a positive-unlabelled weighting by the label frequency draws 26 % more keys in schemas of 40 tables or more; F1 over
+  declared keys does not move, 0.762 against 0.757; with the judge, recall 0.660 to 0.727 and precision 0.956 to 0.928,
+  of which a lower threshold gives most; plain B left unread.

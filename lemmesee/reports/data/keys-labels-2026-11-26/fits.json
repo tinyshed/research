@@ -1,0 +1,350 @@
+{
+ "first": {
+  "eleven-pu": {
+   "fit": "eleven-pu",
+   "seed": 20261027,
+   "grams": "sorted",
+   "data": {
+    "validation renamed beside": 1022,
+    "train renamed": 3999,
+    "train left, the style did not fit": 124
+   },
+   "training pairs": 8603420,
+   "validation pairs": 1674439,
+   "sample": 920601,
+   "pairs entering once more as positives": 63990,
+   "their weights' sum": 7740.85009765625,
+   "sampled negatives' weight lost": 1026.8619384765625,
+   "weights": "the name rules' label frequency by size",
+   "seconds": 710
+  },
+  "eleven-pu-seed2": {
+   "fit": "eleven-pu-seed2",
+   "seed": 20261028,
+   "grams": "sorted",
+   "data": {
+    "validation renamed beside": 1022,
+    "train renamed": 3999,
+    "train left, the style did not fit": 124
+   },
+   "training pairs": 8603420,
+   "validation pairs": 1674439,
+   "sample": 919990,
+   "pairs entering once more as positives": 59117,
+   "their weights' sum": 7765.3046875,
+   "sampled negatives' weight lost": 981.810546875,
+   "weights": "the name rules' label frequency by size",
+   "seconds": 698
+  },
+  "eleven-sar": {
+   "fit": "eleven-sar",
+   "seed": 20261027,
+   "grams": "sorted",
+   "data": {
+    "validation renamed beside": 1022,
+    "train renamed": 3999,
+    "train left, the style did not fit": 124
+   },
+   "training pairs": 8603420,
+   "validation pairs": 1674439,
+   "sample": 920601,
+   "pairs entering once more as positives": 106422,
+   "their weights' sum": 10861.0302734375,
+   "sampled negatives' weight lost": 1467.095458984375,
+   "weights": "a schema's own label frequency",
+   "seconds": 564
+  },
+  "eleven-sar-seed2": {
+   "fit": "eleven-sar-seed2",
+   "seed": 20261028,
+   "grams": "sorted",
+   "data": {
+    "validation renamed beside": 1022,
+    "train renamed": 3999,
+    "train left, the style did not fit": 124
+   },
+   "training pairs": 8603420,
+   "validation pairs": 1674439,
+   "sample": 919990,
+   "pairs entering once more as positives": 101537,
+   "their weights' sum": 10811.7001953125,
+   "sampled negatives' weight lost": 1389.53173828125,
+   "weights": "a schema's own label frequency",
+   "seconds": 713
+  }
+ },
+ "second": {
+  "eleven--wide-pu": {
+   "first": "eleven",
+   "kind": "wide-pu",
+   "seed": 20261027,
+   "params": {},
+   "sample rows": 984591,
+   "threshold": 0.8770551479654768,
+   "threshold, weighted F1": 0.8355305221699807,
+   "validation at the declared threshold": {
+    "precision": 0.8000969394820662,
+    "recall": 0.7914383561643835,
+    "f1": 0.795744094759314
+   },
+   "validation at the weighted threshold": {
+    "precision": 0.77563724526571,
+    "recall": 0.8107534246575342,
+    "f1": 0.7928066709085428
+   },
+   "validation average precision": 0.8142766341857222,
+   "seconds": 154,
+   "importance, the ten largest shares": {
+    "valley: the pair above it": 0.5551,
+    "score over the schema's best": 0.195,
+    "score": 0.1221,
+    "log lead over the column's next": 0.0118,
+    "valley: columns above it": 0.008,
+    "lead over the column's next": 0.0061,
+    "place among the schema's column bests": 0.0054,
+    "last word: others over tables": 0.0054,
+    "rank in column": 0.0054,
+    "others into the target, sum": 0.0047
+   }
+  },
+  "eleven-pu--wide": {
+   "first": "eleven-pu",
+   "kind": "wide",
+   "seed": 20261027,
+   "params": {},
+   "sample rows": 920601,
+   "threshold": 0.7662747030314638,
+   "threshold, weighted F1": 0.7348967660150058,
+   "validation at the declared threshold": {
+    "precision": 0.772403600698643,
+    "recall": 0.7875342465753424,
+    "f1": 0.7798955436478329
+   },
+   "validation at the weighted threshold": {
+    "precision": 0.7579077002851957,
+    "recall": 0.8008904109589041,
+    "f1": 0.7788064473158385
+   },
+   "validation average precision": 0.8121588016626187,
+   "seconds": 71,
+   "importance, the ten largest shares": {
+    "valley: the pair above it": 0.4941,
+    "score over the schema's best": 0.2166,
+    "score": 0.1638,
+    "log lead over the column's next": 0.009,
+    "valley: columns above it": 0.0076,
+    "last word: others over tables": 0.0074,
+    "lead over the column's next": 0.006,
+    "last word: others' mean best": 0.006,
+    "sum of the column's scores": 0.0052,
+    "same name: lead over the group's other target": 0.0047
+   }
+  },
+  "eleven-pu--wide-pu": {
+   "first": "eleven-pu",
+   "kind": "wide-pu",
+   "seed": 20261027,
+   "params": {},
+   "sample rows": 984591,
+   "threshold": 0.842059938166619,
+   "threshold, weighted F1": 0.8240201262877239,
+   "validation at the declared threshold": {
+    "precision": 0.7650085763293311,
+    "recall": 0.7942465753424658,
+    "f1": 0.779353451172794
+   },
+   "validation at the weighted threshold": {
+    "precision": 0.7545542323785002,
+    "recall": 0.8028767123287671,
+    "f1": 0.7779658204745313
+   },
+   "validation average precision": 0.7979546232920042,
+   "seconds": 185,
+   "importance, the ten largest shares": {
+    "valley: the pair above it": 0.4914,
+    "score over the schema's best": 0.2886,
+    "score": 0.1115,
+    "log lead over the column's next": 0.0085,
+    "last word: others over tables": 0.0068,
+    "valley: columns above it": 0.0059,
+    "lead over the column's next": 0.0054,
+    "last word: others' mean best": 0.0048,
+    "sum of the column's scores": 0.0045,
+    "rank in column": 0.0038
+   }
+  },
+  "eleven-pu-seed2--wide": {
+   "first": "eleven-pu-seed2",
+   "kind": "wide",
+   "seed": 20261028,
+   "params": {
+    "random_state": 20261028
+   },
+   "sample rows": 919990,
+   "threshold": 0.7789841665169221,
+   "threshold, weighted F1": 0.7352267985961806,
+   "validation at the declared threshold": {
+    "precision": 0.7795003723512287,
+    "recall": 0.7886301369863014,
+    "f1": 0.7840386776071635
+   },
+   "validation at the weighted threshold": {
+    "precision": 0.7617687163171223,
+    "recall": 0.8035616438356165,
+    "f1": 0.7821072630912304
+   },
+   "validation average precision": 0.8098131549325975,
+   "seconds": 78,
+   "importance, the ten largest shares": {
+    "valley: the pair above it": 0.4656,
+    "score": 0.2851,
+    "score over the schema's best": 0.1209,
+    "last word: others over tables": 0.0086,
+    "lead over the column's next": 0.0081,
+    "log lead over the column's next": 0.0068,
+    "the schema's mean column best": 0.0053,
+    "sum of the column's scores": 0.0051,
+    "same name: lead over the group's other target": 0.0051,
+    "same name: others whose best is the target": 0.005
+   }
+  },
+  "eleven-pu-seed2--wide-pu": {
+   "first": "eleven-pu-seed2",
+   "kind": "wide-pu",
+   "seed": 20261028,
+   "params": {
+    "random_state": 20261028
+   },
+   "sample rows": 979107,
+   "threshold": 0.8448521782824606,
+   "threshold, weighted F1": 0.8019148545065888,
+   "validation at the declared threshold": {
+    "precision": 0.772796807449285,
+    "recall": 0.7958219178082192,
+    "f1": 0.7841403745571117
+   },
+   "validation at the weighted threshold": {
+    "precision": 0.7509467306235799,
+    "recall": 0.814931506849315,
+    "f1": 0.7816318486401262
+   },
+   "validation average precision": 0.8011268553063982,
+   "seconds": 69,
+   "importance, the ten largest shares": {
+    "valley: the pair above it": 0.4635,
+    "score over the schema's best": 0.2712,
+    "score": 0.1521,
+    "lead over the column's next": 0.0084,
+    "last word: others over tables": 0.0084,
+    "log lead over the column's next": 0.0076,
+    "sum of the column's scores": 0.0051,
+    "rank in column": 0.0045,
+    "place among the schema's column bests": 0.0045,
+    "same name: lead over the group's other target": 0.0044
+   }
+  },
+  "eleven-sar--wide-sar": {
+   "first": "eleven-sar",
+   "kind": "wide-sar",
+   "seed": 20261027,
+   "params": {},
+   "sample rows": 1027023,
+   "threshold": 0.908853473779448,
+   "threshold, weighted F1": 0.8242245838121967,
+   "validation at the declared threshold": {
+    "precision": 0.787396607318099,
+    "recall": 0.7693835616438356,
+    "f1": 0.7782858726529481
+   },
+   "validation at the weighted threshold": {
+    "precision": 0.730997008364369,
+    "recall": 0.820068493150685,
+    "f1": 0.7729752412924885
+   },
+   "validation average precision": 0.7983286213125353,
+   "seconds": 131,
+   "importance, the ten largest shares": {
+    "valley: the pair above it": 0.4951,
+    "score over the schema's best": 0.336,
+    "score": 0.0737,
+    "log lead over the column's next": 0.0073,
+    "lead over the column's next": 0.0058,
+    "valley: columns above it": 0.0047,
+    "rank in column": 0.0041,
+    "last word: others over tables": 0.004,
+    "same name: others into the target, best": 0.0038,
+    "targets of the column, log": 0.0034
+   }
+  },
+  "eleven-sar-seed2--wide-sar": {
+   "first": "eleven-sar-seed2",
+   "kind": "wide-sar",
+   "seed": 20261028,
+   "params": {
+    "random_state": 20261028
+   },
+   "sample rows": 1021527,
+   "threshold": 0.899190845311644,
+   "threshold, weighted F1": 0.8874959728749924,
+   "validation at the declared threshold": {
+    "precision": 0.7826988184896013,
+    "recall": 0.7758904109589041,
+    "f1": 0.7792797440924569
+   },
+   "validation at the weighted threshold": {
+    "precision": 0.7721168769822525,
+    "recall": 0.7836986301369863,
+    "f1": 0.7778646452972569
+   },
+   "validation average precision": 0.7942837083997578,
+   "seconds": 132,
+   "importance, the ten largest shares": {
+    "score over the schema's best": 0.3663,
+    "valley: the pair above it": 0.2689,
+    "score": 0.2621,
+    "last word: others over tables": 0.0077,
+    "lead over the column's next": 0.0068,
+    "rank in column": 0.0046,
+    "log lead over the column's next": 0.0045,
+    "place among the schema's column bests": 0.0043,
+    "same name: lead over the group's other target": 0.0043,
+    "same name: others into the target, best": 0.0037
+   }
+  },
+  "eleven-seed2--wide-pu": {
+   "first": "eleven-seed2",
+   "kind": "wide-pu",
+   "seed": 20261028,
+   "params": {
+    "random_state": 20261028
+   },
+   "sample rows": 979107,
+   "threshold": 0.8945865999596737,
+   "threshold, weighted F1": 0.8202396251083751,
+   "validation at the declared threshold": {
+    "precision": 0.8082663605051664,
+    "recall": 0.7715068493150685,
+    "f1": 0.7894589290720494
+   },
+   "validation at the weighted threshold": {
+    "precision": 0.7691853987810473,
+    "recall": 0.8039041095890411,
+    "f1": 0.7861616263103252
+   },
+   "validation average precision": 0.8115805523057429,
+   "seconds": 64,
+   "importance, the ten largest shares": {
+    "valley: the pair above it": 0.5117,
+    "score over the schema's best": 0.1576,
+    "lead over the column's next": 0.1497,
+    "score": 0.0492,
+    "log lead over the column's next": 0.0133,
+    "last word: others over tables": 0.0086,
+    "valley: the column's best above it": 0.0056,
+    "rank in column": 0.0055,
+    "place among the schema's column bests": 0.0055,
+    "valley: columns above it": 0.0055
+   }
+  }
+ }
+}

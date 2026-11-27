@@ -1,0 +1,330 @@
+{
+ "eleven--wide": {
+  "by size": {
+   "under 5": {
+    "training pairs": 59137,
+    "declared keys": 5070,
+    "schema: undeclared keys a schema's own frequency implies, the sum of (1-e)/e over declared keys": 243,
+    "schema: the weights' sum": 179.0,
+    "schema: pairs entering as positives (w >= 0.01)": 1080,
+    "rules: e": 0.953,
+    "rules: undeclared keys the label frequency implies, (1-e)/e x declared": 250,
+    "rules: the weights' sum": 141.8,
+    "rules: pairs entering as positives (w >= 0.01)": 1007,
+    "rules: pairs with w >= 0.5": 83,
+    "teachers: e": 0.953,
+    "teachers: undeclared keys the label frequency implies, (1-e)/e x declared": 250,
+    "teachers: the weights' sum": 141.8,
+    "teachers: pairs entering as positives (w >= 0.01)": 1007,
+    "teachers: pairs with w >= 0.5": 83
+   },
+   "5 to 9": {
+    "training pairs": 279437,
+    "declared keys": 10965,
+    "schema: undeclared keys a schema's own frequency implies, the sum of (1-e)/e over declared keys": 1566,
+    "schema: the weights' sum": 1370.6,
+    "schema: pairs entering as positives (w >= 0.01)": 7645,
+    "rules: e": 0.867,
+    "rules: undeclared keys the label frequency implies, (1-e)/e x declared": 1682,
+    "rules: the weights' sum": 1126.7,
+    "rules: pairs entering as positives (w >= 0.01)": 6338,
+    "rules: pairs with w >= 0.5": 662,
+    "teachers: e": 0.867,
+    "teachers: undeclared keys the label frequency implies, (1-e)/e x declared": 1682,
+    "teachers: the weights' sum": 1126.7,
+    "teachers: pairs entering as positives (w >= 0.01)": 6338,
+    "teachers: pairs with w >= 0.5": 662
+   },
+   "10 to 19": {
+    "training pairs": 1001178,
+    "declared keys": 14214,
+    "schema: undeclared keys a schema's own frequency implies, the sum of (1-e)/e over declared keys": 3379,
+    "schema: the weights' sum": 3033.0,
+    "schema: pairs entering as positives (w >= 0.01)": 18801,
+    "rules: e": 0.793,
+    "rules: undeclared keys the label frequency implies, (1-e)/e x declared": 3710,
+    "rules: the weights' sum": 2536.1,
+    "rules: pairs entering as positives (w >= 0.01)": 15769,
+    "rules: pairs with w >= 0.5": 1574,
+    "teachers: e": 0.69,
+    "teachers: undeclared keys the label frequency implies, (1-e)/e x declared": 6386,
+    "teachers: the weights' sum": 3656.9,
+    "teachers: pairs entering as positives (w >= 0.01)": 20566,
+    "teachers: pairs with w >= 0.5": 2054
+   },
+   "20 to 39": {
+    "training pairs": 1488988,
+    "declared keys": 10185,
+    "schema: undeclared keys a schema's own frequency implies, the sum of (1-e)/e over declared keys": 3338,
+    "schema: the weights' sum": 3235.4,
+    "schema: pairs entering as positives (w >= 0.01)": 22564,
+    "rules: e": 0.736,
+    "rules: undeclared keys the label frequency implies, (1-e)/e x declared": 3653,
+    "rules: the weights' sum": 2465.9,
+    "rules: pairs entering as positives (w >= 0.01)": 15450,
+    "rules: pairs with w >= 0.5": 1161,
+    "teachers: e": 0.62,
+    "teachers: undeclared keys the label frequency implies, (1-e)/e x declared": 6242,
+    "teachers: the weights' sum": 3585.7,
+    "teachers: pairs entering as positives (w >= 0.01)": 30286,
+    "teachers: pairs with w >= 0.5": 1637
+   },
+   "40 or more": {
+    "training pairs": 5774680,
+    "declared keys": 26702,
+    "schema: undeclared keys a schema's own frequency implies, the sum of (1-e)/e over declared keys": 9971,
+    "schema: the weights' sum": 6422.9,
+    "schema: pairs entering as positives (w >= 0.01)": 56332,
+    "rules: e": 0.659,
+    "rules: undeclared keys the label frequency implies, (1-e)/e x declared": 13817,
+    "rules: the weights' sum": 3732.7,
+    "rules: pairs entering as positives (w >= 0.01)": 25426,
+    "rules: pairs with w >= 0.5": 1684,
+    "teachers: e": 0.71,
+    "teachers: undeclared keys the label frequency implies, (1-e)/e x declared": 10906,
+    "teachers: the weights' sum": 3142.5,
+    "teachers: pairs entering as positives (w >= 0.01)": 18288,
+    "teachers: pairs with w >= 0.5": 1205
+   }
+  },
+  "g by score band": [
+   {
+    "score": [
+     0,
+     0.05
+    ],
+    "pairs": 8376451,
+    "declared share": 0.0008805638569365474,
+    "mean g": 0.0008783945937042687
+   },
+   {
+    "score": [
+     0.05,
+     0.2
+    ],
+    "pairs": 104471,
+    "declared share": 0.024753280814771562,
+    "mean g": 0.02482917477614711
+   },
+   {
+    "score": [
+     0.2,
+     0.5
+    ],
+    "pairs": 39034,
+    "declared share": 0.07928984987446841,
+    "mean g": 0.07911367297357293
+   },
+   {
+    "score": [
+     0.5,
+     0.7
+    ],
+    "pairs": 14193,
+    "declared share": 0.17705911364757274,
+    "mean g": 0.17731162163776926
+   },
+   {
+    "score": [
+     0.7,
+     0.8
+    ],
+    "pairs": 6822,
+    "declared share": 0.2834945763705658,
+    "mean g": 0.2839442580014829
+   },
+   {
+    "score": [
+     0.8,
+     0.9
+    ],
+    "pairs": 8864,
+    "declared share": 0.43005415162454874,
+    "mean g": 0.4299930005200248
+   },
+   {
+    "score": [
+     0.9,
+     0.95
+    ],
+    "pairs": 8392,
+    "declared share": 0.6166587225929456,
+    "mean g": 0.6174384935246975
+   },
+   {
+    "score": [
+     0.95,
+     1.0
+    ],
+    "pairs": 45193,
+    "declared share": 0.8993649458987011,
+    "mean g": 0.8994637561131643
+   }
+  ],
+  "sampled pairs": 920601
+ },
+ "eleven-seed2--wide": {
+  "by size": {
+   "under 5": {
+    "training pairs": 59137,
+    "declared keys": 5070,
+    "schema: undeclared keys a schema's own frequency implies, the sum of (1-e)/e over declared keys": 243,
+    "schema: the weights' sum": 177.1,
+    "schema: pairs entering as positives (w >= 0.01)": 1025,
+    "rules: e": 0.953,
+    "rules: undeclared keys the label frequency implies, (1-e)/e x declared": 250,
+    "rules: the weights' sum": 144.4,
+    "rules: pairs entering as positives (w >= 0.01)": 964,
+    "rules: pairs with w >= 0.5": 84,
+    "teachers: e": 0.953,
+    "teachers: undeclared keys the label frequency implies, (1-e)/e x declared": 250,
+    "teachers: the weights' sum": 144.4,
+    "teachers: pairs entering as positives (w >= 0.01)": 964,
+    "teachers: pairs with w >= 0.5": 84
+   },
+   "5 to 9": {
+    "training pairs": 279437,
+    "declared keys": 10965,
+    "schema: undeclared keys a schema's own frequency implies, the sum of (1-e)/e over declared keys": 1566,
+    "schema: the weights' sum": 1284.9,
+    "schema: pairs entering as positives (w >= 0.01)": 7300,
+    "rules: e": 0.867,
+    "rules: undeclared keys the label frequency implies, (1-e)/e x declared": 1682,
+    "rules: the weights' sum": 1049.7,
+    "rules: pairs entering as positives (w >= 0.01)": 6792,
+    "rules: pairs with w >= 0.5": 593,
+    "teachers: e": 0.867,
+    "teachers: undeclared keys the label frequency implies, (1-e)/e x declared": 1682,
+    "teachers: the weights' sum": 1049.7,
+    "teachers: pairs entering as positives (w >= 0.01)": 6792,
+    "teachers: pairs with w >= 0.5": 593
+   },
+   "10 to 19": {
+    "training pairs": 1001178,
+    "declared keys": 14214,
+    "schema: undeclared keys a schema's own frequency implies, the sum of (1-e)/e over declared keys": 3379,
+    "schema: the weights' sum": 2875.5,
+    "schema: pairs entering as positives (w >= 0.01)": 17636,
+    "rules: e": 0.793,
+    "rules: undeclared keys the label frequency implies, (1-e)/e x declared": 3710,
+    "rules: the weights' sum": 2407.3,
+    "rules: pairs entering as positives (w >= 0.01)": 15121,
+    "rules: pairs with w >= 0.5": 1254,
+    "teachers: e": 0.69,
+    "teachers: undeclared keys the label frequency implies, (1-e)/e x declared": 6386,
+    "teachers: the weights' sum": 3466.7,
+    "teachers: pairs entering as positives (w >= 0.01)": 21203,
+    "teachers: pairs with w >= 0.5": 1913
+   },
+   "20 to 39": {
+    "training pairs": 1488988,
+    "declared keys": 10185,
+    "schema: undeclared keys a schema's own frequency implies, the sum of (1-e)/e over declared keys": 3338,
+    "schema: the weights' sum": 3174.3,
+    "schema: pairs entering as positives (w >= 0.01)": 21562,
+    "rules: e": 0.736,
+    "rules: undeclared keys the label frequency implies, (1-e)/e x declared": 3653,
+    "rules: the weights' sum": 2443.5,
+    "rules: pairs entering as positives (w >= 0.01)": 15072,
+    "rules: pairs with w >= 0.5": 1096,
+    "teachers: e": 0.62,
+    "teachers: undeclared keys the label frequency implies, (1-e)/e x declared": 6242,
+    "teachers: the weights' sum": 3551.8,
+    "teachers: pairs entering as positives (w >= 0.01)": 19896,
+    "teachers: pairs with w >= 0.5": 1805
+   },
+   "40 or more": {
+    "training pairs": 5774680,
+    "declared keys": 26702,
+    "schema: undeclared keys a schema's own frequency implies, the sum of (1-e)/e over declared keys": 9971,
+    "schema: the weights' sum": 6694.6,
+    "schema: pairs entering as positives (w >= 0.01)": 54014,
+    "rules: e": 0.659,
+    "rules: undeclared keys the label frequency implies, (1-e)/e x declared": 13817,
+    "rules: the weights' sum": 3987.1,
+    "rules: pairs entering as positives (w >= 0.01)": 21168,
+    "rules: pairs with w >= 0.5": 1946,
+    "teachers: e": 0.71,
+    "teachers: undeclared keys the label frequency implies, (1-e)/e x declared": 10906,
+    "teachers: the weights' sum": 3338.9,
+    "teachers: pairs entering as positives (w >= 0.01)": 18517,
+    "teachers: pairs with w >= 0.5": 1545
+   }
+  },
+  "g by score band": [
+   {
+    "score": [
+     0,
+     0.05
+    ],
+    "pairs": 8364764,
+    "declared share": 0.000853341469048021,
+    "mean g": 0.0008518689790074285
+   },
+   {
+    "score": [
+     0.05,
+     0.2
+    ],
+    "pairs": 112985,
+    "declared share": 0.02071071381156791,
+    "mean g": 0.020787383462600277
+   },
+   {
+    "score": [
+     0.2,
+     0.5
+    ],
+    "pairs": 42022,
+    "declared share": 0.07719765836942553,
+    "mean g": 0.07711745471090001
+   },
+   {
+    "score": [
+     0.5,
+     0.7
+    ],
+    "pairs": 13164,
+    "declared share": 0.16841385597082953,
+    "mean g": 0.16864434429466635
+   },
+   {
+    "score": [
+     0.7,
+     0.8
+    ],
+    "pairs": 6228,
+    "declared share": 0.25032113037893383,
+    "mean g": 0.25056538173338294
+   },
+   {
+    "score": [
+     0.8,
+     0.9
+    ],
+    "pairs": 8580,
+    "declared share": 0.41165501165501167,
+    "mean g": 0.4107376344822762
+   },
+   {
+    "score": [
+     0.9,
+     0.95
+    ],
+    "pairs": 8806,
+    "declared share": 0.5771065182829889,
+    "mean g": 0.5767834539903677
+   },
+   {
+    "score": [
+     0.95,
+     1.0
+    ],
+    "pairs": 46871,
+    "declared share": 0.8965885088860917,
+    "mean g": 0.8968698232141616
+   }
+  ],
+  "sampled pairs": 919990
+ }
+}

@@ -1,0 +1,30 @@
+16:20:25
+eleven-sar-seed2--wide-sar: features, (8603420, 68): 92 s
+eleven-sar-seed2--wide-sar: fitted: 127 s
+{"first": "eleven-sar-seed2", "kind": "wide-sar", "seed": 20261028, "params": {"random_state": 20261028}, "sample rows": 1021527, "threshold": 0.899190845311644, "threshold, weighted F1": 0.8874959728749924, "validation at the declared threshold": {"precision": 0.7826988184896013, "recall": 0.7758904109589041, "f1": 0.7792797440924569}, "validation at the weighted threshold": {"precision": 0.7721168769822525, "recall": 0.7836986301369863, "f1": 0.7778646452972569}, "validation average precision": 0.7942837083997578, "seconds": 132}
+eleven-sar-seed2--wide-sar   schemapile validation              (10 s)
+Traceback (most recent call last):
+  File "<repo>\lemmesee\round-1y\fitting.py", line 284, in <module>
+    score_second(sys.argv[2], sys.argv[3])
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>\lemmesee\round-1y\fitting.py", line 267, in score_second
+    x = wide.features(pool, "wide", schemas, rec, first_scores_of(first, name))
+  File "<repo>\lemmesee\round-1v\wide.py", line 238, in features
+    return np.vstack(list(pool.map(job, jobs)))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>\lemmesee\round-1b\.venv\Lib\site-packages\numpy\_core\shape_base.py", line 290, in vstack
+    return _nx.concatenate(arrs, 0, dtype=dtype, casting=casting)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 209. MiB for an array with shape (804493, 68) and data type float32
+16:23:00
+eleven-sar-seed2--wide-sar   schemapile validation, renamed     (7 s)
+eleven-sar-seed2--wide-sar   schemapile test                    (13 s)
+eleven-sar-seed2--wide-sar   schemapile test, renamed           (10 s)
+eleven-sar-seed2--wide-sar   spider                             (0 s)
+eleven-sar-seed2--wide-sar   bird                               (1 s)
+eleven-sar-seed2--wide-sar   ctu                                (110 s)
+eleven-sar-seed2--wide-sar   livesqlbench (development)         (0 s)
+eleven-sar-seed2--wide-sar   github 2025                        (2 s)
+eleven-sar-seed2--wide-sar   github 2025, rest                  (10 s)
+eleven-sar-seed2--wide-sar   github style                       (3 s)
+eleven-sar-seed2--wide-sar   github fresh                       (7 s)

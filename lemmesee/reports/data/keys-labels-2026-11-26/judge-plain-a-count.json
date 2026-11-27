@@ -1,0 +1,708 @@
+{
+ "answered": 860,
+ "of": 860,
+ "answers by kind": {
+  "control: declared": {
+   "yes": 60
+  },
+  "control: not a key": {
+   "no": 59,
+   "unsure": 1
+  },
+  "drawn, 40 tables or more": {
+   "no": 76,
+   "yes": 162,
+   "unsure": 12
+  },
+  "drawn, under 40 tables": {
+   "yes": 135,
+   "no": 104,
+   "unsure": 11
+  },
+  "named by one language model, 40 tables or more": {
+   "unsure": 13,
+   "yes": 34,
+   "no": 13
+  },
+  "named by one language model, under 40 tables": {
+   "yes": 14,
+   "unsure": 14,
+   "no": 32
+  },
+  "named by several language models, 40 tables or more": {
+   "yes": 49,
+   "no": 2,
+   "unsure": 9
+  },
+  "named by several language models, under 40 tables": {
+   "yes": 48,
+   "unsure": 7,
+   "no": 5
+  }
+ },
+ "strata": {
+  "drawn, 40 tables or more": 3464,
+  "drawn, under 40 tables": 3070,
+  "named by one language model, 40 tables or more": 789,
+  "named by one language model, under 40 tables": 532,
+  "named by several language models, 40 tables or more": 1391,
+  "named by several language models, under 40 tables": 947
+ },
+ "compared models": [
+  "eleven--wide",
+  "eleven-pu--wide-pu@ipw",
+  "eleven-pu-seed2--wide-pu@ipw",
+  "eleven--wide@size-teachers",
+  "eleven-sar--wide-sar@ipw",
+  "eleven-pu--wide-pu@ipw | matched",
+  "eleven-pu-seed2--wide-pu@ipw | matched"
+ ],
+ "language models": [
+  "claude-haiku-5-5",
+  "claude-sonnet-5-5",
+  "deepseek-v4.1-flash-1017",
+  "gemini-3.5-flash-lite",
+  "gpt-6-luna",
+  "gpt-6.1-terra"
+ ],
+ "all": {
+  "declared keys": 16399.0,
+  "real keys, declared and judged-real of the pool": 22766.288666666664,
+  "its 95 % interval": [
+   22411.229333333333,
+   23107.840533333332
+  ],
+  "models": {
+   "eleven--wide": {
+    "drawn": 15711.0,
+    "declared keys found": 12154.0,
+    "keys no declaration names": 3557.0,
+    "sampled": 276,
+    "called keys": 218,
+    "share called keys": 0.7898550724637681,
+    "judged real among them, estimated": 2863.008,
+    "precision, declarations": 0.7735981159697027,
+    "recall, declarations": 0.7411427526068662,
+    "precision, with the judge": 0.955827636687671,
+    "precision, with the judge, 95": [
+     0.9377292342944434,
+     0.9742269747310801
+    ],
+    "recall, declared and judged-real": 0.6596159883533059,
+    "recall, declared and judged-real, 95": [
+     0.6493427915473708,
+     0.6700486268748252
+    ],
+    "f1, with the judge": 0.7805647705634422,
+    "minus eleven-pu--wide-pu@ipw | matched": {
+     "precision, with the judge": 0.040714981155780094,
+     "precision, with the judge, 95": [
+      0.031291702267424684,
+      0.049673166273527726
+     ],
+     "recall, declared and judged-real": -0.05756019433763371,
+     "recall, declared and judged-real, 95": [
+      -0.06417075013464942,
+      -0.05129169955417288
+     ]
+    }
+   },
+   "eleven-pu--wide-pu@ipw": {
+    "drawn": 17842.0,
+    "declared keys found": 13038.0,
+    "keys no declaration names": 4804.0,
+    "sampled": 372,
+    "called keys": 267,
+    "share called keys": 0.717741935483871,
+    "judged real among them, estimated": 3523.04,
+    "precision, declarations": 0.7307476740275753,
+    "recall, declarations": 0.7950484785657662,
+    "precision, with the judge": 0.9282053581437059,
+    "precision, with the judge, 95": [
+     0.9121618652617419,
+     0.9439843179015805
+    ],
+    "recall, declared and judged-real": 0.7274369679871406,
+    "recall, declared and judged-real, 95": [
+     0.7187254854870542,
+     0.7363378680406235
+    ],
+    "f1, with the judge": 0.8156482601835984,
+    "minus eleven--wide": {
+     "precision, with the judge": -0.02762227854396515,
+     "precision, with the judge, 95": [
+      -0.039063506649871016,
+      -0.015924101212724886
+     ],
+     "recall, declared and judged-real": 0.06782097963383471,
+     "recall, declared and judged-real, 95": [
+      0.059684569689787345,
+      0.0761709344041395
+     ]
+    },
+    "minus eleven-pu--wide-pu@ipw | matched": {
+     "precision, with the judge": 0.013092702611814944,
+     "precision, with the judge, 95": [
+      0.003861898890259008,
+      0.022481784553301187
+     ],
+     "recall, declared and judged-real": 0.010260785296201003,
+     "recall, declared and judged-real, 95": [
+      0.003034680792589961,
+      0.017617165212686428
+     ]
+    }
+   },
+   "eleven-pu-seed2--wide-pu@ipw": {
+    "drawn": 17569.0,
+    "declared keys found": 12892.0,
+    "keys no declaration names": 4677.0,
+    "sampled": 378,
+    "called keys": 256,
+    "share called keys": 0.6772486772486772,
+    "judged real among them, estimated": 3364.3199999999997,
+    "precision, declarations": 0.7337924753827765,
+    "recall, declarations": 0.7861454966766266,
+    "precision, with the judge": 0.9252843075872275,
+    "precision, with the judge, 95": [
+     0.9090998918549718,
+     0.9416481302293812
+    ],
+    "recall, declared and judged-real": 0.7140522655237058,
+    "recall, declared and judged-real, 95": [
+     0.7047183319980037,
+     0.723448549769821
+    ],
+    "f1, with the judge": 0.8060594351682091,
+    "minus eleven--wide": {
+     "precision, with the judge": -0.03054332910044355,
+     "precision, with the judge, 95": [
+      -0.041423434412338596,
+      -0.018900365634743194
+     ],
+     "recall, declared and judged-real": 0.054436277170399894,
+     "recall, declared and judged-real, 95": [
+      0.04666517372159748,
+      0.0627842193611522
+     ]
+    },
+    "minus eleven-pu-seed2--wide-pu@ipw | matched": {
+     "precision, with the judge": 0.016848767715863078,
+     "precision, with the judge, 95": [
+      0.007134384427116003,
+      0.02665285445955945
+     ],
+     "recall, declared and judged-real": 0.013002382792124179,
+     "recall, declared and judged-real, 95": [
+      0.005497493116358132,
+      0.02050513581493062
+     ]
+    },
+    "minus eleven-pu--wide-pu@ipw | matched": {
+     "precision, with the judge": 0.010171652055336544,
+     "precision, with the judge, 95": [
+      -0.0003387863149398702,
+      0.02058408480715518
+     ],
+     "recall, declared and judged-real": -0.003123917167233814,
+     "recall, declared and judged-real, 95": [
+      -0.011336854687300795,
+      0.004998950333726739
+     ]
+    }
+   },
+   "eleven--wide@size-teachers": {
+    "drawn": 17696.0,
+    "declared keys found": 12930.0,
+    "keys no declaration names": 4766.0,
+    "sampled": 370,
+    "called keys": 253,
+    "share called keys": 0.6837837837837838,
+    "judged real among them, estimated": 3318.024,
+    "precision, declarations": 0.7306735985533453,
+    "recall, declarations": 0.7884627111409233,
+    "precision, with the judge": 0.9181749547920434,
+    "precision, with the judge, 95": [
+     0.9019100361663653,
+     0.9344213381555154
+    ],
+    "recall, declared and judged-real": 0.7136878670869881,
+    "recall, declared and judged-real, 95": [
+     0.7043237422559896,
+     0.7233665777408192
+    ],
+    "f1, with the judge": 0.803119375369655,
+    "minus eleven--wide": {
+     "precision, with the judge": -0.03765268189562765,
+     "precision, with the judge, 95": [
+      -0.046353507553017766,
+      -0.028416586653532815
+     ],
+     "recall, declared and judged-real": 0.05407187873368213,
+     "recall, declared and judged-real, 95": [
+      0.04795732629749129,
+      0.06051785036118086
+     ]
+    },
+    "minus eleven-pu--wide-pu@ipw | matched": {
+     "precision, with the judge": 0.0030622992601524457,
+     "precision, with the judge, 95": [
+      0.0002658369892606705,
+      0.0052233041226555366
+     ],
+     "recall, declared and judged-real": -0.003488315603951575,
+     "recall, declared and judged-real, 95": [
+      -0.005670897179685844,
+      -0.0018014370363307996
+     ]
+    }
+   },
+   "eleven-sar--wide-sar@ipw": {
+    "drawn": 17373.0,
+    "declared keys found": 12912.0,
+    "keys no declaration names": 4461.0,
+    "sampled": 357,
+    "called keys": 254,
+    "share called keys": 0.711484593837535,
+    "judged real among them, estimated": 3342.912,
+    "precision, declarations": 0.7432222414090831,
+    "recall, declarations": 0.7873650832367828,
+    "precision, with the judge": 0.9356422034190987,
+    "precision, with the judge, 95": [
+     0.919254993380533,
+     0.9521906406492834
+    ],
+    "recall, declared and judged-real": 0.7139904196945233,
+    "recall, declared and judged-real, 95": [
+     0.7048286548287884,
+     0.7234302699519339
+    ],
+    "f1, with the judge": 0.8099252647443528,
+    "minus eleven--wide": {
+     "precision, with the judge": -0.02018543326857236,
+     "precision, with the judge, 95": [
+      -0.030692640612990624,
+      -0.009079297889709594
+     ],
+     "recall, declared and judged-real": 0.05437443134121733,
+     "recall, declared and judged-real, 95": [
+      0.04679555119191539,
+      0.0621727957539113
+     ]
+    },
+    "minus eleven-pu--wide-pu@ipw | matched": {
+     "precision, with the judge": 0.020529547887207733,
+     "precision, with the judge, 95": [
+      0.010022314273128136,
+      0.03109312975766441
+     ],
+     "recall, declared and judged-real": -0.0031857629964163747,
+     "recall, declared and judged-real, 95": [
+      -0.011279469193552069,
+      0.004910050698976369
+     ]
+    }
+   },
+   "eleven-pu--wide-pu@ipw | matched": {
+    "drawn": 17842.0,
+    "declared keys found": 12971.0,
+    "keys no declaration names": 4871.0,
+    "sampled": 378,
+    "called keys": 256,
+    "share called keys": 0.6772486772486772,
+    "judged real among them, estimated": 3356.4399999999996,
+    "precision, declarations": 0.7269924896312072,
+    "recall, declarations": 0.7909628635892433,
+    "precision, with the judge": 0.9151126555318909,
+    "precision, with the judge, 95": [
+     0.8989970070619885,
+     0.9312260957291785
+    ],
+    "recall, declared and judged-real": 0.7171761826909396,
+    "recall, declared and judged-real, 95": [
+     0.7078706453009213,
+     0.7267166610435213
+    ],
+    "f1, with the judge": 0.8041432198250889,
+    "minus eleven--wide": {
+     "precision, with the judge": -0.040714981155780094,
+     "precision, with the judge, 95": [
+      -0.049673166273527726,
+      -0.031291702267424684
+     ],
+     "recall, declared and judged-real": 0.05756019433763371,
+     "recall, declared and judged-real, 95": [
+      0.05129169955417288,
+      0.0641707501346494
+     ]
+    }
+   },
+   "eleven-pu-seed2--wide-pu@ipw | matched": {
+    "drawn": 17569.0,
+    "declared keys found": 12744.0,
+    "keys no declaration names": 4825.0,
+    "sampled": 385,
+    "called keys": 246,
+    "share called keys": 0.638961038961039,
+    "judged real among them, estimated": 3216.304,
+    "precision, declarations": 0.725368546872332,
+    "recall, declarations": 0.7771205561314715,
+    "precision, with the judge": 0.9084355398713644,
+    "precision, with the judge, 95": [
+     0.8920717172292106,
+     0.9247096590585691
+    ],
+    "recall, declared and judged-real": 0.7010498827315816,
+    "recall, declared and judged-real, 95": [
+     0.6913915621099248,
+     0.710961980913606
+    ],
+    "f1, with the judge": 0.7913816673978434,
+    "minus eleven--wide": {
+     "precision, with the judge": -0.04739209681630663,
+     "precision, with the judge, 95": [
+      -0.05849272441569654,
+      -0.03597979334445129
+     ],
+     "recall, declared and judged-real": 0.041433894378275715,
+     "recall, declared and judged-real, 95": [
+      0.03343242561949864,
+      0.04958466310289581
+     ]
+    },
+    "minus eleven-pu--wide-pu@ipw | matched": {
+     "precision, with the judge": -0.006677115660526534,
+     "precision, with the judge, 95": [
+      -0.01719904916288587,
+      0.0035957206115475784
+     ],
+     "recall, declared and judged-real": -0.016126299959357993,
+     "recall, declared and judged-real, 95": [
+      -0.024257012546312597,
+      -0.008179468045352883
+     ]
+    }
+   }
+  }
+ },
+ "40 tables or more": {
+  "declared keys": 6521.0,
+  "real keys, declared and judged-real of the pool": 10348.755333333334,
+  "its 95 % interval": [
+   10075.583683333336,
+   10615.273000000001
+  ],
+  "models": {
+   "eleven--wide": {
+    "drawn": 5950.0,
+    "declared keys found": 4059.0,
+    "keys no declaration names": 1891.0,
+    "sampled": 136,
+    "called keys": 118,
+    "share called keys": 0.8676470588235294,
+    "judged real among them, estimated": 1635.008,
+    "precision, declarations": 0.6821848739495798,
+    "recall, declarations": 0.6224505443950314,
+    "precision, with the judge": 0.9569761344537815,
+    "precision, with the judge, 95": [
+     0.9197163025210083,
+     0.9942359663865545
+    ],
+    "recall, declared and judged-real": 0.5502118676687238,
+    "recall, declared and judged-real, 95": [
+     0.5325584538005881,
+     0.5679536552608192
+    ],
+    "f1, with the judge": 0.6987046413728197,
+    "minus eleven-pu--wide-pu@ipw | matched": {
+     "precision, with the judge": 0.04785722940673276,
+     "precision, with the judge, 95": [
+      0.029371407101763003,
+      0.06465576141833995
+     ],
+     "recall, declared and judged-real": -0.06595498473149708,
+     "recall, declared and judged-real, 95": [
+      -0.07679054634257605,
+      -0.056228292739891696
+     ]
+    }
+   },
+   "eleven-pu--wide-pu@ipw": {
+    "drawn": 7485.0,
+    "declared keys found": 4704.0,
+    "keys no declaration names": 2781.0,
+    "sampled": 208,
+    "called keys": 155,
+    "share called keys": 0.7451923076923077,
+    "judged real among them, estimated": 2147.68,
+    "precision, declarations": 0.6284569138276553,
+    "recall, declarations": 0.7213617543321577,
+    "precision, with the judge": 0.9153881095524382,
+    "precision, with the judge, 95": [
+     0.8876205744822979,
+     0.9431556446225785
+    ],
+    "recall, declared and judged-real": 0.6620776875389781,
+    "recall, declared and judged-real, 95": [
+     0.6482790089011546,
+     0.6764539349863388
+    ],
+    "f1, with the judge": 0.7683945273369792,
+    "minus eleven--wide": {
+     "precision, with the judge": -0.04158802490134328,
+     "precision, with the judge, 95": [
+      -0.06690392774344212,
+      -0.015192610520761464
+     ],
+     "recall, declared and judged-real": 0.11186581987025435,
+     "recall, declared and judged-real, 95": [
+      0.0967684154435953,
+      0.12768618938528167
+     ]
+    },
+    "minus eleven-pu--wide-pu@ipw | matched": {
+     "precision, with the judge": 0.006269204505389481,
+     "precision, with the judge, 95": [
+      -0.01211817692985051,
+      0.025402437609750472
+     ],
+     "recall, declared and judged-real": 0.04591083513875727,
+     "recall, declared and judged-real, 95": [
+      0.033306983982800256,
+      0.0591280467014214
+     ]
+    }
+   },
+   "eleven-pu-seed2--wide-pu@ipw": {
+    "drawn": 7168.0,
+    "declared keys found": 4555.0,
+    "keys no declaration names": 2613.0,
+    "sampled": 189,
+    "called keys": 140,
+    "share called keys": 0.7407407407407407,
+    "judged real among them, estimated": 1939.84,
+    "precision, declarations": 0.6354631696428571,
+    "recall, declarations": 0.6985124980831161,
+    "precision, with the judge": 0.9060881696428572,
+    "precision, with the judge, 95": [
+     0.8770926339285714,
+     0.9350837053571429
+    ],
+    "recall, declared and judged-real": 0.6275962461959192,
+    "recall, declared and judged-real, 95": [
+     0.6115091860501862,
+     0.6437021227236537
+    ],
+    "f1, with the judge": 0.7415574261793461,
+    "minus eleven--wide": {
+     "precision, with the judge": -0.05088796481092428,
+     "precision, with the judge, 95": [
+      -0.07377965598739478,
+      -0.026017754726890607
+     ],
+     "recall, declared and judged-real": 0.07738437852719549,
+     "recall, declared and judged-real, 95": [
+      0.06357271335441374,
+      0.09221009092125577
+     ]
+    },
+    "minus eleven-pu-seed2--wide-pu@ipw | matched": {
+     "precision, with the judge": 0.00488521543310827,
+     "precision, with the judge, 95": [
+      -0.014330358791411646,
+      0.02501108672715756
+     ],
+     "recall, declared and judged-real": 0.03804283581155943,
+     "recall, declared and judged-real, 95": [
+      0.025161420925033758,
+      0.051582107094984946
+     ]
+    },
+    "minus eleven-pu--wide-pu@ipw | matched": {
+     "precision, with the judge": -0.00303073540419152,
+     "precision, with the judge, 95": [
+      -0.02278551156615327,
+      0.0168938083654121
+     ],
+     "recall, declared and judged-real": 0.011429393795698406,
+     "recall, declared and judged-real, 95": [
+      -0.0019742533197697255,
+      0.025241606352837596
+     ]
+    }
+   },
+   "eleven--wide@size-teachers": {
+    "drawn": 6957.0,
+    "declared keys found": 4488.0,
+    "keys no declaration names": 2469.0,
+    "sampled": 174,
+    "called keys": 134,
+    "share called keys": 0.7701149425287356,
+    "judged real among them, estimated": 1856.704,
+    "precision, declarations": 0.6451056489866321,
+    "recall, declarations": 0.6882380003067015,
+    "precision, with the judge": 0.9119885007905706,
+    "precision, with the judge, 95": [
+     0.8801218916199511,
+     0.9418634468880265
+    ],
+    "recall, declared and judged-real": 0.6130886078216298,
+    "recall, declared and judged-real, 95": [
+     0.5965510351112662,
+     0.6300632409437674
+    ],
+    "f1, with the judge": 0.7332478563104614,
+    "minus eleven--wide": {
+     "precision, with the judge": -0.0449876336632109,
+     "precision, with the judge, 95": [
+      -0.06101944188731983,
+      -0.02700107507944971
+     ],
+     "recall, declared and judged-real": 0.06287674015290601,
+     "recall, declared and judged-real, 95": [
+      0.05346524790236524,
+      0.07346438156803266
+     ]
+    },
+    "minus eleven-pu--wide-pu@ipw | matched": {
+     "precision, with the judge": 0.0028695957435218578,
+     "precision, with the judge, 95": [
+      -0.0012432140585457718,
+      0.0050392988433285435
+     ],
+     "recall, declared and judged-real": -0.0030782445785910717,
+     "recall, declared and judged-real, 95": [
+      -0.005845434192010127,
+      -0.001706835151272601
+     ]
+    }
+   },
+   "eleven-sar--wide-sar@ipw": {
+    "drawn": 6934.0,
+    "declared keys found": 4505.0,
+    "keys no declaration names": 2429.0,
+    "sampled": 182,
+    "called keys": 142,
+    "share called keys": 0.7802197802197802,
+    "judged real among them, estimated": 1967.552,
+    "precision, declarations": 0.649697144505336,
+    "recall, declarations": 0.6908449624290753,
+    "precision, with the judge": 0.9334513989039515,
+    "precision, with the judge, 95": [
+     0.9014790885491779,
+     0.9634753965964803
+    ],
+    "recall, declared and judged-real": 0.6254425572466588,
+    "recall, declared and judged-real, 95": [
+     0.609654099764815,
+     0.6415688591169325
+    ],
+    "f1, with the judge": 0.7490185303400503,
+    "minus eleven--wide": {
+     "precision, with the judge": -0.023524735549830034,
+     "precision, with the judge, 95": [
+      -0.045490250113313424,
+      0.0007695185094516166
+     ],
+     "recall, declared and judged-real": 0.075230689577935,
+     "recall, declared and judged-real, 95": [
+      0.062075438887640395,
+      0.08981294816705322
+     ]
+    },
+    "minus eleven-pu--wide-pu@ipw | matched": {
+     "precision, with the judge": 0.024332493856902726,
+     "precision, with the judge, 95": [
+      0.004600509475918169,
+      0.04429239604765911
+     ],
+     "recall, declared and judged-real": 0.009275704846437915,
+     "recall, declared and judged-real, 95": [
+      -0.004069163130725337,
+      0.022853208462682514
+     ]
+    }
+   },
+   "eleven-pu--wide-pu@ipw | matched": {
+    "drawn": 7014.0,
+    "declared keys found": 4506.0,
+    "keys no declaration names": 2508.0,
+    "sampled": 175,
+    "called keys": 135,
+    "share called keys": 0.7714285714285715,
+    "judged real among them, estimated": 1870.56,
+    "precision, declarations": 0.6424294268605646,
+    "recall, declarations": 0.6909983131421561,
+    "precision, with the judge": 0.9091189050470487,
+    "precision, with the judge, 95": [
+     0.8775112631879098,
+     0.9407265469061875
+    ],
+    "recall, declared and judged-real": 0.6161668524002208,
+    "recall, declared and judged-real, 95": [
+     0.5998118796735038,
+     0.6326675690832604
+    ],
+    "f1, with the judge": 0.7345101486004544,
+    "minus eleven--wide": {
+     "precision, with the judge": -0.04785722940673276,
+     "precision, with the judge, 95": [
+      -0.06465576141833995,
+      -0.029371407101763003
+     ],
+     "recall, declared and judged-real": 0.06595498473149708,
+     "recall, declared and judged-real, 95": [
+      0.056228292739891696,
+      0.07679054634257604
+     ]
+    }
+   },
+   "eleven-pu-seed2--wide-pu@ipw | matched": {
+    "drawn": 6770.0,
+    "declared keys found": 4383.0,
+    "keys no declaration names": 2387.0,
+    "sampled": 179,
+    "called keys": 124,
+    "share called keys": 0.6927374301675978,
+    "judged real among them, estimated": 1718.144,
+    "precision, declarations": 0.6474150664697194,
+    "recall, declarations": 0.6721361754332158,
+    "precision, with the judge": 0.9012029542097489,
+    "precision, with the judge, 95": [
+     0.868456129985229,
+     0.9339497784342689
+    ],
+    "recall, declared and judged-real": 0.5895534103843598,
+    "recall, declared and judged-real, 95": [
+     0.5720677245941727,
+     0.6072498203167106
+    ],
+    "f1, with the judge": 0.7128022897926417,
+    "minus eleven--wide": {
+     "precision, with the judge": -0.05577318024403255,
+     "precision, with the judge, 95": [
+      -0.07757802465151498,
+      -0.03333197423134693
+     ],
+     "recall, declared and judged-real": 0.03934154271563606,
+     "recall, declared and judged-real, 95": [
+      0.02615798193059466,
+      0.05280394874527369
+     ]
+    },
+    "minus eleven-pu--wide-pu@ipw | matched": {
+     "precision, with the judge": -0.00791595083729979,
+     "precision, with the judge, 95": [
+      -0.02950380681978526,
+      0.012481395377634706
+     ],
+     "recall, declared and judged-real": -0.026613442015861022,
+     "recall, declared and judged-real, 95": [
+      -0.040774181815957926,
+      -0.013138525950687137
+     ]
+    }
+   }
+  }
+ }
+}

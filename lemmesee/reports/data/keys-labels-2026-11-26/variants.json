@@ -1,0 +1,346 @@
+{
+ "eleven--wide": {
+  "first": "eleven",
+  "kind": "wide",
+  "rule": "",
+  "frozen threshold": 0.7980627105736274,
+  "thresholds by size": [
+   0.7980627105736274,
+   0.7980627105736274,
+   0.7980627105736274,
+   0.7980627105736274,
+   0.7980627105736274
+  ]
+ },
+ "eleven-seed2--wide": {
+  "first": "eleven-seed2",
+  "kind": "wide",
+  "rule": "",
+  "frozen threshold": 0.8144826189063585,
+  "thresholds by size": [
+   0.8144826189063585,
+   0.8144826189063585,
+   0.8144826189063585,
+   0.8144826189063585,
+   0.8144826189063585
+  ]
+ },
+ "eleven--wide@size": {
+  "first": "eleven",
+  "kind": "wide",
+  "rule": "size",
+  "frozen threshold": 0.7980627105736274,
+  "thresholds by size": [
+   0.7845481922431391,
+   0.7728798630643768,
+   0.7710369815941703,
+   0.691380649701921,
+   0.6793959738695617
+  ],
+  "g(t)": 0.344019728729963
+ },
+ "eleven-seed2--wide@size": {
+  "first": "eleven-seed2",
+  "kind": "wide",
+  "rule": "size",
+  "frozen threshold": 0.8144826189063585,
+  "thresholds by size": [
+   0.7913061332283599,
+   0.7912954483750017,
+   0.7689366422137223,
+   0.7431834041815157,
+   0.7129187256040924
+  ],
+  "g(t)": 0.32708821233411395
+ },
+ "eleven--wide@size-teachers": {
+  "first": "eleven",
+  "kind": "wide",
+  "rule": "size-teachers",
+  "frozen threshold": 0.7980627105736274,
+  "thresholds by size": [
+   0.7845481922431391,
+   0.7728798630643768,
+   0.6794059760088897,
+   0.6629497833630298,
+   0.6794124290020045
+  ],
+  "g(t)": 0.344019728729963
+ },
+ "eleven-seed2--wide@size-teachers": {
+  "first": "eleven-seed2",
+  "kind": "wide",
+  "rule": "size-teachers",
+  "frozen threshold": 0.8144826189063585,
+  "thresholds by size": [
+   0.7913061332283599,
+   0.7912954483750017,
+   0.712925127061784,
+   0.7039781880602066,
+   0.7371407273439329
+  ],
+  "g(t)": 0.32708821233411395
+ },
+ "eleven--wide@size-ipw": {
+  "first": "eleven",
+  "kind": "wide",
+  "rule": "size-ipw",
+  "frozen threshold": 0.7980627105736274,
+  "thresholds by size": [
+   0.7845500915566135,
+   0.7728811896776876,
+   0.7728783013379958,
+   0.7096808552742004,
+   0.6794046493443948
+  ],
+  "tau": 0.3580562659846547
+ },
+ "eleven-seed2--wide@size-ipw": {
+  "first": "eleven-seed2",
+  "kind": "wide",
+  "rule": "size-ipw",
+  "frozen threshold": 0.8144826189063585,
+  "thresholds by size": [
+   0.8002349843983957,
+   0.7912993317637241,
+   0.7705813050270081,
+   0.7431894076115991,
+   0.7129236315669166
+  ],
+  "tau": 0.3388801872290322
+ },
+ "eleven--wide@ipw": {
+  "first": "eleven",
+  "kind": "wide",
+  "rule": "ipw",
+  "frozen threshold": 0.7980627105736274,
+  "thresholds by size": [
+   0.7482956051826477,
+   0.7482956051826477,
+   0.7482956051826477,
+   0.7482956051826477,
+   0.7482956051826477
+  ]
+ },
+ "eleven-seed2--wide@ipw": {
+  "first": "eleven-seed2",
+  "kind": "wide",
+  "rule": "ipw",
+  "frozen threshold": 0.8144826189063585,
+  "thresholds by size": [
+   0.7622918486595154,
+   0.7622918486595154,
+   0.7622918486595154,
+   0.7622918486595154,
+   0.7622918486595154
+  ]
+ },
+ "eleven--wide-pu@declared": {
+  "first": "eleven",
+  "kind": "wide-pu",
+  "rule": "declared",
+  "frozen threshold": 0.8770551479654768,
+  "thresholds by size": [
+   0.8770551479654768,
+   0.8770551479654768,
+   0.8770551479654768,
+   0.8770551479654768,
+   0.8770551479654768
+  ]
+ },
+ "eleven-seed2--wide-pu@declared": {
+  "first": "eleven-seed2",
+  "kind": "wide-pu",
+  "rule": "declared",
+  "frozen threshold": 0.8945865999596737,
+  "thresholds by size": [
+   0.8945865999596737,
+   0.8945865999596737,
+   0.8945865999596737,
+   0.8945865999596737,
+   0.8945865999596737
+  ]
+ },
+ "eleven--wide-pu@ipw": {
+  "first": "eleven",
+  "kind": "wide-pu",
+  "rule": "ipw",
+  "frozen threshold": 0.8770551479654768,
+  "thresholds by size": [
+   0.8355305221699807,
+   0.8355305221699807,
+   0.8355305221699807,
+   0.8355305221699807,
+   0.8355305221699807
+  ]
+ },
+ "eleven-seed2--wide-pu@ipw": {
+  "first": "eleven-seed2",
+  "kind": "wide-pu",
+  "rule": "ipw",
+  "frozen threshold": 0.8945865999596737,
+  "thresholds by size": [
+   0.8202396251083751,
+   0.8202396251083751,
+   0.8202396251083751,
+   0.8202396251083751,
+   0.8202396251083751
+  ]
+ },
+ "eleven-pu--wide@declared": {
+  "first": "eleven-pu",
+  "kind": "wide",
+  "rule": "declared",
+  "frozen threshold": 0.7662747030314638,
+  "thresholds by size": [
+   0.7662747030314638,
+   0.7662747030314638,
+   0.7662747030314638,
+   0.7662747030314638,
+   0.7662747030314638
+  ]
+ },
+ "eleven-pu-seed2--wide@declared": {
+  "first": "eleven-pu-seed2",
+  "kind": "wide",
+  "rule": "declared",
+  "frozen threshold": 0.7789841665169221,
+  "thresholds by size": [
+   0.7789841665169221,
+   0.7789841665169221,
+   0.7789841665169221,
+   0.7789841665169221,
+   0.7789841665169221
+  ]
+ },
+ "eleven-pu--wide@ipw": {
+  "first": "eleven-pu",
+  "kind": "wide",
+  "rule": "ipw",
+  "frozen threshold": 0.7662747030314638,
+  "thresholds by size": [
+   0.7348967660150058,
+   0.7348967660150058,
+   0.7348967660150058,
+   0.7348967660150058,
+   0.7348967660150058
+  ]
+ },
+ "eleven-pu-seed2--wide@ipw": {
+  "first": "eleven-pu-seed2",
+  "kind": "wide",
+  "rule": "ipw",
+  "frozen threshold": 0.7789841665169221,
+  "thresholds by size": [
+   0.7352267985961806,
+   0.7352267985961806,
+   0.7352267985961806,
+   0.7352267985961806,
+   0.7352267985961806
+  ]
+ },
+ "eleven-pu--wide-pu@declared": {
+  "first": "eleven-pu",
+  "kind": "wide-pu",
+  "rule": "declared",
+  "frozen threshold": 0.842059938166619,
+  "thresholds by size": [
+   0.842059938166619,
+   0.842059938166619,
+   0.842059938166619,
+   0.842059938166619,
+   0.842059938166619
+  ]
+ },
+ "eleven-pu-seed2--wide-pu@declared": {
+  "first": "eleven-pu-seed2",
+  "kind": "wide-pu",
+  "rule": "declared",
+  "frozen threshold": 0.8448521782824606,
+  "thresholds by size": [
+   0.8448521782824606,
+   0.8448521782824606,
+   0.8448521782824606,
+   0.8448521782824606,
+   0.8448521782824606
+  ]
+ },
+ "eleven-pu--wide-pu@ipw": {
+  "first": "eleven-pu",
+  "kind": "wide-pu",
+  "rule": "ipw",
+  "frozen threshold": 0.842059938166619,
+  "thresholds by size": [
+   0.8240201262877239,
+   0.8240201262877239,
+   0.8240201262877239,
+   0.8240201262877239,
+   0.8240201262877239
+  ]
+ },
+ "eleven-pu-seed2--wide-pu@ipw": {
+  "first": "eleven-pu-seed2",
+  "kind": "wide-pu",
+  "rule": "ipw",
+  "frozen threshold": 0.8448521782824606,
+  "thresholds by size": [
+   0.8019148545065888,
+   0.8019148545065888,
+   0.8019148545065888,
+   0.8019148545065888,
+   0.8019148545065888
+  ]
+ },
+ "eleven-sar--wide-sar@declared": {
+  "first": "eleven-sar",
+  "kind": "wide-sar",
+  "rule": "declared",
+  "frozen threshold": 0.908853473779448,
+  "thresholds by size": [
+   0.908853473779448,
+   0.908853473779448,
+   0.908853473779448,
+   0.908853473779448,
+   0.908853473779448
+  ]
+ },
+ "eleven-sar-seed2--wide-sar@declared": {
+  "first": "eleven-sar-seed2",
+  "kind": "wide-sar",
+  "rule": "declared",
+  "frozen threshold": 0.899190845311644,
+  "thresholds by size": [
+   0.899190845311644,
+   0.899190845311644,
+   0.899190845311644,
+   0.899190845311644,
+   0.899190845311644
+  ]
+ },
+ "eleven-sar--wide-sar@ipw": {
+  "first": "eleven-sar",
+  "kind": "wide-sar",
+  "rule": "ipw",
+  "frozen threshold": 0.908853473779448,
+  "thresholds by size": [
+   0.8242245838121967,
+   0.8242245838121967,
+   0.8242245838121967,
+   0.8242245838121967,
+   0.8242245838121967
+  ]
+ },
+ "eleven-sar-seed2--wide-sar@ipw": {
+  "first": "eleven-sar-seed2",
+  "kind": "wide-sar",
+  "rule": "ipw",
+  "frozen threshold": 0.899190845311644,
+  "thresholds by size": [
+   0.8874959728749924,
+   0.8874959728749924,
+   0.8874959728749924,
+   0.8874959728749924,
+   0.8874959728749924
+  ]
+ }
+}

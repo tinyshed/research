@@ -1,0 +1,89 @@
+{
+ "chosen at": "2026-11-26T16:34:04+00:00",
+ "rule": "the highest weighted F1 over the four GitHub development sets pooled, the mean of two seeds",
+ "table": {
+  "eleven--wide": {
+   "weighted F1, seed 20261027": 0.8114513620835022,
+   "weighted F1, seed 20261028": 0.7936894043172035,
+   "mean": 0.8025703832003528,
+   "a candidate": false
+  },
+  "eleven--wide@size": {
+   "weighted F1, seed 20261027": 0.8298358639370368,
+   "weighted F1, seed 20261028": 0.8152776969057021,
+   "mean": 0.8225567804213694,
+   "a candidate": true
+  },
+  "eleven--wide@size-teachers": {
+   "weighted F1, seed 20261027": 0.8323062083406348,
+   "weighted F1, seed 20261028": 0.8148881268400412,
+   "mean": 0.823597167590338,
+   "a candidate": true
+  },
+  "eleven--wide@size-ipw": {
+   "weighted F1, seed 20261027": 0.8298906634746297,
+   "weighted F1, seed 20261028": 0.8152159508095698,
+   "mean": 0.8225533071420997,
+   "a candidate": true
+  },
+  "eleven--wide@ipw": {
+   "weighted F1, seed 20261027": 0.822259145449182,
+   "weighted F1, seed 20261028": 0.8073911488656678,
+   "mean": 0.8148251471574248,
+   "a candidate": true
+  },
+  "eleven--wide-pu@declared": {
+   "weighted F1, seed 20261027": 0.817894783827042,
+   "weighted F1, seed 20261028": 0.805811590067457,
+   "mean": 0.8118531869472494,
+   "a candidate": true
+  },
+  "eleven--wide-pu@ipw": {
+   "weighted F1, seed 20261027": 0.8321878590214223,
+   "weighted F1, seed 20261028": 0.8237744692803665,
+   "mean": 0.8279811641508944,
+   "a candidate": true
+  },
+  "eleven-pu--wide@declared": {
+   "weighted F1, seed 20261027": 0.8247866082770174,
+   "weighted F1, seed 20261028": 0.8053543939967771,
+   "mean": 0.8150705011368973,
+   "a candidate": true
+  },
+  "eleven-pu--wide@ipw": {
+   "weighted F1, seed 20261027": 0.8298055166087736,
+   "weighted F1, seed 20261028": 0.8146937195766938,
+   "mean": 0.8222496180927337,
+   "a candidate": true
+  },
+  "eleven-pu--wide-pu@declared": {
+   "weighted F1, seed 20261027": 0.8317490213738822,
+   "weighted F1, seed 20261028": 0.8170433364816022,
+   "mean": 0.8243961789277422,
+   "a candidate": true
+  },
+  "eleven-pu--wide-pu@ipw": {
+   "weighted F1, seed 20261027": 0.8351966166474676,
+   "weighted F1, seed 20261028": 0.8245666092228219,
+   "mean": 0.8298816129351447,
+   "a candidate": true
+  },
+  "eleven-sar--wide-sar@declared": {
+   "weighted F1, seed 20261027": 0.7975904528038528,
+   "weighted F1, seed 20261028": 0.8015029266695822,
+   "mean": 0.7995466897367175,
+   "a candidate": false
+  },
+  "eleven-sar--wide-sar@ipw": {
+   "weighted F1, seed 20261027": 0.823898622035929,
+   "weighted F1, seed 20261028": 0.8043180761475082,
+   "mean": 0.8141083490917186,
+   "a candidate": false
+  }
+ },
+ "the highest candidate": "eleven-pu--wide-pu@ipw",
+ "above the frozen model": true,
+ "the round's result": "eleven-pu--wide-pu@ipw",
+ "the best candidate of the other family": "eleven--wide@size-teachers",
+ "read beside, a schema's own label frequency": "eleven-sar--wide-sar@ipw"
+}

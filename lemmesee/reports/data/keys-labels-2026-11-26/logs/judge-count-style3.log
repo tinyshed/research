@@ -1,0 +1,104 @@
+{
+ "answered": 480,
+ "of": 480,
+ "answers by kind": {
+  "control: declared": {
+   "yes": 58,
+   "no": 1,
+   "unsure": 1
+  },
+  "control: not a key": {
+   "no": 59,
+   "yes": 1
+  },
+  "drawn, 40 tables or more": {
+   "unsure": 20,
+   "yes": 64,
+   "no": 36
+  },
+  "drawn, under 40 tables": {
+   "yes": 57,
+   "unsure": 4,
+   "no": 59
+  },
+  "named by one language model, 40 tables or more": {
+   "yes": 5,
+   "no": 4,
+   "unsure": 21
+  },
+  "named by one language model, under 40 tables": {
+   "no": 10,
+   "yes": 19,
+   "unsure": 1
+  },
+  "named by several language models, 40 tables or more": {
+   "yes": 13,
+   "unsure": 15,
+   "no": 2
+  },
+  "named by several language models, under 40 tables": {
+   "yes": 24,
+   "no": 3,
+   "unsure": 3
+  }
+ },
+ "strata": {
+  "drawn, 40 tables or more": 352,
+  "drawn, under 40 tables": 225,
+  "named by one language model, 40 tables or more": 280,
+  "named by one language model, under 40 tables": 89,
+  "named by several language models, 40 tables or more": 186,
+  "named by several language models, under 40 tables": 124
+ },
+ "compared models": [
+  "eleven--wide",
+  "eleven-pu--wide-pu@ipw",
+  "eleven-pu-seed2--wide-pu@ipw",
+  "eleven--wide@size-teachers",
+  "eleven-sar--wide-sar@ipw",
+  "eleven-pu--wide-pu@ipw | matched"
+ ],
+ "language models": [
+  "claude-haiku-5-5",
+  "claude-sonnet-5-5",
+  "deepseek-v4.1-flash-1017",
+  "gemini-3.5-flash-lite",
+  "gemini-3.8-flash",
+  "gpt-6-luna",
+  "gpt-6.1-terra"
+ ]
+}
+== style3, all: declared 1762, real 2339 [2273, 2406]
+  eleven--wide                                 drawn   1458 undeclared   277 sampled 114 yes 0.711 | P declared 0.810 judge 0.937 [0.913, 0.96] | R declared 0.670 real 0.584 [0.567, 0.602]
+      minus eleven-pu--wide-pu@ipw | matched: P +0.049 [0.032, 0.064]  R -0.059 [-0.07, -0.049]
+  eleven-pu--wide-pu@ipw                       drawn   1693 undeclared   408 sampled 163 yes 0.669 | P declared 0.759 judge 0.916 [0.894, 0.938] | R declared 0.729 real 0.663 [0.646, 0.68]
+      minus eleven--wide: P -0.021 [-0.038, -0.004]  R +0.079 [0.068, 0.09]
+      minus eleven-pu--wide-pu@ipw | matched: P +0.028 [0.015, 0.042]  R +0.020 [0.011, 0.03]
+  eleven-pu-seed2--wide-pu@ipw                 drawn   1589 undeclared   363 sampled 155 yes 0.652 | P declared 0.772 judge 0.921 [0.897, 0.944] | R declared 0.696 real 0.625 [0.608, 0.643]
+      minus eleven--wide: P -0.016 [-0.031, -0.0]  R +0.042 [0.032, 0.052]
+      minus eleven-pu--wide-pu@ipw | matched: P +0.033 [0.018, 0.047]  R -0.017 [-0.028, -0.007]
+  eleven--wide@size-teachers                   drawn   1587 undeclared   368 sampled 154 yes 0.617 | P declared 0.768 judge 0.908 [0.884, 0.931] | R declared 0.692 real 0.616 [0.598, 0.633]
+      minus eleven--wide: P -0.029 [-0.041, -0.016]  R +0.032 [0.024, 0.04]
+      minus eleven-pu--wide-pu@ipw | matched: P +0.020 [0.008, 0.029]  R -0.027 [-0.035, -0.02]
+  eleven-sar--wide-sar@ipw                     drawn   1568 undeclared   351 sampled 143 yes 0.636 | P declared 0.776 judge 0.912 [0.888, 0.935] | R declared 0.691 real 0.611 [0.594, 0.629]
+      minus eleven--wide: P -0.025 [-0.037, -0.011]  R +0.027 [0.02, 0.036]
+      minus eleven-pu--wide-pu@ipw | matched: P +0.024 [0.01, 0.036]  R -0.032 [-0.041, -0.023]
+  eleven-pu--wide-pu@ipw | matched             drawn   1693 undeclared   441 sampled 195 yes 0.544 | P declared 0.740 judge 0.888 [0.866, 0.91] | R declared 0.711 real 0.643 [0.625, 0.66]
+      minus eleven--wide: P -0.049 [-0.064, -0.032]  R +0.059 [0.049, 0.07]
+== style3, 40 tables or more: declared 626, real 941 [883, 1000]
+  eleven--wide                                 drawn    359 undeclared   132 sampled  41 yes 0.756 | P declared 0.632 judge 0.886 [0.812, 0.967] | R declared 0.363 real 0.338 [0.308, 0.369]
+      minus eleven-pu--wide-pu@ipw | matched: P +0.058 [0.001, 0.113]  R -0.103 [-0.128, -0.08]
+  eleven-pu--wide-pu@ipw                       drawn    572 undeclared   247 sampled  81 yes 0.716 | P declared 0.568 judge 0.866 [0.809, 0.922] | R declared 0.519 real 0.526 [0.493, 0.56]
+      minus eleven--wide: P -0.020 [-0.08, 0.041]  R +0.188 [0.162, 0.217]
+      minus eleven-pu--wide-pu@ipw | matched: P +0.038 [-0.002, 0.078]  R +0.086 [0.064, 0.109]
+  eleven-pu-seed2--wide-pu@ipw                 drawn    475 undeclared   201 sampled  72 yes 0.625 | P declared 0.577 judge 0.855 [0.793, 0.923] | R declared 0.438 real 0.431 [0.399, 0.465]
+      minus eleven--wide: P -0.031 [-0.084, 0.024]  R +0.094 [0.071, 0.117]
+      minus eleven-pu--wide-pu@ipw | matched: P +0.027 [-0.022, 0.075]  R -0.009 [-0.035, 0.016]
+  eleven--wide@size-teachers                   drawn    438 undeclared   188 sampled  58 yes 0.707 | P declared 0.571 judge 0.845 [0.778, 0.912] | R declared 0.399 real 0.393 [0.362, 0.426]
+      minus eleven--wide: P -0.040 [-0.082, 0.006]  R +0.056 [0.039, 0.075]
+      minus eleven-pu--wide-pu@ipw | matched: P +0.018 [-0.021, 0.051]  R -0.047 [-0.066, -0.031]
+  eleven-sar--wide-sar@ipw                     drawn    456 undeclared   201 sampled  66 yes 0.606 | P declared 0.559 judge 0.817 [0.752, 0.881] | R declared 0.407 real 0.396 [0.363, 0.429]
+      minus eleven--wide: P -0.069 [-0.115, -0.02]  R +0.058 [0.039, 0.078]
+      minus eleven-pu--wide-pu@ipw | matched: P -0.011 [-0.053, 0.027]  R -0.045 [-0.066, -0.026]
+  eleven-pu--wide-pu@ipw | matched             drawn    501 undeclared   233 sampled  80 yes 0.625 | P declared 0.535 judge 0.828 [0.769, 0.892] | R declared 0.428 real 0.441 [0.408, 0.474]
+      minus eleven--wide: P -0.058 [-0.113, -0.001]  R +0.103 [0.08, 0.128]

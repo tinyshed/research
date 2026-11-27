@@ -1,0 +1,36 @@
+{
+ "compared models": [
+  "eleven--wide",
+  "eleven-pu--wide-pu@ipw",
+  "eleven-pu-seed2--wide-pu@ipw",
+  "eleven--wide@size-teachers",
+  "eleven-sar--wide-sar@ipw",
+  "eleven-pu--wide-pu@ipw | matched",
+  "eleven-pu-seed2--wide-pu@ipw | matched"
+ ],
+ "language models": [
+  "claude-haiku-5-5",
+  "claude-sonnet-5-5",
+  "deepseek-v4.1-flash-1017",
+  "gemini-3.5-flash-lite",
+  "gpt-6-luna",
+  "gpt-6.1-terra"
+ ],
+ "strata": {
+  "drawn, 40 tables or more": 3464,
+  "drawn, under 40 tables": 3070,
+  "named by one language model, 40 tables or more": 789,
+  "named by one language model, under 40 tables": 532,
+  "named by several language models, 40 tables or more": 1391,
+  "named by several language models, under 40 tables": 947
+ },
+ "undeclared keys drawn, every one": {
+  "eleven--wide": 3557,
+  "eleven-pu--wide-pu@ipw": 4804,
+  "eleven-pu-seed2--wide-pu@ipw": 4677,
+  "eleven--wide@size-teachers": 4766,
+  "eleven-sar--wide-sar@ipw": 4461,
+  "eleven-pu--wide-pu@ipw | matched": 4871,
+  "eleven-pu-seed2--wide-pu@ipw | matched": 4825
+ }
+}

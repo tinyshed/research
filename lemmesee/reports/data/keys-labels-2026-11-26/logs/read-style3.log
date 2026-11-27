@@ -1,0 +1,94 @@
+16:34:13
+style3: first stage eleven
+style3: first stage eleven-pu
+style3: first stage eleven-pu-seed2
+style3: first stage eleven-sar
+style3: first stage eleven-sar-seed2
+style3: first stage eleven-seed2
+style3: second stage eleven--wide
+style3: second stage eleven--wide-pu
+style3: second stage eleven-pu--wide
+style3: second stage eleven-pu--wide-pu
+style3: second stage eleven-pu-seed2--wide
+style3: second stage eleven-pu-seed2--wide-pu
+style3: second stage eleven-sar--wide-sar
+style3: second stage eleven-sar-seed2--wide-sar
+style3: second stage eleven-seed2--wide
+style3: second stage eleven-seed2--wide-pu
+eleven--wide: 1458 keys drawn, every database as round 1v read it
+eleven-seed2--wide: 1399 keys drawn, every database as round 1v read it
+eleven--wide                                         P 0.810 R 0.670 F1 0.734 | 40+: P 0.632 R 0.363 F1 0.461 | weighted F1 0.730 | drawn 1458 (40+: 359)
+eleven-seed2--wide                                   P 0.818 R 0.650 F1 0.724 | 40+: P 0.635 R 0.327 F1 0.432 | weighted F1 0.713 | drawn 1399 (40+: 323)
+eleven--wide@size                                    P 0.773 R 0.687 F1 0.727 (-0.006 [-0.016,+0.004]) | 40+: P 0.571 R 0.399 F1 0.470 | weighted F1 0.736 | drawn 1565 (40+: 438)
+eleven--wide@size | matched                          P 0.776 R 0.689 F1 0.730 (-0.004 [-0.015,+0.007]) | 40+: P 0.585 R 0.396 F1 0.472 | weighted F1 0.739 | drawn 1565 (40+: 424)
+eleven--wide@size | matched-by-size                  P 0.773 R 0.687 F1 0.727 (-0.006 [-0.016,+0.004]) | 40+: P 0.571 R 0.399 F1 0.470 | weighted F1 0.736 | drawn 1565 (40+: 438)
+eleven-seed2--wide@size                              P 0.800 R 0.670 F1 0.729 (+0.005 [-0.007,+0.016]) | 40+: P 0.609 R 0.366 F1 0.457 | weighted F1 0.728 | drawn 1475 (40+: 376)
+eleven-seed2--wide@size | matched                    P 0.797 R 0.667 F1 0.726 (+0.002 [-0.007,+0.009]) | 40+: P 0.604 R 0.351 F1 0.444 | weighted F1 0.724 | drawn 1475 (40+: 364)
+eleven-seed2--wide@size | matched-by-size            P 0.800 R 0.670 F1 0.729 (+0.005 [-0.007,+0.016]) | 40+: P 0.609 R 0.366 F1 0.457 | weighted F1 0.728 | drawn 1475 (40+: 376)
+eleven--wide@size-teachers                           P 0.768 R 0.692 F1 0.728 (-0.006 [-0.016,+0.005]) | 40+: P 0.571 R 0.399 F1 0.470 | weighted F1 0.741 | drawn 1587 (40+: 438)
+eleven--wide@size-teachers | matched                 P 0.768 R 0.692 F1 0.728 (-0.006 [-0.016,+0.005]) | 40+: P 0.575 R 0.398 F1 0.470 | weighted F1 0.740 | drawn 1587 (40+: 433)
+eleven--wide@size-teachers | matched-by-size         P 0.768 R 0.692 F1 0.728 (-0.006 [-0.016,+0.005]) | 40+: P 0.571 R 0.399 F1 0.470 | weighted F1 0.741 | drawn 1587 (40+: 438)
+eleven-seed2--wide@size-teachers                     P 0.793 R 0.666 F1 0.724 (-0.001 [-0.009,+0.007]) | 40+: P 0.606 R 0.348 F1 0.442 | weighted F1 0.724 | drawn 1480 (40+: 360)
+eleven-seed2--wide@size-teachers | matched           P 0.795 R 0.668 F1 0.726 (+0.002 [-0.008,+0.010]) | 40+: P 0.604 R 0.353 F1 0.446 | weighted F1 0.725 | drawn 1480 (40+: 366)
+eleven-seed2--wide@size-teachers | matched-by-size   P 0.793 R 0.666 F1 0.724 (-0.001 [-0.009,+0.007]) | 40+: P 0.606 R 0.348 F1 0.442 | weighted F1 0.724 | drawn 1480 (40+: 360)
+eleven--wide@size-ipw                                P 0.775 R 0.687 F1 0.728 (-0.006 [-0.015,+0.004]) | 40+: P 0.571 R 0.399 F1 0.470 | weighted F1 0.736 | drawn 1562 (40+: 438)
+eleven--wide@size-ipw | matched                      P 0.777 R 0.688 F1 0.730 (-0.004 [-0.015,+0.008]) | 40+: P 0.586 R 0.396 F1 0.473 | weighted F1 0.739 | drawn 1562 (40+: 423)
+eleven--wide@size-ipw | matched-by-size              P 0.775 R 0.687 F1 0.728 (-0.006 [-0.015,+0.004]) | 40+: P 0.571 R 0.399 F1 0.470 | weighted F1 0.736 | drawn 1562 (40+: 438)
+eleven-seed2--wide@size-ipw                          P 0.800 R 0.670 F1 0.729 (+0.005 [-0.007,+0.016]) | 40+: P 0.609 R 0.366 F1 0.457 | weighted F1 0.728 | drawn 1475 (40+: 376)
+eleven-seed2--wide@size-ipw | matched                P 0.797 R 0.667 F1 0.726 (+0.002 [-0.007,+0.009]) | 40+: P 0.604 R 0.351 F1 0.444 | weighted F1 0.724 | drawn 1475 (40+: 364)
+eleven-seed2--wide@size-ipw | matched-by-size        P 0.800 R 0.670 F1 0.729 (+0.005 [-0.007,+0.016]) | 40+: P 0.609 R 0.366 F1 0.457 | weighted F1 0.728 | drawn 1475 (40+: 376)
+eleven--wide@ipw                                     P 0.787 R 0.680 F1 0.730 (-0.004 [-0.012,+0.004]) | 40+: P 0.595 R 0.380 F1 0.464 | weighted F1 0.734 | drawn 1523 (40+: 400)
+eleven--wide@ipw | matched                           P 0.787 R 0.680 F1 0.730 (-0.004 [-0.012,+0.004]) | 40+: P 0.595 R 0.380 F1 0.464 | weighted F1 0.734 | drawn 1523 (40+: 400)
+eleven--wide@ipw | matched-by-size                   P 0.787 R 0.680 F1 0.730 (-0.004 [-0.012,+0.004]) | 40+: P 0.595 R 0.380 F1 0.464 | weighted F1 0.734 | drawn 1523 (40+: 400)
+eleven-seed2--wide@ipw                               P 0.806 R 0.661 F1 0.726 (+0.002 [-0.003,+0.006]) | 40+: P 0.619 R 0.340 F1 0.439 | weighted F1 0.721 | drawn 1444 (40+: 344)
+eleven-seed2--wide@ipw | matched                     P 0.806 R 0.661 F1 0.726 (+0.002 [-0.003,+0.006]) | 40+: P 0.619 R 0.340 F1 0.439 | weighted F1 0.721 | drawn 1444 (40+: 344)
+eleven-seed2--wide@ipw | matched-by-size             P 0.806 R 0.661 F1 0.726 (+0.002 [-0.003,+0.006]) | 40+: P 0.619 R 0.340 F1 0.439 | weighted F1 0.721 | drawn 1444 (40+: 344)
+eleven--wide-pu@declared                             P 0.807 R 0.684 F1 0.741 (+0.007 [-0.006,+0.026]) | 40+: P 0.620 R 0.417 F1 0.499 | weighted F1 0.743 | drawn 1494 (40+: 421)
+eleven--wide-pu@declared | matched                   P 0.799 R 0.678 F1 0.733 (-0.000 [-0.006,+0.006]) | 40+: P 0.617 R 0.375 F1 0.467 | weighted F1 0.734 | drawn 1494 (40+: 381)
+eleven--wide-pu@declared | matched-by-size           P 0.798 R 0.677 F1 0.732 (-0.001 [-0.011,+0.008]) | 40+: P 0.589 R 0.396 F1 0.474 | weighted F1 0.732 | drawn 1494 (40+: 421)
+eleven-seed2--wide-pu@declared                       P 0.825 R 0.657 F1 0.731 (+0.007 [-0.003,+0.021]) | 40+: P 0.654 R 0.363 F1 0.467 | weighted F1 0.723 | drawn 1402 (40+: 347)
+eleven-seed2--wide-pu@declared | matched             P 0.818 R 0.651 F1 0.725 (+0.001 [-0.001,+0.002]) | 40+: P 0.636 R 0.329 F1 0.434 | weighted F1 0.714 | drawn 1402 (40+: 324)
+eleven-seed2--wide-pu@declared | matched-by-size     P 0.817 R 0.650 F1 0.724 (-0.001 [-0.005,+0.003]) | 40+: P 0.617 R 0.342 F1 0.440 | weighted F1 0.713 | drawn 1402 (40+: 347)
+eleven--wide-pu@ipw                                  P 0.792 R 0.701 F1 0.744 (+0.011 [-0.007,+0.037]) | 40+: P 0.615 R 0.447 F1 0.518 | weighted F1 0.756 | drawn 1560 (40+: 455)
+eleven--wide-pu@ipw | matched                        P 0.777 R 0.688 F1 0.730 (-0.004 [-0.015,+0.007]) | 40+: P 0.588 R 0.396 F1 0.473 | weighted F1 0.738 | drawn 1560 (40+: 422)
+eleven--wide-pu@ipw | matched-by-size                P 0.776 R 0.687 F1 0.729 (-0.004 [-0.014,+0.006]) | 40+: P 0.560 R 0.407 F1 0.472 | weighted F1 0.736 | drawn 1560 (40+: 455)
+eleven-seed2--wide-pu@ipw                            P 0.799 R 0.684 F1 0.737 (+0.013 [-0.003,+0.036]) | 40+: P 0.616 R 0.407 F1 0.490 | weighted F1 0.742 | drawn 1510 (40+: 414)
+eleven-seed2--wide-pu@ipw | matched                  P 0.787 R 0.674 F1 0.726 (+0.002 [-0.011,+0.015]) | 40+: P 0.605 R 0.369 F1 0.458 | weighted F1 0.731 | drawn 1510 (40+: 382)
+eleven-seed2--wide-pu@ipw | matched-by-size          P 0.789 R 0.676 F1 0.728 (+0.004 [-0.012,+0.020]) | 40+: P 0.582 R 0.385 F1 0.463 | weighted F1 0.731 | drawn 1510 (40+: 414)
+eleven-pu--wide@declared                             P 0.780 R 0.707 F1 0.742 (+0.008 [-0.011,+0.029]) | 40+: P 0.590 R 0.450 F1 0.511 | weighted F1 0.753 | drawn 1596 (40+: 478)
+eleven-pu--wide@declared | matched                   P 0.765 R 0.693 F1 0.727 (-0.006 [-0.017,+0.005]) | 40+: P 0.572 R 0.399 F1 0.470 | weighted F1 0.740 | drawn 1596 (40+: 437)
+eleven-pu--wide@declared | matched-by-size           P 0.767 R 0.695 F1 0.729 (-0.005 [-0.018,+0.011]) | 40+: P 0.552 R 0.422 F1 0.478 | weighted F1 0.739 | drawn 1596 (40+: 478)
+eleven-pu-seed2--wide@declared                       P 0.808 R 0.659 F1 0.726 (+0.001 [-0.012,+0.014]) | 40+: P 0.622 R 0.355 F1 0.452 | weighted F1 0.720 | drawn 1437 (40+: 357)
+eleven-pu-seed2--wide@declared | matched             P 0.809 R 0.659 F1 0.726 (+0.002 [-0.002,+0.006]) | 40+: P 0.625 R 0.340 F1 0.441 | weighted F1 0.720 | drawn 1437 (40+: 341)
+eleven-pu-seed2--wide@declared | matched-by-size     P 0.805 R 0.657 F1 0.723 (-0.001 [-0.008,+0.004]) | 40+: P 0.608 R 0.347 F1 0.442 | weighted F1 0.716 | drawn 1437 (40+: 357)
+eleven-pu--wide@ipw                                  P 0.765 R 0.717 F1 0.740 (+0.007 [-0.024,+0.037]) | 40+: P 0.573 R 0.471 F1 0.517 | weighted F1 0.758 | drawn 1650 (40+: 515)
+eleven-pu--wide@ipw | matched                        P 0.752 R 0.705 F1 0.728 (-0.006 [-0.020,+0.011]) | 40+: P 0.556 R 0.420 F1 0.479 | weighted F1 0.747 | drawn 1651 (40+: 473)
+eleven-pu--wide@ipw | matched-by-size                P 0.751 R 0.703 F1 0.726 (-0.007 [-0.025,+0.013]) | 40+: P 0.536 R 0.441 F1 0.484 | weighted F1 0.743 | drawn 1650 (40+: 515)
+eleven-pu-seed2--wide@ipw                            P 0.787 R 0.670 F1 0.724 (-0.001 [-0.016,+0.015]) | 40+: P 0.597 R 0.377 F1 0.462 | weighted F1 0.728 | drawn 1501 (40+: 395)
+eleven-pu-seed2--wide@ipw | matched                  P 0.789 R 0.673 F1 0.726 (+0.002 [-0.011,+0.015]) | 40+: P 0.611 R 0.366 F1 0.458 | weighted F1 0.730 | drawn 1501 (40+: 375)
+eleven-pu-seed2--wide@ipw | matched-by-size          P 0.793 R 0.675 F1 0.729 (+0.005 [-0.008,+0.019]) | 40+: P 0.597 R 0.377 F1 0.462 | weighted F1 0.731 | drawn 1501 (40+: 395)
+eleven-pu--wide-pu@declared                          P 0.769 R 0.724 F1 0.746 (+0.012 [-0.021,+0.050]) | 40+: P 0.576 R 0.510 F1 0.541 | weighted F1 0.766 | drawn 1658 (40+: 554)
+eleven-pu--wide-pu@declared | matched                P 0.750 R 0.706 F1 0.727 (-0.006 [-0.021,+0.011]) | 40+: P 0.553 R 0.422 F1 0.479 | weighted F1 0.747 | drawn 1658 (40+: 477)
+eleven-pu--wide-pu@declared | matched-by-size        P 0.750 R 0.705 F1 0.727 (-0.007 [-0.031,+0.018]) | 40+: P 0.518 R 0.458 F1 0.486 | weighted F1 0.742 | drawn 1658 (40+: 554)
+eleven-pu-seed2--wide-pu@declared                    P 0.798 R 0.685 F1 0.737 (+0.013 [-0.013,+0.045]) | 40+: P 0.618 R 0.423 F1 0.502 | weighted F1 0.741 | drawn 1513 (40+: 429)
+eleven-pu-seed2--wide-pu@declared | matched          P 0.787 R 0.676 F1 0.727 (+0.003 [-0.010,+0.017]) | 40+: P 0.606 R 0.371 F1 0.460 | weighted F1 0.732 | drawn 1513 (40+: 383)
+eleven-pu-seed2--wide-pu@declared | matched-by-size  P 0.786 R 0.675 F1 0.726 (+0.002 [-0.016,+0.020]) | 40+: P 0.571 R 0.391 F1 0.464 | weighted F1 0.729 | drawn 1513 (40+: 429)
+eleven-pu--wide-pu@ipw                               P 0.759 R 0.729 F1 0.744 (+0.010 [-0.025,+0.050]) | 40+: P 0.568 R 0.519 F1 0.543 | weighted F1 0.768 | drawn 1693 (40+: 572)
+eleven-pu--wide-pu@ipw | matched                     P 0.740 R 0.711 F1 0.725 (-0.009 [-0.024,+0.009]) | 40+: P 0.535 R 0.428 F1 0.476 | weighted F1 0.747 | drawn 1693 (40+: 501)
+eleven-pu--wide-pu@ipw | matched-by-size             P 0.738 R 0.709 F1 0.724 (-0.010 [-0.036,+0.016]) | 40+: P 0.507 R 0.463 F1 0.484 | weighted F1 0.743 | drawn 1693 (40+: 572)
+eleven-pu-seed2--wide-pu@ipw                         P 0.772 R 0.696 F1 0.732 (+0.007 [-0.018,+0.041]) | 40+: P 0.577 R 0.438 F1 0.498 | weighted F1 0.744 | drawn 1589 (40+: 475)
+eleven-pu-seed2--wide-pu@ipw | matched               P 0.766 R 0.691 F1 0.726 (+0.002 [-0.017,+0.022]) | 40+: P 0.584 R 0.385 F1 0.464 | weighted F1 0.740 | drawn 1589 (40+: 413)
+eleven-pu-seed2--wide-pu@ipw | matched-by-size       P 0.765 R 0.690 F1 0.725 (+0.001 [-0.024,+0.027]) | 40+: P 0.545 R 0.414 F1 0.470 | weighted F1 0.735 | drawn 1589 (40+: 475)
+eleven-sar--wide-sar@declared                        P 0.837 R 0.654 F1 0.735 (+0.001 [-0.009,+0.013]) | 40+: P 0.662 R 0.356 F1 0.463 | weighted F1 0.720 | drawn 1377 (40+: 337)
+eleven-sar--wide-sar@declared | matched              P 0.832 R 0.650 F1 0.730 (-0.003 [-0.013,+0.006]) | 40+: P 0.658 R 0.332 F1 0.442 | weighted F1 0.716 | drawn 1377 (40+: 316)
+eleven-sar--wide-sar@declared | matched-by-size      P 0.832 R 0.650 F1 0.730 (-0.004 [-0.011,+0.004]) | 40+: P 0.647 R 0.348 F1 0.453 | weighted F1 0.716 | drawn 1377 (40+: 337)
+eleven-sar-seed2--wide-sar@declared                  P 0.842 R 0.637 F1 0.725 (+0.001 [-0.010,+0.010]) | 40+: P 0.698 R 0.324 F1 0.443 | weighted F1 0.706 | drawn 1334 (40+: 291)
+eleven-sar-seed2--wide-sar@declared | matched        P 0.839 R 0.635 F1 0.723 (-0.002 [-0.012,+0.008]) | 40+: P 0.667 R 0.300 F1 0.414 | weighted F1 0.702 | drawn 1334 (40+: 282)
+eleven-sar-seed2--wide-sar@declared | matched-by-size P 0.837 R 0.634 F1 0.722 (-0.003 [-0.012,+0.006]) | 40+: P 0.660 R 0.307 F1 0.419 | weighted F1 0.702 | drawn 1334 (40+: 291)
+eleven-sar--wide-sar@ipw                             P 0.776 R 0.691 F1 0.731 (-0.003 [-0.017,+0.011]) | 40+: P 0.559 R 0.407 F1 0.471 | weighted F1 0.737 | drawn 1568 (40+: 456)
+eleven-sar--wide-sar@ipw | matched                   P 0.774 R 0.689 F1 0.729 (-0.004 [-0.015,+0.007]) | 40+: P 0.582 R 0.396 F1 0.471 | weighted F1 0.739 | drawn 1568 (40+: 426)
+eleven-sar--wide-sar@ipw | matched-by-size           P 0.773 R 0.688 F1 0.728 (-0.006 [-0.016,+0.006]) | 40+: P 0.559 R 0.407 F1 0.471 | weighted F1 0.736 | drawn 1568 (40+: 456)
+eleven-sar-seed2--wide-sar@ipw                       P 0.837 R 0.645 F1 0.728 (+0.004 [-0.007,+0.013]) | 40+: P 0.690 R 0.334 F1 0.450 | weighted F1 0.711 | drawn 1357 (40+: 303)
+eleven-sar-seed2--wide-sar@ipw | matched             P 0.831 R 0.640 F1 0.723 (-0.001 [-0.008,+0.004]) | 40+: P 0.653 R 0.307 F1 0.417 | weighted F1 0.705 | drawn 1357 (40+: 294)
+eleven-sar-seed2--wide-sar@ipw | matched-by-size     P 0.828 R 0.637 F1 0.720 (-0.004 [-0.012,+0.003]) | 40+: P 0.637 R 0.308 F1 0.416 | weighted F1 0.703 | drawn 1357 (40+: 303)
+16:35:33

@@ -1,0 +1,25 @@
+16:35:33
+plain-a: first stage eleven
+plain-a: first stage eleven-pu
+plain-a: first stage eleven-pu-seed2
+plain-a: first stage eleven-sar
+plain-a: first stage eleven-sar-seed2
+plain-a: first stage eleven-seed2
+plain-a: second stage eleven--wide
+Traceback (most recent call last):
+  File "<repo>\lemmesee\round-1y\reading.py", line 148, in <module>
+    read(sys.argv[1])
+    ~~~~^^^^^^^^^^^^^
+  File "<repo>\lemmesee\round-1y\reading.py", line 87, in read
+    schemas, rec, raws = scores(which)
+                         ~~~~~~^^^^^^^
+  File "<repo>\lemmesee\round-1y\reading.py", line 76, in scores
+    feats = wide.features(pool, "wide", schemas, rec, firsts[f])
+  File "<repo>\lemmesee\round-1v\wide.py", line 238, in features
+    return np.vstack(list(pool.map(job, jobs)))
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>\lemmesee\round-1b\.venv\Lib\site-packages\numpy\_core\shape_base.py", line 290, in vstack
+    return _nx.concatenate(arrs, 0, dtype=dtype, casting=casting)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 871. MiB for an array with shape (3357553, 68) and data type float32
+16:52:29
